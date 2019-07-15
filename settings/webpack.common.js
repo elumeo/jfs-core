@@ -13,7 +13,7 @@ module.exports = {
   entry: ['./Main.tsx'],
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, '..', '..', 'dist'),
+    path: resolve(__dirname, '..', '..', '..', 'dist'),
     publicPath: ''
   },
 
