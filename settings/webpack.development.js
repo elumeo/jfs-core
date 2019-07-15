@@ -29,7 +29,7 @@ module.exports = {
     watchOptions:
     {
       poll: 1500,
-      ignored: /node_modules/,
+      ignored: /node_modules\/(?!.*@elumeo).*$/,
       aggregateTimeout: 200
     }
   },
