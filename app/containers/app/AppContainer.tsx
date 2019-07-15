@@ -7,7 +7,7 @@ import Snackbar from 'react-md/lib/Snackbars';
 import Toolbar from 'react-md/lib/Toolbars';
 import NavigationDrawer from './NavigationDrawer';
 import { dismissToastAction } from '../../store/action/BaseAction';
-import { IRootReducer } from '../../../../../src/store/reducer/Root';
+import { IRootReducer } from '../../../../../../src/store/reducer/Root';
 import { IBaseReducerState, IToastConfig } from '../../store/reducer/BaseReducer';
 import config from '../../base/Config';
 

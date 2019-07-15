@@ -2,8 +2,8 @@ import { applyMiddleware, createStore } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import rootEpic from '../../../../src/store/epic/Root';
-import rootReducer from '../../../../src/store/reducer/Root';
+import rootEpic from '../../../../../src/store/epic/Root';
+import rootReducer from '../../../../../src/store/reducer/Root';
 
 // -----------------------------------------------------------------------------
 
@@ -15,8 +15,8 @@ export default () => {
   )(createStore)(rootReducer);
 
   if (module['hot']) {
-    module['hot'].accept('../../../../src/store/reducer/Root.ts', () => {
-      store.replaceReducer(require('../../../../src/store/reducer/Root.ts'));
+    module['hot'].accept('../../../../../src/store/reducer/Root.ts', () => {
+      store.replaceReducer(require('../../../../../src/store/reducer/Root.ts'));
     });
   }
 

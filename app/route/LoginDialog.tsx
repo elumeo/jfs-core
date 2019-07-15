@@ -7,7 +7,7 @@ import DialogContainer from 'react-md/lib/Dialogs';
 import TextField from 'react-md/lib/TextFields/TextField';
 
 import { checkLoginAction, checkSessionAction } from '../store/action/SessionAction';
-import { IRootReducer } from '../../../../src/store/reducer/Root';
+import { IRootReducer } from '../../../../../src/store/reducer/Root';
 
 import './LoginDialog.scss';
 

@@ -16,7 +16,7 @@ try {
 module.exports = {
   ...common,
   devServer: {
-    contentBase: resolve(__dirname, '..', '..', '..', 'dist'),
+    contentBase: resolve(__dirname, '..', '..', '..', '..', 'dist'),
     compress: true,
     historyApiFallback: true,
     disableHostCheck: true,

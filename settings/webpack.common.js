@@ -4,8 +4,8 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     modules: [
-      resolve(__dirname, '..', '..', '..', 'src'),
-      resolve(__dirname, '..', '..')
+      resolve(__dirname, '..', '..', '..', '..', 'src'),
+      resolve(__dirname, '..', '..', '..')
     ]
   },
 
@@ -13,7 +13,7 @@ module.exports = {
   entry: ['./Main.tsx'],
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, '..', '..', '..', 'dist'),
+    path: resolve(__dirname, '..', '..', '..', '..', 'dist'),
     publicPath: ''
   },
 

@@ -49,9 +49,9 @@ module.exports = {
     }),
 
     new CopyWebpackPlugin([
-      { from: '../../../static' },
-      { from: '../../../config.json.dist', to: '../../../config.json' },
-      { from: '../../../local.js.dist', to: '../../../local.js' }
+      { from: '../../../../static' },
+      { from: '../../../../config.json.dist', to: '../../../../config.json' },
+      { from: '../../../../local.js.dist', to: '../../../../local.js' }
     ])
   ]
 };

@@ -8,7 +8,7 @@ import CardText from 'react-md/lib/Cards/CardText';
 import CardTitle from 'react-md/lib/Cards/CardTitle';
 import TextField from 'react-md/lib/TextFields';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
-import { IRootReducer } from '../../../../../src/store/reducer/Root';
+import { IRootReducer } from '../../../../../../src/store/reducer/Root';
 import { checkLoginAction, ILoginType } from '../../store/action/SessionAction';
 import { withRouter, Redirect } from 'react-router-dom';
 

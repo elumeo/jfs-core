@@ -1,11 +1,11 @@
 {
-  "name": "jfs-core",
-  "version": "1.0.0",
+  "name": "@elumeo/jfs-core",
+  "version": "1.0.8",
   "description": "jfs_Core",
   "main": "Main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elumeo/jfs-core.git"
+    "url": "git+https://github.com/elumeo/jfs-core.git"
   },
   "author": "elumeo SE",
   "license": "ISC",
@@ -13,7 +13,7 @@
     "url": "https://github.com/elumeo/jfs-core/issues"
   },
   "homepage": "http://www.elumeo.com",
-  "devDependencies": {
+  "dependencies": {
     "@types/classnames": "^2.2.3",
     "@types/lodash": "^4.14.74",
     "@types/node": "^8.0.29",
@@ -58,9 +58,7 @@
     "typescript": "^3.4.5",
     "typescript-babel-jest": "^1.0.5",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.8.2"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^2.8.2",
     "axios": "^0.17.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-preset-react-hmre": "^1.1.1",
@@ -90,7 +88,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^4.0.8",
-    "react-transition-group": "^2.2.0",
+    "react-transition-group": "1.2.1",
     "readline-sync": "^1.4.9",
     "redux": "^4.0.1",
     "redux-observable": "^1.1.0",
@@ -110,5 +108,8 @@
       "js"
     ],
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

@@ -7,7 +7,7 @@ import CardTitle from 'react-md/lib/Cards/CardTitle';
 import SelectField from 'react-md/lib/SelectFields';
 
 import { changeLanguageAction } from '../../store/action/BaseAction';
-import { IRootReducer } from '../../../../../src/store/reducer/Root';
+import { IRootReducer } from '../../../../../../src/store/reducer/Root';
 import Config from '../../base/Config';
 import { ReactText } from "react";
 

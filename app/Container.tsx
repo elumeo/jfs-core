@@ -4,14 +4,14 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
 import { Switch, HashRouter } from 'react-router-dom';
 import { changeLanguageAction } from './store/action/BaseAction';
-import { IRootReducer } from '../../../src/store/reducer/Root';
+import { IRootReducer } from '../../../../src/store/reducer/Root';
 import Config from './base/Config';
 import AppContainer from './containers/app/AppContainer';
 
-import routes from '../../../src/Routes';
+import routes from '../../../../src/Routes';
 
 import defaultTranslations from './Translations.json';
-import appTranslations from '../../../src/Translations.json';
+import appTranslations from '../../../../src/Translations.json';
 
 const translations = defaultTranslations;
 for (const language in translations) {

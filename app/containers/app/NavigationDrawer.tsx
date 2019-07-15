@@ -8,12 +8,12 @@ import Toolbar from 'react-md/lib/Toolbars';
 import { connect } from 'react-redux';
 import JSCApi from '../../base/JscApi';
 import { logoutAction } from '../../store/action/SessionAction';
-import { IRootReducer } from '../../../../../src/store/reducer/Root';
+import { IRootReducer } from '../../../../../../src/store/reducer/Root';
 import LogoutDialog from '../login/LogoutDialog';
 import { createNavItems, INavItem } from './NavigationItems';
 import { checkSessionAction } from '../../store/action/SessionAction';
 
-import navigationItems from '../../../../../src/Navigation';
+import navigationItems from '../../../../../../src/Navigation';
 
 interface INavigationDrawerProps extends InjectedIntlProps {
   visible: boolean;
