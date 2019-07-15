@@ -9,7 +9,7 @@
 
 ---
 
-To create a new version of the node_module follow these steps.
+To create a new version of the node module follow these steps.
 
 **1. Clone the project**
 
@@ -54,5 +54,7 @@ To create a new version of the node_module follow these steps.
   ```
   > npm install @elumeo/jfs-core@YOUR.VERSION.NUMBER
   ```
+
+  Your version of the jfs-core will then be placed at `node_modules/@elumeo/jfs-core`.
 
 ---
