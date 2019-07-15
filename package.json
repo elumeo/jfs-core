@@ -5,14 +5,14 @@
   "main": "Main.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scharfohnezwiebeln/jfs_Core.git"
+    "url": "https://github.com/elumeo/jfs-core.git"
   },
-  "author": "Juwelo Deutschland GmbH",
+  "author": "elumeo SE",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/scharfohnezwiebeln/jfs_Core/issues"
+    "url": "https://github.com/elumeo/jfs-core/issues"
   },
-  "homepage": "https://github.com/scharfohnezwiebeln/jfs_Core#readme",
+  "homepage": "http://www.elumeo.com",
   "devDependencies": {
     "@types/classnames": "^2.2.3",
     "@types/lodash": "^4.14.74",
