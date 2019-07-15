@@ -41,7 +41,7 @@ export class AppContainer extends React.Component<IAppContainerProps, IAppContai
     />;
   };
 
-  static getToastAutohideTimeout(text: string | JSX.Element, min: number = Snackbar.defaultProps.autohideTimeout) {
+  static getToastAutohideTimeout(text: any, min: number = Snackbar.defaultProps.autohideTimeout) {
     const isString = (typeof text === 'string') || (text instanceof String);
     if (!isString) {
       return min;
@@ -52,10 +52,13 @@ export class AppContainer extends React.Component<IAppContainerProps, IAppContai
   }
 
   private getSnackBarAutohide = (): boolean => {
-    const { toasts } = this.props;
-    return (toasts && toasts.size > 0) && (toasts.first().isError == true)
-      ? false
-      : true;
+    if (this.props.toasts && this.props.toasts.size > 0) {
+      if (this.props.toasts.first().dismissLabel != null) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   private getSnackBarClassName = (): string => {
@@ -134,7 +137,8 @@ export class AppContainer extends React.Component<IAppContainerProps, IAppContai
 
     const toastContents = toasts.map(toast => this.buildSnackBarContent(toast)).toArray();
 
-    console.log('TEST')
+    console.log(toastContents.length > 0 ? toastContents[toastContents.length -1].autohideTimeout : Snackbar.defaultProps.autohideTimeout);
+    console.log(getSnackBarAutohide());
 
     return (
       <div>
@@ -160,7 +164,7 @@ export class AppContainer extends React.Component<IAppContainerProps, IAppContai
           toasts={toastContents}
           onDismiss={dismissToastAction}
           autohide={getSnackBarAutohide()}
-          autohideTimeout={toastContents.length > 0 ? toastContents[toastContents.length -1].autohideTimeout : Snackbar.defaultProps.autohideTimeout}
+          autohideTimeout={toastContents.length > 0 ? toastContents[0].autohideTimeout : Snackbar.defaultProps.autohideTimeout}
         />
       </div>
     );

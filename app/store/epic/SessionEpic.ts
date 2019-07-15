@@ -49,6 +49,7 @@ export const checkLoginEpic: Epic<RootAction, RootAction> = (action$, store) =>
               checkUserRightsAction(response.data)
             )
           }),
+          /* TODO catch error and forward to toast */
           catchError(() =>
             of(
               sessionIsUnauthorizedAction(),
