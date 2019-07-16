@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const common = require('./webpack.common.js');
+const { projectPath, common } = require('./webpack.common.js');
 
 var local = null;
 try {
@@ -44,14 +44,14 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: '../../../static/index.html',
+      template: resolve(projectPath, 'static', 'index.html'),
       inject: false
     }),
 
     new CopyWebpackPlugin([
-      { from: '../../../../static' },
-      { from: '../../../../config.json.dist', to: '../../../../config.json' },
-      { from: '../../../../local.js.dist', to: '../../../../local.js' }
+      { from: resolve(projectPath, 'static') },
+      { from: resolve(projectPath, 'config.json.dist'), to: resolve(projectPath, 'config.json') },
+      { from: resolve(projectPath, 'local.js.dist'), to: resolve(projectPath, 'local.js') }
     ])
   ]
 };

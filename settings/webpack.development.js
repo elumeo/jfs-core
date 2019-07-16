@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-const common = require('./webpack.common.js');
+const { projectPath, common } = require('./webpack.common.js');
 
 let local = null;
 try {
@@ -16,7 +16,7 @@ try {
 module.exports = {
   ...common,
   devServer: {
-    contentBase: resolve(__dirname, '..', '..', '..', '..', 'dist'),
+    contentBase: resolve(projectPath, 'dist'),
     compress: true,
     historyApiFallback: true,
     disableHostCheck: true,

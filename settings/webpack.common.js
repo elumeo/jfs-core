@@ -1,11 +1,13 @@
 const { resolve, join } = require('path');
 
-module.exports = {
+const projectPath = resolve(__dirname, '..', '..', '..', '..');
+
+module.exports.common = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     modules: [
-      resolve(__dirname, '..', '..', '..', '..', 'src'),
-      resolve(__dirname, '..', '..', '..')
+      resolve(projectPath, 'src'),
+      resolve(projectPath, 'node_modules')
     ]
   },
 
@@ -13,7 +15,7 @@ module.exports = {
   entry: ['./Main.tsx'],
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, '..', '..', '..', '..', 'dist'),
+    path: resolve(projectPath, 'dist'),
     publicPath: ''
   },
 
@@ -47,3 +49,5 @@ module.exports = {
 
   performance: { hints: false }
 };
+
+module.exports.projectPath = projectPath;
