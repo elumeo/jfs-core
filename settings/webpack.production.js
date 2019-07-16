@@ -1,5 +1,6 @@
-const webpack = require('webpack');
+const { resolve } = require('path');
 
+const webpack = require('webpack');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
