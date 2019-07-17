@@ -8,19 +8,9 @@ import { IRootReducer } from '../../../../src/store/reducer/Root';
 import Config from './base/Config';
 import AppContainer from './containers/app/AppContainer';
 
-import routes from '../../../../src/Routes';
-
-import defaultTranslations from './Translations.json';
-import appTranslations from '../../../../src/Translations.json';
-
-const translations = defaultTranslations;
-for (const language in translations) {
-  const defaultLanguage = translations[language];
-  const appLanguage = appTranslations[language];
-  if (appLanguage) translations[language] = Object.assign(defaultLanguage, appLanguage);
-}
-
 import { Provider } from 'react-redux';
+
+
 
 // props & state ---------------------------------------------------------------
 interface IContainerProps {
@@ -31,6 +21,8 @@ interface IContainerProps {
   isCheckingSession?: boolean;
   isAuthorized?: boolean;
   store: any;
+  routes: any[];
+  translations: object;
 }
 
 interface IContainerState {}
@@ -45,18 +37,18 @@ class Container extends React.Component<IContainerProps, IContainerState> {
   }
 
   render() {
-    const { language, store } = this.props;
+    const { language, store, routes, translations } = this.props;
 
     return (
       <Provider store={store}>
         <IntlProvider locale={language} messages={translations[language]}>
           <HashRouter>
-            <div>
+            <>
               <AppContainer key="appContainer"/>
               <Switch>
-                {Object.keys(routes).map(name => routes[name]())}
+                {routes}
               </Switch>
-            </div>
+            </>
           </HashRouter>
         </IntlProvider>
       </Provider>

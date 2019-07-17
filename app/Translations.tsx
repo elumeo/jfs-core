@@ -1,4 +1,6 @@
-{
+import appTranslations from '../../../../src/Translations.json';
+
+const defaultTranslations = {
   "de": {
     "app.login": "Anmelden",
     "app.logout": "Abmelden",
@@ -78,3 +80,12 @@
     "app.closeBtnLabelModalDialog": "Close"
   }
 }
+
+const translations = defaultTranslations;
+for (const language in translations) {
+  const defaultLanguage = translations[language];
+  const appLanguage = appTranslations[language];
+  if (appLanguage) translations[language] = Object.assign(defaultLanguage, appLanguage);
+}
+
+export default translations;

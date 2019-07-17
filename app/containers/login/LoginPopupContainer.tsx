@@ -2,8 +2,8 @@ import * as React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
-import { checkSessionAction } from '../store/action/SessionAction';
-import { IRootReducer } from '../../../../../src/store/reducer/Root';
+import { checkSessionAction } from '../../store/action/SessionAction';
+import { IRootReducer } from '../../../../../../src/store/reducer/Root';
 import LoginDialog from './LoginDialog';
 
 export interface ILoginPopupContainerProps {

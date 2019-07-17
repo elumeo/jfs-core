@@ -108,7 +108,7 @@ export class AppContainer extends React.Component<IAppContainerProps, IAppContai
     const { formatMessage } = this.props.intl;
     const { contentTranslationId, contentMessage, contentError } = toast;
 
-    let autohideTimeout, text, toastContent;
+    let text, toastContent;
     if (contentTranslationId !== null) {
       text = formatMessage({ id: contentTranslationId }, { ...toast });
       toastContent = text;
@@ -132,13 +132,10 @@ export class AppContainer extends React.Component<IAppContainerProps, IAppContai
 
   render() {
     const { getNavButton, getSnackBarClassName, getSnackBarAutohide } = this;
-    const { intl: { formatMessage }, children, toasts, dismissToastAction } = this.props;
+    const { intl: { formatMessage }, toasts, dismissToastAction } = this.props;
     const { visible } = this.state;
 
     const toastContents = toasts.map(toast => this.buildSnackBarContent(toast)).toArray();
-
-    console.log(toastContents.length > 0 ? toastContents[toastContents.length -1].autohideTimeout : Snackbar.defaultProps.autohideTimeout);
-    console.log(getSnackBarAutohide());
 
     return (
       <div>
@@ -151,7 +148,6 @@ export class AppContainer extends React.Component<IAppContainerProps, IAppContai
             <div className={config.Language} />
           </div>
         </Toolbar>
-        <div style={{ marginTop: '70px' }}>{children}</div>
         <NavigationDrawer
           visible={visible}
           position="left"
@@ -164,7 +160,9 @@ export class AppContainer extends React.Component<IAppContainerProps, IAppContai
           toasts={toastContents}
           onDismiss={dismissToastAction}
           autohide={getSnackBarAutohide()}
-          autohideTimeout={toastContents.length > 0 ? toastContents[0].autohideTimeout : Snackbar.defaultProps.autohideTimeout}
+          autohideTimeout={toastContents.length > 0
+            ? toastContents[0].autohideTimeout
+            : Snackbar.defaultProps.autohideTimeout}
         />
       </div>
     );
