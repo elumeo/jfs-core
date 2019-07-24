@@ -31,7 +31,7 @@ export const checkSessionEpic: Epic<RootAction, RootAction> = (action$) =>
     catchError(() => of(sessionIsUnauthorizedAction()))
   );
 
-export const checkLoginEpic: Epic<RootAction, RootAction> = (action$, store) =>
+export const checkLoginEpic: Epic<RootAction, RootAction> = action$ =>
   action$.pipe(
     filter(isActionOf(checkLoginAction)),
     switchMap((action: PayloadAction<string, ILoginType>) => {
@@ -42,11 +42,11 @@ export const checkLoginEpic: Epic<RootAction, RootAction> = (action$, store) =>
 
         return from(
           JSCApi.LoginClient.login(credentials)
-        ).pipe(switchMap(response => {
-            Session.setToken(response.data.token);
+        ).pipe(switchMap(({ data, data: { token } }) => {
+            Session.setToken(token);
             document.getElementsByClassName('md-grid')[0].classList.remove('blurred');
             return of(
-              checkUserRightsAction(response.data)
+              checkUserRightsAction(data)
             )
           }),
           /* TODO catch error and forward to toast */
