@@ -4,7 +4,8 @@
   "description": "jfs_Core",
   "main": "Main.js",
   "scripts": {
-    "core-development": "node index.js"
+    "core-development": "node index.js",
+    "release": "npm publish --access public"
   },
   "repository": {
     "type": "git",
