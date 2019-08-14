@@ -34,6 +34,12 @@ const targetBasePath = resolve(
 
 const printLogs = process.argv[3] === '--print-logs';
 
+console.log(`Files in ${targetBasePath} will be synchronized with ${__dirname}`);
+
+if (printLogs) {
+  console.log('Applied changes will be printed to this console.');
+}
+
 ['app', 'library', 'scripts', 'settings'].map(corePath => {
   const whitelistPrefixes = [];
   const watcher = chokidar.watch(resolve(__dirname, corePath));

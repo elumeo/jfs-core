@@ -15,7 +15,6 @@ module.exports = {
     ...common.plugins,
     new ForkTsCheckerWebpackPlugin({ tsconfig: resolve('./tsconfig.json') }),
     new CompressionPlugin({ test: [/\.tsx/, /\.ts/, /\.js/], minRatio: 0.1 }),
-    new webpack.DefinePlugin({ '__REACT_DEVTOOLS_GLOBAL_HOOK__': '({ isDisabled: true })'}),
     new webpack.NamedModulesPlugin()
   ]
 };

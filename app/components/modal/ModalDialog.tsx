@@ -10,6 +10,9 @@ interface IModalDialog extends InjectedIntlProps {
   title?: string;
   closeButtonText?: string;
   description?: string;
+  className?: string;
+  confirmButtonText?: any;
+  onConfirm?: any;
 }
 
 const ModalDialog: React.SFC<IModalDialog> = ({
@@ -20,6 +23,9 @@ const ModalDialog: React.SFC<IModalDialog> = ({
   visible,
   closeButtonText,
   children,
+  className,
+  confirmButtonText,
+  onConfirm
 }) => {
   const { formatMessage } = intl;
   const id = `modal-dialog-${Math.round(Math.random() * 1000)}`;
@@ -30,6 +36,7 @@ const ModalDialog: React.SFC<IModalDialog> = ({
       title={title}
       aria-describedby={description}
       modal
+      className={className}
       actions={[
         {
           onClick: () => {
@@ -38,6 +45,17 @@ const ModalDialog: React.SFC<IModalDialog> = ({
           primary: true,
           label: formatMessage({ id: closeButtonText }),
         },
+        ...(
+          (confirmButtonText && onConfirm) && [
+            {
+              onClick: () => {
+                onConfirm();
+              },
+              primary: true,
+              label: formatMessage({ id: confirmButtonText }),
+            }
+          ] || []
+        )
       ]}
     >
       {children}
