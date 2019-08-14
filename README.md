@@ -1,5 +1,86 @@
 ## Elumeo 'jfs-core' module
 
+#### How to migrate an app to the jfs-core
+
+### Import paths
+
+Some paths in a non-migrated app are going to be moved to jfs-core paths.
+The internal structure of the jfs-core resembles the structure of non-migrated jfs apps.
+
+'jfs-core'-import paths begin with ```@elumeo/jfs-core/app```.
+
+##### Routing
+
+* move all ```<NoAuthRoute/>```s and ```<AuthRoute/>```s to the **default exported array** of ```/src/Routes.tsx```
+
+##### Navigation
+
+* move all navigation items to the **default exported array** of ```/src/Navigation.tsx```
+
+##### Redux Store
+
+###### Actions
+
+* create the file ```/src/store/action/Root.ts```
+* export all actions from jfs-core and app relative actions
+
+example:
+```
+export * from '@elumeo/jfs-core/app/store/action/BaseAction';
+export * from '@elumeo/jfs-core/app/store/action/ConfigAction';
+export * from '@elumeo/jfs-core/app/store/action/SessionAction';
+
+// -----------------------------------------------------------------------------
+
+export * from './AppAction';
+```
+
+###### Epics
+
+* create the file ```/src/store/epic/Root.ts```
+* import all epics from jfs-core
+
+example:
+```
+import { loginEpic, ... } from '@elumeo/jfs-core/app/store/epic/SessionEpic';
+```
+
+* export the combined epic (refer to redux-observables's combineEpics) as **default export**
+
+###### Reducers
+
+* create the file ```/src/store/reducer/Root.ts```
+* import all reducers and their states from jfs-core
+
+example:
+```
+import { baseReducer, baseReducerState } from '@elumeo/jfs-core/app/store/reducer/BaseReducer';
+```
+
+* import all app related reducers
+
+* export the combined reducer (refer to redux's combineReducers) as **default export**
+
+##### Translations
+
+* create the file ```/src/Translations.json```
+
+* create a json with translation keys that are only app relative
+
+```
+ {
+  "de": {
+    "app.title": "Rights Manager"
+  },
+  "en": {
+    "app.title": "Rights Manager"
+  },
+  "it": {
+    "app.title": "Rights Manager"
+  }
+ }
+```
+
 #### How to publish a new version of the 'jfs-core'
 
 ##### Prerequisites
