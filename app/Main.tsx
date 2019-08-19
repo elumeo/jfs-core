@@ -33,6 +33,13 @@ else
 
 // -----------------------------------------------------------------------------
 
+Date.prototype.toJSON = function() {
+  const iso = this.toISOString();
+  return iso.replace(/\..+/, '+00:00'); // W3C format for JSC
+};
+
+// -----------------------------------------------------------------------------
+
 /** @todo import the new config **/
 const config = {};
 store.dispatch(configLoadedAction(config));
