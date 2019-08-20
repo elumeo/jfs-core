@@ -10,7 +10,7 @@ import AppContainer from './containers/app/AppContainer';
 
 import { Provider } from 'react-redux';
 
-
+import Cookie from 'js-cookie';
 
 // props & state ---------------------------------------------------------------
 interface IContainerProps {
@@ -66,11 +66,14 @@ function cookieData(key: string) {
 
 // higher order components -----------------------------------------------------
 const mapStateToProps = (state: IRootReducer, ownProps: IContainerProps): IContainerProps => ({
-  language: state.baseReducer.language
-    ? state.baseReducer.language
-    : cookieData('lang')
-      ? JSON.parse(document.cookie).lang
-      : Config.Language,
+  language: (() => {
+    const cookie = Cookie.get('lang');
+    return state.baseReducer.language
+      ? state.baseReducer.language
+      : cookie
+        ? cookie
+        : Config.Language
+  })(),
   ...ownProps
 });
 

@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "jfs_Core",
   "main": "Main.js",
   "scripts": {
@@ -67,6 +67,7 @@
     "invariant": "^2.2.4",
     "jest": "^21.1.0",
     "json-loader": "^0.5.7",
+    "js-cookie": "^2.2.0",
     "lodash": "^4.17.11",
     "lodash-webpack-plugin": "^0.11.4",
     "ncp": "^2.0.0",
