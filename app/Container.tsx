@@ -56,17 +56,16 @@ class Container extends React.Component<IContainerProps, IContainerState> {
   }
 }
 
-function cookieData(key: string) {
-  if (document.cookie.length) {
-    let cookie = JSON.parse(document.cookie);
-    return cookie[key];
-  }
-  return null;
-}
-
 // higher order components -----------------------------------------------------
 const mapStateToProps = (state: IRootReducer, ownProps: IContainerProps): IContainerProps => ({
   language: (() => {
+    try {
+      JSON.parse(document.cookie);
+      document.cookie = '';
+    }
+    catch(error) {
+
+    }
     const cookie = Cookie.get('lang');
     return state.baseReducer.language
       ? state.baseReducer.language
