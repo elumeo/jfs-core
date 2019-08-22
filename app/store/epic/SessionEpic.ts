@@ -25,7 +25,9 @@ export const checkSessionEpic: Epic<RootAction, RootAction> = (action$) =>
       if (Session.getToken() === undefined) {
         return of(sessionIsUnauthorizedAction());
       } else {
-        return JSCApi.SessionClient.getCurrentSession().then((response: AxiosResponse<JSCApi.DTO.Session.ISessionDTO>) => checkUserRightsAction(response.data));
+        return JSCApi.SessionClient.getCurrentSession()
+          .then((response: AxiosResponse<JSCApi.DTO.Session.ISessionDTO>) =>
+            checkUserRightsAction(response.data));
       }
     }),
     catchError(() => of(sessionIsUnauthorizedAction()))
@@ -45,7 +47,7 @@ export const checkLoginEpic: Epic<RootAction, RootAction> = action$ =>
         ).pipe(switchMap(({ data, data: { token } }) => {
             Session.setToken(token);
             return of(
-              checkUserRightsAction(data)
+              checkUserRightsAction(data),
             )
           }),
           /* TODO catch error and forward to toast */
@@ -70,8 +72,8 @@ export const checkUserRightsEpic: Epic<RootAction, RootAction> = (action$) =>
     switchMap((action: PayloadAction<string, ISessionDTO>) => {
       return from(JSCApi.UserClient.getUserRights(action.payload.username, {filter: 'frontend:jfs'}))
         .pipe(
-          switchMap(response => {
-            if (response.data.assignedApps.some(app => app.name == Config.AppName)) {
+          switchMap(({ data }) => {
+            if (data.assignedApps.some(app => app.name == Config.AppName)) {
               return of(sessionIsAuthorizedAction(action.payload));
             } else {
               throw Error();
