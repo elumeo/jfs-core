@@ -2,13 +2,11 @@ import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-
 import DialogContainer from 'react-md/lib/Dialogs';
-import TextField from 'react-md/lib/TextFields/TextField';
-
+import LoginCredentials from './LoginCredentials';
+import LoginButton from './LoginButton';
 import { checkLoginAction, checkSessionAction } from '../../store/action/SessionAction';
 import { IRootReducer } from '../../../../../../src/store/reducer/Root';
-
 import './LoginDialog.scss';
 
 interface ILoginDialogProps extends InjectedIntlProps {
@@ -16,6 +14,7 @@ interface ILoginDialogProps extends InjectedIntlProps {
   isAuthorized?: boolean;
   checkLoginAction?: ({}) => void;
   checkSessionAction?: () => void;
+  isCheckingLogin?: boolean;
 }
 
 interface ILoginDialogState {
@@ -30,66 +29,40 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
     this.props.checkSessionAction();
   }
 
-  componentDidMount() {
-    const { isAuthorized } = this.props;
-    document
-      .getElementsByClassName('md-grid')[0]
-      .classList.add('blurred');
+  login = () => {
+    const { props: { checkLoginAction }, state: { username, password } } = this;
+    checkLoginAction({ username, password });
   }
 
   render() {
-    const { intl: { formatMessage }, checkLoginAction, isAuthorized } = this.props;
-    const { username, password } = this.state;
+    const {
+      props: {
+        intl: { formatMessage },
+        checkLoginAction, isAuthorized, isCheckingLogin
+      },
+      login
+    } = this;
 
-    const login = (username, password) => {
-      checkLoginAction({ username, password });
-      window.sessionStorage.loginReloaded = false;
-    }
-
-    const { loginReloaded, logout } = window.sessionStorage;
-
-    const hidden = (
-      (!JSON.parse(loginReloaded) || JSON.parse(logout)) &&
-      (!JSON.parse(loginReloaded) && JSON.parse(logout))
-    );
-
-    const id = `modal-dialog-${Math.round(Math.random() * 1000)}`;
     return (
-      <DialogContainer
-        id={id}
-        visible={true}
-        title="Login"
-        aria-describedby=""
-        modal
-        className={`login-dialog ${hidden ? 'hidden' : ''}`}
-        actions={[
-          {
-            onClick: () => login(username, password),
-            primary: true,
-            label: formatMessage({ id: "app.login" }),
-          }
-        ]}
-      >
-        <TextField
-          id="username"
-          type="text"
-          placeholder={formatMessage({id: 'login.username'})}
-          required={true}
-          errorText={formatMessage({id: 'login.username.errorText'})}
-          value={username}
-          onChange={username => this.setState({ username })}
-        />
-        <TextField
-          id="password"
-          type="password"
-          placeholder={formatMessage({id: 'login.password'})}
-          required={true}
-          errorText={formatMessage({id: 'login.password.errorText'})}
-          value={password}
-          onChange={password => this.setState({ password })}
-          onKeyUp={(e) => e.key === 'Enter' && login(username, password)}
-        />
-      </DialogContainer>
+      <div className="login-dialog">
+        <DialogContainer
+          id={'login-dialog'}
+          visible={true}
+          title="Login"
+          aria-describedby=""
+          modal
+        >
+          <LoginCredentials
+            onChangeUsername={update => this.setState({ username: update })}
+            onChangePassword={update => this.setState({ password: update })}
+            onLogin={login}
+          />
+          <LoginButton
+            isCheckingLogin={isCheckingLogin}
+            onLogin={login}
+          />
+        </DialogContainer>
+      </div>
     );
   }
 }
@@ -97,12 +70,13 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
 // higher order components -----------------------------------------------------
 const mapStateToProps = (state: IRootReducer, ownProps: ILoginDialogProps): ILoginDialogProps => ({
   isAuthorized: state.sessionReducer.isAuthorized,
+  isCheckingLogin: state.sessionReducer.isCheckingLogin,
   ...ownProps
 });
 
 const mapDispatchToProps = { checkLoginAction, checkSessionAction };
 
-const enhance: (component) => any = compose(
+const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
   injectIntl
 );

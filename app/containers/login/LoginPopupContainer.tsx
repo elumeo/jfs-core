@@ -21,24 +21,18 @@ class LoginPopupContainer extends React.Component<ILoginPopupContainerProps, ILo
 
   componentWillMount() {
     const { checkSessionAction } = this.props;
-
     checkSessionAction();
   }
 
   render() {
     const { children, isAuthorized } = this.props;
 
-    if (!JSON.parse(window.sessionStorage.loginReloaded) && isAuthorized) {
-      window.sessionStorage.reloading = true;
-      location.reload();
-    }
-
     return (
       <>
-        {
-         !(isAuthorized && window.localStorage.jfs_token) && <LoginDialog/>
-        }
-        {children}
+        {!isAuthorized && <LoginDialog/>}
+        <div className={`authorized-content ${isAuthorized ? '' : 'hidden'}`}>
+          {children}
+        </div>
       </>
     );
   }

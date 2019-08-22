@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import Button from 'react-md/lib/Buttons/Button';
-import Card from 'react-md/lib/Cards/Card';
-import CardActions from 'react-md/lib/Cards/CardActions';
-import CardText from 'react-md/lib/Cards/CardText';
-import CardTitle from 'react-md/lib/Cards/CardTitle';
-import TextField from 'react-md/lib/TextFields';
-import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import { IRootReducer } from '../../../../../../src/store/reducer/Root';
 import { checkLoginAction, ILoginType } from '../../store/action/SessionAction';
 import { withRouter, Redirect } from 'react-router-dom';
+
+import Card from 'react-md/lib/Cards/Card';
+import CardTitle from 'react-md/lib/Cards/CardTitle';
+import CardText from 'react-md/lib/Cards/CardText';
+import CardActions from 'react-md/lib/Cards/CardActions';
+
+import LoginCredentials from './LoginCredentials';
+import LoginButton from './LoginButton';
 
 import Config from '../../base/Config';
 
@@ -34,30 +35,12 @@ class LoginContainer extends React.Component<ILoginContainerProps, ILoginContain
     password: Config.RobotPassword ? Config.RobotPassword : null
   };
 
-  private usernameTFRef;
-
-  public constructor(props: ILoginContainerProps) {
+  constructor(props: ILoginContainerProps) {
     super(props);
-    this.usernameTFRef = React.createRef();
-  }
-
-  componentDidMount() {
-    if (this.usernameTFRef.current) {
-      this.usernameTFRef.current.focus();
-    }
-
     if (Config.RobotUsername && Config.RobotPassword) {
       this.login();
     }
   }
-
-  onUsernameChange = (username: string, e: Event): void => {
-    this.setState({ username });
-  };
-
-  onPasswordChange = (password: string, e: Event): void => {
-    this.setState({ password });
-  };
 
   login = (): void => {
     const { checkLoginAction } = this.props;
@@ -65,18 +48,8 @@ class LoginContainer extends React.Component<ILoginContainerProps, ILoginContain
     checkLoginAction({ username, password });
   };
 
-  onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>): void => {
-    if (e.keyCode == 13) {
-      this.login();
-    }
-  };
-
   render() {
-    const {
-      intl: { formatMessage },
-      isCheckingLogin, isAuthorized
-    } = this.props;
-
+    const { intl: { formatMessage }, isCheckingLogin, isAuthorized } = this.props;
     if (isAuthorized) return <Redirect to={{ pathname: '/start' }}/>
     return (
       <div className="md-grid">
@@ -85,40 +58,17 @@ class LoginContainer extends React.Component<ILoginContainerProps, ILoginContain
             <Card style={{width: 330, margin: 'auto'}} raise={true}>
               <CardTitle title={formatMessage({id: 'login.title'})}/>
               <CardText>
-                <TextField
-                  id="username"
-                  type="text"
-                  ref={this.usernameTFRef}
-                  placeholder={formatMessage({id: 'login.username'})}
-                  required={true}
-                  errorText={formatMessage({id: 'login.username.errorText'})}
-                  onChange={this.onUsernameChange}
-                />
-                <TextField
-                  id="password"
-                  type="password"
-                  placeholder={formatMessage({id: 'login.password'})}
-                  required={true}
-                  errorText={formatMessage({id: 'login.password.errorText'})}
-                  onChange={this.onPasswordChange}
-                  onKeyUp={this.onKeyUp}
+                <LoginCredentials
+                  onChangeUsername={update => this.setState({ username: update })}
+                  onChangePassword={update => this.setState({ password: update })}
+                  onLogin={() => this.login()}
                 />
               </CardText>
-              <CardActions
-                className="md-divider-border md-divider-border--top"
-              >
-                {isCheckingLogin
-                  ? <CircularProgress
-                      id="loginIsCheckingSpinner2"
-                      style={{marginLeft: 'auto'}}
-                    />
-                  : <Button
-                      children={formatMessage({id: 'login.button'})}
-                      primary
-                      flat
-                      onClick={this.login}
-                      style={{marginLeft: 'auto'}}
-                    />}
+              <CardActions className="md-divider-border md-divider-border--top">
+                <LoginButton
+                  isCheckingLogin={isCheckingLogin}
+                  onLogin={() => this.login()}
+                />
               </CardActions>
             </Card>
           </form>

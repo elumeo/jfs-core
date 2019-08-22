@@ -44,7 +44,6 @@ export const checkLoginEpic: Epic<RootAction, RootAction> = action$ =>
           JSCApi.LoginClient.login(credentials)
         ).pipe(switchMap(({ data, data: { token } }) => {
             Session.setToken(token);
-            document.getElementsByClassName('md-grid')[0].classList.remove('blurred');
             return of(
               checkUserRightsAction(data)
             )
@@ -73,7 +72,6 @@ export const checkUserRightsEpic: Epic<RootAction, RootAction> = (action$) =>
         .pipe(
           switchMap(response => {
             if (response.data.assignedApps.some(app => app.name == Config.AppName)) {
-              document.getElementsByClassName('md-grid')[0].classList.remove('blurred');
               return of(sessionIsAuthorizedAction(action.payload));
             } else {
               throw Error();

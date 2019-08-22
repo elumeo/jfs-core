@@ -10,14 +10,22 @@ const generateAxiosConfig = (config: any = {}): any => {
 };
 
 const clientInstance = () => {
-  let instance = axios.create(generateAxiosConfig());
-  if (Session.isLoggedIn()) {
-    instance.defaults.headers = { 'X-JSC-TOKEN': Session.getToken() };
-  } else {
-    instance.defaults.headers = {};
-  }
+  const instance = axios.create(generateAxiosConfig());
+
+  instance.defaults.headers = Session.isLoggedIn()
+    ? { 'X-JSC-TOKEN': Session.getToken() }
+    : {}
+
   return instance;
 };
+
+function checkDestroySession(error): AxiosPromise {
+  if (error.response && error.response.status && error.response.status == 401) {
+    Session.removeToken();
+  }
+
+  throw error;
+}
 
 export default {
   get: (url, params) => {
@@ -47,11 +55,3 @@ export default {
       .catch(error => checkDestroySession(error));
   }
 };
-
-function checkDestroySession(error): AxiosPromise {
-  if (error.response && error.response.status && error.response.status == 401) {
-    Session.removeToken();
-  }
-
-  throw error;
-}

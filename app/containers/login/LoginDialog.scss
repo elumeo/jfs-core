@@ -1,33 +1,11 @@
-@keyframes blur-on {
-  0% { filter: blur(0px) }
-  100% { filter: blur(10px) }
-}
-
-@keyframes blur-off {
-  0% { filter: blur(10px) }
-  100% { filter: blur(0px) }
-}
 @keyframes fade-in {
   0% { opacity: 0 }
+  90% { opacity: 0 }
   100% { opacity: 1 }
 }
 
-.md-grid.blurred {
-  filter: blur(10px);
-  animation-name: blur-on;
-  animation-duration: 1s;
-}
-
-.md-grid:not(.blurred) {
-  animation-name: blur-off;
-  animation-duration: 0.5s;
-}
-
-.login-dialog {
+div.login-dialog {
   animation-name: fade-in;
-  animation-duration: 3s;
-
-  &.hidden {
-    display: none;
-  }
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
 }
