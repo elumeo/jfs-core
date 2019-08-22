@@ -51,6 +51,9 @@ class LoginContainer extends React.Component<ILoginContainerProps, ILoginContain
   render() {
     const { intl: { formatMessage }, isCheckingLogin, isAuthorized } = this.props;
     if (isAuthorized) return <Redirect to={{ pathname: '/start' }}/>
+
+    window.sessionStorage.firstLoad = false;
+
     return (
       <div className="md-grid">
         <div className="md-cell md-cell--12">

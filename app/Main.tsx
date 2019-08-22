@@ -18,6 +18,10 @@ Date.prototype.toJSON = function() {
 
 // -----------------------------------------------------------------------------
 
+window.sessionStorage.firstLoad = true;
+
+// -----------------------------------------------------------------------------
+
 const store = createStore();
 /** @todo import the new config **/
 const config = {};

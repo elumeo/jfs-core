@@ -12,7 +12,8 @@ import { changeLanguageAction } from '../../store/action/BaseAction';
 import translations from '../../Translations';
 
 import { IRootReducer } from '../../../../../../src/store/reducer/Root';
-import { Switch, HashRouter } from 'react-router-dom';
+import { Switch, HashRouter, Redirect } from 'react-router-dom';
+import NoAuthRoute from '../../route/NoAuthRoute';
 
 export interface IAppProps {
   changeLanguageAction?: any;
@@ -45,7 +46,22 @@ class App extends React.Component<IAppProps, IAppState> {
         <IntlProvider locale={language} messages={translations[language]}>
           <HashRouter>
             <Switch>
-              {routes}
+              {[
+                ...routes,
+                <NoAuthRoute
+                  key={'default'}
+                  exact path={`/`}
+                  Component={() =>
+                    <Redirect to={{
+                      pathname: `/${
+                        Boolean(window.sessionStorage.firstLoad)
+                          ? 'login'
+                          : 'start'
+                      }`}
+                    }/>
+                  }
+                />
+              ]}
             </Switch>
           </HashRouter>
         </IntlProvider>
