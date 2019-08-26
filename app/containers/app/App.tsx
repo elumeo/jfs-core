@@ -54,7 +54,7 @@ class App extends React.Component<IAppProps, IAppState> {
                   Component={() =>
                     <Redirect to={{
                       pathname: `/${
-                        Boolean(window.sessionStorage.firstLoad)
+                        Boolean(window.sessionStorage.firstLoad) && !Boolean(window.sessionStorage.jfs_token)
                           ? 'login'
                           : 'start'
                       }`}

@@ -13,6 +13,8 @@ interface IModalDialog extends InjectedIntlProps {
   className?: string;
   confirmButtonText?: any;
   onConfirm?: any;
+  closeOnEsc?: boolean;
+  actions?: {}[];
 }
 
 const ModalDialog: React.SFC<IModalDialog> = ({
@@ -25,7 +27,10 @@ const ModalDialog: React.SFC<IModalDialog> = ({
   children,
   className,
   confirmButtonText,
-  onConfirm
+  onConfirm,
+  closeOnEsc,
+  actions,
+  ...props
 }) => {
   const { formatMessage } = intl;
   const id = `modal-dialog-${Math.round(Math.random() * 1000)}`;
@@ -55,7 +60,8 @@ const ModalDialog: React.SFC<IModalDialog> = ({
               label: formatMessage({ id: confirmButtonText }),
             }
           ] || []
-        )
+        ),
+        ...actions
       ]}
     >
       {children}
