@@ -26,7 +26,7 @@ jfs.config.file.read(string =>
   }
 
   jsc.current = {};
-  jsc.current.file = core.directory('app').directory('base').file('JscApi.ts');
+  jsc.current.file = project.directory('src').directory('base').file('JscApi.ts');
 
   const log =
   {
