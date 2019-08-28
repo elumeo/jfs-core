@@ -29,8 +29,7 @@ const ModalDialog: React.SFC<IModalDialog> = ({
   confirmButtonText,
   onConfirm,
   closeOnEsc,
-  actions,
-  ...props
+  actions
 }) => {
   const { formatMessage } = intl;
   const id = `modal-dialog-${Math.round(Math.random() * 1000)}`;
@@ -61,7 +60,7 @@ const ModalDialog: React.SFC<IModalDialog> = ({
             }
           ] || []
         ),
-        ...actions
+        ...(actions || [])
       ]}
     >
       {children}
