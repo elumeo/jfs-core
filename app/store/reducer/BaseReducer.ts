@@ -8,6 +8,7 @@ export interface IToastConfig {
   contentError?: any | null;
   isError?: boolean;
   dismissLabel?: string | null;
+  [messageParameters: string]: any;
 }
 
 export interface IBaseReducerState {
