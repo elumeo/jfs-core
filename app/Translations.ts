@@ -1,3 +1,4 @@
+// @ts-ignore
 import appTranslations from '../../../../src/Translations.json';
 
 const defaultTranslations = {
@@ -79,7 +80,7 @@ const defaultTranslations = {
     "settings.title": "Impostazioni",
     "app.closeBtnLabelModalDialog": "Close"
   }
-}
+};
 
 const translations = defaultTranslations;
 for (const language in translations) {

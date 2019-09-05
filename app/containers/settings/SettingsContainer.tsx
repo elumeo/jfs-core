@@ -7,7 +7,7 @@ import CardTitle from 'react-md/lib/Cards/CardTitle';
 import SelectField from 'react-md/lib/SelectFields';
 
 import { changeLanguageAction } from '../../store/action/BaseAction';
-import { IRootReducer } from '../../../../../../src/store/reducer/Root';
+import { IRootReducer } from '../../store/reducer/RootReducer';
 import Config from '../../base/Config';
 import { ReactText } from "react";
 
@@ -69,4 +69,5 @@ const mapStateToProps = (state: IRootReducer, ownProps: ISettingsContainerProps)
   ...ownProps
 });
 
+// noinspection JSUnusedGlobalSymbols
 export default injectIntl(connect(mapStateToProps, {changeLanguageAction}, null, {withRef: true})(SettingsContainer));

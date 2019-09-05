@@ -2,7 +2,7 @@ import * as React from 'react';
 import { injectIntl, InjectedIntlProps } from 'react-intl';
 import Snackbar from 'react-md/lib/Snackbars';
 import snackbarContent from './SnackBarContent';
-import { IRootReducer } from '../../../../../../src/store/reducer/Root';
+import { IRootReducer } from '../../store/reducer/RootReducer';
 import { dismissToastAction } from '../../store/action/BaseAction';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -38,9 +38,7 @@ class AppSnackBar extends React.Component<IAppSnackbarProps, IAppSnackbarState> 
           toasts={toastContents}
           onDismiss={dismissToastAction}
           autohide={
-            toasts && toasts.size > 0 && toasts.first().dismissLabel
-              ? false
-              : true
+            !(toasts && toasts.size > 0 && toasts.first().dismissLabel)
           }
           autohideTimeout={toastContents.length > 0
             ? toastContents[0].autohideTimeout
@@ -54,7 +52,7 @@ const mapStateToProps = (state: IRootReducer, ownProps: IAppSnackbarProps) => ({
   ...state.baseReducer,
   ...state.sessionReducer,
   ...ownProps
-})
+});
 
 const enhance = compose(
   connect(mapStateToProps, { dismissToastAction }, null, {withRef: true}),

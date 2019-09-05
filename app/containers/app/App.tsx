@@ -2,6 +2,7 @@ import * as React from 'react';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import Cookie from 'js-cookie';
+// @ts-ignore
 import routes from '../../../../../../src/Routes';
 import Config from '../../base/Config';
 
@@ -11,7 +12,7 @@ import { changeLanguageAction } from '../../store/action/BaseAction';
 
 import translations from '../../Translations';
 
-import { IRootReducer } from '../../../../../../src/store/reducer/Root';
+import { IRootReducer } from '../../store/reducer/RootReducer';
 import { Switch, HashRouter, Redirect } from 'react-router-dom';
 import NoAuthRoute from '../../route/NoAuthRoute';
 

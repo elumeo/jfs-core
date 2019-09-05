@@ -19,13 +19,13 @@ export const errorText = (contentError) => {
       `${method.toUpperCase()} ${url.slice(baseURL.length)})`
     ].join('')
   }
-}
+};
 
 export interface IErrorContentProps extends InjectedIntlProps {
   contentError: any;
 }
 
-const errorContent: React.SFC<IErrorContentProps> = ({
+const errorContent: React.FC<IErrorContentProps> = ({
   intl: { formatMessage },
   contentError
 }) => {
@@ -42,6 +42,6 @@ const errorContent: React.SFC<IErrorContentProps> = ({
       }
     </span>
   )
-}
+};
 
 export default injectIntl(errorContent);

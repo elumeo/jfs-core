@@ -6,7 +6,7 @@ import DialogContainer from 'react-md/lib/Dialogs';
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
 import { checkLoginAction, checkSessionAction } from '../../store/action/SessionAction';
-import { IRootReducer } from '../../../../../../src/store/reducer/Root';
+import { IRootReducer } from '../../store/reducer/RootReducer';
 import './LoginDialog.scss';
 
 interface ILoginDialogProps extends InjectedIntlProps {
@@ -29,7 +29,7 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
     const { props: { checkLoginAction }, state: { username, password } } = this;
     checkLoginAction({ username, password });
     setTimeout(() => location.reload(), 1000);
-  }
+  };
 
   render() {
     const {

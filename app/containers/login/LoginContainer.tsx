@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import { IRootReducer } from '../../../../../../src/store/reducer/Root';
+import { IRootReducer } from '../../store/reducer/RootReducer';
 import { checkLoginAction, ILoginType } from '../../store/action/SessionAction';
 import { withRouter, Redirect } from 'react-router-dom';
 
@@ -50,7 +50,9 @@ class LoginContainer extends React.Component<ILoginContainerProps, ILoginContain
 
   render() {
     const { intl: { formatMessage }, isCheckingLogin, isAuthorized } = this.props;
-    if (isAuthorized) return <Redirect to={{ pathname: '/start' }}/>
+    if (isAuthorized) {
+      return <Redirect to={{pathname: '/start'}}/>;
+    }
 
     window.sessionStorage.firstLoad = false;
 
@@ -87,4 +89,5 @@ const mapStateToProps = (state: IRootReducer, ownProps: ILoginContainerProps) =>
   return {...ownProps, ...sessionReducer};
 };
 
+// noinspection JSUnusedGlobalSymbols
 export default withRouter(injectIntl(connect(mapStateToProps, {checkLoginAction})(LoginContainer)));

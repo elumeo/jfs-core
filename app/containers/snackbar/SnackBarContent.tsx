@@ -13,17 +13,17 @@ const getToastAutohideTimeout = (text: any, min: number = 3000) => {
   const words = text.split(' ').length;
   const calculatedTimeout = words / AVERAGE_READING_WORDS_PER_SECOND * 1000;
   return Math.max(min, calculatedTimeout);
-}
+};
 
 export default (toast, formatMessage) => {
   const { contentTranslationId, contentMessage, contentError } = toast;
 
   let text, toastContent;
-  if (contentTranslationId !== null) {
+  if (contentTranslationId) {
     text = formatMessage({ id: contentTranslationId }, { ...toast });
     toastContent = text;
   }
-  else if (contentMessage !== null) {
+  else if (contentMessage) {
     text = contentMessage;
     toastContent = text;
   }

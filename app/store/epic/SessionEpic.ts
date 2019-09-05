@@ -18,6 +18,7 @@ import { RootAction } from '../action/RootAction';
 import { addToastAction } from "../action/BaseAction";
 import Session from "../../base/Session";
 
+// noinspection JSUnusedGlobalSymbols
 export const checkSessionEpic: Epic<RootAction, RootAction> = (action$) =>
   action$.pipe(
     filter(isActionOf(checkSessionAction)),
@@ -33,6 +34,7 @@ export const checkSessionEpic: Epic<RootAction, RootAction> = (action$) =>
     catchError(() => of(sessionIsUnauthorizedAction()))
   );
 
+// noinspection JSUnusedGlobalSymbols
 export const checkLoginEpic: Epic<RootAction, RootAction> = action$ =>
   action$.pipe(
     filter(isActionOf(checkLoginAction)),
@@ -50,7 +52,6 @@ export const checkLoginEpic: Epic<RootAction, RootAction> = action$ =>
               checkUserRightsAction(data),
             )
           }),
-          /* TODO catch error and forward to toast */
           catchError(() =>
             of(
               sessionIsUnauthorizedAction(),
@@ -66,6 +67,7 @@ export const checkLoginEpic: Epic<RootAction, RootAction> = action$ =>
   )
 ;
 
+// noinspection JSUnusedGlobalSymbols
 export const checkUserRightsEpic: Epic<RootAction, RootAction> = (action$) =>
   action$.pipe(
     filter(isActionOf(checkUserRightsAction)),
@@ -93,6 +95,7 @@ export const checkUserRightsEpic: Epic<RootAction, RootAction> = (action$) =>
   )
 ;
 
+// noinspection JSUnusedGlobalSymbols
 export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) =>
   action$.pipe(
     filter(isActionOf(logoutAction)),
@@ -106,13 +109,3 @@ export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) =>
           catchError(() => of(sessionIsUnauthorizedAction())));
     })
   );
-
-// export const loggerEpic: Epic<RootAction, RootAction> = (action$, store) =>
-//   action$.pipe(
-//     filter(action$ => !!action$.type),
-//     switchMap((action) => {
-//       console.log('loggerEpic', action, isActionOf(checkLoginAction)(action));
-//       return EMPTY
-//     }),
-//     catchError(() => of(sessionIsUnauthorizedAction()))
-//   );
