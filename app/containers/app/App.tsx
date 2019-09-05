@@ -51,16 +51,8 @@ class App extends React.Component<IAppProps, IAppState> {
                 ...routes,
                 <NoAuthRoute
                   key={'default'}
-                  exact path={`/`}
-                  Component={() =>
-                    <Redirect to={{
-                      pathname: `/${
-                        Boolean(window.sessionStorage.firstLoad) && !Boolean(window.sessionStorage.jfs_token)
-                          ? 'login'
-                          : 'start'
-                      }`}
-                    }/>
-                  }
+                  exact path={"/"}
+                  Component={() => <Redirect to={ { pathname: "/start" } }/> }
                 />
               ]}
             </Switch>

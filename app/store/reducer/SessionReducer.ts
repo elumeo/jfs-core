@@ -19,7 +19,7 @@ export interface ISessionReducerState {
 const initialState: ISessionReducerState = {
   isCheckingSession: true,
   isCheckingLogin: false,
-  isAuthorized: false,
+  isAuthorized: true,
   sessionDTO: null
 };
 

@@ -79,9 +79,6 @@ class NavigationDrawer extends React.Component<INavigationDrawerProps, INavigati
   private closeDialog = (close: boolean): void => {
     if (close) {
       this.props.logoutAction();
-      setTimeout(() => {
-        this.props.history.push('/login');
-      }, 500);
     }
     this.setState({ dialogVisible: false });
   };

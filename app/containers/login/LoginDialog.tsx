@@ -28,7 +28,6 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
   login = () => {
     const { props: { checkLoginAction }, state: { username, password } } = this;
     checkLoginAction({ username, password });
-    setTimeout(() => location.reload(), 1000);
   };
 
   render() {
@@ -47,15 +46,15 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
           visible={true}
           title="Login"
           aria-describedby=""
+          actions={<LoginButton
+              isCheckingLogin={isCheckingLogin}
+              onLogin={login}
+          />}
           modal
         >
           <LoginCredentials
             onChangeUsername={update => this.setState({ username: update })}
             onChangePassword={update => this.setState({ password: update })}
-            onLogin={login}
-          />
-          <LoginButton
-            isCheckingLogin={isCheckingLogin}
             onLogin={login}
           />
         </DialogContainer>

@@ -32,7 +32,6 @@ const LogoutDialog: React.SFC<ILogoutDialog> = ({ closeDialog, intl, visible }) 
           onClick: () => {
             closeDialog(false);
           },
-          primary: true,
           label: formatMessage({ id: 'app.cancel.action' })
         }
       ]}

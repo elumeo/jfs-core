@@ -10,13 +10,13 @@ export interface IAppHeaderState {
 }
 
 export default class AppHeader extends React.Component<IAppHeaderProps, IAppHeaderState> {
-  state = { navigationVisible: false }
+  state = { navigationVisible: false };
   render() {
     const { state: { navigationVisible } } = this;
     return (
       <div className="app-header">
         <AppToolbar onToggleMenu={() =>
-            this.setState({ navigationVisible: true })}/>
+            this.setState({ navigationVisible: true })} />
         <NavigationDrawer
           visible={navigationVisible}
           position="left"
