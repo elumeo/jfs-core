@@ -9,6 +9,8 @@ import { checkLoginAction, checkSessionAction } from '../../store/action/Session
 import { IRootReducer } from '../../store/reducer/RootReducer';
 import './LoginDialog.scss';
 
+import Config from '../../base/Config';
+
 interface ILoginDialogProps extends InjectedIntlProps {
   children?: any;
   isAuthorized?: boolean;
@@ -23,7 +25,21 @@ interface ILoginDialogState {
 }
 
 class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> {
-  state = { username: '', password: '' };
+  state = {
+    username: Config.RobotUsername || '',
+    password: Config.RobotPassword || ''
+  };
+
+  constructor(props) {
+    super(props);
+
+    const { props: { isAuthorized } } = this;
+    const { RobotUsername, RobotPassword } = Config;
+
+    if (!isAuthorized && RobotUsername && RobotPassword) {
+      this.login();
+    }
+  }
 
   login = () => {
     const { props: { checkLoginAction }, state: { username, password } } = this;
