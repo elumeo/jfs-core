@@ -8,12 +8,12 @@ import { configLoadedAction } from './store/action/ConfigAction';
 
 import './style/main.scss';
 import App from './containers/app/App';
+import * as moment from "moment";
 
 // -----------------------------------------------------------------------------
 
 Date.prototype.toJSON = function() {
-  const iso = this.toISOString();
-  return iso.replace(/\..+/, '+00:00'); // W3C format for JSC
+  return moment(this).format();
 };
 
 // -----------------------------------------------------------------------------
