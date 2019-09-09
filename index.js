@@ -12,15 +12,10 @@ const copyFile = (sourcePath, targetPath, callback) => {
       callback();
     });
   });
-}
+};
 
-try {
-  if (process.argv.length < 3) {
-    throw 'Error: Missing path of related project.';
-  }
-}
-catch (e) {
-  console.log(e);
+if (process.argv.length < 3) {
+  console.error('Error: Missing path of related project.');
   process.exit(1);
 }
 

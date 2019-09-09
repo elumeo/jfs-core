@@ -59,8 +59,9 @@
     "validate-npm-package-license": "^3.0.4"
   },
   "devDependencies": {
-    "rimraf": "^2.6.3",
-    "chokidar": "^3.0.2"
+    "@elumeo/jfs-core-dev": "^1.0.3",
+    "chokidar": "^3.0.2",
+    "rimraf": "^2.6.3"
   },
   "jest": {
     "transform": {
