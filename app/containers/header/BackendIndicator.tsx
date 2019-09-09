@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getRegion } from '../../store/action/SystemAction';
 import Tooltipped from 'react-md/lib/Tooltips/Tooltipped';
 import { injectIntl, InjectedIntlProps } from 'react-intl';
+// @ts-ignore
 import { IRootReducer } from '../../../../../../src/store/reducer/Root';
 
 export interface IBackendIndicatorProps extends InjectedIntlProps {
@@ -38,11 +39,12 @@ class BackendIndicator extends React.Component<IBackendIndicatorProps, IBackendI
 const mapStateToProps = (state: IRootReducer, ownProps: IBackendIndicatorProps) => ({
   ...ownProps,
   ...state.systemReducer
-})
+});
 
 const enhance = compose(
   connect(mapStateToProps, { getRegion }),
   injectIntl
 );
 
+// noinspection JSUnusedGlobalSymbols
 export default enhance(BackendIndicator);

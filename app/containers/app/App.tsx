@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { changeLanguageAction } from '../../store/action/BaseAction';
 
 import translations from '../../Translations';
-
+// @ts-ignore
 import { IRootReducer } from '../../../../../../src/store/reducer/Root';
 import { Switch, HashRouter, Redirect } from 'react-router-dom';
 import NoAuthRoute from '../../route/NoAuthRoute';
@@ -30,18 +30,6 @@ export interface IAppState {
 class App extends React.Component<IAppProps, IAppState> {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount(): void {
-    const { ForceHTTPS } = Config;
-    const isHTTPS = window.location.protocol.toLowerCase() == "https:";
-    if (!isHTTPS && ForceHTTPS) {
-      window.location.replace(
-        window.location
-          .toString()
-          .replace("http:", "https:")
-      );
-    }
   }
 
   componentWillMount() {
