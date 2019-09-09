@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "jfs_Core",
   "main": "Main.js",
   "scripts": {
