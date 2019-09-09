@@ -19,7 +19,7 @@ import NoAuthRoute from '../../route/NoAuthRoute';
 export interface IAppProps {
   changeLanguageAction?: any;
   language?: any;
-
+  location?: Location;
   store: any;
 }
 
@@ -48,6 +48,13 @@ class App extends React.Component<IAppProps, IAppState> {
     this.props.changeLanguageAction(this.props.language);
     ['de', 'en', 'fr', 'it'].map(abrev =>
       addLocaleData(require(`react-intl/locale-data/${abrev}`)));
+
+    /* Force HTTPS */
+    const { ForceHTTPS } = Config;
+    const isHTTPS = window.location.protocol.toLowerCase() == "https:";
+    if (!isHTTPS && ForceHTTPS) {
+      window.location.replace(window.location.toString().replace("http:", "https:"));
+    }
   }
 
   render() {
