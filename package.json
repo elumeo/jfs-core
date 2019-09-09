@@ -57,6 +57,10 @@
     "typesafe-actions": "^4.4.0",
     "validate-npm-package-license": "^3.0.4"
   },
+  "devDependencies": {
+    "rimraf": "^2.6.3",
+    "chokidar": "^3.0.2"
+  },
   "jest": {
     "transform": {
       "^.+\\.(ts|tsx)$": "typescript-babel-jest"
