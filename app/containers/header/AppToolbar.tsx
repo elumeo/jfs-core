@@ -1,37 +1,16 @@
 import * as React from 'react';
-import {InjectedIntlProps, injectIntl} from 'react-intl';
+import { injectIntl, InjectedIntlProps } from 'react-intl';
 import Toolbar from 'react-md/lib/Toolbars/Toolbar';
 import Button from 'react-md/lib/Buttons/Button';
-import Config from '../../base/Config';
-import Tooltipped from "react-md/lib/Tooltips/Tooltipped";
+// @ts-ignore
+import { leftTools, rightTools } from '../../../../../../src/HeaderTools';
+import './AppToolbar.scss';
 
 export interface IAppToolbarProps extends InjectedIntlProps {
   onToggleMenu: any;
 }
 
-const remove = {prefix: (value, prefix) => value.substring(prefix.length, value.length)};
-const guessBackendRegion = (url) => {
-  for (const variant of ['http://', 'https://']) {
-    if (url.substring(0, variant.length) === variant) {
-      for (let part of remove.prefix(url, variant).split('.')) {
-        switch (part.toLowerCase()) {
-          case 'it':
-          case 'ita':
-            return 'it';
-          case 'de':
-          case 'uk':
-            return part;
-          default:
-            // continue
-        }
-      }
-      return 'de';
-    }
-  }
-};
-const backendRegion = guessBackendRegion(Config.Client.Host);
-
-const appToolbar: React.FC<IAppToolbarProps> = ({
+const AppToolbar: React.SFC<IAppToolbarProps> = ({
   intl: { formatMessage },
   onToggleMenu
 }) => (
@@ -41,12 +20,23 @@ const appToolbar: React.FC<IAppToolbarProps> = ({
     colored
     fixed
   >
-    <Tooltipped label={formatMessage({id: 'Backend'}) + ': ' + backendRegion.toUpperCase()}>
-      <div className='system'>
-        <div className={backendRegion}/>
+    <div className="tools">
+      <div className="left-tools">
+        {leftTools.map((tool, index) => (
+          <div className="tool" key={`left-tool-${index}`}>
+            {tool}
+          </div>
+        ))}
       </div>
-    </Tooltipped>
+      <div className="right-tools">
+        {rightTools.map((tool, index) => (
+          <div className="tool" key={`right-tool-${index}`}>
+            {tool}
+          </div>
+        ))}
+      </div>
+    </div>
   </Toolbar>
 );
 
-export default injectIntl(appToolbar);
+export default injectIntl(AppToolbar);
