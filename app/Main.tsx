@@ -8,7 +8,7 @@ import { configLoadedAction } from './store/action/ConfigAction';
 
 import './style/main.scss';
 import App from './containers/app/App';
-import * as moment from "moment";
+const moment = require('moment');
 
 // -----------------------------------------------------------------------------
 

@@ -7,6 +7,8 @@ import { injectIntl, InjectedIntlProps } from 'react-intl';
 // @ts-ignore
 import { IRootReducer } from '../../../../../../src/store/reducer/Root';
 
+import './BackendIndicator.scss';
+
 export interface IBackendIndicatorProps extends InjectedIntlProps {
   getRegion?: any;
   backendRegion?: string;
@@ -26,11 +28,8 @@ class BackendIndicator extends React.Component<IBackendIndicatorProps, IBackendI
   render() {
     const { props: { intl: { formatMessage }, backendRegion } } = this;
     return (
-      <Tooltipped
-        label={`${formatMessage({id: 'app.backend'})}: ${backendRegion}`}>
-        <div className='system'>
-          <div className={(backendRegion || '').toLowerCase()}/>
-        </div>
+      <Tooltipped label={`${formatMessage({id: 'app.backend'})}: ${backendRegion}`}>
+        <div className={`flag ${(backendRegion || '').toLowerCase()}`}/>
       </Tooltipped>
     )
   }

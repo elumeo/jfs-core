@@ -2,17 +2,21 @@ import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 
+import Button from "react-md/lib/Buttons/Button";
+import Cell from 'react-md/lib/Grids/Cell'
 import Card from 'react-md/lib/Cards/Card';
 import CardTitle from 'react-md/lib/Cards/CardTitle';
+import CardActions from "react-md/lib/Cards/CardActions";
 import SelectField from 'react-md/lib/SelectFields';
 
 import { changeLanguageAction } from '../../store/action/BaseAction';
 import { IRootReducer } from '../../store/reducer/RootReducer';
 import Config from '../../base/Config';
 import { ReactText } from "react";
-import CardActions from "react-md/lib/Cards/CardActions";
-import {Button} from "react-md";
 import { History, withRouter } from "react-router-dom";
+import Cookie from 'js-cookie';
+
+import './SettingsContainer.scss';
 
 const LANGUAGES = [
   { label: 'Deutsch', value: 'de' },
@@ -30,11 +34,15 @@ interface ISettingsContainerProps extends InjectedIntlProps {
 // component -------------------------------------------------------------------
 class SettingsContainer extends React.Component<ISettingsContainerProps> {
   render() {
-    const { intl: { formatMessage }, language } = this.props;
+    const {
+      props: {
+        intl: { formatMessage }, history: { goBack }, language, changeLanguageAction
+      }
+    } = this;
 
     return (
       <div className="md-grid">
-        <div className="md-cell md-cell--12">
+        <Cell size={12}>
           <Card style={{ width: 330, margin: 'auto' }} raise={true}>
             <CardTitle title={formatMessage({ id: 'settings.title' })} />
             <SelectField
@@ -45,28 +53,19 @@ class SettingsContainer extends React.Component<ISettingsContainerProps> {
               value={language}
               itemLabel="label"
               itemValue="value"
-              onChange={
-                lang =>
-                {
-                  let cookieJSON = {};
-                  if (document.cookie.length) {
-                    cookieJSON = JSON.parse(document.cookie);
-                  }
-                  cookieJSON['lang'] = lang;
-                  document.cookie = JSON.stringify(cookieJSON);
-
-                  this.props.changeLanguageAction(lang);
+              onChange={lang => {
+                  Cookie.set('lang', lang);
+                  changeLanguageAction(lang);
                 }
               }
             />
-            <div style={{ height: 20 }} />
             <CardActions className="md-dialog-footer">
-              <Button primary flat onClick={this.props.history.goBack} >
-                <label>{formatMessage({id: 'app.settings.done'})}</label>
+              <Button primary flat onClick={goBack}>
+                {formatMessage({id: 'app.settings.done'})}
               </Button>
             </CardActions>
           </Card>
-        </div>
+        </Cell>
       </div>
     );
   }
