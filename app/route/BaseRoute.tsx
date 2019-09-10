@@ -11,13 +11,10 @@ export interface IBaseRouteProps extends  InjectedIntlProps {
 const enhance = injectIntl;
 
 const BaseRoute: React.FC<IBaseRouteProps> = ({render, intl: { formatMessage }, translationId, path, ...rest}) => {
-  const extension = (
-    translationId
-      ? ` | ${formatMessage({id: translationId})}`
-      : ''
-  );
-
-  document.title = `${formatMessage({id: 'app.title'})}${extension}`;
+  document.title = formatMessage({id: 'app.title'});
+  if (translationId) {
+    document.title += ' | ' +  formatMessage({id: translationId});
+  }
 
   return (
     <Route

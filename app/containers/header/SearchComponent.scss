@@ -1,0 +1,33 @@
+@import '~react-md/src/scss/_react-md';
+
+.app-header .search-component {
+  .md-divider {
+    background: rgba(255, 255, 255, 0.87);
+
+    &--text-field::after {
+      background: rgba(255, 255, 255, 1);
+      height: 2px;
+    }
+  }
+  input.md-text-field {
+    $searchFieldBaseWidth: 120px;
+    $searchFieldWithIncrease: 80px;
+    transition: width ease-in-out 150ms;
+    width: $searchFieldBaseWidth;
+    &:focus {
+      width: $searchFieldBaseWidth + $searchFieldWithIncrease;
+    }
+  }
+}
+
+.search-component {
+  .md-text-field-container {
+    &--input {
+      width: initial;
+
+      @media #{$md-desktop-media} {
+        width: 300px;
+      }
+    }
+  }
+}

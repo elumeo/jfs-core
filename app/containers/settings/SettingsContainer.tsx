@@ -10,6 +10,9 @@ import { changeLanguageAction } from '../../store/action/BaseAction';
 import { IRootReducer } from '../../store/reducer/RootReducer';
 import Config from '../../base/Config';
 import { ReactText } from "react";
+import CardActions from "react-md/lib/Cards/CardActions";
+import {Button} from "react-md";
+import { History, withRouter } from "react-router-dom";
 
 const LANGUAGES = [
   { label: 'Deutsch', value: 'de' },
@@ -21,6 +24,7 @@ const LANGUAGES = [
 interface ISettingsContainerProps extends InjectedIntlProps {
   language?: string;
   changeLanguageAction: (language: ReactText) => void;
+  history?: History;
 }
 
 // component -------------------------------------------------------------------
@@ -56,6 +60,11 @@ class SettingsContainer extends React.Component<ISettingsContainerProps> {
               }
             />
             <div style={{ height: 20 }} />
+            <CardActions className="md-dialog-footer">
+              <Button primary flat onClick={this.props.history.goBack} >
+                <label>{formatMessage({id: 'app.settings.done'})}</label>
+              </Button>
+            </CardActions>
           </Card>
         </div>
       </div>
@@ -70,4 +79,4 @@ const mapStateToProps = (state: IRootReducer, ownProps: ISettingsContainerProps)
 });
 
 // noinspection JSUnusedGlobalSymbols
-export default injectIntl(connect(mapStateToProps, {changeLanguageAction}, null, {withRef: true})(SettingsContainer));
+export default withRouter(injectIntl(connect(mapStateToProps, {changeLanguageAction}, null, {withRef: true})(SettingsContainer)));

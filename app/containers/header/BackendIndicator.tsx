@@ -27,7 +27,7 @@ class BackendIndicator extends React.Component<IBackendIndicatorProps, IBackendI
     const { props: { intl: { formatMessage }, backendRegion } } = this;
     return (
       <Tooltipped
-        label={`${formatMessage({id: 'Backend'})}: ${backendRegion}`}>
+        label={`${formatMessage({id: 'app.backend'})}: ${backendRegion}`}>
         <div className='system'>
           <div className={(backendRegion || '').toLowerCase()}/>
         </div>

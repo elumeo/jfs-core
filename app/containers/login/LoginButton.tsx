@@ -9,7 +9,7 @@ export interface ILoginButtonProps extends InjectedIntlProps {
   onLogin: any;
 }
 
-const loginButton: React.SFC<ILoginButtonProps> = ({
+const loginButton: React.FC<ILoginButtonProps> = ({
   intl: { formatMessage },
   isCheckingLogin, onLogin
 }) => (
@@ -21,6 +21,6 @@ const loginButton: React.SFC<ILoginButtonProps> = ({
         flat
         onClick={onLogin}
       />
-)
+);
 
 export default injectIntl(loginButton);

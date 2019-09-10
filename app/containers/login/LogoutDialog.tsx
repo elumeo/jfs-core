@@ -8,7 +8,7 @@ interface ILogoutDialog extends InjectedIntlProps {
   closeDialog: (logout: boolean) => void;
 }
 
-const LogoutDialog: React.SFC<ILogoutDialog> = ({ closeDialog, intl, visible }) => {
+const LogoutDialog: React.FC<ILogoutDialog> = ({ closeDialog, intl, visible }) => {
   const { formatMessage } = intl;
   return (
     <Dialog
