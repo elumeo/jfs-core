@@ -8,7 +8,7 @@ export interface ILoginCredentialsProps extends InjectedIntlProps {
   onLogin: any;
 }
 
-const loginCredentials: React.SFC<ILoginCredentialsProps> = ({
+const loginCredentials: React.FC<ILoginCredentialsProps> = ({
   intl: { formatMessage },
   onChangeUsername, onChangePassword, onLogin
 }) => (

@@ -10,7 +10,7 @@ export interface IAppToolbarProps extends InjectedIntlProps {
   onToggleMenu: any;
 }
 
-const AppToolbar: React.SFC<IAppToolbarProps> = ({
+const AppToolbar: React.FC<IAppToolbarProps> = ({
   intl: { formatMessage },
   onToggleMenu
 }) => (

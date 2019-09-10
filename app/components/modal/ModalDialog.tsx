@@ -17,7 +17,7 @@ interface IModalDialog extends InjectedIntlProps {
   actions?: {}[];
 }
 
-const ModalDialog: React.SFC<IModalDialog> = ({
+const ModalDialog: React.FC<IModalDialog> = ({
   title,
   description,
   closeDialog,
@@ -40,6 +40,7 @@ const ModalDialog: React.SFC<IModalDialog> = ({
       title={title}
       aria-describedby={description}
       modal
+      closeOnEsc={closeOnEsc}
       className={className}
       actions={[
         {
@@ -74,4 +75,5 @@ ModalDialog.defaultProps = {
   closeButtonText: "app.closeBtnLabelModalDialog",
 };
 
+// noinspection JSUnusedGlobalSymbols
 export default injectIntl(ModalDialog);

@@ -62,7 +62,7 @@ class SettingsContainer extends React.Component<ISettingsContainerProps> {
             <div style={{ height: 20 }} />
             <CardActions className="md-dialog-footer">
               <Button primary flat onClick={this.props.history.goBack} >
-                <label>{formatMessage({id: 'Done'})}</label>
+                <label>{formatMessage({id: 'app.settings.done'})}</label>
               </Button>
             </CardActions>
           </Card>
