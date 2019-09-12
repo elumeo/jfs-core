@@ -21,14 +21,14 @@ const AppToolbar: React.FC<IAppToolbarProps> = ({
     fixed
   >
     <div className="tools">
-      <div className="left-tools">
+      <div className="left-tools md-btn--toolbar">
         {leftTools.map((tool, index) => (
           <div className="tool" key={`left-tool-${index}`}>
             {tool}
           </div>
         ))}
       </div>
-      <div className="right-tools">
+      <div className="right-tools md-btn--toolbar">
         {rightTools.map((tool, index) => (
           <div className="tool" key={`right-tool-${index}`}>
             {tool}

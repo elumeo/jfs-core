@@ -23,16 +23,16 @@ export interface IAppProps {
   store: any;
 }
 
-export interface IAppState {
-
-}
+export interface IAppState {}
 
 class App extends React.Component<IAppProps, IAppState> {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this.props.changeLanguageAction(this.props.language);
     ['de', 'en', 'fr', 'it'].map(abrev =>
       addLocaleData(require(`react-intl/locale-data/${abrev}`)));
 
+    /* Force HTTPS */
     const { ForceHTTPS } = Config;
     const isHTTPS = window.location.protocol.toLowerCase() == "https:";
     if (!isHTTPS && ForceHTTPS) {

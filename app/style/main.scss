@@ -68,12 +68,7 @@ $md-colors-warn-md: false;
 
 .md-table-column--fixed {
   left: auto !important;
-  //position: relative !important;
 }
-
-/*.md-edit-dialog--min-width {
-    width: 300px !important;
-}*/
 
 .item-overlay {
   position: absolute;
@@ -146,5 +141,7 @@ $md-colors-warn-md: false;
     margin: -4px auto 0 auto;
   }
 }
+
+
 
 @include react-md-everything;

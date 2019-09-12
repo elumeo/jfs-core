@@ -9,12 +9,20 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
+    .tool {
+      padding-left: 14px;
+    }
   }
 
   .right-tools {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
+    .tool {
+      padding-right: 14px;
+    }
   }
 
   .tool {
@@ -22,7 +30,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 14px;
-    padding-right: 14px;
   }
 }

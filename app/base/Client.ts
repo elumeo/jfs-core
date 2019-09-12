@@ -14,7 +14,7 @@ const clientInstance = () => {
 
   instance.defaults.headers = Session.isLoggedIn()
     ? { 'X-JSC-TOKEN': Session.getToken() }
-    : {}
+    : {};
 
   return instance;
 };
@@ -27,6 +27,7 @@ function checkDestroySession(error): AxiosPromise {
   throw error;
 }
 
+// noinspection JSUnusedGlobalSymbols
 export default {
   get: (url, params) => {
     return clientInstance()

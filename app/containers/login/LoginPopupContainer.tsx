@@ -12,14 +12,14 @@ export interface ILoginPopupContainerProps {
   checkSessionAction?: () => void;
 }
 
-export interface ILoginPopupContainerState {
-
-}
+export interface ILoginPopupContainerState {}
 
 class LoginPopupContainer extends React.Component<ILoginPopupContainerProps, ILoginPopupContainerState>
 {
+  public state = {};
 
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     const { checkSessionAction } = this.props;
     checkSessionAction();
   }
