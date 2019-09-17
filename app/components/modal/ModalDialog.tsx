@@ -40,6 +40,7 @@ const ModalDialog: React.FC<IModalDialog> = ({
       title={title}
       aria-describedby={description}
       modal
+      onHide={closeDialog}
       closeOnEsc={closeOnEsc}
       className={className}
       actions={[
