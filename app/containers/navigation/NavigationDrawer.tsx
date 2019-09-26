@@ -53,12 +53,6 @@ class NavigationDrawer extends React.Component<INavigationDrawerProps, INavigati
         }
       })),
       {
-        iconName: 'exit_to_app',
-        messageId: 'app.logout',
-        authorizedOnly: true,
-        onClick: this.showDialog
-      },
-      {
         divider: true
       },
       {
