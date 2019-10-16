@@ -1,0 +1,14 @@
+{
+  "Client": {
+    "Host": "http://de.master.api.staging-jsc-app.juwelo.local",
+    "HostWebPackDev": "http://127.0.0.1:2008",
+    "HostExternal": "http://de.master.api.staging-jsc-app.juwelo.local",
+    "Timeout": 30000
+  },
+  "Language": "de",
+  "Currency": "EUR",
+  "Container": "juwelotv",
+  "ContainerLanguage": "de",
+  "AppName": "jfs_Boilerplate",
+  "ForceHTTPS": false
+}

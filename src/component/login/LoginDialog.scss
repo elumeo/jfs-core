@@ -1,0 +1,27 @@
+@keyframes fade-in {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+}
+
+div.login-dialog {
+  animation-name: fade-in;
+  animation-duration: 300ms;
+  animation-timing-function: linear;
+
+  .md-dialog-container.md-overlay {
+    z-index: 10;
+
+    .md-paper {
+      top: 30%;
+    }
+  }
+}
+
+.authorized-content {
+  opacity: 1;
+  transition: opacity linear 300ms;
+
+  &.hidden {
+    opacity: 0;
+  }
+}

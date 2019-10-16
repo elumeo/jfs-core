@@ -1,0 +1,13 @@
+{
+  "SystemController": ["getRegion"],
+  "SessionController": [
+    "getCurrentSession",
+    "logout"
+  ],
+  "LoginController": [
+    "login"
+  ],
+  "UserController": [
+    "getUserRights"
+  ]
+}

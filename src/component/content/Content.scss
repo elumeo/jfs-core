@@ -1,0 +1,8 @@
+.authorized-content {
+  opacity: 1;
+  transition: opacity linear 300ms;
+
+  &.hidden {
+    opacity: 0;
+  }
+}
