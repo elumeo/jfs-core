@@ -4,7 +4,7 @@ import { injectIntl, InjectedIntlProps } from 'react-intl';
 export const errorText = (contentError) => {
   const {
     config: { method, url, baseURL },
-    response, response: { data, data: { message, id, statusText } }
+    response, response: { data, data: { message, id }, status, statusText },
   } = contentError;
 
   return {

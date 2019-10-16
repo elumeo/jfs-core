@@ -1,4 +1,4 @@
-import { addToastAction, changeLanguageAction, dismissToastAction } from '../action/BaseAction';
+import { addToastAction, dismissToastAction, } from '../action/ToastAction';
 import { List } from 'immutable';
 import { createReducer, PayloadAction } from "typesafe-actions";
 
@@ -8,28 +8,24 @@ export interface IToastConfig {
   contentError?: any | null;
   isError?: boolean;
   dismissLabel?: string | null;
+
   [messageParameters: string]: any;
 }
 
-export interface IBaseReducerState {
-  language?: string | null;
+export interface IToastReducerState {
   toasts?: List<IToastConfig>;
 }
 
-const initialState: IBaseReducerState = {
-  language: null,
-  toasts: List<IToastConfig>()
+const initialState: IToastReducerState = {
+  toasts: List<IToastConfig>(),
 };
 
 // noinspection JSUnusedGlobalSymbols,TypeScriptValidateJSTypes
-export const baseReducer = createReducer(initialState)
-  .handleAction(changeLanguageAction, (state: IBaseReducerState, action: PayloadAction<string, string>): IBaseReducerState => (
-    {...state, language: action.payload}
+export const toastReducer = createReducer(initialState)
+  .handleAction(addToastAction, (state: IToastReducerState, action: PayloadAction<string, IToastConfig>): IToastReducerState => (
+    { ...state, toasts: state.toasts.unshift(action.payload) }
   ))
-  .handleAction(addToastAction, (state: IBaseReducerState, action: PayloadAction<string, IToastConfig>): IBaseReducerState => (
-    {...state, toasts: state.toasts.unshift(action.payload)}
-  ))
-  .handleAction(dismissToastAction, (state: IBaseReducerState): IBaseReducerState => {
+  .handleAction(dismissToastAction, (state: IToastReducerState): IToastReducerState => {
     let toastsCount: number;
     let lastToast: IToastConfig, previousToast: IToastConfig;
     let toastsAreEqual: boolean, messagesAreEqual: boolean, translationIdsAreEqual, errorsAreEqual: boolean;
@@ -44,13 +40,13 @@ export const baseReducer = createReducer(initialState)
       previousToast = state.toasts.get(toastsCount - 2);
       state.toasts = state.toasts.shift();
       messagesAreEqual = lastToast.contentMessage != undefined
-          && lastToast.contentMessage == previousToast.contentMessage;
+        && lastToast.contentMessage == previousToast.contentMessage;
       translationIdsAreEqual = lastToast.contentTranslationId != undefined
-          && lastToast.contentTranslationId == previousToast.contentTranslationId;
+        && lastToast.contentTranslationId == previousToast.contentTranslationId;
       errorsAreEqual = lastToast.contentError != undefined && previousToast.contentError != undefined
-          && lastToast.contentError.toString() == previousToast.contentError.toString();
+        && lastToast.contentError.toString() == previousToast.contentError.toString();
       toastsAreEqual = messagesAreEqual || translationIdsAreEqual || errorsAreEqual;
     } while (toastsAreEqual);
-    return {...state, toasts: state.toasts};
+    return { ...state, toasts: state.toasts };
   })
 ;

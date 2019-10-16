@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {compose} from "redux";
-import {connect} from "react-redux";
-import {InjectedIntlProps, injectIntl} from "react-intl";
-import {Autocomplete} from "react-md";
-import {addToastAction} from "../../store/action/BaseAction";
-import {IRootReducer} from "../../store/reducer/RootReducer";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { InjectedIntlProps, injectIntl } from "react-intl";
+import { Autocomplete } from "react-md";
+import { addToastAction } from "../../store/action/ToastAction";
+import { IRootReducer } from "../../store/reducer/RootReducer";
 
 import './SearchComponent.scss';
-import {Button} from "react-md/lib/Buttons";
+import { Button } from "react-md/lib/Buttons";
 import CircularProgress from "react-md/lib/Progress/CircularProgress";
 
 export interface ISearchComponentProps extends InjectedIntlProps {
@@ -130,6 +130,7 @@ class SearchComponent extends React.Component<ISearchComponentProps & InjectedIn
 
 // higher order components -----------------------------------------------------
 const mapStateToProps = (state: IRootReducer, ownProps: ISearchComponentProps): ISearchComponentProps => ({
+    ...state.toastReducer,
     ...ownProps
 });
 

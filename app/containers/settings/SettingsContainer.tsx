@@ -9,7 +9,7 @@ import CardTitle from 'react-md/lib/Cards/CardTitle';
 import CardActions from "react-md/lib/Cards/CardActions";
 import SelectField from 'react-md/lib/SelectFields';
 
-import { changeLanguageAction } from '../../store/action/BaseAction';
+import { changeLanguageAction } from '../../store/action/SettingsAction';
 import { IRootReducer } from '../../store/reducer/RootReducer';
 import Config from '../../base/Config';
 import { ReactText } from "react";
@@ -73,7 +73,7 @@ class SettingsContainer extends React.Component<ISettingsContainerProps> {
 
 // higher order components -----------------------------------------------------
 const mapStateToProps = (state: IRootReducer, ownProps: ISettingsContainerProps): ISettingsContainerProps => ({
-  language: state.baseReducer.language ? state.baseReducer.language : Config.Language,
+  language: state.settingsReducer.language ? state.settingsReducer.language : Config.Language,
   ...ownProps
 });
 

@@ -3,7 +3,7 @@ import { injectIntl, InjectedIntlProps } from 'react-intl';
 import Snackbar from 'react-md/lib/Snackbars';
 import snackbarContent from './SnackBarContent';
 import { IRootReducer } from '../../store/reducer/RootReducer';
-import { dismissToastAction } from '../../store/action/BaseAction';
+import { dismissToastAction } from '../../store/action/ToastAction';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
@@ -42,14 +42,14 @@ class AppSnackBar extends React.Component<IAppSnackbarProps, IAppSnackbarState> 
           }
           autohideTimeout={toastContents.length > 0
             ? toastContents[0].autohideTimeout
-            : 3000}
+            : Snackbar.defaultProps.autohideTimeout}
         />
     )
   }
 }
 
 const mapStateToProps = (state: IRootReducer, ownProps: IAppSnackbarProps) => ({
-  ...state.baseReducer,
+  ...state.toastReducer,
   ...state.sessionReducer,
   ...ownProps
 });

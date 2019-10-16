@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { injectIntl, InjectedIntlProps } from 'react-intl';
+import { InjectedIntlProps, injectIntl } from 'react-intl';
 import Toolbar from 'react-md/lib/Toolbars/Toolbar';
 import Button from 'react-md/lib/Buttons/Button';
 // @ts-ignore
@@ -10,10 +10,7 @@ export interface IAppToolbarProps extends InjectedIntlProps {
   onToggleMenu: any;
 }
 
-const AppToolbar: React.FC<IAppToolbarProps> = ({
-  intl: { formatMessage },
-  onToggleMenu
-}) => (
+const AppToolbar: React.FC<IAppToolbarProps> = ({ intl: { formatMessage }, onToggleMenu }) => (
   <Toolbar
     title={formatMessage({ id: 'app.title' })}
     nav={<Button key="nav" icon onClick={onToggleMenu}>menu</Button>}

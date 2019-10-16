@@ -15,7 +15,7 @@ import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 import { catchError, filter, switchMap } from "rxjs/operators";
 import { AxiosResponse } from "axios";
 import { RootAction } from '../action/RootAction';
-import { addToastAction } from "../action/BaseAction";
+import { addToastAction } from "../action/ToastAction";
 import Session from "../../base/Session";
 
 // noinspection JSUnusedGlobalSymbols
@@ -44,7 +44,8 @@ export const checkLoginEpic: Epic<RootAction, RootAction> = action$ =>
           password: action.payload.password
         };
 
-        return from(
+        // noinspection TypeScriptValidateJSTypes
+      return from(
           JSCApi.LoginClient.login(credentials)
         ).pipe(switchMap(({ data, data: { token } }) => {
             Session.setToken(token);

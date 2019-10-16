@@ -1,19 +1,18 @@
 import * as React from 'react';
 import { addLocaleData, IntlProvider } from 'react-intl';
-import { Provider } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import Cookie from 'js-cookie';
 // @ts-ignore
 import routes from '../../../../../../src/Routes';
 import Config from '../../base/Config';
 
 import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { changeLanguageAction } from '../../store/action/BaseAction';
+import { changeLanguageAction } from '../../store/action/SettingsAction';
 
 import translations from '../../Translations';
 // @ts-ignore
 import { IRootReducer } from '../../../../../../src/store/reducer/Root';
-import { Switch, HashRouter, Redirect } from 'react-router-dom';
+import { HashRouter, Redirect, Switch } from 'react-router-dom';
 import NoAuthRoute from '../../route/NoAuthRoute';
 
 export interface IAppProps {
@@ -70,13 +69,12 @@ const mapStateToProps = (state: IRootReducer, ownProps: IAppProps): IAppProps =>
     try {
       JSON.parse(document.cookie);
       document.cookie = '';
+    } catch (error) {
     }
-    catch(error) {
 
-    }
     const cookie = Cookie.get('lang');
-    return state.baseReducer.language
-      ? state.baseReducer.language
+    return state.settingsReducer.language
+      ? state.settingsReducer.language
       : cookie
         ? cookie
         : Config.Language

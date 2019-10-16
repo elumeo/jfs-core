@@ -48,10 +48,7 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
 
   render() {
     const {
-      props: {
-        intl: { formatMessage },
-        checkLoginAction, isAuthorized, isCheckingLogin
-      },
+      props: { isCheckingLogin },
       login
     } = this;
 
