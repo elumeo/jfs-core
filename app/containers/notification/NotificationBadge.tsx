@@ -10,7 +10,6 @@ import {
 import { INotification } from "../../store/reducer/NotificationReducer";
 
 export interface INotificationBadgeProps {
-  autoHideEmptiedDrawer?: boolean;
   notifications?: INotification[];
   toggleNotificationDrawerAction?: () => void;
 }
