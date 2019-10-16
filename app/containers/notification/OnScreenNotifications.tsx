@@ -26,7 +26,7 @@ class OnScreenNotifications extends React.Component<INotificationFadeInProps> {
       <ReactCSSTransitionGroup
         transitionName={"fadein"}
         transitionEnterTimeout={300}
-        transitionLeaveTimeout={200}
+        transitionLeaveTimeout={150}
         className={"notification-fadein"}
       >
         {notifications.filter(n => n.onScreen).map(n => <NotificationCard config={n} key={n.id}/>)}

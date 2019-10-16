@@ -13,7 +13,7 @@ import {
 import NoNotifications from "./NoNotifications";
 import { Button } from "react-md";
 import Toolbar from "react-md/lib/Toolbars";
-import { INotification } from "../../store/reducer/NotificationReducer";
+import { INotification, NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT } from "../../store/reducer/NotificationReducer";
 
 import './NotificationDrawer.scss'
 
@@ -74,7 +74,7 @@ class NotificationDrawer extends React.Component<INotificationDrawerProps> {
         <ReactCSSTransitionGroup
           transitionName={"fadein"}
           transitionEnterTimeout={300}
-          transitionLeaveTimeout={notificationDismissCounter < 0 ? 200 : 2000}
+          transitionLeaveTimeout={notificationDismissCounter < 0 ? 150 : (NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT * 100)}
         >
           {content}
         </ReactCSSTransitionGroup>

@@ -38,8 +38,8 @@ const initialState: INotificationReducerState = {
   notificationDismissCounter: -1
 };
 
-export const NOTIFICATION_LIMIT = 123;
-export const NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT = 15;
+export const NOTIFICATION_LIMIT: number = 123;
+export const NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT: number = 20;
 
 // noinspection JSUnusedGlobalSymbols,TypeScriptValidateJSTypes
 export const notificationReducer = createReducer(initialState)
