@@ -54,7 +54,7 @@ import { loginEpic, ... } from '@elumeo/jfs-core/app/store/epic/SessionEpic';
 
 example:
 ```
-import { settingsReducer, settingsReducerState } from '@elumeo/jfs-core/app/store/reducer/SettingsReducer';
+import { languageReducer, settingsReducerState } from '@elumeo/jfs-core/app/store/reducer/SettingsReducer';
 ```
 
 * import all app related reducers

@@ -1,0 +1,66 @@
+@import '~react-md/src/scss/react-md';
+@import "../../style/layout";
+@import "../../style/colors";
+
+.badges__notifications {
+  &__notification {
+    transition-property: transform, opacity;
+    transition-duration: 300ms;
+
+    &.fadein-enter {
+      transform: translate3d($notification-drawer-width, 0, 0);
+    }
+
+    &.fadein-enter.fadein-enter-active {
+      transform: translate3d(0, 0, 0);
+    }
+
+    &.fadein-leave {
+      transition-duration: 200ms;
+      //transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+
+    &.fadein-leave.fadein-leave-active {
+      transition-duration: 200ms;
+      //transform: translate3d($notification-drawer-width, 0, 0);
+      opacity: 0;
+    }
+
+    &.md-card {
+      align-items: flex-start;
+      display: flex;
+      position: relative;
+      background: $md-snackbar-color;
+      color: #fff !important;
+      border-radius: 3px;
+
+      p {
+        width: 100%;
+        margin-bottom: 0;
+        padding: 8px;
+      }
+    }
+
+
+    &.error {
+      background: $juw-error-color;
+    }
+    &.clickable {
+      cursor: pointer;
+    }
+  }
+
+  &__notification__close {
+    height: #{$md-line-height}em;
+    position: relative;
+    display: inline-block;
+    float: right;
+    right: -8px;
+    top: -4px;
+  }
+
+  &__notification__icon {
+    padding: 5px 4px 5px 7px;
+  }
+}

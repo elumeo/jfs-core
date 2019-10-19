@@ -5,7 +5,8 @@
   "main": "Main.js",
   "scripts": {
     "core-development": "node index.js",
-    "release": "npm publish --access public"
+    "release": "npm publish --access public",
+    "postinstall": "node ./lifecycle/postinstall/index.js"
   },
   "repository": {
     "type": "git",
@@ -59,7 +60,7 @@
     "validate-npm-package-license": "^3.0.4"
   },
   "devDependencies": {
-    "@elumeo/jfs-core-dev": "^1.0.3",
+    "@elumeo/jfs-core-dev": "^1.0.4",
     "chokidar": "^3.0.2",
     "rimraf": "^2.6.3"
   },
