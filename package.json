@@ -18,6 +18,7 @@
   },
   "homepage": "http://www.elumeo.com",
   "dependencies": {
+    "@elumeo/jfs-core-dev": "^1.0.5",
     "axios": "^0.18.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-preset-react-hmre": "^1.1.1",
@@ -59,7 +60,6 @@
     "validate-npm-package-license": "^3.0.4"
   },
   "devDependencies": {
-    "@elumeo/jfs-core-dev": "^1.0.4",
     "chokidar": "^3.0.2",
     "rimraf": "^2.6.3"
   },
