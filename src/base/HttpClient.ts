@@ -1,45 +1,63 @@
 import axios, { AxiosPromise } from 'axios';
-import Session from "./Session";
+import Session from './Session';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 let dispatchConfig;
 
 let Config = null;
 let pending = false;
 
-const generateAxiosConfig = (config: any, callback): any => {
-  if (Config) {
-    pending = false;
-    dispatchConfig(Config);
-    return callback({
+const configLoadedSubject = new Subject<any>();
+const configLoadedObservable = configLoadedSubject.asObservable();
+
+configLoadedObservable.pipe(
+  filter((isLoaded) => isLoaded)
+).subscribe((config: any) => {
+  dispatchConfig(config);
+}).unsubscribe();
+
+const generateAxiosConfig = (config: any): any => {
+  axios.get('/config.json').then((response) => {
+    configLoadedSubject.next({
       ...config,
-      baseURL: Config.Client.Host,
-      timeout: Config.Client.Timeout,
+      baseURL: response.data.Client.Host,
+      timeout: response.data.Client.Timeout,
       validateStatus: (status: number) => status < 400
     });
-  }
-  else if (!pending) {
-    axios.get('/config.json').then(response => {
-      Config = response.data;
-      generateAxiosConfig(config, callback);
-    });
-    pending = true;
-  }
-  else {
-    setTimeout(() => generateAxiosConfig(config, callback), 200);
-  }
+  });
+
+  // if (Config) {
+  //   pending = false;
+  //   dispatchConfig(Config);
+  //   return callback({
+  //     ...config,
+  //     baseURL: Config.Client.Host,
+  //     timeout: Config.Client.Timeout,
+  //     validateStatus: (status: number) => status < 400
+  //   });
+  // } else if (!pending) {
+  //   axios.get('/config.json').then(response => {
+  //     Config = response.data;
+  //     generateAxiosConfig(config, callback);
+  //   });
+  //   pending = true;
+  // } else {
+  //   setTimeout(() => generateAxiosConfig(config, callback), 200);
+  // }
 };
 
 const clientInstance = (callback) => generateAxiosConfig(
   {},
-  axiosConfig => {
-    const instance = axios.create(axiosConfig);
-
-    instance.defaults.headers = Session.isLoggedIn()
-      ? { 'X-JSC-TOKEN': Session.getToken() }
-      : {};
-
-    return callback(instance, axiosConfig);
-  }
+  // axiosConfig => {
+  //   const instance = axios.create(axiosConfig);
+  //
+  //   instance.defaults.headers = Session.isLoggedIn()
+  //     ? {'X-JSC-TOKEN': Session.getToken()}
+  //     : {};
+  //
+  //   return callback(instance, axiosConfig);
+  // }
 );
 
 function checkDestroySession(error): AxiosPromise {
@@ -95,7 +113,7 @@ export default {
     return clientInstance(
       (instance, axiosConfig) => (
         instance
-          .delete(url, { ...axiosConfig, data })
+          .delete(url, {...axiosConfig, data})
           .catch(error => checkDestroySession(error))
       )
     );

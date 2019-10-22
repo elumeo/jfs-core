@@ -35,16 +35,16 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
   constructor(props) {
     super(props);
 
-    const { props: { isAuthorized, RobotUsername, RobotPassword } } = this;
+    const {props: {isAuthorized, RobotUsername, RobotPassword}} = this;
   }
 
   login = () => {
-    const { props: { checkLoginAction }, state: { username, password } } = this;
-    checkLoginAction({ username, password });
+    const {props: {checkLoginAction}, state: {username, password}} = this;
+    checkLoginAction({username, password});
   };
 
   render() {
-    const { props: { isCheckingLogin, isAuthorized, routeType }, login } = this;
+    const {props: {isCheckingLogin, isAuthorized, routeType}, login} = this;
 
     const unauthorizedState = !isAuthorized && !Session.getToken();
     const unclearAuthorizationState = Session.getToken() && !isAuthorized;
@@ -64,8 +64,8 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
             modal
           >
             <LoginCredentials
-              onChangeUsername={update => this.setState({ username: update })}
-              onChangePassword={update => this.setState({ password: update })}
+              onChangeUsername={update => this.setState({username: update})}
+              onChangePassword={update => this.setState({password: update})}
               onLogin={login}
             />
           </DialogContainer>
@@ -92,7 +92,7 @@ const mapStateToProps = (state: IRootReducer, ownProps: ILoginDialogProps): ILog
   routeType: state.routerReducer.routeType
 });
 
-const mapDispatchToProps = { checkLoginAction, checkSessionAction };
+const mapDispatchToProps = {checkLoginAction, checkSessionAction};
 
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),

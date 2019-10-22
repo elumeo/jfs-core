@@ -2,8 +2,8 @@ import { applyMiddleware, createStore } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { registerConfigDispatchHandler } from '../base/Client';
-import { configLoadedAction } from '../store/action/ConfigAction';
+import { registerConfigDispatchHandler } from '../base/HttpClient';
+import { configLoadedAction } from './action/ConfigAction';
 
 // -----------------------------------------------------------------------------
 

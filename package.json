@@ -62,7 +62,8 @@
   "devDependencies": {
     "@elumeo/jfs-core-dev": "^1.0.4",
     "chokidar": "^3.0.2",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "tslint": "^5.20.0"
   },
   "jest": {
     "transform": {

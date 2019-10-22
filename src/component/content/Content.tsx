@@ -14,7 +14,7 @@ export interface IContentProps {
 
 class Content extends React.Component<IContentProps> {
   render() {
-    const { props: { isAuthorized, children, routeType, splitViewEnabled } } = this;
+    const {props: {isAuthorized, children, routeType, splitViewEnabled}} = this;
 
     const unclearAuthorizationState = Session.getToken() && !isAuthorized;
     const contentClassName = [

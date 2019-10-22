@@ -1,5 +1,5 @@
-const { resolve, join } = require('path');
-const { readFile, writeFile, unlink, mkdir } = require('fs');
+const {resolve, join} = require('path');
+const {readFile, writeFile, unlink, mkdir} = require('fs');
 
 const chokidar = require('chokidar');
 const rmdir = require('rimraf');
@@ -39,54 +39,54 @@ if (printLogs) {
   const whitelistPrefixes = [];
   const watcher = chokidar.watch(resolve(__dirname, corePath));
   setTimeout(() =>
-  watcher.on('all', (event, sourcePath) => {
-    const corePath = sourcePath.substring(__dirname.length, sourcePath.length);
-    const targetPath = join(targetBasePath, corePath);
+    watcher.on('all', (event, sourcePath) => {
+      const corePath = sourcePath.substring(__dirname.length, sourcePath.length);
+      const targetPath = join(targetBasePath, corePath);
 
-    switch (event) {
-      case 'addDir': {
-        mkdir(targetPath, error => {
-          if (error) throw error;
-          if (printLogs) console.log(`Created ${targetPath}`);
-        });
-        break;
-      }
-      case 'add':
-      case 'change': {
-        copyFile(sourcePath, targetPath, () => {
-          if (printLogs) console.log(`${event === 'add' ? 'Created' : 'Updated'} ${targetPath}`);
-        });
-        break;
-      }
-      case 'unlink': {
-        const prefixMatch = prefix =>
-          targetPath.substring(0, prefix.length) === prefix;
-
-        if (whitelistPrefixes.find(prefixMatch) === undefined) {
-          unlink(targetPath, error => {
+      switch (event) {
+        case 'addDir': {
+          mkdir(targetPath, error => {
             if (error) throw error;
-            if (printLogs) console.log(`Removed ${targetPath}`);
+            if (printLogs) console.log(`Created ${targetPath}`);
           });
+          break;
         }
-        break;
-      }
-      case 'unlinkDir':{
-        whitelistPrefixes.push(targetPath);
-        rmdir(targetPath, () => {
-          if (printLogs) console.log(`Removed ${targetPath}`);
-          setTimeout(() => {
-            let offset = 0;
-            while (whitelistPrefixes.indexOf(targetPath, offset) !== -1) {
-              const index = whitelistPrefixes.indexOf(targetPath, offset);
-              whitelistPrefixes.splice(index, 1);
-            }
-          }, 1000)
-        });
-        break;
-      }
-      default: {
+        case 'add':
+        case 'change': {
+          copyFile(sourcePath, targetPath, () => {
+            if (printLogs) console.log(`${event === 'add' ? 'Created' : 'Updated'} ${targetPath}`);
+          });
+          break;
+        }
+        case 'unlink': {
+          const prefixMatch = prefix =>
+            targetPath.substring(0, prefix.length) === prefix;
 
+          if (whitelistPrefixes.find(prefixMatch) === undefined) {
+            unlink(targetPath, error => {
+              if (error) throw error;
+              if (printLogs) console.log(`Removed ${targetPath}`);
+            });
+          }
+          break;
+        }
+        case 'unlinkDir': {
+          whitelistPrefixes.push(targetPath);
+          rmdir(targetPath, () => {
+            if (printLogs) console.log(`Removed ${targetPath}`);
+            setTimeout(() => {
+              let offset = 0;
+              while (whitelistPrefixes.indexOf(targetPath, offset) !== -1) {
+                const index = whitelistPrefixes.indexOf(targetPath, offset);
+                whitelistPrefixes.splice(index, 1);
+              }
+            }, 1000)
+          });
+          break;
+        }
+        default: {
+
+        }
       }
-    }
-  }), 1000);
+    }), 1000);
 });
