@@ -1,12 +1,11 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "4.0.0",
+  "version": "4.0.2",
   "description": "jfs_Core",
   "main": "Main.js",
   "scripts": {
     "core-development": "node index.js",
-    "release": "npm publish --access public",
-    "postinstall": "node ./lifecycle/postinstall/index.js"
+    "release": "npm publish --access public"
   },
   "repository": {
     "type": "git",
@@ -42,6 +41,7 @@
     "react": "^16.5.2",
     "react-addons-css-transition-group": "15.6.0",
     "react-addons-transition-group": "15.6.0",
+    "react-autocomplete": "^1.8.1",
     "react-dom": "^16.5.2",
     "react-infinite": "^0.12.1",
     "react-intl": "^2.7.1",
