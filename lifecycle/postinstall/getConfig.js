@@ -1,6 +1,8 @@
 const { readdir, readFile, writeFile, lstat } = require('fs');
 const { resolve } = require('path');
 
+const configFilename = 'config.dist.json';
+
 const checkPathType = (pathName, callback) => {
   lstat(
     pathName,
@@ -92,7 +94,7 @@ const searchSourcePath = (
 
 const startSearchPath = process.argv.slice(2)[0];
 
-const configTargetPath = resolve(startSearchPath, 'config.json.dist');
+const configTargetPath = resolve(startSearchPath, configFilename);
 searchSourcePath(
   startSearchPath,
   'config.json.dist',
@@ -104,7 +106,7 @@ searchSourcePath(
           console.log(error);
         }
         else {
-          if (!files.find(fileName => fileName === 'config.json.dist')) {
+          if (!files.find(fileName => fileName === configFilename)) {
             readFile(
               configSourcePath,
               (error, data) => {

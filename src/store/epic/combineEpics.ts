@@ -11,10 +11,19 @@ import {
 
 import { getRegionEpic } from './SystemEpic';
 import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from './NotificationEpic';
+import {
+  webSocketCheckSessionIsAuthorizedActionEpic,
+  webSocketConnectRequestActionEpic,
+  webSocketJoinRoomRequestActionEpic, webSocketJoinRoomSuccessActionEpic
+} from './WebsocketEpic';
 
 // noinspection JSUnusedGlobalSymbols
 export default (...epics: any) => {
   return combineEpics(
+    webSocketCheckSessionIsAuthorizedActionEpic,
+    webSocketConnectRequestActionEpic,
+    webSocketJoinRoomRequestActionEpic,
+    webSocketJoinRoomSuccessActionEpic,
     addNotificationEpic,
     autoSessionCheck,
     checkLoginEpic,

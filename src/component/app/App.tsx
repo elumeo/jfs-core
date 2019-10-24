@@ -8,7 +8,7 @@ import Cookie from 'js-cookie';
 import { changeLanguageAction } from '../../store/action/LanguageAction';
 import mergeTranslations from '../../Translations';
 import IRootReducer from '../../store/reducer/RootReducer';
-import WebSocketConnection from '../WebSocket/WebSocketConnection';
+import WebSocketConnection from '../websocket/WebSocketConnection';
 
 export interface IAppProps {
   changeLanguageAction?: any;

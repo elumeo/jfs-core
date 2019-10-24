@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { InjectedIntlProps, injectIntl } from "react-intl";
-import { Autocomplete } from "react-md";
-import { addToastAction } from "../../store/action/ToastAction";
-import IRootReducer from "../../store/reducer/RootReducer";
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { InjectedIntlProps, injectIntl } from 'react-intl';
+import { Autocomplete } from 'react-md';
+import { addToastAction } from '../../store/action/ToastAction';
+import IRootReducer from '../../store/reducer/RootReducer';
 
 import './SearchComponent.scss';
-import { Button } from "react-md/lib/Buttons";
-import CircularProgress from "react-md/lib/Progress/CircularProgress";
+import { Button } from 'react-md/lib/Buttons';
+import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 
 export interface ISearchComponentProps extends InjectedIntlProps {
     addToastAction?: (IToastConfig) => void;
-    autocompleteData?: string[]|number[]|{dataLabel:string, dataValue:string}[];
+    autocompleteData?: string[]|number[]|{dataLabel: string, dataValue: string}[];
     centered?: boolean;
     focusInputOnAutocomplete?: boolean;
     forceNumericInput?: boolean;

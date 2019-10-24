@@ -91,6 +91,15 @@ namespace JSCApi {
 
     }
 
+    export namespace WebSocket {
+
+      export interface IWebSocketRoomData {
+        room: string;
+        data?: any;
+        lastUpdate?: any;
+      }
+
+    }
   }
 
   export namespace LoginClient {

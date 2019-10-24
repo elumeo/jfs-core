@@ -1,5 +1,5 @@
 import { loadConfig, configLoadedAction } from '../action/ConfigAction';
-import { createReducer, PayloadAction } from "typesafe-actions";
+import { createReducer, PayloadAction } from 'typesafe-actions';
 
 export interface IConfigReducerState {
   RobotUsername: string;
@@ -8,6 +8,13 @@ export interface IConfigReducerState {
   ForceHTTPS: boolean;
   pending: boolean;
   loaded: boolean;
+  HttpClient: {
+    Host: string;
+  };
+  WebSocketClient: {
+    Host: string;
+    PrivateNamespace: string;
+  };
 }
 
 const initialState = {
