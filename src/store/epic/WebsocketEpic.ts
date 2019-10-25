@@ -4,6 +4,7 @@ import { isActionOf } from 'typesafe-actions';
 
 import { RootAction } from '../action/RootAction';
 import {
+  webSocketConnectFailedAction,
   webSocketConnectRequestAction,
   webSocketConnectSuccessAction,
   webSocketJoinRoomRequestAction,
@@ -12,7 +13,7 @@ import {
   webSocketRoomUpdateAction
 } from '../action/WebSocketAction';
 import IRootReducer from '../reducer/RootReducer';
-import { of } from 'rxjs';
+import { iif, of } from 'rxjs';
 import { sessionIsAuthorizedAction } from '../action/SessionAction';
 import { WebSocketClient } from '../../base/WebSocketClient';
 
@@ -34,8 +35,9 @@ export const webSocketConnectRequestActionEpic: Epic<RootAction, RootAction> = (
       state.value.configReducer.WebSocketClient.Host,
       state.value.configReducer.WebSocketClient.PrivateNamespace
     )),
-    filter((isConnected) => isConnected === true),
-    switchMap(() => of(webSocketConnectSuccessAction()))
+    switchMap((isConnected) => iif(() => isConnected === true, of(webSocketConnectSuccessAction()), of(webSocketConnectFailedAction())))
+    // filter((isConnected) => isConnected === true),
+    // switchMap(() => of(webSocketConnectSuccessAction()))
   );
 };
 

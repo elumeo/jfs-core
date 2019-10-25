@@ -34,11 +34,11 @@ export const webSocketReducer = createReducer(initialState)
     isConnected: true,
     connectionError: null
   }))
-  .handleAction(webSocketConnectFailedAction, (state: IWebSocketReducerState, action: PayloadAction<string, string>): IWebSocketReducerState => ({
+  .handleAction(webSocketConnectFailedAction, (state: IWebSocketReducerState): IWebSocketReducerState => ({
     ...state,
     isConnecting: false,
     isConnected: false,
-    connectionError: action.payload
+    joinedRooms: []
   }))
 
   .handleAction(webSocketJoinRoomSuccessAction, (state: IWebSocketReducerState, action: PayloadAction<string, string>): IWebSocketReducerState => {

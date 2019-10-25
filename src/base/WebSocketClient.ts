@@ -23,7 +23,11 @@ export class WebSocketClient {
       this.socket.on(this.EVENT_AUTHENTICATED, () => {
         console.log('WebSocketClient connect to: ', host, namespace);
         observer.next(true);
-        observer.complete();
+        // observer.complete();
+      });
+      this.socket.on('connect_error', (error) => {
+        observer.next(false);
+        // observer.complete();
       });
     });
   }
