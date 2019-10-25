@@ -7,25 +7,23 @@ let Config = null;
 let pending = false;
 
 const generateAxiosConfig = (config: any, callback): any => {
-  if (Config) {
+  if(Config) {
     pending = false;
     dispatchConfig(Config);
     console.log(Config);
     return callback({
       ...config,
-      baseURL: Config.HttpClient.Host,
-      timeout: Config.HttpClient.Timeout,
+      baseURL: Config.JscClient.Host,
+      timeout: Config.JscClient.Timeout,
       validateStatus: (status: number) => status < 400
     });
-  }
-  else if (!pending) {
+  } else if(!pending) {
     axios.get('/config.json').then(response => {
       Config = response.data;
       generateAxiosConfig(config, callback);
     });
     pending = true;
-  }
-  else {
+  } else {
     setTimeout(() => generateAxiosConfig(config, callback), 200);
   }
 };
@@ -36,7 +34,7 @@ const clientInstance = (callback) => generateAxiosConfig(
     const instance = axios.create(axiosConfig);
 
     instance.defaults.headers = Session.isLoggedIn()
-      ? { 'X-JSC-TOKEN': Session.getToken() }
+      ? {'X-JSC-TOKEN': Session.getToken()}
       : {};
 
     return callback(instance, axiosConfig);
@@ -44,7 +42,7 @@ const clientInstance = (callback) => generateAxiosConfig(
 );
 
 function checkDestroySession(error): AxiosPromise {
-  if (error.response && error.response.status && error.response.status == 401) {
+  if(error.response && error.response.status && error.response.status == 401) {
     Session.removeToken();
   }
 
@@ -53,7 +51,7 @@ function checkDestroySession(error): AxiosPromise {
 
 export const registerConfigDispatchHandler = dispatchHandler => {
   dispatchConfig = dispatchHandler;
-}
+};
 
 export default {
   get: async (url, params): Promise<any> => {
@@ -96,7 +94,7 @@ export default {
     return clientInstance(
       (instance, axiosConfig) => (
         instance
-          .delete(url, { ...axiosConfig, data })
+          .delete(url, {...axiosConfig, data})
           .catch(error => checkDestroySession(error))
       )
     );

@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import IRootReducer from '../../store/reducer/RootReducer';
 import { IConfigReducerState } from '../../store/reducer/ConfigReducer';
 import { IWebSocketReducerState } from '../../store/reducer/WebSocketReducer';
-import { webSocketConnectRequestAction } from '../../store/action/WebSocketAction';
-import { ActionBuilder } from 'typesafe-actions/dist/create-standard-action';
+import { webSocketConnectRequestAction, webSocketJoinRoomRequestAction } from '../../store/action/WebSocketAction';
 
 export interface IWebsocketConnectionProps {
   config?: IConfigReducerState;
   webSocket?: IWebSocketReducerState;
-  webSocketConnectRequestAction?: ActionBuilder<string>;
+  webSocketConnectRequestAction?: () => void;
+  webSocketJoinRoomRequestAction?: (room: string) => void
 }
 
 export interface IWebsocketConnectionState {
@@ -19,6 +19,14 @@ export interface IWebsocketConnectionState {
 }
 
 class WebSocketConnection extends React.Component<IWebsocketConnectionProps, IWebsocketConnectionState> {
+  componentDidUpdate(prevProps: IWebsocketConnectionProps, prevState: IWebsocketConnectionState) {
+    if(prevProps.webSocket.isConnected === false && this.props.webSocket.isConnected && this.props.config.WebSocketClient.AutoJoinRooms) {
+      for(let i = 0; i < this.props.config.WebSocketClient.AutoJoinRooms.length; i++) {
+        this.props.webSocketJoinRoomRequestAction(this.props.config.WebSocketClient.AutoJoinRooms[i]);
+      }
+    }
+  }
+
   public render() {
     const {props: {children}} = this;
 
@@ -38,5 +46,5 @@ const mapStateToProps = (state: IRootReducer, ownProps: IWebsocketConnectionProp
 
 export default connect(
   mapStateToProps,
-  { webSocketConnectRequestAction }
+  { webSocketConnectRequestAction, webSocketJoinRoomRequestAction }
 )(WebSocketConnection);

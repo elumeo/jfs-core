@@ -6,7 +6,6 @@ import JSCApi from '../JscApi';
 import IWebSocketRoomData = JSCApi.DTO.WebSocket.IWebSocketRoomData;
 
 export class WebSocketClient {
-  public static EVENT_CONNECT = 'connect';
   public static EVENT_NOT_AUTHORIZED = 'notAuthorized';
   public static EVENT_AUTHENTICATED = 'authenticated';
   public static EVENT_JOIN_ROOM = '[Room] Join';
@@ -17,12 +16,12 @@ export class WebSocketClient {
   public static socket: Socket;
 
   public static connect(token: string, ip: string, host: string, namespace: string) {
-    console.log('WebSocketClient connect to: ', host, namespace);
     return new Observable<boolean>((observer) => {
       this.socket = SocketIoClient.connect(host + '/' + namespace, {
         query: {token, ip}
       });
-      this.socket.on('authenticated', () => {
+      this.socket.on(this.EVENT_AUTHENTICATED, () => {
+        console.log('WebSocketClient connect to: ', host, namespace);
         observer.next(true);
         observer.complete();
       });
@@ -33,11 +32,7 @@ export class WebSocketClient {
     return new Observable<string>((observer) => {
       this.socket.emit(this.EVENT_JOIN_ROOM, room);
       this.socket.on(this.EVENT_JOINED_ROOM, (joinedRoom) => {
-        if (room === joinedRoom) {
-          // this.socket.on(this.EVENT_UPDATE_ROOM, (roomData) => {
-          //   console.log(this.EVENT_UPDATE_ROOM, room, roomData);
-          //   observer.next(roomData);
-          // });
+        if(room === joinedRoom) {
           observer.next(room);
           observer.complete();
         }
@@ -45,16 +40,19 @@ export class WebSocketClient {
     });
   }
 
+  public static leave(room: string) {
+    return new Observable<string>((observer) => {
+      this.socket.emit(this.EVENT_LEAVE_ROOM, room);
+      observer.next(room);
+      observer.complete();
+    });
+  }
+
   public static listen(room: string) {
-    console.log('listen 1');
     return new Observable<IWebSocketRoomData>((observer) => {
-      console.log('listen 2');
-      if (this.socket) {
-        console.log('listen 3');
+      if(this.socket) {
         this.socket.on(this.EVENT_UPDATE_ROOM, (roomData: IWebSocketRoomData) => {
-          console.log('listen 4');
-          if (room === roomData.room) {
-            console.log(this.EVENT_UPDATE_ROOM, room, roomData);
+          if(room === roomData.room) {
             observer.next(roomData);
           }
         });

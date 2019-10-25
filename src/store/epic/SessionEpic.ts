@@ -12,7 +12,6 @@ import {
 import { isActionOf, PayloadAction } from "typesafe-actions";
 import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 import { catchError, filter, switchMap } from "rxjs/operators";
-import { AxiosResponse } from "axios";
 import { RootAction } from '../action/RootAction';
 import { addToastAction } from "../action/ToastAction";
 import { configLoadedAction } from "../action/ConfigAction";
@@ -54,8 +53,17 @@ export const checkLoginEpic: Epic<RootAction, RootAction> = action$ =>
           JSCApi.LoginClient.login(credentials)
         ).pipe(
           switchMap(({ data, data: { token } }) => {
-            Session.setToken(token);
-            return of(checkUserRightsAction(data));
+            if(token === undefined) {
+              return of(
+                sessionIsUnauthorizedAction(),
+                addToastAction({
+                  contentTranslationId: 'login.failed',
+                  isError: true
+                }));
+            } else {
+              Session.setToken(token);
+              return of(checkUserRightsAction(data));
+            }
           }),
           catchError(() => of(
             sessionIsUnauthorizedAction(),
@@ -166,4 +174,4 @@ export const autoSessionCheck: Epic<RootAction, RootAction> = (action$, store) =
       }
     )
   )
-)
+);

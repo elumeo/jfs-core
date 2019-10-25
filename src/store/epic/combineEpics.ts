@@ -14,7 +14,7 @@ import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from 
 import {
   webSocketCheckSessionIsAuthorizedActionEpic,
   webSocketConnectRequestActionEpic,
-  webSocketJoinRoomRequestActionEpic, webSocketJoinRoomSuccessActionEpic
+  webSocketJoinRoomRequestActionEpic, webSocketJoinRoomSuccessActionEpic, webSocketLeaveRoomRequestActionEpic
 } from './WebsocketEpic';
 
 // noinspection JSUnusedGlobalSymbols
@@ -24,6 +24,7 @@ export default (...epics: any) => {
     webSocketConnectRequestActionEpic,
     webSocketJoinRoomRequestActionEpic,
     webSocketJoinRoomSuccessActionEpic,
+    webSocketLeaveRoomRequestActionEpic,
     addNotificationEpic,
     autoSessionCheck,
     checkLoginEpic,

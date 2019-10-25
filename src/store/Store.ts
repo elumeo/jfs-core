@@ -2,7 +2,7 @@ import { applyMiddleware, createStore } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { registerConfigDispatchHandler } from '../base/HttpClient';
+import { registerConfigDispatchHandler } from '../base/JscClient';
 import { configLoadedAction } from './action/ConfigAction';
 
 // -----------------------------------------------------------------------------

@@ -8,35 +8,37 @@ export interface IConfigReducerState {
   ForceHTTPS: boolean;
   pending: boolean;
   loaded: boolean;
-  HttpClient: {
+  JscClient: {
     Host: string;
   };
   WebSocketClient: {
     Host: string;
     PrivateNamespace: string;
+    AutoJoinRooms: string[];
   };
 }
 
-const initialState = {
+const initialState: IConfigReducerState = {
   pending: false,
   loaded: false,
-}
+  RobotUsername: null,
+  RobotPassword: null,
+  Language: null,
+  ForceHTTPS: true,
+  JscClient: null,
+  WebSocketClient: null
+};
 
-export const configReducer = createReducer(initialState)
+export const configReducer = createReducer<IConfigReducerState>(initialState)
   .handleAction(loadConfig, (state: IConfigReducerState) => ({
     ...state,
     pending: true,
     loaded: false
   }))
-  .handleAction(
-    configLoadedAction,
-    (
-      state: IConfigReducerState,
-      action: PayloadAction<string, any>
-    ) => ({
-      ...state,
-      ...action.payload,
-      pending: false,
-      loaded: true
-    })
-  );
+  .handleAction(configLoadedAction, (state: IConfigReducerState, action: PayloadAction<string, any>) => ({
+    ...state,
+    ...action.payload,
+    pending: false,
+    loaded: true
+  }))
+;

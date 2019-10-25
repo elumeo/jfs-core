@@ -2,9 +2,8 @@ import {
   webSocketConnectRequestAction,
   webSocketConnectSuccessAction,
   webSocketConnectFailedAction,
-  webSocketJoinRoomRequestAction,
   webSocketJoinRoomSuccessAction,
-  webSocketJoinRoomFailedAction
+  webSocketJoinRoomFailedAction, webSocketLeaveRoomSuccessAction, webSocketLeaveRoomFailedAction
 } from '../action/WebSocketAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 
@@ -15,7 +14,7 @@ export interface IWebSocketReducerState {
   joinedRooms: string[];
 }
 
-const initialState = {
+const initialState: IWebSocketReducerState = {
   isConnected: false,
   isConnecting: false,
   connectionError: null,
@@ -23,13 +22,13 @@ const initialState = {
 };
 
 export const webSocketReducer = createReducer(initialState)
-  .handleAction(webSocketConnectRequestAction, (state: IWebSocketReducerState, action): IWebSocketReducerState => ({
+  .handleAction(webSocketConnectRequestAction, (state: IWebSocketReducerState): IWebSocketReducerState => ({
     ...state,
     isConnecting: true,
     isConnected: false,
     connectionError: null
   }))
-  .handleAction(webSocketConnectSuccessAction, (state: IWebSocketReducerState, action): IWebSocketReducerState => ({
+  .handleAction(webSocketConnectSuccessAction, (state: IWebSocketReducerState): IWebSocketReducerState => ({
     ...state,
     isConnecting: false,
     isConnected: true,
@@ -45,7 +44,6 @@ export const webSocketReducer = createReducer(initialState)
   .handleAction(webSocketJoinRoomSuccessAction, (state: IWebSocketReducerState, action: PayloadAction<string, string>): IWebSocketReducerState => {
     const indexOfRoom = state.joinedRooms.indexOf(action.payload);
     const joinedRooms = state.joinedRooms;
-    console.log(indexOfRoom, joinedRooms);
     if (indexOfRoom === -1) {
       joinedRooms.push(action.payload);
     }
@@ -54,7 +52,22 @@ export const webSocketReducer = createReducer(initialState)
       joinedRooms
     }
   })
-  .handleAction(webSocketJoinRoomFailedAction, (state: IWebSocketReducerState, action: PayloadAction<string, any>) => ({
+  .handleAction(webSocketJoinRoomFailedAction, (state: IWebSocketReducerState) => ({
+    ...state
+  }))
+
+  .handleAction(webSocketLeaveRoomSuccessAction, (state: IWebSocketReducerState, action: PayloadAction<string, string>): IWebSocketReducerState => {
+    const indexOfRoom = state.joinedRooms.indexOf(action.payload);
+    const joinedRooms = state.joinedRooms;
+    if (indexOfRoom !== -1) {
+      joinedRooms.splice(indexOfRoom, 1);
+    }
+    return {
+      ...state,
+      joinedRooms
+    }
+  })
+  .handleAction(webSocketLeaveRoomFailedAction, (state: IWebSocketReducerState) => ({
     ...state
   }))
 ;
