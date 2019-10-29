@@ -36,8 +36,6 @@ export const webSocketConnectRequestActionEpic: Epic<RootAction, RootAction> = (
       state.value.configReducer.WebSocketClient.PrivateNamespace
     )),
     switchMap((isConnected) => iif(() => isConnected === true, of(webSocketConnectSuccessAction()), of(webSocketConnectFailedAction())))
-    // filter((isConnected) => isConnected === true),
-    // switchMap(() => of(webSocketConnectSuccessAction()))
   );
 };
 
