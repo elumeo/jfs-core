@@ -27,7 +27,7 @@
     "ordered-imports": [false, {"named-imports-order": "case-insensitive"}],
     "semicolon": [false, "always"],
     "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case","allow-leading-underscore"],
-    "whitespace": [true, "check-branch", "check-operator", "check-typecast", "check-type", "check-separator", "check-decl", "check-module"],
+    "whitespace": [true, "check-operator", "check-typecast", "check-type", "check-separator", "check-decl", "check-module"],
     "space-before-function-paren": [true, {
       "constructor": "never",
       "method": "never"
