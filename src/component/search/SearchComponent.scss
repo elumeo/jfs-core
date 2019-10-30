@@ -28,9 +28,6 @@
     circle {
       stroke: rgba(255, 255, 255, 1);
     }
-
-    margin-top: auto;
-    margin-bottom: auto;
   }
 }
 
@@ -48,15 +45,20 @@
 }
 
 .search-component {
+  position: relative;
+  padding-right: $md-btn-icon-padding;
+
   .md-divider.md-divider--text-field {
     margin-inline-end: 0;
   }
 
+  .md-text-field.search {
+    padding-right: $md-default-padding;
+  }
+
   button.clear-btn {
-    margin-left: -52px;
-    @media #{$md-desktop-media} {
-      margin-left: -48px;
-    }
+    position: absolute;
+    right: 0;
     visibility: hidden;
 
     &.visible {
@@ -64,13 +66,15 @@
     }
   }
 
+  .icon-view-box {
+    width: calc(#{$md-line-height}em * 2);
+    height: calc(#{$md-line-height}em * 2);
+    display: inline-block;
+    vertical-align: bottom;
+  }
   .search-progress {
-    position: relative;
-    right: 18px;
-    visibility: hidden;
-
-    &.visible {
-      visibility: visible;
-    }
+    height: #{$md-line-height}em;
+    width: #{$md-line-height}em;
+    margin: calc(#{$md-line-height}em / 2);
   }
 }
