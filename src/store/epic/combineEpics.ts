@@ -10,6 +10,7 @@ import {
 } from './SessionEpic';
 
 import { getRegionEpic } from './SystemEpic';
+import { autoLoadConfigEpic, loadConfigEpic } from './ConfigEpic';
 import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from "./NotificationEpic";
 
 // noinspection JSUnusedGlobalSymbols
@@ -22,6 +23,8 @@ export default (...epics: any) => {
     checkUserRightsEpic,
     dismissAllNotificationsEpic,
     getRegionEpic,
+    loadConfigEpic,
+    autoLoadConfigEpic,
     logoutEpic,
     robotLoginEpic,
     splitViewEpic,

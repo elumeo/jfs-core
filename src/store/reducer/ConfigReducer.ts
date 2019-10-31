@@ -1,4 +1,4 @@
-import { loadConfig, configLoadedAction, configLoading } from '../action/ConfigAction';
+import { configLoadedAction, configLoading, loadConfig } from '../action/ConfigAction';
 import { createReducer, PayloadAction } from "typesafe-actions";
 
 export interface IConfigReducerState {
