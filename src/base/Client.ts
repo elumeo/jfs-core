@@ -10,26 +10,19 @@ const generateAxiosConfig = (config: any, callback): any => {
   if (Config) {
     pending = false;
     dispatchConfig(Config);
-    return callback({
-      ...config,
-      baseURL: Config.Client.Host,
-      timeout: Config.Client.Timeout,
-      validateStatus: (status: number) => status < 400
-    });
-  }
-  else if (!pending) {
+    return callback({ ...config, baseURL: Config.Client.Host, timeout: Config.Client.Timeout });
+  } else if (!pending) {
     axios.get('/config.json').then(response => {
       Config = response.data;
       generateAxiosConfig(config, callback);
     });
     pending = true;
-  }
-  else {
+  } else {
     setTimeout(() => generateAxiosConfig(config, callback), 200);
   }
 };
 
-const clientInstance = (callback) => generateAxiosConfig(
+export const clientInstance = (callback) => generateAxiosConfig(
   {},
   axiosConfig => {
     const instance = axios.create(axiosConfig);
@@ -52,8 +45,9 @@ function checkDestroySession(error): AxiosPromise {
 
 export const registerConfigDispatchHandler = dispatchHandler => {
   dispatchConfig = dispatchHandler;
-}
+};
 
+// noinspection JSUnusedGlobalSymbols
 export default {
   get: async (url, params): Promise<any> => {
     return await new Promise((resolve, reject) => {
@@ -95,7 +89,7 @@ export default {
     return clientInstance(
       (instance, axiosConfig) => (
         instance
-          .delete(url, { ...axiosConfig, data })
+          .delete(url, { ...axiosConfig, data, config })
           .catch(error => checkDestroySession(error))
       )
     );

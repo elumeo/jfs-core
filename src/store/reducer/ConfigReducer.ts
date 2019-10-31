@@ -1,4 +1,4 @@
-import { loadConfig, configLoadedAction } from '../action/ConfigAction';
+import { loadConfig, configLoadedAction, configLoading } from '../action/ConfigAction';
 import { createReducer, PayloadAction } from "typesafe-actions";
 
 export interface IConfigReducerState {
@@ -14,10 +14,10 @@ export interface IConfigReducerState {
 const initialState = {
   pending: false,
   loaded: false,
-}
+};
 
 export const configReducer = createReducer(initialState)
-  .handleAction(loadConfig, (state: IConfigReducerState) => ({
+  .handleAction([loadConfig, configLoading], (state: IConfigReducerState) => ({
     ...state,
     pending: true,
     loaded: false

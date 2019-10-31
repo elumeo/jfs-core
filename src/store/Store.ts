@@ -2,11 +2,12 @@ import { applyMiddleware, createStore } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { registerConfigDispatchHandler } from '../base/Client';
-import { configLoadedAction } from '../store/action/ConfigAction';
+import { registerConfigDispatchHandler, clientInstance } from '../base/Client';
+import { configLoadedAction } from './action/ConfigAction';
 
-// -----------------------------------------------------------------------------
+clientInstance(() => console.debug("client initialized -> config load triggered"));
 
+// noinspection JSUnusedGlobalSymbols
 export default (rootEpic, rootReducer) => {
   const epicMiddleware = createEpicMiddleware();
   // create and set store
