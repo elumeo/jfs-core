@@ -7,7 +7,7 @@ import { isActionOf } from 'typesafe-actions';
 
 import axios from 'axios';
 
-export const loadConfigEpic: Epic<RootAction, RootAction> = (action$, store) => (
+export const loadConfigEpic: Epic<RootAction, RootAction> = (action$) => (
   action$.pipe(
     filter(isActionOf(loadConfig)),
     switchMap(

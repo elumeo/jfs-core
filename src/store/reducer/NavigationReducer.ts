@@ -1,5 +1,4 @@
-import { loadConfig, configLoadedAction } from '../action/ConfigAction';
-import { createReducer, PayloadAction } from "typesafe-actions";
+import { createReducer } from "typesafe-actions";
 
 import { openNavigation, closeNavigation } from '../action/NavigationAction';
 

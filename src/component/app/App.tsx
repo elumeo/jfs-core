@@ -15,7 +15,6 @@ export interface IAppProps {
   location?: Location;
   store: any;
   Translations;
-  loadConfig?;
   ForceHTTPS?: boolean;
 }
 
