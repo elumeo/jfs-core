@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { getRegion } from '../../store/action/SystemAction';
 import Tooltipped from 'react-md/lib/Tooltips/Tooltipped';
-import { injectIntl, InjectedIntlProps } from 'react-intl';
+import { InjectedIntlProps, injectIntl } from 'react-intl';
 // @ts-ignore
 import { IRootReducer } from '../../../../../../src/store/reducer/Root';
 
@@ -14,11 +14,7 @@ export interface IBackendIndicatorProps extends InjectedIntlProps {
   backendRegion?: string;
 }
 
-export interface IBackendIndicatorState {
-
-}
-
-class BackendIndicator extends React.Component<IBackendIndicatorProps, IBackendIndicatorState> {
+class BackendIndicator extends React.Component<IBackendIndicatorProps> {
   constructor(props) {
     super(props);
     const { props: { getRegion } } = this;
@@ -28,11 +24,9 @@ class BackendIndicator extends React.Component<IBackendIndicatorProps, IBackendI
   render() {
     const { props: { intl: { formatMessage }, backendRegion } } = this;
     return (
-      <div className="tool">
-        <Tooltipped label={`${formatMessage({id: 'app.backend'})}: ${backendRegion}`}>
-          <div className={`flag ${(backendRegion || '').toLowerCase()}`}/>
-        </Tooltipped>
-      </div>
+      <Tooltipped label={`${formatMessage({ id: 'app.backend' })}: ${backendRegion}`}>
+        <div className={`flag ${(backendRegion || '').toLowerCase()}`}/>
+      </Tooltipped>
     )
   }
 }
