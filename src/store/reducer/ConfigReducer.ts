@@ -5,6 +5,7 @@ export interface IConfigReducerState {
   RobotUsername: string;
   RobotPassword: string;
   Language: string;
+  Currency: string;
   ForceHTTPS: boolean;
   pending: boolean;
   loaded: boolean;
