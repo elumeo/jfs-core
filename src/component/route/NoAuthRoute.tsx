@@ -16,10 +16,7 @@ export interface INoAuthRouteProps extends IBaseRouteProps {
 class NoAuthRoute extends React.Component<INoAuthRouteProps> {
   constructor(props) {
     super(props);
-    const {
-      props: { enterUnauthorizedRoute }
-    } = this;
-    enterUnauthorizedRoute();
+    this.props.enterUnauthorizedRoute();
   }
 
   render() {
@@ -39,7 +36,7 @@ const mapStateToProps = (
   ownProps: INoAuthRouteProps
 ): INoAuthRouteProps => ({
   ...ownProps
-})
+});
 
 const enhance = compose(
   connect(mapStateToProps, { enterUnauthorizedRoute })

@@ -6,7 +6,7 @@ import { compose } from 'redux';
 
 import IRootReducer from '../../store/reducer/RootReducer';
 
-import { openDialog, closeDialog } from '../../store/action/SettingsAction';
+import { closeDialog, openDialog } from '../../store/action/SettingsAction';
 import { injectIntl } from 'react-intl';
 
 export interface ISettingsButtonProps {
@@ -15,26 +15,13 @@ export interface ISettingsButtonProps {
   closeDialog?: () => void;
 }
 
-export interface ISettingsButtonState {
-
-}
-
-class SettingsButton extends React.Component<ISettingsButtonProps, ISettingsButtonState> {
+class SettingsButton extends React.Component<ISettingsButtonProps> {
   render() {
     const { props: { settingsOpened, openDialog, closeDialog } } = this;
     return (
-      <div className="tool">
-        <Button icon onClick={() => {
-          if (settingsOpened) {
-            closeDialog();
-          }
-          else {
-            openDialog();
-          }
-        }}>
-          settings
-        </Button>
-      </div>
+      <Button icon onClick={() => settingsOpened ? closeDialog() : openDialog()}>
+        settings
+      </Button>
     );
   }
 }
@@ -42,11 +29,12 @@ class SettingsButton extends React.Component<ISettingsButtonProps, ISettingsButt
 const mapStateToProps = (state: IRootReducer, ownProps: ISettingsButtonProps) => ({
   ...ownProps,
   settingsOpened: state.settingsReducer.open
-})
+});
 
 const enhance = compose(
   connect(mapStateToProps, { openDialog, closeDialog }),
   injectIntl
 );
 
+// noinspection JSUnusedGlobalSymbols
 export default enhance(SettingsButton);
