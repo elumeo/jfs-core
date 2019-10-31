@@ -151,17 +151,8 @@ export const autoSessionCheck: Epic<RootAction, RootAction> = (action$, store) =
     filter(isActionOf(configLoadedAction)),
     switchMap(
       () => {
-        const {
-          value: {
-            sessionReducer: { isCheckingSession, sessionStateRevalidated }
-          }
-        } = store;
-
-        return (
-          !isCheckingSession && !sessionStateRevalidated
-            ? of(checkSessionAction())
-            : EMPTY
-        )
+        const { isCheckingSession, sessionStateRevalidated } = store.value.sessionReducer;
+        return !isCheckingSession && !sessionStateRevalidated ? of(checkSessionAction()) : EMPTY;
       }
     )
   )

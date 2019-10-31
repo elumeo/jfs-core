@@ -17,20 +17,9 @@ const initialState = {
 };
 
 export const configReducer = createReducer(initialState)
-  .handleAction([loadConfig, configLoading], (state: IConfigReducerState) => ({
-    ...state,
-    pending: true,
-    loaded: false
-  }))
-  .handleAction(
-    configLoadedAction,
-    (
-      state: IConfigReducerState,
-      action: PayloadAction<string, any>
-    ) => ({
-      ...state,
-      ...action.payload,
-      pending: false,
-      loaded: true
-    })
-  );
+  .handleAction([loadConfig, configLoading], (state: IConfigReducerState) => (
+    { ...state, pending: true, loaded: false }
+  ))
+  .handleAction(configLoadedAction, (state: IConfigReducerState, action: PayloadAction<string, any>) => (
+    { ...state, ...action.payload, pending: false, loaded: true }
+  ));

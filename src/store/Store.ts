@@ -5,8 +5,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { registerConfigDispatchHandler, clientInstance } from '../base/Client';
 import { configLoadedAction } from './action/ConfigAction';
 
-clientInstance(() => console.debug("client initialized -> config load triggered"));
-
 // noinspection JSUnusedGlobalSymbols
 export default (rootEpic, rootReducer) => {
   const epicMiddleware = createEpicMiddleware();
@@ -27,5 +25,6 @@ export default (rootEpic, rootReducer) => {
       store.dispatch(configLoadedAction(config));
     }
   );
+  clientInstance(() => console.debug("client initialized -> config load triggered"));
   return store;
 };

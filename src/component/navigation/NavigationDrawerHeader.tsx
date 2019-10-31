@@ -31,7 +31,7 @@ const mapStateToProps = (
 ) => ({
   ...ownProps,
   sessionDTO: state.sessionReducer.sessionDTO
-})
+});
 
 const enhance = compose(
   connect(mapStateToProps),
