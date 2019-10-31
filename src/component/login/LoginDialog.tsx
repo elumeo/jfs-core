@@ -40,17 +40,13 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
   render() {
     const { props: { isCheckingLogin, isAuthorized, routeType }, login } = this;
 
-    const unclearAuthorizationState = Session.getToken() && !isAuthorized;
-
-    if (unclearAuthorizationState || isAuthorized || ['authorized', null].indexOf(routeType) === -1) {
-      return null;
-    }
+    const reevaluatingSession = Session.getToken() && !isAuthorized;
 
     return (
       <div className="login-dialog">
         <DialogContainer
           id={'login-dialog'}
-          visible={true}
+          visible={!reevaluatingSession && !isAuthorized && ['authorized', null].indexOf(routeType) >= -1}
           title="Login"
           aria-describedby=""
           actions={<LoginButton
@@ -66,7 +62,7 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
           />
         </DialogContainer>
       </div>
-    );
+    )
   }
 }
 
