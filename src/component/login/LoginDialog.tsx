@@ -32,12 +32,6 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
     password: this.props.RobotPassword || ''
   };
 
-  constructor(props) {
-    super(props);
-
-    const {props: {isAuthorized, RobotUsername, RobotPassword}} = this;
-  }
-
   login = () => {
     const {props: {checkLoginAction}, state: {username, password}} = this;
     checkLoginAction({username, password});
@@ -46,39 +40,29 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
   render() {
     const {props: {isCheckingLogin, isAuthorized, routeType}, login} = this;
 
-    const unauthorizedState = !isAuthorized && !Session.getToken();
-    const unclearAuthorizationState = Session.getToken() && !isAuthorized;
+    const reevaluatingSession = Session.getToken() && !isAuthorized;
 
-    if (unauthorizedState && routeType === 'authorized') {
-      return (
-        <div className="login-dialog">
-          <DialogContainer
-            id={'login-dialog'}
-            visible={true}
-            title="Login"
-            aria-describedby=""
-            actions={<LoginButton
-              isCheckingLogin={isCheckingLogin}
-              onLogin={login}
-            />}
-            modal
-          >
-            <LoginCredentials
-              onChangeUsername={update => this.setState({username: update})}
-              onChangePassword={update => this.setState({password: update})}
-              onLogin={login}
-            />
-          </DialogContainer>
-        </div>
-      );
-    } else if (
-      unclearAuthorizationState ||
-      isAuthorized ||
-      routeType === 'unauthorized' ||
-      routeType === null
-    ) {
-      return <></>;
-    }
+    return (
+      <div className="login-dialog">
+        <DialogContainer
+          id={'login-dialog'}
+          visible={!reevaluatingSession && !isAuthorized && ['authorized', null].indexOf(routeType) >= -1}
+          title="Login"
+          aria-describedby=""
+          actions={<LoginButton
+            isCheckingLogin={isCheckingLogin}
+            onLogin={login}
+          />}
+          modal
+        >
+          <LoginCredentials
+            onChangeUsername={update => this.setState({ username: update })}
+            onChangePassword={update => this.setState({ password: update })}
+            onLogin={login}
+          />
+        </DialogContainer>
+      </div>
+    )
   }
 }
 
@@ -99,4 +83,5 @@ const enhance = compose(
   injectIntl
 );
 
+// noinspection JSUnusedGlobalSymbols
 export default enhance(LoginDialog);

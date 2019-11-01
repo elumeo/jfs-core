@@ -9,18 +9,14 @@ import { INotification } from "../../store/reducer/NotificationReducer";
 
 const ReactCSSTransitionGroup = require("react-addons-css-transition-group");
 
-export interface INotificationFadeInProps {
-  isAuthorized?: boolean;
+export interface IOnScreenNotificationsProps {
   notifications?: INotification[];
 }
 
-class OnScreenNotifications extends React.Component<INotificationFadeInProps> {
+class OnScreenNotifications extends React.Component<IOnScreenNotificationsProps> {
 
   render() {
-    const { notifications, isAuthorized } = this.props;
-    if (!isAuthorized) {
-      return null;
-    }
+    const { notifications } = this.props;
 
     return (
       <ReactCSSTransitionGroup
@@ -35,10 +31,10 @@ class OnScreenNotifications extends React.Component<INotificationFadeInProps> {
   }
 }
 
-const mapStateToProps = (state: IRootReducer, ownProps: INotificationFadeInProps) => ({
+const mapStateToProps = (state: IRootReducer, ownProps: IOnScreenNotificationsProps) => ({
   ...state.notificationReducer,
-  ...state.sessionReducer,
   ...ownProps
 });
 
+// noinspection JSUnusedGlobalSymbols
 export default connect(mapStateToProps)(OnScreenNotifications)

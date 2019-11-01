@@ -21,14 +21,7 @@ const BaseRoute: React.FC<IBaseRouteProps> = ({
   if (translationId) {
     document.title += ' | ' +  formatMessage({id: translationId});
   }
-
-  return (
-    <Route
-      {...rest}
-      path={path}
-      render={render}
-    />
-  )
+  return <Route {...rest} path={path} render={render}/>;
 };
 
 const enhance = injectIntl;

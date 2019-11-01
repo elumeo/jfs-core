@@ -12,7 +12,7 @@ import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 
 export interface ISearchComponentProps extends InjectedIntlProps {
     addToastAction?: (IToastConfig) => void;
-    autocompleteData?: string[]|number[]|{dataLabel: string, dataValue: string}[];
+    autocompleteData?: string[] | number[] | { dataLabel: string, dataValue: string }[];
     centered?: boolean;
     focusInputOnAutocomplete?: boolean;
     forceNumericInput?: boolean;
@@ -44,7 +44,7 @@ class SearchComponent extends React.Component<ISearchComponentProps & InjectedIn
 
     constructor(props) {
         super(props);
-        this.state = {value: this.props.value ? this.props.value : ''};
+        this.state = { value: this.props.value ? this.props.value : '' };
     }
 
     handleChange = (value: string) => {
@@ -57,23 +57,25 @@ class SearchComponent extends React.Component<ISearchComponentProps & InjectedIn
         if (this.props.onChange) {
             this.props.onChange(value);
         }
-        this.setState({value});
+        this.setState({ value });
     };
 
     handleKeyDown = e => {
         switch (e.keyCode) {
-            case 13 /* Return */:
+            case 13 /* Return */
+            :
                 this.handleSearch();
                 break;
-            case 27 /* ESC */:
+            case 27 /* ESC */
+            :
                 document.getElementById(this.props.id).blur();
                 break;
         }
     };
 
     handleAutocomplete = (v) => {
-        const {searchOnAutocomplete} = this.props;
-        this.setState({value: v});
+        const { searchOnAutocomplete } = this.props;
+        this.setState({ value: v });
         if (searchOnAutocomplete) {
             this.handleSearch(v);
         }
@@ -83,50 +85,59 @@ class SearchComponent extends React.Component<ISearchComponentProps & InjectedIn
         value = value == undefined ? this.state.value : value;
         if (value == '') {
             document.getElementById(this.props.id).focus();
-            this.props.addToastAction({ contentTranslationId: 'app.enterSearchValue'});
+            this.props.addToastAction({ contentTranslationId: 'app.enterSearchValue' });
             return;
         }
-        this.props.onSearch(this.props, {...this.state, value});
+        this.props.onSearch(this.props, { ...this.state, value });
     };
 
     handleClear = () => {
         document.getElementById(this.props.id).focus();
-        this.setState({value: ''});
+        this.setState({ value: '' });
     };
 
     render() {
         const {
-            id, style, className, placeholderTranslationId, intl: {formatMessage}, autocompleteData, indicateSearchProgress,
-            labelTranslationId, focusInputOnAutocomplete, searchOnAutocomplete } = this.props;
+            id, style, className, placeholderTranslationId, intl: { formatMessage }, autocompleteData, indicateSearchProgress,
+            labelTranslationId, focusInputOnAutocomplete, searchOnAutocomplete
+        } = this.props;
         const menuId = `${id}Menu`;
         return (
-            <div className="search-component md-text-field-icon-container" style={style}>
-                <Button icon onClick={() => this.handleSearch()}>search</Button>
-                <Autocomplete
-                  data={autocompleteData}
-                  id={id}
-                  className={className}
-                  focusInputOnAutocomplete={focusInputOnAutocomplete && !searchOnAutocomplete}
-                  inputClassName={`search ${this.state.value != '' && 'search-active' || ''}`}
-                  label={labelTranslationId ? formatMessage({id: labelTranslationId}) : null}
-                  menuId={menuId}
-                  onAutocomplete={this.handleAutocomplete}
-                  onChange={this.handleChange}
-                  onKeyDown={this.handleKeyDown}
-                  placeholder={placeholderTranslationId ? formatMessage({id: placeholderTranslationId}) : null}
-                  textFieldClassName={'md-text-field-icon'}
-                  value={this.state.value}
-                />
-                  <CircularProgress
-                    centered
-                    id={`${id}SearchProgress`}
-                    className={`search-progress ${indicateSearchProgress ? 'visible' : ''}`} />
-                  <Button
-                    icon
-                    className={`clear-btn ${this.state.value != '' && !indicateSearchProgress ? 'visible' : ''}`}
-                    onClick={this.handleClear}
-                  >clear</Button>
-            </div>
+          <div
+            id={id}
+            style={style}
+            className={"search-component md-text-field-icon-container " + className}
+          >
+              <div className="icon-view-box">
+                  {
+                      indicateSearchProgress
+                        ? <CircularProgress
+                          id={`${id}SearchProgress`}
+                          className="search-progress"/>
+                        : <Button icon onClick={() => this.handleSearch()}
+                                  disabled={indicateSearchProgress}>search</Button>
+                  }
+              </div>
+              <Autocomplete
+                id={`${id}-autocomplete`}
+                data={autocompleteData}
+                focusInputOnAutocomplete={focusInputOnAutocomplete && !searchOnAutocomplete}
+                inputClassName={`search ${this.state.value != '' && 'search-active' || ''}`}
+                label={labelTranslationId ? formatMessage({ id: labelTranslationId }) : null}
+                menuId={menuId}
+                onAutocomplete={this.handleAutocomplete}
+                onChange={this.handleChange}
+                onKeyDown={this.handleKeyDown}
+                placeholder={placeholderTranslationId ? formatMessage({ id: placeholderTranslationId }) : null}
+                textFieldClassName={'md-text-field-icon'}
+                value={this.state.value}
+              />
+              <Button
+                icon
+                className={`clear-btn ${this.state.value != '' ? 'visible' : ''}`}
+                onClick={this.handleClear}
+              >clear</Button>
+          </div>
         );
     }
 }
@@ -138,7 +149,7 @@ const mapStateToProps = (state: IRootReducer, ownProps: ISearchComponentProps): 
 });
 
 const enhance = compose(
-  connect(mapStateToProps, {addToastAction}),
+  connect(mapStateToProps, { addToastAction }),
   injectIntl
 );
 

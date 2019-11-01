@@ -1,50 +1,36 @@
 import * as React from 'react';
 import BaseRoute, { IBaseRouteProps } from './BaseRoute';
-
 import { enterAuthorizedRoute } from '../../store/action/RouterAction';
-
-import IRootReducer from '../../store/reducer/RootReducer';
-
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { connect } from "react-redux";
+import IRootReducer from "../../store/reducer/RootReducer";
 
 export interface IAuthRouteProps extends IBaseRouteProps {
   Component: any;
+  isAuthorized?: boolean;
   enterAuthorizedRoute?: () => void;
 }
 
 class AuthRoute extends React.Component<IAuthRouteProps> {
-  constructor(props) {
+  constructor(props: IAuthRouteProps) {
     super(props);
-    const {
-      props: {
-        enterAuthorizedRoute
-      }
-    } = this;
-    enterAuthorizedRoute();
+    this.props.enterAuthorizedRoute();
   }
 
-  render() {
-    const { props: { Component, ...rest } } = this;
+  key = new Date().getTime() + '-' + Math.random();
 
-    return (
-      <BaseRoute
-        {...rest}
-        render={props => <Component {...props}/>}
-      />
-    );
+  render() {
+    const { props: { Component, isAuthorized, path, ...rest } } = this;
+    return isAuthorized ? <BaseRoute {...rest} key={this.key} render={props => <Component {...props} />}/> : null
   }
 }
 
-const mapStateToProps = (
-  state: IRootReducer,
-  ownProps: IAuthRouteProps
-): IAuthRouteProps => ({
-  ...ownProps
-})
-
-const enhance = compose(
-  connect(mapStateToProps, { enterAuthorizedRoute })
-);
-
-export default enhance(AuthRoute);
+// noinspection JSUnusedGlobalSymbols
+export default connect(
+  (state: IRootReducer, ownProps: IAuthRouteProps): IAuthRouteProps => ({
+    ...ownProps,
+    ...state.sessionReducer
+  }),
+  {
+    enterAuthorizedRoute
+  }
+)(AuthRoute);

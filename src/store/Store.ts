@@ -2,11 +2,7 @@ import { applyMiddleware, createStore } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { registerConfigDispatchHandler } from '../base/JscClient';
-import { configLoadedAction } from './action/ConfigAction';
-
-// -----------------------------------------------------------------------------
-
+// noinspection JSUnusedGlobalSymbols
 export default (rootEpic, rootReducer) => {
   const epicMiddleware = createEpicMiddleware();
   // create and set store
@@ -21,10 +17,5 @@ export default (rootEpic, rootReducer) => {
   }
   epicMiddleware.run(rootEpic);
 
-  registerConfigDispatchHandler(
-    config => {
-      store.dispatch(configLoadedAction(config));
-    }
-  );
   return store;
 };

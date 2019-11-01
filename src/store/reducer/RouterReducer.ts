@@ -7,16 +7,13 @@ export interface IRouterReducerState {
 
 const initialState: IRouterReducerState = {
   routeType: null
-}
+};
 
 export const routerReducer = createReducer(initialState)
-  .handleAction(enterAuthorizedRoute, (state: IRouterReducerState) => ({
-    ...state,
-    routeType: 'authorized',
-    })
-  )
-  .handleAction(enterUnauthorizedRoute, (state: IRouterReducerState) => ({
-      ...state,
-      routeType: 'unauthorized'
-    })
-  );
+  .handleAction(enterAuthorizedRoute, (state: IRouterReducerState) => (
+    { ...state, routeType: 'authorized' }
+  ))
+  .handleAction(enterUnauthorizedRoute, (state: IRouterReducerState) => (
+    { ...state, routeType: 'unauthorized' }
+  ))
+;
