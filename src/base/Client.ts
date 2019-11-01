@@ -1,23 +1,19 @@
 import axios, { AxiosPromise } from 'axios';
 import Session from "./Session";
 
-let dispatchConfig;
-
+/**
+ * You have to load the config your self.
+ * Once the config is loaded you have to injected it here using injectConfig().
+ *
+ * All client calls will be delayed as long as the config wasn't injected.
+ */
 let Config = null;
-let pending = false;
 
 const generateAxiosConfig = (config: any, callback): any => {
   if (Config) {
-    pending = false;
-    dispatchConfig(Config);
     return callback({ ...config, baseURL: Config.Client.Host, timeout: Config.Client.Timeout });
-  } else if (!pending) {
-    axios.get('/config.json').then(response => {
-      Config = response.data;
-      generateAxiosConfig(config, callback);
-    });
-    pending = true;
   } else {
+    /* Wait for the config to get injected */
     setTimeout(() => generateAxiosConfig(config, callback), 200);
   }
 };
@@ -35,6 +31,10 @@ export const clientInstance = (callback) => generateAxiosConfig(
   }
 );
 
+export const injectConfig = config => {
+  Config = config;
+};
+
 function checkDestroySession(error): AxiosPromise {
   if (error.response && error.response.status && error.response.status == 401) {
     Session.removeToken();
@@ -42,10 +42,6 @@ function checkDestroySession(error): AxiosPromise {
 
   throw error;
 }
-
-export const registerConfigDispatchHandler = dispatchHandler => {
-  dispatchConfig = dispatchHandler;
-};
 
 // noinspection JSUnusedGlobalSymbols
 export default {
