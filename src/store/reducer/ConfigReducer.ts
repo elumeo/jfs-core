@@ -13,11 +13,11 @@ export interface IConfigReducerState {
 
 const initialState = {
   pending: false,
-  loaded: false,
+  loaded: false
 };
 
 export const configReducer = createReducer(initialState)
-  .handleAction([loadConfig, configLoading], (state: IConfigReducerState) => (
+  .handleAction(loadConfig, (state: IConfigReducerState) => (
     { ...state, pending: true, loaded: false }
   ))
   .handleAction(configLoadedAction, (state: IConfigReducerState, action: PayloadAction<string, any>) => (
