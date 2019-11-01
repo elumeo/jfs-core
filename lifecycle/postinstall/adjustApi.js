@@ -14,7 +14,7 @@ readFile(
       writeFile(
         apiFilePath,
         data.replace(
-          '@elumeo/jfs-core/app/base/Client',
+          '@elumeo/jfs-core/src/base/Client',
           './base/Client'
         ),
         error => {

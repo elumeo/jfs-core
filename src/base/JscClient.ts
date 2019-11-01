@@ -7,7 +7,7 @@ let Config = null;
 let pending = false;
 
 const generateAxiosConfig = (config: any, callback): any => {
-  if(Config) {
+  if (Config) {
     pending = false;
     dispatchConfig(Config);
     console.log(Config);
@@ -17,13 +17,15 @@ const generateAxiosConfig = (config: any, callback): any => {
       timeout: Config.JscClient.Timeout,
       validateStatus: (status: number) => status < 400
     });
-  } else if(!pending) {
+  }
+  else if (!pending) {
     axios.get('/config.json').then(response => {
       Config = response.data;
       generateAxiosConfig(config, callback);
     });
     pending = true;
-  } else {
+  }
+  else {
     setTimeout(() => generateAxiosConfig(config, callback), 200);
   }
 };

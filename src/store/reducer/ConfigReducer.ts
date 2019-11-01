@@ -2,12 +2,10 @@ import { loadConfig, configLoadedAction } from '../action/ConfigAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 
 export interface IConfigReducerState {
-  RobotUsername: string;
-  RobotPassword: string;
-  Language: string;
-  ForceHTTPS: boolean;
-  pending: boolean;
-  loaded: boolean;
+  Client?: {
+    Host?: string;
+    Timeout?: number;
+  };
   JscClient: {
     Host: string;
   };
@@ -16,6 +14,19 @@ export interface IConfigReducerState {
     PrivateNamespace: string;
     AutoJoinRooms: string[];
   };
+  Language?: string;
+  VAT?: number;
+  Currency?: string;
+  Container?: string;
+  ContainerLanguage?: string;
+  WithTimers?: boolean;
+  WithCertificates?: boolean;
+  AppName?: string;
+  RobotUsername?: string;
+  RobotPassword?: string;
+  ForceHTTPS: boolean;
+  pending: boolean;
+  loaded: boolean;
 }
 
 const initialState: IConfigReducerState = {

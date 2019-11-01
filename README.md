@@ -7,7 +7,7 @@
 Some paths in a non-migrated app are going to be moved to jfs-core paths.
 The internal structure of the jfs-core resembles the structure of non-migrated jfs apps.
 
-'jfs-core'-import paths begin with ```@elumeo/jfs-core/app```.
+'jfs-core'-import paths begin with ```@elumeo/jfs-core/src```.
 
 ##### Routing
 
@@ -26,9 +26,9 @@ The internal structure of the jfs-core resembles the structure of non-migrated j
 
 example:
 ```
-export * from '@elumeo/jfs-core/app/store/action/BaseAction';
-export * from '@elumeo/jfs-core/app/store/action/ConfigAction';
-export * from '@elumeo/jfs-core/app/store/action/SessionAction';
+export * from '@elumeo/jfs-core/src/store/action/BaseAction';
+export * from '@elumeo/jfs-core/src/store/action/ConfigAction';
+export * from '@elumeo/jfs-core/src/store/action/SessionAction';
 
 // -----------------------------------------------------------------------------
 
@@ -42,7 +42,7 @@ export * from './AppAction';
 
 example:
 ```
-import { loginEpic, ... } from '@elumeo/jfs-core/app/store/epic/SessionEpic';
+import { loginEpic, ... } from '@elumeo/jfs-core/src/store/epic/SessionEpic';
 ```
 
 * export the combined epic (refer to redux-observables's combineEpics) as **default export**
@@ -54,7 +54,7 @@ import { loginEpic, ... } from '@elumeo/jfs-core/app/store/epic/SessionEpic';
 
 example:
 ```
-import { languageReducer, settingsReducerState } from '@elumeo/jfs-core/app/store/reducer/SettingsReducer';
+import { languageReducer, settingsReducerState } from '@elumeo/jfs-core/src/store/reducer/SettingsReducer';
 ```
 
 * import all app related reducers
