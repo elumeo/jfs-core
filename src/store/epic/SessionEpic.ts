@@ -17,6 +17,7 @@ import { addToastAction } from "../action/ToastAction";
 import catchError from './catchError'
 
 /* TODO: Should Robot login keep the user permanently logged in even if the session expires ?! */
+/* TODO: Fix - LoginDialog not shown if RobotLogin is enabled and the user has been logged. */
 /* TODO: Check what happens at login/reload/refresh/api-call if the backend session has expired! */
 
 export const logoutEpic: Epic<RootAction, RootAction> = (action$) => (
