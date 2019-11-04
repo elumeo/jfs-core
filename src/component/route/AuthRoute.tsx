@@ -4,7 +4,6 @@ import { enterAuthorizedRoute } from '../../store/action/RouterAction';
 import { connect } from "react-redux";
 import IRootReducer from "../../store/reducer/RootReducer";
 import NoAccess from "./NoAccess";
-import { CircularProgress } from "react-md";
 
 export interface IAuthRouteProps extends IBaseRouteProps {
   Component: any;
@@ -21,13 +20,7 @@ class AuthRoute extends React.Component<IAuthRouteProps> {
 
   render() {
     const { props: { Component, isAuthorized, isCheckingLogin, path, ...rest } } = this;
-    if (isCheckingLogin) {
-    return <CircularProgress id="auth-route-waiting-for-login"/>;
-    } else if (isAuthorized) {
-      return <BaseRoute {...rest} render={props => <Component {...props} />}/>;
-    } else {
-      return <NoAccess/>;
-    }
+    return isAuthorized ? <BaseRoute {...rest} render={props => <Component {...props} />}/> : <NoAccess/>;
   }
 }
 
