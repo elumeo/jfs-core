@@ -35,12 +35,10 @@ export const injectConfig = config => {
   Config = config;
 };
 
-function checkDestroySession(error): AxiosPromise {
+function checkDestroySession(error) {
   if (error.response && error.response.status && error.response.status == 401) {
     Session.removeToken();
   }
-
-  throw error;
 }
 
 // noinspection JSUnusedGlobalSymbols
@@ -66,7 +64,10 @@ export default {
       instance => (
         instance
           .post(url, data, config)
-          .catch(error => checkDestroySession(error))
+          .catch(error => {
+            checkDestroySession(error);
+            throw error;
+          })
       )
     );
   },
@@ -76,7 +77,10 @@ export default {
       instance => (
         instance
           .put(url, data, config)
-          .catch(error => checkDestroySession(error))
+          .catch(error => {
+            checkDestroySession(error);
+            throw error;
+          })
       )
     );
   },
@@ -86,7 +90,10 @@ export default {
       (instance, axiosConfig) => (
         instance
           .delete(url, { ...axiosConfig, data, config })
-          .catch(error => checkDestroySession(error))
+          .catch(error => {
+            checkDestroySession(error);
+            throw error;
+          })
       )
     );
   }
