@@ -4,18 +4,16 @@ import { IConfigReducerState } from './ConfigReducer';
 import { ILanguageReducerState, } from './LanguageReducer';
 import { ILogoutReducerState } from './LogoutReducer';
 import { INavigationReducerState } from './NavigationReducer';
-import { INotificationReducerState } from './NotificationReducer';
+import { INotificationReducerState } from "./NotificationReducer";
 import { IRouterReducerState } from './RouterReducer';
 import { ISessionReducerState } from './SessionReducer';
 import { ISettingsReducerState } from './SettingsReducer';
 import { ISystemReducerState } from './SystemReducer';
 import { RouterState } from 'react-router-redux';
-import { ISplitViewReducerState } from './SplitViewReducer';
-import { IWebSocketReducerState } from './WebSocketReducer';
+import { ISplitViewReducerState } from "./SplitViewReducer";
 
 interface IRootReducer extends Bottle.IContainer {
   configReducer?: IConfigReducerState;
-  webSocketReducer?: IWebSocketReducerState;
   languageReducer?: ILanguageReducerState;
   logoutReducer?: ILogoutReducerState;
   navigationReducer?: INavigationReducerState;

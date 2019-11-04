@@ -1,44 +1,37 @@
 import { combineEpics } from 'redux-observable';
 
-import {
-  autoSessionCheck,
-  checkLoginEpic,
-  checkSessionEpic,
-  checkUserRightsEpic,
-  logoutEpic,
-  robotLoginEpic,
-} from './SessionEpic';
+import { checkRightsEpic, logoutEpic, sessionAuthorizeEpic, loggerEpic, } from './SessionEpic';
 
 import { getRegionEpic } from './SystemEpic';
+import { autoLoadConfigEpic, loadConfigEpic } from './ConfigEpic';
+import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from "./NotificationEpic";
 
-import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from './NotificationEpic';
 import {
   webSocketCheckSessionIsAuthorizedActionEpic,
   webSocketConnectRequestActionEpic,
-  webSocketJoinRoomRequestActionEpic, webSocketJoinRoomSuccessActionEpic, webSocketLeaveRoomRequestActionEpic
+  webSocketJoinRoomRequestActionEpic,
+  webSocketJoinRoomSuccessActionEpic,
+  webSocketLeaveRoomRequestActionEpic,
 } from './WebsocketEpic';
-import { autoLoadConfigEpic, loadConfigEpic } from './ConfigEpic';
 
 // noinspection JSUnusedGlobalSymbols
 export default (...epics: any) => {
   return combineEpics(
+    addNotificationEpic,
+    autoLoadConfigEpic,
+    checkRightsEpic,
+    dismissAllNotificationsEpic,
+    getRegionEpic,
+    loadConfigEpic,
+    loggerEpic,
+    logoutEpic,
+    splitViewEpic,
+    sessionAuthorizeEpic,
     webSocketCheckSessionIsAuthorizedActionEpic,
     webSocketConnectRequestActionEpic,
     webSocketJoinRoomRequestActionEpic,
     webSocketJoinRoomSuccessActionEpic,
     webSocketLeaveRoomRequestActionEpic,
-    addNotificationEpic,
-    autoSessionCheck,
-    checkLoginEpic,
-    checkSessionEpic,
-    checkUserRightsEpic,
-    dismissAllNotificationsEpic,
-    getRegionEpic,
-    loadConfigEpic,
-    autoLoadConfigEpic,
-    logoutEpic,
-    robotLoginEpic,
-    splitViewEpic,
     ...epics
   );
 }

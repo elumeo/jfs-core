@@ -33,7 +33,7 @@ class App extends React.Component<IAppProps, IAppState> {
   }
 
   addLocales = () => {
-    const {props: {changeLanguageAction, language}} = this;
+    const { props: { changeLanguageAction, language } } = this;
     const locales = ['de', 'en', 'fr', 'it'];
     changeLanguageAction(language);
     locales.map(
@@ -42,15 +42,15 @@ class App extends React.Component<IAppProps, IAppState> {
   };
 
   checkProtocol = () => {
-    const {props: {ForceHTTPS}} = this;
-    const isHTTPS = window.location.protocol.toLowerCase() == 'https:';
+    const { props: { ForceHTTPS } } = this;
+    const isHTTPS = window.location.protocol.toLowerCase() == "https:";
     if (!isHTTPS && ForceHTTPS) {
-      window.location.replace(window.location.toString().replace('http:', 'https:'));
+      window.location.replace(window.location.toString().replace("http:", "https:"));
     }
   };
 
   render() {
-    const {props: {language, store, Translations, children}} = this;
+    const { props: { language, store, Translations, children } } = this;
 
     const messages = mergeTranslations(Translations);
 
@@ -96,7 +96,7 @@ const mapStateToProps = (state: IRootReducer, ownProps: IAppProps): IAppProps =>
 });
 
 const enhance = compose(
-  connect(mapStateToProps, {changeLanguageAction})
+  connect(mapStateToProps, { changeLanguageAction })
 );
 
 // noinspection JSUnusedGlobalSymbols

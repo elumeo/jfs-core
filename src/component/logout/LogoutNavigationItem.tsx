@@ -40,7 +40,7 @@ const mapStateToProps = (
   ...ownProps,
   RobotUsername: state.configReducer.RobotUsername,
   RobotPassword: state.configReducer.RobotPassword,
-})
+});
 
 const enhance = compose(
   connect(mapStateToProps, { openLogout }),

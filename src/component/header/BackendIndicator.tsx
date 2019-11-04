@@ -1,26 +1,16 @@
 import * as React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { getRegion } from '../../store/action/SystemAction';
 import Tooltipped from 'react-md/lib/Tooltips/Tooltipped';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
-// @ts-ignore
-import { IRootReducer } from '../../../../../../src/store/reducer/Root';
-
 import './BackendIndicator.scss';
+import IRootReducer from "../../store/reducer/RootReducer";
 
 export interface IBackendIndicatorProps extends InjectedIntlProps {
-  getRegion?: any;
   backendRegion?: string;
 }
 
 class BackendIndicator extends React.Component<IBackendIndicatorProps> {
-  constructor(props) {
-    super(props);
-    const { props: { getRegion } } = this;
-    getRegion();
-  }
-
   render() {
     const { props: { intl: { formatMessage }, backendRegion } } = this;
     return (
@@ -37,7 +27,7 @@ const mapStateToProps = (state: IRootReducer, ownProps: IBackendIndicatorProps) 
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { getRegion }),
+  connect(mapStateToProps),
   injectIntl
 );
 

@@ -34,7 +34,7 @@ export class WebSocketClient {
     return new Observable<string>((observer) => {
       this.socket.emit(this.EVENT_JOIN_ROOM, room);
       this.socket.on(this.EVENT_JOINED_ROOM, (joinedRoom) => {
-        if(room === joinedRoom) {
+        if (room === joinedRoom) {
           observer.next(room);
           observer.complete();
         }
@@ -52,9 +52,9 @@ export class WebSocketClient {
 
   public static listen(room: string) {
     return new Observable<IWebSocketRoomData>((observer) => {
-      if(this.socket) {
+      if (this.socket) {
         this.socket.on(this.EVENT_UPDATE_ROOM, (roomData: IWebSocketRoomData) => {
-          if(room === roomData.room) {
+          if (room === roomData.room) {
             observer.next(roomData);
           }
         });

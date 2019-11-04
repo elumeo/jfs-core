@@ -1,5 +1,5 @@
 import axios, { AxiosPromise } from 'axios';
-import Session from './Session';
+import Session from "./Session";
 
 /**
  * You have to load the config your self.
@@ -14,8 +14,8 @@ const generateAxiosConfig = (config: any, callback): any => {
   if (Config) {
     return callback({
       ...config,
-      baseURL: Config.JscClient.Host,
-      timeout: Config.JscClient.Timeout,
+      baseURL: Config.Client.Host,
+      timeout: Config.Client.Timeout,
       validateStatus: (status: number) => status < 400
     });
   }
@@ -31,7 +31,7 @@ export const clientInstance = (callback) => generateAxiosConfig(
     const instance = axios.create(axiosConfig);
 
     instance.defaults.headers = Session.isLoggedIn()
-      ? {'X-JSC-TOKEN': Session.getToken()}
+      ? { 'X-JSC-TOKEN': Session.getToken() }
       : {};
 
     return callback(instance, axiosConfig);
@@ -42,12 +42,10 @@ export const injectConfig = config => {
   Config = config;
 };
 
-function checkDestroySession(error): AxiosPromise {
-  if(error.response && error.response.status && error.response.status == 401) {
+function checkDestroySession(error) {
+  if (error.response && error.response.status && error.response.status == 401) {
     Session.removeToken();
   }
-
-  throw error;
 }
 
 export default {
@@ -72,7 +70,10 @@ export default {
       instance => (
         instance
           .post(url, data, config)
-          .catch(error => checkDestroySession(error))
+          .catch(error => {
+            checkDestroySession(error);
+            throw error;
+          })
       )
     );
   },
@@ -82,7 +83,10 @@ export default {
       instance => (
         instance
           .put(url, data, config)
-          .catch(error => checkDestroySession(error))
+          .catch(error => {
+            checkDestroySession(error);
+            throw error;
+          })
       )
     );
   },
@@ -92,7 +96,10 @@ export default {
       (instance, axiosConfig) => (
         instance
           .delete(url, { ...axiosConfig, data, config })
-          .catch(error => checkDestroySession(error))
+          .catch(error => {
+            checkDestroySession(error);
+            throw error;
+          })
       )
     );
   }

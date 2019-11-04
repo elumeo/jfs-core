@@ -1,6 +1,7 @@
 import './style/main.scss';
-import * as moment from 'moment';
+
+const moment = require('moment');
 
 Date.prototype.toJSON = function() {
-  return moment.default(this).format();
+  return moment(this).format();
 };

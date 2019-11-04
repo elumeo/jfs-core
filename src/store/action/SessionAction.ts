@@ -1,5 +1,6 @@
-import { createStandardAction  } from 'typesafe-actions';
+import { createStandardAction, PayloadAction } from 'typesafe-actions';
 import JSCApi from "../../JscApi";
+import { IToastConfig } from "../reducer/ToastReducer";
 import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 
 export type ILoginType = {
@@ -7,14 +8,10 @@ export type ILoginType = {
     password: string;
 };
 
-export const checkLoginAction = createStandardAction('login/CHECK')<ILoginType>();
-
-export const checkSessionAction = createStandardAction('session/CHECK')();
-
-export const logoutAction = createStandardAction('session/LOGOUT')();
-
-export const checkUserRightsAction = createStandardAction('userRights/CHECK')<ISessionDTO>();
+export const loginAction = createStandardAction('session/LOGIN')<ILoginType>();
+export const logoutAction = createStandardAction('session/LOGOUT')<PayloadAction<string, IToastConfig>|undefined>();
 
 export const sessionIsAuthorizedAction = createStandardAction('session/AUTHORIZED')<ISessionDTO>();
-
 export const sessionIsUnauthorizedAction = createStandardAction('session/UNAUTHORIZED')();
+
+export const checkRightsAction = createStandardAction('rights/CHECK')<ISessionDTO>();
