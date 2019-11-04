@@ -1,5 +1,5 @@
-import { of } from 'rxjs';
-import { catchError, concat } from 'rxjs/operators';
+import { of, concat } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { sessionIsUnauthorizedAction } from '../action/SessionAction';
 
 export default errorHandler => catchError(error =>

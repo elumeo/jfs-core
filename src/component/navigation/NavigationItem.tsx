@@ -10,7 +10,6 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import IRootReducer from '../../store/reducer/RootReducer';
 import { closeNavigation } from '../../store/action/NavigationAction';
-import { checkSessionAction } from '../../store/action/SessionAction';
 
 export interface INavigationItemProps extends InjectedIntlProps {
   divider?: boolean;
@@ -26,7 +25,6 @@ export interface INavigationItemProps extends InjectedIntlProps {
   closeNavigation?: () => void;
   onClickRoute?: string;
   history?: History;
-  checkSessionAction?: () => void;
 }
 
 export interface INavigationItemState {
@@ -87,7 +85,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { closeNavigation, checkSessionAction }),
+  connect(mapStateToProps, { closeNavigation }),
   withRouter,
   injectIntl
 );

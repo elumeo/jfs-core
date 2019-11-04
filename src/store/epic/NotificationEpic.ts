@@ -19,7 +19,6 @@ import { disableSplitViewAction, enableSplitViewAction } from "../action/SplitVi
 
 let notificationIncrementId = 0;
 
-// noinspection JSUnusedGlobalSymbols
 export const addNotificationEpic: Epic<RootAction, RootAction> = (action$) =>
   merge(
     action$.pipe(
@@ -36,7 +35,6 @@ export const addNotificationEpic: Epic<RootAction, RootAction> = (action$) =>
     ),
   );
 
-// noinspection JSUnusedGlobalSymbols
 export const dismissAllNotificationsEpic: Epic<RootAction, RootAction> = (action$, store) =>
   action$.pipe(
     filter(isActionOf([dismissAllNotificationsAction, dismissNextNotificationAction])),
@@ -46,7 +44,6 @@ export const dismissAllNotificationsEpic: Epic<RootAction, RootAction> = (action
     )
   );
 
-// noinspection JSUnusedGlobalSymbols
 export const splitViewEpic: Epic<RootAction, RootAction> = (action$, store) =>
   merge(
     action$.pipe(

@@ -10,8 +10,7 @@ import { injectConfig } from "../../base/Client";
 export const autoLoadConfigEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
     filter(() => !store.value.configReducer.loaded && !store.value.configReducer.pending),
-    switchMap(() => of(loadConfig())),
-    catchError(() => of(loadConfigFailed()))
+    switchMap(() => of(loadConfig()))
   )
 );
 
@@ -25,6 +24,6 @@ export const loadConfigEpic: Epic<RootAction, RootAction> = (action$) => (
           return of(configLoadedAction(response.data));
         })
       )),
-    catchError(() => of(loadConfigFailed()))
+    catchError(() =>  of(loadConfigFailed()))
   )
 );

@@ -1,13 +1,6 @@
 import { combineEpics } from 'redux-observable';
 
-import {
-  autoSessionCheck,
-  checkLoginEpic,
-  checkSessionEpic,
-  checkUserRightsEpic,
-  logoutEpic,
-  robotLoginEpic,
-} from './SessionEpic';
+import { checkRightsEpic, logoutEpic, sessionAuthorizeEpic, } from './SessionEpic';
 
 import { getRegionEpic } from './SystemEpic';
 import { autoLoadConfigEpic, loadConfigEpic } from './ConfigEpic';
@@ -17,17 +10,14 @@ import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from 
 export default (...epics: any) => {
   return combineEpics(
     addNotificationEpic,
-    autoSessionCheck,
-    checkLoginEpic,
-    checkSessionEpic,
-    checkUserRightsEpic,
+    autoLoadConfigEpic,
+    checkRightsEpic,
     dismissAllNotificationsEpic,
     getRegionEpic,
     loadConfigEpic,
-    autoLoadConfigEpic,
     logoutEpic,
-    robotLoginEpic,
     splitViewEpic,
+    sessionAuthorizeEpic,
     ...epics
   );
 }

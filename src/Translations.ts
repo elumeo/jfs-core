@@ -18,6 +18,7 @@ const defaultTranslations = {
     "app.system": "System",
     "app.version": "Version {versionNumber}",
 
+    "login.accessDenied": "Zugriff verweigert",
     "login.button": "Anmelden",
     "login.error": "Benutzername oder Passwort falsch",
     "login.failed": "Login fehlgeschlagen",
@@ -27,9 +28,11 @@ const defaultTranslations = {
     "login.title": "Willkommen",
     "login.username": "Benutzername",
     "login.username.errorText": "Benutzername erforderlich",
+    "logout.failed": "Abmelden fehlgeschlagen",
     "please.login": "Bitte anmelden",
     "settings.language": "Sprache",
     "settings.title": "Einstellungen",
+    "userRights.checkFailed": "Benutzerrechte konnten nicht geladen werden",
   },
   "en": {
     "app.backend": "Backend",
@@ -50,6 +53,7 @@ const defaultTranslations = {
     "app.system": "System",
     "app.version": "Version {versionNumber}",
 
+    "login.accessDenied": "Access Denied",
     "login.button": "Login",
     "login.error": "User or password wrong",
     "login.failed": "Login failed",
@@ -59,9 +63,11 @@ const defaultTranslations = {
     "login.title": "Welcome",
     "login.username": "Username",
     "login.username.errorText": "Username is required",
+    "logout.failed": "Logout failed",
     "please.login": "Please login",
     "settings.language": "Language",
     "settings.title": "Settings",
+    "userRights.checkFailed": "Unable to load user rights"
   },
   "it": {
     "app.backend": "Backend",
@@ -82,6 +88,7 @@ const defaultTranslations = {
     "app.system": "Sistema",
     "app.version": "Versione {versionNumber}",
 
+    "login.accessDenied": "Accesso negato",
     "login.button": "Login",
     "login.error": "Nome utente o Password sbagliati",
     "login.failed": "Login errato",
@@ -91,9 +98,11 @@ const defaultTranslations = {
     "login.title": "Benvenuti",
     "login.username": "Nome utente",
     "login.username.errorText": "Necessario nome utente",
+    "logout.failed": "Logout non riuscito",
     "please.login": "Login",
     "settings.language": "Lingua",
     "settings.title": "Impostazioni",
+    "userRights.checkFailed": "Impossibile caricare i diritti utente"
   }
 };
 

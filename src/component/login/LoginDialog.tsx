@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import DialogContainer from 'react-md/lib/Dialogs';
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
-import { checkLoginAction, checkSessionAction } from '../../store/action/SessionAction';
+import { loginAction } from '../../store/action/SessionAction';
 import IRootReducer from '../../store/reducer/RootReducer';
 import './LoginDialog.scss';
 import Session from '../../base/Session';
@@ -13,8 +13,7 @@ import Session from '../../base/Session';
 interface ILoginDialogProps extends InjectedIntlProps {
   children?: any;
   isAuthorized?: boolean;
-  checkLoginAction?: ({}) => void;
-  checkSessionAction?: () => void;
+  loginAction?: ({}) => void;
   isCheckingLogin?: boolean;
   RobotUsername?: string;
   RobotPassword?: string;
@@ -33,20 +32,21 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
   };
 
   login = () => {
-    const { props: { checkLoginAction }, state: { username, password } } = this;
-    checkLoginAction({ username, password });
+    const { state: { username, password } } = this;
+    this.props.loginAction({ username, password });
   };
 
   render() {
     const { props: { isCheckingLogin, isAuthorized, routeType }, login } = this;
 
     const reevaluatingSession = Session.getToken() && !isAuthorized;
+    const robotLoginEnabled = this.props.RobotPassword !== undefined && this.props.RobotUsername !== undefined;
 
     return (
       <div className="login-dialog">
         <DialogContainer
           id={'login-dialog'}
-          visible={!reevaluatingSession && !isAuthorized && ['authorized', null].indexOf(routeType) >= -1}
+          visible={!robotLoginEnabled && !reevaluatingSession && !isAuthorized && ['authorized', null].indexOf(routeType) > -1}
           title="Login"
           aria-describedby=""
           actions={<LoginButton
@@ -76,7 +76,7 @@ const mapStateToProps = (state: IRootReducer, ownProps: ILoginDialogProps): ILog
   routeType: state.routerReducer.routeType
 });
 
-const mapDispatchToProps = { checkLoginAction, checkSessionAction };
+const mapDispatchToProps = { loginAction };
 
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),

@@ -1,7 +1,5 @@
 import { createStandardAction } from 'typesafe-actions';
 
-export const getRegion = createStandardAction('region/GET')();
-
 export interface IRegionLoadedPayload {
   regionName: string;
 }
