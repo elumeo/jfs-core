@@ -30,6 +30,7 @@ const defaultTranslations = {
     "login.username.errorText": "Benutzername erforderlich",
     "logout.failed": "Abmelden fehlgeschlagen",
     "please.login": "Bitte anmelden",
+    "session.expired": "Sitzung abgelaufen",
     "settings.language": "Sprache",
     "settings.title": "Einstellungen",
     "userRights.checkFailed": "Benutzerrechte konnten nicht geladen werden",
@@ -65,6 +66,7 @@ const defaultTranslations = {
     "login.username.errorText": "Username is required",
     "logout.failed": "Logout failed",
     "please.login": "Please login",
+    "session.expired": "Session expired",
     "settings.language": "Language",
     "settings.title": "Settings",
     "userRights.checkFailed": "Unable to load user rights"
@@ -100,6 +102,7 @@ const defaultTranslations = {
     "login.username.errorText": "Necessario nome utente",
     "logout.failed": "Logout non riuscito",
     "please.login": "Login",
+    "session.expired": "Sessione scaduta",
     "settings.language": "Lingua",
     "settings.title": "Impostazioni",
     "userRights.checkFailed": "Impossibile caricare i diritti utente"
