@@ -5,7 +5,7 @@ import { catchError, filter, switchMap, } from 'rxjs/operators';
 import { RootAction } from '../action/RootAction';
 import axios from 'axios';
 import { isActionOf } from "typesafe-actions";
-import { injectConfig } from "../../base/Client";
+import { injectConfig } from "../../base/JscClient";
 
 export const autoLoadConfigEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(

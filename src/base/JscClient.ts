@@ -7,12 +7,19 @@ import Session from "./Session";
  *
  * All client calls will be delayed as long as the config wasn't injected.
  */
+
 let Config = null;
 
 const generateAxiosConfig = (config: any, callback): any => {
   if (Config) {
-    return callback({ ...config, baseURL: Config.Client.Host, timeout: Config.Client.Timeout });
-  } else {
+    return callback({
+      ...config,
+      baseURL: Config.Client.Host,
+      timeout: Config.Client.Timeout,
+      validateStatus: (status: number) => status < 400
+    });
+  }
+  else {
     /* Wait for the config to get injected */
     setTimeout(() => generateAxiosConfig(config, callback), 200);
   }
@@ -41,7 +48,6 @@ function checkDestroySession(error) {
   }
 }
 
-// noinspection JSUnusedGlobalSymbols
 export default {
   get: async (url, params): Promise<any> => {
     return await new Promise((resolve, reject) => {

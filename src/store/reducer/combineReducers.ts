@@ -12,6 +12,7 @@ import { settingsReducer } from './SettingsReducer';
 import { splitViewReducer } from "./SplitViewReducer";
 import { systemReducer } from './SystemReducer';
 import { toastReducer } from './ToastReducer';
+import { webSocketReducer } from './WebSocketReducer';
 
 // noinspection JSUnusedGlobalSymbols
 export default reducers => combineReducers({
@@ -27,5 +28,6 @@ export default reducers => combineReducers({
   splitViewReducer,
   systemReducer,
   toastReducer,
+  webSocketReducer,
   ...reducers
 });

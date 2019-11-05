@@ -7,7 +7,7 @@ export const catchError = callback => rxjs.catchError(error =>
   concat(
     of(
       ...(
-        error.response.status === 401
+        error && error.response && error.response.status === 401
           ? [sessionIsUnauthorizedAction()]
           : []
       ),

@@ -1,0 +1,36 @@
+{
+  "rules": {
+    "ban-ts-ignore": true,
+    "no-any": false,
+    "no-var-requires": false,
+
+    "quotemark": [true, "single", "jsx-double"],
+    "curly": true,
+    "no-conditional-assignment": true,
+    "no-var-keyword": true,
+    "no-shadowed-variable": false,
+    "no-unreachable": true,
+    "no-unused-expression": true,
+    "no-unused-variable": [true],
+    "switch-default": true,
+
+    "indent": [true, "spaces", 2],
+    "max-line-length": [true, 200],
+    "no-trailing-whitespace": true,
+    "trailing-comma": [false, {"multiline": "always", "singleline": "never"}],
+
+    "align": [true, "parameters", "statements"],
+    "class-name": true,
+    "interface-name": [true, "always-prefix"],
+    "no-consecutive-blank-lines": [true],
+    "no-constructor-vars": true,
+    "ordered-imports": [false, {"named-imports-order": "case-insensitive"}],
+    "semicolon": [false, "always"],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case","allow-leading-underscore"],
+    "whitespace": [true, "check-operator", "check-typecast", "check-type", "check-separator", "check-decl", "check-module"],
+    "space-before-function-paren": [true, {
+      "constructor": "never",
+      "method": "never"
+    }]
+  }
+}

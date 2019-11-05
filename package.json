@@ -54,13 +54,15 @@
     "redux-observable": "^1.1.0",
     "renderkid": "^2.0.2",
     "rxjs": "^6.5.2",
+    "socket.io": "^2.3.0",
     "toposort": "^2.0.2",
     "typesafe-actions": "^4.4.0",
     "validate-npm-package-license": "^3.0.4"
   },
   "devDependencies": {
     "chokidar": "^3.0.2",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "tslint": "^5.20.0"
   },
   "jest": {
     "transform": {

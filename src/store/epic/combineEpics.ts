@@ -4,7 +4,15 @@ import { checkRightsEpic, logoutEpic, sessionAuthorizeEpic, } from './SessionEpi
 
 import { getRegionEpic } from './SystemEpic';
 import { autoLoadConfigEpic, loadConfigEpic } from './ConfigEpic';
-import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from "./NotificationEpic";
+import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from './NotificationEpic';
+
+import {
+  webSocketCheckSessionIsAuthorizedActionEpic,
+  webSocketConnectRequestActionEpic,
+  webSocketJoinRoomRequestActionEpic,
+  webSocketJoinRoomSuccessActionEpic,
+  webSocketLeaveRoomRequestActionEpic,
+} from './WebsocketEpic';
 
 // noinspection JSUnusedGlobalSymbols
 export default (...epics: any) => {
@@ -15,6 +23,14 @@ export default (...epics: any) => {
     dismissAllNotificationsEpic,
     getRegionEpic,
     loadConfigEpic,
+    logoutEpic,
+    splitViewEpic,
+    sessionAuthorizeEpic,
+    webSocketCheckSessionIsAuthorizedActionEpic,
+    webSocketConnectRequestActionEpic,
+    webSocketJoinRoomRequestActionEpic,
+    webSocketJoinRoomSuccessActionEpic,
+    webSocketLeaveRoomRequestActionEpic,
     logoutEpic,
     splitViewEpic,
     sessionAuthorizeEpic,

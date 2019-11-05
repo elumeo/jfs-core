@@ -3,7 +3,7 @@ import { RootAction } from "../action/RootAction";
 import { filter, switchMap } from "rxjs/operators";
 import { isActionOf, PayloadAction } from "typesafe-actions";
 import { configLoadedAction } from "../action/ConfigAction";
-import { from, of } from "rxjs";
+import { from, of, EMPTY } from "rxjs";
 import {
   checkRightsAction,
   loginAction,

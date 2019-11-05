@@ -1,4 +1,4 @@
-import client from './base/Client';
+import client from './base/JscClient';
 import { AxiosResponse } from 'axios';
 
 // This constant is used in the project tools (not in the JFS apps)
@@ -91,6 +91,15 @@ namespace JSCApi {
 
     }
 
+    export namespace WebSocket {
+
+      export interface IWebSocketRoomData {
+        room: string;
+        data?: any;
+        lastUpdate?: any;
+      }
+
+    }
   }
 
   export namespace LoginClient {

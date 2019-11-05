@@ -1,5 +1,7 @@
-const { readdir, readFile, writeFile, lstat } = require('fs');
-const { resolve } = require('path');
+const {readdir, readFile, writeFile, lstat} = require('fs');
+const {resolve} = require('path');
+
+const configFilename = 'config.dist.json';
 
 const checkPathType = (pathName, callback) => {
   lstat(
@@ -7,26 +9,25 @@ const checkPathType = (pathName, callback) => {
     (error, stats) => {
       if (error) {
         throw error;
-      }
-      else {
+      } else {
         callback(
           stats.isDirectory()
             ? 'directory'
             : stats.isFile()
-              ? 'file'
-              : 'other'
+            ? 'file'
+            : 'other'
         );
       }
     }
   );
-}
+};
 
 const readNodeTypes = (directoryPath, nodeNames, callback) => {
   const directoryNode = {
     directories: [],
     files: [],
     other: 0
-  }
+  };
 
   nodeNames.map(
     nodeName => {
@@ -35,17 +36,15 @@ const readNodeTypes = (directoryPath, nodeNames, callback) => {
         nodePath,
         type => {
           if (type === 'directory') {
-            directoryNode.directories.push({ nodeName, nodePath });
-          }
-          else if (type === 'file') {
-            directoryNode.files.push({ nodeName, nodePath });
-          }
-          else {
+            directoryNode.directories.push({nodeName, nodePath});
+          } else if (type === 'file') {
+            directoryNode.files.push({nodeName, nodePath});
+          } else {
             directoryNode.other++;
           }
 
-          const { directories, files, other } = directoryNode;
-          const checkedTotal = directories.length +files.length +other;
+          const {directories, files, other} = directoryNode;
+          const checkedTotal = directories.length + files.length + other;
 
           if (checkedTotal === nodeNames.length) {
             callback(directoryNode);
@@ -54,7 +53,7 @@ const readNodeTypes = (directoryPath, nodeNames, callback) => {
       );
     }
   );
-}
+};
 
 const searchSourcePath = (
   searchDirectoryPath,
@@ -70,9 +69,9 @@ const searchSourcePath = (
       readNodeTypes(
         searchDirectoryPath,
         nodeNames,
-        ({ files }) => {
+        ({files}) => {
           const searchResult = files.find(
-            ({ nodeName }) => nodeName === targetFileName
+            ({nodeName}) => nodeName === targetFileName
           );
           if (!searchResult) {
             searchSourcePath(
@@ -80,38 +79,35 @@ const searchSourcePath = (
               targetFileName,
               callback
             )
-          }
-          else {
+          } else {
             callback(searchResult);
           }
         }
       );
     }
   );
-}
+};
 
 const startSearchPath = process.argv.slice(2)[0];
 
-const configTargetPath = resolve(startSearchPath, 'config.json.dist');
+const configTargetPath = resolve(startSearchPath, configFilename);
 searchSourcePath(
   startSearchPath,
-  'config.json.dist',
-  ({ nodePath: configSourcePath }) => {
+  configFilename,
+  ({nodePath: configSourcePath}) => {
     readdir(
       startSearchPath,
       (error, files) => {
         if (error) {
           console.log(error);
-        }
-        else {
-          if (!files.find(fileName => fileName === 'config.json.dist')) {
+        } else {
+          if (!files.find(fileName => fileName === configFilename)) {
             readFile(
               configSourcePath,
               (error, data) => {
                 if (error) {
                   throw error;
-                }
-                else {
+                } else {
                   writeFile(
                     configTargetPath,
                     data,

@@ -8,6 +8,7 @@ import Cookie from 'js-cookie';
 import { changeLanguageAction } from '../../store/action/LanguageAction';
 import mergeTranslations from '../../Translations';
 import IRootReducer from '../../store/reducer/RootReducer';
+import WebSocketConnection from '../websocket/WebSocketConnection';
 
 export interface IAppProps {
   changeLanguageAction?: any;
@@ -18,7 +19,8 @@ export interface IAppProps {
   ForceHTTPS?: boolean;
 }
 
-export interface IAppState {}
+export interface IAppState {
+}
 
 class App extends React.Component<IAppProps, IAppState> {
   constructor(props) {
@@ -54,16 +56,18 @@ class App extends React.Component<IAppProps, IAppState> {
 
     return (
       <Provider store={store}>
-        <IntlProvider
-          locale={language}
-          messages={messages[language]}
-          key={language}>
-          <HashRouter>
-            <>
-              {children}
-            </>
-          </HashRouter>
-        </IntlProvider>
+        <WebSocketConnection>
+          <IntlProvider
+            locale={language}
+            messages={messages[language]}
+            key={language}>
+            <HashRouter>
+              <>
+                {children}
+              </>
+            </HashRouter>
+          </IntlProvider>
+        </WebSocketConnection>
       </Provider>
     );
   }
