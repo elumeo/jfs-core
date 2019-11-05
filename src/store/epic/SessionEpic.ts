@@ -23,32 +23,19 @@ import catchError from './catchError'
 export const logoutEpic: Epic<RootAction, RootAction> = (action$) => (
   action$.pipe(
     filter(isActionOf(logoutAction)),
-    switchMap(({ payload }) => {
-      return from(
+    switchMap(({ payload }) =>
+      from(
         JSCApi.SessionClient.logout({ token: Session.getToken() })
       ).pipe(
         switchMap(() => {
           Session.removeToken();
           return payload ? of(sessionIsUnauthorizedAction(), payload) : of(sessionIsUnauthorizedAction())
         }),
-        catchError(() => {
-          return of(addToastAction({ contentTranslationId: "logout.failed", isError: true }));
-        })
+        catchError(() => of(addToastAction({ contentTranslationId: "logout.failed", isError: true })))
       )
     })
   )
 );
-
-export const loggerEpic: Epic<RootAction, RootAction> = (action$) => (
-  action$.pipe(
-    switchMap(
-      action => {
-        console.log(action);
-        return EMPTY;
-      }
-    )
-  )
-)
 
 export const checkRightsEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
