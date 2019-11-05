@@ -37,10 +37,10 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
   };
 
   render() {
-    const { props: { isCheckingLogin, isAuthorized, routeType }, login } = this;
+    const { props: { isCheckingLogin, isAuthorized, routeType, RobotUsername, RobotPassword }, login } = this;
 
     const reevaluatingSession = Session.getToken() && !isAuthorized;
-    const robotLoginEnabled = this.props.RobotPassword !== undefined && this.props.RobotUsername !== undefined;
+    const robotLoginEnabled = RobotPassword !== undefined && RobotUsername !== undefined;
 
     return (
       <div className="login-dialog">

@@ -16,16 +16,16 @@ const loginCredentials: React.FC<ILoginCredentialsProps> = ({
     <TextField
       id="username"
       type="text"
+      required
       placeholder={formatMessage({id: 'login.username'})}
-      required={true}
       errorText={formatMessage({id: 'login.username.errorText'})}
       onChange={onChangeUsername}
     />
     <TextField
       id="password"
       type="password"
+      required
       placeholder={formatMessage({id: 'login.password'})}
-      required={true}
       errorText={formatMessage({id: 'login.password.errorText'})}
       onChange={onChangePassword}
       onKeyUp={e => e.keyCode === 13 && onLogin()}

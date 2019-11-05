@@ -18,7 +18,6 @@ import catchError from './catchError'
 
 /* TODO: Should Robot login keep the user permanently logged in even if the session expires ?! */
 /* TODO: Fix - LoginDialog not shown if RobotLogin is enabled and the user has been logged. */
-/* TODO: Check what happens at login/reload/refresh/api-call if the backend session has expired! */
 
 export const logoutEpic: Epic<RootAction, RootAction> = (action$) => (
   action$.pipe(
@@ -73,7 +72,7 @@ export const sessionAuthorizeEpic: Epic<RootAction, RootAction> = (action$, stor
           observable = JSCApi.LoginClient.login({ username: RobotUsername, password: RobotPassword });
         } else if (Session.getToken()) {
           observable = JSCApi.SessionClient.getCurrentSession();
-          errorHandler = e => of(addToastAction({ contentError: e }));
+          errorHandler = e => of(addToastAction({ contentTranslationId: 'session.expired' }));
         } else {
           return of();
         }

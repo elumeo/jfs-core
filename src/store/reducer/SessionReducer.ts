@@ -1,13 +1,9 @@
-import {
-  loginAction,
-  sessionIsAuthorizedAction,
-  sessionIsUnauthorizedAction,
-} from '../action/SessionAction';
+import { loginAction, sessionIsAuthorizedAction, sessionIsUnauthorizedAction, } from '../action/SessionAction';
 import { createReducer, PayloadAction } from "typesafe-actions";
 import JSCApi from "../../JscApi";
 import Session from "../../base/Session";
-import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 import { configLoadedAction } from "../action/ConfigAction";
+import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 
 export interface ISessionReducerState {
   isCheckingLogin: boolean;
@@ -23,7 +19,7 @@ const initialState: ISessionReducerState = {
 
 export const sessionReducer = createReducer<ISessionReducerState>(initialState)
   .handleAction(configLoadedAction, (state): ISessionReducerState => (
-    { ...state, isCheckingLogin: true }
+    { ...state, isCheckingLogin: Boolean(Session.getToken()) }
   ))
   .handleAction(loginAction, (state): ISessionReducerState => (
     { ...state, isCheckingLogin: true }
