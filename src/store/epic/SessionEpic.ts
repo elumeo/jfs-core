@@ -32,7 +32,7 @@ export const logoutEpic: Epic<RootAction, RootAction> = (action$) => (
         }),
         catchError(() => of(addToastAction({ contentTranslationId: "logout.failed", isError: true })))
       )
-    })
+    )
   )
 );
 
