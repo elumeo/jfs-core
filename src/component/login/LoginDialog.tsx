@@ -8,16 +8,19 @@ import LoginButton from './LoginButton';
 import { loginAction } from '../../store/action/SessionAction';
 import IRootReducer from '../../store/reducer/RootReducer';
 import './LoginDialog.scss';
-import Session from '../../base/Session';
+import { setLoginDialogVisibilityAction } from "../../store/action/SystemAction";
+import Session from "../../base/Session";
 
 interface ILoginDialogProps extends InjectedIntlProps {
   children?: any;
   isAuthorized?: boolean;
   loginAction?: ({}) => void;
   isCheckingLogin?: boolean;
+  loginDialogVisible?: boolean;
   RobotUsername?: string;
   RobotPassword?: string;
   routeType?: string;
+  setLoginDialogVisibilityAction?: (visible: boolean) => void;
 }
 
 interface ILoginDialogState {
@@ -36,17 +39,24 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
     this.props.loginAction({ username, password });
   };
 
-  render() {
-    const { props: { isCheckingLogin, isAuthorized, routeType, RobotUsername, RobotPassword }, login } = this;
-
+  componentDidUpdate(prevProps: Readonly<ILoginDialogProps>, prevState: Readonly<ILoginDialogState>, snapshot?: any): void {
+    const { isAuthorized, RobotPassword, RobotUsername, routeType } = this.props;
     const reevaluatingSession = Session.getToken() && !isAuthorized;
     const robotLoginEnabled = RobotPassword !== undefined && RobotUsername !== undefined;
+    const loginDialogVisible = !robotLoginEnabled && !reevaluatingSession && !isAuthorized && ['authorized', null].indexOf(routeType) > -1;
+    if (loginDialogVisible !== this.props.loginDialogVisible) {
+      this.props.setLoginDialogVisibilityAction(loginDialogVisible);
+    }
+  }
+
+  render() {
+    const { props: { isCheckingLogin, loginDialogVisible }, login } = this;
 
     return (
       <div className="login-dialog">
         <DialogContainer
           id={'login-dialog'}
-          visible={!robotLoginEnabled && !reevaluatingSession && !isAuthorized && ['authorized', null].indexOf(routeType) > -1}
+          visible={loginDialogVisible}
           title="Login"
           aria-describedby=""
           actions={<LoginButton
@@ -69,14 +79,13 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
 // higher order components -----------------------------------------------------
 const mapStateToProps = (state: IRootReducer, ownProps: ILoginDialogProps): ILoginDialogProps => ({
   ...ownProps,
-  isAuthorized: state.sessionReducer.isAuthorized,
-  isCheckingLogin: state.sessionReducer.isCheckingLogin,
-  RobotUsername: state.configReducer.RobotUsername,
-  RobotPassword: state.configReducer.RobotPassword,
-  routeType: state.routerReducer.routeType
+  ...state.sessionReducer,
+  ...state.configReducer,
+  ...state.routerReducer,
+  ...state.systemReducer
 });
 
-const mapDispatchToProps = { loginAction };
+const mapDispatchToProps = { loginAction, setLoginDialogVisibilityAction };
 
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),

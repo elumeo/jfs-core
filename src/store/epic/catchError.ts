@@ -1,8 +1,9 @@
 import { of, concat } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import * as rxjs from 'rxjs/operators';
 import { sessionIsUnauthorizedAction } from '../action/SessionAction';
 
-export default errorHandler => catchError(error =>
+// noinspection JSDeprecatedSymbols
+export const catchError = callback => rxjs.catchError(error =>
   concat(
     of(
       ...(
@@ -11,6 +12,6 @@ export default errorHandler => catchError(error =>
           : []
       ),
     ),
-    errorHandler(error)
+    callback(error)
   )
-)
+);

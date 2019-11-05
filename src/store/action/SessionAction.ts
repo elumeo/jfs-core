@@ -9,7 +9,7 @@ export type ILoginType = {
 };
 
 export const loginAction = createStandardAction('session/LOGIN')<ILoginType>();
-export const logoutAction = createStandardAction('session/LOGOUT')<PayloadAction<string, IToastConfig>|undefined>();
+export const logoutAction = createStandardAction('session/LOGOUT')<undefined | PayloadAction<string, IToastConfig>>();
 
 export const sessionIsAuthorizedAction = createStandardAction('session/AUTHORIZED')<ISessionDTO>();
 export const sessionIsUnauthorizedAction = createStandardAction('session/UNAUTHORIZED')();

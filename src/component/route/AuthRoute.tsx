@@ -4,12 +4,15 @@ import { enterAuthorizedRoute } from '../../store/action/RouterAction';
 import { connect } from "react-redux";
 import IRootReducer from "../../store/reducer/RootReducer";
 import NoAccess from "./NoAccess";
+import { CircularProgress } from "react-md";
 
 export interface IAuthRouteProps extends IBaseRouteProps {
   Component: any;
   isAuthorized?: boolean;
-  isCheckingLogin?: boolean;
+  isCheckingSession?: boolean;
+  loginDialogVisible?: boolean;
   enterAuthorizedRoute?: () => void;
+  loaded?: boolean;
 }
 
 class AuthRoute extends React.Component<IAuthRouteProps> {
@@ -19,8 +22,16 @@ class AuthRoute extends React.Component<IAuthRouteProps> {
   }
 
   render() {
-    const { props: { Component, isAuthorized, isCheckingLogin, path, ...rest } } = this;
-    return isAuthorized ? <BaseRoute {...rest} render={props => <Component {...props} />}/> : <NoAccess/>;
+    const { Component, isAuthorized, loginDialogVisible, isCheckingSession, loaded: configLoaded, path, ...rest } = this.props;
+    if (isAuthorized) {
+      return <BaseRoute {...rest} render={props => <Component {...props} />}/>;
+    } else if (isCheckingSession && !loginDialogVisible) {
+      return <CircularProgress id="checking-session-progress"/>;
+    } else if (configLoaded) {
+      return <NoAccess/>;
+    } else {
+      return null;
+    }
   }
 }
 
@@ -28,7 +39,9 @@ class AuthRoute extends React.Component<IAuthRouteProps> {
 export default connect(
   (state: IRootReducer, ownProps: IAuthRouteProps): IAuthRouteProps => ({
     ...ownProps,
-    ...state.sessionReducer
+    ...state.sessionReducer,
+    ...state.systemReducer,
+    ...state.configReducer
   }),
   {
     enterAuthorizedRoute
