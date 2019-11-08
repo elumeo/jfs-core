@@ -1,6 +1,6 @@
 import { createStandardAction, PayloadAction } from 'typesafe-actions';
-import JSCApi from "../../JscApi";
-import { IToastConfig } from "../reducer/ToastReducer";
+import JSCApi from '../../JscApi';
+import { IToastConfig } from '../reducer/ToastReducer';
 import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 
 export type ILoginType = {

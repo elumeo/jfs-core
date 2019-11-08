@@ -9,5 +9,8 @@
   ],
   "UserController": [
     "getUserRights"
+  ],
+  "WebSocketController": [
+    "joinRoomPing"
   ]
 }

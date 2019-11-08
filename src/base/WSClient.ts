@@ -3,9 +3,8 @@ import * as SocketIoClient from 'socket.io-client';
 
 import { Socket } from 'socket.io';
 import JSCApi from '../JscApi';
-import IWebSocketRoomData = JSCApi.DTO.WebSocket.IWebSocketRoomData;
 
-export class WebSocketClient {
+export class WSClient {
   public static EVENT_NOT_AUTHORIZED = 'notAuthorized';
   public static EVENT_AUTHENTICATED = 'authenticated';
   public static EVENT_JOIN_ROOM = '[Room] Join';
@@ -18,7 +17,8 @@ export class WebSocketClient {
   public static connect(token: string, ip: string, host: string, namespace: string) {
     return new Observable<boolean>((observer) => {
       this.socket = SocketIoClient.connect(host + '/' + namespace, {
-        query: {token, ip}
+        query: {token, ip},
+        secure: host.startsWith('https')
       });
       this.socket.on(this.EVENT_AUTHENTICATED, () => {
         console.log('WebSocketClient connect to: ', host, namespace);
@@ -30,14 +30,21 @@ export class WebSocketClient {
     });
   }
 
-  public static join(room: string) {
-    return new Observable<string>((observer) => {
+  public static join<T>(room: string) {
+    return new Observable<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>>((observer) => {
       this.socket.emit(this.EVENT_JOIN_ROOM, room);
       this.socket.on(this.EVENT_JOINED_ROOM, (joinedRoom) => {
-        if (room === joinedRoom) {
-          observer.next(room);
-          observer.complete();
+        if(joinedRoom === room) {
+          this.socket.on(this.EVENT_UPDATE_ROOM, (roomData: JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>) => {
+            if (room === roomData.room) {
+              observer.next(roomData);
+            }
+          });
         }
+        // if (room === joinedRoom) {
+        //   observer.next(room);
+        //   observer.complete();
+        // }
       });
     });
   }
@@ -50,15 +57,15 @@ export class WebSocketClient {
     });
   }
 
-  public static listen(room: string) {
-    return new Observable<IWebSocketRoomData>((observer) => {
-      if (this.socket) {
-        this.socket.on(this.EVENT_UPDATE_ROOM, (roomData: IWebSocketRoomData) => {
-          if (room === roomData.room) {
-            observer.next(roomData);
-          }
-        });
-      }
-    });
-  }
+  // public static listen(room: string) {
+  //   return new Observable<IWebSocketRoomData>((observer) => {
+  //     if (this.socket) {
+  //       this.socket.on(this.EVENT_UPDATE_ROOM, (roomData: IWebSocketRoomData) => {
+  //         if (room === roomData.room) {
+  //           observer.next(roomData);
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
 }

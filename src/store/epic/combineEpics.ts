@@ -9,9 +9,9 @@ import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from 
 import {
   webSocketCheckSessionIsAuthorizedActionEpic,
   webSocketConnectRequestActionEpic,
-  webSocketJoinRoomRequestActionEpic,
-  webSocketJoinRoomSuccessActionEpic,
-  webSocketLeaveRoomRequestActionEpic,
+  // webSocketJoinRoomRequestActionEpic,
+  // webSocketJoinRoomSuccessActionEpic,
+  // webSocketLeaveRoomRequestActionEpic,
 } from './WebsocketEpic';
 
 // noinspection JSUnusedGlobalSymbols
@@ -28,9 +28,9 @@ export default (...epics: any) => {
     sessionAuthorizeEpic,
     webSocketCheckSessionIsAuthorizedActionEpic,
     webSocketConnectRequestActionEpic,
-    webSocketJoinRoomRequestActionEpic,
-    webSocketJoinRoomSuccessActionEpic,
-    webSocketLeaveRoomRequestActionEpic,
+    // webSocketJoinRoomRequestActionEpic,
+    // webSocketJoinRoomSuccessActionEpic,
+    // webSocketLeaveRoomRequestActionEpic,
     logoutEpic,
     splitViewEpic,
     sessionAuthorizeEpic,

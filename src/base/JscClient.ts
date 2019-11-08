@@ -1,5 +1,5 @@
-import axios, { AxiosPromise } from 'axios';
-import Session from "./Session";
+import axios from 'axios';
+import Session from './Session';
 
 /**
  * You have to load the config your self.
@@ -14,8 +14,8 @@ const generateAxiosConfig = (config: any, callback): any => {
   if (Config) {
     return callback({
       ...config,
-      baseURL: Config.Client.Host,
-      timeout: Config.Client.Timeout,
+      baseURL: Config.JscClient.Host,
+      timeout: Config.JscClient.Timeout,
       validateStatus: (status: number) => status < 400
     });
   }

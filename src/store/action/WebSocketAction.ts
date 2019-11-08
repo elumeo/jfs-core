@@ -1,6 +1,5 @@
 import { createStandardAction } from 'typesafe-actions';
 import JSCApi from '../../JscApi';
-import IWebSocketRoomData = JSCApi.DTO.WebSocket.IWebSocketRoomData;
 
 export const webSocketConnectRequestAction = createStandardAction('websocket/CONNECT_REQUEST')();
 export const webSocketConnectSuccessAction = createStandardAction('websocket/CONNECT_SUCCESS')();
@@ -14,4 +13,4 @@ export const webSocketLeaveRoomRequestAction = createStandardAction('websocket/L
 export const webSocketLeaveRoomSuccessAction = createStandardAction('websocket/LEAVE_ROOM_SUCCESS')<string>();
 export const webSocketLeaveRoomFailedAction = createStandardAction('websocket/LEAVE_ROOM_FAILED')<string>();
 
-export const webSocketRoomUpdateAction = createStandardAction('websocket/ROOM_UPDATE')<IWebSocketRoomData>();
+// export const webSocketRoomUpdateAction = createStandardAction('websocket/ROOM_UPDATE')<IWebSocketRoomData>();

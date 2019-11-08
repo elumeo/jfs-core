@@ -1,7 +1,7 @@
 const {readdir, readFile, writeFile, lstat} = require('fs');
 const {resolve} = require('path');
 
-const configFilename = 'config.dist.json';
+const configFilename = 'config.json.dist';
 
 const checkPathType = (pathName, callback) => {
   lstat(

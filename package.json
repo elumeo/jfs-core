@@ -5,6 +5,7 @@
   "main": "Main.js",
   "scripts": {
     "core-development": "node index.js",
+    "jsc-generate": "node node_modules/@elumeo/jfs-core-dev/scripts/jsc-generate/index.js --clientPath=./base",
     "release": "npm publish --access public"
   },
   "repository": {
