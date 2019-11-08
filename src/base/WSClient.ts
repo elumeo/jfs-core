@@ -56,16 +56,4 @@ export class WSClient {
       observer.complete();
     });
   }
-
-  // public static listen(room: string) {
-  //   return new Observable<IWebSocketRoomData>((observer) => {
-  //     if (this.socket) {
-  //       this.socket.on(this.EVENT_UPDATE_ROOM, (roomData: IWebSocketRoomData) => {
-  //         if (room === roomData.room) {
-  //           observer.next(roomData);
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
 }
