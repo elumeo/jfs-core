@@ -3,7 +3,7 @@ import BaseRoute, { IBaseRouteProps } from './BaseRoute';
 
 import { enterUnauthorizedRoute } from '../../store/action/RouterAction';
 
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -32,7 +32,7 @@ class NoAuthRoute extends React.Component<INoAuthRouteProps> {
 }
 
 const mapStateToProps = (
-  state: IRootReducer,
+  _state: ICoreRootReducer,
   ownProps: INoAuthRouteProps
 ): INoAuthRouteProps => ({
   ...ownProps

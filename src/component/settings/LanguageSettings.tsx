@@ -6,7 +6,7 @@ import { compose } from 'redux';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import SelectField from 'react-md/lib/SelectFields/SelectField';
 
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { changeLanguageAction } from '../../store/action/LanguageAction';
 
 import './LanguageSettings.scss';
@@ -56,11 +56,13 @@ class LanguageSettings extends React.Component<ILanguageSettingsProps, ILanguage
 }
 
 const mapStateToProps = (
-  state: IRootReducer,
+  state: ICoreRootReducer,
   ownProps: ILanguageSettingsProps
-) => ({
+): ILanguageSettingsProps => ({
   ...ownProps,
-  language: state.languageReducer.language || state.configReducer.Language,
+  language: (
+    state.languageReducer.language || state.configReducer.config.Language
+  ),
 });
 
 const enhance = compose(
@@ -68,5 +70,4 @@ const enhance = compose(
   injectIntl
 );
 
-// noinspection JSUnusedGlobalSymbols
 export default enhance(LanguageSettings);

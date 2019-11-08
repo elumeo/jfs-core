@@ -2,7 +2,7 @@ import * as React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Button from 'react-md/lib/Buttons/Button';
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 
 import { openNavigation, closeNavigation } from '../../store/action/NavigationAction';
 import { injectIntl } from 'react-intl';
@@ -36,9 +36,9 @@ class NavigationButton extends React.Component<INavigationButtonProps, INavigati
 }
 
 const mapStateToProps = (
-  state: IRootReducer,
+  state: ICoreRootReducer,
   ownProps: INavigationButtonProps
-) => ({
+): INavigationButtonProps => ({
   ...ownProps,
   ...state.navigationReducer
 })

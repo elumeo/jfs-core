@@ -1,17 +1,16 @@
 import { of, concat } from 'rxjs';
-import * as rxjs from 'rxjs/operators';
-import { sessionIsUnauthorizedAction } from '../action/SessionAction';
+import { catchError } from 'rxjs/operators';
+import { logout } from '../action/SessionAction';
 
-// noinspection JSDeprecatedSymbols
-export const catchError = callback => rxjs.catchError(error =>
+export default errorHandler => catchError(error =>
   concat(
     of(
       ...(
         error && error.response && error.response.status === 401
-          ? [sessionIsUnauthorizedAction()]
+          ? [logout({})]
           : []
       ),
     ),
-    callback(error)
+    errorHandler(error)
   )
-);
+)

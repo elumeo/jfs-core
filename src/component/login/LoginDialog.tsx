@@ -5,22 +5,19 @@ import { compose } from 'redux';
 import DialogContainer from 'react-md/lib/Dialogs';
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
-import { loginAction } from '../../store/action/SessionAction';
-import IRootReducer from '../../store/reducer/RootReducer';
+import { checkLogin, ICheckLoginPayload } from '../../store/action/SessionAction';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import './LoginDialog.scss';
-import { setLoginDialogVisibilityAction } from "../../store/action/SystemAction";
-import Session from "../../base/Session";
 
 interface ILoginDialogProps extends InjectedIntlProps {
   children?: any;
-  isAuthorized?: boolean;
-  loginAction?: ({}) => void;
+  checkLogin?: (payload: ICheckLoginPayload) => void;
   isCheckingLogin?: boolean;
-  loginDialogVisible?: boolean;
-  RobotUsername?: string;
-  RobotPassword?: string;
+  isCheckingSession?: boolean;
   routeType?: string;
-  setLoginDialogVisibilityAction?: (visible: boolean) => void;
+  loginVisible?: boolean;
+  isAuthorized?: boolean;
+  robotLoginAvailable?: boolean;
 }
 
 interface ILoginDialogState {
@@ -29,46 +26,48 @@ interface ILoginDialogState {
 }
 
 class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> {
-  state = {
-    username: this.props.RobotUsername || '',
-    password: this.props.RobotPassword || ''
-  };
+  state = { username: '', password: '' };
 
   login = () => {
     const { state: { username, password } } = this;
-    this.props.loginAction({ username, password });
+    this.props.checkLogin({ username, password });
   };
 
-  componentDidUpdate(prevProps: Readonly<ILoginDialogProps>, prevState: Readonly<ILoginDialogState>, snapshot?: any): void {
-    const { isAuthorized, RobotPassword, RobotUsername, routeType } = this.props;
-    const reevaluatingSession = Session.getToken() && !isAuthorized;
-    const robotLoginEnabled = RobotPassword !== undefined && RobotUsername !== undefined;
-    const loginDialogVisible = !robotLoginEnabled && !reevaluatingSession && !isAuthorized && ['authorized', null].indexOf(routeType) > -1;
-    if (loginDialogVisible !== this.props.loginDialogVisible) {
-      this.props.setLoginDialogVisibilityAction(loginDialogVisible);
-    }
-  }
-
   render() {
-    const { props: { isCheckingLogin, loginDialogVisible }, login } = this;
+    const {
+      props: {
+        robotLoginAvailable,
+        routeType,
+        isAuthorized, isCheckingLogin, isCheckingSession,
+        checkLogin
+      },
+      state: { username, password }
+    } = this;
+
+    const loginVisible = (
+      routeType === 'authorized' &&
+      !isAuthorized &&
+      !robotLoginAvailable &&
+      !isCheckingSession
+    )
 
     return (
       <div className="login-dialog">
         <DialogContainer
           id={'login-dialog'}
-          visible={loginDialogVisible}
+          visible={loginVisible}
           title="Login"
           aria-describedby=""
           actions={<LoginButton
             isCheckingLogin={isCheckingLogin}
-            onLogin={login}
+            onLogin={() => checkLogin({ username, password })}
           />}
           modal
         >
           <LoginCredentials
             onChangeUsername={update => this.setState({ username: update })}
             onChangePassword={update => this.setState({ password: update })}
-            onLogin={login}
+            onLogin={() => checkLogin({ username, password })}
           />
         </DialogContainer>
       </div>
@@ -77,20 +76,29 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
 }
 
 // higher order components -----------------------------------------------------
-const mapStateToProps = (state: IRootReducer, ownProps: ILoginDialogProps): ILoginDialogProps => ({
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: ILoginDialogProps
+): ILoginDialogProps => ({
   ...ownProps,
-  ...state.sessionReducer,
-  ...state.configReducer,
-  ...state.routerReducer,
-  ...state.systemReducer
+  isAuthorized: state.sessionReducer.isAuthorized,
+  isCheckingLogin: state.sessionReducer.isCheckingLogin,
+  isCheckingSession: state.sessionReducer.isCheckingSession,
+  routeType: state.routerReducer.routeType,
+  robotLoginAvailable: (
+    state.configReducer.config && (
+      state.configReducer.config.RobotUsername &&
+      state.configReducer.config.RobotPassword
+    ) &&
+    state.appReducer.allowRobotLogin
+  )
 });
 
-const mapDispatchToProps = { loginAction, setLoginDialogVisibilityAction };
+const mapDispatchToProps = { checkLogin };
 
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
   injectIntl
 );
 
-// noinspection JSUnusedGlobalSymbols
 export default enhance(LoginDialog);

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './Content.scss';
 
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 
 export interface IContentProps {
   splitViewEnabled?: boolean;
@@ -22,7 +22,10 @@ class Content extends React.Component<IContentProps> {
   }
 }
 
-const mapStateToProps = (state: IRootReducer, ownProps: IContentProps): IContentProps => ({
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: IContentProps
+): IContentProps => ({
   ...state.splitViewReducer,
   ...ownProps,
 });
@@ -31,5 +34,4 @@ const enhance = connect(
   mapStateToProps
 );
 
-// noinspection JSUnusedGlobalSymbols
 export default enhance(Content);

@@ -1,29 +1,15 @@
 import { configLoadedAction, loadConfig } from '../action/ConfigAction';
-import { createReducer, PayloadAction } from "typesafe-actions";
+import { createReducer, PayloadAction } from 'typesafe-actions';
+import IConfig from '../../base/IConfig';
 
 export interface IConfigReducerState {
-  RobotUsername: string;
-  RobotPassword: string;
-  Language: string;
-  Currency: string;
-  ForceHTTPS: boolean;
+  config: IConfig;
   pending: boolean;
   loaded: boolean;
-  Client?: {
-    Host?: string;
-    Timeout?: number;
-  };
-  JscClient: {
-    Host: string;
-  };
-  WebSocketClient: {
-    Host: string;
-    PrivateNamespace: string;
-    AutoJoinRooms: string[];
-  };
 }
 
 const initialState = {
+  config: null,
   pending: false,
   loaded: false
 };
@@ -32,6 +18,8 @@ export const configReducer = createReducer(initialState)
   .handleAction(loadConfig, (state: IConfigReducerState) => (
     { ...state, pending: true, loaded: false }
   ))
-  .handleAction(configLoadedAction, (state: IConfigReducerState, action: PayloadAction<string, any>) => (
+  .handleAction(
+    configLoadedAction,
+    (state: IConfigReducerState, action: PayloadAction<string, any>) => (
     { ...state, ...action.payload, pending: false, loaded: true }
   ));

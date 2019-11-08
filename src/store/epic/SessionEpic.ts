@@ -1,83 +1,130 @@
-import { Epic } from "redux-observable";
-import { RootAction } from "../action/RootAction";
-import { filter, switchMap } from "rxjs/operators";
-import { isActionOf, PayloadAction } from "typesafe-actions";
-import { configLoadedAction } from "../action/ConfigAction";
-import { from, of, EMPTY } from "rxjs";
+import { Epic } from 'redux-observable';
+import { RootAction } from '../action/RootAction';
+import { filter, switchMap, concatMap, catchError } from 'rxjs/operators';
+import { isActionOf, PayloadAction } from 'typesafe-actions';
+import { configLoadedAction, IConfigLoadedPayload } from '../action/ConfigAction';
+import { from, of, EMPTY } from 'rxjs';
 import {
-  checkRightsAction,
-  loginAction,
-  logoutAction,
-  sessionIsAuthorizedAction,
-  sessionIsUnauthorizedAction
-} from "../action/SessionAction";
-import JSCApi from "../../JscApi";
-import Session from "../../base/Session";
-import { addToastAction } from "../action/ToastAction";
-import { catchError } from './catchError'
-import { IToastConfig } from "../reducer/ToastReducer";
+  checkSession,
+  checkLogin, ICheckLoginPayload,
+  unauthorizeSession,
+  authorizeSession, IAuthorizeSessionPayload,
+  logout, ILogoutPayload
+} from '../action/SessionAction';
+import JSCApi from '../../JscApi';
+import Session from '../../base/Session';
+import { AxiosResponse } from 'axios';
 
-export const logoutEpic: Epic<RootAction, RootAction> = (action$) => (
+/* TODO: Should Robot login keep the user permanently logged in even if the session expires ?! */
+/* TODO: Fix - LoginDialog not shown if RobotLogin is enabled and the user has been logged. */
+
+export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
-    filter(isActionOf(logoutAction)),
-    switchMap((action: undefined | PayloadAction<string, IToastConfig>) =>
-      from(
-        JSCApi.SessionClient.logout({ token: Session.getToken() })
-      ).pipe(
-        switchMap(() => {
-          Session.removeToken();
-          return action.payload ? of(sessionIsUnauthorizedAction(), action.payload) : of(sessionIsUnauthorizedAction())
-        }),
-        catchError(() => of(addToastAction({ contentTranslationId: "logout.failed", isError: true })))
-      )
+    filter(isActionOf(configLoadedAction)),
+    concatMap(
+      (action: PayloadAction<string, IConfigLoadedPayload>) => {
+        const {
+          RobotUsername: username,
+          RobotPassword: password
+        } = action.payload.config;
+        const { allowRobotLogin } = store.value.appReducer;
+
+        if (!Session.getToken() && !(allowRobotLogin && username && password)) {
+          return EMPTY;
+        }
+        else {
+          return of(
+            Session.getToken()
+              ? checkSession()
+              : checkLogin({ username, password })
+          )
+        }
+      }
+    )
+  )
+)
+
+export const loginEpic: Epic<RootAction, RootAction> = (action$, store) => (
+  action$.pipe(
+    filter(isActionOf(checkLogin)),
+    concatMap(
+      (action: PayloadAction<string, ICheckLoginPayload>) => {
+        return from(
+          JSCApi.LoginClient.loginFrontend(
+            store.value.configReducer.config.AppName,
+            { username: action.payload.username,
+              password: action.payload.password }
+          )
+        ).pipe(
+          switchMap(
+            (response: AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>) => of(
+              authorizeSession({ frontendSessionDTO: response.data })
+            )
+          )
+        )
+      }
     )
   )
 );
 
-export const checkRightsEpic: Epic<RootAction, RootAction> = (action$, store) => (
+export const checkSessionEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
-    filter(isActionOf(checkRightsAction)),
-    switchMap(({ payload: sessionDTO }) => {
-      Session.setToken(sessionDTO.token);
-      return from(
-        JSCApi.UserClient.getUserRights(sessionDTO.username, { filter: 'frontend:jfs' })
-      ).pipe(
-        switchMap(({ data }) => {
-            if (data.assignedApps.some(app => app.name == store.value.configReducer.AppName)) {
-              return of(sessionIsAuthorizedAction(sessionDTO));
-            } else {
-              return of(logoutAction(addToastAction({ contentTranslationId: 'login.noUserRights' })))
-            }
-          }
-        ),
-        catchError(e => of(addToastAction({ contentMessage: e.toString() })))
+    filter(isActionOf(checkSession)),
+    concatMap(
+      () => from(JSCApi.SessionClient.getCurrentSessionFrontend(
+        store.value.configReducer.config.AppName,
+      )).pipe(
+        switchMap(
+          (response: AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>) => of(
+            authorizeSession({ frontendSessionDTO: response.data })
+          )
+        )
       )
+    ),
+    catchError(() => {
+      return of(unauthorizeSession());
     })
   )
-);
+)
 
-export const sessionAuthorizeEpic: Epic<RootAction, RootAction> = (action$, store) => (
+export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
-    filter(isActionOf([configLoadedAction, loginAction])),
-    switchMap(action => {
-        const { RobotUsername, RobotPassword } = store.value.configReducer;
-        const { username, password } = action.payload;
-        let promise;
-        let errorHandler = ({}) => of(addToastAction({ contentTranslationId: 'login.failed', isError: true }));
-        if (username !== undefined && password !== undefined) {
-          promise = JSCApi.LoginClient.login(action.payload);
-        } else if (RobotUsername !== undefined && RobotPassword !== undefined) {
-          promise = JSCApi.LoginClient.login({ username: RobotUsername, password: RobotPassword });
-        } else if (Session.getToken()) {
-          promise = JSCApi.SessionClient.getCurrentSession();
-          errorHandler = () => of(addToastAction({ contentTranslationId: 'session.expired' }));
-        } else {
-          return of();
-        }
-        return from(promise).pipe(
-          switchMap(({ data: sessionDTO }) => of(checkRightsAction(sessionDTO))),
-          catchError(errorHandler)
+    filter(isActionOf(logout)),
+    concatMap(
+      (action: PayloadAction<string, ILogoutPayload>) => from(
+        JSCApi.SessionClient.logout(
+          action.payload && action.payload.frontendSessionDTO
+            ? action.payload.frontendSessionDTO.session
+            : store.value.sessionReducer.frontendSessionDTO.session
         )
+      ).pipe(
+        switchMap(() => of(unauthorizeSession()))
+      )
+    ),
+    catchError(error => {
+      console.error(error);
+      return EMPTY;
+    })
+  )
+)
+
+export const unauthorizeSessionEpic: Epic<RootAction, RootAction> = (action$) => (
+  action$.pipe(
+    filter(isActionOf([unauthorizeSession])),
+    concatMap(() => {
+      Session.removeToken();
+      return EMPTY;
+    })
+  )
+)
+
+export const authorizeSessionEpic: Epic<RootAction, RootAction> = (action$) => (
+  action$.pipe(
+    filter(isActionOf(authorizeSession)),
+    concatMap(
+      (action: PayloadAction<string, IAuthorizeSessionPayload>) => {
+        Session.setToken(action.payload.frontendSessionDTO.session.token);
+        return EMPTY;
       }
     )
   )

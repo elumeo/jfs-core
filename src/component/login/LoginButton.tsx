@@ -1,26 +1,26 @@
 import * as React from 'react';
-import {InjectedIntlProps, injectIntl} from 'react-intl';
+import { InjectedIntl, injectIntl } from 'react-intl';
 
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 
-export interface ILoginButtonProps extends InjectedIntlProps {
+export interface ILoginButtonProps {
+  intl?: InjectedIntl;
   isCheckingLogin: boolean;
-  onLogin: any;
+  onLogin: () => void;
 }
 
 const loginButton: React.FC<ILoginButtonProps> = ({
   intl: { formatMessage },
   isCheckingLogin, onLogin
 }) => (
-    <Button
-        children={isCheckingLogin ? <CircularProgress
-            id="loginIsCheckingSpinner2"
-        /> : formatMessage({id: 'login.button'})}
-        primary
-        flat
-        onClick={onLogin}
-      />
+  isCheckingLogin
+    ? <CircularProgress id="check-login-progress"/>
+    : (
+      <Button primary flat onClick={onLogin}>
+        {formatMessage({id: 'login.button'})}
+      </Button>
+    )
 );
 
 export default injectIntl(loginButton);

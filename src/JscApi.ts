@@ -1,8 +1,8 @@
-import client from './base/JscClient';
+import client from './base/JscClient++';
 import { AxiosResponse } from 'axios';
 
 // This constant is used in the project tools (not in the JFS apps)
-export const JSC_API_VERSION: string = '77ac03749e8d3d5e9d3242f603dc3207';
+export const JSC_API_VERSION: string = 'd2b4660b4185fa1d2ba011ffe2ad228d';
 
 namespace JSCApi {
 
@@ -13,51 +13,15 @@ namespace JSCApi {
 
   export namespace DTO {
 
-    export namespace App {
-
-      export const I_APP_DTO_FRONTEND_APP_DOCK = 'appDock';
-      export const I_APP_DTO_FRONTEND_JFS = 'jfs';
-
-      export interface IAppDTO {
-        name?: string;
-        description?: string;
-        version?: string;
-        url?: string;
-        iconUrl?: string;
-        windowWidth?: number;
-        windowHeight?: number;
-        fullscreen?: boolean;
-        frontend?: string;
-        displayName?: string;
-        createdAt?: string;
-        createdBy?: string;
-        modifiedAt?: string;
-        modifiedBy?: string;
-      }
-
-    }
-
     export namespace Authorization {
 
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ = '1';
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE = '2';
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE = '4';
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE = '8';
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE = '3';
-
-      export interface IEntityAttributeAccessDTO {
-        entity?: string;
-        attribute?: string;
-        access?: string;
+      export interface IPropertyDTO {
+        key?: string;
+        value?: string;
         createdAt?: string;
         createdBy?: string;
         modifiedAt?: string;
         modifiedBy?: string;
-      }
-
-      export interface IUserRightsDTO {
-        entityAttributeAccesses?: Array<JSCApi.DTO.Authorization.IEntityAttributeAccessDTO>;
-        assignedApps?: Array<JSCApi.DTO.App.IAppDTO>;
       }
 
     }
@@ -76,6 +40,15 @@ namespace JSCApi {
     }
 
     export namespace Session {
+
+      export interface IFrontendSessionDTO {
+        session?: JSCApi.DTO.Session.ISessionDTO;
+        appProperties?: Array<JSCApi.DTO.Authorization.IPropertyDTO>;
+        createdAt?: string;
+        createdBy?: string;
+        modifiedAt?: string;
+        modifiedBy?: string;
+      }
 
       export interface ISessionDTO {
         token?: string;
@@ -100,20 +73,21 @@ namespace JSCApi {
       }
 
     }
+
   }
 
   export namespace LoginClient {
 
-    export async function login(credentials: JSCApi.DTO.Login.ICredentialsDTO, params?: IUrlParams): Promise<AxiosResponse<JSCApi.DTO.Session.ISessionDTO>> {
-      return await client.post(`/session`, credentials, {params: params});
+    export async function loginFrontend(appName: string, credentials: JSCApi.DTO.Login.ICredentialsDTO, params?: IUrlParams): Promise<AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>> {
+      return await client.post(`/session/${encodeURI(appName)}`, credentials, {params: params});
     }
 
   }
 
   export namespace SessionClient {
 
-    export async function getCurrentSession(params?: IUrlParams): Promise<AxiosResponse<JSCApi.DTO.Session.ISessionDTO>> {
-      return await client.get(`/session`, {params: params});
+    export async function getCurrentSessionFrontend(appName: string, params?: IUrlParams): Promise<AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>> {
+      return await client.get(`/session/${encodeURI(appName)}`, {params: params});
     }
 
     export async function logout(session: JSCApi.DTO.Session.ISessionDTO, params?: IUrlParams): Promise<AxiosResponse<null>> {
@@ -126,14 +100,6 @@ namespace JSCApi {
 
     export async function getRegion(params?: IUrlParams): Promise<AxiosResponse<string>> {
       return await client.get(`/region`, {params: params});
-    }
-
-  }
-
-  export namespace UserClient {
-
-    export async function getUserRights(login: string, params?: IUrlParams): Promise<AxiosResponse<JSCApi.DTO.Authorization.IUserRightsDTO>> {
-      return await client.get(`/user/${encodeURI(login)}/rights`, {params: params});
     }
 
   }

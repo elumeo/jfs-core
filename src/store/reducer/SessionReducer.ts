@@ -1,34 +1,59 @@
-import { loginAction, sessionIsAuthorizedAction, sessionIsUnauthorizedAction, } from '../action/SessionAction';
-import { createReducer, PayloadAction } from "typesafe-actions";
-import JSCApi from "../../JscApi";
-import { configLoadedAction } from "../action/ConfigAction";
-import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
+import {
+  checkLogin,
+  checkSession,
+  authorizeSession, IAuthorizeSessionPayload,
+  unauthorizeSession
+} from '../action/SessionAction';
+import { createReducer, PayloadAction } from 'typesafe-actions';
+import JSCApi from '../../JscApi';
+import Session from '../../base/Session';
+import { configLoadedAction } from '../action/ConfigAction';
+import IFrontendSessionDTO = JSCApi.DTO.Session.IFrontendSessionDTO;
 
 export interface ISessionReducerState {
   isCheckingLogin: boolean;
   isCheckingSession: boolean;
   isAuthorized: boolean;
-  sessionDTO: JSCApi.DTO.Session.ISessionDTO;
+  frontendSessionDTO: IFrontendSessionDTO;
 }
 
 const initialState: ISessionReducerState = {
   isCheckingLogin: false,
   isCheckingSession: false,
   isAuthorized: false,
-  sessionDTO: null
+  frontendSessionDTO: null,
 };
 
 export const sessionReducer = createReducer<ISessionReducerState>(initialState)
-  .handleAction(configLoadedAction, (state): ISessionReducerState => (
-    { ...state, isCheckingSession: true }
+  .handleAction(checkLogin, (state): ISessionReducerState => (
+    { ...state,
+      isCheckingLogin: true }
   ))
-  .handleAction(loginAction, (state): ISessionReducerState => (
-    { ...state, isCheckingLogin: true }
+  .handleAction(checkSession, (state): ISessionReducerState => (
+    { ...state,
+      isCheckingSession: true }
   ))
-  .handleAction(sessionIsAuthorizedAction, (state, action: PayloadAction<string, ISessionDTO>): ISessionReducerState => (
-    { ...state, isCheckingLogin: false, isCheckingSession: false, sessionDTO: action.payload, isAuthorized: true }
-  ))
-  .handleAction(sessionIsUnauthorizedAction, (state): ISessionReducerState => (
-    { ...state, isCheckingLogin: false, isCheckingSession: false, sessionDTO: null, isAuthorized: false }
-  ))
+  .handleAction(
+    authorizeSession,
+    (
+      state: ISessionReducerState,
+      action: PayloadAction<string, IAuthorizeSessionPayload>
+    ): ISessionReducerState => ({
+      ...state,
+      isCheckingLogin: false,
+      isCheckingSession: false,
+      frontendSessionDTO: action.payload.frontendSessionDTO,
+      isAuthorized: true
+    })
+  )
+  .handleAction(
+    unauthorizeSession,
+    (state: ISessionReducerState): ISessionReducerState => ({
+      ...state,
+      isCheckingLogin: false,
+      isCheckingSession: false,
+      frontendSessionDTO: null,
+      isAuthorized: false
+    })
+  )
 ;

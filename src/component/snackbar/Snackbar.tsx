@@ -2,12 +2,12 @@ import * as React from 'react';
 import { injectIntl, InjectedIntlProps } from 'react-intl';
 import Snackbar from 'react-md/lib/Snackbars';
 import snackbarContent from './SnackBarContent';
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { dismissToastAction } from '../../store/action/ToastAction';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { IToastConfig } from "../../store/reducer/ToastReducer";
-import { List } from "immutable";
+import { IToastConfig } from '../../store/reducer/ToastReducer';
+import { List } from 'immutable';
 
 export interface IAppSnackbarProps extends InjectedIntlProps {
   toasts?: List<IToastConfig>;
@@ -46,7 +46,10 @@ class AppSnackBar extends React.Component<IAppSnackbarProps> {
   }
 }
 
-const mapStateToProps = (state: IRootReducer, ownProps: IAppSnackbarProps) => ({
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: IAppSnackbarProps
+) => ({
   ...state.toastReducer,
   ...state.sessionReducer,
   ...ownProps
@@ -57,5 +60,4 @@ const enhance = compose(
   injectIntl
 );
 
-// noinspection JSUnusedGlobalSymbols
 export default enhance(AppSnackBar);

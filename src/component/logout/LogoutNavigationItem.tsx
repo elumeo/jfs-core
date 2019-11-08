@@ -3,7 +3,7 @@ import NavigationItem from '../navigation/NavigationItem';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { openLogout } from '../../store/action/LogoutAction';
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { injectIntl } from 'react-intl';
 
 export interface ILogoutNavigationItemProps {
@@ -34,12 +34,12 @@ class LogoutNavigationItem extends React.Component<ILogoutNavigationItemProps> {
 }
 
 const mapStateToProps = (
-  state: IRootReducer,
+  state: ICoreRootReducer,
   ownProps: ILogoutNavigationItemProps
-) => ({
+): ILogoutNavigationItemProps => ({
   ...ownProps,
-  RobotUsername: state.configReducer.RobotUsername,
-  RobotPassword: state.configReducer.RobotPassword,
+  RobotUsername: state.configReducer.config.RobotUsername,
+  RobotPassword: state.configReducer.config.RobotPassword,
 });
 
 const enhance = compose(

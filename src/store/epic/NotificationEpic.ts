@@ -24,7 +24,12 @@ export const addNotificationEpic: Epic<RootAction, RootAction> = (action$) =>
     action$.pipe(
       filter(isActionOf(addNotificationAction)),
       mergeMap((action) =>
-        of(addNotificationWithIdAction({ ...action.payload, id: ++notificationIncrementId }))
+        of(
+          addNotificationWithIdAction({
+            ...action.payload,
+            id: ++notificationIncrementId
+          })
+        )
       )
     ),
     action$.pipe(

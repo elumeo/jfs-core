@@ -1,29 +1,23 @@
-import { getRegionFailed, regionLoaded, setLoginDialogVisibilityAction } from '../action/SystemAction';
+import { getRegionFailed, regionLoaded } from '../action/SystemAction';
 import { createReducer, PayloadAction } from "typesafe-actions";
 import { configLoadedAction } from "../action/ConfigAction";
 
 export interface ISystemReducerState {
-  pending: boolean;
   backendRegion: string;
-  loginDialogVisible: boolean;
 }
 
 const initialState = {
-  pending: false,
   backendRegion: null,
-  loginDialogVisible: false
+  pending: false
 };
 
 export const systemReducer = createReducer(initialState)
-  .handleAction(configLoadedAction, (state): ISystemReducerState => (
+  .handleAction(configLoadedAction, (state) => (
     { ...state, pending: true }
   ))
-  .handleAction(regionLoaded, (state, action: PayloadAction<string, any>): ISystemReducerState => (
+  .handleAction(regionLoaded, (state, action: PayloadAction<string, any>) => (
     { ...state, backendRegion: action.payload, pending: false }
   ))
-  .handleAction(getRegionFailed, (state): ISystemReducerState => (
+  .handleAction(getRegionFailed, (state) => (
     { ...state, pending: false }
-  ))
-  .handleAction(setLoginDialogVisibilityAction, (state, action: PayloadAction<string, boolean>): ISystemReducerState => (
-    { ...state, loginDialogVisible: action.payload }
   ));

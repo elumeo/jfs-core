@@ -1,18 +1,15 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import BaseRoute, { IBaseRouteProps } from './BaseRoute';
 import { enterAuthorizedRoute } from '../../store/action/RouterAction';
-import { connect } from "react-redux";
-import IRootReducer from "../../store/reducer/RootReducer";
-import NoAccess from "./NoAccess";
-import { CircularProgress } from "react-md";
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 
 export interface IAuthRouteProps extends IBaseRouteProps {
   Component: any;
   isAuthorized?: boolean;
   isCheckingSession?: boolean;
-  loginDialogVisible?: boolean;
   enterAuthorizedRoute?: () => void;
-  loaded?: boolean;
 }
 
 class AuthRoute extends React.Component<IAuthRouteProps> {
@@ -22,28 +19,31 @@ class AuthRoute extends React.Component<IAuthRouteProps> {
   }
 
   render() {
-    const { Component, isAuthorized, loginDialogVisible, isCheckingSession, loaded: configLoaded, path, ...rest } = this.props;
-    if (isAuthorized) {
-      return <BaseRoute {...rest} render={props => <Component {...props} />}/>;
-    } else if (isCheckingSession && !loginDialogVisible) {
-      return <CircularProgress id="checking-session-progress"/>;
-    } else if (configLoaded) {
-      return <NoAccess/>;
-    } else {
-      return null;
-    }
+    const {
+      props: { Component, isAuthorized, isCheckingSession, path, ...rest }
+    } = this;
+    return (
+      isAuthorized
+        ? <BaseRoute
+            {...rest}
+            render={props => <Component {...props}/>}
+          />
+        : isCheckingSession
+          ? <CircularProgress id="check-session-progress"/>
+          : <></>
+    );
   }
 }
 
-// noinspection JSUnusedGlobalSymbols
-export default connect(
-  (state: IRootReducer, ownProps: IAuthRouteProps): IAuthRouteProps => ({
-    ...ownProps,
-    ...state.sessionReducer,
-    ...state.systemReducer,
-    ...state.configReducer
-  }),
-  {
-    enterAuthorizedRoute
-  }
-)(AuthRoute);
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: IAuthRouteProps
+): IAuthRouteProps => ({
+  ...ownProps,
+  isAuthorized: state.sessionReducer.isAuthorized,
+  isCheckingSession: state.sessionReducer.isCheckingSession
+})
+
+const enhance = connect(mapStateToProps, { enterAuthorizedRoute });
+
+export default enhance(AuthRoute);

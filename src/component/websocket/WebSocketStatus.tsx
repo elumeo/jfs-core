@@ -1,5 +1,5 @@
 import * as React from 'react';
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { connect } from 'react-redux';
 import { webSocketConnectRequestAction } from '../../store/action/WebSocketAction';
 import { IWebsocketConnectionProps, IWebsocketConnectionState } from './WebSocketConnection';
@@ -13,20 +13,24 @@ class WebSocketStatus extends React.Component<IWebsocketConnectionProps, IWebsoc
     return (
       <div
         id="webSocketStatus"
-        className={`websocket-status ${webSocket.isConnected ? '-is-connected' : '-is-not-connected'}`}
+        className={[
+          `websocket-status`,
+          webSocket.isConnected ? '-is-connected' : '-is-not-connected'
+        ].join(' ')}
       >
-        WebSocket Status: <span className="websocket-status-indicator" />
+        WebSocket Status: <span className="websocket-status-indicator"/>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state: IRootReducer, ownProps: IWebsocketConnectionProps): IWebsocketConnectionProps => ({
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: IWebsocketConnectionProps
+): IWebsocketConnectionProps => ({
   ...ownProps,
   webSocket: state.webSocketReducer
 });
+const enhance = connect(mapStateToProps, { webSocketConnectRequestAction });
 
-export default connect(
-  mapStateToProps,
-  { webSocketConnectRequestAction }
-)(WebSocketStatus);
+export default enhance(WebSocketStatus);
