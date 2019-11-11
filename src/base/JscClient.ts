@@ -1,9 +1,10 @@
 import axios, { AxiosPromise } from 'axios';
 import Session from './Session';
+import IConfig from './IConfig';
 
 export default class JscClient {
 
-  static Config: any = {};
+  static Config: IConfig = {} as IConfig;
 
   static setConfig = Config => {
     JscClient.Config = Config;
@@ -21,9 +22,14 @@ export default class JscClient {
       JscClient.createAxiosConfig()
     );
 
-    instance.defaults.headers = Session.isLoggedIn()
-      ? { 'X-JSC-TOKEN': Session.getToken() }
-      : {};
+    instance.defaults.headers = {
+      'X-JSC-APP-VERSION': JscClient.Config.AppName,
+      ...(
+        Session.isLoggedIn()
+          ? { 'X-JSC-TOKEN': Session.getToken() }
+          : {}
+      )
+    };
 
     return instance;
   }
@@ -52,7 +58,7 @@ export default class JscClient {
       .delete(url, {
         ...JscClient.createAxiosConfig(),
         data,
-        config: params
+        ...params
       })
   )
 }

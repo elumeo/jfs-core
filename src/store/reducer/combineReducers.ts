@@ -14,8 +14,9 @@ import { systemReducer, ISystemReducerState } from './SystemReducer';
 import { toastReducer, IToastReducerState } from './ToastReducer';
 import { webSocketReducer, IWebSocketReducerState } from './WebSocketReducer';
 import { appReducer, IAppReducerState } from './AppReducer';
+import IConfig from '../../base/IConfig';
 
-export interface IBaseRootReducer {
+export interface IRootReducer<IConfig> {
   appReducer?: IAppReducerState;
   languageReducer?: ILanguageReducerState;
   logoutReducer?: ILogoutReducerState;
@@ -29,14 +30,11 @@ export interface IBaseRootReducer {
   systemReducer?: ISystemReducerState;
   toastReducer?: IToastReducerState;
   webSocketReducer?: IWebSocketReducerState;
+  configReducer?: IConfigReducerState<IConfig>;
 }
 
-export interface ICoreRootReducer extends IBaseRootReducer {
-  configReducer?: IConfigReducerState;
-}
+export interface ICoreRootReducer extends IRootReducer<IConfig> {
 
-export interface IAppRootReducer<IAppConfigReducerState> extends IBaseRootReducer {
-  configReducer?: IAppConfigReducerState;
 }
 
 export default reducers => combineReducers({

@@ -4,14 +4,14 @@ interface IConfig {
   Language: string;
   Currency: string;
   ForceHTTPS: boolean;
-  pending: boolean;
-  loaded: boolean;
+  AppName: string;
   Client?: {
     Host?: string;
     Timeout?: number;
   };
   JscClient: {
     Host: string;
+    Timeout?: number;
   };
   WebSocketClient: {
     Host: string;
