@@ -7,19 +7,18 @@ import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { injectIntl } from 'react-intl';
 
 export interface ILogoutNavigationItemProps {
-  RobotUsername?: string;
-  RobotPassword?: string;
+  robotLoginAvailable?: boolean;
   openLogout?: () => void;
 }
 
 class LogoutNavigationItem extends React.Component<ILogoutNavigationItemProps> {
   render() {
     const {
-      props: { RobotUsername, RobotPassword, openLogout }
+      props: { robotLoginAvailable, openLogout }
     } = this;
 
     return (
-      !(RobotUsername && RobotPassword)
+      !(robotLoginAvailable)
         ? (
           <NavigationItem
             iconName="exit_to_app"
@@ -38,8 +37,13 @@ const mapStateToProps = (
   ownProps: ILogoutNavigationItemProps
 ): ILogoutNavigationItemProps => ({
   ...ownProps,
-  RobotUsername: state.configReducer.config.RobotUsername,
-  RobotPassword: state.configReducer.config.RobotPassword,
+  robotLoginAvailable: (
+    state.configReducer.config && (
+      state.configReducer.config.RobotUsername &&
+      state.configReducer.config.RobotPassword
+    ) &&
+    state.appReducer.allowRobotLogin
+  )
 });
 
 const enhance = compose(

@@ -5,7 +5,7 @@ import { catchError, filter, concatMap, } from 'rxjs/operators';
 import { RootAction } from '../action/RootAction';
 import axios, { AxiosResponse } from 'axios';
 import { isActionOf } from 'typesafe-actions';
-import JscClient from '../../base/JscClient++';
+import JscClient from '../../base/JscClient';
 import IConfig from '../../base/IConfig';
 import { appInitialized } from '../action/AppAction';
 

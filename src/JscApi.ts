@@ -1,4 +1,4 @@
-import client from './base/JscClient++';
+import client from './base/JscClient';
 import { AxiosResponse } from 'axios';
 
 // This constant is used in the project tools (not in the JFS apps)

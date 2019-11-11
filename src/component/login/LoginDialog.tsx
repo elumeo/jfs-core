@@ -28,11 +28,6 @@ interface ILoginDialogState {
 class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> {
   state = { username: '', password: '' };
 
-  login = () => {
-    const { state: { username, password } } = this;
-    this.props.checkLogin({ username, password });
-  };
-
   render() {
     const {
       props: {

@@ -1,106 +1,58 @@
 import axios, { AxiosPromise } from 'axios';
-import Session from "./Session";
+import Session from './Session';
 
-/**
- * You have to load the config your self.
- * Once the config is loaded you have to injected it here using injectConfig().
- *
- * All client calls will be delayed as long as the config wasn't injected.
- */
+export default class JscClient {
 
-let Config = null;
+  static Config: any = {};
 
-const generateAxiosConfig = (config: any, callback): any => {
-  if (Config) {
-    return callback({
-      ...config,
-      baseURL: Config.Client.Host,
-      timeout: Config.Client.Timeout,
-      validateStatus: (status: number) => status < 400
-    });
+  static setConfig = Config => {
+    JscClient.Config = Config;
   }
-  else {
-    /* Wait for the config to get injected */
-    setTimeout(() => generateAxiosConfig(config, callback), 200);
-  }
-};
 
-export const clientInstance = (callback) => generateAxiosConfig(
-  {},
-  axiosConfig => {
-    const instance = axios.create(axiosConfig);
+  static createAxiosConfig = () => ({
+    ...JscClient.Config,
+    baseURL: JscClient.Config.JscClient.Host,
+    timeout: JscClient.Config.JscClient.Timeout,
+    validateStatus: (status: number) => status < 400
+  })
+
+  static createClient = () => {
+    const instance = axios.create(
+      JscClient.createAxiosConfig()
+    );
 
     instance.defaults.headers = Session.isLoggedIn()
       ? { 'X-JSC-TOKEN': Session.getToken() }
       : {};
 
-    return callback(instance, axiosConfig);
+    return instance;
   }
-);
 
-export const injectConfig = config => {
-  Config = config;
-};
+  static get = (url: string, params: any): AxiosPromise<any> => (
+    JscClient
+      .createClient()
+      .get(url, params)
+  )
 
-function checkDestroySession(error) {
-  if (error.response && error.response.status && error.response.status == 401) {
-    Session.removeToken();
-  }
+  static post = (url: string, data: any, params: any): AxiosPromise<any> => (
+    JscClient
+      .createClient()
+      .post(url, data, params)
+  )
+
+  static put = (url: string, data: any, params: any): AxiosPromise<any> => (
+    JscClient
+      .createClient()
+      .put(url, data, params)
+  )
+
+  static delete = (url: string, data: any, params: any): AxiosPromise<any> => (
+    JscClient
+      .createClient()
+      .delete(url, {
+        ...JscClient.createAxiosConfig(),
+        data,
+        config: params
+      })
+  )
 }
-
-export default {
-  get: async (url, params): Promise<any> => {
-    return await new Promise((resolve, reject) => {
-      clientInstance(
-        instance => (
-          instance
-            .get(url, params)
-            .then(resolve)
-            .catch(error => {
-              checkDestroySession(error);
-              reject(error);
-            })
-        )
-      )
-    });
-  },
-
-  post: (url: string, data: any, config?: any) => {
-    return clientInstance(
-      instance => (
-        instance
-          .post(url, data, config)
-          .catch(error => {
-            checkDestroySession(error);
-            throw error;
-          })
-      )
-    );
-  },
-
-  put: (url: string, data: any, config?: any) => {
-    return clientInstance(
-      instance => (
-        instance
-          .put(url, data, config)
-          .catch(error => {
-            checkDestroySession(error);
-            throw error;
-          })
-      )
-    );
-  },
-
-  delete: (url: string, data: any, config?: any) => {
-    return clientInstance(
-      (instance, axiosConfig) => (
-        instance
-          .delete(url, { ...axiosConfig, data, config })
-          .catch(error => {
-            checkDestroySession(error);
-            throw error;
-          })
-      )
-    );
-  }
-};
