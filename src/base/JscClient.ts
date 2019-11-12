@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import Session from './Session';
 
 /**
@@ -25,7 +25,7 @@ const generateAxiosConfig = (config: any, callback): any => {
   }
 };
 
-export const clientInstance = (callback) => generateAxiosConfig(
+export const clientInstance = (callback: (instance: AxiosInstance, axiosConfig: AxiosRequestConfig) => void) => generateAxiosConfig(
   {},
   axiosConfig => {
     const instance = axios.create(axiosConfig);
@@ -67,7 +67,7 @@ export default {
 
   post: (url: string, data: any, config?: any) => {
     return clientInstance(
-      instance => (
+      (instance) => (
         instance
           .post(url, data, config)
           .catch(error => {
@@ -95,7 +95,7 @@ export default {
     return clientInstance(
       (instance, axiosConfig) => (
         instance
-          .delete(url, { ...axiosConfig, data, config })
+          .delete(url, { ...axiosConfig, ...config, data })
           .catch(error => {
             checkDestroySession(error);
             throw error;

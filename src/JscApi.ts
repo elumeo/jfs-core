@@ -1,5 +1,5 @@
 import JscClient from './base/JscClient';
-import { AxiosResponse } from 'axios';
+import { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { WSClient } from './base/WSClient';
 import { Observable } from 'rxjs';
 
@@ -11,6 +11,11 @@ namespace JSCApi {
     filter?: string;
     options?: string;
   }
+
+  export interface IJscClientConfig extends AxiosRequestConfig {
+    params?: IUrlParams;
+  }
+
   export namespace DTO {
 
     export namespace App {
@@ -100,33 +105,33 @@ namespace JSCApi {
     }
   }
   export namespace LoginClient {
-    export async function login(credentials: JSCApi.DTO.Login.ICredentialsDTO, params?: IUrlParams): Promise<AxiosResponse<JSCApi.DTO.Session.ISessionDTO>> {
-      return await JscClient.post('/session', credentials, {params: params});
+    export async function login(credentials: JSCApi.DTO.Login.ICredentialsDTO, config?: IJscClientConfig): Promise<AxiosResponse<JSCApi.DTO.Session.ISessionDTO>> {
+      return await JscClient.post('/session', credentials, config);
     }
 
   }
 
   export namespace SessionClient {
-    export async function getCurrentSession(params?: IUrlParams): Promise<AxiosResponse<JSCApi.DTO.Session.ISessionDTO>> {
-      return await JscClient.get('/session', {params: params});
+    export async function getCurrentSession(config?: IJscClientConfig): Promise<AxiosResponse<JSCApi.DTO.Session.ISessionDTO>> {
+      return await JscClient.get('/session', config);
     }
 
-    export async function logout(session: JSCApi.DTO.Session.ISessionDTO, params?: IUrlParams): Promise<AxiosResponse<null>> {
-      return await JscClient.delete('/session', session, {params: params});
+    export async function logout(session: JSCApi.DTO.Session.ISessionDTO, config?: IJscClientConfig): Promise<AxiosResponse<null>> {
+      return await JscClient.delete('/session', session, config);
     }
 
   }
 
   export namespace SystemClient {
-    export async function getRegion(params?: IUrlParams): Promise<AxiosResponse<string>> {
-      return await JscClient.get('/region', {params: params});
+    export async function getRegion(config?: IJscClientConfig): Promise<AxiosResponse<string>> {
+      return await JscClient.get('/region', config);
     }
 
   }
 
   export namespace UserClient {
-    export async function getUserRights(login: string, params?: IUrlParams): Promise<AxiosResponse<JSCApi.DTO.Authorization.IUserRightsDTO>> {
-      return await JscClient.get('/user/' + encodeURI(login) + '/rights', {params: params});
+    export async function getUserRights(login: string, config?: IJscClientConfig): Promise<AxiosResponse<JSCApi.DTO.Authorization.IUserRightsDTO>> {
+      return await JscClient.get('/user/' + encodeURI(login) + '/rights', config);
     }
 
   }
