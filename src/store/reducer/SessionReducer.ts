@@ -2,7 +2,8 @@ import {
   checkLogin,
   checkSession,
   authorizeSession, IAuthorizeSessionPayload,
-  unauthorizeSession
+  unauthorizeSession,
+  loginFailed
 } from '../action/SessionAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import JSCApi from '../../JscApi';
@@ -59,4 +60,8 @@ export const sessionReducer = createReducer<ISessionReducerState>(initialState)
       isAuthorized: false
     })
   )
-;
+  .handleAction(loginFailed, (state): ISessionReducerState => ({
+      ...state,
+      isCheckingLogin: false
+    })
+  )

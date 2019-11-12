@@ -1,26 +1,35 @@
 import { createStandardAction } from 'typesafe-actions';
 import JSCApi from '../../JscApi';
 import IFrontendSessionDTO = JSCApi.DTO.Session.IFrontendSessionDTO;
+import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
+
+export const checkSession = createStandardAction('session/CHECK')();
 
 export interface ICheckLoginPayload {
     username: string;
     password: string;
 };
 
-interface ISessionDTORequiredPayload {
+export const checkLogin = (
+  createStandardAction('session/LOGIN')<ICheckLoginPayload>()
+);
+export const loggedIn = createStandardAction('session/LOGGED_IN')();
+
+export const loginFailed = createStandardAction('session/LOGIN_FAILED')();
+
+export interface ILogoutPayload {
+  sessionDTO?: ISessionDTO;
+}
+
+export const logout = (
+  createStandardAction('session/LOGOUT')<ILogoutPayload>()
+);
+
+export interface IAuthorizeSessionPayload {
   frontendSessionDTO: IFrontendSessionDTO;
 }
-interface ISessionDTOOptionalPayload {
-  frontendSessionDTO?: IFrontendSessionDTO;
-}
 
-export interface ILoggedInPayload extends ISessionDTORequiredPayload {};
-export interface IAuthorizeSessionPayload extends ISessionDTORequiredPayload {};
-export interface ILogoutPayload extends ISessionDTOOptionalPayload {};
-
-export const checkSession = createStandardAction('session/CHECK')();
-export const checkLogin = createStandardAction('session/LOGIN')<ICheckLoginPayload>();
-export const loggedIn = createStandardAction('session/LOGGED_IN')<ILoggedInPayload>();
-export const logout = createStandardAction('session/LOGOUT')<ILogoutPayload>();
-export const authorizeSession = createStandardAction('session/AUTHORIZE')<IAuthorizeSessionPayload>();
+export const authorizeSession = (
+  createStandardAction('session/AUTHORIZE')<IAuthorizeSessionPayload>()
+);
 export const unauthorizeSession = createStandardAction('session/UNAUTHORIZE')();

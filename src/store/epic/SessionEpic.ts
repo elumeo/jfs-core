@@ -9,14 +9,12 @@ import {
   checkLogin, ICheckLoginPayload,
   unauthorizeSession,
   authorizeSession, IAuthorizeSessionPayload,
-  logout, ILogoutPayload
+  logout, ILogoutPayload,
+  loginFailed
 } from '../action/SessionAction';
 import JSCApi from '../../JscApi';
 import Session from '../../base/Session';
 import { AxiosResponse } from 'axios';
-
-/* TODO: Should Robot login keep the user permanently logged in even if the session expires ?! */
-/* TODO: Fix - LoginDialog not shown if RobotLogin is enabled and the user has been logged. */
 
 export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
@@ -34,7 +32,6 @@ export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) =>
         Session.getToken() || allowRobotLogin && username && password
       )
     ),
-    tap(console.log),
     concatMap(
       ([, { username, password }]) => of(
         Session.getToken()
@@ -49,21 +46,22 @@ export const loginEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
     filter(isActionOf(checkLogin)),
     concatMap(
-      (action: PayloadAction<string, ICheckLoginPayload>) => {
-        return from(
-          JSCApi.LoginClient.loginFrontend(
-            store.value.configReducer.config.AppName,
-            { username: action.payload.username,
-              password: action.payload.password }
-          )
-        ).pipe(
-          switchMap(
-            (response: AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>) => of(
-              authorizeSession({ frontendSessionDTO: response.data })
-            )
+      (action: PayloadAction<string, ICheckLoginPayload>) => from(
+        JSCApi.LoginClient.loginFrontend(
+          store.value.configReducer.config.AppName,
+          { username: action.payload.username,
+            password: action.payload.password }
+        )
+      ).pipe(
+        switchMap(
+          (response: AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>) => of(
+            authorizeSession({ frontendSessionDTO: response.data })
           )
         )
-      }
+      )
+    ),
+    catchError(
+      () => of(loginFailed())
     )
   )
 );
@@ -82,9 +80,7 @@ export const checkSessionEpic: Epic<RootAction, RootAction> = (action$, store) =
         )
       )
     ),
-    catchError(() => {
-      return of(unauthorizeSession());
-    })
+    catchError(() => of(unauthorizeSession()))
   )
 )
 
@@ -94,18 +90,14 @@ export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) => (
     concatMap(
       (action: PayloadAction<string, ILogoutPayload>) => from(
         JSCApi.SessionClient.logout(
-          action.payload && action.payload.frontendSessionDTO
-            ? action.payload.frontendSessionDTO.session
-            : store.value.sessionReducer.frontendSessionDTO.session
+          action.payload && action.payload.sessionDTO
+            ? action.payload.sessionDTO
+            : store.value.sessionReducer.sessionDTO
         )
       ).pipe(
         switchMap(() => of(unauthorizeSession()))
       )
-    ),
-    catchError(error => {
-      console.error(error);
-      return EMPTY;
-    })
+    )
   )
 )
 

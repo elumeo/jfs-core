@@ -1,5 +1,4 @@
 import client from './base/JscClient';
-import { AxiosResponse } from 'axios';
 
 // This constant is used in the project tools (not in the JFS apps)
 export const JSC_API_VERSION: string = 'd2b4660b4185fa1d2ba011ffe2ad228d';
@@ -78,28 +77,28 @@ namespace JSCApi {
 
   export namespace LoginClient {
 
-    export async function loginFrontend(appName: string, credentials: JSCApi.DTO.Login.ICredentialsDTO, params?: IUrlParams): Promise<AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>> {
-      return await client.post(`/session/${encodeURI(appName)}`, credentials, {params: params});
+    export async function loginFrontend(appName: string, credentials: JSCApi.DTO.Login.ICredentialsDTO, params?: IUrlParams) {
+      return await client.post<JSCApi.DTO.Session.IFrontendSessionDTO>(`/session/${encodeURI(appName)}`, credentials, {params: params});
     }
 
   }
 
   export namespace SessionClient {
 
-    export async function getCurrentSessionFrontend(appName: string, params?: IUrlParams): Promise<AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>> {
-      return await client.get(`/session/${encodeURI(appName)}`, {params: params});
+    export async function getCurrentSessionFrontend(appName: string, params?: IUrlParams) {
+      return await client.get<JSCApi.DTO.Session.IFrontendSessionDTO>(`/session/${encodeURI(appName)}`, {params: params});
     }
 
-    export async function logout(session: JSCApi.DTO.Session.ISessionDTO, params?: IUrlParams): Promise<AxiosResponse<null>> {
-      return await client.delete(`/session`, session, {params: params});
+    export async function logout(session: JSCApi.DTO.Session.ISessionDTO, params?: IUrlParams) {
+      return await client.delete<null>(`/session`, session, {params: params});
     }
 
   }
 
   export namespace SystemClient {
 
-    export async function getRegion(params?: IUrlParams): Promise<AxiosResponse<string>> {
-      return await client.get(`/region`, {params: params});
+    export async function getRegion(params?: IUrlParams) {
+      return await client.get<string>(`/region`, {params: params});
     }
 
   }
