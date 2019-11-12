@@ -64,16 +64,16 @@ class App extends React.Component<IAppProps, IAppState> {
     return (
       <Provider store={store}>
         <WebSocketConnection>
-          <HashRouter>
-            <IntlProvider
-              locale={language}
-              messages={messages[language]}
-              key={language}>
+          <IntlProvider
+            locale={language}
+            messages={messages[language]}
+            key={language}>
+            <HashRouter>
               <>
                 {appInitialized && children}
               </>
-            </IntlProvider>
-          </HashRouter>
+            </HashRouter>
+          </IntlProvider>
         </WebSocketConnection>
       </Provider>
     );

@@ -1,6 +1,6 @@
 import { combineEpics } from 'redux-observable';
 
-import { initializeAppEpic, loggerEpic } from './AppEpic';
+import { initializeAppEpic } from './AppEpic';
 import { logoutEpic, authorizeSessionEpic, loadSessionEpic, loginEpic, checkSessionEpic, unauthorizeSessionEpic, } from './SessionEpic';
 import { getRegionEpic } from './SystemEpic';
 import { loadConfigEpic } from './ConfigEpic';
@@ -22,7 +22,6 @@ export default (...epics: any) => combineEpics(
   getRegionEpic,
   loadConfigEpic,
   logoutEpic,
-  loggerEpic,
   splitViewEpic,
   loadSessionEpic,
   checkSessionEpic,

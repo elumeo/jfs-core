@@ -1,6 +1,6 @@
 import { Epic } from 'redux-observable';
 import { RootAction } from '../action/RootAction';
-import { filter, switchMap, concatMap, catchError } from 'rxjs/operators';
+import { filter, map, switchMap, concatMap, catchError, tap } from 'rxjs/operators';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
 import { configLoadedAction, IConfigLoadedPayload } from '../action/ConfigAction';
 import { from, of, EMPTY } from 'rxjs';
@@ -21,25 +21,26 @@ import { AxiosResponse } from 'axios';
 export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
     filter(isActionOf(configLoadedAction)),
+    map((action: PayloadAction<string, IConfigLoadedPayload>) => {
+      const {
+        RobotUsername: username,
+        RobotPassword: password
+      } = action.payload.config;
+      const { allowRobotLogin } = store.value.appReducer;
+      return [allowRobotLogin, { username, password }];
+    }),
+    filter(
+      ([allowRobotLogin, { username, password }]) => (
+        Session.getToken() || allowRobotLogin && username && password
+      )
+    ),
+    tap(console.log),
     concatMap(
-      (action: PayloadAction<string, IConfigLoadedPayload>) => {
-        const {
-          RobotUsername: username,
-          RobotPassword: password
-        } = action.payload.config;
-        const { allowRobotLogin } = store.value.appReducer;
-
-        if (!Session.getToken() && !(allowRobotLogin && username && password)) {
-          return EMPTY;
-        }
-        else {
-          return of(
-            Session.getToken()
-              ? checkSession()
-              : checkLogin({ username, password })
-          )
-        }
-      }
+      ([, { username, password }]) => of(
+        Session.getToken()
+          ? checkSession()
+          : checkLogin({ username, password })
+      )
     )
   )
 )

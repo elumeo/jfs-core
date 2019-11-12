@@ -1,6 +1,7 @@
-import axios, { AxiosPromise } from 'axios';
+import axios, { AxiosPromise, AxiosResponse } from 'axios';
 import Session from './Session';
 import IConfig from './IConfig';
+import { version } from '../../package.json';
 
 export default class JscClient {
 
@@ -23,7 +24,7 @@ export default class JscClient {
     );
 
     instance.defaults.headers = {
-      'X-JSC-APP-VERSION': JscClient.Config.AppName,
+      'X-JSC-APP-VERSION': `${JscClient.Config.AppName}-${version}`,
       ...(
         Session.isLoggedIn()
           ? { 'X-JSC-TOKEN': Session.getToken() }
@@ -34,10 +35,10 @@ export default class JscClient {
     return instance;
   }
 
-  static get = (url: string, params: any): AxiosPromise<any> => (
+  static get = <R>(url: string, params: any) => (
     JscClient
       .createClient()
-      .get(url, params)
+      .get<R>(url, params)
   )
 
   static post = (url: string, data: any, params: any): AxiosPromise<any> => (

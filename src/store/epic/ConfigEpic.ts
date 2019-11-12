@@ -12,19 +12,15 @@ import { appInitialized } from '../action/AppAction';
 export const loadConfigEpic: Epic<RootAction, RootAction> = (action$) => (
   action$.pipe(
     filter(isActionOf(loadConfig)),
-    concatMap(() =>
-      from(
-        axios.get('/config.json', {})
-      ).pipe(
-        concatMap((response: AxiosResponse<IConfig>) => {
-          const config: IConfig = response.data;
-          JscClient.setConfig(config);
-          return of(
-            configLoadedAction({ config }),
-            appInitialized()
-          );
-        })
-      )),
+    concatMap(() => from(axios.get('/config.json', {}))),
+    concatMap((response: AxiosResponse<IConfig>) => {
+      const config: IConfig = response.data;
+      JscClient.setConfig(config);
+      return of(
+        configLoadedAction({ config }),
+        appInitialized()
+      );
+    }),
     catchError(() =>  of(loadConfigFailed()))
   )
 );

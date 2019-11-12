@@ -31,9 +31,8 @@ const mapStateToProps = (
 ): INavigationDrawerHeaderProps => ({
   ...ownProps,
   username: (
-    state.sessionReducer.frontendSessionDTO &&
-    state.sessionReducer.frontendSessionDTO.session &&
-    state.sessionReducer.frontendSessionDTO.session.username
+    state.sessionReducer.sessionDTO &&
+    state.sessionReducer.sessionDTO.username
   )
 });
 

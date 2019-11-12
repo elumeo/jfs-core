@@ -37,8 +37,8 @@ export const webSocketConnectRequestActionEpic: Epic<RootAction, RootAction> = (
     filter(isActionOf(webSocketConnectRequestAction)),
     filter(() => state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
     concatMap(() => WebSocketClient.connect(
-      state.value.sessionReducer.frontendSessionDTO.session.token,
-      state.value.sessionReducer.frontendSessionDTO.session.lastIPAddress,
+      state.value.sessionReducer.sessionDTO.token,
+      state.value.sessionReducer.sessionDTO.lastIPAddress,
       state.value.configReducer.config.WebSocketClient.Host,
       state.value.configReducer.config.WebSocketClient.PrivateNamespace
     )),

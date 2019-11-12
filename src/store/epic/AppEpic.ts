@@ -12,14 +12,3 @@ export const initializeAppEpic: Epic<RootAction, RootAction> = (
     concatMap(() => of(loadConfig()))
   )
 )
-
-export const loggerEpic: Epic<RootAction, RootAction> = (
-  action$ => action$.pipe(
-    concatMap(
-      action => {
-        console.log(action);
-        return EMPTY;
-      }
-    )
-  )
-)

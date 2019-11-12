@@ -6,22 +6,23 @@ import {
 } from '../action/SessionAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import JSCApi from '../../JscApi';
-import Session from '../../base/Session';
-import { configLoadedAction } from '../action/ConfigAction';
-import IFrontendSessionDTO = JSCApi.DTO.Session.IFrontendSessionDTO;
+type ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
+type IPropertyDTO = JSCApi.DTO.Authorization.IPropertyDTO;
 
 export interface ISessionReducerState {
   isCheckingLogin: boolean;
   isCheckingSession: boolean;
   isAuthorized: boolean;
-  frontendSessionDTO: IFrontendSessionDTO;
+  sessionDTO: ISessionDTO;
+  appProperties: Array<IPropertyDTO>;
 }
 
 const initialState: ISessionReducerState = {
   isCheckingLogin: false,
   isCheckingSession: false,
   isAuthorized: false,
-  frontendSessionDTO: null,
+  sessionDTO: null,
+  appProperties: []
 };
 
 export const sessionReducer = createReducer<ISessionReducerState>(initialState)
@@ -42,7 +43,8 @@ export const sessionReducer = createReducer<ISessionReducerState>(initialState)
       ...state,
       isCheckingLogin: false,
       isCheckingSession: false,
-      frontendSessionDTO: action.payload.frontendSessionDTO,
+      sessionDTO: action.payload.frontendSessionDTO.session,
+      appProperties: action.payload.frontendSessionDTO.appProperties,
       isAuthorized: true
     })
   )
@@ -52,7 +54,8 @@ export const sessionReducer = createReducer<ISessionReducerState>(initialState)
       ...state,
       isCheckingLogin: false,
       isCheckingSession: false,
-      frontendSessionDTO: null,
+      sessionDTO: null,
+      appProperties: [],
       isAuthorized: false
     })
   )
