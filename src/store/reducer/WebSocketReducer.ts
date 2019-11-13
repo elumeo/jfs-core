@@ -1,9 +1,9 @@
 import {
   webSocketConnectRequestAction,
   webSocketConnectSuccessAction,
-  webSocketConnectFailedAction
+  webSocketConnectFailedAction, webSocketJoinRoomSuccessAction
 } from '../action/WebSocketAction';
-import { createReducer } from 'typesafe-actions';
+import { createReducer, PayloadAction } from 'typesafe-actions';
 
 export interface IWebSocketReducerState {
   isConnected: boolean;
@@ -39,17 +39,18 @@ export const webSocketReducer = createReducer(initialState)
     joinedRooms: []
   }))
 
-  // .handleAction(webSocketJoinRoomSuccessAction, (state: IWebSocketReducerState, action: PayloadAction<string, string>): IWebSocketReducerState => {
-  //   const indexOfRoom = state.joinedRooms.indexOf(action.payload);
-  //   const joinedRooms = state.joinedRooms;
-  //   if (indexOfRoom === -1) {
-  //     joinedRooms.push(action.payload);
-  //   }
-  //   return {
-  //     ...state,
-  //     joinedRooms
-  //   }
-  // })
+  .handleAction(webSocketJoinRoomSuccessAction, (state: IWebSocketReducerState, action: PayloadAction<string, string>): IWebSocketReducerState => {
+    const indexOfRoom = state.joinedRooms.indexOf(action.payload);
+    const joinedRooms = state.joinedRooms;
+    if (indexOfRoom === -1) {
+      joinedRooms.push(action.payload);
+    }
+    return {
+      ...state,
+      joinedRooms
+    }
+  })
+
   // .handleAction(webSocketJoinRoomFailedAction, (state: IWebSocketReducerState) => ({
   //   ...state
   // }))

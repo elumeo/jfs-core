@@ -1,5 +1,5 @@
 import { Epic, StateObservable } from 'redux-observable';
-import { filter, switchMap, concatMap } from 'rxjs/operators';
+import { filter, switchMap, concatMap, tap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 
 import { RootAction } from '../action/RootAction';
@@ -7,17 +7,15 @@ import {
   webSocketConnectFailedAction,
   webSocketConnectRequestAction,
   webSocketConnectSuccessAction,
-  // webSocketJoinRoomRequestAction,
-  // webSocketJoinRoomSuccessAction,
-  // webSocketLeaveRoomRequestAction, webSocketLeaveRoomSuccessAction,
-  // webSocketRoomUpdateAction
+  webSocketJoinRoomRequestAction,
+  webSocketJoinRoomSuccessAction
 } from '../action/WebSocketAction';
 import IRootReducer from '../reducer/RootReducer';
 import { iif, of } from 'rxjs';
 import { sessionIsAuthorizedAction } from '../action/SessionAction';
 import { WSClient } from '../../base/WSClient';
 
-export const webSocketCheckSessionIsAuthorizedActionEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<IRootReducer>) => {
+export const webSocketCheckSessionIsAuthorizedEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<IRootReducer>) => {
   return action$.pipe(
     filter(isActionOf(sessionIsAuthorizedAction)),
     filter(() => state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
@@ -25,7 +23,7 @@ export const webSocketCheckSessionIsAuthorizedActionEpic: Epic<RootAction, RootA
   );
 };
 
-export const webSocketConnectRequestActionEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<IRootReducer>) => {
+export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<IRootReducer>) => {
   return action$.pipe(
     filter(isActionOf(webSocketConnectRequestAction)),
     filter(() => state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
@@ -39,15 +37,16 @@ export const webSocketConnectRequestActionEpic: Epic<RootAction, RootAction> = (
   );
 };
 
-// export const webSocketJoinRoomRequestActionEpic: Epic<RootAction, RootAction> = (action$) => {
-//   return action$.pipe(
-//     filter(isActionOf(webSocketJoinRoomRequestAction)),
-//     concatMap((action) => WSClient.join(action.payload)),
-//     switchMap((room) => of(webSocketJoinRoomSuccessAction(room)))
-//   );
-// };
-//
-// export const webSocketJoinRoomSuccessActionEpic: Epic<RootAction, RootAction> = (action$) => {
+export const webSocketJoinRoomRequestEpic: Epic<RootAction, RootAction> = (action$) => {
+  return action$.pipe(
+    filter(isActionOf(webSocketJoinRoomRequestAction)),
+    tap(() => console.log('TAP 2')),
+    // concatMap((action) => WSClient.join(action.payload)),
+    switchMap((action) => of(webSocketJoinRoomSuccessAction(action.payload)))
+  );
+};
+
+// export const webSocketJoinRoomSuccessEpic: Epic<RootAction, RootAction> = (action$) => {
 //   return action$.pipe(
 //     filter(isActionOf(webSocketJoinRoomSuccessAction)),
 //     concatMap((action) => WSClient.listen(action.payload)),
@@ -55,7 +54,7 @@ export const webSocketConnectRequestActionEpic: Epic<RootAction, RootAction> = (
 //     switchMap((roomData) => of(webSocketRoomUpdateAction(roomData)))
 //   );
 // };
-//
+
 // export const webSocketLeaveRoomRequestActionEpic: Epic<RootAction, RootAction> = (action$) => {
 //   return action$.pipe(
 //     filter(isActionOf(webSocketLeaveRoomRequestAction)),

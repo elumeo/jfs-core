@@ -1,4 +1,4 @@
-import { Types } from "typesafe-actions";
+import { Types } from 'typesafe-actions';
 export declare type RootAction = Types extends {
     RootAction: infer T;
 } ? T : any;

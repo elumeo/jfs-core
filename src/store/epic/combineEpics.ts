@@ -7,9 +7,9 @@ import { autoLoadConfigEpic, loadConfigEpic } from './ConfigEpic';
 import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from './NotificationEpic';
 
 import {
-  webSocketCheckSessionIsAuthorizedActionEpic,
-  webSocketConnectRequestActionEpic,
-  // webSocketJoinRoomRequestActionEpic,
+  webSocketCheckSessionIsAuthorizedEpic,
+  webSocketConnectRequestEpic, webSocketJoinRoomRequestEpic,
+  // webSocketJoinRoomRequestEpic,
   // webSocketJoinRoomSuccessActionEpic,
   // webSocketLeaveRoomRequestActionEpic,
 } from './WebsocketEpic';
@@ -26,10 +26,9 @@ export default (...epics: any) => {
     logoutEpic,
     splitViewEpic,
     sessionAuthorizeEpic,
-    webSocketCheckSessionIsAuthorizedActionEpic,
-    webSocketConnectRequestActionEpic,
-    // webSocketJoinRoomRequestActionEpic,
-    // webSocketJoinRoomSuccessActionEpic,
+    webSocketCheckSessionIsAuthorizedEpic,
+    webSocketConnectRequestEpic,
+    webSocketJoinRoomRequestEpic,
     // webSocketLeaveRoomRequestActionEpic,
     logoutEpic,
     splitViewEpic,
