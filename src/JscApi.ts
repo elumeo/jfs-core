@@ -137,7 +137,7 @@ namespace JSCApi {
   }
 
   export namespace WebSocketClient {
-    export function joinRoomPing(): Observable<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<string>> {
+    export function joinRoomPing(): Observable<string> {
       return WSClient.join('ping');
     }
 

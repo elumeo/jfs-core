@@ -3,7 +3,7 @@ import { RootAction } from '../action/RootAction';
 import { filter, switchMap } from 'rxjs/operators';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
 import { configLoadedAction } from '../action/ConfigAction';
-import { from, of, EMPTY } from 'rxjs';
+import { from, of } from 'rxjs';
 import {
   checkRightsAction,
   loginAction,
@@ -40,13 +40,13 @@ export const checkRightsEpic: Epic<RootAction, RootAction> = (action$, store) =>
     switchMap(({payload: sessionDTO}) => {
       Session.setToken(sessionDTO.token);
       return from(
-        JSCApi.UserClient.getUserRights(sessionDTO.username, {filter: 'frontend:jfs'})
+        JSCApi.UserClient.getUserRights(sessionDTO.username, {params: {filter: 'frontend:jfs'}})
       ).pipe(
         switchMap(({data}) => {
-            if (data.assignedApps.some(app => app.name == store.value.configReducer.AppName)) {
+            if(data.assignedApps.some(app => app.name == store.value.configReducer.AppName)) {
               return of(sessionIsAuthorizedAction(sessionDTO));
             } else {
-              return of(logoutAction(addToastAction({contentTranslationId: 'login.noUserRights'})))
+              return of(logoutAction(addToastAction({params: {contentTranslationId: 'login.noUserRights'}})))
             }
           }
         ),
@@ -60,15 +60,15 @@ export const sessionAuthorizeEpic: Epic<RootAction, RootAction> = (action$, stor
   action$.pipe(
     filter(isActionOf([configLoadedAction, loginAction])),
     switchMap(action => {
-        const { RobotUsername, RobotPassword } = store.value.configReducer;
-        const { username, password } = action.payload;
+        const {RobotUsername, RobotPassword} = store.value.configReducer;
+        const {username, password} = action.payload;
         let promise;
-        let errorHandler = ({}) => of(addToastAction({ contentTranslationId: 'login.failed', isError: true }));
-        if (username !== undefined && password !== undefined) {
+        let errorHandler = ({}) => of(addToastAction({contentTranslationId: 'login.failed', isError: true}));
+        if(username !== undefined && password !== undefined) {
           promise = JSCApi.LoginClient.login(action.payload);
-        } else if (RobotUsername !== undefined && RobotPassword !== undefined) {
+        } else if(RobotUsername !== undefined && RobotPassword !== undefined) {
           promise = JSCApi.LoginClient.login({username: RobotUsername, password: RobotPassword});
-        } else if (Session.getToken()) {
+        } else if(Session.getToken()) {
           promise = JSCApi.SessionClient.getCurrentSession();
           errorHandler = () => of(addToastAction({contentTranslationId: 'session.expired'}));
         } else {

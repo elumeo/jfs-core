@@ -11,6 +11,7 @@ import { ISettingsReducerState } from './SettingsReducer';
 import { ISystemReducerState } from './SystemReducer';
 import { RouterState } from 'react-router-redux';
 import { ISplitViewReducerState } from "./SplitViewReducer";
+import { IWebSocketReducerState } from './WebSocketReducer';
 
 interface IRootReducer extends Bottle.IContainer {
   configReducer?: IConfigReducerState;
@@ -24,6 +25,7 @@ interface IRootReducer extends Bottle.IContainer {
   settingsReducer?: ISettingsReducerState;
   splitViewReducer?: ISplitViewReducerState;
   systemReducer?: ISystemReducerState;
+  webSocketReducer?: IWebSocketReducerState;
 }
 
 export default IRootReducer;

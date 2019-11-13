@@ -1,4 +1,5 @@
 import { createStandardAction } from 'typesafe-actions';
+import JSCApi from '../../JscApi';
 
 const featureName = 'websocket';
 
@@ -9,3 +10,5 @@ export const webSocketConnectFailedAction = createStandardAction(featureName + '
 export const webSocketJoinRoomRequestAction = createStandardAction(featureName + '/JOIN_ROOM_REQUEST')<string>();
 export const webSocketJoinRoomSuccessAction = createStandardAction(featureName + '/JOIN_ROOM_SUCCESS')<string>();
 export const webSocketJoinRoomFailedAction = createStandardAction(featureName + '/JOIN_ROOM_FAILED')();
+
+export const webSocketUpdateRoomAction = createStandardAction(featureName + '/UPDATE_ROOM')<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>();
