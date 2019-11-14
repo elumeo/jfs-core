@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { InjectedIntlProps, injectIntl } from "react-intl";
-import { Autocomplete } from "react-md";
-import { addToastAction } from "../../store/action/ToastAction";
-import IRootReducer from "../../store/reducer/RootReducer";
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { InjectedIntlProps, injectIntl } from 'react-intl';
+import { Autocomplete } from 'react-md';
+import { addToastAction } from '../../store/action/ToastAction';
+import IRootReducer from '../../store/reducer/RootReducer';
 
 import './SearchComponent.scss';
-import { Button } from "react-md/lib/Buttons";
-import CircularProgress from "react-md/lib/Progress/CircularProgress";
+import { Button } from 'react-md/lib/Buttons';
+import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 
 export interface ISearchComponentProps extends InjectedIntlProps {
-    addToastAction?: (IToastConfig) => void;
+    addToastAction?: typeof addToastAction;
     autocompleteData?: string[] | number[] | { dataLabel: string, dataValue: string }[];
     centered?: boolean;
     focusInputOnAutocomplete?: boolean;
@@ -62,14 +62,14 @@ class SearchComponent extends React.Component<ISearchComponentProps & InjectedIn
 
     handleKeyDown = e => {
         switch (e.keyCode) {
-            case 13 /* Return */
-            :
+            case 13: /* Return */
                 this.handleSearch();
                 break;
-            case 27 /* ESC */
-            :
+            case 27: /* ESC */
                 document.getElementById(this.props.id).blur();
                 break;
+          default:
+            break;
         }
     };
 
@@ -106,7 +106,7 @@ class SearchComponent extends React.Component<ISearchComponentProps & InjectedIn
           <div
             id={id}
             style={style}
-            className={"search-component md-text-field-icon-container " + className}
+            className={'search-component md-text-field-icon-container ' + className}
           >
               <div className="icon-view-box">
                   {

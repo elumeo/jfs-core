@@ -1,10 +1,10 @@
-import * as React from "react";
-import { Button } from "react-md";
-import { connect } from "react-redux";
-import { hideNotificationDrawerAction } from "../../store/action/NotificationAction";
+import * as React from 'react';
+import { Button } from 'react-md';
+import { connect } from 'react-redux';
+import { hideNotificationDrawerAction } from '../../store/action/NotificationAction';
 
 export interface IHideNotificationDrawerButtonProps {
-  hideNotificationDrawerAction?: () => void;
+  hideNotificationDrawerAction?: typeof hideNotificationDrawerAction;
 }
 
 class HideNotificationDrawerButton extends React.Component<IHideNotificationDrawerButtonProps> {

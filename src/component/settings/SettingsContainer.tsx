@@ -2,17 +2,16 @@ import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 
-import Button from "react-md/lib/Buttons/Button";
+import Button from 'react-md/lib/Buttons/Button';
 import Cell from 'react-md/lib/Grids/Cell'
 import Card from 'react-md/lib/Cards/Card';
 import CardTitle from 'react-md/lib/Cards/CardTitle';
-import CardActions from "react-md/lib/Cards/CardActions";
+import CardActions from 'react-md/lib/Cards/CardActions';
 import SelectField from 'react-md/lib/SelectFields';
 
 import { changeLanguageAction } from '../../store/action/LanguageAction';
 import IRootReducer from '../../store/reducer/RootReducer';
-import { ReactText } from "react";
-import { History, withRouter } from "react-router-dom";
+import { History, withRouter } from 'react-router-dom';
 import Cookie from 'js-cookie';
 
 import './SettingsContainer.scss';
@@ -26,7 +25,7 @@ const LANGUAGES = [
 // props & state ---------------------------------------------------------------
 interface ISettingsContainerProps extends InjectedIntlProps {
   language?: string;
-  changeLanguageAction: (language: ReactText) => void;
+  changeLanguageAction: typeof changeLanguageAction;
   history?: History;
 }
 
@@ -54,7 +53,7 @@ class SettingsContainer extends React.Component<ISettingsContainerProps> {
               itemValue="value"
               onChange={lang => {
                   Cookie.set('lang', lang);
-                  changeLanguageAction(lang);
+                  changeLanguageAction(lang.toString());
                 }
               }
             />

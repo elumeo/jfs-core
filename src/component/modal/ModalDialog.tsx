@@ -1,7 +1,7 @@
-import * as React from "react";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import * as React from 'react';
+import { InjectedIntlProps, injectIntl } from 'react-intl';
 
-import DialogContainer from "react-md/lib/Dialogs";
+import DialogContainer from 'react-md/lib/Dialogs';
 
 interface IModalDialog extends InjectedIntlProps {
   visible: boolean;
@@ -71,9 +71,9 @@ const ModalDialog: React.FC<IModalDialog> = ({
 };
 
 ModalDialog.defaultProps = {
-  title: "Modal Dialog",
-  description: "",
-  closeButtonText: "app.closeBtnLabelModalDialog",
+  title: 'Modal Dialog',
+  description: '',
+  closeButtonText: 'app.closeBtnLabelModalDialog',
 };
 
 // noinspection JSUnusedGlobalSymbols

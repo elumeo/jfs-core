@@ -10,7 +10,7 @@ import { compose } from 'redux';
 
 export interface INoAuthRouteProps extends IBaseRouteProps {
   Component: any;
-  enterUnauthorizedRoute?: () => void;
+  enterUnauthorizedRoute?: typeof enterUnauthorizedRoute;
 }
 
 class NoAuthRoute extends React.Component<INoAuthRouteProps> {

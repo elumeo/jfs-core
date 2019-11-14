@@ -11,7 +11,7 @@ import { closeDialog } from '../../store/action/SettingsAction';
 import './SettingsDialog.scss';
 
 export interface ISettingsDialogProps extends InjectedIntlProps {
-  closeDialog?: () => void;
+  closeDialog?: typeof closeDialog;
   settingsOpened?: boolean;
 }
 

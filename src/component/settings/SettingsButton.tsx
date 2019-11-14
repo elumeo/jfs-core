@@ -11,8 +11,8 @@ import { injectIntl } from 'react-intl';
 
 export interface ISettingsButtonProps {
   settingsOpened?: boolean;
-  openDialog?: () => void;
-  closeDialog?: () => void;
+  openDialog?: typeof openDialog;
+  closeDialog?: typeof closeDialog;
 }
 
 class SettingsButton extends React.Component<ISettingsButtonProps> {

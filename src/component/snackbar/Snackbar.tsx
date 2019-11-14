@@ -6,12 +6,12 @@ import IRootReducer from '../../store/reducer/RootReducer';
 import { dismissToastAction } from '../../store/action/ToastAction';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { IToastConfig } from "../../store/reducer/ToastReducer";
-import { List } from "immutable";
+import { IToastConfig } from '../../store/reducer/ToastReducer';
+import { List } from 'immutable';
 
 export interface IAppSnackbarProps extends InjectedIntlProps {
   toasts?: List<IToastConfig>;
-  dismissToastAction?: any;
+  dismissToastAction?: typeof dismissToastAction;
 }
 
 class AppSnackBar extends React.Component<IAppSnackbarProps> {

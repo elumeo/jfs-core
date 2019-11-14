@@ -1,13 +1,13 @@
-import * as React from "react";
-import { Button } from "react-md";
-import { connect } from "react-redux";
-import { pinNotificationDrawerAction, unpinNotificationDrawerAction } from "../../store/action/NotificationAction";
-import IRootReducer from "../../store/reducer/RootReducer";
+import * as React from 'react';
+import { Button } from 'react-md';
+import { connect } from 'react-redux';
+import { pinNotificationDrawerAction, unpinNotificationDrawerAction } from '../../store/action/NotificationAction';
+import IRootReducer from '../../store/reducer/RootReducer';
 
 export interface ISplitViewButtonProps {
   notificationDrawerPinned?: boolean;
-  pinNotificationDrawerAction?: () => void;
-  unpinNotificationDrawerAction?: () => void;
+  pinNotificationDrawerAction?: typeof pinNotificationDrawerAction;
+  unpinNotificationDrawerAction?: typeof unpinNotificationDrawerAction;
 }
 
 class SplitViewButton extends React.Component<ISplitViewButtonProps> {

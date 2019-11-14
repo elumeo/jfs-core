@@ -9,8 +9,8 @@ import { injectIntl } from 'react-intl';
 
 export interface INavigationButtonProps {
   navigationOpen?;
-  openNavigation?;
-  closeNavigation?;
+  openNavigation?: typeof openNavigation;
+  closeNavigation?: typeof closeNavigation;
   iconName: string;
 }
 
@@ -41,7 +41,7 @@ const mapStateToProps = (
 ) => ({
   ...ownProps,
   ...state.navigationReducer
-})
+});
 
 const enhance = compose(
   connect(mapStateToProps, { openNavigation, closeNavigation }),

@@ -31,5 +31,4 @@ const enhance = connect(
   mapStateToProps
 );
 
-// noinspection JSUnusedGlobalSymbols
 export default enhance(Content);

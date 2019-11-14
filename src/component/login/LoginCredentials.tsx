@@ -3,9 +3,9 @@ import { injectIntl, InjectedIntlProps } from 'react-intl';
 import TextField from 'react-md/lib/TextFields/TextField';
 
 export interface ILoginCredentialsProps extends InjectedIntlProps {
-  onChangeUsername: any;
-  onChangePassword: any;
-  onLogin: any;
+  onChangeUsername;
+  onChangePassword;
+  onLogin;
 }
 
 const loginCredentials: React.FC<ILoginCredentialsProps> = ({

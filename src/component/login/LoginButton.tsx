@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {InjectedIntlProps, injectIntl} from 'react-intl';
+import { InjectedIntlProps, injectIntl } from 'react-intl';
 
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';

@@ -13,7 +13,7 @@ import './LanguageSettings.scss';
 
 export interface ILanguageSettingsProps extends InjectedIntlProps {
   language?: string;
-  changeLanguageAction?: (language: string) => void;
+  changeLanguageAction?: typeof changeLanguageAction;
 }
 
 export interface ILanguageSettingsState {
@@ -46,7 +46,7 @@ class LanguageSettings extends React.Component<ILanguageSettingsProps, ILanguage
           onChange={
             lang => {
               Cookie.set('lang', lang);
-              changeLanguageAction(lang as string);
+              changeLanguageAction(lang.toString());
             }
           }
         />

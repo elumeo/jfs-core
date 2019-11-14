@@ -9,9 +9,8 @@ import { logoutAction } from '../../store/action/SessionAction';
 import { closeLogout } from '../../store/action/LogoutAction';
 
 export interface ILogoutDialogProps extends InjectedIntlProps {
-  openLogout?: () => void;
-  closeLogout?: () => void;
-  logoutAction?: () => void;
+  closeLogout?: typeof closeLogout;
+  logoutAction?: typeof logoutAction;
   logoutOpen?: boolean;
 }
 
@@ -40,7 +39,7 @@ class LogoutDialog extends React.Component<ILogoutDialogProps, ILogoutDialogStat
           {
             onClick: () => {
               closeLogout();
-              logoutAction();
+              logoutAction(null);
             },
             primary: true,
             label: formatMessage({ id: 'app.logout.action' })

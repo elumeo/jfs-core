@@ -1,13 +1,12 @@
-import * as React from "react"
+import * as React from 'react'
 
-import { connect } from "react-redux";
-import IRootReducer from "../../store/reducer/RootReducer";
-import NotificationCard from "./NotificationCard";
+import { connect } from 'react-redux';
+import IRootReducer from '../../store/reducer/RootReducer';
+import NotificationCard from './NotificationCard';
 
-import "./OnScreenNotifications.scss";
-import { INotification } from "../../store/reducer/NotificationReducer";
-
-const ReactCSSTransitionGroup = require("react-addons-css-transition-group");
+import './OnScreenNotifications.scss';
+import { INotification } from '../../store/reducer/NotificationReducer';
+const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 export interface IOnScreenNotificationsProps {
   notifications?: INotification[];
@@ -20,10 +19,10 @@ class OnScreenNotifications extends React.Component<IOnScreenNotificationsProps>
 
     return (
       <ReactCSSTransitionGroup
-        transitionName={"fadein"}
+        transitionName={'fadein'}
         transitionEnterTimeout={300}
         transitionLeaveTimeout={150}
-        className={"notification-fadein"}
+        className={'notification-fadein'}
       >
         {notifications.filter(n => n.onScreen).map(n => <NotificationCard config={n} key={n.id}/>)}
       </ReactCSSTransitionGroup>

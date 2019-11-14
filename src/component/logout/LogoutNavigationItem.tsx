@@ -9,7 +9,7 @@ import { injectIntl } from 'react-intl';
 export interface ILogoutNavigationItemProps {
   RobotUsername?: string;
   RobotPassword?: string;
-  openLogout?: () => void;
+  openLogout?: typeof openLogout;
 }
 
 class LogoutNavigationItem extends React.Component<ILogoutNavigationItemProps> {

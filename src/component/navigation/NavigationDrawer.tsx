@@ -14,14 +14,13 @@ import NavigationDrawerHeader from './NavigationDrawerHeader';
 interface INavigationDrawerProps extends InjectedIntlProps {
   navigationOpen?: boolean;
   position: DrawerPosition;
-  history?: any;
+  history?;
   version?: string;
-  navigationItems?: any;
-  closeNavigation?: () => void;
+  navigationItems?;
+  closeNavigation?: typeof closeNavigation;
 }
 
 interface INavigationDrawerState {
-
 }
 
 class NavigationDrawer extends React.Component<INavigationDrawerProps, INavigationDrawerState> {

@@ -1,17 +1,17 @@
 import * as React from 'react';
 import BaseRoute, { IBaseRouteProps } from './BaseRoute';
 import { enterAuthorizedRoute } from '../../store/action/RouterAction';
-import { connect } from "react-redux";
-import IRootReducer from "../../store/reducer/RootReducer";
-import NoAccess from "./NoAccess";
-import { CircularProgress } from "react-md";
+import { connect } from 'react-redux';
+import IRootReducer from '../../store/reducer/RootReducer';
+import NoAccess from './NoAccess';
+import { CircularProgress } from 'react-md';
 
 export interface IAuthRouteProps extends IBaseRouteProps {
   Component: any;
   isAuthorized?: boolean;
   isCheckingSession?: boolean;
   loginDialogVisible?: boolean;
-  enterAuthorizedRoute?: () => void;
+  enterAuthorizedRoute?: typeof enterAuthorizedRoute;
   loaded?: boolean;
 }
 

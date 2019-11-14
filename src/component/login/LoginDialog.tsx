@@ -8,13 +8,13 @@ import LoginButton from './LoginButton';
 import { loginAction } from '../../store/action/SessionAction';
 import IRootReducer from '../../store/reducer/RootReducer';
 import './LoginDialog.scss';
-import { setLoginDialogVisibilityAction } from "../../store/action/SystemAction";
-import Session from "../../base/Session";
+import { setLoginDialogVisibilityAction } from '../../store/action/SystemAction';
+import Session from '../../base/Session';
 
 interface ILoginDialogProps extends InjectedIntlProps {
-  children?: any;
+  children?;
   isAuthorized?: boolean;
-  loginAction?: ({}) => void;
+  loginAction?: typeof loginAction;
   isCheckingLogin?: boolean;
   loginDialogVisible?: boolean;
   RobotUsername?: string;
@@ -24,8 +24,8 @@ interface ILoginDialogProps extends InjectedIntlProps {
 }
 
 interface ILoginDialogState {
-  username?: any;
-  password?: any;
+  username?: string;
+  password?: string;
 }
 
 class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> {

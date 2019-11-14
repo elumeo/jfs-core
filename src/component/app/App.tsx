@@ -11,7 +11,7 @@ import IRootReducer from '../../store/reducer/RootReducer';
 import WebSocketConnection from '../websocket/WebSocketConnection';
 
 export interface IAppProps {
-  changeLanguageAction?: any;
+  changeLanguageAction?: typeof changeLanguageAction;
   language?: any;
   location?: Location;
   store: any;
@@ -43,9 +43,9 @@ class App extends React.Component<IAppProps, IAppState> {
 
   checkProtocol = () => {
     const { props: { ForceHTTPS } } = this;
-    const isHTTPS = window.location.protocol.toLowerCase() == "https:";
+    const isHTTPS = window.location.protocol.toLowerCase() == 'https:';
     if (!isHTTPS && ForceHTTPS) {
-      window.location.replace(window.location.toString().replace("http:", "https:"));
+      window.location.replace(window.location.toString().replace('http:', 'https:'));
     }
   };
 
@@ -99,5 +99,4 @@ const enhance = compose(
   connect(mapStateToProps, { changeLanguageAction })
 );
 
-// noinspection JSUnusedGlobalSymbols
 export default enhance(App);

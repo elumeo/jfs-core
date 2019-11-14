@@ -1,13 +1,13 @@
-import * as React from "react";
-import { Button } from "react-md";
-import { connect } from "react-redux";
-import { dismissAllNotificationsAction } from "../../store/action/NotificationAction";
-import { INotification } from "../../store/reducer/NotificationReducer";
-import IRootReducer from "../../store/reducer/RootReducer";
+import * as React from 'react';
+import { Button } from 'react-md';
+import { connect } from 'react-redux';
+import { dismissAllNotificationsAction } from '../../store/action/NotificationAction';
+import { INotification } from '../../store/reducer/NotificationReducer';
+import IRootReducer from '../../store/reducer/RootReducer';
 
 export interface IDismissAllNotificationsButtonProps {
   notifications?: INotification[];
-  dismissAllNotificationsAction?: () => void;
+  dismissAllNotificationsAction?: typeof dismissAllNotificationsAction;
 }
 
 class DismissAllNotificationsButton extends React.Component<IDismissAllNotificationsButtonProps> {

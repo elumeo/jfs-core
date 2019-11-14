@@ -2,14 +2,14 @@ import * as React from 'react';
 import { Badge, Button } from 'react-md';
 
 import './NotificationBadge.scss'
-import IRootReducer from "../../store/reducer/RootReducer";
-import { connect } from "react-redux";
-import { toggleNotificationDrawerAction } from "../../store/action/NotificationAction";
-import { INotification } from "../../store/reducer/NotificationReducer";
+import IRootReducer from '../../store/reducer/RootReducer';
+import { connect } from 'react-redux';
+import { toggleNotificationDrawerAction } from '../../store/action/NotificationAction';
+import { INotification } from '../../store/reducer/NotificationReducer';
 
 export interface INotificationBadgeProps {
   notifications?: INotification[];
-  toggleNotificationDrawerAction?: () => void;
+  toggleNotificationDrawerAction?: typeof toggleNotificationDrawerAction;
 }
 
 // noinspection JSUnusedGlobalSymbols

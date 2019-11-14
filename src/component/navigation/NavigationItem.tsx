@@ -22,7 +22,7 @@ export interface INavigationItemProps extends InjectedIntlProps {
   authorizedOnly?: boolean;
   unauthorizedOnly?: boolean;
   isAuthorized?: boolean;
-  closeNavigation?: () => void;
+  closeNavigation?: typeof closeNavigation;
   onClickRoute?: string;
   history?: History;
 }
