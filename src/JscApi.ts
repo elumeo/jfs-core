@@ -1,10 +1,10 @@
 import JscClient from './base/JscClient';
-import { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { WSClient } from './base/WSClient';
 import { Observable } from 'rxjs';
 
 // This constant is used in the project tools (not in the JFS apps)
-export const JSC_API_VERSION: string = 'c5090c9fe1c3ea1c1967bed324b2b18a';
+export const JSC_API_VERSION: string = 'c4c6da9b1c5112a5c22afeeefb49feec';
 
 namespace JSCApi {
   export interface IUrlParams {
