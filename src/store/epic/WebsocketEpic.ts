@@ -8,7 +8,10 @@ import {
   webSocketConnectRequestAction,
   webSocketConnectSuccessAction,
   webSocketJoinRoomRequestAction,
-  webSocketJoinRoomSuccessAction, webSocketUpdateRoomAction
+  webSocketJoinRoomSuccessAction,
+  webSocketLeaveRoomRequestAction,
+  webSocketLeaveRoomSuccessAction,
+  webSocketUpdateRoomAction
 } from '../action/WebSocketAction';
 import IRootReducer from '../reducer/RootReducer';
 import { iif, of } from 'rxjs';
@@ -40,7 +43,6 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
 export const webSocketJoinRoomRequestEpic: Epic<RootAction, RootAction> = (action$) => {
   return action$.pipe(
     filter(isActionOf(webSocketJoinRoomRequestAction)),
-    tap(() => console.log('TAP 2')),
     concatMap((action) => WSClient.join(action.payload)),
     switchMap((room) => of(webSocketJoinRoomSuccessAction(room)))
   );
@@ -54,10 +56,10 @@ export const webSocketJoinRoomSuccessEpic: Epic<RootAction, RootAction> = (actio
   );
 };
 
-// export const webSocketLeaveRoomRequestActionEpic: Epic<RootAction, RootAction> = (action$) => {
-//   return action$.pipe(
-//     filter(isActionOf(webSocketLeaveRoomRequestAction)),
-//     concatMap((action) => WSClient.leave(action.payload)),
-//     switchMap((room) => of(webSocketLeaveRoomSuccessAction(room)))
-//   );
-// };
+export const webSocketLeaveRoomRequestEpic: Epic<RootAction, RootAction> = (action$) => {
+  return action$.pipe(
+    filter(isActionOf(webSocketLeaveRoomRequestAction)),
+    concatMap((action) => WSClient.leave(action.payload)),
+    switchMap((room) => of(webSocketLeaveRoomSuccessAction(room)))
+  );
+};

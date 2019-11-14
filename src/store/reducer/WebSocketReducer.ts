@@ -1,7 +1,7 @@
 import {
   webSocketConnectRequestAction,
   webSocketConnectSuccessAction,
-  webSocketConnectFailedAction, webSocketJoinRoomSuccessAction
+  webSocketConnectFailedAction, webSocketJoinRoomSuccessAction, webSocketLeaveRoomSuccessAction
 } from '../action/WebSocketAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 
@@ -50,23 +50,15 @@ export const webSocketReducer = createReducer(initialState)
       joinedRooms
     }
   })
-
-  // .handleAction(webSocketJoinRoomFailedAction, (state: IWebSocketReducerState) => ({
-  //   ...state
-  // }))
-  //
-  // .handleAction(webSocketLeaveRoomSuccessAction, (state: IWebSocketReducerState, action: PayloadAction<string, string>): IWebSocketReducerState => {
-  //   const indexOfRoom = state.joinedRooms.indexOf(action.payload);
-  //   const joinedRooms = state.joinedRooms;
-  //   if (indexOfRoom !== -1) {
-  //     joinedRooms.splice(indexOfRoom, 1);
-  //   }
-  //   return {
-  //     ...state,
-  //     joinedRooms
-  //   }
-  // })
-  // .handleAction(webSocketLeaveRoomFailedAction, (state: IWebSocketReducerState) => ({
-  //   ...state
-  // }))
+  .handleAction(webSocketLeaveRoomSuccessAction, (state: IWebSocketReducerState, action: PayloadAction<string, string>): IWebSocketReducerState => {
+    const indexOfRoom = state.joinedRooms.indexOf(action.payload);
+    const joinedRooms = state.joinedRooms;
+    if (indexOfRoom !== -1) {
+      joinedRooms.splice(indexOfRoom, 1);
+    }
+    return {
+      ...state,
+      joinedRooms
+    }
+  })
 ;

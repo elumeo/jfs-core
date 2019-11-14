@@ -9,6 +9,8 @@ export const webSocketConnectFailedAction = createStandardAction(featureName + '
 
 export const webSocketJoinRoomRequestAction = createStandardAction(featureName + '/JOIN_ROOM_REQUEST')<string>();
 export const webSocketJoinRoomSuccessAction = createStandardAction(featureName + '/JOIN_ROOM_SUCCESS')<string>();
-export const webSocketJoinRoomFailedAction = createStandardAction(featureName + '/JOIN_ROOM_FAILED')();
+
+export const webSocketLeaveRoomRequestAction = createStandardAction(featureName + '/LEAVE_ROOM_REQUEST')<string>();
+export const webSocketLeaveRoomSuccessAction = createStandardAction(featureName + '/LEAVE_ROOM_SUCCESS')<string>();
 
 export const webSocketUpdateRoomAction = createStandardAction(featureName + '/UPDATE_ROOM')<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>();

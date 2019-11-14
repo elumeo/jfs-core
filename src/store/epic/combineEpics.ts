@@ -8,13 +8,12 @@ import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from 
 
 import {
   webSocketCheckSessionIsAuthorizedEpic,
-  webSocketConnectRequestEpic, webSocketJoinRoomRequestEpic,
-  // webSocketJoinRoomRequestEpic,
-  // webSocketJoinRoomSuccessActionEpic,
-  // webSocketLeaveRoomRequestActionEpic,
+  webSocketConnectRequestEpic,
+  webSocketJoinRoomRequestEpic,
+  webSocketJoinRoomSuccessEpic,
+  webSocketLeaveRoomRequestEpic
 } from './WebsocketEpic';
 
-// noinspection JSUnusedGlobalSymbols
 export default (...epics: any) => {
   return combineEpics(
     addNotificationEpic,
@@ -29,7 +28,8 @@ export default (...epics: any) => {
     webSocketCheckSessionIsAuthorizedEpic,
     webSocketConnectRequestEpic,
     webSocketJoinRoomRequestEpic,
-    // webSocketLeaveRoomRequestActionEpic,
+    webSocketJoinRoomSuccessEpic,
+    webSocketLeaveRoomRequestEpic,
     logoutEpic,
     splitViewEpic,
     sessionAuthorizeEpic,
