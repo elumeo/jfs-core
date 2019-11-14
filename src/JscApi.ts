@@ -4,7 +4,7 @@ import { WSClient } from './base/WSClient';
 import { Observable } from 'rxjs';
 
 // This constant is used in the project tools (not in the JFS apps)
-export const JSC_API_VERSION: string = 'c4c6da9b1c5112a5c22afeeefb49feec';
+export const JSC_API_VERSION: string = '02318cbbfe757b90d334c88974c72bac';
 
 namespace JSCApi {
   export interface IUrlParams {
@@ -58,6 +58,15 @@ namespace JSCApi {
         modifiedBy?: string;
       }
 
+      export interface IPropertyDTO {
+        key?: string;
+        value?: string;
+        createdAt?: string;
+        createdBy?: string;
+        modifiedAt?: string;
+        modifiedBy?: string;
+      }
+
       export interface IUserRightsDTO {
         entityAttributeAccesses?: Array<JSCApi.DTO.Authorization.IEntityAttributeAccessDTO>;
         assignedApps?: Array<JSCApi.DTO.App.IAppDTO>;
@@ -78,6 +87,15 @@ namespace JSCApi {
     }
 
     export namespace Session {
+      export interface IFrontendSessionDTO {
+        session?: JSCApi.DTO.Session.ISessionDTO;
+        appProperties?: Array<JSCApi.DTO.Authorization.IPropertyDTO>;
+        createdAt?: string;
+        createdBy?: string;
+        modifiedAt?: string;
+        modifiedBy?: string;
+      }
+
       export interface ISessionDTO {
         token?: string;
         username?: string;
@@ -105,33 +123,33 @@ namespace JSCApi {
     }
   }
   export namespace LoginClient {
-    export async function login(credentials: JSCApi.DTO.Login.ICredentialsDTO, config?: IJscClientConfig): Promise<AxiosResponse<JSCApi.DTO.Session.ISessionDTO>> {
-      return await JscClient.post('/session', credentials, config);
+    export async function loginFrontend(appName: string, credentials: JSCApi.DTO.Login.ICredentialsDTO, config?: IJscClientConfig) {
+      return await JscClient.post<JSCApi.DTO.Session.IFrontendSessionDTO>('/session/' + encodeURI(appName) + '', credentials, config);
     }
 
   }
 
   export namespace SessionClient {
-    export async function getCurrentSession(config?: IJscClientConfig): Promise<AxiosResponse<JSCApi.DTO.Session.ISessionDTO>> {
-      return await JscClient.get('/session', config);
+    export async function getCurrentSessionFrontend(appName: string, config?: IJscClientConfig) {
+      return await JscClient.get<JSCApi.DTO.Session.IFrontendSessionDTO>('/session/' + encodeURI(appName) + '', config);
     }
 
-    export async function logout(session: JSCApi.DTO.Session.ISessionDTO, config?: IJscClientConfig): Promise<AxiosResponse<null>> {
-      return await JscClient.delete('/session', session, config);
+    export async function logout(session: JSCApi.DTO.Session.ISessionDTO, config?: IJscClientConfig) {
+      return await JscClient.delete<null>('/session', session, config);
     }
 
   }
 
   export namespace SystemClient {
-    export async function getRegion(config?: IJscClientConfig): Promise<AxiosResponse<string>> {
-      return await JscClient.get('/region', config);
+    export async function getRegion(config?: IJscClientConfig) {
+      return await JscClient.get<string>('/region', config);
     }
 
   }
 
   export namespace UserClient {
-    export async function getUserRights(login: string, config?: IJscClientConfig): Promise<AxiosResponse<JSCApi.DTO.Authorization.IUserRightsDTO>> {
-      return await JscClient.get('/user/' + encodeURI(login) + '/rights', config);
+    export async function getUserRights(login: string, config?: IJscClientConfig) {
+      return await JscClient.get<JSCApi.DTO.Authorization.IUserRightsDTO>('/user/' + encodeURI(login) + '/rights', config);
     }
 
   }
