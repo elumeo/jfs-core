@@ -9,4 +9,5 @@ export default () =>
       <FormattedMessage id="app.noNotifications"/>
     </Paper>
     <FontIcon className="badges__notifications__empty__icon">notifications</FontIcon>
-  </div>;
+  </div>
+;

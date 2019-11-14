@@ -1,7 +1,9 @@
 import {
   webSocketConnectRequestAction,
   webSocketConnectSuccessAction,
-  webSocketConnectFailedAction, webSocketJoinRoomSuccessAction, webSocketLeaveRoomSuccessAction
+  webSocketConnectFailedAction,
+  webSocketJoinRoomSuccessAction,
+  webSocketLeaveRoomSuccessAction
 } from '../action/WebSocketAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 

@@ -14,7 +14,7 @@ export interface ILogoutNavigationItemProps {
 class LogoutNavigationItem extends React.Component<ILogoutNavigationItemProps> {
   render() {
     const {
-      props: { robotLoginAvailable, openLogout }
+      props: {robotLoginAvailable, openLogout}
     } = this;
 
     return (
@@ -47,7 +47,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { openLogout }),
+  connect(mapStateToProps, {openLogout}),
   injectIntl
 );
 

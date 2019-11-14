@@ -10,7 +10,7 @@ export interface ISettingsNavigationItemProps {
 
 class SettingsNavigationItem extends React.Component<ISettingsNavigationItemProps> {
   render() {
-    const { props: { openSettings } } = this;
+    const {props: {openSettings}} = this;
     return (
       <NavigationItem
         iconName="settings"
@@ -22,7 +22,7 @@ class SettingsNavigationItem extends React.Component<ISettingsNavigationItemProp
 }
 
 const enhance = compose(
-  connect(null, { openSettings })
+  connect(null, {openSettings})
 );
 
 export default enhance(SettingsNavigationItem);

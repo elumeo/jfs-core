@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Card from 'react-md/lib/Cards/Card';
 import FontIcon from 'react-md/lib/FontIcons/FontIcon';
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { InjectedIntlProps, injectIntl } from 'react-intl';
 
 import './NotificationCard.scss'
 import ErrorContent from '../snackbar/ErrorContent';
@@ -20,7 +20,7 @@ export interface INotificationCardProps extends InjectedIntlProps {
 class NotificationCard extends React.Component<INotificationCardProps & InjectedIntlProps> {
 
   getContent = (): JSX.Element => {
-    const { config: { message, translationId, error }, intl: { formatMessage } } = this.props;
+    const {config: {message, translationId, error}, intl: {formatMessage}} = this.props;
     if (!((message ? 1 : 0) ^ (translationId ? 1 : 0) ^ (error ? 1 : 0))) {
       throw new Error(
         `Either 'message' or 'translationId' or 'error' has to be provided.`
@@ -31,7 +31,7 @@ class NotificationCard extends React.Component<INotificationCardProps & Injected
       content = message;
     }
     if (translationId) {
-      content = formatMessage({ id: translationId });
+      content = formatMessage({id: translationId});
     }
     if (error) {
       content = <ErrorContent contentError={error}/>
@@ -40,7 +40,7 @@ class NotificationCard extends React.Component<INotificationCardProps & Injected
   };
 
   getIcon = () => {
-    const { config: { icon, error } } = this.props;
+    const {config: {icon, error}} = this.props;
     const iconName = error ? 'error' : icon;
 
     return iconName ? (
@@ -51,7 +51,7 @@ class NotificationCard extends React.Component<INotificationCardProps & Injected
   };
 
   getCloseButton = () => {
-    const { dismissNotificationAction, config } = this.props;
+    const {dismissNotificationAction, config} = this.props;
     return <button
       onClick={(event) => {
         event.stopPropagation();
@@ -64,13 +64,13 @@ class NotificationCard extends React.Component<INotificationCardProps & Injected
   };
 
   render() {
-    const { config, config: { error, isError, onClick }, intl: { formatMessage } } = this.props;
+    const {config, config: {error, isError, onClick}, intl: {formatMessage}} = this.props;
     const errorClass = isError || error ? 'error' : '';
     const clickClass = onClick ? 'clickable' : '';
     return (
       <Card
         onClick={() => {
-          if(onClick) {
+          if (onClick) {
             onClick(config);
           }
         }}
@@ -96,7 +96,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { dismissNotificationAction }),
+  connect(mapStateToProps, {dismissNotificationAction}),
   injectIntl
 );
 

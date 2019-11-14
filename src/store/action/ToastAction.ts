@@ -1,5 +1,7 @@
-import { IToastConfig } from "../reducer/ToastReducer";
-import { createStandardAction } from "typesafe-actions";
+import { IToastConfig } from '../reducer/ToastReducer';
+import { createStandardAction } from 'typesafe-actions';
 
-export const addToastAction = createStandardAction('toast/ADD')<IToastConfig>();
-export const dismissToastAction = createStandardAction('toast/DELETE')();
+const featureName = 'toast';
+
+export const addToastAction = createStandardAction(featureName + '/ADD')<IToastConfig>();
+export const dismissToastAction = createStandardAction(featureName + '/DELETE')();

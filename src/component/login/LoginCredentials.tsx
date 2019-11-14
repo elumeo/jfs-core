@@ -8,10 +8,12 @@ export interface ILoginCredentialsProps extends InjectedIntlProps {
   onLogin;
 }
 
-const loginCredentials: React.FC<ILoginCredentialsProps> = ({
-  intl: { formatMessage },
-  onChangeUsername, onChangePassword, onLogin
-}) => (
+const loginCredentials: React.FC<ILoginCredentialsProps> = (
+  {
+    intl: {formatMessage},
+    onChangeUsername, onChangePassword, onLogin
+  }
+) => (
   <div className="login-credentials">
     <TextField
       id="username"

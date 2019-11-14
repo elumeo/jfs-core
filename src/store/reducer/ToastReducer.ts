@@ -1,6 +1,6 @@
 import { addToastAction, dismissToastAction, } from '../action/ToastAction';
 import { List } from 'immutable';
-import { createReducer, PayloadAction } from "typesafe-actions";
+import { createReducer, PayloadAction } from 'typesafe-actions';
 
 export interface IToastConfig {
   contentMessage?: string | null;
@@ -20,10 +20,9 @@ const initialState: IToastReducerState = {
   toasts: List<IToastConfig>(),
 };
 
-// noinspection JSUnusedGlobalSymbols,TypeScriptValidateJSTypes
 export const toastReducer = createReducer(initialState)
   .handleAction(addToastAction, (state: IToastReducerState, action: PayloadAction<string, IToastConfig>): IToastReducerState => (
-    { ...state, toasts: state.toasts.unshift(action.payload) }
+    {...state, toasts: state.toasts.unshift(action.payload)}
   ))
   .handleAction(dismissToastAction, (state: IToastReducerState): IToastReducerState => {
     let toastsCount: number;
@@ -47,6 +46,6 @@ export const toastReducer = createReducer(initialState)
         && lastToast.contentError.toString() == previousToast.contentError.toString();
       toastsAreEqual = messagesAreEqual || translationIdsAreEqual || errorsAreEqual;
     } while (toastsAreEqual);
-    return { ...state, toasts: state.toasts };
+    return {...state, toasts: state.toasts};
   })
 ;

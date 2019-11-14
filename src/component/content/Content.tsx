@@ -11,7 +11,7 @@ export interface IContentProps {
 
 class Content extends React.Component<IContentProps> {
   render() {
-    const { props: { children, splitViewEnabled } } = this;
+    const {props: {children, splitViewEnabled}} = this;
 
     const contentClassName = [
       `authorized-content`,

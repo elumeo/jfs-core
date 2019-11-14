@@ -15,7 +15,7 @@ export interface ISettingsButtonProps {
 
 class SettingsButton extends React.Component<ISettingsButtonProps> {
   render() {
-    const { props: { settingsOpen, openSettings, closeSettings } } = this;
+    const {props: {settingsOpen, openSettings, closeSettings}} = this;
     return (
       <Button
         icon
@@ -35,7 +35,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { openSettings, closeSettings }),
+  connect(mapStateToProps, {openSettings, closeSettings}),
   injectIntl
 );
 

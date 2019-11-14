@@ -93,7 +93,6 @@ const mapStateToProps = (
   ...ownProps
 });
 
-// noinspection JSUnusedGlobalSymbols
 export default connect(mapStateToProps, {
   toggleNotificationDrawerAction,
   hideNotificationDrawerAction

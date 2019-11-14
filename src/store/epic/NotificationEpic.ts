@@ -14,8 +14,8 @@ import {
   showNotificationDrawerAction,
   toggleNotificationDrawerAction,
   unpinNotificationDrawerAction,
-} from "../action/NotificationAction";
-import { disableSplitViewAction, enableSplitViewAction } from "../action/SplitViewAction";
+} from '../action/NotificationAction';
+import { disableSplitViewAction, enableSplitViewAction } from '../action/SplitViewAction';
 
 let notificationIncrementId = 0;
 

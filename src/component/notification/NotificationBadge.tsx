@@ -15,7 +15,7 @@ export interface INotificationBadgeProps {
 class NotificationBadge extends React.Component<INotificationBadgeProps> {
 
   render() {
-    const { notifications, toggleNotificationDrawerAction } = this.props;
+    const {notifications, toggleNotificationDrawerAction} = this.props;
     const empty = !notifications.length;
     return (
       <Badge

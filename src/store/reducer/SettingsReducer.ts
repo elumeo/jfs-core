@@ -17,4 +17,5 @@ export const settingsReducer = createReducer(initialState)
   .handleAction(closeSettings, (state) => ({
     ...state,
     settingsOpen: false
-  }));
+  }))
+;

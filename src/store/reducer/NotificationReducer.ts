@@ -9,7 +9,7 @@ import {
   showNotificationDrawerAction,
   unpinNotificationDrawerAction
 } from '../action/NotificationAction';
-import { createReducer, PayloadAction } from "typesafe-actions";
+import { createReducer, PayloadAction } from 'typesafe-actions';
 
 export interface INotificationContent {
   error?: Error;
@@ -43,7 +43,6 @@ const initialState: INotificationReducerState = {
 export const NOTIFICATION_LIMIT: number = 123;
 export const NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT: number = 20;
 
-// noinspection JSUnusedGlobalSymbols,TypeScriptValidateJSTypes
 export const notificationReducer = createReducer(initialState)
   .handleAction(addNotificationWithIdAction, (state: INotificationReducerState, action: PayloadAction<string, INotification>): INotificationReducerState => {
     const notifications = [{ ...action.payload, onScreen: true }, ...state.notifications];

@@ -13,6 +13,6 @@ class HideNotificationDrawerButton extends React.Component<IHideNotificationDraw
   }
 }
 
-const enhance = connect(null, { hideNotificationDrawerAction });
+const enhance = connect(null, {hideNotificationDrawerAction});
 
 export default enhance(HideNotificationDrawerButton);

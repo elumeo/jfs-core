@@ -15,7 +15,7 @@ export interface IOnScreenNotificationsProps {
 class OnScreenNotifications extends React.Component<IOnScreenNotificationsProps> {
 
   render() {
-    const { notifications } = this.props;
+    const {notifications} = this.props;
 
     return (
       <ReactCSSTransitionGroup

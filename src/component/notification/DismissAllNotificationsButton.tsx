@@ -3,7 +3,7 @@ import { Button } from 'react-md';
 import { connect } from 'react-redux';
 import { dismissAllNotificationsAction } from '../../store/action/NotificationAction';
 import { INotification } from '../../store/reducer/NotificationReducer';
-import { ICoreRootReducer } from "../../store/reducer/combineReducers";
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 
 export interface IDismissAllNotificationsButtonProps {
   notifications?: INotification[];
@@ -12,7 +12,7 @@ export interface IDismissAllNotificationsButtonProps {
 
 class DismissAllNotificationsButton extends React.Component<IDismissAllNotificationsButtonProps> {
   render() {
-    const { dismissAllNotificationsAction, notifications } = this.props;
+    const {dismissAllNotificationsAction, notifications} = this.props;
     return (
       <Button
         icon
@@ -32,6 +32,6 @@ const mapStateToProps = (
   ...ownProps
 });
 
-const enhance = connect(mapStateToProps, { dismissAllNotificationsAction });
+const enhance = connect(mapStateToProps, {dismissAllNotificationsAction});
 
 export default enhance(DismissAllNotificationsButton);

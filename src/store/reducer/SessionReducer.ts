@@ -7,6 +7,7 @@ import {
 } from '../action/SessionAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import JSCApi from '../../JscApi';
+
 type ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 type IPropertyDTO = JSCApi.DTO.Authorization.IPropertyDTO;
 
@@ -28,12 +29,16 @@ const initialState: ISessionReducerState = {
 
 export const sessionReducer = createReducer<ISessionReducerState>(initialState)
   .handleAction(checkLogin, (state): ISessionReducerState => (
-    { ...state,
-      isCheckingLogin: true }
+    {
+      ...state,
+      isCheckingLogin: true
+    }
   ))
   .handleAction(checkSession, (state): ISessionReducerState => (
-    { ...state,
-      isCheckingSession: true }
+    {
+      ...state,
+      isCheckingSession: true
+    }
   ))
   .handleAction(
     authorizeSession,
@@ -65,3 +70,4 @@ export const sessionReducer = createReducer<ISessionReducerState>(initialState)
       isCheckingLogin: false
     })
   )
+;

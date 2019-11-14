@@ -17,21 +17,23 @@ interface IModalDialog extends InjectedIntlProps {
   actions?: {}[];
 }
 
-const ModalDialog: React.FC<IModalDialog> = ({
-  title,
-  description,
-  closeDialog,
-  intl,
-  visible,
-  closeButtonText,
-  children,
-  className,
-  confirmButtonText,
-  onConfirm,
-  closeOnEsc,
-  actions
-}) => {
-  const { formatMessage } = intl;
+const ModalDialog: React.FC<IModalDialog> = (
+  {
+    title,
+    description,
+    closeDialog,
+    intl,
+    visible,
+    closeButtonText,
+    children,
+    className,
+    confirmButtonText,
+    onConfirm,
+    closeOnEsc,
+    actions
+  }
+) => {
+  const {formatMessage} = intl;
   const id = `modal-dialog-${Math.round(Math.random() * 1000)}`;
   return (
     <DialogContainer
@@ -49,7 +51,7 @@ const ModalDialog: React.FC<IModalDialog> = ({
             closeDialog(false);
           },
           primary: true,
-          label: formatMessage({ id: closeButtonText }),
+          label: formatMessage({id: closeButtonText}),
         },
         ...(
           (confirmButtonText && onConfirm) && [
@@ -58,7 +60,7 @@ const ModalDialog: React.FC<IModalDialog> = ({
                 onConfirm();
               },
               primary: true,
-              label: formatMessage({ id: confirmButtonText }),
+              label: formatMessage({id: confirmButtonText}),
             }
           ] || []
         ),
@@ -76,5 +78,4 @@ ModalDialog.defaultProps = {
   closeButtonText: 'app.closeBtnLabelModalDialog',
 };
 
-// noinspection JSUnusedGlobalSymbols
 export default injectIntl(ModalDialog);

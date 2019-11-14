@@ -59,7 +59,7 @@ const mapStateToProps = (
 
 export default withRouter(
   injectIntl(
-    connect(mapStateToProps, { closeNavigation })
+    connect(mapStateToProps, {closeNavigation})
     (NavigationDrawer)
   )
 );

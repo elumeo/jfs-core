@@ -17,20 +17,18 @@ const getToastAutohideTimeout = (text: any, min: number = 3000) => {
 };
 
 export default (toast: IToastConfig, formatMessage) => {
-  const { contentTranslationId, contentMessage, contentError } = toast;
+  const {contentTranslationId, contentMessage, contentError} = toast;
 
   let text, toastContent;
   if (contentTranslationId) {
-    text = formatMessage({ id: contentTranslationId }, { ...toast });
+    text = formatMessage({id: contentTranslationId}, {...toast});
     toastContent = text;
-  }
-  else if (contentMessage) {
+  } else if (contentMessage) {
     text = contentMessage;
     toastContent = text;
-  }
-  else {
-    const { errorMessage, errorBody } = errorText(contentError);
-    text = `${formatMessage({ id: 'app.error' })}: ${errorMessage} ${errorBody}`;
+  } else {
+    const {errorMessage, errorBody} = errorText(contentError);
+    text = `${formatMessage({id: 'app.error'})}: ${errorMessage} ${errorBody}`;
     toastContent = (
       <ErrorContent contentError={contentError}/>
     );

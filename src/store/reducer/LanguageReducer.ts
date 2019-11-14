@@ -1,7 +1,7 @@
 import {
   changeLanguageAction
 } from '../action/LanguageAction';
-import { createReducer, PayloadAction } from "typesafe-actions";
+import { createReducer, PayloadAction } from 'typesafe-actions';
 
 export interface ILanguageReducerState {
   language?: string | null;
@@ -11,9 +11,8 @@ const initialState: ILanguageReducerState = {
   language: null,
 };
 
-// noinspection JSUnusedGlobalSymbols,TypeScriptValidateJSTypes
 export const languageReducer = createReducer(initialState)
   .handleAction(changeLanguageAction, (state: ILanguageReducerState, action: PayloadAction<string, string>): ILanguageReducerState => (
-    { ...state, language: action.payload }
+    {...state, language: action.payload}
   ))
 ;

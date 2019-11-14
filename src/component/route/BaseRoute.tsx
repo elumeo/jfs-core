@@ -10,16 +10,18 @@ export interface IBaseRouteProps extends Route {
   intl?: InjectedIntl;
 }
 
-const BaseRoute: React.FC<IBaseRouteProps> = ({
-  intl: { formatMessage },
-  render,
-  translationId,
-  path,
-  ...rest
-}) => {
+const BaseRoute: React.FC<IBaseRouteProps> = (
+  {
+    intl: {formatMessage},
+    render,
+    translationId,
+    path,
+    ...rest
+  }
+) => {
   document.title = formatMessage({id: 'app.title'});
   if (translationId) {
-    document.title += ' | ' +  formatMessage({id: translationId});
+    document.title += ' | ' + formatMessage({id: translationId});
   }
   return <Route {...rest} path={path} render={render}/>;
 };

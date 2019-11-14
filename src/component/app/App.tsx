@@ -5,7 +5,7 @@ import { HashRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import Cookie from 'js-cookie';
 
-import { initializeApp, IInitializeAppPayload } from '../../store/action/AppAction';
+import { initializeApp } from '../../store/action/AppAction';
 import { changeLanguageAction } from '../../store/action/LanguageAction';
 import mergeTranslations from '../../Translations';
 import { ICoreRootReducer } from '../../store/reducer/combineReducers';
@@ -13,7 +13,7 @@ import WebSocketConnection from '../websocket/WebSocketConnection';
 
 export interface IAppProps {
   allowRobotLogin?: boolean;
-  initializeApp?: (payload: IInitializeAppPayload) => void;
+  initializeApp?: typeof initializeApp;
   changeLanguageAction?: typeof changeLanguageAction;
   language?: any;
   location?: Location;
@@ -29,14 +29,14 @@ export interface IAppState {
 class App extends React.Component<IAppProps, IAppState> {
   constructor(props) {
     super(props);
-    const { props: { initializeApp, allowRobotLogin } } = this;
-    initializeApp({ allowRobotLogin });
+    const {props: {initializeApp, allowRobotLogin}} = this;
+    initializeApp(allowRobotLogin); // initializeApp({allowRobotLogin}); ToDo: Warum wurde hier vorher ein Parameter übergeben? Ist in der Action nicht definiert!
     this.checkProtocol();
     this.addLocales();
   }
 
   addLocales = () => {
-    const { props: { changeLanguageAction, language } } = this;
+    const {props: {changeLanguageAction, language}} = this;
     const locales = ['de', 'en', 'fr', 'it'];
     changeLanguageAction(language);
     locales.map(
@@ -45,7 +45,7 @@ class App extends React.Component<IAppProps, IAppState> {
   };
 
   checkProtocol = () => {
-    const { props: { ForceHTTPS } } = this;
+    const {props: {ForceHTTPS}} = this;
     const isHTTPS = window.location.protocol.toLowerCase() === 'https:';
     if (!isHTTPS && ForceHTTPS) {
       window.location.replace(
@@ -56,7 +56,7 @@ class App extends React.Component<IAppProps, IAppState> {
 
   render = () => {
     const {
-      props: { language, store, Translations, children, appInitialized }
+      props: {language, store, Translations, children, appInitialized}
     } = this;
 
     const messages = mergeTranslations(Translations);
@@ -107,7 +107,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { changeLanguageAction, initializeApp })
+  connect(mapStateToProps, {changeLanguageAction, initializeApp})
 );
 
 export default enhance(App);

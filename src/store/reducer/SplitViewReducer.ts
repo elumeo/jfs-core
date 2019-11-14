@@ -1,5 +1,5 @@
-import { createReducer } from "typesafe-actions";
-import { disableSplitViewAction, enableSplitViewAction } from "../action/SplitViewAction";
+import { createReducer } from 'typesafe-actions';
+import { disableSplitViewAction, enableSplitViewAction } from '../action/SplitViewAction';
 
 export interface ISplitViewReducerState {
   splitViewEnabled: boolean;
@@ -11,8 +11,9 @@ const initialState = {
 
 export const splitViewReducer = createReducer(initialState)
   .handleAction(enableSplitViewAction, (state): ISplitViewReducerState => (
-    { ...state, splitViewEnabled: true }
+    {...state, splitViewEnabled: true}
   ))
   .handleAction(disableSplitViewAction, (state): ISplitViewReducerState => (
-    { ...state, splitViewEnabled: false }
-  ));
+    {...state, splitViewEnabled: false}
+  ))
+;

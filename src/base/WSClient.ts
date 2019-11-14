@@ -69,7 +69,7 @@ export class WSClient {
     return new Observable<string>((observer) => {
       // 1. Tell websocket we left the room so updates will not send to us anymore
       this.socket.emit(this.EVENT_LEAVE_ROOM, room);
-      if(this.listenRoomsSubscriptions.hasOwnProperty(room) === true) {
+      if (this.listenRoomsSubscriptions.hasOwnProperty(room) === true) {
         // 2. Close our internal listeners as well
         this.listenRoomsSubscriptions[room].unsubscribe();
         this.listenRoomsSubscriptions[room] = null;
@@ -83,7 +83,7 @@ export class WSClient {
 
   public static listen<T>(room: string) {
     return new Observable<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>>((observer) => {
-      if(this.socket) {
+      if (this.socket) {
         // When listening to a room we only need to initialize a new subscription to the websocket observable
         this.listenRoomsSubscriptions[room] = this.listenRoomsObservable.pipe(
           filter((roomData: JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>) => roomData.room === room)

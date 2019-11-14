@@ -1,5 +1,5 @@
 import { Epic, StateObservable } from 'redux-observable';
-import { filter, switchMap, concatMap, tap } from 'rxjs/operators';
+import { filter, switchMap, concatMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 
 import { RootAction } from '../action/RootAction';

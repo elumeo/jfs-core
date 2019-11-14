@@ -18,12 +18,13 @@ export const appReducer = createReducer(initialState)
       state: IAppReducerState,
       action: PayloadAction<string, IInitializeAppPayload>
     ) => ({
-    ...state,
-    allowRobotLogin: action.payload.allowRobotLogin
-  }))
+      ...state,
+      allowRobotLogin: action.payload.allowRobotLogin
+    }))
   .handleAction(appInitialized, (state: IAppReducerState) => {
     return ({
       ...state,
       appInitialized: true
     })
-  });
+  })
+;

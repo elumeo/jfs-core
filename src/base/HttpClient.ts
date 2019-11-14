@@ -6,7 +6,7 @@ export class HttpClient {
 
   protected static setConfigGenerator = (generateAxiosConfig) => {
     HttpClient.generateAxiosConfig = generateAxiosConfig;
-  }
+  };
 
   protected static createInstance(axiosConfig?: AxiosRequestConfig) {
     return axios.create({
@@ -42,7 +42,7 @@ export class HttpClient {
   public static delete<R>(url: string, data: any, config: AxiosRequestConfig = {}) {
     // Because Axios does not allow data body during delete request we have to put this in the config as a workaround
     // @See: https://github.com/axios/axios/issues/736
-    return HttpClient.createInstance({ data })
+    return HttpClient.createInstance({data})
       .delete(url, config)
       .catch((error: AxiosError) => {
         throw error

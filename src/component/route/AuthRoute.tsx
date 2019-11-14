@@ -20,17 +20,17 @@ class AuthRoute extends React.Component<IAuthRouteProps> {
 
   render() {
     const {
-      props: { Component, isAuthorized, isCheckingSession, path, ...rest }
+      props: {Component, isAuthorized, isCheckingSession, path, ...rest}
     } = this;
     return (
       isAuthorized
         ? <BaseRoute
-            {...rest}
-            render={props => <Component {...props}/>}
-          />
+          {...rest}
+          render={props => <Component {...props}/>}
+        />
         : isCheckingSession
-          ? <CircularProgress id="check-session-progress"/>
-          : <></>
+        ? <CircularProgress id="check-session-progress"/>
+        : <></>
     );
   }
 }
@@ -42,8 +42,8 @@ const mapStateToProps = (
   ...ownProps,
   isAuthorized: state.sessionReducer.isAuthorized,
   isCheckingSession: state.sessionReducer.isCheckingSession
-})
+});
 
-const enhance = connect(mapStateToProps, { enterAuthorizedRoute });
+const enhance = connect(mapStateToProps, {enterAuthorizedRoute});
 
 export default enhance(AuthRoute);

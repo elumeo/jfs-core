@@ -21,22 +21,22 @@ export interface ILanguageSettingsState {
 }
 
 const LANGUAGES = [
-  { label: 'Deutsch', value: 'de' },
-  { label: 'English', value: 'en' },
-  { label: 'Italiano', value: 'it' }
+  {label: 'Deutsch', value: 'de'},
+  {label: 'English', value: 'en'},
+  {label: 'Italiano', value: 'it'}
 ];
 
 class LanguageSettings extends React.Component<ILanguageSettingsProps, ILanguageSettingsState> {
   render() {
     const {
-      props: { intl: { formatMessage }, language, changeLanguageAction }
+      props: {intl: {formatMessage}, language, changeLanguageAction}
     } = this;
 
     return (
       <div className="language-settings">
         <SelectField
           id="language"
-          label={formatMessage({ id: 'settings.language' })}
+          label={formatMessage({id: 'settings.language'})}
           menuItems={LANGUAGES}
           value={language}
           itemLabel="label"
@@ -66,7 +66,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { changeLanguageAction }),
+  connect(mapStateToProps, {changeLanguageAction}),
   injectIntl
 );
 
