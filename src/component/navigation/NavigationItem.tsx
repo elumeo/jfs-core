@@ -8,7 +8,7 @@ import { withRouter, History } from 'react-router-dom';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { closeNavigation } from '../../store/action/NavigationAction';
 
 export interface INavigationItemProps extends InjectedIntlProps {
@@ -77,9 +77,9 @@ class NavigationItem extends React.Component<INavigationItemProps, INavigationIt
 }
 
 const mapStateToProps = (
-  state: IRootReducer,
+  state: ICoreRootReducer,
   ownProps: INavigationItemProps
-) => ({
+): INavigationItemProps => ({
   ...ownProps,
   isAuthorized: state.sessionReducer.isAuthorized
 });

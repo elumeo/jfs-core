@@ -3,23 +3,22 @@ import NavigationItem from '../navigation/NavigationItem';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { openLogout } from '../../store/action/LogoutAction';
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { injectIntl } from 'react-intl';
 
 export interface ILogoutNavigationItemProps {
-  RobotUsername?: string;
-  RobotPassword?: string;
+  robotLoginAvailable?: boolean;
   openLogout?: typeof openLogout;
 }
 
 class LogoutNavigationItem extends React.Component<ILogoutNavigationItemProps> {
   render() {
     const {
-      props: { RobotUsername, RobotPassword, openLogout }
+      props: { robotLoginAvailable, openLogout }
     } = this;
 
     return (
-      !(RobotUsername && RobotPassword)
+      !(robotLoginAvailable)
         ? (
           <NavigationItem
             iconName="exit_to_app"
@@ -34,12 +33,17 @@ class LogoutNavigationItem extends React.Component<ILogoutNavigationItemProps> {
 }
 
 const mapStateToProps = (
-  state: IRootReducer,
+  state: ICoreRootReducer,
   ownProps: ILogoutNavigationItemProps
-) => ({
+): ILogoutNavigationItemProps => ({
   ...ownProps,
-  RobotUsername: state.configReducer.RobotUsername,
-  RobotPassword: state.configReducer.RobotPassword,
+  robotLoginAvailable: (
+    state.configReducer.config && (
+      state.configReducer.config.RobotUsername &&
+      state.configReducer.config.RobotPassword
+    ) &&
+    state.appReducer.allowRobotLogin
+  )
 });
 
 const enhance = compose(

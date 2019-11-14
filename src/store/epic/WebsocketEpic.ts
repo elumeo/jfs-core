@@ -13,28 +13,36 @@ import {
   webSocketLeaveRoomSuccessAction,
   webSocketUpdateRoomAction
 } from '../action/WebSocketAction';
-import IRootReducer from '../reducer/RootReducer';
+import { ICoreRootReducer } from '../reducer/combineReducers';
 import { iif, of } from 'rxjs';
-import { sessionIsAuthorizedAction } from '../action/SessionAction';
+import { authorizeSession } from '../action/SessionAction';
 import { WSClient } from '../../base/WSClient';
 
-export const webSocketCheckSessionIsAuthorizedEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<IRootReducer>) => {
+export const webSocketCheckSessionIsAuthorizedEpic: Epic<RootAction, RootAction> = (
+  action$,
+  state: StateObservable<ICoreRootReducer>
+) => {
   return action$.pipe(
-    filter(isActionOf(sessionIsAuthorizedAction)),
+    filter(isActionOf(authorizeSession)),
     filter(() => state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
     switchMap(() => of(webSocketConnectRequestAction()))
   );
 };
 
-export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<IRootReducer>) => {
+export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (
+  action$,
+  state: StateObservable<ICoreRootReducer>
+) => {
   return action$.pipe(
     filter(isActionOf(webSocketConnectRequestAction)),
     filter(() => state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
     concatMap(() => WSClient.connect(
       state.value.sessionReducer.sessionDTO.token,
       state.value.sessionReducer.sessionDTO.lastIPAddress,
-      state.value.configReducer.WebSocketClient.Host,
-      state.value.configReducer.WebSocketClient.PrivateNamespace
+      // state.value.configReducer.WebSocketClient.Host,
+      // state.value.configReducer.WebSocketClient.PrivateNamespace
+      state.value.configReducer.config.WebSocketClient.Host,
+      state.value.configReducer.config.WebSocketClient.PrivateNamespace
     )),
     switchMap((isConnected) => iif(() => isConnected === true, of(webSocketConnectSuccessAction()), of(webSocketConnectFailedAction())))
   );

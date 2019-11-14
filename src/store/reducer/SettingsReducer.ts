@@ -1,20 +1,20 @@
-import { closeDialog, openDialog } from '../action/SettingsAction';
-import { createReducer } from "typesafe-actions";
+import { closeSettings, openSettings } from '../action/SettingsAction';
+import { createReducer } from 'typesafe-actions';
 
 export interface ISettingsReducerState {
-  open: boolean;
+  settingsOpen: boolean;
 }
 
 const initialState = {
-  open: false
+  settingsOpen: false
 };
 
 export const settingsReducer = createReducer(initialState)
-  .handleAction(openDialog, (state, action) => ({
+  .handleAction(openSettings, (state) => ({
     ...state,
-    open: true
+    settingsOpen: true
   }))
-  .handleAction(closeDialog, (state, action) => ({
+  .handleAction(closeSettings, (state) => ({
     ...state,
-    open: false
+    settingsOpen: false
   }));

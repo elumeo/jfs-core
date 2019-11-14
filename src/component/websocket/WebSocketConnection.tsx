@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import IRootReducer from '../../store/reducer/RootReducer';
-import { IConfigReducerState } from '../../store/reducer/ConfigReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { IWebSocketReducerState } from '../../store/reducer/WebSocketReducer';
-import { webSocketConnectRequestAction, webSocketJoinRoomRequestAction } from '../../store/action/WebSocketAction';
+import {
+  webSocketConnectRequestAction,
+  webSocketJoinRoomRequestAction
+} from '../../store/action/WebSocketAction';
+import IConfig from '../../base/IConfig';
 
 export interface IWebsocketConnectionProps {
-  config?: IConfigReducerState;
+  config?: IConfig;
   webSocket?: IWebSocketReducerState;
   webSocketConnectRequestAction?: typeof webSocketConnectRequestAction;
   webSocketJoinRoomRequestAction?: typeof webSocketJoinRoomRequestAction;
@@ -19,17 +22,24 @@ export interface IWebsocketConnectionState {
 }
 
 class WebSocketConnection extends React.Component<IWebsocketConnectionProps, IWebsocketConnectionState> {
-  componentDidUpdate(prevProps: IWebsocketConnectionProps, prevState: IWebsocketConnectionState) {
-    if(prevProps.webSocket.isConnected === false && this.props.webSocket.isConnected && this.props.config.WebSocketClient.AutoJoinRooms) {
-      for(let i = 0; i < this.props.config.WebSocketClient.AutoJoinRooms.length; i++) {
-        this.props.webSocketJoinRoomRequestAction(this.props.config.WebSocketClient.AutoJoinRooms[i]);
-      }
+  componentDidUpdate(
+    prevProps: IWebsocketConnectionProps,
+    _prevState: IWebsocketConnectionState
+  ): void {
+    const joinRooms = (
+      prevProps.webSocket.isConnected === false &&
+      this.props.webSocket.isConnected &&
+      this.props.config.WebSocketClient.AutoJoinRooms
+    )
+    if (joinRooms) {
+      this.props.config.WebSocketClient.AutoJoinRooms.map(
+        room => this.props.webSocketJoinRoomRequestAction(room)
+      );
     }
   }
 
   public render() {
-    const {props: {children}} = this;
-
+    const { props: { children } } = this;
     return (
       <div>
         {children}
@@ -38,9 +48,12 @@ class WebSocketConnection extends React.Component<IWebsocketConnectionProps, IWe
   }
 }
 
-const mapStateToProps = (state: IRootReducer, ownProps: IWebsocketConnectionProps): IWebsocketConnectionProps => ({
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: IWebsocketConnectionProps
+): IWebsocketConnectionProps => ({
   ...ownProps,
-  config: state.configReducer,
+  config: state.configReducer.config,
   webSocket: state.webSocketReducer
 });
 

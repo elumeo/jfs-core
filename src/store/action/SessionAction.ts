@@ -1,17 +1,35 @@
-import { createStandardAction, PayloadAction } from 'typesafe-actions';
+import { createStandardAction } from 'typesafe-actions';
 import JSCApi from '../../JscApi';
-import { IToastConfig } from '../reducer/ToastReducer';
+import IFrontendSessionDTO = JSCApi.DTO.Session.IFrontendSessionDTO;
 import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 
-export type ILoginType = {
+export const checkSession = createStandardAction('session/CHECK')();
+
+export interface ICheckLoginPayload {
     username: string;
     password: string;
 };
 
-export const loginAction = createStandardAction('session/LOGIN')<ILoginType>();
-export const logoutAction = createStandardAction('session/LOGOUT')<null | PayloadAction<string, IToastConfig>>();
+export const checkLogin = (
+  createStandardAction('session/LOGIN')<ICheckLoginPayload>()
+);
+export const loggedIn = createStandardAction('session/LOGGED_IN')();
 
-export const sessionIsAuthorizedAction = createStandardAction('session/AUTHORIZED')<ISessionDTO>();
-export const sessionIsUnauthorizedAction = createStandardAction('session/UNAUTHORIZED')();
+export const loginFailed = createStandardAction('session/LOGIN_FAILED')();
 
-export const checkRightsAction = createStandardAction('rights/CHECK')<ISessionDTO>();
+export interface ILogoutPayload {
+  sessionDTO?: ISessionDTO;
+}
+
+export const logout = (
+  createStandardAction('session/LOGOUT')<ILogoutPayload>()
+);
+
+export interface IAuthorizeSessionPayload {
+  frontendSessionDTO: IFrontendSessionDTO;
+}
+
+export const authorizeSession = (
+  createStandardAction('session/AUTHORIZE')<IAuthorizeSessionPayload>()
+);
+export const unauthorizeSession = createStandardAction('session/UNAUTHORIZE')();

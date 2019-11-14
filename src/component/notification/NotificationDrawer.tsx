@@ -3,17 +3,21 @@ import * as React from 'react';
 import NotificationCard from './NotificationCard';
 import Drawer from 'react-md/lib/Drawers';
 
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { connect } from 'react-redux';
 import NoNotifications from './NoNotifications';
 import Toolbar from 'react-md/lib/Toolbars';
-import { INotification, NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT } from '../../store/reducer/NotificationReducer';
+import {
+  INotification, NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT
+} from '../../store/reducer/NotificationReducer';
 
 import './NotificationDrawer.scss'
 import HideNotificationDrawerButton from './HideNotificationDrawerButton';
 import SplitViewButton from './SplitViewButton';
 import DismissAllNotificationsButton from './DismissAllNotificationsButton';
-import { hideNotificationDrawerAction, toggleNotificationDrawerAction } from '../../store/action/NotificationAction';
+import {
+  hideNotificationDrawerAction, toggleNotificationDrawerAction
+} from '../../store/action/NotificationAction';
 
 const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
@@ -82,7 +86,9 @@ class NotificationDrawer extends React.Component<INotificationDrawerProps> {
   }
 }
 
-const mapStateToProps = (state: IRootReducer, ownProps: INotificationDrawerProps) => ({
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: INotificationDrawerProps) => ({
   ...state.notificationReducer,
   ...ownProps
 });

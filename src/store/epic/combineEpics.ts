@@ -1,9 +1,9 @@
 import { combineEpics } from 'redux-observable';
 
-import { checkRightsEpic, logoutEpic, sessionAuthorizeEpic, } from './SessionEpic';
-
+import { initializeAppEpic } from './AppEpic';
+import { logoutEpic, authorizeSessionEpic, loadSessionEpic, loginEpic, checkSessionEpic, unauthorizeSessionEpic, } from './SessionEpic';
 import { getRegionEpic } from './SystemEpic';
-import { autoLoadConfigEpic, loadConfigEpic } from './ConfigEpic';
+import { loadConfigEpic } from './ConfigEpic';
 import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from './NotificationEpic';
 
 import {
@@ -14,25 +14,23 @@ import {
   webSocketLeaveRoomRequestEpic
 } from './WebsocketEpic';
 
-export default (...epics: any) => {
-  return combineEpics(
-    addNotificationEpic,
-    autoLoadConfigEpic,
-    checkRightsEpic,
-    dismissAllNotificationsEpic,
-    getRegionEpic,
-    loadConfigEpic,
-    logoutEpic,
-    splitViewEpic,
-    sessionAuthorizeEpic,
-    webSocketCheckSessionIsAuthorizedEpic,
-    webSocketConnectRequestEpic,
-    webSocketJoinRoomRequestEpic,
-    webSocketJoinRoomSuccessEpic,
-    webSocketLeaveRoomRequestEpic,
-    logoutEpic,
-    splitViewEpic,
-    sessionAuthorizeEpic,
-    ...epics
-  );
-}
+export default (...epics: any) => combineEpics(
+  addNotificationEpic,
+  initializeAppEpic,
+  dismissAllNotificationsEpic,
+  getRegionEpic,
+  loadConfigEpic,
+  logoutEpic,
+  splitViewEpic,
+  loadSessionEpic,
+  checkSessionEpic,
+  loginEpic,
+  authorizeSessionEpic,
+  unauthorizeSessionEpic,
+  webSocketCheckSessionIsAuthorizedEpic,
+  webSocketConnectRequestEpic,
+  webSocketJoinRoomRequestEpic,
+  webSocketJoinRoomSuccessEpic,
+  webSocketLeaveRoomRequestEpic,
+  ...epics
+);

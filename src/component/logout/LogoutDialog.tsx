@@ -2,15 +2,16 @@ import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 
 import Dialog from 'react-md/lib/Dialogs';
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { logoutAction } from '../../store/action/SessionAction';
+import { logout } from '../../store/action/SessionAction';
 import { closeLogout } from '../../store/action/LogoutAction';
 
 export interface ILogoutDialogProps extends InjectedIntlProps {
+  openLogout?: () => void;
   closeLogout?: typeof closeLogout;
-  logoutAction?: typeof logoutAction;
+  logout?: typeof logout;
   logoutOpen?: boolean;
 }
 
@@ -23,7 +24,7 @@ class LogoutDialog extends React.Component<ILogoutDialogProps, ILogoutDialogStat
     const {
       props: {
         intl: { formatMessage },
-        logoutOpen, closeLogout, logoutAction
+        logoutOpen, closeLogout, logout
       }
     } = this;
 
@@ -39,7 +40,7 @@ class LogoutDialog extends React.Component<ILogoutDialogProps, ILogoutDialogStat
           {
             onClick: () => {
               closeLogout();
-              logoutAction(null);
+              logout();
             },
             primary: true,
             label: formatMessage({ id: 'app.logout.action' })
@@ -58,13 +59,16 @@ class LogoutDialog extends React.Component<ILogoutDialogProps, ILogoutDialogStat
   }
 }
 
-const mapStateToProps = (state: IRootReducer, ownProps: ILogoutDialogProps) => ({
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: ILogoutDialogProps
+): ILogoutDialogProps => ({
   ...ownProps,
   logoutOpen: state.logoutReducer.logoutOpen
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { closeLogout, logoutAction }),
+  connect(mapStateToProps, { closeLogout, logout }),
   injectIntl
 );
 

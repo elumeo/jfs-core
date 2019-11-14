@@ -5,18 +5,22 @@ import { HashRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import Cookie from 'js-cookie';
 
+import { initializeApp, IInitializeAppPayload } from '../../store/action/AppAction';
 import { changeLanguageAction } from '../../store/action/LanguageAction';
 import mergeTranslations from '../../Translations';
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import WebSocketConnection from '../websocket/WebSocketConnection';
 
 export interface IAppProps {
+  allowRobotLogin?: boolean;
+  initializeApp?: (payload: IInitializeAppPayload) => void;
   changeLanguageAction?: typeof changeLanguageAction;
   language?: any;
   location?: Location;
   store: any;
   Translations;
   ForceHTTPS?: boolean;
+  appInitialized?: boolean;
 }
 
 export interface IAppState {
@@ -25,11 +29,10 @@ export interface IAppState {
 class App extends React.Component<IAppProps, IAppState> {
   constructor(props) {
     super(props);
-    this.addLocales();
-  }
-
-  componentDidUpdate(prevProps: Readonly<IAppProps>, prevState: Readonly<IAppState>, snapshot?: any): void {
+    const { props: { initializeApp, allowRobotLogin } } = this;
+    initializeApp({ allowRobotLogin });
     this.checkProtocol();
+    this.addLocales();
   }
 
   addLocales = () => {
@@ -43,14 +46,18 @@ class App extends React.Component<IAppProps, IAppState> {
 
   checkProtocol = () => {
     const { props: { ForceHTTPS } } = this;
-    const isHTTPS = window.location.protocol.toLowerCase() == 'https:';
+    const isHTTPS = window.location.protocol.toLowerCase() === 'https:';
     if (!isHTTPS && ForceHTTPS) {
-      window.location.replace(window.location.toString().replace('http:', 'https:'));
+      window.location.replace(
+        window.location.toString().replace('http:', 'https:')
+      );
     }
   };
 
-  render() {
-    const { props: { language, store, Translations, children } } = this;
+  render = () => {
+    const {
+      props: { language, store, Translations, children, appInitialized }
+    } = this;
 
     const messages = mergeTranslations(Translations);
 
@@ -63,7 +70,7 @@ class App extends React.Component<IAppProps, IAppState> {
             key={language}>
             <HashRouter>
               <>
-                {children}
+                {appInitialized && children}
               </>
             </HashRouter>
           </IntlProvider>
@@ -74,7 +81,10 @@ class App extends React.Component<IAppProps, IAppState> {
 }
 
 // higher order components -----------------------------------------------------
-const mapStateToProps = (state: IRootReducer, ownProps: IAppProps): IAppProps => ({
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: IAppProps
+): IAppProps => ({
   language: (() => {
     try {
       JSON.parse(document.cookie);
@@ -87,16 +97,17 @@ const mapStateToProps = (state: IRootReducer, ownProps: IAppProps): IAppProps =>
       ? state.languageReducer.language
       : cookie
         ? cookie
-        : state.configReducer.Language
-          ? state.configReducer.Language
+        : state.configReducer.config && state.configReducer.config.Language
+          ? state.configReducer.config.Language
           : 'en'
   })(),
-  ForceHTTPS: state.configReducer.ForceHTTPS,
+  ForceHTTPS: state.configReducer.config && state.configReducer.config.ForceHTTPS,
+  appInitialized: state.appReducer.appInitialized,
   ...ownProps
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { changeLanguageAction })
+  connect(mapStateToProps, { changeLanguageAction, initializeApp })
 );
 
 export default enhance(App);

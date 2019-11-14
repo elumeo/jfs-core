@@ -6,7 +6,7 @@ import Drawer, { DrawerPosition } from 'react-md/lib/Drawers';
 
 import './NavigationDrawer.scss';
 
-import IRootReducer from '../../store/reducer/RootReducer';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { closeNavigation } from '../../store/action/NavigationAction';
 
 import NavigationDrawerHeader from './NavigationDrawerHeader';
@@ -49,7 +49,10 @@ class NavigationDrawer extends React.Component<INavigationDrawerProps, INavigati
 }
 
 // higher order components -----------------------------------------------------
-const mapStateToProps = (state: IRootReducer, ownProps: INavigationDrawerProps): INavigationDrawerProps => ({
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: INavigationDrawerProps
+): INavigationDrawerProps => ({
   ...state.navigationReducer,
   ...ownProps
 });

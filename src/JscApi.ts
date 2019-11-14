@@ -18,49 +18,15 @@ namespace JSCApi {
 
   export namespace DTO {
 
-    export namespace App {
-      export const I_APP_DTO_FRONTEND_APP_DOCK = 'appDock';
-      export const I_APP_DTO_FRONTEND_JFS = 'jfs';
-
-      export interface IAppDTO {
-        name?: string;
-        description?: string;
-        version?: string;
-        url?: string;
-        iconUrl?: string;
-        windowWidth?: number;
-        windowHeight?: number;
-        fullscreen?: boolean;
-        frontend?: string;
-        displayName?: string;
-        createdAt?: string;
-        createdBy?: string;
-        modifiedAt?: string;
-        modifiedBy?: string;
-      }
-
-    }
-
     export namespace Authorization {
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ = '1';
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE = '2';
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE = '4';
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE = '8';
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE = '3';
 
-      export interface IEntityAttributeAccessDTO {
-        entity?: string;
-        attribute?: string;
-        access?: string;
+      export interface IPropertyDTO {
+        key?: string;
+        value?: string;
         createdAt?: string;
         createdBy?: string;
         modifiedAt?: string;
         modifiedBy?: string;
-      }
-
-      export interface IUserRightsDTO {
-        entityAttributeAccesses?: Array<JSCApi.DTO.Authorization.IEntityAttributeAccessDTO>;
-        assignedApps?: Array<JSCApi.DTO.App.IAppDTO>;
       }
 
     }
@@ -78,6 +44,15 @@ namespace JSCApi {
     }
 
     export namespace Session {
+      export interface IFrontendSessionDTO {
+        session?: JSCApi.DTO.Session.ISessionDTO;
+        appProperties?: Array<JSCApi.DTO.Authorization.IPropertyDTO>;
+        createdAt?: string;
+        createdBy?: string;
+        modifiedAt?: string;
+        modifiedBy?: string;
+      }
+
       export interface ISessionDTO {
         token?: string;
         username?: string;
@@ -105,26 +80,29 @@ namespace JSCApi {
     }
   }
   export namespace LoginClient {
-    export async function login(credentials: JSCApi.DTO.Login.ICredentialsDTO, config?: IJscClientConfig): Promise<AxiosResponse<JSCApi.DTO.Session.ISessionDTO>> {
-      return await JscClient.post('/session', credentials, config);
+
+    export async function loginFrontend(appName: string, credentials: JSCApi.DTO.Login.ICredentialsDTO, params?: IUrlParams) {
+      return await client.post<JSCApi.DTO.Session.IFrontendSessionDTO>(`/session/${encodeURI(appName)}`, credentials, {params: params});
     }
 
   }
 
   export namespace SessionClient {
-    export async function getCurrentSession(config?: IJscClientConfig): Promise<AxiosResponse<JSCApi.DTO.Session.ISessionDTO>> {
-      return await JscClient.get('/session', config);
+
+    export async function getCurrentSessionFrontend(appName: string, params?: IUrlParams) {
+      return await client.get<JSCApi.DTO.Session.IFrontendSessionDTO>(`/session/${encodeURI(appName)}`, {params: params});
     }
 
-    export async function logout(session: JSCApi.DTO.Session.ISessionDTO, config?: IJscClientConfig): Promise<AxiosResponse<null>> {
-      return await JscClient.delete('/session', session, config);
+    export async function logout(session: JSCApi.DTO.Session.ISessionDTO, params?: IUrlParams) {
+      return await client.delete<null>(`/session`, session, {params: params});
     }
 
   }
 
   export namespace SystemClient {
-    export async function getRegion(config?: IJscClientConfig): Promise<AxiosResponse<string>> {
-      return await JscClient.get('/region', config);
+
+    export async function getRegion(params?: IUrlParams) {
+      return await client.get<string>(`/region`, {params: params});
     }
 
   }

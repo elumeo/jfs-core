@@ -5,14 +5,14 @@ import { compose } from 'redux';
 
 import ModalDialog from '../../component/modal/ModalDialog';
 
-import IRootReducer from '../../store/reducer/RootReducer';
-import { closeDialog } from '../../store/action/SettingsAction';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
+import { closeSettings } from '../../store/action/SettingsAction';
 
 import './SettingsDialog.scss';
 
 export interface ISettingsDialogProps extends InjectedIntlProps {
-  closeDialog?: typeof closeDialog;
-  settingsOpened?: boolean;
+  closeSettings?: typeof closeSettings;
+  settingsOpen?: boolean;
 }
 
 export interface ISettingsDialogState {
@@ -22,14 +22,14 @@ export interface ISettingsDialogState {
 class SettingsDialog extends React.Component<ISettingsDialogProps, ISettingsDialogState> {
   render() {
     const {
-      props: { intl: { formatMessage }, closeDialog, settingsOpened, children }
+      props: { intl: { formatMessage }, closeSettings, settingsOpen, children }
     } = this;
     return (
       <ModalDialog
         title={formatMessage({ id: 'app.settings' })}
         className="settings-dialog"
-        visible={settingsOpened}
-        closeDialog={() => closeDialog()}
+        visible={settingsOpen}
+        closeDialog={() => closeSettings()}
       >
         {children}
       </ModalDialog>
@@ -37,13 +37,16 @@ class SettingsDialog extends React.Component<ISettingsDialogProps, ISettingsDial
   }
 }
 
-const mapStateToProps = (state: IRootReducer, ownProps: ISettingsDialogProps) => ({
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: ISettingsDialogProps
+): ISettingsDialogProps => ({
   ...ownProps,
-  settingsOpened: state.settingsReducer.open
+  settingsOpen: state.settingsReducer.settingsOpen
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { closeDialog }),
+  connect(mapStateToProps, { closeSettings }),
   injectIntl
 );
 

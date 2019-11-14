@@ -1,29 +1,26 @@
 import { configLoadedAction, loadConfig, loadConfigFailed } from '../action/ConfigAction';
 import { Epic } from 'redux-observable';
 import { from, of } from 'rxjs';
-import { catchError, filter, switchMap, } from 'rxjs/operators';
+import { catchError, filter, concatMap, } from 'rxjs/operators';
 import { RootAction } from '../action/RootAction';
-import axios from 'axios';
-import { isActionOf } from "typesafe-actions";
-import { injectConfig } from "../../base/JscClient";
-
-export const autoLoadConfigEpic: Epic<RootAction, RootAction> = (action$, store) => (
-  action$.pipe(
-    filter(() => !store.value.configReducer.loaded && !store.value.configReducer.pending),
-    switchMap(() => of(loadConfig()))
-  )
-);
+import axios, { AxiosResponse } from 'axios';
+import { isActionOf } from 'typesafe-actions';
+import JscClient from '../../base/JscClient';
+import IConfig from '../../base/IConfig';
+import { appInitialized } from '../action/AppAction';
 
 export const loadConfigEpic: Epic<RootAction, RootAction> = (action$) => (
   action$.pipe(
     filter(isActionOf(loadConfig)),
-    switchMap(() =>
-      from(axios.get('/config.json', {})).pipe(
-        switchMap((response: any) => {
-          injectConfig(response.data);
-          return of(configLoadedAction(response.data));
-        })
-      )),
+    concatMap(() => from(axios.get('/config.json', {}))),
+    concatMap((response: AxiosResponse<IConfig>) => {
+      const config: IConfig = response.data;
+      JscClient.setConfig(config);
+      return of(
+        configLoadedAction({ config }),
+        appInitialized()
+      );
+    }),
     catchError(() =>  of(loadConfigFailed()))
   )
 );

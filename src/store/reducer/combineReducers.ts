@@ -1,21 +1,44 @@
 import { combineReducers } from 'redux';
+import { routerReducer as reactRouterReducer, RouterState } from 'react-router-redux';
 
-import { routerReducer as reactRouterReducer } from 'react-router-redux';
-import { configReducer } from './ConfigReducer';
-import { languageReducer } from './LanguageReducer';
-import { logoutReducer } from './LogoutReducer';
-import { navigationReducer } from './NavigationReducer';
-import { notificationReducer } from "./NotificationReducer";
-import { routerReducer } from './RouterReducer';
-import { sessionReducer } from './SessionReducer';
-import { settingsReducer } from './SettingsReducer';
-import { splitViewReducer } from "./SplitViewReducer";
-import { systemReducer } from './SystemReducer';
-import { toastReducer } from './ToastReducer';
-import { webSocketReducer } from './WebSocketReducer';
+import { configReducer, IConfigReducerState } from './ConfigReducer';
+import { languageReducer, ILanguageReducerState } from './LanguageReducer';
+import { logoutReducer, ILogoutReducerState } from './LogoutReducer';
+import { navigationReducer, INavigationReducerState } from './NavigationReducer';
+import { notificationReducer, INotificationReducerState } from './NotificationReducer';
+import { routerReducer, IRouterReducerState } from './RouterReducer';
+import { sessionReducer, ISessionReducerState } from './SessionReducer';
+import { settingsReducer, ISettingsReducerState } from './SettingsReducer';
+import { splitViewReducer, ISplitViewReducerState } from './SplitViewReducer';
+import { systemReducer, ISystemReducerState } from './SystemReducer';
+import { toastReducer, IToastReducerState } from './ToastReducer';
+import { webSocketReducer, IWebSocketReducerState } from './WebSocketReducer';
+import { appReducer, IAppReducerState } from './AppReducer';
+import IConfig from '../../base/IConfig';
 
-// noinspection JSUnusedGlobalSymbols
+export interface IRootReducer<IConfig> {
+  appReducer?: IAppReducerState;
+  languageReducer?: ILanguageReducerState;
+  logoutReducer?: ILogoutReducerState;
+  navigationReducer?: INavigationReducerState;
+  notificationReducer?: INotificationReducerState;
+  reactRouterReducer?: RouterState;
+  routerReducer?: IRouterReducerState;
+  sessionReducer?: ISessionReducerState;
+  settingsReducer?: ISettingsReducerState;
+  splitViewReducer?: ISplitViewReducerState;
+  systemReducer?: ISystemReducerState;
+  toastReducer?: IToastReducerState;
+  webSocketReducer?: IWebSocketReducerState;
+  configReducer?: IConfigReducerState<IConfig>;
+}
+
+export interface ICoreRootReducer extends IRootReducer<IConfig> {
+
+}
+
 export default reducers => combineReducers({
+  appReducer,
   reactRouterReducer,
   configReducer,
   languageReducer,

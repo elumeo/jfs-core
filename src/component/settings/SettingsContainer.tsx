@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { ReactText } from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-
+import { History, withRouter } from 'react-router-dom';
 import Button from 'react-md/lib/Buttons/Button';
 import Cell from 'react-md/lib/Grids/Cell'
 import Card from 'react-md/lib/Cards/Card';
@@ -10,8 +10,7 @@ import CardActions from 'react-md/lib/Cards/CardActions';
 import SelectField from 'react-md/lib/SelectFields';
 
 import { changeLanguageAction } from '../../store/action/LanguageAction';
-import IRootReducer from '../../store/reducer/RootReducer';
-import { History, withRouter } from 'react-router-dom';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import Cookie from 'js-cookie';
 
 import './SettingsContainer.scss';
@@ -70,10 +69,16 @@ class SettingsContainer extends React.Component<ISettingsContainerProps> {
 }
 
 // higher order components -----------------------------------------------------
-const mapStateToProps = (state: IRootReducer, ownProps: ISettingsContainerProps): ISettingsContainerProps => ({
-  language: state.languageReducer.language ? state.languageReducer.language : state.configReducer.Language,
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: ISettingsContainerProps
+): ISettingsContainerProps => ({
+  language: (
+    state.languageReducer.language
+      ? state.languageReducer.language
+      : state.configReducer.config.Language
+  ),
   ...ownProps
 });
 
-// noinspection JSUnusedGlobalSymbols
 export default withRouter(injectIntl(connect(mapStateToProps, {changeLanguageAction}, null, {withRef: true})(SettingsContainer)));

@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Badge, Button } from 'react-md';
 
 import './NotificationBadge.scss'
-import IRootReducer from '../../store/reducer/RootReducer';
-import { connect } from 'react-redux';
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { toggleNotificationDrawerAction } from '../../store/action/NotificationAction';
 import { INotification } from '../../store/reducer/NotificationReducer';
 
@@ -12,7 +12,6 @@ export interface INotificationBadgeProps {
   toggleNotificationDrawerAction?: typeof toggleNotificationDrawerAction;
 }
 
-// noinspection JSUnusedGlobalSymbols
 class NotificationBadge extends React.Component<INotificationBadgeProps> {
 
   render() {
@@ -27,7 +26,10 @@ class NotificationBadge extends React.Component<INotificationBadgeProps> {
         badgeContent={empty ? '' : notifications.length}
         className={empty ? 'md-badge-container--empty' : ''}
       >
-        <Button icon onClick={toggleNotificationDrawerAction} aria-describedby="notification-badge">
+        <Button
+          icon
+          onClick={() => toggleNotificationDrawerAction()}
+          aria-describedby="notification-badge">
           notifications
         </Button>
       </Badge>
@@ -35,12 +37,14 @@ class NotificationBadge extends React.Component<INotificationBadgeProps> {
   }
 }
 
-const mapStateToProps = (state: IRootReducer, ownProps: INotificationBadgeProps) => ({
+const mapStateToProps = (
+  state: ICoreRootReducer,
+  ownProps: INotificationBadgeProps
+): INotificationBadgeProps => ({
   ...state.notificationReducer,
   ...ownProps
 });
 
-// noinspection JSUnusedGlobalSymbols
 export default connect(mapStateToProps, {
   toggleNotificationDrawerAction
 })(NotificationBadge);

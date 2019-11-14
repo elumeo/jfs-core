@@ -1,106 +1,29 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import Session from './Session';
+import IConfig from './IConfig';
+import { version } from '../../package.json';
 
-/**
- * You have to load the config your self.
- * Once the config is loaded you have to injected it here using injectConfig().
- *
- * All client calls will be delayed as long as the config wasn't injected.
- */
+import { HttpClient } from './HttpClient';
 
-let Config = null;
+export default class JscClient extends HttpClient {
 
-const generateAxiosConfig = (config: any, callback): any => {
-  if (Config) {
-    return callback({
-      ...config,
-      baseURL: Config.JscClient.Host,
-      timeout: Config.JscClient.Timeout,
-      validateStatus: (status: number) => status < 400
-    });
+  static Config: IConfig = {} as IConfig;
+
+  static setConfig = Config => {
+    JscClient.Config = Config;
+    JscClient.setConfigGenerator(JscClient.generateAxiosConfig);
   }
-  else {
-    /* Wait for the config to get injected */
-    setTimeout(() => generateAxiosConfig(config, callback), 200);
-  }
-};
 
-export const clientInstance = (callback: (instance: AxiosInstance, axiosConfig: AxiosRequestConfig) => void) => generateAxiosConfig(
-  {},
-  axiosConfig => {
-    const instance = axios.create(axiosConfig);
-
-    instance.defaults.headers = Session.isLoggedIn()
-      ? { 'X-JSC-TOKEN': Session.getToken() }
-      : {};
-
-    return callback(instance, axiosConfig);
-  }
-);
-
-export const injectConfig = config => {
-  Config = config;
-};
-
-function checkDestroySession(error) {
-  if (error.response && error.response.status && error.response.status == 401) {
-    Session.removeToken();
-  }
+  static generateAxiosConfig = () => ({
+    baseURL: JscClient.Config.JscClient.Host,
+    timeout: JscClient.Config.JscClient.Timeout,
+    validateStatus: (status: number) => status < 400,
+    headers: {
+      'X-JSC-APP-VERSION': `${JscClient.Config.AppName}-${version}`,
+      ...(
+        Session.isLoggedIn()
+          ? { 'X-JSC-TOKEN': Session.getToken() }
+          : {}
+      )
+    }
+  })
 }
-
-export default {
-  get: async (url, params): Promise<any> => {
-    return await new Promise((resolve, reject) => {
-      clientInstance(
-        instance => (
-          instance
-            .get(url, params)
-            .then(resolve)
-            .catch(error => {
-              checkDestroySession(error);
-              reject(error);
-            })
-        )
-      )
-    });
-  },
-
-  post: (url: string, data: any, config?: any) => {
-    return clientInstance(
-      (instance) => (
-        instance
-          .post(url, data, config)
-          .catch(error => {
-            checkDestroySession(error);
-            throw error;
-          })
-      )
-    );
-  },
-
-  put: (url: string, data: any, config?: any) => {
-    return clientInstance(
-      instance => (
-        instance
-          .put(url, data, config)
-          .catch(error => {
-            checkDestroySession(error);
-            throw error;
-          })
-      )
-    );
-  },
-
-  delete: (url: string, data: any, config?: any) => {
-    return clientInstance(
-      (instance, axiosConfig) => (
-        instance
-          .delete(url, { ...axiosConfig, ...config, data })
-          .catch(error => {
-            checkDestroySession(error);
-            throw error;
-          })
-      )
-    );
-  }
-};
