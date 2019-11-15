@@ -1,5 +1,5 @@
-import { createStandardAction } from 'typesafe-actions';
+import { createAction } from 'typesafe-actions';
 
 const featureName = 'language';
 
-export const changeLanguageAction = createStandardAction(featureName + '/CHANGE')<string>();
+export const changeLanguageAction = createAction(featureName + '/CHANGE')<string>();

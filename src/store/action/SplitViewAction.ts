@@ -1,6 +1,6 @@
-import { createStandardAction } from 'typesafe-actions';
+import { createAction } from 'typesafe-actions';
 
 const featureName = 'splitView';
 
-export const enableSplitViewAction = createStandardAction(featureName + '/ENABLE')();
-export const disableSplitViewAction = createStandardAction(featureName + '/DISABLE')();
+export const enableSplitViewAction = createAction(featureName + '/ENABLE')();
+export const disableSplitViewAction = createAction(featureName + '/DISABLE')();

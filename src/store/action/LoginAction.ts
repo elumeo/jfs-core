@@ -1,6 +1,6 @@
-import { createStandardAction } from 'typesafe-actions';
+import { createAction } from 'typesafe-actions';
 
 const featureName = 'login';
 
-export const openLoginDialog = createStandardAction(featureName + '/OPEN')();
-export const closeLoginDialog = createStandardAction(featureName + '/CLOSE')();
+export const openLoginDialog = createAction(featureName + '/OPEN')();
+export const closeLoginDialog = createAction(featureName + '/CLOSE')();

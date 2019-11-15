@@ -1,6 +1,6 @@
-import { createStandardAction } from 'typesafe-actions';
+import { createAction } from 'typesafe-actions';
 
 const featureName = 'navigation';
 
-export const openNavigation = createStandardAction(featureName + '/OPEN')();
-export const closeNavigation = createStandardAction(featureName + '/CLOSE')();
+export const openNavigation = createAction(featureName + '/OPEN')();
+export const closeNavigation = createAction(featureName + '/CLOSE')();
