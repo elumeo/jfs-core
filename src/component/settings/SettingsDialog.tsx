@@ -11,7 +11,7 @@ import { closeSettings } from '../../store/action/SettingsAction';
 import './SettingsDialog.scss';
 
 export interface ISettingsDialogProps extends InjectedIntlProps {
-  closeSettings?: () => void;
+  closeSettings?: typeof closeSettings;
   settingsOpen?: boolean;
 }
 
@@ -22,11 +22,11 @@ export interface ISettingsDialogState {
 class SettingsDialog extends React.Component<ISettingsDialogProps, ISettingsDialogState> {
   render() {
     const {
-      props: { intl: { formatMessage }, closeSettings, settingsOpen, children }
+      props: {intl: {formatMessage}, closeSettings, settingsOpen, children}
     } = this;
     return (
       <ModalDialog
-        title={formatMessage({ id: 'app.settings' })}
+        title={formatMessage({id: 'app.settings'})}
         className="settings-dialog"
         visible={settingsOpen}
         closeDialog={() => closeSettings()}
@@ -46,7 +46,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { closeSettings }),
+  connect(mapStateToProps, {closeSettings}),
   injectIntl
 );
 

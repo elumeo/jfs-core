@@ -1,5 +1,5 @@
 import { enterAuthorizedRoute, enterUnauthorizedRoute } from '../action/RouterAction';
-import { createReducer } from "typesafe-actions";
+import { createReducer } from 'typesafe-actions';
 
 export interface IRouterReducerState {
   routeType: string;
@@ -11,9 +11,9 @@ const initialState: IRouterReducerState = {
 
 export const routerReducer = createReducer(initialState)
   .handleAction(enterAuthorizedRoute, (state: IRouterReducerState) => (
-    { ...state, routeType: 'authorized' }
+    {...state, routeType: 'authorized'}
   ))
   .handleAction(enterUnauthorizedRoute, (state: IRouterReducerState) => (
-    { ...state, routeType: 'unauthorized' }
+    {...state, routeType: 'unauthorized'}
   ))
 ;

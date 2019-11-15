@@ -12,8 +12,8 @@ import IConfig from '../../base/IConfig';
 export interface IWebsocketConnectionProps {
   config?: IConfig;
   webSocket?: IWebSocketReducerState;
-  webSocketConnectRequestAction?: () => void;
-  webSocketJoinRoomRequestAction?: (room: string) => void
+  webSocketConnectRequestAction?: typeof webSocketConnectRequestAction;
+  webSocketJoinRoomRequestAction?: typeof webSocketJoinRoomRequestAction;
 }
 
 export interface IWebsocketConnectionState {
@@ -30,7 +30,7 @@ class WebSocketConnection extends React.Component<IWebsocketConnectionProps, IWe
       prevProps.webSocket.isConnected === false &&
       this.props.webSocket.isConnected &&
       this.props.config.WebSocketClient.AutoJoinRooms
-    )
+    );
     if (joinRooms) {
       this.props.config.WebSocketClient.AutoJoinRooms.map(
         room => this.props.webSocketJoinRoomRequestAction(room)
@@ -39,7 +39,7 @@ class WebSocketConnection extends React.Component<IWebsocketConnectionProps, IWe
   }
 
   public render() {
-    const { props: { children } } = this;
+    const {props: {children}} = this;
     return (
       <div>
         {children}
@@ -59,5 +59,5 @@ const mapStateToProps = (
 
 export default connect(
   mapStateToProps,
-  { webSocketConnectRequestAction, webSocketJoinRoomRequestAction }
+  {webSocketConnectRequestAction, webSocketJoinRoomRequestAction}
 )(WebSocketConnection);

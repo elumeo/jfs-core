@@ -9,13 +9,13 @@ import { INotification } from '../../store/reducer/NotificationReducer';
 
 export interface INotificationBadgeProps {
   notifications?: INotification[];
-  toggleNotificationDrawerAction?: () => void;
+  toggleNotificationDrawerAction?: typeof toggleNotificationDrawerAction;
 }
 
 class NotificationBadge extends React.Component<INotificationBadgeProps> {
 
   render() {
-    const { notifications, toggleNotificationDrawerAction } = this.props;
+    const {notifications, toggleNotificationDrawerAction} = this.props;
     const empty = !notifications.length;
     return (
       <Badge

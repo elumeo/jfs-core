@@ -9,13 +9,13 @@ import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 
 export interface ISettingsButtonProps {
   settingsOpen?: boolean;
-  openSettings?: () => void;
-  closeSettings?: () => void;
+  openSettings?: typeof openSettings;
+  closeSettings?: typeof closeSettings;
 }
 
 class SettingsButton extends React.Component<ISettingsButtonProps> {
   render() {
-    const { props: { settingsOpen, openSettings, closeSettings } } = this;
+    const {props: {settingsOpen, openSettings, closeSettings}} = this;
     return (
       <Button
         icon
@@ -35,7 +35,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { openSettings, closeSettings }),
+  connect(mapStateToProps, {openSettings, closeSettings}),
   injectIntl
 );
 

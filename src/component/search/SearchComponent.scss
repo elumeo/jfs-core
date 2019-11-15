@@ -13,6 +13,7 @@
   .md-toolbar .md-autocomplete {
     width: unset;
   }
+
   input.md-text-field {
     $searchFieldBaseWidth: 120px;
     $searchFieldWithIncrease: 80px;
@@ -72,6 +73,7 @@
     display: inline-block;
     vertical-align: bottom;
   }
+
   .search-progress {
     height: #{$md-line-height}em;
     width: #{$md-line-height}em;

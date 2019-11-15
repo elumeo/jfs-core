@@ -10,8 +10,8 @@ import { closeLogout } from '../../store/action/LogoutAction';
 
 export interface ILogoutDialogProps extends InjectedIntlProps {
   openLogout?: () => void;
-  closeLogout?: () => void;
-  logout?: () => void;
+  closeLogout?: typeof closeLogout;
+  logout?: typeof logout;
   logoutOpen?: boolean;
 }
 
@@ -23,7 +23,7 @@ class LogoutDialog extends React.Component<ILogoutDialogProps, ILogoutDialogStat
   render() {
     const {
       props: {
-        intl: { formatMessage },
+        intl: {formatMessage},
         logoutOpen, closeLogout, logout
       }
     } = this;
@@ -32,7 +32,7 @@ class LogoutDialog extends React.Component<ILogoutDialogProps, ILogoutDialogStat
       <Dialog
         id="logout"
         visible={logoutOpen}
-        title={formatMessage({ id: 'app.logout.title' })}
+        title={formatMessage({id: 'app.logout.title'})}
         onHide={() => closeLogout()}
         aria-labelledby="logoutDescription"
         modal
@@ -40,19 +40,19 @@ class LogoutDialog extends React.Component<ILogoutDialogProps, ILogoutDialogStat
           {
             onClick: () => {
               closeLogout();
-              logout();
+              logout({});
             },
             primary: true,
-            label: formatMessage({ id: 'app.logout.action' })
+            label: formatMessage({id: 'app.logout.action'})
           },
           {
             onClick: () => closeLogout(),
-            label: formatMessage({ id: 'app.cancel.action' })
+            label: formatMessage({id: 'app.cancel.action'})
           }
         ]}
       >
         <p id="logoutDescription" className="md-color--secondary-text">
-          {formatMessage({ id: 'app.logout.message' })}
+          {formatMessage({id: 'app.logout.message'})}
         </p>
       </Dialog>
     );
@@ -68,7 +68,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { closeLogout, logout }),
+  connect(mapStateToProps, {closeLogout, logout}),
   injectIntl
 );
 

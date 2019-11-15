@@ -12,10 +12,10 @@ export interface IBackendIndicatorProps extends InjectedIntlProps {
 
 class BackendIndicator extends React.Component<IBackendIndicatorProps> {
   render() {
-    const { props: { intl: { formatMessage }, backendRegion } } = this;
+    const {props: {intl: {formatMessage}, backendRegion}} = this;
     return (
       <Tooltipped
-        label={`${formatMessage({ id: 'app.backend' })}: ${backendRegion}`}>
+        label={`${formatMessage({id: 'app.backend'})}: ${backendRegion}`}>
         <div className={`flag ${(backendRegion || '').toLowerCase()}`}/>
       </Tooltipped>
     )
@@ -35,5 +35,4 @@ const enhance = compose(
   injectIntl
 );
 
-// noinspection JSUnusedGlobalSymbols
 export default enhance(BackendIndicator);

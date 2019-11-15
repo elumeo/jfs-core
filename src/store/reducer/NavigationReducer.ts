@@ -1,4 +1,4 @@
-import { createReducer } from "typesafe-actions";
+import { createReducer } from 'typesafe-actions';
 
 import { openNavigation, closeNavigation } from '../action/NavigationAction';
 
@@ -18,4 +18,5 @@ export const navigationReducer = createReducer(initialState)
   .handleAction(closeNavigation, (state: INavigationReducerState) => ({
     ...state,
     navigationOpen: false
-  }));
+  }))
+;

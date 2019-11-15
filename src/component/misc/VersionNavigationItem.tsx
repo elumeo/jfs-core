@@ -6,15 +6,17 @@ export interface IVersionNavigationItemProps extends InjectedIntlProps {
   version?: string;
 }
 
-const VersionNavigationItem: React.FC<IVersionNavigationItemProps> = ({
-  intl: { formatMessage }, version
-}) => (
+const VersionNavigationItem: React.FC<IVersionNavigationItemProps> = (
+  {
+    intl: {formatMessage}, version
+  }
+) => (
   <NavigationItem
     iconName="info_outline"
     messageId="app.version"
     messageString={
       formatMessage(
-        { id: 'app.version' },
+        {id: 'app.version'},
         {
           versionNumber: (
             process.env.NODE_ENV && process.env.NODE_ENV == 'production'
@@ -25,6 +27,6 @@ const VersionNavigationItem: React.FC<IVersionNavigationItemProps> = ({
       )
     }
   />
-)
+);
 
 export default injectIntl(VersionNavigationItem);

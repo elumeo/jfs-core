@@ -1,4 +1,6 @@
 import { createStandardAction } from 'typesafe-actions';
 
-export const openLogout = createStandardAction('logout/OPEN')();
-export const closeLogout = createStandardAction('logout/CLOSE')();
+const featureName = 'logout';
+
+export const openLogout = createStandardAction(featureName + '/OPEN')();
+export const closeLogout = createStandardAction(featureName + '/CLOSE')();

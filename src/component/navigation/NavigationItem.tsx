@@ -22,7 +22,7 @@ export interface INavigationItemProps extends InjectedIntlProps {
   authorizedOnly?: boolean;
   unauthorizedOnly?: boolean;
   isAuthorized?: boolean;
-  closeNavigation?: () => void;
+  closeNavigation?: typeof closeNavigation;
   onClickRoute?: string;
   history?: History;
 }
@@ -35,7 +35,7 @@ class NavigationItem extends React.Component<INavigationItemProps, INavigationIt
   render() {
     const {
       props: {
-        intl: { formatMessage },
+        intl: {formatMessage},
         iconName, messageId, onClick, active, messageString,
         authorizedOnly, unauthorizedOnly,
         isAuthorized, closeNavigation, onClickRoute, history
@@ -56,10 +56,10 @@ class NavigationItem extends React.Component<INavigationItemProps, INavigationIt
             primaryText={
               messageString
                 ? messageString
-                : formatMessage({ id: messageId })}
+                : formatMessage({id: messageId})}
             leftIcon={<FontIcon>{iconName}</FontIcon>}
             onClick={(event: React.MouseEvent<HTMLElement>) => {
-              const { location: { pathname } } = history;
+              const {location: {pathname}} = history;
               if (pathname !== onClickRoute) {
                 history.push(onClickRoute);
               }
@@ -85,7 +85,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { closeNavigation }),
+  connect(mapStateToProps, {closeNavigation}),
   withRouter,
   injectIntl
 );

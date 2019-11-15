@@ -9,8 +9,8 @@ import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 
 export interface ISplitViewButtonProps {
   notificationDrawerPinned?: boolean;
-  pinNotificationDrawerAction?: () => void;
-  unpinNotificationDrawerAction?: () => void;
+  pinNotificationDrawerAction?: typeof pinNotificationDrawerAction;
+  unpinNotificationDrawerAction?: typeof unpinNotificationDrawerAction;
 }
 
 class SplitViewButton extends React.Component<ISplitViewButtonProps> {

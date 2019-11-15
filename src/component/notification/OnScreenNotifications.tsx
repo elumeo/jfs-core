@@ -15,14 +15,14 @@ export interface IOnScreenNotificationsProps {
 class OnScreenNotifications extends React.Component<IOnScreenNotificationsProps> {
 
   render() {
-    const { notifications } = this.props;
+    const {notifications} = this.props;
 
     return (
       <ReactCSSTransitionGroup
-        transitionName={"fadein"}
+        transitionName={'fadein'}
         transitionEnterTimeout={300}
         transitionLeaveTimeout={150}
-        className={"notification-fadein"}
+        className={'notification-fadein'}
       >
         {
           notifications

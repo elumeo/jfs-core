@@ -10,10 +10,12 @@ export interface ILoginButtonProps {
   onLogin: () => void;
 }
 
-const loginButton: React.FC<ILoginButtonProps> = ({
-  intl: { formatMessage },
-  isCheckingLogin, onLogin
-}) => (
+const loginButton: React.FC<ILoginButtonProps> = (
+  {
+    intl: {formatMessage},
+    isCheckingLogin, onLogin
+  }
+) => (
   isCheckingLogin
     ? <CircularProgress id="check-login-progress"/>
     : (

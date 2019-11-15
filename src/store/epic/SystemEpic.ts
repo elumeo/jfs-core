@@ -5,7 +5,7 @@ import { catchError, filter, switchMap } from 'rxjs/operators';
 import { RootAction } from '../action/RootAction';
 import { isActionOf } from 'typesafe-actions';
 import JSCApi from '../../JscApi';
-import { configLoadedAction } from "../action/ConfigAction";
+import { configLoadedAction } from '../action/ConfigAction';
 
 export const getRegionEpic: Epic<RootAction, RootAction> = (action$) =>
   action$.pipe(

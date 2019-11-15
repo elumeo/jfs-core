@@ -5,7 +5,6 @@ import { injectIntl } from 'react-intl';
 import Toolbar from 'react-md/lib/Toolbars';
 
 import { ICoreRootReducer } from '../../store/reducer/combineReducers';
-import JSCApi from '../../JscApi';
 import NavigationButton from './NavigationButton';
 
 export interface INavigationDrawerHeaderProps {
@@ -14,7 +13,7 @@ export interface INavigationDrawerHeaderProps {
 
 class NavigationDrawerHeader extends React.Component<INavigationDrawerHeaderProps> {
   render() {
-    const { props: { username } } = this;
+    const {props: {username}} = this;
     return (
       <Toolbar
         actions={<NavigationButton iconName="arrow_back"/>}

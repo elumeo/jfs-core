@@ -1,7 +1,7 @@
-import { Paper } from "react-md/lib/Papers";
-import { FontIcon } from "react-md/lib/FontIcons";
-import * as React from "react";
-import { FormattedMessage } from "react-intl";
+import { Paper } from 'react-md/lib/Papers';
+import { FontIcon } from 'react-md/lib/FontIcons';
+import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 export default () =>
   <div className="badges__notifications__empty">
@@ -9,4 +9,5 @@ export default () =>
       <FormattedMessage id="app.noNotifications"/>
     </Paper>
     <FontIcon className="badges__notifications__empty__icon">notifications</FontIcon>
-  </div>;
+  </div>
+;

@@ -10,7 +10,7 @@ import { compose } from 'redux';
 
 export interface INoAuthRouteProps extends IBaseRouteProps {
   Component: any;
-  enterUnauthorizedRoute?: () => void;
+  enterUnauthorizedRoute?: typeof enterUnauthorizedRoute;
 }
 
 class NoAuthRoute extends React.Component<INoAuthRouteProps> {
@@ -20,7 +20,7 @@ class NoAuthRoute extends React.Component<INoAuthRouteProps> {
   }
 
   render() {
-    const { props: { Component, ...rest } } = this;
+    const {props: {Component, ...rest}} = this;
 
     return (
       <BaseRoute
@@ -39,7 +39,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { enterUnauthorizedRoute })
+  connect(mapStateToProps, {enterUnauthorizedRoute})
 );
 
 export default enhance(NoAuthRoute);

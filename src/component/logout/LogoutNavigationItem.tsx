@@ -8,13 +8,13 @@ import { injectIntl } from 'react-intl';
 
 export interface ILogoutNavigationItemProps {
   robotLoginAvailable?: boolean;
-  openLogout?: () => void;
+  openLogout?: typeof openLogout;
 }
 
 class LogoutNavigationItem extends React.Component<ILogoutNavigationItemProps> {
   render() {
     const {
-      props: { robotLoginAvailable, openLogout }
+      props: {robotLoginAvailable, openLogout}
     } = this;
 
     return (
@@ -47,7 +47,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { openLogout }),
+  connect(mapStateToProps, {openLogout}),
   injectIntl
 );
 

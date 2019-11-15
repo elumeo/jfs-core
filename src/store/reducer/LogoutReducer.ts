@@ -1,5 +1,5 @@
 import { openLogout, closeLogout } from '../action/LogoutAction';
-import { createReducer, PayloadAction } from 'typesafe-actions';
+import { createReducer } from 'typesafe-actions';
 
 export interface ILogoutReducerState {
   logoutOpen: boolean;
@@ -7,7 +7,7 @@ export interface ILogoutReducerState {
 
 const initialState = {
   logoutOpen: false
-}
+};
 
 export const logoutReducer = createReducer(initialState)
   .handleAction(openLogout, (state: ILogoutReducerState) => ({
@@ -17,4 +17,5 @@ export const logoutReducer = createReducer(initialState)
   .handleAction(closeLogout, (state: ILogoutReducerState) => ({
     ...state,
     logoutOpen: false
-  }));
+  }))
+;

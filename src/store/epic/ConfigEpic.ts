@@ -17,10 +17,10 @@ export const loadConfigEpic: Epic<RootAction, RootAction> = (action$) => (
       const config: IConfig = response.data;
       JscClient.setConfig(config);
       return of(
-        configLoadedAction({ config }),
+        configLoadedAction({config}),
         appInitialized()
       );
     }),
-    catchError(() =>  of(loadConfigFailed()))
+    catchError(() => of(loadConfigFailed()))
   )
 );

@@ -11,7 +11,7 @@ export default class JscClient extends HttpClient {
   static setConfig = Config => {
     JscClient.Config = Config;
     JscClient.setConfigGenerator(JscClient.generateAxiosConfig);
-  }
+  };
 
   static setPackageJson = PackageJson => {
     JscClient.PackageJson = PackageJson;
@@ -25,7 +25,7 @@ export default class JscClient extends HttpClient {
       'X-JSC-APP-VERSION': `${JscClient.Config.AppName}-${JscClient.PackageJson.version}`,
       ...(
         Session.isLoggedIn()
-          ? { 'X-JSC-TOKEN': Session.getToken() }
+          ? {'X-JSC-TOKEN': Session.getToken()}
           : {}
       )
     }

@@ -8,7 +8,7 @@ import './WebSocketStatus.scss';
 
 class WebSocketStatus extends React.Component<IWebsocketConnectionProps, IWebsocketConnectionState> {
   render() {
-    const { webSocket } = this.props;
+    const {webSocket} = this.props;
 
     return (
       <div
@@ -31,6 +31,6 @@ const mapStateToProps = (
   ...ownProps,
   webSocket: state.webSocketReducer
 });
-const enhance = connect(mapStateToProps, { webSocketConnectRequestAction });
+const enhance = connect(mapStateToProps, {webSocketConnectRequestAction});
 
 export default enhance(WebSocketStatus);

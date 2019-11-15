@@ -29,4 +29,5 @@ export const appReducer = createReducer(initialState)
       ...state,
       appInitialized: true
     })
-  });
+  })
+;

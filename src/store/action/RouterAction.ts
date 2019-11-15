@@ -1,4 +1,6 @@
 import { createStandardAction } from 'typesafe-actions';
 
-export const enterAuthorizedRoute = createStandardAction('route/ENTER_AUTHORIZED')();
-export const enterUnauthorizedRoute = createStandardAction('route/ENTER_UNAUTHORIZED')();
+const featureName = 'route';
+
+export const enterAuthorizedRoute = createStandardAction(featureName + '/ENTER_AUTHORIZED')();
+export const enterUnauthorizedRoute = createStandardAction(featureName + '/ENTER_UNAUTHORIZED')();

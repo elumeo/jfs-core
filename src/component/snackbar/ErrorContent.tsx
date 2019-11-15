@@ -3,8 +3,8 @@ import { injectIntl, InjectedIntlProps } from 'react-intl';
 
 export const errorText = (contentError) => {
   const {
-    config: { method, url, baseURL },
-    response, response: { data, data: { message, id }, status, statusText },
+    config: {method, url, baseURL},
+    response, response: {data, data: {message, id}, status, statusText},
   } = contentError;
 
   return {
@@ -26,18 +26,18 @@ export interface IErrorContentProps extends InjectedIntlProps {
 }
 
 const errorContent: React.FC<IErrorContentProps> = ({
-  intl: { formatMessage },
-  contentError
-}) => {
-  const { config } = contentError;
-  const { errorMessage, errorBody } = errorText(contentError);
+                                                      intl: {formatMessage},
+                                                      contentError
+                                                    }) => {
+  const {config} = contentError;
+  const {errorMessage, errorBody} = errorText(contentError);
   return (
     <span>
-      <u>{formatMessage({ id: 'app.error' })}:</u>&nbsp;{errorMessage}
-      <br />
+      <u>{formatMessage({id: 'app.error'})}:</u>&nbsp;{errorMessage}
+      <br/>
       {
         config
-          ? <span style={{ fontSize: 'x-small' }}>{errorBody}</span>
+          ? <span style={{fontSize: 'x-small'}}>{errorBody}</span>
           : null
       }
     </span>

@@ -5,5 +5,7 @@ export interface IInitializeAppPayload {
   packageJson: object;
 }
 
-export const initializeApp = createStandardAction('app/INITIALZE')<IInitializeAppPayload>();
-export const appInitialized = createStandardAction('app/INITIALZED')();
+const featureName = 'app';
+
+export const initializeApp = createStandardAction(featureName + '/INITIALZE')<IInitializeAppPayload>();
+export const appInitialized = createStandardAction(featureName + '/INITIALZED')();

@@ -11,14 +11,14 @@ import { List } from 'immutable';
 
 export interface IAppSnackbarProps extends InjectedIntlProps {
   toasts?: List<IToastConfig>;
-  dismissToastAction?: any;
+  dismissToastAction?: typeof dismissToastAction;
 }
 
 class AppSnackBar extends React.Component<IAppSnackbarProps> {
 
   render() {
     const {
-      props: { intl: { formatMessage }, toasts, dismissToastAction }
+      props: {intl: {formatMessage}, toasts, dismissToastAction}
     } = this;
 
     const toastContents = toasts.map(toast => {
@@ -27,21 +27,21 @@ class AppSnackBar extends React.Component<IAppSnackbarProps> {
 
     return (
       <Snackbar
-          id="appSnackbar"
-          className={
-            (toasts && toasts.size > 0) && (toasts.first().isError === true)
-              ? 'appSnackbarError'
-              : 'appSnackbarNormal'
-          }
-          toasts={toastContents}
-          onDismiss={dismissToastAction}
-          autohide={
-            !(toasts && toasts.size > 0 && toasts.first().dismissLabel)
-          }
-          autohideTimeout={toastContents.length > 0
-            ? toastContents[0].autohideTimeout
-            : Snackbar.defaultProps.autohideTimeout}
-        />
+        id="appSnackbar"
+        className={
+          (toasts && toasts.size > 0) && (toasts.first().isError === true)
+            ? 'appSnackbarError'
+            : 'appSnackbarNormal'
+        }
+        toasts={toastContents}
+        onDismiss={dismissToastAction}
+        autohide={
+          !(toasts && toasts.size > 0 && toasts.first().dismissLabel)
+        }
+        autohideTimeout={toastContents.length > 0
+          ? toastContents[0].autohideTimeout
+          : Snackbar.defaultProps.autohideTimeout}
+      />
     )
   }
 }
@@ -56,7 +56,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, { dismissToastAction }, null, {withRef: true}),
+  connect(mapStateToProps, {dismissToastAction}, null, {withRef: true}),
   injectIntl
 );
 

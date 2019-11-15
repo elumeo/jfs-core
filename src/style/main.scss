@@ -1,6 +1,4 @@
-//noinspection CssUnknownTarget
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-//noinspection CssUnknownTarget
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import '~react-md/src/scss/react-md';
 @import './colors';
@@ -83,6 +81,7 @@ $md-colors-warn-md: false;
     font-weight: 600;
     color: white;
   }
+
   .subtitle {
     color: rgba(255, 255, 255, 0.74);
     overflow: hidden;
@@ -102,6 +101,7 @@ $md-colors-warn-md: false;
   height: 32px;
   overflow: hidden;
   display: table;
+
   .amount {
     display: table-cell;
     text-align: center;

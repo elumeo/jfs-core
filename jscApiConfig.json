@@ -1,13 +1,16 @@
 {
   "SystemController": ["getRegion"],
   "SessionController": [
-    "getCurrentSession",
+    "getCurrentSessionFrontend",
     "logout"
   ],
   "LoginController": [
-    "login"
+    "loginFrontend"
   ],
   "UserController": [
     "getUserRights"
+  ],
+  "WebSocketController": [
+    "joinRoomPing"
   ]
 }

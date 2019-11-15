@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import NotificationCard from './NotificationCard';
-import Drawer from "react-md/lib/Drawers";
+import Drawer from 'react-md/lib/Drawers';
 
 import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { connect } from 'react-redux';
@@ -24,8 +24,8 @@ const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 interface INotificationDrawerProps {
   notificationDrawerVisible?: boolean;
   notifications?: INotification[];
-  toggleNotificationDrawerAction?: () => void;
-  hideNotificationDrawerAction?: () => void;
+  toggleNotificationDrawerAction?: typeof toggleNotificationDrawerAction;
+  hideNotificationDrawerAction?: typeof hideNotificationDrawerAction;
   notificationDrawerPinned?: boolean;
   notificationDismissCounter?: number;
 }
@@ -75,7 +75,7 @@ class NotificationDrawer extends React.Component<INotificationDrawerProps> {
         overlay
       >
         <ReactCSSTransitionGroup
-          transitionName={"fadein"}
+          transitionName={'fadein'}
           transitionEnterTimeout={300}
           transitionLeaveTimeout={notificationDismissCounter < 0 ? 150 : (NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT * 100)}
         >
@@ -93,7 +93,6 @@ const mapStateToProps = (
   ...ownProps
 });
 
-// noinspection JSUnusedGlobalSymbols
 export default connect(mapStateToProps, {
   toggleNotificationDrawerAction,
   hideNotificationDrawerAction

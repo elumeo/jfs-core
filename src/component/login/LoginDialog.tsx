@@ -5,13 +5,13 @@ import { compose } from 'redux';
 import DialogContainer from 'react-md/lib/Dialogs';
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
-import { checkLogin, ICheckLoginPayload } from '../../store/action/SessionAction';
+import { checkLogin } from '../../store/action/SessionAction';
 import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import './LoginDialog.scss';
 
 interface ILoginDialogProps extends InjectedIntlProps {
   children?: any;
-  checkLogin?: (payload: ICheckLoginPayload) => void;
+  checkLogin?: typeof checkLogin;
   isCheckingLogin?: boolean;
   isCheckingSession?: boolean;
   routeType?: string;
@@ -21,12 +21,12 @@ interface ILoginDialogProps extends InjectedIntlProps {
 }
 
 interface ILoginDialogState {
-  username?: any;
-  password?: any;
+  username?: string;
+  password?: string;
 }
 
 class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> {
-  state = { username: '', password: '' };
+  state = {username: '', password: ''};
 
   render() {
     const {
@@ -36,7 +36,7 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
         isAuthorized, isCheckingLogin, isCheckingSession,
         checkLogin
       },
-      state: { username, password }
+      state: {username, password}
     } = this;
 
     const loginVisible = (
@@ -44,7 +44,7 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
       !isAuthorized &&
       !robotLoginAvailable &&
       !isCheckingSession
-    )
+    );
 
     return (
       <div className="login-dialog">
@@ -55,14 +55,14 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
           aria-describedby=""
           actions={<LoginButton
             isCheckingLogin={isCheckingLogin}
-            onLogin={() => checkLogin({ username, password })}
+            onLogin={() => checkLogin({username, password})}
           />}
           modal
         >
           <LoginCredentials
-            onChangeUsername={update => this.setState({ username: update })}
-            onChangePassword={update => this.setState({ password: update })}
-            onLogin={() => checkLogin({ username, password })}
+            onChangeUsername={update => this.setState({username: update})}
+            onChangePassword={update => this.setState({password: update})}
+            onLogin={() => checkLogin({username, password})}
           />
         </DialogContainer>
       </div>
@@ -89,7 +89,7 @@ const mapStateToProps = (
   )
 });
 
-const mapDispatchToProps = { checkLogin };
+const mapDispatchToProps = {checkLogin};
 
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
