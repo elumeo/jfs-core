@@ -1,12 +1,12 @@
-import { createAction } from 'typesafe-actions';
+import { createStandardAction } from 'typesafe-actions';
 import IConfig from '../../base/IConfig';
 
 const featureName = 'config';
 
-export const loadConfig = createAction('config/LOAD')();
+export const loadConfig = createStandardAction('config/LOAD')();
 
 export interface IConfigLoadedPayload {
   config: IConfig;
 }
-export const configLoadedAction = createAction(featureName + '/LOADED')<IConfigLoadedPayload>();
-export const loadConfigFailed = createAction(featureName + '/LOAD_FAILED')();
+export const configLoadedAction = createStandardAction(featureName + '/LOADED')<IConfigLoadedPayload>();
+export const loadConfigFailed = createStandardAction(featureName + '/LOAD_FAILED')();

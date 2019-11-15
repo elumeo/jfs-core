@@ -1,4 +1,4 @@
-import { createAction } from 'typesafe-actions';
+import { createStandardAction } from 'typesafe-actions';
 
 export interface IInitializeAppPayload {
   allowRobotLogin?: boolean;
@@ -6,5 +6,5 @@ export interface IInitializeAppPayload {
 
 const featureName = 'app';
 
-export const initializeApp = createAction(featureName + '/INITIALZE')<boolean>();
-export const appInitialized = createAction(featureName + '/INITIALZED')();
+export const initializeApp = createStandardAction(featureName + '/INITIALZE')<boolean>();
+export const appInitialized = createStandardAction(featureName + '/INITIALZED')();

@@ -1,16 +1,16 @@
-import { createAction } from 'typesafe-actions';
+import { createStandardAction } from 'typesafe-actions';
 import { INotificationContent, INotification } from '../reducer/NotificationReducer';
 
 const featureName = 'notification';
 
-export const addNotificationAction = createAction(featureName + '/ADD')<INotificationContent>();
-export const addNotificationWithIdAction = createAction(featureName + '/withId/ADD')<INotification>();
-export const fadeNotificationOffScreenAction = createAction(featureName + '/FADE_OUT')<number>();
-export const dismissNotificationAction = createAction(featureName + '/DELETE')<number>();
-export const dismissAllNotificationsAction = createAction(featureName + '/DELETE_ALL')();
-export const dismissNextNotificationAction = createAction(featureName + '/DELETE_NEXT')();
-export const toggleNotificationDrawerAction = createAction(featureName + '/drawer/TOGGLE')();
-export const showNotificationDrawerAction = createAction(featureName + '/drawer/SHOW')();
-export const hideNotificationDrawerAction = createAction(featureName + '/drawer/HIDE')();
-export const pinNotificationDrawerAction = createAction(featureName + '/drawer/PIN')();
-export const unpinNotificationDrawerAction = createAction(featureName + '/drawer/UNPIN')();
+export const addNotificationAction = createStandardAction(featureName + '/ADD')<INotificationContent>();
+export const addNotificationWithIdAction = createStandardAction(featureName + '/withId/ADD')<INotification>();
+export const fadeNotificationOffScreenAction = createStandardAction(featureName + '/FADE_OUT')<number>();
+export const dismissNotificationAction = createStandardAction(featureName + '/DELETE')<number>();
+export const dismissAllNotificationsAction = createStandardAction(featureName + '/DELETE_ALL')();
+export const dismissNextNotificationAction = createStandardAction(featureName + '/DELETE_NEXT')();
+export const toggleNotificationDrawerAction = createStandardAction(featureName + '/drawer/TOGGLE')();
+export const showNotificationDrawerAction = createStandardAction(featureName + '/drawer/SHOW')();
+export const hideNotificationDrawerAction = createStandardAction(featureName + '/drawer/HIDE')();
+export const pinNotificationDrawerAction = createStandardAction(featureName + '/drawer/PIN')();
+export const unpinNotificationDrawerAction = createStandardAction(featureName + '/drawer/UNPIN')();
