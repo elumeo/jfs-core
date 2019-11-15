@@ -10,19 +10,17 @@ export interface IDismissAllNotificationsButtonProps {
   dismissAllNotificationsAction?: typeof dismissAllNotificationsAction;
 }
 
-class DismissAllNotificationsButton extends React.Component<IDismissAllNotificationsButtonProps> {
-  render() {
-    const {dismissAllNotificationsAction, notifications} = this.props;
-    return (
-      <Button
-        icon
-        onClick={() => dismissAllNotificationsAction()}
-        disabled={!notifications.length}>
-        delete
-      </Button>
-    );
-  }
-}
+const DismissAllNotificationsButton: React.FC<IDismissAllNotificationsButtonProps> = ({
+  dismissAllNotificationsAction,
+  notifications
+}) => (
+  <Button
+    icon
+    onClick={() => dismissAllNotificationsAction()}
+    disabled={!notifications.length}>
+    delete
+  </Button>
+);
 
 const mapStateToProps = (
   state: ICoreRootReducer,

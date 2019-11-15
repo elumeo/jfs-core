@@ -12,29 +12,27 @@ export interface INotificationBadgeProps {
   toggleNotificationDrawerAction?: typeof toggleNotificationDrawerAction;
 }
 
-class NotificationBadge extends React.Component<INotificationBadgeProps> {
-
-  render() {
-    const {notifications, toggleNotificationDrawerAction} = this.props;
-    const empty = !notifications.length;
-    return (
-      <Badge
-        primary
-        circular
-        aria-haspopup
-        badgeId="notification-badge"
-        badgeContent={empty ? '' : notifications.length}
-        className={empty ? 'md-badge-container--empty' : ''}
-      >
-        <Button
-          icon
-          onClick={() => toggleNotificationDrawerAction()}
-          aria-describedby="notification-badge">
-          notifications
-        </Button>
-      </Badge>
-    );
-  }
+const NotificationBadge: React.FC<INotificationBadgeProps> = ({
+  notifications, toggleNotificationDrawerAction
+}) => {
+  const empty = !notifications.length;
+  return (
+    <Badge
+      primary
+      circular
+      aria-haspopup
+      badgeId="notification-badge"
+      badgeContent={empty ? '' : notifications.length}
+      className={empty ? 'md-badge-container--empty' : ''}
+    >
+      <Button
+        icon
+        onClick={() => toggleNotificationDrawerAction()}
+        aria-describedby="notification-badge">
+        notifications
+      </Button>
+    </Badge>
+  );
 }
 
 const mapStateToProps = (

@@ -18,37 +18,31 @@ interface ILoginDialogProps extends InjectedIntlProps {
   robotLoginAvailable?: boolean;
 }
 
-class LoginDialog extends React.Component<ILoginDialogProps> {
-  render() {
-    const {
-      props: { robotLoginAvailable, routeType, isAuthorized, isCheckingSession }
-    } = this;
+const LoginDialog: React.FC<ILoginDialogProps> = ({
+  robotLoginAvailable,
+  routeType,
+  isAuthorized,
+  isCheckingSession
+}) => (
+  <div className="login-dialog">
+    <DialogContainer
+      id={'login-dialog'}
+      visible={
+        routeType === 'authorized' &&
+        !isAuthorized &&
+        !robotLoginAvailable &&
+        !isCheckingSession
+      }
+      title="Login"
+      aria-describedby=""
+      actions={<LoginButton/>}
+      modal
+    >
+      <LoginCredentials/>
+    </DialogContainer>
+  </div>
+)
 
-    const loginVisible = (
-      routeType === 'authorized' &&
-      !isAuthorized &&
-      !robotLoginAvailable &&
-      !isCheckingSession
-    );
-
-    return (
-      <div className="login-dialog">
-        <DialogContainer
-          id={'login-dialog'}
-          visible={loginVisible}
-          title="Login"
-          aria-describedby=""
-          actions={<LoginButton/>}
-          modal
-        >
-          <LoginCredentials/>
-        </DialogContainer>
-      </div>
-    )
-  }
-}
-
-// higher order components -----------------------------------------------------
 const mapStateToProps = (
   state: ICoreRootReducer,
   ownProps: ILoginDialogProps

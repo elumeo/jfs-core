@@ -7,11 +7,13 @@ export interface IHideNotificationDrawerButtonProps {
   hideNotificationDrawerAction?: typeof hideNotificationDrawerAction;
 }
 
-class HideNotificationDrawerButton extends React.Component<IHideNotificationDrawerButtonProps> {
-  render() {
-    return <Button icon onClick={this.props.hideNotificationDrawerAction}>arrow_forward</Button>;
-  }
-}
+const HideNotificationDrawerButton: React.FC<IHideNotificationDrawerButtonProps> = ({
+  hideNotificationDrawerAction
+}) => (
+  <Button icon onClick={hideNotificationDrawerAction}>
+    arrow_forward
+  </Button>
+)
 
 const enhance = connect(null, {hideNotificationDrawerAction});
 

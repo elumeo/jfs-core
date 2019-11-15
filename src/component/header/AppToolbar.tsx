@@ -10,7 +10,11 @@ export interface IAppToolbarProps extends InjectedIntlProps {
   RightTools;
 }
 
-const AppToolbar: React.FC<IAppToolbarProps> = ({LeftTools, RightTools, intl: {formatMessage}}) => (
+const AppToolbar: React.FC<IAppToolbarProps> = ({
+  intl: {formatMessage},
+  LeftTools,
+  RightTools
+}) => (
   <Toolbar
     title={formatMessage({id: 'app.title'})}
     nav={<NavigationButton iconName="menu"/>}

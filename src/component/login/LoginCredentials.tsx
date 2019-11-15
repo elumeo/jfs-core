@@ -3,7 +3,10 @@ import { injectIntl, InjectedIntlProps } from 'react-intl';
 import TextField from 'react-md/lib/TextFields/TextField';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { checkLogin, ICheckLoginPayload, updateCredentials, IUpdateCredentialsPayload } from '../../store/action/LoginAction';
+import {
+  checkLogin, ICheckLoginPayload,
+  updateCredentials, IUpdateCredentialsPayload
+} from '../../store/action/LoginAction';
 import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 
 export interface ILoginCredentialsProps extends InjectedIntlProps {
