@@ -15,12 +15,13 @@ export interface IAppProps {
   allowRobotLogin?: boolean;
   initializeApp?: (payload: IInitializeAppPayload) => void;
   changeLanguageAction?: (language: string) => void;
-  language?: any;
+  language?: string;
   location?: Location;
   store: any;
   Translations;
   ForceHTTPS?: boolean;
   appInitialized?: boolean;
+  packageJson: object;
 }
 
 export interface IAppState {
@@ -29,8 +30,11 @@ export interface IAppState {
 class App extends React.Component<IAppProps, IAppState> {
   constructor(props) {
     super(props);
-    const { props: { initializeApp, allowRobotLogin } } = this;
-    initializeApp({ allowRobotLogin });
+    const { props: { initializeApp, allowRobotLogin, packageJson } } = this;
+    initializeApp({
+      allowRobotLogin,
+      packageJson
+    });
     this.checkProtocol();
     this.addLocales();
   }

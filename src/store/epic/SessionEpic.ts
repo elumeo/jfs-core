@@ -15,6 +15,7 @@ import {
 import JSCApi from '../../JscApi';
 import Session from '../../base/Session';
 import { AxiosResponse } from 'axios';
+import { addToastAction } from '../action/ToastAction';
 
 export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
@@ -61,7 +62,10 @@ export const loginEpic: Epic<RootAction, RootAction> = (action$, store) => (
       )
     ),
     catchError(
-      () => of(loginFailed())
+      () => of(
+        loginFailed(),
+        addToastAction({ contentTranslationId: 'login.failed', isError: true })
+      )
     )
   )
 );
