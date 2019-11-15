@@ -9,10 +9,10 @@ import JscClient from '../../base/JscClient';
 import IConfig from '../../base/IConfig';
 import { appInitialized } from '../action/AppAction';
 
-export const loadConfigEpic: Epic<RootAction, RootAction> = (action$) => (
+export const loadConfigEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
     filter(isActionOf(loadConfig)),
-    concatMap(() => from(axios.get('/config.json', {}))),
+    concatMap(() => from(axios.get(`./config.json`, {}))),
     concatMap((response: AxiosResponse<IConfig>) => {
       const config: IConfig = response.data;
       JscClient.setConfig(config);

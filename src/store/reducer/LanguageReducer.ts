@@ -12,7 +12,11 @@ const initialState: ILanguageReducerState = {
 };
 
 export const languageReducer = createReducer(initialState)
-  .handleAction(changeLanguageAction, (state: ILanguageReducerState, action: PayloadAction<string, string>): ILanguageReducerState => (
+  .handleAction(
+    changeLanguageAction,
+    (
+      state: ILanguageReducerState,
+      action: PayloadAction<string, string>
+    ): ILanguageReducerState => (
     {...state, language: action.payload}
-  ))
-;
+  ));

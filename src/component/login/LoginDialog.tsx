@@ -5,14 +5,12 @@ import { compose } from 'redux';
 import DialogContainer from 'react-md/lib/Dialogs';
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
-import { checkLogin } from '../../store/action/SessionAction';
 import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import './LoginDialog.scss';
+import { checkLogin } from '../../store/action/LoginAction';
 
 interface ILoginDialogProps extends InjectedIntlProps {
   children?: any;
-  checkLogin?: typeof checkLogin;
-  isCheckingLogin?: boolean;
   isCheckingSession?: boolean;
   routeType?: string;
   loginVisible?: boolean;
@@ -20,23 +18,10 @@ interface ILoginDialogProps extends InjectedIntlProps {
   robotLoginAvailable?: boolean;
 }
 
-interface ILoginDialogState {
-  username?: string;
-  password?: string;
-}
-
-class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> {
-  state = {username: '', password: ''};
-
+class LoginDialog extends React.Component<ILoginDialogProps> {
   render() {
     const {
-      props: {
-        robotLoginAvailable,
-        routeType,
-        isAuthorized, isCheckingLogin, isCheckingSession,
-        checkLogin
-      },
-      state: {username, password}
+      props: { robotLoginAvailable, routeType, isAuthorized, isCheckingSession }
     } = this;
 
     const loginVisible = (
@@ -53,17 +38,10 @@ class LoginDialog extends React.Component<ILoginDialogProps, ILoginDialogState> 
           visible={loginVisible}
           title="Login"
           aria-describedby=""
-          actions={<LoginButton
-            isCheckingLogin={isCheckingLogin}
-            onLogin={() => checkLogin({username, password})}
-          />}
+          actions={<LoginButton/>}
           modal
         >
-          <LoginCredentials
-            onChangeUsername={update => this.setState({username: update})}
-            onChangePassword={update => this.setState({password: update})}
-            onLogin={() => checkLogin({username, password})}
-          />
+          <LoginCredentials/>
         </DialogContainer>
       </div>
     )
@@ -77,7 +55,6 @@ const mapStateToProps = (
 ): ILoginDialogProps => ({
   ...ownProps,
   isAuthorized: state.sessionReducer.isAuthorized,
-  isCheckingLogin: state.sessionReducer.isCheckingLogin,
   isCheckingSession: state.sessionReducer.isCheckingSession,
   routeType: state.routerReducer.routeType,
   robotLoginAvailable: (
@@ -89,10 +66,8 @@ const mapStateToProps = (
   )
 });
 
-const mapDispatchToProps = {checkLogin};
-
 const enhance = compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps, { checkLogin }),
   injectIntl
 );
 

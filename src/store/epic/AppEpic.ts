@@ -8,10 +8,16 @@ import { initializeApp, IInitializeAppPayload } from '../action/AppAction';
 import JscClient from '../../base/JscClient';
 
 export const initializeAppEpic: Epic<RootAction, RootAction> = (
-  (action$, _store) => action$.pipe(
+  action$ => action$.pipe(
     filter(isActionOf(initializeApp)),
     concatMap((action: PayloadAction<string, IInitializeAppPayload>) => {
       JscClient.setPackageJson(action.payload.packageJson);
+      const isHTTPS = window.location.protocol.toLowerCase() === 'https:';
+      if (!isHTTPS && action.payload.ForceHTTPS) {
+        window.location.replace(
+          window.location.toString().replace('http:', 'https:')
+        );
+      }
       return of(loadConfig());
     })
   )

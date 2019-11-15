@@ -2,14 +2,13 @@ import { combineEpics } from 'redux-observable';
 
 import { initializeAppEpic } from './AppEpic';
 import {
-  logoutEpic,
-  authorizeSessionEpic,
   loadSessionEpic,
-  loginEpic,
   checkSessionEpic,
-  unauthorizeSessionEpic,
+  authorizeSessionEpic, unauthorizeSessionEpic,
+  logoutEpic,
 } from './SessionEpic';
 import { getRegionEpic } from './SystemEpic';
+import { loginEpic } from './LoginEpic';
 import { loadConfigEpic } from './ConfigEpic';
 import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from './NotificationEpic';
 
@@ -20,18 +19,20 @@ import {
   webSocketJoinRoomSuccessEpic,
   webSocketLeaveRoomRequestEpic
 } from './WebsocketEpic';
+import { setInitialLanguageEpic } from './LanguageEpic';
 
 export default (...epics: any) => combineEpics(
+  loginEpic,
   addNotificationEpic,
   initializeAppEpic,
   dismissAllNotificationsEpic,
   getRegionEpic,
   loadConfigEpic,
   logoutEpic,
+  setInitialLanguageEpic,
   splitViewEpic,
   loadSessionEpic,
   checkSessionEpic,
-  loginEpic,
   authorizeSessionEpic,
   unauthorizeSessionEpic,
   webSocketCheckSessionIsAuthorizedEpic,

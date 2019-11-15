@@ -7,15 +7,6 @@ const featureName = 'session';
 
 export const checkSession = createStandardAction(featureName + '/CHECK')();
 
-export interface ICheckLoginPayload {
-    username: string;
-    password: string;
-}
-
-export const checkLogin = createStandardAction(featureName + '/LOGIN')<ICheckLoginPayload>();
-export const loggedIn = createStandardAction(featureName + '/LOGGED_IN')();
-export const loginFailed = createStandardAction(featureName + '/LOGIN_FAILED')();
-
 export interface ILogoutPayload {
   sessionDTO?: ISessionDTO;
 }
