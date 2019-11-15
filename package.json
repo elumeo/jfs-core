@@ -54,6 +54,7 @@
     "redux": "^4.0.1",
     "redux-observable": "^1.1.0",
     "renderkid": "^2.0.2",
+    "reselect": "^4.0.0",
     "rxjs": "^6.5.2",
     "socket.io": "^2.3.0",
     "toposort": "^2.0.2",
