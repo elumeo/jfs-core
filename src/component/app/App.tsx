@@ -1,86 +1,60 @@
-import * as React from 'react';
-import { IntlProvider } from 'react-intl';
+import React, { useEffect } from 'react';
 import { connect, Provider } from 'react-redux';
-import { HashRouter } from 'react-router-dom';
 import { compose } from 'redux';
 
-import { initializeApp } from '../../store/action/AppAction';
-import { changeLanguageAction } from '../../store/action/LanguageAction';
-import mergeTranslations from '../../Translations';
-import { ICoreRootReducer } from '../../store/reducer/combineReducers';
+import Initialized from './Initialized';
 import WebSocketConnection from '../websocket/WebSocketConnection';
+
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
+import { initializeApp } from '../../store/action/AppAction';
 
 export interface IAppProps {
   allowRobotLogin?: boolean;
   initializeApp?: typeof initializeApp;
-  changeLanguageAction?: typeof changeLanguageAction;
   language?: string;
   location?: Location;
   store: any;
-  Translations;
+  translations: { [language: string]: { [key: string]: string } };
   appInitialized?: boolean;
   packageJson: object;
 }
 
-export interface IAppState {
+const App: React.FC<IAppProps> = ({
+  store,
+  translations,
+  children,
+  initializeApp, allowRobotLogin, packageJson
+}) => {
+  useEffect(
+    () => {
+      initializeApp({
+        allowRobotLogin,
+        packageJson,
+        translations
+      });
+    }
+  );
+  return (
+    <Provider store={store}>
+      <WebSocketConnection>
+        <Initialized>
+          {children}
+        </Initialized>
+      </WebSocketConnection>
+    </Provider>
+  )
 }
 
-class App extends React.Component<IAppProps, IAppState> {
-  constructor(props) {
-    super(props);
-    const { props: { initializeApp, allowRobotLogin, packageJson } } = this;
-    initializeApp({
-      allowRobotLogin,
-      packageJson
-    });
-  }
-
-  render = () => {
-    const {
-      props: {language, store, Translations, children, appInitialized}
-    } = this;
-
-    const messages = mergeTranslations(Translations);
-
-    return (
-      <Provider store={store}>
-        <WebSocketConnection>
-          {
-            language && appInitialized
-              ? (
-                <IntlProvider
-                  locale={language}
-                  messages={messages[language]}
-                  key={language}>
-                  <HashRouter>
-                    <>
-                      {children}
-                    </>
-                  </HashRouter>
-                </IntlProvider>
-              )
-              : (
-                <></>
-              )
-          }
-        </WebSocketConnection>
-      </Provider>
-    );
-  }
-}
-
-// higher order components -----------------------------------------------------
 const mapStateToProps = (
   state: ICoreRootReducer,
   ownProps: IAppProps
 ): IAppProps => ({
-  language: state.languageReducer.language,
-  appInitialized: state.appReducer.appInitialized,
-  ...ownProps
+  ...ownProps,
+  appInitialized: state.appReducer.appInitialized
 });
 
 const enhance = compose(
-  connect(mapStateToProps, {changeLanguageAction, initializeApp})
+  connect(mapStateToProps, { initializeApp })
 );
 
 export default enhance(App);

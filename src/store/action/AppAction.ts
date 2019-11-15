@@ -4,6 +4,7 @@ export interface IInitializeAppPayload {
   allowRobotLogin?: boolean;
   packageJson: object;
   ForceHTTPS?: boolean;
+  translations: { [language: string]: { [key: string]: string } };
 }
 
 const featureName = 'app';

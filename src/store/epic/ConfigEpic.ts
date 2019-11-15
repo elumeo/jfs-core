@@ -17,8 +17,7 @@ export const loadConfigEpic: Epic<RootAction, RootAction> = (action$, store) => 
       const config: IConfig = response.data;
       JscClient.setConfig(config);
       return of(
-        configLoadedAction({config}),
-        appInitialized()
+        configLoadedAction({ config })
       );
     }),
     catchError(() => of(loadConfigFailed()))

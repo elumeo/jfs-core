@@ -4,7 +4,7 @@ import { appInitialized, initializeApp, IInitializeAppPayload } from '../action/
 export interface IAppReducerState {
   appInitialized: boolean;
   allowRobotLogin: boolean;
-  packageJson: object;
+  packageJson: { version?: string };
 }
 
 const initialState: IAppReducerState = {
