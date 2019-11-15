@@ -7,8 +7,8 @@ import { isActionOf } from 'typesafe-actions';
 import { changeLanguageAction, initializeLanguage } from '../action/LanguageAction';
 
 import Cookie from 'js-cookie';
-import { appInitialized } from '../action/AppAction';
 import { configLoadedAction } from '../action/ConfigAction';
+import { loadSession } from '../action/SessionAction';
 
 export const setInitialLanguageEpic: Epic<RootAction, RootAction> = (
   (action$, store) => action$.pipe(
@@ -28,7 +28,7 @@ export const setInitialLanguageEpic: Epic<RootAction, RootAction> = (
               ? store.value.configReducer.config.Language
               : 'en'
         ),
-        appInitialized()
+        loadSession()
       )
     })
   )

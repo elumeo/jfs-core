@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import BaseRoute, { IBaseRouteProps } from './BaseRoute';
@@ -12,27 +12,25 @@ export interface IAuthRouteProps extends IBaseRouteProps {
   enterAuthorizedRoute?: typeof enterAuthorizedRoute;
 }
 
-class AuthRoute extends React.Component<IAuthRouteProps> {
-  constructor(props: IAuthRouteProps) {
-    super(props);
-    this.props.enterAuthorizedRoute();
-  }
+const AuthRoute: React.FC<IAuthRouteProps> = ({
+  Component, isAuthorized, isCheckingSession, path, enterAuthorizedRoute, ...rest
+}) => {
+  useEffect(
+    () => {
+      enterAuthorizedRoute()
+    }
+  );
 
-  render() {
-    const {
-      props: {Component, isAuthorized, isCheckingSession, path, ...rest}
-    } = this;
-    return (
-      isAuthorized
-        ? <BaseRoute
-          {...rest}
-          render={props => <Component {...props}/>}
-        />
-        : isCheckingSession
-        ? <CircularProgress id="check-session-progress"/>
-        : <></>
-    );
-  }
+  return (
+    isAuthorized
+      ? <BaseRoute
+        {...rest}
+        render={props => <Component {...props}/>}
+      />
+      : isCheckingSession
+      ? <CircularProgress id="check-session-progress"/>
+      : <></>
+  );
 }
 
 const mapStateToProps = (

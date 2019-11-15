@@ -16,13 +16,11 @@ interface ILoginDialogProps extends InjectedIntlProps {
   loginVisible?: boolean;
   isAuthorized?: boolean;
   robotLoginAvailable?: boolean;
+  appInitialized?: boolean;
 }
 
 const LoginDialog: React.FC<ILoginDialogProps> = ({
-  robotLoginAvailable,
-  routeType,
-  isAuthorized,
-  isCheckingSession
+  robotLoginAvailable, routeType, isAuthorized, isCheckingSession
 }) => (
   <div className="login-dialog">
     <DialogContainer
@@ -41,7 +39,7 @@ const LoginDialog: React.FC<ILoginDialogProps> = ({
       <LoginCredentials/>
     </DialogContainer>
   </div>
-)
+);
 
 const mapStateToProps = (
   state: ICoreRootReducer,

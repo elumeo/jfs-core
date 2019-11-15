@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import BaseRoute, { IBaseRouteProps } from './BaseRoute';
 
 import { enterUnauthorizedRoute } from '../../store/action/RouterAction';
@@ -13,22 +13,19 @@ export interface INoAuthRouteProps extends IBaseRouteProps {
   enterUnauthorizedRoute?: typeof enterUnauthorizedRoute;
 }
 
-class NoAuthRoute extends React.Component<INoAuthRouteProps> {
-  constructor(props) {
-    super(props);
-    this.props.enterUnauthorizedRoute();
-  }
+const NoAuthRoute: React.FC<INoAuthRouteProps> = ({
+  Component, enterUnauthorizedRoute, ...rest
+}) => {
+  useEffect(() => {
+    enterUnauthorizedRoute();
+  })
 
-  render() {
-    const {props: {Component, ...rest}} = this;
-
-    return (
-      <BaseRoute
-        {...rest}
-        render={props => <Component {...props}/>}
-      />
-    );
-  }
+  return (
+    <BaseRoute
+      {...rest}
+      render={props => <Component {...props}/>}
+    />
+  );
 }
 
 const mapStateToProps = (

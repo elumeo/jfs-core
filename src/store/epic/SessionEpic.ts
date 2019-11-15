@@ -8,22 +8,23 @@ import {
   checkSession,
   unauthorizeSession,
   authorizeSession, IAuthorizeSessionPayload,
-  logout, ILogoutPayload
+  logout, ILogoutPayload, loadSession
 } from '../action/SessionAction';
 import { checkLogin } from '../action/LoginAction';
 import JSCApi from '../../JscApi';
 import Session from '../../base/Session';
 import { AxiosResponse } from 'axios';
 import { addToastAction } from '../action/ToastAction';
+import { appInitialized } from '../action/AppAction';
 
 export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
-    filter(isActionOf(configLoadedAction)),
+    filter(isActionOf(loadSession)),
     map((action: PayloadAction<string, IConfigLoadedPayload>) => {
       const {
         RobotUsername: username,
         RobotPassword: password
-      } = action.payload.config;
+      } = store.value.configReducer.config;
       const {allowRobotLogin} = store.value.appReducer;
       return [allowRobotLogin, {username, password}];
     }),
@@ -94,7 +95,7 @@ export const unauthorizeSessionEpic: Epic<RootAction, RootAction> = (action$) =>
     filter(isActionOf(unauthorizeSession)),
     concatMap(() => {
       Session.removeToken();
-      return EMPTY;
+      return of(appInitialized());
     })
   )
 );
@@ -105,7 +106,7 @@ export const authorizeSessionEpic: Epic<RootAction, RootAction> = (action$) => (
     concatMap(
       (action: PayloadAction<string, IAuthorizeSessionPayload>) => {
         Session.setToken(action.payload.frontendSessionDTO.session.token);
-        return EMPTY;
+        return of(appInitialized());
       }
     )
   )
