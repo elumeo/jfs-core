@@ -19,7 +19,7 @@
   },
   "homepage": "http://www.elumeo.com",
   "dependencies": {
-    "@elumeo/jfs-core-dev": "^1.0.6",
+    "@elumeo/jfs-core-dev": "git+https://github.com/elumeo/jfs-core-dev.git#TECH-64_push_to_web",
     "axios": "^0.19.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-preset-react-hmre": "^1.1.1",
