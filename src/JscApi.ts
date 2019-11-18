@@ -153,14 +153,6 @@ namespace JSCApi {
     }
 
   }
-
-  export namespace WebSocketClient {
-    export function joinRoomPing() {
-      return WSClient.join('ping');
-    }
-
-  }
-
 }
 
 export default JSCApi;

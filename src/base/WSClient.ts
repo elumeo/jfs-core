@@ -4,6 +4,7 @@ import * as SocketIoClient from 'socket.io-client';
 import { Socket } from 'socket.io';
 import JSCApi from '../JscApi';
 import { filter } from 'rxjs/operators';
+import { IWebSocketJoiningRoom, IWebSocketUpdateRoom } from '../store/reducer/WebSocketReducer';
 
 export class WSClient {
   public static EVENT_NOT_AUTHORIZED = 'notAuthorized';
@@ -23,7 +24,7 @@ export class WSClient {
   protected static listenRoomsSubject = new Subject<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>();
   protected static listenRoomsObservable = WSClient.listenRoomsSubject.asObservable();
   protected static listenRoomsSubscriptions: { [key: string]: Subscription } = {};
-  protected static listenRoomsObserver: { [key: string]: Subscriber<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>> } = {};
+  protected static listenRoomsObserver: { [key: string]: Subscriber<IWebSocketUpdateRoom> } = {};
 
   public static connect(token: string, ip: string, host: string, namespace: string) {
     return new Observable<boolean>((observer) => {
@@ -49,17 +50,16 @@ export class WSClient {
     });
   }
 
-  public static join(room: string) {
-    return new Observable<string>((observer) => {
+  public static join(joiningRoom: IWebSocketJoiningRoom) {
+    return new Observable<IWebSocketJoiningRoom>((observer) => {
       // 1. Tell websocket server that we joined the room
-      this.socket.emit(this.EVENT_JOIN_ROOM, room);
+      this.socket.emit(this.EVENT_JOIN_ROOM, joiningRoom.roomState.name);
       // 2. When joining a room we only need to initialize a new subscription to the websocket observable to
       // receive the success response
       const subscription = this.joinRoomsObserver.pipe(
-        filter((joinedRoom) => joinedRoom === room)
-      ).subscribe((test) => {
-        console.log('join', test);
-        observer.next(room);
+        filter((joinedRoom) => joinedRoom === joiningRoom.roomState.name)
+      ).subscribe(() => {
+        observer.next(joiningRoom);
         observer.complete();
         subscription.unsubscribe();
       });
@@ -82,17 +82,22 @@ export class WSClient {
     });
   }
 
-  public static listen<T>(room: string) {
-    return new Observable<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>>((observer) => {
+  public static listen(joiningRoom: IWebSocketJoiningRoom) {
+    return new Observable<IWebSocketUpdateRoom>((observer) => {
       if (this.socket) {
         // When listening to a room we only need to initialize a new subscription to the websocket observable
-        this.listenRoomsSubscriptions[room] = this.listenRoomsObservable.pipe(
-          filter((roomData: JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>) => roomData.room === room)
+        this.listenRoomsSubscriptions[joiningRoom.roomState.name] = this.listenRoomsObservable.pipe(
+          filter((roomData) => roomData.room === joiningRoom.roomState.name)
         ).subscribe((roomData) => {
-          observer.next(roomData as JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>);
+          console.log('roomData LISTEN', roomData);
+          const updateRoom = {
+            roomData: roomData,
+            action: joiningRoom.action
+          } as IWebSocketUpdateRoom;
+          observer.next(updateRoom);
         });
       }
-      this.listenRoomsObserver[room] = observer;
+      this.listenRoomsObserver[joiningRoom.roomState.name] = observer;
     });
   }
 }
