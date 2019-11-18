@@ -57,7 +57,8 @@ export class WSClient {
       // receive the success response
       const subscription = this.joinRoomsObserver.pipe(
         filter((joinedRoom) => joinedRoom === room)
-      ).subscribe(() => {
+      ).subscribe((test) => {
+        console.log('join', test);
         observer.next(room);
         observer.complete();
         subscription.unsubscribe();

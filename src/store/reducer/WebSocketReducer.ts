@@ -3,7 +3,9 @@ import {
   webSocketConnectSuccessAction,
   webSocketConnectFailedAction,
   webSocketJoinRoomSuccessAction,
-  webSocketLeaveRoomSuccessAction, webSocketJoinRoomRequestAction
+  webSocketLeaveRoomSuccessAction,
+  webSocketJoinRoomLoadingAction,
+  webSocketJoinRoomFailureAction
 } from '../action/WebSocketAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 
@@ -18,6 +20,7 @@ export interface IWebSocketRoom {
   isJoining: boolean;
   hasJoined: boolean;
   name: string;
+  error: string;
 }
 
 const initialState: IWebSocketReducerState = {
@@ -28,6 +31,7 @@ const initialState: IWebSocketReducerState = {
 };
 
 export const webSocketReducer = createReducer(initialState)
+
   .handleAction(webSocketConnectRequestAction, (state: IWebSocketReducerState): IWebSocketReducerState => ({
     ...state,
     isConnecting: true,
@@ -47,62 +51,51 @@ export const webSocketReducer = createReducer(initialState)
     joinedRooms: []
   }))
 
-  .handleAction(webSocketJoinRoomRequestAction, (state: IWebSocketReducerState, action: PayloadAction<string, string>): IWebSocketReducerState => {
+  .handleAction(webSocketJoinRoomLoadingAction, (state: IWebSocketReducerState, action: PayloadAction<string, IWebSocketRoom>): IWebSocketReducerState => {
     const rooms = state.joinedRooms;
-    let foundRoom = false;
-    let roomFound = {} as IWebSocketRoom;
     const newRooms: IWebSocketRoom[] = [];
     for(const room of state.joinedRooms) {
-      if(room.name === action.payload) {
-        foundRoom = true;
-        roomFound = {
-          ...room
-        }
-      } else {
+      if(room.name !== action.payload.name) {
         newRooms.push(room);
       }
     }
-    if(foundRoom === false) {
-      roomFound.isJoining = false;
-      roomFound.hasJoined = false;
-      roomFound.name = action.payload;
-    }
-    // const indexOfRoom = state.joinedRooms.indexOf(action.payload);
-    // const joinedRooms = state.joinedRooms;
-    // if (indexOfRoom === -1) {
-    //   joinedRooms.push(action.payload);
-    // }
+    newRooms.push(action.payload);
     return {
       ...state,
-      // joinedRooms
+      joinedRooms: newRooms
     }
   })
 
-  .handleAction(webSocketJoinRoomSuccessAction, (state: IWebSocketReducerState, action: PayloadAction<string, string>): IWebSocketReducerState => {
-    let roomUpdate: IWebSocketRoom = {
-      hasJoined: false,
-      isJoining: false,
-      name: action.payload
-    } as IWebSocketRoom;
-    for(const roomIndex in state.joinedRooms) {
-      console.log(roomIndex);
-      // if(room.name === action.payload) {
-      //   roomUpdate = {
-      //     ...room,
-      //     ...roomUpdate
-      //   }
-      // }
+  .handleAction(webSocketJoinRoomSuccessAction, (state: IWebSocketReducerState, action: PayloadAction<string, IWebSocketRoom>): IWebSocketReducerState => {
+    const rooms = state.joinedRooms;
+    const newRooms: IWebSocketRoom[] = [];
+    for(const room of state.joinedRooms) {
+      if(room.name !== action.payload.name) {
+        newRooms.push(room);
+      }
     }
-    // const indexOfRoom = state.joinedRooms.indexOf(action.payload);
-    // const joinedRooms = state.joinedRooms;
-    // if (indexOfRoom === -1) {
-    //   joinedRooms.push(action.payload);
-    // }
+    newRooms.push(action.payload);
     return {
       ...state,
-      // joinedRooms
+      joinedRooms: newRooms
     }
   })
+  .handleAction(webSocketJoinRoomFailureAction, (state: IWebSocketReducerState, action: PayloadAction<string, IWebSocketRoom>): IWebSocketReducerState => {
+    const rooms = state.joinedRooms;
+    const newRooms: IWebSocketRoom[] = [];
+    for(const room of state.joinedRooms) {
+      if(room.name !== action.payload.name) {
+        newRooms.push(room);
+      }
+    }
+    newRooms.push(action.payload);
+    return {
+      ...state,
+      joinedRooms: newRooms
+    }
+  })
+
+
   .handleAction(webSocketLeaveRoomSuccessAction, (state: IWebSocketReducerState, action: PayloadAction<string, string>): IWebSocketReducerState => {
     // const indexOfRoom = state.joinedRooms.indexOf(action.payload);
     // const joinedRooms = state.joinedRooms;
