@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
-import { IWebSocketReducerState, IWebSocketRoom } from '../reducer/WebSocketReducer';
+import { IWebSocketConnectionReducerState, IWebSocketRoomConnection } from '../reducer/WebSocketConnectionReducer';
 
-const getRoomByNameSelector = (state: IWebSocketReducerState, roomName: string) => {
-  let foundRoom: IWebSocketRoom = null;
-  for(const room of state.joinedRooms) {
+const getRoomByNameSelector = (state: IWebSocketConnectionReducerState, roomName: string) => {
+  let foundRoom: IWebSocketRoomConnection = null;
+  for(const room of state.rooms) {
     if(room.name === roomName) {
       foundRoom = room;
     }
@@ -11,7 +11,7 @@ const getRoomByNameSelector = (state: IWebSocketReducerState, roomName: string) 
   return foundRoom;
 };
 
-export const getRoomState = createSelector(
+export const getRoomConnectionState = createSelector(
   [getRoomByNameSelector],
   (room) => room
 );

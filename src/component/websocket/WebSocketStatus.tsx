@@ -31,6 +31,6 @@ const mapStateToProps = (
   ...ownProps,
   webSocket: state.webSocketReducer
 });
-const enhance = connect(mapStateToProps, {webSocketConnectRequestAction});
+const enhance = connect(mapStateToProps, {webSocketConnectRequestAction: webSocketConnectRequestAction});
 
 export default enhance(WebSocketStatus);

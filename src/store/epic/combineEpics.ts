@@ -18,7 +18,7 @@ import {
   webSocketJoinRoomRequestEpic,
   webSocketJoinRoomSuccessEpic,
   webSocketLeaveRoomRequestEpic
-} from './WebsocketEpic';
+} from './WebSocketEpic';
 import { setInitialLanguageEpic } from './LanguageEpic';
 
 export default (...epics: any) => combineEpics(
