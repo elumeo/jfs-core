@@ -2,7 +2,7 @@ import { Epic } from 'redux-observable';
 import { RootAction } from '../action/RootAction';
 import { filter, map, switchMap, concatMap, catchError, tap } from 'rxjs/operators';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
-import { configLoadedAction, IConfigLoadedPayload } from '../action/ConfigAction';
+import { IConfigLoadedPayload } from '../action/ConfigAction';
 import { from, of, EMPTY } from 'rxjs';
 import {
   checkSession,
@@ -20,7 +20,7 @@ import { appInitialized } from '../action/AppAction';
 export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
     filter(isActionOf(loadSession)),
-    map((action: PayloadAction<string, IConfigLoadedPayload>) => {
+    map(() => {
       const {
         RobotUsername: username,
         RobotPassword: password
@@ -28,16 +28,15 @@ export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) =>
       const {allowRobotLogin} = store.value.appReducer;
       return [allowRobotLogin, {username, password}];
     }),
-    filter(
-      ([allowRobotLogin, {username, password}]) => (
+    switchMap(
+      ([allowRobotLogin, {username, password}]) => of(
         Session.getToken() || allowRobotLogin && username && password
-      )
-    ),
-    concatMap(
-      ([, {username, password}]) => of(
-        Session.getToken()
-          ? checkSession()
-          : checkLogin({ username, password })
+          ? (
+            Session.getToken()
+              ? checkSession()
+              : checkLogin({ username, password })
+          )
+          : unauthorizeSession()
       )
     )
   )
@@ -58,15 +57,30 @@ export const checkSessionEpic: Epic<RootAction, RootAction> = (action$, store) =
       )
     ),
     catchError((error) => {
-      return of(
-        addToastAction({
-          contentTranslationId: (
+      const toastableErrorIds: string[] = [
+        'authorizationRequired', 'invalidSession'
+      ];
+
+      const isToastable = error && error.response && (
+        toastableErrorIds.find(id => id === error.response.id)
+      );
+
+      const contentTranslationId = (
+        isToastable
+          ? (
             error.response.id === 'authorizationRequired'
               ? 'userRights.checkFailed'
               : 'session.expired'
-          ),
-          isError: true
-        }),
+          )
+          : null
+      );
+
+      return of(
+        ...(
+          isToastable
+            ? [addToastAction({ contentTranslationId, isError: true })]
+            : []
+        ),
         unauthorizeSession()
       )
     })
