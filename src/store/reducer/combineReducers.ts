@@ -14,11 +14,13 @@ import { systemReducer, ISystemReducerState } from './SystemReducer';
 import { toastReducer, IToastReducerState } from './ToastReducer';
 import { webSocketReducer, IWebSocketReducerState } from './WebSocketReducer';
 import { appReducer, IAppReducerState } from './AppReducer';
+import { loginReducer, ILoginReducerState } from './LoginReducer';
 import IConfig from '../../base/IConfig';
 
 export interface IRootReducer<IConfig> {
   appReducer?: IAppReducerState;
   languageReducer?: ILanguageReducerState;
+  loginReducer?: ILoginReducerState;
   logoutReducer?: ILogoutReducerState;
   navigationReducer?: INavigationReducerState;
   notificationReducer?: INotificationReducerState;
@@ -42,6 +44,7 @@ export default reducers => combineReducers({
   reactRouterReducer,
   configReducer,
   languageReducer,
+  loginReducer,
   logoutReducer,
   navigationReducer,
   notificationReducer,

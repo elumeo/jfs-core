@@ -11,18 +11,15 @@ export interface INavigationDrawerHeaderProps {
   username?: string;
 }
 
-class NavigationDrawerHeader extends React.Component<INavigationDrawerHeaderProps> {
-  render() {
-    const {props: {username}} = this;
-    return (
-      <Toolbar
-        actions={<NavigationButton iconName="arrow_back"/>}
-        className="md-divider-border md-divider-border--bottom"
-        title={username ? username : ''}
-      />
-    )
-  }
-}
+const NavigationDrawerHeader: React.FC<INavigationDrawerHeaderProps> = ({
+  username
+}) => (
+  <Toolbar
+    actions={<NavigationButton iconName="arrow_back"/>}
+    className="md-divider-border md-divider-border--bottom"
+    title={username ? username : ''}
+  />
+)
 
 const mapStateToProps = (
   state: ICoreRootReducer,

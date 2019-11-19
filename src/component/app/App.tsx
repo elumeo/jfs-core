@@ -1,113 +1,60 @@
-import * as React from 'react';
-import { addLocaleData, IntlProvider } from 'react-intl';
+import React, { useEffect } from 'react';
 import { connect, Provider } from 'react-redux';
-import { HashRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import Cookie from 'js-cookie';
 
-import { initializeApp } from '../../store/action/AppAction';
-import { changeLanguageAction } from '../../store/action/LanguageAction';
-import mergeTranslations from '../../Translations';
-import { ICoreRootReducer } from '../../store/reducer/combineReducers';
+import Initialized from './Initialized';
 import WebSocketConnection from '../websocket/WebSocketConnection';
+
+import { ICoreRootReducer } from '../../store/reducer/combineReducers';
+import { initializeApp } from '../../store/action/AppAction';
 
 export interface IAppProps {
   allowRobotLogin?: boolean;
   initializeApp?: typeof initializeApp;
-  changeLanguageAction?: typeof changeLanguageAction;
-  language?: any;
+  language?: string;
   location?: Location;
   store: any;
-  Translations;
-  ForceHTTPS?: boolean;
+  translations: { [language: string]: { [key: string]: string } };
   appInitialized?: boolean;
+  packageJson: object;
 }
 
-export interface IAppState {
-}
-
-class App extends React.Component<IAppProps, IAppState> {
-  constructor(props) {
-    super(props);
-    const {props: {initializeApp, allowRobotLogin}} = this;
-    initializeApp(allowRobotLogin); // initializeApp({allowRobotLogin}); ToDo: Warum wurde hier vorher ein Parameter übergeben? Ist in der Action nicht definiert!
-    this.checkProtocol();
-    this.addLocales();
-  }
-
-  addLocales = () => {
-    const {props: {changeLanguageAction, language}} = this;
-    const locales = ['de', 'en', 'fr', 'it'];
-    changeLanguageAction(language);
-    locales.map(
-      abrev => addLocaleData(require(`react-intl/locale-data/${abrev}`))
-    );
-  };
-
-  checkProtocol = () => {
-    const {props: {ForceHTTPS}} = this;
-    const isHTTPS = window.location.protocol.toLowerCase() === 'https:';
-    if (!isHTTPS && ForceHTTPS) {
-      window.location.replace(
-        window.location.toString().replace('http:', 'https:')
-      );
+const App: React.FC<IAppProps> = ({
+  store,
+  translations,
+  children,
+  initializeApp, allowRobotLogin, packageJson
+}) => {
+  useEffect(
+    () => {
+      initializeApp({
+        allowRobotLogin,
+        packageJson,
+        translations
+      });
     }
-  };
-
-  render = () => {
-    const {
-      props: {language, store, Translations, children, appInitialized}
-    } = this;
-
-    const messages = mergeTranslations(Translations);
-
-    return (
-      <Provider store={store}>
-        <WebSocketConnection>
-          <IntlProvider
-            locale={language}
-            messages={messages[language]}
-            key={language}>
-            <HashRouter>
-              <>
-                {appInitialized && children}
-              </>
-            </HashRouter>
-          </IntlProvider>
-        </WebSocketConnection>
-      </Provider>
-    );
-  }
+  );
+  return (
+    <Provider store={store}>
+      <WebSocketConnection>
+        <Initialized>
+          {children}
+        </Initialized>
+      </WebSocketConnection>
+    </Provider>
+  )
 }
 
-// higher order components -----------------------------------------------------
 const mapStateToProps = (
   state: ICoreRootReducer,
   ownProps: IAppProps
 ): IAppProps => ({
-  language: (() => {
-    try {
-      JSON.parse(document.cookie);
-      document.cookie = '';
-    } catch (error) {
-    }
-
-    const cookie = Cookie.get('lang');
-    return state.languageReducer.language
-      ? state.languageReducer.language
-      : cookie
-        ? cookie
-        : state.configReducer.config && state.configReducer.config.Language
-          ? state.configReducer.config.Language
-          : 'en'
-  })(),
-  ForceHTTPS: state.configReducer.config && state.configReducer.config.ForceHTTPS,
-  appInitialized: state.appReducer.appInitialized,
-  ...ownProps
+  ...ownProps,
+  appInitialized: state.appReducer.appInitialized
 });
 
 const enhance = compose(
-  connect(mapStateToProps, {changeLanguageAction, initializeApp})
+  connect(mapStateToProps, { initializeApp })
 );
 
 export default enhance(App);

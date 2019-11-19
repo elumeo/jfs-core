@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import './Content.scss';
-
 import { ICoreRootReducer } from '../../store/reducer/combineReducers';
+import './Content.scss';
 
 export interface IContentProps {
   splitViewEnabled?: boolean;
@@ -18,7 +17,11 @@ class Content extends React.Component<IContentProps> {
       splitViewEnabled ? 'split-view--active' : ''
     ].join(' ');
 
-    return <div className={contentClassName}>{children}</div>;
+    return (
+      <div className={contentClassName}>
+        {children}
+      </div>
+    );
   }
 }
 
@@ -30,8 +33,6 @@ const mapStateToProps = (
   ...ownProps,
 });
 
-const enhance = connect(
-  mapStateToProps
-);
+const enhance = connect(mapStateToProps);
 
 export default enhance(Content);

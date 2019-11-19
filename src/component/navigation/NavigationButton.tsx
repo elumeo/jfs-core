@@ -18,22 +18,20 @@ export interface INavigationButtonState {
 
 }
 
-class NavigationButton extends React.Component<INavigationButtonProps, INavigationButtonState> {
-  render() {
-    const {
-      props: {navigationOpen, openNavigation, closeNavigation, iconName}
-    } = this;
-    return (
-      <Button icon onClick={() => (
-        navigationOpen
-          ? closeNavigation()
-          : openNavigation()
-      )}>
-        {iconName}
-      </Button>
-    )
-  }
-}
+const NavigationButton: React.FC<INavigationButtonProps> = ({
+  navigationOpen,
+  openNavigation,
+  closeNavigation,
+  iconName
+}) => (
+  <Button icon onClick={() => (
+    navigationOpen
+      ? closeNavigation()
+      : openNavigation()
+  )}>
+    {iconName}
+  </Button>
+)
 
 const mapStateToProps = (
   state: ICoreRootReducer,

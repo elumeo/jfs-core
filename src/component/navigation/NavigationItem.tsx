@@ -27,53 +27,43 @@ export interface INavigationItemProps extends InjectedIntlProps {
   history?: History;
 }
 
-export interface INavigationItemState {
+const NavigationItem: React.FC<INavigationItemProps> = ({
+  intl: {formatMessage},
+  iconName, messageId, onClick, active, messageString,
+  authorizedOnly, unauthorizedOnly,
+  isAuthorized, closeNavigation, onClickRoute, history
+}) => {
+  const visible = (
+    !authorizedOnly && !unauthorizedOnly || // always display these
+    isAuthorized && authorizedOnly || // only when authorized
+    !isAuthorized && unauthorizedOnly // only when unauthorized
+  );
 
-}
-
-class NavigationItem extends React.Component<INavigationItemProps, INavigationItemState> {
-  render() {
-    const {
-      props: {
-        intl: {formatMessage},
-        iconName, messageId, onClick, active, messageString,
-        authorizedOnly, unauthorizedOnly,
-        isAuthorized, closeNavigation, onClickRoute, history
-      }
-    } = this;
-
-    const visible = (
-      !authorizedOnly && !unauthorizedOnly || // always display these
-      isAuthorized && authorizedOnly || // only when authorized
-      !isAuthorized && unauthorizedOnly // only when unauthorized
-    );
-
-    return (
-      visible
-        ? (
-          <ListItem
-            key={_.uniqueId('navItem_')}
-            primaryText={
-              messageString
-                ? messageString
-                : formatMessage({id: messageId})}
-            leftIcon={<FontIcon>{iconName}</FontIcon>}
-            onClick={(event: React.MouseEvent<HTMLElement>) => {
-              const {location: {pathname}} = history;
-              if (pathname !== onClickRoute) {
-                history.push(onClickRoute);
-              }
-              closeNavigation();
-              if (onClick) {
-                onClick(event);
-              }
-            }}
-            active={active}
-          />
-        )
-        : <></>
-    )
-  }
+  return (
+    visible
+      ? (
+        <ListItem
+          key={_.uniqueId('navItem_')}
+          primaryText={
+            messageString
+              ? messageString
+              : formatMessage({id: messageId})}
+          leftIcon={<FontIcon>{iconName}</FontIcon>}
+          onClick={(event: React.MouseEvent<HTMLElement>) => {
+            const {location: {pathname}} = history;
+            if (pathname !== onClickRoute) {
+              history.push(onClickRoute);
+            }
+            closeNavigation();
+            if (onClick) {
+              onClick(event);
+            }
+          }}
+          active={active}
+        />
+      )
+      : <></>
+  )
 }
 
 const mapStateToProps = (

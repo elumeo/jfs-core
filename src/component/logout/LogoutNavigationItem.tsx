@@ -11,26 +11,21 @@ export interface ILogoutNavigationItemProps {
   openLogout?: typeof openLogout;
 }
 
-class LogoutNavigationItem extends React.Component<ILogoutNavigationItemProps> {
-  render() {
-    const {
-      props: {robotLoginAvailable, openLogout}
-    } = this;
-
-    return (
-      !(robotLoginAvailable)
-        ? (
-          <NavigationItem
-            iconName="exit_to_app"
-            messageId="app.logout"
-            authorizedOnly
-            onClick={() => openLogout()}
-          />
-        )
-        : <></>
+const LogoutNavigationItem: React.FC<ILogoutNavigationItemProps> = ({
+  robotLoginAvailable,
+  openLogout
+}) => (
+  !(robotLoginAvailable)
+    ? (
+      <NavigationItem
+        iconName="exit_to_app"
+        messageId="app.logout"
+        authorizedOnly
+        onClick={() => openLogout()}
+      />
     )
-  }
-}
+    : <></>
+)
 
 const mapStateToProps = (
   state: ICoreRootReducer,

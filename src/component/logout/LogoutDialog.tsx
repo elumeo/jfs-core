@@ -15,49 +15,37 @@ export interface ILogoutDialogProps extends InjectedIntlProps {
   logoutOpen?: boolean;
 }
 
-export interface ILogoutDialogState {
-
-}
-
-class LogoutDialog extends React.Component<ILogoutDialogProps, ILogoutDialogState> {
-  render() {
-    const {
-      props: {
-        intl: {formatMessage},
-        logoutOpen, closeLogout, logout
+const LogoutDialog: React.FC<ILogoutDialogProps> = ({
+  intl: { formatMessage },
+  logoutOpen, closeLogout, logout
+}) => (
+  <Dialog
+    id="logout"
+    visible={logoutOpen}
+    title={formatMessage({id: 'app.logout.title'})}
+    onHide={() => closeLogout()}
+    aria-labelledby="logoutDescription"
+    modal
+    actions={[
+      {
+        onClick: () => {
+          closeLogout();
+          logout({});
+        },
+        primary: true,
+        label: formatMessage({id: 'app.logout.action'})
+      },
+      {
+        onClick: () => closeLogout(),
+        label: formatMessage({id: 'app.cancel.action'})
       }
-    } = this;
-
-    return (
-      <Dialog
-        id="logout"
-        visible={logoutOpen}
-        title={formatMessage({id: 'app.logout.title'})}
-        onHide={() => closeLogout()}
-        aria-labelledby="logoutDescription"
-        modal
-        actions={[
-          {
-            onClick: () => {
-              closeLogout();
-              logout({});
-            },
-            primary: true,
-            label: formatMessage({id: 'app.logout.action'})
-          },
-          {
-            onClick: () => closeLogout(),
-            label: formatMessage({id: 'app.cancel.action'})
-          }
-        ]}
-      >
-        <p id="logoutDescription" className="md-color--secondary-text">
-          {formatMessage({id: 'app.logout.message'})}
-        </p>
-      </Dialog>
-    );
-  }
-}
+    ]}
+  >
+    <p id="logoutDescription" className="md-color--secondary-text">
+      {formatMessage({id: 'app.logout.message'})}
+    </p>
+  </Dialog>
+)
 
 const mapStateToProps = (
   state: ICoreRootReducer,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
+import { InjectedIntlProps, injectIntl, InjectedIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Drawer, { DrawerPosition } from 'react-md/lib/Drawers';
@@ -11,7 +11,8 @@ import { closeNavigation } from '../../store/action/NavigationAction';
 
 import NavigationDrawerHeader from './NavigationDrawerHeader';
 
-interface INavigationDrawerProps extends InjectedIntlProps {
+export interface INavigationDrawerProps extends InjectedIntlProps {
+  intl?: InjectedIntl;
   navigationOpen?: boolean;
   position: DrawerPosition;
   history?;
@@ -20,33 +21,22 @@ interface INavigationDrawerProps extends InjectedIntlProps {
   closeNavigation?: typeof closeNavigation;
 }
 
-interface INavigationDrawerState {
-}
-
-class NavigationDrawer extends React.Component<INavigationDrawerProps, INavigationDrawerState> {
-  render() {
-    const {
-      props: {
-        navigationOpen, closeNavigation, position, children
-      },
-    } = this;
-
-    return (
-      <div className="navigation-drawer">
-        <Drawer
-          visible={navigationOpen}
-          position={position}
-          navItems={children as Element[]}
-          onVisibilityChange={() => closeNavigation()}
-          header={<NavigationDrawerHeader/>}
-          type={Drawer.DrawerTypes.TEMPORARY}
-          clickableDesktopOverlay
-          overlay
-        />
-      </div>
-    );
-  }
-}
+const NavigationDrawer: React.FC<INavigationDrawerProps> = ({
+  navigationOpen, closeNavigation, position, children
+}) => (
+  <div className="navigation-drawer">
+    <Drawer
+      visible={navigationOpen}
+      position={position}
+      navItems={children as Element[]}
+      onVisibilityChange={() => closeNavigation()}
+      header={<NavigationDrawerHeader/>}
+      type={Drawer.DrawerTypes.TEMPORARY}
+      clickableDesktopOverlay
+      overlay
+    />
+  </div>
+);
 
 // higher order components -----------------------------------------------------
 const mapStateToProps = (

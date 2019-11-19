@@ -10,17 +10,15 @@ export interface IBackendIndicatorProps extends InjectedIntlProps {
   backendRegion?: string;
 }
 
-class BackendIndicator extends React.Component<IBackendIndicatorProps> {
-  render() {
-    const {props: {intl: {formatMessage}, backendRegion}} = this;
-    return (
-      <Tooltipped
-        label={`${formatMessage({id: 'app.backend'})}: ${backendRegion}`}>
-        <div className={`flag ${(backendRegion || '').toLowerCase()}`}/>
-      </Tooltipped>
-    )
-  }
-}
+const BackendIndicator: React.FC<IBackendIndicatorProps> = ({
+  intl: {formatMessage},
+  backendRegion
+}) => (
+  <Tooltipped
+    label={`${formatMessage({id: 'app.backend'})}: ${backendRegion}`}>
+    <div className={`flag ${(backendRegion || '').toLowerCase()}`}/>
+  </Tooltipped>
+)
 
 const mapStateToProps = (
   state: ICoreRootReducer,

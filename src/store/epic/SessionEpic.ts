@@ -1,29 +1,30 @@
 import { Epic } from 'redux-observable';
 import { RootAction } from '../action/RootAction';
-import { filter, map, switchMap, concatMap, catchError } from 'rxjs/operators';
+import { filter, map, switchMap, concatMap, catchError, tap } from 'rxjs/operators';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
 import { configLoadedAction, IConfigLoadedPayload } from '../action/ConfigAction';
 import { from, of, EMPTY } from 'rxjs';
 import {
   checkSession,
-  checkLogin, ICheckLoginPayload,
   unauthorizeSession,
   authorizeSession, IAuthorizeSessionPayload,
-  logout, ILogoutPayload,
-  loginFailed
+  logout, ILogoutPayload, loadSession
 } from '../action/SessionAction';
+import { checkLogin } from '../action/LoginAction';
 import JSCApi from '../../JscApi';
 import Session from '../../base/Session';
 import { AxiosResponse } from 'axios';
+import { addToastAction } from '../action/ToastAction';
+import { appInitialized } from '../action/AppAction';
 
 export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
-    filter(isActionOf(configLoadedAction)),
+    filter(isActionOf(loadSession)),
     map((action: PayloadAction<string, IConfigLoadedPayload>) => {
       const {
         RobotUsername: username,
         RobotPassword: password
-      } = action.payload.config;
+      } = store.value.configReducer.config;
       const {allowRobotLogin} = store.value.appReducer;
       return [allowRobotLogin, {username, password}];
     }),
@@ -36,34 +37,8 @@ export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) =>
       ([, {username, password}]) => of(
         Session.getToken()
           ? checkSession()
-          : checkLogin({username, password})
+          : checkLogin({ username, password })
       )
-    )
-  )
-);
-
-export const loginEpic: Epic<RootAction, RootAction> = (action$, store) => (
-  action$.pipe(
-    filter(isActionOf(checkLogin)),
-    concatMap(
-      (action: PayloadAction<string, ICheckLoginPayload>) => from(
-        JSCApi.LoginClient.loginFrontend(
-          store.value.configReducer.config.AppName,
-          {
-            username: action.payload.username,
-            password: action.payload.password
-          }
-        )
-      ).pipe(
-        switchMap(
-          (response: AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>) => of(
-            authorizeSession({frontendSessionDTO: response.data})
-          )
-        )
-      )
-    ),
-    catchError(
-      () => of(loginFailed())
     )
   )
 );
@@ -82,7 +57,19 @@ export const checkSessionEpic: Epic<RootAction, RootAction> = (action$, store) =
         )
       )
     ),
-    catchError(() => of(unauthorizeSession()))
+    catchError((error) => {
+      return of(
+        addToastAction({
+          contentTranslationId: (
+            error.response.id === 'authorizationRequired'
+              ? 'userRights.checkFailed'
+              : 'session.expired'
+          ),
+          isError: true
+        }),
+        unauthorizeSession()
+      )
+    })
   )
 );
 
@@ -105,10 +92,10 @@ export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) => (
 
 export const unauthorizeSessionEpic: Epic<RootAction, RootAction> = (action$) => (
   action$.pipe(
-    filter(isActionOf([unauthorizeSession])),
+    filter(isActionOf(unauthorizeSession)),
     concatMap(() => {
       Session.removeToken();
-      return EMPTY;
+      return of(appInitialized());
     })
   )
 );
@@ -119,7 +106,7 @@ export const authorizeSessionEpic: Epic<RootAction, RootAction> = (action$) => (
     concatMap(
       (action: PayloadAction<string, IAuthorizeSessionPayload>) => {
         Session.setToken(action.payload.frontendSessionDTO.session.token);
-        return EMPTY;
+        return of(appInitialized());
       }
     )
   )

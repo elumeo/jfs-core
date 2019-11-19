@@ -8,6 +8,8 @@ export default () =>
     <Paper className="md-text badges__notifications__empty__message" zDepth={1}>
       <FormattedMessage id="app.noNotifications"/>
     </Paper>
-    <FontIcon className="badges__notifications__empty__icon">notifications</FontIcon>
+    <FontIcon className="badges__notifications__empty__icon">
+      notifications
+    </FontIcon>
   </div>
 ;
