@@ -110,14 +110,22 @@ export const WebSocketConnectionReducer = createReducer(initialState)
 
   // LEAVE
   .handleAction(webSocketLeaveRoomSuccessAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, string>): IWebSocketConnectionReducerState => {
-    // const indexOfRoom = state.rooms.indexOf(action.payload);
-    // const rooms = state.rooms;
-    // if (indexOfRoom !== -1) {
-    //   rooms.splice(indexOfRoom, 1);
-    // }
+    const newRooms: IWebSocketRoomConnection[] = [];
+    for(const room of state.rooms) {
+      if(room.name !== action.payload) {
+        newRooms.push(room);
+      } else {
+        const newRoom = {
+          ...room
+        };
+        newRoom.hasJoined = false;
+        newRoom.isJoining = false;
+        newRooms.push(newRoom);
+      }
+    }
     return {
       ...state,
-      // rooms
+      rooms: newRooms
     }
   })
 ;

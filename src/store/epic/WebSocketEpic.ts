@@ -80,8 +80,8 @@ export const webSocketJoinRoomLoadingEpic: Epic<RootAction, RootAction> = (actio
     concatMap((action) => WSClient.join(action.payload.name)),
     map((room) => {
       let roomState = getRoomConnectionState(state.value.webSocketReducer, room);
-      roomState.hasJoined = false;
-      roomState.isJoining = true;
+      roomState.isJoining = false;
+      roomState.hasJoined = true;
       return roomState;
     }),
     switchMap((roomState) => of(webSocketJoinRoomSuccessAction(roomState)))
