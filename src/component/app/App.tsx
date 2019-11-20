@@ -13,7 +13,7 @@ export interface IAppProps {
   initializeApp?: typeof initializeApp;
   language?: string;
   location?: Location;
-  store: any;
+  store;
   translations: { [language: string]: { [key: string]: string } };
   appInitialized?: boolean;
   packageJson: object;
@@ -45,13 +45,9 @@ const App: React.FC<IAppProps> = ({
   )
 }
 
-const mapStateToProps = (
-  state: ICoreRootReducer,
-  ownProps: IAppProps
-): IAppProps => ({
-  ...ownProps,
-  appInitialized: state.appReducer.appInitialized
-});
+const mapStateToProps = (state: ICoreRootReducer, ownProps: IAppProps): IAppProps => (
+  { ...ownProps }
+);
 
 const enhance = compose(
   connect(mapStateToProps, { initializeApp })
