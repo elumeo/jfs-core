@@ -26,10 +26,10 @@ class WebSocketConnection extends React.Component<IWebsocketConnectionProps, IWe
     const joinRooms = (
       prevProps.webSocket.isConnected === false &&
       this.props.webSocket.isConnected &&
-      this.props.config.WebSocketClient.AutoJoinRooms
+      this.props.config.WebSocketClient.AutoRoomSubscriptions
     );
     if (joinRooms) {
-      this.props.config.WebSocketClient.AutoJoinRooms.map(room => {
+      this.props.config.WebSocketClient.AutoRoomSubscriptions.map(room => {
         return this.props.webSocketJoinRoomRequestAction(room)
       });
     }

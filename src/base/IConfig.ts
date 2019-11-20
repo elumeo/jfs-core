@@ -16,7 +16,7 @@ interface IConfig {
   WebSocketClient: {
     Host: string;
     PrivateNamespace: string;
-    AutoJoinRooms: string[];
+    AutoRoomSubscriptions: string[];
   };
 }
 

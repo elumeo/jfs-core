@@ -7,26 +7,27 @@ import { RootAction } from '../action/RootAction';
 import {
   webSocketConnectFailedAction,
   webSocketConnectRequestAction,
-  webSocketConnectSuccessAction, webSocketJoinRoomLoadingAction,
+  webSocketConnectSuccessAction,
   webSocketJoinRoomRequestAction,
+  webSocketJoinRoomLoadingAction,
   webSocketJoinRoomSuccessAction,
   webSocketLeaveRoomRequestAction,
   webSocketLeaveRoomSuccessAction,
   webSocketUpdateRoomAction
 } from '../action/WebSocketAction';
 import { ICoreRootReducer } from '../reducer/combineReducers';
-import { authorizeSession } from '../action/SessionAction';
 import { WSClient } from '../../base/WSClient';
 import { getRoomConnectionState } from '../selectors/WebSocketSelectors';
 import { IWebSocketRoomConnection } from '../reducer/WebSocketConnectionReducer';
+import { appInitialized } from '../action/AppAction';
 
 export const webSocketCheckSessionIsAuthorizedEpic: Epic<RootAction, RootAction> = (
   action$,
   state: StateObservable<ICoreRootReducer>
 ) => {
   return action$.pipe(
-    filter(isActionOf(authorizeSession)),
-    filter(() => state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
+    filter(isActionOf(appInitialized)),
+    filter(() => state.value.configReducer.config.WebSocketClient !== undefined && state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
     concatMap(() => WSClient.disconnect()),
     switchMap(() => of(webSocketConnectRequestAction()))
   );
@@ -58,7 +59,7 @@ export const webSocketJoinRoomRequestEpic: Epic<RootAction, RootAction> = (actio
     }),
     concatMap((action) => {
       let roomState = getRoomConnectionState(state.value.webSocketReducer, action.payload);
-      if(roomState === null) {
+      if (roomState === null) {
         roomState = {
           isJoining: true,
           hasJoined: false,
