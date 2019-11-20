@@ -6,7 +6,6 @@ import { from, of } from 'rxjs';
 import { authorizeSession } from '../action/SessionAction';
 import { checkLogin, ICheckLoginPayload, loggedIn, loginFailed } from '../action/LoginAction';
 import JSCApi from '../../JscApi';
-import { AxiosResponse } from 'axios';
 import { addToastAction } from '../action/ToastAction';
 
 export const loginEpic: Epic<RootAction, RootAction> = (action$, store) => (
@@ -25,7 +24,7 @@ export const loginEpic: Epic<RootAction, RootAction> = (action$, store) => (
         // This is piped to ensure that the login can be performed again after
         // failing to login
         switchMap(
-          (response: AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>) => of(
+          (response) => of(
             authorizeSession({frontendSessionDTO: response.data}),
             loggedIn()
           )

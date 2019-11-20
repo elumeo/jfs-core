@@ -1,10 +1,11 @@
 import JscClient from './base/JscClient';
 import { AxiosResponse, AxiosRequestConfig } from 'axios';
-import { WSClient } from './base/WSClient';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
+import { PayloadAction } from 'typesafe-actions';
+import { ROOM_UPDATE_ACTION_ID } from './store/action/WebSocketAction';
 
 // This constant is used in the project tools (not in the JFS apps)
-export const JSC_API_VERSION: string = '02318cbbfe757b90d334c88974c72bac';
+export const JSC_API_VERSION: string = '8b4ec5bcef88efaf90ce2c9de8edea35';
 
 namespace JSCApi {
   export interface IUrlParams {
@@ -153,6 +154,21 @@ namespace JSCApi {
     }
 
   }
+
+  export namespace WebSocketClient {
+    export const ROOM_PING = 'ping';
+    const onRoomUpdatePingSubject = new Subject<string>();
+    const onRoomUpdatePing$ = onRoomUpdatePingSubject.asObservable();
+
+    export function onRoomUpdatePing(action: PayloadAction<string, JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<string>>) {
+      if (action.type === ROOM_UPDATE_ACTION_ID && action.payload.room === ROOM_PING) {
+        onRoomUpdatePingSubject.next(action.payload.data);
+      }
+      return onRoomUpdatePing$;
+    }
+
+  }
+
 }
 
 export default JSCApi;

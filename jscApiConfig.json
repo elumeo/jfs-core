@@ -11,6 +11,6 @@
     "getUserRights"
   ],
   "WebSocketController": [
-    "joinRoomPing"
+    "subscribePingRoom"
   ]
 }
