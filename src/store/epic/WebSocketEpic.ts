@@ -48,7 +48,6 @@ export const webSocketConnectSuccessEpic: Epic<RootAction, RootAction> = (action
   return action$.pipe(
     filter(isActionOf(webSocketConnectSuccessAction)),
     switchMap(() => {
-      console.log('onWebSocketConnectSuccessAction', state.value.webSocketReducer.rooms);
       // Filter configRooms against information in state (hasJoined true/false)
       const configRooms = (state.value.configReducer.config.WebSocketClient.AutoRoomSubscriptions === undefined) ? [] : state.value.configReducer.config.WebSocketClient.AutoRoomSubscriptions;
       const stateRooms: string[] = [];
