@@ -19,34 +19,6 @@ export interface IWebsocketConnectionState {
 }
 
 class WebSocketConnection extends React.Component<IWebsocketConnectionProps, IWebsocketConnectionState> {
-  // public componentDidMount() {
-  //   const joinRooms = (
-  //     this.props.webSocket.isConnected &&
-  //     this.props.config.WebSocketClient.AutoRoomSubscriptions
-  //   );
-  //   if (joinRooms) {
-  //     this.props.config.WebSocketClient.AutoRoomSubscriptions.map(room => {
-  //       return this.props.webSocketJoinRoomRequestAction(room)
-  //     });
-  //   }
-  // }
-
-  // public componentDidUpdate(
-  //   prevProps: IWebsocketConnectionProps,
-  //   _prevState: IWebsocketConnectionState
-  // ) {
-  //   const joinRooms = (
-  //     prevProps.webSocket.isConnected === false &&
-  //     this.props.webSocket.isConnected &&
-  //     this.props.config.WebSocketClient.AutoRoomSubscriptions
-  //   );
-  //   if (joinRooms) {
-  //     this.props.config.WebSocketClient.AutoRoomSubscriptions.map(room => {
-  //       return this.props.webSocketJoinRoomRequestAction(room)
-  //     });
-  //   }
-  // }
-
   public render() {
     const {props: {children}} = this;
     return (
