@@ -3,14 +3,18 @@ import { connect } from 'react-redux';
 
 import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { IWebSocketConnectionReducerState } from '../../store/reducer/WebSocketConnectionReducer';
-import { webSocketConnectRequestAction, webSocketJoinRoomRequestAction } from '../../store/action/WebSocketAction';
+import {
+  webSocketConnectRequestAction,
+  webSocketUpdateRoomAction
+} from '../../store/action/WebSocketAction';
 import IConfig from '../../base/IConfig';
+import { WSClient } from '../../base/WSClient';
 
 export interface IWebsocketConnectionProps {
   config?: IConfig;
   webSocket?: IWebSocketConnectionReducerState;
   webSocketConnectRequestAction?: typeof webSocketConnectRequestAction;
-  webSocketJoinRoomRequestAction?: typeof webSocketJoinRoomRequestAction;
+  webSocketUpdateRoomAction?: typeof webSocketUpdateRoomAction;
 }
 
 export interface IWebsocketConnectionState {
@@ -19,6 +23,10 @@ export interface IWebsocketConnectionState {
 }
 
 class WebSocketConnection extends React.Component<IWebsocketConnectionProps, IWebsocketConnectionState> {
+  public componentDidMount() {
+    WSClient.listenRoomsObservable$.subscribe((roomData) => this.props.webSocketUpdateRoomAction(roomData))
+  }
+
   public render() {
     const {props: {children}} = this;
     return (
@@ -40,5 +48,8 @@ const mapStateToProps = (
 
 export default connect(
   mapStateToProps,
-  {webSocketConnectRequestAction: webSocketConnectRequestAction, webSocketJoinRoomRequestAction}
+  {
+    webSocketConnectRequestAction,
+    webSocketUpdateRoomAction
+  }
 )(WebSocketConnection);

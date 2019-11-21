@@ -12,8 +12,7 @@ import {
   webSocketJoinRoomLoadingAction,
   webSocketJoinRoomSuccessAction,
   webSocketLeaveRoomRequestAction,
-  webSocketLeaveRoomSuccessAction,
-  webSocketUpdateRoomAction
+  webSocketLeaveRoomSuccessAction
 } from '../action/WebSocketAction';
 import { ICoreRootReducer } from '../reducer/combineReducers';
 import { WSClient } from '../../base/WSClient';
@@ -121,14 +120,6 @@ export const webSocketJoinRoomLoadingEpic: Epic<RootAction, RootAction> = (actio
       return roomState;
     }),
     switchMap((roomState) => of(webSocketJoinRoomSuccessAction(roomState)))
-  );
-};
-
-export const webSocketJoinRoomSuccessEpic: Epic<RootAction, RootAction> = (action$) => {
-  return action$.pipe(
-    filter(isActionOf(webSocketJoinRoomSuccessAction)),
-    concatMap((action) => WSClient.listen(action.payload.name)),
-    switchMap((roomData) => [webSocketUpdateRoomAction(roomData)])
   );
 };
 

@@ -16,7 +16,7 @@ import {
   webSocketCheckSessionIsAuthorizedEpic,
   webSocketConnectRequestEpic, webSocketConnectSuccessEpic, webSocketJoinRoomLoadingEpic,
   webSocketJoinRoomRequestEpic,
-  webSocketJoinRoomSuccessEpic,
+  // webSocketJoinRoomSuccessEpic,
   webSocketLeaveRoomRequestEpic
 } from './WebSocketEpic';
 import { setInitialLanguageEpic } from './LanguageEpic';
@@ -39,7 +39,6 @@ export default (...epics: any) => combineEpics(
   webSocketConnectRequestEpic,
   webSocketJoinRoomRequestEpic,
   webSocketJoinRoomLoadingEpic,
-  webSocketJoinRoomSuccessEpic,
   webSocketLeaveRoomRequestEpic,
   webSocketConnectSuccessEpic,
   ...epics
