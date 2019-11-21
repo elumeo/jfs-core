@@ -14,7 +14,7 @@ import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from 
 
 import {
   webSocketCheckSessionIsAuthorizedEpic,
-  webSocketConnectRequestEpic, webSocketJoinRoomLoadingEpic,
+  webSocketConnectRequestEpic, webSocketConnectSuccessEpic, webSocketJoinRoomLoadingEpic,
   webSocketJoinRoomRequestEpic,
   webSocketJoinRoomSuccessEpic,
   webSocketLeaveRoomRequestEpic
@@ -41,5 +41,6 @@ export default (...epics: any) => combineEpics(
   webSocketJoinRoomLoadingEpic,
   webSocketJoinRoomSuccessEpic,
   webSocketLeaveRoomRequestEpic,
+  webSocketConnectSuccessEpic,
   ...epics
 );

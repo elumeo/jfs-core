@@ -1,7 +1,7 @@
 import { Epic, StateObservable } from 'redux-observable';
 import { filter, switchMap, concatMap, map } from 'rxjs/operators';
 import { iif, of } from 'rxjs';
-import { isActionOf } from 'typesafe-actions';
+import { isActionOf, PayloadAction } from 'typesafe-actions';
 
 import { RootAction } from '../action/RootAction';
 import {
@@ -21,10 +21,7 @@ import { getRoomConnectionState } from '../selectors/WebSocketSelectors';
 import { IWebSocketRoomConnection } from '../reducer/WebSocketConnectionReducer';
 import { appInitialized } from '../action/AppAction';
 
-export const webSocketCheckSessionIsAuthorizedEpic: Epic<RootAction, RootAction> = (
-  action$,
-  state: StateObservable<ICoreRootReducer>
-) => {
+export const webSocketCheckSessionIsAuthorizedEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
   return action$.pipe(
     filter(isActionOf(appInitialized)),
     filter(() => state.value.configReducer.config.WebSocketClient !== undefined && state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
@@ -33,10 +30,7 @@ export const webSocketCheckSessionIsAuthorizedEpic: Epic<RootAction, RootAction>
   );
 };
 
-export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (
-  action$,
-  state: StateObservable<ICoreRootReducer>
-) => {
+export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
   return action$.pipe(
     filter(isActionOf(webSocketConnectRequestAction)),
     filter(() => state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
@@ -46,17 +40,59 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (
       state.value.configReducer.config.WebSocketClient.Host,
       state.value.configReducer.config.WebSocketClient.PrivateNamespace
     )),
-    switchMap((isConnected) => iif(() => isConnected === true, of(webSocketConnectSuccessAction()), of(webSocketConnectFailedAction())))
+    switchMap((isConnected) => iif(() => isConnected, of(webSocketConnectSuccessAction()), of(webSocketConnectFailedAction())))
+  );
+};
+
+export const webSocketConnectSuccessEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
+  return action$.pipe(
+    filter(isActionOf(webSocketConnectSuccessAction)),
+    switchMap(() => {
+      console.log('onWebSocketConnectSuccessAction', state.value.webSocketReducer.rooms);
+      // Filter configRooms against information in state (hasJoined true/false)
+      const configRooms = (state.value.configReducer.config.WebSocketClient.AutoRoomSubscriptions === undefined) ? [] : state.value.configReducer.config.WebSocketClient.AutoRoomSubscriptions;
+      const stateRooms: string[] = [];
+      const leftRooms: string[] = [];
+      for(const stateRoom of state.value.webSocketReducer.rooms) {
+        if(stateRoom.hasJoined) {
+          stateRooms.push(stateRoom.name);
+        } else {
+          leftRooms.push(stateRoom.name);
+        }
+      }
+      const cleanedConfigRooms: string[] = [];
+      for(const configRoom of configRooms) {
+        let foundInLeftRoom = false;
+        for(const leftRoom of leftRooms) {
+          if(configRoom === leftRoom) {
+            foundInLeftRoom = true;
+            break;
+          }
+        }
+
+        if(foundInLeftRoom === false) {
+          cleanedConfigRooms.push(configRoom);
+        }
+      }
+
+      let mergedRooms: string[] = [...cleanedConfigRooms, ...stateRooms];
+      mergedRooms = [...new Set(mergedRooms)];
+      const roomActions: PayloadAction<string, string>[] = [];
+      for(const room of mergedRooms) {
+        roomActions.push(webSocketJoinRoomRequestAction(room));
+      }
+      return roomActions;
+    })
   );
 };
 
 export const webSocketJoinRoomRequestEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
   return action$.pipe(
     filter(isActionOf(webSocketJoinRoomRequestAction)),
-    filter((action) => {
-      const roomState = getRoomConnectionState(state.value.webSocketReducer, action.payload);
-      return roomState === null || roomState.hasJoined === false && roomState.isJoining === false;
-    }),
+    // filter((action) => {
+    //   const roomState = getRoomConnectionState(state.value.webSocketReducer, action.payload);
+    //   return roomState === null || roomState.hasJoined === false && roomState.isJoining === false;
+    // }),
     concatMap((action) => {
       let roomState = getRoomConnectionState(state.value.webSocketReducer, action.payload);
       if (roomState === null) {
