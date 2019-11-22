@@ -1,9 +1,12 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { HashRouter } from 'react-router-dom';
+import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+
+import './Initialized.scss';
 
 export interface IInitializedProps {
   language?: string;
@@ -28,6 +31,10 @@ const Initialized: React.FC<IInitializedProps> = ({
         </>
       </HashRouter>
     </IntlProvider>
+  ) || (
+    <div className="app-initialize-progress">
+      <CircularProgress id="app-initialize-progress" scale={2}/>
+    </div>
   )
 );
 
