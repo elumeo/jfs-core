@@ -13,5 +13,5 @@ const getRoomByNameSelector = (state: IWebSocketConnectionReducerState, roomName
 
 export const getRoomConnectionState = createSelector(
   [getRoomByNameSelector],
-  (room) => room
+  (room) => ({...room})
 );
