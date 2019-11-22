@@ -30,17 +30,20 @@ export const loginEpic: Epic<RootAction, RootAction> = (action$, store) => (
           )
         ),
         catchError(
-          error => of(
-            loginFailed(),
-            addToastAction({
-              contentTranslationId: (
-                error.response.data.id === 'authorizationRequired'
-                  ? 'userRights.checkFailed'
-                  : 'login.failed'
-              ),
-              isError: true
-            })
-          )
+          error => {
+            console.log(error);
+            return of(
+              loginFailed(),
+              addToastAction({
+                contentTranslationId: (
+                  error.response.data.id === 'authorizationRequired'
+                    ? 'userRights.checkFailed'
+                    : 'login.failed'
+                ),
+                isError: true
+              })
+            )
+          }
         )
       )
     )
