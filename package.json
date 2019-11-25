@@ -24,7 +24,6 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-runtime": "^6.26.0",
-    "bcrypt": "^3.0.6",
     "bottlejs": "^1.7.1",
     "chain-function": "^1.0.1",
     "classnames": "^2.2.5",
