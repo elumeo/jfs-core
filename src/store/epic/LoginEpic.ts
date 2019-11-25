@@ -7,7 +7,7 @@ import { authorizeSession } from '../action/SessionAction';
 import { checkLogin, ICheckLoginPayload, loggedIn, loginFailed } from '../action/LoginAction';
 import JSCApi from '../../JscApi';
 import { addToastAction } from '../action/ToastAction';
-import Session from "../../base/Session";
+import Session from '../../base/Session';
 
 export const loginEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
@@ -27,7 +27,6 @@ export const loginEpic: Epic<RootAction, RootAction> = (action$, store) => (
         switchMap(
           (response) => {
             Session.setToken(response.data.session.token);
-
             return of(
               authorizeSession({frontendSessionDTO: response.data}),
               loggedIn()

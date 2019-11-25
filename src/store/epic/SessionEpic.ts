@@ -1,14 +1,15 @@
 import { Epic } from 'redux-observable';
 import { RootAction } from '../action/RootAction';
-import { filter, map, switchMap, concatMap, catchError, tap } from 'rxjs/operators';
+import { catchError, concatMap, filter, map, switchMap } from 'rxjs/operators';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
-import { IConfigLoadedPayload } from '../action/ConfigAction';
-import { from, of, EMPTY } from 'rxjs';
+import { from, of } from 'rxjs';
 import {
+  authorizeSession,
   checkSession,
-  unauthorizeSession,
-  authorizeSession, IAuthorizeSessionPayload,
-  logout, ILogoutPayload, loadSession
+  ILogoutPayload,
+  loadSession,
+  logout,
+  unauthorizeSession
 } from '../action/SessionAction';
 import { checkLogin } from '../action/LoginAction';
 import JSCApi from '../../JscApi';
@@ -117,10 +118,6 @@ export const unauthorizeSessionEpic: Epic<RootAction, RootAction> = (action$) =>
 export const authorizeSessionEpic: Epic<RootAction, RootAction> = (action$) => (
   action$.pipe(
     filter(isActionOf(authorizeSession)),
-    concatMap(
-      (action: PayloadAction<string, IAuthorizeSessionPayload>) => {
-        return of(appInitialized());
-      }
-    )
+    concatMap(() => of(appInitialized()))
   )
 );
