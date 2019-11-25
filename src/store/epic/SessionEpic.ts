@@ -119,7 +119,6 @@ export const authorizeSessionEpic: Epic<RootAction, RootAction> = (action$) => (
     filter(isActionOf(authorizeSession)),
     concatMap(
       (action: PayloadAction<string, IAuthorizeSessionPayload>) => {
-        Session.setToken(action.payload.frontendSessionDTO.session.token);
         return of(appInitialized());
       }
     )

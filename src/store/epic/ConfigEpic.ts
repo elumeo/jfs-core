@@ -7,7 +7,6 @@ import axios, { AxiosResponse } from 'axios';
 import { isActionOf } from 'typesafe-actions';
 import JscClient from '../../base/JscClient';
 import IConfig from '../../base/IConfig';
-import { appInitialized } from '../action/AppAction';
 
 export const loadConfigEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
