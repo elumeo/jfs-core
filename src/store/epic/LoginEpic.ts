@@ -31,15 +31,15 @@ export const loginEpic: Epic<RootAction, RootAction> = (action$, store) => (
         ),
         catchError(
           error => {
-            console.log(error);
+            let contentTranslationId = 'login.failed';
+            if (error.response && error.response.data && error.response.data.id && error.response.data.id === 'authorizationRequired') {
+              contentTranslationId = 'userRights.checkFailed';
+            }
+
             return of(
               loginFailed(),
               addToastAction({
-                contentTranslationId: (
-                  error.response.data.id === 'authorizationRequired'
-                    ? 'userRights.checkFailed'
-                    : 'login.failed'
-                ),
+                contentTranslationId: contentTranslationId,
                 isError: true
               })
             )
