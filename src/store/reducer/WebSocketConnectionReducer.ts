@@ -1,4 +1,4 @@
-import { createReducer, PayloadAC, PayloadAction } from 'typesafe-actions';
+import { createReducer, PayloadAction } from 'typesafe-actions';
 
 import JSCApi from '../../JscApi';
 import {
@@ -13,17 +13,11 @@ import {
 
 export interface IWebSocketJoinRoom {
   room: string;
-  action: PayloadAC<string, any>
-}
-
-export interface IWebSocketJoiningRoom {
-  roomState: IWebSocketRoomConnection;
-  action: PayloadAC<string, any>
+  error?: string;
 }
 
 export interface IWebSocketUpdateRoom<T> {
   roomData: JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>;
-  action: PayloadAC<string, any>
 }
 
 export interface IWebSocketConnectionReducerState {
@@ -33,19 +27,19 @@ export interface IWebSocketConnectionReducerState {
   rooms: IWebSocketRoomConnection[];
 }
 
-export interface IWebSocketRoomConnection {
-  isJoining: boolean;
-  hasJoined: boolean;
-  name: string;
-  error: string;
-}
-
 const initialState: IWebSocketConnectionReducerState = {
   isConnected: false,
   isConnecting: false,
   connectionError: null,
   rooms: []
 };
+
+export interface IWebSocketRoomConnection {
+  isJoining: boolean;
+  hasJoined: boolean;
+  name: string;
+  error: string;
+}
 
 export const WebSocketConnectionReducer = createReducer(initialState)
 
