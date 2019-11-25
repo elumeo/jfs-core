@@ -12,7 +12,7 @@ export const webSocketConnectFailedAction = createStandardAction(featureName + '
 export const webSocketJoinRoomRequestAction = createStandardAction(featureName + '/JOIN_ROOM_REQUEST')<string>();
 export const webSocketJoinRoomLoadingAction = createStandardAction(featureName + '/JOIN_ROOM_LOADING')<IWebSocketRoomConnection>();
 export const webSocketJoinRoomSuccessAction = createStandardAction(featureName + '/JOIN_ROOM_SUCCESS')<IWebSocketRoomConnection>();
-export const webSocketJoinRoomFailureAction = createStandardAction(featureName + '/JOIN_ROOM_FAILURE')<string>();
+export const webSocketJoinRoomFailureAction = createStandardAction(featureName + '/JOIN_ROOM_FAILURE')<IWebSocketRoomConnection>();
 
 export const webSocketLeaveRoomRequestAction = createStandardAction(featureName + '/LEAVE_ROOM_REQUEST')<string>();
 export const webSocketLeaveRoomSuccessAction = createStandardAction(featureName + '/LEAVE_ROOM_SUCCESS')<string>();
