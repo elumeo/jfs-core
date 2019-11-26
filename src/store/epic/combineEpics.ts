@@ -8,7 +8,7 @@ import {
   logoutEpic,
 } from './SessionEpic';
 import { getRegionEpic } from './SystemEpic';
-import { loginEpic } from './LoginEpic';
+import { loginEpic, robotLoginRefreshEpic } from './LoginEpic';
 import { loadConfigEpic } from './ConfigEpic';
 import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from './NotificationEpic';
 
@@ -22,6 +22,7 @@ import {
 import { setInitialLanguageEpic } from './LanguageEpic';
 
 export default (...epics: any) => combineEpics(
+  robotLoginRefreshEpic,
   loginEpic,
   addNotificationEpic,
   initializeAppEpic,

@@ -54,7 +54,8 @@ const mapStateToProps = (
       state.configReducer.config.RobotUsername &&
       state.configReducer.config.RobotPassword
     ) &&
-    state.appReducer.allowRobotLogin
+    state.appReducer.allowRobotLogin &&
+    !state.loginReducer.failedLogins
   )
 });
 
