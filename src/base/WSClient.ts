@@ -25,7 +25,6 @@ export class WSClient {
           secure: host.startsWith('https')
         });
         this.socket.on(this.EVENT_AUTHENTICATED, () => {
-          console.log('WebSocketClient connect to: ', host, namespace);
           observer.next(true);
           this.socket.on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
         });
@@ -49,7 +48,6 @@ export class WSClient {
   }
 
   public static join(room: string) {
-    console.log('join');
     return new Observable<string>((observer) => {
       // 1. Tell websocket server that we joined the room
       this.socket.emit(this.EVENT_JOIN_ROOM, room);
@@ -57,7 +55,6 @@ export class WSClient {
       // 2.a Wait for successful join
       this.socket.on(this.EVENT_JOINED_ROOM, (joinedRoom) => {
         if(room === joinedRoom) {
-          console.log(this.EVENT_JOINED_ROOM);
           this.socket.off(this.EVENT_JOIN_ROOM_FAILED);
           this.socket.off(this.EVENT_JOINED_ROOM);
           observer.next(room);

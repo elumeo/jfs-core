@@ -1,5 +1,5 @@
 import { Epic, StateObservable } from 'redux-observable';
-import { filter, switchMap, concatMap, map, catchError, tap } from 'rxjs/operators';
+import { filter, switchMap, concatMap, map, catchError } from 'rxjs/operators';
 import { iif, of } from 'rxjs';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
 
@@ -110,7 +110,6 @@ export const webSocketJoinRoomRequestEpic: Epic<RootAction, RootAction> = (actio
 export const webSocketJoinRoomLoadingEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
   return action$.pipe(
     filter(isActionOf(webSocketJoinRoomLoadingAction)),
-    tap(() => console.log('webSocketJoinRoomLoadingAction')),
     concatMap((action) => {
       return WSClient.join(action.payload.name).pipe(
         map((room) => {
