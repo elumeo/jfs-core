@@ -8,12 +8,14 @@ export interface ILoginReducerState {
   username: string;
   password: string;
   isCheckingLogin: boolean;
+  failedLogins: number;
 }
 
 export const initialState: ILoginReducerState = {
   username: '',
   password: '',
-  isCheckingLogin: false
+  isCheckingLogin: false,
+  failedLogins: 0
 }
 
 export const loginReducer = createReducer<ILoginReducerState>(initialState)
@@ -22,13 +24,6 @@ export const loginReducer = createReducer<ILoginReducerState>(initialState)
     (state: ILoginReducerState): ILoginReducerState => ({
       ...state,
       isCheckingLogin: true
-    })
-  )
-  .handleAction(
-    [loggedIn, loginFailed],
-    (state: ILoginReducerState): ILoginReducerState => ({
-      ...state,
-      isCheckingLogin: false
     })
   )
   .handleAction(
@@ -43,6 +38,18 @@ export const loginReducer = createReducer<ILoginReducerState>(initialState)
     })
   )
   .handleAction(
-    unauthorizeSession,
-    () => ({ ...initialState })
+    loggedIn,
+    (state: ILoginReducerState) => ({
+      ...state,
+      failedLogins: 0,
+      isCheckingLogin: false
+    })
+  )
+  .handleAction(
+    loginFailed,
+    (state: ILoginReducerState) => ({
+      ...state,
+      failedLogins: state.failedLogins + 1,
+      isCheckingLogin: false
+    })
   )
