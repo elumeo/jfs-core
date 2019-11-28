@@ -43,7 +43,7 @@ const mapStateToProps = (
 ): IWebsocketConnectionProps => ({
   ...ownProps,
   config: state.configReducer.config,
-  webSocket: state.webSocketReducer
+  webSocket: state.webSocketConnectionReducer
 });
 
 export default connect(

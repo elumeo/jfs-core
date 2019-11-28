@@ -33,7 +33,6 @@ interface INotificationDrawerProps {
 class NotificationDrawer extends React.Component<INotificationDrawerProps> {
 
   closeOnESC = (e: React.KeyboardEvent) => {
-    console.log(e);
     if (e.keyCode == 13) {
       this.props.hideNotificationDrawerAction();
     }

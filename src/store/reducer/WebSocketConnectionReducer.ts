@@ -41,7 +41,7 @@ export interface IWebSocketRoomConnection {
   error: string;
 }
 
-export const WebSocketConnectionReducer = createReducer(initialState)
+export const webSocketConnectionReducer = createReducer(initialState)
 
   .handleAction(webSocketConnectRequestAction, (state: IWebSocketConnectionReducerState): IWebSocketConnectionReducerState => ({
     ...state,
@@ -58,8 +58,7 @@ export const WebSocketConnectionReducer = createReducer(initialState)
   .handleAction(webSocketConnectFailedAction, (state: IWebSocketConnectionReducerState): IWebSocketConnectionReducerState => ({
     ...state,
     isConnecting: false,
-    isConnected: false,
-    rooms: []
+    isConnected: false
   }))
 
   .handleAction(webSocketJoinRoomLoadingAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoomConnection>): IWebSocketConnectionReducerState => {

@@ -12,7 +12,7 @@ import { settingsReducer, ISettingsReducerState } from './SettingsReducer';
 import { splitViewReducer, ISplitViewReducerState } from './SplitViewReducer';
 import { systemReducer, ISystemReducerState } from './SystemReducer';
 import { toastReducer, IToastReducerState } from './ToastReducer';
-import { WebSocketConnectionReducer, IWebSocketConnectionReducerState } from './WebSocketConnectionReducer';
+import { webSocketConnectionReducer, IWebSocketConnectionReducerState } from './WebSocketConnectionReducer';
 import { appReducer, IAppReducerState } from './AppReducer';
 import { loginReducer, ILoginReducerState } from './LoginReducer';
 import IConfig from '../../base/IConfig';
@@ -31,7 +31,7 @@ export interface IRootReducer<IConfig> {
   splitViewReducer?: ISplitViewReducerState;
   systemReducer?: ISystemReducerState;
   toastReducer?: IToastReducerState;
-  webSocketReducer?: IWebSocketConnectionReducerState;
+  webSocketConnectionReducer?: IWebSocketConnectionReducerState;
   configReducer?: IConfigReducerState<IConfig>;
 }
 
@@ -54,6 +54,6 @@ export default reducers => combineReducers({
   splitViewReducer,
   systemReducer,
   toastReducer,
-  webSocketReducer: WebSocketConnectionReducer,
+  webSocketConnectionReducer,
   ...reducers
 });

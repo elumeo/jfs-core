@@ -52,19 +52,19 @@ export const webSocketConnectSuccessEpic: Epic<RootAction, RootAction> = (action
     switchMap(() => {
       // Filter configRooms against information in state (hasJoined true/false)
       const configRooms = (state.value.configReducer.config.WebSocketClient.AutoRoomSubscriptions === undefined) ? [] : state.value.configReducer.config.WebSocketClient.AutoRoomSubscriptions;
-      const stateRooms: string[] = [];
-      const leftRooms: string[] = [];
-      for(const stateRoom of state.value.webSocketReducer.rooms) {
+      const stateJoinedRooms: string[] = [];
+      const stateLeftRooms: string[] = [];
+      for(const stateRoom of state.value.webSocketConnectionReducer.rooms) {
         if(stateRoom.hasJoined) {
-          stateRooms.push(stateRoom.name);
+          stateJoinedRooms.push(stateRoom.name);
         } else {
-          leftRooms.push(stateRoom.name);
+          stateLeftRooms.push(stateRoom.name);
         }
       }
       const cleanedConfigRooms: string[] = [];
       for(const configRoom of configRooms) {
         let foundInLeftRoom = false;
-        for(const leftRoom of leftRooms) {
+        for(const leftRoom of stateLeftRooms) {
           if(configRoom === leftRoom) {
             foundInLeftRoom = true;
             break;
@@ -75,8 +75,7 @@ export const webSocketConnectSuccessEpic: Epic<RootAction, RootAction> = (action
           cleanedConfigRooms.push(configRoom);
         }
       }
-
-      let mergedRooms: string[] = [...cleanedConfigRooms, ...stateRooms];
+      let mergedRooms: string[] = [...cleanedConfigRooms, ...stateJoinedRooms];
       mergedRooms = [...new Set(mergedRooms)];
       const roomActions: PayloadAction<string, string>[] = [];
       for(const room of mergedRooms) {
@@ -92,7 +91,7 @@ export const webSocketJoinRoomRequestEpic: Epic<RootAction, RootAction> = (actio
     filter(isActionOf(webSocketJoinRoomRequestAction)),
     // Disabled this filter because we want to reconnect automatically when websocket server is restarted
     // filter((action) => {
-    //   const roomState = getRoomConnectionState(state.value.webSocketReducer, action.payload);
+    //   const roomState = getRoomConnectionState(state.value.webSocketConnectionReducer, action.payload);
     //   return roomState === null || roomState.hasJoined === false && roomState.isJoining === false;
     // }),
     map((action) => {
@@ -113,7 +112,7 @@ export const webSocketJoinRoomLoadingEpic: Epic<RootAction, RootAction> = (actio
     concatMap((action) => {
       return WSClient.join(action.payload.name).pipe(
         map((room) => {
-          let roomState = getRoomConnectionState(state.value.webSocketReducer, room);
+          let roomState = getRoomConnectionState(state.value.webSocketConnectionReducer, room);
           roomState.isJoining = false;
           roomState.hasJoined = true;
           return roomState;

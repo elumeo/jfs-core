@@ -28,7 +28,10 @@ export class WSClient {
           observer.next(true);
           this.socket.on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
         });
-        this.socket.on('connect_error', () => observer.next(false));
+        this.socket.on('connect_error', () => {
+          this.socket.off(this.EVENT_UPDATE_ROOM);
+          observer.next(false);
+        });
       } else {
         observer.next(true);
       }
