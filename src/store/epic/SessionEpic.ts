@@ -2,7 +2,7 @@ import { Epic } from 'redux-observable';
 import { RootAction } from '../action/RootAction';
 import { catchError, concatMap, filter, map, switchMap } from 'rxjs/operators';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
-import { from, of } from 'rxjs';
+import { from, of, EMPTY, concat } from 'rxjs';
 import {
   authorizeSession,
   checkSession,
@@ -17,6 +17,7 @@ import Session from '../../base/Session';
 import { AxiosResponse } from 'axios';
 import { addToastAction } from '../action/ToastAction';
 import { appInitialized } from '../action/AppAction';
+import { beforeLogoutFinished } from '../action/LogoutAction';
 
 export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
@@ -88,9 +89,19 @@ export const checkSessionEpic: Epic<RootAction, RootAction> = (action$, store) =
   )
 );
 
-export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) => (
+export const beforeLogoutHookEpic = handleLogoutHook => (action$, store) => (
   action$.pipe(
     filter(isActionOf(logout)),
+    concatMap(action => concat(
+      handleLogoutHook(action, store),
+      of(beforeLogoutFinished())
+    ))
+  )
+);
+
+export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) => (
+  action$.pipe(
+    filter(isActionOf(beforeLogoutFinished)),
     concatMap(
       (action: PayloadAction<string, ILogoutPayload>) => from(
         JSCApi.SessionClient.logout(

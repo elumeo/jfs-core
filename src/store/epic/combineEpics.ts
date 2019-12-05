@@ -6,6 +6,7 @@ import {
   checkSessionEpic,
   authorizeSessionEpic, unauthorizeSessionEpic,
   logoutEpic,
+  beforeLogoutHookEpic,
 } from './SessionEpic';
 import { getRegionEpic } from './SystemEpic';
 import { loginEpic, robotLoginRefreshEpic } from './LoginEpic';
@@ -20,8 +21,9 @@ import {
   webSocketLeaveRoomRequestEpic
 } from './WebSocketEpic';
 import { setInitialLanguageEpic } from './LanguageEpic';
+import { EMPTY } from 'rxjs';
 
-export default (...epics: any) => combineEpics(
+export const wrappedCombineEpics = (...epics) => combineEpics(
   robotLoginRefreshEpic,
   loginEpic,
   addNotificationEpic,
@@ -43,4 +45,17 @@ export default (...epics: any) => combineEpics(
   webSocketLeaveRoomRequestEpic,
   webSocketConnectSuccessEpic,
   ...epics
-);
+)
+
+export const defaultHooks = {
+  beforeLogoutHook: (action, store) => {
+    return EMPTY;
+  }
+}
+
+export const createCombineEpics = (hooks = defaultHooks) => (...epics) => wrappedCombineEpics(
+  beforeLogoutHookEpic(hooks.beforeLogoutHook),
+  ...epics
+)
+
+export default combineEpics;
