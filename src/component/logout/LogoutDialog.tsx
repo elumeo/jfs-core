@@ -13,11 +13,12 @@ export interface ILogoutDialogProps extends InjectedIntlProps {
   closeLogout?: typeof closeLogout;
   logout?: typeof logout;
   logoutOpen?: boolean;
+  beforeLogout?: () => void;
 }
 
 const LogoutDialog: React.FC<ILogoutDialogProps> = ({
   intl: { formatMessage },
-  logoutOpen, closeLogout, logout
+  logoutOpen, closeLogout, logout, children
 }) => (
   <Dialog
     id="logout"
@@ -42,7 +43,11 @@ const LogoutDialog: React.FC<ILogoutDialogProps> = ({
     ]}
   >
     <p id="logoutDescription" className="md-color--secondary-text">
-      {formatMessage({id: 'app.logout.message'})}
+      {
+        children
+          ? children
+          : formatMessage({id: 'app.logout.message'})
+      }
     </p>
   </Dialog>
 )
