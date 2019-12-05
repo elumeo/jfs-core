@@ -21,7 +21,7 @@ import {
   webSocketLeaveRoomRequestEpic
 } from './WebSocketEpic';
 import { setInitialLanguageEpic } from './LanguageEpic';
-import { EMPTY } from 'rxjs';
+import { Observable, EMPTY } from 'rxjs';
 
 export const wrappedCombineEpics = (...epics) => combineEpics(
   robotLoginRefreshEpic,
@@ -48,7 +48,7 @@ export const wrappedCombineEpics = (...epics) => combineEpics(
 )
 
 export const defaultHooks = {
-  beforeLogoutHook: (action, store) => {
+  beforeLogoutHook:<R> (action, store): Observable<R> => {
     return EMPTY;
   }
 }
