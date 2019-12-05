@@ -2,18 +2,17 @@ import { applyMiddleware, createStore } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import { routerMiddleware } from 'connected-react-router';
+import { createHashHistory } from 'history';
+
+const history = createHashHistory();
+
 export default (rootEpic, rootReducer) => {
   const epicMiddleware = createEpicMiddleware();
   // create and set store
   const store = composeWithDevTools(
-    applyMiddleware(epicMiddleware)
+    applyMiddleware(epicMiddleware, routerMiddleware(history))
   )(createStore)(rootReducer);
-
-  if (module['hot']) {
-    module['hot'].accept('../../../../../src/store/reducer/Root.ts', () => {
-      store.replaceReducer(require('../../../../../src/store/reducer/Root.ts'));
-    });
-  }
   epicMiddleware.run(rootEpic);
 
   return store;
