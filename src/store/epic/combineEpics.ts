@@ -58,4 +58,4 @@ export const createCombineEpics = (hooks = defaultHooks) => (...epics) => wrappe
   ...epics
 )
 
-export default combineEpics;
+export default wrappedCombineEpics;
