@@ -11,45 +11,90 @@ export class WSClient {
   public static EVENT_JOIN_ROOM_FAILED = '[Room] Join Failed';
   public static EVENT_LEAVE_ROOM = '[Room] Leave';
   public static EVENT_UPDATE_ROOM = '[Room] Update';
+  public static EVENT_CONNECT_ERROR = 'connect_error';
 
   public static socket: typeof io.Socket = null;
 
   protected static listenRoomsSubject = new Subject<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>();
   public static listenRoomsObservable$ = WSClient.listenRoomsSubject.asObservable();
 
+  protected static connectSubject: Subject<boolean> = null;
+  public static connectObservable$: Observable<boolean> = null;
+
   public static connect(token: string, ip: string, host: string, namespace: string) {
-    return new Observable<boolean>((observer) => {
-      if (this.socket === null) {
-        this.socket = io.connect(host + '/' + namespace, {
-          query: {token, ip},
-          secure: host.startsWith('https')
-        });
-        this.socket.on(this.EVENT_AUTHENTICATED, () => {
-          this.socket.on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
-          observer.next(true);
-          observer.complete();
-        });
-        this.socket.on('connect_error', () => {
-          this.socket.off(this.EVENT_UPDATE_ROOM);
-          observer.next(false);
-          observer.complete();
-        });
-      } else {
-        observer.next(true);
-        observer.complete();
-      }
-    });
+    if(WSClient.connectSubject === null) {
+      WSClient.connectSubject = new Subject<boolean>();
+      WSClient.connectObservable$ = WSClient.connectSubject.asObservable();
+    }
+
+    if (this.socket === null) {
+      this.socket = io.connect(host + '/' + namespace, {
+        query: {token, ip},
+        secure: host.startsWith('https')
+      });
+      this.socket.on(this.EVENT_AUTHENTICATED, () => {
+        this.socket.on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
+        WSClient.connectSubject.next(true);
+        // observer.complete();
+      });
+      this.socket.on(this.EVENT_CONNECT_ERROR, () => {
+        this.socket.off(this.EVENT_UPDATE_ROOM);
+        WSClient.connectSubject.next(false);
+        WSClient.connectSubject.complete();
+        WSClient.connectSubject = null;
+        WSClient.connectObservable$ = null;
+      });
+    } else {
+      WSClient.connectSubject.next(true);
+      // observer.complete();
+    }
+
+    // return new Observable<boolean>((observer) => {
+    //   if (this.socket === null) {
+    //     this.socket = io.connect(host + '/' + namespace, {
+    //       query: {token, ip},
+    //       secure: host.startsWith('https')
+    //     });
+    //     this.socket.on(this.EVENT_AUTHENTICATED, () => {
+    //       this.socket.on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
+    //       observer.next(true);
+    //       // observer.complete();
+    //     });
+    //     this.socket.on('connect_error', () => {
+    //       this.socket.off(this.EVENT_UPDATE_ROOM);
+    //       observer.next(false);
+    //       // observer.complete();
+    //     });
+    //   } else {
+    //     observer.next(true);
+    //     // observer.complete();
+    //   }
+    // });
   }
 
   public static disconnect() {
-    return new Observable<boolean>((observer) => {
+    if(WSClient.connectSubject !== null) {
       if (this.socket !== null && this.socket.connected) {
+        this.socket.off(this.EVENT_UPDATE_ROOM);
+        this.socket.off(this.EVENT_CONNECT_ERROR);
+        this.socket.off(this.EVENT_AUTHENTICATED);
         this.socket.disconnect();
         this.socket = null;
       }
-      observer.next(true);
-      observer.complete();
-    });
+      WSClient.connectSubject.next(false);
+      WSClient.connectSubject.complete();
+      WSClient.connectSubject = null; // ToDo: Nicht null setzen sondern bei connect auf isCompleteted prüfen
+      WSClient.connectObservable$ = null; // ToDo: Nicht null setzen sondern bei connect auf isCompleteted prüfen
+    }
+
+    // return new Observable<boolean>((observer) => {
+    //   if (this.socket !== null && this.socket.connected) {
+    //     this.socket.disconnect();
+    //     this.socket = null;
+    //   }
+    //   observer.next(true);
+    //   observer.complete();
+    // });
   }
 
   public static join(room: string) {

@@ -1,6 +1,6 @@
 import { Epic, StateObservable } from 'redux-observable';
-import { filter, switchMap, concatMap, map, catchError } from 'rxjs/operators';
-import { iif, of } from 'rxjs';
+import { filter, switchMap, concatMap, map, catchError, tap } from 'rxjs/operators';
+import { EMPTY, iif, of } from 'rxjs';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
 
 import { RootAction } from '../action/RootAction';
@@ -47,8 +47,8 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
     filter(isActionOf(webSocketConnectRequestAction)),
     filter(() => state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
     concatMap(() => WSClient.leaveAllRooms(state.value.webSocketConnectionReducer.rooms)),
-    concatMap(() => WSClient.disconnect()),
-    concatMap(() => {
+    tap(() => WSClient.disconnect()),
+    tap(() => {
       return WSClient.connect(
         state.value.sessionReducer.sessionDTO.token,
         state.value.sessionReducer.sessionDTO.lastIPAddress,
@@ -56,6 +56,7 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
         state.value.configReducer.config.WebSocketClient.PrivateNamespace
       );
     }),
+    switchMap(() => WSClient.connectObservable$),
     switchMap((isConnected) => iif(() => isConnected, of(webSocketConnectSuccessAction()), of(webSocketConnectFailedAction())))
   );
 };
@@ -108,8 +109,9 @@ export const webSocketDisconnectRequestEpic: Epic<RootAction, RootAction> = (act
       (state.value.webSocketConnectionReducer.isConnected || state.value.webSocketConnectionReducer.isConnecting)
     )),
     concatMap(() => WSClient.leaveAllRooms(state.value.webSocketConnectionReducer.rooms)),
-    concatMap(() => WSClient.disconnect()),
-    switchMap(() => of(webSocketDisconnectSuccessAction()))
+    tap(() => WSClient.disconnect()),
+    switchMap(() => WSClient.connectObservable$),
+    switchMap((isConnected) => iif(() => isConnected, of(webSocketDisconnectSuccessAction(), EMPTY)))
   );
 };
 
