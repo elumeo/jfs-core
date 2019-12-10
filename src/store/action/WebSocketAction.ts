@@ -9,6 +9,9 @@ export const webSocketConnectRequestAction = createStandardAction(featureName + 
 export const webSocketConnectSuccessAction = createStandardAction(featureName + '/CONNECT_SUCCESS')();
 export const webSocketConnectFailedAction = createStandardAction(featureName + '/CONNECT_FAILED')();
 
+export const webSocketDisconnectRequestAction = createStandardAction(featureName + '/DISCONNECT_REQUEST')();
+export const webSocketDisconnectSuccessAction = createStandardAction(featureName + '/DISCONNECT_SUCCESS')();
+
 export const webSocketJoinRoomRequestAction = createStandardAction(featureName + '/JOIN_ROOM_REQUEST')<string>();
 export const webSocketJoinRoomLoadingAction = createStandardAction(featureName + '/JOIN_ROOM_LOADING')<IWebSocketRoomConnection>();
 export const webSocketJoinRoomSuccessAction = createStandardAction(featureName + '/JOIN_ROOM_SUCCESS')<IWebSocketRoomConnection>();

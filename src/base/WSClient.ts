@@ -1,7 +1,7 @@
 import { Observable, Subject } from 'rxjs';
 import io from 'socket.io-client';
 import JSCApi from '../JscApi';
-import { IWebSocketJoinRoom } from '../store/reducer/WebSocketConnectionReducer';
+import { IWebSocketJoinRoom, IWebSocketRoomConnection } from '../store/reducer/WebSocketConnectionReducer';
 
 export class WSClient {
   public static EVENT_NOT_AUTHORIZED = 'notAuthorized';
@@ -25,15 +25,18 @@ export class WSClient {
           secure: host.startsWith('https')
         });
         this.socket.on(this.EVENT_AUTHENTICATED, () => {
-          observer.next(true);
           this.socket.on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
+          observer.next(true);
+          observer.complete();
         });
         this.socket.on('connect_error', () => {
           this.socket.off(this.EVENT_UPDATE_ROOM);
           observer.next(false);
+          observer.complete();
         });
       } else {
         observer.next(true);
+        observer.complete();
       }
     });
   }
@@ -43,10 +46,9 @@ export class WSClient {
       if (this.socket !== null && this.socket.connected) {
         this.socket.disconnect();
         this.socket = null;
-        observer.next(true);
-      } else {
-        observer.next(true);
       }
+      observer.next(true);
+      observer.complete();
     });
   }
 
@@ -86,6 +88,26 @@ export class WSClient {
       this.socket.emit(this.EVENT_LEAVE_ROOM, room);
       observer.next(room);
       observer.complete();
+    });
+  }
+
+  public static leaveAllRooms(rooms: IWebSocketRoomConnection[]) {
+    return new Observable<boolean>((observer) => {
+      let countLeftRooms = 0;
+      if(rooms.length === 0) {
+        observer.next(true);
+        observer.complete();
+      } else {
+        for(const room of rooms) {
+          this.leave(room.name).subscribe(() => {
+            countLeftRooms++;
+            if(countLeftRooms === rooms.length) {
+              observer.next(true);
+              observer.complete();
+            }
+          });
+        }
+      }
     });
   }
 }

@@ -2,7 +2,7 @@ import { Epic } from 'redux-observable';
 import { RootAction } from '../action/RootAction';
 import { catchError, concatMap, filter, map, switchMap } from 'rxjs/operators';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
-import { from, of, EMPTY, concat } from 'rxjs';
+import { from, of, concat } from 'rxjs';
 import {
   authorizeSession,
   checkSession,
@@ -36,7 +36,7 @@ export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) =>
           ? (
             Session.getToken()
               ? checkSession()
-              : checkLogin({ username, password })
+              : checkLogin({username, password})
           )
           : unauthorizeSession()
       )
@@ -80,7 +80,7 @@ export const checkSessionEpic: Epic<RootAction, RootAction> = (action$, store) =
       return of(
         ...(
           isToastable
-            ? [addToastAction({ contentTranslationId, isError: true })]
+            ? [addToastAction({contentTranslationId, isError: true})]
             : []
         ),
         unauthorizeSession()
@@ -102,17 +102,14 @@ export const beforeLogoutHookEpic = handleLogoutHook => (action$, store) => (
 export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
     filter(isActionOf(beforeLogoutFinished)),
-    concatMap(
-      (action: PayloadAction<string, ILogoutPayload>) => from(
-        JSCApi.SessionClient.logout(
-          action.payload && action.payload.sessionDTO
-            ? action.payload.sessionDTO
-            : store.value.sessionReducer.sessionDTO
-        )
-      ).pipe(
-        switchMap(() => of(unauthorizeSession()))
+    concatMap((action: PayloadAction<string, ILogoutPayload>) => from(
+      JSCApi.SessionClient.logout(
+        action.payload && action.payload.sessionDTO
+          ? action.payload.sessionDTO
+          : store.value.sessionReducer.sessionDTO
       )
-    )
+    )),
+    switchMap(() => of(unauthorizeSession()))
   )
 );
 

@@ -14,11 +14,13 @@ import { loadConfigEpic } from './ConfigEpic';
 import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from './NotificationEpic';
 
 import {
-  webSocketCheckSessionIsAuthorizedEpic,
-  webSocketConnectRequestEpic, webSocketConnectSuccessEpic, webSocketJoinRoomLoadingEpic,
+  webSocketAppIsInitializedEpic,
+  webSocketConnectRequestEpic,
+  webSocketConnectSuccessEpic,
+  webSocketDisconnectRequestEpic,
+  webSocketJoinRoomLoadingEpic,
   webSocketJoinRoomRequestEpic,
-  // webSocketJoinRoomSuccessEpic,
-  webSocketLeaveRoomRequestEpic
+  webSocketLeaveRoomRequestEpic, webSocketLogoutEpic
 } from './WebSocketEpic';
 import { setInitialLanguageEpic } from './LanguageEpic';
 import { Observable, EMPTY } from 'rxjs';
@@ -38,24 +40,26 @@ export const wrappedCombineEpics = (...epics) => combineEpics(
   checkSessionEpic,
   authorizeSessionEpic,
   unauthorizeSessionEpic,
-  webSocketCheckSessionIsAuthorizedEpic,
+  webSocketAppIsInitializedEpic,
   webSocketConnectRequestEpic,
+  webSocketConnectSuccessEpic,
   webSocketJoinRoomRequestEpic,
   webSocketJoinRoomLoadingEpic,
   webSocketLeaveRoomRequestEpic,
-  webSocketConnectSuccessEpic,
+  webSocketLogoutEpic,
+  webSocketDisconnectRequestEpic,
   ...epics
-)
+);
 
 export const defaultHooks = {
-  beforeLogoutHook:<R> (action, store): Observable<R> => {
+  beforeLogoutHook: <R>(action, store): Observable<R> => {
     return EMPTY;
   }
-}
+};
 
 export const createCombineEpics = (hooks = defaultHooks) => (...epics) => wrappedCombineEpics(
   beforeLogoutHookEpic(hooks.beforeLogoutHook),
   ...epics
-)
+);
 
 export default wrappedCombineEpics;

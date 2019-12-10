@@ -8,7 +8,7 @@ import {
   webSocketJoinRoomSuccessAction,
   webSocketLeaveRoomSuccessAction,
   webSocketJoinRoomLoadingAction,
-  webSocketJoinRoomFailureAction
+  webSocketJoinRoomFailureAction, webSocketDisconnectSuccessAction
 } from '../action/WebSocketAction';
 
 export interface IWebSocketJoinRoom {
@@ -59,6 +59,14 @@ export const webSocketConnectionReducer = createReducer(initialState)
     ...state,
     isConnecting: false,
     isConnected: false
+  }))
+
+  .handleAction(webSocketDisconnectSuccessAction, (state: IWebSocketConnectionReducerState): IWebSocketConnectionReducerState => ({
+    ...state,
+    isConnecting: false,
+    isConnected: false,
+    connectionError: null,
+    rooms: []
   }))
 
   .handleAction(webSocketJoinRoomLoadingAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoomConnection>): IWebSocketConnectionReducerState => {
