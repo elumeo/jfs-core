@@ -15,12 +15,15 @@ import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from 
 
 import {
   webSocketAppIsInitializedEpic,
+  webSocketCheckForConnectionErrorEpic,
+  webSocketCheckForReconnectEpic,
   webSocketConnectRequestEpic,
   webSocketConnectSuccessEpic,
   webSocketDisconnectRequestEpic,
   webSocketJoinRoomLoadingEpic,
   webSocketJoinRoomRequestEpic,
-  webSocketLeaveRoomRequestEpic, webSocketLogoutEpic
+  webSocketLeaveRoomRequestEpic,
+  webSocketLogoutEpic
 } from './WebSocketEpic';
 import { setInitialLanguageEpic } from './LanguageEpic';
 import { Observable, EMPTY } from 'rxjs';
@@ -48,6 +51,8 @@ export const wrappedCombineEpics = (...epics) => combineEpics(
   webSocketLeaveRoomRequestEpic,
   webSocketLogoutEpic,
   webSocketDisconnectRequestEpic,
+  webSocketCheckForConnectionErrorEpic,
+  webSocketCheckForReconnectEpic,
   ...epics
 );
 

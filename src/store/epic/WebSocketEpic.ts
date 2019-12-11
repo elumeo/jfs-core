@@ -1,6 +1,6 @@
 import { Epic, StateObservable } from 'redux-observable';
-import { filter, switchMap, concatMap, map, catchError, tap } from 'rxjs/operators';
-import { EMPTY, iif, of } from 'rxjs';
+import { filter, switchMap, concatMap, map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
 
 import { RootAction } from '../action/RootAction';
@@ -29,7 +29,6 @@ export const webSocketAppIsInitializedEpic: Epic<RootAction, RootAction> = (acti
   return action$.pipe(
     filter(isActionOf(appInitialized)),
     filter(() => state.value.configReducer.config.WebSocketClient !== undefined && state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
-    // concatMap(() => of(webSocketDisconnectRequestAction())),
     switchMap(() => of(webSocketConnectRequestAction()))
   );
 };
@@ -47,8 +46,8 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
     filter(isActionOf(webSocketConnectRequestAction)),
     filter(() => state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
     concatMap(() => WSClient.leaveAllRooms(state.value.webSocketConnectionReducer.rooms)),
-    tap(() => WSClient.disconnect()),
-    tap(() => {
+    concatMap(() => WSClient.disconnect()),
+    concatMap(() => {
       return WSClient.connect(
         state.value.sessionReducer.sessionDTO.token,
         state.value.sessionReducer.sessionDTO.lastIPAddress,
@@ -56,8 +55,23 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
         state.value.configReducer.config.WebSocketClient.PrivateNamespace
       );
     }),
-    switchMap(() => WSClient.connectObservable$),
-    switchMap((isConnected) => iif(() => isConnected, of(webSocketConnectSuccessAction()), of(webSocketConnectFailedAction())))
+    switchMap(() => of(webSocketConnectSuccessAction()))
+  );
+};
+
+export const webSocketCheckForConnectionErrorEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
+  return action$.pipe(
+    filter(isActionOf(webSocketConnectRequestAction)),
+    concatMap(() => WSClient.connectionErrorObservable$),
+    switchMap(() => of(webSocketConnectFailedAction()))
+  );
+};
+
+export const webSocketCheckForReconnectEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
+  return action$.pipe(
+    filter(isActionOf(webSocketConnectRequestAction)),
+    concatMap(() => WSClient.reconnectObservable$),
+    switchMap(() => of(webSocketConnectSuccessAction()))
   );
 };
 
@@ -104,25 +118,15 @@ export const webSocketConnectSuccessEpic: Epic<RootAction, RootAction> = (action
 export const webSocketDisconnectRequestEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
   return action$.pipe(
     filter(isActionOf(webSocketDisconnectRequestAction)),
-    filter(() => (
-      state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized &&
-      (state.value.webSocketConnectionReducer.isConnected || state.value.webSocketConnectionReducer.isConnecting)
-    )),
     concatMap(() => WSClient.leaveAllRooms(state.value.webSocketConnectionReducer.rooms)),
-    tap(() => WSClient.disconnect()),
-    switchMap(() => WSClient.connectObservable$),
-    switchMap((isConnected) => iif(() => isConnected, of(webSocketDisconnectSuccessAction(), EMPTY)))
+    concatMap(() => WSClient.disconnect()),
+    switchMap(() => of(webSocketDisconnectSuccessAction()))
   );
 };
 
 export const webSocketJoinRoomRequestEpic: Epic<RootAction, RootAction> = (action$) => {
   return action$.pipe(
     filter(isActionOf(webSocketJoinRoomRequestAction)),
-    // Disabled this filter because we want to reconnect automatically when websocket server is restarted
-    // filter((action) => {
-    //   const roomState = getRoomConnectionState(state.value.webSocketConnectionReducer, action.payload);
-    //   return roomState === null || roomState.hasJoined === false && roomState.isJoining === false;
-    // }),
     map((action) => {
       return {
         isJoining: true,
