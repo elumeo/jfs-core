@@ -113,7 +113,7 @@ export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) => (
       ).pipe(
         switchMap(() => of(logoutFinished()))
       )
-    ))
+    )
   )
 );
 

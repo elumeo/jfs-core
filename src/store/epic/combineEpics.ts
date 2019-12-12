@@ -57,8 +57,15 @@ export const wrappedCombineEpics = (...epics) => combineEpics(
   ...epics
 );
 
-export const defaultHooks = {
-  beforeLogoutHook: <R>(action, store): Observable<R> => {
+export type Hook = <R>(action, store) => Observable<R>;
+
+export interface IAppHooks {
+  beforeLogoutHook: Hook;
+  afterLogoutHook: Hook;
+}
+
+export const defaultHooks: IAppHooks = {
+  beforeLogoutHook: (action, store) => {
     return EMPTY;
   },
   afterLogoutHook: (action, store) => {
