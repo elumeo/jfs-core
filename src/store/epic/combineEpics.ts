@@ -7,6 +7,7 @@ import {
   authorizeSessionEpic, unauthorizeSessionEpic,
   logoutEpic,
   beforeLogoutHookEpic,
+  afterLogoutHookEpic,
 } from './SessionEpic';
 import { getRegionEpic } from './SystemEpic';
 import { loginEpic, robotLoginRefreshEpic } from './LoginEpic';
@@ -50,12 +51,16 @@ export const wrappedCombineEpics = (...epics) => combineEpics(
 export const defaultHooks = {
   beforeLogoutHook: (action, store) => {
     return EMPTY;
+  },
+  afterLogoutHook: (action, store) => {
+    return EMPTY;
   }
 }
 
 export const createCombineEpics = (hooks = defaultHooks) => (...epics) => wrappedCombineEpics(
   beforeLogoutHookEpic(hooks.beforeLogoutHook),
+  afterLogoutHookEpic(hooks.afterLogoutHook),
   ...epics
 )
 
-export default wrappedCombineEpics;
+export default createCombineEpics();

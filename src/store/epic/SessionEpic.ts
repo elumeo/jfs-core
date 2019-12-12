@@ -1,8 +1,8 @@
 import { Epic } from 'redux-observable';
 import { RootAction } from '../action/RootAction';
-import { catchError, concatMap, filter, map, switchMap } from 'rxjs/operators';
+import { catchError, concatMap, filter, map, switchMap, debounce } from 'rxjs/operators';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
-import { from, of, EMPTY, concat } from 'rxjs';
+import { from, of, concat, timer, EMPTY } from 'rxjs';
 import {
   authorizeSession,
   checkSession,
@@ -17,7 +17,7 @@ import Session from '../../base/Session';
 import { AxiosResponse } from 'axios';
 import { addToastAction } from '../action/ToastAction';
 import { appInitialized } from '../action/AppAction';
-import { beforeLogoutFinished } from '../action/LogoutAction';
+import { beforeLogoutHookFinished, logoutFinished, closeLogout } from '../action/LogoutAction';
 
 export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
@@ -94,14 +94,15 @@ export const beforeLogoutHookEpic = handleLogoutHook => (action$, store) => (
     filter(isActionOf(logout)),
     concatMap(action => concat(
       handleLogoutHook(action, store),
-      of(beforeLogoutFinished())
+      of(beforeLogoutHookFinished())
     ))
   )
 );
 
 export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
-    filter(isActionOf(beforeLogoutFinished)),
+    filter(isActionOf(beforeLogoutHookFinished)),
+    debounce(() => timer(200)),
     concatMap(
       (action: PayloadAction<string, ILogoutPayload>) => from(
         JSCApi.SessionClient.logout(
@@ -110,18 +111,35 @@ export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) => (
             : store.value.sessionReducer.sessionDTO
         )
       ).pipe(
-        switchMap(() => of(unauthorizeSession()))
+        switchMap(() => of(logoutFinished()))
       )
     )
   )
 );
 
-export const unauthorizeSessionEpic: Epic<RootAction, RootAction> = (action$) => (
+export const afterLogoutHookEpic = handleLogoutFinished => action$ => (
+  action$.pipe(
+    filter(isActionOf(logoutFinished)),
+    concatMap(
+      action => concat(
+        handleLogoutFinished(action),
+        of(closeLogout()),
+        of(unauthorizeSession())
+      )
+    )
+  )
+)
+
+export const unauthorizeSessionEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
     filter(isActionOf(unauthorizeSession)),
     concatMap(() => {
       Session.removeToken();
-      return of(appInitialized());
+      return (
+        store.value.appReducer.appInitialized
+          ? EMPTY
+          : of(appInitialized())
+      );
     })
   )
 );

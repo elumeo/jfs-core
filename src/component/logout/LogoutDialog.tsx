@@ -7,18 +7,21 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { logout } from '../../store/action/SessionAction';
 import { closeLogout } from '../../store/action/LogoutAction';
+import Button from 'react-md/lib/Buttons/Button';
+import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 
 export interface ILogoutDialogProps extends InjectedIntlProps {
   openLogout?: () => void;
   closeLogout?: typeof closeLogout;
   logout?: typeof logout;
   logoutOpen?: boolean;
+  logoutPending?: boolean;
   beforeLogout?: () => void;
 }
 
 const LogoutDialog: React.FC<ILogoutDialogProps> = ({
   intl: { formatMessage },
-  logoutOpen, closeLogout, logout, children
+  logoutOpen, closeLogout, logout, children, logoutPending
 }) => (
   <Dialog
     id="logout"
@@ -28,18 +31,24 @@ const LogoutDialog: React.FC<ILogoutDialogProps> = ({
     aria-labelledby="logoutDescription"
     modal
     actions={[
-      {
-        onClick: () => {
-          closeLogout();
-          logout({});
-        },
-        primary: true,
-        label: formatMessage({id: 'app.logout.action'})
-      },
-      {
-        onClick: () => closeLogout(),
-        label: formatMessage({id: 'app.cancel.action'})
-      }
+      <Button
+        flat
+        primary
+        disabled={logoutPending}
+        onClick={() => logout({})}
+      >
+        {
+          logoutPending
+            ? <CircularProgress id="logout-progress"/>
+            : formatMessage({id: 'app.logout.action'})
+        }
+      </Button>,
+      <Button
+        flat
+        onClick={() => closeLogout()}
+      >
+        {formatMessage({id: 'app.cancel.action'})}
+      </Button>
     ]}
   >
     <p id="logoutDescription" className="md-color--secondary-text">
@@ -57,7 +66,8 @@ const mapStateToProps = (
   ownProps: ILogoutDialogProps
 ): ILogoutDialogProps => ({
   ...ownProps,
-  logoutOpen: state.logoutReducer.logoutOpen
+  logoutOpen: state.logoutReducer.logoutOpen,
+  logoutPending: state.logoutReducer.logoutPending
 });
 
 const enhance = compose(
