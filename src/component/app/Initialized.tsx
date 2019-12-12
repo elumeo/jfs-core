@@ -23,8 +23,7 @@ const Initialized: React.FC<IInitializedProps> = ({
   appInitialized && (
     <IntlProvider
       locale={language}
-      messages={messages[language]}
-      key={language}>
+      messages={messages[language]}>
       <HashRouter>
         <>
           {children}

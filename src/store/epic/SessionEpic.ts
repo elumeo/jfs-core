@@ -36,7 +36,7 @@ export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) =>
           ? (
             Session.getToken()
               ? checkSession()
-              : checkLogin({ username, password })
+              : checkLogin({username, password})
           )
           : unauthorizeSession()
       )
@@ -80,7 +80,7 @@ export const checkSessionEpic: Epic<RootAction, RootAction> = (action$, store) =
       return of(
         ...(
           isToastable
-            ? [addToastAction({ contentTranslationId, isError: true })]
+            ? [addToastAction({contentTranslationId, isError: true})]
             : []
         ),
         unauthorizeSession()
@@ -113,7 +113,7 @@ export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) => (
       ).pipe(
         switchMap(() => of(logoutFinished()))
       )
-    )
+    ))
   )
 );
 
