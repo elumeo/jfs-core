@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "7.2.0",
+  "version": "7.2.1",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "homepage": "http://www.elumeo.com",
   "dependencies": {
     "connected-react-router": "5.0.1",
-    "@elumeo/jfs-core-dev": "2.1.0",
+    "@elumeo/jfs-core-dev": "2.1.1",
     "axios": "^0.18.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-preset-react-hmre": "^1.1.1",
