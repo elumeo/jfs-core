@@ -20,7 +20,7 @@
   "homepage": "http://www.elumeo.com",
   "dependencies": {
     "connected-react-router": "5.0.1",
-    "@elumeo/jfs-core-dev": "2.1.1",
+    "@elumeo/jfs-core-dev": "2.1.2",
     "axios": "^0.18.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-preset-react-hmre": "^1.1.1",
