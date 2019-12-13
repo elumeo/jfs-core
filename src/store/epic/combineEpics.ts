@@ -60,8 +60,8 @@ export const wrappedCombineEpics = (...epics) => combineEpics(
 export type Hook = <R>(action, store) => Observable<R>;
 
 export interface IAppHooks {
-  beforeLogoutHook: Hook;
-  afterLogoutHook: Hook;
+  beforeLogoutHook?: Hook;
+  afterLogoutHook?: Hook;
 }
 
 export const defaultHooks: IAppHooks = {
@@ -73,9 +73,9 @@ export const defaultHooks: IAppHooks = {
   }
 };
 
-export const createCombineEpics = (hooks = defaultHooks) => (...epics) => wrappedCombineEpics(
-  beforeLogoutHookEpic(hooks.beforeLogoutHook),
-  afterLogoutHookEpic(hooks.afterLogoutHook),
+export const createCombineEpics = (hooks: IAppHooks = {}) => (...epics) => wrappedCombineEpics(
+  beforeLogoutHookEpic(hooks.beforeLogoutHook || defaultHooks.beforeLogoutHook),
+  afterLogoutHookEpic(hooks.afterLogoutHook || defaultHooks.afterLogoutHook),
   ...epics
 );
 

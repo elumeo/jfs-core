@@ -1,4 +1,5 @@
-import { openLogout, closeLogout, beforeLogoutHookFinished, logoutFinished } from '../action/LogoutAction';
+import { openLogout, closeLogout, logoutFinished } from '../action/LogoutAction';
+import { logout } from '../action/SessionAction';
 import { createReducer } from 'typesafe-actions';
 
 export interface ILogoutReducerState {
@@ -21,7 +22,7 @@ export const logoutReducer = createReducer(initialState)
     logoutOpen: false
   }))
   .handleAction(
-    beforeLogoutHookFinished, state => ({
+    logout, state => ({
       ...state,
       logoutPending: true
     })
