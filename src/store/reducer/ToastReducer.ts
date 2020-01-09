@@ -7,6 +7,7 @@ export interface IToastConfig {
   contentTranslationId?: string | null;
   contentError?: any | null;
   isError?: boolean;
+  isSuccess?: boolean;
   dismissLabel?: string | null;
 
   [messageParameters: string]: any;

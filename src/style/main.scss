@@ -44,6 +44,14 @@ $md-colors-warn-md: false;
   color: white !important;
 }
 
+.appSnackbarSuccess {
+  background: darkgreen !important;
+}
+
+.appSnackbarSuccess > .md-text--theme-secondary {
+  color: white !important;
+}
+
 .appSnackbarNormal > .md-text--theme-secondary {
   color: white !important;
 }

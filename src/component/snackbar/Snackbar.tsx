@@ -25,14 +25,20 @@ class AppSnackBar extends React.Component<IAppSnackbarProps> {
       return snackbarContent(toast, formatMessage);
     }).toArray();
 
+    let className = 'appSnackbarNormal';
+    if (toasts && toasts.size > 0) {
+      if (toasts.first().isError === true) {
+        className = 'appSnackbarError';
+      }
+      if (toasts.first().isSuccess === true) {
+        className = 'appSnackbarSuccess';
+      }
+    }
+
     return (
       <Snackbar
         id="appSnackbar"
-        className={
-          (toasts && toasts.size > 0) && (toasts.first().isError === true)
-            ? 'appSnackbarError'
-            : 'appSnackbarNormal'
-        }
+        className={className}
         toasts={toastContents}
         onDismiss={dismissToastAction}
         autohide={
