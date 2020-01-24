@@ -1,0 +1,91 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0;
+    color: rgb(60, 60, 60);
+}
+
+.header {
+    width: 100vw;
+    height: 8.75vh;
+    box-sizing: border-box;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: fixed;
+    top: 0;
+
+    box-shadow: 0px 10px 100px -30px rgba(0,0,0,0.75);
+    border-bottom: 1px solid lightgray;
+
+    background: white;
+
+    z-index: 10;
+}
+
+.export-csv-button {
+    display: block;
+    background: rgb(60, 60, 60);
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.translations-table {
+    position: absolute;
+    top: 8.75vh;
+    overflow-y: scroll;
+    table-layout:fixed;
+
+    width: 100%;
+    overflow-x: hidden;
+
+    border-collapse: collapse;
+}
+
+.header-row td {
+    font-weight: bolder;
+}
+
+.header-row td.value-cell {
+    text-transform: uppercase;
+}
+
+.translations-table td {
+    height: 40px;
+    white-space: nowrap;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.translations-table tr:nth-child(1n) {
+    background: white;
+}
+.translations-table tr:nth-child(2n) {
+    background: lightgray;
+}
+
+.translations-table tr:hover td {
+    text-overflow: clip;
+    white-space: normal;
+}
+
+.translations-table, .translations-table tr, .translations-table td {
+    border: 1px solid lightgray;
+}
+
+.key-cell {
+    width: 12.5vw;
+}
+
+.value-cell {
+    width: 100%;
+}
