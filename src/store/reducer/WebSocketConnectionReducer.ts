@@ -1,119 +1,153 @@
 import { createReducer, PayloadAction } from 'typesafe-actions';
-
-import JSCApi from '../../JscApi';
 import {
+  webSocketAddNamespaceAction,
+  webSocketConnectFailedAction,
   webSocketConnectRequestAction,
   webSocketConnectSuccessAction,
-  webSocketConnectFailedAction,
-  webSocketJoinRoomSuccessAction,
-  webSocketLeaveRoomSuccessAction,
+  webSocketDisconnectSuccessAction,
+  webSocketJoinRoomFailureAction,
   webSocketJoinRoomLoadingAction,
-  webSocketJoinRoomFailureAction, webSocketDisconnectSuccessAction
+  webSocketJoinRoomSuccessAction,
+  webSocketLeaveRoomSuccessAction
 } from '../action/WebSocketAction';
 
-export interface IWebSocketJoinRoom {
+// export enum WS_NAMESPACES {
+//   JSC2JFS = 'Jsc2Jfs',
+//   JFS2JFS = 'Jfs2Jfs'
+// }
+
+export interface IWebSocketRoom {
   room: string;
+  namespace: string;
   error?: string;
 }
 
-export interface IWebSocketUpdateRoom<T> {
-  roomData: JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>;
+export interface IWebSocketConnectionReducerState {
+  [webSocketNamespace: string]: IWebSocketNamespace;
 }
 
-export interface IWebSocketConnectionReducerState {
+export interface IWebSocketNamespace {
   isConnected: boolean;
   isConnecting: boolean;
   connectionError: string;
   rooms: IWebSocketRoomConnection[];
 }
 
-const initialState: IWebSocketConnectionReducerState = {
-  isConnected: false,
-  isConnecting: false,
-  connectionError: null,
-  rooms: []
+export const webSocketConnectionReducerInitialState: IWebSocketConnectionReducerState = {
+  // It is not possible to set initial state values for any namespace here because namespaces will be created
+  // dynamically with the action: webSocketAddNamespaceAction
 };
 
 export interface IWebSocketRoomConnection {
+  namespace: string;
   isJoining: boolean;
   hasJoined: boolean;
   name: string;
   error: string;
 }
 
-export const webSocketConnectionReducer = createReducer(initialState)
+export const webSocketConnectionReducer = createReducer(webSocketConnectionReducerInitialState)
 
-  .handleAction(webSocketConnectRequestAction, (state: IWebSocketConnectionReducerState): IWebSocketConnectionReducerState => ({
-    ...state,
-    isConnecting: true,
-    isConnected: false,
-    connectionError: null
-  }))
-  .handleAction(webSocketConnectSuccessAction, (state: IWebSocketConnectionReducerState): IWebSocketConnectionReducerState => ({
-    ...state,
-    isConnecting: false,
-    isConnected: true,
-    connectionError: null
-  }))
-  .handleAction(webSocketConnectFailedAction, (state: IWebSocketConnectionReducerState): IWebSocketConnectionReducerState => ({
-    ...state,
-    isConnecting: false,
-    isConnected: false
-  }))
+  .handleAction(webSocketConnectRequestAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, string>): IWebSocketConnectionReducerState => {
+    return {
+      ...state,
+      [action.payload]: {
+        ...state[action.payload],
+        isConnecting: true,
+        isConnected: false,
+        connectionError: null
+      }
+    };
+  })
 
-  .handleAction(webSocketDisconnectSuccessAction, (state: IWebSocketConnectionReducerState): IWebSocketConnectionReducerState => ({
-    ...state,
-    isConnecting: false,
-    isConnected: false,
-    connectionError: null,
-    rooms: []
-  }))
+  .handleAction(webSocketConnectSuccessAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, string>): IWebSocketConnectionReducerState => {
+    return {
+      ...state,
+      [action.payload]: {
+        ...state[action.payload],
+        isConnecting: false,
+        isConnected: true,
+        connectionError: null
+      }
+    };
+  })
 
-  .handleAction(webSocketJoinRoomLoadingAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoomConnection>): IWebSocketConnectionReducerState => {
+  .handleAction(webSocketConnectFailedAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, string>): IWebSocketConnectionReducerState => {
+    return {
+      ...state,
+      [action.payload]: {
+        ...state[action.payload],
+        isConnecting: false,
+        isConnected: false
+      }
+    };
+  })
+
+  .handleAction(webSocketDisconnectSuccessAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, string>): IWebSocketConnectionReducerState => {
+    return {
+      ...state,
+      [action.payload]: {
+        ...state[action.payload],
+        isConnecting: false,
+        isConnected: false,
+        connectionError: null,
+        rooms: []
+      }
+    };
+  })
+
+  .handleAction([
+    webSocketJoinRoomLoadingAction,
+    webSocketJoinRoomSuccessAction,
+    webSocketJoinRoomFailureAction
+  ], (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoomConnection>): IWebSocketConnectionReducerState => {
     const newRooms: IWebSocketRoomConnection[] = [];
-    for(const room of state.rooms) {
-      if(room.name !== action.payload.name) {
+    for (const room of state[action.payload.namespace].rooms) {
+      if (room.name !== action.payload.name) {
         newRooms.push(room);
       }
     }
     newRooms.push(action.payload);
-    return {
-      ...state,
-      rooms: newRooms
-    }
-  })
-  .handleAction(webSocketJoinRoomSuccessAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoomConnection>): IWebSocketConnectionReducerState => {
-    const newRooms: IWebSocketRoomConnection[] = [];
-    for(const room of state.rooms) {
-      if(room.name !== action.payload.name) {
-        newRooms.push(room);
-      }
-    }
-    newRooms.push(action.payload);
-    return {
-      ...state,
-      rooms: newRooms
-    }
-  })
-  .handleAction(webSocketJoinRoomFailureAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoomConnection>): IWebSocketConnectionReducerState => {
-    const newRooms: IWebSocketRoomConnection[] = [];
-    for(const room of state.rooms) {
-      if(room.name !== action.payload.name) {
-        newRooms.push(room);
-      }
-    }
-    newRooms.push(action.payload);
-    return {
-      ...state,
-      rooms: newRooms
-    }
-  })
 
-  // LEAVE
-  .handleAction(webSocketLeaveRoomSuccessAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, string>): IWebSocketConnectionReducerState => {
+    return {
+      ...state,
+      [action.payload.namespace]: {
+        ...state[action.payload.namespace],
+        rooms: newRooms
+      }
+    };
+  })
+  // .handleAction(webSocketJoinRoomSuccessAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoomConnection>): IWebSocketConnectionReducerState => {
+  //   const newRooms: IWebSocketRoomConnection[] = [];
+  //   for (const room of state.rooms) {
+  //     if (room.name !== action.payload.name) {
+  //       newRooms.push(room);
+  //     }
+  //   }
+  //   newRooms.push(action.payload);
+  //   return {
+  //     ...state,
+  //     rooms: newRooms
+  //   }
+  // })
+  // .handleAction(webSocketJoinRoomFailureAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoomConnection>): IWebSocketConnectionReducerState => {
+  //   const newRooms: IWebSocketRoomConnection[] = [];
+  //   for (const room of state.rooms) {
+  //     if (room.name !== action.payload.name) {
+  //       newRooms.push(room);
+  //     }
+  //   }
+  //   newRooms.push(action.payload);
+  //   return {
+  //     ...state,
+  //     rooms: newRooms
+  //   }
+  // })
+
+  .handleAction(webSocketLeaveRoomSuccessAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoom>): IWebSocketConnectionReducerState => {
     const newRooms: IWebSocketRoomConnection[] = [];
-    for(const room of state.rooms) {
-      if(room.name !== action.payload) {
+    for (const room of state[action.payload.namespace].rooms) {
+      if (room.name !== action.payload.room) {
         newRooms.push(room);
       } else {
         const newRoom = {
@@ -126,7 +160,22 @@ export const webSocketConnectionReducer = createReducer(initialState)
     }
     return {
       ...state,
-      rooms: newRooms
+      [action.payload.namespace]: {
+        ...state[action.payload.namespace],
+        rooms: newRooms
+      }
+    }
+  })
+
+  .handleAction(webSocketAddNamespaceAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, string>): IWebSocketConnectionReducerState => {
+    return {
+      ...state,
+      [action.payload]: {
+        isConnected: false,
+        isConnecting: false,
+        connectionError: null,
+        rooms: []
+      }
     }
   })
 ;

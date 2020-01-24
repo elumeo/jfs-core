@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { ICoreRootReducer } from '../../store/reducer/combineReducers';
-import { IWebSocketConnectionReducerState } from '../../store/reducer/WebSocketConnectionReducer';
+import { webSocketConnectionReducerInitialState } from '../../store/reducer/WebSocketConnectionReducer';
 import {
   webSocketConnectRequestAction,
   webSocketUpdateRoomAction
@@ -12,7 +12,7 @@ import { WSClient } from '../../base/WSClient';
 
 export interface IWebsocketConnectionProps {
   config?: IConfig;
-  webSocket?: IWebSocketConnectionReducerState;
+  webSocketConnectionReducer?: typeof webSocketConnectionReducerInitialState;
   webSocketConnectRequestAction?: typeof webSocketConnectRequestAction;
   webSocketUpdateRoomAction?: typeof webSocketUpdateRoomAction;
 }
@@ -43,7 +43,7 @@ const mapStateToProps = (
 ): IWebsocketConnectionProps => ({
   ...ownProps,
   config: state.configReducer.config,
-  webSocket: state.webSocketConnectionReducer
+  webSocketConnectionReducer: state.webSocketConnectionReducer
 });
 
 export default connect(

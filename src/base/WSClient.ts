@@ -1,7 +1,7 @@
 import { Observable, Subject } from 'rxjs';
 import io from 'socket.io-client';
 import JSCApi from '../JscApi';
-import { IWebSocketJoinRoom, IWebSocketRoomConnection } from '../store/reducer/WebSocketConnectionReducer';
+import { IWebSocketRoom, IWebSocketRoomConnection } from '../store/reducer/WebSocketConnectionReducer';
 
 export class WSClient {
   public static EVENT_NOT_AUTHORIZED = 'notAuthorized';
@@ -14,70 +14,73 @@ export class WSClient {
   public static EVENT_CONNECT_ERROR = 'connect_error';
   public static EVENT_RECONNECT = 'reconnect';
 
-  public static socket: typeof io.Socket = null;
+  public static sockets: typeof io.Socket[] = [];
 
   protected static listenRoomsSubject = new Subject<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>();
   public static listenRoomsObservable$ = WSClient.listenRoomsSubject.asObservable();
 
-  protected static connectionErrorSubject = new Subject<boolean>();
+  protected static connectionErrorSubject = new Subject<string>();
   public static connectionErrorObservable$ = WSClient.connectionErrorSubject.asObservable();
 
-  protected static reconnectSubject = new Subject<boolean>();
+  protected static reconnectSubject = new Subject<string>();
   public static reconnectObservable$ = WSClient.reconnectSubject.asObservable();
 
   public static connect(token: string, ip: string, host: string, namespace: string) {
-    return new Observable<void>((observer) => {
-      if (this.socket !== null) {
-        this.disconnect().subscribe();
+    this.checkSocket(namespace);
+    return new Observable<string>((observer) => {
+      if (this.sockets[namespace] !== null) {
+        this.disconnect(namespace).subscribe();
       }
 
-      if (this.socket === null) {
-        this.socket = io.connect(host + '/' + namespace, {
+      if (this.sockets[namespace] === null) {
+        this.sockets[namespace] = io.connect(host + '/' + namespace, {
           query: {token, ip},
           secure: host.startsWith('https')
         });
-        this.socket.on(this.EVENT_AUTHENTICATED, () => {
-          this.socket.off(this.EVENT_AUTHENTICATED);
-          this.socket.on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
-          observer.next();
+        this.sockets[namespace].on(this.EVENT_AUTHENTICATED, () => {
+          this.sockets[namespace].off(this.EVENT_AUTHENTICATED);
+          this.sockets[namespace].on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
+          observer.next(namespace);
           observer.complete();
         });
 
-        this.socket.on(this.EVENT_CONNECT_ERROR, () => {
-          this.socket.off(this.EVENT_UPDATE_ROOM);
-          this.connectionErrorSubject.next();
+        this.sockets[namespace].on(this.EVENT_CONNECT_ERROR, () => {
+          this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
+          this.connectionErrorSubject.next(namespace);
         });
 
-        this.socket.on(this.EVENT_RECONNECT, () => {
-          this.socket.on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
-          this.reconnectSubject.next();
+        this.sockets[namespace].on(this.EVENT_RECONNECT, () => {
+          this.sockets[namespace].on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
+          this.reconnectSubject.next(namespace);
         });
       }
     });
   }
 
-  public static disconnect() {
-    return new Observable<void>((observer) => {
-      if (this.socket !== null) {
-        this.socket.off(this.EVENT_UPDATE_ROOM);
-        this.socket.disconnect();
-        this.socket = null;
+  public static disconnect(namespace: string) {
+    this.checkSocket(namespace);
+    return new Observable<string>((observer) => {
+      if (this.sockets[namespace] !== null) {
+        this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
+        this.sockets[namespace].disconnect();
+        this.sockets[namespace] = null;
       }
-      observer.next();
+      observer.next(namespace);
       observer.complete();
     });
   }
 
-  public static join(room: string) {
+  public static join(namespace: string, room: string) {
+    this.checkSocket(namespace);
     return new Observable<string>((observer) => {
       // 1. Tell websocket server that we joined the room
-      this.socket.emit(this.EVENT_JOIN_ROOM, room);
+      this.sockets[namespace].emit(this.EVENT_JOIN_ROOM, room);
 
       // 2.a Wait for successful join
-      this.socket.on(this.EVENT_JOINED_ROOM, (joinedRoom) => {
+      this.sockets[namespace].on(this.EVENT_JOINED_ROOM, (joinedRoom) => {
         if (room === joinedRoom) {
-          this.socket.off(this.EVENT_JOIN_ROOM_FAILED);
-          this.socket.off(this.EVENT_JOINED_ROOM);
+          this.sockets[namespace].off(this.EVENT_JOIN_ROOM_FAILED);
+          this.sockets[namespace].off(this.EVENT_JOINED_ROOM);
           observer.next(room);
           observer.complete();
           observer.unsubscribe();
@@ -85,12 +88,12 @@ export class WSClient {
       });
 
       // 2.b Wait for failed join
-      this.socket.on(this.EVENT_JOIN_ROOM_FAILED, (error) => {
-        const failedRoom = (JSON.parse(error.config.data) as IWebSocketJoinRoom);
+      this.sockets[namespace].on(this.EVENT_JOIN_ROOM_FAILED, (error) => {
+        const failedRoom = (JSON.parse(error.config.data) as IWebSocketRoom);
         if (room === failedRoom.room) {
           failedRoom.error = error.message;
-          this.socket.off(this.EVENT_JOIN_ROOM_FAILED);
-          this.socket.off(this.EVENT_JOINED_ROOM);
+          this.sockets[namespace].off(this.EVENT_JOIN_ROOM_FAILED);
+          this.sockets[namespace].off(this.EVENT_JOINED_ROOM);
           observer.error(failedRoom);
           observer.complete();
           observer.unsubscribe();
@@ -99,33 +102,45 @@ export class WSClient {
     });
   }
 
-  public static leave(room: string) {
-    return new Observable<string>((observer) => {
-      if(this.socket !== null) {
-        this.socket.emit(this.EVENT_LEAVE_ROOM, room);
+  public static leave(room: IWebSocketRoom) {
+    this.checkSocket(room.namespace);
+    return new Observable<IWebSocketRoom>((observer) => {
+      if(this.sockets[room.namespace] !== null) {
+        this.sockets[room.namespace].emit(this.EVENT_LEAVE_ROOM, room);
       }
       observer.next(room);
       observer.complete();
     });
   }
 
-  public static leaveAllRooms(rooms: IWebSocketRoomConnection[]) {
-    return new Observable<boolean>((observer) => {
+  public static leaveAllRooms(namespace: string, rooms: IWebSocketRoomConnection[]) {
+    this.checkSocket(namespace);
+    return new Observable<string>((observer) => {
       let countLeftRooms = 0;
       if (rooms.length === 0) {
-        observer.next(true);
+        observer.next(namespace);
         observer.complete();
       } else {
         for (const room of rooms) {
-          this.leave(room.name).subscribe(() => {
+          const roomData = {
+            namespace: room.namespace,
+            room: room.name
+          } as IWebSocketRoom;
+          this.leave(roomData).subscribe(() => {
             countLeftRooms++;
             if (countLeftRooms === rooms.length) {
-              observer.next(true);
+              observer.next(namespace);
               observer.complete();
             }
           });
         }
       }
     });
+  }
+
+  private static checkSocket(namespace: string) {
+    if(this.sockets[namespace] === undefined) {
+      this.sockets[namespace] = null;
+    }
   }
 }
