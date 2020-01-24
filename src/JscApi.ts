@@ -114,6 +114,7 @@ namespace JSCApi {
     export namespace WebSocket {
       export interface IWebSocketRoomUpdateDTO<T0> {
         room?: string;
+        namespace?: string;
         data?: T0;
         createdAt?: string;
         createdBy?: string;

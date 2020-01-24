@@ -16,7 +16,7 @@ class WebSocketStatus extends React.Component<IWebsocketConnectionProps, IWebsoc
         <div
           className={[
             `websocket-status`,
-            isWebSocketNamespaceConnectedState(webSocketConnectionReducer, JscWebSocketClient.PrivateNamespace) ? '-is-connected' : '-is-not-connected'
+            JscWebSocketClient !== undefined && isWebSocketNamespaceConnectedState(webSocketConnectionReducer, JscWebSocketClient.PrivateNamespace) ? '-is-connected' : '-is-not-connected'
           ].join(' ')}
         >
           WS {JscWebSocketClient.PrivateNamespace} Status: <span className="websocket-status-indicator"/>
@@ -24,7 +24,7 @@ class WebSocketStatus extends React.Component<IWebsocketConnectionProps, IWebsoc
         <div
           className={[
             `websocket-status`,
-            isWebSocketNamespaceConnectedState(webSocketConnectionReducer, JfsWebSocketClient.PrivateNamespace) ? '-is-connected' : '-is-not-connected'
+            JfsWebSocketClient !== undefined && isWebSocketNamespaceConnectedState(webSocketConnectionReducer, JfsWebSocketClient.PrivateNamespace) ? '-is-connected' : '-is-not-connected'
           ].join(' ')}
         >
           WS {JfsWebSocketClient.PrivateNamespace} Status: <span className="websocket-status-indicator"/>

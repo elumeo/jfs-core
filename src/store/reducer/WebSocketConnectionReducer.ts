@@ -117,34 +117,9 @@ export const webSocketConnectionReducer = createReducer(webSocketConnectionReduc
       }
     };
   })
-  // .handleAction(webSocketJoinRoomSuccessAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoomConnection>): IWebSocketConnectionReducerState => {
-  //   const newRooms: IWebSocketRoomConnection[] = [];
-  //   for (const room of state.rooms) {
-  //     if (room.name !== action.payload.name) {
-  //       newRooms.push(room);
-  //     }
-  //   }
-  //   newRooms.push(action.payload);
-  //   return {
-  //     ...state,
-  //     rooms: newRooms
-  //   }
-  // })
-  // .handleAction(webSocketJoinRoomFailureAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoomConnection>): IWebSocketConnectionReducerState => {
-  //   const newRooms: IWebSocketRoomConnection[] = [];
-  //   for (const room of state.rooms) {
-  //     if (room.name !== action.payload.name) {
-  //       newRooms.push(room);
-  //     }
-  //   }
-  //   newRooms.push(action.payload);
-  //   return {
-  //     ...state,
-  //     rooms: newRooms
-  //   }
-  // })
 
   .handleAction(webSocketLeaveRoomSuccessAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoom>): IWebSocketConnectionReducerState => {
+    console.log('webSocketLeaveRoomSuccessAction', action.payload.namespace);
     const newRooms: IWebSocketRoomConnection[] = [];
     for (const room of state[action.payload.namespace].rooms) {
       if (room.name !== action.payload.room) {

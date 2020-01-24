@@ -64,10 +64,10 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
       }
 
       return WSClient.connect(
-        state.value.sessionReducer.sessionDTO.token,
-        state.value.sessionReducer.sessionDTO.lastIPAddress,
         host,
-        namespace
+        namespace,
+        state.value.sessionReducer.sessionDTO.token,
+        state.value.sessionReducer.sessionDTO.lastIPAddress
       );
     }),
     switchMap((namespace) => of(webSocketConnectSuccessAction(namespace)))

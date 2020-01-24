@@ -1,7 +1,10 @@
 import { Observable, Subject } from 'rxjs';
 import io from 'socket.io-client';
+import { PayloadAction } from 'typesafe-actions';
 import JSCApi from '../JscApi';
 import { IWebSocketRoom, IWebSocketRoomConnection } from '../store/reducer/WebSocketConnectionReducer';
+import IWebSocketRoomUpdateDTO = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO;
+import { ROOM_UPDATE_ACTION_ID } from '../store/action/WebSocketAction';
 
 export class WSClient {
   public static EVENT_NOT_AUTHORIZED = 'notAuthorized';
@@ -25,7 +28,11 @@ export class WSClient {
   protected static reconnectSubject = new Subject<string>();
   public static reconnectObservable$ = WSClient.reconnectSubject.asObservable();
 
-  public static connect(token: string, ip: string, host: string, namespace: string) {
+  protected static JFS_NAMESPACE = 'Jfs2Jfs';
+  protected static jfsOnRoomUpdateSubject = new Subject<string>();
+  protected static jfsOnRoomUpdate$ = WSClient.jfsOnRoomUpdateSubject.asObservable();
+
+  public static connect(host: string, namespace: string, token?: string, ip?: string, ) {
     this.checkSocket(namespace);
     return new Observable<string>((observer) => {
       if (this.sockets[namespace] !== null) {
@@ -92,6 +99,7 @@ export class WSClient {
         const failedRoom = (JSON.parse(error.config.data) as IWebSocketRoom);
         if (room === failedRoom.room) {
           failedRoom.error = error.message;
+          failedRoom.namespace = namespace;
           this.sockets[namespace].off(this.EVENT_JOIN_ROOM_FAILED);
           this.sockets[namespace].off(this.EVENT_JOINED_ROOM);
           observer.error(failedRoom);
@@ -106,7 +114,7 @@ export class WSClient {
     this.checkSocket(room.namespace);
     return new Observable<IWebSocketRoom>((observer) => {
       if(this.sockets[room.namespace] !== null) {
-        this.sockets[room.namespace].emit(this.EVENT_LEAVE_ROOM, room);
+        this.sockets[room.namespace].emit(this.EVENT_LEAVE_ROOM, room.room);
       }
       observer.next(room);
       observer.complete();
@@ -136,6 +144,16 @@ export class WSClient {
         }
       }
     });
+  }
+
+  public static listenToJfs(action: PayloadAction<string, IWebSocketRoomUpdateDTO<string>>, roomToCheck) {
+    // if (action.type === ROOM_UPDATE_ACTION_ID) {
+    //   console.log('listenToJfs', roomToCheck, action.payload.room, action.payload.namespace, action.payload.data);
+    // }
+    if (action.type === ROOM_UPDATE_ACTION_ID && action.payload.room === roomToCheck && action.payload.namespace === WSClient.JFS_NAMESPACE) {
+      WSClient.jfsOnRoomUpdateSubject.next(action.payload.data);
+    }
+    return WSClient.jfsOnRoomUpdate$;
   }
 
   private static checkSocket(namespace: string) {
