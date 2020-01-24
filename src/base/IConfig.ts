@@ -1,3 +1,9 @@
+interface IWebSockClient {
+  Host: string;
+  PrivateNamespace: string;
+  AutoRoomSubscriptions: string[];
+}
+
 interface IConfig {
   RobotUsername: string;
   RobotPassword: string;
@@ -13,11 +19,8 @@ interface IConfig {
     Host: string;
     Timeout?: number;
   };
-  WebSocketClient: {
-    Host: string;
-    PrivateNamespace: string;
-    AutoRoomSubscriptions: string[];
-  };
+  JscWebSocketClient: IWebSockClient;
+  JfsWebSocketClient: IWebSockClient;
 }
 
 export default IConfig;
