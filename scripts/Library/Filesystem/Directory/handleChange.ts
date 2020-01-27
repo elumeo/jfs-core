@@ -1,57 +1,60 @@
+import color from 'ansi-colors';
 import File from "../File";
 import Directory from "./index";
 
+const formatMessagePrefix = (messagePrefix) => messagePrefix ? `${messagePrefix}: ` : '';
 
-const handleNewDirectory = (targetPath, corePath) => {
+const handleNewDirectory = (targetPath, corePath, messagePrefix) => {
     const newDirectory = new Directory({ path: targetPath });
     newDirectory.create(() => {
-        console.log(`Created ${corePath}`);
+        console.log(`${formatMessagePrefix(messagePrefix)}${color.greenBright(`+${corePath}`)}`);
     });
 };
 
-const handleNewFile = (sourcePath, targetPath, corePath) => {
+const handleNewFile = (sourcePath, targetPath, corePath, messagePrefix) => {
     const newFile = new File({ path: sourcePath });
     newFile.copy({
         newPath: targetPath,
         fileCopied: () => {
-            console.log(`Created/Updated ${corePath}`);
+
+            console.log(`${formatMessagePrefix(messagePrefix)}${color.greenBright(`+${corePath}`)}`);
         }
     });
 };
 
-const handleRemoveFile = (targetPath, corePath) => {
+const handleRemoveFile = (targetPath, corePath, messagePrefix) => {
     const removedFile = new File({ path: targetPath });
     removedFile.remove({
         fileRemoved: () => {
-            console.log(`Removed ${corePath}`);
+            console.log(`${formatMessagePrefix(messagePrefix)}${color.redBright(`-${corePath}`)}`);
         }
     });
 };
 
-const handleRemoveDirectory = (targetPath, corePath) => {
+const handleRemoveDirectory = (targetPath, corePath, messagePrefix) => {
     const removedDirectory = new Directory({ path: targetPath });
     removedDirectory.remove(() => {
-        console.log(`Removed ${corePath}`);
+        console.log(`${formatMessagePrefix(messagePrefix)}${color.redBright(`-${corePath}`)}`);
     });
 };
 
-const handleChange = ({ event, sourcePath, targetPath, corePath }) => {
+const handleChange = ({ event, sourcePath, targetPath, corePath, messagePrefix }) => {
     switch (event) {
         case 'addDir': {
-            handleNewDirectory(targetPath, corePath);
+            handleNewDirectory(targetPath, corePath, messagePrefix);
             break;
         }
         case 'add':
         case 'change': {
-            handleNewFile(sourcePath, targetPath, corePath);
+            handleNewFile(sourcePath, targetPath, corePath, messagePrefix);
             break;
         }
         case 'unlink': {
-            handleRemoveFile(targetPath, corePath);
+            handleRemoveFile(targetPath, corePath, messagePrefix);
             break;
         }
         case 'unlinkDir': {
-            handleRemoveDirectory(targetPath, corePath);
+            handleRemoveDirectory(targetPath, corePath, messagePrefix);
         }
     }
 };

@@ -1,3 +1,3 @@
-import Core from 'Library/Core';
+import Translations from "Library/Translations";
 
-Core.sync();
+Translations.check();

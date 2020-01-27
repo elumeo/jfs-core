@@ -1,3 +1,3 @@
-import Translations from "../Library/Translations";
+import Translations from "Library/Translations";
 
-Translations.check({});
+Translations.check();

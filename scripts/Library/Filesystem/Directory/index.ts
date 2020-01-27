@@ -129,7 +129,7 @@ class Directory extends FsNode {
         directoryCreated
     )
 
-    public sync = (targetBasePath: string) => {
+    public sync = (targetBasePath: string, messagePrefix: string = '') => {
         this.copy({
             newPath: targetBasePath,
             directoryCopied: () => {
@@ -138,6 +138,7 @@ class Directory extends FsNode {
                         () => watcher.on(
                             'all',
                             (event, sourcePath) => {
+
                                 const corePath = sourcePath.substring(
                                     this.path.length,
                                     sourcePath.length
@@ -150,7 +151,8 @@ class Directory extends FsNode {
                                         targetBasePath,
                                         corePath
                                     ].join(''),
-                                    corePath
+                                    corePath,
+                                    messagePrefix
                                 })
                             }
                         ),

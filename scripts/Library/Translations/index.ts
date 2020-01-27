@@ -201,14 +201,12 @@ class Translations {
         );
     };
 
-    public static check = ({
-        includeCompleteRows
-    }: ICheckOptions) => {
+    public static check = (checkOptions?: ICheckOptions) => {
         Translations.lastHtmlFile(
             (lastHtmlFile) => {
                 if (!lastHtmlFile) {
                     Translations.generateViewContent({
-                        includeCompleteRows,
+                        includeCompleteRows: (checkOptions || {}).includeCompleteRows,
                         viewContentReady: ({
                                                csvString,
                                                htmlString

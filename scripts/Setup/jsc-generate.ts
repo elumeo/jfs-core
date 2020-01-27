@@ -1,3 +1,3 @@
-import JSC from '../Library/JSC';
+import JSC from 'Library/JSC';
 
 JSC.generate();

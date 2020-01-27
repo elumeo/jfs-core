@@ -6,8 +6,9 @@
   "scripts": {
     "start": "ts-node-dev --respawn -r tsconfig-paths/register scripts/index.ts --development true --project-path ../jfs_RightsManager",
     "build-scripts": "webpack --config settings/scripts/webpack.scripts.js",
-    "core-development": "node index.js",
-    "jsc-generate": "node node_modules/@elumeo/jfs-core-dev/scripts/jsc-generate/index.js --elumeoPath=./",
+    "compile-scripts": "node ./scripts/compile-scripts.js",
+    "core-development": "node ./scripts/core-development.js",
+    "jsc-generate": "node ./scripts/jsc-generate.js --project-path ./",
     "release": "npm publish --access public"
   },
   "repository": {
