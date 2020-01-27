@@ -45,7 +45,7 @@ const mapStateToProps = (
   language: state.languageReducer.language,
   appInitialized: state.appReducer.appInitialized,
   messages: state.languageReducer.messages
-})
+});
 
 const enhance = compose(
   connect(mapStateToProps)
