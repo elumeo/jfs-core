@@ -34,7 +34,8 @@ class Core {
 
         const globalSettingsDirectory = new Directory({
             path: resolve(
-                process.cwd(),
+                __dirname,
+                '..',
                 'settings'
             )
         });

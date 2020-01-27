@@ -343,13 +343,13 @@ Core.deployAppSettings = () => {
     const appDirectory = new Directory_1.default({
         path: path_1.resolve(process.cwd(), CLI_1.default.parameter('project-path'))
     });
-    const globalSettingsDirectoy = new Directory_1.default({
-        path: path_1.resolve(__dirname, '..', '..', '..', 'settings')
+    const globalSettingsDirectory = new Directory_1.default({
+        path: path_1.resolve(__dirname, '..', 'settings')
     });
-    globalSettingsDirectoy.directory({
+    globalSettingsDirectory.directory({
         directoryName: 'frontend',
         directoryReady: frontendDirectory => {
-            globalSettingsDirectoy.files(globalSettingsFiles => {
+            globalSettingsDirectory.files(globalSettingsFiles => {
                 frontendDirectory.files(frontendDirectoryFiles => {
                     let copiedFiles = 0;
                     const filesToCopy = [
