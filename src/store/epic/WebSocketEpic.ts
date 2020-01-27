@@ -32,6 +32,7 @@ export const webSocketAppIsInitializedEpic: Epic<RootAction, RootAction> = (acti
     switchMap(() => {
       const actions = [];
       const config = state.value.configReducer.config;
+      console.log('appInitialized', config.JscWebSocketClient);
       if(config.JscWebSocketClient !== undefined) {
         actions.push(webSocketAddNamespaceAction(config.JscWebSocketClient.PrivateNamespace));
         actions.push(webSocketConnectRequestAction(config.JscWebSocketClient.PrivateNamespace));

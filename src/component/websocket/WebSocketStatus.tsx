@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ICoreRootReducer } from '../../store/reducer/combineReducers';
 import { connect } from 'react-redux';
-import { webSocketConnectRequestAction } from '../../store/action/WebSocketAction';
 import { IWebsocketConnectionProps, IWebsocketConnectionState } from './WebSocketConnection';
 
 import './WebSocketStatus.scss';
@@ -42,6 +41,6 @@ const mapStateToProps = (
   webSocketConnectionReducer: state.webSocketConnectionReducer,
   config: state.configReducer.config
 });
-const enhance = connect(mapStateToProps, {webSocketConnectRequestAction: webSocketConnectRequestAction});
+const enhance = connect(mapStateToProps, {});
 
 export default enhance(WebSocketStatus);
