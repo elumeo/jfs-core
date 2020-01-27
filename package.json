@@ -10,7 +10,7 @@
     "core-development": "node ./scripts/core-development.js",
     "jsc-generate": "node ./scripts/jsc-generate.js --project-path ./",
     "release": "npm publish --access public",
-    "postinstall": "node ./scripts/deploy-config-files.js --project-path= ../../.."
+    "postinstall": "node ./scripts/deploy-config-files.js --project-path ../../.."
   },
   "repository": {
     "type": "git",
