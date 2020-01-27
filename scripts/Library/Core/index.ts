@@ -36,8 +36,6 @@ class Core {
             path: resolve(
                 __dirname,
                 '..',
-                '..',
-                '..',
                 'settings'
             )
         });
