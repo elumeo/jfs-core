@@ -32,18 +32,17 @@ class Core {
             )
         });
 
-        const globalSettingsDirectoy = new Directory({
+        const globalSettingsDirectory = new Directory({
             path: resolve(
-                __dirname,
-                '..',
+                process.cwd(),
                 'settings'
             )
         });
 
-        globalSettingsDirectoy.directory({
+        globalSettingsDirectory.directory({
             directoryName: 'frontend',
             directoryReady: frontendDirectory => {
-                globalSettingsDirectoy.files(
+                globalSettingsDirectory.files(
                     globalSettingsFiles => {
                         frontendDirectory.files(
                             frontendDirectoryFiles => {
