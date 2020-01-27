@@ -6,7 +6,7 @@ import { ROOM_UPDATE_ACTION_ID } from '../Store/Action/WebSocketAction';
 import { IWebSocketRoom } from '../Store/Reducer/WebSocketConnectionReducer';
 
 // This constant is used in the project tools (not in the JFS apps)
-export const JSC_API_VERSION: string = '21da807e4e581712a4917c77d32a94ac';
+export const JSC_API_VERSION: string = '038a3ca371a4e1bc34a2a64035c9a1ae';
 
 namespace JSCApi {
 export interface IUrlParams {
@@ -21,9 +21,10 @@ params?: IUrlParams;
 export namespace DTO {
 
 export namespace WebSocket {
-export interface IWebSocketRoomUpdateDTO<T3> {
+export interface IWebSocketRoomUpdateDTO<T5> {
 room?: string;
-data?: T3;
+namespace?: string;
+data?: T5;
 createdAt?: string;
 createdBy?: string;
 modifiedAt?: string;
