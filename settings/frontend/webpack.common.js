@@ -1,100 +1,65 @@
-const { configFilename } = require("../../scripts/constants.js");
-
-const { resolve, join } = require('path');
+const { resolve } = require('path');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const projectPath = resolve(__dirname, '..', '..', '..', '..');
+const rules = require('./rules');
+const alias = require('./alias');
+
+const {
+  projectSrc,
+  projectStatic,
+  projectNodeModules,
+  projectDist,
+  projectMainTsx,
+  projectLocalJs,
+  projectLocalJsDist,
+  projectConfigJsonDist,
+  projectDistConfigJson
+} = require('./resolvedPaths');
 
 const copyJobs = [
-  { from: resolve(projectPath, 'static') },
-  { from: resolve(projectPath, configFilename),
-    to: resolve(projectPath, 'dist', 'config.json') }
-]
+  { from: projectStatic },
+  { from: projectConfigJsonDist, to: projectDistConfigJson }
+];
 
 module.exports.local = null;
 try {
-  module.exports.local = require(resolve(projectPath, 'local.js'));
+  module.exports.local = require(projectLocalJs);
 } catch (error) {
   console.error(error.message);
   copyJobs.push({
-    from: resolve(projectPath, 'local.js.dist'),
-    to: resolve(projectPath, 'local.js')
+    from: projectLocalJsDist,
+    to: projectLocalJs
   });
-}
-
-const babelLoader = {
-  loader: 'babel-loader',
-  options: {
-    presets: ['react', ['es2015', { modules: false, loose: true }]],
-    plugins: ['transform-runtime', 'lodash']
-  }
-};
-
-const atLoader = { loader: 'awesome-typescript-loader' }
-
-const typescriptRule = {
-  test: /\.tsx?$/,
-  use: [
-    babelLoader,
-    atLoader
-  ]
-};
-
-const sassRule = {
-  test: /\.s*css$/,
-  loaders: ['style-loader', 'css-loader', 'sass-loader']
-}
-
-const jsonRule = {
-  test: /\.json$/,
-  loaders: ['json-loader']
 }
 
 module.exports.common = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
-    modules: [
-      resolve(projectPath, 'src'),
-      resolve(projectPath, 'node_modules')
-    ],
-    alias: {
-      App: projectPath
-    }
+    modules: [projectSrc, projectNodeModules],
+    alias
   },
 
-  context: resolve(__dirname, '..', '..', 'jfs-core', 'app'),
-  entry: [resolve(projectPath, 'src', 'Main.tsx')],
+  context: projectSrc,
+  entry: [projectMainTsx],
   output: {
     filename: 'bundle.js',
-    path: resolve(projectPath, 'dist'),
-    publicPath: ''
+    path: projectDist,
+    publicPath: '/'
   },
 
   module: {
-    rules: [
-      typescriptRule,
-      sassRule,
-      jsonRule
-    ],
+    rules
   },
+
   performance: { hints: false },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: resolve(projectPath, 'static', 'index.html'),
+      template: resolve(projectStatic, 'index.html'),
       inject: false
     }),
     new CopyWebpackPlugin(copyJobs)
   ]
 };
-
-module.exports.projectPath = projectPath;
-
-module.exports.typescriptRule = typescriptRule;
-module.exports.babelLoader = babelLoader;
-module.exports.atLoader = atLoader;
-
-module.exports.sassRule = sassRule;
-module.exports.jsonRule = jsonRule;

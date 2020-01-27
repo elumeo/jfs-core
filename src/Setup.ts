@@ -1,4 +1,4 @@
-import './style/main.scss';
+import './Style/main.scss';
 
 const moment = require('moment');
 

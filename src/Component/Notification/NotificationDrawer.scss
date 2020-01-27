@@ -1,0 +1,88 @@
+@import '~react-md/src/scss/react-md';
+@import "../../Style/layout";
+
+@mixin caret($direction, $color, $size: 8px) {
+  $noops: null;
+  $position: null;
+  @if $direction == 'left' or $direction == 'right' {
+    $noops: 'top' 'bottom';
+    $position: if($direction == 'left', 'right', 'left');
+  } @else {
+    $noops: 'left' 'right';
+    $position: if($direction == 'top', 'bottom', 'top');
+  }
+
+  border-#{nth($noops, 1)}: $size solid transparent;
+  border-#{nth($noops, 2)}: $size solid transparent;
+  border-#{$position}: $size solid $color;
+  content: '';
+  position: absolute;
+}
+
+.md-drawer--right {
+  left: unset;
+}
+
+.md-overlay--hidden {
+  display: none;
+}
+
+.notification-drawer {
+  overflow: auto;
+  transition-property: transform, margin-top;
+  margin-top: 0;
+  width: $notification-drawer-width;
+
+  .md-title--toolbar {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  @media #{$md-desktop-media} {
+    &--pinned {
+      margin-top: 64px;
+    }
+    .md-list.md-list--drawer {
+      position: relative;
+      height: 100%;
+    }
+  }
+
+  .split-view-button {
+    display: none;
+    @media #{$md-desktop-media} {
+      display: unset;
+    }
+  }
+
+  .badges__notifications {
+    &__empty {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
+
+      .md-icon.md-icon {
+        color: get-color('icon', true);
+        font-size: 48px;
+      }
+    }
+
+    &__empty__message {
+      left: 50%;
+      padding: 12px;
+      position: absolute;
+      top: -50px;
+      transform: translate3d(-50%, 0, 0);
+      white-space: nowrap;
+
+      &::after {
+        @include caret(bottom, $md-grey-400);
+
+        left: 50%;
+        top: 101%;
+        transform: translate3d(-50%, 0, 0);
+      }
+    }
+  }
+}

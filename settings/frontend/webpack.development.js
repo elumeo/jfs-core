@@ -4,14 +4,20 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 const {
-  projectPath,
-  common,
-  local,
   typescriptRule,
   babelLoader,
   atLoader,
   sassRule,
   jsonRule
+} = require('./rules');
+
+const {
+  projectPath
+} = require('./resolvedPaths');
+
+const {
+  common,
+  local
 } = require('./webpack.common.js');
 
 const mode = process.argv.includes('--watch') ? 'watch' : 'devServer';

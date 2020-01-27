@@ -23,6 +23,64 @@ class Core {
         )
     });
 
+    public static deployAppSettings = () => {
+
+        const appDirectory = new Directory({
+            path: resolve(
+                process.cwd(),
+                CLI.parameter('project-path'),
+            )
+        });
+
+        const globalSettingsDirectoy = new Directory({
+            path: resolve(
+                __dirname,
+                '..',
+                '..',
+                '..',
+                'settings'
+            )
+        });
+
+        globalSettingsDirectoy.directory({
+            directoryName: 'frontend',
+            directoryReady: frontendDirectory => {
+                globalSettingsDirectoy.files(
+                    globalSettingsFiles => {
+                        frontendDirectory.files(
+                            frontendDirectoryFiles => {
+                                let copiedFiles = 0;
+                                const filesToCopy = [
+                                    ...frontendDirectoryFiles
+                                        .filter(({ name }) => ['tsconfig.json', 'tslint.json'].includes(name)),
+                                    ...globalSettingsFiles
+                                ];
+
+                                filesToCopy.forEach(
+                                    file => {
+                                        file.copy({
+                                            newPath: resolve(
+                                                appDirectory.path,
+                                                file.name
+                                            ),
+                                            fileCopied: () => {
+                                                if (++copiedFiles === filesToCopy.length) {
+                                                    console.log(
+                                                        color.greenBright('Deployed config files')
+                                                    );
+                                                }
+                                            }
+                                        })
+                                    }
+                                )
+                            }
+                        )
+                    }
+                )
+            }
+        });
+    };
+
     public static sync() {
         if (!CLI.parameter('project-path')) {
             console.error(

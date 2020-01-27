@@ -1,0 +1,22 @@
+import { createReducer } from 'typesafe-actions';
+
+import { openNavigation, closeNavigation } from '../Action/NavigationAction';
+
+export interface INavigationReducerState {
+  navigationOpen: boolean;
+}
+
+const initialState = {
+  navigationOpen: false
+};
+
+export const navigationReducer = createReducer(initialState)
+  .handleAction(openNavigation, (state: INavigationReducerState) => ({
+    ...state,
+    navigationOpen: true
+  }))
+  .handleAction(closeNavigation, (state: INavigationReducerState) => ({
+    ...state,
+    navigationOpen: false
+  }))
+;

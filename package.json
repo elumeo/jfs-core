@@ -9,7 +9,8 @@
     "compile-scripts": "node ./scripts/compile-scripts.js",
     "core-development": "node ./scripts/core-development.js",
     "jsc-generate": "node ./scripts/jsc-generate.js --project-path ./",
-    "release": "npm publish --access public"
+    "release": "npm publish --access public",
+    "postinstall": "node ./scripts/deploy-config-files.js --project-path= ../../.."
   },
   "repository": {
     "type": "git",
