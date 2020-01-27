@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import NotificationCard from './NotificationCard';
 
 import './OnScreenNotifications.scss';

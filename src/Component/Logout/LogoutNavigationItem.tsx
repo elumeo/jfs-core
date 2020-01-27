@@ -3,7 +3,7 @@ import NavigationItem from '../Navigation/NavigationItem';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { openLogout } from '../../Store/Action/LogoutAction';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { injectIntl } from 'react-intl';
 
 export interface ILogoutNavigationItemProps {

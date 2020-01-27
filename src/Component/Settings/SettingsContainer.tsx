@@ -10,7 +10,7 @@ import CardActions from 'react-md/lib/Cards/CardActions';
 import SelectField from 'react-md/lib/SelectFields';
 
 import { changeLanguageAction } from '../../Store/Action/LanguageAction';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import Cookie from 'js-cookie';
 
 import './SettingsContainer.scss';

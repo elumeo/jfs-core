@@ -5,7 +5,7 @@ import { isActionOf, PayloadAction } from 'typesafe-actions';
 import { from, of } from 'rxjs';
 import { authorizeSession, unauthorizeSession } from '../Action/SessionAction';
 import { checkLogin, ICheckLoginPayload, loggedIn, loginFailed } from '../Action/LoginAction';
-import JSCApi from '../../JscApi';
+import JSCApi from '../../Jsc/JscApi';
 import { addToastAction } from '../Action/ToastAction';
 import Session from '../../Base/Session';
 

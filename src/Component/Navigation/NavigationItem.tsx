@@ -8,7 +8,7 @@ import { withRouter, History } from 'react-router-dom';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { closeNavigation } from '../../Store/Action/NavigationAction';
 
 export interface INavigationItemProps extends InjectedIntlProps {

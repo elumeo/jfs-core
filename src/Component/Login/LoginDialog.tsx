@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import DialogContainer from 'react-md/lib/Dialogs';
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import './LoginDialog.scss';
 import { checkLogin } from '../../Store/Action/LoginAction';
 

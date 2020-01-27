@@ -6,7 +6,7 @@ import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { checkLogin, ICheckLoginPayload } from '../../Store/Action/LoginAction';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 
 export interface ILoginButtonProps {
   intl?: InjectedIntl;

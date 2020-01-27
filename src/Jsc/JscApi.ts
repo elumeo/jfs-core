@@ -1,9 +1,9 @@
-import JscClient from '@elumeo/jfs-core/src/base/JscClient';
+import JscClient from '../Base/JscClient';
 import { AxiosRequestConfig } from 'axios';
 import { Subject } from 'rxjs';
 import { PayloadAction } from 'typesafe-actions';
-import { ROOM_UPDATE_ACTION_ID } from '@elumeo/jfs-core/src/store/action/WebSocketAction';
-import { IWebSocketRoom } from '@elumeo/jfs-core/src/store/reducer/WebSocketConnectionReducer';
+import { ROOM_UPDATE_ACTION_ID } from '../Store/Action/WebSocketAction';
+import { IWebSocketRoom } from '../Store/Reducer/WebSocketConnectionReducer';
 
 // This constant is used in the project tools (not in the JFS apps)
 export const JSC_API_VERSION: string = '21da807e4e581712a4917c77d32a94ac';

@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import Initialized from './Initialized';
 import WebSocketConnection from '../Websocket/WebSocketConnection';
 
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { initializeApp } from '../../Store/Action/AppAction';
 
 export interface IAppProps {

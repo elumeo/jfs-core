@@ -6,7 +6,7 @@ import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
 import { addToastAction } from '../../Store/Action/ToastAction';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import './SearchComponent.scss';
 
 export interface ISearchComponentProps extends InjectedIntlProps {

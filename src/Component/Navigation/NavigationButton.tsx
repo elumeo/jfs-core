@@ -2,7 +2,7 @@ import * as React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Button from 'react-md/lib/Buttons/Button';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 
 import { openNavigation, closeNavigation } from '../../Store/Action/NavigationAction';
 import { injectIntl } from 'react-intl';

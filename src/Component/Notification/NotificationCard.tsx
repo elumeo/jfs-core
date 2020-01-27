@@ -7,7 +7,7 @@ import { InjectedIntlProps, injectIntl } from 'react-intl';
 
 import './NotificationCard.scss'
 import ErrorContent from '../Snackbar/ErrorContent';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { dismissNotificationAction } from '../../Store/Action/NotificationAction';
 import { INotification } from '../../Store/Reducer/NotificationReducer';
 

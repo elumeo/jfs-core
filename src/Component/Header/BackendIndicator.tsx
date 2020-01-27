@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Tooltipped from 'react-md/lib/Tooltips/Tooltipped';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import './BackendIndicator.scss';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 
 export interface IBackendIndicatorProps extends InjectedIntlProps {
   backendRegion?: string;

@@ -6,7 +6,7 @@ import { compose } from 'redux';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import SelectField from 'react-md/lib/SelectFields/SelectField';
 
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { changeLanguageAction } from '../../Store/Action/LanguageAction';
 
 import './LanguageSettings.scss';

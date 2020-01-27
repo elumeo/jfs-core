@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import BaseRoute, { IBaseRouteProps } from './BaseRoute';
 import { enterAuthorizedRoute } from '../../Store/Action/RouterAction';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 
 export interface IAuthRouteProps extends IBaseRouteProps {
   Component: any;

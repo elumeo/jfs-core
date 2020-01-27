@@ -3,7 +3,7 @@ import { Button } from 'react-md';
 import { connect } from 'react-redux';
 import { dismissAllNotificationsAction } from '../../Store/Action/NotificationAction';
 import { INotification } from '../../Store/Reducer/NotificationReducer';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 
 export interface IDismissAllNotificationsButtonProps {
   notifications?: INotification[];

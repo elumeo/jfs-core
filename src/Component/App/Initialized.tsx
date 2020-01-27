@@ -2,7 +2,7 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { HashRouter } from 'react-router-dom';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 

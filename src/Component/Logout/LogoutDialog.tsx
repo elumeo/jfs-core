@@ -2,7 +2,7 @@ import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 
 import Dialog from 'react-md/lib/Dialogs';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { logout } from '../../Store/Action/SessionAction';

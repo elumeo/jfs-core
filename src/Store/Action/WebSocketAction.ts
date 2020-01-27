@@ -1,5 +1,5 @@
 import { createStandardAction } from 'typesafe-actions';
-import JSCApi from '../../JscApi';
+import JSCApi from '../../Jsc/JscApi';
 import { IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/WebSocketConnectionReducer';
 
 const featureName = 'websocket';

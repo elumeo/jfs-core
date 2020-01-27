@@ -6,7 +6,7 @@ import Drawer, { DrawerPosition } from 'react-md/lib/Drawers';
 
 import './NavigationDrawer.scss';
 
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { closeNavigation } from '../../Store/Action/NavigationAction';
 
 import NavigationDrawerHeader from './NavigationDrawerHeader';

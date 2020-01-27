@@ -5,7 +5,7 @@ import { compose } from 'redux';
 
 import ModalDialog from '../Modal/ModalDialog';
 
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { closeSettings } from '../../Store/Action/SettingsAction';
 
 import './SettingsDialog.scss';

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import Toolbar from 'react-md/lib/Toolbars';
 
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import NavigationButton from './NavigationButton';
 
 export interface INavigationDrawerHeaderProps {

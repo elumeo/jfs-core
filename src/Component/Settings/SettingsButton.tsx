@@ -5,7 +5,7 @@ import Button from 'react-md/lib/Buttons/Button';
 
 import { closeSettings, openSettings } from '../../Store/Action/SettingsAction';
 import { injectIntl } from 'react-intl';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 
 export interface ISettingsButtonProps {
   settingsOpen?: boolean;

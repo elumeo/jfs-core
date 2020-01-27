@@ -12,7 +12,7 @@ import {
   unauthorizeSession
 } from '../Action/SessionAction';
 import { checkLogin } from '../Action/LoginAction';
-import JSCApi from '../../JscApi';
+import JSCApi from '../../Jsc/JscApi';
 import Session from '../../Base/Session';
 import { AxiosResponse } from 'axios';
 import { addToastAction } from '../Action/ToastAction';

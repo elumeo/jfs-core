@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Badge, Button } from 'react-md';
 
 import './NotificationBadge.scss'
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { toggleNotificationDrawerAction } from '../../Store/Action/NotificationAction';
 import { INotification } from '../../Store/Reducer/NotificationReducer';
 

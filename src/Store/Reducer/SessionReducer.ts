@@ -4,7 +4,7 @@ import {
   unauthorizeSession
 } from '../Action/SessionAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
-import JSCApi from '../../JscApi';
+import JSCApi from '../../Jsc/JscApi';
 
 type ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 type IPropertyDTO = JSCApi.DTO.Authorization.IPropertyDTO;

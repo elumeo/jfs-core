@@ -5,7 +5,7 @@ import {
   pinNotificationDrawerAction,
   unpinNotificationDrawerAction
 } from '../../Store/Action/NotificationAction';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 
 export interface ISplitViewButtonProps {
   notificationDrawerPinned?: boolean;

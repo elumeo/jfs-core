@@ -3,7 +3,7 @@ import * as React from 'react';
 import NotificationCard from './NotificationCard';
 import Drawer from 'react-md/lib/Drawers';
 
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { connect } from 'react-redux';
 import NoNotifications from './NoNotifications';
 import Toolbar from 'react-md/lib/Toolbars';

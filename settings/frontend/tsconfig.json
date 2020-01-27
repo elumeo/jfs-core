@@ -19,6 +19,7 @@
     "paths": {
       "Action/*": ["./Store/Action/*"],
       "Component/*": ["./Component/*"],
+      "Core/*": ["../node_modules/@elumeo/jfs-core/src/*"],
       "JscApi": ["./Jsc/JscApi.ts"],
       "Mock/*": ["./Mock/*"],
       "Setup/*": ["./Setup/*"],

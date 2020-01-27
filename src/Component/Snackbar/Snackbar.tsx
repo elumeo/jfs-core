@@ -2,7 +2,7 @@ import * as React from 'react';
 import { injectIntl, InjectedIntlProps } from 'react-intl';
 import Snackbar from 'react-md/lib/Snackbars';
 import snackbarContent from './SnackBarContent';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { dismissToastAction } from '../../Store/Action/ToastAction';
 import { compose } from 'redux';
 import { connect } from 'react-redux';

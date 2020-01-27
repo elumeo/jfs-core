@@ -3,7 +3,7 @@ import BaseRoute, { IBaseRouteProps } from './BaseRoute';
 
 import { enterUnauthorizedRoute } from '../../Store/Action/RouterAction';
 
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';

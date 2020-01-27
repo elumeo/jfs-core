@@ -1,5 +1,5 @@
 import { createStandardAction } from 'typesafe-actions';
-import JSCApi from '../../JscApi';
+import JSCApi from '../../Jsc/JscApi';
 import IFrontendSessionDTO = JSCApi.DTO.Session.IFrontendSessionDTO;
 import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 

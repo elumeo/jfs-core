@@ -17,7 +17,7 @@ import {
   webSocketDisconnectRequestAction,
   webSocketDisconnectSuccessAction, webSocketAddNamespaceAction
 } from '../Action/WebSocketAction';
-import { ICoreRootReducer } from '../Reducer/combineReducers';
+import { ICoreRootReducer } from '../Reducer';
 import { getRoomConnectionState } from '../Selectors/WebSocketSelectors';
 import { IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/WebSocketConnectionReducer';
 import { appInitialized } from '../Action/AppAction';

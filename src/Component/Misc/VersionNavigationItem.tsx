@@ -1,7 +1,7 @@
 import * as React from 'react';
 import NavigationItem from '../Navigation/NavigationItem';
 import { injectIntl, InjectedIntlProps } from 'react-intl';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 

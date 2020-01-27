@@ -7,7 +7,7 @@ import {
   checkLogin, ICheckLoginPayload,
   updateCredentials, IUpdateCredentialsPayload
 } from '../../Store/Action/LoginAction';
-import { ICoreRootReducer } from '../../Store/Reducer/combineReducers';
+import { ICoreRootReducer } from '../../Store/Reducer';
 
 export interface ILoginCredentialsProps extends InjectedIntlProps {
   username?: string;
