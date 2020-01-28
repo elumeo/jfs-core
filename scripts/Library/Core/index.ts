@@ -64,7 +64,13 @@ class Core {
                                             fileCopied: () => {
                                                 if (++copiedFiles === filesToCopy.length) {
                                                     console.log(
-                                                        color.greenBright('Deployed config files')
+                                                        color.greenBright('Deployed config files\n')
+                                                    );
+
+                                                    filesToCopy.map(
+                                                        ({ name }) => console.log(
+                                                            color.greenBright(`-- ${name}`)
+                                                        )
                                                     );
                                                 }
                                             }

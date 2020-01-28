@@ -362,7 +362,8 @@ Core.deployAppSettings = () => {
                             newPath: path_1.resolve(appDirectory.path, file.name),
                             fileCopied: () => {
                                 if (++copiedFiles === filesToCopy.length) {
-                                    console.log(ansi_colors_1.default.greenBright('Deployed config files'));
+                                    console.log(ansi_colors_1.default.greenBright('Deployed config files\n'));
+                                    filesToCopy.map(({ name }) => console.log(ansi_colors_1.default.greenBright(`-- ${name}`)));
                                 }
                             }
                         });
