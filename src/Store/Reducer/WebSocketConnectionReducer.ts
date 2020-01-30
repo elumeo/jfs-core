@@ -11,15 +11,11 @@ import {
   webSocketLeaveRoomSuccessAction
 } from '../Action/WebSocketAction';
 
-// export enum WS_NAMESPACES {
-//   JSC2JFS = 'Jsc2Jfs',
-//   JFS2JFS = 'Jfs2Jfs'
-// }
-
-export interface IWebSocketRoom {
+export interface IWebSocketRoom<T = string> {
   room: string;
-  namespace: string;
+  namespace?: string;
   error?: string;
+  data?: T;
 }
 
 export interface IWebSocketConnectionReducerState {

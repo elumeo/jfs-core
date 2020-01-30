@@ -5,6 +5,7 @@ import JSCApi from '../Jsc/JscApi';
 import { IWebSocketRoom, IWebSocketRoomConnection } from '../Store/Reducer/WebSocketConnectionReducer';
 import IWebSocketRoomUpdateDTO = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO;
 import { ROOM_UPDATE_ACTION_ID } from '../Store/Action/WebSocketAction';
+import { ICoreRootReducer } from '../Store/Reducer';
 
 export class WSClient {
   public static EVENT_NOT_AUTHORIZED = 'notAuthorized';
@@ -28,8 +29,7 @@ export class WSClient {
   protected static reconnectSubject = new Subject<string>();
   public static reconnectObservable$ = WSClient.reconnectSubject.asObservable();
 
-  protected static JFS_NAMESPACE = 'Jfs2Jfs';
-  protected static jfsOnRoomUpdateSubject = new Subject<string>();
+  protected static jfsOnRoomUpdateSubject = new Subject<any>();
   protected static jfsOnRoomUpdate$ = WSClient.jfsOnRoomUpdateSubject.asObservable();
 
   public static connect(host: string, namespace: string, token?: string, ip?: string, ) {
@@ -146,19 +146,27 @@ export class WSClient {
     });
   }
 
-  public static listenToJfs(action: PayloadAction<string, IWebSocketRoomUpdateDTO<string>>, roomToCheck) {
-    // if (action.type === ROOM_UPDATE_ACTION_ID) {
-    //   console.log('listenToJfs', roomToCheck, action.payload.room, action.payload.namespace, action.payload.data);
-    // }
-    if (action.type === ROOM_UPDATE_ACTION_ID && action.payload.room === roomToCheck && action.payload.namespace === WSClient.JFS_NAMESPACE) {
+  public static listen<T>(action: PayloadAction<string, IWebSocketRoomUpdateDTO<string>>, roomToCheck: IWebSocketRoom<T>) {
+    if (action.type === ROOM_UPDATE_ACTION_ID && action.payload.room === roomToCheck.room && action.payload.namespace === roomToCheck.namespace) {
       WSClient.jfsOnRoomUpdateSubject.next(action.payload.data);
     }
-    return WSClient.jfsOnRoomUpdate$;
+    return <Observable<T>> WSClient.jfsOnRoomUpdate$;
+  }
+
+  public static emit<T>(room: IWebSocketRoom<T>) {
+    this.sockets[room.namespace].emit(this.EVENT_UPDATE_ROOM, room);
   }
 
   private static checkSocket(namespace: string) {
     if(this.sockets[namespace] === undefined) {
       this.sockets[namespace] = null;
     }
+  }
+
+  public static prepareRoomName(roomName: string, allReducers: ICoreRootReducer) {
+    if(allReducers.sessionReducer.sessionDTO !== null) {
+      roomName = roomName.replace('[userId]', allReducers.sessionReducer.sessionDTO.username);
+    }
+    return roomName;
   }
 }
