@@ -1,1 +1,1 @@
-import 'Setup/jsc-check';
+import 'Setup/translation-check';

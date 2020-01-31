@@ -4,7 +4,7 @@
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
-    "start": "ts-node-dev --respawn -r tsconfig-paths/register scripts/index.ts --development true --project-path ../jfs_RightsManager",
+    "start": "ts-node-dev --respawn -r tsconfig-paths/register scripts/index.ts --development true --project-path ../jfs_Boilerplate",
     "build-scripts": "webpack --config settings/scripts/webpack.scripts.js",
     "compile-scripts": "node ./scripts/compile-scripts.js",
     "core-development": "node ./scripts/core-development.js",

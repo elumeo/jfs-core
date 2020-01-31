@@ -208,22 +208,31 @@ class Translations {
                     Translations.generateViewContent({
                         includeCompleteRows: (checkOptions || {}).includeCompleteRows,
                         viewContentReady: ({
-                                               csvString,
-                                               htmlString
-                                           }) => Translations.createView({
-                            htmlString,
                             csvString,
-                            versionNumber: 1,
-                            viewCreated: htmlPath => opn(htmlPath)
-                        })
+                            htmlString
+                        }) => {
+                            if (csvString.split('\n').length -1) {
+                                Translations.createView({
+                                    htmlString,
+                                    csvString,
+                                    versionNumber: 1,
+                                    viewCreated: htmlPath => opn(htmlPath)
+                                })
+                            }
+                            else {
+                                console.log(
+                                    color.green('No translations missing.')
+                                );
+                            }
+                        }
                     });
                 }
                 else {
                     Translations.generateViewContent({
                         viewContentReady: ({
-                                               htmlString,
-                                               csvString
-                                           }) => {
+                            htmlString,
+                            csvString
+                        }) => {
                             if (csvString.split('\n').length -1) {
                                 Translations.updateView(
                                     htmlString,
@@ -234,7 +243,9 @@ class Translations {
                             else {
                                 Translations.removeView(
                                     () => {
-                                        console.log(color.green('No translations missing.'));
+                                        console.log(
+                                            color.green('No translations missing.')
+                                        );
                                     }
                                 );
                             }

@@ -186,11 +186,11 @@ const fs_1 = __webpack_require__(1);
 const FsNode_1 = __importDefault(__webpack_require__(3));
 const File_1 = __importDefault(__webpack_require__(0));
 const path_1 = __webpack_require__(2);
-const rimraf_1 = __importDefault(__webpack_require__(9));
-const ncp_1 = __importDefault(__webpack_require__(10));
-const child_process_1 = __webpack_require__(11);
-const chokidar_1 = __importDefault(__webpack_require__(12));
-const handleChange_1 = __importDefault(__webpack_require__(13));
+const rimraf_1 = __importDefault(__webpack_require__(10));
+const ncp_1 = __importDefault(__webpack_require__(11));
+const child_process_1 = __webpack_require__(12);
+const chokidar_1 = __importDefault(__webpack_require__(13));
+const handleChange_1 = __importDefault(__webpack_require__(14));
 class Directory extends FsNode_1.default {
     constructor() {
         super(...arguments);
@@ -292,12 +292,8 @@ module.exports = __webpack_require__(7);
 
 "use strict";
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const App_1 = __importDefault(__webpack_require__(8));
-App_1.default.syncLocalDependencies();
+__webpack_require__(8);
 
 
 /***/ }),
@@ -310,43 +306,84 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const App_1 = __importDefault(__webpack_require__(9));
+App_1.default.syncLocalDependencies();
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 const File_1 = __importDefault(__webpack_require__(0));
 const Directory_1 = __importDefault(__webpack_require__(4));
 const path_1 = __webpack_require__(2);
-const CLI_1 = __importDefault(__webpack_require__(14));
+const CLI_1 = __importDefault(__webpack_require__(15));
 const ansi_colors_1 = __importDefault(__webpack_require__(5));
 class App {
 }
+App.localLinkPrefix = 'jfs-sync: ';
+App.syncDirectoryNames = [
+    'src',
+    'settings',
+    'scripts'
+];
 App.packageJson = new File_1.default({
-    path: path_1.resolve(process.cwd(), CLI_1.default.parameter('project-path'), 'package.json')
+    path: path_1.resolve(process.cwd(), CLI_1.default.parameter('project-path') || '.', 'package.json')
 });
 App.dependencies = (dependenciesReady) => App.packageJson.read({
     dataReady: data => dependenciesReady(JSON.parse(data).dependencies)
 });
+App.hasLocalLink = (dependencyVersion) => (dependencyVersion.substring(0, App.localLinkPrefix.length) === App.localLinkPrefix);
+App.extractLocalLink = (dependencyVersion) => (dependencyVersion.substring(App.localLinkPrefix.length, dependencyVersion.length));
+App.localLinkedDependencies = (localLinkedDependenciesReady) => App.dependencies(dependencies => localLinkedDependenciesReady(Object.keys(dependencies)
+    .filter(dependencyName => App.hasLocalLink(dependencies[dependencyName]))
+    .map(dependencyName => ({
+    dependencyName,
+    localLink: App.extractLocalLink(dependencies[dependencyName])
+}))));
+App.framedMessage = (message) => [
+    '',
+    '-------------------------------------------------------------------------------------------------------------',
+    '',
+    message,
+    '',
+    '-------------------------------------------------------------------------------------------------------------',
+    ''
+].join('\n');
 App.syncLocalDependencies = () => {
-    App.dependencies(dependencies => {
-        Object
-            .keys(dependencies)
-            .map(dependencyName => {
-            const dependencyVersion = dependencies[dependencyName];
-            const hasLocalLink = dependencyVersion.substring(0, 3) === '../';
-            if (hasLocalLink) {
-                const localDependencyDirectory = new Directory_1.default({
-                    path: path_1.resolve(App.packageJson.parent, dependencyVersion)
+    App.localLinkedDependencies(localLinkedDependencies => {
+        if (!localLinkedDependencies.length) {
+            console.warn(App.framedMessage([
+                ansi_colors_1.default.yellow([
+                    'WARNING: No local links to jfs-core or jfc components detected.',
+                    'Please check your dependencies.'
+                ].join(' ')),
+                '',
+                `Troubleshooting: Your local link pattern should match ${ansi_colors_1.default.green(ansi_colors_1.default.bold(`"${App.localLinkPrefix}path/to/jfs/module"`))}`,
+            ].join('\n')));
+        }
+        else {
+            console.log(localLinkedDependencies.map(({ dependencyName, localLink }) => ansi_colors_1.default.green(`Link: ${dependencyName} --> ${path_1.resolve(App.packageJson.parent, localLink)}`)).join('\n'), '\n');
+        }
+        localLinkedDependencies
+            .forEach(dependency => {
+            const { dependencyName, localLink } = dependency;
+            const localDependencyDirectory = new Directory_1.default({
+                path: path_1.resolve(App.packageJson.parent, localLink)
+            });
+            localDependencyDirectory.directories(directories => {
+                directories
+                    .filter(({ name }) => App.syncDirectoryNames.includes(name))
+                    .forEach(directory => {
+                    directory.sync(path_1.resolve(App.packageJson.parent, 'node_modules', dependencyName, directory.name), `${ansi_colors_1.default.yellow(dependencyName)}/${ansi_colors_1.default.cyan(directory.name)}`);
                 });
-                const syncDirectoryNames = [
-                    'src',
-                    'settings',
-                    'scripts'
-                ];
-                localDependencyDirectory.directories(directories => {
-                    directories
-                        .filter(({ name }) => syncDirectoryNames.includes(name))
-                        .forEach(directory => {
-                        directory.sync(path_1.resolve(App.packageJson.parent, 'node_modules', dependencyName, directory.name), `${ansi_colors_1.default.yellow(dependencyName)}/${ansi_colors_1.default.cyan(directory.name)}`);
-                    });
-                });
-            }
+            });
         });
     });
 };
@@ -354,31 +391,31 @@ exports.default = App;
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("rimraf");
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("ncp");
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 module.exports = require("child_process");
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("chokidar");
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -444,7 +481,7 @@ exports.default = handleChange;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

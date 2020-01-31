@@ -156,12 +156,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __webpack_require__(0);
 const ansi_colors_1 = __importDefault(__webpack_require__(4));
 const File_1 = __importDefault(__webpack_require__(1));
-const CLI_1 = __importDefault(__webpack_require__(9));
-const Language_1 = __importDefault(__webpack_require__(10));
-const TranslationTable_1 = __importDefault(__webpack_require__(11));
-const PageRenderer_1 = __importDefault(__webpack_require__(13));
+const CLI_1 = __importDefault(__webpack_require__(10));
+const Language_1 = __importDefault(__webpack_require__(11));
+const TranslationTable_1 = __importDefault(__webpack_require__(12));
+const PageRenderer_1 = __importDefault(__webpack_require__(14));
 const Directory_1 = __importDefault(__webpack_require__(6));
-const opn_1 = __importDefault(__webpack_require__(19));
+const opn_1 = __importDefault(__webpack_require__(20));
 class Translations {
 }
 Translations.translationsFile = new File_1.default({
@@ -273,12 +273,19 @@ Translations.check = (checkOptions) => {
         if (!lastHtmlFile) {
             Translations.generateViewContent({
                 includeCompleteRows: (checkOptions || {}).includeCompleteRows,
-                viewContentReady: ({ csvString, htmlString }) => Translations.createView({
-                    htmlString,
-                    csvString,
-                    versionNumber: 1,
-                    viewCreated: htmlPath => opn_1.default(htmlPath)
-                })
+                viewContentReady: ({ csvString, htmlString }) => {
+                    if (csvString.split('\n').length - 1) {
+                        Translations.createView({
+                            htmlString,
+                            csvString,
+                            versionNumber: 1,
+                            viewCreated: htmlPath => opn_1.default(htmlPath)
+                        });
+                    }
+                    else {
+                        console.log(ansi_colors_1.default.green('No translations missing.'));
+                    }
+                }
             });
         }
         else {
@@ -349,11 +356,11 @@ const fs_1 = __webpack_require__(2);
 const FsNode_1 = __importDefault(__webpack_require__(5));
 const File_1 = __importDefault(__webpack_require__(1));
 const path_1 = __webpack_require__(0);
-const rimraf_1 = __importDefault(__webpack_require__(14));
-const ncp_1 = __importDefault(__webpack_require__(15));
-const child_process_1 = __webpack_require__(16);
-const chokidar_1 = __importDefault(__webpack_require__(17));
-const handleChange_1 = __importDefault(__webpack_require__(18));
+const rimraf_1 = __importDefault(__webpack_require__(15));
+const ncp_1 = __importDefault(__webpack_require__(16));
+const child_process_1 = __webpack_require__(17);
+const chokidar_1 = __importDefault(__webpack_require__(18));
+const handleChange_1 = __importDefault(__webpack_require__(19));
 class Directory extends FsNode_1.default {
     constructor() {
         super(...arguments);
@@ -449,6 +456,16 @@ module.exports = __webpack_require__(8);
 
 "use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
+__webpack_require__(9);
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -458,7 +475,7 @@ Translations_1.default.check();
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -514,7 +531,7 @@ CLI.mergeInput = (result, input) => {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -539,7 +556,7 @@ exports.default = Language;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -549,7 +566,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = __importDefault(__webpack_require__(3));
-const json_2_csv_1 = __webpack_require__(12);
+const json_2_csv_1 = __webpack_require__(13);
 class TranslationTable {
     constructor(translations) {
         this.titleRow = () => {
@@ -606,13 +623,13 @@ exports.default = TranslationTable;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("json-2-csv");
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -651,31 +668,31 @@ exports.default = PageRenderer;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = require("rimraf");
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = require("ncp");
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = require("child_process");
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = require("chokidar");
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -741,7 +758,7 @@ exports.default = handleChange;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = require("opn");
