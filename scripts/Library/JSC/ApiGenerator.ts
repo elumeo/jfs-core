@@ -35,15 +35,18 @@ class ApiGenerator {
         Api.config(
             jscApiConfig => ApiGenerator.endpoint({
                 versionNumber,
-                endpointNameReady: endpointName => (
+                endpointNameReady: endpointName => {
+
                     axios
                         .post(endpointName, jscApiConfig, ApiGenerator.axiosParams())
                         .then(({ data: apiString }) => apiFetched(apiString))
                         .catch(error => {
-                            console.error(color.red(`System Error => ${error.message}`));
-                            console.log(error.data);
+                            const message = error.response.data.match(/(?<=\[message\] => ).*/gm);
+                            console.error(
+                                color.red(message)
+                            );
                         })
-                )
+                }
             })
         )
     );

@@ -1,3 +1,1 @@
-import Translations from "Library/Translations";
-
-Translations.check();
+import 'Setup/jsc-check';

@@ -165,7 +165,7 @@ const opn_1 = __importDefault(__webpack_require__(19));
 class Translations {
 }
 Translations.translationsFile = new File_1.default({
-    path: path_1.resolve(process.cwd(), CLI_1.default.parameter('project-path'), 'src', 'setup', 'Translations.json')
+    path: path_1.resolve(process.cwd(), CLI_1.default.parameter('project-path') || '.', 'src', 'Setup', 'Translations.json')
 });
 Translations.renderer = new PageRenderer_1.default({
     pageDirectoryPath: path_1.resolve(__dirname, ...(CLI_1.default.parameter('development')

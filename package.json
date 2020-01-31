@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
@@ -23,7 +23,6 @@
   },
   "homepage": "http://www.elumeo.com",
   "dependencies": {
-    "@elumeo/jfs-core-dev": "2.1.2",
     "@types/classnames": "^2.2.3",
     "@types/lodash": "^4.14.74",
     "@types/node": "^8.0.29",
@@ -84,6 +83,7 @@
     "ncp": "^2.0.0",
     "node-sass": "^4.9.4",
     "opn": "^5.3.0",
+    "php-parser": "^3.0.0-prerelease.9",
     "preserve": "^0.2.0",
     "react": "^16.5.2",
     "react-addons-css-transition-group": "15.6.0",

@@ -31,9 +31,9 @@ class Translations {
     private static translationsFile: File = new File({
         path: resolve(
             process.cwd(),
-            CLI.parameter('project-path'),
+            CLI.parameter('project-path') || '.',
             'src',
-            'setup',
+            'Setup',
             'Translations.json'
         )
     });

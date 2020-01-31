@@ -212,7 +212,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const File_1 = __importDefault(__webpack_require__(1));
 const CLI_1 = __importDefault(__webpack_require__(3));
 const path_1 = __webpack_require__(0);
-const ApiGenerator_1 = __importDefault(__webpack_require__(11));
+const ApiGenerator_1 = __importDefault(__webpack_require__(12));
 class Api {
 }
 Api.file = new File_1.default({
@@ -283,11 +283,11 @@ const fs_1 = __webpack_require__(2);
 const FsNode_1 = __importDefault(__webpack_require__(5));
 const File_1 = __importDefault(__webpack_require__(1));
 const path_1 = __webpack_require__(0);
-const rimraf_1 = __importDefault(__webpack_require__(14));
-const ncp_1 = __importDefault(__webpack_require__(15));
-const child_process_1 = __webpack_require__(16);
-const chokidar_1 = __importDefault(__webpack_require__(17));
-const handleChange_1 = __importDefault(__webpack_require__(18));
+const rimraf_1 = __importDefault(__webpack_require__(15));
+const ncp_1 = __importDefault(__webpack_require__(16));
+const child_process_1 = __webpack_require__(17);
+const chokidar_1 = __importDefault(__webpack_require__(18));
+const handleChange_1 = __importDefault(__webpack_require__(19));
 class Directory extends FsNode_1.default {
     constructor() {
         super(...arguments);
@@ -383,16 +383,26 @@ module.exports = __webpack_require__(9);
 
 "use strict";
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const JSC_1 = __importDefault(__webpack_require__(10));
-JSC_1.default.check();
+__webpack_require__(10);
 
 
 /***/ }),
 /* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const JSC_1 = __importDefault(__webpack_require__(11));
+JSC_1.default.check();
+
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -410,7 +420,7 @@ exports.default = JSC;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -419,9 +429,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const axios_1 = __importDefault(__webpack_require__(12));
+const axios_1 = __importDefault(__webpack_require__(13));
 const ansi_colors_1 = __importDefault(__webpack_require__(6));
-const JFS_1 = __importDefault(__webpack_require__(13));
+const JFS_1 = __importDefault(__webpack_require__(14));
 const CLI_1 = __importDefault(__webpack_require__(3));
 const Api_1 = __importDefault(__webpack_require__(4));
 class ApiGenerator {
@@ -438,13 +448,15 @@ ApiGenerator.axiosParams = () => (CLI_1.default.parameter('elumeoPath')
     : null);
 ApiGenerator.fetchApi = (api, versionNumber, apiFetched) => (Api_1.default.config(jscApiConfig => ApiGenerator.endpoint({
     versionNumber,
-    endpointNameReady: endpointName => (axios_1.default
-        .post(endpointName, jscApiConfig, ApiGenerator.axiosParams())
-        .then(({ data: apiString }) => apiFetched(apiString))
-        .catch(error => {
-        console.error(ansi_colors_1.default.red(`System Error => ${error.message}`));
-        console.log(error.data);
-    }))
+    endpointNameReady: endpointName => {
+        axios_1.default
+            .post(endpointName, jscApiConfig, ApiGenerator.axiosParams())
+            .then(({ data: apiString }) => apiFetched(apiString))
+            .catch(error => {
+            const message = error.response.data.match(/(?<=\[message\] => ).*/gm);
+            console.error(ansi_colors_1.default.red(message));
+        });
+    }
 })));
 ApiGenerator.generate = (api, versionNumber = 2) => (ApiGenerator.fetchApi(api, versionNumber, apiString => Api_1.default.file.write({
     data: apiString,
@@ -457,13 +469,13 @@ exports.default = ApiGenerator;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -477,7 +489,7 @@ const path_1 = __webpack_require__(0);
 const Directory_1 = __importDefault(__webpack_require__(7));
 class JFS {
 }
-JFS.projectPath = () => path_1.resolve(process.cwd(), CLI_1.default.parameter('project-path'));
+JFS.projectPath = () => path_1.resolve(process.cwd(), CLI_1.default.parameter('project-path') || '.');
 JFS.configFile = (configFileFound, searchDirectoryPath = JFS.projectPath()) => {
     const searchDirectory = new Directory_1.default({ path: searchDirectoryPath });
     const fileName = 'config.json.dist';
@@ -500,31 +512,31 @@ exports.default = JFS;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = require("rimraf");
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = require("ncp");
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = require("child_process");
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = require("chokidar");
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

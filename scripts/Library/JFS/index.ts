@@ -13,7 +13,7 @@ class JFS {
 
     private static projectPath = () => resolve(
         process.cwd(),
-        CLI.parameter('project-path')
+        CLI.parameter('project-path') || '.'
     );
 
     public static configFile = (
