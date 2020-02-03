@@ -65,6 +65,12 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73,8 +79,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs_1 = __webpack_require__(1);
-const FsNode_1 = __importDefault(__webpack_require__(3));
+const fs_1 = __webpack_require__(2);
+const FsNode_1 = __importDefault(__webpack_require__(4));
 class File extends FsNode_1.default {
     constructor() {
         super(...arguments);
@@ -132,26 +138,26 @@ exports.default = File;
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports) {
 
 module.exports = require("fs");
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports) {
 
-module.exports = require("path");
+module.exports = require("ansi-colors");
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs_1 = __webpack_require__(1);
-const path_1 = __webpack_require__(2);
+const fs_1 = __webpack_require__(2);
+const path_1 = __webpack_require__(0);
 class FsNode {
     constructor(props) {
         this.stats = (statsReady) => fs_1.lstat(this.path, (error, stats) => {
@@ -173,7 +179,7 @@ exports.default = FsNode;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -182,15 +188,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs_1 = __webpack_require__(1);
-const FsNode_1 = __importDefault(__webpack_require__(3));
-const File_1 = __importDefault(__webpack_require__(0));
-const path_1 = __webpack_require__(2);
-const rimraf_1 = __importDefault(__webpack_require__(10));
-const ncp_1 = __importDefault(__webpack_require__(11));
-const child_process_1 = __webpack_require__(12);
-const chokidar_1 = __importDefault(__webpack_require__(13));
-const handleChange_1 = __importDefault(__webpack_require__(14));
+const fs_1 = __webpack_require__(2);
+const FsNode_1 = __importDefault(__webpack_require__(4));
+const File_1 = __importDefault(__webpack_require__(1));
+const path_1 = __webpack_require__(0);
+const rimraf_1 = __importDefault(__webpack_require__(13));
+const ncp_1 = __importDefault(__webpack_require__(14));
+const child_process_1 = __webpack_require__(15);
+const chokidar_1 = __importDefault(__webpack_require__(16));
+const handleChange_1 = __importDefault(__webpack_require__(17));
 class Directory extends FsNode_1.default {
     constructor() {
         super(...arguments);
@@ -274,12 +280,6 @@ exports.default = Directory;
 
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("ansi-colors");
-
-/***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -320,14 +320,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const File_1 = __importDefault(__webpack_require__(0));
-const Directory_1 = __importDefault(__webpack_require__(4));
-const path_1 = __webpack_require__(2);
-const CLI_1 = __importDefault(__webpack_require__(15));
-const ansi_colors_1 = __importDefault(__webpack_require__(5));
+const File_1 = __importDefault(__webpack_require__(1));
+const path_1 = __webpack_require__(0);
+const CLI_1 = __importDefault(__webpack_require__(10));
+const ansi_colors_1 = __importDefault(__webpack_require__(3));
+const Notifier_1 = __importDefault(__webpack_require__(11));
+const LocalLink_1 = __importDefault(__webpack_require__(12));
 class App {
 }
-App.localLinkPrefix = 'jfs-sync: ';
 App.syncDirectoryNames = [
     'src',
     'settings',
@@ -339,52 +339,28 @@ App.packageJson = new File_1.default({
 App.dependencies = (dependenciesReady) => App.packageJson.read({
     dataReady: data => dependenciesReady(JSON.parse(data).dependencies)
 });
-App.hasLocalLink = (dependencyVersion) => (dependencyVersion.substring(0, App.localLinkPrefix.length) === App.localLinkPrefix);
-App.extractLocalLink = (dependencyVersion) => (dependencyVersion.substring(App.localLinkPrefix.length, dependencyVersion.length));
-App.localLinkedDependencies = (localLinkedDependenciesReady) => App.dependencies(dependencies => localLinkedDependenciesReady(Object.keys(dependencies)
-    .filter(dependencyName => App.hasLocalLink(dependencies[dependencyName]))
-    .map(dependencyName => ({
-    dependencyName,
-    localLink: App.extractLocalLink(dependencies[dependencyName])
+App.localLinks = (localLinksReady) => App.dependencies(dependencies => localLinksReady(Object.keys(dependencies)
+    .filter(dependencyName => LocalLink_1.default.isLocalLink(dependencies[dependencyName]))
+    .map(dependencyName => new LocalLink_1.default({
+    linkName: dependencyName,
+    linkPath: path_1.resolve(App.packageJson.parent, LocalLink_1.default.extractLocalPath(dependencies[dependencyName]))
 }))));
-App.framedMessage = (message) => [
-    '',
-    '-------------------------------------------------------------------------------------------------------------',
-    '',
-    message,
-    '',
-    '-------------------------------------------------------------------------------------------------------------',
-    ''
-].join('\n');
+App.showLocalLinkedDependencies = (localLinkedDependencies) => console.log(localLinkedDependencies
+    .map(localLink => ansi_colors_1.default.green(localLink.toString()))
+    .join('\n'), '\n');
+App.warnNoLocalLinks = () => console.warn(Notifier_1.default.framedMessage(Notifier_1.default.multiLineMessage(ansi_colors_1.default.yellow([
+    'WARNING: No local links to jfs-core or jfc components detected.',
+    'Please check your dependencies.'
+].join(' ')), '', `Troubleshooting: Your local link pattern should match ${ansi_colors_1.default.green(ansi_colors_1.default.bold(`"${LocalLink_1.default.prefix}path/to/jfs/module"`))}`)));
 App.syncLocalDependencies = () => {
-    App.localLinkedDependencies(localLinkedDependencies => {
-        if (!localLinkedDependencies.length) {
-            console.warn(App.framedMessage([
-                ansi_colors_1.default.yellow([
-                    'WARNING: No local links to jfs-core or jfc components detected.',
-                    'Please check your dependencies.'
-                ].join(' ')),
-                '',
-                `Troubleshooting: Your local link pattern should match ${ansi_colors_1.default.green(ansi_colors_1.default.bold(`"${App.localLinkPrefix}path/to/jfs/module"`))}`,
-            ].join('\n')));
+    App.localLinks(localLinks => {
+        if (!localLinks.length) {
+            App.warnNoLocalLinks();
         }
         else {
-            console.log(localLinkedDependencies.map(({ dependencyName, localLink }) => ansi_colors_1.default.green(`Link: ${dependencyName} --> ${path_1.resolve(App.packageJson.parent, localLink)}`)).join('\n'), '\n');
+            App.showLocalLinkedDependencies(localLinks);
         }
-        localLinkedDependencies
-            .forEach(dependency => {
-            const { dependencyName, localLink } = dependency;
-            const localDependencyDirectory = new Directory_1.default({
-                path: path_1.resolve(App.packageJson.parent, localLink)
-            });
-            localDependencyDirectory.directories(directories => {
-                directories
-                    .filter(({ name }) => App.syncDirectoryNames.includes(name))
-                    .forEach(directory => {
-                    directory.sync(path_1.resolve(App.packageJson.parent, 'node_modules', dependencyName, directory.name), `${ansi_colors_1.default.yellow(dependencyName)}/${ansi_colors_1.default.cyan(directory.name)}`);
-                });
-            });
-        });
+        localLinks.forEach(localLink => localLink.sync(App.packageJson.parent, App.syncDirectoryNames));
     });
 };
 exports.default = App;
@@ -392,96 +368,6 @@ exports.default = App;
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports) {
-
-module.exports = require("rimraf");
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = require("ncp");
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports) {
-
-module.exports = require("child_process");
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-module.exports = require("chokidar");
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const ansi_colors_1 = __importDefault(__webpack_require__(5));
-const File_1 = __importDefault(__webpack_require__(0));
-const index_1 = __importDefault(__webpack_require__(4));
-const formatMessagePrefix = (messagePrefix) => messagePrefix ? `${messagePrefix}: ` : '';
-const handleNewDirectory = (targetPath, corePath, messagePrefix) => {
-    const newDirectory = new index_1.default({ path: targetPath });
-    newDirectory.create(() => {
-        console.log(`${formatMessagePrefix(messagePrefix)}${ansi_colors_1.default.greenBright(`+${corePath}`)}`);
-    });
-};
-const handleNewFile = (sourcePath, targetPath, corePath, messagePrefix) => {
-    const newFile = new File_1.default({ path: sourcePath });
-    newFile.copy({
-        newPath: targetPath,
-        fileCopied: () => {
-            console.log(`${formatMessagePrefix(messagePrefix)}${ansi_colors_1.default.greenBright(`+${corePath}`)}`);
-        }
-    });
-};
-const handleRemoveFile = (targetPath, corePath, messagePrefix) => {
-    const removedFile = new File_1.default({ path: targetPath });
-    removedFile.remove({
-        fileRemoved: () => {
-            console.log(`${formatMessagePrefix(messagePrefix)}${ansi_colors_1.default.redBright(`-${corePath}`)}`);
-        }
-    });
-};
-const handleRemoveDirectory = (targetPath, corePath, messagePrefix) => {
-    const removedDirectory = new index_1.default({ path: targetPath });
-    removedDirectory.remove(() => {
-        console.log(`${formatMessagePrefix(messagePrefix)}${ansi_colors_1.default.redBright(`-${corePath}`)}`);
-    });
-};
-const handleChange = ({ event, sourcePath, targetPath, corePath, messagePrefix }) => {
-    switch (event) {
-        case 'addDir': {
-            handleNewDirectory(targetPath, corePath, messagePrefix);
-            break;
-        }
-        case 'add':
-        case 'change': {
-            handleNewFile(sourcePath, targetPath, corePath, messagePrefix);
-            break;
-        }
-        case 'unlink': {
-            handleRemoveFile(targetPath, corePath, messagePrefix);
-            break;
-        }
-        case 'unlinkDir': {
-            handleRemoveDirectory(targetPath, corePath, messagePrefix);
-        }
-    }
-};
-exports.default = handleChange;
-
-
-/***/ }),
-/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -534,6 +420,144 @@ CLI.mergeInput = (result, input) => {
     }
     return result;
 };
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+class Notfier {
+}
+Notfier.framedMessage = (message) => Notfier.multiLineMessage('', '-------------------------------------------------------------------------------------------------------------', '', message, '', '-------------------------------------------------------------------------------------------------------------', '');
+Notfier.multiLineMessage = (...messageLines) => [
+    ...messageLines
+].join(`\n`);
+exports.default = Notfier;
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const Directory_1 = __importDefault(__webpack_require__(5));
+const path_1 = __webpack_require__(0);
+const ansi_colors_1 = __importDefault(__webpack_require__(3));
+class LocalLink {
+    constructor(props) {
+        this.toString = () => `Link: ${this.linkName} --> ${this.linkPath}`;
+        this.sync = (projectPath, syncList) => this.linkDirectory.directories(directories => directories
+            .filter(({ name }) => syncList.includes(name))
+            .forEach(directory => directory.sync(path_1.resolve(projectPath, 'node_modules', this.linkName, directory.name), `${ansi_colors_1.default.yellow(this.linkName)}/${ansi_colors_1.default.cyan(directory.name)}`)));
+        this.linkName = props.linkName;
+        this.linkPath = props.linkPath;
+        this.linkDirectory = new Directory_1.default({
+            path: this.linkPath
+        });
+    }
+}
+LocalLink.prefix = 'jfs-sync: ';
+LocalLink.isLocalLink = (dependencyVersion) => (dependencyVersion.substring(0, LocalLink.prefix.length) === LocalLink.prefix);
+LocalLink.extractLocalPath = (linkPath) => (linkPath.substring(LocalLink.prefix.length, linkPath.length));
+exports.default = LocalLink;
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = require("rimraf");
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+module.exports = require("ncp");
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+module.exports = require("child_process");
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+module.exports = require("chokidar");
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const ansi_colors_1 = __importDefault(__webpack_require__(3));
+const File_1 = __importDefault(__webpack_require__(1));
+const index_1 = __importDefault(__webpack_require__(5));
+const formatMessagePrefix = (messagePrefix) => messagePrefix ? `${messagePrefix}: ` : '';
+const handleNewDirectory = (targetPath, corePath, messagePrefix) => {
+    const newDirectory = new index_1.default({ path: targetPath });
+    newDirectory.create(() => {
+        console.log(`${formatMessagePrefix(messagePrefix)}${ansi_colors_1.default.greenBright(`+${corePath}`)}`);
+    });
+};
+const handleNewFile = (sourcePath, targetPath, corePath, messagePrefix) => {
+    const newFile = new File_1.default({ path: sourcePath });
+    newFile.copy({
+        newPath: targetPath,
+        fileCopied: () => {
+            console.log(`${formatMessagePrefix(messagePrefix)}${ansi_colors_1.default.greenBright(`+${corePath}`)}`);
+        }
+    });
+};
+const handleRemoveFile = (targetPath, corePath, messagePrefix) => {
+    const removedFile = new File_1.default({ path: targetPath });
+    removedFile.remove({
+        fileRemoved: () => {
+            console.log(`${formatMessagePrefix(messagePrefix)}${ansi_colors_1.default.redBright(`-${corePath}`)}`);
+        }
+    });
+};
+const handleRemoveDirectory = (targetPath, corePath, messagePrefix) => {
+    const removedDirectory = new index_1.default({ path: targetPath });
+    removedDirectory.remove(() => {
+        console.log(`${formatMessagePrefix(messagePrefix)}${ansi_colors_1.default.redBright(`-${corePath}`)}`);
+    });
+};
+const handleChange = ({ event, sourcePath, targetPath, corePath, messagePrefix }) => {
+    switch (event) {
+        case 'addDir': {
+            handleNewDirectory(targetPath, corePath, messagePrefix);
+            break;
+        }
+        case 'add':
+        case 'change': {
+            handleNewFile(sourcePath, targetPath, corePath, messagePrefix);
+            break;
+        }
+        case 'unlink': {
+            handleRemoveFile(targetPath, corePath, messagePrefix);
+            break;
+        }
+        case 'unlinkDir': {
+            handleRemoveDirectory(targetPath, corePath, messagePrefix);
+        }
+    }
+};
+exports.default = handleChange;
 
 
 /***/ })

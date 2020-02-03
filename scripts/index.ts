@@ -1,1 +1,1 @@
-import 'Setup/translation-check';
+import 'Setup/sync-development';
