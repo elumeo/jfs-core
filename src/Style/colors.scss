@@ -46,9 +46,9 @@ $juw-citrin-300: rgb(255, 240, 180);
 $juw-citrin: $juw-citrin-900;
 
 $juw-quarz-900: rgb(155, 140, 120);
-$juw-quarz-700: rgb(155, 140, 120, 0.54);
-$juw-quarz-500: rgb(155, 140, 120, 0.25);
-$juw-quarz-300: rgb(155, 140, 120, 0.1);
+$juw-quarz-700: rgba(155, 140, 120, 0.54);
+$juw-quarz-500: rgba(155, 140, 120, 0.25);
+$juw-quarz-300: rgba(155, 140, 120, 0.1);
 $juw-quarz: $juw-quarz-900;
 // @deprecated in 8.0.6 $juw-quarz should be used
 $juw-platin: $juw-quarz-500; // The color platin does not exist in style guide and should
