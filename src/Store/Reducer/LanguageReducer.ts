@@ -4,11 +4,15 @@ import {
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import { IInitializeAppPayload, initializeApp } from '../Action/AppAction';
 
-import mergeTranslations from '../../Translations';
+import Translations, {ITranslations} from '../../Base/Translations';
+import coreTranslations from '../../Translations.json';
+import Shared from '../../Shared';
+
+console.log();
 
 export interface ILanguageReducerState {
   language: string;
-  messages: { [language: string]: { [key: string]: string } };
+  messages: ITranslations;
 }
 
 const initialState: ILanguageReducerState = {
@@ -29,9 +33,13 @@ export const languageReducer = createReducer(initialState)
     initializeApp,
     (
       state: ILanguageReducerState,
-      action: PayloadAction<string, IInitializeAppPayload>
+      { payload: { translations: appTranslations } }: PayloadAction<string, IInitializeAppPayload>
     ): ILanguageReducerState => ({
       ...state,
-      messages: mergeTranslations(action.payload.translations)
+      messages: Translations.merge(
+          coreTranslations as unknown as ITranslations,
+          Shared.translations,
+          appTranslations
+      )
     })
   );

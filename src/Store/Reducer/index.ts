@@ -16,6 +16,7 @@ import { webSocketConnectionReducer, IWebSocketConnectionReducerState } from './
 import { appReducer, IAppReducerState } from './AppReducer';
 import { loginReducer, ILoginReducerState } from './LoginReducer';
 import IConfig from '../../Base/IConfig';
+import Shared from '../../Shared';
 
 export interface IRootReducer<IConfig> {
   appReducer?: IAppReducerState;
@@ -55,5 +56,6 @@ export default reducers => combineReducers({
   systemReducer,
   toastReducer,
   webSocketConnectionReducer,
-  ...reducers
+  ...reducers,
+  ...Shared.Reducer()
 });

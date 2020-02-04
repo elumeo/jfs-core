@@ -28,6 +28,7 @@ import {
 } from './WebSocketEpic';
 import { setInitialLanguageEpic } from './LanguageEpic';
 import { Observable, EMPTY } from 'rxjs';
+import Shared from '../../Shared';
 
 export const wrappedCombineEpics = (...epics) => combineEpics(
   robotLoginRefreshEpic,
@@ -54,7 +55,8 @@ export const wrappedCombineEpics = (...epics) => combineEpics(
   webSocketDisconnectRequestEpic,
   webSocketCheckForConnectionErrorEpic,
   webSocketCheckForReconnectEpic,
-  ...epics
+  ...epics,
+  Shared.Epic()
 );
 
 export type Hook = <R>(action, store) => Observable<R>;
@@ -65,12 +67,8 @@ export interface IAppHooks {
 }
 
 export const defaultHooks: IAppHooks = {
-  beforeLogoutHook: (action, store) => {
-    return EMPTY;
-  },
-  afterLogoutHook: (action, store) => {
-    return EMPTY;
-  }
+  beforeLogoutHook: () => EMPTY,
+  afterLogoutHook: () => EMPTY
 };
 
 export const createCombineEpics = (hooks: IAppHooks = {}) => (...epics) => wrappedCombineEpics(

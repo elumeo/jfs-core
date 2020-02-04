@@ -52,7 +52,6 @@ if (mode === 'devServer') {
     publicPath: '/',
     watchOptions: {
       poll: 1500,
-      ignored: /node_modules\/(?!@elumeo).*$/,
       aggregateTimeout: 200
     }
   };
