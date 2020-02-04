@@ -4,12 +4,14 @@
 @import './colors';
 @import './layout';
 
-$md-primary-color: $juw-rodolith;
-$md-secondary-color: $juw-apatith;
+//$md-primary-color: $juw-rodolith;
+//$md-secondary-color: $juw-apatith;
+$md-primary-color: $juw-primary;
+$md-secondary-color: $juw-quarz;
 $md-error-color: $juw-error-color;
 
 html {
-  background: $juw-platin !important;
+  background: $juw-quarz-500 !important;
 }
 
 body {
