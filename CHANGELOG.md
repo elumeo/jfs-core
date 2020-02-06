@@ -1,4 +1,4 @@
-## [8.1.1] - 2020-02-05
+## [8.1.1] - 2020-02-06
 ### Added
 - Added $juw-font-color scss variable
 
