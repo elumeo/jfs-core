@@ -100,21 +100,28 @@ export const beforeLogoutHookEpic = handleLogoutHook => (action$, store) => (
 );
 
 export const logoutEpic: Epic<RootAction, RootAction> = (action$, store) => (
-  action$.pipe(
-    filter(isActionOf(beforeLogoutHookFinished)),
-    debounce(() => timer(200)),
-    concatMap(
-      (action: PayloadAction<string, ILogoutPayload>) => from(
-        JSCApi.SessionClient.logout(
-          action.payload && action.payload.sessionDTO
-            ? action.payload.sessionDTO
-            : store.value.sessionReducer.sessionDTO
-        )
-      ).pipe(
-        switchMap(() => of(logoutFinished()))
-      )
+    action$.pipe(
+        filter(isActionOf(beforeLogoutHookFinished)),
+        debounce(() => timer(200)),
+        concatMap(
+            (action: PayloadAction<string, ILogoutPayload>) => from(
+                JSCApi.SessionClient.logout(
+                    action.payload && action.payload.sessionDTO
+                        ? action.payload.sessionDTO
+                        : store.value.sessionReducer.sessionDTO
+                )
+            ).pipe(
+                switchMap(() => of(logoutFinished()))
+            )
+        ),
+        catchError((error) => {
+            if (error && error.response && error.response.status === 401) {
+                return of(logoutFinished());
+            }
+
+            throw error;
+        })
     )
-  )
 );
 
 export const afterLogoutHookEpic = handleLogoutFinished => action$ => (
