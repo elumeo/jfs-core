@@ -2,6 +2,7 @@
 ### Added
 - Fixed an error in scss colors which was introduced in 8.0.6
 - Make epic property in ISharedStoreProps optional
+- Added $juw-font-color scss variable
 
 ## [8.1.0] - 2020-02-04
 ### Added
