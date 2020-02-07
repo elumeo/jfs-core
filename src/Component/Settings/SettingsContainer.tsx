@@ -1,7 +1,8 @@
 import React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import { History, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { History } from 'history';
 import Button from 'react-md/lib/Buttons/Button';
 import Cell from 'react-md/lib/Grids/Cell'
 import Card from 'react-md/lib/Cards/Card';
@@ -14,6 +15,7 @@ import { ICoreRootReducer } from '../../Store/Reducer';
 import Cookie from 'js-cookie';
 
 import './SettingsContainer.scss';
+import { compose } from 'redux';
 
 // ToDo: Duplikat entfernen => Siehe LanguageSettings.tsx
 const LANGUAGES = [
@@ -39,25 +41,25 @@ class SettingsContainer extends React.Component<ISettingsContainerProps> {
     } = this;
 
     return (
-      <div className="md-grid settings-grid">
+      <div className='md-grid settings-grid'>
         <Cell size={12}>
           <Card style={{width: 330, margin: 'auto'}} raise={true}>
             <CardTitle title={formatMessage({id: 'settings.title'})}/>
             <SelectField
-              id="language"
+              id='language'
               label={formatMessage({id: 'settings.language'})}
-              className="md-cell md-cell--12"
+              className='md-cell md-cell--12'
               menuItems={LANGUAGES}
               value={language}
-              itemLabel="label"
-              itemValue="value"
+              itemLabel='label'
+              itemValue='value'
               onChange={lang => {
                 Cookie.set('lang', lang);
                 changeLanguageAction(lang.toString());
               }
               }
             />
-            <CardActions className="md-dialog-footer">
+            <CardActions className='md-dialog-footer'>
               <Button primary flat onClick={goBack}>
                 {formatMessage({id: 'app.settings.done'})}
               </Button>
@@ -82,4 +84,10 @@ const mapStateToProps = (
   ...ownProps
 });
 
-export default withRouter(injectIntl(connect(mapStateToProps, {changeLanguageAction}, null, {withRef: true})(SettingsContainer)));
+const enhance = compose(
+  connect(mapStateToProps, {changeLanguageAction}),
+  withRouter,
+  injectIntl
+);
+
+export default enhance(SettingsContainer);
