@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 export interface IBaseRouteProps extends RouteProps {
   translationId?: string;
   exact?: boolean;
-  render: (props?: any) => ReactNode;
+  render?: (props: any) => JSX.Element;
   path?: string;
   intl?: InjectedIntl;
 }
