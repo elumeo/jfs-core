@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { InjectedIntlProps, injectIntl, InjectedIntl } from 'react-intl';
-import { withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Drawer, { DrawerPosition } from 'react-md/lib/Drawers';
 
@@ -11,11 +11,11 @@ import { closeNavigation } from '../../Store/Action/NavigationAction';
 
 import NavigationDrawerHeader from './NavigationDrawerHeader';
 
-export interface INavigationDrawerProps extends InjectedIntlProps {
+export interface INavigationDrawerProps extends InjectedIntlProps, RouteComponentProps {
   intl?: InjectedIntl;
   navigationOpen?: boolean;
   position: DrawerPosition;
-  history?;
+  history;
   version?: string;
   navigationItems?;
   closeNavigation?: typeof closeNavigation;
@@ -24,7 +24,7 @@ export interface INavigationDrawerProps extends InjectedIntlProps {
 const NavigationDrawer: React.FC<INavigationDrawerProps> = ({
   navigationOpen, closeNavigation, position, children
 }) => (
-  <div className="navigation-drawer">
+  <div className='navigation-drawer'>
     <Drawer
       visible={navigationOpen}
       position={position}
