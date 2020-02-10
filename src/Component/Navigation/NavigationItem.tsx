@@ -4,7 +4,8 @@ import { injectIntl, InjectedIntlProps } from 'react-intl';
 import FontIcon from 'react-md/lib/FontIcons';
 import ListItem from 'react-md/lib/Lists/ListItem';
 
-import { withRouter, History } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { History } from 'history';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';

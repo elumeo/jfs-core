@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, RouteProps } from 'react-router-dom';
 import { injectIntl, InjectedIntl } from 'react-intl';
+import { ReactNode } from 'react';
 
-export interface IBaseRouteProps extends Route {
+export interface IBaseRouteProps extends RouteProps {
   translationId?: string;
   exact?: boolean;
   render?: (props: any) => JSX.Element;

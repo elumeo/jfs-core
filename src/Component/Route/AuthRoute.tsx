@@ -13,7 +13,12 @@ export interface IAuthRouteProps extends IBaseRouteProps {
 }
 
 const AuthRoute: React.FC<IAuthRouteProps> = ({
-  Component, isAuthorized, isCheckingSession, path, enterAuthorizedRoute, ...rest
+  Component,
+  isAuthorized,
+  isCheckingSession,
+  path,
+  enterAuthorizedRoute,
+  ...rest
 }) => {
   useEffect(
     () => {
@@ -28,10 +33,10 @@ const AuthRoute: React.FC<IAuthRouteProps> = ({
         render={props => <Component {...props}/>}
       />
       : isCheckingSession
-      ? <CircularProgress id="check-session-progress"/>
+      ? <CircularProgress id='check-session-progress'/>
       : <></>
   );
-}
+};
 
 const mapStateToProps = (
   state: ICoreRootReducer,
