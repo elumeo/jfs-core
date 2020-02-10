@@ -165,7 +165,10 @@ export const webSocketConnectSuccessEpic: Epic<RootAction, RootAction> = (action
 export const webSocketDisconnectRequestEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
     return action$.pipe(
         filter(isActionOf(webSocketDisconnectRequestAction)),
-        concatMap((action) => WSClient.leaveAllRooms(action.payload, state.value.webSocketConnectionReducer[action.payload].rooms)),
+        filter((action) => Boolean(state.value.webSocketConnectionReducer[action.payload])),
+        concatMap((action) => WSClient.leaveAllRooms(
+            action.payload, state.value.webSocketConnectionReducer[action.payload].rooms
+        )),
         concatMap((namespace) => WSClient.disconnect(namespace)),
         switchMap((namespace) => of(webSocketDisconnectSuccessAction(namespace)))
     );
