@@ -24,7 +24,7 @@ const LoginButton: React.FC<ILoginButtonProps> = (
     username, password
   }
 ) => (
-  <Button primary flat onClick={() => checkLogin({ username, password })}>
+  <Button primary flat onClick={() => checkLogin({ username, password })} disabled={isCheckingLogin}>
     {isCheckingLogin
       ? <CircularProgress id='check-login-progress'/>
       : formatMessage({ id: 'login.button' })}
