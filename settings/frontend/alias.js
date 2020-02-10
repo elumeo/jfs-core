@@ -8,7 +8,7 @@ module.exports = {
   Action: resolve(projectSrc, 'Store', 'Action'),
   Component: resolve(projectSrc, 'Component'),
   Core: '@elumeo/jfs-core/src',
-  'Core/Action': '@elumeo/jfs-core/src/Store/Action',
+  'Jfc/Component/HelloWorld': 'jfc-hello-world',
   JscApi: resolve(projectSrc, 'Jsc', 'JscApi'),
   Mock: resolve(projectSrc, 'Mock'),
   Setup: resolve(projectSrc, 'Setup'),

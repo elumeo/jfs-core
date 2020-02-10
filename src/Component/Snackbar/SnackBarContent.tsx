@@ -27,8 +27,8 @@ export default (toast: IToastConfig, formatMessage) => {
     text = contentMessage;
     toastContent = text;
   } else {
-    const {errorMessage, errorBody} = errorText(contentError);
-    text = `${formatMessage({id: 'app.error'})}: ${errorMessage} ${errorBody}`;
+    const {body, head} = errorText(contentError);
+    text = `${formatMessage({id: 'app.error'})}: ${body} ${head}`;
     toastContent = (
       <ErrorContent contentError={contentError}/>
     );

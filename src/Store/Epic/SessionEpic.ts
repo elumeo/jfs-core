@@ -1,4 +1,4 @@
-import { Epic } from 'redux-observable';
+import {Epic, StateObservable} from 'redux-observable';
 import { RootAction } from '../Action/RootAction';
 import { catchError, concatMap, filter, map, switchMap, debounce } from 'rxjs/operators';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
@@ -18,6 +18,7 @@ import { AxiosResponse } from 'axios';
 import { addToastAction } from '../Action/ToastAction';
 import { appInitialized } from '../Action/AppAction';
 import { beforeLogoutHookFinished, logoutFinished, closeLogout } from '../Action/LogoutAction';
+import {ICoreRootReducer} from "../Reducer";
 
 export const loadSessionEpic: Epic<RootAction, RootAction> = (action$, store) => (
   action$.pipe(
@@ -148,9 +149,16 @@ export const unauthorizeSessionEpic: Epic<RootAction, RootAction> = (action$, st
   )
 );
 
-export const authorizeSessionEpic: Epic<RootAction, RootAction> = (action$) => (
+export const authorizeSessionEpic: Epic<RootAction, RootAction> = (
+    action$,
+    state$: StateObservable<ICoreRootReducer>
+) => (
   action$.pipe(
     filter(isActionOf(authorizeSession)),
-    concatMap(() => of(appInitialized()))
+    concatMap(() => (
+        state$.value.appReducer.appInitialized
+            ? EMPTY
+            : of(appInitialized())
+    ))
   )
 );
