@@ -6,8 +6,9 @@ import DialogContainer from 'react-md/lib/Dialogs';
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
 import { ICoreRootReducer } from '../../Store/Reducer';
-import './LoginDialog.scss';
 import { checkLogin } from '../../Store/Action/LoginAction';
+
+import './LoginDialog.scss';
 
 interface ILoginDialogProps extends InjectedIntlProps {
   children?: any;
@@ -22,7 +23,7 @@ interface ILoginDialogProps extends InjectedIntlProps {
 const LoginDialog: React.FC<ILoginDialogProps> = ({
   robotLoginAvailable, routeType, isAuthorized, isCheckingSession
 }) => (
-  <div className="login-dialog">
+  <div className='login-dialog'>
     <DialogContainer
       id={'login-dialog'}
       visible={
@@ -31,8 +32,8 @@ const LoginDialog: React.FC<ILoginDialogProps> = ({
         !robotLoginAvailable &&
         !isCheckingSession
       }
-      title="Login"
-      aria-describedby=""
+      title='Login'
+      aria-describedby=''
       actions={<LoginButton/>}
       modal
     >
@@ -64,4 +65,5 @@ const enhance = compose(
   injectIntl
 );
 
+// noinspection JSUnusedGlobalSymbols
 export default enhance(LoginDialog);

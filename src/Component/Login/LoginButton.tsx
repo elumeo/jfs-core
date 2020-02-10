@@ -5,8 +5,8 @@ import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { checkLogin, ICheckLoginPayload } from '../../Store/Action/LoginAction';
 import { ICoreRootReducer } from '../../Store/Reducer';
+import { checkLogin, ICheckLoginPayload } from '../../Store/Action/LoginAction';
 
 export interface ILoginButtonProps {
   intl?: InjectedIntl;
@@ -19,17 +19,16 @@ export interface ILoginButtonProps {
 const LoginButton: React.FC<ILoginButtonProps> = (
   {
     intl: { formatMessage },
+    // tslint:disable-next-line:no-shadowed-variable
     isCheckingLogin, checkLogin,
     username, password
   }
 ) => (
-  isCheckingLogin
-    ? <CircularProgress id="check-login-progress"/>
-    : (
-      <Button primary flat onClick={() => checkLogin({ username, password })}>
-        {formatMessage({id: 'login.button'})}
-      </Button>
-    )
+  <Button primary flat onClick={() => checkLogin({ username, password })}>
+    {isCheckingLogin
+      ? <CircularProgress id='check-login-progress'/>
+      : formatMessage({ id: 'login.button' })}
+  </Button>
 );
 
 const mapStateToProps = (
@@ -40,7 +39,7 @@ const mapStateToProps = (
   isCheckingLogin: state.loginReducer.isCheckingLogin,
   username: state.loginReducer.username,
   password: state.loginReducer.password
-})
+});
 
 const enhance = compose(
   connect(mapStateToProps, { checkLogin }),
