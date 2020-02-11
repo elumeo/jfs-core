@@ -1,3 +1,9 @@
+## [8.1.4] - 2020-02-10
+
+### Bugfixes
+- CircularProgress integrated within the login button of the LoginDialog to prevent size flickering 
+
+
 ## [8.1.3] - 2020-02-10
 
 ### Updates
