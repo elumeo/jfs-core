@@ -1,17 +1,13 @@
-## [8.1.4] - 2020-02-10
-
-### Bugfixes
-- CircularProgress integrated within the login button of the LoginDialog to prevent size flickering 
-
+## [8.1.4] - 2020-02-11
+### Bugfixed
+- CircularProgress integrated within the login button of the LoginDialog to prevent size flickering
+- fixed style error which sets the wrong secondary color
 
 ## [8.1.3] - 2020-02-10
-
 ### Updates
-
 - updated react-router-dom to version 5
 
 ### Bugfixed
-
 - fixed error occurring while leaving websocket rooms
 
 ## [8.1.2] - 2020-02-10
