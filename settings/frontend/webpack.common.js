@@ -47,7 +47,7 @@ module.exports.common = {
   output: {
     filename: 'bundle.js',
     path: projectDist,
-    publicPath: '/'
+    publicPath: ''
   },
 
   module: {

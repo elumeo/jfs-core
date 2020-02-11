@@ -1,3 +1,10 @@
+## [8.1.6] - 2020-02-10
+
+### Bugfixed
+
+- fixed wrong public path for bundle.js
+- fixed display format for jsc error with id = 0
+
 ## [8.1.5] - 2020-02-11
 ### Bugfixed
 - fixed style error which sets the wrong primary color

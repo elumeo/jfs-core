@@ -24,7 +24,7 @@ namespace Format {
 
     export const httpBody = (response) => (
         response && response.data
-            ? response.data.message && response.data.id
+            ? response.data.message && (response.data.id || response.data.id === 0)
                 ? `${response.data.message} (${response.data.id})`
                 : response.data
             : response.data
