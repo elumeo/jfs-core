@@ -1,3 +1,7 @@
+## [8.1.5] - 2020-02-11
+### Bugfixed
+- fixed style error which sets the wrong primary color
+
 ## [8.1.4] - 2020-02-11
 ### Bugfixed
 - fixed style error which sets the wrong secondary color
