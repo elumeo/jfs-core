@@ -1,7 +1,9 @@
-## [8.1.6] - 2020-02-10
-
+## [8.1.7] - 2020-02-12
 ### Bugfixed
+- fixed a bug in websocket connection: connection was not triggered after login
 
+## [8.1.6] - 2020-02-10
+### Bugfixed
 - fixed wrong public path for bundle.js
 - fixed display format for jsc error with id = 0
 

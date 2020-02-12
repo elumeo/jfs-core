@@ -32,13 +32,12 @@ export class WSClient {
   protected static jfsOnRoomUpdateSubject = new Subject<any>();
   protected static jfsOnRoomUpdate$ = WSClient.jfsOnRoomUpdateSubject.asObservable();
 
-  public static connect(host: string, namespace: string, token?: string, ip?: string, ) {
+  public static connect(host: string, namespace: string, token?: string, ip?: string) {
     this.checkSocket(namespace);
     return new Observable<string>((observer) => {
       if (this.sockets[namespace] !== null) {
         this.disconnect(namespace).subscribe();
       }
-
       if (this.sockets[namespace] === null) {
         this.sockets[namespace] = io.connect(host + '/' + namespace, {
           query: {token, ip},
@@ -113,7 +112,7 @@ export class WSClient {
   public static leave(room: IWebSocketRoom) {
     this.checkSocket(room.namespace);
     return new Observable<IWebSocketRoom>((observer) => {
-      if(this.sockets[room.namespace] !== null) {
+      if (this.sockets[room.namespace] !== null) {
         this.sockets[room.namespace].emit(this.EVENT_LEAVE_ROOM, room.room);
       }
       observer.next(room);
@@ -158,13 +157,13 @@ export class WSClient {
   }
 
   private static checkSocket(namespace: string) {
-    if(this.sockets[namespace] === undefined) {
+    if (this.sockets[namespace] === undefined) {
       this.sockets[namespace] = null;
     }
   }
 
   public static prepareRoomName(roomName: string, allReducers: ICoreRootReducer) {
-    if(allReducers.sessionReducer.sessionDTO !== null) {
+    if (allReducers.sessionReducer.sessionDTO !== null) {
       roomName = roomName.replace('[userId]', allReducers.sessionReducer.sessionDTO.username);
     }
     return roomName;

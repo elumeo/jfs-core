@@ -98,9 +98,11 @@ export const webSocketConnectionReducer = createReducer(webSocketConnectionReduc
     webSocketJoinRoomFailureAction
   ], (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoomConnection>): IWebSocketConnectionReducerState => {
     const newRooms: IWebSocketRoomConnection[] = [];
-    for (const room of state[action.payload.namespace].rooms) {
-      if (room.name !== action.payload.name) {
-        newRooms.push(room);
+    if (state[action.payload.namespace] !== undefined) {
+      for (const room of state[action.payload.namespace].rooms) {
+        if (room.name !== action.payload.name) {
+          newRooms.push(room);
+        }
       }
     }
     newRooms.push(action.payload);
@@ -115,7 +117,6 @@ export const webSocketConnectionReducer = createReducer(webSocketConnectionReduc
   })
 
   .handleAction(webSocketLeaveRoomSuccessAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketRoom>): IWebSocketConnectionReducerState => {
-    console.log('webSocketLeaveRoomSuccessAction', action.payload.namespace);
     const newRooms: IWebSocketRoomConnection[] = [];
     for (const room of state[action.payload.namespace].rooms) {
       if (room.name !== action.payload.room) {
