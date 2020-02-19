@@ -9,9 +9,9 @@ const alias = require('./alias');
 const {
   projectSrc,
   projectStatic,
-  projectNodeModules,
   projectDist,
   projectMainTsx,
+  projectNodeModules,
   projectLocalJs,
   projectLocalJsDist,
   projectConfigJsonDist,

@@ -7,6 +7,7 @@ const {
 module.exports = {
   Action: resolve(projectSrc, 'Store', 'Action'),
   Component: resolve(projectSrc, 'Component'),
+  Composition: resolve(projectSrc, 'Composition'),
   Core: '@elumeo/jfs-core/src',
   'Jfc/Component/HelloWorld': 'jfc-hello-world',
   JscApi: resolve(projectSrc, 'Jsc', 'JscApi'),
