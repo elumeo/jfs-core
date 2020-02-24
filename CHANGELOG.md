@@ -1,3 +1,11 @@
+## [8.1.9]
+### Bugfixes
+- Use the INotification in websocket error handling
+
+## [8.1.8]
+### Bugfixes
+- Fixed error format
+
 ## [8.1.7] - 2020-02-12
 ### Bugfixed
 - fixed a bug in websocket connection: connection was not triggered after login

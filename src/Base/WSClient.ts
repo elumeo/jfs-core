@@ -97,7 +97,7 @@ export class WSClient {
       this.sockets[namespace].on(this.EVENT_JOIN_ROOM_FAILED, (error) => {
         const failedRoom = (JSON.parse(error.config.data) as IWebSocketRoom);
         if (room === failedRoom.room) {
-          failedRoom.error = error.message;
+          failedRoom.error = error;
           failedRoom.namespace = namespace;
           this.sockets[namespace].off(this.EVENT_JOIN_ROOM_FAILED);
           this.sockets[namespace].off(this.EVENT_JOINED_ROOM);

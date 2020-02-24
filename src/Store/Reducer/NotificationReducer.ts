@@ -10,9 +10,10 @@ import {
   unpinNotificationDrawerAction
 } from '../Action/NotificationAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
+import { AxiosError } from 'axios';
 
 export interface INotificationContent {
-  error?: Error;
+  error?: Error|AxiosError;
   message?: string;
   translationId?: string;
 

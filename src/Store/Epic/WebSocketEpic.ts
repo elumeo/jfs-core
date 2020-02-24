@@ -23,6 +23,7 @@ import { IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/WebSocketCo
 import { addNotificationAction } from '../Action/NotificationAction';
 import { authorizeSession, logout } from '../Action/SessionAction';
 import { WSClient } from '../../Base/WSClient';
+import { INotificationContent } from '../Reducer/NotificationReducer';
 
 export const webSocketAppIsInitializedEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
   return action$.pipe(
@@ -209,16 +210,34 @@ export const webSocketJoinRoomLoadingEpic: Epic<RootAction, RootAction> = (actio
         catchError((err) => {
           const update: IWebSocketRoomConnection = {
             name: action.payload.name,
-            error: err.toString(),
+            error: err.error.message,
             hasJoined: false,
             isJoining: false,
             namespace: action.payload.namespace
           };
-          return of(webSocketJoinRoomFailureAction(update), addNotificationAction({
-            message: err.toString(),
+          const error: INotificationContent = {
+            error: {
+              response: {
+                data: {
+                  message: err.error.message,
+                  id: 0
+                },
+                headers: null,
+                config: err.error.config,
+                status: null,
+                statusText: err.error.message
+              },
+              name: err.error.name,
+              config: err.error.config,
+              message: err.error.message
+            },
             isError: true,
             icon: 'error'
-          }));
+          };
+          return of(
+            webSocketJoinRoomFailureAction(update),
+            addNotificationAction(error)
+          );
         })
       );
     })
