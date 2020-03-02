@@ -3,6 +3,7 @@
   "buildOnSave": false,
   "compilerOptions": {
     "target": "es6",
+    "lib": ["es2018", "esNext", "DOM"],
     "module": "esnext",
     "moduleResolution": "node",
     "removeComments": true,
