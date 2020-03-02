@@ -1,3 +1,11 @@
+## [8.2.0]
+
+### Bugfixes
+- re-enabled recursive dependency resolution in webpack settings
+
+### Added
+- added \<International/> component for message internationalization
+
 ## [8.1.9]
 ### Bugfixes
 - Use the INotification in websocket error handling
