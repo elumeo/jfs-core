@@ -38,7 +38,7 @@ module.exports.common = {
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
-    modules: [projectSrc, projectNodeModules],
+    modules: [projectSrc, 'node_modules'],
     alias
   },
 
