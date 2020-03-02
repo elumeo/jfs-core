@@ -1,41 +1,34 @@
-import * as React from 'react';
-import { injectIntl, InjectedIntlProps } from 'react-intl';
+import React from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 
+import International from '../International';
 import ModalDialog from '../Modal/ModalDialog';
-
 import { ICoreRootReducer } from '../../Store/Reducer';
 import { closeSettings } from '../../Store/Action/SettingsAction';
-
 import './SettingsDialog.scss';
 
-export interface ISettingsDialogProps extends InjectedIntlProps {
+export interface ISettingsDialogProps {
   closeSettings?: typeof closeSettings;
   settingsOpen?: boolean;
 }
 
-export interface ISettingsDialogState {
-
-}
-
-class SettingsDialog extends React.Component<ISettingsDialogProps, ISettingsDialogState> {
-  render() {
-    const {
-      props: {intl: {formatMessage}, closeSettings, settingsOpen, children}
-    } = this;
-    return (
+const SettingsDialog: React.FC<ISettingsDialogProps> = ({
+  closeSettings,
+  settingsOpen,
+  children
+}) => (
+  <International>
+    {({ formatMessage }) => (
       <ModalDialog
         title={formatMessage({id: 'app.settings'})}
         className="settings-dialog"
         visible={settingsOpen}
-        closeDialog={() => closeSettings()}
-      >
+        closeDialog={() => closeSettings()}>
         {children}
       </ModalDialog>
-    );
-  }
-}
+    )}
+  </International>
+);
 
 const mapStateToProps = (
   state: ICoreRootReducer,
@@ -45,9 +38,6 @@ const mapStateToProps = (
   settingsOpen: state.settingsReducer.settingsOpen
 });
 
-const enhance = compose(
-  connect(mapStateToProps, {closeSettings}),
-  injectIntl
-);
+const enhance = connect(mapStateToProps, {closeSettings});
 
 export default enhance(SettingsDialog);

@@ -1,7 +1,5 @@
-import * as React from 'react';
-import { injectIntl, InjectedIntlProps } from 'react-intl';
+import React from 'react';
 import TextField from 'react-md/lib/TextFields/TextField';
-import { compose } from 'redux';
 import { connect } from 'react-redux';
 import {
   checkLogin, ICheckLoginPayload,
@@ -9,38 +7,43 @@ import {
 } from '../../Store/Action/LoginAction';
 import { ICoreRootReducer } from '../../Store/Reducer';
 
-export interface ILoginCredentialsProps extends InjectedIntlProps {
+import International from '../International';
+
+export interface ILoginCredentialsProps {
+  language?: string;
   username?: string;
   password?: string;
   checkLogin?: (payload: ICheckLoginPayload) => void;
   updateCredentials?: (payload: IUpdateCredentialsPayload) => void;
 }
 
-const LoginCredentials: React.FC<ILoginCredentialsProps> = (
-  {
-    intl: { formatMessage },
-    updateCredentials, checkLogin, username, password
-  }
-) => (
-  <div className="login-credentials">
-    <TextField
-      id="username"
-      type="text"
-      required
-      placeholder={formatMessage({id: 'login.username'})}
-      errorText={formatMessage({id: 'login.username.errorText'})}
-      onChange={update => updateCredentials({ username: update as string, password })}
-    />
-    <TextField
-      id="password"
-      type="password"
-      required
-      placeholder={formatMessage({id: 'login.password'})}
-      errorText={formatMessage({id: 'login.password.errorText'})}
-      onChange={update => updateCredentials({ username, password: update as string })}
-      onKeyUp={e => e.keyCode === 13 && checkLogin({ username, password })}
-    />
-  </div>
+const LoginCredentials: React.FC<ILoginCredentialsProps> = ({
+  updateCredentials,
+  checkLogin,
+  username,
+  password
+}) => (
+  <International>
+    {({ formatMessage }) => (
+      <div className="login-credentials">
+        <TextField
+          id="username"
+          type="text"
+          required
+          placeholder={formatMessage({id: 'login.username'})}
+          errorText={formatMessage({id: 'login.username.errorText'})}
+          onChange={update => updateCredentials({ username: update as string, password })}/>
+        <TextField
+          id="password"
+          type="password"
+          required
+          placeholder={formatMessage({id: 'login.password'})}
+          errorText={formatMessage({id: 'login.password.errorText'})}
+          onChange={update => updateCredentials({ username, password: update as string })}
+          onKeyUp={e => e.keyCode === 13 && checkLogin({ username, password })}/>
+      </div>
+    )}
+  </International>
 );
 
 const mapStateToProps = (
@@ -49,12 +52,10 @@ const mapStateToProps = (
 ): ILoginCredentialsProps => ({
   ...ownProps,
   username: state.loginReducer.username,
-  password: state.loginReducer.password
-})
+  password: state.loginReducer.password,
+  language: state.languageReducer.language
+});
 
-const enhance = compose(
-  connect(mapStateToProps, { updateCredentials, checkLogin }),
-  injectIntl
-);
+const enhance = connect(mapStateToProps, { updateCredentials, checkLogin });
 
 export default enhance(LoginCredentials);

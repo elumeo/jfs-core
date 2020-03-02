@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { injectIntl, InjectedIntlProps } from 'react-intl';
+import React from 'react';
 import './Style.scss';
+import International from '../International';
 
 namespace Format {
 
@@ -37,24 +37,28 @@ export const errorText = ({ response, config }) => ({
     body: Format.httpBody(response)
 });
 
-export interface IErrorContentProps extends InjectedIntlProps {
+export interface IErrorContentProps {
   contentError: any;
 }
 
-const errorContent: React.FC<IErrorContentProps> = ({ intl: {formatMessage}, contentError }) => {
+const errorContent: React.FC<IErrorContentProps> = ({ contentError }) => {
   const {config} = contentError;
   const {body, head} = errorText(contentError);
   return (
-    <span className="error-content">
-      <u>{formatMessage({id: 'app.error'})}:</u>&nbsp;{body}
-      <br/>
-      {
-        config
-          ? <span style={{fontSize: 'x-small'}}>{head}</span>
-          : null
-      }
-    </span>
+    <International>
+      {({ formatMessage }) => (
+        <span className="error-content">
+          <u>{formatMessage({id: 'app.error'})}:</u>&nbsp;{body}
+          <br/>
+          {
+            config
+              ? <span style={{fontSize: 'x-small'}}>{head}</span>
+              : null
+          }
+        </span>
+      )}
+    </International>
   )
 };
 
-export default injectIntl(errorContent);
+export default errorContent;

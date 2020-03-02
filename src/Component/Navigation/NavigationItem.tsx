@@ -1,6 +1,5 @@
-import * as React from 'react';
+import React from 'react';
 import * as _ from 'lodash';
-import { injectIntl, InjectedIntlProps } from 'react-intl';
 import FontIcon from 'react-md/lib/FontIcons';
 import ListItem from 'react-md/lib/Lists/ListItem';
 
@@ -11,14 +10,13 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { ICoreRootReducer } from '../../Store/Reducer';
 import { closeNavigation } from '../../Store/Action/NavigationAction';
+import International from '../International';
 
-export interface INavigationItemProps extends InjectedIntlProps {
-  divider?: boolean;
+export interface INavigationItemProps {
   iconName?: string;
   messageId?: string;
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   active?: boolean;
-  visible?: boolean;
   messageString?: string;
   authorizedOnly?: boolean;
   unauthorizedOnly?: boolean;
@@ -29,7 +27,6 @@ export interface INavigationItemProps extends InjectedIntlProps {
 }
 
 const NavigationItem: React.FC<INavigationItemProps> = ({
-  intl: {formatMessage},
   iconName, messageId, onClick, active, messageString,
   authorizedOnly, unauthorizedOnly,
   isAuthorized, closeNavigation, onClickRoute, history
@@ -43,29 +40,32 @@ const NavigationItem: React.FC<INavigationItemProps> = ({
   return (
     visible
       ? (
-        <ListItem
-          key={_.uniqueId('navItem_')}
-          primaryText={
-            messageString
-              ? messageString
-              : formatMessage({id: messageId})}
-          leftIcon={<FontIcon>{iconName}</FontIcon>}
-          onClick={(event: React.MouseEvent<HTMLElement>) => {
-            const {location: {pathname}} = history;
-            if (pathname !== onClickRoute) {
-              history.push(onClickRoute);
-            }
-            closeNavigation();
-            if (onClick) {
-              onClick(event);
-            }
-          }}
-          active={active}
-        />
+        <International>
+          {({ formatMessage }) => (
+            <ListItem
+              key={_.uniqueId('navItem_')}
+              primaryText={
+                messageString
+                  ? messageString
+                  : formatMessage({id: messageId})}
+              leftIcon={<FontIcon>{iconName}</FontIcon>}
+              onClick={(event: React.MouseEvent<HTMLElement>) => {
+                const {location: {pathname}} = history;
+                if (pathname !== onClickRoute) {
+                  history.push(onClickRoute);
+                }
+                closeNavigation();
+                if (onClick) {
+                  onClick(event);
+                }
+              }}
+              active={active}/>
+          )}
+        </International>
       )
       : <></>
   )
-}
+};
 
 const mapStateToProps = (
   state: ICoreRootReducer,
@@ -77,8 +77,7 @@ const mapStateToProps = (
 
 const enhance = compose(
   connect(mapStateToProps, {closeNavigation}),
-  withRouter,
-  injectIntl
+  withRouter
 );
 
 export default enhance(NavigationItem);

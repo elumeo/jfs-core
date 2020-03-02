@@ -1,23 +1,26 @@
-import * as React from 'react';
+import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Tooltipped from 'react-md/lib/Tooltips/Tooltipped';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
 import './BackendIndicator.scss';
 import { ICoreRootReducer } from '../../Store/Reducer';
+import International from '../International';
 
-export interface IBackendIndicatorProps extends InjectedIntlProps {
+export interface IBackendIndicatorProps {
   backendRegion?: string;
 }
 
 const BackendIndicator: React.FC<IBackendIndicatorProps> = ({
-  intl: {formatMessage},
   backendRegion
 }) => (
-  <Tooltipped
-    label={`${formatMessage({id: 'app.backend'})}: ${backendRegion}`}>
-    <div className={`flag ${(backendRegion || '').toLowerCase()}`}/>
-  </Tooltipped>
+  <International>
+    {({ formatMessage }) => (
+      <Tooltipped
+        label={`${formatMessage({id: 'app.backend'})}: ${backendRegion}`}>
+        <div className={`flag ${(backendRegion || '').toLowerCase()}`}/>
+      </Tooltipped>
+    )}
+  </International>
 )
 
 const mapStateToProps = (
@@ -29,8 +32,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps),
-  injectIntl
+  connect(mapStateToProps)
 );
 
 export default enhance(BackendIndicator);

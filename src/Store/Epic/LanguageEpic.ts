@@ -25,9 +25,7 @@ export const setInitialLanguageEpic: Epic<RootAction, RootAction> = (
         changeLanguageAction(
           cookie
             ? cookie
-            : store.value.configReducer.config.Language
-            ? store.value.configReducer.config.Language
-            : 'en'
+            : store.value.configReducer.config.Language || 'en'
         ),
         loadSession()
       )

@@ -1,21 +1,15 @@
-import * as React from 'react';
-import { compose } from 'redux';
+import React from 'react';
 import { connect } from 'react-redux';
 import Button from 'react-md/lib/Buttons/Button';
 import { ICoreRootReducer } from '../../Store/Reducer';
 
 import { openNavigation, closeNavigation } from '../../Store/Action/NavigationAction';
-import { injectIntl } from 'react-intl';
 
 export interface INavigationButtonProps {
   navigationOpen?;
   openNavigation?: typeof openNavigation;
   closeNavigation?: typeof closeNavigation;
   iconName: string;
-}
-
-export interface INavigationButtonState {
-
 }
 
 const NavigationButton: React.FC<INavigationButtonProps> = ({
@@ -41,9 +35,6 @@ const mapStateToProps = (
   ...state.navigationReducer
 });
 
-const enhance = compose(
-  connect(mapStateToProps, {openNavigation, closeNavigation}),
-  injectIntl
-);
+const enhance = connect(mapStateToProps, {openNavigation, closeNavigation});
 
 export default enhance(NavigationButton);

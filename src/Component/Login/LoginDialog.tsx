@@ -1,7 +1,5 @@
-import * as React from 'react';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
+import React from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import DialogContainer from 'react-md/lib/Dialogs';
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
@@ -10,7 +8,7 @@ import { checkLogin } from '../../Store/Action/LoginAction';
 
 import './LoginDialog.scss';
 
-interface ILoginDialogProps extends InjectedIntlProps {
+interface ILoginDialogProps {
   children?: any;
   isCheckingSession?: boolean;
   routeType?: string;
@@ -21,26 +19,31 @@ interface ILoginDialogProps extends InjectedIntlProps {
 }
 
 const LoginDialog: React.FC<ILoginDialogProps> = ({
-  robotLoginAvailable, routeType, isAuthorized, isCheckingSession
-}) => (
-  <div className='login-dialog'>
-    <DialogContainer
-      id={'login-dialog'}
-      visible={
-        routeType === 'authorized' &&
-        !isAuthorized &&
-        !robotLoginAvailable &&
-        !isCheckingSession
-      }
-      title='Login'
-      aria-describedby=''
-      actions={<LoginButton/>}
-      modal
-    >
-      <LoginCredentials/>
-    </DialogContainer>
-  </div>
-);
+  robotLoginAvailable,
+  routeType,
+  isAuthorized,
+  isCheckingSession
+}) => {
+  return (
+    <div className='login-dialog'>
+      <DialogContainer
+        id={'login-dialog'}
+        visible={
+          routeType === 'authorized' &&
+          !isAuthorized &&
+          !robotLoginAvailable &&
+          !isCheckingSession
+        }
+        title='Login'
+        aria-describedby=''
+        actions={<LoginButton/>}
+        modal
+      >
+        <LoginCredentials/>
+      </DialogContainer>
+    </div>
+  );
+}
 
 const mapStateToProps = (
   state: ICoreRootReducer,
@@ -60,10 +63,6 @@ const mapStateToProps = (
   )
 });
 
-const enhance = compose(
-  connect(mapStateToProps, { checkLogin }),
-  injectIntl
-);
+const enhance = connect(mapStateToProps, { checkLogin });
 
-// noinspection JSUnusedGlobalSymbols
 export default enhance(LoginDialog);

@@ -1,15 +1,14 @@
-import * as React from 'react';
-import { compose } from 'redux';
+import React from 'react';
 import { connect } from 'react-redux';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
 import { addToastAction } from '../../Store/Action/ToastAction';
 import { ICoreRootReducer } from '../../Store/Reducer';
 import './SearchComponent.scss';
+import International from '../International';
 
-export interface ISearchComponentProps extends InjectedIntlProps {
+export interface ISearchComponentProps {
   addToastAction?: typeof addToastAction;
   autocompleteData?: string[] | number[] | { dataLabel: string, dataValue: string }[];
   centered?: boolean;
@@ -31,7 +30,7 @@ export interface ISearchComponentState {
   value?: string;
 }
 
-class SearchComponent extends React.Component<ISearchComponentProps & InjectedIntlProps, ISearchComponentState> {
+class SearchComponent extends React.Component<ISearchComponentProps, ISearchComponentState> {
   state: ISearchComponentState;
   static defaultProps = {
     autocompleteData: [],
@@ -97,7 +96,7 @@ class SearchComponent extends React.Component<ISearchComponentProps & InjectedIn
 
   render() {
     const {
-      id, style, className, placeholderTranslationId, intl: {formatMessage}, autocompleteData, indicateSearchProgress,
+      id, style, className, placeholderTranslationId, autocompleteData, indicateSearchProgress,
       labelTranslationId, focusInputOnAutocomplete, searchOnAutocomplete
     } = this.props;
     const menuId = `${id}Menu`;
@@ -105,32 +104,42 @@ class SearchComponent extends React.Component<ISearchComponentProps & InjectedIn
       <div
         id={id}
         style={style}
-        className={'search-component md-text-field-icon-container ' + className}
-      >
+        className={'search-component md-text-field-icon-container ' + className}>
         <div className="icon-view-box">
           {
             indicateSearchProgress
-              ? <CircularProgress
-                id={`${id}SearchProgress`}
-                className="search-progress"/>
-              : <Button icon onClick={() => this.handleSearch()}
-                        disabled={indicateSearchProgress}>search</Button>
+              ? (
+                <CircularProgress
+                  id={`${id}SearchProgress`}
+                  className="search-progress"/>
+              )
+              : (
+                <Button
+                  icon
+                  onClick={() => this.handleSearch()}
+                  disabled={indicateSearchProgress}>
+                  search
+                </Button>
+              )
           }
         </div>
-        <Autocomplete
-          id={`${id}-autocomplete`}
-          data={autocompleteData}
-          focusInputOnAutocomplete={focusInputOnAutocomplete && !searchOnAutocomplete}
-          inputClassName={`search ${this.state.value != '' && 'search-active' || ''}`}
-          label={labelTranslationId ? formatMessage({id: labelTranslationId}) : null}
-          menuId={menuId}
-          onAutocomplete={this.handleAutocomplete}
-          onChange={this.handleChange}
-          onKeyDown={this.handleKeyDown}
-          placeholder={placeholderTranslationId ? formatMessage({id: placeholderTranslationId}) : null}
-          textFieldClassName={'md-text-field-icon'}
-          value={this.state.value}
-        />
+        <International>
+          {({ formatMessage }) => (
+            <Autocomplete
+              id={`${id}-autocomplete`}
+              data={autocompleteData}
+              focusInputOnAutocomplete={focusInputOnAutocomplete && !searchOnAutocomplete}
+              inputClassName={`search ${this.state.value != '' && 'search-active' || ''}`}
+              label={labelTranslationId ? formatMessage({id: labelTranslationId}) : null}
+              menuId={menuId}
+              onAutocomplete={this.handleAutocomplete}
+              onChange={this.handleChange}
+              onKeyDown={this.handleKeyDown}
+              placeholder={placeholderTranslationId ? formatMessage({id: placeholderTranslationId}) : null}
+              textFieldClassName={'md-text-field-icon'}
+              value={this.state.value}/>
+          )}
+        </International>
         <Button
           icon
           className={`clear-btn ${this.state.value != '' ? 'visible' : ''}`}
@@ -150,9 +159,6 @@ const mapStateToProps = (
   ...ownProps
 });
 
-const enhance = compose(
-  connect(mapStateToProps, {addToastAction}),
-  injectIntl
-);
+const enhance = connect(mapStateToProps, {addToastAction});
 
 export default enhance(SearchComponent);
