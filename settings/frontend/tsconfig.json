@@ -28,10 +28,12 @@
     }
   },
   "exclude": [
-    "node_modules",
     "dist",
     "src/**/__test__/*"
   ],
+  "include": [
+    "node_modules"
+  ]
   "awesomeTypescriptLoaderOptions": {
     "useBabel": true,
     "useCache": true
