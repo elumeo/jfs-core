@@ -1,3 +1,11 @@
+## [8.2.2]
+- Fixed broken tsconfig.json
+
+## [8.2.1]
+
+### Bugfixes
+- Adjusted tsconfig for third party module auto completion
+
 ## [8.2.0]
 
 ### Bugfixes

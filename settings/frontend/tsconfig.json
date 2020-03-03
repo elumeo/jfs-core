@@ -29,11 +29,9 @@
   },
   "exclude": [
     "dist",
-    "src/**/__test__/*"
+    "src/__test__/*",
+    "node_modules/@elumeo/jfs-core/scripts"
   ],
-  "include": [
-    "node_modules"
-  ]
   "awesomeTypescriptLoaderOptions": {
     "useBabel": true,
     "useCache": true
