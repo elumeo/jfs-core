@@ -1,4 +1,9 @@
+## [8.3.0]
+### Added
+- Static class for internationalized messages
+
 ## [8.2.2]
+### Bugfixes
 - Fixed broken tsconfig.json
 
 ## [8.2.1]

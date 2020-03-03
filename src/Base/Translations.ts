@@ -1,3 +1,7 @@
+import { IntlMessageFormat } from 'intl-messageformat';
+
+import messages from '../Translations.json';
+
 interface ILanguage {
     [key: string]: string;
 }
@@ -7,6 +11,29 @@ export interface ITranslations {
 }
 
 class Translations {
+
+    private static selectedLanguage: string;
+
+    private static messages: ITranslations = {};
+
+    public static addMessages = (newMessages: ITranslations) => {
+        Translations.messages = Translations.merge(Translations.messages, newMessages);
+    };
+
+    public static formatMessage = ({ id }, values?) => {
+        if (Translations.messages[Translations.selectedLanguage][id]) {
+            const message = new IntlMessageFormat(Translations.messages[Translations.selectedLanguage][id]);
+            return message.format(values);
+        }
+        else {
+            return id;
+        }
+
+    };
+
+    public static setSelectedLanguage = (language: string) => {
+        Translations.selectedLanguage = language;
+    }
 
     private static mergeLanguage = (translations: ITranslations, languageName: string, language: ILanguage) => {
         if (!translations[languageName]) {
@@ -38,5 +65,7 @@ class Translations {
     }
 
 }
+
+Translations.addMessages(messages);
 
 export default Translations;
