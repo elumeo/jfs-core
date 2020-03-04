@@ -1,3 +1,7 @@
+## [8.3.2]
+### Bugfixes
+- Updated version of webpack & babel
+
 ## [8.3.1]
 ### Bugfixes
 - Fixed broken production settings (removed UglifyJsPlugin)
