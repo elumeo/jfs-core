@@ -1,5 +1,8 @@
 const { resolve } = require('path');
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
@@ -50,7 +53,15 @@ module.exports = {
     publicPath: ''
   },
   plugins: [
-
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: resolve('static', 'index.html'),
+      inject: false
+    }),
+    new CopyWebpackPlugin([
+      { from: resolve('static') },
+      { from: resolve('config.json.dist'), to: resolve('dist', 'config.json') }
+    ])
   ],
   performance: { hints: false },
 };
