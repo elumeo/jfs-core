@@ -1,3 +1,7 @@
+## [8.3.1]
+### Bugfixes
+- Fixed broken production settings (removed UglifyJsPlugin)
+
 ## [8.3.0]
 ### Added
 - Static class for internationalized messages
