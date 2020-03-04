@@ -9,8 +9,7 @@
     "compile-scripts": "node ./scripts/compile-scripts.js",
     "core-development": "node ./scripts/core-development.js",
     "jsc-generate": "node ./scripts/jsc-generate.js --project-path ./",
-    "release": "npm publish --access public",
-    "postinstall": "node ./scripts/deploy-config-files.js --project-path ../../.."
+    "release": "npm publish --access public"
   },
   "repository": {
     "type": "git",
@@ -45,7 +44,6 @@
     "@types/socket.io": "^2.1.4",
     "@types/socket.io-client": "^1.4.32",
     "ansi-colors": "^4.1.1",
-    "awesome-typescript-loader": "^3.2.3",
     "axios": "^0.18.0",
     "babel-loader": "^8.0.6",
     "bottlejs": "^1.7.1",
