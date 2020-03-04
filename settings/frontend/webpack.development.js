@@ -3,28 +3,14 @@ const webpack = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-const {
-  typescriptRule,
-  babelLoader,
-  atLoader,
-  sassRule,
-  jsonRule
-} = require('./rules');
-
-const {
-  projectPath
-} = require('./resolvedPaths');
-
-const {
-  common,
-  local
-} = require('./webpack.common.js');
+const common = require('./webpack.common.js');
 
 const mode = process.argv.includes('--watch') ? 'watch' : 'devServer';
 const https = mode === 'devServer' && process.argv.includes('--https');
 
 module.exports = {
   ...common,
+  mode: 'development',
   devtool: 'cheap-module-source-map',
   plugins: [
     ...common.plugins,
@@ -34,21 +20,27 @@ module.exports = {
   ]
 };
 
-if (mode === 'devServer') {
-  const host = local ? local.hostname : '127.0.0.1';
-  const port = local ? local.port : '2008';
+const overrideHostAndPort = (host = 'localhost', port = 8080) => {
+  module.exports.devServer.host = host;
+  module.exports.devServer.port = port;
+  const entry = module.exports.entry[0];
+  module.exports.entry = () => [
+    `webpack-dev-server/client?http://${host}:${port}/`,
+    'webpack/hot/only-dev-server',
+    entry
+  ];
+  module.exports.output.publicPath = `http://localhost:${port}/`;
+};
 
+if (mode === 'devServer') {
   module.exports.devServer = {
     https,
-    contentBase: resolve(projectPath, 'dist'),
+    contentBase: resolve('dist'),
     hot: true,
     inline: true,
     compress: true,
     historyApiFallback: true,
     disableHostCheck: true,
-    noInfo: true,
-    host: host,
-    port: port,
     publicPath: '/',
     watchOptions: {
       poll: 1500,
@@ -56,34 +48,16 @@ if (mode === 'devServer') {
     }
   };
 
-  const entry = module.exports.entry[0];
+  try {
+    const { host, port } = require(resolve('local'));
+    overrideHostAndPort(host, port);
+  }
+  catch (error) {
+    console.log(error);
+    overrideHostAndPort();
+  }
 
-  module.exports.entry = () => [
-    `webpack-dev-server/client?http://${host}:${port}/`,
-    'webpack/hot/only-dev-server',
-    entry
-  ];
 
-  module.exports.output.publicPath = `http://localhost:${port}/`;
-
-  module.exports.module.rules = [
-    {
-      ...typescriptRule,
-      use: [
-        { loader: 'react-hot-loader/webpack' },
-        {
-          ...babelLoader,
-          options: {
-            ...babelLoader.options,
-            presets: [...babelLoader.options.presets, 'react-hmre']
-          }
-        },
-        atLoader
-      ]
-    },
-    sassRule,
-    jsonRule
-  ];
-
+  module.exports.module.rules[0].use.shift({ loader: 'react-hot-loader/webpack' });
   module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
 }

@@ -1,66 +1,56 @@
 const { resolve } = require('path');
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const rules = require('./rules');
-const alias = require('./alias');
-
-const {
-  projectSrc,
-  projectStatic,
-  projectDist,
-  projectMainTsx,
-  projectNodeModules,
-  projectLocalJs,
-  projectLocalJsDist,
-  projectConfigJsonDist,
-  projectDistConfigJson
-} = require('./resolvedPaths');
-
-const copyJobs = [
-  { from: projectStatic },
-  { from: projectConfigJsonDist, to: projectDistConfigJson }
-];
-
-module.exports.local = null;
-try {
-  module.exports.local = require(projectLocalJs);
-} catch (error) {
-  console.error(error.message);
-  copyJobs.push({
-    from: projectLocalJsDist,
-    to: projectLocalJs
-  });
-}
-
-module.exports.common = {
-
+module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
-    modules: [projectSrc, 'node_modules'],
-    alias
+    modules: [resolve('src'), 'node_modules'],
+    alias: {
+      Action: resolve('src', 'Store', 'Action'),
+      Component: resolve('src', 'Component'),
+      Composition: resolve('src', 'Composition'),
+      Core: '@elumeo/jfs-core/src',
+      'Jfc/Component/HelloWorld': 'jfc-hello-world',
+      JscApi: resolve('src', 'Jsc', 'JscApi'),
+      Mock: resolve('src', 'Mock'),
+      Setup: resolve('src', 'Setup'),
+      Store: resolve('src', 'Store', 'index.ts')
+    }
   },
-
-  context: projectSrc,
-  entry: [projectMainTsx],
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/react', ['@babel/env', { modules: false, loose: true }]],
+              plugins: ['@babel/transform-runtime']
+            }
+          },
+          {
+            loader: 'ts-loader',
+            options: {
+              allowTsInNodeModules: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.s*css$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
+  },
+  context: resolve('src'),
+  entry: [resolve('src', 'Main.tsx')],
   output: {
     filename: 'bundle.js',
-    path: projectDist,
+    path: resolve('dist'),
     publicPath: ''
   },
-
-  module: {
-    rules
-  },
-
-  performance: { hints: false },
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: resolve(projectStatic, 'index.html'),
-      inject: false
-    }),
-    new CopyWebpackPlugin(copyJobs)
-  ]
+
+  ],
+  performance: { hints: false },
 };
