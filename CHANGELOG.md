@@ -1,3 +1,7 @@
+## [8.3.4]
+### Bugfixes
+- Fixed an issue with the websocket join room logic
+
 ## [8.3.3]
 ### Bugfixes
 - Moved .babelrc settings to webpack.common.js

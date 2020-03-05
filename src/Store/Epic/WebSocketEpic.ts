@@ -148,7 +148,9 @@ export const webSocketConnectSuccessEpic: Epic<RootAction, RootAction> = (action
         }
       }
       let mergedRooms: string[] = [...cleanedConfigRooms, ...stateJoinedRooms];
-      mergedRooms = [...new Set(mergedRooms)];
+      // Removed this logic because in production mode
+      // it creates a multi dimension array instead of an one dimension array
+      // mergedRooms = [...new Set(mergedRooms)];
       const roomActions: PayloadAction<string, IWebSocketRoom>[] = [];
       for (const room of mergedRooms) {
         const roomData = {
