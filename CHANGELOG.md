@@ -1,3 +1,7 @@
+## [8.3.3]
+### Bugfixes
+- Moved .babelrc settings to webpack.common.js
+
 ## [8.3.2]
 ### Bugfixes
 - Updated version of webpack & babel
