@@ -4,6 +4,7 @@
 
 .badges__notifications {
   &__notification {
+    position: relative;
     transition-property: transform, opacity;
     transition-duration: 300ms;
 
@@ -17,51 +18,67 @@
 
     &.fadein-leave {
       transition-duration: 200ms;
-      //transform: translate3d(0, 0, 0);
-      opacity: 1;
+      opacity: 0.9;
     }
 
     &.fadein-leave.fadein-leave-active {
       transition-duration: 200ms;
-      //transform: translate3d($notification-drawer-width, 0, 0);
       opacity: 0;
     }
 
     &.md-card {
-      align-items: flex-start;
-      display: flex;
-      position: relative;
       background: $md-snackbar-color;
       color: #fff !important;
       border-radius: 3px;
+      opacity: 0.9;
 
-      p {
-        width: 100%;
-        margin-bottom: 0;
-        padding: 8px;
+      .md-card-text:last-child {
+        padding-bottom: 8px;
+      }
+
+      .md-btn--text {
+        color: #fff !important;
+      }
+
+      .badge {
+        position: absolute;
+        top: 0;
+        left: 8px;
+
+        .md-badge {
+          background: $md-snackbar-color;
+
+          &--circular {
+            font-size: 12px;
+          }
+        }
+      }
+
+      .header {
+        padding: 8px 8px 0 8px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .timestamp {
+        color: #cdcdcd;
+        font-size: 0.825em;
+        margin-left: auto;
       }
     }
 
-
     &.error {
       background: $juw-error-color;
+
+      .badge .md-badge {
+        background: $juw-error-color;
+      }
     }
 
     &.clickable {
       cursor: pointer;
     }
-  }
-
-  &__notification__close {
-    height: #{$md-line-height}em;
-    position: relative;
-    display: inline-block;
-    float: right;
-    right: -8px;
-    top: -4px;
-  }
-
-  &__notification__icon {
-    padding: 5px 4px 5px 7px;
   }
 }

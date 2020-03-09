@@ -34,12 +34,8 @@ class OnScreenNotifications extends React.Component<IOnScreenNotificationsProps>
   }
 }
 
-const mapStateToProps = (
-  state: ICoreRootReducer,
-  ownProps: IOnScreenNotificationsProps
-) => ({
-  ...state.notificationReducer,
-  ...ownProps
-});
-
-export default connect(mapStateToProps)(OnScreenNotifications)
+// noinspection JSUnusedGlobalSymbols
+export default connect((store: ICoreRootReducer, ownProps: IOnScreenNotificationsProps): IOnScreenNotificationsProps => ({
+  ...ownProps,
+  notifications: store.notificationReducer.notifications
+}))(OnScreenNotifications)

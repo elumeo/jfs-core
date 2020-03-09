@@ -7,27 +7,23 @@ import { ICoreRootReducer } from '../../Store/Reducer';
 import { connect } from 'react-redux';
 import NoNotifications from './NoNotifications';
 import Toolbar from 'react-md/lib/Toolbars';
-import {
-  INotification, NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT
-} from '../../Store/Reducer/NotificationReducer';
+import { INotification, NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT } from '../../Store/Reducer/NotificationReducer';
 
 import './NotificationDrawer.scss'
 import HideNotificationDrawerButton from './HideNotificationDrawerButton';
 import SplitViewButton from './SplitViewButton';
 import DismissAllNotificationsButton from './DismissAllNotificationsButton';
-import {
-  hideNotificationDrawerAction, toggleNotificationDrawerAction
-} from '../../Store/Action/NotificationAction';
+import { hideNotificationDrawerAction, toggleNotificationDrawerAction } from '../../Store/Action/NotificationAction';
 
 const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 interface INotificationDrawerProps {
   notificationDrawerVisible?: boolean;
   notifications?: INotification[];
-  toggleNotificationDrawerAction?: typeof toggleNotificationDrawerAction;
-  hideNotificationDrawerAction?: typeof hideNotificationDrawerAction;
   notificationDrawerPinned?: boolean;
   notificationDismissCounter?: number;
+  toggleNotificationDrawerAction?: typeof toggleNotificationDrawerAction;
+  hideNotificationDrawerAction?: typeof hideNotificationDrawerAction;
 }
 
 class NotificationDrawer extends React.Component<INotificationDrawerProps> {
@@ -39,14 +35,12 @@ class NotificationDrawer extends React.Component<INotificationDrawerProps> {
   };
 
   render() {
-    const {
-      notifications, notificationDrawerPinned, notificationDrawerVisible, notificationDismissCounter, toggleNotificationDrawerAction
-    } = this.props;
+    const { notifications, notificationDrawerPinned, notificationDrawerVisible, notificationDismissCounter } = this.props;
     const empty = !notifications.length;
 
     let content;
     if (empty) {
-      content = [<NoNotifications key="no-notifications"/>];
+      content = [<NoNotifications key='no-notifications'/>];
     } else {
       content = notifications.map(n => <NotificationCard config={n} key={n.id}/>);
     }
@@ -54,7 +48,7 @@ class NotificationDrawer extends React.Component<INotificationDrawerProps> {
     const header = <Toolbar
       nav={<HideNotificationDrawerButton/>}
       actions={[<SplitViewButton/>, <DismissAllNotificationsButton/>]}
-      className="md-divider-border md-divider-border--bottom"
+      className='md-divider-border md-divider-border--bottom'
     />;
 
     const pinnedClassName = notificationDrawerPinned ? 'notification-drawer--pinned' : '';
@@ -64,8 +58,8 @@ class NotificationDrawer extends React.Component<INotificationDrawerProps> {
       <Drawer
         className={`notification-drawer ${pinnedClassName}`}
         visible={notificationDrawerVisible}
-        onVisibilityChange={toggleNotificationDrawerAction}
-        position="right"
+        onVisibilityChange={this.props.toggleNotificationDrawerAction}
+        position='right'
         header={header}
         onKeyDown={this.closeOnESC}
         type={Drawer.DrawerTypes.TEMPORARY}
@@ -85,14 +79,15 @@ class NotificationDrawer extends React.Component<INotificationDrawerProps> {
   }
 }
 
-const mapStateToProps = (
-  state: ICoreRootReducer,
-  ownProps: INotificationDrawerProps) => ({
-  ...state.notificationReducer,
-  ...ownProps
-});
-
-export default connect(mapStateToProps, {
+// noinspection JSUnusedGlobalSymbols
+export default connect((
+  store: ICoreRootReducer, ownProps: INotificationDrawerProps): INotificationDrawerProps => ({
+  ...ownProps,
+  notificationDrawerVisible: store.notificationReducer.notificationDrawerVisible,
+  notifications: store.notificationReducer.notifications,
+  notificationDrawerPinned: store.notificationReducer.notificationDrawerPinned,
+  notificationDismissCounter: store.notificationReducer.notificationDismissCounter
+}), {
   toggleNotificationDrawerAction,
   hideNotificationDrawerAction
 })(NotificationDrawer)

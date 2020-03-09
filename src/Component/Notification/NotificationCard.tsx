@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import Card from 'react-md/lib/Cards/Card';
 import FontIcon from 'react-md/lib/FontIcons/FontIcon';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
@@ -10,6 +9,7 @@ import ErrorContent from '../Snackbar/ErrorContent';
 import { ICoreRootReducer } from '../../Store/Reducer';
 import { dismissNotificationAction } from '../../Store/Action/NotificationAction';
 import { INotification } from '../../Store/Reducer/NotificationReducer';
+import { Badge, Button, CardActions, CardText } from 'react-md';
 
 export interface INotificationCardProps extends InjectedIntlProps {
   config: INotification;
@@ -19,11 +19,25 @@ export interface INotificationCardProps extends InjectedIntlProps {
 
 class NotificationCard extends React.Component<INotificationCardProps & InjectedIntlProps> {
 
+  getBadge = (): React.ReactNode => {
+    const { config: { count, id } } = this.props;
+    return count <= 1
+      ? null
+      : <Badge primary circular className='badge' badgeId={`count_of_${id}`} badgeContent={`${count}x`}/>;
+  };
+
+  getHeader = (): React.ReactNode => {
+    return <header className='header'>
+      {this.getIcon()}
+      {this.getTimestamp()}
+    </header>
+  };
+
   getContent = (): JSX.Element => {
-    const {config: {message, translationId, error}, intl: {formatMessage}} = this.props;
+    const { config: { message, translationId, error }, intl: { formatMessage } } = this.props;
     if (!((message ? 1 : 0) ^ (translationId ? 1 : 0) ^ (error ? 1 : 0))) {
       throw new Error(
-        `Either 'message' or 'translationId' or 'error' has to be provided.`
+        `Only either 'message', 'translationId' or 'error' can be specified.`
       );
     }
     let content = null;
@@ -31,40 +45,59 @@ class NotificationCard extends React.Component<INotificationCardProps & Injected
       content = message;
     }
     if (translationId) {
-      content = formatMessage({id: translationId});
+      content = formatMessage({ id: translationId });
     }
     if (error) {
       content = <ErrorContent contentError={error}/>
     }
-    return <p className="md-text--inherit">{this.getCloseButton()}{content}</p>
+    return <CardText className='md-text--inherit'>{content}</CardText>
   };
 
   getIcon = () => {
-    const {config: {icon, error}} = this.props;
+    const { config: { icon, error } } = this.props;
     const iconName = error ? 'error' : icon;
-
-    return iconName ? (
-      <div className="badges__notifications__notification__icon">
-        <FontIcon className="md-text--inherit">{iconName}</FontIcon>
-      </div>
-    ) : null;
+    return iconName ? <FontIcon className='icon md-text--inherit'>{iconName}</FontIcon> : null;
   };
 
-  getCloseButton = () => {
-    const {dismissNotificationAction, config} = this.props;
-    return <button
-      onClick={(event) => {
+  getTimestamp = () => {
+    const { config: { timestamp }, intl: { formatTime, formatDate } } = this.props;
+    const now = new Date();
+    const displayDate = now.toDateString() != timestamp.toDateString();
+    return <div className='timestamp'>{displayDate ? `${formatDate(timestamp)} ` : null}{formatTime(timestamp)}</div>;
+  };
+
+  getActions = (): React.ReactNode => {
+    const { config, config: { customActionLabelTranslationId, dismissLabelTranslationId, onCustomAction, onDismiss }, intl: { formatMessage: _ } } = this.props;
+    if (!(!onCustomAction) && !customActionLabelTranslationId) {
+      throw new Error('If you provide a onCustomAction you should also provide a customActionLabelTranslationId');
+    }
+    return <CardActions className='md-dialog-footer'>
+      {!onCustomAction
+        ? null
+        : <Button raised onClick={() => onCustomAction(config)}>
+          {!customActionLabelTranslationId ? 'notification.action_1' : _({ id: customActionLabelTranslationId })}
+        </Button>}
+      <Button raised onClick={event => {
         event.stopPropagation();
-        dismissNotificationAction(config.id);
-      }}
-      className="md-btn md-text--inherit md-pointer--hover badges__notifications__notification__close"
-    >
-      <FontIcon className="md-text--inherit">close</FontIcon>
-    </button>;
+        this.props.dismissNotificationAction(config.id);
+        if (typeof onDismiss == 'function') {
+          onDismiss(config);
+        }
+      }}>
+        {_({ id: !dismissLabelTranslationId ? 'notification.dismiss' : dismissLabelTranslationId })}
+      </Button>
+    </CardActions>;
   };
+
+  componentDidMount(): void {
+    const { config, config: { onMount } } = this.props;
+    if (typeof onMount == 'function') {
+      onMount(config);
+    }
+  }
 
   render() {
-    const {config, config: {error, isError, onClick}, intl: {formatMessage}} = this.props;
+    const { config, config: { error, isError, onClick } } = this.props;
     const errorClass = isError || error ? 'error' : '';
     const clickClass = onClick ? 'clickable' : '';
     return (
@@ -77,27 +110,23 @@ class NotificationCard extends React.Component<INotificationCardProps & Injected
         className={[
           `md-cell`, `md-cell--12`,
           `badges__notifications__notification`,
-          errorClass, clickClass, formatMessage({id: 'app.title'})
+          errorClass, clickClass
         ].join(' ')}>
-        {this.getIcon()}
+        {this.getBadge()}
+        {this.getHeader()}
         {this.getContent()}
+        {this.getActions()}
       </Card>
     )
   }
 }
 
-const mapStateToProps = (
-  state: ICoreRootReducer,
-  ownProps: INotificationCardProps
-): INotificationCardProps => ({
-  ...state.notificationReducer,
-  ...state.languageReducer,
-  ...ownProps
-});
-
-const enhance = compose(
-  connect(mapStateToProps, {dismissNotificationAction}),
-  injectIntl
+export default injectIntl(connect(
+  (store: ICoreRootReducer, ownProps: INotificationCardProps): INotificationCardProps => ({
+    ...ownProps,
+    language: store.languageReducer.language,
+  }), {
+    dismissNotificationAction
+  })
+  (NotificationCard)
 );
-
-export default enhance(NotificationCard);

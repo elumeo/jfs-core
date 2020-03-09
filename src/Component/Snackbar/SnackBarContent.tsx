@@ -1,20 +1,7 @@
 import * as React from 'react';
 import ErrorContent, { errorText } from './ErrorContent';
 import { IToastConfig } from '../../Store/Reducer/ToastReducer';
-
-// https://en.wikipedia.org/wiki/Speed_reading
-const AVERAGE_READING_WORDS_PER_MINUTE = 200;
-const AVERAGE_READING_WORDS_PER_SECOND = AVERAGE_READING_WORDS_PER_MINUTE / 60;
-
-const getToastAutohideTimeout = (text: any, min: number = 3000) => {
-  const isString = (typeof text === 'string') || (text instanceof String);
-  if (!isString) {
-    return min;
-  }
-  const words = text.split(' ').length;
-  const calculatedTimeout = words / AVERAGE_READING_WORDS_PER_SECOND * 1000;
-  return Math.max(min, calculatedTimeout);
-};
+import { determineTimeToRead as getToastAutohideTimeout } from '../../Base/Utilities';
 
 export default (toast: IToastConfig, formatMessage) => {
   const {contentTranslationId, contentMessage, contentError} = toast;

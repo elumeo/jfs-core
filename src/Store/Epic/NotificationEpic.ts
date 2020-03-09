@@ -2,7 +2,7 @@ import { Epic } from 'redux-observable';
 import { EMPTY, merge, of } from 'rxjs';
 import { delay, filter, mergeMap } from 'rxjs/operators';
 import { RootAction } from '../Action/RootAction';
-import { isActionOf } from 'typesafe-actions';
+import { isActionOf, PayloadAction } from 'typesafe-actions';
 import {
   addNotificationAction,
   addNotificationWithIdAction,
@@ -16,6 +16,8 @@ import {
   unpinNotificationDrawerAction,
 } from '../Action/NotificationAction';
 import { disableSplitViewAction, enableSplitViewAction } from '../Action/SplitViewAction';
+import { INotification, INotificationContent } from '../Reducer/NotificationReducer';
+import { determineTimeToRead } from '../../Base/Utilities';
 
 let notificationIncrementId = 0;
 
@@ -23,19 +25,22 @@ export const addNotificationEpic: Epic<RootAction, RootAction> = (action$) =>
   merge(
     action$.pipe(
       filter(isActionOf(addNotificationAction)),
-      mergeMap((action) =>
-        of(
-          addNotificationWithIdAction({
-            ...action.payload,
-            id: ++notificationIncrementId
-          })
-        )
-      )
+      mergeMap(({ payload: notification }: PayloadAction<string, INotificationContent>) => of(
+        addNotificationWithIdAction({
+          ...notification,
+          id: ++notificationIncrementId,
+          count: 1,
+          timestamp: new Date(),
+          autoHideDelay: !notification.stayOnScreen ? determineTimeToRead(notification.message) : null
+        })
+      ))
     ),
     action$.pipe(
       filter(isActionOf(addNotificationWithIdAction)),
-      mergeMap((action) =>
-        of(fadeNotificationOffScreenAction(action.payload.id)).pipe(delay(3000))
+      mergeMap(({ payload: notification }: PayloadAction<string, INotification>) =>
+        notification.autoHideDelay !== null && notification.autoHideDelay !== undefined
+          ? of(fadeNotificationOffScreenAction(notification.id)).pipe(delay(notification.autoHideDelay))
+          : EMPTY
       )
     ),
   );
