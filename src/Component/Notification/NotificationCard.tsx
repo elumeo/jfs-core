@@ -24,7 +24,9 @@ class NotificationCard extends React.Component<INotificationCardProps> {
     const { config: { count, id } } = this.props;
     return count <= 1
       ? null
-      : <Badge primary circular className='badge' badgeId={`count_of_${id}`} badgeContent={`${count}x`}/>;
+      : <Badge primary circular className='badge' badgeId={`count_of_${id}`} badgeContent={`${count}x`}>
+        <FontIcon> </FontIcon>
+      </Badge>;
   };
 
   getHeader = (): React.ReactNode => {
