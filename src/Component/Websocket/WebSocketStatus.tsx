@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ICoreRootReducer } from '../../Store/Reducer';
 import { connect } from 'react-redux';
 import { IWebsocketConnectionProps, IWebsocketConnectionState } from './WebSocketConnection';

@@ -1,10 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import NavigationItem from '../Navigation/NavigationItem';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { openLogout } from '../../Store/Action/LogoutAction';
 import { ICoreRootReducer } from '../../Store/Reducer';
-import { injectIntl } from 'react-intl';
 
 export interface ILogoutNavigationItemProps {
   robotLoginAvailable?: boolean;
@@ -25,7 +24,7 @@ const LogoutNavigationItem: React.FC<ILogoutNavigationItemProps> = ({
       />
     )
     : <></>
-)
+);
 
 const mapStateToProps = (
   state: ICoreRootReducer,
@@ -42,8 +41,7 @@ const mapStateToProps = (
 });
 
 const enhance = compose(
-  connect(mapStateToProps, {openLogout}),
-  injectIntl
+  connect(mapStateToProps, {openLogout})
 );
 
 export default enhance(LogoutNavigationItem);

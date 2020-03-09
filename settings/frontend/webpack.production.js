@@ -1,22 +1,30 @@
 const webpack = require('webpack');
-const { CheckerPlugin } = require('awesome-typescript-loader');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
-const { common } = require('./webpack.common.js');
+const common = require('./webpack.common.js');
 
 process.env.NODE_ENV = 'production';
 
 module.exports = {
   ...common,
+  mode: 'production',
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+        terserOptions: {
+          compress: { warnings: false },
+          output: { comments: false },
+          ie8: true
+        },
+        sourceMap: false
+      })
+    ]
+  },
   plugins: [
     ...common.plugins,
-    new CheckerPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      compress: { screw_ie8: true, warnings: false },
-      output: { comments: false },
-      sourceMap: false
-    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')

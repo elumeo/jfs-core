@@ -1,7 +1,5 @@
-import * as React from 'react';
-import { compose } from 'redux';
+import React from 'react';
 import { connect } from 'react-redux';
-import { injectIntl } from 'react-intl';
 import Toolbar from 'react-md/lib/Toolbars';
 
 import { ICoreRootReducer } from '../../Store/Reducer';
@@ -19,7 +17,7 @@ const NavigationDrawerHeader: React.FC<INavigationDrawerHeaderProps> = ({
     className="md-divider-border md-divider-border--bottom"
     title={username ? username : ''}
   />
-)
+);
 
 const mapStateToProps = (
   state: ICoreRootReducer,
@@ -32,9 +30,6 @@ const mapStateToProps = (
   )
 });
 
-const enhance = compose(
-  connect(mapStateToProps),
-  injectIntl
-);
+const enhance = connect(mapStateToProps);
 
 export default enhance(NavigationDrawerHeader);

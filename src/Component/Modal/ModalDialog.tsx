@@ -1,9 +1,8 @@
-import * as React from 'react';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
-
+import React from 'react';
 import DialogContainer from 'react-md/lib/Dialogs';
+import International from '../International';
 
-interface IModalDialog extends InjectedIntlProps {
+interface IModalDialog {
   visible: boolean;
   children?: any;
   closeDialog: (close: boolean) => void;
@@ -22,7 +21,6 @@ const ModalDialog: React.FC<IModalDialog> = (
     title,
     description,
     closeDialog,
-    intl,
     visible,
     closeButtonText,
     children,
@@ -32,45 +30,45 @@ const ModalDialog: React.FC<IModalDialog> = (
     closeOnEsc,
     actions
   }
-) => {
-  const {formatMessage} = intl;
-  const id = `modal-dialog-${Math.round(Math.random() * 1000)}`;
-  return (
-    <DialogContainer
-      id={id}
-      visible={visible}
-      title={title}
-      aria-describedby={description}
-      modal
-      onHide={closeDialog}
-      closeOnEsc={closeOnEsc}
-      className={className}
-      actions={[
-        {
-          onClick: () => {
-            closeDialog(false);
+) => (
+  <International>
+    {({ formatMessage }) => (
+      <DialogContainer
+        id={`modal-dialog-${Math.round(Math.random() * 1000)}`}
+        visible={visible}
+        title={title}
+        aria-describedby={description}
+        modal
+        onHide={closeDialog}
+        closeOnEsc={closeOnEsc}
+        className={className}
+        actions={[
+          {
+            onClick: () => {
+              closeDialog(false);
+            },
+            primary: true,
+            label: formatMessage({id: closeButtonText}),
           },
-          primary: true,
-          label: formatMessage({id: closeButtonText}),
-        },
-        ...(
-          (confirmButtonText && onConfirm) && [
-            {
-              onClick: () => {
-                onConfirm();
-              },
-              primary: true,
-              label: formatMessage({id: confirmButtonText}),
-            }
-          ] || []
-        ),
-        ...(actions || [])
-      ]}
-    >
-      {children}
-    </DialogContainer>
-  );
-};
+          ...(
+            (confirmButtonText && onConfirm) && [
+              {
+                onClick: () => {
+                  onConfirm();
+                },
+                primary: true,
+                label: formatMessage({id: confirmButtonText}),
+              }
+            ] || []
+          ),
+          ...(actions || [])
+        ]}
+      >
+        {children}
+      </DialogContainer>
+    )}
+  </International>
+);
 
 ModalDialog.defaultProps = {
   title: 'Modal Dialog',
@@ -78,4 +76,4 @@ ModalDialog.defaultProps = {
   closeButtonText: 'app.closeBtnLabelModalDialog',
 };
 
-export default injectIntl(ModalDialog);
+export default ModalDialog;

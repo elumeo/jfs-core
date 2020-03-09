@@ -1,23 +1,23 @@
-import * as React from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Card from 'react-md/lib/Cards/Card';
 import FontIcon from 'react-md/lib/FontIcons/FontIcon';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
 
 import './NotificationCard.scss'
 import ErrorContent from '../Snackbar/ErrorContent';
 import { ICoreRootReducer } from '../../Store/Reducer';
 import { dismissNotificationAction } from '../../Store/Action/NotificationAction';
 import { INotification } from '../../Store/Reducer/NotificationReducer';
+import International from '../International';
 import { Badge, Button, CardActions, CardText } from 'react-md';
 
-export interface INotificationCardProps extends InjectedIntlProps {
+export interface INotificationCardProps {
   config: INotification;
   dismissNotificationAction?: typeof dismissNotificationAction;
   language?: string;
 }
 
-class NotificationCard extends React.Component<INotificationCardProps & InjectedIntlProps> {
+class NotificationCard extends React.Component<INotificationCardProps> {
 
   getBadge = (): React.ReactNode => {
     const { config: { count, id } } = this.props;
@@ -34,23 +34,28 @@ class NotificationCard extends React.Component<INotificationCardProps & Injected
   };
 
   getContent = (): JSX.Element => {
-    const { config: { message, translationId, error }, intl: { formatMessage } } = this.props;
-    if (!((message ? 1 : 0) ^ (translationId ? 1 : 0) ^ (error ? 1 : 0))) {
-      throw new Error(
-        `Only either 'message', 'translationId' or 'error' can be specified.`
-      );
+    return <International>{
+      ({ formatMessage }) => {
+        const { config: { message, translationId, error } } = this.props;
+        if (!((message ? 1 : 0) ^ (translationId ? 1 : 0) ^ (error ? 1 : 0))) {
+          throw new Error(
+            `Only either 'message', 'translationId' or 'error' can be specified.`
+          );
+        }
+        let content = null;
+        if (message) {
+          content = message;
+        }
+        if (translationId) {
+          content = formatMessage({ id: translationId });
+        }
+        if (error) {
+          content = <ErrorContent contentError={error}/>
+        }
+        return <CardText className='md-text--inherit'>{content}</CardText>
+      }
     }
-    let content = null;
-    if (message) {
-      content = message;
-    }
-    if (translationId) {
-      content = formatMessage({ id: translationId });
-    }
-    if (error) {
-      content = <ErrorContent contentError={error}/>
-    }
-    return <CardText className='md-text--inherit'>{content}</CardText>
+    </International>;
   };
 
   getIcon = () => {
@@ -121,12 +126,11 @@ class NotificationCard extends React.Component<INotificationCardProps & Injected
   }
 }
 
-export default injectIntl(connect(
+export default connect(
   (store: ICoreRootReducer, ownProps: INotificationCardProps): INotificationCardProps => ({
     ...ownProps,
     language: store.languageReducer.language,
   }), {
     dismissNotificationAction
   })
-  (NotificationCard)
-);
+(NotificationCard);

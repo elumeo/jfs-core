@@ -20,22 +20,26 @@ const Initialized: React.FC<IInitializedProps> = ({
   children,
   appInitialized
 }) => (
-  appInitialized && (
-    <IntlProvider
-      locale={language}
-      messages={messages[language]}>
+  appInitialized
+    ? (
       <HashRouter>
-        <>
-          {children}
-        </>
+        <IntlProvider
+          locale={language}
+          messages={messages[language]}>
+          <>
+            {children}
+          </>
+        </IntlProvider>
       </HashRouter>
-    </IntlProvider>
-  ) || (
-    <div className="app-initialize-progress">
-      <CircularProgress id="app-initialize-progress" scale={2}/>
-    </div>
-  )
+    )
+    : (
+      <div className="app-initialize-progress">
+        <CircularProgress id="app-initialize-progress" scale={2}/>
+      </div>
+    )
 );
+
+
 
 const mapStateToProps = (
   state: ICoreRootReducer,

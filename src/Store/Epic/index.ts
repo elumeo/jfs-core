@@ -26,7 +26,7 @@ import {
   webSocketLeaveRoomRequestEpic,
   webSocketLogoutEpic
 } from './WebSocketEpic';
-import { setInitialLanguageEpic } from './LanguageEpic';
+import LanguageEpic, { setInitialLanguageEpic } from './LanguageEpic';
 import { Observable, EMPTY } from 'rxjs';
 import Shared from '../../Shared';
 
@@ -39,7 +39,7 @@ export const wrappedCombineEpics = (...epics) => combineEpics(
   getRegionEpic,
   loadConfigEpic,
   logoutEpic,
-  setInitialLanguageEpic,
+  LanguageEpic,
   splitViewEpic,
   loadSessionEpic,
   checkSessionEpic,

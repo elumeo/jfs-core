@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import ErrorContent, { errorText } from './ErrorContent';
 import { IToastConfig } from '../../Store/Reducer/ToastReducer';
 import { determineTimeToRead as getToastAutohideTimeout } from '../../Base/Utilities';

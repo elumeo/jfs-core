@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import { ICoreRootReducer } from '../../Store/Reducer';
@@ -10,7 +10,7 @@ export interface IContentProps {
 
 class Content extends React.Component<IContentProps> {
   render() {
-    const {props: {children, splitViewEnabled}} = this;
+    const { props: { children, splitViewEnabled } } = this;
 
     const contentClassName = [
       `authorized-content`,

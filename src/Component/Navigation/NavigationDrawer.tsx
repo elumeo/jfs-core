@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { InjectedIntlProps, injectIntl, InjectedIntl } from 'react-intl';
+import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Drawer, { DrawerPosition } from 'react-md/lib/Drawers';
@@ -11,8 +10,7 @@ import { closeNavigation } from '../../Store/Action/NavigationAction';
 
 import NavigationDrawerHeader from './NavigationDrawerHeader';
 
-export interface INavigationDrawerProps extends InjectedIntlProps, RouteComponentProps {
-  intl?: InjectedIntl;
+export interface INavigationDrawerProps extends RouteComponentProps {
   navigationOpen?: boolean;
   position: DrawerPosition;
   history;
@@ -22,7 +20,10 @@ export interface INavigationDrawerProps extends InjectedIntlProps, RouteComponen
 }
 
 const NavigationDrawer: React.FC<INavigationDrawerProps> = ({
-  navigationOpen, closeNavigation, position, children
+  navigationOpen,
+  closeNavigation,
+  position,
+  children
 }) => (
   <div className='navigation-drawer'>
     <Drawer
@@ -38,7 +39,6 @@ const NavigationDrawer: React.FC<INavigationDrawerProps> = ({
   </div>
 );
 
-// higher order components -----------------------------------------------------
 const mapStateToProps = (
   state: ICoreRootReducer,
   ownProps: INavigationDrawerProps
@@ -48,8 +48,7 @@ const mapStateToProps = (
 });
 
 export default withRouter(
-  injectIntl(
-    connect(mapStateToProps, {closeNavigation})
+  connect(mapStateToProps, {closeNavigation})(
     (NavigationDrawer)
   )
 );

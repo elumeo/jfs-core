@@ -3,6 +3,7 @@
   "buildOnSave": false,
   "compilerOptions": {
     "target": "es6",
+    "lib": ["es2018", "esNext", "DOM"],
     "module": "esnext",
     "moduleResolution": "node",
     "removeComments": true,
@@ -27,9 +28,9 @@
     }
   },
   "exclude": [
-    "node_modules",
     "dist",
-    "src/**/__test__/*"
+    "src/__test__/*",
+    "node_modules/@elumeo/jfs-core/scripts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useBabel": true,

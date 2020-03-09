@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Button } from 'react-md';
 import { connect } from 'react-redux';
 import { dismissAllNotificationsAction } from '../../Store/Action/NotificationAction';

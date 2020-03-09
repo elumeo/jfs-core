@@ -1,3 +1,40 @@
+## [8.3.4]
+### Bugfixes
+- Fixed an issue with the websocket join room logic
+
+## [8.3.3]
+### Bugfixes
+- Moved .babelrc settings to webpack.common.js
+
+## [8.3.2]
+### Bugfixes
+- Updated version of webpack & babel
+
+## [8.3.1]
+### Bugfixes
+- Fixed broken production settings (removed UglifyJsPlugin)
+
+## [8.3.0]
+### Added
+- Static class for internationalized messages
+
+## [8.2.2]
+### Bugfixes
+- Fixed broken tsconfig.json
+
+## [8.2.1]
+
+### Bugfixes
+- Adjusted tsconfig for third party module auto completion
+
+## [8.2.0]
+
+### Bugfixes
+- re-enabled recursive dependency resolution in webpack settings
+
+### Added
+- added \<International/> component for message internationalization
+
 ## [8.1.9]
 ### Bugfixes
 - Use the INotification in websocket error handling
