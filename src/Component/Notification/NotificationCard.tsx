@@ -10,6 +10,7 @@ import { dismissNotificationAction } from '../../Store/Action/NotificationAction
 import { INotification } from '../../Store/Reducer/NotificationReducer';
 import International from '../International';
 import { Badge, Button, CardActions, CardText } from 'react-md';
+import Translations from '../../Base/Translations';
 
 export interface INotificationCardProps {
   config: INotification;
@@ -65,14 +66,17 @@ class NotificationCard extends React.Component<INotificationCardProps> {
   };
 
   getTimestamp = () => {
-    const { config: { timestamp }, intl: { formatTime, formatDate } } = this.props;
+    const { config: { timestamp } } = this.props;
+    const { formatDate, formatTime } = Translations; 
     const now = new Date();
     const displayDate = now.toDateString() != timestamp.toDateString();
-    return <div className='timestamp'>{displayDate ? `${formatDate(timestamp)} ` : null}{formatTime(timestamp)}</div>;
+    return <div
+      className='timestamp'>{displayDate ? `${formatDate(timestamp)} ` : null}{formatTime(timestamp)}</div>;
   };
 
   getActions = (): React.ReactNode => {
-    const { config, config: { customActionLabelTranslationId, dismissLabelTranslationId, onCustomAction, onDismiss }, intl: { formatMessage: _ } } = this.props;
+    const { config, config: { customActionLabelTranslationId, dismissLabelTranslationId, onCustomAction, onDismiss } } = this.props;
+    const { formatMessage } = Translations;
     if (!(!onCustomAction) && !customActionLabelTranslationId) {
       throw new Error('If you provide a onCustomAction you should also provide a customActionLabelTranslationId');
     }
@@ -80,7 +84,7 @@ class NotificationCard extends React.Component<INotificationCardProps> {
       {!onCustomAction
         ? null
         : <Button raised onClick={() => onCustomAction(config)}>
-          {!customActionLabelTranslationId ? 'notification.action_1' : _({ id: customActionLabelTranslationId })}
+          {!customActionLabelTranslationId ? 'notification.action_1' : formatMessage({ id: customActionLabelTranslationId })}
         </Button>}
       <Button raised onClick={event => {
         event.stopPropagation();
@@ -89,7 +93,7 @@ class NotificationCard extends React.Component<INotificationCardProps> {
           onDismiss(config);
         }
       }}>
-        {_({ id: !dismissLabelTranslationId ? 'notification.dismiss' : dismissLabelTranslationId })}
+        {formatMessage({ id: !dismissLabelTranslationId ? 'notification.dismiss' : dismissLabelTranslationId })}
       </Button>
     </CardActions>;
   };

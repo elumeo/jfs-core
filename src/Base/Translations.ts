@@ -24,23 +24,29 @@ class Translations {
         if (Translations.messages[Translations.selectedLanguage][id]) {
             const message = new IntlMessageFormat(Translations.messages[Translations.selectedLanguage][id]);
             return message.format(values);
-        }
-        else {
+        } else {
             return id;
         }
-
     };
+
+    public static formatDate(value: string | Date) {
+        return new Intl.DateTimeFormat(Translations.selectedLanguage).format(new Date(value));
+    }
+
+    public static formatTime(value: string | Date) {
+        return new Intl.DateTimeFormat(Translations.selectedLanguage, { hour: '2-digit', minute: '2-digit' }).format(new Date(value));
+    }
 
     public static setSelectedLanguage = (language: string) => {
         Translations.selectedLanguage = language;
-    }
+    };
 
     private static mergeLanguage = (translations: ITranslations, languageName: string, language: ILanguage) => {
         if (!translations[languageName]) {
             translations[languageName] = language;
-        }
-        else {
+        } else {
             for (const translationKey in language) {
+                // noinspection JSUnfilteredForInLoop
                 translations[languageName][translationKey] = language[translationKey];
             }
         }
