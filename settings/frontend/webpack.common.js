@@ -1,4 +1,8 @@
 const { resolve } = require('path');
+const copyLocal = require('./copyLocal');
+copyLocal();
+
+// -----------------------------------------------------------------------------
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
