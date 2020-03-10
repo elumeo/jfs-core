@@ -3,6 +3,7 @@
   "buildOnSave": false,
   "compilerOptions": {
     "target": "es6",
+    "lib": ["es2018", "esNext", "DOM"],
     "module": "esnext",
     "moduleResolution": "node",
     "removeComments": true,
@@ -15,12 +16,21 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "noImplicitReturns": true,
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "Action/*": ["./Store/Action/*"],
+      "Component/*": ["./Component/*"],
+      "Core/*": ["../node_modules/@elumeo/jfs-core/src/*"],
+      "JscApi": ["./Jsc/JscApi.ts"],
+      "Mock/*": ["./Mock/*"],
+      "Setup/*": ["./Setup/*"],
+      "Store": ["./Store/index.ts"]
+    }
   },
   "exclude": [
-    "node_modules",
     "dist",
-    "src/**/__test__/*"
+    "src/__test__/*",
+    "node_modules/@elumeo/jfs-core/scripts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useBabel": true,

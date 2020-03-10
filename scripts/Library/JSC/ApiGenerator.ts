@@ -31,7 +31,7 @@ class ApiGenerator {
             : null
     );
 
-    public static fetchApi = (api: Api, versionNumber, apiFetched: (apiString: string) => void) => (
+    public static fetchApi = (versionNumber, apiFetched: (apiString: string) => void) => (
         Api.config(
             jscApiConfig => ApiGenerator.endpoint({
                 versionNumber,
@@ -51,22 +51,27 @@ class ApiGenerator {
         )
     );
 
-    public static generate = (api: Api, versionNumber = 2) => (
+    public static generate = (
+      generationComplete: () => void,
+      versionNumber = 2
+    ) => (
         ApiGenerator.fetchApi(
-            api,
             versionNumber,
             apiString => Api.file.write({
                 data: apiString,
-                dataWritten: () => console.log(
-                    color.green(`√ New JscApi File '${Api.file.path}' successfully created`)
-                )
+                dataWritten: () => {
+                  const message = color.green(
+                    `√ New JscApi File '${Api.file.path}' successfully created`
+                  );
+                  console.log(message);
+                  generationComplete();
+                }
             })
         )
     );
 
-    public static check = (api: Api, versionNumber = 2) => (
+    public static check = (versionNumber = 2) => (
         ApiGenerator.fetchApi(
-            api,
             versionNumber,
             apiString => Api.version(
                 apiHash => console.log(

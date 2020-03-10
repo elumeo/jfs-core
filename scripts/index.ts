@@ -1,1 +1,1 @@
-import 'Setup/sync-development';
+import 'Setup/jsc-generate';

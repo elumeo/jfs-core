@@ -41,7 +41,8 @@ class Api {
         )
     );
 
-    public static generate = () => ApiGenerator.generate(
+    public static generate = (generationComplete: () => void) => ApiGenerator.generate(
+        generationComplete,
         CLI.parameter('version') || 2
     );
 

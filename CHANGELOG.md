@@ -1,3 +1,7 @@
+## [8.5.0] - 2020-03-10
+### Added
+- prettier integration for jsc-generate script
+
 ## [8.4.3] - 2020-03-10
 ### Bugfixes
 - create local.js automatically before any build from local.js.dist

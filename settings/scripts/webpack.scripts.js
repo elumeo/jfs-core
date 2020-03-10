@@ -8,7 +8,7 @@ module.exports = {
   entry: [resolve(__dirname, '..', '..', 'scripts', 'index.ts')],
   output: {
     path: resolve(__dirname, '..', '..', 'scripts'),
-    filename: 'script.js'
+    filename: 'jsc-generate.js'
   },
   resolve: {
     extensions: ['.ts', '.json'],
@@ -27,7 +27,7 @@ module.exports = {
       {
         test: /\.ts?$/,
         use: [
-          'awesome-typescript-loader'
+          'ts-loader'
         ]
       }
     ]
