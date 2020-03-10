@@ -1,10 +1,14 @@
+## [8.4.3] - 2020-03-10
+### Bugfixes
+- create local.js automatically before any build from local.js.dist
+
 ## [8.4.0] - 2020-03-09
 ### Added
 - formatTime and formatDate to static Translation class
 - Notifications
     - stayOnScreen - adding an option to leave Notifications on screen as long as the user dismiss them.
     - intelligent autoHideTimeout - calculate the autoHideTimeout by determining the words to read for each notification
-    - combine duplicates - consecutively equal notifications will be combined to a single notification indicating how often it occurred 
+    - combine duplicates - consecutively equal notifications will be combined to a single notification indicating how often it occurred
     - TimeStamp - each Notification will show the time of it’s occurrence, also the date if it’s not today
     - Custom Actions - Notifications will give the option to add a custom action
     - Keep Track - Adding Notifications should give a handle to it to manually dismiss them later
