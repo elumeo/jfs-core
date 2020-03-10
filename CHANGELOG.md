@@ -6,6 +6,15 @@
 ### Bugfixes
 - create local.js automatically before any build from local.js.dist
 
+## [8.4.2] - 2020-03-09
+### Bugfixes
+- Rolled back IDE auto import improvement due to broken core
+
+## [8.4.1] - 2020-03-09
+### Bugfixes
+- Notification Badge without children error
+- Improved IDE auto import
+
 ## [8.4.0] - 2020-03-09
 ### Added
 - formatTime and formatDate to static Translation class
