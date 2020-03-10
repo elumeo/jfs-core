@@ -1,3 +1,7 @@
+## [8.5.1] - 2020-03-10
+### Bugfixes
+- fixed an issue when try to emit to websocket when no websocket connection is available 
+
 ## [8.5.0] - 2020-03-10
 ### Added
 - prettier integration for jsc-generate script
