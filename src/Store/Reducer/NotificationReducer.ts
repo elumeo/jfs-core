@@ -13,7 +13,7 @@ import {
 } from '../Action/NotificationAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import { AxiosError } from 'axios';
-import { getPlainText } from 'Component/Notification/NotificationCard';
+import { getPlainText } from '../../Component/Notification/NotificationCard';
 
 export interface INotificationContent {
   error?: Error | AxiosError | any;
