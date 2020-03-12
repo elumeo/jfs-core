@@ -3,6 +3,13 @@ import color from 'ansi-colors';
 import File from "Library/Filesystem/File";
 import Directory from "Library/Filesystem/Directory";
 import CLI from "Library/CLI";
+import { existsSync } from 'fs';
+
+enum CORE_ENVIRONMENT {
+  LOCAL = 'local',
+  APP = 'app',
+  SHARED = 'shared'
+}
 
 class Core {
 
@@ -23,66 +30,116 @@ class Core {
         )
     });
 
+    public static detectEnvironment = ({
+      modeDetected
+    }: { modeDetected: (mode: CORE_ENVIRONMENT) => void }) => {
+      const coreMode = !existsSync(
+        resolve(
+            process.cwd(),
+            CLI.parameter('project-path'),
+            'package.json'
+        )
+      );
+
+      if (!coreMode) {
+        const projectPackageJson = new File({
+          path: resolve(
+            process.cwd(),
+            CLI.parameter('project-path'),
+            'package.json'
+          )
+        });
+
+        projectPackageJson.read({
+          encoding: 'utf8',
+          dataReady: (data) => {
+            const { name } = JSON.parse(data as string);
+            const jfcMode = name.substring(0, 'jfc'.length) === 'jfc';
+
+            modeDetected(
+              jfcMode
+                ? CORE_ENVIRONMENT.SHARED
+                : CORE_ENVIRONMENT.APP
+            );
+          }
+        });
+      }
+    }
+
     public static deployAppSettings = () => {
-
-        const appDirectory = new Directory({
-            path: resolve(
-                process.cwd(),
-                CLI.parameter('project-path'),
-            )
-        });
-
-        const globalSettingsDirectory = new Directory({
-            path: resolve(
-                __dirname,
-                '..',
-                'settings'
-            )
-        });
-
-        globalSettingsDirectory.directory({
-            directoryName: 'frontend',
-            directoryReady: frontendDirectory => {
-                globalSettingsDirectory.files(
-                    globalSettingsFiles => {
-                        frontendDirectory.files(
-                            frontendDirectoryFiles => {
-                                let copiedFiles = 0;
-                                const filesToCopy = [
-                                    ...frontendDirectoryFiles
-                                        .filter(({ name }) => ['tsconfig.json', 'tslint.json'].includes(name)),
-                                    ...globalSettingsFiles
-                                ];
-
-                                filesToCopy.forEach(
-                                    file => {
-                                        file.copy({
-                                            newPath: resolve(
-                                                appDirectory.path,
-                                                file.name
-                                            ),
-                                            fileCopied: () => {
-                                                if (++copiedFiles === filesToCopy.length) {
-                                                    console.log(
-                                                        color.greenBright('Deployed config files\n')
-                                                    );
-
-                                                    filesToCopy.map(
-                                                        ({ name }) => console.log(
-                                                            color.greenBright(`-- ${name}`)
-                                                        )
-                                                    );
-                                                }
-                                            }
-                                        })
-                                    }
-                                )
-                            }
-                        )
-                    }
+      Core.detectEnvironment({
+        modeDetected: (mode) => {
+          if (mode !== CORE_ENVIRONMENT.LOCAL) {
+            const appDirectory = new Directory({
+                path: resolve(
+                    process.cwd(),
+                    CLI.parameter('project-path'),
                 )
-            }
-        });
+            });
+
+            const globalSettingsDirectory = new Directory({
+                path: resolve(
+                    __dirname,
+                    '..',
+                    'settings'
+                )
+            });
+
+            globalSettingsDirectory.directory({
+                directoryName: 'frontend',
+                directoryReady: frontendDirectory => {
+                    globalSettingsDirectory.files(
+                        globalSettingsFiles => {
+                            frontendDirectory.files(
+                                frontendDirectoryFiles => {
+                                    let copiedFiles = 0;
+                                    const filesToCopy = [
+                                        ...frontendDirectoryFiles
+                                            .filter(
+                                              ({ name }) => [
+                                                'tsconfig.json',
+                                                'tslint.json'
+                                              ].includes(name)
+                                            ),
+                                        ...globalSettingsFiles
+                                    ];
+
+                                    filesToCopy.forEach(
+                                        file => {
+                                            file.copy({
+                                                newPath: resolve(
+                                                    appDirectory.path,
+                                                    file.name
+                                                ),
+                                                fileCopied: () => {
+                                                    if (++copiedFiles === filesToCopy.length) {
+                                                      console.log(
+                                                          color.greenBright(
+                                                            'Deployed config files\n'
+                                                          )
+                                                      );
+
+                                                      filesToCopy.map(
+                                                          ({ name }) => console.log(
+                                                              color.greenBright(
+                                                                `-- ${name}`
+                                                              )
+                                                          )
+                                                      );
+                                                    }
+                                                }
+                                            })
+                                        }
+                                    )
+                                }
+                            )
+                        }
+                    )
+                }
+            });
+          }
+        }
+      });
     };
 
     public static sync() {
