@@ -17,10 +17,10 @@ namespace Format {
     );
 
     export const httpHead = ({ response, config }) => [
-        `(http: `,
-        Format.response(response),
-        Format.config(config),
-    ].join('')
+      `(http: `,
+      Format.response(response),
+      Format.config(config),
+    ].join('');
 
     export const httpBody = (response) => (
         response && response.data
@@ -47,14 +47,11 @@ const errorContent: React.FC<IErrorContentProps> = ({ contentError }) => {
   return (
     <International>
       {({ formatMessage }) => (
-        <span className="error-content">
-          <u>{formatMessage({id: 'app.error'})}:</u>&nbsp;{body}
+        <span className='error-content'>
+          <u>{formatMessage({ id: 'app.error' })}:&nbsp;</u>
+          {body}
           <br/>
-          {
-            config
-              ? <span style={{fontSize: 'x-small'}}>{head}</span>
-              : null
-          }
+          {!config ? null : <span style={{ fontSize: 'x-small' }}>{head}</span>}
         </span>
       )}
     </International>

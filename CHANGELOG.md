@@ -1,3 +1,13 @@
+## [8.5.2] - 2020-03-10
+### Added
+- Notification 
+    - dismissButtonVisible option
+    - message type supports string[] to render as list 
+    - translationId type supports string[] to render as list
+### Bugfixes
+- Notification
+    - timeToRead will also get calculated for translations and error objects
+
 ## [8.5.1] - 2020-03-10
 ### Bugfixes
 - fixed an issue when try to emit to websocket when no websocket connection is available 

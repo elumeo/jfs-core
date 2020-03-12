@@ -1,8 +1,10 @@
+// noinspection TypeScriptPreferShortImport
 import {
   addNotificationWithIdAction,
   dismissAllNotificationsAction,
   dismissNextNotificationAction,
-  dismissNotificationAction, dismissNotificationByGroupIdAction,
+  dismissNotificationAction,
+  dismissNotificationByGroupIdAction,
   fadeNotificationOffScreenAction,
   hideNotificationDrawerAction,
   pinNotificationDrawerAction,
@@ -11,11 +13,12 @@ import {
 } from '../Action/NotificationAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import { AxiosError } from 'axios';
+import { getPlainText } from 'Component/Notification/NotificationCard';
 
 export interface INotificationContent {
-  error?: Error | AxiosError;
-  message?: string;
-  translationId?: string;
+  error?: Error | AxiosError | any;
+  message?: string | string[];
+  translationId?: string | string[];
 
   icon?: string;
   isError?: boolean;
@@ -25,6 +28,7 @@ export interface INotificationContent {
   onClick?: (notification: INotification) => void;
   onMount?: (notification: INotification) => void;
 
+  dismissButtonVisible?: boolean;
   dismissLabelTranslationId?: string;
   onDismiss?: (notification: INotification) => void;
   customActionLabelTranslationId?: string;
@@ -33,9 +37,9 @@ export interface INotificationContent {
 
 export interface INotification extends INotificationContent {
   id: number;
+  onScreen?: boolean;
   count: number;
   timestamp: Date;
-  onScreen?: boolean;
   autoHideDelay: number;
 }
 
@@ -59,14 +63,8 @@ export const NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT: number = 20;
 export const notificationReducer = createReducer(initialState)
   .handleAction(addNotificationWithIdAction, (state: INotificationReducerState, { payload: notification }: PayloadAction<string, INotification>): INotificationReducerState => {
     const notifications = [...state.notifications];
-    const sameTranslationId = notifications.length > 0 && !(!notification.translationId) && !(!notifications[0].translationId)
-      && notification.translationId == notifications[0].translationId;
-    const sameMessage = notifications.length > 0 && !(!notification.message) && !(!notifications[0].message)
-      && notification.message == notifications[0].message;
-    const sameError = notifications.length > 0 && !(!notification.error) && !(!notifications[0].error)
-      && notification.error.message == notifications[0].error.message
-      && notification.error.name == notifications[0].error.name;
-    if (sameMessage || sameTranslationId || sameError) {
+    const isDuplicate = notifications.length > 0 && getPlainText(notification) == getPlainText(notifications[0]);
+    if (isDuplicate) {
       notifications[0].id = notification.id;
       notifications[0].count++;
       notifications[0].timestamp = new Date();

@@ -17,7 +17,7 @@ import {
 } from '../Action/NotificationAction';
 import { disableSplitViewAction, enableSplitViewAction } from '../Action/SplitViewAction';
 import { INotification, INotificationContent } from '../Reducer/NotificationReducer';
-import { determineTimeToRead } from '../../Base/Utilities';
+import { timeToRead } from '../../Component/Notification/NotificationCard';
 
 let notificationIncrementId = 0;
 
@@ -31,7 +31,7 @@ export const addNotificationEpic: Epic<RootAction, RootAction> = (action$) =>
           id: ++notificationIncrementId,
           count: 1,
           timestamp: new Date(),
-          autoHideDelay: !notification.stayOnScreen ? determineTimeToRead(notification.message) : null
+          autoHideDelay: !notification.stayOnScreen ? timeToRead(notification) : null
         })
       ))
     ),
