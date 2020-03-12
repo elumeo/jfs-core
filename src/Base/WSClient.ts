@@ -153,7 +153,9 @@ export class WSClient {
   }
 
   public static emit<T>(room: IWebSocketRoom<T>) {
-    this.sockets[room.namespace].emit(this.EVENT_UPDATE_ROOM, room);
+    if (this.sockets[room.namespace] !== null) {
+      this.sockets[room.namespace].emit(this.EVENT_UPDATE_ROOM, room);
+    }
   }
 
   private static checkSocket(namespace: string) {
