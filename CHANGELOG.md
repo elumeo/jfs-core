@@ -1,3 +1,7 @@
+## [8.5.5] - 2020-03-13
+### Bugfixes
+- Smoother Notification animations
+
 ## [8.5.4] - 2020-03-13
 ### Added
 - Hide button to on screen notifications 
