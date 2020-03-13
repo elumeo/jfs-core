@@ -1,3 +1,12 @@
+## [8.5.4] - 2020-03-13
+### Added
+- Hide button to on screen notifications 
+- Hide/Dismiss-Animation optimization
+
+## [8.5.3] - 2020-03-10
+### Bugfixes
+- invalid import shorthand
+
 ## [8.5.2] - 2020-03-10
 ### Added
 - Notification 
