@@ -1,3 +1,7 @@
+## [8.5.6] - 2020-03-13
+### Bugfixes
+- Dismiss all Notifications will not dismiss those with dismissButtonVisible === false
+
 ## [8.5.5] - 2020-03-13
 ### Bugfixes
 - Smoother Notification animations
