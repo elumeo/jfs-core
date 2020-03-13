@@ -6,8 +6,6 @@ import { isActionOf, PayloadAction } from 'typesafe-actions';
 import {
   addNotificationAction,
   addNotificationWithIdAction,
-  dismissAllNotificationsAction,
-  dismissNextNotificationAction,
   fadeNotificationOffScreenAction,
   hideNotificationDrawerAction,
   pinNotificationDrawerAction,
@@ -43,15 +41,6 @@ export const addNotificationEpic: Epic<RootAction, RootAction> = (action$) =>
           : EMPTY
       )
     ),
-  );
-
-export const dismissAllNotificationsEpic: Epic<RootAction, RootAction> = (action$, store) =>
-  action$.pipe(
-    filter(isActionOf([dismissAllNotificationsAction, dismissNextNotificationAction])),
-    mergeMap(() => store.value.notificationReducer.notifications.length
-      ? of(dismissNextNotificationAction()).pipe(delay(10))
-      : EMPTY
-    )
   );
 
 export const splitViewEpic: Epic<RootAction, RootAction> = (action$, store) =>
