@@ -102,7 +102,11 @@ export const notificationReducer = createReducer(initialState)
     return { ...state, notifications, dismissAnimationClassName: 'disappear', notificationDrawerVisible };
   })
   .handleAction(dismissAllNotificationsAction, (state: INotificationReducerState): INotificationReducerState => (
-    { ...state, dismissAnimationClassName: 'disappear', notifications: [] }
+    {
+      ...state,
+      dismissAnimationClassName: 'disappear',
+      notifications: state.notifications.filter(n => n.dismissButtonVisible === false)
+    }
   ))
   .handleAction(showNotificationDrawerAction, (state: INotificationReducerState): INotificationReducerState => (
     { ...state, notificationDrawerVisible: true }
