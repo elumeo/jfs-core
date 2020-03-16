@@ -75,7 +75,6 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
       );
     }),
     switchMap((namespace) => {
-      console.log('EPIC success');
       return of(webSocketConnectSuccessAction(namespace));
     })
   );
