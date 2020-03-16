@@ -1,3 +1,11 @@
+## [8.5.7] - 2020-03-16
+### Bugfixes
+- Fixed error handling in websocket context
+
+### Added
+- new config value for websocket connection: Path
+  * is optional: default is `/`
+
 ## [8.5.6] - 2020-03-13
 ### Bugfixes
 - Dismiss all Notifications will not dismiss those with dismissButtonVisible === false

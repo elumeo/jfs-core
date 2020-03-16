@@ -54,10 +54,13 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
     concatMap((namespace) => {
       let host: string = null;
       const config = state.value.configReducer.config;
+      let path = '/socket.io';
       if (config.JscWebSocketClient !== undefined && namespace === config.JscWebSocketClient.PrivateNamespace) {
         host = config.JscWebSocketClient.Host;
+        path = (config.JscWebSocketClient.Path !== undefined && config.JscWebSocketClient.Path !== null) ? config.JscWebSocketClient.Path + path : path;
       } else if (config.JfsWebSocketClient !== undefined && namespace === config.JfsWebSocketClient.PrivateNamespace) {
         host = config.JfsWebSocketClient.Host;
+        path = (config.JfsWebSocketClient.Path !== undefined && config.JfsWebSocketClient.Path !== null) ? config.JfsWebSocketClient.Path + path : path;
       }
       if (host === null) {
         return EMPTY;
@@ -65,12 +68,16 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
 
       return WSClient.connect(
         host,
+        path,
         namespace,
         state.value.sessionReducer.sessionDTO.token,
         state.value.sessionReducer.sessionDTO.lastIPAddress
       );
     }),
-    switchMap((namespace) => of(webSocketConnectSuccessAction(namespace)))
+    switchMap((namespace) => {
+      console.log('EPIC success');
+      return of(webSocketConnectSuccessAction(namespace));
+    })
   );
 };
 
@@ -97,7 +104,10 @@ export const webSocketCheckForConnectionErrorEpic: Epic<RootAction, RootAction> 
   return action$.pipe(
     filter(isActionOf(webSocketConnectRequestAction)),
     concatMap(() => WSClient.connectionErrorObservable$),
-    switchMap((namespace) => of(webSocketConnectFailedAction(namespace)))
+    switchMap((namespace) => of(
+      addNotificationAction({message: 'Unable to connect to websocket server (' + namespace + ')!', isError: true}),
+      webSocketConnectFailedAction(namespace))
+    )
   );
 };
 
