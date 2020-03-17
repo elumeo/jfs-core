@@ -2,19 +2,19 @@ import React from 'react';
 import { Route, RouteProps } from 'react-router-dom';
 import International from '../International';
 
-export interface IBaseRouteProps extends RouteProps {
+export type IBaseRouteProps = RouteProps & {
+  Component?: () => JSX.Element;
   translationId?: string;
-  exact?: boolean;
-  render?: (props: any) => JSX.Element;
-  path?: string;
 }
 
 const BaseRoute: React.FC<IBaseRouteProps> = ({
-  render,
+  Component,
   translationId,
-  path,
   ...rest
 }) => {
+  if (Component) {
+    rest.component = Component;
+  }
   return (
     <International>
       {({ formatMessage }) => {
@@ -22,7 +22,7 @@ const BaseRoute: React.FC<IBaseRouteProps> = ({
         if (translationId) {
           document.title += ' | ' + formatMessage({id: translationId});
         }
-        return <Route {...rest} path={path} render={render}/>;
+        return <Route {...rest}/>;
       }}
     </International>
   );

@@ -6,17 +6,14 @@ import { enterAuthorizedRoute } from '../../Store/Action/RouterAction';
 import { ICoreRootReducer } from '../../Store/Reducer';
 
 export interface IAuthRouteProps extends IBaseRouteProps {
-  Component: any;
   isAuthorized?: boolean;
   isCheckingSession?: boolean;
   enterAuthorizedRoute?: typeof enterAuthorizedRoute;
 }
 
 const AuthRoute: React.FC<IAuthRouteProps> = ({
-  Component,
   isAuthorized,
   isCheckingSession,
-  path,
   enterAuthorizedRoute,
   ...rest
 }) => {
@@ -28,13 +25,10 @@ const AuthRoute: React.FC<IAuthRouteProps> = ({
 
   return (
     isAuthorized
-      ? <BaseRoute
-        {...rest}
-        render={props => <Component {...props}/>}
-      />
+      ? <BaseRoute {...rest}/>
       : isCheckingSession
-      ? <CircularProgress id='check-session-progress'/>
-      : <></>
+        ? <CircularProgress id='check-session-progress'/>
+        : <></>
   );
 };
 
