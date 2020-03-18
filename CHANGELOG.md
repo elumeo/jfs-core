@@ -1,3 +1,7 @@
+## [8.6.0] - 2020-03-17
+### Added
+- Full support of react-router functionalities for AuthRoute, NoAuthRoute & BaseRoute
+
 ## [8.5.7] - 2020-03-16
 ### Bugfixes
 - Fixed error handling in websocket context
@@ -16,7 +20,7 @@
 
 ## [8.5.4] - 2020-03-13
 ### Added
-- Hide button to on screen notifications 
+- Hide button to on screen notifications
 - Hide/Dismiss-Animation optimization
 
 ## [8.5.3] - 2020-03-10
@@ -25,9 +29,9 @@
 
 ## [8.5.2] - 2020-03-10
 ### Added
-- Notification 
+- Notification
     - dismissButtonVisible option
-    - message type supports string[] to render as list 
+    - message type supports string[] to render as list
     - translationId type supports string[] to render as list
 ### Bugfixes
 - Notification
@@ -35,7 +39,7 @@
 
 ## [8.5.1] - 2020-03-10
 ### Bugfixes
-- fixed an issue when try to emit to websocket when no websocket connection is available 
+- fixed an issue when try to emit to websocket when no websocket connection is available
 
 ## [8.5.0] - 2020-03-10
 ### Added
