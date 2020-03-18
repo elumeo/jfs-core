@@ -26,7 +26,7 @@ const LANGUAGES = [
 
 interface ISettingsContainerProps {
   language?: string;
-  changeLanguageAction: typeof changeLanguageAction;
+  changeLanguageAction?: typeof changeLanguageAction;
   history?: History;
 }
 

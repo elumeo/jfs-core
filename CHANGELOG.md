@@ -1,3 +1,9 @@
+## [8.6.1] - 2020-03-17
+### Bugfix
+- Prevent websocket error to be raised more then 1 time during connection/reconnection
+- Fixed a bug that changeLanguageAction prop in SettingsContainer is not required anymore
+- Fixed a shadowed name issue in src/Store/Reducer/index.ts
+
 ## [8.6.0] - 2020-03-17
 ### Added
 - Full support of react-router functionalities for AuthRoute, NoAuthRoute & BaseRoute

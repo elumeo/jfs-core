@@ -99,13 +99,20 @@ export const webSocketLogoutEpic: Epic<RootAction, RootAction> = (action$, state
   );
 };
 
-export const webSocketCheckForConnectionErrorEpic: Epic<RootAction, RootAction> = (action$) => {
+export const webSocketCheckForConnectionErrorEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
   return action$.pipe(
     filter(isActionOf(webSocketConnectRequestAction)),
     concatMap(() => WSClient.connectionErrorObservable$),
-    switchMap((namespace) => of(
-      addNotificationAction({message: 'Unable to connect to websocket server (' + namespace + ')!', isError: true}),
-      webSocketConnectFailedAction(namespace))
+    switchMap((namespace) => {
+        if (state.value.webSocketConnectionReducer[namespace].isConnecting) {
+          return of(
+            addNotificationAction({message: 'Unable to connect to websocket server (' + namespace + ')!', isError: true}),
+            webSocketConnectFailedAction(namespace)
+          );
+        }
+
+        return EMPTY;
+      }
     )
   );
 };
