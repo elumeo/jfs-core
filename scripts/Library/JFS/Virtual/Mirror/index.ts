@@ -1,6 +1,7 @@
 import Mirror from './Type';
 import File from 'Library/OS/Filesystem/File';
 import { sep } from 'path';
+import Directory from 'Library/OS/Filesystem/Directory';
 
 class Mirror {
 
@@ -55,13 +56,25 @@ class Mirror {
           return { relativePath, equal };
         },
         { relativePath: '', equal: true }
-      )
+      );
 
-    this.virtualFile.write({
-      data: (
-        `export * from '${relativePath}'`
-      )
-    })
+    (new Directory({ path: this.virtualFile.parent })).create(
+      () => this.virtualFile.read({
+        dataReady: (data: string) => this.virtualFile.write({
+          data: [
+            `export * from '${relativePath}';`,
+            ...(
+              data.includes('export default')
+                ? [
+                  `import d from '${relativePath}';`,
+                  `export default d;`
+                ]
+                : []
+            )
+          ].join('\n')
+        })
+      })
+    );
   }
 
 }
