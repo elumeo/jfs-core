@@ -9,7 +9,7 @@ import { ICoreRootReducer } from '../../Store/Reducer';
 // noinspection TypeScriptPreferShortImport
 import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../../Store/Action/NotificationAction';
 import { INotification, INotificationContent } from '../../Store/Reducer/NotificationReducer';
-import { Badge, Button, CardActions, CardText } from 'react-md';
+import { Badge, Button, CardText } from 'react-md';
 import Translations from '../../Base/Translations';
 import { timeToRead as _timeToRead } from '../../Base/Utilities';
 
@@ -77,8 +77,10 @@ class NotificationCard extends React.Component<INotificationCardProps> {
   getContent = (): JSX.Element => getContent(this.props.config).content;
 
   getIcon = () => {
-    const { config: { icon, error } } = this.props;
-    const iconName = error ? 'error' : icon;
+    const { config: { icon, error, isError, isSuccess } } = this.props;
+    let iconName = icon;
+    iconName = (error || isError) && !icon ? 'error' : iconName;
+    iconName = isSuccess && !icon ? 'check' : iconName;
     return iconName ? <FontIcon className='icon md-text--inherit'>{iconName}</FontIcon> : null;
   };
 
@@ -95,50 +97,70 @@ class NotificationCard extends React.Component<INotificationCardProps> {
     const {
       config,
       config: {
-        customActionLabelTranslationId, onCustomAction,
-        dismissButtonVisible, dismissLabelTranslationId, onDismiss,
-        hideButtonVisible, hideLabelTranslationId, onHide
+        customActionTooltipTranslationId, customActionIconName, onCustomAction,
+        dismissButtonVisible, onDismiss,
+        hideButtonVisible, onHide
       }
     } = this.props;
     const { formatMessage } = Translations;
-    if (!(!onCustomAction) && !customActionLabelTranslationId) {
-      throw new Error('If you provide a onCustomAction you should also provide a customActionLabelTranslationId');
+    const fm = id => formatMessage({ id });
+    if (!(!onCustomAction) && !customActionIconName) {
+      throw new Error('If you provide a onCustomAction you should also provide a customActionIconName');
     }
     const actions = [];
-    if (!(!onCustomAction)) {
+    if (dismissButtonVisible !== false) {
       actions.push(
-        <Button raised key='custom-action-btn' onClick={() => onCustomAction(config, this)}>
-          {!customActionLabelTranslationId ? 'notification.action_1' : formatMessage({ id: customActionLabelTranslationId })}
+        <Button
+          icon
+          key='dismiss-btn'
+          tooltipLabel={fm('Dismiss')}
+          tooltipPosition={'left'}
+          tooltipDelay={666}
+          onClick={event => {
+            event.stopPropagation();
+            this.props.dismissNotificationAction(config.id);
+            if (typeof onDismiss == 'function') {
+              onDismiss(config, this);
+            }
+          }}>
+          close
         </Button>
       );
     }
     if (hideButtonVisible !== false) {
       actions.push(
-        <Button raised key='hide-btn' onClick={event => {
-          event.stopPropagation();
-          this.props.fadeNotificationOffScreenAction(config.id);
-          if (typeof onHide == 'function') {
-            onHide(config, this);
-          }
-        }}>
-          {formatMessage({ id: !hideLabelTranslationId ? 'notification.hide' : hideLabelTranslationId })}
+        <Button
+          icon
+          key='hide-btn'
+          tooltipLabel={fm('Hide')}
+          tooltipPosition={'left'}
+          tooltipDelay={666}
+          onClick={event => {
+            event.stopPropagation();
+            this.props.fadeNotificationOffScreenAction(config.id);
+            if (typeof onHide == 'function') {
+              onHide(config, this);
+            }
+          }}>
+          arrow_forward
         </Button>
       );
     }
-    if (dismissButtonVisible !== false) {
+    if (!(!onCustomAction)) {
       actions.push(
-        <Button raised key='dismiss-btn' onClick={event => {
-          event.stopPropagation();
-          this.props.dismissNotificationAction(config.id);
-          if (typeof onDismiss == 'function') {
-            onDismiss(config, this);
-          }
-        }}>
-          {formatMessage({ id: !dismissLabelTranslationId ? 'notification.dismiss' : dismissLabelTranslationId })}
+        <Button
+          icon
+          key='custom-action-btn'
+          tooltipLabel={customActionTooltipTranslationId ? fm(customActionTooltipTranslationId) : undefined}
+          tooltipPosition={'left'}
+          tooltipDelay={666}
+          onClick={() => onCustomAction(config, this)}
+        >
+          {customActionIconName}
         </Button>
       );
     }
-    return <CardActions className='md-dialog-footer' children={actions}/>;
+    return <>{actions}</>;
   };
 
   componentDidMount(): void {
@@ -149,9 +171,13 @@ class NotificationCard extends React.Component<INotificationCardProps> {
   }
 
   render() {
-    const { config, config: { error, isError, onClick } } = this.props;
+    const { config, config: { error, isSuccess, isError, onClick } } = this.props;
     const errorClass = isError || error ? 'error' : '';
+    const successClass = isSuccess ? 'success' : '';
     const clickClass = onClick ? 'clickable' : '';
+    if (errorClass.length && successClass.length) {
+      throw new Error('isError|error and isSuccess cannot be combined');
+    }
     return (
       <Card
         onClick={() => {
@@ -162,12 +188,18 @@ class NotificationCard extends React.Component<INotificationCardProps> {
         className={[
           `md-cell`, `md-cell--12`,
           `badges__notifications__notification`,
-          errorClass, clickClass
+          successClass, errorClass, clickClass
         ].join(' ')}>
         {this.getBadge()}
-        {this.getHeader()}
-        {this.getContent()}
-        {this.getActions()}
+        <div className='notification-grid'>
+          <div className='notification-grid-content'>
+            {this.getHeader()}
+            {this.getContent()}
+          </div>
+          <div className='notification-grid-actions'>
+            {this.getActions()}
+          </div>
+        </div>
       </Card>
     )
   }

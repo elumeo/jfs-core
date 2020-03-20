@@ -48,12 +48,11 @@
       border-radius: 3px;
       opacity: 0.9;
 
-      .md-card-text:last-child {
-        padding-bottom: 8px;
-      }
-
-      .md-btn--text {
-        color: #fff !important;
+      .md-btn {
+        &--icon,
+        &--text {
+          color: #fff !important;
+        }
       }
 
       .badge {
@@ -71,11 +70,12 @@
       }
 
       .header {
-        padding: 8px 8px 0 8px;
+        padding: 10px 8px 0 8px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
+        width: 100%;
       }
 
       .timestamp {
@@ -93,8 +93,34 @@
       }
     }
 
+    &.success {
+      background: $juw-success-color;
+
+      .badge .md-badge {
+        background: $juw-success-color;
+      }
+    }
+
     &.clickable {
       cursor: pointer;
+    }
+
+    .notification-grid {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      &-actions,
+      &-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      &-content {
+        width: 100%;
+      }
     }
   }
 }

@@ -33,7 +33,7 @@ class OnScreenNotifications extends React.Component<IOnScreenNotificationsProps>
         {
           notifications
             .filter(n => n.onScreen)
-            .map(n => <NotificationCard config={{ ...n, dismissButtonVisible: false }} key={n.id}/>)
+            .map(n => <NotificationCard config={n} key={n.id}/>)
         }
       </ReactCSSTransitionGroup>
     );

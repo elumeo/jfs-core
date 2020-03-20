@@ -1,3 +1,14 @@
+## [8.6.0] - 2020-03-20
+### Bugfixes
+- Made errorContent more reliable
+- Removed drop shadow from items of the NotificationDrawer 
+
+### Added
+- Notifications
+    - Compact NotificationCard layout (icon buttons only)
+    - isSuccess option to color notifications with $juw_success_color
+    - Default icons for error and success cases
+
 ## [8.5.6] - 2020-03-13
 ### Bugfixes
 - Dismiss all Notifications will not dismiss those with dismissButtonVisible === false
