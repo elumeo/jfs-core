@@ -2,7 +2,7 @@ import { Observable, Subject } from 'rxjs';
 import io from 'socket.io-client';
 import { PayloadAction } from 'typesafe-actions';
 import JSCApi from '../Jsc/JscApi';
-import { IWebSocketRoom, IWebSocketRoomConnection } from '../Store/Reducer/WebSocketConnectionReducer';
+import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../Store/Reducer/WebSocketConnectionReducer';
 import IWebSocketRoomUpdateDTO = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO;
 import { ROOM_UPDATE_ACTION_ID } from '../Store/Action/WebSocketAction';
 import { ICoreRootReducer } from '../Store/Reducer';
@@ -24,7 +24,7 @@ export class WSClient {
   protected static listenRoomsSubject = new Subject<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>();
   public static listenRoomsObservable$ = WSClient.listenRoomsSubject.asObservable();
 
-  protected static connectionErrorSubject = new Subject<string>();
+  protected static connectionErrorSubject = new Subject<IWebSocketError>();
   public static connectionErrorObservable$ = WSClient.connectionErrorSubject.asObservable();
 
   protected static reconnectSubject = new Subject<string>();
@@ -52,14 +52,16 @@ export class WSClient {
           observer.complete();
         });
 
-        this.sockets[namespace].on(this.EVENT_ERROR, () => {
+        this.sockets[namespace].on(this.EVENT_ERROR, (err) => {
+          console.log(this.EVENT_ERROR, err);
           this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
-          this.connectionErrorSubject.next(namespace);
+          this.connectionErrorSubject.next({namespace, message: err});
         });
 
-        this.sockets[namespace].on(this.EVENT_CONNECT_ERROR, () => {
+        this.sockets[namespace].on(this.EVENT_CONNECT_ERROR, (err) => {
+          console.log(this.EVENT_CONNECT_ERROR, err);
           this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
-          this.connectionErrorSubject.next(namespace);
+          this.connectionErrorSubject.next({namespace, message: err});
         });
 
         this.sockets[namespace].on(this.EVENT_RECONNECT, () => {

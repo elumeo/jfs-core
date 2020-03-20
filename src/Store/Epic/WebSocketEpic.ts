@@ -103,11 +103,13 @@ export const webSocketCheckForConnectionErrorEpic: Epic<RootAction, RootAction> 
   return action$.pipe(
     filter(isActionOf(webSocketConnectRequestAction)),
     concatMap(() => WSClient.connectionErrorObservable$),
-    switchMap((namespace) => {
-        if (state.value.webSocketConnectionReducer[namespace].isConnecting) {
+    switchMap((err) => {
+        if (state.value.webSocketConnectionReducer[err.namespace].isConnecting) {
           return of(
-            addNotificationAction({message: 'Unable to connect to websocket server (' + namespace + ')!', isError: true}),
-            webSocketConnectFailedAction(namespace)
+            addNotificationAction({
+              message: 'Unable to connect to websocket server (' + err.namespace + ')' + (err.message !== null && err.message !== '' ? ' because of ' + err.message : '') + '!', isError: true
+            }),
+            webSocketConnectFailedAction(err)
           );
         }
 

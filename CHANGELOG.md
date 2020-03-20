@@ -1,3 +1,7 @@
+## [8.6.2] - 2020-03-20
+### Bugfix
+- extended error message handling websocket
+
 ## [8.6.1] - 2020-03-17
 ### Bugfix
 - Prevent websocket error to be raised more then 1 time during connection/reconnection

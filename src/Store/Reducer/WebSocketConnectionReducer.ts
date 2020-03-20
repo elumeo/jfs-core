@@ -11,6 +11,11 @@ import {
   webSocketLeaveRoomSuccessAction
 } from '../Action/WebSocketAction';
 
+export interface IWebSocketError {
+  namespace: string;
+  message: string;
+}
+
 export interface IWebSocketRoom<T = string> {
   room: string;
   namespace?: string;
@@ -68,13 +73,14 @@ export const webSocketConnectionReducer = createReducer(webSocketConnectionReduc
     };
   })
 
-  .handleAction(webSocketConnectFailedAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, string>): IWebSocketConnectionReducerState => {
+  .handleAction(webSocketConnectFailedAction, (state: IWebSocketConnectionReducerState, action: PayloadAction<string, IWebSocketError>): IWebSocketConnectionReducerState => {
     return {
       ...state,
-      [action.payload]: {
-        ...state[action.payload],
+      [action.payload.namespace]: {
+        ...state[action.payload.namespace],
         isConnecting: false,
-        isConnected: false
+        isConnected: false,
+        connectionError: action.payload.message
       }
     };
   })
