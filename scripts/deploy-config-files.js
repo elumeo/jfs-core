@@ -170,6 +170,18 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 
 /***/ }),
 
+/***/ "../Library/JFS/Core/Settings/Deployment/index.ts":
+/*!********************************************************!*\
+  !*** ../Library/JFS/Core/Settings/Deployment/index.ts ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst ansi_colors_1 = __importDefault(__webpack_require__(/*! ansi-colors */ \"ansi-colors\"));\nclass Deployment {\n    constructor({ path, settings, onComplete }) {\n        const totalDeployedFiles = [];\n        settings.forEach(setting => setting.deploy({\n            path,\n            deploymentDone: (deployedFiles) => {\n                totalDeployedFiles.push(deployedFiles);\n                if (settings.length === totalDeployedFiles.length) {\n                    onComplete(totalDeployedFiles.reduce((allDeployedFiles, deployedFiles) => [\n                        ...allDeployedFiles,\n                        ...deployedFiles\n                    ], []));\n                }\n            }\n        }));\n    }\n}\nDeployment.notify = (deployedFiles) => {\n    const title = (message) => ansi_colors_1.default.greenBright(`${message}\\n`);\n    const listEntry = (entry) => ansi_colors_1.default.greenBright(`-- ${entry}`);\n    console.log(title('Deployed config files'));\n    deployedFiles\n        .forEach(({ name }) => console.log(listEntry(name)));\n};\nexports.default = Deployment;\n\n\n//# sourceURL=webpack:///../Library/JFS/Core/Settings/Deployment/index.ts?");
+
+/***/ }),
+
 /***/ "../Library/JFS/Core/Settings/index.ts":
 /*!*********************************************!*\
   !*** ../Library/JFS/Core/Settings/index.ts ***!
@@ -494,15 +506,15 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 
 /***/ }),
 
-/***/ "../Setup/jsc-generate.ts":
-/*!********************************!*\
-  !*** ../Setup/jsc-generate.ts ***!
-  \********************************/
+/***/ "../Setup/deploy-config-files.ts":
+/*!***************************************!*\
+  !*** ../Setup/deploy-config-files.ts ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst JFS_1 = __importDefault(__webpack_require__(/*! Library/JFS */ \"../Library/JFS/index.ts\"));\nconst Location_1 = __importDefault(__webpack_require__(/*! Library/JFS/Environment/Location */ \"../Library/JFS/Environment/Location.ts\"));\nJFS_1.default.discover(() => {\n    if (JFS_1.default.Environment.Location.type === Location_1.default.Type.LOCAL) {\n        JFS_1.default.Core.JSC.generate(JFS_1.default.Core.config, 2, () => { });\n    }\n    else if (JFS_1.default.Environment.Location.type === Location_1.default.Type.REMOTE) {\n        JFS_1.default.Environment.Head.JSC.generate(JFS_1.default.Environment.Head.config, 2, () => { });\n    }\n});\n\n\n//# sourceURL=webpack:///../Setup/jsc-generate.ts?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst CLI_1 = __importDefault(__webpack_require__(/*! Library/OS/CLI */ \"../Library/OS/CLI/index.ts\"));\nconst Deployment_1 = __importDefault(__webpack_require__(/*! Library/JFS/Core/Settings/Deployment */ \"../Library/JFS/Core/Settings/Deployment/index.ts\"));\nconst JFS_1 = __importDefault(__webpack_require__(/*! Library/JFS */ \"../Library/JFS/index.ts\"));\nconst Location_1 = __importDefault(__webpack_require__(/*! Library/JFS/Environment/Location */ \"../Library/JFS/Environment/Location.ts\"));\nconst blackList = [\n    'webpack.common.js', 'webpack.development.js', 'webpack.production.js',\n    'webpack.scripts.js', 'copyLocal.js'\n];\nJFS_1.default.discover(() => {\n    const { Environment, Core } = JFS_1.default;\n    Core.settings.compose(CLI_1.default.parameter('scripts-mode')\n        ? 'scripts'\n        : 'frontend', settings => {\n        settings.forEach(setting => setting.setBlackList(...blackList));\n        const onComplete = () => { };\n        if (Environment.Location.type === Location_1.default.Type.LOCAL) {\n            new Deployment_1.default({\n                path: Environment.Location.path,\n                settings,\n                onComplete\n            });\n        }\n        else if (Environment.Location.type === Location_1.default.Type.REMOTE) {\n            new Deployment_1.default({\n                path: Environment.Head.path,\n                settings,\n                onComplete: () => {\n                    if (JFS_1.default.App) {\n                        JFS_1.default.App.setup(() => {\n                        });\n                    }\n                    else if (JFS_1.default.Component) {\n                        JFS_1.default.Component.setup(() => {\n                            // console.log(JFS.Component);\n                        });\n                    }\n                }\n            });\n        }\n    });\n});\n\n\n//# sourceURL=webpack:///../Setup/deploy-config-files.ts?");
 
 /***/ }),
 
@@ -514,7 +526,7 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__webpack_require__(/*! Setup/jsc-generate */ \"../Setup/jsc-generate.ts\");\n\n\n//# sourceURL=webpack:///.?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__webpack_require__(/*! Setup/deploy-config-files */ \"../Setup/deploy-config-files.ts\");\n\n\n//# sourceURL=webpack:///.?");
 
 /***/ }),
 
