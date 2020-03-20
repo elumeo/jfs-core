@@ -18,7 +18,7 @@ import { loginReducer, ILoginReducerState } from './LoginReducer';
 import IConfig from '../../Base/IConfig';
 import Shared from '../../Shared';
 
-export interface IRootReducer<IConfig> {
+export interface IRootReducer<T_IConfig> {
   appReducer?: IAppReducerState;
   languageReducer?: ILanguageReducerState;
   loginReducer?: ILoginReducerState;
@@ -33,7 +33,7 @@ export interface IRootReducer<IConfig> {
   systemReducer?: ISystemReducerState;
   toastReducer?: IToastReducerState;
   webSocketConnectionReducer?: IWebSocketConnectionReducerState;
-  configReducer?: IConfigReducerState<IConfig>;
+  configReducer?: IConfigReducerState<T_IConfig>;
 }
 
 export interface ICoreRootReducer extends IRootReducer<IConfig> {

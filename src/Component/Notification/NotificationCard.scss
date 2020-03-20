@@ -5,25 +5,41 @@
 .badges__notifications {
   &__notification {
     position: relative;
-    transition-property: transform, opacity;
+    transition-property: transform, max-height, opacity;
     transition-duration: 300ms;
 
     &.fadein-enter {
+      max-height: 0;
       transform: translate3d($notification-drawer-width, 0, 0);
     }
 
     &.fadein-enter.fadein-enter-active {
+      max-height: 500px;
       transform: translate3d(0, 0, 0);
     }
 
-    &.fadein-leave {
+    &.fadeout-leave {
+      max-height: 500px;
       transition-duration: 200ms;
-      opacity: 0.9;
+      transform: translate3d(0, 0, 0);
     }
 
-    &.fadein-leave.fadein-leave-active {
+    &.fadeout-leave.fadeout-leave-active {
+      max-height: 0;
+      transition-duration: 200ms;
+      transform: translate3d($notification-drawer-width, 0, 0);
+    }
+
+    &.disappear-leave {
+      transition-duration: 200ms;
+      opacity: 0.9;
+      max-height: 500px;
+    }
+
+    &.disappear-leave.disappear-leave-active {
       transition-duration: 200ms;
       opacity: 0;
+      max-height: 0;
     }
 
     &.md-card {

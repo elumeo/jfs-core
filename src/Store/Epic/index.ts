@@ -2,17 +2,18 @@ import { combineEpics } from 'redux-observable';
 
 import { initializeAppEpic } from './AppEpic';
 import {
-  loadSessionEpic,
-  checkSessionEpic,
-  authorizeSessionEpic, unauthorizeSessionEpic,
-  logoutEpic,
-  beforeLogoutHookEpic,
   afterLogoutHookEpic,
+  authorizeSessionEpic,
+  beforeLogoutHookEpic,
+  checkSessionEpic,
+  loadSessionEpic,
+  logoutEpic,
+  unauthorizeSessionEpic,
 } from './SessionEpic';
 import { getRegionEpic } from './SystemEpic';
 import { loginEpic, robotLoginRefreshEpic } from './LoginEpic';
 import { loadConfigEpic } from './ConfigEpic';
-import { addNotificationEpic, dismissAllNotificationsEpic, splitViewEpic } from './NotificationEpic';
+import { addNotificationEpic, splitViewEpic } from './NotificationEpic';
 
 import {
   webSocketAppIsInitializedEpic,
@@ -26,8 +27,8 @@ import {
   webSocketLeaveRoomRequestEpic,
   webSocketLogoutEpic
 } from './WebSocketEpic';
-import LanguageEpic, { setInitialLanguageEpic } from './LanguageEpic';
-import { Observable, EMPTY } from 'rxjs';
+import LanguageEpic from './LanguageEpic';
+import { EMPTY, Observable } from 'rxjs';
 import Shared from '../../Shared';
 
 export const wrappedCombineEpics = (...epics) => combineEpics(
@@ -35,7 +36,6 @@ export const wrappedCombineEpics = (...epics) => combineEpics(
   loginEpic,
   addNotificationEpic,
   initializeAppEpic,
-  dismissAllNotificationsEpic,
   getRegionEpic,
   loadConfigEpic,
   logoutEpic,

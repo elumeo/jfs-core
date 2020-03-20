@@ -1,7 +1,7 @@
 import React from 'react';
 import ErrorContent, { errorText } from './ErrorContent';
 import { IToastConfig } from '../../Store/Reducer/ToastReducer';
-import { determineTimeToRead as getToastAutohideTimeout } from '../../Base/Utilities';
+import { timeToRead } from '../../Base/Utilities';
 
 export default (toast: IToastConfig, formatMessage) => {
   const {contentTranslationId, contentMessage, contentError} = toast;
@@ -24,6 +24,6 @@ export default (toast: IToastConfig, formatMessage) => {
   return {
     text: toastContent,
     action: toast.dismissLabel,
-    autohideTimeout: getToastAutohideTimeout(text)
+    autohideTimeout: timeToRead(text)
   };
 }

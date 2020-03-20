@@ -7,7 +7,7 @@ import { ICoreRootReducer } from '../../Store/Reducer';
 import { connect } from 'react-redux';
 import NoNotifications from './NoNotifications';
 import Toolbar from 'react-md/lib/Toolbars';
-import { INotification, NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT } from '../../Store/Reducer/NotificationReducer';
+import { INotification } from '../../Store/Reducer/NotificationReducer';
 
 import './NotificationDrawer.scss'
 import HideNotificationDrawerButton from './HideNotificationDrawerButton';
@@ -21,7 +21,6 @@ interface INotificationDrawerProps {
   notificationDrawerVisible?: boolean;
   notifications?: INotification[];
   notificationDrawerPinned?: boolean;
-  notificationDismissCounter?: number;
   toggleNotificationDrawerAction?: typeof toggleNotificationDrawerAction;
   hideNotificationDrawerAction?: typeof hideNotificationDrawerAction;
 }
@@ -35,14 +34,14 @@ class NotificationDrawer extends React.Component<INotificationDrawerProps> {
   };
 
   render() {
-    const { notifications, notificationDrawerPinned, notificationDrawerVisible, notificationDismissCounter } = this.props;
+    const { notifications, notificationDrawerPinned, notificationDrawerVisible } = this.props;
     const empty = !notifications.length;
 
     let content;
     if (empty) {
       content = [<NoNotifications key='no-notifications'/>];
     } else {
-      content = notifications.map(n => <NotificationCard config={n} key={n.id}/>);
+      content = notifications.map(n => <NotificationCard config={{ ...n, hideButtonVisible: false }} key={n.id}/>);
     }
 
     const header = <Toolbar
@@ -68,9 +67,14 @@ class NotificationDrawer extends React.Component<INotificationDrawerProps> {
         overlay
       >
         <ReactCSSTransitionGroup
-          transitionName={'fadein'}
+          transitionName={{
+            enter: 'fadein-enter',
+            enterActive: 'fadein-enter-active',
+            leave: 'disappear-leave',
+            leaveActive: 'disappear-leave-active'
+          }}
           transitionEnterTimeout={300}
-          transitionLeaveTimeout={notificationDismissCounter < 0 ? 150 : (NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT * 100)}
+          transitionLeaveTimeout={200}
         >
           {content}
         </ReactCSSTransitionGroup>
@@ -86,7 +90,6 @@ export default connect((
   notificationDrawerVisible: store.notificationReducer.notificationDrawerVisible,
   notifications: store.notificationReducer.notifications,
   notificationDrawerPinned: store.notificationReducer.notificationDrawerPinned,
-  notificationDismissCounter: store.notificationReducer.notificationDismissCounter
 }), {
   toggleNotificationDrawerAction,
   hideNotificationDrawerAction

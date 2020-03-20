@@ -16,6 +16,7 @@ export class WSClient {
   public static EVENT_LEAVE_ROOM = '[Room] Leave';
   public static EVENT_UPDATE_ROOM = '[Room] Update';
   public static EVENT_CONNECT_ERROR = 'connect_error';
+  public static EVENT_ERROR = 'error';
   public static EVENT_RECONNECT = 'reconnect';
 
   public static sockets: typeof io.Socket[] = [];
@@ -32,7 +33,7 @@ export class WSClient {
   protected static jfsOnRoomUpdateSubject = new Subject<any>();
   protected static jfsOnRoomUpdate$ = WSClient.jfsOnRoomUpdateSubject.asObservable();
 
-  public static connect(host: string, namespace: string, token?: string, ip?: string) {
+  public static connect(host: string, path: string, namespace: string, token?: string, ip?: string) {
     this.checkSocket(namespace);
     return new Observable<string>((observer) => {
       if (this.sockets[namespace] !== null) {
@@ -41,13 +42,19 @@ export class WSClient {
       if (this.sockets[namespace] === null) {
         this.sockets[namespace] = io.connect(host + '/' + namespace, {
           query: {token, ip},
-          secure: host.startsWith('https')
+          secure: host.startsWith('https'),
+          path: path
         });
         this.sockets[namespace].on(this.EVENT_AUTHENTICATED, () => {
           this.sockets[namespace].off(this.EVENT_AUTHENTICATED);
           this.sockets[namespace].on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
           observer.next(namespace);
           observer.complete();
+        });
+
+        this.sockets[namespace].on(this.EVENT_ERROR, () => {
+          this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
+          this.connectionErrorSubject.next(namespace);
         });
 
         this.sockets[namespace].on(this.EVENT_CONNECT_ERROR, () => {

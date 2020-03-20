@@ -10,24 +10,30 @@ const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 export interface IOnScreenNotificationsProps {
   notifications?: INotification[];
+  dismissAnimationClassName?: string;
 }
 
 class OnScreenNotifications extends React.Component<IOnScreenNotificationsProps> {
 
   render() {
-    const {notifications} = this.props;
+    const { notifications, dismissAnimationClassName } = this.props;
 
     return (
       <ReactCSSTransitionGroup
-        transitionName={'fadein'}
+        transitionName={{
+          enter: 'fadein-enter',
+          enterActive: 'fadein-enter-active',
+          leave: `${dismissAnimationClassName}-leave`,
+          leaveActive: `${dismissAnimationClassName}-leave-active`,
+        }}
         transitionEnterTimeout={300}
-        transitionLeaveTimeout={150}
+        transitionLeaveTimeout={200}
         className={'notification-fadein'}
       >
         {
           notifications
             .filter(n => n.onScreen)
-            .map(n => <NotificationCard config={n} key={n.id}/>)
+            .map(n => <NotificationCard config={{ ...n, dismissButtonVisible: false }} key={n.id}/>)
         }
       </ReactCSSTransitionGroup>
     );
@@ -37,5 +43,6 @@ class OnScreenNotifications extends React.Component<IOnScreenNotificationsProps>
 // noinspection JSUnusedGlobalSymbols
 export default connect((store: ICoreRootReducer, ownProps: IOnScreenNotificationsProps): IOnScreenNotificationsProps => ({
   ...ownProps,
-  notifications: store.notificationReducer.notifications
+  notifications: store.notificationReducer.notifications,
+  dismissAnimationClassName: store.notificationReducer.dismissAnimationClassName,
 }))(OnScreenNotifications)

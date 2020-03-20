@@ -1,8 +1,10 @@
+// noinspection TypeScriptPreferShortImport
+import React from 'react';
 import {
   addNotificationWithIdAction,
   dismissAllNotificationsAction,
-  dismissNextNotificationAction,
-  dismissNotificationAction, dismissNotificationByGroupIdAction,
+  dismissNotificationAction,
+  dismissNotificationByGroupIdAction,
   fadeNotificationOffScreenAction,
   hideNotificationDrawerAction,
   pinNotificationDrawerAction,
@@ -11,102 +13,99 @@ import {
 } from '../Action/NotificationAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import { AxiosError } from 'axios';
+import { getPlainText, INotificationCardProps } from '../../Component/Notification/NotificationCard';
 
 export interface INotificationContent {
-  error?: Error | AxiosError;
-  message?: string;
-  translationId?: string;
+  error?: Error | AxiosError | any;
+  message?: string | string[];
+  translationId?: string | string[];
 
   icon?: string;
   isError?: boolean;
   stayOnScreen?: boolean;
   groupId?: string;
 
-  onClick?: (notification: INotification) => void;
-  onMount?: (notification: INotification) => void;
+  onClick?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
+  onMount?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
 
+  dismissButtonVisible?: boolean;
   dismissLabelTranslationId?: string;
-  onDismiss?: (notification: INotification) => void;
+  onDismiss?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
+
+  hideButtonVisible?: boolean;
+  hideLabelTranslationId?: string;
+  onHide?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
+
   customActionLabelTranslationId?: string;
-  onCustomAction?: (notification: INotification) => void;
+  onCustomAction?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
 }
 
 export interface INotification extends INotificationContent {
   id: number;
+  onScreen?: boolean;
   count: number;
   timestamp: Date;
-  onScreen?: boolean;
   autoHideDelay: number;
 }
 
 export interface INotificationReducerState {
   notifications?: INotification[];
+  dismissAnimationClassName?: string;
   notificationDrawerVisible?: boolean;
   notificationDrawerPinned?: boolean;
-  notificationDismissCounter?: number;
 }
 
 const initialState: INotificationReducerState = {
   notifications: [],
+  dismissAnimationClassName: 'disappear',
   notificationDrawerVisible: false,
   notificationDrawerPinned: false,
-  notificationDismissCounter: -1
 };
 
 export const NOTIFICATION_LIMIT: number = 123;
-export const NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT: number = 20;
 
 export const notificationReducer = createReducer(initialState)
   .handleAction(addNotificationWithIdAction, (state: INotificationReducerState, { payload: notification }: PayloadAction<string, INotification>): INotificationReducerState => {
     const notifications = [...state.notifications];
-    const sameTranslationId = notifications.length > 0 && !(!notification.translationId) && !(!notifications[0].translationId)
-      && notification.translationId == notifications[0].translationId;
-    const sameMessage = notifications.length > 0 && !(!notification.message) && !(!notifications[0].message)
-      && notification.message == notifications[0].message;
-    const sameError = notifications.length > 0 && !(!notification.error) && !(!notifications[0].error)
-      && notification.error.message == notifications[0].error.message
-      && notification.error.name == notifications[0].error.name;
-    if (sameMessage || sameTranslationId || sameError) {
+    const isDuplicate = notifications.length > 0 && getPlainText(notification) == getPlainText(notifications[0]);
+    if (isDuplicate) {
       notifications[0].id = notification.id;
       notifications[0].count++;
       notifications[0].timestamp = new Date();
       notifications[0].onScreen = true;
-      return { ...state, notifications, notificationDismissCounter: -1 };
+      return { ...state, notifications };
     } else {
       if (notifications.length > NOTIFICATION_LIMIT) {
         notifications.pop();
       }
       return {
         ...state,
-        notifications: [{ ...notification, onScreen: true }, ...state.notifications],
-        notificationDismissCounter: -1
+        notifications: [{ ...notification, onScreen: true }, ...state.notifications]
       };
     }
   })
   .handleAction(fadeNotificationOffScreenAction, (state: INotificationReducerState, { payload: id }: PayloadAction<string, number>): INotificationReducerState => (
     {
       ...state,
+      dismissAnimationClassName: 'fadeout',
       notifications: state.notifications.map(n => ({ ...n, onScreen: n.id == id ? false : n.onScreen }))
     }
   ))
   .handleAction(dismissNotificationAction, (state: INotificationReducerState, { payload: id }: PayloadAction<string, number>): INotificationReducerState => {
     const notifications = state.notifications.filter(n => n.id != id);
     const notificationDrawerVisible = !state.notificationDrawerPinned && notifications.length == 0 ? false : state.notificationDrawerVisible;
-    return { ...state, notifications, notificationDrawerVisible };
+    return { ...state, notifications, dismissAnimationClassName: 'disappear', notificationDrawerVisible };
   })
   .handleAction(dismissNotificationByGroupIdAction, (state: INotificationReducerState, { payload: groupId }: PayloadAction<string, string>): INotificationReducerState => {
     const notifications = state.notifications.filter(n => n.groupId != groupId);
     const notificationDrawerVisible = !state.notificationDrawerPinned && notifications.length == 0 ? false : state.notificationDrawerVisible;
-    return { ...state, notifications, notificationDrawerVisible };
+    return { ...state, notifications, dismissAnimationClassName: 'disappear', notificationDrawerVisible };
   })
   .handleAction(dismissAllNotificationsAction, (state: INotificationReducerState): INotificationReducerState => (
-    { ...state, notificationDismissCounter: 1 }
-  ))
-  .handleAction(dismissNextNotificationAction, (state: INotificationReducerState): INotificationReducerState => (
     {
       ...state,
-      notificationDismissCounter: state.notificationDismissCounter + 1,
-      notifications: state.notificationDismissCounter > NOTIFICATION_DISMISS_ALL_ANIMATION_LIMIT ? [] : state.notifications.filter((n, i) => i != 0),
+      dismissAnimationClassName: 'disappear',
+      notifications: state.notifications.filter(n => n.dismissButtonVisible === false)
     }
   ))
   .handleAction(showNotificationDrawerAction, (state: INotificationReducerState): INotificationReducerState => (

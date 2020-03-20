@@ -4,17 +4,55 @@ import Card from 'react-md/lib/Cards/Card';
 import FontIcon from 'react-md/lib/FontIcons/FontIcon';
 
 import './NotificationCard.scss'
-import ErrorContent from '../Snackbar/ErrorContent';
+import ErrorContent, { errorText } from '../Snackbar/ErrorContent';
 import { ICoreRootReducer } from '../../Store/Reducer';
-import { dismissNotificationAction } from '../../Store/Action/NotificationAction';
-import { INotification } from '../../Store/Reducer/NotificationReducer';
-import International from '../International';
+// noinspection TypeScriptPreferShortImport
+import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../../Store/Action/NotificationAction';
+import { INotification, INotificationContent } from '../../Store/Reducer/NotificationReducer';
 import { Badge, Button, CardActions, CardText } from 'react-md';
 import Translations from '../../Base/Translations';
+import { timeToRead as _timeToRead } from '../../Base/Utilities';
+
+export const timeToRead = (notification: INotificationContent): number => getContent(notification).timeToRead;
+
+export const getPlainText = (notification: INotificationContent): string => getContent(notification).words;
+
+export const getContent = (notification: INotificationContent) => {
+  const { message, translationId, error } = notification;
+  const { formatMessage } = Translations;
+  if (!((message ? 1 : 0) ^ (translationId ? 1 : 0) ^ (error ? 1 : 0))) {
+    throw new Error(
+      `Either 'message', 'translationId' or 'error' most be specified.`
+    );
+  }
+  let content = null;
+  let words = '';
+  if (message) {
+    words = typeof message == 'object' ? message.join(' ') : message;
+    content = typeof message == 'object' ? <ul>{message.map((m, i) => <li key={i}>{m}</li>)}</ul> : message;
+  }
+  if (translationId) {
+    words = typeof translationId == 'object' ? translationId.map(tId => formatMessage({ id: tId })).join(' ') : translationId;
+    content = typeof translationId == 'object'
+      ? <ul>{translationId.map((tId, i) => <li key={i}>{formatMessage({ id: tId })}</li>)}</ul>
+      : formatMessage({ id: translationId });
+  }
+  if (error) {
+    const { body, head } = errorText(error);
+    words = `${formatMessage({ id: 'app.error' })}: ${body} ${head}`;
+    content = <ErrorContent contentError={error}/>
+  }
+  return {
+    words,
+    content: <CardText className='md-text--inherit'>{content}</CardText>,
+    timeToRead: _timeToRead(words)
+  };
+};
 
 export interface INotificationCardProps {
   config: INotification;
   dismissNotificationAction?: typeof dismissNotificationAction;
+  fadeNotificationOffScreenAction?: typeof fadeNotificationOffScreenAction;
   language?: string;
 }
 
@@ -36,30 +74,7 @@ class NotificationCard extends React.Component<INotificationCardProps> {
     </header>
   };
 
-  getContent = (): JSX.Element => {
-    return <International>{
-      ({ formatMessage }) => {
-        const { config: { message, translationId, error } } = this.props;
-        if (!((message ? 1 : 0) ^ (translationId ? 1 : 0) ^ (error ? 1 : 0))) {
-          throw new Error(
-            `Only either 'message', 'translationId' or 'error' can be specified.`
-          );
-        }
-        let content = null;
-        if (message) {
-          content = message;
-        }
-        if (translationId) {
-          content = formatMessage({ id: translationId });
-        }
-        if (error) {
-          content = <ErrorContent contentError={error}/>
-        }
-        return <CardText className='md-text--inherit'>{content}</CardText>
-      }
-    }
-    </International>;
-  };
+  getContent = (): JSX.Element => getContent(this.props.config).content;
 
   getIcon = () => {
     const { config: { icon, error } } = this.props;
@@ -69,7 +84,7 @@ class NotificationCard extends React.Component<INotificationCardProps> {
 
   getTimestamp = () => {
     const { config: { timestamp } } = this.props;
-    const { formatDate, formatTime } = Translations; 
+    const { formatDate, formatTime } = Translations;
     const now = new Date();
     const displayDate = now.toDateString() != timestamp.toDateString();
     return <div
@@ -77,33 +92,59 @@ class NotificationCard extends React.Component<INotificationCardProps> {
   };
 
   getActions = (): React.ReactNode => {
-    const { config, config: { customActionLabelTranslationId, dismissLabelTranslationId, onCustomAction, onDismiss } } = this.props;
+    const {
+      config,
+      config: {
+        customActionLabelTranslationId, onCustomAction,
+        dismissButtonVisible, dismissLabelTranslationId, onDismiss,
+        hideButtonVisible, hideLabelTranslationId, onHide
+      }
+    } = this.props;
     const { formatMessage } = Translations;
     if (!(!onCustomAction) && !customActionLabelTranslationId) {
       throw new Error('If you provide a onCustomAction you should also provide a customActionLabelTranslationId');
     }
-    return <CardActions className='md-dialog-footer'>
-      {!onCustomAction
-        ? null
-        : <Button raised onClick={() => onCustomAction(config)}>
+    const actions = [];
+    if (!(!onCustomAction)) {
+      actions.push(
+        <Button raised key='custom-action-btn' onClick={() => onCustomAction(config, this)}>
           {!customActionLabelTranslationId ? 'notification.action_1' : formatMessage({ id: customActionLabelTranslationId })}
-        </Button>}
-      <Button raised onClick={event => {
-        event.stopPropagation();
-        this.props.dismissNotificationAction(config.id);
-        if (typeof onDismiss == 'function') {
-          onDismiss(config);
-        }
-      }}>
-        {formatMessage({ id: !dismissLabelTranslationId ? 'notification.dismiss' : dismissLabelTranslationId })}
-      </Button>
-    </CardActions>;
+        </Button>
+      );
+    }
+    if (hideButtonVisible !== false) {
+      actions.push(
+        <Button raised key='hide-btn' onClick={event => {
+          event.stopPropagation();
+          this.props.fadeNotificationOffScreenAction(config.id);
+          if (typeof onHide == 'function') {
+            onHide(config, this);
+          }
+        }}>
+          {formatMessage({ id: !hideLabelTranslationId ? 'notification.hide' : hideLabelTranslationId })}
+        </Button>
+      );
+    }
+    if (dismissButtonVisible !== false) {
+      actions.push(
+        <Button raised key='dismiss-btn' onClick={event => {
+          event.stopPropagation();
+          this.props.dismissNotificationAction(config.id);
+          if (typeof onDismiss == 'function') {
+            onDismiss(config, this);
+          }
+        }}>
+          {formatMessage({ id: !dismissLabelTranslationId ? 'notification.dismiss' : dismissLabelTranslationId })}
+        </Button>
+      );
+    }
+    return <CardActions className='md-dialog-footer' children={actions}/>;
   };
 
   componentDidMount(): void {
     const { config, config: { onMount } } = this.props;
     if (typeof onMount == 'function') {
-      onMount(config);
+      onMount(config, this);
     }
   }
 
@@ -115,7 +156,7 @@ class NotificationCard extends React.Component<INotificationCardProps> {
       <Card
         onClick={() => {
           if (onClick) {
-            onClick(config);
+            onClick(config, this);
           }
         }}
         className={[
@@ -137,6 +178,7 @@ export default connect(
     ...ownProps,
     language: store.languageReducer.language,
   }), {
-    dismissNotificationAction
+    dismissNotificationAction,
+    fadeNotificationOffScreenAction,
   })
 (NotificationCard);
