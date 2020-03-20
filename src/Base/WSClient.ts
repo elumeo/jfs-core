@@ -53,13 +53,11 @@ export class WSClient {
         });
 
         this.sockets[namespace].on(this.EVENT_ERROR, (err) => {
-          console.log(this.EVENT_ERROR, err);
           this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
           this.connectionErrorSubject.next({namespace, message: err});
         });
 
         this.sockets[namespace].on(this.EVENT_CONNECT_ERROR, (err) => {
-          console.log(this.EVENT_CONNECT_ERROR, err);
           this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
           this.connectionErrorSubject.next({namespace, message: err});
         });
