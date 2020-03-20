@@ -1,20 +1,19 @@
-import { resolve } from 'path';
-import JSC from 'Library/JSC';
-import Directory from 'Library/Filesystem/Directory';
+import JFS from 'Library/JFS';
+import Location from 'Library/JFS/Environment/Location';
 
-const project = new Directory({ path: resolve('.') });
-
-JSC.generate(
-  () => {
-    project.run({
-      command: 'node',
-      parameters: [
-        'node_modules/prettier/bin-prettier.js',
-        '--write', './src/Jsc/JscApi.ts'
-      ],
-      commandExited: () => {
-
-      }
-    });
+JFS.discover(() => {
+  if (JFS.Environment.Location.type === Location.Type.LOCAL) {
+    JFS.Core.JSC.generate(
+      JFS.Core.config,
+      2,
+      () => {}
+    )
   }
-);
+  else if (JFS.Environment.Location.type === Location.Type.REMOTE) {
+    JFS.Environment.Head.JSC.generate(
+      JFS.Environment.Head.config,
+      2,
+      () => {}
+    )
+  }
+});

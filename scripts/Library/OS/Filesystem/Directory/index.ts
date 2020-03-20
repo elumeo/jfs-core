@@ -1,13 +1,14 @@
-import { readdir, mkdir } from 'fs';
+import { readdir, mkdir, existsSync } from 'fs';
 import FsNode, {IFsNodeProps} from '../FsNode';
 import File from '../File';
-import {resolve} from "path";
+import {resolve, sep} from "path";
 import rmdir from 'rimraf';
 import ncp from 'ncp';
 import {ChildProcess, spawn, SpawnOptions} from "child_process";
 import chokidar, {FSWatcher} from 'chokidar';
 
 import handleChange from "./handleChange";
+import Explorer from '../Explorer';
 
 interface IChildren {
     directories: Directory[];
@@ -86,6 +87,9 @@ class Directory extends FsNode {
     public directory = ({
         directoryName,
         directoryReady
+    }: {
+      directoryName: string;
+      directoryReady: (directory: Directory) => void;
     }) => this.directories(
         directories => directoryReady(
             directories.find(directory => directory.name === directoryName)
@@ -124,9 +128,37 @@ class Directory extends FsNode {
         chokidar.watch(resolve(this.path))
     )
 
-    public create = (directoryCreated: () => void) => mkdir(
-        this.path,
-        directoryCreated
+    public create = (directoryCreated: () => void) => (
+      (new Explorer(this.path)).explore(
+        (path) => path,
+        pathStack => {
+          const payload = (
+            this.path
+              .substring(pathStack[0].length, this.path.length)
+              .split(sep)
+              .slice(1)
+          )
+          const createChild = (payload: string[], onComplete: () => void) => {
+            if (!payload.length) {
+              onComplete();
+            }
+            else {
+              mkdir(
+                resolve(
+                  pathStack[0],
+                  payload[0]
+                ),
+                () => createChild(
+                  payload.slice(1),
+                  onComplete
+                )
+              )
+            }
+          }
+
+          createChild(payload, directoryCreated);
+        }
+      )
     )
 
     public sync = (targetBasePath: string, messagePrefix: string = '') => {

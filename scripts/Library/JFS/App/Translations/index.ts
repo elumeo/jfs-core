@@ -1,17 +1,15 @@
 import { resolve } from "path";
-
 import color from 'ansi-colors';
+import opn from 'opn';
 
-import File from "Library/Filesystem/File";
-import CLI from 'Library/CLI';
+import File from "Library/OS/Filesystem/File";
+import Directory from "Library/OS/Filesystem/Directory";
+import CLI from 'Library/OS/CLI';
 
 import { ITranslations } from './Types';
 import Language from './Language';
 import TranslationTable, { ICsvOptions, IHtmlOptions } from "./TranslationTable";
 import PageRenderer from "./PageRenderer";
-
-import Directory from "../Filesystem/Directory";
-import opn from 'opn';
 
 type TranslationsReadyCallback = (translations: ITranslations) => void;
 type ViewContent = { csvString: string; htmlString: string; };
@@ -113,14 +111,18 @@ class Translations {
     private static lastHtmlFile = (fileFound: (lastHtmlFile: File) => void) => {
         Translations.setupDirectory().files(files => {
             const pattern = /(?<=missing.translations.v)(.*)(?=.html)/;
-            fileFound(files.find(({ name }) => name.match(pattern)));
+            fileFound(
+              files.find(({ name }) => Boolean(name.match(pattern)))
+            );
         });
     };
 
     private static lastCsvFile = (fileFound: (lastHtmlFile: File) => void) => {
         Translations.setupDirectory().files(files => {
             const pattern = /(?<=missing.translations.v)(.*)(?=.csv)/;
-            fileFound(files.find(({ name }) => name.match(pattern)));
+            fileFound(
+              files.find(({ name }) => Boolean(name.match(pattern).length))
+            );
         });
     };
 
@@ -169,7 +171,7 @@ class Translations {
                 dataReady: data => {
                     const [versionNumber] = lastHtmlFile.name.match(/(?<=missing.translations.v)(.*)(?=.html)/);
 
-                    if (!data.includes(htmlString)) {
+                    if (!(data as string).includes(htmlString)) {
                         Translations.lastCsvFile(lastCsvFile => lastCsvFile.remove({
                             fileRemoved: () => lastHtmlFile.remove({})
                         }));

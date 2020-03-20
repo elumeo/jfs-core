@@ -1,12 +1,12 @@
 {
   "JscClient": {
-    "Host": "http://de.TECH-64_push_to_web.api.staging-jsc-app.juwelo.local",
-    "HostExternal": "https://api-test.juwelo.de/staging/de/master",
+    "Host-Internal": "http://de.TECH-64_push_to_web.api.staging-jsc-app.juwelo.local",
+    "Host": "https://api-test.juwelo.de/staging/de/master",
     "Timeout": 30000
   },
   "Language": "de",
   "Currency": "EUR",
   "Container": "juwelotv",
   "ContainerLanguage": "de",
-  "AppName": "jfs_StoreOrderPicking"
+  "AppName": "jfs_Core"
 }

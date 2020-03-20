@@ -1,4 +1,8 @@
 node_modules
 .idea
-.config.json.dist
-.config.dist.json
+/.editorconfig
+/.prettierrc
+/.prettierignore
+/tsconfig.json
+/tslint.json
+.autohidefiles

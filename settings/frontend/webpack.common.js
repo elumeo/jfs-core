@@ -7,21 +7,45 @@ copyLocal();
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const generateAliases = () => {
+  const tsConfigPath = resolve('tsconfig.json');
+  const { compilerOptions: { baseUrl, paths } } = require(tsConfigPath);
+
+  const removePatternFromPath = (path) => {
+    const pattern = '/*';
+    if (path.substring(path.length -pattern.length, path.length) === pattern) {
+      return path.substring(0, path.length -pattern.length);
+    }
+    else {
+      return path;
+    }
+  }
+
+  return Object.keys(paths)
+    .map(
+      (pathKey) => {
+        return {
+          [removePatternFromPath(pathKey)]: resolve(
+            baseUrl,
+            removePatternFromPath(paths[pathKey][0])
+          )
+        };
+      }
+    )
+    .reduce(
+      (aliases, alias) => ({
+        ...aliases,
+        ...alias
+      }),
+      {}
+    )
+}
+
 module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     modules: [resolve('src'), 'node_modules'],
-    alias: {
-      Action: resolve('src', 'Store', 'Action'),
-      Component: resolve('src', 'Component'),
-      Composition: resolve('src', 'Composition'),
-      Core: '@elumeo/jfs-core/src',
-      'Jfc/Component/HelloWorld': 'jfc-hello-world',
-      JscApi: resolve('src', 'Jsc', 'JscApi'),
-      Mock: resolve('src', 'Mock'),
-      Setup: resolve('src', 'Setup'),
-      Store: resolve('src', 'Store', 'index.ts')
-    }
+    alias: generateAliases()
   },
   module: {
     rules: [

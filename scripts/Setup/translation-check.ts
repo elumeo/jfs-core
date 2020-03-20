@@ -1,3 +1,6 @@
-import Translations from "Library/Translations";
+import JFS from 'Library/JFS';
+import App from 'Library/JFS/App';
 
-Translations.check();
+JFS.discover(() => {
+  App.Translations.check();
+});
