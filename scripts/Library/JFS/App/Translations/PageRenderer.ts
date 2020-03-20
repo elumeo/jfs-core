@@ -1,4 +1,4 @@
-import File from "../Filesystem/File";
+import File from "Library/OS/Filesystem/File";
 import {resolve} from "path";
 
 export interface IPageRendererProps {
@@ -10,7 +10,7 @@ class PageRenderer {
     private htmlFile: File;
     private cssFile: File;
     private javaScriptFile: File;
-    
+
     constructor(props: IPageRendererProps) {
         this.htmlFile = new File({
             path: resolve(

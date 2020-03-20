@@ -54,10 +54,13 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
     concatMap((namespace) => {
       let host: string = null;
       const config = state.value.configReducer.config;
+      let path = '/socket.io';
       if (config.JscWebSocketClient !== undefined && namespace === config.JscWebSocketClient.PrivateNamespace) {
         host = config.JscWebSocketClient.Host;
+        path = (config.JscWebSocketClient.Path !== undefined && config.JscWebSocketClient.Path !== null) ? config.JscWebSocketClient.Path + path : path;
       } else if (config.JfsWebSocketClient !== undefined && namespace === config.JfsWebSocketClient.PrivateNamespace) {
         host = config.JfsWebSocketClient.Host;
+        path = (config.JfsWebSocketClient.Path !== undefined && config.JfsWebSocketClient.Path !== null) ? config.JfsWebSocketClient.Path + path : path;
       }
       if (host === null) {
         return EMPTY;
@@ -65,12 +68,15 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
 
       return WSClient.connect(
         host,
+        path,
         namespace,
         state.value.sessionReducer.sessionDTO.token,
         state.value.sessionReducer.sessionDTO.lastIPAddress
       );
     }),
-    switchMap((namespace) => of(webSocketConnectSuccessAction(namespace)))
+    switchMap((namespace) => {
+      return of(webSocketConnectSuccessAction(namespace));
+    })
   );
 };
 
@@ -93,11 +99,23 @@ export const webSocketLogoutEpic: Epic<RootAction, RootAction> = (action$, state
   );
 };
 
-export const webSocketCheckForConnectionErrorEpic: Epic<RootAction, RootAction> = (action$) => {
+export const webSocketCheckForConnectionErrorEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
   return action$.pipe(
     filter(isActionOf(webSocketConnectRequestAction)),
     concatMap(() => WSClient.connectionErrorObservable$),
-    switchMap((namespace) => of(webSocketConnectFailedAction(namespace)))
+    switchMap((err) => {
+        if (state.value.webSocketConnectionReducer[err.namespace].isConnecting) {
+          return of(
+            addNotificationAction({
+              message: 'Unable to connect to websocket server (' + err.namespace + ')' + (err.message !== null && err.message !== '' ? ' because of ' + err.message : '') + '!', isError: true
+            }),
+            webSocketConnectFailedAction(err)
+          );
+        }
+
+        return EMPTY;
+      }
+    )
   );
 };
 

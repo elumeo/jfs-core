@@ -1,4 +1,4 @@
-## [8.6.0] - 2020-03-20
+## [8.7.0] - 2020-03-20
 ### Bugfixes
 - Made errorContent more reliable
 - Removed drop shadow from items of the NotificationDrawer 
@@ -8,6 +8,28 @@
     - Compact NotificationCard layout (icon buttons only)
     - isSuccess option to color notifications with $juw_success_color
     - Default icons for error and success cases
+
+## [8.6.2] - 2020-03-20
+### Bugfix
+- extended error message handling websocket
+
+## [8.6.1] - 2020-03-17
+### Bugfix
+- Prevent websocket error to be raised more then 1 time during connection/reconnection
+- Fixed a bug that changeLanguageAction prop in SettingsContainer is not required anymore
+- Fixed a shadowed name issue in src/Store/Reducer/index.ts
+
+## [8.6.0] - 2020-03-17
+### Added
+- Full support of react-router functionalities for AuthRoute, NoAuthRoute & BaseRoute
+
+## [8.5.7] - 2020-03-16
+### Bugfixes
+- Fixed error handling in websocket context
+
+### Added
+- new config value for websocket connection: Path
+  * is optional: default is `/`
 
 ## [8.5.6] - 2020-03-13
 ### Bugfixes
@@ -19,7 +41,7 @@
 
 ## [8.5.4] - 2020-03-13
 ### Added
-- Hide button to on screen notifications 
+- Hide button to on screen notifications
 - Hide/Dismiss-Animation optimization
 
 ## [8.5.3] - 2020-03-10
@@ -28,9 +50,9 @@
 
 ## [8.5.2] - 2020-03-10
 ### Added
-- Notification 
+- Notification
     - dismissButtonVisible option
-    - message type supports string[] to render as list 
+    - message type supports string[] to render as list
     - translationId type supports string[] to render as list
 ### Bugfixes
 - Notification
@@ -38,7 +60,7 @@
 
 ## [8.5.1] - 2020-03-10
 ### Bugfixes
-- fixed an issue when try to emit to websocket when no websocket connection is available 
+- fixed an issue when try to emit to websocket when no websocket connection is available
 
 ## [8.5.0] - 2020-03-10
 ### Added

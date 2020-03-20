@@ -1,6 +1,6 @@
 import { createStandardAction } from 'typesafe-actions';
 import JSCApi from '../../Jsc/JscApi';
-import { IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/WebSocketConnectionReducer';
+import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/WebSocketConnectionReducer';
 
 const featureName = 'websocket';
 export const ROOM_UPDATE_ACTION_ID = featureName + '/UPDATE_ROOM';
@@ -9,7 +9,7 @@ export const webSocketAddNamespaceAction = createStandardAction(featureName + '/
 
 export const webSocketConnectRequestAction = createStandardAction(featureName + '/CONNECT_REQUEST')<string>();
 export const webSocketConnectSuccessAction = createStandardAction(featureName + '/CONNECT_SUCCESS')<string>();
-export const webSocketConnectFailedAction = createStandardAction(featureName + '/CONNECT_FAILED')<string>();
+export const webSocketConnectFailedAction = createStandardAction(featureName + '/CONNECT_FAILED')<IWebSocketError>();
 
 export const webSocketDisconnectRequestAction = createStandardAction(featureName + '/DISCONNECT_REQUEST')<string>();
 export const webSocketDisconnectSuccessAction = createStandardAction(featureName + '/DISCONNECT_SUCCESS')<string>();

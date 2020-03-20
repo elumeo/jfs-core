@@ -9,22 +9,19 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 export interface INoAuthRouteProps extends IBaseRouteProps {
-  Component: any;
   enterUnauthorizedRoute?: typeof enterUnauthorizedRoute;
 }
 
 const NoAuthRoute: React.FC<INoAuthRouteProps> = ({
-  Component, enterUnauthorizedRoute, ...rest
+  enterUnauthorizedRoute,
+  ...rest
 }) => {
   useEffect(() => {
     enterUnauthorizedRoute();
   })
 
   return (
-    <BaseRoute
-      {...rest}
-      render={props => <Component {...props}/>}
-    />
+    <BaseRoute {...rest}/>
   );
 }
 

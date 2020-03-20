@@ -1,7 +1,12 @@
-import Directory from "Library/Filesystem/Directory";
+import Directory from "Library/OS/Filesystem/Directory";
 import {resolve} from "path";
 import color from "ansi-colors";
-import Notifier from "../../Notifier";
+import Notifier from "Library/Notifier";
+
+interface ILocalLink {
+  linkName: string;
+  linkPath: string;
+}
 
 class LocalLink {
 
@@ -11,7 +16,7 @@ class LocalLink {
         dependencyVersion.substring(0, LocalLink.prefix.length) === LocalLink.prefix
     );
 
-    public static extractLocalPath = (linkPath: string) => (
+    public static extractPath = (linkPath: string) => (
         linkPath.substring(LocalLink.prefix.length, linkPath.length)
     );
 
@@ -19,7 +24,7 @@ class LocalLink {
     private readonly linkPath: string;
     private linkDirectory: Directory;
 
-    constructor(props) {
+    constructor(props: ILocalLink) {
         this.linkName = props.linkName;
         this.linkPath = props.linkPath;
         this.linkDirectory = new Directory({
@@ -34,7 +39,7 @@ class LocalLink {
         syncList: string[]
     ) => this.linkDirectory.directories(directories =>
         directories
-            .filter(({ name }) => syncList.includes(name))
+            .filter(({ name }) => syncList['includes'](name))
             .forEach(
                 directory => directory.sync(
                     resolve(
@@ -48,9 +53,9 @@ class LocalLink {
             )
     );
 
-    public static showLocalLinks = (localLinks) => console.log(
+    public static showLocalLinks = (localLinks: LocalLink[]) => console.log(
         localLinks
-            .map(localLink => color.green(localLink.toString()))
+            .map((localLink: LocalLink) => color.green(localLink.toString()))
             .join('\n'),
         '\n'
     );

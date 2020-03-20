@@ -3,12 +3,13 @@ const { resolve } = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
+  mode: 'development',
   target: 'node',
   context: resolve(__dirname, '..', '..', 'scripts', 'index.ts'),
   entry: [resolve(__dirname, '..', '..', 'scripts', 'index.ts')],
   output: {
     path: resolve(__dirname, '..', '..', 'scripts'),
-    filename: 'jsc-generate.js'
+    filename: 'script.js'
   },
   resolve: {
     extensions: ['.ts', '.json'],

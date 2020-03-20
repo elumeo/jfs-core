@@ -1,16 +1,15 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "8.6.0",
+  "version": "8.7.0",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
-    "start": "ts-node-dev --respawn -r tsconfig-paths/register scripts/index.ts --development true --project-path ../jfs_Boilerplate",
-    "build-scripts": "webpack --config settings/scripts/webpack.scripts.js",
-    "compile-scripts": "node ./scripts/compile-scripts.js",
-    "core-development": "node ./scripts/core-development.js",
-    "jsc-generate": "node ./scripts/jsc-generate.js --project-path ./",
+    "start": "ts-node-dev --respawn -r tsconfig-paths/register scripts/index.ts --scripts-mode true",
+    "build-script": "webpack --config settings/scripts/webpack.scripts.js",
+    "jsc-generate": "node ./scripts/jsc-generate.js",
+    "jsc-check": "node ./scripts/jsc-check.js",
     "release": "npm publish --access public",
-    "postinstall": "node ./scripts/deploy-config-files.js --project-path ../../.."
+    "postinstall": "node ./scripts/deploy-config-files.js"
   },
   "repository": {
     "type": "git",

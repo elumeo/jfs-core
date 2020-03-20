@@ -1,5 +1,6 @@
 interface IWebSockClient {
   Host: string;
+  Path: string;
   PrivateNamespace: string;
   AutoRoomSubscriptions: string[];
 }

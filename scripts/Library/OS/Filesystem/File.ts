@@ -1,4 +1,4 @@
-import { readFile, writeFile, appendFile, unlink } from 'fs';
+import { readFile, writeFile, appendFile, unlink, existsSync } from 'fs';
 import FsNode from './FsNode';
 
 interface IDefaultReadSettings {
@@ -38,6 +38,8 @@ class File extends FsNode {
     public static readonly defaultReadSettings: IDefaultReadSettings =  {
         encoding: 'utf8',
     };
+
+    public exists = () => existsSync(this.path);
 
     public create = ({ fileCreated }: ICreateSettings) => appendFile(
         this.path,
@@ -92,11 +94,11 @@ class File extends FsNode {
 
     public copy = ({ newPath: path, fileCopied }: ICopySettings) => this.read({
         dataReady: data => {
-            const newFile = new File({ path });
-            newFile.write({
-                data,
-                dataWritten: () => fileCopied(newFile)
-            });
+          const newFile = new File({ path });
+          newFile.write({
+              data,
+              dataWritten: () => fileCopied(newFile)
+          });
         }
     });
 
@@ -104,6 +106,19 @@ class File extends FsNode {
         newPath,
         fileCopied: newFile => fileMoved(newFile)
     });
+
+    public update = ({ patcher, onComplete }: {
+      patcher: (data: string | Buffer) => (string | Buffer),
+      onComplete: () => void
+    }) => {
+      this.read({
+        encoding: 'utf8',
+        dataReady: data => this.write({
+          data: patcher(data),
+          dataWritten: onComplete
+        })
+      });
+    }
 
 }
 

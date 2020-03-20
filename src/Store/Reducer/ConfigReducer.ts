@@ -2,8 +2,8 @@ import { configLoadedAction, loadConfig } from '../Action/ConfigAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import IConfig from '../../Base/IConfig';
 
-export interface IConfigReducerState<IConfig> {
-  config: IConfig;
+export interface IConfigReducerState<T> {
+  config: T;
   pending: boolean;
   loaded: boolean;
 }

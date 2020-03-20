@@ -2,7 +2,7 @@ import { Observable, Subject } from 'rxjs';
 import io from 'socket.io-client';
 import { PayloadAction } from 'typesafe-actions';
 import JSCApi from '../Jsc/JscApi';
-import { IWebSocketRoom, IWebSocketRoomConnection } from '../Store/Reducer/WebSocketConnectionReducer';
+import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../Store/Reducer/WebSocketConnectionReducer';
 import IWebSocketRoomUpdateDTO = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO;
 import { ROOM_UPDATE_ACTION_ID } from '../Store/Action/WebSocketAction';
 import { ICoreRootReducer } from '../Store/Reducer';
@@ -16,6 +16,7 @@ export class WSClient {
   public static EVENT_LEAVE_ROOM = '[Room] Leave';
   public static EVENT_UPDATE_ROOM = '[Room] Update';
   public static EVENT_CONNECT_ERROR = 'connect_error';
+  public static EVENT_ERROR = 'error';
   public static EVENT_RECONNECT = 'reconnect';
 
   public static sockets: typeof io.Socket[] = [];
@@ -23,7 +24,7 @@ export class WSClient {
   protected static listenRoomsSubject = new Subject<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>();
   public static listenRoomsObservable$ = WSClient.listenRoomsSubject.asObservable();
 
-  protected static connectionErrorSubject = new Subject<string>();
+  protected static connectionErrorSubject = new Subject<IWebSocketError>();
   public static connectionErrorObservable$ = WSClient.connectionErrorSubject.asObservable();
 
   protected static reconnectSubject = new Subject<string>();
@@ -32,7 +33,7 @@ export class WSClient {
   protected static jfsOnRoomUpdateSubject = new Subject<any>();
   protected static jfsOnRoomUpdate$ = WSClient.jfsOnRoomUpdateSubject.asObservable();
 
-  public static connect(host: string, namespace: string, token?: string, ip?: string) {
+  public static connect(host: string, path: string, namespace: string, token?: string, ip?: string) {
     this.checkSocket(namespace);
     return new Observable<string>((observer) => {
       if (this.sockets[namespace] !== null) {
@@ -41,7 +42,8 @@ export class WSClient {
       if (this.sockets[namespace] === null) {
         this.sockets[namespace] = io.connect(host + '/' + namespace, {
           query: {token, ip},
-          secure: host.startsWith('https')
+          secure: host.startsWith('https'),
+          path: path
         });
         this.sockets[namespace].on(this.EVENT_AUTHENTICATED, () => {
           this.sockets[namespace].off(this.EVENT_AUTHENTICATED);
@@ -50,9 +52,14 @@ export class WSClient {
           observer.complete();
         });
 
-        this.sockets[namespace].on(this.EVENT_CONNECT_ERROR, () => {
+        this.sockets[namespace].on(this.EVENT_ERROR, (err) => {
           this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
-          this.connectionErrorSubject.next(namespace);
+          this.connectionErrorSubject.next({namespace, message: err});
+        });
+
+        this.sockets[namespace].on(this.EVENT_CONNECT_ERROR, (err) => {
+          this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
+          this.connectionErrorSubject.next({namespace, message: err});
         });
 
         this.sockets[namespace].on(this.EVENT_RECONNECT, () => {
