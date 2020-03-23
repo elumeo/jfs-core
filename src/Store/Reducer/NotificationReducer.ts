@@ -1,5 +1,6 @@
 // noinspection TypeScriptPreferShortImport
 import React from 'react';
+// noinspection TypeScriptPreferShortImport
 import {
   addNotificationWithIdAction,
   dismissAllNotificationsAction,
@@ -13,6 +14,7 @@ import {
 } from '../Action/NotificationAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import { AxiosError } from 'axios';
+// noinspection TypeScriptPreferShortImport
 import { getPlainText, INotificationCardProps } from '../../Component/Notification/NotificationCard';
 
 export interface INotificationContent {
@@ -22,6 +24,7 @@ export interface INotificationContent {
 
   icon?: string;
   isError?: boolean;
+  isSuccess?: boolean;
   stayOnScreen?: boolean;
   groupId?: string;
 
@@ -29,14 +32,13 @@ export interface INotificationContent {
   onMount?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
 
   dismissButtonVisible?: boolean;
-  dismissLabelTranslationId?: string;
   onDismiss?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
 
   hideButtonVisible?: boolean;
-  hideLabelTranslationId?: string;
   onHide?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
 
-  customActionLabelTranslationId?: string;
+  customActionTooltipTranslationId?: string;
+  customActionIconName?: string;
   onCustomAction?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
 }
 

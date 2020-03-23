@@ -68,6 +68,10 @@
       }
     }
 
+    &__notification {
+      box-shadow: none;
+    }
+
     &__empty__message {
       left: 50%;
       padding: 12px;

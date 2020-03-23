@@ -9,6 +9,7 @@ import CardTitle from 'react-md/lib/Cards/CardTitle';
 import CardActions from 'react-md/lib/Cards/CardActions';
 import SelectField from 'react-md/lib/SelectFields';
 
+// noinspection TypeScriptPreferShortImport
 import { changeLanguageAction } from '../../Store/Action/LanguageAction';
 import { ICoreRootReducer } from '../../Store/Reducer';
 import Cookie from 'js-cookie';
@@ -34,7 +35,7 @@ class SettingsContainer extends React.Component<ISettingsContainerProps> {
   render() {
     const {
       props: {
-        history: {goBack}, language, changeLanguageAction
+        history: {goBack}, language
       }
     } = this;
 
@@ -90,4 +91,5 @@ const enhance = compose(
   withRouter
 );
 
+// noinspection JSUnusedGlobalSymbols
 export default enhance(SettingsContainer);

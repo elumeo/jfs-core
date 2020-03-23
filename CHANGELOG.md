@@ -1,3 +1,18 @@
+## [8.7.0] - 2020-03-20
+### Bugfixes
+- Made errorContent more reliable
+- Removed drop shadow from items of the NotificationDrawer 
+
+### Added
+- Notifications
+    - Compact NotificationCard layout (icon buttons only)
+    - isSuccess option to color notifications with $juw_success_color
+    - Default icons for error and success cases
+
+## [8.6.2] - 2020-03-20
+### Bugfix
+- extended error message handling websocket
+
 ## [8.6.1] - 2020-03-17
 ### Bugfix
 - Prevent websocket error to be raised more then 1 time during connection/reconnection
