@@ -69,7 +69,7 @@ class JFC {
         paths: Object.keys(tsConfig.compilerOptions.paths).reduce(
           (paths, pathName) => ({
             ...paths,
-            'Core': '../node_modules/@elumeo/jfs-core',
+            'Core/*': '../node_modules/@elumeo/jfs-core/src/*',
             [`Jfc/${this.name}/${pathName}`]: (
               tsConfig.compilerOptions.paths[pathName]
             )
