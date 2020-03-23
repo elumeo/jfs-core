@@ -5,7 +5,7 @@ import {resolve, sep} from "path";
 import rmdir from 'rimraf';
 import ncp from 'ncp';
 import {ChildProcess, spawn, SpawnOptions} from "child_process";
-import chokidar, {FSWatcher} from 'chokidar';
+import chokidar, { FSWatcher } from 'chokidar';
 
 import handleChange from "./handleChange";
 import Explorer from '../Explorer';

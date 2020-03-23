@@ -7,12 +7,10 @@ import Virtual from 'Library/JFS/Virtual';
 import { resolve } from 'path';
 
 namespace Path {
-
   export const removeWildcard = (path: string) => Text.removeSuffix(
     path,
     '/*'
   );
-
 }
 
 class JFC {
@@ -71,6 +69,7 @@ class JFC {
         paths: Object.keys(tsConfig.compilerOptions.paths).reduce(
           (paths, pathName) => ({
             ...paths,
+            'Core': '../node_modules/@elumeo/jfs-core',
             [`Jfc/${this.name}/${pathName}`]: (
               tsConfig.compilerOptions.paths[pathName]
             )
