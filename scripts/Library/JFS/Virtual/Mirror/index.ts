@@ -52,21 +52,20 @@ class Mirror {
               }
             }
           }
-
           return { relativePath, equal };
         },
         { relativePath: '', equal: true }
       );
 
     (new Directory({ path: this.virtualFile.parent })).create(
-      () => this.virtualFile.read({
+      () => this.sourceFile.read({
         dataReady: (data: string) => this.virtualFile.write({
           data: [
-            `export * from '${relativePath}';`,
+            `export * from '${File.removeExtension(relativePath)}';`,
             ...(
               data.includes('export default')
                 ? [
-                  `import d from '${relativePath}';`,
+                  `import d from '${File.removeExtension(relativePath)}';`,
                   `export default d;`
                 ]
                 : []

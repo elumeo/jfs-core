@@ -3,6 +3,7 @@ import Directory from 'Library/OS/Filesystem/Directory';
 import File from 'Library/OS/Filesystem/File';
 import Virtual from '..';
 import Mirror from '../Mirror';
+import { resolve } from 'path';
 
 class Environment {
   public readonly root: string;
@@ -15,6 +16,16 @@ class Environment {
     this.directory = new Directory({ path: root });
     this.source = new Directory({ path: source });
   }
+
+  createVirtualPath = (...segments: string[]) => resolve(
+    this.root,
+    ...segments
+  );
+
+  createSourcePath = (...segments: string[]) => resolve(
+    this.source.path,
+    ...segments
+  )
 
   addMirror = ({
     virtualPath,

@@ -1,7 +1,19 @@
 import TsConfig from 'Library/TypeScript/TsConfig';
 import NodePackage from 'Library/Node/Package';
+import File from 'Library/OS/Filesystem/File';
 import Directory from 'Library/OS/Filesystem/Directory';
 import Text from 'Library/Text';
+import Virtual from 'Library/JFS/Virtual';
+import { resolve } from 'path';
+
+namespace Path {
+
+  export const removeWildcard = (path: string) => Text.removeSuffix(
+    path,
+    '/*'
+  );
+
+}
 
 class JFC {
   public readonly isHead: boolean;
@@ -51,8 +63,121 @@ class JFC {
     });
   }
 
-  setup = (onComplete: () => void) => {
-    onComplete();
+  setup = (onComplete: () => void) => this.tsConfig.update({
+    patcher: (tsConfig) => ({
+      ...tsConfig,
+      compilerOptions: {
+        ...tsConfig.compilerOptions,
+        paths: Object.keys(tsConfig.compilerOptions.paths).reduce(
+          (paths, pathName) => ({
+            ...paths,
+            [`Jfc/${this.name}/${pathName}`]: (
+              tsConfig.compilerOptions.paths[pathName]
+            )
+          }),
+          {}
+        )
+      }
+    }),
+    onComplete
+  })
+
+  virtualize = (onComplete: () => void) => {
+    const virtualEnvironment = new Virtual.Environment({
+      root: this.path,
+      source: resolve(this.path, 'src')
+    });
+
+    Object
+      .keys(this.pathMappings)
+      .forEach(
+        alias => {
+          const virtualPath = virtualEnvironment.createVirtualPath(
+            Text.removePrefix(
+              alias,
+              `${this.aliasPrefix}/`
+            )
+          );
+
+          const sourcePath = virtualEnvironment.createSourcePath(
+            Text.removePrefix(
+              this.pathMappings[alias][0],
+              `${this.pathPrefix}/`
+            )
+          );
+
+          if (Text.endsWith(sourcePath, '/*')) {
+            const directory = new Directory({
+              path: Path.removeWildcard(sourcePath)
+            });
+
+            const addDirectory = (directory: Directory) => {
+              if (directory.exists()) {
+                directory.files(
+                  files => {
+                    files.forEach(
+                      file => virtualEnvironment.addMirror({
+                        sourcePath: file.path,
+                        virtualPath: resolve(
+                          Path.removeWildcard(virtualPath),
+                          file.name
+                        )
+                      })
+                    )
+
+                    directory.directories(
+                      directories => directories.forEach(
+                        addDirectory
+                      )
+                    )
+                  }
+                )
+              }
+            }
+
+            addDirectory(directory);
+          }
+          else {
+            const fileWithoutSuffix = new File({
+              path: sourcePath
+            });
+
+            const sourceParent = new Directory({
+              path: fileWithoutSuffix.parent
+            });
+
+            sourceParent.files(
+              files => {
+                const { path, name } = files.find(
+                  file => Text.beginsWith(
+                    file.name,
+                    fileWithoutSuffix.name
+                  )
+                )
+
+                const suffix = Text.removePrefix(
+                  name,
+                  fileWithoutSuffix.name
+                );
+
+                virtualEnvironment.addMirror({
+                  sourcePath: path,
+                  virtualPath: `${virtualPath}${suffix}`
+                });
+              }
+            );
+
+          }
+        }
+      )
+
+    setTimeout(
+      () => {
+        virtualEnvironment.mirrors.forEach(mirror => mirror.apply());
+        onComplete();
+      },
+      1000
+    );
   }
 
 }
