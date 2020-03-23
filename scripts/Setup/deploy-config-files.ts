@@ -39,7 +39,7 @@ JFS.discover(
               }
               else if (JFS.Component) {
                 JFS.Component.setup(() => {
-                  // console.log(JFS.Component);
+                  
                 });
               }
             }
