@@ -1,3 +1,7 @@
+## [8.8.1] - 2020-03-24
+### Bugfix
+- Minor adjustments for tsconfig in jfc
+
 ## [8.8.0] - 2020-03-24
 ### Added
 - Support for path mapping in jfc components

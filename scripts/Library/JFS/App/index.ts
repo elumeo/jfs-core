@@ -10,7 +10,7 @@ import TsConfig from 'Library/TypeScript/TsConfig';
 
 class App {
   public static readonly Translations = Translations;
-  
+
   public readonly path: string;
   public readonly nodePackage: NodePackage;
   public readonly tsConfig: TsConfig;
@@ -36,12 +36,12 @@ class App {
   )
 
   jfcPathMapping = (jfc: JFC) => ({
-    [`Jfc/${jfc.name}/Action/*`]: [`${this.jfcPath(jfc)}/Action/*`],
-    [`Jfc/${jfc.name}/Component/*`]: [`${this.jfcPath(jfc)}/Component/*`],
-    [`Jfc/${jfc.name}/Mock/*`]: [`${this.jfcPath(jfc)}/Mock/*`],
-    [`Jfc/${jfc.name}/JscApi`]: [`${this.jfcPath(jfc)}/JscApi.ts`],
-    [`Jfc/${jfc.name}/Store`]: [`${this.jfcPath(jfc)}/Store.ts`],
-    [`Jfc/${jfc.name}/Setup`]: [`${this.jfcPath(jfc)}/Setup.ts`]
+    [`Jfc/${jfc.name}/Action/*`]: [`${this.jfcPath(jfc)}/src/Store/Action/*`],
+    [`Jfc/${jfc.name}/Component`]: [`${this.jfcPath(jfc)}/src/Component/index.tsx`],
+    [`Jfc/${jfc.name}/Component/*`]: [`${this.jfcPath(jfc)}/src/Component/*`],
+    [`Jfc/${jfc.name}/Mock/*`]: [`${this.jfcPath(jfc)}/src/Mock/*`],
+    [`Jfc/${jfc.name}/JscApi`]: [`${this.jfcPath(jfc)}/src/Jsc/JscApi.ts`],
+    [`Jfc/${jfc.name}/Setup`]: [`${this.jfcPath(jfc)}/src/index.ts`]
   })
 
   addJfcPathMappings = (tsConfig: any) => this.JFC.reduce(

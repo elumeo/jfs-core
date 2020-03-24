@@ -33,14 +33,10 @@ JFS.discover(
             settings,
             onComplete: () => {
               if (JFS.App) {
-                JFS.App.setup(() => {
-
-                });
+                JFS.App.setup(() => {});
               }
               else if (JFS.Component) {
-                JFS.Component.setup(() => {
-                  
-                });
+                JFS.Component.setup(() => {});
               }
             }
           });

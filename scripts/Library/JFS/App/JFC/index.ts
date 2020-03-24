@@ -66,16 +66,15 @@ class JFC {
       ...tsConfig,
       compilerOptions: {
         ...tsConfig.compilerOptions,
-        paths: Object.keys(tsConfig.compilerOptions.paths).reduce(
-          (paths, pathName) => ({
-            ...paths,
-            'Core/*': '../node_modules/@elumeo/jfs-core/src/*',
-            [`Jfc/${this.name}/${pathName}`]: (
-              tsConfig.compilerOptions.paths[pathName]
-            )
-          }),
-          {}
-        )
+        paths: ({
+          'Core/*': '../node_modules/@elumeo/jfs-core/src/*',
+          [`Jfc/${this.name}/Action/*`]: [`./Store/Action/*`],
+          [`Jfc/${this.name}/Component`]: [`./Component/index.tsx`],
+          [`Jfc/${this.name}/Component/*`]: [`./Component/*`],
+          [`Jfc/${this.name}/Mock/*`]: [`./Mock/*`],
+          [`Jfc/${this.name}/JscApi`]: [`./Jsc/JscApi.ts`],
+          [`Jfc/${this.name}/Setup`]: [`./index.ts`]
+        })
       }
     }),
     onComplete
