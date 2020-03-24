@@ -1,3 +1,7 @@
+## [8.9.0] - 2020-03-24
+### Added
+- Updated react-redux to 8.9.0
+
 ## [8.8.1] - 2020-03-24
 ### Bugfix
 - Minor adjustments for tsconfig in jfc
