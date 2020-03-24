@@ -55,10 +55,15 @@ class JFC {
         : `../node_modules/${this.directory.name}`
     );
 
-    this.pathMappings = TsConfig.pathMappings({
-      prefix: this.aliasPrefix,
-      pathPrefix: this.pathPrefix
-    });
+    this.pathMappings = {
+      'Core/*': ['../node_modules/@elumeo/jfs-core/src/*'],
+      [`Jfc/${this.name}/Action/*`]: [`./Store/Action/*`],
+      [`Jfc/${this.name}/Component`]: [`./Component/index.tsx`],
+      [`Jfc/${this.name}/Component/*`]: [`./Component/*`],
+      [`Jfc/${this.name}/Mock/*`]: [`./Mock/*`],
+      [`Jfc/${this.name}/JscApi`]: [`./Jsc/JscApi.ts`],
+      [`Jfc/${this.name}/Setup`]: [`./index.ts`]
+    }
   }
 
   setup = (onComplete: () => void) => this.tsConfig.update({
@@ -66,15 +71,7 @@ class JFC {
       ...tsConfig,
       compilerOptions: {
         ...tsConfig.compilerOptions,
-        paths: ({
-          'Core/*': '../node_modules/@elumeo/jfs-core/src/*',
-          [`Jfc/${this.name}/Action/*`]: [`./Store/Action/*`],
-          [`Jfc/${this.name}/Component`]: [`./Component/index.tsx`],
-          [`Jfc/${this.name}/Component/*`]: [`./Component/*`],
-          [`Jfc/${this.name}/Mock/*`]: [`./Mock/*`],
-          [`Jfc/${this.name}/JscApi`]: [`./Jsc/JscApi.ts`],
-          [`Jfc/${this.name}/Setup`]: [`./index.ts`]
-        })
+        paths: this.pathMappings
       }
     }),
     onComplete
@@ -151,7 +148,7 @@ class JFC {
                     file.name,
                     fileWithoutSuffix.name
                   )
-                )
+                );
 
                 const suffix = Text.removePrefix(
                   name,
