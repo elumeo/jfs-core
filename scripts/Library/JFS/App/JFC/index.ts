@@ -133,7 +133,7 @@ class JFC {
               }
             }
 
-            addDirectory(directory);
+            directory.create(() => addDirectory(directory));
           }
           else {
             const fileWithoutSuffix = new File({
