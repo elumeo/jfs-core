@@ -92,7 +92,7 @@
     "react-infinite": "^0.12.1",
     "react-intl": "^2.7.1",
     "react-md": "^1.12.2",
-    "react-redux": "^5.0.7",
+    "react-redux": "^7.1.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "react-router-redux": "^4.0.8",
