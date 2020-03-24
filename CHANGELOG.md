@@ -1,7 +1,11 @@
+## [8.8.0] - 2020-03-24
+### Added
+- Support for path mapping in jfc components
+
 ## [8.7.0] - 2020-03-20
 ### Bugfixes
 - Made errorContent more reliable
-- Removed drop shadow from items of the NotificationDrawer 
+- Removed drop shadow from items of the NotificationDrawer
 
 ### Added
 - Notifications
