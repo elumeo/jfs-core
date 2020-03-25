@@ -13,7 +13,7 @@ export interface INotificationBadgeProps {
 }
 
 const NotificationBadge: React.FC<INotificationBadgeProps> = ({
-  notifications, toggleNotificationDrawerAction
+  notifications, toggleNotificationDrawerAction: _toggleNotificationDrawerAction
 }) => {
   const empty = !notifications.length;
   return (
@@ -21,19 +21,19 @@ const NotificationBadge: React.FC<INotificationBadgeProps> = ({
       primary
       circular
       aria-haspopup
-      badgeId="notification-badge"
+      badgeId='notification-badge'
       badgeContent={empty ? '' : notifications.length}
       className={empty ? 'md-badge-container--empty' : ''}
     >
       <Button
         icon
-        onClick={() => toggleNotificationDrawerAction()}
-        aria-describedby="notification-badge">
+        onClick={() => _toggleNotificationDrawerAction()}
+        aria-describedby='notification-badge'>
         notifications
       </Button>
     </Badge>
   );
-}
+};
 
 const mapStateToProps = (
   state: ICoreRootReducer,
