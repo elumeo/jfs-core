@@ -35,6 +35,11 @@ interface IMoveSettings {
 
 class File extends FsNode {
 
+    public static readonly removeExtension = (path: string) => path.substring(
+      0,
+      path.lastIndexOf('.')
+    )
+
     public static readonly defaultReadSettings: IDefaultReadSettings =  {
         encoding: 'utf8',
     };

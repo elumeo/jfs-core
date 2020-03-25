@@ -1,14 +1,12 @@
+import { join } from 'path';
 import NodePackage from 'Library/Node/Package';
 import Directory from 'Library/OS/Filesystem/Directory';
 import Config from '../Config';
 import JSC from '../JSC';
 import { App } from './Type';
 import JFC from './JFC';
-import Text from 'Library/Text';
 import Translations from './Translations';
 import TsConfig from 'Library/TypeScript/TsConfig';
-import { resolve } from 'path';
-import Virtual from 'Library/JFS/Virtual';
 
 class App {
   public static readonly Translations = Translations;
@@ -31,142 +29,46 @@ class App {
     this.JFC = [];
   }
 
+  jfcPath = (jfc: JFC) => join(
+    `..`,
+    `node_modules`,
+    `${jfc.directory.name}`,
+  )
+
+  jfcPathMapping = (jfc: JFC) => ({
+    [`Jfc/${jfc.name}/Action/*`]: [`${this.jfcPath(jfc)}/src/Store/Action/*`],
+    [`Jfc/${jfc.name}/Component`]: [`${this.jfcPath(jfc)}/src/Component/index.tsx`],
+    [`Jfc/${jfc.name}/Component/*`]: [`${this.jfcPath(jfc)}/src/Component/*`],
+    [`Jfc/${jfc.name}/Mock/*`]: [`${this.jfcPath(jfc)}/src/Mock/*`],
+    [`Jfc/${jfc.name}/JscApi`]: [`${this.jfcPath(jfc)}/src/Jsc/JscApi.ts`],
+    [`Jfc/${jfc.name}/Setup`]: [`${this.jfcPath(jfc)}/src/index.ts`]
+  })
+
+  addJfcPathMappings = (tsConfig: any) => this.JFC.reduce(
+    (tsConfig, jfc) => TsConfig.addPathMapping(
+      tsConfig,
+      this.jfcPathMapping(jfc)
+    ),
+    tsConfig
+  );
+
+  setupTsConfig = (onComplete: () => void) => this.tsConfig.update({
+    patcher: this.addJfcPathMappings,
+    onComplete: () => this.JFC.forEach(jfc => jfc.virtualize(onComplete))
+  });
+
   setup = (onComplete: () => void) => {
-    this.discover(
-      (jfc: JFC[]) => {
-        jfc.forEach(jfc => this.JFC.push(jfc));
-        this.tsConfig.update({
-          patcher: (tsConfig: any) => (
-            this.JFC
-              .map(({ pathMappings }) => pathMappings)
-              .reduce(TsConfig.addPathMapping, tsConfig)
-          ),
-          onComplete: () => {
-            this.JFC.forEach(
-              jfc => {
-                const virtual = new Virtual.Environment({
-                  root: jfc.path,
-                  source: resolve(jfc.path, 'src')
-                });
-
-                Object
-                  .keys(jfc.pathMappings)
-                  .forEach(
-                    alias => {
-                      const virtualPath = resolve(
-                        virtual.root,
-                        Text.removePrefix(
-                          alias,
-                          `${jfc.aliasPrefix}/`
-                        )
-                      );
-
-                      const sourcePath = resolve(
-                        virtual.source.path,
-                        Text.removePrefix(
-                          jfc.pathMappings[alias][0],
-                          `${jfc.pathPrefix}/`
-                        )
-                      );
-
-                      if (Text.endsWith(sourcePath, '/*')) {
-                        const directory = new Directory({
-                          path: Text.removeSuffix(
-                            sourcePath,
-                            '/*'
-                          )
-                        });
-
-                        const addDirectory = (directory: Directory) => {
-                          if (directory.exists()) {
-                            directory.files(
-                              files => {
-                                files.forEach(
-                                  file => {
-                                    virtual.addMirror({
-                                      sourcePath: file.path,
-                                      virtualPath: resolve(
-                                        Text.removeSuffix(
-                                          virtualPath,
-                                          '/*'
-                                        ),
-                                        file.name
-                                      )
-                                    })
-                                  }
-                                )
-
-                                directory.directories(
-                                  directories => directories.forEach(
-                                    addDirectory
-                                  )
-                                )
-                              }
-                            )
-                          }
-                        }
-
-                        addDirectory(directory);
-                      }
-                      else {
-                        virtual.addMirror({
-                          sourcePath,
-                          virtualPath
-                        });
-                      }
-                    }
-                  )
-
-                setTimeout(
-                  () => {
-                    virtual.mirrors.forEach(mirror => mirror.apply())
-                  },
-                  1000
-                );
-              }
-            )
-
-            /*this.JFC.forEach(
-              jfc => {
-                jfc.tsConfig.file.read({
-                  dataReady: (data: string) => {
-                    Object.keys(jfc.pathMappings)
-                      .forEach((alias) => {
-                        const virtualPath = TsConfig.removeWildcard(
-                          Text.removePrefix(
-                            alias,
-                            `${jfc.aliasPrefix}/`
-                          )
-                        );
-                        const localPath = resolve(
-                          jfc.path,
-                          JSON.parse(data).compilerOptions.baseUrl,
-                          TsConfig.removeWildcard(
-                            Text.removePrefix(
-                              jfc.pathMappings[alias][0],
-                              `${jfc.pathPrefix}${sep}`
-                            )
-                          )
-                        );
-
-                        console.log({
-                          virtualPath,
-                          localPath
-                        });
-                      })
-                  }
-                })
-              }
-            )
-            onComplete();*/
-          }
-        });
-      }
-    );
+    this.discover(() => this.setupTsConfig(onComplete));
   }
 
-  discover = (onComplete: (jfc: JFC[]) => void) => (
-    JFC.fromNodePackage(this.nodePackage, onComplete)
+  discover = (onComplete: () => void) => (
+    JFC.fromNodePackage(
+      this.nodePackage,
+      (jfc: JFC[]) => {
+        jfc.forEach(jfc => this.JFC.push(jfc));
+        onComplete();
+      }
+    )
   );
 
 }
