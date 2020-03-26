@@ -143,22 +143,24 @@ class JFC {
 
             sourceParent.files(
               files => {
-                const { path, name } = files.find(
+                const fileWithSuffix = files.find(
                   file => Text.beginsWith(
                     file.name,
                     fileWithoutSuffix.name
                   )
                 );
 
-                const suffix = Text.removePrefix(
-                  name,
-                  fileWithoutSuffix.name
-                );
-
-                virtualEnvironment.addMirror({
-                  sourcePath: path,
-                  virtualPath: `${virtualPath}${suffix}`
-                });
+                if (fileWithSuffix) {
+                  const { path, name } = fileWithSuffix;
+                  const suffix = Text.removePrefix(
+                    name,
+                    fileWithoutSuffix.name
+                  );
+                  virtualEnvironment.addMirror({
+                    sourcePath: path,
+                    virtualPath: `${virtualPath}${suffix}`
+                  });
+                }
               }
             );
 
