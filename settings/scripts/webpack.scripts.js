@@ -9,7 +9,7 @@ module.exports = {
   entry: [resolve(__dirname, '..', '..', 'scripts', 'index.ts')],
   output: {
     path: resolve(__dirname, '..', '..', 'scripts'),
-    filename: 'deploy-config-files.js'
+    filename: 'script.js'
   },
   resolve: {
     extensions: ['.ts', '.json'],

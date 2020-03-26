@@ -1,9 +1,14 @@
+## [8.9.3] - 2020-03-26
+## Bugfix
+- Downgraded react-redux to ^5.0.7
+- Added fallback routine for deploy-config-files
+
 ## [8.9.2] - 2020-03-25
 ### Changed
-- Adjusted NotificationBadge size and position slightly 
+- Adjusted NotificationBadge size and position slightly
 
 ## [8.9.1] - 2020-03-`??`
-`no details yet ...` 
+`no details yet ...`
 
 ## [8.9.0] - 2020-03-24
 ### Added
