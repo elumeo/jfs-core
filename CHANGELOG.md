@@ -1,3 +1,10 @@
+## [8.9.2] - 2020-03-25
+### Changed
+- Adjusted NotificationBadge size and position slightly 
+
+## [8.9.1] - 2020-03-`??`
+`no details yet ...` 
+
 ## [8.9.0] - 2020-03-24
 ### Added
 - Updated react-redux to 8.9.0
