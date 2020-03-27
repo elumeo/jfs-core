@@ -1,3 +1,7 @@
+## [8.9.4] - 2020-03-27
+## Bugfix
+- Notification actions stay visible now
+
 ## [8.9.3] - 2020-03-26
 ## Bugfix
 - Downgraded react-redux to ^5.0.7
