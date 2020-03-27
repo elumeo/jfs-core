@@ -93,7 +93,7 @@ class NotificationCard extends React.Component<INotificationCardProps> {
       className='timestamp'>{displayDate ? `${formatDate(timestamp)} ` : null}{formatTime(timestamp)}</div>;
   };
 
-  getActions = (): React.ReactNode => {
+  getActions = (): React.ReactNode[] => {
     const {
       config,
       config: {
@@ -160,7 +160,7 @@ class NotificationCard extends React.Component<INotificationCardProps> {
         </Button>
       );
     }
-    return <>{actions}</>;
+    return actions;
   };
 
   componentDidMount(): void {
@@ -178,6 +178,7 @@ class NotificationCard extends React.Component<INotificationCardProps> {
     if (errorClass.length && successClass.length) {
       throw new Error('isError|error and isSuccess cannot be combined');
     }
+    const actions = this.getActions();
     return (
       <Card
         onClick={() => {
@@ -196,9 +197,7 @@ class NotificationCard extends React.Component<INotificationCardProps> {
             {this.getHeader()}
             {this.getContent()}
           </div>
-          <div className='notification-grid-actions'>
-            {this.getActions()}
-          </div>
+          {actions.length ? <div className='notification-grid-actions'>{actions}</div> : null}
         </div>
       </Card>
     )

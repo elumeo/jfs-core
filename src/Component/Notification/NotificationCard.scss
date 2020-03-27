@@ -119,7 +119,11 @@
       }
 
       &-content {
-        width: 100%;
+        width: calc(100% - #{$md-btn-icon-size});
+
+        &:last-child {
+          width: 100%;
+        }
       }
     }
   }
