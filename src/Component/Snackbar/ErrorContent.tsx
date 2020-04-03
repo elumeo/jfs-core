@@ -1,6 +1,7 @@
 import React from 'react';
 import './Style.scss';
 import International from '../International';
+import { AxiosError } from 'axios';
 
 namespace Format {
 
@@ -37,18 +38,18 @@ namespace Format {
 
 }
 
-export const errorText = ({ response, config }) => ({
-    head: Format.httpHead({ response, config }),
-    body: Format.httpBody(response)
+export const errorText = ({ response, config, message, name, stack }) => ({
+  head: response && config ? Format.httpHead({ response, config }) : name,
+  body: response ? Format.httpBody(response) : message + '\n' + stack,
 });
 
 export interface IErrorContentProps {
-  contentError: any;
+  contentError: Error | AxiosError | any;
 }
 
 const errorContent: React.FC<IErrorContentProps> = ({ contentError }) => {
-  const {config} = contentError;
-  const {body, head} = errorText(contentError);
+  const { config } = contentError;
+  const { body, head } = errorText(contentError);
   return (
     <International>
       {({ formatMessage }) => (
