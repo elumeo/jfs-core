@@ -1,12 +1,14 @@
 import React from 'react';
 import DialogContainer from 'react-md/lib/Dialogs';
 import International from '../International';
+import { IconSeparator } from 'react-md';
 
 interface IModalDialog {
   visible: boolean;
   children?: any;
   closeDialog: (close: boolean) => void;
   title?: string;
+  titleIcon?: JSX.Element;
   closeButtonText?: string;
   description?: string;
   className?: string;
@@ -19,6 +21,7 @@ interface IModalDialog {
 const ModalDialog: React.FC<IModalDialog> = (
   {
     title,
+    titleIcon,
     description,
     closeDialog,
     visible,
@@ -36,7 +39,11 @@ const ModalDialog: React.FC<IModalDialog> = (
       <DialogContainer
         id={`modal-dialog-${Math.round(Math.random() * 1000)}`}
         visible={visible}
-        title={title}
+        title={
+          titleIcon
+            ? <IconSeparator label={title} iconBefore>{titleIcon}</IconSeparator>
+            : title
+        }
         aria-describedby={description}
         modal
         onHide={closeDialog}
