@@ -35,7 +35,7 @@ export class WSClient {
 
   public static connect(host: string, path: string, namespace: string, token?: string, ip?: string, appName?: string) {
     if (appName === undefined || appName === null) {
-      appName = window.location.origin;
+      appName = 'Unknown (' + window.location.origin + ')';
     }
 
     this.checkSocket(namespace);
