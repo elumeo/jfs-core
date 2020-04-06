@@ -1,3 +1,7 @@
+## [8.9.5] - 2020-04-06
+### Added
+- Added appName as connect argument to WSClient (required for websocket monitoring)
+
 ## [8.9.4] - 2020-03-27
 ## Bugfix
 - Notification actions stay visible now

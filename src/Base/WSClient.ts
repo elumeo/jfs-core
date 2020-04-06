@@ -33,7 +33,11 @@ export class WSClient {
   protected static jfsOnRoomUpdateSubject = new Subject<any>();
   protected static jfsOnRoomUpdate$ = WSClient.jfsOnRoomUpdateSubject.asObservable();
 
-  public static connect(host: string, path: string, namespace: string, token?: string, ip?: string) {
+  public static connect(host: string, path: string, namespace: string, token?: string, ip?: string, appName?: string) {
+    if (appName === undefined || appName === null) {
+      appName = window.location.origin;
+    }
+
     this.checkSocket(namespace);
     return new Observable<string>((observer) => {
       if (this.sockets[namespace] !== null) {
@@ -41,7 +45,7 @@ export class WSClient {
       }
       if (this.sockets[namespace] === null) {
         this.sockets[namespace] = io.connect(host + '/' + namespace, {
-          query: {token, ip},
+          query: {token, ip, appName},
           secure: host.startsWith('https'),
           path: path
         });

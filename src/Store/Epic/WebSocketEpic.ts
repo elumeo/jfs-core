@@ -71,7 +71,8 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
         path,
         namespace,
         state.value.sessionReducer.sessionDTO.token,
-        state.value.sessionReducer.sessionDTO.lastIPAddress
+        state.value.sessionReducer.sessionDTO.lastIPAddress,
+        state.value.configReducer.config.AppName
       );
     }),
     switchMap((namespace) => {
