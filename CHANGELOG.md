@@ -3,11 +3,11 @@
 - Added appName as connect argument to WSClient (required for websocket monitoring)
 
 ## [8.9.4] - 2020-03-27
-## Bugfix
+### Bugfix
 - Notification actions stay visible now
 
 ## [8.9.3] - 2020-03-26
-## Bugfix
+### Bugfix
 - Downgraded react-redux to ^5.0.7
 - Added fallback routine for deploy-config-files
 
