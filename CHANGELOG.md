@@ -1,3 +1,7 @@
+## [8.9.6] - 2020-04-07
+### Bugfix
+- Fixed an issue with double room join events when reconnecting and the room name is a dynamic value
+
 ## [8.9.5] - 2020-04-06
 ### Added
 - Added appName as connect argument to WSClient (required for websocket monitoring)
