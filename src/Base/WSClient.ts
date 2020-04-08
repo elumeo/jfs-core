@@ -33,9 +33,13 @@ export class WSClient {
   protected static jfsOnRoomUpdateSubject = new Subject<any>();
   protected static jfsOnRoomUpdate$ = WSClient.jfsOnRoomUpdateSubject.asObservable();
 
-  public static connect(host: string, path: string, namespace: string, token?: string, ip?: string, appName?: string) {
+  public static connect(host: string, path: string, namespace: string, token?: string, ip?: string, username?: string, appName?: string) {
     if (appName === undefined || appName === null) {
       appName = 'Unknown (' + window.location.origin + ')';
+    }
+
+    if (username === undefined || username === null) {
+      username = 'Unknown User';
     }
 
     this.checkSocket(namespace);
@@ -45,7 +49,7 @@ export class WSClient {
       }
       if (this.sockets[namespace] === null) {
         this.sockets[namespace] = io.connect(host + '/' + namespace, {
-          query: {token, ip, appName},
+          query: {token, ip, username, appName},
           secure: host.startsWith('https'),
           path: path
         });

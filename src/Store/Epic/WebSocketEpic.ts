@@ -73,6 +73,7 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
         namespace,
         state.value.sessionReducer.sessionDTO.token,
         state.value.sessionReducer.sessionDTO.lastIPAddress,
+        state.value.sessionReducer.sessionDTO.username,
         state.value.configReducer.config.AppName
       );
     }),
