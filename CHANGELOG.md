@@ -1,3 +1,7 @@
+## [8.9.8] - 2020-04-08
+### Bugfix
+- Removed [Object object] output when formatting non jsc errors
+
 ## [8.9.7] - 2020-04-08
 ### Added
 - Added username as connect argument to WSClient (required for websocket monitoring)
