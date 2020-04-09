@@ -1,9 +1,21 @@
+## [8.9.7] - 2020-04-08
+### Added
+- Added username as connect argument to WSClient (required for websocket monitoring)
+
+## [8.9.6] - 2020-04-07
+### Bugfix
+- Fixed an issue with double room join events when reconnecting and the room name is a dynamic value
+
+## [8.9.5] - 2020-04-06
+### Added
+- Added appName as connect argument to WSClient (required for websocket monitoring)
+
 ## [8.9.4] - 2020-03-27
-## Bugfix
+### Bugfix
 - Notification actions stay visible now
 
 ## [8.9.3] - 2020-03-26
-## Bugfix
+### Bugfix
 - Downgraded react-redux to ^5.0.7
 - Added fallback routine for deploy-config-files
 

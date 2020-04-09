@@ -24,6 +24,7 @@ import { addNotificationAction } from '../Action/NotificationAction';
 import { authorizeSession, logout } from '../Action/SessionAction';
 import { WSClient } from '../../Base/WSClient';
 import { INotificationContent } from '../Reducer/NotificationReducer';
+import _ from 'lodash';
 
 export const webSocketAppIsInitializedEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
   return action$.pipe(
@@ -71,7 +72,9 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
         path,
         namespace,
         state.value.sessionReducer.sessionDTO.token,
-        state.value.sessionReducer.sessionDTO.lastIPAddress
+        state.value.sessionReducer.sessionDTO.lastIPAddress,
+        state.value.sessionReducer.sessionDTO.username,
+        state.value.configReducer.config.AppName
       );
     }),
     switchMap((namespace) => {
@@ -151,24 +154,23 @@ export const webSocketConnectSuccessEpic: Epic<RootAction, RootAction> = (action
           stateLeftRooms.push(stateRoom.name);
         }
       }
+
       const cleanedConfigRooms: string[] = [];
       for (const configRoom of configRooms) {
+        const preparedConfigRoom = WSClient.prepareRoomName(configRoom, state.value);
         let foundInLeftRoom = false;
         for (const leftRoom of stateLeftRooms) {
-          if (configRoom === leftRoom) {
+          if (preparedConfigRoom === leftRoom) {
             foundInLeftRoom = true;
             break;
           }
         }
 
         if (foundInLeftRoom === false) {
-          cleanedConfigRooms.push(configRoom);
+          cleanedConfigRooms.push(preparedConfigRoom);
         }
       }
-      let mergedRooms: string[] = [...cleanedConfigRooms, ...stateJoinedRooms];
-      // Removed this logic because in production mode
-      // it creates a multi dimension array instead of an one dimension array
-      // mergedRooms = [...new Set(mergedRooms)];
+      let mergedRooms: string[] = _.uniq([...cleanedConfigRooms, ...stateJoinedRooms]);
       const roomActions: PayloadAction<string, IWebSocketRoom>[] = [];
       for (const room of mergedRooms) {
         const roomData = {
