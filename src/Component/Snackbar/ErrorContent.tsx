@@ -28,7 +28,7 @@ namespace Format {
       return 'NO_ERROR_RESPONSE';
     }
     if (!_response.data) {
-      return _response.toString();
+      return '';
     }
     if (typeof _response.data.message != 'string' || !_response.data.id || _response.data.id === 0) {
       return _response.data.toString();
