@@ -1,0 +1,37 @@
+
+.md-dialog--centered {
+  transform-origin: unset !important;
+  transform: none;
+  margin: auto;
+  top: unset;
+  left: unset;
+
+  max-height: calc(100% - 48px);
+  max-width: calc(100% - 80px);
+  min-width: 280px;
+  width: unset;
+
+  &.md-dialog--centered-enter {
+    transition-property: transform !important;
+    transform: translateY(-10%) !important;
+  }
+
+  &.md-dialog--centered-enter.md-dialog--centered-enter-active {
+    transition-property: transform !important;
+    transform: translateY(0) !important;
+  }
+
+  &.md-dialog--centered-leave {
+    transition-property: transform !important;
+    transform: translateY(0) !important;
+  }
+
+  &.md-dialog--centered-leave.md-dialog--centered-leave-active {
+    transition-property: transform !important;
+    transform: translateY(-10%) !important;
+  }
+}
+
+div.login-dialog .md-dialog-container.md-overlay .md-paper {
+  top: 132px;
+}
