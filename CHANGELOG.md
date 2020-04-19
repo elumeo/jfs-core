@@ -1,3 +1,7 @@
+## [8.9.9] - 2020-04-08
+### Bugfix
+- Made blurry ModalDialog Font sharp
+
 ## [8.9.8] - 2020-04-08
 ### Bugfix
 - Removed [Object object] output when formatting non jsc errors
