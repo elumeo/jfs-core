@@ -1,3 +1,7 @@
+## [8.9.10] - 2020-04-21
+### Bugfix
+- Fixed NavigationItem onClick behaviour
+
 ## [8.9.9] - 2020-04-08
 ### Bugfix
 - Made blurry ModalDialog Font sharp
