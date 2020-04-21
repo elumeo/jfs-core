@@ -51,8 +51,8 @@ const NavigationItem: React.FC<INavigationItemProps> = ({
               leftIcon={<FontIcon>{iconName}</FontIcon>}
               onClick={(event: React.MouseEvent<HTMLElement>) => {
                 const {location: {pathname}} = history;
-                if (pathname !== onClickRoute) {
-                  history.push(onClickRoute);
+                if (onClickRoute != undefined && pathname !== onClickRoute) {
+                   history.push(onClickRoute);
                 }
                 closeNavigation();
                 if (onClick) {
