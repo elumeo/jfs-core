@@ -10,10 +10,11 @@ import Toolbar from 'react-md/lib/Toolbars';
 import { INotification } from '../../Store/Reducer/NotificationReducer';
 
 import './NotificationDrawer.scss'
-import HideNotificationDrawerButton from './HideNotificationDrawerButton';
 import SplitViewButton from './SplitViewButton';
 import DismissAllNotificationsButton from './DismissAllNotificationsButton';
+// noinspection TypeScriptPreferShortImport
 import { hideNotificationDrawerAction, toggleNotificationDrawerAction } from '../../Store/Action/NotificationAction';
+import { Button } from 'react-md';
 
 const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
@@ -45,7 +46,7 @@ class NotificationDrawer extends React.Component<INotificationDrawerProps> {
     }
 
     const header = <Toolbar
-      nav={<HideNotificationDrawerButton/>}
+      nav={<Button icon onClick={() => this.props.hideNotificationDrawerAction()}>arrow_forward</Button>}
       actions={[<SplitViewButton/>, <DismissAllNotificationsButton/>]}
       className='md-divider-border md-divider-border--bottom'
     />;
@@ -69,9 +70,7 @@ class NotificationDrawer extends React.Component<INotificationDrawerProps> {
         <ReactCSSTransitionGroup
           transitionName={{
             enter: 'fadein-enter',
-            enterActive: 'fadein-enter-active',
             leave: 'disappear-leave',
-            leaveActive: 'disappear-leave-active'
           }}
           transitionEnterTimeout={300}
           transitionLeaveTimeout={200}
