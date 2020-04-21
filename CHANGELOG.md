@@ -1,3 +1,7 @@
+## [8.9.11] - 2020-04-21
+### Bugfix
+- Fixed laggy NotificationDrawer close animation
+
 ## [8.9.10] - 2020-04-21
 ### Bugfix
 - Fixed NavigationItem onClick behaviour
