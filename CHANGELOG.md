@@ -1,3 +1,8 @@
+## [8.9.12] - 2020-04-22
+### Bugfix
+- Made ModalDialog repair styles more specific. 
+- Moved LoginDialog styles to LoginDialog.scss
+
 ## [8.9.11] - 2020-04-21
 ### Bugfix
 - Fixed laggy NotificationDrawer close animation
