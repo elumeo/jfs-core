@@ -1,7 +1,9 @@
 ## [8.9.12] - 2020-04-22
 ### Bugfix
-- Made ModalDialog repair styles more specific. 
 - Moved LoginDialog styles to LoginDialog.scss
+- ⚠️ Made ModalDialog repair styles more specific. 
+    - This may overrule your custom styles to .md-dialog
+    - In order to make your custom styles most relevant again, please use .md-dialog.md-dialog--centered
 
 ## [8.9.11] - 2020-04-21
 ### Bugfix
