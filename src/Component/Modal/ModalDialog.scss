@@ -1,5 +1,5 @@
 
-.md-dialog--centered {
+.md-dialog.md-dialog--centered {
   transform-origin: unset !important;
   transform: none;
   margin: auto;
@@ -30,8 +30,4 @@
     transition-property: transform !important;
     transform: translateY(-10%) !important;
   }
-}
-
-div.login-dialog .md-dialog-container.md-overlay .md-paper {
-  top: 132px;
 }
