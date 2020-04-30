@@ -1,3 +1,8 @@
+## [8.11.0] - 2020-04-30
+## Added
+- Added <DatePicker/> component
+- Added outside click handler to <Popover/>
+
 ## [8.10.0] - 2020-04-30
 ## Added
 - Compatibility mode for react-intl
