@@ -42,7 +42,9 @@ export const loginReducer = createReducer<ILoginReducerState>(initialState)
     (state: ILoginReducerState) => ({
       ...state,
       failedLogins: 0,
-      isCheckingLogin: false
+      isCheckingLogin: false,
+      username: '',
+      password: ''
     })
   )
   .handleAction(

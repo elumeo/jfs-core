@@ -1,3 +1,7 @@
+## [8.12.1] - 2020-04-30
+## Bugfix
+- Fixed an issue were the login was possible without providing credentials
+
 ## [8.12.0] - 2020-04-30
 ## Bugfix
 - for the latest ModalDialog Bugfix
