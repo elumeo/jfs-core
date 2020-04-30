@@ -36,7 +36,9 @@
         "session.expired": "Sitzung abgelaufen",
         "settings.language": "Sprache",
         "settings.title": "Einstellungen",
-        "userRights.checkFailed": "Benutzerrechte konnten nicht geladen werden"
+        "userRights.checkFailed": "Benutzerrechte konnten nicht geladen werden",
+
+        "date": "Datum"
     },
     "en": {
         "app.backend": "Backend",
@@ -75,7 +77,9 @@
         "session.expired": "Session expired",
         "settings.language": "Language",
         "settings.title": "Settings",
-        "userRights.checkFailed": "Unable to load user rights"
+        "userRights.checkFailed": "Unable to load user rights",
+
+        "date": "Date"
     },
     "it": {
         "app.backend": "Backend",
@@ -114,6 +118,8 @@
         "session.expired": "Sessione scaduta",
         "settings.language": "Lingua",
         "settings.title": "Impostazioni",
-        "userRights.checkFailed": "Impossibile caricare i diritti utente"
+        "userRights.checkFailed": "Impossibile caricare i diritti utente",
+
+        "date": "Data"
     }
 }

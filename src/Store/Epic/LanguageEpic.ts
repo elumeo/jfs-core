@@ -9,6 +9,7 @@ import Cookie from 'js-cookie';
 import { configLoadedAction } from '../Action/ConfigAction';
 import { loadSession } from '../Action/SessionAction';
 import Format from '../../Utilities/Format';
+import { setDefaultLocale } from 'react-datepicker';
 
 export const setInitialLanguageEpic: Epic<RootAction, RootAction> = (
   (action$, store) => action$.pipe(
@@ -29,6 +30,7 @@ export const setLanguageEpic: Epic = (action$) => (
         filter(isActionOf(changeLanguageAction)),
         switchMap(({ payload }) => {
             Format.Locale.selectLanguage(payload);
+            setDefaultLocale(payload);
             return EMPTY;
         })
     )

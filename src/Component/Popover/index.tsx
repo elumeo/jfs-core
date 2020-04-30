@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import Button from 'react-md/lib/Buttons/Button';
 import Card from 'react-md/lib/Cards/Card';
+import OutsideClickHandler from 'react-outside-click-handler';
 
 import './Style.scss';
 
@@ -150,21 +151,33 @@ const Popover: React.FC<Popover.Props> = ({
         {isOpen ? 'close' : 'launch'}
       </Button>
       {
-        isOpen && createPortal(
-          <Card
-            className={`popover position-${position} anker-${anker} popover-${popoverId}`}
-            style={{
-              position: 'absolute',
-              top,
-              left,
-              width: 200,
-              height: 200,
-              zIndex: 100000
-            }}>
-            <div style={{ background: 'white', width: '100%', height: '100%' }}>
-              TEST
-            </div>
-          </Card>,
+        createPortal(
+          <OutsideClickHandler onOutsideClick={(event) => {
+            // @ts-ignore
+            const { path } = event;
+            const button = (path as HTMLElement[]).find(
+              ({ id }) => id === `popover-button-${popoverId}`
+            );
+            if (!button) {
+              setIsOpen(false);
+            }
+          }}>
+            <Card
+              className={`popover position-${position} anker-${anker} popover-${popoverId}`}
+              style={{
+                position: 'absolute',
+                top,
+                left,
+                width: 200,
+                height: 200,
+                zIndex: 100000,
+                display: isOpen ? 'block' : 'none'
+              }}>
+              <div style={{ background: 'white', width: '100%', height: '100%' }}>
+                TEST
+              </div>
+            </Card>
+          </OutsideClickHandler>,
           document.getElementById('root')
         )
       }
