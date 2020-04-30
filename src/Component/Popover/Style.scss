@@ -1,0 +1,71 @@
+.popover:before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  height: 17.5px;
+  width: 17.5px;
+  background: white;
+  transform: rotate(45deg);
+  box-shadow: (
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2)
+  );
+}
+
+.popover {
+
+
+  &.position-bottom.anker-start:before {
+    top: -7.5px;
+    left: 10px;
+  }
+  &.position-top.anker-start:before {
+    bottom: -7.5px;
+    left: 10px;
+  }
+  &.position-bottom.anker-end:before {
+    top: -7.5px;
+    right: 10px;
+  }
+  &.position-top.anker-end:before {
+    bottom: -7.5px;
+    right: 10px;
+  }
+  &.position-top.anker-center:before {
+    bottom: -7.5px;
+
+    left: calc(50% - 9.585px);
+  }
+  &.position-bottom.anker-center:before {
+    top: -7.5px;
+    left: calc(50% - 9.585px);
+  }
+
+  &.position-left.anker-start:before {
+    top: 10px;
+    right: -7.5px;
+  }
+  &.position-right.anker-start:before {
+    top: 10px;
+    left: -7.5px;
+  }
+
+  &.position-left.anker-end:before {
+    bottom: 10px;
+    right: -7.5px;
+  }
+  &.position-right.anker-end:before {
+    bottom: 10px;
+    left: -7.5px;
+  }
+  &.position-left.anker-center:before {
+    bottom: calc(50% - 9.585px);
+    right: -7.5px;
+  }
+  &.position-right.anker-center:before {
+    top: calc(50% - 9.585px);
+    left: -7.5px;
+  }
+}

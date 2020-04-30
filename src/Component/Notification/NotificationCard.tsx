@@ -10,7 +10,7 @@ import { ICoreRootReducer } from '../../Store/Reducer';
 import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../../Store/Action/NotificationAction';
 import { INotification, INotificationContent } from '../../Store/Reducer/NotificationReducer';
 import { Badge, Button, CardText } from 'react-md';
-import Translations from '../../Base/Translations';
+import Format from '../../Utilities/Format';
 import { timeToRead as _timeToRead } from '../../Base/Utilities';
 
 export const timeToRead = (notification: INotificationContent): number => getContent(notification).timeToRead;
@@ -19,7 +19,7 @@ export const getPlainText = (notification: INotificationContent): string => getC
 
 export const getContent = (notification: INotificationContent) => {
   const { message, translationId, error } = notification;
-  const { formatMessage } = Translations;
+  const { formatMessage } = Format.Translations;
   if (!((message ? 1 : 0) ^ (translationId ? 1 : 0) ^ (error ? 1 : 0))) {
     throw new Error(
       `Either 'message', 'translationId' or 'error' most be specified.`
@@ -86,7 +86,7 @@ class NotificationCard extends React.Component<INotificationCardProps> {
 
   getTimestamp = () => {
     const { config: { timestamp } } = this.props;
-    const { formatDate, formatTime } = Translations;
+    const { formatDate, formatTime } = Format;
     const now = new Date();
     const displayDate = now.toDateString() != timestamp.toDateString();
     return <div
@@ -102,7 +102,7 @@ class NotificationCard extends React.Component<INotificationCardProps> {
         hideButtonVisible, onHide
       }
     } = this.props;
-    const { formatMessage } = Translations;
+    const { formatMessage } = Format.Translations;
     const fm = id => formatMessage({ id });
     if (!(!onCustomAction) && !customActionIconName) {
       throw new Error('If you provide a onCustomAction you should also provide a customActionIconName');

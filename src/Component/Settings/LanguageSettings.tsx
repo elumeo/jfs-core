@@ -9,7 +9,7 @@ import { changeLanguageAction } from '../../Store/Action/LanguageAction';
 
 import './LanguageSettings.scss';
 import International from '../International';
-import Translations from "../../Base/Translations";
+import Translations from "../../Utilities/Format/Translations";
 
 export interface ILanguageSettingsProps {
   language?: string;

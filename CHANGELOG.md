@@ -1,7 +1,15 @@
+## [8.10.0] - 2020-04-30
+## Added
+- Compatibility mode for react-intl
+- <FormattedMessage/> component
+- <Popover/> component
+- New Utilities class
+- redux-providers for easy access to store
+
 ## [8.9.12] - 2020-04-22
 ### Bugfix
 - Moved LoginDialog styles to LoginDialog.scss
-- ⚠️ Made ModalDialog repair styles more specific. 
+- ⚠️ Made ModalDialog repair styles more specific.
     - This may overrule your custom styles to .md-dialog
     - In order to make your custom styles most relevant again, please use .md-dialog.md-dialog--centered
 

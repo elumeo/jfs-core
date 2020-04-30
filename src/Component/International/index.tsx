@@ -1,9 +1,14 @@
 import React from 'react';
-import Translations from '../../Base/Translations';
+import Translations from '../../Utilities/Format/Translations';
 import { PrimitiveType } from 'intl-messageformat';
 
+export type FormatMessage = (
+  messageDescriptor: { id: string; },
+  values?: Record<string, PrimitiveType> | undefined
+) => string;
+
 interface IInternationalChildrenProps {
-  formatMessage: (messageDescriptor: { id: string; }, values?: Record<string, PrimitiveType> | undefined) => string;
+  formatMessage: FormatMessage;
 }
 
 interface IInternationalProps {

@@ -7,7 +7,6 @@ import WebSocketConnection from '../Websocket/WebSocketConnection';
 
 import { ICoreRootReducer } from '../../Store/Reducer';
 import { initializeApp } from '../../Store/Action/AppAction';
-import { addLocaleData } from "react-intl";
 
 export interface IAppProps {
   allowRobotLogin?: boolean;
@@ -33,10 +32,10 @@ const App: React.FC<IAppProps> = ({
         packageJson,
         translations
       });
-      addLocaleData(require(`react-intl/locale-data/de`));
-      addLocaleData(require(`react-intl/locale-data/en`));
-      addLocaleData(require(`react-intl/locale-data/fr`));
-      addLocaleData(require(`react-intl/locale-data/it`));
+      // addLocaleData(require(`react-intl/locale-data/de`));
+      // addLocaleData(require(`react-intl/locale-data/en`));
+      // addLocaleData(require(`react-intl/locale-data/fr`));
+      // addLocaleData(require(`react-intl/locale-data/it`));
     }
   );
   return (

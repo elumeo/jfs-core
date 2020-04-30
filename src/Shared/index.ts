@@ -1,13 +1,13 @@
 import SharedComponent from './Component';
 import SharedStore, { ISharedStoreProps } from './Store';
 
-import Translations, { ITranslations } from '../Base/Translations';
+import Messages from '../Utilities/Format/Translations/Messages';
 import { combineEpics } from 'redux-observable';
 
 class Shared {
   private static components: SharedComponent<any, any>[] = [];
   private static stores: SharedStore[] = [];
-  public static translations: ITranslations = {};
+  public static translations: Messages.LanguageMap = {};
 
   public static addComponent = <IModuleState, IComponentProps>(
     sharedComponent: SharedComponent<IModuleState, IComponentProps>
@@ -28,8 +28,8 @@ class Shared {
     )
   };
 
-  public static addTranslations = (translations: ITranslations) => {
-    Shared.translations = Translations.merge(Shared.translations, translations);
+  public static addTranslations = (translations: Messages.LanguageMap) => {
+    Shared.translations = Messages.merge(Shared.translations, translations);
   };
 
   public static mount = <IRootReducer, IModuleState>(
