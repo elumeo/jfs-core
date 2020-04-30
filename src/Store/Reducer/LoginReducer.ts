@@ -16,7 +16,7 @@ export const initialState: ILoginReducerState = {
   password: '',
   isCheckingLogin: false,
   failedLogins: 0
-}
+};
 
 export const loginReducer = createReducer<ILoginReducerState>(initialState)
   .handleAction(

@@ -1,3 +1,7 @@
+## [8.12.0] - 2020-04-30
+## Bugfix
+- for the latest ModalDialog Bugfix
+
 ## [8.11.0] - 2020-04-30
 ## Added
 - Added <DatePicker/> component
