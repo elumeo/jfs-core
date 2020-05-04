@@ -11,16 +11,11 @@ export type InjectedIntlProps = {
   }
 }
 
-type ComponentType = (
-  React.ComponentClass<InjectedIntlProps> |
-  React.StatelessComponent<InjectedIntlProps>
-);
+type ComponentType<T> = React.ComponentClass<T> | React.StatelessComponent<T>;
 
-export const injectIntl = <T extends ComponentType>(
-  Component: T
-): React.FC => ({
-  ...ownProps
-}) => (
+export const injectIntl = <T extends InjectedIntlProps>(
+  Component: ComponentType<T>
+): React.FC<T> => (ownProps: T) => (
   <International>
     {({ formatMessage }) => {
       const Connected = Component as React.FC<InjectedIntlProps>;

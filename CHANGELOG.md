@@ -1,3 +1,7 @@
+## [8.12.3] - 2020-05-04
+## Bugfix
+- Fixed injectIntl compatibility module
+
 ## [8.12.2] - 2020-05-04
 ## Bugfix
 - Fixed integration of locale data for react-intl
