@@ -1,5 +1,6 @@
 import React from 'react';
 import International, { FormatMessage } from '../Component/International';
+import Format from '../Utilities/Format';
 
 export type InjectedIntl = {
   formatMessage: FormatMessage;
@@ -8,6 +9,8 @@ export type InjectedIntl = {
 export type InjectedIntlProps = {
   intl?: {
     formatMessage: FormatMessage;
+    formatNumber: typeof Format.formatNumber;
+    formatDate: typeof Format.formatDate;
   }
 }
 
@@ -19,7 +22,11 @@ export const injectIntl = <T extends InjectedIntlProps>(
   <International>
     {({ formatMessage }) => {
       const Connected = Component as React.FC<InjectedIntlProps>;
-      const intl = { formatMessage };
+      const intl = {
+        formatMessage,
+        formatNumber: Format.formatNumber,
+        formatDate: Format.formatDate
+      };
       return <Connected intl={intl} {...ownProps}/>;
     }}
   </International>
