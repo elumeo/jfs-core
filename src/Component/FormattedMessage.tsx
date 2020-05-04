@@ -29,7 +29,7 @@ const FormattedMessage = <T, >({
               Object.keys(mappedValues).reduce(
                 (markedUpValues, key) => ({
                   ...markedUpValues,
-                  [key]: ReactDOMServer.renderToStaticMarkup(
+                  [key]: ReactDOMServer.renderToString(
                     <>{mappedValues[key]}</>
                   )
                 }),

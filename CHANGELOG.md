@@ -1,5 +1,12 @@
 ## [8.13.0] - 2020-05-04
 ## Added
+- Added support for components to be rendered as values in formatMessage()
+
+## Bugfix
+- Downgraded moment.js due to a bug
+
+## [8.13.0] - 2020-05-04
+## Added
 - formatNumber() and formatDate are now available to the compatibility module for react-intl
 
 ## [8.12.3] - 2020-05-04

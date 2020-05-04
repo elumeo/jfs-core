@@ -4,6 +4,9 @@ import Format from '../Utilities/Format';
 
 export type InjectedIntl = {
   formatMessage: FormatMessage;
+  formatNumber: typeof Format.formatNumber;
+  formatDate: typeof Format.formatDate;
+  formatTime: typeof Format.formatTime;
 }
 
 export type InjectedIntlProps = {
@@ -11,6 +14,7 @@ export type InjectedIntlProps = {
     formatMessage: FormatMessage;
     formatNumber: typeof Format.formatNumber;
     formatDate: typeof Format.formatDate;
+    formatTime: typeof Format.formatTime;
   }
 }
 
@@ -25,7 +29,8 @@ export const injectIntl = <T extends InjectedIntlProps>(
       const intl = {
         formatMessage,
         formatNumber: Format.formatNumber,
-        formatDate: Format.formatDate
+        formatDate: Format.formatDate,
+        formatTime: Format.formatTime
       };
       return <Connected intl={intl} {...ownProps}/>;
     }}
