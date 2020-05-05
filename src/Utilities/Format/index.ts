@@ -1,6 +1,7 @@
 import Translations from './Translations';
 import Text from './Text';
 import Currency from './Currency';
+import PhoneNumber from './PhoneNumber';
 
 import Locale from './Locale';
 
@@ -10,6 +11,7 @@ class Format {
   static Translations = Translations;
   static Text = Text;
   static Currency = Currency;
+  static PhoneNumber = PhoneNumber;
 
   public static mapProductLanguageToLocale = (productLanguage: string) => {
     switch (productLanguage) {

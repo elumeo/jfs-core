@@ -1,3 +1,7 @@
+## [8.14.0] - 2020-05-05
+## Bugfix
+- Fixed SettingsContainer component
+
 ## [8.14.0] - 2020-05-04
 ## Added
 - Added support for components to be rendered as values in formatMessage()
