@@ -7,9 +7,8 @@ import SelectField from 'react-md/lib/SelectFields/SelectField';
 import { ICoreRootReducer } from '../../Store/Reducer';
 import { changeLanguageAction } from '../../Store/Action/LanguageAction';
 
-import './LanguageSettings.scss';
 import International from '../International';
-import Translations from "../../Utilities/Format/Translations";
+import Translations from '../../Utilities/Format/Translations';
 
 export interface ILanguageSettingsProps {
   language?: string;
@@ -30,15 +29,15 @@ const LANGUAGES = [
 
 const LanguageSettings: React.FC<ILanguageSettingsProps> = ({
   language,
-  changeLanguageAction
+  changeLanguageAction: _changeLanguageAction
 }) => {
   console.log(language, Translations.formatMessage({ id: 'app.name' }));
   return (
-      <div className="language-settings">
+      <div className='language-settings'>
         <International>
           {({ formatMessage }) => (
               <SelectField
-                  id="language"
+                  id='language'
                   label={formatMessage({id: 'settings.language'})}
                   menuItems={LANGUAGES}
                   value={language}
@@ -49,14 +48,14 @@ const LanguageSettings: React.FC<ILanguageSettingsProps> = ({
                   onChange={
                     lang => {
                       Cookie.set('lang', lang);
-                      changeLanguageAction(lang.toString());
+                      _changeLanguageAction(lang.toString());
                     }
                   }/>
           )}
         </International>
       </div>
   );
-}
+};
 
 const mapStateToProps = (
   state: ICoreRootReducer,
