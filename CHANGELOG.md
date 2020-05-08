@@ -1,3 +1,7 @@
+## [8.14.3] - 2020-05-08
+## Bugfix
+- Removed debug output
+
 ## [8.14.2] - 2020-05-08
 ## Bugfix
 - Fixed language settings dropdown oversize. 
