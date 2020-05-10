@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import TextField from 'react-md/lib/TextFields/TextField';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -42,6 +42,7 @@ const DatePicker: React.FC<DatePicker.Props> = ({
   const [date, setDate] = useState<Date>(value);
   const [open, setOpen] = useState(false);
   const [id] = useState(Math.floor(Math.random() * 100));
+  const datePickerRef = useRef<ReactDatePicker>();
 
   useEffect(
     () => {
@@ -60,10 +61,14 @@ const DatePicker: React.FC<DatePicker.Props> = ({
             <OutsideClickHandler onOutsideClick={() => setOpen(false)}>
               <ReactDatePicker
                 {...rest}
+                ref={datePickerRef}
                 selected={date}
                 onChange={(newDate) => {
                   setDate(newDate);
                   onChange(newDate);
+                  if (datePickerRef.current.props.shouldCloseOnSelect) {
+                    setOpen(false);
+                  }
                 }}
                 dateFormat={dateFormat || mapLanguageToDateFormat(language)}
                 locale='de'

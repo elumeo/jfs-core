@@ -1,3 +1,7 @@
+## [8.14.4] - 2020-05-10
+### Bugfix
+- Fixed an issue in ReactDatePicker that prop `shouldCloseOnSelect` was not recognized in custom `onChange` handler
+
 ## [8.14.3] - 2020-05-08
 ### Bugfix
 - Removed debug output

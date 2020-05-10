@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "8.14.3",
+  "version": "8.14.4",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
