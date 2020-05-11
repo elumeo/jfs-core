@@ -17,6 +17,7 @@ import { appReducer, IAppReducerState } from './AppReducer';
 import { loginReducer, ILoginReducerState } from './LoginReducer';
 import IConfig from '../../Base/IConfig';
 import Shared from '../../Shared';
+import ProcessReducer from './Process';
 
 export interface IRootReducer<T_IConfig> {
   appReducer?: IAppReducerState;
@@ -34,6 +35,7 @@ export interface IRootReducer<T_IConfig> {
   toastReducer?: IToastReducerState;
   webSocketConnectionReducer?: IWebSocketConnectionReducerState;
   configReducer?: IConfigReducerState<T_IConfig>;
+  ProcessReducer?: ProcessReducer.State;
 }
 
 export interface ICoreRootReducer extends IRootReducer<IConfig> {
@@ -56,6 +58,7 @@ export default reducers => combineReducers({
   systemReducer,
   toastReducer,
   webSocketConnectionReducer,
+  ProcessReducer,
   ...reducers,
   ...Shared.Reducer()
 });

@@ -14,6 +14,7 @@ import { getRegionEpic } from './SystemEpic';
 import { loginEpic, robotLoginRefreshEpic } from './LoginEpic';
 import { loadConfigEpic } from './ConfigEpic';
 import { addNotificationEpic, splitViewEpic } from './NotificationEpic';
+import ProcessEpic from './Process';
 
 import {
   webSocketAppIsInitializedEpic,
@@ -32,6 +33,7 @@ import { EMPTY, Observable } from 'rxjs';
 import Shared from '../../Shared';
 
 export const wrappedCombineEpics = (...epics) => combineEpics(
+  ProcessEpic,
   robotLoginRefreshEpic,
   loginEpic,
   addNotificationEpic,

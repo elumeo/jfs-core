@@ -22,10 +22,13 @@ export default class SharedComponent<IModuleState, IComponentProps> {
   public static mapStateToProps = mapModuleStateToProps => (
     state,
     ownProps
-  ) => mapModuleStateToProps(
+  ) => ({
+    language: state.languageReducer.language,
+    ...mapModuleStateToProps(
       SharedComponent.mapGlobalStateToModuleState(state),
-    ownProps
-  );
+      ownProps
+    )
+  });
 
   public static compose = (
     mapModuleStateToProps,

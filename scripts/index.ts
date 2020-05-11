@@ -1,1 +1,1 @@
-import 'Setup/deploy-config-files';
+import 'Setup/jsc-generate';

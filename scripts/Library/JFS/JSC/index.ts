@@ -44,6 +44,7 @@ class JSC {
   ) => jfsConfig.read(
     config => {
       const endpoint = this.config.endpoint(config, versionNumber);
+      console.log({ endpoint });
       this.config.read(
         jscApiConfig => (
           axios

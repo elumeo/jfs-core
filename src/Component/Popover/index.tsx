@@ -1,186 +1,78 @@
 import React, { useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import Button from 'react-md/lib/Buttons/Button';
-import Card from 'react-md/lib/Cards/Card';
-import OutsideClickHandler from 'react-outside-click-handler';
-
+import computeOffset from './computeOffset';
+import Speaker from './Speaker';
 import './Style.scss';
+import { Position, Anker } from './Types';
 
 namespace Popover {
-  export type Position = 'top' | 'left' | 'right' | 'bottom';
-  export type Anker = 'start' | 'center' | 'end';
-
   export type Props = {
     position: Position;
     anker: Anker;
+    Whisper: ({
+      isOpen,
+      setIsOpen
+    }: {
+      isOpen: boolean;
+      setIsOpen: (isOpen: boolean) => void;
+    }) => JSX.Element;
+    target: HTMLElement;
   }
 }
 
 const Popover: React.FC<Popover.Props> = ({
-  position,
-  anker
+  position, anker, Whisper, children, target
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [offset, setOffset] = useState({ top: 0, left: 0 });
   const [popoverId] = useState(Math.floor(Math.random() * 100));
-  const [{ top, left }, setPosition] = useState({ top: 0, left: 0 });
+  const [speakerId] = useState(`popover-speaker-${popoverId}`);
+  const [whisperId] = useState(`popover-whisper-${popoverId}`);
+  const [maxWhisperWidth, setMaxWhisperWidth] = useState(null);
 
   useEffect(
     () => {
-      const popoverElement = document.getElementsByClassName(`popover-${popoverId}`)[0];
-      if (popoverElement) {
-        const buttonElement = document.getElementById(`popover-button-${popoverId}`);
-        const buttonDimesions = buttonElement.getBoundingClientRect();
-        const popoverDimensions = popoverElement.getBoundingClientRect();
-
-        const buttonCenter = {
-          left: (
-            buttonDimesions.left
-            + buttonDimesions.width / 2
-            - popoverDimensions.width / 2
-          ),
-          top: (
-            buttonDimesions.top
-            + buttonDimesions.height / 2
-            - popoverDimensions.height / 2
-          )
-        };
-
-        const extraSpace = 10;
-
-        const topPositionOffset = (
-          position === 'top'
-            ? -(popoverDimensions.height / 2 + buttonDimesions.height / 2)
-            : position === 'bottom'
-              ? popoverDimensions.height / 2 + buttonDimesions.height / 2
-              : 0
+      const speakerElement = document.getElementById(speakerId);
+      if (speakerElement) {
+        const whisperElement = document.getElementById(whisperId);
+        const whisper = whisperElement.getBoundingClientRect();
+        const speaker = speakerElement.getBoundingClientRect();
+        setOffset(
+          computeOffset({ whisper, speaker, position, anker })
         );
-
-        const topAnkerOffset = (
-          ['left', 'right'].includes(position)
-            ? anker === 'start'
-              ? popoverDimensions.height / 2
-              : anker === 'end'
-                ? - popoverDimensions.height / 2
-                : 0
-            : 0
-        );
-
-        const topCorrectifierOffset = (
-          ['left', 'right'].includes(position)
-            ? anker === 'start'
-              ? - buttonDimesions.height / 2
-              : anker === 'end'
-                ? buttonDimesions.height / 2
-                : 0
-            : 0
-        );
-
-        const topSpacingOffset = (
-          ['top', 'bottom'].includes(position)
-            ? position === 'top'
-              ? - extraSpace
-              : extraSpace
-            : 0
-        );
-
-        const topOffset = (
-          topPositionOffset
-          + topAnkerOffset
-          + topCorrectifierOffset
-          + topSpacingOffset
-        );
-
-        const leftPositionOffset = (
-          position === 'left'
-            ? -(popoverDimensions.width / 2 + buttonDimesions.width / 2)
-            : position === 'right'
-              ? popoverDimensions.width / 2 + buttonDimesions.width / 2
-              : 0
-        );
-
-        const leftAnkerOffset = (
-          ['top', 'bottom'].includes(position)
-            ? anker === 'start'
-              ? popoverDimensions.width / 2
-              : anker === 'end'
-                ? - popoverDimensions.width / 2
-                : 0
-            : 0
-        );
-
-        const leftCorrectifierOffset = (
-          ['top', 'bottom'].includes(position)
-            ? anker === 'start'
-              ? - buttonDimesions.width / 2
-              : anker === 'end'
-                ? buttonDimesions.width / 2
-                : 0
-            : 0
-        );
-
-        const leftSpacingOffset = (
-          ['left', 'right'].includes(position)
-            ? position === 'left'
-              ? - extraSpace
-              : extraSpace
-            : 0
-        );
-
-        const leftOffset = (
-          leftPositionOffset
-          + leftAnkerOffset
-          + leftCorrectifierOffset
-          + leftSpacingOffset
-        );
-
-        setPosition({
-          left: buttonCenter.left + leftOffset,
-          top: buttonCenter.top + topOffset
-        });
       }
     },
     [isOpen]
   );
 
+  useEffect(
+    () => {
+      const realWhisper = document.getElementById(whisperId).children[0];
+      setMaxWhisperWidth(realWhisper.clientWidth);
+    },
+    [
+      document.getElementById(whisperId) &&
+      document.getElementById(whisperId).children[0]
+    ]
+  );
+
   return (
     <>
-      <Button
-        id={`popover-button-${popoverId}`}
-        icon
-        onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? 'close' : 'launch'}
-      </Button>
-      {
-        createPortal(
-          <OutsideClickHandler onOutsideClick={(event) => {
-            // @ts-ignore
-            const { path } = event;
-            const button = (path as HTMLElement[]).find(
-              ({ id }) => id === `popover-button-${popoverId}`
-            );
-            if (!button) {
-              setIsOpen(false);
-            }
-          }}>
-            <Card
-              className={`popover position-${position} anker-${anker} popover-${popoverId}`}
-              style={{
-                position: 'absolute',
-                top,
-                left,
-                width: 200,
-                height: 200,
-                zIndex: 100000,
-                display: isOpen ? 'block' : 'none'
-              }}>
-              <div style={{ background: 'white', width: '100%', height: '100%' }}>
-                TEST
-              </div>
-            </Card>
-          </OutsideClickHandler>,
-          document.getElementById('root')
-        )
-      }
+      <div id={whisperId} style={{ maxWidth: maxWhisperWidth }}>
+        <Whisper
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}/>
+      </div>
+      <Speaker
+        id={speakerId}
+        whisperId={whisperId}
+        offset={offset}
+        position={position}
+        anker={anker}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        target={target}>
+        {children}
+      </Speaker>
     </>
   )
 }

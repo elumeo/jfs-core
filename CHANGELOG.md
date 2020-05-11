@@ -1,4 +1,4 @@
-## [8.14.0] - 2020-05-05
+## [8.14.1] - 2020-05-05
 ## Bugfix
 - Fixed SettingsContainer component
 
