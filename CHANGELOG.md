@@ -1,41 +1,58 @@
+## [8.14.5] - 2020-05-11
+### Bugfix
+- Fixed language bug in shared components
+
+## [8.14.4] - 2020-05-10
+### Bugfix
+- Fixed an issue in ReactDatePicker that prop `shouldCloseOnSelect` was not recognized in custom `onChange` handler
+
+## [8.14.3] - 2020-05-08
+### Bugfix
+- Removed debug output
+
+## [8.14.2] - 2020-05-08
+### Bugfix
+- Fixed language settings dropdown oversize.
+- Fixed missing translations for notification card action button tooltips.
+
 ## [8.14.1] - 2020-05-05
-## Bugfix
+### Bugfix
 - Fixed SettingsContainer component
 
 ## [8.14.0] - 2020-05-04
-## Added
+### Added
 - Added support for components to be rendered as values in formatMessage()
 
-## Bugfix
+### Bugfix
 - Downgraded moment.js due to a bug
 
 ## [8.13.0] - 2020-05-04
-## Added
+### Added
 - formatNumber() and formatDate are now available to the compatibility module for react-intl
 
 ## [8.12.3] - 2020-05-04
-## Bugfix
+### Bugfix
 - Fixed injectIntl compatibility module
 
 ## [8.12.2] - 2020-05-04
-## Bugfix
+### Bugfix
 - Fixed integration of locale data for react-intl
 
 ## [8.12.1] - 2020-04-30
-## Bugfix
+### Bugfix
 - Fixed an issue were the login was possible without providing credentials
 
 ## [8.12.0] - 2020-04-30
-## Bugfix
+### Bugfix
 - for the latest ModalDialog Bugfix
 
 ## [8.11.0] - 2020-04-30
-## Added
+### Added
 - Added <DatePicker/> component
 - Added outside click handler to <Popover/>
 
 ## [8.10.0] - 2020-04-30
-## Added
+### Added
 - Compatibility mode for react-intl
 - <FormattedMessage/> component
 - <Popover/> component

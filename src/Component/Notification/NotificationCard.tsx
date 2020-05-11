@@ -113,9 +113,6 @@ class NotificationCard extends React.Component<INotificationCardProps> {
         <Button
           icon
           key='dismiss-btn'
-          tooltipLabel={fm('Dismiss')}
-          tooltipPosition={'left'}
-          tooltipDelay={666}
           onClick={event => {
             event.stopPropagation();
             this.props.dismissNotificationAction(config.id);
@@ -132,9 +129,6 @@ class NotificationCard extends React.Component<INotificationCardProps> {
         <Button
           icon
           key='hide-btn'
-          tooltipLabel={fm('Hide')}
-          tooltipPosition={'left'}
-          tooltipDelay={666}
           onClick={event => {
             event.stopPropagation();
             this.props.fadeNotificationOffScreenAction(config.id);

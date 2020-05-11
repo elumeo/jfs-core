@@ -13,7 +13,7 @@ export interface ISettingsDialogProps {
 }
 
 const SettingsDialog: React.FC<ISettingsDialogProps> = ({
-  closeSettings,
+  closeSettings: _closeSettings,
   settingsOpen,
   children
 }) => (
@@ -21,9 +21,9 @@ const SettingsDialog: React.FC<ISettingsDialogProps> = ({
     {({ formatMessage }) => (
       <ModalDialog
         title={formatMessage({id: 'app.settings'})}
-        className="settings-dialog"
+        className='settings-dialog'
         visible={settingsOpen}
-        closeDialog={() => closeSettings()}>
+        closeDialog={() => _closeSettings()}>
         {children}
       </ModalDialog>
     )}
