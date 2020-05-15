@@ -70,7 +70,9 @@ const DatePicker: React.FC<DatePicker.Props> = ({
                     setOpen(false);
                   }
                 }}
-                dateFormat={dateFormat || mapLanguageToDateFormat(language)}
+                dateFormat={dateFormat || mapLanguageToDateFormat(
+                  language as 'de' | 'it' | 'en'
+                )}
                 locale='de'
                 open={open}
                 id={id.toString()}

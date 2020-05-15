@@ -1,55 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-type ProvidedProps<State, Actions> = {
-  actions: Actions;
-  state: State;
-};
+namespace Provider {
+  export type Props<State, Actions> = {
+    state?: State;
+    children: (props: {
+      state: State;
+      actions: Actions;
+    }) => JSX.Element;
+  }
 
-type ProviderProps<State, Actions> = Partial<Actions> & {
-  state?: State;
-  children: (providedProps: ProvidedProps<State, Actions>) => JSX.Element;
-}
-
-type Provider<State, Actions> = React.FC<ProviderProps<State, Actions>>;
-
-type MapToProviderState<State, GlobalState> = (globalState: GlobalState) => State;
-
-export const createProvider = <State, GlobalState, Actions>(
+  export const create = <GlobalState, State, Actions>(
     actions: Actions,
-    mapToProviderState: MapToProviderState<State, GlobalState>
-  ): Provider<State, Actions> => {
-  const Provider = ({
-    children,
-    state,
-    ...actions
-  }) => (
-    <>
-      {children({ state, actions })}
-    </>
-  );
+    mapToProviderState: (GlobalState) => State
+  ): React.FC<Props<State, Actions>> => {
+    const Unconnected: React.FC<Props<State, Actions>> = ({
+      state,
+      children,
+      ...actions
+    }) => (
+      <>
+        {children({ actions: actions as Actions, state })}
+      </>
+    )
 
-  const mapStateToProps = (
-    state: GlobalState,
-    ownProps
-  ): ProviderProps<Actions, State> => ({
-    ...ownProps,
-    state: mapToProviderState(state)
-  });
+    const enhance = connect(
+      (state: GlobalState, ownProps: Props<State, Actions>) => ({
+        ...ownProps,
+        state: mapToProviderState(state)
+      }),
+      actions as {}
+    );
 
-  // @ts-ignore
-  const enhance = connect(mapStateToProps, actions);
-
-  return enhance(Provider) as Provider<State, Actions>;
+    return enhance(Unconnected) as unknown as React.FC<Props<State, Actions>>;
+  };
 }
 
-export default <State, GlobalState, Actions>({
-  actions,
-  mapToProviderState
-}: {
-  actions: Actions,
-  mapToProviderState: (globalState: GlobalState) => State
-}) => (createProvider<State, GlobalState, Actions>(
-  actions,
-  mapToProviderState
-) as React.FC);
+export default Provider;
