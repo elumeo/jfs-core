@@ -2,7 +2,7 @@
 ### Bugfix
 - SearchComponent padding adjustment
 
-## [8.14.6] - 2020-05-11
+## [8.14.7] - 2020-05-11
 ### Bugfix
 - Fixed type errors
 
