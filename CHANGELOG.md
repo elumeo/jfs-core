@@ -1,3 +1,7 @@
+## [8.15.1] - 2020-05-22
+### Bugfix
+- fixed wrong naming of juwelo font icon component
+
 ## [8.15.0] - 2020-05-22
 ### Added
 - Added a new script to generate juwelo icon font from given svgs

@@ -42,9 +42,9 @@ JFS.discover(() => {
             fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.eot');
             fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.ttf');
             fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.svg');
-            fs.copyFileSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.scss', __dirname + '/../src/Component/JuweloIconFont/juwelo-icon-font.scss');
-            fs.copyFileSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.woff', __dirname + '/../src/Component/JuweloIconFont/juwelo-icon-font.woff');
-            fs.copyFileSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.woff2', __dirname + '/../src/Component/JuweloIconFont/juwelo-icon-font.woff2');
+            fs.copyFileSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.scss', __dirname + '/../src/Component/JuweloFontIcon/juwelo-icon-font.scss');
+            fs.copyFileSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.woff', __dirname + '/../src/Component/JuweloFontIcon/juwelo-icon-font.woff');
+            fs.copyFileSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.woff2', __dirname + '/../src/Component/JuweloFontIcon/juwelo-icon-font.woff2');
             fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.scss');
             fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.woff');
             fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.woff2');

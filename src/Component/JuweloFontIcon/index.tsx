@@ -4,20 +4,20 @@ import './styles.scss';
 import { connect } from 'react-redux';
 import { ICoreRootReducer } from '../../Store/Reducer';
 
-export interface IJuweloIconFontProps {
+export interface IJuweloFontIconProps {
   icon: string;
 }
 
-class JuweloIconFont extends React.Component<IJuweloIconFontProps> {
+class JuweloFontIcon extends React.Component<IJuweloFontIconProps> {
   render() {
     return <i className={'juwelo-icon-font jif-' + this.props.icon} />;
   }
 }
 
-const mapStateToProps = (state: ICoreRootReducer, props: IJuweloIconFontProps) : IJuweloIconFontProps => ({
+const mapStateToProps = (state: ICoreRootReducer, props: IJuweloFontIconProps) : IJuweloFontIconProps => ({
   ...props,
 });
 
 export default (
-  connect(mapStateToProps, {}, null, {withRef: true})(JuweloIconFont)
+  connect(mapStateToProps, {}, null, {withRef: true})(JuweloFontIcon)
 );
