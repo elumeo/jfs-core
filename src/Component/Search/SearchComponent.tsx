@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
+// noinspection TypeScriptPreferShortImport
 import { addToastAction } from '../../Store/Action/ToastAction';
 import { ICoreRootReducer } from '../../Store/Reducer';
 import './SearchComponent.scss';
@@ -105,13 +106,13 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
         id={id}
         style={style}
         className={'search-component md-text-field-icon-container ' + className}>
-        <div className="icon-view-box">
+        <div className='icon-view-box'>
           {
             indicateSearchProgress
               ? (
                 <CircularProgress
                   id={`${id}SearchProgress`}
-                  className="search-progress"/>
+                  className='search-progress'/>
               )
               : (
                 <Button
@@ -161,4 +162,5 @@ const mapStateToProps = (
 
 const enhance = connect(mapStateToProps, {addToastAction});
 
+// noinspection JSUnusedGlobalSymbols
 export default enhance(SearchComponent);

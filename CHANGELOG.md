@@ -1,4 +1,4 @@
-## [8.14.8] - 2020-05-22
+## [8.14.9] - 2020-05-22
 ### Added
 - Added a new script to generate juwelo icon font from given svgs
     + put svgs into scripts/Resources/juwelo-icon-font/svg directory
@@ -6,6 +6,10 @@
     + run `npm run generate-juwelo-icon-font`
 - Added a new component for juwelo icon font
     + usage: `<JuweloFontIcon icon="invoice_address" />`
+
+## [8.14.8] - 2020-05-20
+### Bugfix
+- SearchComponent padding adjustment
 
 ## [8.14.7?] - 2020-05-11
 ### Bugfix
