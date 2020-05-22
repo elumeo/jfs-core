@@ -1,4 +1,4 @@
-## [8.14.9] - 2020-05-22
+## [8.15.0] - 2020-05-22
 ### Added
 - Added a new script to generate juwelo icon font from given svgs
     + put svgs into scripts/Resources/juwelo-icon-font/svg directory
