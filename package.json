@@ -1,12 +1,13 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "8.14.7",
+  "version": "8.14.8",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
     "start": "ts-node-dev --respawn -r tsconfig-paths/register scripts/index.ts --scripts-mode true",
     "build-script": "webpack --watch --config settings/scripts/webpack.scripts.js",
     "jsc-generate": "node ./scripts/jsc-generate.js",
+    "generate-juwelo-icon-font": "node ./scripts/generate-juwelo-icon-font.js",
     "jsc-check": "node ./scripts/jsc-check.js",
     "release": "npm publish --access public",
     "postinstall": "node ./scripts/deploy-config-files.js"
@@ -123,6 +124,7 @@
     "typesafe-actions": "^4.4.0",
     "typescript": "^3.8.3",
     "typescript-babel-jest": "^1.0.5",
+    "url-loader": "^4.1.0",
     "validate-npm-package-license": "^3.0.4",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
@@ -136,7 +138,8 @@
     "chokidar": "^3.0.2",
     "rimraf": "^2.6.3",
     "tsconfig-paths": "^3.9.0",
-    "tslint": "^5.20.0"
+    "tslint": "^5.20.0",
+    "fontagon": "^1.0.9"
   },
   "jest": {
     "transform": {
