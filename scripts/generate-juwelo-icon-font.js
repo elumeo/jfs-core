@@ -494,15 +494,15 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 
 /***/ }),
 
-/***/ "../Setup/jsc-generate.ts":
-/*!********************************!*\
-  !*** ../Setup/jsc-generate.ts ***!
-  \********************************/
+/***/ "../Setup/generate-juwelo-icon-font.ts":
+/*!*********************************************!*\
+  !*** ../Setup/generate-juwelo-icon-font.ts ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst JFS_1 = __importDefault(__webpack_require__(/*! Library/JFS */ \"../Library/JFS/index.ts\"));\nconst Location_1 = __importDefault(__webpack_require__(/*! Library/JFS/Environment/Location */ \"../Library/JFS/Environment/Location.ts\"));\nJFS_1.default.discover(() => {\n    if (JFS_1.default.Environment.Location.type === Location_1.default.Type.LOCAL) {\n        JFS_1.default.Core.JSC.generate(JFS_1.default.Core.config, 2, () => { });\n    }\n    else if (JFS_1.default.Environment.Location.type === Location_1.default.Type.REMOTE) {\n        JFS_1.default.Environment.Head.JSC.generate(JFS_1.default.Environment.Head.config, 2, () => { });\n    }\n});\n\n\n//# sourceURL=webpack:///../Setup/jsc-generate.ts?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst JFS_1 = __importDefault(__webpack_require__(/*! Library/JFS */ \"../Library/JFS/index.ts\"));\nconst Location_1 = __importDefault(__webpack_require__(/*! Library/JFS/Environment/Location */ \"../Library/JFS/Environment/Location.ts\"));\nconst nodeSass = __webpack_require__(/*! node-sass */ \"node-sass\");\nconst fs = __webpack_require__(/*! fs */ \"fs\");\nconst Fontagon = __webpack_require__(/*! fontagon */ \"fontagon\");\nJFS_1.default.discover(() => {\n    if (JFS_1.default.Environment.Location.type === Location_1.default.Type.LOCAL) {\n        Fontagon({\n            files: [\n                __dirname + '/Resources/juwelo-icon-font/svg/*.svg'\n            ],\n            dist: __dirname + '/Resources/juwelo-icon-font/dist',\n            fontName: 'juwelo-icon-font',\n            style: 'sass',\n            classOptions: {\n                baseClass: 'juwelo-icon-font',\n                classPrefix: 'jif',\n                order: ['woff', 'woff2']\n            }\n        }).then((opts) => {\n            nodeSass.render({\n                file: __dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.sass',\n                outFile: __dirname + '/Resources/juwelo-icon-font/scss/juwelo-icon-font.scss',\n            }, (error, result) => {\n                if (error) {\n                    console.error(error); // used to be \"code\" in v2x and below\n                }\n                else {\n                    const pattern = '.*juwelo-icon-font\\.eot.*';\n                    let cssLineSplit = result.css.toString().split(/\\r?\\n/);\n                    cssLineSplit = cssLineSplit.filter((line) => {\n                        const r = new RegExp(pattern);\n                        return r.exec(line) === null;\n                    });\n                    fs.writeFile(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.scss', cssLineSplit.join('\\n'), (err) => {\n                        if (err) {\n                            return console.log(err);\n                        }\n                        fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.sass');\n                        fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.eot');\n                        fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.ttf');\n                        fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.svg');\n                        fs.copyFileSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.scss', __dirname + '/../src/Component/JuweloFontIcon/juwelo-icon-font.scss');\n                        fs.copyFileSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.woff', __dirname + '/../src/Component/JuweloFontIcon/juwelo-icon-font.woff');\n                        fs.copyFileSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.woff2', __dirname + '/../src/Component/JuweloFontIcon/juwelo-icon-font.woff2');\n                        fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.scss');\n                        fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.woff');\n                        fs.unlinkSync(__dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.woff2');\n                        fs.rmdirSync(__dirname + '/Resources/juwelo-icon-font/dist');\n                        console.log('The file was saved!');\n                    });\n                }\n            });\n        }).catch((err) => {\n            console.error('fail! ', err);\n        });\n    }\n});\n\n\n//# sourceURL=webpack:///../Setup/generate-juwelo-icon-font.ts?");
 
 /***/ }),
 
@@ -514,7 +514,7 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__webpack_require__(/*! Setup/jsc-generate */ \"../Setup/jsc-generate.ts\");\n\n\n//# sourceURL=webpack:///.?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__webpack_require__(/*! Setup/generate-juwelo-icon-font */ \"../Setup/generate-juwelo-icon-font.ts\");\n\n\n//# sourceURL=webpack:///.?");
 
 /***/ }),
 
@@ -573,6 +573,17 @@ eval("module.exports = require(\"chokidar\");\n\n//# sourceURL=webpack:///extern
 
 /***/ }),
 
+/***/ "fontagon":
+/*!***************************!*\
+  !*** external "fontagon" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"fontagon\");\n\n//# sourceURL=webpack:///external_%22fontagon%22?");
+
+/***/ }),
+
 /***/ "fs":
 /*!*********************!*\
   !*** external "fs" ***!
@@ -603,6 +614,17 @@ eval("module.exports = require(\"json-2-csv\");\n\n//# sourceURL=webpack:///exte
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"ncp\");\n\n//# sourceURL=webpack:///external_%22ncp%22?");
+
+/***/ }),
+
+/***/ "node-sass":
+/*!****************************!*\
+  !*** external "node-sass" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"node-sass\");\n\n//# sourceURL=webpack:///external_%22node-sass%22?");
 
 /***/ }),
 

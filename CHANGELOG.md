@@ -1,3 +1,8 @@
+## [8.15.2] - 2020-05-25
+### Bugfix
+- fixed wrong generated script js file for generating juwelo icon font
+- fixed an issue with currency helper when providing wrong number as arg 
+
 ## [8.15.1] - 2020-05-22
 ### Bugfix
 - fixed wrong naming of juwelo font icon component

@@ -5,7 +5,7 @@ class Currency {
   public static getCurrencySign(currency: string) {
     const tmpValue = new Intl.NumberFormat(
       Format.Locale.selectedLanguage,
-      { style: 'currency', currency }
+      {style: 'currency', currency}
     );
     // We must use ts-ignore because typescript seems not to know that formatToParts exists but it does
     // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/formatToParts
@@ -14,7 +14,7 @@ class Currency {
     const tmpValueParts = tmpValue.formatToParts(0) as string[];
     let sign = '';
     tmpValueParts.forEach((part) => {
-      if(part['type'] === 'currency') {
+      if (part['type'] === 'currency') {
         sign = part['value'];
       }
     });
@@ -26,20 +26,20 @@ class Currency {
     value: number,
     showFraction = false
   ) {
-    if (value === null || value.toString() === '') {
-      return '';
+    if (isNaN(value) || value === null || value.toString() === '') {
+      value = 0;
     }
 
-    if(showFraction) {
+    if (showFraction) {
       return new Intl.NumberFormat(
         Format.Locale.selectedLanguage,
-        { style: 'currency', currency }
+        {style: 'currency', currency}
       ).format(value);
     }
 
     return new Intl.NumberFormat(
       Format.Locale.selectedLanguage,
-      { style: 'currency', currency, minimumFractionDigits: 0 }
+      {style: 'currency', currency, minimumFractionDigits: 0}
     ).format(value);
   }
 }
