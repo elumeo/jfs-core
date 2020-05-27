@@ -1,3 +1,7 @@
+## [8.15.3] - 2020-05-27
+### Added
+- Added react-virtualized lib to package as core dependency
+
 ## [8.15.2] - 2020-05-25
 ### Bugfix
 - fixed wrong generated script js file for generating juwelo icon font
