@@ -14,6 +14,7 @@ export interface ISearchComponentProps {
   autocompleteData?: string[] | number[] | { dataLabel: string, dataValue: string }[];
   centered?: boolean;
   focusInputOnAutocomplete?: boolean;
+  focusInputOnClear?: boolean;
   forceNumericInput?: boolean;
   id: string;
   indicateSearchProgress?: boolean;
@@ -36,6 +37,7 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
   static defaultProps = {
     autocompleteData: [],
     focusInputOnAutocomplete: false,
+    focusInputOnClear: true,
     forceNumericInput: false,
     searchOnAutocomplete: true,
     value: '',
@@ -91,8 +93,11 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
   };
 
   handleClear = () => {
-    document.getElementById(this.props.id).focus();
-    this.setState({value: ''});
+    const { focusInputOnClear, id } = this.props;
+    if (focusInputOnClear) {
+      document.getElementById(`${id}-autocomplete`).focus();
+    }
+    this.setState({ value: '' });
   };
 
   render() {

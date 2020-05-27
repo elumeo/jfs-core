@@ -1,3 +1,7 @@
+## [8.15.5] - 2020-05-27
+### Bugfix
+- fixed SearchComponent input doesn't get focused on clear
+
 ## [8.15.4] - 2020-05-27
 ### Changed
 - Give the formatTime formatter method an optional options parameter to be able to add seconds as well 
