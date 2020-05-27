@@ -1,3 +1,7 @@
+## [8.15.4] - 2020-05-27
+### Changed
+- Give the formatTime formatter method an optional options parameter to be able to add seconds as well 
+
 ## [8.15.3] - 2020-05-27
 ### Added
 - Added react-virtualized lib to package as core dependency
