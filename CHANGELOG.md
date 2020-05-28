@@ -1,3 +1,9 @@
+## [8.15.6] - 2020-05-28
+### Added
+- Added new juwelo font icon: apple
+- Added new juwelo font icon: webshop
+- Added new juwelo font icon: webshop_bidagent
+
 ## [8.15.5] - 2020-05-27
 ### Bugfix
 - fixed SearchComponent input doesn't get focused on clear

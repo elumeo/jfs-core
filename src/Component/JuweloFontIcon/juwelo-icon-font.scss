@@ -1,8 +1,8 @@
 @charset "UTF-8";
 @font-face {
   font-family: "juwelo-icon-font";
-  src: url("juwelo-icon-font.woff2?06c428529b19993a28f68be8f7900286") format("woff2");
-  src: url("juwelo-icon-font.woff?06c428529b19993a28f68be8f7900286") format("woff"); }
+  src: url("juwelo-icon-font.woff2?f2a10d7f9cf84421cf5556282132ad25") format("woff2");
+  src: url("juwelo-icon-font.woff?f2a10d7f9cf84421cf5556282132ad25") format("woff"); }
 
 .juwelo-icon-font, .jif-icons {
   -webkit-user-select: none;
@@ -40,8 +40,20 @@
   /* Support for IE. */
   font-feature-settings: 'liga'; }
 
-.jif-delivery_address:before {
+.jif-apple:before {
   content: ""; }
 
-.jif-invoice_address:before {
+.jif-delivery_address:before {
   content: ""; }
+
+.jif-invoice_address:before {
+  content: ""; }
+
+.jif-tmp:before {
+  content: ""; }
+
+.jif-webshop_bidagent:before {
+  content: ""; }
+
+.jif-webshop:before {
+  content: ""; }
