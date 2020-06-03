@@ -1,3 +1,7 @@
+## [8.15.7] - 2020-06-03
+### Added
+- Added `disabled` prop to SearchComponent
+
 ## [8.15.6] - 2020-05-28
 ### Added
 - Added new juwelo font icon: apple

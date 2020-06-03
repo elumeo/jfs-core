@@ -26,6 +26,7 @@ export interface ISearchComponentProps {
   style?: React.CSSProperties;
   className?: string;
   value?: string;
+  disabled?: boolean;
 }
 
 export interface ISearchComponentState {
@@ -41,6 +42,7 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
     forceNumericInput: false,
     searchOnAutocomplete: true,
     value: '',
+    disabled: false,
   };
 
   constructor(props) {
@@ -103,14 +105,18 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
   render() {
     const {
       id, style, className, placeholderTranslationId, autocompleteData, indicateSearchProgress,
-      labelTranslationId, focusInputOnAutocomplete, searchOnAutocomplete
+      labelTranslationId, focusInputOnAutocomplete, searchOnAutocomplete, disabled
     } = this.props;
     const menuId = `${id}Menu`;
     return (
       <div
         id={id}
         style={style}
-        className={'search-component md-text-field-icon-container ' + className}>
+        className={[
+          'search-component md-text-field-icon-container',
+          disabled ? 'search-component--disabled' : undefined,
+          className
+        ].join(' ')}>
         <div className='icon-view-box'>
           {
             indicateSearchProgress
@@ -122,8 +128,9 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
               : (
                 <Button
                   icon
+                  className='search-component-search-btn'
                   onClick={() => this.handleSearch()}
-                  disabled={indicateSearchProgress}>
+                  disabled={indicateSearchProgress || disabled}>
                   search
                 </Button>
               )
@@ -143,12 +150,14 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
               onKeyDown={this.handleKeyDown}
               placeholder={placeholderTranslationId ? formatMessage({id: placeholderTranslationId}) : null}
               textFieldClassName={'md-text-field-icon'}
+              disabled={disabled}
               value={this.state.value}/>
           )}
         </International>
         <Button
           icon
           className={`clear-btn ${this.state.value != '' ? 'visible' : ''}`}
+          disabled={disabled}
           onClick={this.handleClear}
         >clear</Button>
       </div>
