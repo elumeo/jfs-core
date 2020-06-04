@@ -31,10 +31,11 @@ export interface ISearchComponentProps {
 
 export interface ISearchComponentState {
   value?: string;
+  inputFocused?: boolean;
 }
 
 class SearchComponent extends React.Component<ISearchComponentProps, ISearchComponentState> {
-  state: ISearchComponentState;
+  state: ISearchComponentState = { inputFocused: false };
   static defaultProps = {
     autocompleteData: [],
     focusInputOnAutocomplete: false,
@@ -115,6 +116,7 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
         className={[
           'search-component md-text-field-icon-container',
           disabled ? 'search-component--disabled' : undefined,
+          this.state.inputFocused ? 'search-component--focused' : undefined,
           className
         ].join(' ')}>
         <div className='icon-view-box'>
@@ -143,15 +145,18 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
               data={autocompleteData}
               focusInputOnAutocomplete={focusInputOnAutocomplete && !searchOnAutocomplete}
               inputClassName={`search ${this.state.value != '' && 'search-active' || ''}`}
-              label={labelTranslationId ? formatMessage({id: labelTranslationId}) : null}
+              label={labelTranslationId ? formatMessage({ id: labelTranslationId }) : null}
               menuId={menuId}
               onAutocomplete={this.handleAutocomplete}
               onChange={this.handleChange}
               onKeyDown={this.handleKeyDown}
-              placeholder={placeholderTranslationId ? formatMessage({id: placeholderTranslationId}) : null}
+              placeholder={placeholderTranslationId ? formatMessage({ id: placeholderTranslationId }) : null}
               textFieldClassName={'md-text-field-icon'}
               disabled={disabled}
-              value={this.state.value}/>
+              value={this.state.value}
+              onFocus={() => this.setState({ inputFocused: true })}
+              onBlur={() => this.setState({ inputFocused: false })}
+            />
           )}
         </International>
         <Button

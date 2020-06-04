@@ -1,3 +1,7 @@
+## [8.15.8] - 2020-06-04
+### Added
+- Added focus class to SearchComponent
+
 ## [8.15.7] - 2020-06-03
 ### Added
 - Added `disabled` prop to SearchComponent
