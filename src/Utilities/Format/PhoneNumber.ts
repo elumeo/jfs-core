@@ -1,23 +1,41 @@
-import { CountryCode, parsePhoneNumberFromString } from 'libphonenumber-js';
+// import AwesomePhoneNumber from 'awesome-phonenumber';
+import { CountryCode } from 'libphonenumber-js';
+
+import { PhoneNumberUtil, PhoneNumberFormat } from 'google-libphonenumber';
+const {
+  parse, isValidNumber, getRegionCodeForNumber, format
+} = PhoneNumberUtil.getInstance();
 
 class PhoneNumber {
+  // public static formatPhone(msisdn: string, backendRegion: string) {
+  //   if (msisdn) {
+  //     const defaultCountry = PhoneNumber.correctCountryCode(backendRegion);
+  //     const phoneNumber = new AwesomePhoneNumber(msisdn, backendRegion);
+  //     if (phoneNumber && phoneNumber.isValid()) {
+  //       return phoneNumber.getNumber(
+  //         phoneNumber.getRegionCode() !== defaultCountry
+  //           ? 'international'
+  //           : 'national'
+  //       );
+  //     }
+  //   }
+  //   return msisdn;
+  // }
 
   public static formatPhone(msisdn: string, backendRegion: string) {
-    let formattedMsisdn: string = msisdn;
     if (msisdn) {
-      let defaultCountry = PhoneNumber.correctCountryCode(backendRegion);
-
-      let phoneNumber = parsePhoneNumberFromString(msisdn, defaultCountry);
-      if (phoneNumber) {
-        if (phoneNumber.country != defaultCountry) {
-          formattedMsisdn = phoneNumber.formatInternational();
-        } else {
-          formattedMsisdn = phoneNumber.formatNational()
-        }
+      const defaultCountry = PhoneNumber.correctCountryCode(backendRegion);
+      const phoneNumber = parse(msisdn, backendRegion);
+      if (phoneNumber && isValidNumber(phoneNumber)) {
+        return format(
+          phoneNumber,
+          getRegionCodeForNumber(phoneNumber) !== defaultCountry
+            ? PhoneNumberFormat.INTERNATIONAL
+            : PhoneNumberFormat.NATIONAL
+        );
       }
     }
-
-    return formattedMsisdn;
+    return msisdn;
   }
 
   protected static correctCountryCode(countryCode: string): CountryCode {
