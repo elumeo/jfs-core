@@ -1,35 +1,15 @@
-// import AwesomePhoneNumber from 'awesome-phonenumber';
-import { CountryCode } from 'libphonenumber-js';
-
 import { PhoneNumberUtil, PhoneNumberFormat } from 'google-libphonenumber';
-const {
-  parse, isValidNumber, getRegionCodeForNumber, format
-} = PhoneNumberUtil.getInstance();
 
 class PhoneNumber {
-  // public static formatPhone(msisdn: string, backendRegion: string) {
-  //   if (msisdn) {
-  //     const defaultCountry = PhoneNumber.correctCountryCode(backendRegion);
-  //     const phoneNumber = new AwesomePhoneNumber(msisdn, backendRegion);
-  //     if (phoneNumber && phoneNumber.isValid()) {
-  //       return phoneNumber.getNumber(
-  //         phoneNumber.getRegionCode() !== defaultCountry
-  //           ? 'international'
-  //           : 'national'
-  //       );
-  //     }
-  //   }
-  //   return msisdn;
-  // }
-
   public static formatPhone(msisdn: string, backendRegion: string) {
+    const phoneUtil = PhoneNumberUtil.getInstance();
     if (msisdn) {
       const defaultCountry = PhoneNumber.correctCountryCode(backendRegion);
-      const phoneNumber = parse(msisdn, backendRegion);
-      if (phoneNumber && isValidNumber(phoneNumber)) {
-        return format(
+      const phoneNumber = phoneUtil.parse(msisdn, defaultCountry);
+      if (phoneNumber && phoneUtil.isValidNumber(phoneNumber)) {
+        return phoneUtil.format(
           phoneNumber,
-          getRegionCodeForNumber(phoneNumber) !== defaultCountry
+          phoneUtil.getRegionCodeForNumber(phoneNumber) !== defaultCountry
             ? PhoneNumberFormat.INTERNATIONAL
             : PhoneNumberFormat.NATIONAL
         );
@@ -38,17 +18,17 @@ class PhoneNumber {
     return msisdn;
   }
 
-  protected static correctCountryCode(countryCode: string): CountryCode {
+  protected static correctCountryCode(countryCode: string): string {
     if (!countryCode || countryCode.length == 0) {
-      return 'DE' as CountryCode;
+      return 'DE';
     }
 
     countryCode = countryCode.trim().toUpperCase();
     if (countryCode == 'UK' || countryCode == 'EN') {
-      return 'GB' as CountryCode;
+      return 'GB';
     }
 
-    return countryCode as CountryCode;
+    return countryCode;
   }
 }
 
