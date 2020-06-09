@@ -1,17 +1,18 @@
+## [8.15.10] - 2020-06-08
+### Bugfix
+- Fixed an issue that google-libphonenumber throws an exception when passed phone number is not a valid phone number (e.g. '-')
+
 ## [8.15.9] - 2020-06-09
 ### Fixes
 - Fixed DatePicker to work inline
 
-## [8.15.8] - 2020-06-05
+## [8.15.8] - 2020-06-04
 ### Changes
 - Moved from `libphonenumber-js` to `google-libphonenumber`
 
 ## [8.15.7] - 2020-06-04
 ### Added
 - Added focus class to SearchComponent
-
-## [8.15.7] - 2020-06-03
-### Added
 - Added `disabled` prop to SearchComponent
 
 ## [8.15.6] - 2020-05-28
