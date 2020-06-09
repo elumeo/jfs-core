@@ -1,3 +1,7 @@
+## [8.15.9] - 2020-06-08
+### Bugfix
+- Fixed an issue that google-libphonenumber throws an exception when passed phone number is not a valid phone number (e.g. '-')
+
 ## [8.15.8] - 2020-06-05
 ### Changes
 - Moved from `libphonenumber-js` to `google-libphonenumber`

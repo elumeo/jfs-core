@@ -5,14 +5,18 @@ class PhoneNumber {
     const phoneUtil = PhoneNumberUtil.getInstance();
     if (msisdn) {
       const defaultCountry = PhoneNumber.correctCountryCode(backendRegion);
-      const phoneNumber = phoneUtil.parse(msisdn, defaultCountry);
-      if (phoneNumber && phoneUtil.isValidNumber(phoneNumber)) {
-        return phoneUtil.format(
-          phoneNumber,
-          phoneUtil.getRegionCodeForNumber(phoneNumber) !== defaultCountry
-            ? PhoneNumberFormat.INTERNATIONAL
-            : PhoneNumberFormat.NATIONAL
-        );
+      try {
+        const phoneNumber = phoneUtil.parse(msisdn, defaultCountry);
+        if (phoneNumber && phoneUtil.isValidNumber(phoneNumber)) {
+          return phoneUtil.format(
+            phoneNumber,
+            phoneUtil.getRegionCodeForNumber(phoneNumber) !== defaultCountry
+              ? PhoneNumberFormat.INTERNATIONAL
+              : PhoneNumberFormat.NATIONAL
+          );
+        }
+      } catch (e) {
+        return msisdn;
       }
     }
     return msisdn;
