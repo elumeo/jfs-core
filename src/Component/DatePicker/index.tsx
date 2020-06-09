@@ -26,10 +26,10 @@ const mapLanguageToDateFormat = (language: 'de' | 'en' | 'it') => {
 }
 
 namespace DatePicker {
-  export type Props = ReactDatePickerProps & {
+  export type Props = {
     value: Date;
     onChange: (newDate: Date) => void;
-  };
+  } & ReactDatePickerProps;
 }
 
 const DatePicker: React.FC<DatePicker.Props> = ({
@@ -46,10 +46,13 @@ const DatePicker: React.FC<DatePicker.Props> = ({
 
   useEffect(
     () => {
-      document.getElementById(id.toString()).parentNode.addEventListener(
-        'click',
-        () => setOpen(true)
-      )
+      const domNode = document.getElementById(id.toString());
+      if (domNode) {
+        domNode.parentNode.addEventListener(
+          'click',
+          () => setOpen(true)
+        );
+      }
     }
   );
 

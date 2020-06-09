@@ -1,3 +1,7 @@
+## [8.15.9] - 2020-06-09
+### Fixes
+- Fixed DatePicker to work inline
+
 ## [8.15.8] - 2020-06-05
 ### Changes
 - Moved from `libphonenumber-js` to `google-libphonenumber`
