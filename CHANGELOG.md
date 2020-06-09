@@ -1,4 +1,8 @@
-## [8.15.8] - 2020-06-04
+## [8.15.8] - 2020-06-05
+### Changes
+- Moved from `libphonenumber-js` to `google-libphonenumber`
+
+## [8.15.7] - 2020-06-04
 ### Added
 - Added focus class to SearchComponent
 
@@ -18,7 +22,7 @@
 
 ## [8.15.4] - 2020-05-27
 ### Changed
-- Give the formatTime formatter method an optional options parameter to be able to add seconds as well 
+- Give the formatTime formatter method an optional options parameter to be able to add seconds as well
 
 ## [8.15.3] - 2020-05-27
 ### Added
@@ -27,7 +31,7 @@
 ## [8.15.2] - 2020-05-25
 ### Bugfix
 - fixed wrong generated script js file for generating juwelo icon font
-- fixed an issue with currency helper when providing wrong number as arg 
+- fixed an issue with currency helper when providing wrong number as arg
 
 ## [8.15.1] - 2020-05-22
 ### Bugfix

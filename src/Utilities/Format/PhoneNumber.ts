@@ -1,36 +1,34 @@
-import { CountryCode, parsePhoneNumberFromString } from 'libphonenumber-js';
+import { PhoneNumberUtil, PhoneNumberFormat } from 'google-libphonenumber';
 
 class PhoneNumber {
-
   public static formatPhone(msisdn: string, backendRegion: string) {
-    let formattedMsisdn: string = msisdn;
+    const phoneUtil = PhoneNumberUtil.getInstance();
     if (msisdn) {
-      let defaultCountry = PhoneNumber.correctCountryCode(backendRegion);
-
-      let phoneNumber = parsePhoneNumberFromString(msisdn, defaultCountry);
-      if (phoneNumber) {
-        if (phoneNumber.country != defaultCountry) {
-          formattedMsisdn = phoneNumber.formatInternational();
-        } else {
-          formattedMsisdn = phoneNumber.formatNational()
-        }
+      const defaultCountry = PhoneNumber.correctCountryCode(backendRegion);
+      const phoneNumber = phoneUtil.parse(msisdn, defaultCountry);
+      if (phoneNumber && phoneUtil.isValidNumber(phoneNumber)) {
+        return phoneUtil.format(
+          phoneNumber,
+          phoneUtil.getRegionCodeForNumber(phoneNumber) !== defaultCountry
+            ? PhoneNumberFormat.INTERNATIONAL
+            : PhoneNumberFormat.NATIONAL
+        );
       }
     }
-
-    return formattedMsisdn;
+    return msisdn;
   }
 
-  protected static correctCountryCode(countryCode: string): CountryCode {
+  protected static correctCountryCode(countryCode: string): string {
     if (!countryCode || countryCode.length == 0) {
-      return 'DE' as CountryCode;
+      return 'DE';
     }
 
     countryCode = countryCode.trim().toUpperCase();
     if (countryCode == 'UK' || countryCode == 'EN') {
-      return 'GB' as CountryCode;
+      return 'GB';
     }
 
-    return countryCode as CountryCode;
+    return countryCode;
   }
 }
 
