@@ -1,3 +1,7 @@
+## [8.15.11] - 2020-06-10
+### Bugfix
+- Added onClear callback property to SearchComponent
+
 ## [8.15.10] - 2020-06-08
 ### Bugfix
 - Fixed an issue that google-libphonenumber throws an exception when passed phone number is not a valid phone number (e.g. '-')

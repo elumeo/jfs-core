@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
-// noinspection TypeScriptPreferShortImport
+// noinspection TypeScriptPreferShortImport,ES6PreferShortImport
 import { addToastAction } from '../../Store/Action/ToastAction';
 import { ICoreRootReducer } from '../../Store/Reducer';
 import './SearchComponent.scss';
@@ -20,6 +20,7 @@ export interface ISearchComponentProps {
   indicateSearchProgress?: boolean;
   labelTranslationId?: string;
   onChange?: (value: string) => void;
+  onClear?: () => void;
   onSearch: (props: ISearchComponentProps, state: ISearchComponentState) => void;
   placeholderTranslationId: string;
   searchOnAutocomplete?: boolean;
@@ -101,6 +102,9 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
       document.getElementById(`${id}-autocomplete`).focus();
     }
     this.setState({ value: '' });
+    if (this.props.onClear) {
+      this.props.onClear();
+    }
   };
 
   render() {
