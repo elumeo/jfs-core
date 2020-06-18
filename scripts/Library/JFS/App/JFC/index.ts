@@ -4,7 +4,7 @@ import File from 'Library/OS/Filesystem/File';
 import Directory from 'Library/OS/Filesystem/Directory';
 import Text from 'Library/Text';
 import Virtual from 'Library/JFS/Virtual';
-import { resolve } from 'path';
+import { resolve, sep } from 'path';
 
 namespace Path {
   export const removeWildcard = (path: string) => Text.removeSuffix(
@@ -92,16 +92,16 @@ class JFC {
               alias,
               `${this.aliasPrefix}/`
             )
-          );
+          ).split('/').join(sep);
 
           const sourcePath = virtualEnvironment.createSourcePath(
             Text.removePrefix(
               this.pathMappings[alias][0],
               `${this.pathPrefix}/`
             )
-          );
+          ).split('/').join(sep);
 
-          if (Text.endsWith(sourcePath, '/*')) {
+          if (Text.endsWith(sourcePath, sep + '*')) {
             const directory = new Directory({
               path: Path.removeWildcard(sourcePath)
             });
@@ -134,7 +134,7 @@ class JFC {
           }
           else {
             const fileWithoutSuffix = new File({
-              path: sourcePath
+              path: sourcePath.split('/').join(sep)
             });
 
             const sourceParent = new Directory({
