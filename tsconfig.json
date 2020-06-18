@@ -1,39 +1,24 @@
 {
-  "compileOnSave": false,
-  "buildOnSave": false,
   "compilerOptions": {
-    "target": "es6",
-    "lib": ["es2018", "esNext", "DOM"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "sourceMap": true,
-    "jsx": "react",
-    "outDir": "./dist/",
-    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "noImplicitReturns": true,
-    "baseUrl": "./src",
-    "paths": {
-      "Action/*": ["./Store/Action/*"],
-      "Component/*": ["./Component/*"],
-      "Core/*": ["../node_modules/@elumeo/jfs-core/src/*"],
-      "JscApi": ["./Jsc/JscApi.ts"],
-      "Mock/*": ["./Mock/*"],
-      "Setup/*": ["./Setup/*"],
-      "Store": ["./Store/index.ts"]
-    }
+    "target": "es6",
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "build",
+    "baseUrl": "./scripts"
   },
-  "exclude": [
-    "dist",
-    "src/__test__/*",
-    "node_modules/@elumeo/jfs-core/scripts"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "useBabel": true,
-    "useCache": true
-  }
+  "path": {
+    "Setup/*": [
+      "./scripts/Setup/*"
+    ],
+    "Library/*": [
+      "./scripts/Library/*"
+    ]
+  },
+  "include": [
+    "./scripts/**/*"
+  ]
 }

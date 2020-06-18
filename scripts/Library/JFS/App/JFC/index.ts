@@ -5,11 +5,12 @@ import Directory from 'Library/OS/Filesystem/Directory';
 import Text from 'Library/Text';
 import Virtual from 'Library/JFS/Virtual';
 import { resolve, sep } from 'path';
+import JFS from 'Library/JFS';
 
 namespace Path {
   export const removeWildcard = (path: string) => Text.removeSuffix(
     path,
-    '/*'
+    '/*'.replace('/', sep)
   );
 }
 
@@ -94,11 +95,23 @@ class JFC {
             )
           ).split('/').join(sep);
 
-          const sourcePath = virtualEnvironment.createSourcePath(
-            Text.removePrefix(
-              this.pathMappings[alias][0],
-              `${this.pathPrefix}/`
-            )
+          const sourcePath = (
+            alias === 'Core/*'
+              ? (
+                resolve(
+                  JFS.Environment.Head.path,
+                  'src',
+                  this.pathMappings[alias][0]
+                )
+              )
+              : (
+                virtualEnvironment.createSourcePath(
+                  Text.removePrefix(
+                    this.pathMappings[alias][0],
+                    `${this.pathPrefix}/`
+                  )
+                )
+              )
           ).split('/').join(sep);
 
           if (Text.endsWith(sourcePath, sep + '*')) {
