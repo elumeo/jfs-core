@@ -9,7 +9,7 @@
     "jsc-generate": "node ./scripts/build/Setup/jsc-generate.js",
     "jsc-check": "node ./scripts/build/Setup/Check/Api.js",
     "release": "npm publish --access public",
-    "postinstall": "node ./scripts/build/Setup/deploy-config-files.js"
+    "postinstall": "subpkg install && node ./scripts/build/Setup/deploy-config-files.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,9 @@
     "url": "https://github.com/elumeo/jfs-core/issues"
   },
   "homepage": "http://www.elumeo.com",
+  "subPackages": [
+    "scripts"
+  ],
   "dependencies": {
     "@babel/core": "^7.8.6",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
@@ -113,6 +116,7 @@
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
     "style-loader": "^0.18.2",
+    "subpackage": "^1.1.0",
     "terser-webpack-plugin": "^2.3.5",
     "thread-loader": "^1.1.5",
     "toposort": "^2.0.2",
