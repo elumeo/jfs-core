@@ -26,9 +26,6 @@ JFS_1.default.discover(() => {
                         })
                     });
                     synchronization.start();
-                    synchronization.on('all', ({ path, stats }) => {
-                        console.log({ path, stats });
-                    });
                 });
             });
         });

@@ -1,4 +1,4 @@
-import { resolve, normalize } from 'path';
+import { resolve } from 'path';
 import JFS from 'Library/JFS';
 import App from 'Library/JFS/App';
 import Component from 'Library/JFS/Component';
@@ -24,9 +24,6 @@ JFS.discover(() => {
               })
             });
             synchronization.start();
-            synchronization.on('all', ({ path, stats }) => {
-              console.log({ path, stats });
-            });
           }
         );
       });

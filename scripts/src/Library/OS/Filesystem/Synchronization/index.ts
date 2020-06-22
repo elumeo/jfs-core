@@ -1,5 +1,4 @@
 import { Stats } from 'fs';
-import Emitter from 'events';
 import Directory from 'Library/OS/Filesystem/Directory';
 
 namespace Synchronization {
@@ -19,12 +18,10 @@ namespace Synchronization {
 class Synchronization {
   private from: Directory;
   private to: Directory;
-  public readonly emitter: Emitter;
 
   constructor({ from, to }: Synchronization.Props) {
     this.from = from;
     this.to = to;
-    this.emitter = new Emitter;
   }
 
   equalize: Synchronization.Equalize = onComplete => {
@@ -37,8 +34,34 @@ class Synchronization {
       'ready',
       () => this.from.watcher.on(
         'all',
-        (eventName, path, stats) => this.equalize(
-          () => this.emit(eventName, { path, stats })
+        (eventName, path) => this.equalize(
+          () => {
+            const eventIndicator = (
+              eventName: 'add' | 'change' | 'unlink' | 'addDir' | 'unlinkDir'
+            ) => {
+              if (eventName === 'add') {
+                return '+File';
+              }
+              else if (eventName === 'change') {
+                return '+File (UPDATE)';
+              }
+              else if (eventName === 'unlink') {
+                return '-File';
+              }
+              else if (eventName === 'addDir') {
+                return '+Directory';
+              }
+              else if (eventName === 'unlinkDir') {
+                return '-Directory';
+              }
+            }
+
+            console.log(
+              this.from.name,
+              eventIndicator(eventName),
+              path.substring(this.from.path.length)
+            );
+          }
         )
       )
     );
@@ -49,16 +72,6 @@ class Synchronization {
       this.equalize(() => this.watch());
     }
   }
-
-  private emit = (
-    eventName: string,
-    payload: Synchronization.Payload
-  ) => this.emitter.emit(eventName, payload);
-
-  on = (
-    eventName: string,
-    callback: (payload: Synchronization.Payload) => void
-  ) => this.emitter.on(eventName, callback);
 }
 
 export default Synchronization;
