@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Directory_1 = __importDefault(require("../../../OS/Filesystem/Directory"));
+const ansi_colors_1 = require("ansi-colors");
 class Synchronization {
     constructor({ from, to }) {
         this.equalize = onComplete => {
@@ -14,22 +15,22 @@ class Synchronization {
             this.from.watcher.once('ready', () => this.from.watcher.on('all', (eventName, path) => this.equalize(() => {
                 const eventIndicator = (eventName) => {
                     if (eventName === 'add') {
-                        return '+File';
+                        return ansi_colors_1.greenBright('+File');
                     }
                     else if (eventName === 'change') {
-                        return '+File (UPDATE)';
+                        return ansi_colors_1.greenBright('+File (UPDATE)');
                     }
                     else if (eventName === 'unlink') {
-                        return '-File';
+                        return ansi_colors_1.redBright('-File');
                     }
                     else if (eventName === 'addDir') {
-                        return '+Directory';
+                        return ansi_colors_1.greenBright('+Directory');
                     }
                     else if (eventName === 'unlinkDir') {
-                        return '-Directory';
+                        return ansi_colors_1.redBright('-Directory');
                     }
                 };
-                console.log(new Directory_1.default({ path: this.from.parent }).name, this.from.name + path.substring(this.from.path.length), eventIndicator(eventName));
+                console.log(ansi_colors_1.yellowBright(new Directory_1.default({ path: this.from.parent }).name), ansi_colors_1.blueBright(this.from.name + path.substring(this.from.path.length)), eventIndicator(eventName));
             })));
         };
         this.start = () => {

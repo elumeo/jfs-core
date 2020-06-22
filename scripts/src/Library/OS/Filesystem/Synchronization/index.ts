@@ -1,5 +1,6 @@
 import { Stats } from 'fs';
 import Directory from 'Library/OS/Filesystem/Directory';
+import { greenBright, redBright, yellowBright, blueBright } from 'ansi-colors'
 
 namespace Synchronization {
   export type Props = {
@@ -40,25 +41,25 @@ class Synchronization {
               eventName: 'add' | 'change' | 'unlink' | 'addDir' | 'unlinkDir'
             ) => {
               if (eventName === 'add') {
-                return '+File';
+                return greenBright('+File');
               }
               else if (eventName === 'change') {
-                return '+File (UPDATE)';
+                return greenBright('+File (UPDATE)');
               }
               else if (eventName === 'unlink') {
-                return '-File';
+                return redBright('-File');
               }
               else if (eventName === 'addDir') {
-                return '+Directory';
+                return greenBright('+Directory');
               }
               else if (eventName === 'unlinkDir') {
-                return '-Directory';
+                return redBright('-Directory');
               }
             }
 
             console.log(
-              new Directory({ path: this.from.parent }).name,
-              this.from.name + path.substring(this.from.path.length),
+              yellowBright(new Directory({ path: this.from.parent }).name),
+              blueBright(this.from.name + path.substring(this.from.path.length)),
               eventIndicator(eventName),
             );
           }
