@@ -1,7 +1,3 @@
-## [8.15.13] - 2020-06-18
-### Bugfix
-- Fixed deploy-config-files script when running on windows
-
 ## [8.15.12] - 2020-06-18
 ### Bugfix
 - Fixed deploy-config-files script when running on windows

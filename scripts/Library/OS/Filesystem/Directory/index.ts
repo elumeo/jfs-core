@@ -128,41 +128,38 @@ class Directory extends FsNode {
         chokidar.watch(resolve(this.path))
     )
 
-    public create = (directoryCreated: () => void) => {
-      console.log(this.path);
-      return (
-        (new Explorer(this.path)).explore(
-          (path) => path,
-          pathStack => {
-            const payload = (
-              this.path
-                .substring(pathStack[0].length, this.path.length)
-                .split(sep)
-                .slice(1)
-            )
-            const createChild = (payload: string[], onComplete: () => void) => {
-              if (!payload.length) {
-                onComplete();
-              }
-              else {
-                mkdir(
-                  resolve(
-                    pathStack[0],
-                    payload[0]
-                  ),
-                  () => createChild(
-                    payload.slice(1),
-                    onComplete
-                  )
-                )
-              }
+    public create = (directoryCreated: () => void) => (
+      (new Explorer(this.path)).explore(
+        (path) => path,
+        pathStack => {
+          const payload = (
+            this.path
+              .substring(pathStack[0].length, this.path.length)
+              .split(sep)
+              .slice(1)
+          )
+          const createChild = (payload: string[], onComplete: () => void) => {
+            if (!payload.length) {
+              onComplete();
             }
-
-            createChild(payload, directoryCreated);
+            else {
+              mkdir(
+                resolve(
+                  pathStack[0],
+                  payload[0]
+                ),
+                () => createChild(
+                  payload.slice(1),
+                  onComplete
+                )
+              )
+            }
           }
-        )
+
+          createChild(payload, directoryCreated);
+        }
       )
-    }
+    )
 
     public sync = (targetBasePath: string, messagePrefix: string = '') => {
         this.copy({
