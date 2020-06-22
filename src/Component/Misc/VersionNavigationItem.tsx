@@ -1,6 +1,6 @@
 import React from 'react';
 import NavigationItem from '../Navigation/NavigationItem';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { connect } from 'react-redux';
 import International from '../International';
 
@@ -33,11 +33,11 @@ const VersionNavigationItem: React.FC<IVersionNavigationItemProps> = ({
 );
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: IVersionNavigationItemProps
 ): IVersionNavigationItemProps => ({
   ...ownProps,
-  version: state.appReducer.packageJson.version
+  version: state.Core.App.packageJson.version
 });
 
 const enhance = connect(mapStateToProps);

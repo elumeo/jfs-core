@@ -1,7 +1,6 @@
-import { Epic } from 'redux-observable';
+import { Epic, combineEpics, StateObservable } from 'redux-observable';
 import { EMPTY, merge, of } from 'rxjs';
 import { delay, filter, mergeMap } from 'rxjs/operators';
-import { RootAction } from '../Action/RootAction';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
 import {
   addNotificationAction,
@@ -12,18 +11,19 @@ import {
   showNotificationDrawerAction,
   toggleNotificationDrawerAction,
   unpinNotificationDrawerAction,
-} from '../Action/NotificationAction';
-import { disableSplitViewAction, enableSplitViewAction } from '../Action/SplitViewAction';
-import { INotification, INotificationContent } from '../Reducer/NotificationReducer';
-import { timeToRead } from '../../Component/Notification/NotificationCard';
+} from 'Action/NotificationAction';
+import { disableSplitViewAction, enableSplitViewAction } from 'Action/SplitViewAction';
+import { INotification } from 'Types/Notification';
+import { timeToRead } from 'Component/Notification/NotificationCard';
+import Global from 'Store/Reducer/Global';
 
 let notificationIncrementId = 0;
 
-export const addNotificationEpic: Epic<RootAction, RootAction> = (action$) =>
+const addNotificationEpic: Epic = action$ =>
   merge(
     action$.pipe(
       filter(isActionOf(addNotificationAction)),
-      mergeMap(({ payload: notification }: PayloadAction<string, INotificationContent>) => of(
+      mergeMap(({ payload: notification }) => of(
         addNotificationWithIdAction({
           ...notification,
           id: ++notificationIncrementId,
@@ -43,12 +43,12 @@ export const addNotificationEpic: Epic<RootAction, RootAction> = (action$) =>
     ),
   );
 
-export const splitViewEpic: Epic<RootAction, RootAction> = (action$, store) =>
+const splitViewEpic: Epic = (action$, store: StateObservable<Global.State>) =>
   merge(
     action$.pipe(
       filter(isActionOf(toggleNotificationDrawerAction)),
       mergeMap(() => of(
-        store.value.notificationReducer.notificationDrawerVisible
+        store.value.Core.Notification.notificationDrawerVisible
           ? hideNotificationDrawerAction()
           : showNotificationDrawerAction()
       ))
@@ -56,7 +56,7 @@ export const splitViewEpic: Epic<RootAction, RootAction> = (action$, store) =>
     action$.pipe(
       filter(isActionOf(showNotificationDrawerAction)),
       mergeMap(() => of(
-        store.value.notificationReducer.notificationDrawerPinned
+        store.value.Core.Notification.notificationDrawerPinned
           ? enableSplitViewAction()
           : disableSplitViewAction()
       ))
@@ -64,7 +64,7 @@ export const splitViewEpic: Epic<RootAction, RootAction> = (action$, store) =>
     action$.pipe(
       filter(isActionOf(pinNotificationDrawerAction)),
       mergeMap(() => of(
-        store.value.notificationReducer.notificationDrawerVisible
+        store.value.Core.Notification.notificationDrawerVisible
           ? enableSplitViewAction()
           : disableSplitViewAction()
       ))
@@ -74,3 +74,8 @@ export const splitViewEpic: Epic<RootAction, RootAction> = (action$, store) =>
       mergeMap(() => of(disableSplitViewAction()))
     )
   );
+
+export default combineEpics(
+  addNotificationEpic,
+  splitViewEpic
+);

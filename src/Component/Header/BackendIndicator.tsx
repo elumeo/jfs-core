@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Tooltipped from 'react-md/lib/Tooltips/Tooltipped';
 import './BackendIndicator.scss';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import International from '../International';
 
 export interface IBackendIndicatorProps {
@@ -24,11 +24,11 @@ const BackendIndicator: React.FC<IBackendIndicatorProps> = ({
 )
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: IBackendIndicatorProps
 ): IBackendIndicatorProps => ({
   ...ownProps,
-  ...state.systemReducer
+  ...state.Core.System
 });
 
 const enhance = compose(

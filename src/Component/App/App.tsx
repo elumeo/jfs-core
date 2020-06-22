@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import Initialized from './Initialized';
 import WebSocketConnection from '../Websocket/WebSocketConnection';
 
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { initializeApp } from '../../Store/Action/AppAction';
 
 import { addLocaleData } from 'react-intl';
@@ -52,9 +52,12 @@ const App: React.FC<IAppProps> = ({
   )
 }
 
-const mapStateToProps = (state: ICoreRootReducer, ownProps: IAppProps): IAppProps => (
-  { ...ownProps }
-);
+const mapStateToProps = (
+  _state: Global.State,
+  ownProps: IAppProps
+): IAppProps => ({
+  ...ownProps
+});
 
 const enhance = compose(
   connect(mapStateToProps, { initializeApp })

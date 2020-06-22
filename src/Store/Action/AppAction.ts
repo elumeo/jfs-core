@@ -1,13 +1,17 @@
 import { createStandardAction } from 'typesafe-actions';
 
-export interface IInitializeAppPayload {
-  allowRobotLogin?: boolean;
-  packageJson: object;
-  ForceHTTPS?: boolean;
-  translations: { [language: string]: { [key: string]: string } };
-}
-
 const featureName = 'app';
 
-export const initializeApp = createStandardAction(featureName + '/INITIALZE')<IInitializeAppPayload>();
+export namespace initializeApp {
+  export type Payload = {
+    allowRobotLogin?: boolean;
+    packageJson: object;
+    ForceHTTPS?: boolean;
+    translations: { [language: string]: { [key: string]: string } };
+  }
+}
+
+export const initializeApp = (
+  createStandardAction(featureName + '/INITIALZE')<initializeApp.Payload>()
+);
 export const appInitialized = createStandardAction(featureName + '/INITIALZED')();

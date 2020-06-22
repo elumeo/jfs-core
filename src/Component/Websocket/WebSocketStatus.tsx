@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { connect } from 'react-redux';
 import { IWebsocketConnectionProps, IWebsocketConnectionState } from './WebSocketConnection';
 
@@ -34,12 +34,12 @@ class WebSocketStatus extends React.Component<IWebsocketConnectionProps, IWebsoc
 }
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: IWebsocketConnectionProps
 ): IWebsocketConnectionProps => ({
   ...ownProps,
-  webSocketConnectionReducer: state.webSocketConnectionReducer,
-  config: state.configReducer.config
+  webSocketConnectionReducer: state.Core.WebSocketConnection,
+  config: state.Core.Configuration.config
 });
 const enhance = connect(mapStateToProps, {});
 

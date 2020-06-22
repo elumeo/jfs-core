@@ -1,9 +1,7 @@
-import { Epic, StateObservable } from 'redux-observable';
+import { Epic, StateObservable, combineEpics } from 'redux-observable';
 import { filter, switchMap, concatMap, map, catchError } from 'rxjs/operators';
 import { of, EMPTY } from 'rxjs';
 import { isActionOf, PayloadAction } from 'typesafe-actions';
-
-import { RootAction } from '../Action/RootAction';
 import {
   webSocketConnectFailedAction,
   webSocketConnectRequestAction,
@@ -16,23 +14,31 @@ import {
   webSocketJoinRoomFailureAction,
   webSocketDisconnectRequestAction,
   webSocketDisconnectSuccessAction, webSocketAddNamespaceAction
-} from '../Action/WebSocketAction';
-import { ICoreRootReducer } from '../Reducer';
+} from 'Action/WebSocketAction';
+import Global from '../Reducer/Global';
 import { getRoomConnectionState } from '../Selectors/WebSocketSelectors';
-import { IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/WebSocketConnectionReducer';
-import { addNotificationAction } from '../Action/NotificationAction';
-import { authorizeSession, logout } from '../Action/SessionAction';
+import {
+  IWebSocketRoom, IWebSocketRoomConnection
+} from '../Reducer/Core/WebSocketConnectionReducer';
+import { addNotificationAction } from 'Action/NotificationAction';
+import { authorizeSession, logout } from 'Action/SessionAction';
 import { WSClient } from '../../Base/WSClient';
-import { INotificationContent } from '../Reducer/NotificationReducer';
+import { INotificationContent } from 'Types/Notification';
 import _ from 'lodash';
 
-export const webSocketAppIsInitializedEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
+export const webSocketAppIsInitializedEpic: Epic = (
+  action$,
+  state$: StateObservable<Global.State>
+) => {
   return action$.pipe(
     filter(isActionOf(authorizeSession)),
-    filter(() => state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
+    filter(() => (
+      state$.value.Core.Configuration.loaded &&
+      state$.value.Core.Session.isAuthorized
+    )),
     switchMap(() => {
       const actions = [];
-      const config = state.value.configReducer.config;
+      const config = state$.value.Core.Configuration.config;
       if (config.JscWebSocketClient !== undefined) {
         actions.push(webSocketAddNamespaceAction(config.JscWebSocketClient.PrivateNamespace));
         actions.push(webSocketConnectRequestAction(config.JscWebSocketClient.PrivateNamespace));
@@ -46,15 +52,18 @@ export const webSocketAppIsInitializedEpic: Epic<RootAction, RootAction> = (acti
   );
 };
 
-export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
+export const webSocketConnectRequestEpic: Epic = (
+  action$,
+  state$: StateObservable<Global.State>
+) => {
   return action$.pipe(
     filter(isActionOf(webSocketConnectRequestAction)),
-    filter(() => state.value.configReducer.loaded && state.value.sessionReducer.isAuthorized),
-    concatMap((action) => WSClient.leaveAllRooms(action.payload, state.value.webSocketConnectionReducer[action.payload].rooms)),
+    filter(() => state$.value.Core.Configuration.loaded && state$.value.Core.Session.isAuthorized),
+    concatMap((action) => WSClient.leaveAllRooms(action.payload, state$.value.Core.WebSocketConnection[action.payload].rooms)),
     concatMap((namespace) => WSClient.disconnect(namespace)),
     concatMap((namespace) => {
       let host: string = null;
-      const config = state.value.configReducer.config;
+      const config = state$.value.Core.Configuration.config;
       let path = '/socket.io';
       if (config.JscWebSocketClient !== undefined && namespace === config.JscWebSocketClient.PrivateNamespace) {
         host = config.JscWebSocketClient.Host;
@@ -71,10 +80,10 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
         host,
         path,
         namespace,
-        state.value.sessionReducer.sessionDTO.token,
-        state.value.sessionReducer.sessionDTO.lastIPAddress,
-        state.value.sessionReducer.sessionDTO.username,
-        state.value.configReducer.config.AppName
+        state$.value.Core.Session.sessionDTO.token,
+        state$.value.Core.Session.sessionDTO.lastIPAddress,
+        state$.value.Core.Session.sessionDTO.username,
+        state$.value.Core.Configuration.config.AppName
       );
     }),
     switchMap((namespace) => {
@@ -83,13 +92,16 @@ export const webSocketConnectRequestEpic: Epic<RootAction, RootAction> = (action
   );
 };
 
-export const webSocketLogoutEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
+export const webSocketLogoutEpic: Epic = (
+  action$,
+  state: StateObservable<Global.State>
+) => {
   return action$.pipe(
     filter(isActionOf(logout)),
     // filter(() => (state.value.configReducer.config.JscWebSocketClient !== undefined && state.value.configReducer.loaded)),
     switchMap(() => {
       const disconnectRequestActions = [];
-      const config = state.value.configReducer.config;
+      const config = state.value.Core.Configuration.config;
       if (config.JscWebSocketClient !== undefined) {
         disconnectRequestActions.push(webSocketDisconnectRequestAction(config.JscWebSocketClient.PrivateNamespace));
       }
@@ -102,12 +114,15 @@ export const webSocketLogoutEpic: Epic<RootAction, RootAction> = (action$, state
   );
 };
 
-export const webSocketCheckForConnectionErrorEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
+export const webSocketCheckForConnectionErrorEpic: Epic = (
+  action$,
+  state: StateObservable<Global.State>
+) => {
   return action$.pipe(
     filter(isActionOf(webSocketConnectRequestAction)),
     concatMap(() => WSClient.connectionErrorObservable$),
     switchMap((err) => {
-        if (state.value.webSocketConnectionReducer[err.namespace].isConnecting) {
+        if (state.value.Core.WebSocketConnection[err.namespace].isConnecting) {
           return of(
             addNotificationAction({
               message: 'Unable to connect to websocket server (' + err.namespace + ')' + (err.message !== null && err.message !== '' ? ' because of ' + err.message : '') + '!', isError: true
@@ -122,7 +137,7 @@ export const webSocketCheckForConnectionErrorEpic: Epic<RootAction, RootAction> 
   );
 };
 
-export const webSocketCheckForReconnectEpic: Epic<RootAction, RootAction> = (action$) => {
+export const webSocketCheckForReconnectEpic: Epic = action$ => {
   return action$.pipe(
     filter(isActionOf(webSocketConnectRequestAction)),
     concatMap(() => WSClient.reconnectObservable$),
@@ -130,13 +145,16 @@ export const webSocketCheckForReconnectEpic: Epic<RootAction, RootAction> = (act
   );
 };
 
-export const webSocketConnectSuccessEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
+export const webSocketConnectSuccessEpic: Epic = (
+  action$,
+  state$: StateObservable<Global.State>
+) => {
   return action$.pipe(
     filter(isActionOf(webSocketConnectSuccessAction)),
     switchMap((action) => {
       // Filter configRooms against information in state (hasJoined true/false)
       let configRooms: string[] = [];
-      const config = state.value.configReducer.config;
+      const config = state$.value.Core.Configuration.config;
       if (config.JscWebSocketClient !== undefined && action.payload === config.JscWebSocketClient.PrivateNamespace) {
         configRooms = (config.JscWebSocketClient.AutoRoomSubscriptions === undefined) ? [] : config.JscWebSocketClient.AutoRoomSubscriptions;
       }
@@ -147,7 +165,7 @@ export const webSocketConnectSuccessEpic: Epic<RootAction, RootAction> = (action
 
       const stateJoinedRooms: string[] = [];
       const stateLeftRooms: string[] = [];
-      for (const stateRoom of state.value.webSocketConnectionReducer[action.payload].rooms) {
+      for (const stateRoom of state$.value.Core.WebSocketConnection[action.payload].rooms) {
         if (stateRoom.hasJoined) {
           stateJoinedRooms.push(stateRoom.name);
         } else {
@@ -157,7 +175,7 @@ export const webSocketConnectSuccessEpic: Epic<RootAction, RootAction> = (action
 
       const cleanedConfigRooms: string[] = [];
       for (const configRoom of configRooms) {
-        const preparedConfigRoom = WSClient.prepareRoomName(configRoom, state.value);
+        const preparedConfigRoom = WSClient.prepareRoomName(configRoom, state$.value);
         let foundInLeftRoom = false;
         for (const leftRoom of stateLeftRooms) {
           if (preparedConfigRoom === leftRoom) {
@@ -184,23 +202,29 @@ export const webSocketConnectSuccessEpic: Epic<RootAction, RootAction> = (action
   );
 };
 
-export const webSocketDisconnectRequestEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
+export const webSocketDisconnectRequestEpic: Epic = (
+  action$,
+  state$: StateObservable<Global.State>
+) => {
   return action$.pipe(
     filter(isActionOf(webSocketDisconnectRequestAction)),
-    filter((action) => Boolean(state.value.webSocketConnectionReducer[action.payload])),
+    filter((action) => Boolean(state$.value.Core.WebSocketConnection[action.payload])),
     concatMap((action) => WSClient.leaveAllRooms(
-      action.payload, state.value.webSocketConnectionReducer[action.payload].rooms
+      action.payload, state$.value.Core.WebSocketConnection[action.payload].rooms
     )),
     concatMap((namespace) => WSClient.disconnect(namespace)),
     switchMap((namespace) => of(webSocketDisconnectSuccessAction(namespace)))
   );
 };
 
-export const webSocketJoinRoomRequestEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
+export const webSocketJoinRoomRequestEpic: Epic = (
+  action$,
+  state$: StateObservable<Global.State>
+) => {
   return action$.pipe(
     filter(isActionOf(webSocketJoinRoomRequestAction)),
     map((action) => {
-      let roomName = WSClient.prepareRoomName(action.payload.room, state.value);
+      let roomName = WSClient.prepareRoomName(action.payload.room, state$.value);
       return {
         isJoining: true,
         hasJoined: false,
@@ -213,7 +237,10 @@ export const webSocketJoinRoomRequestEpic: Epic<RootAction, RootAction> = (actio
   );
 };
 
-export const webSocketJoinRoomLoadingEpic: Epic<RootAction, RootAction> = (action$, state: StateObservable<ICoreRootReducer>) => {
+export const webSocketJoinRoomLoadingEpic: Epic = (
+  action$,
+  state$: StateObservable<Global.State>
+) => {
   return action$.pipe(
     filter(isActionOf(webSocketJoinRoomLoadingAction)),
     concatMap((action) => {
@@ -223,7 +250,7 @@ export const webSocketJoinRoomLoadingEpic: Epic<RootAction, RootAction> = (actio
             room: room,
             namespace: action.payload.namespace
           };
-          let roomState = getRoomConnectionState(state.value.webSocketConnectionReducer, roomObj);
+          let roomState = getRoomConnectionState(state$.value.Core.WebSocketConnection, roomObj);
           roomState.isJoining = false;
           roomState.hasJoined = true;
           return roomState;
@@ -266,10 +293,23 @@ export const webSocketJoinRoomLoadingEpic: Epic<RootAction, RootAction> = (actio
   );
 };
 
-export const webSocketLeaveRoomRequestEpic: Epic<RootAction, RootAction> = (action$) => {
+export const webSocketLeaveRoomRequestEpic: Epic = action$ => {
   return action$.pipe(
     filter(isActionOf(webSocketLeaveRoomRequestAction)),
     concatMap((action) => WSClient.leave(action.payload)),
     switchMap((room) => of(webSocketLeaveRoomSuccessAction(room)))
   );
 };
+
+export default combineEpics(
+  webSocketAppIsInitializedEpic,
+  webSocketConnectRequestEpic,
+  webSocketConnectSuccessEpic,
+  webSocketJoinRoomRequestEpic,
+  webSocketJoinRoomLoadingEpic,
+  webSocketLeaveRoomRequestEpic,
+  webSocketLogoutEpic,
+  webSocketDisconnectRequestEpic,
+  webSocketCheckForConnectionErrorEpic,
+  webSocketCheckForReconnectEpic,
+);

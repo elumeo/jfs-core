@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import NotificationCard from './NotificationCard';
 
 import './OnScreenNotifications.scss';
-import { INotification } from '../../Store/Reducer/NotificationReducer';
+import { INotification } from '../../Types/Notification';
 
 const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
@@ -41,8 +41,8 @@ class OnScreenNotifications extends React.Component<IOnScreenNotificationsProps>
 }
 
 // noinspection JSUnusedGlobalSymbols
-export default connect((store: ICoreRootReducer, ownProps: IOnScreenNotificationsProps): IOnScreenNotificationsProps => ({
+export default connect((store: Global.State, ownProps: IOnScreenNotificationsProps): IOnScreenNotificationsProps => ({
   ...ownProps,
-  notifications: store.notificationReducer.notifications,
-  dismissAnimationClassName: store.notificationReducer.dismissAnimationClassName,
+  notifications: store.Core.Notification.notifications,
+  dismissAnimationClassName: store.Core.Notification.dismissAnimationClassName,
 }))(OnScreenNotifications)

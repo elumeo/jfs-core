@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import './Content.scss';
 
 export interface IContentProps {
@@ -26,10 +25,10 @@ class Content extends React.Component<IContentProps> {
 }
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: IContentProps
 ): IContentProps => ({
-  ...state.splitViewReducer,
+  ...state.Core.SplitView,
   ...ownProps,
 });
 

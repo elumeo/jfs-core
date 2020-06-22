@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Badge, Button } from 'react-md';
 
 import './NotificationBadge.scss'
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { toggleNotificationDrawerAction } from '../../Store/Action/NotificationAction';
-import { INotification } from '../../Store/Reducer/NotificationReducer';
+import { INotification } from '../../Types/Notification';
 
 export interface INotificationBadgeProps {
   notifications?: INotification[];
@@ -36,10 +36,10 @@ const NotificationBadge: React.FC<INotificationBadgeProps> = ({
 };
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: INotificationBadgeProps
 ): INotificationBadgeProps => ({
-  ...state.notificationReducer,
+  ...state.Core.Notification,
   ...ownProps
 });
 

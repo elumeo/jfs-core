@@ -1,16 +1,15 @@
-import { loadConfig } from '../Action/ConfigAction';
-import { Epic } from 'redux-observable';
+import { Epic, combineEpics } from 'redux-observable';
 import { of } from 'rxjs';
 import { filter, concatMap } from 'rxjs/operators';
-import { RootAction } from '../Action/RootAction';
-import { isActionOf, PayloadAction } from 'typesafe-actions';
-import { initializeApp, IInitializeAppPayload } from '../Action/AppAction';
-import JscClient from '../../Base/JscClient';
+import { isActionOf } from 'typesafe-actions';
+import { loadConfig } from 'Action/ConfigAction';
+import { initializeApp } from 'Action/AppAction';
+import JscClient from 'Jsc/Client';
 
-export const initializeAppEpic: Epic<RootAction, RootAction> = (
+const initializeAppEpic: Epic = (
   action$ => action$.pipe(
     filter(isActionOf(initializeApp)),
-    concatMap((action: PayloadAction<string, IInitializeAppPayload>) => {
+    concatMap(action => {
       JscClient.setPackageJson(action.payload.packageJson);
       const isHTTPS = window.location.protocol.toLowerCase() === 'https:';
       if (!isHTTPS && action.payload.ForceHTTPS) {
@@ -21,4 +20,8 @@ export const initializeAppEpic: Epic<RootAction, RootAction> = (
       return of(loadConfig());
     })
   )
+);
+
+export default combineEpics(
+  initializeAppEpic
 );

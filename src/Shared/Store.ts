@@ -1,5 +1,7 @@
+import { Reducer } from 'redux';
+
 export interface ISharedStoreProps {
-  [reducer: string]: any;
+  [reducer: string]: Reducer;
 
   epic?: any;
 }

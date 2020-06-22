@@ -10,7 +10,7 @@ import CardActions from 'react-md/lib/Cards/CardActions';
 import SelectField from 'react-md/lib/SelectFields';
 
 import { changeLanguageAction } from '../../Store/Action/LanguageAction';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import Cookie from 'js-cookie';
 
 import './SettingsContainer.scss';
@@ -74,13 +74,13 @@ class SettingsContainer extends React.Component<ISettingsContainerProps> {
 }
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: ISettingsContainerProps
 ): ISettingsContainerProps => ({
   language: (
-    state.languageReducer.language
-      ? state.languageReducer.language
-      : state.configReducer.config.Language
+    state.Core.Language.language
+      ? state.Core.Language.language
+      : state.Core.Configuration.config.Language
   ),
   ...ownProps
 });

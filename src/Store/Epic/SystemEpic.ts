@@ -1,13 +1,12 @@
-import { getRegionFailed, regionLoaded } from '../Action/SystemAction';
-import { Epic } from 'redux-observable';
+import { Epic, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import { catchError, filter, switchMap } from 'rxjs/operators';
-import { RootAction } from '../Action/RootAction';
 import { isActionOf } from 'typesafe-actions';
-import JSCApi from '../../Jsc/JscApi';
-import { configLoadedAction } from '../Action/ConfigAction';
+import JSCApi from 'Jsc/Api';
+import { getRegionFailed, regionLoaded } from 'Action/SystemAction';
+import { configLoadedAction } from 'Action/ConfigAction';
 
-export const getRegionEpic: Epic<RootAction, RootAction> = (action$) =>
+const getRegionEpic: Epic = action$ =>
   action$.pipe(
     filter(isActionOf(configLoadedAction)),
     switchMap(() =>
@@ -21,3 +20,7 @@ export const getRegionEpic: Epic<RootAction, RootAction> = (action$) =>
     ),
     catchError(() => of(getRegionFailed()))
   );
+
+export default combineEpics(
+  getRegionEpic
+);

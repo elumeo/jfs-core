@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { ICoreRootReducer } from '../../Store/Reducer';
-import { webSocketConnectionReducerInitialState } from '../../Store/Reducer/WebSocketConnectionReducer';
+import Global from '../../Store/Reducer/Global';
+import { webSocketConnectionReducerInitialState } from '../../Store/Reducer/Core/WebSocketConnectionReducer';
 import { webSocketUpdateRoomAction } from '../../Store/Action/WebSocketAction';
-import IConfig from '../../Base/IConfig';
+import IConfig from 'Types/Configuration';
 import { WSClient } from '../../Base/WSClient';
 
 export interface IWebsocketConnectionProps {
@@ -34,12 +34,12 @@ class WebSocketConnection extends React.Component<IWebsocketConnectionProps, IWe
 }
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: IWebsocketConnectionProps
 ): IWebsocketConnectionProps => ({
   ...ownProps,
-  config: state.configReducer.config,
-  webSocketConnectionReducer: state.webSocketConnectionReducer
+  config: state.Core.Configuration.config,
+  webSocketConnectionReducer: state.Core.WebSocketConnection
 });
 
 export default connect(

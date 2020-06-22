@@ -1,23 +1,14 @@
 import React from 'react';
-
 import Cookie from 'js-cookie';
 import { connect } from 'react-redux';
 import SelectField from 'react-md/lib/SelectFields/SelectField';
-
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { changeLanguageAction } from '../../Store/Action/LanguageAction';
-
-import International from '../International';
-
+import { LANGUAGE } from '../../Types/Language';
+import International from '../International'
 export interface ILanguageSettingsProps {
   language?: string;
   changeLanguageAction?: typeof changeLanguageAction;
-}
-
-enum LANGUAGE {
-  GERMAN = 'de',
-  ENGLISH = 'en',
-  ITALIAN = 'it'
 }
 
 const LANGUAGES = [
@@ -55,12 +46,13 @@ const LanguageSettings: React.FC<ILanguageSettingsProps> = (
   </div>;
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: ILanguageSettingsProps
 ): ILanguageSettingsProps => ({
   ...ownProps,
   language: (
-    state.languageReducer.language || state.configReducer.config.Language
+    state.Core.Language.language ||
+    state.Core.Configuration.config.Language
   ),
 });
 

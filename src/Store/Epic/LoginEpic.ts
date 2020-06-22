@@ -1,21 +1,24 @@
-import { Epic } from 'redux-observable';
-import { RootAction } from '../Action/RootAction';
-import { filter, switchMap, concatMap, catchError, tap } from 'rxjs/operators';
-import { isActionOf, PayloadAction } from 'typesafe-actions';
+import { Epic, StateObservable, combineEpics } from 'redux-observable';
+import { filter, switchMap, concatMap, catchError } from 'rxjs/operators';
+import { isActionOf } from 'typesafe-actions';
 import { from, of } from 'rxjs';
-import { authorizeSession, unauthorizeSession } from '../Action/SessionAction';
-import { checkLogin, ICheckLoginPayload, loggedIn, loginFailed } from '../Action/LoginAction';
-import JSCApi from '../../Jsc/JscApi';
-import { addToastAction } from '../Action/ToastAction';
+import { authorizeSession, unauthorizeSession } from 'Action/SessionAction';
+import { checkLogin, loggedIn, loginFailed } from 'Action/LoginAction';
+import JSCApi from 'Jsc/Api';
+import { addToastAction } from 'Action/ToastAction';
 import Session from '../../Base/Session';
+import Core from '../Reducer/Core';
 
-export const loginEpic: Epic<RootAction, RootAction> = (action$, store) => (
+const loginEpic: Epic = (
+  action$,
+  state$: StateObservable<{ Core: Core.State; }>
+) => (
   action$.pipe(
     filter(isActionOf(checkLogin)),
     concatMap(
-      (action: PayloadAction<string, ICheckLoginPayload>) => from(
+      action => from(
         JSCApi.LoginClient.loginFrontend(
-          store.value.configReducer.config.AppName,
+          state$.value.Core.Configuration.config.AppName,
           {
             username: action.payload.username,
             password: action.payload.password
@@ -54,22 +57,30 @@ export const loginEpic: Epic<RootAction, RootAction> = (action$, store) => (
   )
 );
 
-export const robotLoginRefreshEpic: Epic<RootAction, RootAction> = (action$, store) => (
+const robotLoginRefreshEpic: Epic = (
+  action$,
+  state$: StateObservable<{ Core: Core.State; }>
+) => (
   action$.pipe(
     filter(isActionOf(unauthorizeSession)),
     filter(() => (
-      store.value.appReducer.allowRobotLogin &&
-      store.value.configReducer.config.RobotUsername &&
-      store.value.configReducer.config.RobotPassword &&
-      !store.value.loginReducer.failedLogins
+      state$.value.Core.App.allowRobotLogin &&
+      state$.value.Core.Configuration.config.RobotUsername &&
+      state$.value.Core.Configuration.config.RobotPassword &&
+      !state$.value.Core.Login.failedLogins
     )),
     switchMap(
       () => of(
         checkLogin({
-          username: store.value.configReducer.config.RobotUsername,
-          password: store.value.configReducer.config.RobotPassword
+          username: state$.value.Core.Configuration.config.RobotUsername,
+          password: state$.value.Core.Configuration.config.RobotPassword
         })
       )
     )
   )
 )
+
+export default combineEpics(
+  robotLoginRefreshEpic,
+  loginEpic,
+);

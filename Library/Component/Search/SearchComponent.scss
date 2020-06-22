@@ -1,0 +1,82 @@
+@import '~react-md/src/scss/react-md';
+
+.app-header .search-component {
+  .md-divider {
+    background: rgba(255, 255, 255, 0.87);
+
+    &--text-field::after {
+      background: rgba(255, 255, 255, 1);
+      height: 2px;
+    }
+  }
+
+  .md-toolbar .md-autocomplete {
+    width: unset;
+  }
+
+  input.md-text-field {
+    $searchFieldBaseWidth: 120px;
+    $searchFieldWithIncrease: 80px;
+    transition: width ease-in-out 150ms;
+    width: $searchFieldBaseWidth;
+
+    &:focus, &.search-active {
+      width: $searchFieldBaseWidth + $searchFieldWithIncrease;
+    }
+  }
+
+  .search-progress {
+    circle {
+      stroke: rgba(255, 255, 255, 1);
+    }
+  }
+}
+
+.md-toolbar .md-autocomplete-container.search-component,
+.md-toolbar .search-component .md-autocomplete {
+  height: unset;
+}
+
+.md-toolbar {
+  .search-component {
+    .md-autocomplete, .md-autocomplete-container {
+      height: unset;
+    }
+  }
+}
+
+.search-component {
+  position: relative;
+  padding-right: $md-btn-icon-padding;
+
+  .md-divider.md-divider--text-field {
+    margin-inline-end: 0;
+  }
+
+  .md-text-field.search {
+    padding-right: $md-default-padding;
+  }
+
+  button.clear-btn {
+    position: absolute;
+    right: 0;
+    visibility: hidden;
+
+    &.visible {
+      visibility: visible;
+    }
+  }
+
+  .icon-view-box {
+    width: calc(#{$md-line-height}em * 2);
+    height: calc(#{$md-line-height}em * 2);
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
+  .search-progress {
+    height: #{$md-line-height}em;
+    width: #{$md-line-height}em;
+    margin: calc(#{$md-line-height}em / 2);
+  }
+}

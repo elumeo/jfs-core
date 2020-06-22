@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import International from '../International';
 import ModalDialog from '../Modal/ModalDialog';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { closeSettings } from '../../Store/Action/SettingsAction';
 import './SettingsDialog.scss';
 
@@ -31,11 +31,11 @@ const SettingsDialog: React.FC<ISettingsDialogProps> = ({
 );
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: ISettingsDialogProps
 ): ISettingsDialogProps => ({
   ...ownProps,
-  settingsOpen: state.settingsReducer.settingsOpen
+  settingsOpen: state.Core.Settings.settingsOpen
 });
 
 const enhance = connect(mapStateToProps, {closeSettings});

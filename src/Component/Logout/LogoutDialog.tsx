@@ -1,7 +1,7 @@
 import React from 'react';
 import Dialog from 'react-md/lib/Dialogs';
 
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { logout } from '../../Store/Action/SessionAction';
@@ -66,12 +66,12 @@ const LogoutDialog: React.FC<ILogoutDialogProps> = ({
 );
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: ILogoutDialogProps
 ): ILogoutDialogProps => ({
   ...ownProps,
-  logoutOpen: state.logoutReducer.logoutOpen,
-  logoutPending: state.logoutReducer.logoutPending
+  logoutOpen: state.Core.Logout.logoutOpen,
+  logoutPending: state.Core.Logout.logoutPending
 });
 
 const enhance = compose(

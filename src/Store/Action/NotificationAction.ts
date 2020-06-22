@@ -1,5 +1,5 @@
 import { createStandardAction, PayloadAction } from 'typesafe-actions';
-import { INotification, INotificationContent } from '../Reducer/NotificationReducer';
+import { INotification, INotificationContent } from 'Types/Notification';
 
 const featureName = 'notification';
 

@@ -1,5 +1,5 @@
 import { createStandardAction } from 'typesafe-actions';
-import JSCApi from '../../Jsc/JscApi';
+import JSCApi from 'Jsc/Api';
 import IFrontendSessionDTO = JSCApi.DTO.Session.IFrontendSessionDTO;
 import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 
@@ -9,20 +9,26 @@ export const loadSession = createStandardAction(`${featureName}/LOAD`)();
 
 export const checkSession = createStandardAction(featureName + '/CHECK')();
 
-export interface ILogoutPayload {
-  sessionDTO?: ISessionDTO;
+export namespace logout {
+  export type Payload = {
+    sessionDTO?: ISessionDTO;
+  }
 }
+
 export const logout = (
-  createStandardAction(featureName + '/LOGOUT')<ILogoutPayload>()
+  createStandardAction(featureName + '/LOGOUT')<logout.Payload>()
 );
 
-export interface IAuthorizeSessionPayload {
-  frontendSessionDTO: IFrontendSessionDTO;
+export namespace authorizeSession {
+  export type Payload = {
+    frontendSessionDTO: IFrontendSessionDTO;
+  }
 }
 
 export const authorizeSession = (
-  createStandardAction(featureName + '/AUTHORIZE')<IAuthorizeSessionPayload>()
+  createStandardAction(featureName + '/AUTHORIZE')<authorizeSession.Payload>()
 );
+
 export const unauthorizeSession = (
   createStandardAction(featureName + '/UNAUTHORIZE')()
 );

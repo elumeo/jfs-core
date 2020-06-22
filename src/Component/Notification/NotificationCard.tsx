@@ -5,13 +5,13 @@ import FontIcon from 'react-md/lib/FontIcons/FontIcon';
 
 import './NotificationCard.scss'
 import ErrorContent, { errorText } from '../Snackbar/ErrorContent';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 // noinspection TypeScriptPreferShortImport
 import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../../Store/Action/NotificationAction';
-import { INotification, INotificationContent } from '../../Store/Reducer/NotificationReducer';
+import { INotification, INotificationContent } from '../../Types/Notification';
 import { Badge, Button, CardText } from 'react-md';
 import Format from '../../Utilities/Format';
-import { timeToRead as _timeToRead } from '../../Base/Utilities';
+import { timeToRead as _timeToRead } from '../../Types/Toast';
 
 export const timeToRead = (notification: INotificationContent): number => getContent(notification).timeToRead;
 
@@ -199,9 +199,9 @@ class NotificationCard extends React.Component<INotificationCardProps> {
 }
 
 export default connect(
-  (store: ICoreRootReducer, ownProps: INotificationCardProps): INotificationCardProps => ({
+  (store: Global.State, ownProps: INotificationCardProps): INotificationCardProps => ({
     ...ownProps,
-    language: store.languageReducer.language,
+    language: store.Core.Language.language,
   }), {
     dismissNotificationAction,
     fadeNotificationOffScreenAction,

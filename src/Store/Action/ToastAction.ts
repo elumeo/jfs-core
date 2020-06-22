@@ -1,4 +1,4 @@
-import { IToastConfig } from '../Reducer/ToastReducer';
+import { IToastConfig } from '../Reducer/Core/ToastReducer';
 import { createStandardAction } from 'typesafe-actions';
 
 const featureName = 'toast';

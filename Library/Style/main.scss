@@ -1,0 +1,158 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import '~react-md/src/scss/react-md';
+@import './colors';
+@import './layout';
+
+$md-primary-color: $juw-primary;
+$md-secondary-color: $juw-secondary;
+$md-error-color: $juw-error-color;
+
+html {
+  background: $juw-quarz-500 !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* disable material design color warnings */
+$md-colors-warn-md: false;
+
+.unfloat-label > label {
+  transform: translate3d(0, 12px, 0) !important;
+  font-size: 12px;
+}
+
+.md-tab--inactive {
+  .md-tab-label {
+    color: $md-light-theme-secondary-text-color !important;
+  }
+}
+
+.md-progress--linear {
+  background-color: rgba($md-secondary-color, 0.2) !important;
+}
+
+.appSnackbarError {
+  background: $md-error-color !important;
+}
+
+.appSnackbarError > .md-text--theme-secondary {
+  color: white !important;
+}
+
+.appSnackbarSuccess {
+  background: darkgreen !important;
+}
+
+.appSnackbarSuccess > .md-text--theme-secondary {
+  color: white !important;
+}
+
+.appSnackbarNormal > .md-text--theme-secondary {
+  color: white !important;
+}
+
+.no-vertical-margin {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.md-table-row {
+  height: 49px !important;
+}
+
+.md-edit-dialog-column {
+  width: 300px !important;
+}
+
+.md-table-column--grow {
+  width: auto !important;
+}
+
+.md-table-column--fixed {
+  left: auto !important;
+}
+
+.item-overlay {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.54);
+  padding: 8px 16px;
+  font-size: 13px;
+
+  .title {
+    font-weight: 600;
+    color: white;
+  }
+
+  .subtitle {
+    color: rgba(255, 255, 255, 0.74);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.quantity-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.54);
+  color: white;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  display: table;
+
+  .amount {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 11px;
+  }
+}
+
+.ouput-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  display: table;
+}
+
+.font-icon__primary {
+  color: $md-primary-color;
+}
+
+.primary-bold {
+  color: $md-primary-color;
+  font-weight: bold;
+}
+
+#appSnackbar {
+  min-height: 48px;
+  height: fit-content !important;
+}
+
+.md-btn {
+  .md-progress {
+    margin: -4px auto 0 auto;
+  }
+}
+
+.md-toolbar--action-right {
+  display: flex;
+  align-items: center;
+}
+
+@include react-md-everything;

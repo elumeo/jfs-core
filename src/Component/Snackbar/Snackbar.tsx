@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Snackbar from 'react-md/lib/Snackbars';
 import snackbarContent from './SnackBarContent';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { dismissToastAction } from '../../Store/Action/ToastAction';
 import { connect } from 'react-redux';
-import { IToastConfig } from '../../Store/Reducer/ToastReducer';
+import { IToastConfig } from '../../Store/Reducer/Core/ToastReducer';
 import { List } from 'immutable';
 import International from '../International';
 
@@ -53,11 +53,11 @@ const AppSnackBar: React.FC<IAppSnackbarProps> = ({
 )
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: IAppSnackbarProps
 ) => ({
-  ...state.toastReducer,
-  ...state.sessionReducer,
+  ...state.Core.Toast,
+  ...state.Core.Session,
   ...ownProps
 });
 

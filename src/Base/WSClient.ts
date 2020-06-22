@@ -1,11 +1,15 @@
 import { Observable, Subject } from 'rxjs';
 import io from 'socket.io-client';
 import { PayloadAction } from 'typesafe-actions';
-import JSCApi from '../Jsc/JscApi';
-import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../Store/Reducer/WebSocketConnectionReducer';
+import JSCApi from 'Jsc/Api';
+import {
+  IWebSocketError,
+  IWebSocketRoom,
+  IWebSocketRoomConnection
+} from '../Store/Reducer/Core/WebSocketConnectionReducer';
 import IWebSocketRoomUpdateDTO = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO;
-import { ROOM_UPDATE_ACTION_ID } from '../Store/Action/WebSocketAction';
-import { ICoreRootReducer } from '../Store/Reducer';
+import { ROOM_UPDATE_ACTION_ID } from 'Action/WebSocketAction';
+import Global from '../Store/Reducer/Global';
 
 export class WSClient {
   public static EVENT_NOT_AUTHORIZED = 'notAuthorized';
@@ -179,9 +183,9 @@ export class WSClient {
     }
   }
 
-  public static prepareRoomName(roomName: string, allReducers: ICoreRootReducer) {
-    if (allReducers.sessionReducer.sessionDTO !== null) {
-      roomName = roomName.replace('[userId]', allReducers.sessionReducer.sessionDTO.username);
+  public static prepareRoomName(roomName: string, allReducers: Global.State) {
+    if (allReducers.Core.Session.sessionDTO !== null) {
+      roomName = roomName.replace('[userId]', allReducers.Core.Session.sessionDTO.username);
     }
     return roomName;
   }

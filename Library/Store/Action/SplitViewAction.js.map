@@ -1,0 +1,1 @@
+{"version":3,"file":"SplitViewAction.js","sourceRoot":"","sources":["../../../src/Store/Action/SplitViewAction.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oBAAoB,EAAE,MAAM,kBAAkB,CAAC;AAExD,MAAM,WAAW,GAAG,WAAW,CAAC;AAEhC,MAAM,CAAC,MAAM,qBAAqB,GAAG,oBAAoB,CAAC,WAAW,GAAG,SAAS,CAAC,EAAE,CAAC;AACrF,MAAM,CAAC,MAAM,sBAAsB,GAAG,oBAAoB,CAAC,WAAW,GAAG,UAAU,CAAC,EAAE,CAAC"}

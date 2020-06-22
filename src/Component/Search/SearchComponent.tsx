@@ -4,7 +4,7 @@ import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
 import { addToastAction } from '../../Store/Action/ToastAction';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import './SearchComponent.scss';
 import International from '../International';
 
@@ -152,10 +152,10 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
 
 // higher order components -----------------------------------------------------
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: ISearchComponentProps
 ): ISearchComponentProps => ({
-  ...state.toastReducer,
+  ...state.Core.Toast,
   ...ownProps
 });
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import BaseRoute, { IBaseRouteProps } from './BaseRoute';
 import { enterAuthorizedRoute } from '../../Store/Action/RouterAction';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 
 export interface IAuthRouteProps extends IBaseRouteProps {
   isAuthorized?: boolean;
@@ -33,12 +33,12 @@ const AuthRoute: React.FC<IAuthRouteProps> = ({
 };
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: IAuthRouteProps
 ): IAuthRouteProps => ({
   ...ownProps,
-  isAuthorized: state.sessionReducer.isAuthorized,
-  isCheckingSession: state.sessionReducer.isCheckingSession
+  isAuthorized: state.Core.Session.isAuthorized,
+  isCheckingSession: state.Core.Session.isCheckingSession
 });
 
 const enhance = connect(mapStateToProps, {enterAuthorizedRoute});

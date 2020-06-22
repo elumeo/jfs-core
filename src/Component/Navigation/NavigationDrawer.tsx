@@ -5,7 +5,7 @@ import Drawer, { DrawerPosition } from 'react-md/lib/Drawers';
 
 import './NavigationDrawer.scss';
 
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { closeNavigation } from '../../Store/Action/NavigationAction';
 
 import NavigationDrawerHeader from './NavigationDrawerHeader';
@@ -40,10 +40,10 @@ const NavigationDrawer: React.FC<INavigationDrawerProps> = ({
 );
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: INavigationDrawerProps
 ): INavigationDrawerProps => ({
-  ...state.navigationReducer,
+  ...state.Core.Navigation,
   ...ownProps
 });
 

@@ -3,11 +3,11 @@ import * as React from 'react';
 import NotificationCard from './NotificationCard';
 import Drawer from 'react-md/lib/Drawers';
 
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { connect } from 'react-redux';
 import NoNotifications from './NoNotifications';
 import Toolbar from 'react-md/lib/Toolbars';
-import { INotification } from '../../Store/Reducer/NotificationReducer';
+import { INotification } from '../../Types/Notification';
 
 import './NotificationDrawer.scss'
 import SplitViewButton from './SplitViewButton';
@@ -84,11 +84,11 @@ class NotificationDrawer extends React.Component<INotificationDrawerProps> {
 
 // noinspection JSUnusedGlobalSymbols
 export default connect((
-  store: ICoreRootReducer, ownProps: INotificationDrawerProps): INotificationDrawerProps => ({
+  store: Global.State, ownProps: INotificationDrawerProps): INotificationDrawerProps => ({
   ...ownProps,
-  notificationDrawerVisible: store.notificationReducer.notificationDrawerVisible,
-  notifications: store.notificationReducer.notifications,
-  notificationDrawerPinned: store.notificationReducer.notificationDrawerPinned,
+  notificationDrawerVisible: store.Core.Notification.notificationDrawerVisible,
+  notifications: store.Core.Notification.notifications,
+  notificationDrawerPinned: store.Core.Notification.notificationDrawerPinned,
 }), {
   toggleNotificationDrawerAction,
   hideNotificationDrawerAction

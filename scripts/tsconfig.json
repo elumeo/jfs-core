@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "ES6",
+      "ES2017"
+    ],
+    "typeRoots": ["./node_modules/*"],
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "target": "es6",
+    "noImplicitAny": false,
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "outDir": "build",
+    "baseUrl": "./src",
+    "paths": {
+      "Setup/*": [
+        "./Setup/*"
+      ],
+      "Library/*": [
+        "./Library/*"
+      ]
+    }
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}

@@ -2,10 +2,9 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { HashRouter } from 'react-router-dom';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-
 import './Initialized.scss';
 
 export interface IInitializedProps {
@@ -42,13 +41,13 @@ const Initialized: React.FC<IInitializedProps> = ({
 
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: IInitializedProps
 ): IInitializedProps => ({
   ...ownProps,
-  language: state.languageReducer.language,
-  appInitialized: state.appReducer.appInitialized,
-  messages: state.languageReducer.messages
+  language: state.Core.Language.language,
+  appInitialized: state.Core.App.appInitialized,
+  messages: state.Core.Language.messages
 });
 
 const enhance = compose(

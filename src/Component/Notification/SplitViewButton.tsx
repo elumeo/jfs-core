@@ -5,7 +5,7 @@ import {
   pinNotificationDrawerAction,
   unpinNotificationDrawerAction
 } from '../../Store/Action/NotificationAction';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 
 export interface ISplitViewButtonProps {
   notificationDrawerPinned?: boolean;
@@ -39,10 +39,10 @@ class SplitViewButton extends React.Component<ISplitViewButtonProps> {
 }
 
 const mapStateToProps = (
-  store: ICoreRootReducer,
+  store: Global.State,
   ownProps: ISplitViewButtonProps
 ): ISplitViewButtonProps => ({
-  ...store.notificationReducer,
+  ...store.Core.Notification,
   ...ownProps
 });
 

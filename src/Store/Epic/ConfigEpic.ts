@@ -1,14 +1,13 @@
-import { configLoadedAction, loadConfig, loadConfigFailed } from '../Action/ConfigAction';
-import { Epic } from 'redux-observable';
+import { Epic, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import { catchError, filter, concatMap, } from 'rxjs/operators';
-import { RootAction } from '../Action/RootAction';
 import axios, { AxiosResponse } from 'axios';
 import { isActionOf } from 'typesafe-actions';
-import JscClient from '../../Base/JscClient';
-import IConfig from '../../Base/IConfig';
+import { configLoadedAction, loadConfig, loadConfigFailed } from 'Action/ConfigAction';
+import JscClient from 'Jsc/Client';
+import IConfig from 'Types/Configuration';
 
-export const loadConfigEpic: Epic<RootAction, RootAction> = (action$, store) => (
+const loadConfigEpic: Epic = action$ => (
   action$.pipe(
     filter(isActionOf(loadConfig)),
     concatMap(() => from(axios.get(`./config.json`, {}))),
@@ -21,4 +20,8 @@ export const loadConfigEpic: Epic<RootAction, RootAction> = (action$, store) => 
     }),
     catchError(() => of(loadConfigFailed()))
   )
+);
+
+export default combineEpics(
+  loadConfigEpic
 );

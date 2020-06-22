@@ -5,20 +5,26 @@ const featureName = 'login';
 export const openLoginDialog = createStandardAction(featureName + '/OPEN')();
 export const closeLoginDialog = createStandardAction(featureName + '/CLOSE')();
 
-export interface IUpdateCredentialsPayload {
-  username: string;
-  password: string;
+export namespace updateCredentials {
+  export type Payload = {
+    username: string;
+    password: string;
+  }
 }
 
 export const updateCredentials = (
-  createStandardAction(`${featureName}/UPDATE_CREDENTIALS`)<IUpdateCredentialsPayload>()
+  createStandardAction(`${featureName}/UPDATE_CREDENTIALS`)<updateCredentials.Payload>()
 );
 
-export interface ICheckLoginPayload {
-  username: string;
-  password: string;
+export namespace checkLogin {
+  export type Payload = {
+    username: string;
+    password: string;
+  }
 }
 
-export const checkLogin = createStandardAction(featureName + '/CHECK')<ICheckLoginPayload>();
+export const checkLogin = (
+  createStandardAction(featureName + '/CHECK')<checkLogin.Payload>()
+);
 export const loggedIn = createStandardAction(featureName + '/LOGGED_IN')();
 export const loginFailed = createStandardAction(featureName + '/LOGIN_FAILED')();

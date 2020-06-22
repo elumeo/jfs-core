@@ -1,6 +1,6 @@
 import { of, concat } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { logout } from '../Action/SessionAction';
+import { logout } from 'Action/SessionAction';
 
 export default errorHandler => catchError(error =>
   concat(
