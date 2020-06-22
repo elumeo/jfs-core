@@ -1,5 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const Directory_1 = __importDefault(require("../../../OS/Filesystem/Directory"));
 class Synchronization {
     constructor({ from, to }) {
         this.equalize = onComplete => {
@@ -25,7 +29,7 @@ class Synchronization {
                         return '-Directory';
                     }
                 };
-                console.log(this.from.name, eventIndicator(eventName), path.substring(this.from.path.length));
+                console.log(new Directory_1.default({ path: this.from.parent }).name, this.from.name + path.substring(this.from.path.length), eventIndicator(eventName));
             })));
         };
         this.start = () => {

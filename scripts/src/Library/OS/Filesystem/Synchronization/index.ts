@@ -57,9 +57,9 @@ class Synchronization {
             }
 
             console.log(
-              this.from.name,
+              new Directory({ path: this.from.parent }).name,
+              this.from.name + path.substring(this.from.path.length),
               eventIndicator(eventName),
-              path.substring(this.from.path.length)
             );
           }
         )
