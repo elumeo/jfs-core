@@ -5,7 +5,8 @@
   "scripts": {
     "start": "ts-node-dev --respawn -r tsconfig-paths/register src/index.ts --scripts-mode true",
     "build": "tsc && tsc-alias",
-    "build:watch": "tsc-watch --onCompilationComplete \"node helper.js\""
+    "build:watch": "tsc-watch --onCompilationComplete \"node helper.js\"",
+    "postinstall": "node ./build/Setup/deploy-config-files.js"
   },
   "author": "elumeo SE",
   "license": "ISC",
