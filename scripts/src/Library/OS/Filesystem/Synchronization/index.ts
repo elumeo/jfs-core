@@ -1,6 +1,8 @@
 import { Stats } from 'fs';
 import Directory from 'Library/OS/Filesystem/Directory';
 import { greenBright, redBright, yellowBright, blueBright } from 'ansi-colors'
+import File from '../File';
+import { resolve } from 'path';
 
 namespace Synchronization {
   export type Props = {
@@ -14,6 +16,38 @@ namespace Synchronization {
     path: string;
     stats: Stats;
   }
+}
+
+const eventIndicator = (
+  eventName: 'add' | 'change' | 'unlink' | 'addDir' | 'unlinkDir'
+) => {
+  if (eventName === 'add') {
+    return greenBright('+File');
+  }
+  else if (eventName === 'change') {
+    return greenBright('+File (UPDATE)');
+  }
+  else if (eventName === 'unlink') {
+    return redBright('-File');
+  }
+  else if (eventName === 'addDir') {
+    return greenBright('+Directory');
+  }
+  else if (eventName === 'unlinkDir') {
+    return redBright('-Directory');
+  }
+}
+
+const print = (
+  from: Directory,
+  eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
+  path: string
+) => {
+  console.log(
+    yellowBright(new Directory({ path: from.parent }).name),
+    blueBright(from.name + path.substring(from.path.length)),
+    eventIndicator(eventName)
+  );
 }
 
 class Synchronization {
@@ -35,35 +69,48 @@ class Synchronization {
       'ready',
       () => this.from.watcher.on(
         'all',
-        (eventName, path) => this.equalize(
-          () => {
-            const eventIndicator = (
-              eventName: 'add' | 'change' | 'unlink' | 'addDir' | 'unlinkDir'
-            ) => {
-              if (eventName === 'add') {
-                return greenBright('+File');
+        (eventName, path) => {
+          setTimeout(
+            () => {
+              if (['unlinkDir', 'addDir'].includes(eventName)) {
+                const directory = new Directory({
+                  path: resolve(
+                    this.to.path,
+                    path.substring(this.from.path.length +1)
+                  )
+                });
+                if (eventName === 'unlinkDir') {
+                  directory.remove(() => print(this.from, eventName, path));
+                }
+                else if (eventName === 'addDir') {
+                  directory.create(() => print(this.from, eventName, path));
+                }
               }
-              else if (eventName === 'change') {
-                return greenBright('+File (UPDATE)');
-              }
-              else if (eventName === 'unlink') {
-                return redBright('-File');
-              }
-              else if (eventName === 'addDir') {
-                return greenBright('+Directory');
-              }
-              else if (eventName === 'unlinkDir') {
-                return redBright('-Directory');
-              }
-            }
+              else if (['add', 'unlink', 'change'].includes(eventName)) {
+                const file = new File({
+                  path: resolve(
+                    this.to.path,
+                    path.substring(this.from.path.length +1)
+                  )
+                });
 
-            console.log(
-              yellowBright(new Directory({ path: this.from.parent }).name),
-              blueBright(this.from.name + path.substring(this.from.path.length)),
-              eventIndicator(eventName),
-            );
-          }
-        )
+                if (eventName === 'add') {
+                  file.create(() => print(this.from, eventName, path));
+                }
+                else if (eventName === 'unlink') {
+                  file.remove(() => print(this.from, eventName, path));
+                }
+                else if (eventName === 'change') {
+                  new File({ path }).copy(
+                    file.path,
+                    () => print(this.from, eventName, path)
+                  );
+                }
+              }
+            },
+            200
+          );
+        }
       )
     );
   };

@@ -47,7 +47,7 @@ class Directory extends FsNode_1.default {
         this.child = ({ childName, childReady }) => this.children(({ files, directories }) => childReady(files.find(file => file.name === childName) ||
             directories.find(directory => directory.name === childName)));
         this.files = (filesReady) => this.children(({ files }) => filesReady(files));
-        this.file = ({ fileName, fileReady }) => this.files(files => fileReady(files.find(file => file.name === fileName)));
+        this.file = (fileName, fileReady) => this.files(files => fileReady(files.find(file => file.name === fileName)));
         this.directories = (directoriesReady) => this.children(({ directories }) => directoriesReady(directories));
         this.directory = (directoryName, directoryReady) => this.directories(directories => directoryReady(directories.find(directory => directory.name === directoryName)));
         this.remove = (directoryRemoved) => rimraf_1.default(this.path, directoryRemoved);

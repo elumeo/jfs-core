@@ -69,10 +69,10 @@ class Directory extends FsNode {
     ({ files }) => filesReady(files)
   );
 
-  public file = ({
-    fileName,
-    fileReady
-  }) => this.files(
+  public file = (
+    fileName: string,
+    fileReady: (file: File) => void
+  ) => this.files(
     files => fileReady(
       files.find(file => file.name === fileName)
     )
