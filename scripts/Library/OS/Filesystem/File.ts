@@ -51,7 +51,7 @@ class File extends FsNode {
         '',
         (error: NodeJS.ErrnoException) => {
             if (error) {
-                throw error;
+                //throw error;
             }
             else if (fileCreated) {
                 fileCreated();
