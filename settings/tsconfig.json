@@ -22,7 +22,7 @@
       "Action/*": ["./Store/Action/*"],
       "Component/*": ["./Component/*"],
       "Constant/*": ["./Constant/*"],
-      "Core/*": ["../node_modules/@elumeo/jfs-core/src/*"],
+      "Core/*": ["../node_modules/@elumeo/jfs-core/build/*"],
       "Jsc/*": ["./Jsc/*"],
       "Mock/*": ["./Mock/*"],
       "Setup/*": ["./Setup/*"],
