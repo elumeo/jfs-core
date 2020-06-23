@@ -1,0 +1,9 @@
+node_modules
+.idea
+/.editorconfig
+/.prettierrc
+/.prettierignore
+/tsconfig.json
+/tslint.json
+.autohidefiles
+./src
