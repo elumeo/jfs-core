@@ -103,21 +103,21 @@ declare namespace JSCApi {
         }
     }
     export namespace LoginClient {
-        const loginFrontend: (appName: any, credentials: any, config?: IJscClientConfig) => Promise<AxiosResponse<DTO.Session.IFrontendSessionDTO>>;
+        const loginFrontend: (appName: any, credentials: any, config?: IJscClientConfig) => Promise<AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>>;
     }
     export namespace SessionClient {
-        const getCurrentSessionFrontend: (appName: any, config?: IJscClientConfig) => Promise<AxiosResponse<DTO.Session.IFrontendSessionDTO>>;
+        const getCurrentSessionFrontend: (appName: any, config?: IJscClientConfig) => Promise<AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>>;
         const logout: (session: any, config?: IJscClientConfig) => Promise<AxiosResponse<void>>;
     }
     export namespace SystemClient {
         const getRegion: (config?: IJscClientConfig) => Promise<AxiosResponse<string>>;
     }
     export namespace UserClient {
-        const getUserRights: (login: any, config?: IJscClientConfig) => Promise<AxiosResponse<DTO.Authorization.IUserRightsDTO>>;
+        const getUserRights: (login: any, config?: IJscClientConfig) => Promise<AxiosResponse<JSCApi.DTO.Authorization.IUserRightsDTO>>;
     }
     export namespace WebSocketClient {
         const ROOM_PING: IWebSocketRoom;
-        const onRoomUpdatePing: (action: PayloadAction<string, DTO.WebSocket.IWebSocketRoomUpdateDTO<string>>) => Observable<string>;
+        const onRoomUpdatePing: (action: PayloadAction<string, JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<string>>) => Observable<string>;
     }
     export {};
 }

@@ -7,8 +7,8 @@ declare type Size = {
     height: number;
 };
 declare const computeOffset: ({ whisper, speaker, position, anker }: {
-    position: import("react-md/lib/Tooltips").Positions;
-    anker: LineAlignSetting;
+    position: 'top' | 'left' | 'right' | 'bottom';
+    anker: 'start' | 'center' | 'end';
     whisper: Size & Position;
     speaker: Size & Position;
 }) => {

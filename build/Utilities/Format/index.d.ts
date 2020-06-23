@@ -3,6 +3,7 @@ import Text from './Text';
 import Currency from './Currency';
 import PhoneNumber from './PhoneNumber';
 import Locale from './Locale';
+import DateTimeFormatOptions = Intl.DateTimeFormatOptions;
 declare class Format {
     static Locale: typeof Locale;
     static Translations: typeof Translations;
@@ -11,7 +12,7 @@ declare class Format {
     static PhoneNumber: typeof PhoneNumber;
     static mapProductLanguageToLocale: (productLanguage: string) => "en_gb" | "es_es" | "fr_fr" | "it_it" | "nl_nl" | "de_de";
     static formatNumber(value: number, showFraction?: boolean): string;
-    static formatTime: (value: string | Date) => string;
+    static formatTime: (value: string | Date, options?: DateTimeFormatOptions) => string;
     static formatDate: (value: string | Date) => string;
 }
 export default Format;

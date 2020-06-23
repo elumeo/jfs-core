@@ -33,7 +33,10 @@ const DatePicker = (_a) => {
     const [id] = useState(Math.floor(Math.random() * 100));
     const datePickerRef = useRef();
     useEffect(() => {
-        document.getElementById(id.toString()).parentNode.addEventListener('click', () => setOpen(true));
+        const domNode = document.getElementById(id.toString());
+        if (domNode) {
+            domNode.parentNode.addEventListener('click', () => setOpen(true));
+        }
     });
     return (React.createElement(International, null, ({ formatMessage }) => (React.createElement(OutsideClickHandler, { onOutsideClick: () => setOpen(false) },
         React.createElement(ReactDatePicker, Object.assign({}, rest, { ref: datePickerRef, selected: date, onChange: (newDate) => {

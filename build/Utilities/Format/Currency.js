@@ -12,8 +12,8 @@ class Currency {
         return sign;
     }
     static getCurrency(currency, value, showFraction = false) {
-        if (value === null || value.toString() === '') {
-            return '';
+        if (isNaN(value) || value === null || value.toString() === '') {
+            value = 0;
         }
         if (showFraction) {
             return new Intl.NumberFormat(Format.Locale.selectedLanguage, { style: 'currency', currency }).format(value);

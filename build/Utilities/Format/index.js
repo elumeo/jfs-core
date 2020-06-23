@@ -33,7 +33,7 @@ Format.mapProductLanguageToLocale = (productLanguage) => {
             return 'de_de';
     }
 };
-Format.formatTime = (value) => new Intl.DateTimeFormat(Locale.selectedLanguage, { hour: '2-digit', minute: '2-digit' }).format(new Date(value));
+Format.formatTime = (value, options = { hour: '2-digit', minute: '2-digit' }) => new Intl.DateTimeFormat(Locale.selectedLanguage, options).format(new Date(value));
 Format.formatDate = (value) => new Intl.DateTimeFormat(Locale.selectedLanguage).format(new Date(value));
 export default Format;
 //# sourceMappingURL=index.js.map
