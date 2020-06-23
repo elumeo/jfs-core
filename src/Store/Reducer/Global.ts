@@ -8,7 +8,7 @@ namespace Global {
 }
 
 const Global = combineReducers<Global.State>({
-  Core
+  Core,
 });
 
 export default Global;

@@ -11,7 +11,7 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "jsx": "react",
-    "outDir": "./Library",
+    "outDir": "./build",
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
@@ -21,6 +21,7 @@
     "paths": {
       "Action/*": ["./Store/Action/*"],
       "Component/*": ["./Component/*"],
+      "Constant/*": ["./Constant/*"],
       "Core/*": ["../node_modules/@elumeo/jfs-core/src/*"],
       "Jsc/*": ["./Jsc/*"],
       "Mock/*": ["./Mock/*"],
@@ -35,7 +36,7 @@
     "src/__test__/*",
     "node_modules/@elumeo/jfs-core/scripts",
     "scripts",
-    "Library",
+    "build",
     "./helper.js"
   ],
   "awesomeTypescriptLoaderOptions": {

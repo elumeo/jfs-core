@@ -33,5 +33,3 @@ export interface INotification extends INotificationContent {
   timestamp: Date;
   autoHideDelay: number;
 }
-
-export const NOTIFICATION_LIMIT: number = 123;

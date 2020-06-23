@@ -2,11 +2,11 @@ import * as React from 'react';
 import Snackbar from 'react-md/lib/Snackbars';
 import snackbarContent from './SnackBarContent';
 import Global from '../../Store/Reducer/Global';
-import { dismissToastAction } from '../../Store/Action/ToastAction';
+import { dismissToastAction } from 'Action/ToastAction';
 import { connect } from 'react-redux';
 import { IToastConfig } from '../../Store/Reducer/Core/ToastReducer';
 import { List } from 'immutable';
-import International from '../International';
+import International from 'Component/International';
 
 export interface IAppSnackbarProps {
   toasts?: List<IToastConfig>;

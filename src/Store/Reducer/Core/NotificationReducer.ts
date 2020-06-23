@@ -11,8 +11,9 @@ import {
   unpinNotificationDrawerAction
 } from '../../Action/NotificationAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
-import { getPlainText } from '../../../Component/Notification/NotificationCard';
-import { INotification, NOTIFICATION_LIMIT } from '../../../Types/Notification';
+import { getPlainText } from 'Component/Notification/NotificationCard';
+import { INotification } from 'Types/Notification';
+import { NOTIFICATION_LIMIT } from 'Constant/Notification';
 
 namespace Notification {
   export type State = {

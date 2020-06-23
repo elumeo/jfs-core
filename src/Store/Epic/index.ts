@@ -8,8 +8,7 @@ import LoginEpic from './LoginEpic';
 import ConfigurationEpic from './ConfigEpic';
 import NotificationEpic from './NotificationEpic';
 import WebSocketEpic from './WebSocketEpic';
-import LanguageEpic from './LanguageEpic';
-import Shared from '../../Shared';
+import LanguageEpic from './LanguageEpic'
 
 export const wrappedCombineEpics = (...epics: Epic[]) => combineEpics(
   LoginEpic,
@@ -20,8 +19,7 @@ export const wrappedCombineEpics = (...epics: Epic[]) => combineEpics(
   SessionEpic,
   LanguageEpic,
   WebSocketEpic,
-  ...epics,
-  Shared.Epic()
+  ...epics
 );
 
 export type Hook = <R>(action, store) => Observable<R>;

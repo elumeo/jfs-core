@@ -11,7 +11,7 @@ import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../.
 import { INotification, INotificationContent } from '../../Types/Notification';
 import { Badge, Button, CardText } from 'react-md';
 import Format from '../../Utilities/Format';
-import { timeToRead as _timeToRead } from '../../Types/Toast';
+import { timeToRead as _timeToRead } from 'Component/Snackbar/TimeToRead';
 
 export const timeToRead = (notification: INotificationContent): number => getContent(notification).timeToRead;
 
