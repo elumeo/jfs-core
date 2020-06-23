@@ -121,6 +121,33 @@ type ExtendedType = Popover.Props & {
   node node_modules/@elumeo/jfs-core/scripts/build/Setup/SCRIPT_NAME
   ```
 
+### Synchronization of projects
+
+- instead of linking projects through the dependencies there is now a new field in package.json called 'jfs' where you can enter local links
+
+```
+{
+  "name": "jfs_Boilerplate",
+  "description": "jfs_Boilerplate",
+  "scripts": {
+    ...,
+    "sync-development": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/sync-development.js"
+  },
+  "dependencies": {
+    "@elumeo/jfs-core": "9.0.0",
+    "jfc-hello-world": "https:/github.com/scharfohnezwiebeln/jfc_HelloWorld.git"
+  },
+  "jfs": {
+    "sync": {
+      "@elumeo/jfs-core": "../../jfs-core",
+      "jfc-hello-world": "../../jfc_HelloWorld"
+    }
+  }
+}
+```
+
+- this has the advantage of being able to install dependencies with npm without the need of having to replace the dependency version every time
+
 ### Updated dependencies
 
 - react-redux: 5.0.7 --> 7.2.0

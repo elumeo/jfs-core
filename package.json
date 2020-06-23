@@ -4,7 +4,7 @@
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
-    "build": "tsc && tsc-alias && copyfiles -u 1 src/**/*.scss build",
+    "build": "tsc && tsc-alias && copyfiles -u 1 \"src/**/*.scss\" build",
     "build:watch": "tsc-watch --onCompilationComplete \"node helper.js\"",
     "jsc-generate": "node ./scripts/build/Setup/jsc-generate.js",
     "jsc-check": "node ./scripts/build/Setup/Check/Api.js",
