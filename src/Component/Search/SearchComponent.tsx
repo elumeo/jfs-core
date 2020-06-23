@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
+// noinspection TypeScriptPreferShortImport,ES6PreferShortImport
 import { addToastAction } from '../../Store/Action/ToastAction';
 import Global from '../../Store/Reducer/Global';
 import './SearchComponent.scss';
@@ -13,31 +14,37 @@ export interface ISearchComponentProps {
   autocompleteData?: string[] | number[] | { dataLabel: string, dataValue: string }[];
   centered?: boolean;
   focusInputOnAutocomplete?: boolean;
+  focusInputOnClear?: boolean;
   forceNumericInput?: boolean;
   id: string;
   indicateSearchProgress?: boolean;
   labelTranslationId?: string;
   onChange?: (value: string) => void;
+  onClear?: () => void;
   onSearch: (props: ISearchComponentProps, state: ISearchComponentState) => void;
   placeholderTranslationId: string;
   searchOnAutocomplete?: boolean;
   style?: React.CSSProperties;
   className?: string;
   value?: string;
+  disabled?: boolean;
 }
 
 export interface ISearchComponentState {
   value?: string;
+  inputFocused?: boolean;
 }
 
 class SearchComponent extends React.Component<ISearchComponentProps, ISearchComponentState> {
-  state: ISearchComponentState;
+  state: ISearchComponentState = { inputFocused: false };
   static defaultProps = {
     autocompleteData: [],
     focusInputOnAutocomplete: false,
+    focusInputOnClear: true,
     forceNumericInput: false,
     searchOnAutocomplete: true,
     value: '',
+    disabled: false,
   };
 
   constructor(props) {
@@ -90,34 +97,46 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
   };
 
   handleClear = () => {
-    document.getElementById(this.props.id).focus();
-    this.setState({value: ''});
+    const { focusInputOnClear, id } = this.props;
+    if (focusInputOnClear) {
+      document.getElementById(`${id}-autocomplete`).focus();
+    }
+    this.setState({ value: '' });
+    if (this.props.onClear) {
+      this.props.onClear();
+    }
   };
 
   render() {
     const {
       id, style, className, placeholderTranslationId, autocompleteData, indicateSearchProgress,
-      labelTranslationId, focusInputOnAutocomplete, searchOnAutocomplete
+      labelTranslationId, focusInputOnAutocomplete, searchOnAutocomplete, disabled
     } = this.props;
     const menuId = `${id}Menu`;
     return (
       <div
         id={id}
         style={style}
-        className={'search-component md-text-field-icon-container ' + className}>
-        <div className="icon-view-box">
+        className={[
+          'search-component md-text-field-icon-container',
+          disabled ? 'search-component--disabled' : undefined,
+          this.state.inputFocused ? 'search-component--focused' : undefined,
+          className
+        ].join(' ')}>
+        <div className='icon-view-box'>
           {
             indicateSearchProgress
               ? (
                 <CircularProgress
                   id={`${id}SearchProgress`}
-                  className="search-progress"/>
+                  className='search-progress'/>
               )
               : (
                 <Button
                   icon
+                  className='search-component-search-btn'
                   onClick={() => this.handleSearch()}
-                  disabled={indicateSearchProgress}>
+                  disabled={indicateSearchProgress || disabled}>
                   search
                 </Button>
               )
@@ -130,19 +149,24 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
               data={autocompleteData}
               focusInputOnAutocomplete={focusInputOnAutocomplete && !searchOnAutocomplete}
               inputClassName={`search ${this.state.value != '' && 'search-active' || ''}`}
-              label={labelTranslationId ? formatMessage({id: labelTranslationId}) : null}
+              label={labelTranslationId ? formatMessage({ id: labelTranslationId }) : null}
               menuId={menuId}
               onAutocomplete={this.handleAutocomplete}
               onChange={this.handleChange}
               onKeyDown={this.handleKeyDown}
-              placeholder={placeholderTranslationId ? formatMessage({id: placeholderTranslationId}) : null}
+              placeholder={placeholderTranslationId ? formatMessage({ id: placeholderTranslationId }) : null}
               textFieldClassName={'md-text-field-icon'}
-              value={this.state.value}/>
+              disabled={disabled}
+              value={this.state.value}
+              onFocus={() => this.setState({ inputFocused: true })}
+              onBlur={() => this.setState({ inputFocused: false })}
+            />
           )}
         </International>
         <Button
           icon
           className={`clear-btn ${this.state.value != '' ? 'visible' : ''}`}
+          disabled={disabled}
           onClick={this.handleClear}
         >clear</Button>
       </div>
@@ -161,4 +185,5 @@ const mapStateToProps = (
 
 const enhance = connect(mapStateToProps, {addToastAction});
 
+// noinspection JSUnusedGlobalSymbols
 export default enhance(SearchComponent);

@@ -4,6 +4,7 @@ import Currency from './Currency';
 import PhoneNumber from './PhoneNumber';
 
 import Locale from './Locale';
+import DateTimeFormatOptions = Intl.DateTimeFormatOptions;
 
 class Format {
 
@@ -42,9 +43,9 @@ class Format {
     ).format(value);
   }
 
-  public static formatTime = (value: string | Date) => new Intl.DateTimeFormat(
+  public static formatTime = (value: string | Date, options: DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit' }) => new Intl.DateTimeFormat(
     Locale.selectedLanguage,
-    { hour: '2-digit', minute: '2-digit' }
+    options
   ).format(new Date(value));
 
   public static formatDate = (value: string | Date) => new Intl.DateTimeFormat(

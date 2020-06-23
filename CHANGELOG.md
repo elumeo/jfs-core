@@ -1,4 +1,73 @@
-## [8.14.6] - 2020-05-11
+## [8.15.13] - 2020-06-18
+### Bugfix
+- Fixed deploy-config-files script when running on windows
+
+## [8.15.12] - 2020-06-18
+### Bugfix
+- Fixed deploy-config-files script when running on windows
+
+## [8.15.11] - 2020-06-10
+### Bugfix
+- Added onClear callback property to SearchComponent
+
+## [8.15.10] - 2020-06-08
+### Bugfix
+- Fixed an issue that google-libphonenumber throws an exception when passed phone number is not a valid phone number (e.g. '-')
+
+## [8.15.9] - 2020-06-09
+### Fixes
+- Fixed DatePicker to work inline
+
+## [8.15.8] - 2020-06-04
+### Changes
+- Moved from `libphonenumber-js` to `google-libphonenumber`
+
+## [8.15.7] - 2020-06-04
+### Added
+- Added focus class to SearchComponent
+- Added `disabled` prop to SearchComponent
+
+## [8.15.6] - 2020-05-28
+### Added
+- Added new juwelo font icon: apple
+- Added new juwelo font icon: webshop
+- Added new juwelo font icon: webshop_bidagent
+
+## [8.15.5] - 2020-05-27
+### Bugfix
+- fixed SearchComponent input doesn't get focused on clear
+
+## [8.15.4] - 2020-05-27
+### Changed
+- Give the formatTime formatter method an optional options parameter to be able to add seconds as well
+
+## [8.15.3] - 2020-05-27
+### Added
+- Added react-virtualized lib to package as core dependency
+
+## [8.15.2] - 2020-05-25
+### Bugfix
+- fixed wrong generated script js file for generating juwelo icon font
+- fixed an issue with currency helper when providing wrong number as arg
+
+## [8.15.1] - 2020-05-22
+### Bugfix
+- fixed wrong naming of juwelo font icon component
+
+## [8.15.0] - 2020-05-22
+### Added
+- Added a new script to generate juwelo icon font from given svgs
+    + put svgs into scripts/Resources/juwelo-icon-font/svg directory
+        * the filename of the svg will be used as the icon name
+    + run `npm run generate-juwelo-icon-font`
+- Added a new component for juwelo icon font
+    + usage: `<JuweloFontIcon icon="invoice_address" />`
+
+## [8.14.8] - 2020-05-20
+### Bugfix
+- SearchComponent padding adjustment
+
+## [8.14.7?] - 2020-05-11
 ### Bugfix
 - Fixed type errors
 

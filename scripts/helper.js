@@ -8,7 +8,7 @@ const tscAlias = resolve(cwd, 'node_modules', 'tsc-alias', 'src', 'bin', 'index.
 
 spawn(
   copyfiles,
-  ['-u', '1', 'src/**/*.scss', 'Library'],
+  ['-u', '1', 'src/**/*.scss', 'build'],
   { cwd }
 );
 const tscAliasProcess = spawn(

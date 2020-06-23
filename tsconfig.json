@@ -1,14 +1,11 @@
 {
-  "compileOnSave": false,
-  "buildOnSave": false,
   "compilerOptions": {
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "target": "es6",
-    "lib": ["es2018", "esNext", "DOM"],
-    "module": "esnext",
+    "noImplicitAny": false,
     "moduleResolution": "node",
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "sourceMap": true,
     "jsx": "react",
     "outDir": "./build",
