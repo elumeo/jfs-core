@@ -6,11 +6,16 @@ const cwd = resolve(__dirname);
 const copyfiles = resolve(cwd, 'node_modules', 'copyfiles', 'copyfiles');
 const tscAlias = resolve(cwd, 'node_modules', 'tsc-alias', 'src', 'bin', 'index.js');
 
-spawn(
-  copyfiles,
-  ['-u', '1', 'src/**/*.scss', 'build'],
-  { cwd }
-);
+const copyNonTypeScriptFiles = () => {
+  ['scss', 'woff', 'woff2'].forEach(
+    extension => spawn(
+      copyfiles,
+      ['-u', '1', `src/**/*.${extension}`, 'build'],
+      { cwd }
+    )
+  )
+}
+
 const tscAliasProcess = spawn(
   tscAlias,
   [],
@@ -21,3 +26,5 @@ tscAliasProcess.stdout.on(
   'data',
   data => console.log(data.toString())
 );
+
+tscAliasProcess.on('exit', copyNonTypeScriptFiles);

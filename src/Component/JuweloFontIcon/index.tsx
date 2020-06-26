@@ -23,5 +23,5 @@ const mapStateToProps = (
 });
 
 export default (
-  connect(mapStateToProps, {}, null, {withRef: true})(JuweloFontIcon)
+  connect(mapStateToProps, {}, null, {forwardRef: true})(JuweloFontIcon)
 );
