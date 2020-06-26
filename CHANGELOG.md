@@ -1,3 +1,8 @@
+## [9.0.2] - 2020-06-26
+
+### Bugfix
+- Fixes for build pipeline
+
 ## [8.15.13] - 2020-06-18
 ### Bugfix
 - Fixed deploy-config-files script when running on windows
