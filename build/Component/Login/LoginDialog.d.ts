@@ -1,3 +1,4 @@
+import React from 'react';
 import './LoginDialog.scss';
 interface ILoginDialogProps {
     children?: any;
@@ -8,5 +9,5 @@ interface ILoginDialogProps {
     robotLoginAvailable?: boolean;
     appInitialized?: boolean;
 }
-declare const _default: import("react-redux").ComponentClass<ILoginDialogProps>;
+declare const _default: import("react-redux").ConnectedComponent<React.FC<ILoginDialogProps>, Pick<ILoginDialogProps, never> & ILoginDialogProps>;
 export default _default;

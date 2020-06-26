@@ -1,3 +1,4 @@
+import React from 'react';
 import { logout } from '../../Store/Action/SessionAction';
 import { closeLogout } from '../../Store/Action/LogoutAction';
 export interface ILogoutDialogProps {
@@ -8,5 +9,5 @@ export interface ILogoutDialogProps {
     logoutPending?: boolean;
     beforeLogout?: () => void;
 }
-declare const _default: import("react-redux").ComponentClass<ILogoutDialogProps>;
+declare const _default: import("react-redux").ConnectedComponent<React.FC<ILogoutDialogProps>, Pick<ILogoutDialogProps, never> & ILogoutDialogProps>;
 export default _default;

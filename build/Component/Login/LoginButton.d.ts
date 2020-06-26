@@ -1,3 +1,4 @@
+import React from 'react';
 import { checkLogin } from '../../Store/Action/LoginAction';
 export interface ILoginButtonProps {
     isCheckingLogin?: boolean;
@@ -5,5 +6,5 @@ export interface ILoginButtonProps {
     username?: string;
     password?: string;
 }
-declare const _default: import("react-redux").ComponentClass<ILoginButtonProps>;
+declare const _default: import("react-redux").ConnectedComponent<React.FC<ILoginButtonProps>, Pick<ILoginButtonProps, never> & ILoginButtonProps>;
 export default _default;

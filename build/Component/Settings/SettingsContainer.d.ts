@@ -6,5 +6,5 @@ interface ISettingsContainerProps {
     changeLanguageAction?: typeof changeLanguageAction;
     history?: History;
 }
-declare const _default: import("react-redux").ComponentClass<ISettingsContainerProps>;
+declare const _default: import("react-redux").ConnectedComponent<any, Pick<unknown, never> & ISettingsContainerProps>;
 export default _default;

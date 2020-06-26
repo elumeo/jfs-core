@@ -28,5 +28,24 @@ export interface ISearchComponentState {
     value?: string;
     inputFocused?: boolean;
 }
-declare const _default: import("react-redux").ComponentClass<ISearchComponentProps>;
+declare class SearchComponent extends React.Component<ISearchComponentProps, ISearchComponentState> {
+    state: ISearchComponentState;
+    static defaultProps: {
+        autocompleteData: any[];
+        focusInputOnAutocomplete: boolean;
+        focusInputOnClear: boolean;
+        forceNumericInput: boolean;
+        searchOnAutocomplete: boolean;
+        value: string;
+        disabled: boolean;
+    };
+    constructor(props: any);
+    handleChange: (value: string) => void;
+    handleKeyDown: (e: any) => void;
+    handleAutocomplete: (v: any) => void;
+    handleSearch: (value?: string) => void;
+    handleClear: () => void;
+    render(): JSX.Element;
+}
+declare const _default: import("react-redux").ConnectedComponent<typeof SearchComponent, Pick<React.ClassAttributes<SearchComponent> & ISearchComponentProps, "key" | "ref"> & ISearchComponentProps>;
 export default _default;

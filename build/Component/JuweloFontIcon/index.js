@@ -6,5 +6,5 @@ const JuweloFontIcon = ({ icon }) => {
     return React.createElement("i", { className: className });
 };
 const mapStateToProps = (_state, props) => (Object.assign({}, props));
-export default (connect(mapStateToProps, {}, null, { withRef: true })(JuweloFontIcon));
+export default (connect(mapStateToProps, {}, null, { forwardRef: true })(JuweloFontIcon));
 //# sourceMappingURL=index.js.map

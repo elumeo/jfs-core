@@ -1,10 +1,10 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
-    "build": "tsc && tsc-alias && copyfiles -u 1 \"src/**/*.scss\" build",
+    "build": "tsc && node helper.js",
     "build:watch": "tsc-watch --onCompilationComplete \"node helper.js\"",
     "jsc-generate": "node ./scripts/build/Setup/jsc-generate.js",
     "jsc-check": "node ./scripts/build/Setup/Check/Api.js",

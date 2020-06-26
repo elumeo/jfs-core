@@ -14,5 +14,5 @@ export interface INavigationItemProps {
     onClickRoute?: string;
     history?: History;
 }
-declare const _default: import("react-redux").ComponentClass<INavigationItemProps>;
+declare const _default: import("react-redux").ConnectedComponent<any, Pick<unknown, never> & INavigationItemProps>;
 export default _default;

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { INotification } from '../../Types/Notification';
 import './NotificationDrawer.scss';
 import { hideNotificationDrawerAction, toggleNotificationDrawerAction } from '../../Store/Action/NotificationAction';
@@ -8,5 +9,9 @@ interface INotificationDrawerProps {
     toggleNotificationDrawerAction?: typeof toggleNotificationDrawerAction;
     hideNotificationDrawerAction?: typeof hideNotificationDrawerAction;
 }
-declare const _default: import("react-redux").ComponentClass<INotificationDrawerProps>;
+declare class NotificationDrawer extends React.Component<INotificationDrawerProps> {
+    closeOnESC: (e: React.KeyboardEvent) => void;
+    render(): JSX.Element;
+}
+declare const _default: import("react-redux").ConnectedComponent<typeof NotificationDrawer, Pick<React.ClassAttributes<NotificationDrawer> & INotificationDrawerProps, "key" | "ref"> & INotificationDrawerProps>;
 export default _default;

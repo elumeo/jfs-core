@@ -1,3 +1,4 @@
+import React from 'react';
 import { initializeApp } from '../../Store/Action/AppAction';
 export interface IAppProps {
     allowRobotLogin?: boolean;
@@ -13,5 +14,5 @@ export interface IAppProps {
     appInitialized?: boolean;
     packageJson: object;
 }
-declare const _default: import("react-redux").ComponentClass<IAppProps>;
+declare const _default: import("react-redux").ConnectedComponent<React.FC<IAppProps>, Pick<IAppProps, never> & IAppProps>;
 export default _default;

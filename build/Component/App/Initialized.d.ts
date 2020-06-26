@@ -1,3 +1,4 @@
+import React from 'react';
 import './Initialized.scss';
 export interface IInitializedProps {
     language?: string;
@@ -8,5 +9,5 @@ export interface IInitializedProps {
     };
     appInitialized?: boolean;
 }
-declare const _default: import("react-redux").ComponentClass<IInitializedProps>;
+declare const _default: import("react-redux").ConnectedComponent<React.FC<IInitializedProps>, Pick<IInitializedProps, never> & IInitializedProps>;
 export default _default;
