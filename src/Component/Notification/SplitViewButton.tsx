@@ -13,30 +13,23 @@ export interface ISplitViewButtonProps {
   unpinNotificationDrawerAction?: typeof unpinNotificationDrawerAction;
 }
 
-class SplitViewButton extends React.Component<ISplitViewButtonProps> {
-  render() {
-    const {
-      props: {
-        notificationDrawerPinned,
-        pinNotificationDrawerAction,
-        unpinNotificationDrawerAction
-      }
-    } = this;
-    return (
-      <Button
-        icon
-        primary={notificationDrawerPinned}
-        className="split-view-button"
-        onClick={() => (
-          notificationDrawerPinned
-            ? unpinNotificationDrawerAction()
-            : pinNotificationDrawerAction()
-        )}>
-        vertical_split
-      </Button>
-    );
-  }
-}
+const SplitViewButton: React.FC<ISplitViewButtonProps> = ({
+  notificationDrawerPinned,
+  pinNotificationDrawerAction,
+  unpinNotificationDrawerAction
+}) => (
+  <Button
+    icon
+    primary={notificationDrawerPinned}
+    className="split-view-button"
+    onClick={() => (
+      notificationDrawerPinned
+        ? unpinNotificationDrawerAction()
+        : pinNotificationDrawerAction()
+    )}>
+    vertical_split
+  </Button>
+);
 
 const mapStateToProps = (
   store: Global.State,

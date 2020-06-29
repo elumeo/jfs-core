@@ -10,18 +10,20 @@ import { initializeApp } from '../../Store/Action/AppAction';
 
 import { addLocaleData } from 'react-intl';
 
-export interface IAppProps {
-  allowRobotLogin?: boolean;
-  initializeApp?: typeof initializeApp;
-  language?: string;
-  location?: Location;
-  store;
-  translations: { [language: string]: { [key: string]: string } };
-  appInitialized?: boolean;
-  packageJson: object;
+namespace App {
+  export type Props = {
+    allowRobotLogin?: boolean;
+    initializeApp?: typeof initializeApp;
+    language?: string;
+    location?: Location;
+    store;
+    translations: { [language: string]: { [key: string]: string } };
+    appInitialized?: boolean;
+    packageJson: object;
+  }
 }
 
-const App: React.FC<IAppProps> = ({
+const App: React.FC<App.Props> = ({
   store,
   translations,
   children,

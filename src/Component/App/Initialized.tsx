@@ -7,13 +7,15 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import './Initialized.scss';
 
-export interface IInitializedProps {
-  language?: string;
-  messages?: { [language: string]: { [key: string]: string } };
-  appInitialized?: boolean;
+namespace Initialized {
+  export type Props = {
+    language?: string;
+    messages?: { [language: string]: { [key: string]: string } };
+    appInitialized?: boolean;
+  }
 }
 
-const Initialized: React.FC<IInitializedProps> = ({
+const Initialized: React.FC<Initialized.Props> = ({
   language,
   messages,
   children,
@@ -42,8 +44,8 @@ const Initialized: React.FC<IInitializedProps> = ({
 
 const mapStateToProps = (
   state: Global.State,
-  ownProps: IInitializedProps
-): IInitializedProps => ({
+  ownProps: Initialized.Props
+): Initialized.Props => ({
   ...ownProps,
   language: state.Core.Language.language,
   appInitialized: state.Core.App.appInitialized,

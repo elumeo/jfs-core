@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import Global from '../../Store/Reducer/Global';
 import './Content.scss';
 
-export interface IContentProps {
-  splitViewEnabled?: boolean;
+namespace Content {
+  export type Props = {
+    splitViewEnabled?: boolean;
+  }
 }
 
-class Content extends React.Component<IContentProps> {
+class Content extends React.Component<Content.Props> {
   render() {
     const { props: { children, splitViewEnabled } } = this;
 
@@ -26,8 +28,8 @@ class Content extends React.Component<IContentProps> {
 
 const mapStateToProps = (
   state: Global.State,
-  ownProps: IContentProps
-): IContentProps => ({
+  ownProps: Content.Props
+): Content.Props => ({
   ...state.Core.SplitView,
   ...ownProps,
 });
