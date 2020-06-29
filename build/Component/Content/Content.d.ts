@@ -1,10 +1,10 @@
 import React from 'react';
 import './Content.scss';
-export interface IContentProps {
-    splitViewEnabled?: boolean;
+declare namespace Content {
+    type Props = {
+        splitViewEnabled?: boolean;
+    };
 }
-declare class Content extends React.Component<IContentProps> {
-    render(): JSX.Element;
-}
-declare const _default: import("react-redux").ConnectedComponent<typeof Content, Pick<React.ClassAttributes<Content> & IContentProps, "key" | "ref"> & IContentProps>;
+declare const Content: React.FC<Content.Props>;
+declare const _default: import("react-redux").ConnectedComponent<React.FC<Content.Props>, Pick<Content.Props, never> & Content.Props>;
 export default _default;

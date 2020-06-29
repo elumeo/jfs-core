@@ -7,13 +7,19 @@ const cwd = resolve(__dirname);
 const copyfiles = resolve(cwd, 'node_modules', 'copyfiles', 'copyfiles');
 const tscAlias = resolve(cwd, 'node_modules', 'tsc-alias', 'src', 'bin', 'index.js');
 
-['scss', 'woff', 'woff2'].forEach(
-  extension => spawn(
-    copyfiles,
-    ['-u', '1', `src/**/*.${extension}`, 'build'],
-    { cwd }
-  )
+spawn(
+  copyfiles,
+  ['-u', '1', 'src/**/*.scss', 'build'],
+  { cwd }
 );
+
+rif.sync({
+  files: [
+    './build/**/*.*s'
+  ],
+  from: /from 'Core/gm,
+  to: 'from \'@elumeo/jfs-core/build'
+});
 
 const tscAliasProcess = spawn(
   tscAlias,
@@ -31,7 +37,7 @@ tscAliasProcess.on('exit', () => {
     files: [
       './build/**/*.*s'
     ],
-    from: /Store\/index\/Reducer/gm,
-    to: 'Store/Reducer'
+    from: /index\/Reducer/gm,
+    to: 'Reducer'
   });
 });

@@ -56,8 +56,8 @@ const App: React.FC<App.Props> = ({
 
 const mapStateToProps = (
   _state: Global.State,
-  ownProps: IAppProps
-): IAppProps => ({
+  ownProps: App.Props
+): App.Props => ({
   ...ownProps
 });
 

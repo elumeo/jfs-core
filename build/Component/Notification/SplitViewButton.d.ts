@@ -5,8 +5,5 @@ export interface ISplitViewButtonProps {
     pinNotificationDrawerAction?: typeof pinNotificationDrawerAction;
     unpinNotificationDrawerAction?: typeof unpinNotificationDrawerAction;
 }
-declare class SplitViewButton extends React.Component<ISplitViewButtonProps> {
-    render(): JSX.Element;
-}
-declare const _default: import("react-redux").ConnectedComponent<typeof SplitViewButton, Pick<React.ClassAttributes<SplitViewButton> & ISplitViewButtonProps, "key" | "ref"> & ISplitViewButtonProps>;
+declare const _default: import("react-redux").ConnectedComponent<React.FC<ISplitViewButtonProps>, Pick<ISplitViewButtonProps, never> & ISplitViewButtonProps>;
 export default _default;

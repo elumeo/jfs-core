@@ -1,13 +1,16 @@
 import React from 'react';
 import './Initialized.scss';
-export interface IInitializedProps {
-    language?: string;
-    messages?: {
-        [language: string]: {
-            [key: string]: string;
+declare namespace Initialized {
+    type Props = {
+        language?: string;
+        messages?: {
+            [language: string]: {
+                [key: string]: string;
+            };
         };
+        appInitialized?: boolean;
     };
-    appInitialized?: boolean;
 }
-declare const _default: import("react-redux").ConnectedComponent<React.FC<IInitializedProps>, Pick<IInitializedProps, never> & IInitializedProps>;
+declare const Initialized: React.FC<Initialized.Props>;
+declare const _default: import("react-redux").ConnectedComponent<React.FC<Initialized.Props>, Pick<Initialized.Props, never> & Initialized.Props>;
 export default _default;

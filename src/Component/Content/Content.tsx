@@ -9,21 +9,19 @@ namespace Content {
   }
 }
 
-class Content extends React.Component<Content.Props> {
-  render() {
-    const { props: { children, splitViewEnabled } } = this;
+const Content: React.FC<Content.Props> = ({
+  children, splitViewEnabled
+}) => {
+  const contentClassName = [
+    `authorized-content`,
+    splitViewEnabled ? 'split-view--active' : ''
+  ].join(' ');
 
-    const contentClassName = [
-      `authorized-content`,
-      splitViewEnabled ? 'split-view--active' : ''
-    ].join(' ');
-
-    return (
-      <div className={contentClassName}>
-        {children}
-      </div>
-    );
-  }
+  return (
+    <div className={contentClassName}>
+      {children}
+    </div>
+  );
 }
 
 const mapStateToProps = (
