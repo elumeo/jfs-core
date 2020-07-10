@@ -18,6 +18,11 @@
               "array": false,
               "generics": []
             },
+            "token": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
             "createdAt": {
               "type": "string",
               "array": false,
@@ -86,6 +91,11 @@
           "name": "SessionDTO",
           "generics": [],
           "properties": {
+            "allowedMethods": {
+              "type": "string",
+              "array": true,
+              "generics": []
+            },
             "token": {
               "type": "string",
               "array": false,

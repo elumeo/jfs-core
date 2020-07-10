@@ -1,5 +1,4 @@
-import Render from '../../Render';
-import Text from 'Library/Text';
+import Render from 'Library/JFS/Project/Api/Generator/Render';
 
 namespace Description {
   export type DTO = {
@@ -22,7 +21,7 @@ class Description {
     generics: string[];
     array: boolean;
   }) => (
-    `${name}: ${type}${
+    `${name}?: ${type}${
       generics && generics.length
         ? `<${generics.join(', ')}>`
         : ''
