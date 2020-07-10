@@ -4,7 +4,6 @@ import Config from 'Library/JFS/Config';
 import Text from "Library/Text";
 import Translations from "./Translations";
 import JSC from './Api';
-import { ITranslations } from "./Translations/Types";
 
 namespace Project {
   export type Props = {

@@ -6,6 +6,7 @@ import Client from './Client';
 import DTO from './DTO';
 import Namespace from './Namespace';
 import { API } from './Types';
+import Text from 'Library/Text';
 
 class API {
   static Client = Client;
@@ -87,9 +88,13 @@ class API {
   static describe: API.Static.Describe = ({
     remote, onDescription
   }) => {
+    const url = `${remote.host}${remote.path}`;
+    const protocols = ['http', 'https'];
     return (
       axios.post<API.Description>(
-        `http://${remote.host}${remote.path}`,
+        protocols.some(protocol => Text.beginsWith(url, protocol))
+          ? url
+          : `http://${url}`,
         remote.configuration
       )
         .then(({ data: description }) => onDescription(description))
@@ -114,7 +119,7 @@ class API {
     onComplete
   }) => {
     const preprocessed = API.preprocess(options, description);
-    const { dtos, clients } = preprocessed
+    const { dtos, clients } = preprocessed;
     onComplete(
       API.render({
         local: {

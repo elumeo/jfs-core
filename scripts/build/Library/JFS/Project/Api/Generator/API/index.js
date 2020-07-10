@@ -40,6 +40,7 @@ const Imports_1 = __importDefault(require("./Imports"));
 const Client_1 = __importDefault(require("./Client"));
 const DTO_1 = __importDefault(require("./DTO"));
 const Namespace_1 = __importDefault(require("./Namespace"));
+const Text_1 = __importDefault(require("../../../../../Text"));
 class API {
 }
 API.Client = Client_1.default;
@@ -73,7 +74,11 @@ API.preprocess = (api, description) => (Object.assign(Object.assign({}, descript
             }) }, client), { name: client.name.replace('Controller', 'Client') }));
     }) }));
 API.describe = ({ remote, onDescription }) => {
-    return (axios_1.default.post(`http://${remote.host}${remote.path}`, remote.configuration)
+    const url = `${remote.host}${remote.path}`;
+    const protocols = ['http', 'https'];
+    return (axios_1.default.post(protocols.some(protocol => Text_1.default.beginsWith(url, protocol))
+        ? url
+        : `http://${url}`, remote.configuration)
         .then(({ data: description }) => onDescription(description))
         .catch((error) => console.log(error)));
 };

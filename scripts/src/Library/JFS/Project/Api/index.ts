@@ -5,6 +5,7 @@ import Config from './Config';
 import API from './Generator/API';
 import * as Generator from './Generator/API/Types';
 import Project from 'Library/JFS/Project';
+import File from 'Library/OS/Filesystem/File';
 
 class JSC {
   path: string;
@@ -29,42 +30,34 @@ class JSC {
       namespace?: string;
       core?: boolean;
     }
-  ) => this.describe(
-    project,
-    (description) => this.check({
-      description,
-      onComplete: result => {
-        if (result) {
-          API.generate({
-            description,
-            options: {
-              namespace: (options || {}).namespace || 'JSCApi',
-              core: (options || {}).core || false
-            },
-            onComplete: code => {
-              this.saveDescription(description);
-              this.saveCode(API.format(code));
-            }
-          })
+  ) => {
+    this.describe(
+      project,
+      description => this.check({
+        description,
+        onComplete: result => {
+          if (result) {
+            API.generate({
+              description,
+              options: {
+                namespace: (options || {}).namespace || 'JSCApi',
+                core: (options || {}).core || false
+              },
+              onComplete: code => {
+                this.saveDescription(description);
+                this.saveCode(API.format(code));
+              }
+            })
+          }
         }
-      }
-    })
-  );
-
-  public saveCode = (code: string, onComplete?: () => void) => {
-    writeFile(
-      resolve(this.path, 'Api', 'index.ts'),
-      code,
-      (error) => {
-        if (error) {
-          throw error;
-        }
-        else if (onComplete) {
-          onComplete();
-        }
-      }
+      })
     );
   }
+
+  public saveCode = (code: string, onComplete?: () => void) => (
+    new File({ path: resolve(this.path, 'Api', 'index.ts') })
+      .write(code, onComplete)
+  )
 
   public describe = (
     project: Project,
@@ -78,7 +71,7 @@ class JSC {
       }) => project.JSC.config.read(
         ({ remote }) => API.describe({
           remote: {
-            host: (host as string).replace('https://', ''),
+            host: host,
             path: '/client/api/description',
             configuration: remote
           },

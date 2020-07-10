@@ -8,39 +8,34 @@ const path_1 = require("path");
 const json_diff_1 = __importDefault(require("json-diff"));
 const Config_1 = __importDefault(require("./Config"));
 const API_1 = __importDefault(require("./Generator/API"));
+const File_1 = __importDefault(require("../../../OS/Filesystem/File"));
 class JSC {
     constructor(path) {
-        this.generate = (project, options) => this.describe(project, (description) => this.check({
-            description,
-            onComplete: result => {
-                if (result) {
-                    API_1.default.generate({
-                        description,
-                        options: {
-                            namespace: (options || {}).namespace || 'JSCApi',
-                            core: (options || {}).core || false
-                        },
-                        onComplete: code => {
-                            this.saveDescription(description);
-                            this.saveCode(API_1.default.format(code));
-                        }
-                    });
+        this.generate = (project, options) => {
+            this.describe(project, description => this.check({
+                description,
+                onComplete: result => {
+                    if (result) {
+                        API_1.default.generate({
+                            description,
+                            options: {
+                                namespace: (options || {}).namespace || 'JSCApi',
+                                core: (options || {}).core || false
+                            },
+                            onComplete: code => {
+                                this.saveDescription(description);
+                                this.saveCode(API_1.default.format(code));
+                            }
+                        });
+                    }
                 }
-            }
-        }));
-        this.saveCode = (code, onComplete) => {
-            fs_1.writeFile(path_1.resolve(this.path, 'Api', 'index.ts'), code, (error) => {
-                if (error) {
-                    throw error;
-                }
-                else if (onComplete) {
-                    onComplete();
-                }
-            });
+            }));
         };
+        this.saveCode = (code, onComplete) => (new File_1.default({ path: path_1.resolve(this.path, 'Api', 'index.ts') })
+            .write(code, onComplete));
         this.describe = (project, onDescription) => (project.config.read(({ JscClient: { Host: host } }) => project.JSC.config.read(({ remote }) => API_1.default.describe({
             remote: {
-                host: host.replace('https://', ''),
+                host: host,
                 path: '/client/api/description',
                 configuration: remote
             },

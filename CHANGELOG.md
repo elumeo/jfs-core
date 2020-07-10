@@ -1,3 +1,18 @@
+## [9.0.5] - 2020-07-10
+
+### Bugfix
+- Fix for formatting url in jsc-generate
+
+## [9.0.4] - 2020-06-26
+
+### Bugfix
+- Fixes for build pipeline
+
+## [9.0.3] - 2020-06-26
+
+### Bugfix
+- Fixes for build pipeline
+
 ## [9.0.2] - 2020-06-26
 
 ### Bugfix

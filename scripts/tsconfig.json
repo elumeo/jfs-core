@@ -4,21 +4,24 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "target": "es6",
+    "lib": [
+      "es2018", "esNext"
+    ],
     "noImplicitAny": false,
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "build",
-    "baseUrl": "./scripts"
-  },
-  "path": {
-    "Setup/*": [
-      "./scripts/Setup/*"
-    ],
-    "Library/*": [
-      "./scripts/Library/*"
-    ]
+    "baseUrl": "./src",
+    "paths": {
+      "Setup/*": [
+        "./Setup/*"
+      ],
+      "Library/*": [
+        "./Library/*"
+      ]
+    }
   },
   "include": [
-    "./scripts/**/*"
+    "./**/*"
   ]
 }
