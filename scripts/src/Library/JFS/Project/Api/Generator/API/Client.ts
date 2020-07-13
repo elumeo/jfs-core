@@ -187,7 +187,7 @@ class Client {
         method: protocol.method,
         type: `${resource.type.name}${
           Render.TypeScript.generics(...resource.type.generics)
-        }`,
+        }${resource.type.array ? '[]' : ''}`,
         path: Client.replacePathParameters(resource.path),
         parameters: [
           ...parameters
@@ -212,7 +212,7 @@ class Client {
           'AxiosResponse' + Render.TypeScript.generics(
             resource.type.name + Render.TypeScript.generics(
               ...resource.type.generics
-            )
+            ) + (resource.type.array ? '[]' : '')
           )
         )
       }

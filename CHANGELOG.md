@@ -1,3 +1,13 @@
+## [9.0.7] - 2020-07-13
+
+### Bugfix
+- Fixed generation of array type resources in jsc-generate
+
+## [9.0.6] - 2020-07-10
+
+### Bugfix
+- Made all generated properties optional in jsc-generate
+
 ## [9.0.5] - 2020-07-10
 
 ### Bugfix

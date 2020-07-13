@@ -120,6 +120,7 @@ class API {
   }) => {
     const preprocessed = API.preprocess(options, description);
     const { dtos, clients } = preprocessed;
+
     onComplete(
       API.render({
         local: {

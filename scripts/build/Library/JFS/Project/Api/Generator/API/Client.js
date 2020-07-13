@@ -71,7 +71,7 @@ Client.request = ({ parameters, protocol, resource }) => (Render_1.default.TypeS
     body: Render_1.default.Axios.request({
         client: 'JscClient',
         method: protocol.method,
-        type: `${resource.type.name}${Render_1.default.TypeScript.generics(...resource.type.generics)}`,
+        type: `${resource.type.name}${Render_1.default.TypeScript.generics(...resource.type.generics)}${resource.type.array ? '[]' : ''}`,
         path: Client.replacePathParameters(resource.path),
         parameters: [
             ...parameters
@@ -90,7 +90,7 @@ Client.request = ({ parameters, protocol, resource }) => (Render_1.default.TypeS
         }
     ],
     returnAnnotation: {
-        type: 'Promise' + Render_1.default.TypeScript.generics('AxiosResponse' + Render_1.default.TypeScript.generics(resource.type.name + Render_1.default.TypeScript.generics(...resource.type.generics)))
+        type: 'Promise' + Render_1.default.TypeScript.generics('AxiosResponse' + Render_1.default.TypeScript.generics(resource.type.name + Render_1.default.TypeScript.generics(...resource.type.generics) + (resource.type.array ? '[]' : '')))
     }
 }));
 Client.namespace = ({ name, methods }) => (Render_1.default.TypeScript.namespace({

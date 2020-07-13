@@ -1,7 +1,8 @@
 {
   "JscClient": {
     "Host-Internal": "http://de.TECH-64_push_to_web.api.staging-jsc-app.juwelo.local",
-    "Host": "https://localhost/jsc-api-de",
+    "Host": "https://api-test.juwelo.de/staging/de/STORY-3389_RightsManager_new_features",
+    "Host-Local": "http://localhost/jsc-api-de",
     "Timeout": 30000
   },
   "Language": "de",
