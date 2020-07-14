@@ -18,10 +18,13 @@ export interface IWebsocketConnectionState {
   isConnected: false
 }
 
-const WebSocketConnection: React.FC<IWebsocketConnectionProps> = ({ children }) => {
+const WebSocketConnection: React.FC<IWebsocketConnectionProps> = ({
+  children,
+  webSocketUpdateRoomAction
+}) => {
   useEffect(
     () => {
-      WSClient.listenRoomsObservable$.subscribe((roomData) => this.props.webSocketUpdateRoomAction(roomData));
+      WSClient.listenRoomsObservable$.subscribe((roomData) => webSocketUpdateRoomAction(roomData));
     },
     []
   );

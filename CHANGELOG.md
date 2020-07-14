@@ -1,3 +1,8 @@
+## [9.0.7] - 2020-07-14
+
+### Bugfix
+- Fixed WebSocketConnection props
+
 ## [9.0.7] - 2020-07-13
 
 ### Bugfix
