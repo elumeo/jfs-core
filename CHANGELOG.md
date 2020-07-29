@@ -1,3 +1,13 @@
+## [9.0.10] - 2020-07-29
+
+### Bugfix
+-- Support for deep nested DTO namespaces in jsc-generate
+
+## [9.0.9] - 2020-07-28
+
+### Bugfix
+- Exported history
+
 ## [9.0.7] - 2020-07-14
 
 ### Bugfix

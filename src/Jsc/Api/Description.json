@@ -45,7 +45,8 @@
             }
           }
         }
-      ]
+      ],
+      "namespaces": []
     },
     {
       "name": "Session",
@@ -92,8 +93,8 @@
           "generics": [],
           "properties": {
             "allowedMethods": {
-              "type": "string",
-              "array": true,
+              "type": "array",
+              "array": false,
               "generics": []
             },
             "token": {
@@ -143,7 +144,8 @@
             }
           }
         }
-      ]
+      ],
+      "namespaces": []
     },
     {
       "name": "Authorization",
@@ -263,7 +265,8 @@
             }
           }
         }
-      ]
+      ],
+      "namespaces": []
     },
     {
       "name": "App",
@@ -354,7 +357,8 @@
             }
           }
         }
-      ]
+      ],
+      "namespaces": []
     },
     {
       "name": "WebSocket",
@@ -403,7 +407,8 @@
             }
           }
         }
-      ]
+      ],
+      "namespaces": []
     }
   ],
   "clients": [

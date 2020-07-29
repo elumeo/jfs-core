@@ -7,6 +7,7 @@ namespace DTO {
     name: string;
     constants: Constant.Description[];
     dtos: Description.DTO[];
+    namespaces: DTO.Group[];
   }
 }
 
@@ -14,17 +15,20 @@ class DTO {
   static Constant = Constant;
   static Description = Description;
 
-  static group = ({ name, constants, dtos }: DTO.Group) => (
-    Render.TypeScript.namespace({
-      name,
-      what: Render.Text.lines(
-        ...[
-          ...constants.map(DTO.Constant.generate),
-          ...dtos.map((description) => DTO.Description.generate({ ...description }))
-        ].map(Render.EcmaScript.export)
-      )
-    })
-  );
+  static group = ({ name, constants, dtos, namespaces }: DTO.Group) => {
+    return (
+      Render.TypeScript.namespace({
+        name,
+        what: Render.Text.lines(
+          ...[
+            ...(constants || []).map(DTO.Constant.generate),
+            ...dtos.map(description => DTO.Description.generate({ ...description })),
+            ...namespaces.map(dtoNamespace => DTO.group(dtoNamespace))
+          ].map(Render.EcmaScript.export)
+        )
+      })
+    )
+  };
 }
 
 export default DTO;
