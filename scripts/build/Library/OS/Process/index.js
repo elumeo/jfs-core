@@ -8,8 +8,9 @@ class Process {
         };
         this.run = (onSpawn) => {
             this.instance = child_process_1.spawn(this.command, this.parameters, this.options);
-            Process.print(this.instance);
-            onSpawn(this.instance);
+            if (onSpawn) {
+                onSpawn(this.instance);
+            }
         };
         this.command = command;
         this.parameters = parameters;

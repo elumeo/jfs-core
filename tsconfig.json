@@ -26,7 +26,7 @@
       "Jsc/*": ["./Jsc/*"],
       "Mock/*": ["./Mock/*"],
       "Setup/*": ["./Setup/*"],
-      "Store": ["./Store/index.ts"],
+      "Store/*": ["./Store/*"],
       "Types/*": ["./Types/*"],
       "Utilities/*": ["./Utilities/*"]
     }
@@ -36,11 +36,6 @@
     "src/__test__/*",
     "node_modules/@elumeo/jfs-core/scripts",
     "scripts",
-    "build",
-    "./helper.js"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "useBabel": true,
-    "useCache": true
-  }
+    "build"
+  ]
 }

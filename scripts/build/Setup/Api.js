@@ -20,4 +20,4 @@ const job = new Job_1.default({
     }
 });
 job.run();
-//# sourceMappingURL=jsc-check.js.map
+//# sourceMappingURL=Api.js.map

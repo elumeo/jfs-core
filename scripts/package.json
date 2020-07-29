@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Core scripts for all JFS apps",
   "scripts": {
-    "start": "ts-node-dev --respawn -r tsconfig-paths/register src/index.ts --scripts-mode true",
-    "build": "tsc && tsc-alias",
+    "build": "tsc && node helper.js",
     "build:watch": "tsc-watch --onCompilationComplete \"node helper.js\"",
     "postinstall": "node ./build/Setup/deploy-config-files.js"
   },

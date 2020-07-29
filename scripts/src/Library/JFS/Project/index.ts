@@ -4,6 +4,8 @@ import Config from 'Library/JFS/Config';
 import Text from "Library/Text";
 import Translations from "./Translations";
 import JSC from './Api';
+import File from "Library/OS/Filesystem/File";
+import { resolve } from "path";
 
 namespace Project {
   export type Props = {
@@ -18,6 +20,7 @@ abstract class Project {
   public readonly nodePackage: NodePackage;
   public readonly JSC: JSC;
   public readonly config: Config;
+  public readonly tsconfig: File;
 
   constructor({ path }: Project.Props) {
     this.path = path;
@@ -30,6 +33,9 @@ abstract class Project {
     this.nodePackage = new NodePackage(NodePackage.location(path));
     this.JSC = new JSC(JSC.location(path));
     this.config = new Config(Config.location(path));
+    this.tsconfig = new File({
+      path: resolve(path, 'tsconfig.json')
+    });
   }
 
   public translations = (

@@ -1,3 +1,9 @@
+## [9.1.0] - 2020-07-29
+
+### Added
+
+-- jfs-prebuild script for transpiling the core and jfc components
+
 ## [9.0.10] - 2020-07-29
 
 ### Bugfix

@@ -30,10 +30,11 @@ class Process {
     this.options.cwd = cwd.path;
   }
 
-  run = (onSpawn: (instance: ChildProcess) => void) => {
+  run = (onSpawn?: (instance: ChildProcess) => void) => {
     this.instance = spawn(this.command, this.parameters, this.options);
-    Process.print(this.instance);
-    onSpawn(this.instance);
+    if (onSpawn) {
+      onSpawn(this.instance);
+    }
   }
 }
 
