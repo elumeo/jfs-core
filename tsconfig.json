@@ -36,6 +36,7 @@
     "src/__test__/*",
     "node_modules/@elumeo/jfs-core/scripts",
     "scripts",
-    "build"
+    "build",
+    "./helper.js"
   ]
 }
