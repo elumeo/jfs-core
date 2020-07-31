@@ -1,3 +1,9 @@
+## [9.1.0] - 2020-07-31
+
+### Bugfix
+
+-- fixes for jsc-generate to follow the given format
+
 ## [9.1.0] - 2020-07-29
 
 ### Added
