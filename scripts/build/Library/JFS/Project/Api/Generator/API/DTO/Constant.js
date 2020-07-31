@@ -7,7 +7,7 @@ const Render_1 = __importDefault(require("../../Render"));
 class Constant {
 }
 Constant.generate = ({ name, value }) => Render_1.default.TypeScript.variable({
-    name,
+    name: `I_${name}`,
     value: `'${value}'`
 });
 exports.default = Constant;

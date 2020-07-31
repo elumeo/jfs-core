@@ -9,6 +9,7 @@ const json_diff_1 = __importDefault(require("json-diff"));
 const Config_1 = __importDefault(require("./Config"));
 const API_1 = __importDefault(require("./Generator/API"));
 const File_1 = __importDefault(require("../../../OS/Filesystem/File"));
+const ansi_colors_1 = require("ansi-colors");
 class JSC {
     constructor(path) {
         this.generate = (project, options) => {
@@ -16,6 +17,10 @@ class JSC {
                 description,
                 onComplete: result => {
                     if (result) {
+                        console.log([
+                            `Jsc/Api/Description.json did change.\n`,
+                            ansi_colors_1.bgRedBright(' --> Generating new API...')
+                        ].join(''));
                         API_1.default.generate({
                             description,
                             options: {
@@ -27,6 +32,12 @@ class JSC {
                                 this.saveCode(API_1.default.format(code));
                             }
                         });
+                    }
+                    else {
+                        console.log([
+                            `Jsc/Api/Description.json did not change.\n`,
+                            ansi_colors_1.bgGreenBright(' --> Nothing to be done here.')
+                        ].join(''));
                     }
                 }
             }));
@@ -47,7 +58,7 @@ class JSC {
         };
         this.check = ({ description, onComplete }) => {
             if (!fs_1.existsSync(path_1.resolve(this.path, 'Api', 'Description.json'))) {
-                onComplete('No description found');
+                onComplete('No description found.');
             }
             else {
                 fs_1.readFile(path_1.resolve(this.path, 'Api', 'Description.json'), 'utf8', (error, data) => {

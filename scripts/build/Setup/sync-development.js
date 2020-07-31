@@ -15,19 +15,14 @@ JFS_1.default.discover(() => {
         const node_modules = path_1.resolve(JFS_1.default.Head.path, 'node_modules');
         JFS_1.default.Head.nodePackage.json(({ jfs: { sync } }) => {
             const projects = (Object.keys(sync).map(name => ({ name, path: sync[name] })));
-            projects.forEach(({ name, path }) => {
-                resources.forEach(resource => {
-                    const synchronization = new Synchronization_1.default({
-                        from: new Directory_1.default({
-                            path: path_1.resolve(JFS_1.default.Head.path, path, resource)
-                        }),
-                        to: new Directory_1.default({
-                            path: path_1.resolve(node_modules, name, resource)
-                        })
-                    });
-                    synchronization.start();
-                });
-            });
+            projects.forEach(({ name, path }) => resources.forEach(resource => new Synchronization_1.default({
+                from: new Directory_1.default({
+                    path: path_1.resolve(JFS_1.default.Head.path, path, resource)
+                }),
+                to: new Directory_1.default({
+                    path: path_1.resolve(node_modules, name, resource)
+                })
+            }).start()));
         });
     }
 });

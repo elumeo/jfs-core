@@ -70,7 +70,19 @@ API.preprocess = (api, description) => (Object.assign(Object.assign({}, descript
                                             : sequence
                                     ].join('.'))
                                     : sequence), '')}`
-                                : resource.type.name) }) }) }));
+                                : resource.type.name), generics: resource.type.generics.map(generic => [
+                                api.namespace,
+                                generic.substring(0, 3) === 'DTO'
+                                    ? generic.split('.').reduce((typeName, sequence, index, array) => (typeName.length
+                                        ? ([
+                                            typeName,
+                                            index === array.length - 1
+                                                ? 'I' + sequence
+                                                : sequence
+                                        ].join('.'))
+                                        : sequence), '')
+                                    : generic
+                            ].join('.')) }) }) }));
             }) }, client), { name: client.name.replace('Controller', 'Client') }));
     }) }));
 API.describe = ({ remote, onDescription }) => {

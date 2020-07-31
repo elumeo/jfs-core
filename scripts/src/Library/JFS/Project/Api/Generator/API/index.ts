@@ -67,13 +67,35 @@ class API {
                               index === array.length -1
                                 ? 'I' + sequence
                                 : sequence
-                              ].join('.')
+                            ].join('.')
                           )
                           : sequence
                       ),
                       ''
                     )}`
                     : resource.type.name
+                ),
+                generics: resource.type.generics.map(
+                  generic => [
+                    api.namespace,
+                    generic.substring(0, 3) === 'DTO'
+                      ? generic.split('.').reduce(
+                        (typeName, sequence, index, array) => (
+                          typeName.length
+                            ? (
+                              [
+                                typeName,
+                                index === array.length -1
+                                  ? 'I' + sequence
+                                  : sequence
+                              ].join('.')
+                            )
+                            : sequence
+                        ),
+                        ''
+                      )
+                      : generic
+                  ].join('.')
                 )
               }
             }

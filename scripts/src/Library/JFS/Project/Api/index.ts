@@ -6,6 +6,7 @@ import API from './Generator/API';
 import * as Generator from './Generator/API/Types';
 import Project from 'Library/JFS/Project';
 import File from 'Library/OS/Filesystem/File';
+import { bgGreenBright, bgRedBright } from 'ansi-colors';
 
 class JSC {
   path: string;
@@ -37,6 +38,10 @@ class JSC {
         description,
         onComplete: result => {
           if (result) {
+            console.log([
+              `Jsc/Api/Description.json did change.\n`,
+              bgRedBright(' --> Generating new API...')
+            ].join(''));
             API.generate({
               description,
               options: {
@@ -48,6 +53,12 @@ class JSC {
                 this.saveCode(API.format(code));
               }
             })
+          }
+          else {
+            console.log([
+              `Jsc/Api/Description.json did not change.\n`,
+              bgGreenBright(' --> Nothing to be done here.')
+            ].join(''));
           }
         }
       })
@@ -97,7 +108,7 @@ class JSC {
     onComplete: (diffSequence: string) => void
   }) => {
     if (!existsSync(resolve(this.path, 'Api', 'Description.json'))) {
-      onComplete('No description found');
+      onComplete('No description found.');
     }
     else {
       readFile(

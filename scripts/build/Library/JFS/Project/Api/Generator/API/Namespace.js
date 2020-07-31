@@ -12,18 +12,18 @@ Namespace.DTO = DTO_1.default;
 Namespace.Client = Client_1.default;
 Namespace.generate = ({ name, remote }) => Render_1.default.TypeScript.namespace({
     name,
-    what: Render_1.default.Text.lines(Render_1.default.TypeScript.interface({
+    what: Render_1.default.Text.lines(Render_1.default.EcmaScript.export(Render_1.default.TypeScript.interface({
         name: 'IUrlParams',
         lines: [
             'filter?: string;',
             'options?: string;'
         ]
-    }), Render_1.default.TypeScript.interface({
+    })), Render_1.default.EcmaScript.export(Render_1.default.TypeScript.interface({
         name: 'IJscClientConfig',
         lines: [
             'params?: IUrlParams;',
         ]
-    }), Render_1.default.EcmaScript.export(Render_1.default.TypeScript.namespace({
+    })), Render_1.default.EcmaScript.export(Render_1.default.TypeScript.namespace({
         name: 'DTO',
         what: Render_1.default.Text.lines(...remote.dtos.map(description => Namespace.DTO.group(description)).map(Render_1.default.EcmaScript.export))
     })), Render_1.default.Text.lines(...remote.clients.map(client => Render_1.default.EcmaScript.export(Namespace.Client.namespace(client)))))

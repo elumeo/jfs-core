@@ -13,7 +13,7 @@ class Constant {
     name,
     value
   }: Constant.Description) => Render.TypeScript.variable({
-    name,
+    name: `I_${name}`,
     value: `'${value}'`
   });
 }

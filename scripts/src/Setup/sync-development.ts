@@ -14,21 +14,16 @@ JFS.discover(() => {
       const projects = (
         Object.keys(sync).map(name => ({ name, path: sync[name] }))
       );
-      projects.forEach(({ name, path }) => {
-        resources.forEach(
-          resource => {
-            const synchronization = new Synchronization({
-              from: new Directory({
-                path: resolve(JFS.Head.path, path, resource)
-              }),
-              to: new Directory({
-                path: resolve(node_modules, name, resource)
-              })
-            });
-            synchronization.start();
-          }
-        );
-      });
+      projects.forEach(({ name, path }) => resources.forEach(
+        resource => new Synchronization({
+          from: new Directory({
+            path: resolve(JFS.Head.path, path, resource)
+          }),
+          to: new Directory({
+            path: resolve(node_modules, name, resource)
+          })
+        }).start()
+      ));
     })
   }
 });

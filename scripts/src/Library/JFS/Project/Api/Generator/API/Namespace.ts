@@ -16,19 +16,23 @@ class Namespace {
   }) => Render.TypeScript.namespace({
     name,
     what: Render.Text.lines(
-      Render.TypeScript.interface({
-        name: 'IUrlParams',
-        lines: [
-          'filter?: string;',
-          'options?: string;'
-        ]
-      }),
-      Render.TypeScript.interface({
-        name: 'IJscClientConfig',
-        lines: [
-          'params?: IUrlParams;',
-        ]
-      }),
+      Render.EcmaScript.export(
+        Render.TypeScript.interface({
+          name: 'IUrlParams',
+          lines: [
+            'filter?: string;',
+            'options?: string;'
+          ]
+        })
+      ),
+      Render.EcmaScript.export(
+        Render.TypeScript.interface({
+          name: 'IJscClientConfig',
+          lines: [
+            'params?: IUrlParams;',
+          ]
+        })
+      ),
       Render.EcmaScript.export(
         Render.TypeScript.namespace({
           name: 'DTO',
