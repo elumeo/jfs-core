@@ -39,7 +39,7 @@ class JSC {
         onComplete: result => {
           if (result) {
             console.log([
-              `Jsc/Api/Description.json did change.\n`,
+              `Jsc/Api/description.json did change.\n`,
               bgRedBright(' --> Generating new API...')
             ].join(''));
             API.generate({
@@ -55,7 +55,7 @@ class JSC {
             })
           } else {
             console.log([
-              `Jsc/Api/Description.json did not change.\n`,
+              `Jsc/Api/description.json did not change.\n`,
               bgGreenBright(' --> Nothing to be done here.')
             ].join(''));
           }

@@ -40,7 +40,7 @@ type ExtendedType = Popover.Props & {
 ##### Generating the JSC api
 
 - makes use of the new api description rest endpoint
-- each generation will also create a ```Description.json``` file which is used to determine if changes have happened in the backend when running 'jsc-check' or 'jsc-generate'
+- each generation will also create a ```description.json``` file which is used to determine if changes have happened in the backend when running 'jsc-check' or 'jsc-generate'
 - slightly changed structure of configuration
 
 ```
