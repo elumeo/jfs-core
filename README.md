@@ -55,7 +55,7 @@ type ExtendedType = Popover.Props & {
   }
 }
 ```
-- configuration moved: ```Jsc/JscApiConfig.json``` -> ```Jsc/Api/Config.json```
+- configuration moved: ```Jsc/JscApiConfig.json``` -> ```Jsc/Api/config.json```
 
 ##### Store structure
 

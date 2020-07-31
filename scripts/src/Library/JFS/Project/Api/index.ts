@@ -45,7 +45,7 @@ class JSC {
             API.generate({
               description,
               options: {
-                namespace: (options || {}).namespace || 'JSCApi',
+                namespace: (options || {}).namespace || 'JSCApi',
                 core: (options || {}).core || false
               },
               onComplete: code => {
@@ -53,8 +53,7 @@ class JSC {
                 this.saveCode(API.format(code));
               }
             })
-          }
-          else {
+          } else {
             console.log([
               `Jsc/Api/Description.json did not change.\n`,
               bgGreenBright(' --> Nothing to be done here.')
@@ -66,7 +65,7 @@ class JSC {
   }
 
   public saveCode = (code: string, onComplete?: () => void) => (
-    new File({ path: resolve(this.path, 'Api', 'index.ts') })
+    new File({path: resolve(this.path, 'Api', 'index.ts')})
       .write(code, onComplete)
   )
 
@@ -76,11 +75,11 @@ class JSC {
   ) => (
     project.config.read(
       ({
-        JscClient: {
-          Host: host
-        }
-      }) => project.JSC.config.read(
-        ({ remote }) => API.describe({
+         JscClient: {
+           Host: host
+         }
+       }) => project.JSC.config.read(
+        ({remote}) => API.describe({
           remote: {
             host: host,
             path: '/client/api/description',
@@ -92,10 +91,9 @@ class JSC {
     )
   );
 
-
   public saveDescription = (description: Generator.API.Description) => {
     writeFile(
-      resolve(this.path, 'Api', 'Description.json'),
+      resolve(this.path, 'Api', 'description.json'),
       JSON.stringify(description, null, 2),
       () => {
 
@@ -103,22 +101,20 @@ class JSC {
     );
   }
 
-  public check = ({ description, onComplete }: {
+  public check = ({description, onComplete}: {
     description: Generator.API.Description,
     onComplete: (diffSequence: string) => void
   }) => {
-    if (!existsSync(resolve(this.path, 'Api', 'Description.json'))) {
+    if (!existsSync(resolve(this.path, 'Api', 'description.json'))) {
       onComplete('No description found.');
-    }
-    else {
+    } else {
       readFile(
-        resolve(this.path, 'Api', 'Description.json'),
+        resolve(this.path, 'Api', 'description.json'),
         'utf8',
         (error, data) => {
           if (error) {
             throw error;
-          }
-          else {
+          } else {
             onComplete(
               JsonDiff.diffString(description, JSON.parse(data))
             );

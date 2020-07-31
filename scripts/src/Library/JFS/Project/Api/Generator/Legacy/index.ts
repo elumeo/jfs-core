@@ -1,6 +1,6 @@
 import { readFile, writeFile, existsSync } from 'fs';
-import { resolve } from "path";
-import JfsConfig from "Library/JFS/Config";
+import { resolve } from 'path';
+import JfsConfig from 'Library/JFS/Config';
 import JscConfig from 'Library/JFS/Project/Api/Config';
 import API from '../API';
 import * as Generator from '../API/Types';
@@ -48,12 +48,11 @@ class JSC {
       onComplete: result => {
         if (result === JSC.API_CHECK_OK) {
           console.log(result);
-        }
-        else {
+        } else {
           API.generate({
             description,
             options: {
-              namespace: (options || {}).namespace || 'JSCApi',
+              namespace: (options || {}).namespace || 'JSCApi',
               core: (options || {}).core || false
             },
             onComplete: code => {
@@ -73,8 +72,7 @@ class JSC {
       (error) => {
         if (error) {
           throw error;
-        }
-        else if (onComplete) {
+        } else if (onComplete) {
           onComplete();
         }
       }
@@ -90,11 +88,11 @@ class JSC {
   ) => (
     JFS.config.read(
       ({
-        JscClient: {
-          Host: host
-        }
-      }) => JFS.JSC.config.read(
-        ({ remote }) => API.describe({
+         JscClient: {
+           Host: host
+         }
+       }) => JFS.JSC.config.read(
+        ({remote}) => API.describe({
           remote: {
             host: (host as string).replace('https://', ''),
             path: '/client/api/description',
@@ -106,10 +104,9 @@ class JSC {
     )
   );
 
-
   public saveDescription = (description: Generator.API.Description) => {
     writeFile(
-      resolve(this.path, 'Api', 'Description.json'),
+      resolve(this.path, 'Api', 'description.json'),
       JSON.stringify(description, null, 2),
       () => {
 
@@ -117,22 +114,20 @@ class JSC {
     );
   }
 
-  public check = ({ description, onComplete }: {
+  public check = ({description, onComplete}: {
     description: Generator.API.Description,
     onComplete: (diffSequence: string) => void
   }) => {
-    if (!existsSync(resolve(this.path, 'Api', 'Description.json'))) {
+    if (!existsSync(resolve(this.path, 'Api', 'description.json'))) {
       onComplete('No description found');
-    }
-    else {
+    } else {
       readFile(
-        resolve(this.path, 'Api', 'Description.json'),
+        resolve(this.path, 'Api', 'description.json'),
         'utf8',
         (error, data) => {
           if (error) {
             throw error;
-          }
-          else {
+          } else {
             onComplete(
               JsonDiff.diffString(description, JSON.parse(data)) ||
               JSC.API_CHECK_OK
