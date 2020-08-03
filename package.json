@@ -10,7 +10,8 @@
     "jsc-check": "node ./scripts/build/Setup/Check/Api.js",
     "release": "npm publish --access public",
     "postinstall": "subpkg install",
-    "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i"
+    "clean-install": "rm -rf ./node_modules ./package-lock.json ./scripts/node_modules ./scripts/package-lock.json && npm i",
+    "clean-install-and-rebuild": "rm -rf ./build ./node_modules ./package-lock.json ./scripts/node_modules ./scripts/package-lock.json ./scripts/build && npm i && npm run build"
   },
   "repository": {
     "type": "git",

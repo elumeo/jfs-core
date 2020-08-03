@@ -1,5 +1,9 @@
 ## jfs-core 9
 
+## Install the core
+- run `npm i` to install all required modules for the core and submodule (scripts) system
+- run `npm run clean-install-and-rebuild` to install everything from scratch and build the js files (see section `Transpilation and compilation`) afterwards
+
 ## Using jfs-core in another project
 
 ### Transpilation and compilation
@@ -120,6 +124,7 @@ type ExtendedType = Popover.Props & {
   ```
   node node_modules/@elumeo/jfs-core/scripts/build/Setup/SCRIPT_NAME
   ```
+- to rebuild the scripts run `npm run build` inside the `scripts` directory
 
 ### Synchronization of projects
 
