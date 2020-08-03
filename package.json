@@ -9,7 +9,8 @@
     "jsc-generate": "node ./scripts/build/Setup/jsc-generate.js",
     "jsc-check": "node ./scripts/build/Setup/Check/Api.js",
     "release": "npm publish --access public",
-    "postinstall": "subpkg install"
+    "postinstall": "subpkg install",
+    "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i"
   },
   "repository": {
     "type": "git",

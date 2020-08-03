@@ -16,11 +16,14 @@ class Project {
         this.translations = (onComplete) => Translations_1.default.get(this.path, translations => onComplete(new Translations_1.default(translations)));
         this.path = path;
         this.directory = new Directory_1.default({ path });
-        this.name = this.directory.name
-            .substring('jfc-'.length)
-            .split('-')
-            .map(Text_1.default.capitalize)
-            .join('');
+        this.name = this.directory.name;
+        if (this.directory.name.substring('jfc-'.length) !== '') {
+            this.name = this.directory.name
+                .substring('jfc-'.length)
+                .split('-')
+                .map(Text_1.default.capitalize)
+                .join('');
+        }
         this.nodePackage = new Package_1.default(Package_1.default.location(path));
         this.JSC = new Api_1.default(Api_1.default.location(path));
         this.config = new Config_1.default(Config_1.default.location(path));

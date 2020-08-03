@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc && node helper.js",
     "build:watch": "tsc-watch --onCompilationComplete \"node helper.js\"",
-    "postinstall": "node ./build/Setup/deploy-config-files.js"
+    "postinstall": "node ./build/Setup/deploy-config-files.js",
+    "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i"
   },
   "author": "elumeo SE",
   "license": "ISC",
