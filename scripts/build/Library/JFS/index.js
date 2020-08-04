@@ -37,12 +37,11 @@ JFS.discover = (onComplete) => {
         new File_1.default({ path: path_1.resolve(path, 'package.json') }).exists()));
     const nodePackages = projects.map(path => new Package_1.default(Package_1.default.location(path)));
     nodePackages.forEach(nodePackage => JFS.project(nodePackage, project => {
-        console.log(JFS.projects.length);
         if (project instanceof Core_1.default) {
             JFS.Core = project;
         }
         if (!JFS.projects.length) {
-            JFS.Head = JFS.projects[JFS.projects.length - 1];
+            JFS.Head = project;
         }
         JFS.projects.push(project);
         if (JFS.projects.length === projects.length) {
