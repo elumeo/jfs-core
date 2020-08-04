@@ -144,6 +144,18 @@ class Directory extends FsNode {
   }
 
   public unwatch = () => this.watcher.close();
+
+  public trace = (origin: Directory = this) => {
+    if (origin.path.length > 1) {
+      return [
+        ...this.trace(new Directory({ path: origin.parent })),
+        origin.path
+      ];
+    }
+    else {
+      return [sep];
+    }
+  }
 }
 
 export default Directory;

@@ -47,5 +47,5 @@ declare class SearchComponent extends React.Component<ISearchComponentProps, ISe
     handleClear: () => void;
     render(): JSX.Element;
 }
-declare const _default: import("react-redux").ConnectedComponent<typeof SearchComponent, Pick<React.ClassAttributes<SearchComponent> & ISearchComponentProps, "key" | "ref"> & ISearchComponentProps>;
+declare const _default: import("react-redux").ConnectedComponent<typeof SearchComponent, Pick<React.ClassAttributes<SearchComponent> & ISearchComponentProps, "ref" | "key"> & ISearchComponentProps>;
 export default _default;

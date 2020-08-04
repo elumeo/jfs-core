@@ -6,10 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const App_1 = __importDefault(require("./App"));
 const Core_1 = __importDefault(require("./Core"));
 const Component_1 = __importDefault(require("./Component"));
-const Explorer_1 = __importDefault(require("../OS/Filesystem/Explorer"));
+const File_1 = __importDefault(require("../OS/Filesystem/File"));
 const Package_1 = __importDefault(require("../Node/Package"));
 const Text_1 = __importDefault(require("../Text"));
 const path_1 = require("path");
+const Directory_1 = __importDefault(require("../OS/Filesystem/Directory"));
 class JFS {
 }
 JFS.Core = null;
@@ -29,21 +30,25 @@ JFS.project = (nodePackage, onComplete) => {
     });
 };
 JFS.discover = (onComplete) => {
-    const explorer = new Explorer_1.default(path_1.resolve(__dirname, '..', '..', '..', '..'));
-    explorer.explore(Package_1.default.location, (paths) => (paths
-        .map(path => new Package_1.default(Package_1.default.location(path)))
-        .forEach((nodePackage) => {
-        JFS.project(nodePackage, project => {
-            JFS.projects.push(project);
-            if (project instanceof Core_1.default) {
-                JFS.Core = project;
-            }
-            if (JFS.projects.length === paths.length) {
-                JFS.Head = JFS.projects[JFS.projects.length - 1];
-                onComplete();
-            }
-        });
-    })));
+    const directory = new Directory_1.default({ path: __dirname });
+    const projects = directory
+        .trace()
+        .filter(path => (!Text_1.default.endsWith(path, 'scripts') &&
+        new File_1.default({ path: path_1.resolve(path, 'package.json') }).exists()));
+    const nodePackages = projects.map(path => new Package_1.default(Package_1.default.location(path)));
+    nodePackages.forEach(nodePackage => JFS.project(nodePackage, project => {
+        console.log(JFS.projects.length);
+        if (project instanceof Core_1.default) {
+            JFS.Core = project;
+        }
+        if (!JFS.projects.length) {
+            JFS.Head = JFS.projects[JFS.projects.length - 1];
+        }
+        JFS.projects.push(project);
+        if (JFS.projects.length === projects.length) {
+            onComplete();
+        }
+    }));
 };
 exports.default = JFS;
 //# sourceMappingURL=index.js.map

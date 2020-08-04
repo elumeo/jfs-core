@@ -10,36 +10,36 @@ const rif = require('replace-in-file');
 const node_modules = path_1.resolve(__dirname, '..', '..', 'node_modules');
 const copyfiles = path_1.resolve(node_modules, 'copyfiles', 'copyfiles');
 const tscAlias = path_1.resolve(node_modules, 'tsc-alias', 'src', 'bin', 'index.js');
-JFS_1.default.discover(() => JFS_1.default.Head.tsconfig.json(({ compilerOptions: { outDir } }) => {
-    ['scss', 'json'].forEach(extension => new Process_1.default({
-        command: copyfiles,
-        parameters: [
-            '-u', '1', `src/**/*.${extension}`, outDir
-        ],
-        options: { cwd: JFS_1.default.Head.path }
-    }).run());
-    rif.sync({
-        files: [
-            `./${outDir}/**/*.*s`
-        ],
-        from: /from 'Core/gm,
-        to: 'from \'@elumeo/jfs-core/build'
-    });
-    new Process_1.default({
-        command: tscAlias,
-        parameters: [],
-        options: { cwd: JFS_1.default.Head.path }
-    }).run(instance => {
-        instance.stdout.on('data', data => console.log(data.toString()));
-        instance.on('exit', () => {
-            rif.sync({
-                files: [
-                    `./${outDir}/**/*.*s`
-                ],
-                from: /index\/Reducer/gm,
-                to: 'Reducer'
-            });
+const Core_1 = __importDefault(require("../Library/JFS/Core"));
+const Component_1 = __importDefault(require("../Library/JFS/Component"));
+const App_1 = __importDefault(require("../Library/JFS/App"));
+JFS_1.default.discover(() => {
+    const types = {
+        Core: Core_1.default,
+        Component: Component_1.default,
+        App: App_1.default
+    };
+    console.log(Object.keys(types).find(key => JFS_1.default.Head instanceof types[key]));
+    JFS_1.default.Head.tsconfig.json(({ compilerOptions: { outDir } }) => {
+        ['scss', 'json'].forEach(extension => new Process_1.default({
+            command: copyfiles,
+            parameters: [
+                '-u', '1', `src/**/*.${extension}`, outDir
+            ],
+            options: { cwd: JFS_1.default.Head.path }
+        }).run());
+        rif.sync({
+            files: [
+                `./${outDir}/**/*.*s`
+            ],
+            from: /from 'Core/gm,
+            to: 'from \'@elumeo/jfs-core/build'
         });
+        new Process_1.default({
+            command: tscAlias,
+            parameters: ['-p', path_1.resolve(JFS_1.default.Head.path, 'tsconfig.json')],
+            options: { cwd: JFS_1.default.Head.path }
+        }).run(instance => instance.stdout.on('data', data => console.log(data.toString())));
     });
-}));
+});
 //# sourceMappingURL=jfs-prebuild.js.map

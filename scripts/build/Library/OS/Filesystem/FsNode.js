@@ -20,7 +20,7 @@ class FsNode {
         this.path = props.path;
         this.predecessors = props.path.split(path_1.sep);
         this.name = this.predecessors[this.predecessors.length - 1];
-        this.parent = this.predecessors.slice(0, this.predecessors.length - 1).join(path_1.sep);
+        this.parent = this.predecessors.slice(0, this.predecessors.length - 1).join(path_1.sep) || path_1.sep;
         this.emitter = new events_1.default;
     }
 }

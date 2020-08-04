@@ -25,5 +25,5 @@ declare class NotificationCard extends React.Component<INotificationCardProps> {
     componentDidMount(): void;
     render(): JSX.Element;
 }
-declare const _default: import("react-redux").ConnectedComponent<typeof NotificationCard, Pick<React.ClassAttributes<NotificationCard> & INotificationCardProps, "key" | "ref"> & INotificationCardProps>;
+declare const _default: import("react-redux").ConnectedComponent<typeof NotificationCard, Pick<React.ClassAttributes<NotificationCard> & INotificationCardProps, "ref" | "key"> & INotificationCardProps>;
 export default _default;

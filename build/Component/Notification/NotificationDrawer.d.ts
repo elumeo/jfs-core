@@ -13,5 +13,5 @@ declare class NotificationDrawer extends React.Component<INotificationDrawerProp
     closeOnESC: (e: React.KeyboardEvent) => void;
     render(): JSX.Element;
 }
-declare const _default: import("react-redux").ConnectedComponent<typeof NotificationDrawer, Pick<React.ClassAttributes<NotificationDrawer> & INotificationDrawerProps, "key" | "ref"> & INotificationDrawerProps>;
+declare const _default: import("react-redux").ConnectedComponent<typeof NotificationDrawer, Pick<React.ClassAttributes<NotificationDrawer> & INotificationDrawerProps, "ref" | "key"> & INotificationDrawerProps>;
 export default _default;

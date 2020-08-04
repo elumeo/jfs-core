@@ -78,6 +78,17 @@ class Directory extends FsNode_1.default {
             this.watcher = chokidar_1.default.watch(this.path, options);
         };
         this.unwatch = () => this.watcher.close();
+        this.trace = (origin = this) => {
+            if (origin.path.length > 1) {
+                return [
+                    ...this.trace(new Directory({ path: origin.parent })),
+                    origin.path
+                ];
+            }
+            else {
+                return [path_1.sep];
+            }
+        };
     }
 }
 exports.default = Directory;

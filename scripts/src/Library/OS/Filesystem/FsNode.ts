@@ -23,7 +23,7 @@ class FsNode {
     this.parent = this.predecessors.slice(
       0,
       this.predecessors.length -1
-    ).join(sep);
+    ).join(sep) || sep;
     this.emitter = new Emitter;
   }
 

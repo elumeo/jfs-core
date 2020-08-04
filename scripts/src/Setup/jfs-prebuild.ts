@@ -7,45 +7,47 @@ const node_modules = resolve(__dirname, '..', '..', 'node_modules');
 const copyfiles = resolve(node_modules, 'copyfiles', 'copyfiles');
 const tscAlias = resolve(node_modules, 'tsc-alias', 'src', 'bin', 'index.js');
 
-JFS.discover(() => JFS.Head.tsconfig.json<TsConfig>(({
-  compilerOptions: { outDir }
-}) => {
-  ['scss', 'json'].forEach(
-    extension => new Process({
-      command: copyfiles,
-      parameters: [
-        '-u', '1', `src/**/*.${extension}`, outDir
-      ],
-      options: { cwd: JFS.Head.path }
-    }).run()
+import Core from 'Library/JFS/Core';
+import Component from 'Library/JFS/Component';
+import App from 'Library/JFS/App';
+
+JFS.discover(() => {
+  const types = {
+    Core,
+    Component,
+    App
+  };
+  console.log(
+    Object.keys(types).find(key => JFS.Head instanceof types[key])
   );
-
-  rif.sync({
-    files: [
-      `./${outDir}/**/*.*s`
-    ],
-    from: /from 'Core/gm,
-    to: 'from \'@elumeo/jfs-core/build'
-  });
-
-  new Process({
-    command: tscAlias,
-    parameters: [],
-    options: { cwd: JFS.Head.path }
-  }).run(instance => {
-    instance.stdout.on(
-      'data',
-      data => console.log(data.toString())
+  JFS.Head.tsconfig.json<TsConfig>(({
+    compilerOptions: { outDir }
+  }) => {
+    ['scss', 'json'].forEach(
+      extension => new Process({
+        command: copyfiles,
+        parameters: [
+          '-u', '1', `src/**/*.${extension}`, outDir
+        ],
+        options: { cwd: JFS.Head.path }
+      }).run()
     );
 
-    instance.on('exit', () => {
-      rif.sync({
-        files: [
-          `./${outDir}/**/*.*s`
-        ],
-        from: /index\/Reducer/gm,
-        to: 'Reducer'
-      });
+    rif.sync({
+      files: [
+        `./${outDir}/**/*.*s`
+      ],
+      from: /from 'Core/gm,
+      to: 'from \'@elumeo/jfs-core/build'
     });
-  });
-}));
+
+    new Process({
+      command: tscAlias,
+      parameters: ['-p', resolve(JFS.Head.path, 'tsconfig.json')],
+      options: { cwd: JFS.Head.path }
+    }).run(instance => instance.stdout.on(
+      'data',
+      data => console.log(data.toString())
+    ));
+  })
+});
