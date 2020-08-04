@@ -14,6 +14,7 @@ const filesNamesToCopy = [
     '.prettierrc',
 ];
 JFS_1.default.discover(() => {
+    console.log(JFS_1.default.Head);
     new Directory_1.default({
         path: path_1.resolve(JFS_1.default.Core.path, 'settings')
     }).files(files => {

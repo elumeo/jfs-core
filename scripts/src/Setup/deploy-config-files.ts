@@ -12,6 +12,7 @@ const filesNamesToCopy = [
 
 JFS.discover(
   () => {
+    console.log(JFS.Head);
     new Directory({
       path: resolve(JFS.Core.path, 'settings')
     }).files(
