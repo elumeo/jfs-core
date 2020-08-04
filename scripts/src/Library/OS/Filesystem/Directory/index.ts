@@ -145,7 +145,7 @@ class Directory extends FsNode {
 
   public unwatch = () => this.watcher.close();
 
-  public trace = (origin: Directory = this) => {
+  public trace = (origin: Directory = this): string[] => {
     if (origin.path.length > 1) {
       return [
         ...this.trace(new Directory({ path: origin.parent })),

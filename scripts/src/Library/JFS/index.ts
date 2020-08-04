@@ -53,12 +53,11 @@ class JFS {
 
     nodePackages.forEach(
       nodePackage => JFS.project(nodePackage, project => {
-        console.log(JFS.projects.length);
         if (project instanceof Core) {
           JFS.Core = project;
         }
         if (!JFS.projects.length) {
-          JFS.Head = JFS.projects[JFS.projects.length -1];
+          JFS.Head = project;
         }
         JFS.projects.push(project);
         if (JFS.projects.length === projects.length) {

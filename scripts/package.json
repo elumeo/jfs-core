@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc && node helper.js",
     "build:watch": "tsc-watch --onCompilationComplete \"node helper.js\"",
-    "postinstall": "tsc && node helper.js && node ./build/Setup/deploy-config-files.js",
+    "postinstall": "node ./build/Setup/deploy-config-files.js",
     "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i"
   },
   "author": "elumeo SE",
@@ -25,7 +25,8 @@
     "replace-in-file": "^3.1.1",
     "rimraf": "^2.6.3",
     "rxjs": "^6.5.2",
-    "simple-git": "^1.107.0"
+    "simple-git": "^1.107.0",
+    "source-map-support": "^0.5.19"
   },
   "devDependencies": {
     "@types/ansi-colors": "^3.2.2",
