@@ -1,4 +1,10 @@
-type CompilerOptions = {
+export namespace CompilerOptions {
+  export type Paths = {
+    [key: string]: string[];
+  }
+}
+
+export type CompilerOptions = {
   outDir: string;
   baseUrl: string;
   paths: {

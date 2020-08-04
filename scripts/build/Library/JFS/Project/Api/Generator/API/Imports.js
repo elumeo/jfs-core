@@ -10,7 +10,7 @@ Imports.generate = ({ webSocketClient, core }) => Render_1.default.Text.lines(Re
     what: 'JscClient',
     from: (core
         ? '../Client'
-        : 'Core/Jsc/Client')
+        : '@elumeo/jfs-core/build/Jsc/Client')
 }), ...(webSocketClient
     ? [
         Render_1.default.EcmaScript.import({ what: '{ Subject }', from: 'rxjs' }),
@@ -22,13 +22,13 @@ Imports.generate = ({ webSocketClient, core }) => Render_1.default.Text.lines(Re
             what: '{ ROOM_UPDATE_ACTION_ID }',
             from: (core
                 ? 'Action/WebSocketAction'
-                : 'Core/Store/Action/WebSocketAction')
+                : '@elumeo/jfs-core/build/Store/Action/WebSocketAction')
         }),
         Render_1.default.EcmaScript.import({
             what: '{ IWebSocketRoom }',
             from: (core
                 ? 'Store/Reducer/Core/WebSocketConnectionReducer'
-                : 'Core/Store/Reducer/Core/WebSocketConnectionReducer')
+                : '@elumeo/jfs-core/build/Store/Reducer/Core/WebSocketConnectionReducer')
         }),
     ]
     : []));

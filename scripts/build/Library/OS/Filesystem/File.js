@@ -45,6 +45,9 @@ class File extends FsNode_1.default {
                 }
             });
         };
+        this.save = (json, onComplete) => {
+            this.write(JSON.stringify(json, null, 2), onComplete);
+        };
         this.remove = onComplete => this.exists() && fs_1.unlink(this.path, (error) => {
             if (error) {
                 throw error;

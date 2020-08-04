@@ -80,6 +80,13 @@ class File extends FsNode {
       )
     };
 
+    public save = <T>(json: T, onComplete: () => void) => {
+      this.write(
+        JSON.stringify(json, null, 2),
+        onComplete
+      );
+    }
+
     public remove: File.Remove = onComplete => this.exists() && unlink(
       this.path,
       (error: NodeJS.ErrnoException) => {

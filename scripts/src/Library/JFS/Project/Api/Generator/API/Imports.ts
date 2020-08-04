@@ -15,7 +15,7 @@ class Imports {
       from: (
         core
           ? '../Client'
-          : 'Core/Jsc/Client'
+          : '@elumeo/jfs-core/build/Jsc/Client'
       )
     }),
     ...(
@@ -31,7 +31,7 @@ class Imports {
             from: (
               core
                 ? 'Action/WebSocketAction'
-                : 'Core/Store/Action/WebSocketAction'
+                : '@elumeo/jfs-core/build/Store/Action/WebSocketAction'
             )
           }),
           Render.EcmaScript.import({
@@ -39,7 +39,7 @@ class Imports {
             from: (
               core
                 ? 'Store/Reducer/Core/WebSocketConnectionReducer'
-                : 'Core/Store/Reducer/Core/WebSocketConnectionReducer'
+                : '@elumeo/jfs-core/build/Store/Reducer/Core/WebSocketConnectionReducer'
             )
           }),
         ]
