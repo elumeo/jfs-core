@@ -1,3 +1,9 @@
+## [9.1.2] - 2020-08-04
+
+### Bugfix
+
+-- Fixed build pipeline for jfc-components
+
 ## [9.1.0] - 2020-07-31
 
 ### Bugfix
