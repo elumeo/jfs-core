@@ -1,4 +1,4 @@
-## jfs-core 9
+# jfs-core 9
 
 ## Install the core
 - run `npm i` to install all required modules for the core and submodule (scripts) system
@@ -15,9 +15,11 @@
 
 ### Frontend structure
 
-##### Usage of types instead of interfaces - [Why?](https://medium.com/@koss_lebedev/type-aliases-vs-interfaces-in-typescript-based-react-apps-e77c9a1d5fd0)
+#### Usage of types instead of interfaces
+- check this [article](https://medium.com/@koss_lebedev/type-aliases-vs-interfaces-in-typescript-based-react-apps-e77c9a1d5fd0) which is about pros and cons
+- IMPORTANT: This is TBD!!! 
 
-##### Usage of [namespace merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#merging-namespaces)
+#### Usage of [namespace merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#merging-namespaces)
 
 - transport type definitions together with apis that use them
 
@@ -30,19 +32,20 @@ type ExtendedType = Popover.Props & {
 };
 ```
 
-##### New directories 'Types' & 'Constant'
+#### New directories 'Types' & 'Constant'
 
 - root directories (with path aliases) for defining types and constants
 
-##### Moved files
+#### Moved files
 - JscClient: ```'Core/Base/JscClient'``` -> ```'Jsc/Client'```
 - Translations: ```'Core/Base/Translation'``` -> ```'Core/Utilities/Format/Translations'```
 - Toast utilities (timeToRead(), constants) ```'Core/Base/Utilities'``` -> ```'Core/Constant/Toast'```, ```'Core/Component/Snackbar/TimeToRead'```
 - IConfig: ```'Core/Base/IConfig'``` -> ```'Core/Types/Configuration'```
 - INotification: ```'Core/Store/Reducer/Notification'``` -> ```'Core/Types/Notification'```
 
-##### Generating the JSC api
+### Core Scripts
 
+#### Generating the JSC api
 - makes use of the new api description rest endpoint
 - each generation will also create a ```description.json``` file which is used to determine if changes have happened in the backend when running 'jsc-check' or 'jsc-generate'
 - slightly changed structure of configuration
@@ -61,7 +64,14 @@ type ExtendedType = Popover.Props & {
 ```
 - configuration moved: ```Jsc/JscApiConfig.json``` -> ```Jsc/Api/config.json```
 
-##### Store structure
+#### Adding a new icon to the juwelo icon font
+- to add a new icon to the juwelo icon font we need the new icon as a svg graphic
+- put this file into the core directory `scripts/Resources/juwelo-icon-font/svg`
+- in the terminal use the command: `npm run generate-juwelo-icon-font`
+- this command will automatically check the directory `scripts/Resources/juwelo-icon-font/svg` and will generate a new icon font including all files in this directory
+- the filename is also the css class name to access the font icon
+
+### Store structure
 
 - Core reducer as combinedReducer
 
@@ -90,7 +100,7 @@ type ExtendedType = Popover.Props & {
 }
 ```
 
-##### Usage of jfc components
+### Usage of jfc components
 
 - jfs-core does **not** automatically combine jfc reducers to it's reducer anymore
 - instead you should create your own namespace in the global reducer (in the app) like this:

@@ -1,3 +1,7 @@
+## [9.1.4] - 2020-08-05
+### Changes
+- Added new juwelo font icon for bid block
+
 ## [9.1.3] - 2020-08-05
 ### Changes
 - Updating the document.title is now optional on BaseRoute
@@ -183,8 +187,8 @@
 ## [8.10.0] - 2020-04-30
 ### Added
 - Compatibility mode for react-intl
-- <FormattedMessage/> component
-- <Popover/> component
+- `<FormattedMessage/>` component
+- `<Popover/>` component
 - New Utilities class
 - redux-providers for easy access to store
 

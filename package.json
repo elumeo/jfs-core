@@ -1,12 +1,13 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "9.1.3",
+  "version": "9.1.4",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
     "build": "tsc && node scripts/build/Setup/jfs-prebuild.js",
     "build:watch": "tsc-watch --onCompilationComplete \"node scripts/build/Setup/jfs-prebuild.js\"",
     "jsc-generate": "node ./scripts/build/Setup/jsc-generate.js",
+    "generate-juwelo-icon-font": "node ./scripts/build/Setup/generate-juwelo-icon-font.js",
     "jsc-check": "node ./scripts/build/Setup/Check/Api.js",
     "release": "npm publish --access public",
     "postinstall": "subpkg install",
