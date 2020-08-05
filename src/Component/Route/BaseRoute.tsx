@@ -5,22 +5,29 @@ import International from '../International';
 export type IBaseRouteProps = RouteProps & {
   Component?: () => JSX.Element;
   translationId?: string;
+  updateDocumentTitle?: boolean;
 }
 
-const BaseRoute: React.FC<IBaseRouteProps> = ({
-  Component,
-  translationId,
-  ...rest
-}) => {
+const BaseRoute: React.FC<IBaseRouteProps> = (
+  {
+    Component,
+    translationId,
+    updateDocumentTitle,
+    ...rest
+  }
+) => {
   if (Component) {
     rest.component = Component;
   }
   return (
     <International>
       {({ formatMessage }) => {
-        document.title = formatMessage({id: 'app.title'});
-        if (translationId) {
-          document.title += ' | ' + formatMessage({id: translationId});
+        if (updateDocumentTitle === true) {
+          if (translationId) {
+            document.title += ' | ' + formatMessage({ id: translationId });
+          } else {
+            document.title = formatMessage({ id: 'app.title' });
+          }
         }
         return <Route {...rest}/>;
       }}

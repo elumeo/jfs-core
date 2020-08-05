@@ -1,3 +1,7 @@
+## [8.15.12] - 2020-08-05
+### Changes
+- Updating the document.title is now optional on BaseRoute
+
 ## [8.15.11] - 2020-06-10
 ### Bugfix
 - Added onClear callback property to SearchComponent
