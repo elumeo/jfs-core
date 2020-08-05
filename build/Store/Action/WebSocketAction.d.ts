@@ -1,0 +1,16 @@
+import JSCApi from '../../Jsc/Api';
+import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/Core/WebSocketConnectionReducer';
+export declare const ROOM_UPDATE_ACTION_ID: string;
+export declare const webSocketAddNamespaceAction: import("typesafe-actions").PayloadAC<string, string>;
+export declare const webSocketConnectRequestAction: import("typesafe-actions").PayloadAC<string, string>;
+export declare const webSocketConnectSuccessAction: import("typesafe-actions").PayloadAC<string, string>;
+export declare const webSocketConnectFailedAction: import("typesafe-actions").PayloadAC<string, IWebSocketError>;
+export declare const webSocketDisconnectRequestAction: import("typesafe-actions").PayloadAC<string, string>;
+export declare const webSocketDisconnectSuccessAction: import("typesafe-actions").PayloadAC<string, string>;
+export declare const webSocketJoinRoomRequestAction: import("typesafe-actions").PayloadAC<string, IWebSocketRoom<string>>;
+export declare const webSocketJoinRoomLoadingAction: import("typesafe-actions").PayloadAC<string, IWebSocketRoomConnection>;
+export declare const webSocketJoinRoomSuccessAction: import("typesafe-actions").PayloadAC<string, IWebSocketRoomConnection>;
+export declare const webSocketJoinRoomFailureAction: import("typesafe-actions").PayloadAC<string, IWebSocketRoomConnection>;
+export declare const webSocketLeaveRoomRequestAction: import("typesafe-actions").PayloadAC<string, IWebSocketRoom<string>>;
+export declare const webSocketLeaveRoomSuccessAction: import("typesafe-actions").PayloadAC<string, IWebSocketRoom<string>>;
+export declare const webSocketUpdateRoomAction: import("typesafe-actions").PayloadAC<string, JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>;

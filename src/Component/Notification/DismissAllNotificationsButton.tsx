@@ -2,8 +2,8 @@ import React from 'react';
 import { Button } from 'react-md';
 import { connect } from 'react-redux';
 import { dismissAllNotificationsAction } from '../../Store/Action/NotificationAction';
-import { INotification } from '../../Store/Reducer/NotificationReducer';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import { INotification } from '../../Types/Notification';
+import Global from '../../Store/Reducer/Global';
 
 export interface IDismissAllNotificationsButtonProps {
   notifications?: INotification[];
@@ -23,10 +23,10 @@ const DismissAllNotificationsButton: React.FC<IDismissAllNotificationsButtonProp
 );
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: IDismissAllNotificationsButtonProps
 ): IDismissAllNotificationsButtonProps => ({
-  ...state.notificationReducer,
+  ...state.Core.Notification,
   ...ownProps
 });
 

@@ -1,0 +1,13 @@
+import { Epic } from 'redux-observable';
+export declare const webSocketAppIsInitializedEpic: Epic;
+export declare const webSocketConnectRequestEpic: Epic;
+export declare const webSocketLogoutEpic: Epic;
+export declare const webSocketCheckForConnectionErrorEpic: Epic;
+export declare const webSocketCheckForReconnectEpic: Epic;
+export declare const webSocketConnectSuccessEpic: Epic;
+export declare const webSocketDisconnectRequestEpic: Epic;
+export declare const webSocketJoinRoomRequestEpic: Epic;
+export declare const webSocketJoinRoomLoadingEpic: Epic;
+export declare const webSocketLeaveRoomRequestEpic: Epic;
+declare const _default: Epic<any, any, any, any>;
+export default _default;

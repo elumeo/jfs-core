@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Button from 'react-md/lib/Buttons/Button';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 
 import { openNavigation, closeNavigation } from '../../Store/Action/NavigationAction';
 
@@ -28,11 +28,11 @@ const NavigationButton: React.FC<INavigationButtonProps> = ({
 )
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: INavigationButtonProps
 ): INavigationButtonProps => ({
   ...ownProps,
-  ...state.navigationReducer
+  ...state.Core.Navigation
 });
 
 const enhance = connect(mapStateToProps, {openNavigation, closeNavigation});

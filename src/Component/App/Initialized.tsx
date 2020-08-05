@@ -2,19 +2,20 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { HashRouter } from 'react-router-dom';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-
 import './Initialized.scss';
 
-export interface IInitializedProps {
-  language?: string;
-  messages?: { [language: string]: { [key: string]: string } };
-  appInitialized?: boolean;
+namespace Initialized {
+  export type Props = {
+    language?: string;
+    messages?: { [language: string]: { [key: string]: string } };
+    appInitialized?: boolean;
+  }
 }
 
-const Initialized: React.FC<IInitializedProps> = ({
+const Initialized: React.FC<Initialized.Props> = ({
   language,
   messages,
   children,
@@ -42,13 +43,13 @@ const Initialized: React.FC<IInitializedProps> = ({
 
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
-  ownProps: IInitializedProps
-): IInitializedProps => ({
+  state: Global.State,
+  ownProps: Initialized.Props
+): Initialized.Props => ({
   ...ownProps,
-  language: state.languageReducer.language,
-  appInitialized: state.appReducer.appInitialized,
-  messages: state.languageReducer.messages
+  language: state.Core.Language.language,
+  appInitialized: state.Core.App.appInitialized,
+  messages: state.Core.Language.messages
 });
 
 const enhance = compose(

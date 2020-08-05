@@ -1,35 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import './Content.scss';
 
-export interface IContentProps {
-  splitViewEnabled?: boolean;
-}
-
-class Content extends React.Component<IContentProps> {
-  render() {
-    const { props: { children, splitViewEnabled } } = this;
-
-    const contentClassName = [
-      `authorized-content`,
-      splitViewEnabled ? 'split-view--active' : ''
-    ].join(' ');
-
-    return (
-      <div className={contentClassName}>
-        {children}
-      </div>
-    );
+namespace Content {
+  export type Props = {
+    splitViewEnabled?: boolean;
   }
 }
 
+const Content: React.FC<Content.Props> = ({
+  children, splitViewEnabled
+}) => {
+  const contentClassName = [
+    `authorized-content`,
+    splitViewEnabled ? 'split-view--active' : ''
+  ].join(' ');
+
+  return (
+    <div className={contentClassName}>
+      {children}
+    </div>
+  );
+}
+
 const mapStateToProps = (
-  state: ICoreRootReducer,
-  ownProps: IContentProps
-): IContentProps => ({
-  ...state.splitViewReducer,
+  state: Global.State,
+  ownProps: Content.Props
+): Content.Props => ({
+  ...state.Core.SplitView,
   ...ownProps,
 });
 

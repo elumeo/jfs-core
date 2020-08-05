@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import DialogContainer from 'react-md/lib/Dialogs';
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { checkLogin } from '../../Store/Action/LoginAction';
-
 import './LoginDialog.scss';
 
 interface ILoginDialogProps {
@@ -46,20 +45,20 @@ const LoginDialog: React.FC<ILoginDialogProps> = ({
 }
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: ILoginDialogProps
 ): ILoginDialogProps => ({
   ...ownProps,
-  isAuthorized: state.sessionReducer.isAuthorized,
-  isCheckingSession: state.sessionReducer.isCheckingSession,
-  routeType: state.routerReducer.routeType,
+  isAuthorized: state.Core.Session.isAuthorized,
+  isCheckingSession: state.Core.Session.isCheckingSession,
+  routeType: state.Core.Router.routeType,
   robotLoginAvailable: (
-    state.configReducer.config && (
-      state.configReducer.config.RobotUsername &&
-      state.configReducer.config.RobotPassword
+    state.Core.Configuration.config && (
+      state.Core.Configuration.config.RobotUsername &&
+      state.Core.Configuration.config.RobotPassword
     ) &&
-    state.appReducer.allowRobotLogin &&
-    !state.loginReducer.failedLogins
+    state.Core.App.allowRobotLogin &&
+    !state.Core.Login.failedLogins
   )
 });
 

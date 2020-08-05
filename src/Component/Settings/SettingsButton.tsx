@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Button from 'react-md/lib/Buttons/Button';
 
 import { closeSettings, openSettings } from '../../Store/Action/SettingsAction';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 
 export interface ISettingsButtonProps {
   settingsOpen?: boolean;
@@ -24,11 +24,11 @@ const SettingsButton: React.FC<ISettingsButtonProps> = ({
 );
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: ISettingsButtonProps
 ): ISettingsButtonProps => ({
   ...ownProps,
-  settingsOpen: state.settingsReducer.settingsOpen
+  settingsOpen: state.Core.Settings.settingsOpen
 });
 
 const enhance = connect(mapStateToProps, {openSettings, closeSettings});

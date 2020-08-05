@@ -8,7 +8,7 @@ import { History } from 'history';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import { closeNavigation } from '../../Store/Action/NavigationAction';
 import International from '../International';
 
@@ -68,11 +68,11 @@ const NavigationItem: React.FC<INavigationItemProps> = ({
 };
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: INavigationItemProps
 ): INavigationItemProps => ({
   ...ownProps,
-  isAuthorized: state.sessionReducer.isAuthorized
+  isAuthorized: state.Core.Session.isAuthorized
 });
 
 const enhance = compose(

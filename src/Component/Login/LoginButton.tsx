@@ -1,15 +1,14 @@
 import React from 'react';
-
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import { connect } from 'react-redux';
-import { ICoreRootReducer } from '../../Store/Reducer';
-import { checkLogin, ICheckLoginPayload } from '../../Store/Action/LoginAction';
-import International from '../International';
+import International from 'Component/International';
+import Global from '../../Store/Reducer/Global';
+import { checkLogin } from '../../Store/Action/LoginAction';
 
 export interface ILoginButtonProps {
   isCheckingLogin?: boolean;
-  checkLogin?: (payload: ICheckLoginPayload) => void;
+  checkLogin?: (payload: checkLogin.Payload) => void;
   username?: string;
   password?: string;
 }
@@ -36,13 +35,13 @@ const LoginButton: React.FC<ILoginButtonProps> = ({
 );
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: ILoginButtonProps
 ): ILoginButtonProps => ({
   ...ownProps,
-  isCheckingLogin: state.loginReducer.isCheckingLogin,
-  username: state.loginReducer.username,
-  password: state.loginReducer.password
+  isCheckingLogin: state.Core.Login.isCheckingLogin,
+  username: state.Core.Login.username,
+  password: state.Core.Login.password
 });
 
 const enhance = connect(mapStateToProps, { checkLogin });

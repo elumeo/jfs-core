@@ -1,20 +1,17 @@
 import React from 'react';
 import TextField from 'react-md/lib/TextFields/TextField';
 import { connect } from 'react-redux';
-import {
-  checkLogin, ICheckLoginPayload,
-  updateCredentials, IUpdateCredentialsPayload
-} from '../../Store/Action/LoginAction';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import { checkLogin, updateCredentials } from 'Action/LoginAction';
+import Global from '../../Store/Reducer/Global';
 
-import International from '../International';
+import International from 'Component/International';
 
 export interface ILoginCredentialsProps {
   language?: string;
   username?: string;
   password?: string;
-  checkLogin?: (payload: ICheckLoginPayload) => void;
-  updateCredentials?: (payload: IUpdateCredentialsPayload) => void;
+  checkLogin?: (payload: checkLogin.Payload) => void;
+  updateCredentials?: (payload: updateCredentials.Payload) => void;
 }
 
 const LoginCredentials: React.FC<ILoginCredentialsProps> = ({
@@ -47,13 +44,13 @@ const LoginCredentials: React.FC<ILoginCredentialsProps> = ({
 );
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: ILoginCredentialsProps
 ): ILoginCredentialsProps => ({
   ...ownProps,
-  username: state.loginReducer.username,
-  password: state.loginReducer.password,
-  language: state.languageReducer.language
+  username: state.Core.Login.username,
+  password: state.Core.Login.password,
+  language: state.Core.Language.language
 });
 
 const enhance = connect(mapStateToProps, { updateCredentials, checkLogin });

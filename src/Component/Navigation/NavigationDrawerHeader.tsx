@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Toolbar from 'react-md/lib/Toolbars';
 
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 import NavigationButton from './NavigationButton';
 
 export interface INavigationDrawerHeaderProps {
@@ -15,18 +15,17 @@ const NavigationDrawerHeader: React.FC<INavigationDrawerHeaderProps> = ({
   <Toolbar
     actions={<NavigationButton iconName="arrow_back"/>}
     className="md-divider-border md-divider-border--bottom"
-    title={username ? username : ''}
-  />
+    title={username ? username : ''}/>
 );
 
 const mapStateToProps = (
-  state: ICoreRootReducer,
+  state: Global.State,
   ownProps: INavigationDrawerHeaderProps
 ): INavigationDrawerHeaderProps => ({
   ...ownProps,
   username: (
-    state.sessionReducer.sessionDTO &&
-    state.sessionReducer.sessionDTO.username
+    state.Core.Session.sessionDTO &&
+    state.Core.Session.sessionDTO.username
   )
 });
 

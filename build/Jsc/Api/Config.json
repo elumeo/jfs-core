@@ -1,0 +1,21 @@
+{
+  "local": {
+    "namespace": "JSCApi"
+  },
+  "remote": {
+    "SystemController": ["getRegion"],
+    "SessionController": [
+      "getCurrentSessionFrontend",
+      "logout"
+    ],
+    "LoginController": [
+      "loginFrontend"
+    ],
+    "UserController": [
+      "getUserRights"
+    ],
+    "WebSocketController": [
+      "subscribePingRoom"
+    ]
+  }
+}

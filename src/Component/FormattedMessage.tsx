@@ -1,7 +1,8 @@
 import React, { PropsWithChildren } from 'react';
-import Translations from '../Utilities/Format/Translations';
+import Translations from 'Utilities/Format/Translations';
 import ReactDOMServer from 'react-dom/server';
-import TranslationsProvider from '../Store/Provider/Translations';
+import Global from 'Store/Reducer/Global';
+import { connect } from 'react-redux';
 
 namespace FormattedMessage {
   export type Props<T> = PropsWithChildren<{
@@ -20,26 +21,29 @@ const FormattedMessage = <T, >({
 }: FormattedMessage.Props<T>): JSX.Element => {
   const mappedValues = mapValues && mapValues(values) || values;
   return (
-    <TranslationsProvider>
-      {() => (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: Translations.formatMessage(
-              { id },
-              Object.keys(mappedValues).reduce(
-                (markedUpValues, key) => ({
-                  ...markedUpValues,
-                  [key]: ReactDOMServer.renderToString(
-                    <>{mappedValues[key]}</>
-                  )
-                }),
-                {}
+    <span
+      dangerouslySetInnerHTML={{
+        __html: Translations.formatMessage(
+          { id },
+          Object.keys(mappedValues).reduce(
+            (markedUpValues, key) => ({
+              ...markedUpValues,
+              [key]: ReactDOMServer.renderToString(
+                <>{mappedValues[key]}</>
               )
-            )
-          }}/>
-      )}
-    </TranslationsProvider>
+            }),
+            {}
+          )
+        )
+      }}/>
   );
 };
 
-export default FormattedMessage;
+const enhance = connect(
+  <T, >(state: Global.State, ownProps: FormattedMessage.Props<T>) => ({
+    ...ownProps,
+    state: state.Core.Language
+  })
+);
+
+export default enhance(FormattedMessage);

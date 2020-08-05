@@ -1,6 +1,77 @@
-## [8.15.12] - 2020-08-05
+## [9.1.2] - 2020-08-04
+
+### Bugfix
+
+-- Fixed build pipeline for jfc-components
+
+## [9.1.0] - 2020-07-31
+
+### Bugfix
+
+-- fixes for jsc-generate to follow the given format
+
+## [9.1.0] - 2020-07-29
+
+### Added
+
+-- jfs-prebuild script for transpiling the core and jfc components
+
+## [9.0.10] - 2020-07-29
+
+### Bugfix
+-- Support for deep nested DTO namespaces in jsc-generate
+
+## [9.0.9] - 2020-07-28
+
+### Bugfix
+- Exported history
+
+## [9.0.7] - 2020-07-14
+
+### Bugfix
+- Fixed WebSocketConnection props
+
+## [9.0.7] - 2020-07-13
+
+### Bugfix
+- Fixed generation of array type resources in jsc-generate
+
+## [9.0.6] - 2020-07-10
+
+### Bugfix
+- Made all generated properties optional in jsc-generate
+
+## [9.0.5] - 2020-07-10
+
+### Bugfix
+- Fix for formatting url in jsc-generate
+
+## [9.0.4] - 2020-06-26
+
+### Bugfix
+- Fixes for build pipeline
+
+## [9.0.3] - 2020-06-26
+
+### Bugfix
+- Fixes for build pipeline
+
+## [9.0.2] - 2020-06-26
+
+### Bugfix
+- Fixes for build pipeline
+
+## [8.15.14] - 2020-08-05
 ### Changes
 - Updating the document.title is now optional on BaseRoute
+
+## [8.15.13] - 2020-06-18
+### Bugfix
+- Fixed deploy-config-files script when running on windows
+
+## [8.15.12] - 2020-06-18
+### Bugfix
+- Fixed deploy-config-files script when running on windows
 
 ## [8.15.11] - 2020-06-10
 ### Bugfix

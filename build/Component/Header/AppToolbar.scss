@@ -1,0 +1,45 @@
+.tools {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .left-tools {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    > * {
+      margin-left: 14px;
+    }
+  }
+
+  .right-tools {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    > * {
+      margin-right: 14px;
+    }
+
+    > *:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .tool {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}

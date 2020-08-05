@@ -5,7 +5,7 @@ import {
   pinNotificationDrawerAction,
   unpinNotificationDrawerAction
 } from '../../Store/Action/NotificationAction';
-import { ICoreRootReducer } from '../../Store/Reducer';
+import Global from '../../Store/Reducer/Global';
 
 export interface ISplitViewButtonProps {
   notificationDrawerPinned?: boolean;
@@ -13,36 +13,29 @@ export interface ISplitViewButtonProps {
   unpinNotificationDrawerAction?: typeof unpinNotificationDrawerAction;
 }
 
-class SplitViewButton extends React.Component<ISplitViewButtonProps> {
-  render() {
-    const {
-      props: {
-        notificationDrawerPinned,
-        pinNotificationDrawerAction,
-        unpinNotificationDrawerAction
-      }
-    } = this;
-    return (
-      <Button
-        icon
-        primary={notificationDrawerPinned}
-        className="split-view-button"
-        onClick={() => (
-          notificationDrawerPinned
-            ? unpinNotificationDrawerAction()
-            : pinNotificationDrawerAction()
-        )}>
-        vertical_split
-      </Button>
-    );
-  }
-}
+const SplitViewButton: React.FC<ISplitViewButtonProps> = ({
+  notificationDrawerPinned,
+  pinNotificationDrawerAction,
+  unpinNotificationDrawerAction
+}) => (
+  <Button
+    icon
+    primary={notificationDrawerPinned}
+    className="split-view-button"
+    onClick={() => (
+      notificationDrawerPinned
+        ? unpinNotificationDrawerAction()
+        : pinNotificationDrawerAction()
+    )}>
+    vertical_split
+  </Button>
+);
 
 const mapStateToProps = (
-  store: ICoreRootReducer,
+  store: Global.State,
   ownProps: ISplitViewButtonProps
 ): ISplitViewButtonProps => ({
-  ...store.notificationReducer,
+  ...store.Core.Notification,
   ...ownProps
 });
 

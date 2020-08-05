@@ -1,6 +1,6 @@
 import { createStandardAction } from 'typesafe-actions';
-import JSCApi from '../../Jsc/JscApi';
-import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/WebSocketConnectionReducer';
+import JSCApi from 'Jsc/Api';
+import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/Core/WebSocketConnectionReducer';
 
 const featureName = 'websocket';
 export const ROOM_UPDATE_ACTION_ID = featureName + '/UPDATE_ROOM';
