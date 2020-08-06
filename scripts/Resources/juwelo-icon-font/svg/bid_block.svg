@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>bid_block</title>
+    <g id="bid_block" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="gavel" transform="translate(7.000000, 7.000000)" fill="#000000" fill-rule="nonzero">
+            <path d="M2.2896162,6.93218954 L6.79279491,11.5661765 L4.54080527,13.8643791 L0,9.26879085 L2.2896162,6.93218954 Z M9.08161055,0 L13.5847893,4.63398693 L11.3327996,6.93218954 L6.79199435,2.33660131 L9.08161055,0 Z M3.41521074,5.78349673 L5.66720038,3.48529412 L17,15.0506536 L14.7480104,17.3488562 L3.41521074,5.78349673 Z M8.8817842e-16,16.3529412 L9.60678126,16.3529412 L9.60678126,18 L8.8817842e-16,18 L8.8817842e-16,16.3529412 Z" id="Shape"></path>
+        </g>
+        <g id="not_allowed" transform="translate(2.000000, 2.000000)" stroke="#000000" stroke-width="2">
+            <circle id="Oval" cx="14" cy="14" r="13"></circle>
+            <line x1="5" y1="23" x2="23" y2="5" id="Line" stroke-linecap="square"></line>
+        </g>
+    </g>
+</svg>

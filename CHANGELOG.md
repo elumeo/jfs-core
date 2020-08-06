@@ -1,3 +1,7 @@
+## [9.1.5] - 2020-08-06
+### Changes
+- Added new juwelo font icons: multiple sources, cash_on_delivery, cash_in_advance
+
 ## [9.1.4] - 2020-08-05
 ### Changes
 - Added new juwelo font icon for bid block
