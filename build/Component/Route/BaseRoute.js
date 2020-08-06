@@ -13,14 +13,18 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import International from '../International';
 const BaseRoute = (_a) => {
-    var { Component, translationId } = _a, rest = __rest(_a, ["Component", "translationId"]);
+    var { Component, translationId, updateDocumentTitle } = _a, rest = __rest(_a, ["Component", "translationId", "updateDocumentTitle"]);
     if (Component) {
         rest.component = Component;
     }
     return (React.createElement(International, null, ({ formatMessage }) => {
-        document.title = formatMessage({ id: 'app.title' });
-        if (translationId) {
-            document.title += ' | ' + formatMessage({ id: translationId });
+        if (updateDocumentTitle === true) {
+            if (translationId) {
+                document.title += ' | ' + formatMessage({ id: translationId });
+            }
+            else {
+                document.title = formatMessage({ id: 'app.title' });
+            }
         }
         return React.createElement(Route, Object.assign({}, rest));
     }));
