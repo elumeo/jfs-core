@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "9.1.5",
+  "version": "9.1.6",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
@@ -150,6 +150,7 @@
     "fontagon": "^1.0.9",
     "ncp": "^2.0.0",
     "rimraf": "^2.6.3",
+    "tsc-watch": "^4.2.9",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.0"
   },
