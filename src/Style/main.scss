@@ -35,6 +35,14 @@ body {
   border-bottom: 2px solid $juw-grey-300;
 }
 
+.ReactVirtualized__Table__row{
+  border-bottom: 1px solid $juw-grey-300;
+
+  &:hover{
+    background-color: $juw-grey-300;
+  }
+}
+
 /* disable material design color warnings */
 $md-colors-warn-md: false;
 
