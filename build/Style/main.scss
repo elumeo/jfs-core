@@ -25,7 +25,7 @@ body {
   }
 }
 
-.ReactVirtualized__Table__headerColumn{
+.ReactVirtualized__Table__headerColumn {
   outline: none;
   color: $juw-grey-700;
   text-transform: none;
@@ -33,17 +33,17 @@ body {
   align-self: flex-end;
 }
 
-.ReactVirtualized__Table__row{
+.ReactVirtualized__Table__headerRow {
+  border-bottom: 2px solid $juw-grey-300 !important;
+}
+
+.ReactVirtualized__Table__row {
   border-bottom: 1px solid $juw-grey-300;
   outline: none;
 
   &:hover{
     background-color: $juw-grey-300;
   }
-}
-
-.ReactVirtualized__Table__headerRow {
-  border-bottom: 2px solid $juw-grey-300 !important;
 }
 
 /* disable material design color warnings */
