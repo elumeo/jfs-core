@@ -1,3 +1,8 @@
+## [9.1.7] - 2020-08-07
+### Changes
+- Added more juwelo font icons
+- changed default font size for juwelo font icons from 24px to 20px
+
 ## [9.1.6] - 2020-08-06
 ### Changes
 - Added more juwelo font icons
