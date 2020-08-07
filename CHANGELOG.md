@@ -2,6 +2,7 @@
 ### Changes
 - Added more juwelo font icons
 - changed default font size for juwelo font icons from 24px to 20px
+- Implemented some default styling for font size and react virtualized tables
 
 ## [9.1.6] - 2020-08-06
 ### Changes

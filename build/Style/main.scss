@@ -8,6 +8,8 @@ $md-primary-color: $juw-primary;
 $md-secondary-color: $juw-secondary;
 $md-error-color: $juw-error-color;
 
+$juwelo-default-font-size: 13px;
+
 html {
   background: $juw-quarz-500 !important;
 }
@@ -16,6 +18,23 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+
+  p, span, div{
+    font-size: 13px;
+  }
+}
+
+.ReactVirtualized__Table__headerColumn{
+  outline: none;
+  color: $juw-grey-700;
+  text-transform: none;
+  font-weight: normal;
+  align-self: flex-end;
+}
+
+.ReactVirtualized__Table__headerRow {
+  border-bottom: 2px solid $juw-grey-300 !important;
 }
 
 /* disable material design color warnings */
