@@ -8,8 +8,6 @@ $md-primary-color: $juw-primary;
 $md-secondary-color: $juw-secondary;
 $md-error-color: $juw-error-color;
 
-$juwelo-default-font-size: 13px;
-
 html {
   background: $juw-quarz-500 !important;
 }
@@ -34,7 +32,7 @@ body {
 }
 
 .ReactVirtualized__Table__headerRow {
-  border-bottom: 2px solid $juw-grey-300 !important;
+  border-bottom: 2px solid $juw-grey-300;
 }
 
 .ReactVirtualized__Table__row {

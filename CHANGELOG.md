@@ -1,3 +1,7 @@
+## [9.1.8] - 2020-08-10
+### Bugfix
+- Added missing build files
+
 ## [9.1.7] - 2020-08-07
 ### Changes
 - Added more juwelo font icons
