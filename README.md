@@ -6,6 +6,12 @@
 
 ## Using jfs-core in another project
 
+### Dependencies
+
+- all dependencies that are used outside of the core have to be listed in the ```dependencies``` in package.json
+- webpack creates a dependency graph for the build -> bundle size is not effected
+- jfc components only have a peer dependency to the core
+
 ### Transpilation and compilation
 
 - jfs-core 9 is going to be **pretranspiled** to JavaScript
@@ -17,7 +23,6 @@
 
 #### Usage of types instead of interfaces
 - check this [article](https://medium.com/@koss_lebedev/type-aliases-vs-interfaces-in-typescript-based-react-apps-e77c9a1d5fd0) which is about pros and cons
-- IMPORTANT: This is TBD!!! 
 
 #### Usage of [namespace merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#merging-namespaces)
 
@@ -193,6 +198,17 @@ type ExtendedType = Popover.Props & {
 
   results --> ```'@elumeo/jfs-core/scripts/build'```
 
+##### How to synchronise & build the core
+
+- run ```npm run build:watch``` in jfs-core
+- run ```npm run sync-development``` in your jfs app or your jfc component (see "Synchronization of projects")
+- add as many apps and components for synchronisation as you want
+
+##### How to synchronise & build while working on the core, a component and an app
+
+- run ```npm run build:watch``` in your component and the core
+- run ```npm run sync-development``` in your app and your component
+
 ##### New environment detection
 
 - running JFS.discover()
@@ -202,6 +218,6 @@ type ExtendedType = Popover.Props & {
 
 ---
 
-## Furture
+## Future
 
 - **9.1**: integration of showcase app as new way to access the documentation for jfs-core
