@@ -11,6 +11,7 @@ spawn(
   ['-u', '1', 'src/**/*.scss', 'build'],
   { cwd }
 );
+
 const tscAliasProcess = spawn(
   tscAlias,
   [],
