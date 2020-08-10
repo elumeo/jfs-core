@@ -6,19 +6,36 @@ import Global from '../../Store/Reducer/Global';
 
 export interface IJuweloFontIconProps {
   icon: string;
+  error?: boolean;
+  light?: boolean;
 }
 
-const JuweloFontIcon: React.FC<IJuweloFontIconProps> = ({
-  icon
-}) => {
-  const className = 'juwelo-icon-font jif-' + icon;
+const JuweloFontIcon: React.FC<IJuweloFontIconProps> = (
+  {
+    icon,
+    error,
+    light
+  }
+) => {
+  error = error === undefined ? false : error;
+  light = light === undefined ? false : light;
+
+  let className = 'juwelo-icon-font jif-' + icon;
+
+  if (light) {
+    className += ' -light';
+  }
+
+  if (error) {
+    className += ' -error';
+  }
   return <i className={className}/>;
 }
 
 const mapStateToProps = (
   _state: Global.State,
   props: IJuweloFontIconProps
-) : IJuweloFontIconProps => ({
+): IJuweloFontIconProps => ({
   ...props,
 });
 
