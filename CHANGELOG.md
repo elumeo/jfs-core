@@ -1,3 +1,11 @@
+## [9.1.13] - 2020-08-12
+### Bugfix
+- Added .idea to sync ignore list
+
+## [9.1.12] - 2020-08-12
+### Bugfix
+- ???
+
 ## [9.1.11] - 2020-08-12
 ### Bugfix
 - fixed sync-development when running in app and component simultaneously
