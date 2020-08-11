@@ -9,7 +9,7 @@
     "curly": true,
     "no-conditional-assignment": true,
     "no-var-keyword": true,
-    "no-shadowed-variable": true,
+    "no-shadowed-variable": false,
     "no-unused-expression": true,
     "no-unused-variable": false,
     "switch-default": true,
