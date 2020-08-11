@@ -11,10 +11,17 @@ namespace Text {
   export const removePrefix = (
     text: string,
     prefix: string
-  ): string => text.substring(
-    prefix.length,
-    text.length
-  );
+  ): string => {
+    if (text.substring(0, prefix.length) === prefix) {
+      return text.substring(
+        prefix.length,
+        text.length
+      )
+    }
+    else {
+      return text;
+    }
+  };
 
   export const removeSuffix = (
     text: string,

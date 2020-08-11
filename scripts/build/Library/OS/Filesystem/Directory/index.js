@@ -74,8 +74,30 @@ class Directory extends FsNode_1.default {
             };
             createChild(payload, directoryCreated);
         }));
+        this.on = (event, handle) => {
+            this.emitter.on(event, handle);
+        };
         this.watch = (options) => {
             this.watcher = chokidar_1.default.watch(this.path, options);
+            this.watcher.on('all', (event, path, stats) => {
+                const payload = { path, stats };
+                const emit = (event) => this.emitter.emit(event, payload);
+                if (event === 'add') {
+                    emit('FILE_CREATED');
+                }
+                else if (event === 'change') {
+                    emit('FILE_CHANGED');
+                }
+                else if (event === 'unlink') {
+                    emit('FILE_REMOVED');
+                }
+                else if (event === 'addDir') {
+                    emit('DIRECTORY_CREATED');
+                }
+                else if (event === 'unlinkDir') {
+                    emit('DIRECTORY_REMOVED');
+                }
+            });
         };
         this.unwatch = () => this.watcher.close();
         this.trace = (origin = this) => {

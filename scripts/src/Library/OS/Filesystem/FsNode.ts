@@ -13,17 +13,16 @@ class FsNode {
   public readonly name: string;
   public readonly path: string;
   public readonly parent: string;
+  public readonly segments: string[];
   public readonly predecessors: string[];
   protected emitter: Emitter;
 
   constructor(props: FsNode.Props) {
     this.path = props.path;
-    this.predecessors = props.path.split(sep);
-    this.name = this.predecessors[this.predecessors.length -1];
-    this.parent = this.predecessors.slice(
-      0,
-      this.predecessors.length -1
-    ).join(sep) || sep;
+    this.segments = props.path.split(sep);
+    this.predecessors = this.segments.slice(0, this.segments.length -1);
+    this.name = this.segments[this.segments.length -1];
+    this.parent = this.predecessors.join(sep) || sep;
     this.emitter = new Emitter;
   }
 

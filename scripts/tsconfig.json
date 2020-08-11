@@ -5,6 +5,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "target": "es6",
+    "incremental": true,
     "lib": [
       "es2018", "esNext"
     ],

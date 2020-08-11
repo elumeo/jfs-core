@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
+// noinspection TypeScriptPreferShortImport,ES6PreferShortImport
 import { addToastAction } from '../../Store/Action/ToastAction';
 import './SearchComponent.scss';
 import International from '../International';
@@ -24,10 +25,10 @@ class SearchComponent extends React.Component {
         };
         this.handleKeyDown = e => {
             switch (e.keyCode) {
-                case 13:
+                case 13: /* Return */
                     this.handleSearch();
                     break;
-                case 27:
+                case 27: /* ESC */
                     document.getElementById(this.props.id).blur();
                     break;
                 default:
@@ -87,7 +88,9 @@ SearchComponent.defaultProps = {
     value: '',
     disabled: false,
 };
+// higher order components -----------------------------------------------------
 const mapStateToProps = (state, ownProps) => (Object.assign(Object.assign({}, state.Core.Toast), ownProps));
 const enhance = connect(mapStateToProps, { addToastAction });
+// noinspection JSUnusedGlobalSymbols
 export default enhance(SearchComponent);
 //# sourceMappingURL=SearchComponent.js.map

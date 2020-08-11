@@ -53,5 +53,5 @@ const checkTranslations = ({ open }) => new Job_1.default({
         }
     }
 });
-checkTranslations({ open: false }).run();
+checkTranslations({ open: true }).run();
 //# sourceMappingURL=check-translations.js.map

@@ -4,6 +4,7 @@ import Card from 'react-md/lib/Cards/Card';
 import FontIcon from 'react-md/lib/FontIcons/FontIcon';
 import './NotificationCard.scss';
 import ErrorContent, { errorText } from '../Snackbar/ErrorContent';
+// noinspection TypeScriptPreferShortImport
 import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../../Store/Action/NotificationAction';
 import { Badge, Button, CardText } from 'react-md';
 import Format from '../../Utilities/Format';

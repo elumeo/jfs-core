@@ -6,18 +6,35 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
 const FsNode_1 = __importDefault(require("./FsNode"));
 const json_2_csv_1 = require("json-2-csv");
+const path_1 = require("path");
 class File extends FsNode_1.default {
     constructor() {
         super(...arguments);
         this.exists = () => fs_1.existsSync(this.path);
-        this.create = (onComplete) => fs_1.appendFile(this.path, '', (error) => {
-            if (error) {
-                throw error;
-            }
-            else if (onComplete) {
-                onComplete();
-            }
-        });
+        this.create = (onComplete) => {
+            this.predecessors.reduce((parent, segment) => {
+                if (parent) {
+                    const path = (parent.length > 1
+                        ? `${parent}${path_1.sep}${segment}`
+                        : `${parent}${segment}`);
+                    if (!fs_1.existsSync(path)) {
+                        fs_1.mkdirSync(path);
+                    }
+                    return path;
+                }
+                else {
+                    return `${path_1.sep}${segment}`;
+                }
+            }, null);
+            fs_1.appendFile(this.path, '', (error) => {
+                if (error) {
+                    throw error;
+                }
+                else if (onComplete) {
+                    onComplete();
+                }
+            });
+        };
         this.read = (parameters) => {
             const shortSyntax = typeof parameters === 'function';
             const encoding = (shortSyntax

@@ -1,11 +1,10 @@
-import { readdir, mkdir } from 'fs';
-import FsNode from '../FsNode';
-import File from '../File';
+import { readdir, mkdir, existsSync, mkdirSync } from 'fs';
+import FsNode from './FsNode';
+import File from './File';
 import {resolve, sep} from "path";
 import rmdir from 'rimraf';
 import ncp from 'ncp';
 import chokidar, { FSWatcher, WatchOptions } from 'chokidar';
-import Explorer from '../Explorer';
 
 namespace Directory {
   export type Children = (
@@ -14,10 +13,33 @@ namespace Directory {
       files: File[];
     }) => void
   ) => void;
+
+  export namespace Event {
+    export type Name = (
+      'FILE_CREATED' |
+      'FILE_CHANGED' |
+      'FILE_REMOVED' |
+      'DIRECTORY_CREATED' |
+      'DIRECTORY_REMOVED'
+    );
+    export type Payload = File | Directory;
+  }
+
+  export type Event = {
+    name: Event.Name;
+    payload: Event.Payload
+  }
 }
 
 class Directory extends FsNode {
   public watcher: FSWatcher;
+  public static readonly events: Directory.Event.Name[] = [
+    'FILE_CREATED',
+    'FILE_CHANGED',
+    'FILE_REMOVED',
+    'DIRECTORY_CREATED',
+    'DIRECTORY_REMOVED'
+  ];
 
   public children: Directory.Children = onComplete => {
     readdir(
@@ -106,41 +128,61 @@ class Directory extends FsNode {
     }
   );
 
-  public create = (directoryCreated: () => void) => (
-    (new Explorer(this.path)).explore(
-      (path) => path,
-      pathStack => {
-        const payload = (
-          this.path
-          .substring(pathStack[0].length, this.path.length)
-          .split(sep)
-          .slice(1)
-        )
-        const createChild = (payload: string[], onComplete: () => void) => {
-          if (!payload.length) {
-            onComplete();
+  public create = (directoryCreated: () => void) => {
+    this.predecessors.reduce(
+      (parent, segment) => {
+        if (parent) {
+          const path = (
+            parent.length > 1
+              ? `${parent}${sep}${segment}`
+              : `${parent}${segment}`
+          );
+          if (!existsSync(path)) {
+            mkdirSync(path);
           }
-          else {
-            mkdir(
-              resolve(
-                pathStack[0],
-                payload[0]
-              ),
-              () => createChild(
-                payload.slice(1),
-                onComplete
-              )
-            )
-          }
+          return path;
         }
+        else {
+          return `${sep}${segment}`;
+        }
+      },
+      null
+    );
+    mkdir(
+      this.path,
+      directoryCreated
+    );
+  };
 
-        createChild(payload, directoryCreated);
-      }
-    )
-  );
+  public on = (event: Directory.Event.Name, handle: (payload: Directory.Event.Payload) => void) => {
+    this.emitter.on(event, handle);
+  }
 
   public watch = (options?: WatchOptions) => {
     this.watcher = chokidar.watch(this.path, options);
+    this.watcher.once(
+      'ready',
+      () => this.watcher.on(
+        'all',
+        (event, path) => {
+          if (event === 'add') {
+            this.emitter.emit('FILE_CREATED', new File({ path }));
+          }
+          else if (event === 'change') {
+            this.emitter.emit('FILE_CHANGED', new File({ path }));
+          }
+          else if (event === 'unlink') {
+            this.emitter.emit('FILE_REMOVED', new File({ path }));
+          }
+          else if (event === 'addDir') {
+            this.emitter.emit('DIRECTORY_CREATED', new Directory({ path }))
+          }
+          else if (event === 'unlinkDir') {
+            this.emitter.emit('DIRECTORY_REMOVED', new Directory({ path }));
+          }
+        }
+      )
+    );
   }
 
   public unwatch = () => this.watcher.close();

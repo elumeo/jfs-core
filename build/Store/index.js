@@ -6,6 +6,7 @@ import { createHashHistory } from 'history';
 export const history = createHashHistory();
 export default (rootEpic, rootReducer) => {
     const epicMiddleware = createEpicMiddleware();
+    // create and set store
     const store = composeWithDevTools(applyMiddleware(epicMiddleware, routerMiddleware(history)))(createStore)(rootReducer);
     epicMiddleware.run(rootEpic);
     return store;

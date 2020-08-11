@@ -1,6 +1,7 @@
-import { readFile, writeFile, appendFile, unlink, existsSync } from 'fs';
+import { readFile, writeFile, appendFile, unlink, existsSync, mkdirSync } from 'fs';
 import FsNode from './FsNode';
 import { csv2json } from 'json-2-csv';
+import { sep } from 'path';
 
 namespace File {
   export namespace Options {
@@ -26,18 +27,39 @@ class File extends FsNode {
 
     public exists = () => existsSync(this.path);
 
-    public create: File.Create = (onComplete) => appendFile(
-      this.path,
-      '',
-      (error: NodeJS.ErrnoException) => {
-        if (error) {
-          throw error;
+    public create: File.Create = (onComplete) => {
+      this.predecessors.reduce(
+        (parent, segment) => {
+          if (parent) {
+            const path = (
+              parent.length > 1
+                ? `${parent}${sep}${segment}`
+                : `${parent}${segment}`
+            );
+            if (!existsSync(path)) {
+              mkdirSync(path);
+            }
+            return path;
+          }
+          else {
+            return `${sep}${segment}`;
+          }
+        },
+        null
+      );
+      appendFile(
+        this.path,
+        '',
+        (error: NodeJS.ErrnoException) => {
+          if (error) {
+            throw error;
+          }
+          else if (onComplete) {
+            onComplete();
+          }
         }
-        else if (onComplete) {
-          onComplete();
-        }
-      }
-    );
+      )
+    };
 
     public read: File.Read = (parameters) => {
       const shortSyntax = typeof parameters === 'function';

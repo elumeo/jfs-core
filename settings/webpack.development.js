@@ -1,7 +1,6 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 
 const common = require('./webpack.common.js');
 
@@ -11,11 +10,9 @@ const https = mode === 'devServer' && process.argv.includes('--https');
 module.exports = {
   ...common,
   mode: 'development',
-  devtool: 'cheap-module-source-map',
   plugins: [
     ...common.plugins,
-    new ForkTsCheckerWebpackPlugin({ tsconfig: resolve('./tsconfig.json') }),
-    new CompressionPlugin({ test: [/\.tsx/, /\.ts/, /\.js/], minRatio: 0.1 }),
+    new ForkTsCheckerWebpackPlugin({ tsconfig: resolve('tsconfig.json') }),
     new webpack.NamedModulesPlugin()
   ]
 };

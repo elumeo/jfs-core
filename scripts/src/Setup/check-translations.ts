@@ -62,4 +62,4 @@ const checkTranslations = ({
   }
 });
 
-checkTranslations({ open: false }).run();
+checkTranslations({ open: true }).run();

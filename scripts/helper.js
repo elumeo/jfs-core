@@ -6,10 +6,12 @@ const cwd = resolve(__dirname);
 const copyfiles = resolve(cwd, 'node_modules', 'copyfiles', 'copyfiles');
 const tscAlias = resolve(cwd, 'node_modules', 'tsc-alias', 'src', 'bin', 'index.js');
 
-spawn(
-  copyfiles,
-  ['-u', '1', 'src/**/*.scss', 'build'],
-  { cwd }
+['scss', 'css', 'html', 'js'].forEach(
+  extension => spawn(
+    copyfiles,
+    ['-u', '1', `src/**/*.${extension}`, 'build'],
+    { cwd }
+  )
 );
 
 const tscAliasProcess = spawn(

@@ -10,6 +10,7 @@ const Toast = createReducer(initialState)
     let toastsCount;
     let lastToast, previousToast;
     let toastsAreEqual, messagesAreEqual, translationIdsAreEqual, errorsAreEqual;
+    /* Also remove successive, equal toasts */
     do {
         toastsCount = state.toasts.size;
         if (toastsCount <= 1) {

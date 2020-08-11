@@ -25,5 +25,5 @@ Explorer.createPathItem = (previous, current) => ({
 Explorer.finalizeList = (all, newPrevious) => (all.length === newPrevious.length
     ? newPrevious.map(({ path }) => path)
     : newPrevious);
-exports.default = Explorer;
+// export default Explorer;
 //# sourceMappingURL=Explorer.js.map

@@ -1,0 +1,38 @@
+{
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es2018", "esNext", "DOM"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noImplicitReturns": true,
+    "baseUrl": "./src",
+    "paths": {
+      "Action/*": ["./Store/Action/*"],
+      "Component/*": ["./Component/*"],
+      "Constant/*": ["./Constant/*"],
+      "Core/*": ["../node_modules/@elumeo/jfs-core/build/*"],
+      "Jsc/*": ["./Jsc/*"],
+      "Mock/*": ["./Mock/*"],
+      "Setup/*": ["./Setup/*"],
+      "Store/*": ["./Store/*"],
+      "Types/*": ["./Types/*"],
+      "Utilities/*": ["./Utilities/*"]
+    }
+  },
+  "exclude": [
+    "dist",
+    "src/__test__/*",
+    "node_modules/@elumeo/jfs-core/scripts",
+    "scripts",
+    "build",
+    "./helper.js"
+  ]
+}

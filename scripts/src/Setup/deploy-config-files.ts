@@ -1,54 +1,20 @@
 import JFS from 'Library/JFS';
 import Directory from 'Library/OS/Filesystem/Directory';
 import { resolve } from 'path';
-import TsConfig, { CompilerOptions } from 'Library/Types/TsConfig';
-import File from 'Library/OS/Filesystem/File';
 import Component from 'Library/JFS/Component';
+import Core from 'Library/JFS/Core';
+import App from 'Library/JFS/App';
+import Text from 'Library/Text';
 
 const filesNamesToCopy = [
-  'tsconfig.json',
+  'tsconfig.app.json',
+  'tsconfig.component.json',
+  'tsconfig.core.json',
   'tslint.json',
   '.editorconfig',
   '.prettierconfig',
   '.prettierrc',
 ];
-
-const updateCompilerOptions = (
-  tsconfig: TsConfig,
-  compilerOptions: CompilerOptions
-): TsConfig => ({
-  ...tsconfig,
-  compilerOptions
-});
-
-const updatePaths = (
-  tsconfig: TsConfig,
-  paths: CompilerOptions.Paths
-): TsConfig => updateCompilerOptions(
-  tsconfig,
-  {
-    ...tsconfig.compilerOptions,
-    paths
-  }
-);
-
-const removeAliasFromPaths = (
-  tsconfig: TsConfig,
-  alias: string
-): TsConfig => updatePaths(
-  tsconfig,
-  Object.keys(tsconfig.compilerOptions.paths).reduce(
-    (paths, key) => ({
-      ...paths,
-      ...(
-        alias === key
-          ? {}
-          : { [key]: tsconfig.compilerOptions.paths[key] }
-      )
-    }),
-    {}
-  )
-);
 
 JFS.discover(
   () => {
@@ -68,15 +34,29 @@ JFS.discover(
                 }
               };
 
-              if (JFS.Head instanceof Component && file.name === 'tsconfig.json') {
-                file.json<TsConfig>(tsconfig => {
-                  new File({
-                    path: resolve(JFS.Head.path, 'tsconfig.json')
-                  }).save<TsConfig>(
-                    removeAliasFromPaths(tsconfig, 'Core/*'),
-                    onCopyComplete
-                  )
-                });
+              if (Text.beginsWith(file.name, 'tsconfig.')) {
+                const target = resolve(JFS.Head.path, 'tsconfig.json');
+                const onComplete = () => {};
+
+                const check = () => [
+                  { pattern: 'app', type: App },
+                  { pattern: 'component', type: Component },
+                  { pattern: 'core', type: Core }
+                ].reduce(
+                  (isValid, { pattern, type }) => (
+                    isValid || (
+                      Text.between(
+                        file.name, 'tsconfig.', '.json'
+                      ) === pattern &&
+                      JFS.Head instanceof type
+                    )
+                  ),
+                  false
+                );
+
+                if (check()) {
+                  file.copy(target, onComplete);
+                }
               }
               else {
                 file.copy(

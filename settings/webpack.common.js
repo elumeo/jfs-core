@@ -62,14 +62,15 @@ module.exports = {
           {
             loader: 'ts-loader',
             options: {
-              allowTsInNodeModules: true
+              allowTsInNodeModules: true,
+              transpileOnly: true
             }
           }
         ]
       },
       {
         test: /\.s*css$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.eot(\?v=[0-9]\.[0-9]\.[0-9])?$/,

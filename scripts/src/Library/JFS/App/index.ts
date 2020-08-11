@@ -9,7 +9,7 @@ namespace App {
 }
 
 class App extends Project {
-  protected readonly components: Component[];
+  public readonly components: Component[];
 
   constructor({ path }: App.Props) {
     super({ path });

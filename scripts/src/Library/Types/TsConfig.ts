@@ -7,6 +7,9 @@ export namespace CompilerOptions {
 export type CompilerOptions = {
   outDir: string;
   baseUrl: string;
+  incremental: boolean;
+  removeComments: boolean;
+  sourceMap: boolean;
   paths: {
     [key: string]: string[];
   }
