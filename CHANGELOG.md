@@ -1,3 +1,9 @@
+## [9.1.11] - 2020-08-11
+### Bugfix
+- new sync-development script (less issues with startup & syncing)
+- deploy separate tsconfig files for apps, components and the core
+- improved tsconfig with incremental build for faster webpack builds
+
 ## [9.1.10] - 2020-08-11
 ### Changes
 - Disabled shadowed name variable check in tslint
@@ -8,7 +14,7 @@
 - update juwelo icon font with new test icon
 
 ### Changes
-- extended juwelo icon font component with 2 more props: error, light 
+- extended juwelo icon font component with 2 more props: error, light
 
 ## [9.1.8] - 2020-08-10
 ### Bugfix
