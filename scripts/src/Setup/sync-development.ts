@@ -36,12 +36,16 @@ JFS.discover(() => {
         console.log(`- ${name} => ${jfs.sync[name]}`);
         const from = resolve(JFS.Head.path, jfs.sync[name]);
         const to = resolve(JFS.Head.path, 'node_modules', name);
-        const synchronization = new Synchronization({ from, to });
-
+        const synchronization = new Synchronization({
+          from, to,
+          ignore: [
+            'node_modules',
+            '.git'
+          ]
+        });
         const format = (event: string, project: string, path: string) => {
           return `${cyanBright(event)}: ${magenta(project)}${path}`
         }
-
         synchronization.run(({ event, target }) => {
           const path = target.path.substring(to.length);
           const message = format(event, name, path);

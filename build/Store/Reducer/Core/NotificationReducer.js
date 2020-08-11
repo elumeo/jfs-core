@@ -1,4 +1,3 @@
-// noinspection TypeScriptPreferShortImport
 import { addNotificationWithIdAction, dismissAllNotificationsAction, dismissNotificationAction, dismissNotificationByGroupIdAction, fadeNotificationOffScreenAction, hideNotificationDrawerAction, pinNotificationDrawerAction, showNotificationDrawerAction, unpinNotificationDrawerAction } from '../../Action/NotificationAction';
 import { createReducer } from 'typesafe-actions';
 import { getPlainText } from '../../../Component/Notification/NotificationCard';

@@ -8,7 +8,7 @@ const File_1 = __importDefault(require("./File"));
 const path_1 = require("path");
 const Text_1 = __importDefault(require("../../Text"));
 class Synchronization {
-    constructor({ from, to }) {
+    constructor({ from, to, ignore }) {
         this.target = (source) => {
             const FsNode = (source instanceof File_1.default
                 ? File_1.default
@@ -18,24 +18,28 @@ class Synchronization {
             });
         };
         this.run = (onSynchronized) => {
-            const { sender } = this;
+            const { sender, recipient, ignore } = this;
             sender.watch();
             Directory_1.default.events.forEach(event => sender.on(event, source => {
                 const onComplete = () => onSynchronized({ event, source, target });
                 const target = this.target(source);
-                if (Text_1.default.endsWith(event, 'CREATED')) {
+                const ignored = ignore.includes(target.path.substring(recipient.path.length + 1).split(path_1.sep)[0]);
+                if (ignored) {
+                }
+                else if (Text_1.default.endsWith(event, 'CREATED')) {
                     target.create(onComplete);
                 }
                 else if (Text_1.default.endsWith(event, 'REMOVED')) {
                     target.remove(onComplete);
                 }
                 else if (event === 'FILE_CHANGED') {
-                    source.copy(target.path, onComplete);
+                    source.read(text => target.write(text, onComplete));
                 }
             }));
         };
         this.sender = new Directory_1.default({ path: from });
         this.recipient = new Directory_1.default({ path: to });
+        this.ignore = ignore || [];
     }
 }
 exports.default = Synchronization;

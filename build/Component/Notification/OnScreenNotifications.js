@@ -16,6 +16,5 @@ class OnScreenNotifications extends React.Component {
             .map(n => React.createElement(NotificationCard, { config: n, key: n.id }))));
     }
 }
-// noinspection JSUnusedGlobalSymbols
 export default connect((store, ownProps) => (Object.assign(Object.assign({}, ownProps), { notifications: store.Core.Notification.notifications, dismissAnimationClassName: store.Core.Notification.dismissAnimationClassName })))(OnScreenNotifications);
 //# sourceMappingURL=OnScreenNotifications.js.map

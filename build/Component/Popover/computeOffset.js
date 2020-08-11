@@ -1,5 +1,4 @@
 const positionFigureNames = ['top', 'left'];
-// -----------------------------------------------------------------------------
 const verticalFigures = ['top', 'bottom'];
 const horizontalFigures = ['left', 'right'];
 const dimensionName = (figure) => (isVerticalPosition(figure)
@@ -12,11 +11,9 @@ const isHorizontalPosition = (figure) => horizontalFigures.includes(figure);
 const isPrimaryFigure = (figure) => verticalFigures[0] === figure || horizontalFigures[0] === figure;
 const figurePositionMatch = (figure, position) => (figure === 'top' && isVerticalPosition(position) ||
     figure === 'left' && isHorizontalPosition(position));
-// -----------------------------------------------------------------------------
 const computeWhisperCenter = ({ whisper, speaker }) => positionFigureNames.reduce((center, figure) => (Object.assign(Object.assign({}, center), { [figure]: (whisper[figure]
         + whisper[dimensionName(figure)] / 2
         - speaker[dimensionName(figure)] / 2) })), { top: null, left: null });
-// -----------------------------------------------------------------------------
 const computePositionOffset = ({ position, speaker, whisper }) => positionFigureNames.reduce((positionOffset, figure) => (Object.assign(Object.assign({}, positionOffset), { [figure]: (figurePositionMatch(figure, position)
         ? (speaker[dimensionName(position)] / 2
             + whisper[dimensionName(position)] / 2) * (isPrimaryFigure(position)
@@ -42,7 +39,6 @@ const computeSpacingOffset = ({ position, spacing }) => positionFigureNames.redu
             ? -spacing
             : spacing
         : 0) })), { top: null, left: null });
-// -----------------------------------------------------------------------------
 const computeOffset = ({ whisper, speaker, position, anker }) => {
     const whisperCenter = computeWhisperCenter({ whisper, speaker });
     const positionOffset = computePositionOffset({ position, whisper, speaker });

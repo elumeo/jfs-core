@@ -312,7 +312,7 @@
         "affectsGlobalScope": true
       },
       "../src/setup.ts": {
-        "version": "98b9285a1f4a5bc0d2aedba9cb7a743b59fd74638349e4f29117d727fb78390f",
+        "version": "99baba77f78d9175acb949f5068a32fa30463e3518aefaac5c5bd7762aa42434",
         "signature": "d3cb89dbc515da1700ccd75bf2da356ff2f5b80de0e9b83fd126b0793fce60c9",
         "affectsGlobalScope": false
       },
@@ -1762,8 +1762,8 @@
         "affectsGlobalScope": false
       },
       "../src/component/juwelofonticon/index.tsx": {
-        "version": "3c0012c9ff8703a371e2a59b97ace604d7a6035cdb41ba3a02a9a41a53fd5438",
-        "signature": "78eafaaf8839f12546cb6220655a0c37d0cb775c52412e27911c5a8e93fe8aca",
+        "version": "b49129573163c4ea2ccada1f36bd3f6e39fef50872b7b6311c7bf5f06d6d1c41",
+        "signature": "7bedc9ca906b66a3160cf0b06eb618cd385b37ed24061ca03ed0b72281fa86f5",
         "affectsGlobalScope": false
       },
       "../src/component/login/loginbutton.tsx": {

@@ -39,7 +39,13 @@ JFS_1.default.discover(() => {
                 console.log(`- ${name} => ${jfs.sync[name]}`);
                 const from = path_1.resolve(JFS_1.default.Head.path, jfs.sync[name]);
                 const to = path_1.resolve(JFS_1.default.Head.path, 'node_modules', name);
-                const synchronization = new Synchronization_1.default({ from, to });
+                const synchronization = new Synchronization_1.default({
+                    from, to,
+                    ignore: [
+                        'node_modules',
+                        '.git'
+                    ]
+                });
                 const format = (event, project, path) => {
                     return `${ansi_colors_1.cyanBright(event)}: ${ansi_colors_1.magenta(project)}${path}`;
                 };

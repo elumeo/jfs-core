@@ -1,22 +1,25 @@
 import Directory from "./Directory";
 import File from "./File";
-import { resolve } from "path";
+import { resolve, sep } from "path";
 import Text from "Library/Text";
 
 namespace Synchronization {
   export type Props = {
     from: string;
     to: string;
+    ignore?: string[];
   }
 }
 
 class Synchronization {
   private sender: Directory;
   private recipient: Directory;
+  private ignore: string[];
 
-  constructor({ from, to }: Synchronization.Props) {
+  constructor({ from, to, ignore }: Synchronization.Props) {
     this.sender = new Directory({ path: from });
     this.recipient = new Directory({ path: to });
+    this.ignore = ignore || [];
   }
 
   private target = (source: File | Directory): File | Directory => {
@@ -44,21 +47,35 @@ class Synchronization {
       target: File | Directory;
     }) => void
   ) => {
-    const { sender } = this;
+    const { sender, recipient, ignore } = this;
     sender.watch();
     Directory.events.forEach(event => sender.on(
       event,
       source => {
         const onComplete = () => onSynchronized({ event, source, target });
         const target = this.target(source);
-        if (Text.endsWith(event, 'CREATED')) {
+
+        const ignored = ignore.includes(
+          target.path.substring(recipient.path.length +1).split(sep)[0]
+        );
+
+
+        if (ignored) {
+
+        }
+        else if (Text.endsWith(event, 'CREATED')) {
           target.create(onComplete);
         }
         else if (Text.endsWith(event, 'REMOVED')) {
           target.remove(onComplete);
         }
         else if (event === 'FILE_CHANGED') {
-          (source as File).copy(target.path, onComplete);
+          (source as File).read(
+            text => (target as File).write(
+              text,
+              onComplete
+            )
+          );
         }
       }
     ));

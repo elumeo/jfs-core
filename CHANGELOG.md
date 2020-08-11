@@ -1,3 +1,8 @@
+## [9.1.11] - 2020-08-12
+### Bugfix
+- fixed sync-development when running in app and component simultaneously
+- added ignore list for syncing
+
 ## [9.1.11] - 2020-08-11
 ### Bugfix
 - new sync-development script (less issues with startup & syncing)
