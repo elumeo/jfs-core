@@ -1,3 +1,7 @@
+## [9.1.14] - 2020-08-12
+### Bugfix
+- Added missing build files
+
 ## [9.1.13] - 2020-08-12
 ### Bugfix
 - Added .idea to sync ignore list

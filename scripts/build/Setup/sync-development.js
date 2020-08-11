@@ -43,7 +43,8 @@ JFS_1.default.discover(() => {
                     from, to,
                     ignore: [
                         'node_modules',
-                        '.git'
+                        '.git',
+                        '.idea'
                     ]
                 });
                 const format = (event, project, path) => {

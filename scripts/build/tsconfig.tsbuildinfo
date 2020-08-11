@@ -532,7 +532,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/sync-development.ts": {
-        "version": "c8bee97010cb54d4187dd482161e4354c872751876e4e8aac542f8591c6ac465",
+        "version": "e8d63dba20172542f5c4eea3cb86abeb7551a05c5535032c30978310d4404809",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -632,8 +632,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react/index.d.ts": {
-        "version": "6dbb6d38449af937829d2bd38a2ff5bfd45b164c6e22bed25dff9fd0bea9cf47",
-        "signature": "6dbb6d38449af937829d2bd38a2ff5bfd45b164c6e22bed25dff9fd0bea9cf47",
+        "version": "99fffab102cf237a91e7f40423bfe1a14bc9d55e19f42573559fefe47e79b4a8",
+        "signature": "99fffab102cf237a91e7f40423bfe1a14bc9d55e19f42573559fefe47e79b4a8",
         "affectsGlobalScope": true
       },
       "../../node_modules/@types/hoist-non-react-statics/index.d.ts": {
@@ -672,8 +672,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/ts3.1/common/lang.d.ts": {
-        "version": "f612468e9c3edff588905c4c4f512487a13ac32ffbd291fe07696268ab8c8dfa",
-        "signature": "f612468e9c3edff588905c4c4f512487a13ac32ffbd291fe07696268ab8c8dfa",
+        "version": "d7fac90d8d76afeccb236132472c6c2c26f1783af0e46575d3b2f5a59501f4ca",
+        "signature": "d7fac90d8d76afeccb236132472c6c2c26f1783af0e46575d3b2f5a59501f4ca",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/ts3.1/common/math.d.ts": {
@@ -986,7 +986,6 @@
           "./Library/*"
         ]
       },
-      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
