@@ -1,3 +1,7 @@
+## [9.1.16] - 2020-08-12
+### Changes
+- Changed scss imports to use only necessary files directly instead of whole react-md each time
+
 ## [9.1.15] - 2020-08-12
 ### Changes
 - Moved color variables from main.scss into colors.scss
