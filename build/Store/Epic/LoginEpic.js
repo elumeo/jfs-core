@@ -10,7 +10,10 @@ import Session from '../../Base/Session';
 const loginEpic = (action$, state$) => (action$.pipe(filter(isActionOf(checkLogin)), concatMap(action => from(JSCApi.LoginClient.loginFrontend(state$.value.Core.Configuration.config.AppName, {
     username: action.payload.username,
     password: action.payload.password
-})).pipe(switchMap((response) => {
+})).pipe(
+// This is piped to ensure that the login can be performed again after
+// failing to login
+switchMap((response) => {
     Session.setToken(response.data.session.token);
     return of(authorizeSession({ frontendSessionDTO: response.data }), loggedIn());
 }), catchError(error => {

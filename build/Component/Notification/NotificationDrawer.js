@@ -7,6 +7,7 @@ import Toolbar from 'react-md/lib/Toolbars';
 import './NotificationDrawer.scss';
 import SplitViewButton from './SplitViewButton';
 import DismissAllNotificationsButton from './DismissAllNotificationsButton';
+// noinspection TypeScriptPreferShortImport
 import { hideNotificationDrawerAction, toggleNotificationDrawerAction } from '../../Store/Action/NotificationAction';
 import { Button } from 'react-md';
 const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
@@ -39,6 +40,7 @@ class NotificationDrawer extends React.Component {
                 }, transitionEnterTimeout: 300, transitionLeaveTimeout: 200 }, content)));
     }
 }
+// noinspection JSUnusedGlobalSymbols
 export default connect((store, ownProps) => (Object.assign(Object.assign({}, ownProps), { notificationDrawerVisible: store.Core.Notification.notificationDrawerVisible, notifications: store.Core.Notification.notifications, notificationDrawerPinned: store.Core.Notification.notificationDrawerPinned })), {
     toggleNotificationDrawerAction,
     hideNotificationDrawerAction

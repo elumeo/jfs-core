@@ -56,7 +56,9 @@ export class WSClient {
     static join(namespace, room) {
         this.checkSocket(namespace);
         return new Observable((observer) => {
+            // 1. Tell websocket server that we joined the room
             this.sockets[namespace].emit(this.EVENT_JOIN_ROOM, room);
+            // 2.a Wait for successful join
             this.sockets[namespace].on(this.EVENT_JOINED_ROOM, (joinedRoom) => {
                 if (room === joinedRoom) {
                     this.sockets[namespace].off(this.EVENT_JOIN_ROOM_FAILED);
@@ -66,6 +68,7 @@ export class WSClient {
                     observer.unsubscribe();
                 }
             });
+            // 2.b Wait for failed join
             this.sockets[namespace].on(this.EVENT_JOIN_ROOM_FAILED, (error) => {
                 const failedRoom = JSON.parse(error.config.data);
                 if (room === failedRoom.room) {

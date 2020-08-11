@@ -1,6 +1,9 @@
 import { createReducer } from 'typesafe-actions';
 import { webSocketAddNamespaceAction, webSocketConnectFailedAction, webSocketConnectRequestAction, webSocketConnectSuccessAction, webSocketDisconnectSuccessAction, webSocketJoinRoomFailureAction, webSocketJoinRoomLoadingAction, webSocketJoinRoomSuccessAction, webSocketLeaveRoomSuccessAction } from '../../Action/WebSocketAction';
-export const webSocketConnectionReducerInitialState = {};
+export const webSocketConnectionReducerInitialState = {
+// It is not possible to set initial state values for any namespace here because namespaces will be created
+// dynamically with the action: webSocketAddNamespaceAction
+};
 const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState)
     .handleAction(webSocketConnectRequestAction, (state, action) => {
     return Object.assign(Object.assign({}, state), { [action.payload]: Object.assign(Object.assign({}, state[action.payload]), { isConnecting: true, isConnected: false, connectionError: null }) });

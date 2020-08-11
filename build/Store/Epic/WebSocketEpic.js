@@ -46,7 +46,9 @@ export const webSocketConnectRequestEpic = (action$, state$) => {
     }));
 };
 export const webSocketLogoutEpic = (action$, state) => {
-    return action$.pipe(filter(isActionOf(logout)), switchMap(() => {
+    return action$.pipe(filter(isActionOf(logout)), 
+    // filter(() => (state.value.configReducer.config.JscWebSocketClient !== undefined && state.value.configReducer.loaded)),
+    switchMap(() => {
         const disconnectRequestActions = [];
         const config = state.value.Core.Configuration.config;
         if (config.JscWebSocketClient !== undefined) {
@@ -56,6 +58,7 @@ export const webSocketLogoutEpic = (action$, state) => {
             disconnectRequestActions.push(webSocketDisconnectRequestAction(config.JfsWebSocketClient.PrivateNamespace));
         }
         return disconnectRequestActions;
+        // return of(webSocketDisconnectRequestAction(WS_NAMESPACES.JSC2JFS), webSocketDisconnectRequestAction(WS_NAMESPACES.JFS2JFS))
     }));
 };
 export const webSocketCheckForConnectionErrorEpic = (action$, state) => {
@@ -73,6 +76,7 @@ export const webSocketCheckForReconnectEpic = action$ => {
 };
 export const webSocketConnectSuccessEpic = (action$, state$) => {
     return action$.pipe(filter(isActionOf(webSocketConnectSuccessAction)), switchMap((action) => {
+        // Filter configRooms against information in state (hasJoined true/false)
         let configRooms = [];
         const config = state$.value.Core.Configuration.config;
         if (config.JscWebSocketClient !== undefined && action.payload === config.JscWebSocketClient.PrivateNamespace) {

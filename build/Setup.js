@@ -6,5 +6,4 @@ Date.prototype.toJSON = function () {
 import Translations from './Utilities/Format/Translations';
 import messages from './Setup/Translations.json';
 Translations.addMessages(messages);
-// TEST
 //# sourceMappingURL=Setup.js.map

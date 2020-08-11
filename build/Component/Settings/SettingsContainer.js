@@ -12,6 +12,7 @@ import Cookie from 'js-cookie';
 import './SettingsContainer.scss';
 import { compose } from 'redux';
 import International from '../International';
+// ToDo: Duplikat entfernen => Siehe LanguageSettings.tsx
 const LANGUAGES = [
     { label: 'Deutsch', value: 'de' },
     { label: 'English', value: 'en' },
@@ -37,5 +38,6 @@ const mapStateToProps = (state, ownProps) => (Object.assign({ language: (state.C
         ? state.Core.Language.language
         : state.Core.Configuration.config.Language) }, ownProps));
 const enhance = compose(connect(mapStateToProps, { changeLanguageAction }), withRouter);
+// noinspection JSUnusedGlobalSymbols
 export default enhance(SettingsContainer);
 //# sourceMappingURL=SettingsContainer.js.map

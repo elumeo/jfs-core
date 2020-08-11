@@ -4,10 +4,6 @@
 @import './colors';
 @import './layout';
 
-$md-primary-color: $juw-primary;
-$md-secondary-color: $juw-secondary;
-$md-error-color: $juw-error-color;
-
 html {
   background: $juw-quarz-500 !important;
 }
@@ -43,9 +39,6 @@ body {
     background-color: $juw-grey-300;
   }
 }
-
-/* disable material design color warnings */
-$md-colors-warn-md: false;
 
 .unfloat-label > label {
   transform: translate3d(0, 12px, 0) !important;

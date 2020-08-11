@@ -1,3 +1,7 @@
+## [9.1.15] - 2020-08-12
+### Changes
+- Moved color variables from main.scss into colors.scss
+
 ## [9.1.14] - 2020-08-12
 ### Bugfix
 - Added missing build files
