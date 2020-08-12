@@ -1,15 +1,16 @@
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+@use 'colors';
+@use 'layout';
 @import '~react-md/src/scss/react-md';
-@import 'colors';
-@import 'layout';
 
-$md-primary-color: $juw-primary;
-$md-secondary-color: $juw-secondary;
-$md-error-color: $juw-error-color;
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+$md-primary-color: colors.$juw-primary;
+$md-secondary-color: colors.$juw-secondary;
+$md-error-color: colors.$juw-error-color;
 
 html {
-  background: $juw-quarz-500 !important;
+  background: colors.$juw-quarz-500 !important;
 }
 
 body {
