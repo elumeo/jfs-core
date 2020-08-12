@@ -1,5 +1,5 @@
-@import '~react-md/src/scss/react-md';
-@import "../../Style/layout";
+@use '~react-md/src/scss/react-md';
+@use "../../Style/layout";
 
 @mixin caret($direction, $color, $size: 8px) {
   $noops: null;
@@ -31,14 +31,14 @@
   overflow: auto;
   transition-property: transform, margin-top;
   margin-top: 0;
-  width: $notification-drawer-width;
+  width: layout.$notification-drawer-width;
 
   .md-title--toolbar {
     margin-left: 12px;
     margin-right: 12px;
   }
 
-  @media #{$md-desktop-media} {
+  @media #{react-md.$md-desktop-media} {
     &--pinned {
       margin-top: 64px;
     }
@@ -50,7 +50,7 @@
 
   .split-view-button {
     display: none;
-    @media #{$md-desktop-media} {
+    @media #{react-md.$md-desktop-media} {
       display: unset;
     }
   }
@@ -63,7 +63,7 @@
       transform: translate3d(-50%, 0, 0);
 
       .md-icon.md-icon {
-        color: get-color('icon', true);
+        color: react-md.get-color('icon', true);
         font-size: 48px;
       }
     }
@@ -81,7 +81,7 @@
       white-space: nowrap;
 
       &::after {
-        @include caret(bottom, $md-grey-400);
+        @include caret(bottom, react-md.$md-grey-400);
 
         left: 50%;
         top: 101%;

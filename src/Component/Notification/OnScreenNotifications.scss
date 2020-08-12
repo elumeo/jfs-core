@@ -1,19 +1,19 @@
-@import '~react-md/src/scss/react-md';
-@import "../../Style/layout";
+@use '~react-md/src/scss/react-md';
+@use "../../Style/layout";
 
 .notification-fadein {
   transition-property: right;
-  transition-duration: $md-drawer-transition-time;
+  transition-duration: react-md.$md-drawer-transition-time;
   position: fixed;
   width: 300px;
-  top: calc(64px + -1 * #{$md-default-padding} / 4);
-  right: calc(-1 * #{$md-default-padding} / 4);
+  top: calc(64px + -1 * #{react-md.$md-default-padding} / 4);
+  right: calc(-1 * #{react-md.$md-default-padding} / 4);
   z-index: 16;
 }
 
 
 .notification-drawer--visible {
   .notification-fadein {
-    right: calc(-1 * #{$notification-drawer-width} - calc(#{$md-default-padding} / 4));
+    right: calc(-1 * #{layout.$notification-drawer-width} - calc(#{react-md.$md-default-padding} / 4));
   }
 }

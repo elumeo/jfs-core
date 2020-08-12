@@ -1,4 +1,4 @@
-@import '~react-md/src/scss/react-md';
+@use '~react-md/src/scss/react-md';
 
 // StyleGuide colors
 
@@ -59,8 +59,8 @@ $juw-grey-500: rgba(0, 0, 0, 0.25);
 $juw-grey-300: rgba(0, 0, 0, 0.1);
 $juw-grey: $juw-grey-900;
 
-$juw-error-color: $md-red-900;
-$juw-success-color: $md-green-900;
+$juw-error-color: react-md.$md-red-900;
+$juw-success-color: react-md.$md-green-900;
 $juw-primary: $juw-rodolith-800;
 $juw-secondary: $juw-apatith;
 $juw-font-color: $juw-grey-900;
