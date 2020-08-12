@@ -1,3 +1,7 @@
+## [8.16.0] - 2020-08-12
+### Changed
+- replaced node-sass with dart-sass
+
 ## [8.15.12] - 2020-06-18
 ### Bugfix
 - Fixed deploy-config-files script when running on windows
