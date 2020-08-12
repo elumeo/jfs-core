@@ -1,5 +1,5 @@
-import JFS from 'Library/JFS';
-import Location from 'Library/JFS/Environment/Location';
+import JFS from '../Library/JFS';
+import Location from '../Library/JFS/Environment/Location';
 
 const nodeSass = require('node-sass')
 const fs = require('fs')
@@ -20,7 +20,7 @@ JFS.discover(() => {
         classPrefix: 'jif',
         order: ['woff', 'woff2']
       }
-    }).then((opts) => {
+    }).then(() => {
       nodeSass.render({
         file: __dirname + '/Resources/juwelo-icon-font/dist/juwelo-icon-font.sass',
         outFile: __dirname + '/Resources/juwelo-icon-font/scss/juwelo-icon-font.scss',
