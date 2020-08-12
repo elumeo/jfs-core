@@ -69,7 +69,17 @@ module.exports = {
       },
       {
         test: /\.s*css$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              // Prefer `dart-sass`
+              implementation: require('sass'),
+            },
+          },
+        ],
       },
       {
         test: /\.eot(\?v=[0-9]\.[0-9]\.[0-9])?$/,
