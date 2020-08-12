@@ -1,7 +1,7 @@
-@import "../../Style/main";
+@use '~react-md/src/scss/react-md';
 @import "./juwelo-icon-font";
 
 .juwelo-icon-font, .jif-icons {
-    font-size: $md-font-icon-size;
-    color: $md-light-theme-icon-text-color;
+    font-size: #{react-md.$md-font-icon-size};
+    color: #{react-md.$md-light-theme-icon-text-color};
 }

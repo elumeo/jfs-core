@@ -3,7 +3,7 @@
 
 .notification-fadein {
   transition-property: right;
-  transition-duration: react-md.$md-drawer-transition-time;
+  transition-duration: #{react-md.$md-drawer-transition-time};
   position: fixed;
   width: 300px;
   top: calc(64px + -1 * #{react-md.$md-default-padding} / 4);

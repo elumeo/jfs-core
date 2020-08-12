@@ -31,7 +31,7 @@
   overflow: auto;
   transition-property: transform, margin-top;
   margin-top: 0;
-  width: layout.$notification-drawer-width;
+  width: #{layout.$notification-drawer-width};
 
   .md-title--toolbar {
     margin-left: 12px;
