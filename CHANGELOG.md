@@ -1,3 +1,7 @@
+## [8.16.1] - 2020-08-12
+### Fixed
+- Fixed alias import
+
 ## [8.16.0] - 2020-08-12
 ### Changed
 - replaced node-sass with dart-sass
