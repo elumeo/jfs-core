@@ -517,7 +517,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/jfs-prebuild.ts": {
-        "version": "8b30cf6baf05c7b6dcf8e36824c186e753e1f4319813a67b492bdae92c6fddcd",
+        "version": "223cd84203f49ad269b46741e08169651e26d6b10c529eeb97000ef0ba2950a8",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -2326,6 +2326,9 @@
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../src/library/jfs/app/index.ts",
+        "../src/library/jfs/component/index.ts",
+        "../src/library/jfs/core/index.ts",
         "../src/library/jfs/index.ts",
         "../src/library/os/process/index.ts",
         "../src/library/types/tsconfig.ts"

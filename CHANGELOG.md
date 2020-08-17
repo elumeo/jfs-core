@@ -1,3 +1,7 @@
+## [9.2.0] - 2020-08-17
+### Added
+- Added sync script for styles from src to build
+
 ## [9.1.18] - 2020-08-12
 ### Changes
 - Changed scss imports to use only necessary files directly instead of whole react-md each time
