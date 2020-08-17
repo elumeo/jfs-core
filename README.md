@@ -19,6 +19,11 @@
 - jfc components and scripts are also going to be pretranspiled
 - **Webpack will only be used in the app** to create a bundle from JavaScript files of the core/jfc components and TypeScript files of the app
 
+### Synchronization of styles
+
+- the typescript compiler does not listen to changes on scss files therefore we have a script to synchronize these on our own
+- to synchronize changes on styles in from src to build just run the sync-styles script
+
 ### Frontend structure
 
 #### Usage of types instead of interfaces
