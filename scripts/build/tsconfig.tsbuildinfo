@@ -517,7 +517,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/jfs-prebuild.ts": {
-        "version": "223cd84203f49ad269b46741e08169651e26d6b10c529eeb97000ef0ba2950a8",
+        "version": "8b30cf6baf05c7b6dcf8e36824c186e753e1f4319813a67b492bdae92c6fddcd",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -533,6 +533,11 @@
       },
       "../src/setup/sync-development.ts": {
         "version": "e8d63dba20172542f5c4eea3cb86abeb7551a05c5535032c30978310d4404809",
+        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "affectsGlobalScope": false
+      },
+      "../src/setup/sync-styles.ts": {
+        "version": "2a4e99c651a03f0dd49dff4e4e7957310845c30be8335c5aa38028640a5f372e",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -632,8 +637,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react/index.d.ts": {
-        "version": "99fffab102cf237a91e7f40423bfe1a14bc9d55e19f42573559fefe47e79b4a8",
-        "signature": "99fffab102cf237a91e7f40423bfe1a14bc9d55e19f42573559fefe47e79b4a8",
+        "version": "6dbb6d38449af937829d2bd38a2ff5bfd45b164c6e22bed25dff9fd0bea9cf47",
+        "signature": "6dbb6d38449af937829d2bd38a2ff5bfd45b164c6e22bed25dff9fd0bea9cf47",
         "affectsGlobalScope": true
       },
       "../../node_modules/@types/hoist-non-react-statics/index.d.ts": {
@@ -672,8 +677,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/ts3.1/common/lang.d.ts": {
-        "version": "d7fac90d8d76afeccb236132472c6c2c26f1783af0e46575d3b2f5a59501f4ca",
-        "signature": "d7fac90d8d76afeccb236132472c6c2c26f1783af0e46575d3b2f5a59501f4ca",
+        "version": "f612468e9c3edff588905c4c4f512487a13ac32ffbd291fe07696268ab8c8dfa",
+        "signature": "f612468e9c3edff588905c4c4f512487a13ac32ffbd291fe07696268ab8c8dfa",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/ts3.1/common/math.d.ts": {
@@ -2321,9 +2326,6 @@
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../src/library/jfs/app/index.ts",
-        "../src/library/jfs/component/index.ts",
-        "../src/library/jfs/core/index.ts",
         "../src/library/jfs/index.ts",
         "../src/library/os/process/index.ts",
         "../src/library/types/tsconfig.ts"
@@ -2352,6 +2354,17 @@
         "../src/library/jfs/core/index.ts",
         "../src/library/jfs/index.ts",
         "../src/library/os/filesystem/synchronization.ts"
+      ],
+      "../src/setup/sync-styles.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/ansi-colors/types/index.d.ts",
+        "../src/library/jfs/app/index.ts",
+        "../src/library/jfs/index.ts",
+        "../src/library/os/filesystem/directory.ts",
+        "../src/library/os/filesystem/file.ts",
+        "../src/library/text/index.ts"
       ]
     },
     "exportedModulesMap": {
@@ -3630,7 +3643,8 @@
       "../src/setup/jfs-prebuild.ts",
       "../src/setup/jsc-check.ts",
       "../src/setup/jsc-generate.ts",
-      "../src/setup/sync-development.ts"
+      "../src/setup/sync-development.ts",
+      "../src/setup/sync-styles.ts"
     ]
   },
   "version": "3.9.7"
