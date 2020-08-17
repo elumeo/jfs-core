@@ -1,3 +1,7 @@
+## [9.3.0] - 2020-08-17
+### Added
+- webpack-bundle-analyzer dependency
+
 ## [9.2.1] - 2020-08-17
 ### Fixed
 - Support for external source maps in webpack

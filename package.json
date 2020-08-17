@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "9.2.1",
+  "version": "9.3.0",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
@@ -137,6 +137,7 @@
     "url-loader": "^4.1.0",
     "validate-npm-package-license": "^3.0.4",
     "webpack": "^4.42.0",
+    "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
