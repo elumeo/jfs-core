@@ -1,3 +1,7 @@
+## [9.2.1] - 2020-08-17
+### Fixed
+- Support for external source maps in webpack
+
 ## [9.2.0] - 2020-08-17
 ### Added
 - Added sync script for styles from src to build

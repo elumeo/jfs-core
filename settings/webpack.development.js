@@ -9,6 +9,17 @@ const https = mode === 'devServer' && process.argv.includes('--https');
 
 module.exports = {
   ...common,
+  module: {
+    ...common.module,
+    rules: [
+      ...common.module.rules,
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      }
+    ]
+  },
   mode: 'development',
   plugins: [
     ...common.plugins,

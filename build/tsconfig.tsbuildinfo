@@ -2868,6 +2868,7 @@
           "./Utilities/*"
         ]
       },
+      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
