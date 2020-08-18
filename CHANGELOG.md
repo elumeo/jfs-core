@@ -1,3 +1,7 @@
+## [9.3.5] - 2020-08-18
+### Fixed
+- fixed translation checker on windows
+
 ## [9.3.4] - 2020-08-18
 ### Fixed
 - fixed translation checker

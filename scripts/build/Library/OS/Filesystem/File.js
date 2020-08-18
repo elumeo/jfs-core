@@ -25,7 +25,12 @@ class File extends FsNode_1.default {
                     return path;
                 }
                 else {
-                    return `${path_1.sep}${segment}`;
+                    if (process.platform === 'win32') {
+                        return segment;
+                    }
+                    else {
+                        return `${path_1.sep}${segment}`;
+                    }
                 }
             }, null);
             fs_1.appendFile(this.path, '', (error) => {

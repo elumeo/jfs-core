@@ -207,7 +207,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/os/filesystem/file.ts": {
-        "version": "773fa32345ae106105224d10ae19798888203dec3bc53bdaa96ca398c752f288",
+        "version": "efd01ea8fb7f6b237db4fa0e3150f81c9f0235767714be8b41100144d8eef413",
         "signature": "d4136e90ae8db9899b24ad45b3cd24d0cd1d444acbf15f0f6f75c8a6e477b2b8",
         "affectsGlobalScope": false
       },
@@ -991,6 +991,7 @@
           "./Library/*"
         ]
       },
+      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {

@@ -45,7 +45,12 @@ class File extends FsNode {
             return path;
           }
           else {
-            return `${sep}${segment}`;
+            if (process.platform === 'win32') {
+              return segment;
+            }
+            else {
+              return `${sep}${segment}`;
+            }
           }
         },
         null
