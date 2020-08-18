@@ -462,8 +462,8 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/translations/snapshot.ts": {
-        "version": "750ccc7b94cdec36f077aa332fbf4b7974ec7a62ed0445328549fc178423e969",
-        "signature": "de48889e987d9d3ef4e5692dd2069e3753314bf00aeaf442a3d02d9ca0e3dcbc",
+        "version": "f3d49119a6f41c949694a84c57c9eb5f12cd5e627d818d3f8d9e3ebfe9910973",
+        "signature": "64d352338217a5f04fe9fb6481264d56d6681877422f3ca07462008ba84f6043",
         "affectsGlobalScope": false
       },
       "../src/library/job/index.ts": {
@@ -497,7 +497,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/check-translations.ts": {
-        "version": "6baaef10eeadbfe06ffa68ed00e21329050af144cb3b87e948ac9fb3d35e3ee7",
+        "version": "1c3b84badd3e26bbb809424cf846e60de997b96308e7722dd95fe345361344f7",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
