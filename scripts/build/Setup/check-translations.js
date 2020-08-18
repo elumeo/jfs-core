@@ -17,7 +17,9 @@ const Snapshot_1 = __importDefault(require("../Library/JFS/Project/Translations/
 const Translations_1 = __importDefault(require("../Library/JFS/Project/Translations"));
 const File_1 = __importDefault(require("../Library/OS/Filesystem/File"));
 const onComplete = ({ missing, html }) => {
-    html.open();
+    if (html) {
+        html.open();
+    }
 };
 JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
     const translations = new File_1.default({

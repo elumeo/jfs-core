@@ -1,3 +1,7 @@
+## [9.3.4] - 2020-08-18
+### Fixed
+- fixed translation checker
+
 ## [9.3.3] - 2020-08-18
 ### Fixed
 - fixed translation checker
