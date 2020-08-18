@@ -1,3 +1,7 @@
+## [9.3.6] - 2020-08-18
+### Fixed
+- fixed unhandled error exception warning in webpack-dev-server when running on macOS (Darwin)
+
 ## [9.3.5] - 2020-08-18
 ### Fixed
 - fixed translation checker on windows

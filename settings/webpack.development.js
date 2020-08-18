@@ -51,7 +51,11 @@ if (mode === 'devServer') {
     disableHostCheck: true,
     publicPath: '/',
     watchOptions: {
-      poll: 1500,
+      poll: (
+        process.platform === 'darwin'
+          ? undefined
+          : 1500
+      ),
       aggregateTimeout: 200
     }
   };
