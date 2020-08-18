@@ -1,18 +1,13 @@
 import { bold } from 'ansi-colors';
 import JFS from 'Library/JFS';
 import Snapshot from 'Library/JFS/Project/Translations/Snapshot';
-import opn from 'opn';
 import Job from 'Library/Job';
 import Translations from 'Library/JFS/Project/Translations';
 import File from 'Library/OS/Filesystem/File';
 
-const checkTranslations = ({
-  open
-}: {
-  open: boolean;
-}) => new Job<{
+const job = new Job<{
   missing: { key: string; }[],
-  url: string;
+  html: File;
 }>({
   name: 'jfs-translation-check',
   task: onComplete => JFS.discover(async () => {
@@ -24,36 +19,30 @@ const checkTranslations = ({
     const current = await Snapshot.current(translations);
 
     if (previous) {
-      Snapshot.update(
-        previous,
-        current,
-        onComplete
-      );
+      Snapshot.update(previous, current, onComplete);
     }
     else {
       const missing = current.translations.missing(current.includeCompleteRows);
       if (missing.length) {
-        const html = await current.file('html');
-        Snapshot.create(
-          1,
-          current,
-          () => onComplete({ missing, url: html && html.path || null })
-        );
+        Snapshot.create(1, current, async () => onComplete({
+          missing,
+          html: (await current.file('html')) || null
+        }));
       }
       else {
-        onComplete({ missing, url: null });
+        onComplete({ missing, html: null });
       }
     }
   }),
-  onComplete: ({ missing, url }, status) => {
+  onComplete: ({ missing, html }, status) => {
     if (missing.length) {
       status(
         'NOT_OK',
         `${bold('INCOMPLETE')}: ${missing.length} translations missing`
-      )
+      );
 
-      if (url && open) {
-        opn(url);
+      if (html) {
+        html.open();
       }
     }
     else {
@@ -62,4 +51,4 @@ const checkTranslations = ({
   }
 });
 
-checkTranslations({ open: true }).run();
+job.run();
