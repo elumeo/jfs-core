@@ -21,7 +21,7 @@ JFS_1.default.discover(() => {
     };
     console.log(Object.keys(types).find(key => JFS_1.default.Head instanceof types[key]));
     JFS_1.default.Head.tsconfig.json(({ compilerOptions: { outDir } }) => {
-        ['scss', 'json'].forEach(extension => new Process_1.default({
+        ['scss', 'json', 'woff', 'woff2'].forEach(extension => new Process_1.default({
             command: copyfiles,
             parameters: [
                 '-u', '1', `src/**/*.${extension}`, outDir

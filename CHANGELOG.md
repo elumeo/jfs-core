@@ -1,3 +1,7 @@
+## [9.3.2] - 2020-08-18
+### Fixed
+- added woff and woff2 to build pipeline
+
 ## [9.3.1] - 2020-08-18
 ### Changed
 - updated juwelo icon font

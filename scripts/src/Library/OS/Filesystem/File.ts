@@ -2,6 +2,7 @@ import { readFile, writeFile, appendFile, unlink, existsSync, mkdirSync } from '
 import FsNode from './FsNode';
 import { csv2json } from 'json-2-csv';
 import { sep } from 'path';
+import opn from 'opn';
 
 namespace File {
   export namespace Options {
@@ -24,6 +25,8 @@ class File extends FsNode {
       0,
       path.lastIndexOf('.')
     );
+
+    public open = () => opn(this.path);
 
     public exists = () => existsSync(this.path);
 
