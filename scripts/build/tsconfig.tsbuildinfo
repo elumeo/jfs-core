@@ -497,7 +497,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/check-translations.ts": {
-        "version": "6baaef10eeadbfe06ffa68ed00e21329050af144cb3b87e948ac9fb3d35e3ee7",
+        "version": "746ca10e0314d4d1b3dd5fa94c14dd8a0d45e6709673ccd612f3d98f3cd40aeb",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -2301,7 +2301,6 @@
         "../src/library/jfs/index.ts",
         "../src/library/jfs/project/translations/index.ts",
         "../src/library/jfs/project/translations/snapshot.ts",
-        "../src/library/job/index.ts",
         "../src/library/os/filesystem/file.ts"
       ],
       "../src/setup/deploy-config-files.ts": [
