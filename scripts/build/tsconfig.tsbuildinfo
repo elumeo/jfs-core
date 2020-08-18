@@ -637,8 +637,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react/index.d.ts": {
-        "version": "99fffab102cf237a91e7f40423bfe1a14bc9d55e19f42573559fefe47e79b4a8",
-        "signature": "99fffab102cf237a91e7f40423bfe1a14bc9d55e19f42573559fefe47e79b4a8",
+        "version": "b0de1737a447411ed29ff2cf75b82b9f4e89791337f743c3b6bcbd05a95ec524",
+        "signature": "b0de1737a447411ed29ff2cf75b82b9f4e89791337f743c3b6bcbd05a95ec524",
         "affectsGlobalScope": true
       },
       "../../node_modules/@types/hoist-non-react-statics/index.d.ts": {
@@ -747,8 +747,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-infinite/index.d.ts": {
-        "version": "e3216c3ff07f0a6d603f569ef0ad9fc2281710ad00f2a176160988c781d5aebc",
-        "signature": "e3216c3ff07f0a6d603f569ef0ad9fc2281710ad00f2a176160988c781d5aebc",
+        "version": "9ca28ee066a3188c65f1b79dcb68d7b43d3be1c8c63f3400c81498ca7180ff38",
+        "signature": "9ca28ee066a3188c65f1b79dcb68d7b43d3be1c8c63f3400c81498ca7180ff38",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-intl/index.d.ts": {
@@ -912,8 +912,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/socket.io/index.d.ts": {
-        "version": "5faa9c30e7aace25ba71ac2ab7b29f04837d82fc81b31a8f7db2b306d9dff730",
-        "signature": "5faa9c30e7aace25ba71ac2ab7b29f04837d82fc81b31a8f7db2b306d9dff730",
+        "version": "7d666a6623022683b640930047127f754d79393a29c0f51f3447325f8435809f",
+        "signature": "7d666a6623022683b640930047127f754d79393a29c0f51f3447325f8435809f",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/socket.io-client/index.d.ts": {

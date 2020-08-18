@@ -317,8 +317,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/axios/index.d.ts": {
-        "version": "7d04801f5ace7a92365ca303eaf7ac2adab6b4c52d9779c8d90824e5218ddc78",
-        "signature": "7d04801f5ace7a92365ca303eaf7ac2adab6b4c52d9779c8d90824e5218ddc78",
+        "version": "e7df7eb51c5090db4bdcdbf9efe053530dff0e33796f40b08b1a3be6c3a351d0",
+        "signature": "e7df7eb51c5090db4bdcdbf9efe053530dff0e33796f40b08b1a3be6c3a351d0",
         "affectsGlobalScope": false
       },
       "../src/base/httpclient.ts": {
@@ -877,8 +877,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react/index.d.ts": {
-        "version": "99fffab102cf237a91e7f40423bfe1a14bc9d55e19f42573559fefe47e79b4a8",
-        "signature": "99fffab102cf237a91e7f40423bfe1a14bc9d55e19f42573559fefe47e79b4a8",
+        "version": "b0de1737a447411ed29ff2cf75b82b9f4e89791337f743c3b6bcbd05a95ec524",
+        "signature": "b0de1737a447411ed29ff2cf75b82b9f4e89791337f743c3b6bcbd05a95ec524",
         "affectsGlobalScope": true
       },
       "../node_modules/@types/hoist-non-react-statics/index.d.ts": {
@@ -1878,7 +1878,7 @@
       },
       "../src/component/navigation/navigationdrawer.tsx": {
         "version": "7508e7df054a114ad4b50d175f7344431053d238d02c7cea0d15eb4822aed4c0",
-        "signature": "8ede10b79794c27e3aa42123079be13c483beee1164e9e027b37ac9101aa9484",
+        "signature": "d2e03af1efb3ff616af8a1a52374692c86082ade3e449a5fadcb1c30468eaaf0",
         "affectsGlobalScope": false
       },
       "../src/component/notification/dismissallnotificationsbutton.tsx": {
@@ -2682,8 +2682,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react-infinite/index.d.ts": {
-        "version": "e3216c3ff07f0a6d603f569ef0ad9fc2281710ad00f2a176160988c781d5aebc",
-        "signature": "e3216c3ff07f0a6d603f569ef0ad9fc2281710ad00f2a176160988c781d5aebc",
+        "version": "9ca28ee066a3188c65f1b79dcb68d7b43d3be1c8c63f3400c81498ca7180ff38",
+        "signature": "9ca28ee066a3188c65f1b79dcb68d7b43d3be1c8c63f3400c81498ca7180ff38",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react-virtualized/dist/es/cellmeasurer.d.ts": {
@@ -2757,8 +2757,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/@types/socket.io/index.d.ts": {
-        "version": "5faa9c30e7aace25ba71ac2ab7b29f04837d82fc81b31a8f7db2b306d9dff730",
-        "signature": "5faa9c30e7aace25ba71ac2ab7b29f04837d82fc81b31a8f7db2b306d9dff730",
+        "version": "7d666a6623022683b640930047127f754d79393a29c0f51f3447325f8435809f",
+        "signature": "7d666a6623022683b640930047127f754d79393a29c0f51f3447325f8435809f",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/source-list-map/index.d.ts": {
@@ -2868,7 +2868,6 @@
           "./Utilities/*"
         ]
       },
-      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {

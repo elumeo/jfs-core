@@ -1,3 +1,8 @@
+## [9.3.1] - 2020-08-18
+### Changed
+- updated juwelo icon font
+- updated node modules versions in package.json
+
 ## [9.3.0] - 2020-08-17
 ### Added
 - webpack-bundle-analyzer dependency
