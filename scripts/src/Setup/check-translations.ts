@@ -1,11 +1,12 @@
-import { bold } from 'ansi-colors';
 import JFS from 'Library/JFS';
 import Snapshot from 'Library/JFS/Project/Translations/Snapshot';
 import Translations from 'Library/JFS/Project/Translations';
 import File from 'Library/OS/Filesystem/File';
 
 const onComplete = ({ missing, html }) => {
-  html.open()
+  if (html) {
+    html.open();
+  }
 }
 
 JFS.discover(async () => {
