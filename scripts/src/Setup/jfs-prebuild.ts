@@ -23,7 +23,7 @@ JFS.discover(() => {
   JFS.Head.tsconfig.json<TsConfig>(({
     compilerOptions: { outDir }
   }) => {
-    ['scss', 'json'].forEach(
+    ['scss', 'json', 'woff', 'woff2'].forEach(
       extension => new Process({
         command: copyfiles,
         parameters: [

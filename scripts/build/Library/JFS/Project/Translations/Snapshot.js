@@ -149,15 +149,15 @@ Snapshot.update = (previous, current, onComplete) => (Snapshot.difference(previo
     if (isDifferent) {
         if (missing.length) {
             Snapshot.replace(previous, current, () => onComplete({
-                missing, url: html.path,
+                missing, html,
             }));
         }
         else {
-            previous.remove(() => onComplete({ missing, url: null }));
+            previous.remove(() => onComplete({ missing, html: null }));
         }
     }
     else {
-        onComplete({ missing, url: html.path });
+        onComplete({ missing, html });
     }
 })));
 exports.default = Snapshot;

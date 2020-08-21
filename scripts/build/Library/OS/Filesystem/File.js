@@ -7,9 +7,11 @@ const fs_1 = require("fs");
 const FsNode_1 = __importDefault(require("./FsNode"));
 const json_2_csv_1 = require("json-2-csv");
 const path_1 = require("path");
+const opn_1 = __importDefault(require("opn"));
 class File extends FsNode_1.default {
     constructor() {
         super(...arguments);
+        this.open = () => opn_1.default(this.path);
         this.exists = () => fs_1.existsSync(this.path);
         this.create = (onComplete) => {
             this.predecessors.reduce((parent, segment) => {
@@ -23,7 +25,12 @@ class File extends FsNode_1.default {
                     return path;
                 }
                 else {
-                    return `${path_1.sep}${segment}`;
+                    if (process.platform === 'win32') {
+                        return segment;
+                    }
+                    else {
+                        return `${path_1.sep}${segment}`;
+                    }
                 }
             }, null);
             fs_1.appendFile(this.path, '', (error) => {

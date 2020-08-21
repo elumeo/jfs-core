@@ -1,3 +1,23 @@
+## [9.3.6] - 2020-08-18
+### Fixed
+- fixed unhandled error exception warning in webpack-dev-server when running on macOS (Darwin)
+
+## [9.3.5] - 2020-08-18
+### Fixed
+- fixed translation checker on windows
+
+## [9.3.4] - 2020-08-18
+### Fixed
+- fixed translation checker
+
+## [9.3.3] - 2020-08-18
+### Fixed
+- fixed translation checker
+
+## [9.3.2] - 2020-08-18
+### Fixed
+- added woff and woff2 to build pipeline
+
 ## [9.3.1] - 2020-08-18
 ### Changed
 - updated juwelo icon font

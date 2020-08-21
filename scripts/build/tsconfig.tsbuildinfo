@@ -207,8 +207,8 @@
         "affectsGlobalScope": false
       },
       "../src/library/os/filesystem/file.ts": {
-        "version": "74c962dcf5cd578ea65d7360b0b0d84be6f45fac7e849f4c54a89de237958b9b",
-        "signature": "d79a3d785eac84025d21d8f6569fcc08de50ee0434d8efe0212e0716403c3f09",
+        "version": "efd01ea8fb7f6b237db4fa0e3150f81c9f0235767714be8b41100144d8eef413",
+        "signature": "d4136e90ae8db9899b24ad45b3cd24d0cd1d444acbf15f0f6f75c8a6e477b2b8",
         "affectsGlobalScope": false
       },
       "../src/library/jfs/config.ts": {
@@ -462,8 +462,8 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/translations/snapshot.ts": {
-        "version": "f3d49119a6f41c949694a84c57c9eb5f12cd5e627d818d3f8d9e3ebfe9910973",
-        "signature": "64d352338217a5f04fe9fb6481264d56d6681877422f3ca07462008ba84f6043",
+        "version": "750ccc7b94cdec36f077aa332fbf4b7974ec7a62ed0445328549fc178423e969",
+        "signature": "de48889e987d9d3ef4e5692dd2069e3753314bf00aeaf442a3d02d9ca0e3dcbc",
         "affectsGlobalScope": false
       },
       "../src/library/job/index.ts": {
@@ -497,7 +497,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/check-translations.ts": {
-        "version": "1c3b84badd3e26bbb809424cf846e60de997b96308e7722dd95fe345361344f7",
+        "version": "d7419b5866c4c00d342397351b7e230ecb86b4f44d043b86651a3c20bf30069c",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -517,7 +517,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/jfs-prebuild.ts": {
-        "version": "223cd84203f49ad269b46741e08169651e26d6b10c529eeb97000ef0ba2950a8",
+        "version": "b69e1cc4ab8f8abe7c6393dbe1885740190250ac9d823dd260497b692943a3c6",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -637,8 +637,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react/index.d.ts": {
-        "version": "b0de1737a447411ed29ff2cf75b82b9f4e89791337f743c3b6bcbd05a95ec524",
-        "signature": "b0de1737a447411ed29ff2cf75b82b9f4e89791337f743c3b6bcbd05a95ec524",
+        "version": "99fffab102cf237a91e7f40423bfe1a14bc9d55e19f42573559fefe47e79b4a8",
+        "signature": "99fffab102cf237a91e7f40423bfe1a14bc9d55e19f42573559fefe47e79b4a8",
         "affectsGlobalScope": true
       },
       "../../node_modules/@types/hoist-non-react-statics/index.d.ts": {
@@ -747,8 +747,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-infinite/index.d.ts": {
-        "version": "9ca28ee066a3188c65f1b79dcb68d7b43d3be1c8c63f3400c81498ca7180ff38",
-        "signature": "9ca28ee066a3188c65f1b79dcb68d7b43d3be1c8c63f3400c81498ca7180ff38",
+        "version": "e3216c3ff07f0a6d603f569ef0ad9fc2281710ad00f2a176160988c781d5aebc",
+        "signature": "e3216c3ff07f0a6d603f569ef0ad9fc2281710ad00f2a176160988c781d5aebc",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-intl/index.d.ts": {
@@ -912,8 +912,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/socket.io/index.d.ts": {
-        "version": "7d666a6623022683b640930047127f754d79393a29c0f51f3447325f8435809f",
-        "signature": "7d666a6623022683b640930047127f754d79393a29c0f51f3447325f8435809f",
+        "version": "5faa9c30e7aace25ba71ac2ab7b29f04837d82fc81b31a8f7db2b306d9dff730",
+        "signature": "5faa9c30e7aace25ba71ac2ab7b29f04837d82fc81b31a8f7db2b306d9dff730",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/socket.io-client/index.d.ts": {
@@ -991,6 +991,7 @@
           "./Library/*"
         ]
       },
+      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
@@ -2296,11 +2297,9 @@
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/ansi-colors/types/index.d.ts",
         "../src/library/jfs/index.ts",
         "../src/library/jfs/project/translations/index.ts",
         "../src/library/jfs/project/translations/snapshot.ts",
-        "../src/library/job/index.ts",
         "../src/library/os/filesystem/file.ts"
       ],
       "../src/setup/deploy-config-files.ts": [
