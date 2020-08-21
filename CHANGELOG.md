@@ -1,3 +1,7 @@
+## [9.3.7] - 2020-08-21
+### Fixed
+- Added more error handling to websocket client
+
 ## [9.3.6] - 2020-08-18
 ### Fixed
 - fixed unhandled error exception warning in webpack-dev-server when running on macOS (Darwin)
