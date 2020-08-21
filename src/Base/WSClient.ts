@@ -1,5 +1,6 @@
 import { Observable, Subject } from 'rxjs';
 import io from 'socket.io-client';
+import engineIo from 'engine.io-client';
 import { PayloadAction } from 'typesafe-actions';
 import JSCApi from 'Jsc/Api';
 import {
@@ -20,6 +21,7 @@ export class WSClient {
   public static EVENT_LEAVE_ROOM = '[Room] Leave';
   public static EVENT_UPDATE_ROOM = '[Room] Update';
   public static EVENT_CONNECT_ERROR = 'connect_error';
+  public static EVENT_CONNECT_TIMEOUT = 'connect_timeout';
   public static EVENT_ERROR = 'error';
   public static EVENT_RECONNECT = 'reconnect';
 
@@ -70,6 +72,11 @@ export class WSClient {
         });
 
         this.sockets[namespace].on(this.EVENT_CONNECT_ERROR, (err) => {
+          this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
+          this.connectionErrorSubject.next({namespace, message: err});
+        });
+
+        this.sockets[namespace].on(this.EVENT_CONNECT_TIMEOUT, (err) => {
           this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
           this.connectionErrorSubject.next({namespace, message: err});
         });

@@ -14,6 +14,7 @@ export declare class WSClient {
     static EVENT_LEAVE_ROOM: string;
     static EVENT_UPDATE_ROOM: string;
     static EVENT_CONNECT_ERROR: string;
+    static EVENT_CONNECT_TIMEOUT: string;
     static EVENT_ERROR: string;
     static EVENT_RECONNECT: string;
     static sockets: typeof io.Socket[];

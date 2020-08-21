@@ -1622,8 +1622,8 @@
         "affectsGlobalScope": false
       },
       "../src/base/wsclient.ts": {
-        "version": "87e635c3403b3fee69f844ac6dc7ea32a544b565fcfc390016c8a021c7e889b4",
-        "signature": "9c7b5cf2f9e192f3db35b5b6032336855f50166610aa0dba68ec3a5ca271c4da",
+        "version": "df6a2f0cf7fb5f6d2b83e8bd1ec092007e58ab082800736eb4d7731dbb424e4c",
+        "signature": "ff5d37efbb6595103d993380e7193cfc7bd38c5c9cf7079e3a1dae1a322fa32a",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react-dom/server/index.d.ts": {
@@ -2868,6 +2868,7 @@
           "./Utilities/*"
         ]
       },
+      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {

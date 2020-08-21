@@ -34,6 +34,10 @@ export class WSClient {
                     this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
                     this.connectionErrorSubject.next({ namespace, message: err });
                 });
+                this.sockets[namespace].on(this.EVENT_CONNECT_TIMEOUT, (err) => {
+                    this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
+                    this.connectionErrorSubject.next({ namespace, message: err });
+                });
                 this.sockets[namespace].on(this.EVENT_RECONNECT, () => {
                     this.sockets[namespace].on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
                     this.reconnectSubject.next(namespace);
@@ -149,6 +153,7 @@ WSClient.EVENT_JOIN_ROOM_FAILED = '[Room] Join Failed';
 WSClient.EVENT_LEAVE_ROOM = '[Room] Leave';
 WSClient.EVENT_UPDATE_ROOM = '[Room] Update';
 WSClient.EVENT_CONNECT_ERROR = 'connect_error';
+WSClient.EVENT_CONNECT_TIMEOUT = 'connect_timeout';
 WSClient.EVENT_ERROR = 'error';
 WSClient.EVENT_RECONNECT = 'reconnect';
 WSClient.sockets = [];

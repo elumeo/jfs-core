@@ -4,6 +4,8 @@
 @import './colors';
 @import './layout';
 
+@include react-md-everything;
+
 html {
   background: $juw-quarz-500 !important;
 }
@@ -174,4 +176,6 @@ body {
   align-items: center;
 }
 
-@include react-md-everything;
+.md-toolbar .md-title--toolbar {
+  margin-bottom: 0; // For some reason the react-md styling has no effect and we have to set this manually
+}
