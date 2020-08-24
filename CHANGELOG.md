@@ -2,6 +2,7 @@
 ### Changed
 - Added clean-install script to package.json
 - Updated node modules
+- moved some colors from main.scss to colors.scss
 
 ## [8.16.1] - 2020-08-12
 ### Fixed
