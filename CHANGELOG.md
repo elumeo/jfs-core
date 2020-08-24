@@ -1,3 +1,8 @@
+## [8.16.2] - 2020-08-24
+### Changed
+- Added clean-install script to package.json
+- Updated node modules
+
 ## [8.16.1] - 2020-08-12
 ### Fixed
 - Fixed alias import

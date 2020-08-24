@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "8.16.1",
+  "version": "8.16.2",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "generate-juwelo-icon-font": "node ./scripts/generate-juwelo-icon-font.js",
     "jsc-check": "node ./scripts/jsc-check.js",
     "release": "npm publish --access public",
-    "postinstall": "node ./scripts/deploy-config-files.js"
+    "postinstall": "node ./scripts/deploy-config-files.js",
+    "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i"
   },
   "repository": {
     "type": "git",
