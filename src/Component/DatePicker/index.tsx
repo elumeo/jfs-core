@@ -18,27 +18,33 @@ enum DateFormat {
 
 const mapLanguageToDateFormat = (language: 'de' | 'en' | 'it') => {
   switch (language) {
-    case 'de': return DateFormat.DE;
-    case 'en': return DateFormat.EN;
-    case 'it': return DateFormat.IT;
-    default: return DateFormat.DE;
+    case 'de':
+      return DateFormat.DE;
+    case 'en':
+      return DateFormat.EN;
+    case 'it':
+      return DateFormat.IT;
+    default:
+      return DateFormat.DE;
   }
 }
 
 namespace DatePicker {
   export type Props = {
+    customClearButtonId: string;
     value: Date;
-    onChange: (newDate: Date) => void;
+    onChange: (newDate: Date, oldDate: Date, event: (React.SyntheticEvent<any> | undefined)) => void;
   } & ReactDatePickerProps;
 }
 
 const DatePicker: React.FC<DatePicker.Props> = ({
-  customInput,
-  dateFormat,
-  value,
-  onChange,
-  ...rest
-}) => {
+                                                  customClearButtonId,
+                                                  customInput,
+                                                  dateFormat,
+                                                  value,
+                                                  onChange,
+                                                  ...rest
+                                                }) => {
   const [date, setDate] = useState<Date>(value);
   const [open, setOpen] = useState(false);
   const [id] = useState(Math.floor(Math.random() * 100));
@@ -56,37 +62,50 @@ const DatePicker: React.FC<DatePicker.Props> = ({
     }
   );
 
+  useEffect(
+    () => {
+      document.getElementById(customClearButtonId)?.addEventListener('click', () => {
+        // The clear method exists
+        datePickerRef.current.clear();
+      });
+    },
+    []
+  );
+
   return (
     <International>
-      {({ formatMessage }) => (
+      {({formatMessage}) => (
         <TranslationsProvider>
-          {({ state: { language } }) => (
-            <OutsideClickHandler onOutsideClick={() => setOpen(false)}>
-              <ReactDatePicker
-                {...rest}
-                ref={datePickerRef}
-                selected={date}
-                onChange={(newDate) => {
-                  setDate(newDate);
-                  onChange(newDate);
-                  if (datePickerRef.current.props.shouldCloseOnSelect) {
-                    setOpen(false);
-                  }
-                }}
-                dateFormat={dateFormat || mapLanguageToDateFormat(
-                  language as 'de' | 'it' | 'en'
-                )}
-                locale='de'
-                open={open}
-                id={id.toString()}
-                customInput={
-                  customInput ||
-                  <TextField
-                    label={formatMessage({ id: 'date' })}
-                    id={id}/>
-                }/>
-            </OutsideClickHandler>
-          )}
+          {({state: {language}}) => {
+            return (
+              <OutsideClickHandler onOutsideClick={() => setOpen(false)}>
+                <ReactDatePicker
+                  {...rest}
+                  ref={datePickerRef}
+                  selected={date}
+                  onChange={(newDate, event) => {
+                    console.log('ReactDatePicker::onChange', newDate, date);
+                    setDate(newDate);
+                    onChange(newDate, date, event);
+                    if (datePickerRef.current.props.shouldCloseOnSelect) {
+                      setOpen(false);
+                    }
+                  }}
+                  dateFormat={dateFormat || mapLanguageToDateFormat(
+                    language as 'de' | 'it' | 'en'
+                  )}
+                  locale='de'
+                  open={open}
+                  id={id.toString()}
+                  customInput={
+                    customInput ||
+                    <TextField
+                      label={formatMessage({id: 'date'})}
+                      id={id}/>
+                  }/>
+              </OutsideClickHandler>
+            )
+          }}
         </TranslationsProvider>
       )}
     </International>

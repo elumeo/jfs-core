@@ -2,7 +2,7 @@
 ### Changed
 - Added clean-install script to package.json
 - Updated node modules
-- moved some colors from main.scss to colors.scss
+- Added an option to pass a custom "clear button id" to datepicker component to listen to click events on that button a call the internal clear method of react datepicker 
 
 ## [8.16.1] - 2020-08-12
 ### Fixed
