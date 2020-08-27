@@ -1,3 +1,9 @@
+## [9.3.8] - 2020-08-27
+### Changed
+- removed usage of `config.json.dist` with `npm start` command
+- it is now required (!) to have a `config.json` in a `dist` directory
+- this can be manually copied from `config.json.dist` or with the `npm run build` comman
+
 ## [9.3.7] - 2020-08-21
 ### Fixed
 - Added more error handling to websocket client

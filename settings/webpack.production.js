@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const common = require('./webpack.common.js');
 
@@ -38,5 +39,9 @@ module.exports = {
     // Eliminate more unused lodash code
     new LodashModuleReplacementPlugin(),
     new CompressionPlugin({ test: [/\.tsx/, /\.ts/, /\.js/], minRatio: 0.1 }),
+    new CopyWebpackPlugin([
+      { from: resolve('static') },
+      { from: resolve('config.json.dist'), to: resolve('dist', 'config.json') }
+    ])
   ]
 };
