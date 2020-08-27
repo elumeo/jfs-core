@@ -1,4 +1,6 @@
 const webpack = require('webpack');
+const { resolve } = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -25,6 +27,10 @@ module.exports = {
   },
   plugins: [
     ...common.plugins,
+    new CopyWebpackPlugin([
+      { from: resolve('static') },
+      { from: resolve('config.json.dist'), to: resolve('dist', 'config.json') }
+    ]),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')

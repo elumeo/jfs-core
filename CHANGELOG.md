@@ -1,3 +1,9 @@
+## [8.16.3] - 2020-08-27
+### Changed
+- removed usage of `config.json.dist` with `npm start` command
+  * it is now required (!) to have a `config.json` in a `dist` directory
+  * this can be manually copied from `config.json.dist` or with the `npm run build` command
+
 ## [8.16.2] - 2020-08-24
 ### Changed
 - Added clean-install script to package.json

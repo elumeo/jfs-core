@@ -4,7 +4,6 @@ copyLocal();
 
 // -----------------------------------------------------------------------------
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const generateAliases = () => {
@@ -119,11 +118,7 @@ module.exports = {
       filename: 'index.html',
       template: resolve('static', 'index.html'),
       inject: false
-    }),
-    new CopyWebpackPlugin([
-      { from: resolve('static') },
-      { from: resolve('config.json.dist'), to: resolve('dist', 'config.json') }
-    ])
+    })
   ],
   performance: { hints: false },
 };
