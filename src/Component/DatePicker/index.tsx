@@ -127,7 +127,6 @@ const DatePicker: React.FC<DatePicker.Props> = ({
 
   return (
     <International>
-      {/* tslint:disable-next-line:no-shadowed-variable */}
       {() => (
         <TranslationsProvider>
           {({state: {language}}) => {
