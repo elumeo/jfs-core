@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const JFS_1 = __importDefault(require("../Library/JFS"));
 const Core_1 = __importDefault(require("../Library/JFS/Core"));
 const message = {
-    completed: (`Added peerDependencies to package.json of ${JFS_1.default.Head.directory.name}`)
+    completed: () => (`Added peerDependencies to package.json of ${JFS_1.default.Head.directory.name}`)
 };
 JFS_1.default.discover(() => {
     if (!(JFS_1.default.Head instanceof Core_1.default)) {

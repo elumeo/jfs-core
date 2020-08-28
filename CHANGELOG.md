@@ -1,3 +1,7 @@
+## [9.4.1] - 2020-08-28
+## Fixed
+- fixed set-peer-dependency bug
+
 ## [9.4.0] - 2020-08-28
 ### Added
 - script for adding core dependencies as peerDependencies to jfs apps or jfc components

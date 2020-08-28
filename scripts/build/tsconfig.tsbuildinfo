@@ -532,7 +532,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/set-peer-dependencies.ts": {
-        "version": "f4e513196da998cf87254538c68a921ae9eab33c7b3356c0d7c11a953b1d59e9",
+        "version": "88d34b4e051e51c1d02d98b1c0a7414c01b3afb5d37ae16300ef6855cb65ebe3",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -579,6 +579,11 @@
       "../../node_modules/@types/classnames/index.d.ts": {
         "version": "d22e870fef25a052477d24f34356470262881420c8b058c89d86392de6502c42",
         "signature": "d22e870fef25a052477d24f34356470262881420c8b058c89d86392de6502c42",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/diacritics/index.d.ts": {
+        "version": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
+        "signature": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/engine.io/index.d.ts": {
@@ -642,8 +647,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react/index.d.ts": {
-        "version": "99fffab102cf237a91e7f40423bfe1a14bc9d55e19f42573559fefe47e79b4a8",
-        "signature": "99fffab102cf237a91e7f40423bfe1a14bc9d55e19f42573559fefe47e79b4a8",
+        "version": "b0de1737a447411ed29ff2cf75b82b9f4e89791337f743c3b6bcbd05a95ec524",
+        "signature": "b0de1737a447411ed29ff2cf75b82b9f4e89791337f743c3b6bcbd05a95ec524",
         "affectsGlobalScope": true
       },
       "../../node_modules/@types/hoist-non-react-statics/index.d.ts": {
@@ -917,8 +922,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/socket.io/index.d.ts": {
-        "version": "5faa9c30e7aace25ba71ac2ab7b29f04837d82fc81b31a8f7db2b306d9dff730",
-        "signature": "5faa9c30e7aace25ba71ac2ab7b29f04837d82fc81b31a8f7db2b306d9dff730",
+        "version": "7d666a6623022683b640930047127f754d79393a29c0f51f3447325f8435809f",
+        "signature": "7d666a6623022683b640930047127f754d79393a29c0f51f3447325f8435809f",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/socket.io-client/index.d.ts": {
@@ -1012,6 +1017,11 @@
         "../node_modules/@types/node/ts3.2/index.d.ts"
       ],
       "../../node_modules/@types/classnames/types.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts"
+      ],
+      "../../node_modules/@types/diacritics/index.d.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts"
@@ -2398,6 +2408,11 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts"
       ],
+      "../../node_modules/@types/diacritics/index.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts"
+      ],
       "../../node_modules/@types/engine.io/index.d.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -3469,6 +3484,7 @@
       "../../node_modules/@types/anymatch/index.d.ts",
       "../../node_modules/@types/classnames/index.d.ts",
       "../../node_modules/@types/classnames/types.d.ts",
+      "../../node_modules/@types/diacritics/index.d.ts",
       "../../node_modules/@types/engine.io/index.d.ts",
       "../../node_modules/@types/google-libphonenumber/index.d.ts",
       "../../node_modules/@types/history/createbrowserhistory.d.ts",
