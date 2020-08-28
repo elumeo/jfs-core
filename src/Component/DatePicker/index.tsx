@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import TextField from 'react-md/lib/TextFields/TextField';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Setup';
 import OutsideClickHandler from 'react-outside-click-handler';
 import TranslationsProvider from '../../Store/Provider/Translations';
 import International from '../International';
+import { InjectedIntlProps, injectIntl } from 'react-intl';
+import './styles.scss'
 
 enum DateFormat {
   DE = 'dd.MM.yy',
@@ -31,18 +32,20 @@ const mapLanguageToDateFormat = (language: 'de' | 'en' | 'it') => {
 
 namespace DatePicker {
   export type Props = {
+    label?: string;
     customClearButtonId: string;
     value: Date;
     onChange: (newDate: Date, oldDate: Date, event: (React.SyntheticEvent<any> | undefined)) => void;
-  } & ReactDatePickerProps;
+  } & ReactDatePickerProps & InjectedIntlProps;
 }
 
 const DatePicker: React.FC<DatePicker.Props> = ({
+                                                  label,
                                                   customClearButtonId,
-                                                  customInput,
                                                   dateFormat,
                                                   value,
                                                   onChange,
+                                                  intl: {formatMessage},
                                                   ...rest
                                                 }) => {
   const [date, setDate] = useState<Date>(value);
@@ -50,31 +53,82 @@ const DatePicker: React.FC<DatePicker.Props> = ({
   const [id] = useState(Math.floor(Math.random() * 100));
   const datePickerRef = useRef<ReactDatePicker>();
 
-  useEffect(
-    () => {
-      const domNode = document.getElementById(id.toString());
-      if (domNode) {
-        domNode.parentNode.addEventListener(
-          'click',
-          () => setOpen(true)
-        );
-      }
+  useEffect(() => {
+    const domNode = document.getElementById(id.toString());
+    if (domNode) {
+      domNode.parentNode.addEventListener(
+        'click',
+        () => setOpen(true)
+      );
     }
-  );
+  });
 
-  useEffect(
-    () => {
-      document.getElementById(customClearButtonId)?.addEventListener('click', () => {
-        // The clear method exists
-        datePickerRef.current.clear();
-      });
-    },
-    []
-  );
+  useEffect(() => {
+    document.getElementById(customClearButtonId)?.addEventListener('click', () => {
+      // The clear method exists
+      datePickerRef.current.clear();
+    });
+    const input = getInput();
+    input.addEventListener('keydown', _handleKeyupEventOnCustomInputField);
+    input.addEventListener('blur', _handleBlurEventOnCustomInputField);
+    const finalLabel = label !== null ? label : formatMessage({id: 'form.datePicker.label'});
+    getInputParent().setAttribute('data-label', finalLabel);
+  }, []);
+
+  const _handleKeyupEventOnCustomInputField = (e: KeyboardEvent) => {
+    const input = getInput();
+    if (document.activeElement.id === input.id && e.keyCode === 9 && e.shiftKey) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
+  const _handleBlurEventOnCustomInputField = () => {
+    checkRawHasValue();
+    if (datePickerRef.current.isCalendarOpen() === false) {
+      setActive(false);
+    }
+  };
+
+  const checkRawHasValue = () => {
+    const input = getInput();
+    if (input.value === '') {
+      setHasValue(false);
+    } else {
+      setHasValue(true);
+    }
+  }
+
+  const setHasValue = (hasValue: boolean) => {
+    const inputParent = getInputParent();
+    if (hasValue) {
+      inputParent.classList.add('has-value');
+    } else {
+      inputParent.classList.remove('has-value');
+    }
+  }
+
+  const setActive = (isActive: boolean) => {
+    const inputParent = getInputParent();
+    if (isActive) {
+      inputParent.classList.add('is-active');
+    } else {
+      inputParent.classList.remove('is-active');
+    }
+  }
+
+  const getInput = () => {
+    return datePickerRef.current.input as HTMLInputElement;
+  };
+
+  const getInputParent = () => {
+    return getInput().parentElement;
+  };
 
   return (
     <International>
-      {({formatMessage}) => (
+      {/* tslint:disable-next-line:no-shadowed-variable */}
+      {() => (
         <TranslationsProvider>
           {({state: {language}}) => {
             return (
@@ -84,12 +138,20 @@ const DatePicker: React.FC<DatePicker.Props> = ({
                   ref={datePickerRef}
                   selected={date}
                   onChange={(newDate, event) => {
-                    console.log('ReactDatePicker::onChange', newDate, date);
-                    setDate(newDate);
-                    onChange(newDate, date, event);
+                    setHasValue(newDate !== null);
+                    setDate(newDate as Date);
+                    onChange(newDate as Date, date, event);
                     if (datePickerRef.current.props.shouldCloseOnSelect) {
                       setOpen(false);
                     }
+                  }}
+                  onCalendarOpen={() => {
+                    setActive(true);
+                    // addEventListenerToCustomInputField();
+                  }}
+                  onCalendarClose={() => {
+                    setActive(false);
+                    // removeEventListenerToCustomInputField();
                   }}
                   dateFormat={dateFormat || mapLanguageToDateFormat(
                     language as 'de' | 'it' | 'en'
@@ -97,12 +159,8 @@ const DatePicker: React.FC<DatePicker.Props> = ({
                   locale='de'
                   open={open}
                   id={id.toString()}
-                  customInput={
-                    customInput ||
-                    <TextField
-                      label={formatMessage({id: 'date'})}
-                      id={id}/>
-                  }/>
+                  customInput={<input className='md-full-width md-text md-text-field customDatePickerInputField'/>}
+                />
               </OutsideClickHandler>
             )
           }}
@@ -112,4 +170,4 @@ const DatePicker: React.FC<DatePicker.Props> = ({
   );
 }
 
-export default DatePicker;
+export default injectIntl(DatePicker);
