@@ -1,3 +1,7 @@
+## [8.16.5] - 2020-08-28
+### Added
+- Added translationValues to Notifications to enable intl variable replacements 
+
 ## [8.16.4] - 2020-08-28
 ### Bugfix
 - Fixed an issue in the datepicker component where a custom input field is not compatible with react-md
