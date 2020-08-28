@@ -1,3 +1,9 @@
+## [8.16.4] - 2020-08-28
+### Bugfix
+- Fixed an issue in the datepicker component where a custom input field is not compatible with react-md
+  * the custom field isn't supported anymore
+  * added styling and logic to be aligned with react md 
+
 ## [8.16.3] - 2020-08-27
 ### Changed
 - removed usage of `config.json.dist` with `npm start` command
@@ -147,8 +153,8 @@
 ## [8.10.0] - 2020-04-30
 ### Added
 - Compatibility mode for react-intl
-- <FormattedMessage/> component
-- <Popover/> component
+- `<FormattedMessage/>` component
+- `<Popover/>` component
 - New Utilities class
 - redux-providers for easy access to store
 

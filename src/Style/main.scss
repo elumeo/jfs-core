@@ -1,5 +1,7 @@
 @use 'colors';
 @use 'layout';
+@use 'typographie';
+
 @import '~react-md/src/scss/react-md';
 
 $md-primary-color: colors.$juw-primary;
@@ -82,9 +84,9 @@ $md-colors-warn-md: false;
   position: absolute;
   width: 100%;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.54);
+  background: colors.$juw-grey-700;
   padding: 8px 16px;
-  font-size: 13px;
+  font-size: typographie.$font-size-default;
 
   .title {
     font-weight: 600;
@@ -104,7 +106,7 @@ $md-colors-warn-md: false;
   top: 0;
   left: 0;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.54);
+  background: colors.$juw-grey-700;
   color: white;
   width: 32px;
   height: 32px;
