@@ -1,6 +1,5 @@
-// noinspection TypeScriptPreferShortImport
 import React from 'react';
-// noinspection TypeScriptPreferShortImport
+// noinspection TypeScriptPreferShortImport,ES6PreferShortImport
 import {
   addNotificationWithIdAction,
   dismissAllNotificationsAction,
@@ -14,13 +13,15 @@ import {
 } from '../Action/NotificationAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import { AxiosError } from 'axios';
-// noinspection TypeScriptPreferShortImport
+// noinspection TypeScriptPreferShortImport,ES6PreferShortImport
 import { getPlainText, INotificationCardProps } from '../../Component/Notification/NotificationCard';
+import { PrimitiveType } from 'intl-messageformat';
 
 export interface INotificationContent {
   error?: Error | AxiosError | any;
   message?: string | string[];
   translationId?: string | string[];
+  translationValues?: Record<string, PrimitiveType>;
 
   icon?: string;
   isError?: boolean;
