@@ -1,8 +1,8 @@
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import { changeLanguageAction } from 'Action/LanguageAction';
 import { initializeApp } from 'Action/AppAction';
-import Messages from '../../../Utilities/Format/Translations/Messages';
-import coreTranslations from '../../../Setup/Translations.json';
+import Messages from 'Utilities/Format/Translations/Messages';
+import coreTranslations from 'Setup/Translations.json';
 import Shared from '../../../Shared';
 
 namespace Language {

@@ -1,3 +1,7 @@
+## [9.5.0] - 2020-08-28
+## Added
+- added utilities from RightsManager: Sort, Filter, Text.removeDiacritics
+
 ## [9.4.1] - 2020-08-28
 ## Fixed
 - fixed set-peer-dependency bug

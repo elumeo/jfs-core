@@ -316,14 +316,9 @@
         "signature": "d3cb89dbc515da1700ccd75bf2da356ff2f5b80de0e9b83fd126b0793fce60c9",
         "affectsGlobalScope": false
       },
-      "../node_modules/axios/index.d.ts": {
-        "version": "e7df7eb51c5090db4bdcdbf9efe053530dff0e33796f40b08b1a3be6c3a351d0",
-        "signature": "e7df7eb51c5090db4bdcdbf9efe053530dff0e33796f40b08b1a3be6c3a351d0",
-        "affectsGlobalScope": false
-      },
       "../src/base/httpclient.ts": {
         "version": "d9591645979ff9b1e01b8634072d36520e4787cb66d3d1ca6e0e2058eabc26c2",
-        "signature": "a641af8f1c265fefff7b1b1a9e9be1c0a296b6a977856bc038d632206588998f",
+        "signature": "2899aea2a124522d2bbd46741293e42e2987eef9ca2fafa00885b78f8ab20e60",
         "affectsGlobalScope": false
       },
       "../src/base/session.ts": {
@@ -832,8 +827,8 @@
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/languagereducer.ts": {
-        "version": "bd4b78b4a1075a194cd9b451d4f6f7f7f243d21c714e239797e229f129168917",
-        "signature": "c3aa10496e57f60400d65b6c5a72ca1944d2cdb72f854dfe82054fbca7c36f57",
+        "version": "762ae3d14c0a74b794da1d409309569cf1b29f8cbcf43d0b5a2bdedb84c42e40",
+        "signature": "68309d851b1ff140843d7ac109259abdfb2ae6004842b741d416a02b1b8b24d7",
         "affectsGlobalScope": false
       },
       "../src/store/action/logoutaction.ts": {
@@ -1476,9 +1471,14 @@
         "signature": "dfa8e1d7fa541e7baff2182b73a6cffd76a0f88386be1530d511f28460c37845",
         "affectsGlobalScope": false
       },
+      "../node_modules/@types/diacritics/index.d.ts": {
+        "version": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
+        "signature": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
+        "affectsGlobalScope": false
+      },
       "../src/utilities/format/text.ts": {
-        "version": "734d38613b11f0c35b6f5e8f3ffc4bf1e8bb45e57dd19e5afb41f45962522800",
-        "signature": "511cc7e8d3850bacc9c023d88e3c98a0f3d168627ffd813c5608ee65dce170c7",
+        "version": "69d815f55f7f9ace585d1b445efac4d4e9b822568d60822f0c321810c545783e",
+        "signature": "8f56b7bb0f236e115306242a510e837d651379bd3495d0d5d4f31d6e132d2ba9",
         "affectsGlobalScope": false
       },
       "../src/utilities/format/currency.ts": {
@@ -2596,6 +2596,16 @@
         "signature": "a0192e305b5707346dd13eac41c33e7786bdbc5095f5bc530c192181d0296e36",
         "affectsGlobalScope": false
       },
+      "../src/utilities/filter.ts": {
+        "version": "51f7819ececaff5014bf498abcbdf0a07dfdb6180596e1b03534176d15361508",
+        "signature": "2a11cdfe68d5427c2ce9e530cb73b1c4f8bb238c559fbc0f1ba44f7c9a080b85",
+        "affectsGlobalScope": false
+      },
+      "../src/utilities/sort.ts": {
+        "version": "4c9e99472446c17c44715390cfff265daf7988a6acdf7078a7f26a26c56618ea",
+        "signature": "b37eddeac44eec79619609aa8ab39b009dd920b078a1d23eb72ec048e1793d2f",
+        "affectsGlobalScope": false
+      },
       "../src/utilities/index.ts": {
         "version": "9860a38c6f1c4597ba592ae3321234f54ed5862c3d4d8d984bc4505f68432185",
         "signature": "b7cf8cdfe42a98dfee64621116c777e8b3e30dfa9fa407dbdb6b577eeffb7f83",
@@ -2679,11 +2689,6 @@
       "../node_modules/@types/react-addons-css-transition-group/index.d.ts": {
         "version": "e5f3b063289bb6805c2901125b183ee505b6953c6e058406d2f9c59645a3d41a",
         "signature": "e5f3b063289bb6805c2901125b183ee505b6953c6e058406d2f9c59645a3d41a",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/react-infinite/index.d.ts": {
-        "version": "9ca28ee066a3188c65f1b79dcb68d7b43d3be1c8c63f3400c81498ca7180ff38",
-        "signature": "9ca28ee066a3188c65f1b79dcb68d7b43d3be1c8c63f3400c81498ca7180ff38",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react-virtualized/dist/es/cellmeasurer.d.ts": {
@@ -2988,6 +2993,11 @@
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/color-name/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../node_modules/@types/diacritics/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
@@ -3361,12 +3371,6 @@
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
-      "../node_modules/@types/react-infinite/index.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
       "../node_modules/@types/react-intl/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
@@ -3674,11 +3678,6 @@
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/anymatch/index.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/axios/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
@@ -6215,7 +6214,6 @@
       "../src/base/httpclient.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../src/base/session.ts": [
@@ -6689,7 +6687,6 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../src/component/international/index.tsx"
       ],
@@ -6757,7 +6754,6 @@
       "../src/jsc/api/index.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
@@ -6904,7 +6900,6 @@
       "../src/store/epic/configepic.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/redux-observable/index.d.ts",
         "../node_modules/rxjs/index.d.ts",
@@ -6976,7 +6971,6 @@
       "../src/store/epic/sessionepic.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/redux-observable/index.d.ts",
         "../node_modules/rxjs/index.d.ts",
@@ -7190,9 +7184,13 @@
       "../src/types/notification.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../src/component/notification/notificationcard.tsx"
+      ],
+      "../src/utilities/filter.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
       ],
       "../src/utilities/format/currency.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -7222,6 +7220,7 @@
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../src/utilities/format/text.ts": [
+        "../node_modules/@types/diacritics/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
@@ -7248,6 +7247,11 @@
         "../src/utilities/notifier.ts"
       ],
       "../src/utilities/notifier.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../src/utilities/sort.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
@@ -7370,6 +7374,11 @@
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/color-name/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../node_modules/@types/diacritics/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
@@ -7743,12 +7752,6 @@
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
-      "../node_modules/@types/react-infinite/index.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
       "../node_modules/@types/react-intl/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
@@ -8056,11 +8059,6 @@
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/anymatch/index.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/axios/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
@@ -10594,9 +10592,6 @@
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
-      "../src/base/httpclient.ts": [
-        "../node_modules/axios/index.d.ts"
-      ],
       "../src/base/wsclient.ts": [
         "../node_modules/@types/socket.io-client/index.d.ts",
         "../node_modules/rxjs/index.d.ts",
@@ -11023,6 +11018,7 @@
       "../node_modules/@types/classnames/index.d.ts",
       "../node_modules/@types/classnames/types.d.ts",
       "../node_modules/@types/color-name/index.d.ts",
+      "../node_modules/@types/diacritics/index.d.ts",
       "../node_modules/@types/engine.io/index.d.ts",
       "../node_modules/@types/glob/index.d.ts",
       "../node_modules/@types/google-libphonenumber/index.d.ts",
@@ -11061,7 +11057,6 @@
       "../node_modules/@types/react-datepicker/index.d.ts",
       "../node_modules/@types/react-dom/index.d.ts",
       "../node_modules/@types/react-dom/server/index.d.ts",
-      "../node_modules/@types/react-infinite/index.d.ts",
       "../node_modules/@types/react-intl/index.d.ts",
       "../node_modules/@types/react-outside-click-handler/index.d.ts",
       "../node_modules/@types/react-redux/index.d.ts",
@@ -11107,7 +11102,6 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/webpack/node_modules/source-map/source-map.d.ts",
       "../node_modules/anymatch/index.d.ts",
-      "../node_modules/axios/index.d.ts",
       "../node_modules/connected-react-router/index.d.ts",
       "../node_modules/csstype/index.d.ts",
       "../node_modules/date-fns/typings.d.ts",
@@ -11455,7 +11449,19 @@
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../node_modules/typescript/lib/lib.esnext.promise.d.ts",
       "../node_modules/typescript/lib/lib.esnext.string.d.ts",
-      "../src/base/httpclient.ts",
+      [
+        "../src/base/httpclient.ts",
+        [
+          {
+            "file": "../src/base/httpclient.ts",
+            "start": 54,
+            "length": 7,
+            "messageText": "Cannot find module 'axios' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          }
+        ]
+      ],
       "../src/base/session.ts",
       "../src/base/wsclient.ts",
       "../src/component/app/app.tsx",
@@ -11500,7 +11506,19 @@
       "../src/component/settings/settingscontainer.tsx",
       "../src/component/settings/settingsdialog.tsx",
       "../src/component/settings/settingsnavigationitem.tsx",
-      "../src/component/snackbar/errorcontent.tsx",
+      [
+        "../src/component/snackbar/errorcontent.tsx",
+        [
+          {
+            "file": "../src/component/snackbar/errorcontent.tsx",
+            "start": 123,
+            "length": 7,
+            "messageText": "Cannot find module 'axios' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          }
+        ]
+      ],
       "../src/component/snackbar/snackbar.tsx",
       "../src/component/snackbar/snackbarcontent.tsx",
       "../src/component/snackbar/timetoread.ts",
@@ -11508,7 +11526,19 @@
       "../src/component/websocket/websocketstatus.tsx",
       "../src/constant/notification.ts",
       "../src/constant/toast.ts",
-      "../src/jsc/api/index.ts",
+      [
+        "../src/jsc/api/index.ts",
+        [
+          {
+            "file": "../src/jsc/api/index.ts",
+            "start": 30,
+            "length": 7,
+            "messageText": "Cannot find module 'axios' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          }
+        ]
+      ],
       "../src/jsc/client.ts",
       "../src/setup.ts",
       "../src/setup/translations.json",
@@ -11529,12 +11559,36 @@
       "../src/store/action/websocketaction.ts",
       "../src/store/epic/appepic.ts",
       "../src/store/epic/catcherror.ts",
-      "../src/store/epic/configepic.ts",
+      [
+        "../src/store/epic/configepic.ts",
+        [
+          {
+            "file": "../src/store/epic/configepic.ts",
+            "start": 190,
+            "length": 7,
+            "messageText": "Cannot find module 'axios' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          }
+        ]
+      ],
       "../src/store/epic/index.ts",
       "../src/store/epic/languageepic.ts",
       "../src/store/epic/loginepic.ts",
       "../src/store/epic/notificationepic.ts",
-      "../src/store/epic/sessionepic.ts",
+      [
+        "../src/store/epic/sessionepic.ts",
+        [
+          {
+            "file": "../src/store/epic/sessionepic.ts",
+            "start": 289,
+            "length": 7,
+            "messageText": "Cannot find module 'axios' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          }
+        ]
+      ],
       "../src/store/epic/systemepic.ts",
       "../src/store/epic/websocketepic.ts",
       "../src/store/index.ts",
@@ -11557,7 +11611,20 @@
       "../src/store/selectors/websocketselectors.ts",
       "../src/types/configuration.ts",
       "../src/types/language.ts",
-      "../src/types/notification.ts",
+      [
+        "../src/types/notification.ts",
+        [
+          {
+            "file": "../src/types/notification.ts",
+            "start": 27,
+            "length": 7,
+            "messageText": "Cannot find module 'axios' or its corresponding type declarations.",
+            "category": 1,
+            "code": 2307
+          }
+        ]
+      ],
+      "../src/utilities/filter.ts",
       "../src/utilities/format/currency.ts",
       "../src/utilities/format/index.ts",
       "../src/utilities/format/locale.ts",
@@ -11566,7 +11633,8 @@
       "../src/utilities/format/translations/index.ts",
       "../src/utilities/format/translations/messages.ts",
       "../src/utilities/index.ts",
-      "../src/utilities/notifier.ts"
+      "../src/utilities/notifier.ts",
+      "../src/utilities/sort.ts"
     ]
   },
   "version": "3.9.7"
