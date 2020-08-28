@@ -531,6 +531,11 @@
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
+      "../src/setup/set-peer-dependencies.ts": {
+        "version": "f4e513196da998cf87254538c68a921ae9eab33c7b3356c0d7c11a953b1d59e9",
+        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "affectsGlobalScope": false
+      },
       "../src/setup/sync-development.ts": {
         "version": "e8d63dba20172542f5c4eea3cb86abeb7551a05c5535032c30978310d4404809",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
@@ -2346,6 +2351,13 @@
         "../src/library/jfs/core/index.ts",
         "../src/library/jfs/index.ts"
       ],
+      "../src/setup/set-peer-dependencies.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../src/library/jfs/core/index.ts",
+        "../src/library/jfs/index.ts"
+      ],
       "../src/setup/sync-development.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -3645,6 +3657,7 @@
       "../src/setup/jfs-prebuild.ts",
       "../src/setup/jsc-check.ts",
       "../src/setup/jsc-generate.ts",
+      "../src/setup/set-peer-dependencies.ts",
       "../src/setup/sync-development.ts",
       "../src/setup/sync-styles.ts"
     ]

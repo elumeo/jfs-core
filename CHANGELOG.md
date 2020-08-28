@@ -1,3 +1,10 @@
+## [9.4.0] - 2020-08-28
+### Added
+- script for adding core dependencies as peerDependencies to jfs apps or jfc components
+
+### Fixed
+- added missing import in webpack.production.js
+
 ## [9.3.8] - 2020-08-27
 ### Changed
 - removed usage of `config.json.dist` with `npm start` command
