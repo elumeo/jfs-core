@@ -1,3 +1,8 @@
+## [8.16.6] - 2020-08-29
+### Added
+- Added possibility to decide which element to auto focus on ModalDialog or completely disable auto focus
+
+
 ## [8.16.5] - 2020-08-28
 ### Added
 - Added translationValues to Notifications to enable intl variable replacements 
