@@ -28,7 +28,7 @@ JFS.project = (nodePackage, onComplete) => {
             onComplete(new App_1.default({ path }));
         }
         else {
-            throw `Invalid name format in  ${nodePackage.file.path}`;
+            throw `Invalid name format in ${nodePackage.file.path}`;
         }
     });
 };
@@ -38,6 +38,8 @@ JFS.discover = (onComplete) => {
         .trace()
         .filter(path => (!Text_1.default.endsWith(path, 'scripts') &&
         new File_1.default({ path: path_1.resolve(path, 'package.json') }).exists()));
+    console.log(directory
+        .trace());
     const nodePackages = projects.map(path => new Package_1.default(Package_1.default.location(path)));
     JFS.project(nodePackages[0], project => {
         if (project instanceof Core_1.default) {
