@@ -37,8 +37,8 @@ JFS_1.default.discover(() => {
             console.log('Synchronization');
             Object.keys(jfs.sync).map(name => {
                 console.log(`- ${name} => ${jfs.sync[name]}`);
-                const from = path_1.resolve(JFS_1.default.Head.path, jfs.sync[name]);
-                const to = path_1.resolve(JFS_1.default.Head.path, 'node_modules', name);
+                const from = path_1.resolve(JFS_1.default.Head.path, jfs.sync[name]).replace('/', path_1.sep);
+                const to = path_1.resolve(JFS_1.default.Head.path, 'node_modules', name).replace('/', path_1.sep);
                 const synchronization = new Synchronization_1.default({
                     from, to,
                     ignore: [

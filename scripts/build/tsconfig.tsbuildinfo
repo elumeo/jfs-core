@@ -532,12 +532,12 @@
         "affectsGlobalScope": false
       },
       "../src/setup/set-peer-dependencies.ts": {
-        "version": "88d34b4e051e51c1d02d98b1c0a7414c01b3afb5d37ae16300ef6855cb65ebe3",
+        "version": "6e9c7ee98e696907cd49d53d69fd4b69612ed39967b0cfa287c26d7abbc12899",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
       "../src/setup/sync-development.ts": {
-        "version": "e8d63dba20172542f5c4eea3cb86abeb7551a05c5535032c30978310d4404809",
+        "version": "4a3e1c860c70dc4e94220c4a026ee6b7f3969ad72e306916b2e4cdbe6ee4322c",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -1001,6 +1001,7 @@
           "./Library/*"
         ]
       },
+      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
