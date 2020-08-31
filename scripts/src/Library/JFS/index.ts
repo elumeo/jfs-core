@@ -30,7 +30,7 @@ class JFS {
           onComplete(new App({ path }));
         }
         else {
-          throw `Invalid name format in  ${nodePackage.file.path}`;
+          throw `Invalid name format in ${nodePackage.file.path}`;
         }
       }
     );
@@ -41,6 +41,8 @@ class JFS {
   ) => {
     const directory = new Directory({ path: __dirname });
 
+
+
     const projects = directory
       .trace()
       .filter(
@@ -49,6 +51,11 @@ class JFS {
           new File({ path: resolve(path, 'package.json') }).exists()
         )
       );
+
+    console.log(
+      directory
+        .trace()
+    );
 
     const nodePackages = projects.map(
       path => new NodePackage(NodePackage.location(path))
