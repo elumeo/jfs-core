@@ -22,10 +22,8 @@ JFS_1.default.discover(() => {
     console.log(Object.keys(types).find(key => JFS_1.default.Head instanceof types[key]));
     JFS_1.default.Head.tsconfig.json(({ compilerOptions: { outDir } }) => {
         ['scss', 'json', 'woff', 'woff2'].forEach(extension => new Process_1.default({
-            command: copyfiles,
-            parameters: [
-                '-u', '1', `src/**/*.${extension}`, outDir
-            ],
+            command: 'node',
+            parameters: [copyfiles, '-u', '1', `src/**/*.${extension}`, outDir],
             options: { cwd: JFS_1.default.Head.path }
         }).run());
         rif.sync({
@@ -36,8 +34,8 @@ JFS_1.default.discover(() => {
             to: 'from \'@elumeo/jfs-core/build'
         });
         new Process_1.default({
-            command: tscAlias,
-            parameters: ['-p', path_1.resolve(JFS_1.default.Head.path, 'tsconfig.json')],
+            command: 'node',
+            parameters: [tscAlias, '-p', path_1.resolve(JFS_1.default.Head.path, 'tsconfig.json')],
             options: { cwd: JFS_1.default.Head.path }
         }).run(instance => instance.stdout.on('data', data => console.log(data.toString())));
     });

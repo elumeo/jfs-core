@@ -8,15 +8,15 @@ const tscAlias = resolve(cwd, 'node_modules', 'tsc-alias', 'src', 'bin', 'index.
 
 ['scss', 'css', 'html', 'js'].forEach(
   extension => spawn(
-    copyfiles,
-    ['-u', '1', `src/**/*.${extension}`, 'build'],
+    'node',
+    [copyfiles, '-u', '1', `src/**/*.${extension}`, 'build'],
     { cwd }
   )
 );
 
 const tscAliasProcess = spawn(
-  tscAlias,
-  [],
+  'node',
+  [tscAlias],
   { cwd }
 );
 

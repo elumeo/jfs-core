@@ -517,7 +517,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/jfs-prebuild.ts": {
-        "version": "b69e1cc4ab8f8abe7c6393dbe1885740190250ac9d823dd260497b692943a3c6",
+        "version": "ce6087470ac8a03660820a4d5b3ca5aacefa07dbe8e7e1ab624af73982cce885",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -1001,7 +1001,6 @@
           "./Library/*"
         ]
       },
-      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {

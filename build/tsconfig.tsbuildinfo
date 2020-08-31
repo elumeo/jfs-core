@@ -316,9 +316,14 @@
         "signature": "d3cb89dbc515da1700ccd75bf2da356ff2f5b80de0e9b83fd126b0793fce60c9",
         "affectsGlobalScope": false
       },
+      "../node_modules/axios/index.d.ts": {
+        "version": "7d04801f5ace7a92365ca303eaf7ac2adab6b4c52d9779c8d90824e5218ddc78",
+        "signature": "7d04801f5ace7a92365ca303eaf7ac2adab6b4c52d9779c8d90824e5218ddc78",
+        "affectsGlobalScope": false
+      },
       "../src/base/httpclient.ts": {
         "version": "d9591645979ff9b1e01b8634072d36520e4787cb66d3d1ca6e0e2058eabc26c2",
-        "signature": "2899aea2a124522d2bbd46741293e42e2987eef9ca2fafa00885b78f8ab20e60",
+        "signature": "a641af8f1c265fefff7b1b1a9e9be1c0a296b6a977856bc038d632206588998f",
         "affectsGlobalScope": false
       },
       "../src/base/session.ts": {
@@ -2691,6 +2696,11 @@
         "signature": "e5f3b063289bb6805c2901125b183ee505b6953c6e058406d2f9c59645a3d41a",
         "affectsGlobalScope": false
       },
+      "../node_modules/@types/react-infinite/index.d.ts": {
+        "version": "e3216c3ff07f0a6d603f569ef0ad9fc2281710ad00f2a176160988c781d5aebc",
+        "signature": "e3216c3ff07f0a6d603f569ef0ad9fc2281710ad00f2a176160988c781d5aebc",
+        "affectsGlobalScope": false
+      },
       "../node_modules/@types/react-virtualized/dist/es/cellmeasurer.d.ts": {
         "version": "ef6ea397e7ba421c63de74c52a4a6a422e37bfab2adf3923261a4a3a8ef8edc1",
         "signature": "ef6ea397e7ba421c63de74c52a4a6a422e37bfab2adf3923261a4a3a8ef8edc1",
@@ -2873,7 +2883,6 @@
           "./Utilities/*"
         ]
       },
-      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
@@ -3371,6 +3380,12 @@
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
+      "../node_modules/@types/react-infinite/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
       "../node_modules/@types/react-intl/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
@@ -3678,6 +3693,11 @@
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/anymatch/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../node_modules/axios/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
@@ -6214,6 +6234,7 @@
       "../src/base/httpclient.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../src/base/session.ts": [
@@ -6687,6 +6708,7 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
+        "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../src/component/international/index.tsx"
       ],
@@ -6754,6 +6776,7 @@
       "../src/jsc/api/index.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
@@ -6900,6 +6923,7 @@
       "../src/store/epic/configepic.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/redux-observable/index.d.ts",
         "../node_modules/rxjs/index.d.ts",
@@ -6971,6 +6995,7 @@
       "../src/store/epic/sessionepic.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/redux-observable/index.d.ts",
         "../node_modules/rxjs/index.d.ts",
@@ -7184,6 +7209,7 @@
       "../src/types/notification.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../src/component/notification/notificationcard.tsx"
       ],
@@ -7752,6 +7778,12 @@
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
+      "../node_modules/@types/react-infinite/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
       "../node_modules/@types/react-intl/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
@@ -8059,6 +8091,11 @@
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/anymatch/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../node_modules/axios/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
@@ -10592,6 +10629,9 @@
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
+      "../src/base/httpclient.ts": [
+        "../node_modules/axios/index.d.ts"
+      ],
       "../src/base/wsclient.ts": [
         "../node_modules/@types/socket.io-client/index.d.ts",
         "../node_modules/rxjs/index.d.ts",
@@ -11057,6 +11097,7 @@
       "../node_modules/@types/react-datepicker/index.d.ts",
       "../node_modules/@types/react-dom/index.d.ts",
       "../node_modules/@types/react-dom/server/index.d.ts",
+      "../node_modules/@types/react-infinite/index.d.ts",
       "../node_modules/@types/react-intl/index.d.ts",
       "../node_modules/@types/react-outside-click-handler/index.d.ts",
       "../node_modules/@types/react-redux/index.d.ts",
@@ -11102,6 +11143,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/webpack/node_modules/source-map/source-map.d.ts",
       "../node_modules/anymatch/index.d.ts",
+      "../node_modules/axios/index.d.ts",
       "../node_modules/connected-react-router/index.d.ts",
       "../node_modules/csstype/index.d.ts",
       "../node_modules/date-fns/typings.d.ts",
@@ -11449,19 +11491,7 @@
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../node_modules/typescript/lib/lib.esnext.promise.d.ts",
       "../node_modules/typescript/lib/lib.esnext.string.d.ts",
-      [
-        "../src/base/httpclient.ts",
-        [
-          {
-            "file": "../src/base/httpclient.ts",
-            "start": 54,
-            "length": 7,
-            "messageText": "Cannot find module 'axios' or its corresponding type declarations.",
-            "category": 1,
-            "code": 2307
-          }
-        ]
-      ],
+      "../src/base/httpclient.ts",
       "../src/base/session.ts",
       "../src/base/wsclient.ts",
       "../src/component/app/app.tsx",
@@ -11506,19 +11536,7 @@
       "../src/component/settings/settingscontainer.tsx",
       "../src/component/settings/settingsdialog.tsx",
       "../src/component/settings/settingsnavigationitem.tsx",
-      [
-        "../src/component/snackbar/errorcontent.tsx",
-        [
-          {
-            "file": "../src/component/snackbar/errorcontent.tsx",
-            "start": 123,
-            "length": 7,
-            "messageText": "Cannot find module 'axios' or its corresponding type declarations.",
-            "category": 1,
-            "code": 2307
-          }
-        ]
-      ],
+      "../src/component/snackbar/errorcontent.tsx",
       "../src/component/snackbar/snackbar.tsx",
       "../src/component/snackbar/snackbarcontent.tsx",
       "../src/component/snackbar/timetoread.ts",
@@ -11526,19 +11544,7 @@
       "../src/component/websocket/websocketstatus.tsx",
       "../src/constant/notification.ts",
       "../src/constant/toast.ts",
-      [
-        "../src/jsc/api/index.ts",
-        [
-          {
-            "file": "../src/jsc/api/index.ts",
-            "start": 30,
-            "length": 7,
-            "messageText": "Cannot find module 'axios' or its corresponding type declarations.",
-            "category": 1,
-            "code": 2307
-          }
-        ]
-      ],
+      "../src/jsc/api/index.ts",
       "../src/jsc/client.ts",
       "../src/setup.ts",
       "../src/setup/translations.json",
@@ -11559,36 +11565,12 @@
       "../src/store/action/websocketaction.ts",
       "../src/store/epic/appepic.ts",
       "../src/store/epic/catcherror.ts",
-      [
-        "../src/store/epic/configepic.ts",
-        [
-          {
-            "file": "../src/store/epic/configepic.ts",
-            "start": 190,
-            "length": 7,
-            "messageText": "Cannot find module 'axios' or its corresponding type declarations.",
-            "category": 1,
-            "code": 2307
-          }
-        ]
-      ],
+      "../src/store/epic/configepic.ts",
       "../src/store/epic/index.ts",
       "../src/store/epic/languageepic.ts",
       "../src/store/epic/loginepic.ts",
       "../src/store/epic/notificationepic.ts",
-      [
-        "../src/store/epic/sessionepic.ts",
-        [
-          {
-            "file": "../src/store/epic/sessionepic.ts",
-            "start": 289,
-            "length": 7,
-            "messageText": "Cannot find module 'axios' or its corresponding type declarations.",
-            "category": 1,
-            "code": 2307
-          }
-        ]
-      ],
+      "../src/store/epic/sessionepic.ts",
       "../src/store/epic/systemepic.ts",
       "../src/store/epic/websocketepic.ts",
       "../src/store/index.ts",
@@ -11611,19 +11593,7 @@
       "../src/store/selectors/websocketselectors.ts",
       "../src/types/configuration.ts",
       "../src/types/language.ts",
-      [
-        "../src/types/notification.ts",
-        [
-          {
-            "file": "../src/types/notification.ts",
-            "start": 27,
-            "length": 7,
-            "messageText": "Cannot find module 'axios' or its corresponding type declarations.",
-            "category": 1,
-            "code": 2307
-          }
-        ]
-      ],
+      "../src/types/notification.ts",
       "../src/utilities/filter.ts",
       "../src/utilities/format/currency.ts",
       "../src/utilities/format/index.ts",

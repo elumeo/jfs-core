@@ -25,10 +25,8 @@ JFS.discover(() => {
   }) => {
     ['scss', 'json', 'woff', 'woff2'].forEach(
       extension => new Process({
-        command: copyfiles,
-        parameters: [
-          '-u', '1', `src/**/*.${extension}`, outDir
-        ],
+        command: 'node',
+        parameters: [copyfiles, '-u', '1', `src/**/*.${extension}`, outDir],
         options: { cwd: JFS.Head.path }
       }).run()
     );
@@ -42,8 +40,8 @@ JFS.discover(() => {
     });
 
     new Process({
-      command: tscAlias,
-      parameters: ['-p', resolve(JFS.Head.path, 'tsconfig.json')],
+      command: 'node',
+      parameters: [tscAlias, '-p', resolve(JFS.Head.path, 'tsconfig.json')],
       options: { cwd: JFS.Head.path }
     }).run(instance => instance.stdout.on(
       'data',

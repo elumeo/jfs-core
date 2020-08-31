@@ -1,3 +1,7 @@
+## [9.5.1] - 2020-08-28
+## Fixed
+- Fixed scripts build/jfs-prebuild for windows platform
+
 ## [9.5.0] - 2020-08-28
 ## Added
 - added utilities from RightsManager: Sort, Filter, Text.removeDiacritics
