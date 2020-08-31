@@ -432,7 +432,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/index.ts": {
-        "version": "194dc97bae591c124add7c5c733dc61f77a91c38d80aad3bfd7865fa4dbded9b",
+        "version": "99b848d07be4bf38bc04393684216f4a4803f8eb644ff5e62bc44b260e534b51",
         "signature": "41d3e1e6319c1630a0299e5ec5f3510b2b35c193e0bdce5237a1e01932354ed4",
         "affectsGlobalScope": false
       },
@@ -532,12 +532,12 @@
         "affectsGlobalScope": false
       },
       "../src/setup/set-peer-dependencies.ts": {
-        "version": "6e9c7ee98e696907cd49d53d69fd4b69612ed39967b0cfa287c26d7abbc12899",
+        "version": "88d34b4e051e51c1d02d98b1c0a7414c01b3afb5d37ae16300ef6855cb65ebe3",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
       "../src/setup/sync-development.ts": {
-        "version": "b9b3b9af00279ebf4fe2af84ff5700f35ff99d0badbe0885afa653d28928b3cc",
+        "version": "e8d63dba20172542f5c4eea3cb86abeb7551a05c5535032c30978310d4404809",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -1001,7 +1001,6 @@
           "./Library/*"
         ]
       },
-      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {

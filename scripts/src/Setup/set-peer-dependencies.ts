@@ -17,7 +17,7 @@ JFS.discover(() => {
             ...nodePackage,
             peerDependencies: dependencies
           },
-          () => console.log(message.completed())
+          () => console.log(message.completed)
         );
       });
     });

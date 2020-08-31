@@ -12,7 +12,7 @@ JFS_1.default.discover(() => {
     if (!(JFS_1.default.Head instanceof Core_1.default)) {
         JFS_1.default.Core.nodePackage.json(({ dependencies }) => {
             JFS_1.default.Head.nodePackage.json(nodePackage => {
-                JFS_1.default.Head.nodePackage.file.save(Object.assign(Object.assign({}, nodePackage), { peerDependencies: dependencies }), () => console.log(message.completed()));
+                JFS_1.default.Head.nodePackage.file.save(Object.assign(Object.assign({}, nodePackage), { peerDependencies: dependencies }), () => console.log(message.completed));
             });
         });
     }
