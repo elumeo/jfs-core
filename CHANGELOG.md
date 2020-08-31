@@ -1,3 +1,24 @@
+## [9.5.0] - 2020-08-28
+## Added
+- added utilities from RightsManager: Sort, Filter, Text.removeDiacritics
+
+## [9.4.1] - 2020-08-28
+## Fixed
+- fixed set-peer-dependency bug
+
+## [9.4.0] - 2020-08-28
+### Added
+- script for adding core dependencies as peerDependencies to jfs apps or jfc components
+
+### Fixed
+- added missing import in webpack.production.js
+
+## [9.3.8] - 2020-08-27
+### Changed
+- removed usage of `config.json.dist` with `npm start` command
+- it is now required (!) to have a `config.json` in a `dist` directory
+- this can be manually copied from `config.json.dist` or with the `npm run build` comman
+
 ## [9.3.7] - 2020-08-21
 ### Fixed
 - Added more error handling to websocket client
