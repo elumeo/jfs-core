@@ -13,6 +13,12 @@ class Synchronization {
             const FsNode = (source instanceof File_1.default
                 ? File_1.default
                 : Directory_1.default);
+            console.log({
+                recipient: this.recipient.path,
+                virtual: source.path.substring(this.sender.path.length),
+                withoutPrefix: Text_1.default.removePrefix(source.path.substring(this.sender.path.length), '/'),
+                recipientResource: path_1.resolve(this.recipient.path, Text_1.default.removePrefix(source.path.substring(this.sender.path.length), '/'))
+            });
             return new FsNode({
                 path: path_1.resolve(this.recipient.path, Text_1.default.removePrefix(source.path.substring(this.sender.path.length), '/'))
             });

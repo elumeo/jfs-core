@@ -29,6 +29,22 @@ class Synchronization {
         : Directory
     );
 
+    console.log({
+      recipient: this.recipient.path,
+      virtual: source.path.substring(this.sender.path.length),
+      withoutPrefix: Text.removePrefix(
+        source.path.substring(this.sender.path.length),
+        '/'
+      ),
+      recipientResource: resolve(
+        this.recipient.path,
+        Text.removePrefix(
+          source.path.substring(this.sender.path.length),
+          '/'
+        )
+      )
+    });
+
     return new FsNode({
       path: resolve(
         this.recipient.path,
