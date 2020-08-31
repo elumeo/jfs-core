@@ -29,6 +29,9 @@ class JFS {
         else if (Text.beginsWith(name, 'jfs')) {
           onComplete(new App({ path }));
         }
+        else {
+          throw `Invalid name format in  ${nodePackage.file.path}`;
+        }
       }
     );
   }
@@ -51,20 +54,29 @@ class JFS {
       path => new NodePackage(NodePackage.location(path))
     );
 
-    nodePackages.forEach(
-      nodePackage => JFS.project(nodePackage, project => {
-        if (project instanceof Core) {
-          JFS.Core = project;
-        }
-        if (!JFS.projects.length) {
-          JFS.Head = project;
-        }
-        JFS.projects.push(project);
-        if (JFS.projects.length === projects.length) {
-          onComplete();
-        }
-      })
-    );
+    JFS.project(nodePackages[0], project => {
+      if (project instanceof Core) {
+        JFS.Core = project;
+      }
+      JFS.Head = project;
+      JFS.projects.push(project);
+      if (JFS.projects.length === projects.length) {
+        onComplete();
+      }
+    });
+
+    if (nodePackages.length > 1) {
+      nodePackages
+        .slice(1)
+        .forEach(nodePackage => {
+          JFS.project(nodePackage, project => {
+            JFS.projects.push(project);
+            if (JFS.projects.length === projects.length) {
+              onComplete();
+            }
+          })
+        });
+    }
   }
 }
 

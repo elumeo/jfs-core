@@ -1,4 +1,8 @@
-## [9.5.1] - 2020-08-28
+## [9.5.2] - 2020-08-31
+## Fixed
+- Fix (attempt) for concurrency in JFS.discover()
+
+## [9.5.1] - 2020-08-31
 ## Fixed
 - Fixed scripts build/jfs-prebuild for windows platform
 
