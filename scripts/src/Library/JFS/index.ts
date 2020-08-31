@@ -41,8 +41,6 @@ class JFS {
   ) => {
     const directory = new Directory({ path: __dirname });
 
-
-
     const projects = directory
       .trace()
       .filter(
@@ -77,6 +75,9 @@ class JFS {
         .slice(1)
         .forEach(nodePackage => {
           JFS.project(nodePackage, project => {
+            if (project instanceof Core) {
+              JFS.Core = project;
+            }
             JFS.projects.push(project);
             if (JFS.projects.length === projects.length) {
               onComplete();

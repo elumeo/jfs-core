@@ -56,6 +56,9 @@ JFS.discover = (onComplete) => {
             .slice(1)
             .forEach(nodePackage => {
             JFS.project(nodePackage, project => {
+                if (project instanceof Core_1.default) {
+                    JFS.Core = project;
+                }
                 JFS.projects.push(project);
                 if (JFS.projects.length === projects.length) {
                     onComplete();
