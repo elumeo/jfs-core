@@ -1,3 +1,48 @@
+## [9.5.10] - 2020-09-01
+## Fixed
+- fixed some style issues after change to dart-sass
+
+## [9.5.9] - 2020-09-01 (was not released)
+## Fixed
+- fixed some style issues after change to dart-sass
+
+## [9.5.8] - 2020-09-01
+## Fixed
+- fixed some style issues after change to dart-sass
+
+## [9.5.7] - 2020-09-01
+## Fixed
+- updated sass-loader module
+
+## [9.5.6] - 2020-09-01
+## Fixed
+- fixed dart sass config issue
+
+## [9.5.5] - 2020-09-01
+## Changed
+- moved script package.json from node-sass to dart-sass
+
+## Fixed
+- Fixed an issue in the datepicker component where a custom input field is not compatible with react-md
+
+## [9.5.4] - 2020-09-01
+## Changed
+- moved from node-sass to dart-sass
+- changed multiple scss imports to use `@use` instead of `@import`
+
+## Fixed
+- Fixed an issue in the datepicker component where a custom input field is not compatible with react-md
+    * the custom field isn't supported anymore
+    * added styling and logic to be aligned with react md
+
+## [9.5.3] - 2020-08-28
+## Fixed
+- ???
+
+## [9.5.2] - 2020-08-28
+## Fixed
+- ???
+
 ## [9.5.1] - 2020-08-28
 ## Fixed
 - Fixed scripts build/jfs-prebuild for windows platform

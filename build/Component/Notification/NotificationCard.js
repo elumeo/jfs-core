@@ -4,7 +4,6 @@ import Card from 'react-md/lib/Cards/Card';
 import FontIcon from 'react-md/lib/FontIcons/FontIcon';
 import './NotificationCard.scss';
 import ErrorContent, { errorText } from '../Snackbar/ErrorContent';
-// noinspection TypeScriptPreferShortImport
 import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../../Store/Action/NotificationAction';
 import { Badge, Button, CardText } from 'react-md';
 import Format from '../../Utilities/Format';
@@ -12,7 +11,7 @@ import { timeToRead as _timeToRead } from '../Snackbar/TimeToRead';
 export const timeToRead = (notification) => getContent(notification).timeToRead;
 export const getPlainText = (notification) => getContent(notification).words;
 export const getContent = (notification) => {
-    const { message, translationId, error } = notification;
+    const { message, translationId, translationValues, error } = notification;
     const { formatMessage } = Format.Translations;
     if (!((message ? 1 : 0) ^ (translationId ? 1 : 0) ^ (error ? 1 : 0))) {
         throw new Error(`Either 'message', 'translationId' or 'error' most be specified.`);
@@ -24,14 +23,16 @@ export const getContent = (notification) => {
         content = typeof message == 'object' ? React.createElement("ul", null, message.map((m, i) => React.createElement("li", { key: i }, m))) : message;
     }
     if (translationId) {
-        words = typeof translationId == 'object' ? translationId.map(tId => formatMessage({ id: tId })).join(' ') : translationId;
+        words = typeof translationId == 'object'
+            ? translationId.map(tId => formatMessage({ id: tId }, translationValues)).join(' ')
+            : translationId;
         content = typeof translationId == 'object'
-            ? React.createElement("ul", null, translationId.map((tId, i) => React.createElement("li", { key: i }, formatMessage({ id: tId }))))
-            : formatMessage({ id: translationId });
+            ? React.createElement("ul", null, translationId.map((tId, i) => React.createElement("li", { key: i }, formatMessage({ id: tId }, translationValues))))
+            : formatMessage({ id: translationId }, translationValues);
     }
     if (error) {
         const { body, head } = errorText(error);
-        words = `${formatMessage({ id: 'app.error' })}: ${body} ${head}`;
+        words = `${formatMessage({ id: 'app.error' }, translationValues)}: ${body} ${head}`;
         content = React.createElement(ErrorContent, { contentError: error });
     }
     return {

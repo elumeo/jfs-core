@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './Content.scss';
+import './_styles.scss';
 const Content = ({ children, splitViewEnabled }) => {
     const contentClassName = [
         `authorized-content`,

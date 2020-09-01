@@ -1,5 +1,5 @@
 import React from 'react';
-import './ModalDialog.scss';
+import './_styles.scss';
 interface IModalDialog {
     visible: boolean;
     children?: any;
@@ -13,6 +13,8 @@ interface IModalDialog {
     onConfirm?: any;
     closeOnEsc?: boolean;
     actions?: {}[];
+    focusOnMount?: boolean;
+    initialFocus?: string;
 }
 declare const ModalDialog: React.FC<IModalDialog>;
 export default ModalDialog;

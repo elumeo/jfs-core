@@ -1,7 +1,7 @@
 import JFS from 'Library/JFS';
 import Core from 'Library/JFS/Core';
 import { default as Fontagon } from 'fontagon'
-import * as NodeSass from 'node-sass';
+import * as DartSass from 'dart-sass';
 import fs from 'fs';
 import { resolve } from 'path';
 
@@ -28,7 +28,7 @@ JFS.discover(
           order: ['woff', 'woff2']
         }
       }).then(opts => {
-        NodeSass.render(
+        DartSass.render(
           {
             file: resolve(dist, 'juwelo-icon-font.sass'),
             outFile: resolve(scss, 'juwelo-icon-font.scss'),

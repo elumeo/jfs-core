@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles.scss';
 import { connect } from 'react-redux';
+import './_styles.scss';
 const JuweloFontIcon = ({ icon, error, light }) => {
     error = error === undefined ? false : error;
     light = light === undefined ? false : light;

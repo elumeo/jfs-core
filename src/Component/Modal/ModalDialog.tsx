@@ -2,7 +2,7 @@ import React from 'react';
 import DialogContainer from 'react-md/lib/Dialogs';
 import International from '../International';
 import { IconSeparator } from 'react-md';
-import './ModalDialog.scss';
+import './_styles.scss';
 
 interface IModalDialog {
   visible: boolean;
@@ -17,6 +17,8 @@ interface IModalDialog {
   onConfirm?: any;
   closeOnEsc?: boolean;
   actions?: {}[];
+  focusOnMount?: boolean;
+  initialFocus?: string;
 }
 
 const ModalDialog: React.FC<IModalDialog> = (
@@ -32,7 +34,9 @@ const ModalDialog: React.FC<IModalDialog> = (
     confirmButtonText,
     onConfirm,
     closeOnEsc,
-    actions
+    actions,
+    focusOnMount,
+    initialFocus
   }
 ) => (
   <International>
@@ -40,6 +44,8 @@ const ModalDialog: React.FC<IModalDialog> = (
       <DialogContainer
         id={`modal-dialog-${Math.round(Math.random() * 1000)}`}
         visible={visible}
+        focusOnMount={focusOnMount}
+        initialFocus={initialFocus}
         title={
           titleIcon
             ? <IconSeparator label={title} iconBefore>{titleIcon}</IconSeparator>
@@ -57,6 +63,7 @@ const ModalDialog: React.FC<IModalDialog> = (
             },
             primary: true,
             label: formatMessage({id: closeButtonText}),
+            className: 'jfs-close-btn'
           },
           ...(
             (confirmButtonText && onConfirm) && [
@@ -66,6 +73,7 @@ const ModalDialog: React.FC<IModalDialog> = (
                 },
                 primary: true,
                 label: formatMessage({id: confirmButtonText}),
+                className: 'jfs-confirm-btn'
               }
             ] || []
           ),
@@ -82,6 +90,7 @@ ModalDialog.defaultProps = {
   title: 'Modal Dialog',
   description: '',
   closeButtonText: 'app.closeBtnLabelModalDialog',
+  focusOnMount: true,
 };
 
 export default ModalDialog;

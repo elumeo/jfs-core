@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.scss';
+import './_styles.scss';
 export interface IJuweloFontIconProps {
     icon: string;
     error?: boolean;

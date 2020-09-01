@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Global from '../../Store/Reducer/Global';
-import './Content.scss';
+import './_styles.scss';
 
 namespace Content {
   export type Props = {

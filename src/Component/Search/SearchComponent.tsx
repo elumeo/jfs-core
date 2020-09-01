@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
-// noinspection TypeScriptPreferShortImport,ES6PreferShortImport
 import { addToastAction } from '../../Store/Action/ToastAction';
 import Global from '../../Store/Reducer/Global';
 import './SearchComponent.scss';

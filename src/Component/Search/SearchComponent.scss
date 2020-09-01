@@ -1,4 +1,4 @@
-@import '~react-md/src/scss/react-md';
+@use '~react-md/src/scss/react-md';
 
 .app-header .search-component {
   .md-divider {
@@ -47,7 +47,7 @@
 
 .search-component {
   position: relative;
-  padding-right: $md-btn-icon-padding;
+  padding-right: react-md.$md-btn-icon-padding;
 
   .md-divider.md-divider--text-field {
     margin-inline-end: 0;
@@ -68,15 +68,15 @@
   }
 
   .icon-view-box {
-    width: calc(#{$md-line-height}em * 2);
-    height: calc(#{$md-line-height}em * 2);
+    width: calc(#{react-md.$md-line-height}em * 2);
+    height: calc(#{react-md.$md-line-height}em * 2);
     display: inline-block;
     vertical-align: bottom;
   }
 
   .search-progress {
-    height: #{$md-line-height}em;
-    width: #{$md-line-height}em;
-    margin: calc(#{$md-line-height}em / 2);
+    height: #{react-md.$md-line-height}em;
+    width: #{react-md.$md-line-height}em;
+    margin: calc(#{react-md.$md-line-height}em / 2);
   }
 }
