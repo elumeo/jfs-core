@@ -1,7 +1,15 @@
+## [8.16.7] - 2020-09-01
+### Changed
+- ModalDialog 
+    * confirmButtonText and closeButtonText may contain an ReactElement
+    * closeButton is now optional (for those who need to arrange the footer actions individually)
+- Notifications
+    * The Notifications count Badge is more visible now.
+    * The Notification duplication count Badge has been removed.
+
 ## [8.16.6] - 2020-08-29
 ### Added
 - Added possibility to decide which element to auto focus on ModalDialog or completely disable auto focus
-
 
 ## [8.16.5] - 2020-08-28
 ### Added

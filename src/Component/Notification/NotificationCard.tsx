@@ -9,7 +9,7 @@ import { ICoreRootReducer } from '../../Store/Reducer';
 // noinspection TypeScriptPreferShortImport,ES6PreferShortImport
 import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../../Store/Action/NotificationAction';
 import { INotification, INotificationContent } from '../../Store/Reducer/NotificationReducer';
-import { Badge, Button, CardText } from 'react-md';
+import { Button, CardText } from 'react-md';
 import Format from '../../Utilities/Format';
 import { timeToRead as _timeToRead } from '../../Base/Utilities';
 
@@ -59,15 +59,6 @@ export interface INotificationCardProps {
 }
 
 class NotificationCard extends React.Component<INotificationCardProps> {
-
-  getBadge = (): React.ReactNode => {
-    const { config: { count, id } } = this.props;
-    return count <= 1
-      ? null
-      : <Badge primary circular className='badge' badgeId={`count_of_${id}`} badgeContent={`${count}x`}>
-        <FontIcon> </FontIcon>
-      </Badge>;
-  };
 
   getHeader = (): React.ReactNode => {
     return <header className='header'>
@@ -187,7 +178,6 @@ class NotificationCard extends React.Component<INotificationCardProps> {
           `badges__notifications__notification`,
           successClass, errorClass, clickClass
         ].join(' ')}>
-        {this.getBadge()}
         <div className='notification-grid'>
           <div className='notification-grid-content'>
             {this.getHeader()}
