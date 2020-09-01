@@ -5,6 +5,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import '~react-md/src/scss/react-md';
 
+$md-primary-color: colors.$juw-primary;
+$md-secondary-color: colors.$juw-secondary;
+$md-error-color: colors.$juw-error-color;
+
 @include react-md-everything;
 
 html {
