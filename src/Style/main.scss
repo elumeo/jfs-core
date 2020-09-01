@@ -1,14 +1,14 @@
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-@import url(https://fonts.googleapis.com/css?family=Roboto);
-@import '~react-md/src/scss/react-md';
 @use 'colors';
 @use 'layout';
 @use 'typography';
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import '~react-md/src/scss/react-md';
 
 @include react-md-everything;
 
 html {
-  background: $juw-quarz-500 !important;
+  background: colors.$juw-quarz-500 !important;
 }
 
 body {
