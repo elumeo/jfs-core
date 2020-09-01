@@ -25,7 +25,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const JFS_1 = __importDefault(require("../Library/JFS"));
 const Core_1 = __importDefault(require("../Library/JFS/Core"));
 const fontagon_1 = __importDefault(require("fontagon"));
-const NodeSass = __importStar(require("node-sass"));
+const DartSass = __importStar(require("dart-sass"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = require("path");
 JFS_1.default.discover(() => {
@@ -47,7 +47,7 @@ JFS_1.default.discover(() => {
                 order: ['woff', 'woff2']
             }
         }).then(opts => {
-            NodeSass.render({
+            DartSass.render({
                 file: path_1.resolve(dist, 'juwelo-icon-font.sass'),
                 outFile: path_1.resolve(scss, 'juwelo-icon-font.scss'),
             }, (error, result) => {

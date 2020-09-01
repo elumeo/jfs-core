@@ -507,7 +507,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/generate-juwelo-icon-font.ts": {
-        "version": "f37fae7d31a82191ef9fe5ff8cdae03b3de962420283705697d06d76926ca065",
+        "version": "5b71a3feac26efb5292957f49f696f8132828324ca5d1a73c4d2ffba5d6cde2c",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },

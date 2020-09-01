@@ -1,3 +1,7 @@
+## [9.5.6] - 2020-09-01
+## Fixed
+- fixed dart sass config issue
+
 ## [9.5.5] - 2020-09-01
 ## Changed
 - moved script package.json from node-sass to dart-sass
