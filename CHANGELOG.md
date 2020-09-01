@@ -1,5 +1,13 @@
+## [9.5.5] - 2020-09-01
+## Changed
+- moved script package.json from node-sass to dart-sass
+
+## Fixed
+- Fixed an issue in the datepicker component where a custom input field is not compatible with react-md
+
 ## [9.5.4] - 2020-09-01
 ## Changed
+- moved from node-sass to dart-sass
 - changed multiple scss imports to use `@use` instead of `@import`
 
 ## Fixed
