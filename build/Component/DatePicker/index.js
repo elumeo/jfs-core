@@ -10,14 +10,15 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import React, { useState, useEffect, useRef } from 'react';
-import TextField from 'react-md/lib/TextFields/TextField';
+import { connect } from 'react-redux';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import './Setup';
 import OutsideClickHandler from 'react-outside-click-handler';
+import { injectIntl } from 'react-intl';
+import './Setup';
 import International from '../International';
 import { LANGUAGE, DATE_FORMAT } from '../../Types/Language';
-import { connect } from 'react-redux';
+import './_styles.scss';
 const mapLanguageToDateFormat = (language) => {
     switch (language) {
         case LANGUAGE.GERMAN: return DATE_FORMAT.DE;
@@ -27,7 +28,7 @@ const mapLanguageToDateFormat = (language) => {
     }
 };
 const DatePicker = (_a) => {
-    var { customInput, dateFormat, value, onChange, state: { language } } = _a, rest = __rest(_a, ["customInput", "dateFormat", "value", "onChange", "state"]);
+    var { label, customClearButtonId, dateFormat, value, onChange, intl: { formatMessage }, state: { language } } = _a, rest = __rest(_a, ["label", "customClearButtonId", "dateFormat", "value", "onChange", "intl", "state"]);
     const [date, setDate] = useState(value);
     const [open, setOpen] = useState(false);
     const [id] = useState(Math.floor(Math.random() * 100));
@@ -38,16 +39,83 @@ const DatePicker = (_a) => {
             domNode.parentNode.addEventListener('click', () => setOpen(true));
         }
     });
+    useEffect(() => {
+        var _a;
+        (_a = document.getElementById(customClearButtonId)) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
+            // The clear method does exists => its just not in the typing
+            // @ts-ignore
+            datePickerRef.current.clear();
+        });
+        const input = getInput();
+        input.addEventListener('keydown', _handleKeyupEventOnCustomInputField);
+        input.addEventListener('blur', _handleBlurEventOnCustomInputField);
+        const finalLabel = label !== null ? label : formatMessage({ id: 'form.datePicker.label' });
+        getInputParent().setAttribute('data-label', finalLabel);
+    }, []);
+    const _handleKeyupEventOnCustomInputField = (e) => {
+        const input = getInput();
+        if (document.activeElement.id === input.id && e.keyCode === 9 && e.shiftKey) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    };
+    const _handleBlurEventOnCustomInputField = () => {
+        checkRawHasValue();
+        if (datePickerRef.current.isCalendarOpen() === false) {
+            setActive(false);
+        }
+    };
+    const checkRawHasValue = () => {
+        const input = getInput();
+        if (input.value === '') {
+            setHasValue(false);
+        }
+        else {
+            setHasValue(true);
+        }
+    };
+    const setHasValue = (hasValue) => {
+        const inputParent = getInputParent();
+        if (hasValue) {
+            inputParent.classList.add('has-value');
+        }
+        else {
+            inputParent.classList.remove('has-value');
+        }
+    };
+    const setActive = (isActive) => {
+        const inputParent = getInputParent();
+        if (isActive) {
+            inputParent.classList.add('is-active');
+        }
+        else {
+            inputParent.classList.remove('is-active');
+        }
+    };
+    const getInput = () => {
+        // The clear method does exists => its just not in the typing
+        // @ts-ignore
+        return datePickerRef.current.input;
+    };
+    const getInputParent = () => {
+        return getInput().parentElement;
+    };
     return (React.createElement(International, null, ({ formatMessage }) => (React.createElement(OutsideClickHandler, { onOutsideClick: () => setOpen(false) },
-        React.createElement(ReactDatePicker, Object.assign({}, rest, { ref: datePickerRef, selected: date, onChange: (newDate) => {
+        React.createElement(ReactDatePicker, Object.assign({}, rest, { ref: datePickerRef, selected: date, onChange: (newDate, event) => {
+                setHasValue(newDate !== null);
                 setDate(newDate);
-                onChange(newDate);
+                onChange(newDate, date, event);
                 if (datePickerRef.current.props.shouldCloseOnSelect) {
                     setOpen(false);
                 }
-            }, dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: 'de', open: open, id: id.toString(), customInput: customInput ||
-                React.createElement(TextField, { label: formatMessage({ id: 'date' }), id: id }) }))))));
+            }, onCalendarOpen: () => {
+                setActive(true);
+                // addEventListenerToCustomInputField();
+            }, onCalendarClose: () => {
+                setActive(false);
+                // removeEventListenerToCustomInputField();
+            }, dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: 'de', open: open, id: id.toString(), customInput: React.createElement("input", { className: 'md-full-width md-text md-text-field customDatePickerInputField' }) }))))));
 };
 const enhance = connect((state, ownProps) => (Object.assign(Object.assign({}, ownProps), { state: state.Core.Language })));
-export default enhance(DatePicker);
+export default injectIntl(enhance(DatePicker));
 //# sourceMappingURL=index.js.map

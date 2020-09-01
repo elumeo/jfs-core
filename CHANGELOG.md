@@ -1,3 +1,20 @@
+## [9.5.4] - 2020-09-01
+## Changed
+- changed multiple scss imports to use `@use` instead of `@import`
+
+## Fixed
+- Fixed an issue in the datepicker component where a custom input field is not compatible with react-md
+    * the custom field isn't supported anymore
+    * added styling and logic to be aligned with react md
+
+## [9.5.3] - 2020-08-28
+## Fixed
+- ???
+
+## [9.5.2] - 2020-08-28
+## Fixed
+- ???
+
 ## [9.5.1] - 2020-08-28
 ## Fixed
 - Fixed scripts build/jfs-prebuild for windows platform

@@ -1,8 +1,8 @@
 import React from 'react';
-
-import './styles.scss';
 import { connect } from 'react-redux';
+
 import Global from '../../Store/Reducer/Global';
+import './styles.scss';
 
 export interface IJuweloFontIconProps {
   icon: string;

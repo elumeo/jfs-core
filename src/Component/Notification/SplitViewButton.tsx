@@ -21,7 +21,7 @@ const SplitViewButton: React.FC<ISplitViewButtonProps> = ({
   <Button
     icon
     primary={notificationDrawerPinned}
-    className="split-view-button"
+    className={'split-view-button'}
     onClick={() => (
       notificationDrawerPinned
         ? unpinNotificationDrawerAction()

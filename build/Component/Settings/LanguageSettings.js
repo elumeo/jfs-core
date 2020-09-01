@@ -1,9 +1,9 @@
 import React from 'react';
 import Cookie from 'js-cookie';
 import { connect } from 'react-redux';
-import SelectField from 'react-md/lib/SelectFields/SelectField';
-import { changeLanguageAction } from '../../Store/Action/LanguageAction';
+import { SelectField } from 'react-md';
 import { LANGUAGE } from '../../Types/Language';
+import { changeLanguageAction } from '../../Store/Action/LanguageAction';
 import International from '../International';
 const LANGUAGES = [
     { label: 'Deutsch', value: LANGUAGE.GERMAN },

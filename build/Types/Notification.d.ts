@@ -1,10 +1,12 @@
 /// <reference types="react" />
 import { AxiosError } from 'axios';
 import { INotificationCardProps } from '../Component/Notification/NotificationCard';
+import { PrimitiveType } from 'intl-messageformat';
 export interface INotificationContent {
     error?: Error | AxiosError | any;
     message?: string | string[];
     translationId?: string | string[];
+    translationValues?: Record<string, PrimitiveType>;
     icon?: string;
     isError?: boolean;
     isSuccess?: boolean;

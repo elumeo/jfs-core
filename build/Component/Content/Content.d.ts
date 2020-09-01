@@ -1,5 +1,5 @@
 import React from 'react';
-import './Content.scss';
+import './_styles.scss';
 declare namespace Content {
     type Props = {
         splitViewEnabled?: boolean;

@@ -4,7 +4,7 @@ import { HashRouter } from 'react-router-dom';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import './Initialized.scss';
+import './_styles.scss';
 const Initialized = ({ language, messages, children, appInitialized }) => (appInitialized
     ? (React.createElement(HashRouter, null,
         React.createElement(IntlProvider, { locale: language, messages: messages[language] },

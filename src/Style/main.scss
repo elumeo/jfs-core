@@ -1,8 +1,9 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import '~react-md/src/scss/react-md';
-@import './colors';
-@import './layout';
+@use 'colors';
+@use 'layout';
+@use 'typography';
 
 @include react-md-everything;
 
@@ -23,22 +24,22 @@ body {
 
 .ReactVirtualized__Table__headerColumn {
   outline: none;
-  color: $juw-grey-700;
+  color: colors.$juw-grey-700;
   text-transform: none;
   font-weight: normal;
   align-self: flex-end;
 }
 
 .ReactVirtualized__Table__headerRow {
-  border-bottom: 2px solid $juw-grey-300;
+  border-bottom: 2px solid colors.$juw-grey-300;
 }
 
 .ReactVirtualized__Table__row {
-  border-bottom: 1px solid $juw-grey-300;
+  border-bottom: 1px solid colors.$juw-grey-300;
   outline: none;
 
   &:hover{
-    background-color: $juw-grey-300;
+    background-color: colors.$juw-grey-300;
   }
 }
 
@@ -102,9 +103,9 @@ body {
   position: absolute;
   width: 100%;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.54);
+  background: colors.$juw-grey-700;
   padding: 8px 16px;
-  font-size: 13px;
+  font-size: typography.$font-size-default;
 
   .title {
     font-weight: 600;
@@ -124,7 +125,7 @@ body {
   top: 0;
   left: 0;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.54);
+  background: colors.$juw-grey-700;
   color: white;
   width: 32px;
   height: 32px;

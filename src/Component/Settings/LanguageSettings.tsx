@@ -1,11 +1,13 @@
 import React from 'react';
 import Cookie from 'js-cookie';
 import { connect } from 'react-redux';
-import SelectField from 'react-md/lib/SelectFields/SelectField';
+import { SelectField } from 'react-md';
+
 import Global from '../../Store/Reducer/Global';
-import { changeLanguageAction } from '../../Store/Action/LanguageAction';
 import { LANGUAGE } from '../../Types/Language';
+import { changeLanguageAction } from '../../Store/Action/LanguageAction';
 import International from '../International'
+
 export interface ILanguageSettingsProps {
   language?: string;
   changeLanguageAction?: typeof changeLanguageAction;

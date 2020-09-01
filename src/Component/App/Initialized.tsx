@@ -5,7 +5,7 @@ import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import Global from '../../Store/Reducer/Global';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import './Initialized.scss';
+import './_styles.scss';
 
 namespace Initialized {
   export type Props = {
@@ -34,13 +34,11 @@ const Initialized: React.FC<Initialized.Props> = ({
       </HashRouter>
     )
     : (
-      <div className="app-initialize-progress">
-        <CircularProgress id="app-initialize-progress" scale={2}/>
+      <div className='app-initialize-progress'>
+        <CircularProgress id='app-initialize-progress' scale={2}/>
       </div>
     )
 );
-
-
 
 const mapStateToProps = (
   state: Global.State,

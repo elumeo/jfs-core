@@ -6,7 +6,6 @@ import FontIcon from 'react-md/lib/FontIcons/FontIcon';
 import './NotificationCard.scss'
 import ErrorContent, { errorText } from '../Snackbar/ErrorContent';
 import Global from '../../Store/Reducer/Global';
-// noinspection TypeScriptPreferShortImport
 import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../../Store/Action/NotificationAction';
 import { INotification, INotificationContent } from '../../Types/Notification';
 import { Badge, Button, CardText } from 'react-md';
@@ -18,7 +17,7 @@ export const timeToRead = (notification: INotificationContent): number => getCon
 export const getPlainText = (notification: INotificationContent): string => getContent(notification).words;
 
 export const getContent = (notification: INotificationContent) => {
-  const { message, translationId, error } = notification;
+  const { message, translationId, translationValues, error } = notification;
   const { formatMessage } = Format.Translations;
   if (!((message ? 1 : 0) ^ (translationId ? 1 : 0) ^ (error ? 1 : 0))) {
     throw new Error(
@@ -32,14 +31,16 @@ export const getContent = (notification: INotificationContent) => {
     content = typeof message == 'object' ? <ul>{message.map((m, i) => <li key={i}>{m}</li>)}</ul> : message;
   }
   if (translationId) {
-    words = typeof translationId == 'object' ? translationId.map(tId => formatMessage({ id: tId })).join(' ') : translationId;
+    words = typeof translationId == 'object'
+      ? translationId.map(tId => formatMessage({ id: tId }, translationValues)).join(' ')
+      : translationId;
     content = typeof translationId == 'object'
-      ? <ul>{translationId.map((tId, i) => <li key={i}>{formatMessage({ id: tId })}</li>)}</ul>
-      : formatMessage({ id: translationId });
+      ? <ul>{translationId.map((tId, i) => <li key={i}>{formatMessage({ id: tId }, translationValues)}</li>)}</ul>
+      : formatMessage({ id: translationId }, translationValues);
   }
   if (error) {
     const { body, head } = errorText(error);
-    words = `${formatMessage({ id: 'app.error' })}: ${body} ${head}`;
+    words = `${formatMessage({ id: 'app.error' }, translationValues)}: ${body} ${head}`;
     content = <ErrorContent contentError={error}/>
   }
   return {

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Initialized.scss';
+import './_styles.scss';
 declare namespace Initialized {
     type Props = {
         language?: string;
