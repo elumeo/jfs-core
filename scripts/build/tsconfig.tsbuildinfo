@@ -572,7 +572,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/os/filesystem/synchronization.ts": {
-        "version": "19f768818f764a529a474398d47ae8f35c76ce833cf98400f3bb88c4cba6cfd3",
+        "version": "e2b224896a28bcdc91a4cdb4627e576cc5c15b61eb2ccc7a9d362da319ab57e5",
         "signature": "0139c196c0844e862030c09432fe5e4c489d97f2773f491b2c7a240814faa69c",
         "affectsGlobalScope": false
       },

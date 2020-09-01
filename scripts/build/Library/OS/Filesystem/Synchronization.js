@@ -12,10 +12,6 @@ class Synchronization {
     constructor({ from, to, ignore }) {
         this.target = (source) => {
             const path = path_1.resolve(this.recipient.path, Text_1.default.removePrefix(source.path.substring(this.sender.path.length), path_1.sep));
-            console.log({
-                withPrefix: source.path.substring(this.sender.path.length),
-                withoutPrefix: Text_1.default.removePrefix(source.path.substring(this.sender.path.length), path_1.sep)
-            });
             if (source instanceof File_1.default) {
                 return new File_1.default({ path });
             }
