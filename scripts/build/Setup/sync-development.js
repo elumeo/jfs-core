@@ -57,6 +57,9 @@ JFS_1.default.discover(() => {
                 });
             });
         }
+        else {
+            console.log('No jfs field found in package.json.');
+        }
     });
 });
 //# sourceMappingURL=sync-development.js.map

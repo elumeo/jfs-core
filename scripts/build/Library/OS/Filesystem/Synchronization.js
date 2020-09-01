@@ -5,28 +5,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Directory_1 = __importDefault(require("./Directory"));
 const File_1 = __importDefault(require("./File"));
+const Event_1 = __importDefault(require("./Event"));
 const path_1 = require("path");
 const Text_1 = __importDefault(require("../../Text"));
 class Synchronization {
     constructor({ from, to, ignore }) {
         this.target = (source) => {
-            const FsNode = (source instanceof File_1.default
-                ? File_1.default
-                : Directory_1.default);
-            console.log({
-                recipient: this.recipient.path,
-                virtual: source.path.substring(this.sender.path.length),
-                withoutPrefix: Text_1.default.removePrefix(source.path.substring(this.sender.path.length), '/'),
-                recipientResource: path_1.resolve(this.recipient.path, Text_1.default.removePrefix(source.path.substring(this.sender.path.length), '/'))
-            });
-            return new FsNode({
-                path: path_1.resolve(this.recipient.path, Text_1.default.removePrefix(source.path.substring(this.sender.path.length), '/'))
-            });
+            const path = path_1.resolve(this.recipient.path, Text_1.default.removePrefix(source.path.substring(this.sender.path.length), '/'));
+            if (source instanceof File_1.default) {
+                return new File_1.default({ path });
+            }
+            else {
+                return new Directory_1.default({ path });
+            }
         };
         this.run = (onSynchronized) => {
             const { sender, recipient, ignore } = this;
             sender.watch();
-            Directory_1.default.events.forEach(event => sender.on(event, source => {
+            Event_1.default.names.forEach(event => sender.on(event, source => {
                 const onComplete = () => onSynchronized({ event, source, target });
                 const target = this.target(source);
                 const ignored = ignore.includes(target.path.substring(recipient.path.length + 1).split(path_1.sep)[0]);

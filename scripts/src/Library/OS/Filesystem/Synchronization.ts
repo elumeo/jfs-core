@@ -1,5 +1,6 @@
 import Directory from "./Directory";
 import File from "./File";
+import Event from './Event';
 import { resolve, sep } from "path";
 import Text from "Library/Text";
 
@@ -23,49 +24,32 @@ class Synchronization {
   }
 
   private target = (source: File | Directory): File | Directory => {
-    const FsNode = (
-      source instanceof File
-        ? File
-        : Directory
-    );
-
-    console.log({
-      recipient: this.recipient.path,
-      virtual: source.path.substring(this.sender.path.length),
-      withoutPrefix: Text.removePrefix(
+    const path = resolve(
+      this.recipient.path,
+      Text.removePrefix(
         source.path.substring(this.sender.path.length),
         '/'
-      ),
-      recipientResource: resolve(
-        this.recipient.path,
-        Text.removePrefix(
-          source.path.substring(this.sender.path.length),
-          '/'
-        )
       )
-    });
+    );
 
-    return new FsNode({
-      path: resolve(
-        this.recipient.path,
-        Text.removePrefix(
-          source.path.substring(this.sender.path.length),
-          '/'
-        )
-      )
-    });
+    if (source instanceof File) {
+      return new File({ path });
+    }
+    else {
+      return new Directory({ path });
+    }
   };
 
   public run = (
     onSynchronized: (payload: {
-      event: Directory.Event.Name;
+      event: Event.Name;
       source: File | Directory;
       target: File | Directory;
     }) => void
   ) => {
     const { sender, recipient, ignore } = this;
     sender.watch();
-    Directory.events.forEach(event => sender.on(
+    Event.names.forEach(event => sender.on(
       event,
       source => {
         const onComplete = () => onSynchronized({ event, source, target });
@@ -74,7 +58,6 @@ class Synchronization {
         const ignored = ignore.includes(
           target.path.substring(recipient.path.length +1).split(sep)[0]
         );
-
 
         if (ignored) {
 

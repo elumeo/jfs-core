@@ -108,7 +108,7 @@ class Snapshot {
       if (file) {
         file.read(
           csv => {
-            csv2json(csv, (error, data) => {
+            csv2json(csv as string, (error, data) => {
               if (error) {
                 throw error;
               }

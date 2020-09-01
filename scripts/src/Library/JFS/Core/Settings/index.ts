@@ -33,9 +33,10 @@ class Settings {
   }: {
     subSettingsName: string;
     subSettingsReady: (subSettings: Settings) => void;
-  }) => this.directory.directory(
-    subSettingsName,
-    directory => subSettingsReady(new Settings(directory))
+  }) => subSettingsReady(
+    new Settings(
+      this.directory.directory(subSettingsName)
+    )
   );
 
   files = (filesReady: (files: File[]) => void) => {

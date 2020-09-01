@@ -13,7 +13,7 @@ class Settings {
                 subSettings
             ])
         }));
-        this.subSettings = ({ subSettingsName, subSettingsReady }) => this.directory.directory(subSettingsName, directory => subSettingsReady(new Settings(directory)));
+        this.subSettings = ({ subSettingsName, subSettingsReady }) => subSettingsReady(new Settings(this.directory.directory(subSettingsName)));
         this.files = (filesReady) => {
             this.directory.files(filesReady);
         };

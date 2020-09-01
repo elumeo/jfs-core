@@ -54,5 +54,8 @@ JFS.discover(() => {
         });
       });
     }
+    else {
+      console.log('No jfs field found in package.json.');
+    }
   });
 });
