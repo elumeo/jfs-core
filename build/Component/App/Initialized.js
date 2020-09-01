@@ -9,8 +9,8 @@ const Initialized = ({ language, messages, children, appInitialized }) => (appIn
     ? (React.createElement(HashRouter, null,
         React.createElement(IntlProvider, { locale: language, messages: messages[language] },
             React.createElement(React.Fragment, null, children))))
-    : (React.createElement("div", { className: "app-initialize-progress" },
-        React.createElement(CircularProgress, { id: "app-initialize-progress", scale: 2 }))));
+    : (React.createElement("div", { className: 'app-initialize-progress' },
+        React.createElement(CircularProgress, { id: 'app-initialize-progress', scale: 2 }))));
 const mapStateToProps = (state, ownProps) => (Object.assign(Object.assign({}, ownProps), { language: state.Core.Language.language, appInitialized: state.Core.App.appInitialized, messages: state.Core.Language.messages }));
 const enhance = compose(connect(mapStateToProps));
 export default enhance(Initialized);
