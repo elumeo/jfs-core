@@ -1,3 +1,7 @@
+## [9.5.9] - 2020-09-01
+## Fixed
+- fixed some style issues after change to dart-sass
+
 ## [9.5.8] - 2020-09-01
 ## Fixed
 - fixed some style issues after change to dart-sass

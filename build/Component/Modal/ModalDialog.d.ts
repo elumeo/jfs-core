@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.scss';
+import './_styles.scss';
 interface IModalDialog {
     visible: boolean;
     children?: any;

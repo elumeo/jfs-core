@@ -2,7 +2,7 @@ import React from 'react';
 import DialogContainer from 'react-md/lib/Dialogs';
 import International from '../International';
 import { IconSeparator } from 'react-md';
-import './styles.scss';
+import './_styles.scss';
 
 interface IModalDialog {
   visible: boolean;

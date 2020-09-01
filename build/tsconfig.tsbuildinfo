@@ -1767,8 +1767,8 @@
         "affectsGlobalScope": false
       },
       "../src/component/juwelofonticon/index.tsx": {
-        "version": "490a7f4d0c698c9ee0a6e4ffcf4e6219b3657a4578585ea1a9e1309da164c191",
-        "signature": "7bedc9ca906b66a3160cf0b06eb618cd385b37ed24061ca03ed0b72281fa86f5",
+        "version": "2e642a187c2a4584f1f68ce8dba4e6e9a6e5e394924b7ddf302dff941add7ca5",
+        "signature": "0f15266c81023585f5761a06cb2a336b2e50f9e73abbf0abbeb4acde7ddd9481",
         "affectsGlobalScope": false
       },
       "../src/component/login/loginbutton.tsx": {
@@ -1872,8 +1872,8 @@
         "affectsGlobalScope": false
       },
       "../src/component/modal/modaldialog.tsx": {
-        "version": "d3453a9eecb2d2dbe0c84c098e29ddddfd09e14ea246e4eef595402d34ffc5d5",
-        "signature": "4edccdb2c428a284e3f315c30bb75e853859d0b9f5040ed2c26b90de2f892430",
+        "version": "0814dbfca337e5465db99ba4e3a944de31ad89400f738a2fb9dd3d63de0865be",
+        "signature": "6a2b0de018bac593ab49cd1dff65c18519224932b7cc9abf9680eb5d6424118a",
         "affectsGlobalScope": false
       },
       "../src/component/navigation/navigationdrawerheader.tsx": {
@@ -2873,6 +2873,7 @@
           "./Utilities/*"
         ]
       },
+      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
