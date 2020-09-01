@@ -32,6 +32,14 @@ class Synchronization {
       )
     );
 
+    console.log({
+      withPrefix: source.path.substring(this.sender.path.length),
+      withoutPrefix: Text.removePrefix(
+        source.path.substring(this.sender.path.length),
+        sep
+      )
+    });
+
     if (source instanceof File) {
       return new File({ path });
     }
