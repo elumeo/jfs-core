@@ -28,7 +28,7 @@ class Synchronization {
       this.recipient.path,
       Text.removePrefix(
         source.path.substring(this.sender.path.length),
-        '/'
+        sep
       )
     );
 
