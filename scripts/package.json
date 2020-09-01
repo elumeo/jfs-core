@@ -29,7 +29,6 @@
     "simple-git": "^1.107.0"
   },
   "devDependencies": {
-    "@types/ansi-colors": "^3.2.2",
     "@types/ncp": "^2.0.4",
     "@types/node": "^8.0.29",
     "@types/prettier": "^2.0.1",

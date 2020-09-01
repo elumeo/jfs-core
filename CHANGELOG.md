@@ -1,3 +1,7 @@
+## [9.5.7] - 2020-09-01
+## Fixed
+- updated sass-loader module
+
 ## [9.5.6] - 2020-09-01
 ## Fixed
 - fixed dart sass config issue
