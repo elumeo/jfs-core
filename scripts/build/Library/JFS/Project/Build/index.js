@@ -47,20 +47,23 @@ Build.equalize = (project) => {
         }
     }));
 };
-Build.synchronize = (project, event, file) => {
+Build.synchronize = (project, event, file) => new Promise(resolve => {
     const src = project.directory('src');
     const build = project.directory('build');
     const remove = Text_1.default.endsWith(event, 'REMOVED');
     const virtual = src.virtual(file.path);
     const path = build.mount(virtual);
-    const onComplete = () => console.log(`${ansi_colors_1.cyan(event)}: ${virtual}`);
+    const onComplete = () => {
+        console.log(`${ansi_colors_1.cyan(event)}: ${virtual}`);
+        resolve();
+    };
     if (remove) {
         new File_1.default({ path }).remove(onComplete);
     }
     else {
         file.copy(path, onComplete);
     }
-};
+});
 Build.compile = (project) => new Promise((resolve) => __awaiter(void 0, void 0, void 0, function* () {
     if (Transpiler_1.default.running) {
         Transpiler_1.default.process.kill(`SIGKILL`);
@@ -91,8 +94,8 @@ Build.watch = (project) => __awaiter(void 0, void 0, void 0, function* () {
             else {
                 console.clear();
                 console.log('Synchronizing ...');
-                Build.synchronize(project, event, file);
-                Build.compile(project);
+                yield Build.synchronize(project, event, file);
+                yield Build.compile(project);
             }
         }
     })));

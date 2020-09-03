@@ -43,20 +43,23 @@ class Build {
     project: Directory,
     event: Event.Name,
     file: File
-  ) => {
+  ) => new Promise(resolve => {
     const src = project.directory('src');
     const build = project.directory('build');
     const remove = Text.endsWith(event, 'REMOVED');
     const virtual = src.virtual(file.path);
     const path = build.mount(virtual);
-    const onComplete = () => console.log(`${cyan(event)}: ${virtual}`);
+    const onComplete = () => {
+      console.log(`${cyan(event)}: ${virtual}`);
+      resolve();
+    };
     if (remove) {
       new File({ path }).remove(onComplete)
     }
     else {
       file.copy(path, onComplete);
     }
-  }
+  });
 
   static compile = (project: Directory) => new Promise(async resolve => {
     if (Transpiler.running) {
@@ -90,9 +93,8 @@ class Build {
           else {
             console.clear();
             console.log('Synchronizing ...');
-            Build.synchronize(project, event, file);
-
-            Build.compile(project);
+            await Build.synchronize(project, event, file);
+            await Build.compile(project);
           }
         }
       }

@@ -1,4 +1,8 @@
-## [9.5.11] - 2020-09-01
+## [9.5.12] - 2020-09-03
+## Fixed/Added
+- Added new jfs-build script for transpiling and syncing based on events
+
+## [9.5.11] - 2020-09-02
 ## Fixed
 - fixed sync-development on windows
 
