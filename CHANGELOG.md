@@ -1,3 +1,7 @@
+## [9.5.14] - 2020-09-03
+## Fixed
+- Fixed an issue with datepicker component in inline mode
+
 ## [9.5.13] - 2020-09-03
 ## Fixed
 - Cleaned build
