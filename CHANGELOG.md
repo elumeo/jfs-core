@@ -1,3 +1,7 @@
+## [9.5.13] - 2020-09-03
+## Fixed
+- Cleaned build
+
 ## [9.5.12] - 2020-09-03
 ## Fixed/Added
 - Added new jfs-build script for transpiling and syncing based on events
