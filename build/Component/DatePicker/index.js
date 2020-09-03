@@ -119,7 +119,7 @@ const DatePicker = (_a) => {
         }
         return undefined;
     };
-    return (React.createElement(International, null, ({ formatMessage }) => (React.createElement(OutsideClickHandler, { onOutsideClick: () => setOpen(false) },
+    return (React.createElement(International, null, () => (React.createElement(OutsideClickHandler, { onOutsideClick: () => setOpen(false) },
         React.createElement(ReactDatePicker, Object.assign({}, rest, { ref: datePickerRef, selected: date, onChange: (newDate, event) => {
                 setHasValue(newDate !== null);
                 setDate(newDate);
