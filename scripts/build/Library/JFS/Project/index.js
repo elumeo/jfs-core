@@ -11,9 +11,19 @@ const Translations_1 = __importDefault(require("./Translations"));
 const Api_1 = __importDefault(require("./Api"));
 const File_1 = __importDefault(require("../../OS/Filesystem/File"));
 const path_1 = require("path");
+const Build_1 = __importDefault(require("./Build"));
 class Project {
     constructor({ path }) {
         this.translations = (onComplete) => Translations_1.default.get(this.path, translations => onComplete(new Translations_1.default(translations)));
+        this.build = (watch) => {
+            console.log(`Running build in ${watch ? 'watch' : 'single'} mode`);
+            if (watch) {
+                Build_1.default.watch(this.directory);
+            }
+            else {
+                Build_1.default.single(this.directory);
+            }
+        };
         this.path = path;
         this.directory = new Directory_1.default({ path });
         this.name = this.directory.name;

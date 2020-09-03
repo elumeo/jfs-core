@@ -40,6 +40,5 @@ class File extends FsNode_1.default {
         this.save = (data, onComplete) => Operation.save(this.path, data, onComplete);
     }
 }
-File.removeExtension = (path) => path.substring(0, path.lastIndexOf('.'));
 exports.default = File;
 //# sourceMappingURL=index.js.map

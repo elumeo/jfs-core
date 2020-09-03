@@ -2,11 +2,12 @@ import { readdir } from 'fs';
 import FsNode from 'Library/OS/Filesystem/FsNode';
 import Event from 'Library/OS/Filesystem/Event';
 import File from 'Library/OS/Filesystem/File';
-import {resolve} from "path";
+import {resolve, sep} from "path";
 
 import { create, remove, copy } from './Operation';
 import { WatchOptions } from 'chokidar';
 import Watcher from '../Watcher';
+import Text from 'Library/Text';
 
 class Directory extends FsNode {
   private watcher: Watcher;
@@ -97,6 +98,12 @@ class Directory extends FsNode {
 
   watch = (options?: WatchOptions) => this.watcher.watch(options);
   unwatch = () => this.watcher.unwatch();
+
+  virtual = (path: string) => path.substring(this.path.length);
+  mount = (virtual: string) => this.resolve(
+    this.path,
+    Text.removePrefix(virtual, sep)
+  )
 }
 
 export default Directory;

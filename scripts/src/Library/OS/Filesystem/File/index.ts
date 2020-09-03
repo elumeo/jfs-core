@@ -3,10 +3,6 @@ import * as Operation from './Operation';
 import * as Read from './Operation/Read';
 
 class File extends FsNode {
-    public static readonly removeExtension = (path: string) => path.substring(
-      0,
-      path.lastIndexOf('.')
-    );
 
     open = () => Operation.open(this.path);
 

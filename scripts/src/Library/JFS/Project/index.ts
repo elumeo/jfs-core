@@ -6,6 +6,7 @@ import Translations from './Translations';
 import JSC from './Api';
 import File from 'Library/OS/Filesystem/File';
 import { resolve } from 'path';
+import Build from './Build';
 
 namespace Project {
   export type Props = {
@@ -47,6 +48,16 @@ abstract class Project {
     this.path,
     translations => onComplete(new Translations(translations))
   )
+
+  public build = (watch?: boolean) => {
+    console.log(`Running build in ${watch ? 'watch' : 'single'} mode`);
+    if (watch) {
+      Build.watch(this.directory);
+    }
+    else {
+      Build.single(this.directory);
+    }
+  }
 }
 
 export default Project;

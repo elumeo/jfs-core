@@ -9,6 +9,7 @@ const File_1 = __importDefault(require("../../../OS/Filesystem/File"));
 const path_1 = require("path");
 const Operation_1 = require("./Operation");
 const Watcher_1 = __importDefault(require("../Watcher"));
+const Text_1 = __importDefault(require("../../../Text"));
 class Directory extends FsNode_1.default {
     constructor({ path }) {
         super({ path });
@@ -50,6 +51,8 @@ class Directory extends FsNode_1.default {
         this.on = (event, handle) => this.watcher.on(event, handle);
         this.watch = (options) => this.watcher.watch(options);
         this.unwatch = () => this.watcher.unwatch();
+        this.virtual = (path) => path.substring(this.path.length);
+        this.mount = (virtual) => this.resolve(this.path, Text_1.default.removePrefix(virtual, path_1.sep));
         this.watcher = new Watcher_1.default({ path });
     }
 }
