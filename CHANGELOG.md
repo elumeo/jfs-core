@@ -1,70 +1,78 @@
+## [9.5.15] - 2020-09-04
+### Fixed
+- Fixed an issue Juwelo icon font
+
+## [9.5.14] - 2020-09-03
+### Fixed
+- Fixed an issue with datepicker component in inline mode
+
 ## [9.5.13] - 2020-09-03
-## Fixed
+### Fixed
 - Cleaned build
 
 ## [9.5.12] - 2020-09-03
-## Fixed/Added
+### Fixed
 - Added new jfs-build script for transpiling and syncing based on events
 
 ## [9.5.11] - 2020-09-02
-## Fixed
+### Fixed
 - fixed sync-development on windows
 
 ## [9.5.10] - 2020-09-01
-## Fixed
+### Fixed
 - fixed some style issues after change to dart-sass
 
 ## [9.5.9] - 2020-09-01 (was not released)
-## Fixed
+### Fixed
 - fixed some style issues after change to dart-sass
 
 ## [9.5.8] - 2020-09-01
-## Fixed
+### Fixed
 - fixed some style issues after change to dart-sass
 
 ## [9.5.7] - 2020-09-01
-## Fixed
+### Fixed
 - updated sass-loader module
 
 ## [9.5.6] - 2020-09-01
-## Fixed
+### Fixed
 - fixed dart sass config issue
 
 ## [9.5.5] - 2020-09-01
-## Changed
+### Changed
 - moved script package.json from node-sass to dart-sass
 
-## Fixed
+### Fixed
 - Fixed an issue in the datepicker component where a custom input field is not compatible with react-md
 
 ## [9.5.4] - 2020-09-01
-## Changed
+### Changed
 - moved from node-sass to dart-sass
 - changed multiple scss imports to use `@use` instead of `@import`
 
-## Fixed
+### Fixed
 - Fixed an issue in the datepicker component where a custom input field is not compatible with react-md
     * the custom field isn't supported anymore
     * added styling and logic to be aligned with react md
 
 ## [9.5.3] - 2020-08-28
-## Fixed
+### Fixed
 - ???
 
 ## [9.5.2] - 2020-08-28
-## Fixed
+### Fixed
 - ???
 
 ## [9.5.1] - 2020-08-28
-## Fixed
+### Fixed
 - Fixed scripts build/jfs-prebuild for windows platform
 
 ## [9.5.0] - 2020-08-28
-## Added
+### Added
 - added utilities from RightsManager: Sort, Filter, Text.removeDiacritics
 
 ## [9.4.1] - 2020-08-28
-## Fixed
+### Fixed
 - fixed set-peer-dependency bug
 
 ## [9.4.0] - 2020-08-28

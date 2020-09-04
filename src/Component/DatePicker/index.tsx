@@ -13,10 +13,14 @@ import './_styles.scss'
 
 const mapLanguageToDateFormat = (language: LANGUAGE) => {
   switch (language) {
-    case LANGUAGE.GERMAN: return DATE_FORMAT.DE;
-    case LANGUAGE.ENGLISH: return DATE_FORMAT.EN;
-    case LANGUAGE.ITALIAN: return DATE_FORMAT.IT;
-    default: return DATE_FORMAT.DE;
+    case LANGUAGE.GERMAN:
+      return DATE_FORMAT.DE;
+    case LANGUAGE.ENGLISH:
+      return DATE_FORMAT.EN;
+    case LANGUAGE.ITALIAN:
+      return DATE_FORMAT.IT;
+    default:
+      return DATE_FORMAT.DE;
   }
 }
 
@@ -37,7 +41,7 @@ const DatePicker: React.FC<DatePicker.Props> = ({
                                                   value,
                                                   onChange,
                                                   intl: {formatMessage},
-                                                  state: { language },
+                                                  state: {language},
                                                   ...rest
                                                 }) => {
   const [date, setDate] = useState<Date>(value);
@@ -64,10 +68,15 @@ const DatePicker: React.FC<DatePicker.Props> = ({
       datePickerRef.current.clear();
     });
     const input = getInput();
-    input.addEventListener('keydown', _handleKeyupEventOnCustomInputField);
-    input.addEventListener('blur', _handleBlurEventOnCustomInputField);
-    const finalLabel = label !== null ? label : formatMessage({id: 'form.datePicker.label'});
-    getInputParent().setAttribute('data-label', finalLabel);
+    if (input !== undefined) {
+      input.addEventListener('keydown', _handleKeyupEventOnCustomInputField);
+      input.addEventListener('blur', _handleBlurEventOnCustomInputField);
+    }
+    const inputParent = getInputParent();
+    if (inputParent !== undefined) {
+      const finalLabel = label !== null ? label : formatMessage({id: 'form.datePicker.label'});
+      inputParent.setAttribute('data-label', finalLabel);
+    }
   }, []);
 
   const _handleKeyupEventOnCustomInputField = (e: KeyboardEvent) => {
@@ -87,28 +96,34 @@ const DatePicker: React.FC<DatePicker.Props> = ({
 
   const checkRawHasValue = () => {
     const input = getInput();
-    if (input.value === '') {
-      setHasValue(false);
-    } else {
-      setHasValue(true);
+    if (input !== undefined) {
+      if (input.value === '') {
+        setHasValue(false);
+      } else {
+        setHasValue(true);
+      }
     }
   }
 
   const setHasValue = (hasValue: boolean) => {
     const inputParent = getInputParent();
-    if (hasValue) {
-      inputParent.classList.add('has-value');
-    } else {
-      inputParent.classList.remove('has-value');
+    if (inputParent !== undefined) {
+      if (hasValue) {
+        inputParent.classList.add('has-value');
+      } else {
+        inputParent.classList.remove('has-value');
+      }
     }
   }
 
   const setActive = (isActive: boolean) => {
     const inputParent = getInputParent();
-    if (isActive) {
-      inputParent.classList.add('is-active');
-    } else {
-      inputParent.classList.remove('is-active');
+    if (inputParent !== undefined) {
+      if (isActive) {
+        inputParent.classList.add('is-active');
+      } else {
+        inputParent.classList.remove('is-active');
+      }
     }
   }
 
@@ -119,12 +134,16 @@ const DatePicker: React.FC<DatePicker.Props> = ({
   };
 
   const getInputParent = () => {
-    return getInput().parentElement;
+    const input = getInput();
+    if (input !== undefined) {
+      return input.parentElement;
+    }
+    return undefined;
   };
 
   return (
     <International>
-      {({ formatMessage }) => (
+      {() => (
         <OutsideClickHandler onOutsideClick={() => setOpen(false)}>
           <ReactDatePicker
             {...rest}
