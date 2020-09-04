@@ -69,10 +69,25 @@ Client.request = ({ parameters, protocol, resource }) => {
         fatArrow: {
             shortSyntax: true
         },
+        parameters: [
+            ...parameters.map(parameter => {
+                const { name, annotation } = parameter;
+                return (Object.assign({ name }, annotation));
+            }),
+            {
+                name: 'config',
+                type: 'IJscClientConfig',
+                optional: true
+            }
+        ],
         body: Render_1.default.Axios.request({
             client: 'JscClient',
             method: protocol.method,
-            type: `${resource.type.name}${Render_1.default.TypeScript.generics(...resource.type.generics)}${resource.type.array ? '[]' : ''}`,
+            type: [
+                resource.type.name,
+                Render_1.default.TypeScript.generics(...resource.type.generics),
+                resource.type.array ? '[]' : ''
+            ].join(''),
             path: Client.replacePathParameters(resource.path),
             parameters: [
                 ...parameters
@@ -82,14 +97,6 @@ Client.request = ({ parameters, protocol, resource }) => {
                 'config'
             ]
         }),
-        parameters: [
-            ...parameters.map(({ name, annotation }) => (Object.assign({ name }, annotation))),
-            {
-                name: 'config',
-                type: 'IJscClientConfig',
-                optional: true
-            }
-        ],
         returnAnnotation: {
             type: 'Promise' + Render_1.default.TypeScript.generics('AxiosResponse' + Render_1.default.TypeScript.generics(resource.type.name + Render_1.default.TypeScript.generics(...resource.type.generics) + (resource.type.array ? '[]' : '')))
         }
