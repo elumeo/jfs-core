@@ -65,7 +65,7 @@ const DatePicker: React.FC<DatePicker.Props> = ({
 
   useEffect(() => {
     document.getElementById(customClearButtonId)?.addEventListener('click', () => {
-      // The clear method exists
+      // @ts-ignore The clear method exists
       datePickerRef.current.clear();
     });
     const input = getInput();
@@ -73,6 +73,9 @@ const DatePicker: React.FC<DatePicker.Props> = ({
     input.addEventListener('blur', _handleBlurEventOnCustomInputField);
     const finalLabel = label !== null ? label : formatMessage({id: 'form.datePicker.label'});
     getInputParent().setAttribute('data-label', finalLabel);
+    if (date !== null) {
+      setHasValue(true);
+    }
   }, []);
 
   const _handleKeyupEventOnCustomInputField = (e: KeyboardEvent) => {
@@ -118,6 +121,7 @@ const DatePicker: React.FC<DatePicker.Props> = ({
   }
 
   const getInput = () => {
+    // @ts-ignore input does exist!
     return datePickerRef.current.input as HTMLInputElement;
   };
 
