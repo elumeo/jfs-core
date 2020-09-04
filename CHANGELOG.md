@@ -1,3 +1,7 @@
+## [9.5.15] - 2020-09-03
+## Fixed
+- Fixed an issue Juwelo icon font
+
 ## [9.5.14] - 2020-09-03
 ## Fixed
 - Fixed an issue with datepicker component in inline mode
