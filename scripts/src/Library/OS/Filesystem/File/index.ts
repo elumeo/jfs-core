@@ -2,19 +2,18 @@ import FsNode from '../FsNode';
 import * as Operation from './Operation';
 import * as Read from './Operation/Read';
 
+type Data = string | Buffer;
+
 class File extends FsNode {
 
     open = () => Operation.open(this.path);
-
-    create = (
-      onComplete: () => void
-    ) => Operation.create(this.path, this.predecessors, onComplete);
-
+    create = (onComplete: () => void) => Operation.create(this.path, onComplete);
     read = (options: Read.Options) => Operation.read(this.path, options);
-
-    write = (
-      data: string | Buffer, onComplete: () => void
-    ) => Operation.write(this.path, data, onComplete);
+    write = (data: Data, onComplete: () => void) => Operation.write(
+      this.path,
+      data,
+      onComplete
+    );
 
     remove = (onComplete: () => void) => Operation.remove(this.path, onComplete);
 

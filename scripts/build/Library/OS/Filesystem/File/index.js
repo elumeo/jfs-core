@@ -28,7 +28,7 @@ class File extends FsNode_1.default {
     constructor() {
         super(...arguments);
         this.open = () => Operation.open(this.path);
-        this.create = (onComplete) => Operation.create(this.path, this.predecessors, onComplete);
+        this.create = (onComplete) => Operation.create(this.path, onComplete);
         this.read = (options) => Operation.read(this.path, options);
         this.write = (data, onComplete) => Operation.write(this.path, data, onComplete);
         this.remove = (onComplete) => Operation.remove(this.path, onComplete);

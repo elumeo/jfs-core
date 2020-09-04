@@ -201,28 +201,8 @@
         "signature": "a1ec879346ae1806cccf8c39dee0fbfa332768d3bd5728bf282d8b46ecbdd502",
         "affectsGlobalScope": false
       },
-      "../src/library/os/filesystem/file/operation/create.ts": {
-        "version": "11b6e4f9849be0077cb299aee1fb8d01f9ed190bbd08a049c39bc74eb7cdd6f2",
-        "signature": "f77d0c44e7aba075c4e56902bc19dd44123b4f4e1b525d9c22a5df7f38fa76b2",
-        "affectsGlobalScope": false
-      },
-      "../src/library/os/filesystem/file/operation/read.ts": {
-        "version": "4155b5078c0ce4f2a6d0d2598860ae13efb73b8c1f8793241bb3bc49bd5fb330",
-        "signature": "e230ad3d763143205ccbe172a372a2a57ef5c0f0b65f1cbd203ea55d030d7fe6",
-        "affectsGlobalScope": false
-      },
-      "../src/library/os/filesystem/file/operation/open.ts": {
-        "version": "0aaeaa49c371aafb84f398e23928e4930fe53ea3b588dc60416e1ec838d890a2",
-        "signature": "e3f921df7e2964b019981729fa1c81e822e19b538f4630f2474eab49469e8b93",
-        "affectsGlobalScope": false
-      },
-      "../src/library/text/index.ts": {
-        "version": "4ce28d1dbfec680f4d09f532ac7afc7e3be9fa8ffe8adcda6077eeb8ae1c2dea",
-        "signature": "92d910906166f665e1e5b736c20fe79d9cee55565b895a43e8802b43aad1a7f2",
-        "affectsGlobalScope": false
-      },
       "../src/library/os/filesystem/directory/operation/create.ts": {
-        "version": "8ca42554a7b8203c494b941e6e5fadb3483bf625954ab00b479d7fbd052b4f41",
+        "version": "3e1151bf1f8d038a8faeb76aef8675b4a40c2c89b8ae5ce5839fe27426b99d89",
         "signature": "acd30e3a6b4539688fdbdfa57e2821a0a255a7c51e79171600972ba22cef1cd9",
         "affectsGlobalScope": false
       },
@@ -276,6 +256,21 @@
         "signature": "a85443e771c1272d2dfd267e938a527923d52b3636510ce708e1792508f39c0e",
         "affectsGlobalScope": false
       },
+      "../src/library/os/filesystem/file/operation/create.ts": {
+        "version": "6538fb18f7af57f49c93a4bc14e480b8861f6cc991c2fc8e3908b01309e5c425",
+        "signature": "acd30e3a6b4539688fdbdfa57e2821a0a255a7c51e79171600972ba22cef1cd9",
+        "affectsGlobalScope": false
+      },
+      "../src/library/os/filesystem/file/operation/read.ts": {
+        "version": "4155b5078c0ce4f2a6d0d2598860ae13efb73b8c1f8793241bb3bc49bd5fb330",
+        "signature": "e230ad3d763143205ccbe172a372a2a57ef5c0f0b65f1cbd203ea55d030d7fe6",
+        "affectsGlobalScope": false
+      },
+      "../src/library/os/filesystem/file/operation/open.ts": {
+        "version": "0aaeaa49c371aafb84f398e23928e4930fe53ea3b588dc60416e1ec838d890a2",
+        "signature": "e3f921df7e2964b019981729fa1c81e822e19b538f4630f2474eab49469e8b93",
+        "affectsGlobalScope": false
+      },
       "../src/library/os/filesystem/file/operation/write.ts": {
         "version": "a31c8e6c36339ec27e40a874c56311575e06b0e066bc1b9b2a4103b6e50db5c8",
         "signature": "525714a9119f8b6d8d2387c253d360be718288411dd952afee0afd26c34b881a",
@@ -327,8 +322,8 @@
         "affectsGlobalScope": false
       },
       "../src/library/os/filesystem/file/index.ts": {
-        "version": "0afe512e2c580464357e642fa7f82ceb985a5d6e63adbacc5cd2b858eed9c938",
-        "signature": "f692fcf254170934979b4f794a861eabf9bebb649599fe35591137827d8d663c",
+        "version": "281208958003aa2932d97c48b9adbcff4c1bd3249849d3986eefe578838dc61a",
+        "signature": "367fda3be3c22e5168d109b2a3fcdd4378288587046b973af0e14fc3ac399669",
         "affectsGlobalScope": false
       },
       "../src/library/jfs/config.ts": {
@@ -349,6 +344,11 @@
       "../src/library/os/filesystem/watcher.ts": {
         "version": "66d0c24d06a349c7167f1861820d221cd2300482edb9b73307abbe9d10bc8d87",
         "signature": "5610988bdae73c0118697d64d0b46cde842886ba87ff56b95c69afec192ea5e2",
+        "affectsGlobalScope": false
+      },
+      "../src/library/text/index.ts": {
+        "version": "4ce28d1dbfec680f4d09f532ac7afc7e3be9fa8ffe8adcda6077eeb8ae1c2dea",
+        "signature": "92d910906166f665e1e5b736c20fe79d9cee55565b895a43e8802b43aad1a7f2",
         "affectsGlobalScope": false
       },
       "../src/library/os/filesystem/directory/index.ts": {
@@ -2413,8 +2413,7 @@
       "../src/library/os/filesystem/directory/operation/create.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../src/library/text/index.ts"
+        "../node_modules/@types/node/ts3.2/index.d.ts"
       ],
       "../src/library/os/filesystem/directory/operation/index.ts": [
         "../../node_modules/date-fns/typings.d.ts",
@@ -2455,7 +2454,8 @@
       "../src/library/os/filesystem/file/operation/create.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts"
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../src/library/os/filesystem/directory/operation/index.ts"
       ],
       "../src/library/os/filesystem/file/operation/csv.ts": [
         "../../node_modules/date-fns/typings.d.ts",

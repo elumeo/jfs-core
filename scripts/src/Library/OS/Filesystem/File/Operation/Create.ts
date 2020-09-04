@@ -1,45 +1,24 @@
-import { existsSync, mkdirSync, appendFile } from 'fs';
-import { sep } from 'path';
+import { create } from '../../Directory/Operation';
+import { appendFile } from 'fs';
+import { dirname } from 'path';
 
 export default (
   path: string,
-  predecessors: string[],
   onComplete: () => void
 ) => {
-  predecessors.reduce(
-    (parent, segment) => {
-      if (parent) {
-        const path = (
-          parent.length > 1
-            ? `${parent}${sep}${segment}`
-            : `${parent}${segment}`
-        );
-        if (!existsSync(path)) {
-          mkdirSync(path);
+  create(
+    dirname(path),
+    () => appendFile(
+      path,
+      '',
+      (error: NodeJS.ErrnoException) => {
+        if (error) {
+          throw error;
         }
-        return path;
-      }
-      else {
-        if (process.platform === 'win32') {
-          return segment;
-        }
-        else {
-          return `${sep}${segment}`;
+        else if (onComplete) {
+          onComplete();
         }
       }
-    },
-    null
+    )
   );
-  appendFile(
-    path,
-    '',
-    (error: NodeJS.ErrnoException) => {
-      if (error) {
-        throw error;
-      }
-      else if (onComplete) {
-        onComplete();
-      }
-    }
-  )
 };
