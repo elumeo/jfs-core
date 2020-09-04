@@ -51,15 +51,15 @@ class JSC {
             onDescription
         }))));
         this.saveDescription = (description) => {
-            fs_1.writeFile(path_1.resolve(this.path, 'Api', 'description.json'), JSON.stringify(description, null, 2), () => {
+            fs_1.writeFile(path_1.resolve(this.path, 'Api', 'Description.json'), JSON.stringify(description, null, 2), () => {
             });
         };
         this.check = ({ description, onComplete }) => {
-            if (!fs_1.existsSync(path_1.resolve(this.path, 'Api', 'description.json'))) {
+            if (!fs_1.existsSync(path_1.resolve(this.path, 'Api', 'Description.json'))) {
                 onComplete('No description found');
             }
             else {
-                fs_1.readFile(path_1.resolve(this.path, 'Api', 'description.json'), 'utf8', (error, data) => {
+                fs_1.readFile(path_1.resolve(this.path, 'Api', 'Description.json'), 'utf8', (error, data) => {
                     if (error) {
                         throw error;
                     }

@@ -3,6 +3,10 @@ import Render from '../Render';
 namespace Callback {
   export type Parameter = {
     name: string;
+    annotation?: {
+      type?: string;
+      optional?: boolean;
+    }
     type?: string;
     optional?: boolean;
     defaultValue?: string;
@@ -177,47 +181,52 @@ class Client {
     parameters,
     protocol,
     resource
-  }) => (
-    Render.TypeScript.function({
-      fatArrow: {
-        shortSyntax: true
-      },
-      body: Render.Axios.request({
-        client: 'JscClient',
-        method: protocol.method,
-        type: `${resource.type.name}${
-          Render.TypeScript.generics(...resource.type.generics)
-        }${resource.type.array ? '[]' : ''}`,
-        path: Client.replacePathParameters(resource.path),
+  }) => {
+    return (
+      Render.TypeScript.function({
+        fatArrow: {
+          shortSyntax: true
+        },
+        body: Render.Axios.request({
+          client: 'JscClient',
+          method: protocol.method,
+          type: `${resource.type.name}${
+            Render.TypeScript.generics(...resource.type.generics)
+          }${resource.type.array ? '[]' : ''}`,
+          path: Client.replacePathParameters(resource.path),
+          parameters: [
+            ...parameters
+              .filter(({ name }) => (
+                !Client.replacePathParameters(resource.path)
+                  .includes(`encodeURI(${name})`)
+              ))
+              .map(({ name }) => name),
+            'config'
+          ]
+        }),
         parameters: [
-          ...parameters
-            .filter(({ name }) => (
-              !Client.replacePathParameters(resource.path)
-                .includes(`encodeURI(${name})`)
-            ))
-            .map(({ name }) => name),
-          `config`
-        ]
-      }),
-      parameters: [
-        ...parameters,
-        {
-          name: 'config',
-          type: 'IJscClientConfig',
-          optional: true
-        }
-      ],
-      returnAnnotation: {
-        type: 'Promise' + Render.TypeScript.generics(
-          'AxiosResponse' + Render.TypeScript.generics(
-            resource.type.name + Render.TypeScript.generics(
-              ...resource.type.generics
-            ) + (resource.type.array ? '[]' : '')
+          ...parameters.map(({ name, annotation }) => ({
+            name,
+            ...annotation
+          })),
+          {
+            name: 'config',
+            type: 'IJscClientConfig',
+            optional: true
+          }
+        ],
+        returnAnnotation: {
+          type: 'Promise' + Render.TypeScript.generics(
+            'AxiosResponse' + Render.TypeScript.generics(
+              resource.type.name + Render.TypeScript.generics(
+                ...resource.type.generics
+              ) + (resource.type.array ? '[]' : '')
+            )
           )
-        )
-      }
-    })
-  );
+        }
+      })
+    );
+  }
 
   static namespace: Client.Namespace = ({ name, methods }) => (
     Render.TypeScript.namespace({

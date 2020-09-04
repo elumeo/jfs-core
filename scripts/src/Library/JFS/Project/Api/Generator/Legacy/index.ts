@@ -106,7 +106,7 @@ class JSC {
 
   public saveDescription = (description: Generator.API.Description) => {
     writeFile(
-      resolve(this.path, 'Api', 'description.json'),
+      resolve(this.path, 'Api', 'Description.json'),
       JSON.stringify(description, null, 2),
       () => {
 
@@ -118,11 +118,11 @@ class JSC {
     description: Generator.API.Description,
     onComplete: (diffSequence: string) => void
   }) => {
-    if (!existsSync(resolve(this.path, 'Api', 'description.json'))) {
+    if (!existsSync(resolve(this.path, 'Api', 'Description.json'))) {
       onComplete('No description found');
     } else {
       readFile(
-        resolve(this.path, 'Api', 'description.json'),
+        resolve(this.path, 'Api', 'Description.json'),
         'utf8',
         (error, data) => {
           if (error) {

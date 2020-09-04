@@ -18,7 +18,7 @@ class JSC {
                 onComplete: result => {
                     if (result) {
                         console.log([
-                            `Jsc/Api/description.json did change.\n`,
+                            `Jsc/Api/Description.json did change.\n`,
                             ansi_colors_1.bgRedBright(' --> Generating new API...')
                         ].join(''));
                         API_1.default.generate({
@@ -35,7 +35,7 @@ class JSC {
                     }
                     else {
                         console.log([
-                            `Jsc/Api/description.json did not change.\n`,
+                            `Jsc/Api/Description.json did not change.\n`,
                             ansi_colors_1.bgGreenBright(' --> Nothing to be done here.')
                         ].join(''));
                     }
@@ -53,15 +53,15 @@ class JSC {
             onDescription
         }))));
         this.saveDescription = (description) => {
-            fs_1.writeFile(path_1.resolve(this.path, 'Api', 'description.json'), JSON.stringify(description, null, 2), () => {
+            fs_1.writeFile(path_1.resolve(this.path, 'Api', 'Description.json'), JSON.stringify(description, null, 2), () => {
             });
         };
         this.check = ({ description, onComplete }) => {
-            if (!fs_1.existsSync(path_1.resolve(this.path, 'Api', 'description.json'))) {
+            if (!fs_1.existsSync(path_1.resolve(this.path, 'Api', 'Description.json'))) {
                 onComplete('No description found.');
             }
             else {
-                fs_1.readFile(path_1.resolve(this.path, 'Api', 'description.json'), 'utf8', (error, data) => {
+                fs_1.readFile(path_1.resolve(this.path, 'Api', 'Description.json'), 'utf8', (error, data) => {
                     if (error) {
                         throw error;
                     }

@@ -64,35 +64,37 @@ Client.stream = ({ protocol, resource }) => Render_1.default.Text.lines(Render_1
     }),
     constant: true
 })));
-Client.request = ({ parameters, protocol, resource }) => (Render_1.default.TypeScript.function({
-    fatArrow: {
-        shortSyntax: true
-    },
-    body: Render_1.default.Axios.request({
-        client: 'JscClient',
-        method: protocol.method,
-        type: `${resource.type.name}${Render_1.default.TypeScript.generics(...resource.type.generics)}${resource.type.array ? '[]' : ''}`,
-        path: Client.replacePathParameters(resource.path),
+Client.request = ({ parameters, protocol, resource }) => {
+    return (Render_1.default.TypeScript.function({
+        fatArrow: {
+            shortSyntax: true
+        },
+        body: Render_1.default.Axios.request({
+            client: 'JscClient',
+            method: protocol.method,
+            type: `${resource.type.name}${Render_1.default.TypeScript.generics(...resource.type.generics)}${resource.type.array ? '[]' : ''}`,
+            path: Client.replacePathParameters(resource.path),
+            parameters: [
+                ...parameters
+                    .filter(({ name }) => (!Client.replacePathParameters(resource.path)
+                    .includes(`encodeURI(${name})`)))
+                    .map(({ name }) => name),
+                'config'
+            ]
+        }),
         parameters: [
-            ...parameters
-                .filter(({ name }) => (!Client.replacePathParameters(resource.path)
-                .includes(`encodeURI(${name})`)))
-                .map(({ name }) => name),
-            `config`
-        ]
-    }),
-    parameters: [
-        ...parameters,
-        {
-            name: 'config',
-            type: 'IJscClientConfig',
-            optional: true
+            ...parameters.map(({ name, annotation }) => (Object.assign({ name }, annotation))),
+            {
+                name: 'config',
+                type: 'IJscClientConfig',
+                optional: true
+            }
+        ],
+        returnAnnotation: {
+            type: 'Promise' + Render_1.default.TypeScript.generics('AxiosResponse' + Render_1.default.TypeScript.generics(resource.type.name + Render_1.default.TypeScript.generics(...resource.type.generics) + (resource.type.array ? '[]' : '')))
         }
-    ],
-    returnAnnotation: {
-        type: 'Promise' + Render_1.default.TypeScript.generics('AxiosResponse' + Render_1.default.TypeScript.generics(resource.type.name + Render_1.default.TypeScript.generics(...resource.type.generics) + (resource.type.array ? '[]' : '')))
-    }
-}));
+    }));
+};
 Client.namespace = ({ name, methods }) => (Render_1.default.TypeScript.namespace({
     name: name,
     what: Render_1.default.Text.lines(...methods

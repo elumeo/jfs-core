@@ -1,12 +1,11 @@
 import { existsSync, mkdirSync, mkdir } from 'fs';
-import { sep } from 'path';
+import { sep, dirname } from 'path';
 
 export default (
   path: string,
-  predecessors: string[],
   onComplete: () => void
 ) => {
-  predecessors.reduce(
+  dirname(path).split(sep).reduce(
     (parent, segment) => {
       if (parent) {
         const path = (

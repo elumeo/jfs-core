@@ -82,7 +82,10 @@ API.preprocess = (api, description) => (Object.assign(Object.assign({}, descript
                                         ].join('.'))
                                         : sequence), '')
                                     : generic
-                            ].join('.')) }) }) }));
+                            ].join('.')) }) }), parameters: method.parameters.map(parameter => {
+                        console.log(parameter.type);
+                        return parameter;
+                    }) }));
             }) }, client), { name: client.name.replace('Controller', 'Client') }));
     }) }));
 API.describe = ({ remote, onDescription }) => {

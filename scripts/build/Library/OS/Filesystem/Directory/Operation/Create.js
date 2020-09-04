@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
 const path_1 = require("path");
-exports.default = (path, predecessors, onComplete) => {
-    predecessors.reduce((parent, segment) => {
+exports.default = (path, onComplete) => {
+    path_1.dirname(path).split(path_1.sep).reduce((parent, segment) => {
         if (parent) {
             const path = (parent.length > 1
                 ? `${parent}${path_1.sep}${segment}`

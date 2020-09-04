@@ -98,7 +98,11 @@ class API {
                   ].join('.')
                 )
               }
-            }
+            },
+            parameters: method.parameters.map(parameter => {
+              console.log(parameter.type);
+              return parameter;
+            })
           })
         ),
         ...client,

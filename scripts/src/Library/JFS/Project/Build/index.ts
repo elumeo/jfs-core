@@ -85,7 +85,7 @@ class Build {
       async fsNode => {
         if (fsNode instanceof File) {
           const file = fsNode;
-          if (extname(file.path) === '.ts') {
+          if (['.ts', '.tsx'].includes(extname(file.path))) {
             console.clear();
             console.log('Recompiling ...');
             await Build.compile(project);

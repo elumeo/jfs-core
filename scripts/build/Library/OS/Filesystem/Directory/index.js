@@ -45,7 +45,7 @@ class Directory extends FsNode_1.default {
         this.resolve = (...segments) => path_1.resolve(this.path, ...segments);
         this.file = (name) => new File_1.default({ path: this.resolve(name) });
         this.directory = (name) => new Directory({ path: this.resolve(name) });
-        this.create = (onComplete) => Operation_1.create(this.path, this.predecessors, onComplete);
+        this.create = (onComplete) => Operation_1.create(this.path, onComplete);
         this.remove = (onComplete) => Operation_1.remove(this.path, onComplete);
         this.copy = (target, onComplete) => Operation_1.copy(this.path, target, onComplete);
         this.on = (event, handle) => this.watcher.on(event, handle);

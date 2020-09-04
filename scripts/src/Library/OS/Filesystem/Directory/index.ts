@@ -75,7 +75,6 @@ class Directory extends FsNode {
 
   create = (onComplete: () => void) => create(
     this.path,
-    this.predecessors,
     onComplete
   );
 

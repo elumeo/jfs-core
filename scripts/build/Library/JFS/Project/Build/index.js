@@ -86,7 +86,7 @@ Build.watch = (project) => __awaiter(void 0, void 0, void 0, function* () {
     Event_1.default.names.forEach(event => src.on(event, (fsNode) => __awaiter(void 0, void 0, void 0, function* () {
         if (fsNode instanceof File_1.default) {
             const file = fsNode;
-            if (path_1.extname(file.path) === '.ts') {
+            if (['.ts', '.tsx'].includes(path_1.extname(file.path))) {
                 console.clear();
                 console.log('Recompiling ...');
                 yield Build.compile(project);

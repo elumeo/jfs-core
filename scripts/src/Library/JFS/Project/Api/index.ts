@@ -39,7 +39,7 @@ class JSC {
         onComplete: result => {
           if (result) {
             console.log([
-              `Jsc/Api/description.json did change.\n`,
+              `Jsc/Api/Description.json did change.\n`,
               bgRedBright(' --> Generating new API...')
             ].join(''));
             API.generate({
@@ -55,7 +55,7 @@ class JSC {
             })
           } else {
             console.log([
-              `Jsc/Api/description.json did not change.\n`,
+              `Jsc/Api/Description.json did not change.\n`,
               bgGreenBright(' --> Nothing to be done here.')
             ].join(''));
           }
@@ -93,7 +93,7 @@ class JSC {
 
   public saveDescription = (description: Generator.API.Description) => {
     writeFile(
-      resolve(this.path, 'Api', 'description.json'),
+      resolve(this.path, 'Api', 'Description.json'),
       JSON.stringify(description, null, 2),
       () => {
 
@@ -105,11 +105,11 @@ class JSC {
     description: Generator.API.Description,
     onComplete: (diffSequence: string) => void
   }) => {
-    if (!existsSync(resolve(this.path, 'Api', 'description.json'))) {
+    if (!existsSync(resolve(this.path, 'Api', 'Description.json'))) {
       onComplete('No description found.');
     } else {
       readFile(
-        resolve(this.path, 'Api', 'description.json'),
+        resolve(this.path, 'Api', 'Description.json'),
         'utf8',
         (error, data) => {
           if (error) {
