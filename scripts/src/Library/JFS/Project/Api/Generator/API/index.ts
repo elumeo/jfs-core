@@ -100,7 +100,6 @@ class API {
               }
             },
             parameters: method.parameters.map(parameter => {
-              console.log(parameter.type);
               if (Text.beginsWith(parameter.type, 'DTO')) {
                 return {
                   ...parameter,

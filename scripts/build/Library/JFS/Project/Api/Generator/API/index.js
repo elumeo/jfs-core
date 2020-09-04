@@ -83,7 +83,6 @@ API.preprocess = (api, description) => (Object.assign(Object.assign({}, descript
                                         : sequence), '')
                                     : generic
                             ].join('.')) }) }), parameters: method.parameters.map(parameter => {
-                        console.log(parameter.type);
                         if (Text_1.default.beginsWith(parameter.type, 'DTO')) {
                             return Object.assign(Object.assign({}, parameter), { type: parameter.type.substring(0, 3) === 'DTO'
                                     ? `${api.namespace}.${parameter.type.split('.').reduce((typeName, sequence, index, array) => (typeName.length

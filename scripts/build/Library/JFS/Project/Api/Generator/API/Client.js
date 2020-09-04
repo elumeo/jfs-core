@@ -70,10 +70,7 @@ Client.request = ({ parameters, protocol, resource }) => {
             shortSyntax: true
         },
         parameters: [
-            ...parameters.map(parameter => {
-                const { name, annotation } = parameter;
-                return (Object.assign({ name }, annotation));
-            }),
+            ...parameters.map(({ name, annotation }) => (Object.assign({ name }, annotation))),
             {
                 name: 'config',
                 type: 'IJscClientConfig',

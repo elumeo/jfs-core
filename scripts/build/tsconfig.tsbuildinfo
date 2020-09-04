@@ -452,7 +452,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/api/generator/api/client.ts": {
-        "version": "4edcfd3042627b550fc8149dfc730ce0f6f4e527c15f48b5d442c91c7e958e42",
+        "version": "3bc73782995b2b1b1f37e689a22cb86d35657709148eeaf4a352741d0e04c017",
         "signature": "722b79a606520ed7866253a3f95c783ba48203eb9411dc8e1312c8e11a0819b4",
         "affectsGlobalScope": false
       },
@@ -482,7 +482,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/api/generator/api/index.ts": {
-        "version": "14bbf88ed081d4cea9beb86efc7e801a93fb0b130ee23f158e604cd1cfe44b83",
+        "version": "fbd694dec08cc5c164b33d03285c8ca8508978c32968c4e24943ccdb631789f5",
         "signature": "51d7caf32cf50763d25bc825319cf2caa3c1c719a74b7b872c855eab9c15dacb",
         "affectsGlobalScope": false
       },

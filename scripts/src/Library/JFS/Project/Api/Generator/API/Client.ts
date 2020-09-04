@@ -188,13 +188,10 @@ class Client {
           shortSyntax: true
         },
         parameters: [
-          ...parameters.map(parameter => {
-            const { name, annotation } = parameter;
-            return ({
-              name,
-              ...annotation
-            })
-          }),
+          ...parameters.map(({ name, annotation }) => ({
+            name,
+            ...annotation
+          })),
           {
             name: 'config',
             type: 'IJscClientConfig',
