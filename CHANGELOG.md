@@ -1,4 +1,4 @@
-## [9.5.15] - 2020-09-03
+## [9.5.15] - 2020-09-04
 ## Fixed
 - Fixed an issue Juwelo icon font
 
