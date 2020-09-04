@@ -1,3 +1,7 @@
+## [9.5.16] - 2020-09-04
+### Fixed
+- Fixed problems with sync-development, jsc-generate
+
 ## [9.5.15] - 2020-09-04
 ### Fixed
 - Fixed an issue Juwelo icon font
