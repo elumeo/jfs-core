@@ -13,7 +13,7 @@
     "check-translations": "node ./scripts/build/Setup/check-translations.js",
     "prepublish": "cd scripts && npm run build",
     "release": "npm publish --access public",
-    "postinstall": "subpkg install",
+    "postinstall": "subpkg install && node ./build/Setup/deploy-config-files.js && node ./build/Setup/set-peer-dependencies.js",
     "clean-install": "rm -rf ./node_modules ./package-lock.json ./scripts/node_modules ./scripts/package-lock.json && npm i",
     "clean-install-and-rebuild": "rm -rf ./build ./node_modules ./package-lock.json ./scripts/node_modules ./scripts/package-lock.json ./scripts/build && npm i && npm run build"
   },
