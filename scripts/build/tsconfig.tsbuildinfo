@@ -482,7 +482,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/api/generator/api/index.ts": {
-        "version": "5a5ff90aa657a9f598e0c205bd22d7775d08a4d32dcd4fc4b08881648a9e5cea",
+        "version": "14bbf88ed081d4cea9beb86efc7e801a93fb0b130ee23f158e604cd1cfe44b83",
         "signature": "51d7caf32cf50763d25bc825319cf2caa3c1c719a74b7b872c855eab9c15dacb",
         "affectsGlobalScope": false
       },

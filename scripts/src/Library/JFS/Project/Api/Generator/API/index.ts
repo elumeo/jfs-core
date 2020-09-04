@@ -101,7 +101,31 @@ class API {
             },
             parameters: method.parameters.map(parameter => {
               console.log(parameter.type);
-              return parameter;
+              if (Text.beginsWith(parameter.type, 'DTO')) {
+                return {
+                  ...parameter,
+                  type: parameter.type.substring(0, 3) === 'DTO'
+                    ? `${api.namespace}.${parameter.type.split('.').reduce(
+                      (typeName, sequence, index, array) => (
+                        typeName.length
+                          ? (
+                            [
+                              typeName,
+                              index === array.length -1
+                                ? 'I' + sequence
+                                : sequence
+                            ].join('.')
+                          )
+                          : sequence
+                      ),
+                      ''
+                    )}`
+                    : parameter.type
+                }
+              }
+              else {
+                return parameter;
+              }
             })
           })
         ),
