@@ -42,6 +42,11 @@ class Currency {
       {style: 'currency', currency, minimumFractionDigits: 0}
     ).format(value);
   }
+  
+  public static intlThousandsSeperator = new Intl.NumberFormat().format(1111).replace(/1/g, '')
+  public static intlDecSeparator =  new Intl.NumberFormat().format(1.1).replace(/1/g, '');
+  public static replaceAllNonNumericOrSeperatorRegex = /[^0-9.,-]/
+ 
 }
 
 export default Currency;

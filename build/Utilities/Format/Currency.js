@@ -25,5 +25,8 @@ class Currency {
         return new Intl.NumberFormat(Format.Locale.selectedLanguage, { style: 'currency', currency, minimumFractionDigits: 0 }).format(value);
     }
 }
+Currency.intlThousandsSeperator = new Intl.NumberFormat().format(1111).replace(/1/g, '');
+Currency.intlDecSeparator = new Intl.NumberFormat().format(1.1).replace(/1/g, '');
+Currency.replaceAllNonNumericOrSeperatorRegex = /[^0-9.,-]/;
 export default Currency;
 //# sourceMappingURL=Currency.js.map

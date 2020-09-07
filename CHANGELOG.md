@@ -1,3 +1,7 @@
+## [9.5.17] - 2020-09-07
+### Added
+- Added PriceInput Component.
+
 ## [9.5.16] - 2020-09-04
 ### Fixed
 - Fixed problems with sync-development, jsc-generate
