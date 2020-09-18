@@ -1,3 +1,17 @@
+## [9.5.19] - 2020-09-17
+### Changed
+- ModalDialog 
+    * confirmButtonText and closeButtonText may contain an ReactElement
+    * closeButton is now optional (for those who need to arrange the footer actions individually)
+- Notifications
+    * The Notifications count Badge is more visible now.
+    * The Notification duplication count Badge has been removed.
+### Fixed
+- Added missing json-diff node module
+    
+## [9.5.18] - 2020-09-???
+### ???
+
 ## [9.5.17] - 2020-09-07
 ### Added
 - Added PriceInput Component.

@@ -9,7 +9,7 @@ import {
   pinNotificationDrawerAction,
   showNotificationDrawerAction,
   unpinNotificationDrawerAction
-} from '../../Action/NotificationAction';
+} from 'Action/NotificationAction';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import { getPlainText } from 'Component/Notification/NotificationCard';
 import { INotification } from 'Types/Notification';

@@ -3,14 +3,14 @@ import './_styles.scss';
 interface IModalDialog {
     visible: boolean;
     children?: any;
-    closeDialog: (close: boolean) => void;
     title?: string;
     titleIcon?: JSX.Element;
-    closeButtonText?: string;
+    closeDialog?: (close: boolean) => void;
+    closeButtonText?: string | React.ReactElement;
     description?: string;
     className?: string;
-    confirmButtonText?: any;
     onConfirm?: any;
+    confirmButtonText?: string | React.ReactElement;
     closeOnEsc?: boolean;
     actions?: {}[];
     focusOnMount?: boolean;
