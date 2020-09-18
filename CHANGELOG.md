@@ -1,3 +1,7 @@
+## [9.5.21] - 2020-09-18
+## Fixed
+- Fixed JFS.discover() to point JFS.Head to process.cwd()
+
 ## [9.5.20] - 2020-09-18
 ## Fixed
 - Fixed console.log in set-peer-dependencies
