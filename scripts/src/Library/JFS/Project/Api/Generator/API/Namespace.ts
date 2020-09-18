@@ -21,7 +21,8 @@ class Namespace {
           name: 'IUrlParams',
           lines: [
             'filter?: string;',
-            'options?: string;'
+            'options?: string;',
+            'searchString?: string;'
           ]
         })
       ),

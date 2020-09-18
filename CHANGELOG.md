@@ -1,3 +1,7 @@
+## [9.5.21] - 2020-09-18
+## Added
+- Added new searchString param again (core-9)
+
 ## [9.5.20] - 2020-09-18
 ## Fixed
 - Fixed console.log in set-peer-dependencies
