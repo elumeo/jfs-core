@@ -35,32 +35,37 @@ class JFS {
 
   public static discover = (
     onComplete: () => void
-  ) => JFS.project(
-    new NodePackage(NodePackage.location(process.cwd())),
-    project => {
-      JFS.Head = project;
-      if (project instanceof Core) {
-        JFS.Core = project;
-      }
-      else {
-        JFS.project(
-          new NodePackage(
-            NodePackage.location(
-              JFS.Head.directory.resolve(
-                'node_modules',
-                '@elumeo',
-                'jfs-core'
-              )
-            )
-          ),
-          project => {
-            JFS.Core = project as Core;
-            onComplete();
-          }
+  ) => {
+    const directory = new Directory({ path: __dirname });
+
+    const projects = directory
+      .trace()
+      .filter(
+        path => (
+          !Text.endsWith(path, 'scripts') &&
+          new File({ path: resolve(path, 'package.json') }).exists()
         )
-      }
-    }
-  )
+      );
+
+    const nodePackages = projects.map(
+      path => new NodePackage(NodePackage.location(path))
+    );
+
+    nodePackages.forEach(
+      nodePackage => JFS.project(nodePackage, project => {
+        if (project instanceof Core) {
+          JFS.Core = project;
+        }
+        if (!JFS.projects.length) {
+          JFS.Head = project;
+        }
+        JFS.projects.push(project);
+        if (JFS.projects.length === projects.length) {
+          onComplete();
+        }
+      })
+    );
+  }
 }
 
 export default JFS;

@@ -552,7 +552,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/index.ts": {
-        "version": "2349b29eed1e1926f4497a7b02b614b882fc72b5d97c9a03d210c2c774f7dbab",
+        "version": "99b848d07be4bf38bc04393684216f4a4803f8eb644ff5e62bc44b260e534b51",
         "signature": "41d3e1e6319c1630a0299e5ec5f3510b2b35c193e0bdce5237a1e01932354ed4",
         "affectsGlobalScope": false
       },
@@ -642,7 +642,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/set-peer-dependencies.ts": {
-        "version": "9516cabaac381b04eef87f3fc38f7f8b8e58455bc52e38bf42a6eacd6b6105fe",
+        "version": "6e9c7ee98e696907cd49d53d69fd4b69612ed39967b0cfa287c26d7abbc12899",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
