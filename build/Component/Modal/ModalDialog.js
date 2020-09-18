@@ -1,31 +1,51 @@
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 import React from 'react';
 import DialogContainer from 'react-md/lib/Dialogs';
 import International from '../International';
 import { IconSeparator } from 'react-md';
 import './_styles.scss';
-const ModalDialog = ({ title, titleIcon, description, closeDialog, visible, closeButtonText, children, className, confirmButtonText, onConfirm, closeOnEsc, actions, focusOnMount, initialFocus }) => (React.createElement(International, null, ({ formatMessage }) => (React.createElement(DialogContainer, { id: `modal-dialog-${Math.round(Math.random() * 1000)}`, visible: visible, focusOnMount: focusOnMount, initialFocus: initialFocus, title: titleIcon
-        ? React.createElement(IconSeparator, { label: title, iconBefore: true }, titleIcon)
-        : title, "aria-describedby": description, modal: true, onHide: closeDialog, closeOnEsc: closeOnEsc, className: className, actions: [
-        {
-            onClick: () => {
-                closeDialog(false);
-            },
-            primary: true,
-            label: formatMessage({ id: closeButtonText }),
-            className: 'jfs-close-btn'
-        },
-        ...((confirmButtonText && onConfirm) && [
-            {
-                onClick: () => {
-                    onConfirm();
-                },
-                primary: true,
-                label: formatMessage({ id: confirmButtonText }),
-                className: 'jfs-confirm-btn'
-            }
-        ] || []),
-        ...(actions || [])
-    ] }, children))));
+const ModalDialog = (_a) => {
+    var { title, titleIcon, description, closeDialog, visible, closeButtonText, children, confirmButtonText, onConfirm, actions } = _a, rest = __rest(_a, ["title", "titleIcon", "description", "closeDialog", "visible", "closeButtonText", "children", "confirmButtonText", "onConfirm", "actions"]);
+    return (React.createElement(International, null, ({ formatMessage }) => (React.createElement(DialogContainer, Object.assign({ id: `modal-dialog-${Math.round(Math.random() * 1000)}`, visible: visible, title: titleIcon
+            ? React.createElement(IconSeparator, { label: title, iconBefore: true }, titleIcon)
+            : title, "aria-describedby": description, modal: true, onHide: closeDialog, actions: [
+            ...((closeButtonText && closeDialog) && [
+                {
+                    onClick: () => {
+                        closeDialog(false);
+                    },
+                    primary: true,
+                    label: typeof closeButtonText == 'string'
+                        ? formatMessage({ id: closeButtonText })
+                        : closeButtonText,
+                    className: 'jfs-close-btn'
+                }
+            ] || []),
+            ...((confirmButtonText && onConfirm) && [
+                {
+                    onClick: () => {
+                        onConfirm();
+                    },
+                    primary: true,
+                    label: typeof confirmButtonText == 'string'
+                        ? formatMessage({ id: confirmButtonText })
+                        : confirmButtonText,
+                    className: 'jfs-confirm-btn'
+                }
+            ] || []),
+            ...(actions || [])
+        ] }, rest), children))));
+};
 ModalDialog.defaultProps = {
     title: 'Modal Dialog',
     description: '',

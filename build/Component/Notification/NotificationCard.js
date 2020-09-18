@@ -4,10 +4,10 @@ import Card from 'react-md/lib/Cards/Card';
 import FontIcon from 'react-md/lib/FontIcons/FontIcon';
 import './NotificationCard.scss';
 import ErrorContent, { errorText } from '../Snackbar/ErrorContent';
+// noinspection TypeScriptPreferShortImport,ES6PreferShortImport
 import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../../Store/Action/NotificationAction';
-import { Badge, Button, CardText } from 'react-md';
+import { Button, CardText } from 'react-md';
 import Format from '../../Utilities/Format';
-import { timeToRead as _timeToRead } from '../Snackbar/TimeToRead';
 export const timeToRead = (notification) => getContent(notification).timeToRead;
 export const getPlainText = (notification) => getContent(notification).words;
 export const getContent = (notification) => {
@@ -38,19 +38,12 @@ export const getContent = (notification) => {
     return {
         words,
         content: React.createElement(CardText, { className: 'md-text--inherit' }, content),
-        timeToRead: _timeToRead(words)
+        timeToRead: timeToRead(notification)
     };
 };
 class NotificationCard extends React.Component {
     constructor() {
         super(...arguments);
-        this.getBadge = () => {
-            const { config: { count, id } } = this.props;
-            return count <= 1
-                ? null
-                : React.createElement(Badge, { primary: true, circular: true, className: 'badge', badgeId: `count_of_${id}`, badgeContent: `${count}x` },
-                    React.createElement(FontIcon, null, " "));
-        };
         this.getHeader = () => {
             return React.createElement("header", { className: 'header' },
                 this.getIcon(),
@@ -129,7 +122,6 @@ class NotificationCard extends React.Component {
                 `badges__notifications__notification`,
                 successClass, errorClass, clickClass
             ].join(' ') },
-            this.getBadge(),
             React.createElement("div", { className: 'notification-grid' },
                 React.createElement("div", { className: 'notification-grid-content' },
                     this.getHeader(),
@@ -137,7 +129,7 @@ class NotificationCard extends React.Component {
                 actions.length ? React.createElement("div", { className: 'notification-grid-actions' }, actions) : null)));
     }
 }
-export default connect((store, ownProps) => (Object.assign(Object.assign({}, ownProps), { language: store.Core.Language.language })), {
+export default connect((state, ownProps) => (Object.assign(Object.assign({}, ownProps), { language: state.Core.Language.language })), {
     dismissNotificationAction,
     fadeNotificationOffScreenAction,
 })(NotificationCard);

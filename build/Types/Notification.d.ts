@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { AxiosError } from 'axios';
 import { INotificationCardProps } from '../Component/Notification/NotificationCard';
 import { PrimitiveType } from 'intl-messageformat';

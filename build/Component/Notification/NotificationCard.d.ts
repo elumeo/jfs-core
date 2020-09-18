@@ -16,7 +16,6 @@ export interface INotificationCardProps {
     language?: string;
 }
 declare class NotificationCard extends React.Component<INotificationCardProps> {
-    getBadge: () => React.ReactNode;
     getHeader: () => React.ReactNode;
     getContent: () => JSX.Element;
     getIcon: () => JSX.Element;

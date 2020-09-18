@@ -7,14 +7,14 @@ import './_styles.scss';
 interface IModalDialog {
   visible: boolean;
   children?: any;
-  closeDialog: (close: boolean) => void;
   title?: string;
   titleIcon?: JSX.Element;
-  closeButtonText?: string;
+  closeDialog?: (close: boolean) => void;
+  closeButtonText?: string | React.ReactElement;
   description?: string;
   className?: string;
-  confirmButtonText?: any;
   onConfirm?: any;
+  confirmButtonText?: string | React.ReactElement;
   closeOnEsc?: boolean;
   actions?: {}[];
   focusOnMount?: boolean;
@@ -30,13 +30,10 @@ const ModalDialog: React.FC<IModalDialog> = (
     visible,
     closeButtonText,
     children,
-    className,
     confirmButtonText,
     onConfirm,
-    closeOnEsc,
     actions,
-    focusOnMount,
-    initialFocus
+    ...rest
   }
 ) => (
   <International>
@@ -44,8 +41,6 @@ const ModalDialog: React.FC<IModalDialog> = (
       <DialogContainer
         id={`modal-dialog-${Math.round(Math.random() * 1000)}`}
         visible={visible}
-        focusOnMount={focusOnMount}
-        initialFocus={initialFocus}
         title={
           titleIcon
             ? <IconSeparator label={title} iconBefore>{titleIcon}</IconSeparator>
@@ -54,17 +49,19 @@ const ModalDialog: React.FC<IModalDialog> = (
         aria-describedby={description}
         modal
         onHide={closeDialog}
-        closeOnEsc={closeOnEsc}
-        className={className}
         actions={[
-          {
-            onClick: () => {
-              closeDialog(false);
-            },
-            primary: true,
-            label: formatMessage({id: closeButtonText}),
-            className: 'jfs-close-btn'
-          },
+          ...(
+            (closeButtonText && closeDialog) && [
+              {
+                onClick: () => {
+                  closeDialog(false);
+                },
+                primary: true,
+                label: typeof closeButtonText == 'string'
+                  ? formatMessage({ id: closeButtonText })
+                  : closeButtonText,
+                className: 'jfs-close-btn'
+              }] || []),
           ...(
             (confirmButtonText && onConfirm) && [
               {
@@ -72,13 +69,16 @@ const ModalDialog: React.FC<IModalDialog> = (
                   onConfirm();
                 },
                 primary: true,
-                label: formatMessage({id: confirmButtonText}),
+                label: typeof confirmButtonText == 'string'
+                  ? formatMessage({ id: confirmButtonText })
+                  : confirmButtonText,
                 className: 'jfs-confirm-btn'
               }
             ] || []
           ),
           ...(actions || [])
         ]}
+        {...rest}
       >
         {children}
       </DialogContainer>

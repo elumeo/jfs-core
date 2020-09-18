@@ -5,12 +5,14 @@ import FontIcon from 'react-md/lib/FontIcons/FontIcon';
 
 import './NotificationCard.scss'
 import ErrorContent, { errorText } from '../Snackbar/ErrorContent';
-import Global from '../../Store/Reducer/Global';
+
+// noinspection TypeScriptPreferShortImport,ES6PreferShortImport
 import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../../Store/Action/NotificationAction';
-import { INotification, INotificationContent } from '../../Types/Notification';
-import { Badge, Button, CardText } from 'react-md';
+import { INotification, INotificationContent } from 'Types/Notification';
+import { Button, CardText } from 'react-md';
 import Format from '../../Utilities/Format';
-import { timeToRead as _timeToRead } from 'Component/Snackbar/TimeToRead';
+// import { timeToRead as _timeToRead } from '';
+import Global from 'Store/Reducer/Global';
 
 export const timeToRead = (notification: INotificationContent): number => getContent(notification).timeToRead;
 
@@ -46,7 +48,7 @@ export const getContent = (notification: INotificationContent) => {
   return {
     words,
     content: <CardText className='md-text--inherit'>{content}</CardText>,
-    timeToRead: _timeToRead(words)
+    timeToRead: timeToRead(notification)
   };
 };
 
@@ -58,15 +60,6 @@ export interface INotificationCardProps {
 }
 
 class NotificationCard extends React.Component<INotificationCardProps> {
-
-  getBadge = (): React.ReactNode => {
-    const { config: { count, id } } = this.props;
-    return count <= 1
-      ? null
-      : <Badge primary circular className='badge' badgeId={`count_of_${id}`} badgeContent={`${count}x`}>
-        <FontIcon> </FontIcon>
-      </Badge>;
-  };
 
   getHeader = (): React.ReactNode => {
     return <header className='header'>
@@ -186,7 +179,6 @@ class NotificationCard extends React.Component<INotificationCardProps> {
           `badges__notifications__notification`,
           successClass, errorClass, clickClass
         ].join(' ')}>
-        {this.getBadge()}
         <div className='notification-grid'>
           <div className='notification-grid-content'>
             {this.getHeader()}
@@ -200,9 +192,9 @@ class NotificationCard extends React.Component<INotificationCardProps> {
 }
 
 export default connect(
-  (store: Global.State, ownProps: INotificationCardProps): INotificationCardProps => ({
+  (state: Global.State, ownProps: INotificationCardProps): INotificationCardProps => ({
     ...ownProps,
-    language: store.Core.Language.language,
+    language: state.Core.Language.language,
   }), {
     dismissNotificationAction,
     fadeNotificationOffScreenAction,
