@@ -1,6 +1,10 @@
-## [9.5.21] - 2020-09-18
+## [9.5.22] - 2020-09-18
 ## Added
 - Added new searchString param again (core-9)
+
+## [9.5.21] - 2020-09-18
+## Fixed
+- Fixed JFS.discover() to point JFS.Head to process.cwd()
 
 ## [9.5.20] - 2020-09-18
 ## Fixed
