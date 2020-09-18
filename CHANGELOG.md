@@ -1,3 +1,7 @@
+## [9.5.19] - 2020-09-11
+### Fixed
+- Fixed console.log in set-peer-dependencies
+
 ## [9.5.18] - 2020-09-11
 ### Fixed
 - Fix (attempt) for console.log in set-peer-dependencies
