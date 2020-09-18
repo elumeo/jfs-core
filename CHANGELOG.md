@@ -1,3 +1,7 @@
+## [9.5.18] - 2020-09-11
+### Fixed
+- Fix (attempt) for console.log in set-peer-dependencies
+
 ## [9.5.17] - 2020-09-07
 ### Added
 - Added PriceInput Component.
