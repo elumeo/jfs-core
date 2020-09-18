@@ -1,3 +1,7 @@
+## [9.5.23] - 2020-09-18
+## Fixed
+- Fixed missing compiled version of Namespace.ts
+
 ## [9.5.22] - 2020-09-18
 ## Added
 - Added new searchString param again (core-9)

@@ -16,7 +16,8 @@ Namespace.generate = ({ name, remote }) => Render_1.default.TypeScript.namespace
         name: 'IUrlParams',
         lines: [
             'filter?: string;',
-            'options?: string;'
+            'options?: string;',
+            'searchString?: string;'
         ]
     })), Render_1.default.EcmaScript.export(Render_1.default.TypeScript.interface({
         name: 'IJscClientConfig',
