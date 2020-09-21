@@ -8,6 +8,7 @@ import ErrorContent, { errorText } from '../Snackbar/ErrorContent';
 import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../../Store/Action/NotificationAction';
 import { Button, CardText } from 'react-md';
 import Format from '../../Utilities/Format';
+import { timeToRead as _timeToRead } from '../Snackbar/TimeToRead';
 export const timeToRead = (notification) => getContent(notification).timeToRead;
 export const getPlainText = (notification) => getContent(notification).words;
 export const getContent = (notification) => {
@@ -38,7 +39,7 @@ export const getContent = (notification) => {
     return {
         words,
         content: React.createElement(CardText, { className: 'md-text--inherit' }, content),
-        timeToRead: timeToRead(notification)
+        timeToRead: _timeToRead(words)
     };
 };
 class NotificationCard extends React.Component {

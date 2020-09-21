@@ -1,3 +1,7 @@
+## [9.5.24] - 2020-09-21
+## Fixed
+- NotificationCard timeToRead infinite recursion  
+
 ## [9.5.23] - 2020-09-18
 ## Fixed
 - Fixed missing compiled version of Namespace.ts

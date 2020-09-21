@@ -1506,8 +1506,18 @@
         "signature": "0d9b782a794faf431765d1028f6cfdf7be03cc49acd13353f54bfdde3d5cb0d3",
         "affectsGlobalScope": false
       },
+      "../src/constant/toast.ts": {
+        "version": "f851037efaea4d65870d40f33a3f0a78811ea81ef9e778b2cc3a315a562bafa8",
+        "signature": "c85679763951854fce49f4f7e8d73500dc1534f2b27ae0c6308eac4b680d7f93",
+        "affectsGlobalScope": false
+      },
+      "../src/component/snackbar/timetoread.ts": {
+        "version": "ca6701c8897168afd65b15d3b6bb852ca74e64c4b29c29f9634b97d96eca2a12",
+        "signature": "c6ae587d16c6cac750fb10d87b6ee6d50ed5d2422632352f07c95669fe88c544",
+        "affectsGlobalScope": false
+      },
       "../src/component/notification/notificationcard.tsx": {
-        "version": "0687e80497b3243c21a71ab752ebe7888c08c4a9812dafc714a4209460eb0d10",
+        "version": "6dc745884db368733eb77cc658dc0b65bcf31045f95527a8eaa235bf1eaf3d09",
         "signature": "6eed22a78f30f0af1c4de743e4312fb91bc2a1ffb40114ae3d5c523585b24eaf",
         "affectsGlobalScope": false
       },
@@ -1979,16 +1989,6 @@
       "../src/component/settings/settingsnavigationitem.tsx": {
         "version": "32988b22cc8ca7735848dd0a5b429fc26b159ec80e56e625a8c66b43657245df",
         "signature": "428f6d519bc369868a2b4e879e087af92b770f4280b705002909a71265792c1b",
-        "affectsGlobalScope": false
-      },
-      "../src/constant/toast.ts": {
-        "version": "f851037efaea4d65870d40f33a3f0a78811ea81ef9e778b2cc3a315a562bafa8",
-        "signature": "c85679763951854fce49f4f7e8d73500dc1534f2b27ae0c6308eac4b680d7f93",
-        "affectsGlobalScope": false
-      },
-      "../src/component/snackbar/timetoread.ts": {
-        "version": "ca6701c8897168afd65b15d3b6bb852ca74e64c4b29c29f9634b97d96eca2a12",
-        "signature": "c6ae587d16c6cac750fb10d87b6ee6d50ed5d2422632352f07c95669fe88c544",
         "affectsGlobalScope": false
       },
       "../src/component/snackbar/snackbarcontent.tsx": {
@@ -6524,6 +6524,7 @@
         "../node_modules/react-md/lib/cards/card.d.ts",
         "../node_modules/react-md/lib/fonticons/fonticon.d.ts",
         "../src/component/snackbar/errorcontent.tsx",
+        "../src/component/snackbar/timetoread.ts",
         "../src/store/action/notificationaction.ts",
         "../src/store/reducer/global.ts",
         "../src/types/notification.ts",

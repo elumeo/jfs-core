@@ -11,7 +11,7 @@ import { dismissNotificationAction, fadeNotificationOffScreenAction } from '../.
 import { INotification, INotificationContent } from 'Types/Notification';
 import { Button, CardText } from 'react-md';
 import Format from '../../Utilities/Format';
-// import { timeToRead as _timeToRead } from '';
+import { timeToRead as _timeToRead } from 'Component/Snackbar/TimeToRead';
 import Global from 'Store/Reducer/Global';
 
 export const timeToRead = (notification: INotificationContent): number => getContent(notification).timeToRead;
@@ -48,7 +48,7 @@ export const getContent = (notification: INotificationContent) => {
   return {
     words,
     content: <CardText className='md-text--inherit'>{content}</CardText>,
-    timeToRead: timeToRead(notification)
+    timeToRead: _timeToRead(words)
   };
 };
 
