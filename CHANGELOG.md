@@ -1,3 +1,7 @@
+## [9.5.25] - 2020-09-22
+## Fixed
+- Incorrect `.woff` files
+
 ## [9.5.24] - 2020-09-21
 ## Fixed
 - NotificationCard timeToRead infinite recursion  
