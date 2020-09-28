@@ -2,7 +2,7 @@ import { readFile } from 'fs';
 
 type OnComplete = (data: string | Buffer) => void;
 type Settings = {
-  encoding?: string;
+  encoding?: 'utf8' | null;
   onComplete: OnComplete;
 };
 

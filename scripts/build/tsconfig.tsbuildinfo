@@ -262,8 +262,8 @@
         "affectsGlobalScope": false
       },
       "../src/library/os/filesystem/file/operation/read.ts": {
-        "version": "4155b5078c0ce4f2a6d0d2598860ae13efb73b8c1f8793241bb3bc49bd5fb330",
-        "signature": "e230ad3d763143205ccbe172a372a2a57ef5c0f0b65f1cbd203ea55d030d7fe6",
+        "version": "d9eb41f5920b4bb78e4149e04ac2bba72954bd2ae0c5b7aa83848a8229d9873a",
+        "signature": "d09289519014065670d6a2f342c79277475c231c8a1f41e98c47f6e124900c64",
         "affectsGlobalScope": false
       },
       "../src/library/os/filesystem/file/operation/open.ts": {
@@ -282,7 +282,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/os/filesystem/file/operation/copy.ts": {
-        "version": "4353cf08934c01a55f515acb74ba10417c564962bf5b7085cbd778a1bcc66de0",
+        "version": "133863a9205fbcec3feb14b285789f79d931fa524041d2760e7790a550754a5d",
         "signature": "b9773c4cbdb4d692d107a510bdf8225d38955e25a8443d7282df1fa2b5ac57c2",
         "affectsGlobalScope": false
       },
@@ -602,8 +602,8 @@
         "affectsGlobalScope": false
       },
       "../src/library/os/filesystem/synchronization.ts": {
-        "version": "e2b224896a28bcdc91a4cdb4627e576cc5c15b61eb2ccc7a9d362da319ab57e5",
-        "signature": "0139c196c0844e862030c09432fe5e4c489d97f2773f491b2c7a240814faa69c",
+        "version": "bb40eac0421a3f53f575e92f2f19f7d6161c8912dc96fc45e58c4f8880fcefb1",
+        "signature": "51c52563c40028de71de3731eb481489642cbd90bcb184847e2ca9b8b6d51b43",
         "affectsGlobalScope": false
       },
       "../src/setup/check-translations.ts": {
@@ -737,8 +737,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/history/index.d.ts": {
-        "version": "cc53cba64efb30576f2a36f1d7107e4453e84cbd0f371d49cd1dfd208e11233b",
-        "signature": "cc53cba64efb30576f2a36f1d7107e4453e84cbd0f371d49cd1dfd208e11233b",
+        "version": "80a54fa1520c12a4e57f0c2d33c5a5aefce76d6e53d7ada334881b161180f02e",
+        "signature": "80a54fa1520c12a4e57f0c2d33c5a5aefce76d6e53d7ada334881b161180f02e",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react/global.d.ts": {
@@ -1051,7 +1051,7 @@
         "signature": "d558a0fe921ebcc88d3212c2c42108abf9f0d694d67ebdeba37d7728c044f579",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@types/uglify-js/node_modules/source-map/source-map.d.ts": {
+      "../../node_modules/source-map/source-map.d.ts": {
         "version": "2887592574fcdfd087647c539dcb0fbe5af2521270dad4a37f9d17c16190d579",
         "signature": "2887592574fcdfd087647c539dcb0fbe5af2521270dad4a37f9d17c16190d579",
         "affectsGlobalScope": false
@@ -1066,11 +1066,6 @@
         "signature": "4fb0b7d532aa6fb850b6cd2f1ee4f00802d877b5c66a51903bc1fb0624126349",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@types/webpack/node_modules/source-map/source-map.d.ts": {
-        "version": "2887592574fcdfd087647c539dcb0fbe5af2521270dad4a37f9d17c16190d579",
-        "signature": "2887592574fcdfd087647c539dcb0fbe5af2521270dad4a37f9d17c16190d579",
-        "affectsGlobalScope": false
-      },
       "../../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts": {
         "version": "b90c59ac4682368a01c83881b814738eb151de8a58f52eb7edadea2bcffb11b9",
         "signature": "b90c59ac4682368a01c83881b814738eb151de8a58f52eb7edadea2bcffb11b9",
@@ -1082,8 +1077,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/webpack/index.d.ts": {
-        "version": "89909d846a878c41b9b3b3e43278ccc3206fd47591d90ef1a3ba65ab264ee163",
-        "signature": "89909d846a878c41b9b3b3e43278ccc3206fd47591d90ef1a3ba65ab264ee163",
+        "version": "3f1bfa5b1d3e8d4ea1f64c13e0060453a52282f7fce02a536856de40dab3f7e1",
+        "signature": "3f1bfa5b1d3e8d4ea1f64c13e0060453a52282f7fce02a536856de40dab3f7e1",
         "affectsGlobalScope": false
       }
     },
@@ -1111,6 +1106,7 @@
           "./Library/*"
         ]
       },
+      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
@@ -1722,13 +1718,8 @@
         "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/uglify-js/index.d.ts": [
-        "../../node_modules/@types/uglify-js/node_modules/source-map/source-map.d.ts",
         "../../node_modules/date-fns/typings.d.ts",
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts"
-      ],
-      "../../node_modules/@types/uglify-js/node_modules/source-map/source-map.d.ts": [
-        "../../node_modules/date-fns/typings.d.ts",
+        "../../node_modules/source-map/source-map.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -1747,15 +1738,10 @@
       "../../node_modules/@types/webpack/index.d.ts": [
         "../../node_modules/@types/tapable/index.d.ts",
         "../../node_modules/@types/uglify-js/index.d.ts",
-        "../../node_modules/@types/uglify-js/node_modules/source-map/source-map.d.ts",
         "../../node_modules/@types/webpack-sources/index.d.ts",
         "../../node_modules/anymatch/index.d.ts",
         "../../node_modules/date-fns/typings.d.ts",
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts"
-      ],
-      "../../node_modules/@types/webpack/node_modules/source-map/source-map.d.ts": [
-        "../../node_modules/date-fns/typings.d.ts",
+        "../../node_modules/source-map/source-map.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -1782,6 +1768,11 @@
       "../../node_modules/redux/index.d.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../../node_modules/symbol-observable/index.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/source-map/source-map.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -2456,9 +2447,7 @@
       "../src/library/os/filesystem/file/operation/copy.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../src/library/os/filesystem/file/operation/read.ts",
-        "../src/library/os/filesystem/file/operation/write.ts"
+        "../node_modules/@types/node/index.d.ts"
       ],
       "../src/library/os/filesystem/file/operation/create.ts": [
         "../../node_modules/date-fns/typings.d.ts",
@@ -3278,11 +3267,6 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts"
       ],
-      "../../node_modules/@types/uglify-js/node_modules/source-map/source-map.d.ts": [
-        "../../node_modules/date-fns/typings.d.ts",
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts"
-      ],
       "../../node_modules/@types/webpack-sources/index.d.ts": [
         "../../node_modules/@types/source-list-map/index.d.ts",
         "../../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
@@ -3298,15 +3282,10 @@
       "../../node_modules/@types/webpack/index.d.ts": [
         "../../node_modules/@types/tapable/index.d.ts",
         "../../node_modules/@types/uglify-js/index.d.ts",
-        "../../node_modules/@types/uglify-js/node_modules/source-map/source-map.d.ts",
         "../../node_modules/@types/webpack-sources/index.d.ts",
         "../../node_modules/anymatch/index.d.ts",
         "../../node_modules/date-fns/typings.d.ts",
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts"
-      ],
-      "../../node_modules/@types/webpack/node_modules/source-map/source-map.d.ts": [
-        "../../node_modules/date-fns/typings.d.ts",
+        "../../node_modules/source-map/source-map.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -3335,6 +3314,11 @@
         "../../node_modules/symbol-observable/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts"
+      ],
+      "../../node_modules/source-map/source-map.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/symbol-observable/index.d.ts": [
         "../../node_modules/date-fns/typings.d.ts",
@@ -3865,16 +3849,15 @@
       "../../node_modules/@types/source-list-map/index.d.ts",
       "../../node_modules/@types/tapable/index.d.ts",
       "../../node_modules/@types/uglify-js/index.d.ts",
-      "../../node_modules/@types/uglify-js/node_modules/source-map/source-map.d.ts",
       "../../node_modules/@types/webpack-sources/index.d.ts",
       "../../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
       "../../node_modules/@types/webpack/index.d.ts",
-      "../../node_modules/@types/webpack/node_modules/source-map/source-map.d.ts",
       "../../node_modules/anymatch/index.d.ts",
       "../../node_modules/csstype/index.d.ts",
       "../../node_modules/date-fns/typings.d.ts",
       "../../node_modules/popper.js/index.d.ts",
       "../../node_modules/redux/index.d.ts",
+      "../../node_modules/source-map/source-map.d.ts",
       "../../node_modules/symbol-observable/index.d.ts",
       "../node_modules/@types/color-name/index.d.ts",
       "../node_modules/@types/glob/index.d.ts",

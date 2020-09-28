@@ -1,3 +1,7 @@
+## [9.5.26] - 2020-09-28
+## Fixed
+- Fixed corruption of binary files when building or synchronizing the core (e. g. woff files)
+
 ## [9.5.25] - 2020-09-22
 ## Fixed
 - Incorrect `.woff` files
