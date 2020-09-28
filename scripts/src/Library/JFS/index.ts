@@ -33,38 +33,58 @@ class JFS {
     );
   }
 
+  private static head = async () => new Promise<Project>((resolve, reject) => {
+    const path = process.cwd();
+    const nodePackage = new NodePackage(
+      NodePackage.location(process.cwd())
+    );
+    
+    nodePackage.json(({ name }) => {
+      if (name === '@elumeo/jfs-core') {
+        resolve(new Core({ path }));
+      }
+      else if (Text.beginsWith(name, 'jfc')) {
+        resolve(new Component({ path }));
+      }
+      else if (Text.beginsWith(name, 'jfs')) {
+        resolve(new App({ path }));
+      }
+      else {
+        reject('No valid head found for jfs.');
+      }
+    });
+  });
+
   public static discover = (
     onComplete: () => void
   ) => {
-    const directory = new Directory({ path: __dirname });
+    JFS.head().then(head => {
+      JFS.Head = head;
+      if (head instanceof Component || head instanceof App) {
+        JFS.Core = new Core({
+          path: resolve(head.path, 'node_modules', '@elumeo', 'jfs-core')
+        });
 
-    const projects = directory
-      .trace()
-      .filter(
-        path => (
-          !Text.endsWith(path, 'scripts') &&
-          new File({ path: resolve(path, 'package.json') }).exists()
-        )
-      );
-
-    const nodePackages = projects.map(
-      path => new NodePackage(NodePackage.location(path))
-    );
-
-    nodePackages.forEach(
-      nodePackage => JFS.project(nodePackage, project => {
-        if (project instanceof Core) {
-          JFS.Core = project;
-        }
-        if (!JFS.projects.length) {
-          JFS.Head = project;
-        }
-        JFS.projects.push(project);
-        if (JFS.projects.length === projects.length) {
+        head.nodePackage.json(({ dependencies }) => {
+          JFS.projects = [
+            JFS.Head,
+            JFS.Core,
+            ...(
+              Object.keys(dependencies)
+                .filter(key => Text.beginsWith(key, 'jfc'))
+                .map(key => new Component({
+                  path: resolve(head.path, 'node_modules', key)
+                }))
+            )
+          ];
           onComplete();
-        }
-      })
-    );
+        });
+      }
+      else if (head instanceof Core) {
+        JFS.Core = head;
+        onComplete();
+      }
+    });
   }
 }
 

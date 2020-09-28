@@ -1,3 +1,7 @@
+## [9.5.28] - 2020-09-28
+## Fixed
+- Restored JFS.discover() fix
+
 ## [9.5.27] - 2020-09-28
 ## Fixed
 - Fixed missing devtool

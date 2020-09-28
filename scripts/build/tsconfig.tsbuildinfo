@@ -552,8 +552,8 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/index.ts": {
-        "version": "99b848d07be4bf38bc04393684216f4a4803f8eb644ff5e62bc44b260e534b51",
-        "signature": "41d3e1e6319c1630a0299e5ec5f3510b2b35c193e0bdce5237a1e01932354ed4",
+        "version": "29fa4a1e207a0b725bef97d160bdfc6c9bc99f1a96522fc6ede1ad5480bc45e7",
+        "signature": "d58daa97dbced613668b0451dfbf15731636acca2129059fff77ea921c7ef853",
         "affectsGlobalScope": false
       },
       "../src/library/jfs/core/settings/deployment/index.ts": {
