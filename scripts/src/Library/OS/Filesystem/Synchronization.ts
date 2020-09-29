@@ -4,20 +4,16 @@ import Event from './Event';
 import { resolve, sep } from "path";
 import Text from "Library/Text";
 
-namespace Synchronization {
-  export type Props = {
-    from: string;
-    to: string;
-    ignore?: string[];
-  }
-}
-
 class Synchronization {
   private sender: Directory;
   private recipient: Directory;
   private ignore: string[];
 
-  constructor({ from, to, ignore }: Synchronization.Props) {
+  constructor({ from, to, ignore }: {
+    from: string;
+    to: string;
+    ignore?: string[];
+  }) {
     this.sender = new Directory({ path: from });
     this.recipient = new Directory({ path: to });
     this.ignore = ignore || [];
@@ -69,12 +65,7 @@ class Synchronization {
           target.remove(onComplete);
         }
         else if (event === 'FILE_CHANGED') {
-          (source as File).read(
-            text => (target as File).write(
-              text,
-              onComplete
-            )
-          );
+          (source as File).copy(target.path, onComplete);
         }
       }
     ));

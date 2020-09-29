@@ -1,3 +1,19 @@
+## [9.5.28] - 2020-09-28
+## Fixed
+- Restored JFS.discover() fix
+
+## [9.5.27] - 2020-09-28
+## Fixed
+- Fixed missing devtool
+
+## [9.5.26] - 2020-09-28
+## Fixed
+- Fixed corruption of binary files when building or synchronizing the core (e. g. woff files)
+
+## [9.5.25] - 2020-09-22
+## Fixed
+- Incorrect `.woff` files
+
 ## [9.5.24] - 2020-09-21
 ## Fixed
 - NotificationCard timeToRead infinite recursion  

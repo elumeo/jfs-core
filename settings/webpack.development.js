@@ -9,6 +9,7 @@ const https = mode === 'devServer' && process.argv.includes('--https');
 
 module.exports = {
   ...common,
+  devtool: 'inline-source-map',
   module: {
     ...common.module,
     rules: [

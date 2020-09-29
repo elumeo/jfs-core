@@ -4,19 +4,32 @@ import { connect } from 'react-redux';
 import Global from '../../Store/Reducer/Global';
 import './_styles.scss';
 
+type Icon = (
+  'apple' |
+  'badge_percentIcon' | 'bid_block' |
+  'cash_in_advance' | 'cash_on_delivery' | 'check' |
+  'delivery_address' |
+  'ideal' |
+  'invoice_address' |
+  'multiple_sources' |
+  'paypal' |
+  'ratepay' |
+  'test' |
+  'webshop' |
+  'webshop_bidagent'
+);
+
 export interface IJuweloFontIconProps {
-  icon: string;
+  icon: Icon;
   error?: boolean;
   light?: boolean;
 }
 
-const JuweloFontIcon: React.FC<IJuweloFontIconProps> = (
-  {
-    icon,
-    error,
-    light
-  }
-) => {
+const JuweloFontIcon: React.FC<IJuweloFontIconProps> = ({
+  icon,
+  error,
+  light
+}) => {
   error = error === undefined ? false : error;
   light = light === undefined ? false : light;
 

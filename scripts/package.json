@@ -16,6 +16,7 @@
     "copyfiles": "^2.3.0",
     "dart-sass": "^1.25.0",
     "fontagon": "^1.0.10",
+    "isbinaryfile": "^4.0.6",
     "json-2-csv": "^3.5.9",
     "json-diff": "^0.5.4",
     "ncp": "^2.0.0",

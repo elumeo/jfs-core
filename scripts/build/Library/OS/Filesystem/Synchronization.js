@@ -35,7 +35,7 @@ class Synchronization {
                     target.remove(onComplete);
                 }
                 else if (event === 'FILE_CHANGED') {
-                    source.read(text => target.write(text, onComplete));
+                    source.copy(target.path, onComplete);
                 }
             }));
         };

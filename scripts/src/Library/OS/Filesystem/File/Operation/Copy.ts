@@ -1,11 +1,13 @@
-import read from './Read';
-import write from './Write';
+import { copyFile } from 'fs';
 
 export default (
   from: string,
   to: string,
   onComplete: () => void
-) => read(
-  from,
-  data => write(to, data, onComplete)
-);
+) => {
+  copyFile(
+    from,
+    to,
+    onComplete
+  )
+};
