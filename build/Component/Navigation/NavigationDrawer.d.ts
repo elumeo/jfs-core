@@ -11,5 +11,5 @@ export interface INavigationDrawerProps extends RouteComponentProps {
     navigationItems?: any;
     closeNavigation?: typeof closeNavigation;
 }
-declare const _default: React.ComponentClass<Pick<Pick<INavigationDrawerProps, never> & INavigationDrawerProps, "position" | "closeNavigation" | "navigationOpen" | "version" | "navigationItems">, any> & import("react-router").WithRouterStatics<import("react-redux").ConnectedComponent<React.FC<INavigationDrawerProps>, Pick<INavigationDrawerProps, never> & INavigationDrawerProps>>;
+declare const _default: React.ComponentClass<Pick<Pick<INavigationDrawerProps, never> & INavigationDrawerProps, "position" | "navigationOpen" | "closeNavigation" | "version" | "navigationItems">, any> & import("react-router").WithRouterStatics<import("react-redux").ConnectedComponent<React.FC<INavigationDrawerProps>, Pick<INavigationDrawerProps, never> & INavigationDrawerProps>>;
 export default _default;
