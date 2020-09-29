@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import BaseRoute, { IBaseRouteProps } from './BaseRoute';
+// noinspection ES6PreferShortImport
 import { enterAuthorizedRoute } from '../../Store/Action/RouterAction';
 import Global from '../../Store/Reducer/Global';
 
@@ -27,8 +28,8 @@ const AuthRoute: React.FC<IAuthRouteProps> = ({
     isAuthorized
       ? <BaseRoute {...rest}/>
       : isCheckingSession
-        ? <CircularProgress id='check-session-progress'/>
-        : <></>
+      ? <CircularProgress id='check-session-progress'/>
+      : <></>
   );
 };
 

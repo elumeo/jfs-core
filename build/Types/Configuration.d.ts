@@ -1,10 +1,10 @@
-interface IWebSockClient {
+declare type IWebSockClient = {
     Host: string;
     Path: string;
     PrivateNamespace: string;
     AutoRoomSubscriptions: string[];
-}
-interface IConfig {
+};
+declare type IConfig = {
     RobotUsername: string;
     RobotPassword: string;
     Language: string;
@@ -21,5 +21,5 @@ interface IConfig {
     };
     JscWebSocketClient: IWebSockClient;
     JfsWebSocketClient: IWebSockClient;
-}
+};
 export default IConfig;

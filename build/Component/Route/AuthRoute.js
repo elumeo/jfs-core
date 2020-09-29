@@ -13,6 +13,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import BaseRoute from './BaseRoute';
+// noinspection ES6PreferShortImport
 import { enterAuthorizedRoute } from '../../Store/Action/RouterAction';
 const AuthRoute = (_a) => {
     var { isAuthorized, isCheckingSession, enterAuthorizedRoute } = _a, rest = __rest(_a, ["isAuthorized", "isCheckingSession", "enterAuthorizedRoute"]);

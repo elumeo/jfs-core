@@ -1,11 +1,11 @@
-interface IWebSockClient {
+type IWebSockClient = {
   Host: string;
   Path: string;
   PrivateNamespace: string;
   AutoRoomSubscriptions: string[];
 }
 
-interface IConfig {
+type IConfig = {
   RobotUsername: string;
   RobotPassword: string;
   Language: string;

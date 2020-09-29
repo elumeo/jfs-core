@@ -11,6 +11,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import React, { useEffect } from 'react';
 import BaseRoute from './BaseRoute';
+// noinspection ES6PreferShortImport
 import { enterUnauthorizedRoute } from '../../Store/Action/RouterAction';
 import { connect } from 'react-redux';
 import { compose } from 'redux';

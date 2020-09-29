@@ -11,12 +11,12 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import React from 'react';
 import DialogContainer from 'react-md/lib/Dialogs';
-import International from '../International';
 import { IconSeparator } from 'react-md';
 import './_styles.scss';
+import { injectIntl } from 'react-intl';
 const ModalDialog = (_a) => {
-    var { title, titleIcon, description, closeDialog, visible, closeButtonText, children, confirmButtonText, onConfirm, actions } = _a, rest = __rest(_a, ["title", "titleIcon", "description", "closeDialog", "visible", "closeButtonText", "children", "confirmButtonText", "onConfirm", "actions"]);
-    return (React.createElement(International, null, ({ formatMessage }) => (React.createElement(DialogContainer, Object.assign({ id: `modal-dialog-${Math.round(Math.random() * 1000)}`, visible: visible, title: titleIcon
+    var { title, titleIcon, description, closeDialog, visible, closeButtonText, children, confirmButtonText, onConfirm, actions, intl } = _a, rest = __rest(_a, ["title", "titleIcon", "description", "closeDialog", "visible", "closeButtonText", "children", "confirmButtonText", "onConfirm", "actions", "intl"]);
+    return (React.createElement(DialogContainer, Object.assign({ id: `modal-dialog-${Math.round(Math.random() * 1000)}`, visible: visible, title: titleIcon
             ? React.createElement(IconSeparator, { label: title, iconBefore: true }, titleIcon)
             : title, "aria-describedby": description, modal: true, onHide: closeDialog, actions: [
             ...((closeButtonText && closeDialog) && [
@@ -26,7 +26,7 @@ const ModalDialog = (_a) => {
                     },
                     primary: true,
                     label: typeof closeButtonText == 'string'
-                        ? formatMessage({ id: closeButtonText })
+                        ? intl.formatMessage({ id: closeButtonText })
                         : closeButtonText,
                     className: 'jfs-close-btn'
                 }
@@ -38,13 +38,13 @@ const ModalDialog = (_a) => {
                     },
                     primary: true,
                     label: typeof confirmButtonText == 'string'
-                        ? formatMessage({ id: confirmButtonText })
+                        ? intl.formatMessage({ id: confirmButtonText })
                         : confirmButtonText,
                     className: 'jfs-confirm-btn'
                 }
             ] || []),
             ...(actions || [])
-        ] }, rest), children))));
+        ] }, rest), children));
 };
 ModalDialog.defaultProps = {
     title: 'Modal Dialog',
@@ -52,5 +52,5 @@ ModalDialog.defaultProps = {
     closeButtonText: 'app.closeBtnLabelModalDialog',
     focusOnMount: true,
 };
-export default ModalDialog;
+export default injectIntl(ModalDialog);
 //# sourceMappingURL=ModalDialog.js.map

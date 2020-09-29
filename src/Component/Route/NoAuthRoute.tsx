@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import BaseRoute, { IBaseRouteProps } from './BaseRoute';
 
+// noinspection ES6PreferShortImport
 import { enterUnauthorizedRoute } from '../../Store/Action/RouterAction';
 
 import Global from '../../Store/Reducer/Global';

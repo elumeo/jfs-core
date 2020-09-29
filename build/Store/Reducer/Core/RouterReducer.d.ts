@@ -1,6 +1,9 @@
+import { Location } from 'history';
 declare namespace Router {
     type State = {
         routeType: 'authorized' | 'unauthorized';
+        location: Location;
+        params: any;
     };
 }
 declare const Router: import("typesafe-actions").Reducer<Router.State, any> & {
