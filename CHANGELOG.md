@@ -1,8 +1,8 @@
-## [9.5.29] - 2020-09-29
+## 2020-09-29
 ## Added
-- location and params to Router Store.
+- RouteDetails to Router State
 ## Changed
-- ModalDialog to not use compatibility intl anymore. 
+- ModalDialog to not use compatibility intl anymore.
 
 ## [9.5.28] - 2020-09-28
 ## Fixed
