@@ -1,3 +1,7 @@
+## [9.5.29] - 2020-09-29
+## Added
+- Restored JFS.discover() fix
+
 ## [9.5.28] - 2020-09-28
 ## Fixed
 - Restored JFS.discover() fix
