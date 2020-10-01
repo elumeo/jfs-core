@@ -1,10 +1,10 @@
 import React from 'react';
-import Global from '../../Store/Reducer/Global';
+import Global from 'Store/Reducer/Global';
 import { connect } from 'react-redux';
 import { IWebsocketConnectionProps, IWebsocketConnectionState } from './WebSocketConnection';
 
 import './WebSocketStatus.scss';
-import { isWebSocketNamespaceConnectedState } from '../../Store/Selectors/WebSocketSelectors';
+import { isWebSocketNamespaceConnectedState } from 'Store/Selectors/WebSocketSelectors';
 
 class WebSocketStatus extends React.Component<IWebsocketConnectionProps, IWebsocketConnectionState> {
   render() {

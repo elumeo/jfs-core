@@ -1,7 +1,6 @@
 import React from 'react';
-import Translations from '../../Utilities/Format/Translations';
-const International = ({ children }) => (React.createElement(React.Fragment, null, children({
-    formatMessage: Translations.formatMessage
-})));
-export default International;
+import { injectIntl } from 'react-intl';
+const International = ({ intl: { formatMessage }, children }) => (React.createElement(React.Fragment, null, children({ formatMessage })));
+const enhance = injectIntl;
+export default enhance(International);
 //# sourceMappingURL=index.js.map

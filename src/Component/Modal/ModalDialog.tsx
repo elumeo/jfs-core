@@ -78,8 +78,7 @@ const ModalDialog: React.FC<IModalDialog> = (
           ),
           ...(actions || [])
         ]}
-        {...rest}
-      >
+        {...rest}>
         {children}
       </DialogContainer>
     )}

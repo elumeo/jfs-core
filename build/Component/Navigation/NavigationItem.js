@@ -1,19 +1,21 @@
 import React from 'react';
-import * as _ from 'lodash';
+import { uniqueId } from 'lodash';
 import FontIcon from 'react-md/lib/FontIcons';
 import ListItem from 'react-md/lib/Lists/ListItem';
-import { withRouter } from 'react-router-dom';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { closeNavigation } from '../../Store/Action/NavigationAction';
+import { useHistory } from 'react-router-dom';
 import International from '../International';
-const NavigationItem = ({ iconName, messageId, onClick, active, messageString, authorizedOnly, unauthorizedOnly, isAuthorized, closeNavigation, onClickRoute, history }) => {
+import { useSelector } from '../../Types/Redux';
+import useActions from '../../Store/Action/useActions';
+const NavigationItem = ({ iconName, messageId, onClick, active, messageString, authorizedOnly, unauthorizedOnly, onClickRoute }) => {
+    const history = useHistory();
+    const { closeNavigation } = useActions();
+    const isAuthorized = useSelector(state => state.Core.Session.isAuthorized);
     const visible = (!authorizedOnly && !unauthorizedOnly || // always display these
         isAuthorized && authorizedOnly || // only when authorized
         !isAuthorized && unauthorizedOnly // only when unauthorized
     );
     return (visible
-        ? (React.createElement(International, null, ({ formatMessage }) => (React.createElement(ListItem, { key: _.uniqueId('navItem_'), primaryText: messageString
+        ? (React.createElement(International, null, ({ formatMessage }) => (React.createElement(ListItem, { key: uniqueId('navItem_'), primaryText: messageString
                 ? messageString
                 : formatMessage({ id: messageId }), leftIcon: React.createElement(FontIcon, null, iconName), onClick: (event) => {
                 const { location: { pathname } } = history;
@@ -27,7 +29,5 @@ const NavigationItem = ({ iconName, messageId, onClick, active, messageString, a
             }, active: active }))))
         : React.createElement(React.Fragment, null));
 };
-const mapStateToProps = (state, ownProps) => (Object.assign(Object.assign({}, ownProps), { isAuthorized: state.Core.Session.isAuthorized }));
-const enhance = compose(connect(mapStateToProps, { closeNavigation }), withRouter);
-export default enhance(NavigationItem);
+export default NavigationItem;
 //# sourceMappingURL=NavigationItem.js.map

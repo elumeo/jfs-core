@@ -1,16 +1,11 @@
 import React from 'react';
-import * as _ from 'lodash';
+import { uniqueId } from 'lodash';
 import FontIcon from 'react-md/lib/FontIcons';
 import ListItem from 'react-md/lib/Lists/ListItem';
-
-import { withRouter } from 'react-router-dom';
-import { History } from 'history';
-
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import Global from '../../Store/Reducer/Global';
-import { closeNavigation } from '../../Store/Action/NavigationAction';
-import International from '../International';
+import { useHistory } from 'react-router-dom';
+import International from 'Component/International';
+import { useSelector } from 'Types/Redux';
+import useActions from 'Action/useActions';
 
 export interface INavigationItemProps {
   iconName?: string;
@@ -20,17 +15,18 @@ export interface INavigationItemProps {
   messageString?: string;
   authorizedOnly?: boolean;
   unauthorizedOnly?: boolean;
-  isAuthorized?: boolean;
-  closeNavigation?: typeof closeNavigation;
   onClickRoute?: string;
-  history?: History;
 }
 
 const NavigationItem: React.FC<INavigationItemProps> = ({
   iconName, messageId, onClick, active, messageString,
-  authorizedOnly, unauthorizedOnly,
-  isAuthorized, closeNavigation, onClickRoute, history
+  authorizedOnly, unauthorizedOnly, onClickRoute
 }) => {
+  const history = useHistory();
+  const { closeNavigation } = useActions();
+  const isAuthorized = useSelector<boolean>(
+    state => state.Core.Session.isAuthorized
+  );
   const visible = (
     !authorizedOnly && !unauthorizedOnly || // always display these
     isAuthorized && authorizedOnly || // only when authorized
@@ -43,7 +39,7 @@ const NavigationItem: React.FC<INavigationItemProps> = ({
         <International>
           {({ formatMessage }) => (
             <ListItem
-              key={_.uniqueId('navItem_')}
+              key={uniqueId('navItem_')}
               primaryText={
                 messageString
                   ? messageString
@@ -67,17 +63,4 @@ const NavigationItem: React.FC<INavigationItemProps> = ({
   )
 };
 
-const mapStateToProps = (
-  state: Global.State,
-  ownProps: INavigationItemProps
-): INavigationItemProps => ({
-  ...ownProps,
-  isAuthorized: state.Core.Session.isAuthorized
-});
-
-const enhance = compose(
-  connect(mapStateToProps, {closeNavigation}),
-  withRouter
-);
-
-export default enhance(NavigationItem);
+export default NavigationItem;

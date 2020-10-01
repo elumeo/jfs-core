@@ -1,5 +1,6 @@
-export declare const history: import("history").History<{}>;
-declare const _default: (rootEpic: any, rootReducer: any) => import("redux").Store<any, import("redux").AnyAction> & {
+import * as Redux from 'redux';
+import { Epic } from '../Types/Redux';
+declare const createStore: <T>(root: Epic, rootReducer: Redux.Reducer<T, Redux.AnyAction>) => Redux.Store<T & {}, Redux.AnyAction> & {
     dispatch: {};
 };
-export default _default;
+export default createStore;

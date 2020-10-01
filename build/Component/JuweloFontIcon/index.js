@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import './_styles.scss';
 const JuweloFontIcon = ({ icon, error, light }) => {
     error = error === undefined ? false : error;
@@ -13,6 +12,5 @@ const JuweloFontIcon = ({ icon, error, light }) => {
     }
     return React.createElement("i", { className: className });
 };
-const mapStateToProps = (_state, props) => (Object.assign({}, props));
-export default (connect(mapStateToProps, {}, null, { forwardRef: true })(JuweloFontIcon));
+export default JuweloFontIcon;
 //# sourceMappingURL=index.js.map

@@ -1,17 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import Global from '../../Store/Reducer/Global';
 import './_styles.scss';
+import { useSelector } from 'Types/Redux';
 
-namespace Content {
-  export type Props = {
-    splitViewEnabled?: boolean;
-  }
-}
-
-const Content: React.FC<Content.Props> = ({
-  children, splitViewEnabled
-}) => {
+const Content: React.FC = ({ children }) => {
+  const splitViewEnabled = useSelector<boolean>(
+    state => state.Core.SplitView.splitViewEnabled
+  );
   const contentClassName = [
     `authorized-content`,
     splitViewEnabled ? 'split-view--active' : ''
@@ -24,14 +18,4 @@ const Content: React.FC<Content.Props> = ({
   );
 }
 
-const mapStateToProps = (
-  state: Global.State,
-  ownProps: Content.Props
-): Content.Props => ({
-  ...state.Core.SplitView,
-  ...ownProps,
-});
-
-const enhance = connect(mapStateToProps);
-
-export default enhance(Content);
+export default Content;

@@ -1,68 +1,33 @@
-import React, { useEffect } from 'react';
-import { connect, Provider } from 'react-redux';
-import { compose } from 'redux';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import WebSocketConnection from 'Component/Websocket/WebSocketConnection';
+import Loader from './Loader';
 
-import Initialized from './Initialized';
-import WebSocketConnection from '../Websocket/WebSocketConnection';
-
-import Global from '../../Store/Reducer/Global';
-import { initializeApp } from '../../Store/Action/AppAction';
-
-import { addLocaleData } from 'react-intl';
-
-namespace App {
-  export type Props = {
-    allowRobotLogin?: boolean;
-    initializeApp?: typeof initializeApp;
-    language?: string;
-    location?: Location;
-    store;
-    translations: { [language: string]: { [key: string]: string } };
-    appInitialized?: boolean;
-    packageJson: object;
-  }
+export type Props = {
+  store: Store;
+  allowRobotLogin?: boolean;
+  translations: {
+    [language: string]: {
+      [key: string]: string
+    };
+  };
+  packageJson: object;
 }
 
-const App: React.FC<App.Props> = ({
-  store,
-  translations,
-  children,
-  initializeApp, allowRobotLogin, packageJson
-}) => {
-  useEffect(
-    () => {
-      initializeApp({
-        allowRobotLogin,
-        packageJson,
-        translations
-      });
-      ['de', 'en', 'fr', 'it'].forEach(
-        (locale) => addLocaleData(
-          require(`react-intl/locale-data/${locale}`)
-        )
-      );
-    }
-  );
-  return (
-    <Provider store={store}>
-      <WebSocketConnection>
-        <Initialized>
-          {children}
-        </Initialized>
-      </WebSocketConnection>
-    </Provider>
-  )
-}
-
-const mapStateToProps = (
-  _state: Global.State,
-  ownProps: App.Props
-): App.Props => ({
-  ...ownProps
-});
-
-const enhance = compose(
-  connect(mapStateToProps, { initializeApp })
+const App: React.FC<Props> = ({
+  store, children, allowRobotLogin, translations, packageJson
+}) => (
+  <Provider store={store}>
+    <WebSocketConnection>
+      <Loader
+        allowRobotLogin={allowRobotLogin}
+        translations={translations}
+        packageJson={packageJson}>
+        {children}
+      </Loader>
+    </WebSocketConnection>
+  </Provider>
 );
 
-export default enhance(App);
+export default App;

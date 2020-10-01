@@ -1,20 +1,15 @@
 import React from 'react';
 import Toolbar from 'react-md/lib/Toolbars/Toolbar';
+import NavigationButton from 'Component/Navigation/NavigationButton'
+import International from 'Component/International';
 import './AppToolbar.scss';
-
-import NavigationButton from '../Navigation/NavigationButton';
-
-import International from '../International';
 
 export interface IAppToolbarProps {
   LeftTools: () => JSX.Element;
   RightTools: () => JSX.Element;
 }
 
-const AppToolbar: React.FC<IAppToolbarProps> = ({
-  LeftTools,
-  RightTools
-}) => (
+const AppToolbar: React.FC<IAppToolbarProps> = ({ LeftTools, RightTools }) => (
   <International>
     {({ formatMessage }) => (
       <Toolbar

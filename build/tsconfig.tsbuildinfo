@@ -312,7 +312,7 @@
         "affectsGlobalScope": true
       },
       "../src/setup.ts": {
-        "version": "98b9285a1f4a5bc0d2aedba9cb7a743b59fd74638349e4f29117d727fb78390f",
+        "version": "5b25d58fa176e13af7bff3b046feb2f0b15b2f4d855386c8e1c002cdcc7bc28c",
         "signature": "d3cb89dbc515da1700ccd75bf2da356ff2f5b80de0e9b83fd126b0793fce60c9",
         "affectsGlobalScope": false
       },
@@ -881,16 +881,6 @@
         "signature": "0290ce481d9430774f1d41e757d087e9324b497e1ee0a9e908cf57a9f8bc6e0d",
         "affectsGlobalScope": true
       },
-      "../node_modules/@types/hoist-non-react-statics/index.d.ts": {
-        "version": "bfe1b52cf71aea9bf8815810cc5d9490fa9617313e3d3c2ee3809a28b80d0bb4",
-        "signature": "bfe1b52cf71aea9bf8815810cc5d9490fa9617313e3d3c2ee3809a28b80d0bb4",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/react-redux/index.d.ts": {
-        "version": "1bda2f0ea3e43d36d496ea9a21e37961d2712726c0255ef4098ef585474777b6",
-        "signature": "1bda2f0ea3e43d36d496ea9a21e37961d2712726c0255ef4098ef585474777b6",
-        "affectsGlobalScope": false
-      },
       "../node_modules/react-md/lib/index.d.ts": {
         "version": "22bcdab3fbe263a669cab5dc687900b8f8cf66b6be1ebeba6cf79364686adeff",
         "signature": "22bcdab3fbe263a669cab5dc687900b8f8cf66b6be1ebeba6cf79364686adeff",
@@ -921,14 +911,579 @@
         "signature": "ff7bc42b448a7563b3ff5e8f292648de2ecc345d8ba75bcaa2271380cd7edea1",
         "affectsGlobalScope": false
       },
+      "../src/constant/toast.ts": {
+        "version": "f851037efaea4d65870d40f33a3f0a78811ea81ef9e778b2cc3a315a562bafa8",
+        "signature": "c85679763951854fce49f4f7e8d73500dc1534f2b27ae0c6308eac4b680d7f93",
+        "affectsGlobalScope": false
+      },
+      "../src/component/snackbar/timetoread.ts": {
+        "version": "ca6701c8897168afd65b15d3b6bb852ca74e64c4b29c29f9634b97d96eca2a12",
+        "signature": "c6ae587d16c6cac750fb10d87b6ee6d50ed5d2422632352f07c95669fe88c544",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationcard/icon.tsx": {
+        "version": "b9f8a214bd77d0dbbe173706c79ad7a7642bc90a04b687c8295967ae282265aa",
+        "signature": "699e34d3e9b0b291d8dbab4f0993eb234ab94b2c0c639a1a49f82d8d826f4046",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/diacritics/index.d.ts": {
+        "version": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
+        "signature": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
+        "affectsGlobalScope": false
+      },
+      "../src/utilities/format/text.ts": {
+        "version": "69d815f55f7f9ace585d1b445efac4d4e9b822568d60822f0c321810c545783e",
+        "signature": "8f56b7bb0f236e115306242a510e837d651379bd3495d0d5d4f31d6e132d2ba9",
+        "affectsGlobalScope": false
+      },
+      "../src/utilities/format/currency.ts": {
+        "version": "07e5daa3911df8917c205a0987d7ebe64d2a42d297bb098127015d7b7e7a78f2",
+        "signature": "a080458d13829dff695de618414698447431608a0b5a61a424656917d1413652",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/google-libphonenumber/index.d.ts": {
+        "version": "aff95fbc2cb1aa0468e2f5b5b4b427ca9caf971a5c727dd66bd0183e43b62110",
+        "signature": "aff95fbc2cb1aa0468e2f5b5b4b427ca9caf971a5c727dd66bd0183e43b62110",
+        "affectsGlobalScope": true
+      },
+      "../src/utilities/format/phonenumber.ts": {
+        "version": "7c26b01627be0147791bf1f84a69913abc4626a021f2daa6c4d36167ffcb6f8d",
+        "signature": "c7d54db1b10a222b6c926fb8e87473a874d6ca6946b0d9b089f0e565c3db96c4",
+        "affectsGlobalScope": false
+      },
+      "../src/utilities/format/index.ts": {
+        "version": "57a07da768306d34131937cab1f42c80c5ec2657c52b0ed90f062e4c402ca3c1",
+        "signature": "0d9b782a794faf431765d1028f6cfdf7be03cc49acd13353f54bfdde3d5cb0d3",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationcard/timestamp.tsx": {
+        "version": "6b2d092f4d18fb673f713269c65fa519163ce8eb33c572e19ba28e9ca460b4fe",
+        "signature": "6a3566c1acc2b432187e25c93a4881803e53f3b57508bcce3e3fcbf45ac25f83",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/react-intl/index.d.ts": {
+        "version": "ab08aa4d1579ea43e48f22627292f708c9f826c281981497186d3b8fb6358034",
+        "signature": "ab08aa4d1579ea43e48f22627292f708c9f826c281981497186d3b8fb6358034",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/react-md/lib/inks/injectink.d.ts": {
+        "version": "3cc4f3550cd5527f45ab75e638d99264e2de88c918604d9cfb20eb18787cadb6",
+        "signature": "3cc4f3550cd5527f45ab75e638d99264e2de88c918604d9cfb20eb18787cadb6",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/inks/index.d.ts": {
+        "version": "8820c935a2bec705fefab11ee12c32c3a97e9198dfa463845bf6eb89abcb9c4e",
+        "signature": "8820c935a2bec705fefab11ee12c32c3a97e9198dfa463845bf6eb89abcb9c4e",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/buttons/button.d.ts": {
+        "version": "26fde5c9a15900e1306de287d2b78fea84bdf675a5aedfd264831c2bc39a8cf2",
+        "signature": "26fde5c9a15900e1306de287d2b78fea84bdf675a5aedfd264831c2bc39a8cf2",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/hoist-non-react-statics/index.d.ts": {
+        "version": "bfe1b52cf71aea9bf8815810cc5d9490fa9617313e3d3c2ee3809a28b80d0bb4",
+        "signature": "bfe1b52cf71aea9bf8815810cc5d9490fa9617313e3d3c2ee3809a28b80d0bb4",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/react-redux/index.d.ts": {
+        "version": "1bda2f0ea3e43d36d496ea9a21e37961d2712726c0255ef4098ef585474777b6",
+        "signature": "1bda2f0ea3e43d36d496ea9a21e37961d2712726c0255ef4098ef585474777b6",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/loginaction.ts": {
+        "version": "424d3e1fd938039471ca427ca26eefd2bd50844209976f30d8294d282302f353",
+        "signature": "e3cc7bb12991c8c7188d998a1a4e8d174ecf352a76a688904364f1c3502313d5",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/routeraction.ts": {
+        "version": "c4fb1a693dbc088ca0c855e1658bf3221c5b6c552be7a11a3bc4e3623df290e0",
+        "signature": "d28756096afd7409edda9ab116d95c51fbc9929bb44b542969204c946099354d",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/settingsaction.ts": {
+        "version": "1b5df445e37f79cb60d6cc7f70d020872497ddbe83695e1b4ab7152bb51d1bc7",
+        "signature": "93e39ed452d8ab5a520bea43bf0520dff7858482f22b78d869ded1d7a3fa8886",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/splitviewaction.ts": {
+        "version": "641936589f47654323f728b844191301b8de4e51dff1970c954743a4f40a6176",
+        "signature": "6c70a3bda1db2b8177a0c471c89dc0f86052a00b641605652fe3f2c81b2bccdf",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/systemaction.ts": {
+        "version": "d74d50363210e96149420041a19b265a625cf272a92da59c624fe419721eeab4",
+        "signature": "4164d8ca0809c0998e764ea79ba002082e411a8c86b5b921a49033542378bc4c",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/immutable/dist/immutable-nonambient.d.ts": {
+        "version": "407b11f5c8edb4fdb4871a666f15d2ea4a8ca30153f0f74ceee6c247dcc2cceb",
+        "signature": "407b11f5c8edb4fdb4871a666f15d2ea4a8ca30153f0f74ceee6c247dcc2cceb",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/toastreducer.ts": {
+        "version": "5676f306cc1b77bfab3befb5714d00711083f7e92889d845dc75f3736f382691",
+        "signature": "3b9aeecae4e75d8cf5b1cfeec8a8e1a1f1e46ed213bd2df821e99de0b3fec254",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/toastaction.ts": {
+        "version": "2282c4ced592fa7811ab74c9048d0f3cde7c6bfef968818b4cfa03c1b54cbeea",
+        "signature": "8650e4b85167085c116e31608036fdd19180ed7a2103335eca42b290e5b8232a",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/index.ts": {
+        "version": "53752eed1d16a858fbce7c3ecdffc410b122cb1782344b6a22185f040b4f88dc",
+        "signature": "53752eed1d16a858fbce7c3ecdffc410b122cb1782344b6a22185f040b4f88dc",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/useactions.ts": {
+        "version": "43354885db0ade11e9f32bab64f0d17bd50b9167c77c515d9f07eb8da6cd534f",
+        "signature": "d67e7c399448143bf13f55da29bde46ac8827d9cf8e08c195035d39fe2e91db3",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationcard/dismissbutton.tsx": {
+        "version": "3a6ff6d4a04feda736e737b95aef58ac5f933d0233f71843336670ced99c3b42",
+        "signature": "043e3b2d0c0abe80eb34df018ee8edddd6514ff732c736c557cc824aa8afa295",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationcard/hidebutton.tsx": {
+        "version": "614d819cf106d3fc8d76fa31c9711ae8e496a32b1768ac02ee771f60d33a03ce",
+        "signature": "abea9e849dbf40e2dbff0fbf3d25c174e6343c4e033bf37e7da97170bcb45ae4",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationcard/customactionbutton.tsx": {
+        "version": "a7193e690b30d81901bb040f3e7f4b67b714ea856207412d8c0ddc1e4f5a59e3",
+        "signature": "20a6a9b06f071f3073f6648e31168f1585260b1e0f499098f1ce25f5f354880b",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationcard/actions.tsx": {
+        "version": "3c966215cba56307885c952926e62ad501567f3059cf8f89a0e20fbe970977db",
+        "signature": "0a7bff0c1f77df7e090cbf18f551912197519d00484ccf3b2684f359f1a0a5f4",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationcard/useclassname.ts": {
+        "version": "165992774ca0c2b84a77240cbaebe7de7ae3d383ce13f04b90a4138930a26afa",
+        "signature": "415de45c010fffa492549ebff45947d4f1d10f6f77e79c37317b55fbc9d37a08",
+        "affectsGlobalScope": false
+      },
       "../src/component/international/index.tsx": {
-        "version": "9585ce22478d6417b4e3e4e85379f456047e00041e964fa83a8b6c052379a0a2",
-        "signature": "a99c0e7a72928f8d1d675fdb5d95230400e0e08dc059a4a15000ff9a0284a4a9",
+        "version": "291d7f9b2a021e616e03198bbed76818105738324bff9928345eb19049e0cff5",
+        "signature": "771091048d9cdbd617163f1d9469ea181564f4377abda03323f2e66a0837421a",
         "affectsGlobalScope": false
       },
       "../src/component/snackbar/errorcontent.tsx": {
         "version": "a128c407553bb3b404826d86a771a381d241ff596bd6e72feba9913c9d60db07",
         "signature": "58babe85d0ef8981c08a8dbc6433f9db954e26de8802672691fedd698a0100ef",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/cards/cardtext.d.ts": {
+        "version": "9fe4b84fc9e96af73f8fb239b3e6ae6d3dc49738b99ecf08976fee58bb884a8a",
+        "signature": "9fe4b84fc9e96af73f8fb239b3e6ae6d3dc49738b99ecf08976fee58bb884a8a",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationcard/getcontent.tsx": {
+        "version": "bd7604b0e85bd540b9c65bd68209495c23716f2f1f00e92bef8f780f2a58668a",
+        "signature": "3e641c48d2292d1cb225c03a5d48856ab25cfd366dae775a30b3529c035e97f0",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationcard/_notificationcard.tsx": {
+        "version": "cc7cb7a5f61cb4ca348ab357f7c09d084740c2b66b9e233d128dd849521924be",
+        "signature": "9b1427b01b26973170f3c3a402ddf9843d9e540542350f4f7aa8b09e064cb74a",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationcard/getplaintext.ts": {
+        "version": "1c4456eb429ea8b14b45d176a647117edaab83a42594f26f04e17c9a87e15937",
+        "signature": "239e1feec6496fa1a3c9648687a7d4402ff3427fdce4ef4aa90239ab52b1867a",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationcard/timetoread.ts": {
+        "version": "a83675f36db11ffa167a0b1eb3172ea71eac3abd1fd3d350106398b513dbddcc",
+        "signature": "83ec7b4acc58d6a70118a4e8e4bd53fce7616ad02877bc7557889149d91d0a70",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationcard/index.tsx": {
+        "version": "001ab8df9d43ffeb53c1382dccd0927282e00c898775eb3cd7e6102bf58c6412",
+        "signature": "ce88ef52a50d56cfc2acc8daac53d97e835bdaa9394cdc8a0783e44a3849cca5",
+        "affectsGlobalScope": false
+      },
+      "../src/types/notification.ts": {
+        "version": "0fd64831235ea083becaf21c8d16df2f4604bd30227aa2d301ece943b58b0f49",
+        "signature": "c3f516d7fce40a7ddc0caa50c3d7550a09a184a90c0ea8333c6ff30795941a38",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/notificationaction.ts": {
+        "version": "17119ef3c304e170e1b357771489919dcfc35c009d5004ee634c1b84eb2605e4",
+        "signature": "c65f333f27543c9ba0d7f08dceb567a35baa7cce4c08a1475b8717aa78ad10f4",
+        "affectsGlobalScope": false
+      },
+      "../src/constant/notification.ts": {
+        "version": "8e6020aac106098a90958f06b3a63b5f0ede51eefc811badde7fd951d8398d58",
+        "signature": "20e1adfe22a5bd7f86c64d30b61c06360d07ef06f13d4bd761215506de40c3aa",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/notificationreducer.ts": {
+        "version": "66cf4480c2b911c93aa56a0ea7e0631d3cd57a84c811cc9bee271fc9a277d72e",
+        "signature": "5f23d9474f4a5c40e93aef4132d8990d58c19235fe410f687591121038e8dc44",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/routerreducer.ts": {
+        "version": "c69b633b4a8613bfbfe22d873690b520c6731a3d4339bc85ee2d4d8859c20df3",
+        "signature": "b606c5b5564c326605268bca7f85a8e95e7fb26aeba9b10aa90d10bd7da74adc",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/sessionreducer.ts": {
+        "version": "40f295575ec849a426403e76831402df1f0fd548713f28f977641b385cbdf2b0",
+        "signature": "85085333916720717cc86c02fd18dc5733f345f885d8048c0cebf1f5196143d6",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/settingsreducer.ts": {
+        "version": "fecf26dc00dd6be15a40b3b4d22b0999fb4830aed483a364f577b22a67443178",
+        "signature": "373d882b70002eee36591d7730a3c6f5472bfaf9c09f4dcacda50b9f2e1d35ba",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/splitviewreducer.ts": {
+        "version": "b07dd20274f2baf972dc6fd2c1dd2f515de6c2be07bf166ac6f9024c4754416e",
+        "signature": "6fea8a2dada5539fa4ae0280b0b4debc92486382d948e222fd9456656515cae9",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/systemreducer.ts": {
+        "version": "01779ad142ba079989d2112f42ef4885568472d8b5aee6f64888f768be4cb811",
+        "signature": "376d3ff2f8564c3c0d9c31b3d3024b2bb3c854a6229646425aadc38f25f9353f",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/appreducer.ts": {
+        "version": "b4aa1aa5117c8b8ff6492d921ea624ed29a33de5b6129627f0c0dec9cec31449",
+        "signature": "fcda666d0915bc31d50107f73117beeee50d4cf8f2c8f803a4b9887e3d386513",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/loginreducer.ts": {
+        "version": "8771300555a355a4d764f66cb2de38b1d414e91180f8344e11bb65d72fb6c23c",
+        "signature": "ab6f1ab78763db197473359cf0519b976414e6925139db0eb0d9031f69b24b34",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/index.ts": {
+        "version": "44d960d5f543b31e11c9c8ef4eb4249e8e83389b394875b6ffc19e0e17473ddb",
+        "signature": "9ec2b39336cc3086d886a993071d2fe546686a35354333139fc68238977a84f2",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/global.ts": {
+        "version": "c1c5d41d8a837394cac5c4bf94c87bd237da162986096abb90258b3bdb3510d9",
+        "signature": "dfd7b3365b3f512670cbeaba7cbc2867ad9fb6d3ecc40891b0937ad3769816aa",
+        "affectsGlobalScope": false
+      },
+      "../src/base/wsclient.ts": {
+        "version": "df6a2f0cf7fb5f6d2b83e8bd1ec092007e58ab082800736eb4d7731dbb424e4c",
+        "signature": "ff5d37efbb6595103d993380e7193cfc7bd38c5c9cf7079e3a1dae1a322fa32a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/react-dom/server/index.d.ts": {
+        "version": "53cea979e3bea1c13b6c88496a6dcfd130f5cbcd36c697dabfc71d5033508164",
+        "signature": "53cea979e3bea1c13b6c88496a6dcfd130f5cbcd36c697dabfc71d5033508164",
+        "affectsGlobalScope": true
+      },
+      "../src/component/formattedmessage.tsx": {
+        "version": "e982ee1ea63ff02cf08086f1dd1caf2eae8cf470e6a51d37fbae96a356824223",
+        "signature": "01351037742ba215d31d25339e1e1631a705719fdb37477a2536476dd41c50b1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/redux-observable/index.d.ts": {
+        "version": "4e1a1b7d18b7c336c547f38d959323bbc804bae85f0c357879f2264005f2af15",
+        "signature": "4e1a1b7d18b7c336c547f38d959323bbc804bae85f0c357879f2264005f2af15",
+        "affectsGlobalScope": false
+      },
+      "../src/types/redux.ts": {
+        "version": "39b84d8b617321eefd7e84e76eec3408d40bace15ca39608f078c6336b3dc72f",
+        "signature": "18ff4c563f2ae11febae4198a20f3a5607710dbd9daf15aceff76314b7d12087",
+        "affectsGlobalScope": false
+      },
+      "../src/component/websocket/websocketconnection.tsx": {
+        "version": "19c572560b0a394661031a64a93b020200f4eafdad40a2c4ac08e00d55270d53",
+        "signature": "4bf0ed86769a4347d98294dfb120894fa6a4fe5d4445c2aef02961893f2942d7",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/progress/linearprogress.d.ts": {
+        "version": "25abd88bffbfc4ccbb18c6701808827d3474dfdd6fb347c4a50080351a0ee80a",
+        "signature": "25abd88bffbfc4ccbb18c6701808827d3474dfdd6fb347c4a50080351a0ee80a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/progress/index.d.ts": {
+        "version": "c2fac46d3ccd70378f8d7af8797597063d278c47180b0f66e0e34dff4b5499d2",
+        "signature": "c2fac46d3ccd70378f8d7af8797597063d278c47180b0f66e0e34dff4b5499d2",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/progress/circularprogress.d.ts": {
+        "version": "e72b5660376b5affdb0350658f06757dba8ab8af256f24fdfe88407ea82a709a",
+        "signature": "e72b5660376b5affdb0350658f06757dba8ab8af256f24fdfe88407ea82a709a",
+        "affectsGlobalScope": false
+      },
+      "../src/component/app/useloader.tsx": {
+        "version": "9da9ea3b2c7932bcca64583cc3512e0802b09402e437a9c7b33ef34224f90744",
+        "signature": "9b267dd0173026c2aaa8677c07cd1feecf2d99fadfa909d7a97d6ca5322350c9",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/domutils.d.ts": {
+        "version": "271cde49dfd9b398ccc91bb3aaa43854cf76f4d14e10fed91cbac649aa6cbc63",
+        "signature": "271cde49dfd9b398ccc91bb3aaa43854cf76f4d14e10fed91cbac649aa6cbc63",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/history/createbrowserhistory.d.ts": {
+        "version": "c6f2572e21f626260d2e4a65e4e1e42b9b273b6f43b5c3bc115c2926417d3eca",
+        "signature": "c6f2572e21f626260d2e4a65e4e1e42b9b273b6f43b5c3bc115c2926417d3eca",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/createhashhistory.d.ts": {
+        "version": "374ab77e05e0bf5a52acad6d65121d4bd31068108f23d70186dba5fcd7d6a1a3",
+        "signature": "374ab77e05e0bf5a52acad6d65121d4bd31068108f23d70186dba5fcd7d6a1a3",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/creatememoryhistory.d.ts": {
+        "version": "a4ecd4bb653aa71093375845fba6250ca0f3c633d0e933fc9bf4b301834eab27",
+        "signature": "a4ecd4bb653aa71093375845fba6250ca0f3c633d0e933fc9bf4b301834eab27",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/locationutils.d.ts": {
+        "version": "25d91fb9ed77a828cc6c7a863236fb712dafcd52f816eec481bd0c1f589f4404",
+        "signature": "25d91fb9ed77a828cc6c7a863236fb712dafcd52f816eec481bd0c1f589f4404",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/pathutils.d.ts": {
+        "version": "4cd14cea22eed1bfb0dc76183e56989f897ac5b14c0e2a819e5162eafdcfe243",
+        "signature": "4cd14cea22eed1bfb0dc76183e56989f897ac5b14c0e2a819e5162eafdcfe243",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/index.d.ts": {
+        "version": "80a54fa1520c12a4e57f0c2d33c5a5aefce76d6e53d7ada334881b161180f02e",
+        "signature": "80a54fa1520c12a4e57f0c2d33c5a5aefce76d6e53d7ada334881b161180f02e",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/react-router/index.d.ts": {
+        "version": "0caf70f74777ccb2fff9869da0c51fb832923e9625a84249e00bf107b399bfaa",
+        "signature": "0caf70f74777ccb2fff9869da0c51fb832923e9625a84249e00bf107b399bfaa",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/react-router-dom/index.d.ts": {
+        "version": "5859c951fdc2f03f96a25661b33eec6c3747b461dc9331bb1096690a8924edc5",
+        "signature": "5859c951fdc2f03f96a25661b33eec6c3747b461dc9331bb1096690a8924edc5",
+        "affectsGlobalScope": false
+      },
+      "../src/component/app/initialized.tsx": {
+        "version": "567941f2940602405f3705d0b494db3437cd58f396a5bfe9e58ad72631bfb14a",
+        "signature": "e9660ee1f793fa77fb9d782845f0b66b94d7105d055d78bdf832fe2fa10388a1",
+        "affectsGlobalScope": false
+      },
+      "../src/component/app/loader.tsx": {
+        "version": "5ff3861169463c2d83115ca60b6bd24b66ed9a90e44e770432f53a86475165f5",
+        "signature": "57c52f96d77ac3e6b88f1f0aaffef85a47510daa36cd4052e9ffd5c2a46fc2ec",
+        "affectsGlobalScope": false
+      },
+      "../src/component/app/app.tsx": {
+        "version": "e0f43ff75115eeed7c9663c0182cabbd463a113e64c50b48d1f80e2abcb87848",
+        "signature": "79f96cf726c9421b0ba39b342f64efe16df5ea7f3b9e759ae04f73bd7c4b6870",
+        "affectsGlobalScope": false
+      },
+      "../src/component/content/content.tsx": {
+        "version": "3b90d6f1709d675de481cca2fd4ed9e75e36f114a1b45be22ba9fb229b1b3d42",
+        "signature": "23efce4cbad1a0d519f5a994ad36b296766ac9e2a254bc01fdfb3b951a7f7b83",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/popper.js/index.d.ts": {
+        "version": "1873db8f2261ba4f248bde3e5bb4c79b1fdc990315054e9604fce8f41ddd1587",
+        "signature": "1873db8f2261ba4f248bde3e5bb4c79b1fdc990315054e9604fce8f41ddd1587",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/date-fns/typings.d.ts": {
+        "version": "b44ccf907564571b6044083a8afb2c22b6f3422dc61c58ff8b75d2736e673239",
+        "signature": "b44ccf907564571b6044083a8afb2c22b6f3422dc61c58ff8b75d2736e673239",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/react-datepicker/index.d.ts": {
+        "version": "00d31f2de787ecbeb4f74341477b24e6f2a609a73d49b779ccd3c1d4c217f69e",
+        "signature": "00d31f2de787ecbeb4f74341477b24e6f2a609a73d49b779ccd3c1d4c217f69e",
+        "affectsGlobalScope": false
+      },
+      "../src/component/datepicker/setup.ts": {
+        "version": "03946e9359d2b69381ba9251e2ae6e01472615c0cd8853c6047626ad11ccb994",
+        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/react-outside-click-handler/index.d.ts": {
+        "version": "f2d11abcba45c9f1647dbb3b52e60f50718fc4dba4c549d562155aa64a0fbe42",
+        "signature": "f2d11abcba45c9f1647dbb3b52e60f50718fc4dba4c549d562155aa64a0fbe42",
+        "affectsGlobalScope": false
+      },
+      "../src/types/language.ts": {
+        "version": "35fa026ba23474be962f7f5e0c257cc8b3c6ebb24ea897492606c26647550b78",
+        "signature": "39983c90e1ec3b80bb2f66eece7d11973c9e0f21692f5731ad09e3505da0fc28",
+        "affectsGlobalScope": false
+      },
+      "../src/component/datepicker/index.tsx": {
+        "version": "1275cb7acdae6064b527283811dd49f25f6c887b7bcc6fea9ff92f2ce4d773de",
+        "signature": "78d52b142d5c63a118ecc118a63ed4daa19af8d6314c780bcb6c0bf8cf77fb2d",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/toolbars/toolbar.d.ts": {
+        "version": "e9337238d37162324a62448e27757ccb05c131c855a3045f8f1f0e16eee5e2c4",
+        "signature": "e9337238d37162324a62448e27757ccb05c131c855a3045f8f1f0e16eee5e2c4",
+        "affectsGlobalScope": false
+      },
+      "../src/component/navigation/navigationbutton.tsx": {
+        "version": "1368614dba120bf42b1ded1f4154ebfb245b1e1a2d90784d62836e567727da88",
+        "signature": "da4210be94d1a1b7ca480776993ad37b1fd4f8a9963bd41625ea63f603dce0b0",
+        "affectsGlobalScope": false
+      },
+      "../src/component/header/apptoolbar.tsx": {
+        "version": "62204669e04033967899df16650a767dfa303605ec29b4211d0fa3b8dfdd3382",
+        "signature": "875ca7c509e17149a326835978c7be9ce6c9c315f4619bf855c0a963c2c19a20",
+        "affectsGlobalScope": false
+      },
+      "../src/component/header/appheader.tsx": {
+        "version": "731154f78328ee88431d47d6d29151b19d46fa7cb3063db80d868ffbf8b9a6a2",
+        "signature": "86390a8d94bc11a75c952768aa74566a1b9ad4648886237141ebd0c30f5b2983",
+        "affectsGlobalScope": false
+      },
+      "../src/component/header/backendindicator.tsx": {
+        "version": "8ef47c4fe30a8129a42c1bd6b2db7790a5e4f73ba7fdf90008776feb2c7cfce0",
+        "signature": "a7dfe39bb147767781cb54f403699ae756891346c3e69c59554b05482e92f8ac",
+        "affectsGlobalScope": false
+      },
+      "../src/component/juwelofonticon/index.tsx": {
+        "version": "db3f19f43ff1893ad6e4e14432bc3f4efe4dcd991023bc04dd5a4c56c63a992e",
+        "signature": "3853bf6f76df589b239436fedf5842bf943ebb7765fd3266df7b061dfcf35ae8",
+        "affectsGlobalScope": false
+      },
+      "../src/component/login/loginbutton.tsx": {
+        "version": "4391fd40bd05235285733f3540be68fc1bc2ac318e7a63993bc34674e69b237b",
+        "signature": "7a333dcdee0f468e98d7582e53a7e6d59abd050790bfcf9ab2cdcb8abfa9cc63",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/textfields/textfield.d.ts": {
+        "version": "79c230514f22cc72322bb70d7735a90e67030da4b5fd00b02dcb1095630c83fb",
+        "signature": "79c230514f22cc72322bb70d7735a90e67030da4b5fd00b02dcb1095630c83fb",
+        "affectsGlobalScope": false
+      },
+      "../src/component/login/logincredentials.tsx": {
+        "version": "0b9579ac4c88594ed1670c46b96229cce9c832a5944d518d564ccef2f61f4ce6",
+        "signature": "b5c979eef6aba997c78f95bae2a251fd5d367639eca4b1f8e63ca578e4dbd6e3",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/buttons/index.d.ts": {
+        "version": "a401ac2b35793af86dc9ffad8357ac15be692188e87698718a0eaac2bf620cf0",
+        "signature": "a401ac2b35793af86dc9ffad8357ac15be692188e87698718a0eaac2bf620cf0",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/dialogs/dialog.d.ts": {
+        "version": "2118ab8be0c3259b0891f6bcfd41aa2d09738ac99563daec57951187aafd620a",
+        "signature": "2118ab8be0c3259b0891f6bcfd41aa2d09738ac99563daec57951187aafd620a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/dialogs/dialogcontainer.d.ts": {
+        "version": "0d05f34df88268223096f7ae27a8370b76ae378a2e358dbcc6a044b1f9a8d271",
+        "signature": "0d05f34df88268223096f7ae27a8370b76ae378a2e358dbcc6a044b1f9a8d271",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/dialogs/index.d.ts": {
+        "version": "65a6ffe8c3b086ff719496e253381fc7a2ef4488f4e0c45b662ecd983826671d",
+        "signature": "65a6ffe8c3b086ff719496e253381fc7a2ef4488f4e0c45b662ecd983826671d",
+        "affectsGlobalScope": false
+      },
+      "../src/component/login/logindialog.tsx": {
+        "version": "d80f75724f2839655d72abd7d82e2378c183fc4bb503cac1d0d5a990a77cb71b",
+        "signature": "c498ef9d87201d9be1518827b64192e19b8c23934abbc4ae33301e365e6e058e",
+        "affectsGlobalScope": false
+      },
+      "../src/component/logout/logoutdialog.tsx": {
+        "version": "75c388f83a14edcd41b4c8731b5a92a3dd18cff8876ecf80f54c7287ba8e6046",
+        "signature": "a5e83246de04d4309ae3abbed37e06c320d5d9e34381d77cebd3c71fc4a7bccd",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/common/common.d.ts": {
+        "version": "29304d38d619bac17128f20c21af1a03256f9edf8f0b82e6674565e09e956dff",
+        "signature": "29304d38d619bac17128f20c21af1a03256f9edf8f0b82e6674565e09e956dff",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/common/array.d.ts": {
+        "version": "d03a1ae3d39f757c9f22e4e775b940a98d86bb50ec85529b59e32a17b65c2b90",
+        "signature": "d03a1ae3d39f757c9f22e4e775b940a98d86bb50ec85529b59e32a17b65c2b90",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/common/collection.d.ts": {
+        "version": "0c75b204aed9cf6ff1c7b4bed87a3ece0d9d6fc857a6350c0c95ed0c38c814e8",
+        "signature": "0c75b204aed9cf6ff1c7b4bed87a3ece0d9d6fc857a6350c0c95ed0c38c814e8",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/common/date.d.ts": {
+        "version": "187119ff4f9553676a884e296089e131e8cc01691c546273b1d0089c3533ce42",
+        "signature": "187119ff4f9553676a884e296089e131e8cc01691c546273b1d0089c3533ce42",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/common/function.d.ts": {
+        "version": "99256c6888e554431cf3b907d6267a7a119f34c860937f422f771c1396b7e5b4",
+        "signature": "99256c6888e554431cf3b907d6267a7a119f34c860937f422f771c1396b7e5b4",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/common/lang.d.ts": {
+        "version": "d7fac90d8d76afeccb236132472c6c2c26f1783af0e46575d3b2f5a59501f4ca",
+        "signature": "d7fac90d8d76afeccb236132472c6c2c26f1783af0e46575d3b2f5a59501f4ca",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/common/math.d.ts": {
+        "version": "65648639567d214f62c1b21d200c852807e68bdb08311f95ab6f526ef5b98995",
+        "signature": "65648639567d214f62c1b21d200c852807e68bdb08311f95ab6f526ef5b98995",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/common/number.d.ts": {
+        "version": "00baffbe8a2f2e4875367479489b5d43b5fc1429ecb4a4cc98cfc3009095f52a",
+        "signature": "00baffbe8a2f2e4875367479489b5d43b5fc1429ecb4a4cc98cfc3009095f52a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/common/object.d.ts": {
+        "version": "7fc5a3d7cff296cea5c225911726a56283b663328709088fcc912d61f73682fc",
+        "signature": "7fc5a3d7cff296cea5c225911726a56283b663328709088fcc912d61f73682fc",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/common/seq.d.ts": {
+        "version": "3c92b6dfd43cc1c2485d9eba5ff0b74a19bb8725b692773ef1d66dac48cda4bd",
+        "signature": "3c92b6dfd43cc1c2485d9eba5ff0b74a19bb8725b692773ef1d66dac48cda4bd",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/common/string.d.ts": {
+        "version": "4908e4c00832b26ce77a629de8501b0e23a903c094f9e79a7fec313a15da796a",
+        "signature": "4908e4c00832b26ce77a629de8501b0e23a903c094f9e79a7fec313a15da796a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/common/util.d.ts": {
+        "version": "2630a7cbb597e85d713b7ef47f2946d4280d3d4c02733282770741d40672b1a5",
+        "signature": "2630a7cbb597e85d713b7ef47f2946d4280d3d4c02733282770741d40672b1a5",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/lodash/index.d.ts": {
+        "version": "0714e2046df66c0e93c3330d30dbc0565b3e8cd3ee302cf99e4ede6220e5fec8",
+        "signature": "0714e2046df66c0e93c3330d30dbc0565b3e8cd3ee302cf99e4ede6220e5fec8",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/react-md/lib/fonticons/index.d.ts": {
+        "version": "f5182adec3c8acd05d0a72fb879066e7112123e4279819a7382e30170d72f92d",
+        "signature": "f5182adec3c8acd05d0a72fb879066e7112123e4279819a7382e30170d72f92d",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/react-md/lib/lists/listitem.d.ts": {
+        "version": "2eb7f0ddf2a0d2504d36d114428f6a24693f76bc1e84d2ae2424fc798fdea239",
+        "signature": "2eb7f0ddf2a0d2504d36d114428f6a24693f76bc1e84d2ae2424fc798fdea239",
+        "affectsGlobalScope": false
+      },
+      "../src/component/navigation/navigationitem.tsx": {
+        "version": "60de112ba4c5c64dbfe4b19a0cbd3586b93087e33ce6260080673605f67b37bf",
+        "signature": "6715863702e62e419a7930484d9c46038232a96f080258e8b246feabe65a19a7",
+        "affectsGlobalScope": false
+      },
+      "../src/component/logout/logoutnavigationitem.tsx": {
+        "version": "e371ab4cebb97fbe7fceea36f822819df32647a3835daa067ad57f7bfa128852",
+        "signature": "ee145f0613fb339d25e1ecc81eb0316226cfd0b4943bb99fa3e14c8119474b33",
+        "affectsGlobalScope": false
+      },
+      "../src/component/misc/versionnavigationitem.tsx": {
+        "version": "98696dad54ce262012280bfb73105eec0533c334ff97af35160b01fe66564e83",
+        "signature": "b2039e7fd77b9df11914208f121ee3be3cd5200e136b6433920e22573e1b92c0",
         "affectsGlobalScope": false
       },
       "../node_modules/react-md/lib/helpers/layover.d.ts": {
@@ -944,21 +1499,6 @@
       "../node_modules/react-md/lib/menus/dropdownmenu.d.ts": {
         "version": "a68457b627d614af68957018bfe6f59fbc1a10a32d86e7797d54f819cdaa9e42",
         "signature": "a68457b627d614af68957018bfe6f59fbc1a10a32d86e7797d54f819cdaa9e42",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/react-md/lib/inks/injectink.d.ts": {
-        "version": "3cc4f3550cd5527f45ab75e638d99264e2de88c918604d9cfb20eb18787cadb6",
-        "signature": "3cc4f3550cd5527f45ab75e638d99264e2de88c918604d9cfb20eb18787cadb6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/react-md/lib/inks/index.d.ts": {
-        "version": "8820c935a2bec705fefab11ee12c32c3a97e9198dfa463845bf6eb89abcb9c4e",
-        "signature": "8820c935a2bec705fefab11ee12c32c3a97e9198dfa463845bf6eb89abcb9c4e",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/react-md/lib/buttons/button.d.ts": {
-        "version": "26fde5c9a15900e1306de287d2b78fea84bdf675a5aedfd264831c2bc39a8cf2",
-        "signature": "26fde5c9a15900e1306de287d2b78fea84bdf675a5aedfd264831c2bc39a8cf2",
         "affectsGlobalScope": false
       },
       "../node_modules/react-md/lib/menus/menubutton.d.ts": {
@@ -1011,19 +1551,9 @@
         "signature": "00650d30a289ce8cb3c39866361550ba267de270164f0755de2844e624ebc974",
         "affectsGlobalScope": false
       },
-      "../node_modules/react-md/lib/buttons/index.d.ts": {
-        "version": "a401ac2b35793af86dc9ffad8357ac15be692188e87698718a0eaac2bf620cf0",
-        "signature": "a401ac2b35793af86dc9ffad8357ac15be692188e87698718a0eaac2bf620cf0",
-        "affectsGlobalScope": false
-      },
       "../node_modules/react-md/lib/cards/cardactions.d.ts": {
         "version": "7537bc24c28b4d7f52a57b9869a30ff16ada6d6fdeacb0c9e7183c2766f1e93a",
         "signature": "7537bc24c28b4d7f52a57b9869a30ff16ada6d6fdeacb0c9e7183c2766f1e93a",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/react-md/lib/cards/cardtext.d.ts": {
-        "version": "9fe4b84fc9e96af73f8fb239b3e6ae6d3dc49738b99ecf08976fee58bb884a8a",
-        "signature": "9fe4b84fc9e96af73f8fb239b3e6ae6d3dc49738b99ecf08976fee58bb884a8a",
         "affectsGlobalScope": false
       },
       "../node_modules/react-md/lib/cards/cardtitle.d.ts": {
@@ -1076,11 +1606,6 @@
         "signature": "3fc827f83c3565199297aa7c4fcf0d01f4f32b8bbfe16143fc17c5b87942cae4",
         "affectsGlobalScope": false
       },
-      "../node_modules/react-md/lib/textfields/textfield.d.ts": {
-        "version": "79c230514f22cc72322bb70d7735a90e67030da4b5fd00b02dcb1095630c83fb",
-        "signature": "79c230514f22cc72322bb70d7735a90e67030da4b5fd00b02dcb1095630c83fb",
-        "affectsGlobalScope": false
-      },
       "../node_modules/react-md/lib/textfields/index.d.ts": {
         "version": "9e1e8161cd93eeb44de5f877ea5167e1987f2534915ff3586eb37dca127b678d",
         "signature": "9e1e8161cd93eeb44de5f877ea5167e1987f2534915ff3586eb37dca127b678d",
@@ -1094,11 +1619,6 @@
       "../node_modules/react-md/lib/lists/list.d.ts": {
         "version": "92a0d67d6befdc49c7d309e22298458bfe6dc323fef68cdd6a1bdc55009f596b",
         "signature": "92a0d67d6befdc49c7d309e22298458bfe6dc323fef68cdd6a1bdc55009f596b",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/react-md/lib/lists/listitem.d.ts": {
-        "version": "2eb7f0ddf2a0d2504d36d114428f6a24693f76bc1e84d2ae2424fc798fdea239",
-        "signature": "2eb7f0ddf2a0d2504d36d114428f6a24693f76bc1e84d2ae2424fc798fdea239",
         "affectsGlobalScope": false
       },
       "../node_modules/react-md/lib/selectfields/selectfield.d.ts": {
@@ -1139,21 +1659,6 @@
       "../node_modules/react-md/lib/datatables/index.d.ts": {
         "version": "bfb8c048907252c65bb2c57579871fd24e6abc3a4ee7ff636b4380514ee08a6a",
         "signature": "bfb8c048907252c65bb2c57579871fd24e6abc3a4ee7ff636b4380514ee08a6a",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/react-md/lib/dialogs/dialog.d.ts": {
-        "version": "2118ab8be0c3259b0891f6bcfd41aa2d09738ac99563daec57951187aafd620a",
-        "signature": "2118ab8be0c3259b0891f6bcfd41aa2d09738ac99563daec57951187aafd620a",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/react-md/lib/dialogs/dialogcontainer.d.ts": {
-        "version": "0d05f34df88268223096f7ae27a8370b76ae378a2e358dbcc6a044b1f9a8d271",
-        "signature": "0d05f34df88268223096f7ae27a8370b76ae378a2e358dbcc6a044b1f9a8d271",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/react-md/lib/dialogs/index.d.ts": {
-        "version": "65a6ffe8c3b086ff719496e253381fc7a2ef4488f4e0c45b662ecd983826671d",
-        "signature": "65a6ffe8c3b086ff719496e253381fc7a2ef4488f4e0c45b662ecd983826671d",
         "affectsGlobalScope": false
       },
       "../node_modules/react-md/lib/dividers/divider.d.ts": {
@@ -1204,11 +1709,6 @@
       "../node_modules/react-md/lib/fileinputs/index.d.ts": {
         "version": "60dfd95eb0debaa3d64989547e4a2eda9af37170b6d6c2b051c002fa534e5a5c",
         "signature": "60dfd95eb0debaa3d64989547e4a2eda9af37170b6d6c2b051c002fa534e5a5c",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/react-md/lib/fonticons/index.d.ts": {
-        "version": "f5182adec3c8acd05d0a72fb879066e7112123e4279819a7382e30170d72f92d",
-        "signature": "f5182adec3c8acd05d0a72fb879066e7112123e4279819a7382e30170d72f92d",
         "affectsGlobalScope": false
       },
       "../node_modules/react-md/lib/grids/grid.d.ts": {
@@ -1341,21 +1841,6 @@
         "signature": "b84647282e40ae9909972655efe4683c0c2e13317615c7e02e604eec3ae42f0f",
         "affectsGlobalScope": false
       },
-      "../node_modules/react-md/lib/progress/circularprogress.d.ts": {
-        "version": "e72b5660376b5affdb0350658f06757dba8ab8af256f24fdfe88407ea82a709a",
-        "signature": "e72b5660376b5affdb0350658f06757dba8ab8af256f24fdfe88407ea82a709a",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/react-md/lib/progress/linearprogress.d.ts": {
-        "version": "25abd88bffbfc4ccbb18c6701808827d3474dfdd6fb347c4a50080351a0ee80a",
-        "signature": "25abd88bffbfc4ccbb18c6701808827d3474dfdd6fb347c4a50080351a0ee80a",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/react-md/lib/progress/index.d.ts": {
-        "version": "c2fac46d3ccd70378f8d7af8797597063d278c47180b0f66e0e34dff4b5499d2",
-        "signature": "c2fac46d3ccd70378f8d7af8797597063d278c47180b0f66e0e34dff4b5499d2",
-        "affectsGlobalScope": false
-      },
       "../node_modules/react-md/lib/selectioncontrols/selectioncontrol.d.ts": {
         "version": "a02a910af832f9e39629d3ea2cd190f3d36c557d303bbf5e643cade95a489644",
         "signature": "a02a910af832f9e39629d3ea2cd190f3d36c557d303bbf5e643cade95a489644",
@@ -1456,11 +1941,6 @@
         "signature": "8299e0c8928a1b82138d9459dabad11cfc5059b03d22206cff939b92fc232ad7",
         "affectsGlobalScope": false
       },
-      "../node_modules/react-md/lib/toolbars/toolbar.d.ts": {
-        "version": "e9337238d37162324a62448e27757ccb05c131c855a3045f8f1f0e16eee5e2c4",
-        "signature": "e9337238d37162324a62448e27757ccb05c131c855a3045f8f1f0e16eee5e2c4",
-        "affectsGlobalScope": false
-      },
       "../node_modules/react-md/lib/toolbars/index.d.ts": {
         "version": "12f18e2c380a8cc82a9e641a7f9184c27874641e77643e0846e186e7046db589",
         "signature": "12f18e2c380a8cc82a9e641a7f9184c27874641e77643e0846e186e7046db589",
@@ -1476,444 +1956,79 @@
         "signature": "dfa8e1d7fa541e7baff2182b73a6cffd76a0f88386be1530d511f28460c37845",
         "affectsGlobalScope": false
       },
-      "../node_modules/@types/diacritics/index.d.ts": {
-        "version": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
-        "signature": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
-        "affectsGlobalScope": false
-      },
-      "../src/utilities/format/text.ts": {
-        "version": "69d815f55f7f9ace585d1b445efac4d4e9b822568d60822f0c321810c545783e",
-        "signature": "8f56b7bb0f236e115306242a510e837d651379bd3495d0d5d4f31d6e132d2ba9",
-        "affectsGlobalScope": false
-      },
-      "../src/utilities/format/currency.ts": {
-        "version": "07e5daa3911df8917c205a0987d7ebe64d2a42d297bb098127015d7b7e7a78f2",
-        "signature": "a080458d13829dff695de618414698447431608a0b5a61a424656917d1413652",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/google-libphonenumber/index.d.ts": {
-        "version": "aff95fbc2cb1aa0468e2f5b5b4b427ca9caf971a5c727dd66bd0183e43b62110",
-        "signature": "aff95fbc2cb1aa0468e2f5b5b4b427ca9caf971a5c727dd66bd0183e43b62110",
-        "affectsGlobalScope": true
-      },
-      "../src/utilities/format/phonenumber.ts": {
-        "version": "7c26b01627be0147791bf1f84a69913abc4626a021f2daa6c4d36167ffcb6f8d",
-        "signature": "c7d54db1b10a222b6c926fb8e87473a874d6ca6946b0d9b089f0e565c3db96c4",
-        "affectsGlobalScope": false
-      },
-      "../src/utilities/format/index.ts": {
-        "version": "57a07da768306d34131937cab1f42c80c5ec2657c52b0ed90f062e4c402ca3c1",
-        "signature": "0d9b782a794faf431765d1028f6cfdf7be03cc49acd13353f54bfdde3d5cb0d3",
-        "affectsGlobalScope": false
-      },
-      "../src/constant/toast.ts": {
-        "version": "f851037efaea4d65870d40f33a3f0a78811ea81ef9e778b2cc3a315a562bafa8",
-        "signature": "c85679763951854fce49f4f7e8d73500dc1534f2b27ae0c6308eac4b680d7f93",
-        "affectsGlobalScope": false
-      },
-      "../src/component/snackbar/timetoread.ts": {
-        "version": "ca6701c8897168afd65b15d3b6bb852ca74e64c4b29c29f9634b97d96eca2a12",
-        "signature": "c6ae587d16c6cac750fb10d87b6ee6d50ed5d2422632352f07c95669fe88c544",
-        "affectsGlobalScope": false
-      },
-      "../src/component/notification/notificationcard.tsx": {
-        "version": "6dc745884db368733eb77cc658dc0b65bcf31045f95527a8eaa235bf1eaf3d09",
-        "signature": "6eed22a78f30f0af1c4de743e4312fb91bc2a1ffb40114ae3d5c523585b24eaf",
-        "affectsGlobalScope": false
-      },
-      "../src/types/notification.ts": {
-        "version": "0fd64831235ea083becaf21c8d16df2f4604bd30227aa2d301ece943b58b0f49",
-        "signature": "c3f516d7fce40a7ddc0caa50c3d7550a09a184a90c0ea8333c6ff30795941a38",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/notificationaction.ts": {
-        "version": "17119ef3c304e170e1b357771489919dcfc35c009d5004ee634c1b84eb2605e4",
-        "signature": "c65f333f27543c9ba0d7f08dceb567a35baa7cce4c08a1475b8717aa78ad10f4",
-        "affectsGlobalScope": false
-      },
-      "../src/constant/notification.ts": {
-        "version": "8e6020aac106098a90958f06b3a63b5f0ede51eefc811badde7fd951d8398d58",
-        "signature": "20e1adfe22a5bd7f86c64d30b61c06360d07ef06f13d4bd761215506de40c3aa",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/notificationreducer.ts": {
-        "version": "66cf4480c2b911c93aa56a0ea7e0631d3cd57a84c811cc9bee271fc9a277d72e",
-        "signature": "5f23d9474f4a5c40e93aef4132d8990d58c19235fe410f687591121038e8dc44",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/routeraction.ts": {
-        "version": "c4fb1a693dbc088ca0c855e1658bf3221c5b6c552be7a11a3bc4e3623df290e0",
-        "signature": "d28756096afd7409edda9ab116d95c51fbc9929bb44b542969204c946099354d",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/routerreducer.ts": {
-        "version": "c69b633b4a8613bfbfe22d873690b520c6731a3d4339bc85ee2d4d8859c20df3",
-        "signature": "b606c5b5564c326605268bca7f85a8e95e7fb26aeba9b10aa90d10bd7da74adc",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/sessionreducer.ts": {
-        "version": "40f295575ec849a426403e76831402df1f0fd548713f28f977641b385cbdf2b0",
-        "signature": "85085333916720717cc86c02fd18dc5733f345f885d8048c0cebf1f5196143d6",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/settingsaction.ts": {
-        "version": "1b5df445e37f79cb60d6cc7f70d020872497ddbe83695e1b4ab7152bb51d1bc7",
-        "signature": "93e39ed452d8ab5a520bea43bf0520dff7858482f22b78d869ded1d7a3fa8886",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/settingsreducer.ts": {
-        "version": "fecf26dc00dd6be15a40b3b4d22b0999fb4830aed483a364f577b22a67443178",
-        "signature": "373d882b70002eee36591d7730a3c6f5472bfaf9c09f4dcacda50b9f2e1d35ba",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/splitviewaction.ts": {
-        "version": "641936589f47654323f728b844191301b8de4e51dff1970c954743a4f40a6176",
-        "signature": "6c70a3bda1db2b8177a0c471c89dc0f86052a00b641605652fe3f2c81b2bccdf",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/splitviewreducer.ts": {
-        "version": "b07dd20274f2baf972dc6fd2c1dd2f515de6c2be07bf166ac6f9024c4754416e",
-        "signature": "6fea8a2dada5539fa4ae0280b0b4debc92486382d948e222fd9456656515cae9",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/systemaction.ts": {
-        "version": "d74d50363210e96149420041a19b265a625cf272a92da59c624fe419721eeab4",
-        "signature": "4164d8ca0809c0998e764ea79ba002082e411a8c86b5b921a49033542378bc4c",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/systemreducer.ts": {
-        "version": "01779ad142ba079989d2112f42ef4885568472d8b5aee6f64888f768be4cb811",
-        "signature": "376d3ff2f8564c3c0d9c31b3d3024b2bb3c854a6229646425aadc38f25f9353f",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/immutable/dist/immutable-nonambient.d.ts": {
-        "version": "407b11f5c8edb4fdb4871a666f15d2ea4a8ca30153f0f74ceee6c247dcc2cceb",
-        "signature": "407b11f5c8edb4fdb4871a666f15d2ea4a8ca30153f0f74ceee6c247dcc2cceb",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/toastaction.ts": {
-        "version": "2faf020621ed172f2426f67e7301015e73f6f03eb8f3b90366b18f9618bbdc37",
-        "signature": "d627488decac70ff6fcfc0370b03fefadfafe54b5f315ccf3dd4e93bba253fe8",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/toastreducer.ts": {
-        "version": "5676f306cc1b77bfab3befb5714d00711083f7e92889d845dc75f3736f382691",
-        "signature": "3b9aeecae4e75d8cf5b1cfeec8a8e1a1f1e46ed213bd2df821e99de0b3fec254",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/appreducer.ts": {
-        "version": "b4aa1aa5117c8b8ff6492d921ea624ed29a33de5b6129627f0c0dec9cec31449",
-        "signature": "fcda666d0915bc31d50107f73117beeee50d4cf8f2c8f803a4b9887e3d386513",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/loginaction.ts": {
-        "version": "424d3e1fd938039471ca427ca26eefd2bd50844209976f30d8294d282302f353",
-        "signature": "e3cc7bb12991c8c7188d998a1a4e8d174ecf352a76a688904364f1c3502313d5",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/loginreducer.ts": {
-        "version": "8771300555a355a4d764f66cb2de38b1d414e91180f8344e11bb65d72fb6c23c",
-        "signature": "ab6f1ab78763db197473359cf0519b976414e6925139db0eb0d9031f69b24b34",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/index.ts": {
-        "version": "44d960d5f543b31e11c9c8ef4eb4249e8e83389b394875b6ffc19e0e17473ddb",
-        "signature": "9ec2b39336cc3086d886a993071d2fe546686a35354333139fc68238977a84f2",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/global.ts": {
-        "version": "c1c5d41d8a837394cac5c4bf94c87bd237da162986096abb90258b3bdb3510d9",
-        "signature": "dfd7b3365b3f512670cbeaba7cbc2867ad9fb6d3ecc40891b0937ad3769816aa",
-        "affectsGlobalScope": false
-      },
-      "../src/base/wsclient.ts": {
-        "version": "df6a2f0cf7fb5f6d2b83e8bd1ec092007e58ab082800736eb4d7731dbb424e4c",
-        "signature": "ff5d37efbb6595103d993380e7193cfc7bd38c5c9cf7079e3a1dae1a322fa32a",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/react-dom/server/index.d.ts": {
-        "version": "53cea979e3bea1c13b6c88496a6dcfd130f5cbcd36c697dabfc71d5033508164",
-        "signature": "53cea979e3bea1c13b6c88496a6dcfd130f5cbcd36c697dabfc71d5033508164",
-        "affectsGlobalScope": true
-      },
-      "../src/component/formattedmessage.tsx": {
-        "version": "e982ee1ea63ff02cf08086f1dd1caf2eae8cf470e6a51d37fbae96a356824223",
-        "signature": "01351037742ba215d31d25339e1e1631a705719fdb37477a2536476dd41c50b1",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/react-intl/index.d.ts": {
-        "version": "ab08aa4d1579ea43e48f22627292f708c9f826c281981497186d3b8fb6358034",
-        "signature": "ab08aa4d1579ea43e48f22627292f708c9f826c281981497186d3b8fb6358034",
-        "affectsGlobalScope": true
-      },
-      "../node_modules/@types/history/domutils.d.ts": {
-        "version": "271cde49dfd9b398ccc91bb3aaa43854cf76f4d14e10fed91cbac649aa6cbc63",
-        "signature": "271cde49dfd9b398ccc91bb3aaa43854cf76f4d14e10fed91cbac649aa6cbc63",
-        "affectsGlobalScope": true
-      },
-      "../node_modules/@types/history/createbrowserhistory.d.ts": {
-        "version": "c6f2572e21f626260d2e4a65e4e1e42b9b273b6f43b5c3bc115c2926417d3eca",
-        "signature": "c6f2572e21f626260d2e4a65e4e1e42b9b273b6f43b5c3bc115c2926417d3eca",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/createhashhistory.d.ts": {
-        "version": "374ab77e05e0bf5a52acad6d65121d4bd31068108f23d70186dba5fcd7d6a1a3",
-        "signature": "374ab77e05e0bf5a52acad6d65121d4bd31068108f23d70186dba5fcd7d6a1a3",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/creatememoryhistory.d.ts": {
-        "version": "a4ecd4bb653aa71093375845fba6250ca0f3c633d0e933fc9bf4b301834eab27",
-        "signature": "a4ecd4bb653aa71093375845fba6250ca0f3c633d0e933fc9bf4b301834eab27",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/locationutils.d.ts": {
-        "version": "25d91fb9ed77a828cc6c7a863236fb712dafcd52f816eec481bd0c1f589f4404",
-        "signature": "25d91fb9ed77a828cc6c7a863236fb712dafcd52f816eec481bd0c1f589f4404",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/pathutils.d.ts": {
-        "version": "4cd14cea22eed1bfb0dc76183e56989f897ac5b14c0e2a819e5162eafdcfe243",
-        "signature": "4cd14cea22eed1bfb0dc76183e56989f897ac5b14c0e2a819e5162eafdcfe243",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/index.d.ts": {
-        "version": "80a54fa1520c12a4e57f0c2d33c5a5aefce76d6e53d7ada334881b161180f02e",
-        "signature": "80a54fa1520c12a4e57f0c2d33c5a5aefce76d6e53d7ada334881b161180f02e",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/react-router/index.d.ts": {
-        "version": "0caf70f74777ccb2fff9869da0c51fb832923e9625a84249e00bf107b399bfaa",
-        "signature": "0caf70f74777ccb2fff9869da0c51fb832923e9625a84249e00bf107b399bfaa",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/react-router-dom/index.d.ts": {
-        "version": "5859c951fdc2f03f96a25661b33eec6c3747b461dc9331bb1096690a8924edc5",
-        "signature": "5859c951fdc2f03f96a25661b33eec6c3747b461dc9331bb1096690a8924edc5",
-        "affectsGlobalScope": false
-      },
-      "../src/component/app/initialized.tsx": {
-        "version": "d120b5a4698ffc218bf7f1e94015516e6c29af0fb94a7b656c2387acfcc98f72",
-        "signature": "8e528855f2369300729c9605a801662b16538067ffd408c95616f0393133d612",
-        "affectsGlobalScope": false
-      },
-      "../src/component/websocket/websocketconnection.tsx": {
-        "version": "459b4b38550216389d0862812b8bfde663890d04603c02bf760a3e3286e83d07",
-        "signature": "f8e9f0aa75322d64b1db5cd3ded5b998c06982cea050d980da3f4a9f339d0b01",
-        "affectsGlobalScope": false
-      },
-      "../src/component/app/app.tsx": {
-        "version": "743f31c52ba7234a5bc0adb9b98bbb4ec0b836893683f9874bbaa8c2b38c1f0a",
-        "signature": "da744a441c103bd97c0f65aaf4821623a60ef042c6be81621e93b451b85961b6",
-        "affectsGlobalScope": false
-      },
-      "../src/component/content/content.tsx": {
-        "version": "d305149c9c6bc419a37cd2ece416f4557c0c1850e39508b7b7ffbe0f8ecea225",
-        "signature": "1b3563be606029d4e6afdcec1efc39676d65c21d5844888a0806cc95e799cd7f",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/popper.js/index.d.ts": {
-        "version": "1873db8f2261ba4f248bde3e5bb4c79b1fdc990315054e9604fce8f41ddd1587",
-        "signature": "1873db8f2261ba4f248bde3e5bb4c79b1fdc990315054e9604fce8f41ddd1587",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/date-fns/typings.d.ts": {
-        "version": "b44ccf907564571b6044083a8afb2c22b6f3422dc61c58ff8b75d2736e673239",
-        "signature": "b44ccf907564571b6044083a8afb2c22b6f3422dc61c58ff8b75d2736e673239",
-        "affectsGlobalScope": true
-      },
-      "../node_modules/@types/react-datepicker/index.d.ts": {
-        "version": "00d31f2de787ecbeb4f74341477b24e6f2a609a73d49b779ccd3c1d4c217f69e",
-        "signature": "00d31f2de787ecbeb4f74341477b24e6f2a609a73d49b779ccd3c1d4c217f69e",
-        "affectsGlobalScope": false
-      },
-      "../src/component/datepicker/setup.ts": {
-        "version": "03946e9359d2b69381ba9251e2ae6e01472615c0cd8853c6047626ad11ccb994",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/react-outside-click-handler/index.d.ts": {
-        "version": "f2d11abcba45c9f1647dbb3b52e60f50718fc4dba4c549d562155aa64a0fbe42",
-        "signature": "f2d11abcba45c9f1647dbb3b52e60f50718fc4dba4c549d562155aa64a0fbe42",
-        "affectsGlobalScope": false
-      },
-      "../src/types/language.ts": {
-        "version": "35fa026ba23474be962f7f5e0c257cc8b3c6ebb24ea897492606c26647550b78",
-        "signature": "39983c90e1ec3b80bb2f66eece7d11973c9e0f21692f5731ad09e3505da0fc28",
-        "affectsGlobalScope": false
-      },
-      "../src/component/datepicker/index.tsx": {
-        "version": "1275cb7acdae6064b527283811dd49f25f6c887b7bcc6fea9ff92f2ce4d773de",
-        "signature": "78d52b142d5c63a118ecc118a63ed4daa19af8d6314c780bcb6c0bf8cf77fb2d",
-        "affectsGlobalScope": false
-      },
-      "../src/component/navigation/navigationbutton.tsx": {
-        "version": "baf3515015039bd359a7c61235a6c19478d91647dea0fb7299c2a04b89479f6c",
-        "signature": "21c70de4d7e4c58113850cdf2b642430ae66d6ab7b6da4fc77c573c35a987d6d",
-        "affectsGlobalScope": false
-      },
-      "../src/component/header/apptoolbar.tsx": {
-        "version": "66ed248764444702e91998c9419fe9e8cabc29b6ac63232c8a23e3c649d3f455",
-        "signature": "875ca7c509e17149a326835978c7be9ce6c9c315f4619bf855c0a963c2c19a20",
-        "affectsGlobalScope": false
-      },
-      "../src/component/header/appheader.tsx": {
-        "version": "731154f78328ee88431d47d6d29151b19d46fa7cb3063db80d868ffbf8b9a6a2",
-        "signature": "86390a8d94bc11a75c952768aa74566a1b9ad4648886237141ebd0c30f5b2983",
-        "affectsGlobalScope": false
-      },
-      "../src/component/header/backendindicator.tsx": {
-        "version": "2c56202f804915e19bed481f7485231add38b95139760e2e3c5b4257a0698b48",
-        "signature": "fe1d13b1746357648d8b07fd1d0e000bc824ddcc0f6a8fc5a90eeb3fb1dc00b3",
-        "affectsGlobalScope": false
-      },
-      "../src/component/juwelofonticon/index.tsx": {
-        "version": "b69bb40bf93205897c027df5b7b5c91366193fb4e6a401cf5c39702d0e011b4d",
-        "signature": "6db0457db6af4366793aac7eb62ab11b1038dda13cd38291f75353c2ea190c4d",
-        "affectsGlobalScope": false
-      },
-      "../src/component/login/loginbutton.tsx": {
-        "version": "c4ae8aed11b790b1e2a1ccd26239ad428bdd0854d6d194cd8190e7207036f7b7",
-        "signature": "93ac2c32e2969c29d8919ee70a348bb2a78f24fb72d7fa4fe7ff0476fcba7e22",
-        "affectsGlobalScope": false
-      },
-      "../src/component/login/logincredentials.tsx": {
-        "version": "a1b125b06699e25c57aac3c8de9052518aa5433dced6a7d3e56599b556c26fd9",
-        "signature": "bef7360d4256430a203399ec3549af786b5354b638b7f671ebd8e431075075a9",
-        "affectsGlobalScope": false
-      },
-      "../src/component/login/logindialog.tsx": {
-        "version": "820d51357e6e5130fba11062ccf38ab61bc7c2d779404033f09a37ec09e633bc",
-        "signature": "848400c7a6bfca898cf983ec4ac71c7f6cc9087e9908d49cfbfaf9433c3f03a3",
-        "affectsGlobalScope": false
-      },
-      "../src/component/logout/logoutdialog.tsx": {
-        "version": "ae7459459766b85c7fddbe8ccebc52cbfd852e7dccca4cfe5c6a2f215d0f171c",
-        "signature": "9101d6d8cf20ccbc62a2c09312da33d24e6232aab4d32dbcff95fdec99dd2cd8",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/common/common.d.ts": {
-        "version": "29304d38d619bac17128f20c21af1a03256f9edf8f0b82e6674565e09e956dff",
-        "signature": "29304d38d619bac17128f20c21af1a03256f9edf8f0b82e6674565e09e956dff",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/common/array.d.ts": {
-        "version": "d03a1ae3d39f757c9f22e4e775b940a98d86bb50ec85529b59e32a17b65c2b90",
-        "signature": "d03a1ae3d39f757c9f22e4e775b940a98d86bb50ec85529b59e32a17b65c2b90",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/common/collection.d.ts": {
-        "version": "0c75b204aed9cf6ff1c7b4bed87a3ece0d9d6fc857a6350c0c95ed0c38c814e8",
-        "signature": "0c75b204aed9cf6ff1c7b4bed87a3ece0d9d6fc857a6350c0c95ed0c38c814e8",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/common/date.d.ts": {
-        "version": "187119ff4f9553676a884e296089e131e8cc01691c546273b1d0089c3533ce42",
-        "signature": "187119ff4f9553676a884e296089e131e8cc01691c546273b1d0089c3533ce42",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/common/function.d.ts": {
-        "version": "99256c6888e554431cf3b907d6267a7a119f34c860937f422f771c1396b7e5b4",
-        "signature": "99256c6888e554431cf3b907d6267a7a119f34c860937f422f771c1396b7e5b4",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/common/lang.d.ts": {
-        "version": "d7fac90d8d76afeccb236132472c6c2c26f1783af0e46575d3b2f5a59501f4ca",
-        "signature": "d7fac90d8d76afeccb236132472c6c2c26f1783af0e46575d3b2f5a59501f4ca",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/common/math.d.ts": {
-        "version": "65648639567d214f62c1b21d200c852807e68bdb08311f95ab6f526ef5b98995",
-        "signature": "65648639567d214f62c1b21d200c852807e68bdb08311f95ab6f526ef5b98995",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/common/number.d.ts": {
-        "version": "00baffbe8a2f2e4875367479489b5d43b5fc1429ecb4a4cc98cfc3009095f52a",
-        "signature": "00baffbe8a2f2e4875367479489b5d43b5fc1429ecb4a4cc98cfc3009095f52a",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/common/object.d.ts": {
-        "version": "7fc5a3d7cff296cea5c225911726a56283b663328709088fcc912d61f73682fc",
-        "signature": "7fc5a3d7cff296cea5c225911726a56283b663328709088fcc912d61f73682fc",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/common/seq.d.ts": {
-        "version": "3c92b6dfd43cc1c2485d9eba5ff0b74a19bb8725b692773ef1d66dac48cda4bd",
-        "signature": "3c92b6dfd43cc1c2485d9eba5ff0b74a19bb8725b692773ef1d66dac48cda4bd",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/common/string.d.ts": {
-        "version": "4908e4c00832b26ce77a629de8501b0e23a903c094f9e79a7fec313a15da796a",
-        "signature": "4908e4c00832b26ce77a629de8501b0e23a903c094f9e79a7fec313a15da796a",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/common/util.d.ts": {
-        "version": "2630a7cbb597e85d713b7ef47f2946d4280d3d4c02733282770741d40672b1a5",
-        "signature": "2630a7cbb597e85d713b7ef47f2946d4280d3d4c02733282770741d40672b1a5",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/lodash/index.d.ts": {
-        "version": "0714e2046df66c0e93c3330d30dbc0565b3e8cd3ee302cf99e4ede6220e5fec8",
-        "signature": "0714e2046df66c0e93c3330d30dbc0565b3e8cd3ee302cf99e4ede6220e5fec8",
-        "affectsGlobalScope": true
-      },
-      "../src/component/navigation/navigationitem.tsx": {
-        "version": "fd781f25b2e2f4bba14d26b369e8de235487e62703b9d4e8b6f4114cdb05a26c",
-        "signature": "e754e0c603b75b1a92c928db2c0061822da66a8bda37d2a63e7c7998ea29e570",
-        "affectsGlobalScope": false
-      },
-      "../src/component/logout/logoutnavigationitem.tsx": {
-        "version": "661c137990738e17ca8060f3c0fd7ac7a358cc68240ec76957053ce4a9001900",
-        "signature": "837b21a61687da4a1f0b9180cf6a091b51b6f11273d1a8061803bed63e02dbdc",
-        "affectsGlobalScope": false
-      },
-      "../src/component/misc/versionnavigationitem.tsx": {
-        "version": "698530d024db788c958332a5948c1ab6133d6f3f3a84ab725759f05bb57bb363",
-        "signature": "d74088f2b5bd6b91fa11f755a229ecabda47d542e4e90c328229341df55bd89f",
-        "affectsGlobalScope": false
-      },
       "../src/component/modal/modaldialog.tsx": {
-        "version": "f4e7c630e666c3e4ad6b522c28e94b47b31b941a2ea80d7bd0e960e27ca1a332",
+        "version": "057a23a3049c7777c0fd64d2fcd29a3c393507407d3f942b0e9fecf5ec5d2678",
         "signature": "2150bc6bc1d08e654099776759efa1e9a131fdbbf8f27312d8b29a7b34e3d6ce",
         "affectsGlobalScope": false
       },
       "../src/component/navigation/navigationdrawerheader.tsx": {
-        "version": "3ac693dfb43984ea3e7d7e5b375802609fb1207dad7ad807c4d6288b7ceecdfd",
-        "signature": "d7dad0b2326ccb47ad71c997f27f6cbe87a32ac5db3ff2006654a7fcf8b64a64",
+        "version": "744b553ed93e3cb0b794fb4c8135cad2754786845e5eb3dee16de84de8d388e8",
+        "signature": "e696659917bc7448c983c433a9b3c3921f78f82aad007d15b41a78d64fab4713",
         "affectsGlobalScope": false
       },
       "../src/component/navigation/navigationdrawer.tsx": {
-        "version": "7508e7df054a114ad4b50d175f7344431053d238d02c7cea0d15eb4822aed4c0",
-        "signature": "331004f290aa98ad682ae3e985d77a43ffc7a133fa1e1f411d644d75692c59e3",
-        "affectsGlobalScope": false
-      },
-      "../src/component/notification/dismissallnotificationsbutton.tsx": {
-        "version": "037ab285724bcdff7c54c1c06cf26ac15e706e0ac7cdec03e89602dc53214003",
-        "signature": "3a348cdbd3159afc525acddf356d4466f6b036b2eec612b3c1b90d578d24befb",
-        "affectsGlobalScope": false
-      },
-      "../src/component/notification/nonotifications.tsx": {
-        "version": "04a474da8dcb4d545a001293dbd060029f6031e53537a9fe684559cd82392d03",
-        "signature": "41469ab9c84d19178049a6f893c0a642710b3be2fa9c53bc7fcf0c0b42a67003",
+        "version": "0a1f665568df6266ed33e01304fee75e751356f6de577cdb574ff0d354a0488c",
+        "signature": "a57c97b167046acf2229073654be948d751c6d4534c278948cedf9db5ed54d41",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationbadge.tsx": {
-        "version": "5386aca512a1d7edeb7cd23dfa97c67d4e620d379df7c558558c41b3db98caf4",
-        "signature": "8109b93177db9fde1a41b85c2ce8cf510e28fba2644c3be95a350a22a7e94df6",
+        "version": "3e822a4746f0aa435a65df37b14554cc8ddaf03899b813c9e5dbbb6d476e82c7",
+        "signature": "61bb18ab31842c6bd80b1ab2c99387c3c3d746a5641ece6f56f0d8a27b7232df",
         "affectsGlobalScope": false
       },
-      "../src/component/notification/splitviewbutton.tsx": {
-        "version": "737d2784579a2baa4e3401d6fa002ee6c9ff1abbb40fa81d11957a18c2fb4b42",
-        "signature": "fc6312ad1d4e39f94d2cfe6d4b83410c871ad19fa32fd709626aa20e192cdfc2",
+      "../node_modules/@types/react-addons-transition-group/index.d.ts": {
+        "version": "fd9006a671f47d0f411c6202801d625bbc5cbd665c2e3a9bbb5ab3457a577ff2",
+        "signature": "fd9006a671f47d0f411c6202801d625bbc5cbd665c2e3a9bbb5ab3457a577ff2",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/react-addons-css-transition-group/index.d.ts": {
+        "version": "e5f3b063289bb6805c2901125b183ee505b6953c6e058406d2f9c59645a3d41a",
+        "signature": "e5f3b063289bb6805c2901125b183ee505b6953c6e058406d2f9c59645a3d41a",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationsfragment/nonotifications.tsx": {
+        "version": "a9a827f8e32d7d007a040515bd38bd50477e8d9cc0d0dc05021fa3dcb7536d99",
+        "signature": "11034baa008de10a5526252f4b08857d495b6bf579a79e9975a4ed81df3d1203",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationsfragment/index.tsx": {
+        "version": "e54145c9d3a2f5e28fc1148495a748ad6bf3eb09b75f3400bcbb9d894962f79e",
+        "signature": "35bffba979d1e844d02d24f52a413a5ef6eb4b1221f426daee901f6d2641720b",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationdrawertoolbar/splitviewbutton.tsx": {
+        "version": "f973e9f4f0b9d686fe51b9b46afad268422289d64661317e98b9f86e680774a1",
+        "signature": "359d190861c592807e9b16492923799ef1b808ae66af7313a1d3881049b6f837",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationdrawertoolbar/dismissallnotificationsbutton.tsx": {
+        "version": "f19e156de5d6e9fb1c3c367ee362a39bc468d34210bd664b50529d6902465299",
+        "signature": "d7507ac4eccad99a733a0dc1aa64ea728eed4d449e0cc2594fedb8f8a915367d",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationdrawertoolbar/hidenotificationdrawerbutton.tsx": {
+        "version": "23bd40f23b00e5b6d0ec27a1fcbcdeb73845999d7dfe77e63a3ee70734af81dd",
+        "signature": "1249894a5f5706ed09d75826470661c3e3b2713dae5074a0b96f4c77f36b396f",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationdrawertoolbar/index.tsx": {
+        "version": "467f881f2fde8175d5373d97532d572254b35a4ed0caa9b8e0109843a6e74600",
+        "signature": "8ccff351b58d3cc90dc1b60204e908c1fb3ef7f15e5ee64956ecba0016fc9f02",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/usenotificationdrawerclassnames.tsx": {
+        "version": "5bd0c3239f86f82f31b02c2b3d95136e747f6be37dcb801d1a65d04b0948c3cd",
+        "signature": "7e5f64136c2e2e7e36c56c62ca8ca09dc106defe700f53158de8762fb83c1a17",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationdrawer.tsx": {
-        "version": "f677158a0002851c8e1063c891bb9d8cfb703d1cbb498099d2d7e9ed49e677bf",
-        "signature": "a10e223c9cc260a17bd1777d1735a3a8781e363f8533c0943c1feb7dc09ac41b",
+        "version": "47eea20968bc7e1ad863f0dd59b6772cb62fb3149dfdc8ea0db1ae56db366f6f",
+        "signature": "dc030946f3316360135446e4fab70bba7e787e2b2e8b1e843d95cea763e5a502",
         "affectsGlobalScope": false
       },
       "../src/component/notification/onscreennotifications.tsx": {
-        "version": "c5822384dc651606bd3c7ed6a371252c9c5642b901e4424ec40ac4a1676cca77",
-        "signature": "69fa1bf34dfd237fd862a55477ebbeed963e3b14b9dfe4da594550aa3a866816",
+        "version": "21ca13a27ccc8c72c9a18b88eaaa8684b16c2d5ea2ee45c4b9e8a922f579e964",
+        "signature": "8919a66aea809a39d47b0c0d0da4de8f5f80809d549bd1b1055ea99e6e574ca3",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react-dom/index.d.ts": {
@@ -1947,18 +2062,18 @@
         "affectsGlobalScope": false
       },
       "../src/component/route/baseroute.tsx": {
-        "version": "ef1ea9fc29a78e9d399d35706dfb6cb911bf67ae9c1c9bac0b562e5440fb714e",
-        "signature": "63e6e35c7827569893a6eb74418135141932c4834c7112611564ed13b44085ce",
+        "version": "ab15a8c07e2cfd7b1779d534ce3ef92a4e8f8d20ba0fdc684ead1c9cbe0a575b",
+        "signature": "45c795b3096454a674c3ba1e1572c1fb6a6824138ce05da7ec1792e74b2b5de8",
         "affectsGlobalScope": false
       },
       "../src/component/route/authroute.tsx": {
-        "version": "d953cc9caeba6bbbe3e741a5a7bfda77d10ffd7deb75e5d655a9332f1162720d",
-        "signature": "7f72d29d8a5e5bf0106495ab8b2da49faad357f32e84aff2e0472e594cd35bfa",
+        "version": "6b504ee063588784ae242f984fd8cd14952d05cc263fe52101b859f493e3ffed",
+        "signature": "77eb5757235ae3fcec44c910d9c3337463418154320ac33f9aa0abc17c99d6a0",
         "affectsGlobalScope": false
       },
       "../src/component/route/noauthroute.tsx": {
-        "version": "be0c574904834dcec945ca36fd66bf76146f0cae8661add1b003c659a851ebcc",
-        "signature": "f58a0a61cfe49148581f8726f017dae9bf5e2f953c757b1692cc88954e3e85ad",
+        "version": "0dbfd81f77f66ef42e67a8f1ad8fefd0a333d82728e01969df098d4a255b27ca",
+        "signature": "b1ceeaa3f58a497fa89359cf49b6fe0ce928e5bd0ee099ac9a5b08abcafc00f5",
         "affectsGlobalScope": false
       },
       "../src/component/search/searchcomponent.tsx": {
@@ -1992,13 +2107,13 @@
         "affectsGlobalScope": false
       },
       "../src/component/snackbar/snackbarcontent.tsx": {
-        "version": "5b57cafbf72a965d32990fa1493654b2e00bf244fa542a1369a10a6f0d958a4a",
-        "signature": "f83d3073ab2ec1b8a3a3ef112cce2178d26d5b4e688bd424ee2ca8ccd89e6c53",
+        "version": "ef7df53afca95adb2e7a59aca5b1de9d4a4aa5b7a5b123c44d946699034a8ec2",
+        "signature": "95df8071a175e2b5e070b0ac717e63bb0c45a6bca44ee5bab572408f929bb2fc",
         "affectsGlobalScope": false
       },
       "../src/component/snackbar/snackbar.tsx": {
-        "version": "259314f4978fe5e310ab5c1fcb94e00d1248b812982bc469ab5b00bab78db63d",
-        "signature": "fe6f472e3d05b4ed64203e093fd089fa1f0a8ad17f1d3fe8d5bc36d9621dd78c",
+        "version": "abed35de91c64e12a49e6fad6cca864be507153a2baa4be7c29f0a4c32abed8e",
+        "signature": "8948cae861d5b7eb52b2b5162acfa6276cde472db05440cbce23bb97ccda67d1",
         "affectsGlobalScope": false
       },
       "../node_modules/reselect/lib/index.d.ts": {
@@ -2012,13 +2127,8 @@
         "affectsGlobalScope": false
       },
       "../src/component/websocket/websocketstatus.tsx": {
-        "version": "64268bbce4983ebaf23abf754b59cc9e20da191c9f3c2ccf51c947c8da67bb44",
+        "version": "7b75feb55e9fe8cc2164547902621082e5e2b6fe00ce9593b58411e1ba76d193",
         "signature": "3375fad3605643070ac0ecd0aff1ed2d1bb665b39ee1d56ab3acd7a349f8cac8",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/redux-observable/index.d.ts": {
-        "version": "4e1a1b7d18b7c336c547f38d959323bbc804bae85f0c357879f2264005f2af15",
-        "signature": "4e1a1b7d18b7c336c547f38d959323bbc804bae85f0c357879f2264005f2af15",
         "affectsGlobalScope": false
       },
       "../node_modules/redux-devtools-extension/index.d.ts": {
@@ -2031,9 +2141,14 @@
         "signature": "581b7f56434a07b9c320fc8e8460e7690a1dd51fd2ddcb659d0fec9d93980cc2",
         "affectsGlobalScope": false
       },
+      "../src/store/middleware.ts": {
+        "version": "21b1f737cb4f3d15292fdcef5fc6a85931215aeda3ffaef14ebccca7537af88a",
+        "signature": "86f91babb5d8dcd0b1402a53d5f9b948451fc755e2ac98a8d15a05cfc0afa443",
+        "affectsGlobalScope": false
+      },
       "../src/store/index.ts": {
-        "version": "e9764601f913fbeae82997ee88b2fd671e2ab7dd528108ceca26a0316265314d",
-        "signature": "a3d803dc6a426542a7062db65fe8cd476ac7a3cd3740cd1c3ef6b5166c8a9e51",
+        "version": "33d51270c6c1bffe15c688ca43468289bf2b643a18a3e6fae182d902b2d6e727",
+        "signature": "e4d218027084b853b4a543e253d272b78d65dc03b12321d3c380901a113a23f7",
         "affectsGlobalScope": false
       },
       "../node_modules/rxjs/internal/operators/audit.d.ts": {
@@ -2557,53 +2672,58 @@
         "affectsGlobalScope": false
       },
       "../src/store/epic/appepic.ts": {
-        "version": "db2951287bb290869184596c36c54a9fcc6747fe8a20069d921effbf3bfcad1c",
-        "signature": "404026b659b183e6ee8fcf8d02b1f94b9a46e25ee5ad9bf4c908a2c9e2bae7f3",
+        "version": "b3e7a95ff82d7c8288de3b2fe32d72238a8106841d6f6aa231d8dc2e3dc02fc6",
+        "signature": "62abb5b3945d0026e5f87b8dabfb96e29722f690f85e3f7a7e7bbedccb617fed",
         "affectsGlobalScope": false
       },
       "../src/store/epic/configepic.ts": {
-        "version": "7e0578d743a53da764b462866721b8974fa7217f98dfdabb93a5e65ce077a148",
-        "signature": "404026b659b183e6ee8fcf8d02b1f94b9a46e25ee5ad9bf4c908a2c9e2bae7f3",
-        "affectsGlobalScope": false
-      },
-      "../src/store/epic/languageepic.ts": {
-        "version": "95b71a09f6d0fd287c22e84d2616d140c6eb8c27b07ab1b2c4be16305f89a1f6",
-        "signature": "404026b659b183e6ee8fcf8d02b1f94b9a46e25ee5ad9bf4c908a2c9e2bae7f3",
-        "affectsGlobalScope": false
-      },
-      "../src/store/epic/loginepic.ts": {
-        "version": "616018553dfca23224cf0021c0d35272da78acbee05ea070d1b5fa943a0a013e",
-        "signature": "404026b659b183e6ee8fcf8d02b1f94b9a46e25ee5ad9bf4c908a2c9e2bae7f3",
-        "affectsGlobalScope": false
-      },
-      "../src/store/epic/notificationepic.ts": {
-        "version": "e28fa4a463dae27f6827c46289d14620f002377f2c2393d6248de4da5aae5c96",
-        "signature": "404026b659b183e6ee8fcf8d02b1f94b9a46e25ee5ad9bf4c908a2c9e2bae7f3",
+        "version": "e4c06821d09d042f9b0fba1b745e30ec87b2d477ea4b1b23a0e256553a89df74",
+        "signature": "62abb5b3945d0026e5f87b8dabfb96e29722f690f85e3f7a7e7bbedccb617fed",
         "affectsGlobalScope": false
       },
       "../src/store/epic/sessionepic.ts": {
-        "version": "1b709b3ef9ce4d99c563c8530d87712bb1c765d0fa1b9e018b4419ec528b3461",
-        "signature": "63c2ccbb703e2551724b3b67eeac99ff81b4f6317c9864f9aca8a43f5a6276a6",
+        "version": "0710f95b3d9b1f2b5c08b2bc81054461331b677a9e9041e080a099f247d7b462",
+        "signature": "b9513d0b8c93ca49c48e39e9b3d51c6d692aa55fade50275e84196fa98b16e43",
         "affectsGlobalScope": false
       },
       "../src/store/epic/systemepic.ts": {
-        "version": "7984f0e1983fa15cc7bcf0fe963b13c3c3e40be80f04f5e9fc5861ab23b8bfba",
-        "signature": "404026b659b183e6ee8fcf8d02b1f94b9a46e25ee5ad9bf4c908a2c9e2bae7f3",
+        "version": "264ae28558ef4d74b05919cbe49ed37bc252fa05f18af576699501e6200e98c7",
+        "signature": "da74cbb959c5a24a84daee426b4293d3bb974368d27d82fcd6737a28d13bbd21",
+        "affectsGlobalScope": false
+      },
+      "../src/store/epic/loginepic.ts": {
+        "version": "e4f3fa913b9d4abd051aa78f0a5db672dfb30786f8af2c16628210e30545ba7c",
+        "signature": "4544553ab0165db4fcd42a630cef51b8473cf1da0c06d3e92986532e3b8545f0",
+        "affectsGlobalScope": false
+      },
+      "../src/store/epic/notificationepic.ts": {
+        "version": "f7447259d11620eeb81e03c6563c26de49a4c0dce66d31ac1525e2a9e9713e65",
+        "signature": "62abb5b3945d0026e5f87b8dabfb96e29722f690f85e3f7a7e7bbedccb617fed",
         "affectsGlobalScope": false
       },
       "../src/store/epic/websocketepic.ts": {
-        "version": "ee391699e2302546f224049ea155c4078c221b8e3f066219f844ff0dc1d27994",
-        "signature": "6ec4dff0489ff9a0d71899ee2f36c25ab176a2845407b5ac1ddef946b518a0a6",
+        "version": "57c108f28c6e296248805d0c0e1d1ec32203c025efcd3c2315dc98df863a8cf0",
+        "signature": "9bdc98f1fdc4551f84e0053001dee6c25b866f802e94ae819cd7ccc99d78c44f",
+        "affectsGlobalScope": false
+      },
+      "../src/store/epic/languageepic.ts": {
+        "version": "49e6e0ab830fe4d42f321bf779f6099c6c7f7b4ff73c80dd6032ac56f2eed33a",
+        "signature": "62abb5b3945d0026e5f87b8dabfb96e29722f690f85e3f7a7e7bbedccb617fed",
+        "affectsGlobalScope": false
+      },
+      "../src/store/epic/hooks.ts": {
+        "version": "24e203f48b40a33054f7842745c2c3c49a6e739a1db4dac5c873b7e86c8d5315",
+        "signature": "4cc1bc7cc7a2191ae8de43089e1fa76e88b214f42caa81d54cea366387df6e5b",
         "affectsGlobalScope": false
       },
       "../src/store/epic/catcherror.ts": {
-        "version": "67ab3e8736818639cbeec71d47f6c82de4bdf59ff347d97997707a6c2de729bd",
+        "version": "068618670b40682c0682632b366520d0abe1b9eee52996f3aeab1eb80c38ae91",
         "signature": "6cd5756f423e1a32624c3e752636f088ed77c00806330e4e37e27a4da7a1d414",
         "affectsGlobalScope": false
       },
       "../src/store/epic/index.ts": {
-        "version": "386b178c6feb48c769111784d1ff675032cbfa6b1939d6a009ed96c8c4b4fa40",
-        "signature": "a0192e305b5707346dd13eac41c33e7786bdbc5095f5bc530c192181d0296e36",
+        "version": "d44a5ce54bd8edf946cdbc8a23b9ed6fff658b9d63848c6a8f8ac068e6ecfaee",
+        "signature": "020d8e428eb475e9e75a7cc2f2c5675598bfd29321431a75a6b461fd84e31bad",
         "affectsGlobalScope": false
       },
       "../src/utilities/filter.ts": {
@@ -2613,7 +2733,7 @@
       },
       "../src/utilities/sort.ts": {
         "version": "4c9e99472446c17c44715390cfff265daf7988a6acdf7078a7f26a26c56618ea",
-        "signature": "b37eddeac44eec79619609aa8ab39b009dd920b078a1d23eb72ec048e1793d2f",
+        "signature": "64b4b3e8218783915ad4fe5ed9b0cdf27be7a53012c5906091e2502c4709b03a",
         "affectsGlobalScope": false
       },
       "../src/utilities/index.ts": {
@@ -2684,16 +2804,6 @@
       "../node_modules/@types/prettier/index.d.ts": {
         "version": "ad54f8e1b76fd15833256be9a4fe1af3a569ed1d561d55c57d57fe84c518d0b0",
         "signature": "ad54f8e1b76fd15833256be9a4fe1af3a569ed1d561d55c57d57fe84c518d0b0",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/react-addons-transition-group/index.d.ts": {
-        "version": "fd9006a671f47d0f411c6202801d625bbc5cbd665c2e3a9bbb5ab3457a577ff2",
-        "signature": "fd9006a671f47d0f411c6202801d625bbc5cbd665c2e3a9bbb5ab3457a577ff2",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/react-addons-css-transition-group/index.d.ts": {
-        "version": "e5f3b063289bb6805c2901125b183ee505b6953c6e058406d2f9c59645a3d41a",
-        "signature": "e5f3b063289bb6805c2901125b183ee505b6953c6e058406d2f9c59645a3d41a",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react-infinite/index.d.ts": {
@@ -6242,15 +6352,12 @@
       "../src/component/app/app.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-intl/index.d.ts",
         "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/redux/index.d.ts",
-        "../src/component/app/initialized.tsx",
-        "../src/component/websocket/websocketconnection.tsx",
-        "../src/store/action/appaction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/component/app/loader.tsx",
+        "../src/component/websocket/websocketconnection.tsx"
       ],
       "../src/component/app/initialized.tsx": [
         "../node_modules/@types/node/base.d.ts",
@@ -6260,17 +6367,33 @@
         "../node_modules/@types/react-router-dom/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
-        "../node_modules/react-md/lib/progress/circularprogress.d.ts",
-        "../node_modules/redux/index.d.ts",
         "../src/store/reducer/global.ts"
       ],
-      "../src/component/content/content.tsx": [
+      "../src/component/app/loader.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/react-md/lib/progress/circularprogress.d.ts",
+        "../src/component/app/initialized.tsx",
+        "../src/component/app/useloader.tsx",
         "../src/store/reducer/global.ts"
+      ],
+      "../src/component/app/useloader.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react-intl/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/store/action/useactions.ts"
+      ],
+      "../src/component/content/content.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/types/redux.ts"
       ],
       "../src/component/datepicker/index.tsx": [
         "../node_modules/@types/node/base.d.ts",
@@ -6321,79 +6444,67 @@
       "../src/component/header/backendindicator.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
+        "../node_modules/@types/react-intl/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/tooltips/tooltipped.d.ts",
-        "../node_modules/redux/index.d.ts",
-        "../src/component/international/index.tsx",
-        "../src/store/reducer/global.ts"
+        "../src/types/redux.ts"
       ],
       "../src/component/international/index.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react-intl/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts",
-        "../node_modules/intl-messageformat/lib/intl-messageformat.d.ts",
-        "../src/utilities/format/translations/index.ts"
+        "../node_modules/date-fns/typings.d.ts"
       ],
       "../src/component/juwelofonticon/index.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts",
-        "../src/store/reducer/global.ts"
+        "../node_modules/date-fns/typings.d.ts"
       ],
       "../src/component/login/loginbutton.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/buttons/button.d.ts",
         "../node_modules/react-md/lib/progress/circularprogress.d.ts",
         "../src/component/international/index.tsx",
-        "../src/store/action/loginaction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/store/action/useactions.ts",
+        "../src/types/redux.ts"
       ],
       "../src/component/login/logincredentials.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/textfields/textfield.d.ts",
         "../src/component/international/index.tsx",
-        "../src/store/action/loginaction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/store/action/useactions.ts",
+        "../src/types/redux.ts"
       ],
       "../src/component/login/logindialog.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/dialogs/index.d.ts",
         "../src/component/login/loginbutton.tsx",
         "../src/component/login/logincredentials.tsx",
-        "../src/store/action/loginaction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/types/redux.ts"
       ],
       "../src/component/logout/logoutdialog.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/buttons/button.d.ts",
         "../node_modules/react-md/lib/dialogs/index.d.ts",
         "../node_modules/react-md/lib/progress/circularprogress.d.ts",
-        "../node_modules/redux/index.d.ts",
         "../src/component/international/index.tsx",
-        "../src/store/action/logoutaction.ts",
-        "../src/store/action/sessionaction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/store/action/useactions.ts",
+        "../src/types/redux.ts"
       ],
       "../src/component/logout/logoutnavigationitem.tsx": [
         "../node_modules/@types/node/base.d.ts",
@@ -6409,12 +6520,11 @@
       "../src/component/misc/versionnavigationitem.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../src/component/international/index.tsx",
         "../src/component/navigation/navigationitem.tsx",
-        "../src/store/reducer/global.ts"
+        "../src/types/redux.ts"
       ],
       "../src/component/modal/modaldialog.tsx": [
         "../node_modules/@types/node/base.d.ts",
@@ -6428,63 +6538,230 @@
       "../src/component/navigation/navigationbutton.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/buttons/button.d.ts",
-        "../src/store/action/navigationaction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/store/action/useactions.ts",
+        "../src/types/redux.ts"
       ],
       "../src/component/navigation/navigationdrawer.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react-router-dom/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/drawers/index.d.ts",
         "../src/component/navigation/navigationdrawerheader.tsx",
-        "../src/store/action/navigationaction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/store/action/useactions.ts",
+        "../src/types/redux.ts"
       ],
       "../src/component/navigation/navigationdrawerheader.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/toolbars/index.d.ts",
         "../src/component/navigation/navigationbutton.tsx",
-        "../src/store/reducer/global.ts"
+        "../src/types/redux.ts"
       ],
       "../src/component/navigation/navigationitem.tsx": [
-        "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/lodash/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react-router-dom/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/fonticons/index.d.ts",
         "../node_modules/react-md/lib/lists/listitem.d.ts",
-        "../node_modules/redux/index.d.ts",
         "../src/component/international/index.tsx",
-        "../src/store/action/navigationaction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/store/action/useactions.ts",
+        "../src/types/redux.ts"
       ],
-      "../src/component/notification/dismissallnotificationsbutton.tsx": [
+      "../src/component/notification/notificationbadge.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/index.d.ts",
-        "../src/store/action/notificationaction.ts",
-        "../src/store/reducer/global.ts",
+        "../src/store/action/useactions.ts",
+        "../src/types/notification.ts",
+        "../src/types/redux.ts"
+      ],
+      "../src/component/notification/notificationcard/_notificationcard.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/react-md/lib/cards/card.d.ts",
+        "../src/component/notification/notificationcard/actions.tsx",
+        "../src/component/notification/notificationcard/getcontent.tsx",
+        "../src/component/notification/notificationcard/icon.tsx",
+        "../src/component/notification/notificationcard/index.tsx",
+        "../src/component/notification/notificationcard/timestamp.tsx",
+        "../src/component/notification/notificationcard/useclassname.ts",
         "../src/types/notification.ts"
       ],
-      "../src/component/notification/nonotifications.tsx": [
+      "../src/component/notification/notificationcard/actions.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react-intl/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/component/notification/notificationcard/customactionbutton.tsx",
+        "../src/component/notification/notificationcard/dismissbutton.tsx",
+        "../src/component/notification/notificationcard/hidebutton.tsx",
+        "../src/component/notification/notificationcard/index.tsx",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/customactionbutton.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/react-md/lib/buttons/button.d.ts",
+        "../src/component/notification/notificationcard/index.tsx",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/dismissbutton.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/react-md/lib/buttons/button.d.ts",
+        "../src/component/notification/notificationcard/index.tsx",
+        "../src/store/action/useactions.ts",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/getcontent.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/react-md/lib/cards/cardtext.d.ts",
+        "../src/component/snackbar/errorcontent.tsx",
+        "../src/component/snackbar/timetoread.ts",
+        "../src/types/notification.ts",
+        "../src/utilities/format/index.ts"
+      ],
+      "../src/component/notification/notificationcard/getplaintext.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/component/notification/notificationcard/getcontent.tsx",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/hidebutton.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/react-md/lib/buttons/button.d.ts",
+        "../src/component/notification/notificationcard/index.tsx",
+        "../src/store/action/useactions.ts",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/icon.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/react-md/lib/fonticons/fonticon.d.ts",
+        "../src/component/snackbar/timetoread.ts",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/index.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/component/notification/notificationcard/_notificationcard.tsx",
+        "../src/component/notification/notificationcard/getcontent.tsx",
+        "../src/component/notification/notificationcard/getplaintext.ts",
+        "../src/component/notification/notificationcard/timetoread.ts",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/timestamp.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/component/snackbar/timetoread.ts",
+        "../src/types/notification.ts",
+        "../src/utilities/format/index.ts"
+      ],
+      "../src/component/notification/notificationcard/timetoread.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/component/notification/notificationcard/getcontent.tsx",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/useclassname.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationdrawer.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react-addons-css-transition-group/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/react-md/lib/drawers/index.d.ts",
+        "../src/component/notification/notificationdrawertoolbar/index.tsx",
+        "../src/component/notification/notificationsfragment/index.tsx",
+        "../src/component/notification/usenotificationdrawerclassnames.tsx",
+        "../src/store/action/useactions.ts",
+        "../src/types/redux.ts"
+      ],
+      "../src/component/notification/notificationdrawertoolbar/dismissallnotificationsbutton.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/react-md/index.d.ts",
+        "../src/store/action/useactions.ts",
+        "../src/types/notification.ts",
+        "../src/types/redux.ts"
+      ],
+      "../src/component/notification/notificationdrawertoolbar/hidenotificationdrawerbutton.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/react-md/lib/buttons/button.d.ts",
+        "../src/store/action/useactions.ts"
+      ],
+      "../src/component/notification/notificationdrawertoolbar/index.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/react-md/lib/toolbars/index.d.ts",
+        "../src/component/notification/notificationdrawertoolbar/dismissallnotificationsbutton.tsx",
+        "../src/component/notification/notificationdrawertoolbar/hidenotificationdrawerbutton.tsx",
+        "../src/component/notification/notificationdrawertoolbar/splitviewbutton.tsx"
+      ],
+      "../src/component/notification/notificationdrawertoolbar/splitviewbutton.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/react-md/index.d.ts",
+        "../src/store/action/useactions.ts",
+        "../src/types/redux.ts"
+      ],
+      "../src/component/notification/notificationsfragment/index.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/component/notification/notificationcard/index.tsx",
+        "../src/component/notification/notificationsfragment/nonotifications.tsx",
+        "../src/types/notification.ts",
+        "../src/types/redux.ts"
+      ],
+      "../src/component/notification/notificationsfragment/nonotifications.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
@@ -6493,69 +6770,21 @@
         "../node_modules/react-md/lib/papers/index.d.ts",
         "../src/component/international/index.tsx"
       ],
-      "../src/component/notification/notificationbadge.tsx": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts",
-        "../node_modules/react-md/index.d.ts",
-        "../src/store/action/notificationaction.ts",
-        "../src/store/reducer/global.ts",
-        "../src/types/notification.ts"
-      ],
-      "../src/component/notification/notificationcard.tsx": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts",
-        "../node_modules/react-md/index.d.ts",
-        "../node_modules/react-md/lib/cards/card.d.ts",
-        "../node_modules/react-md/lib/fonticons/fonticon.d.ts",
-        "../src/component/snackbar/errorcontent.tsx",
-        "../src/component/snackbar/timetoread.ts",
-        "../src/store/action/notificationaction.ts",
-        "../src/store/reducer/global.ts",
-        "../src/types/notification.ts",
-        "../src/utilities/format/index.ts"
-      ],
-      "../src/component/notification/notificationdrawer.tsx": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts",
-        "../node_modules/react-md/index.d.ts",
-        "../node_modules/react-md/lib/drawers/index.d.ts",
-        "../node_modules/react-md/lib/toolbars/index.d.ts",
-        "../src/component/notification/dismissallnotificationsbutton.tsx",
-        "../src/component/notification/nonotifications.tsx",
-        "../src/component/notification/notificationcard.tsx",
-        "../src/component/notification/splitviewbutton.tsx",
-        "../src/store/action/notificationaction.ts",
-        "../src/store/reducer/global.ts",
-        "../src/types/notification.ts"
-      ],
       "../src/component/notification/onscreennotifications.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
+        "../node_modules/@types/react-addons-css-transition-group/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
-        "../src/component/notification/notificationcard.tsx",
-        "../src/store/reducer/global.ts",
-        "../src/types/notification.ts"
+        "../src/component/notification/notificationcard/index.tsx",
+        "../src/types/notification.ts",
+        "../src/types/redux.ts"
       ],
-      "../src/component/notification/splitviewbutton.tsx": [
+      "../src/component/notification/usenotificationdrawerclassnames.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
-        "../node_modules/react-md/index.d.ts",
-        "../src/store/action/notificationaction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/types/redux.ts"
       ],
       "../src/component/popover/computeoffset.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -6598,32 +6827,28 @@
       "../src/component/route/authroute.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/progress/circularprogress.d.ts",
         "../src/component/route/baseroute.tsx",
-        "../src/store/action/routeraction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/store/action/useactions.ts",
+        "../src/types/redux.ts"
       ],
       "../src/component/route/baseroute.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react-intl/index.d.ts",
         "../node_modules/@types/react-router-dom/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts",
-        "../src/component/international/index.tsx"
+        "../node_modules/date-fns/typings.d.ts"
       ],
       "../src/component/route/noauthroute.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
-        "../node_modules/redux/index.d.ts",
         "../src/component/route/baseroute.tsx",
-        "../src/store/action/routeraction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/store/action/useactions.ts"
       ],
       "../src/component/search/searchcomponent.tsx": [
         "../node_modules/@types/node/base.d.ts",
@@ -6710,16 +6935,15 @@
       "../src/component/snackbar/snackbar.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/immutable/dist/immutable-nonambient.d.ts",
         "../node_modules/react-md/lib/snackbars/index.d.ts",
         "../src/component/international/index.tsx",
         "../src/component/snackbar/snackbarcontent.tsx",
-        "../src/store/action/toastaction.ts",
+        "../src/store/action/useactions.ts",
         "../src/store/reducer/core/toastreducer.ts",
-        "../src/store/reducer/global.ts"
+        "../src/types/redux.ts"
       ],
       "../src/component/snackbar/snackbarcontent.tsx": [
         "../node_modules/@types/node/base.d.ts",
@@ -6739,14 +6963,14 @@
       "../src/component/websocket/websocketconnection.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../src/base/wsclient.ts",
+        "../src/store/action/useactions.ts",
         "../src/store/action/websocketaction.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
-        "../src/store/reducer/global.ts",
-        "../src/types/configuration.ts"
+        "../src/types/configuration.ts",
+        "../src/types/redux.ts"
       ],
       "../src/component/websocket/websocketstatus.tsx": [
         "../node_modules/@types/node/base.d.ts",
@@ -6818,6 +7042,25 @@
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/types/configuration.ts"
       ],
+      "../src/store/action/index.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/store/action/appaction.ts",
+        "../src/store/action/configaction.ts",
+        "../src/store/action/languageaction.ts",
+        "../src/store/action/loginaction.ts",
+        "../src/store/action/logoutaction.ts",
+        "../src/store/action/navigationaction.ts",
+        "../src/store/action/notificationaction.ts",
+        "../src/store/action/routeraction.ts",
+        "../src/store/action/sessionaction.ts",
+        "../src/store/action/settingsaction.ts",
+        "../src/store/action/splitviewaction.ts",
+        "../src/store/action/systemaction.ts",
+        "../src/store/action/toastaction.ts",
+        "../src/store/action/websocketaction.ts"
+      ],
       "../src/store/action/languageaction.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
@@ -6887,6 +7130,13 @@
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/store/reducer/core/toastreducer.ts"
       ],
+      "../src/store/action/useactions.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react-redux/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/store/action/index.ts"
+      ],
       "../src/store/action/websocketaction.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
@@ -6904,8 +7154,8 @@
         "../node_modules/rxjs/operators/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/jsc/client.ts",
-        "../src/store/action/appaction.ts",
-        "../src/store/action/configaction.ts"
+        "../src/store/action/index.ts",
+        "../src/types/redux.ts"
       ],
       "../src/store/epic/catcherror.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -6925,10 +7175,11 @@
         "../node_modules/rxjs/operators/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/jsc/client.ts",
-        "../src/store/action/configaction.ts",
-        "../src/types/configuration.ts"
+        "../src/store/action/index.ts",
+        "../src/types/configuration.ts",
+        "../src/types/redux.ts"
       ],
-      "../src/store/epic/index.ts": [
+      "../src/store/epic/hooks.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
@@ -6941,7 +7192,14 @@
         "../src/store/epic/notificationepic.ts",
         "../src/store/epic/sessionepic.ts",
         "../src/store/epic/systemepic.ts",
-        "../src/store/epic/websocketepic.ts"
+        "../src/store/epic/websocketepic.ts",
+        "../src/types/redux.ts"
+      ],
+      "../src/store/epic/index.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/store/epic/hooks.ts"
       ],
       "../src/store/epic/languageepic.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -6952,10 +7210,8 @@
         "../node_modules/rxjs/index.d.ts",
         "../node_modules/rxjs/operators/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
-        "../src/store/action/configaction.ts",
-        "../src/store/action/languageaction.ts",
-        "../src/store/action/sessionaction.ts",
-        "../src/store/reducer/core/index.ts",
+        "../src/store/action/index.ts",
+        "../src/types/redux.ts",
         "../src/utilities/format/index.ts"
       ],
       "../src/store/epic/loginepic.ts": [
@@ -6968,10 +7224,8 @@
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/base/session.ts",
         "../src/jsc/api/index.ts",
-        "../src/store/action/loginaction.ts",
-        "../src/store/action/sessionaction.ts",
-        "../src/store/action/toastaction.ts",
-        "../src/store/reducer/core/index.ts"
+        "../src/store/action/index.ts",
+        "../src/types/redux.ts"
       ],
       "../src/store/epic/notificationepic.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -6981,11 +7235,9 @@
         "../node_modules/rxjs/index.d.ts",
         "../node_modules/rxjs/operators/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
-        "../src/component/notification/notificationcard.tsx",
-        "../src/store/action/notificationaction.ts",
-        "../src/store/action/splitviewaction.ts",
-        "../src/store/reducer/global.ts",
-        "../src/types/notification.ts"
+        "../src/component/notification/notificationcard/index.tsx",
+        "../src/store/action/index.ts",
+        "../src/types/redux.ts"
       ],
       "../src/store/epic/sessionepic.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -6998,12 +7250,8 @@
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/base/session.ts",
         "../src/jsc/api/index.ts",
-        "../src/store/action/appaction.ts",
-        "../src/store/action/loginaction.ts",
-        "../src/store/action/logoutaction.ts",
-        "../src/store/action/sessionaction.ts",
-        "../src/store/action/toastaction.ts",
-        "../src/store/reducer/core/index.ts"
+        "../src/store/action/index.ts",
+        "../src/types/redux.ts"
       ],
       "../src/store/epic/systemepic.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -7015,7 +7263,8 @@
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/jsc/api/index.ts",
         "../src/store/action/configaction.ts",
-        "../src/store/action/systemaction.ts"
+        "../src/store/action/systemaction.ts",
+        "../src/types/redux.ts"
       ],
       "../src/store/epic/websocketepic.ts": [
         "../node_modules/@types/lodash/index.d.ts",
@@ -7031,11 +7280,19 @@
         "../src/store/action/sessionaction.ts",
         "../src/store/action/websocketaction.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
-        "../src/store/reducer/global.ts",
         "../src/store/selectors/websocketselectors.ts",
-        "../src/types/notification.ts"
+        "../src/types/notification.ts",
+        "../src/types/redux.ts"
       ],
       "../src/store/index.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/redux/index.d.ts",
+        "../src/store/middleware.ts",
+        "../src/types/redux.ts"
+      ],
+      "../src/store/middleware.ts": [
         "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
@@ -7043,7 +7300,8 @@
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/redux-devtools-extension/index.d.ts",
         "../node_modules/redux-observable/index.d.ts",
-        "../node_modules/redux/index.d.ts"
+        "../node_modules/redux/index.d.ts",
+        "../src/types/redux.ts"
       ],
       "../src/store/reducer/core/appreducer.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -7120,7 +7378,7 @@
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
-        "../src/component/notification/notificationcard.tsx",
+        "../src/component/notification/notificationcard/index.tsx",
         "../src/constant/notification.ts",
         "../src/store/action/notificationaction.ts",
         "../src/types/notification.ts"
@@ -7208,7 +7466,17 @@
         "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/intl-messageformat/lib/intl-messageformat.d.ts",
-        "../src/component/notification/notificationcard.tsx"
+        "../src/component/notification/notificationcard/index.tsx"
+      ],
+      "../src/types/redux.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/react-redux/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/redux-observable/index.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/store/action/index.ts",
+        "../src/store/reducer/global.ts"
       ],
       "../src/utilities/filter.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -10628,16 +10896,16 @@
         "../src/store/reducer/global.ts"
       ],
       "../src/component/app/app.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/appaction.ts"
+        "../node_modules/redux/index.d.ts"
       ],
       "../src/component/app/initialized.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../src/component/app/loader.tsx": [
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/content/content.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/datepicker/index.tsx": [
@@ -10656,36 +10924,27 @@
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/header/backendindicator.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
+        "../node_modules/@types/react-intl/index.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/international/index.tsx": [
-        "../node_modules/@types/react/index.d.ts",
-        "../node_modules/intl-messageformat/lib/intl-messageformat.d.ts"
+        "../node_modules/@types/react-intl/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/juwelofonticon/index.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/login/loginbutton.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/loginaction.ts"
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/login/logincredentials.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/loginaction.ts"
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/login/logindialog.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/logout/logoutdialog.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/logoutaction.ts",
-        "../src/store/action/sessionaction.ts"
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/logout/logoutnavigationitem.tsx": [
         "../node_modules/@types/react-redux/index.d.ts",
@@ -10693,68 +10952,103 @@
         "../src/store/action/logoutaction.ts"
       ],
       "../src/component/misc/versionnavigationitem.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/modal/modaldialog.tsx": [
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/navigation/navigationbutton.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/navigationaction.ts"
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/navigation/navigationdrawer.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react-router-dom/index.d.ts",
-        "../node_modules/@types/react-router/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../node_modules/react-md/lib/drawers/index.d.ts",
-        "../src/store/action/navigationaction.ts"
+        "../node_modules/react-md/lib/drawers/index.d.ts"
       ],
       "../src/component/navigation/navigationdrawerheader.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/navigation/navigationitem.tsx": [
-        "../node_modules/@types/history/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/navigationaction.ts"
-      ],
-      "../src/component/notification/dismissallnotificationsbutton.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/notificationaction.ts",
-        "../src/types/notification.ts"
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/notification/notificationbadge.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../src/component/notification/notificationcard/_notificationcard.tsx": [
         "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/notificationaction.ts",
+        "../src/component/notification/notificationcard/index.tsx",
         "../src/types/notification.ts"
       ],
-      "../src/component/notification/notificationcard.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
+      "../src/component/notification/notificationcard/actions.tsx": [
+        "../node_modules/@types/react-intl/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/notificationaction.ts",
+        "../src/component/notification/notificationcard/index.tsx",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/customactionbutton.tsx": [
+        "../node_modules/@types/react/index.d.ts",
+        "../src/component/notification/notificationcard/index.tsx",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/dismissbutton.tsx": [
+        "../node_modules/@types/react/index.d.ts",
+        "../src/component/notification/notificationcard/index.tsx",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/getcontent.tsx": [
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/getplaintext.ts": [
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/hidebutton.tsx": [
+        "../node_modules/@types/react/index.d.ts",
+        "../src/component/notification/notificationcard/index.tsx",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/icon.tsx": [
+        "../node_modules/@types/react/index.d.ts",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/index.tsx": [
+        "../node_modules/@types/react/index.d.ts",
+        "../src/component/notification/notificationcard/getcontent.tsx",
+        "../src/component/notification/notificationcard/getplaintext.ts",
+        "../src/component/notification/notificationcard/timetoread.ts",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/timestamp.tsx": [
+        "../node_modules/@types/react/index.d.ts",
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/timetoread.ts": [
+        "../src/types/notification.ts"
+      ],
+      "../src/component/notification/notificationcard/useclassname.ts": [
         "../src/types/notification.ts"
       ],
       "../src/component/notification/notificationdrawer.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/notificationaction.ts",
-        "../src/types/notification.ts"
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../src/component/notification/notificationdrawertoolbar/dismissallnotificationsbutton.tsx": [
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../src/component/notification/notificationdrawertoolbar/hidenotificationdrawerbutton.tsx": [
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../src/component/notification/notificationdrawertoolbar/index.tsx": [
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../src/component/notification/notificationdrawertoolbar/splitviewbutton.tsx": [
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../src/component/notification/notificationsfragment/index.tsx": [
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../src/component/notification/notificationsfragment/nonotifications.tsx": [
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/notification/onscreennotifications.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/types/notification.ts"
-      ],
-      "../src/component/notification/splitviewbutton.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/notificationaction.ts"
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/popover/index.tsx": [
         "../node_modules/@types/react/index.d.ts",
@@ -10769,20 +11063,17 @@
         "../node_modules/react-md/index.d.ts"
       ],
       "../src/component/route/authroute.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../src/component/route/baseroute.tsx",
-        "../src/store/action/routeraction.ts"
+        "../src/component/route/baseroute.tsx"
       ],
       "../src/component/route/baseroute.tsx": [
+        "../node_modules/@types/react-intl/index.d.ts",
         "../node_modules/@types/react-router-dom/index.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/route/noauthroute.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../src/component/route/baseroute.tsx",
-        "../src/store/action/routeraction.ts"
+        "../src/component/route/baseroute.tsx"
       ],
       "../src/component/search/searchcomponent.tsx": [
         "../node_modules/@types/react-redux/index.d.ts",
@@ -10818,17 +11109,12 @@
         "../node_modules/axios/index.d.ts"
       ],
       "../src/component/snackbar/snackbar.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../node_modules/immutable/dist/immutable-nonambient.d.ts",
-        "../src/store/action/toastaction.ts",
-        "../src/store/reducer/core/toastreducer.ts"
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/snackbar/snackbarcontent.tsx": [
         "../src/store/reducer/core/toastreducer.ts"
       ],
       "../src/component/websocket/websocketconnection.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../src/store/action/websocketaction.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
@@ -10858,6 +11144,22 @@
       "../src/store/action/configaction.ts": [
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/types/configuration.ts"
+      ],
+      "../src/store/action/index.ts": [
+        "../src/store/action/appaction.ts",
+        "../src/store/action/configaction.ts",
+        "../src/store/action/languageaction.ts",
+        "../src/store/action/loginaction.ts",
+        "../src/store/action/logoutaction.ts",
+        "../src/store/action/navigationaction.ts",
+        "../src/store/action/notificationaction.ts",
+        "../src/store/action/routeraction.ts",
+        "../src/store/action/sessionaction.ts",
+        "../src/store/action/settingsaction.ts",
+        "../src/store/action/splitviewaction.ts",
+        "../src/store/action/systemaction.ts",
+        "../src/store/action/toastaction.ts",
+        "../src/store/action/websocketaction.ts"
       ],
       "../src/store/action/languageaction.ts": [
         "../node_modules/typesafe-actions/dist/index.d.ts"
@@ -10895,46 +11197,132 @@
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/store/reducer/core/toastreducer.ts"
       ],
+      "../src/store/action/useactions.ts": [
+        "../src/store/action/index.ts"
+      ],
       "../src/store/action/websocketaction.ts": [
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/jsc/api/index.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts"
       ],
       "../src/store/epic/appepic.ts": [
-        "../node_modules/redux-observable/index.d.ts"
+        "../node_modules/redux-observable/index.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/jsc/api/index.ts",
+        "../src/store/action/index.ts",
+        "../src/store/reducer/core/toastreducer.ts",
+        "../src/store/reducer/core/websocketconnectionreducer.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/notification.ts"
       ],
       "../src/store/epic/catcherror.ts": [
         "../node_modules/rxjs/index.d.ts"
       ],
       "../src/store/epic/configepic.ts": [
-        "../node_modules/redux-observable/index.d.ts"
+        "../node_modules/redux-observable/index.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/jsc/api/index.ts",
+        "../src/store/action/index.ts",
+        "../src/store/reducer/core/toastreducer.ts",
+        "../src/store/reducer/core/websocketconnectionreducer.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/notification.ts"
+      ],
+      "../src/store/epic/hooks.ts": [
+        "../node_modules/redux-observable/index.d.ts",
+        "../node_modules/rxjs/index.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/jsc/api/index.ts",
+        "../src/store/action/index.ts",
+        "../src/store/reducer/core/toastreducer.ts",
+        "../src/store/reducer/core/websocketconnectionreducer.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/notification.ts",
+        "../src/types/redux.ts"
       ],
       "../src/store/epic/index.ts": [
         "../node_modules/redux-observable/index.d.ts",
-        "../node_modules/rxjs/index.d.ts"
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/jsc/api/index.ts",
+        "../src/store/action/index.ts",
+        "../src/store/epic/hooks.ts",
+        "../src/store/reducer/core/toastreducer.ts",
+        "../src/store/reducer/core/websocketconnectionreducer.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/notification.ts"
       ],
       "../src/store/epic/languageepic.ts": [
-        "../node_modules/redux-observable/index.d.ts"
+        "../node_modules/redux-observable/index.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/jsc/api/index.ts",
+        "../src/store/action/index.ts",
+        "../src/store/reducer/core/toastreducer.ts",
+        "../src/store/reducer/core/websocketconnectionreducer.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/notification.ts"
       ],
       "../src/store/epic/loginepic.ts": [
-        "../node_modules/redux-observable/index.d.ts"
+        "../node_modules/redux-observable/index.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/jsc/api/index.ts",
+        "../src/store/action/index.ts",
+        "../src/store/reducer/core/toastreducer.ts",
+        "../src/store/reducer/core/websocketconnectionreducer.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/notification.ts"
       ],
       "../src/store/epic/notificationepic.ts": [
-        "../node_modules/redux-observable/index.d.ts"
+        "../node_modules/redux-observable/index.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/jsc/api/index.ts",
+        "../src/store/action/index.ts",
+        "../src/store/reducer/core/toastreducer.ts",
+        "../src/store/reducer/core/websocketconnectionreducer.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/notification.ts"
       ],
       "../src/store/epic/sessionepic.ts": [
         "../node_modules/redux-observable/index.d.ts",
-        "../src/store/reducer/core/index.ts"
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/jsc/api/index.ts",
+        "../src/store/action/index.ts",
+        "../src/store/reducer/core/toastreducer.ts",
+        "../src/store/reducer/core/websocketconnectionreducer.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/notification.ts"
       ],
       "../src/store/epic/systemepic.ts": [
-        "../node_modules/redux-observable/index.d.ts"
+        "../node_modules/redux-observable/index.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/jsc/api/index.ts",
+        "../src/store/action/configaction.ts",
+        "../src/store/action/index.ts",
+        "../src/store/action/systemaction.ts",
+        "../src/store/reducer/core/toastreducer.ts",
+        "../src/store/reducer/core/websocketconnectionreducer.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/notification.ts"
       ],
       "../src/store/epic/websocketepic.ts": [
-        "../node_modules/redux-observable/index.d.ts"
+        "../node_modules/redux-observable/index.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/jsc/api/index.ts",
+        "../src/store/action/index.ts",
+        "../src/store/action/sessionaction.ts",
+        "../src/store/reducer/core/toastreducer.ts",
+        "../src/store/reducer/core/websocketconnectionreducer.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/notification.ts",
+        "../src/types/redux.ts"
       ],
       "../src/store/index.ts": [
+        "../node_modules/redux/index.d.ts",
+        "../src/types/redux.ts"
+      ],
+      "../src/store/middleware.ts": [
         "../node_modules/@types/history/index.d.ts",
-        "../node_modules/redux/index.d.ts"
+        "../node_modules/redux/index.d.ts",
+        "../src/types/redux.ts"
       ],
       "../src/store/reducer/core/appreducer.ts": [
         "../node_modules/typesafe-actions/dist/index.d.ts"
@@ -11015,6 +11403,12 @@
         "../node_modules/axios/index.d.ts",
         "../node_modules/intl-messageformat/lib/intl-messageformat.d.ts",
         "../src/component/notification/notificationcard.tsx"
+      ],
+      "../src/types/redux.ts": [
+        "../node_modules/redux-observable/index.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/store/action/index.ts",
+        "../src/store/reducer/global.ts"
       ],
       "../src/utilities/format/index.ts": [
         "../src/utilities/format/currency.ts",
@@ -11488,6 +11882,8 @@
       "../src/base/wsclient.ts",
       "../src/component/app/app.tsx",
       "../src/component/app/initialized.tsx",
+      "../src/component/app/loader.tsx",
+      "../src/component/app/useloader.tsx",
       "../src/component/content/content.tsx",
       "../src/component/datepicker/index.tsx",
       "../src/component/datepicker/setup.ts",
@@ -11508,13 +11904,28 @@
       "../src/component/navigation/navigationdrawer.tsx",
       "../src/component/navigation/navigationdrawerheader.tsx",
       "../src/component/navigation/navigationitem.tsx",
-      "../src/component/notification/dismissallnotificationsbutton.tsx",
-      "../src/component/notification/nonotifications.tsx",
       "../src/component/notification/notificationbadge.tsx",
-      "../src/component/notification/notificationcard.tsx",
+      "../src/component/notification/notificationcard/_notificationcard.tsx",
+      "../src/component/notification/notificationcard/actions.tsx",
+      "../src/component/notification/notificationcard/customactionbutton.tsx",
+      "../src/component/notification/notificationcard/dismissbutton.tsx",
+      "../src/component/notification/notificationcard/getcontent.tsx",
+      "../src/component/notification/notificationcard/getplaintext.ts",
+      "../src/component/notification/notificationcard/hidebutton.tsx",
+      "../src/component/notification/notificationcard/icon.tsx",
+      "../src/component/notification/notificationcard/index.tsx",
+      "../src/component/notification/notificationcard/timestamp.tsx",
+      "../src/component/notification/notificationcard/timetoread.ts",
+      "../src/component/notification/notificationcard/useclassname.ts",
       "../src/component/notification/notificationdrawer.tsx",
+      "../src/component/notification/notificationdrawertoolbar/dismissallnotificationsbutton.tsx",
+      "../src/component/notification/notificationdrawertoolbar/hidenotificationdrawerbutton.tsx",
+      "../src/component/notification/notificationdrawertoolbar/index.tsx",
+      "../src/component/notification/notificationdrawertoolbar/splitviewbutton.tsx",
+      "../src/component/notification/notificationsfragment/index.tsx",
+      "../src/component/notification/notificationsfragment/nonotifications.tsx",
       "../src/component/notification/onscreennotifications.tsx",
-      "../src/component/notification/splitviewbutton.tsx",
+      "../src/component/notification/usenotificationdrawerclassnames.tsx",
       "../src/component/popover/computeoffset.ts",
       "../src/component/popover/index.tsx",
       "../src/component/popover/speaker.tsx",
@@ -11544,6 +11955,7 @@
       "../src/shared/index.ts",
       "../src/store/action/appaction.ts",
       "../src/store/action/configaction.ts",
+      "../src/store/action/index.ts",
       "../src/store/action/languageaction.ts",
       "../src/store/action/loginaction.ts",
       "../src/store/action/logoutaction.ts",
@@ -11555,10 +11967,12 @@
       "../src/store/action/splitviewaction.ts",
       "../src/store/action/systemaction.ts",
       "../src/store/action/toastaction.ts",
+      "../src/store/action/useactions.ts",
       "../src/store/action/websocketaction.ts",
       "../src/store/epic/appepic.ts",
       "../src/store/epic/catcherror.ts",
       "../src/store/epic/configepic.ts",
+      "../src/store/epic/hooks.ts",
       "../src/store/epic/index.ts",
       "../src/store/epic/languageepic.ts",
       "../src/store/epic/loginepic.ts",
@@ -11567,6 +11981,7 @@
       "../src/store/epic/systemepic.ts",
       "../src/store/epic/websocketepic.ts",
       "../src/store/index.ts",
+      "../src/store/middleware.ts",
       "../src/store/reducer/core/appreducer.ts",
       "../src/store/reducer/core/configreducer.ts",
       "../src/store/reducer/core/index.ts",
@@ -11587,6 +12002,7 @@
       "../src/types/configuration.ts",
       "../src/types/language.ts",
       "../src/types/notification.ts",
+      "../src/types/redux.ts",
       "../src/utilities/filter.ts",
       "../src/utilities/format/currency.ts",
       "../src/utilities/format/index.ts",

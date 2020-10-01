@@ -13,4 +13,4 @@ export default errorHandler => catchError(error =>
     ),
     errorHandler(error)
   )
-)
+);

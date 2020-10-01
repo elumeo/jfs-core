@@ -1,46 +1,32 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import BaseRoute, { IBaseRouteProps } from './BaseRoute';
-import { enterAuthorizedRoute } from '../../Store/Action/RouterAction';
-import Global from '../../Store/Reducer/Global';
+import useActions from 'Action/useActions';
+import { useSelector } from 'Types/Redux';
 
-export interface IAuthRouteProps extends IBaseRouteProps {
-  isAuthorized?: boolean;
-  isCheckingSession?: boolean;
-  enterAuthorizedRoute?: typeof enterAuthorizedRoute;
-}
-
-const AuthRoute: React.FC<IAuthRouteProps> = ({
-  isAuthorized,
-  isCheckingSession,
-  enterAuthorizedRoute,
-  ...rest
-}) => {
+const AuthRoute: React.FC<IBaseRouteProps> = props => {
+  const { enterAuthorizedRoute } = useActions();
+  const { isAuthorized, isCheckingSession } = useSelector<{
+    isAuthorized: boolean;
+    isCheckingSession: boolean;
+  }>(state => ({
+    isAuthorized: state.Core.Session.isAuthorized,
+    isCheckingSession: state.Core.Session.isCheckingSession
+  }));
   useEffect(
     () => {
       enterAuthorizedRoute()
-    }
+    },
+    [props.path]
   );
 
   return (
     isAuthorized
-      ? <BaseRoute {...rest}/>
+      ? <BaseRoute {...props}/>
       : isCheckingSession
         ? <CircularProgress id='check-session-progress'/>
         : <></>
   );
 };
 
-const mapStateToProps = (
-  state: Global.State,
-  ownProps: IAuthRouteProps
-): IAuthRouteProps => ({
-  ...ownProps,
-  isAuthorized: state.Core.Session.isAuthorized,
-  isCheckingSession: state.Core.Session.isCheckingSession
-});
-
-const enhance = connect(mapStateToProps, {enterAuthorizedRoute});
-
-export default enhance(AuthRoute);
+export default AuthRoute;

@@ -1,14 +1,14 @@
-import { Epic, combineEpics } from 'redux-observable';
+import { combineEpics } from 'redux-observable';
 import { of } from 'rxjs';
 import { filter, concatMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
-import { loadConfig } from 'Action/ConfigAction';
-import { initializeApp } from 'Action/AppAction';
+import { Epic } from 'Types/Redux';
+import * as Action from 'Store/Action';
 import JscClient from 'Jsc/Client';
 
 const initializeAppEpic: Epic = (
   action$ => action$.pipe(
-    filter(isActionOf(initializeApp)),
+    filter(isActionOf(Action.initializeApp)),
     concatMap(action => {
       JscClient.setPackageJson(action.payload.packageJson);
       const isHTTPS = window.location.protocol.toLowerCase() === 'https:';
@@ -17,7 +17,7 @@ const initializeAppEpic: Epic = (
           window.location.toString().replace('http:', 'https:')
         );
       }
-      return of(loadConfig());
+      return of(Action.loadConfig());
     })
   )
 );

@@ -1,7 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import Global from '../../Store/Reducer/Global';
 import './_styles.scss';
 
 type Icon = (
@@ -45,13 +42,4 @@ const JuweloFontIcon: React.FC<IJuweloFontIconProps> = ({
   return <i className={className}/>;
 }
 
-const mapStateToProps = (
-  _state: Global.State,
-  props: IJuweloFontIconProps
-): IJuweloFontIconProps => ({
-  ...props,
-});
-
-export default (
-  connect(mapStateToProps, {}, null, {forwardRef: true})(JuweloFontIcon)
-);
+export default JuweloFontIcon;

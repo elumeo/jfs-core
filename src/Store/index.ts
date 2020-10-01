@@ -1,19 +1,11 @@
-import { applyMiddleware, createStore } from 'redux';
-import { createEpicMiddleware } from 'redux-observable';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import * as Redux from 'redux';
+import middleware, { start } from './Middleware';
+import { Epic } from 'Types/Redux';
 
-import { routerMiddleware } from 'connected-react-router';
-import { createHashHistory } from 'history';
-
-export const history = createHashHistory();
-
-export default (rootEpic, rootReducer) => {
-  const epicMiddleware = createEpicMiddleware();
-  // create and set store
-  const store = composeWithDevTools(
-    applyMiddleware(epicMiddleware, routerMiddleware(history))
-  )(createStore)(rootReducer);
-  epicMiddleware.run(rootEpic);
-
+const createStore = <T>(root: Epic, rootReducer: Redux.Reducer<T>) => {
+  const store = Redux.createStore(rootReducer, middleware);
+  start(root);
   return store;
 };
+
+export default createStore;

@@ -1,28 +1,22 @@
 import React from 'react';
-import Translations from '../../Utilities/Format/Translations';
-import { PrimitiveType } from 'intl-messageformat';
+import { injectIntl, InjectedIntl } from 'react-intl';
 
-export type FormatMessage = (
-  messageDescriptor: { id: string; },
-  values?: Record<string, PrimitiveType> | undefined
-) => string;
-
-interface IInternationalChildrenProps {
-  formatMessage: FormatMessage;
-}
-
-interface IInternationalProps {
-  children: (internationalChildrenProps: IInternationalChildrenProps) => JSX.Element;
-}
-
-const International: React.FC<IInternationalProps> = ({
+const International: React.FC<{
+  intl?: InjectedIntl;
+  children: (
+    internationalChildrenProps: {
+      formatMessage: InjectedIntl['formatMessage'];
+    }
+  ) => JSX.Element;
+}> = ({
+  intl: { formatMessage },
   children
 }) => (
   <>
-    {children({
-      formatMessage: Translations.formatMessage
-    })}
+    {children({ formatMessage })}
   </>
 );
 
-export default International;
+const enhance = injectIntl;
+
+export default enhance(International);

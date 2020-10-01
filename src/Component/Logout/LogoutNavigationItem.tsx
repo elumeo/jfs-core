@@ -1,9 +1,9 @@
 import React from 'react';
-import NavigationItem from '../Navigation/NavigationItem';
+import NavigationItem from 'Component/Navigation/NavigationItem';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { openLogout } from '../../Store/Action/LogoutAction';
-import Global from '../../Store/Reducer/Global';
+import { openLogout } from 'Store/Action/LogoutAction';
+import Global from 'Store/Reducer/Global';
 
 export interface ILogoutNavigationItemProps {
   robotLoginAvailable?: boolean;

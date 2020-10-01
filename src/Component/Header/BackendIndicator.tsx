@@ -1,38 +1,25 @@
 import React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
 import Tooltipped from 'react-md/lib/Tooltips/Tooltipped';
 import './BackendIndicator.scss';
-import Global from '../../Store/Reducer/Global';
-import International from '../International';
+import { injectIntl, InjectedIntlProps } from 'react-intl';
+import { useSelector } from 'Types/Redux';
 
-export interface IBackendIndicatorProps {
-  backendRegion?: string;
+const BackendIndicator: React.FC<InjectedIntlProps> = ({ intl }) => {
+  const backendRegion = useSelector<string>(
+    state => state.Core.System.backendRegion
+  );
+  const label = [
+    intl.formatMessage({ id: 'app.backend' }),
+    backendRegion
+  ].join(': ');
+  return (
+    <Tooltipped
+      label={label}>
+      <div className={`flag ${(backendRegion || '').toLowerCase()}`}/>
+    </Tooltipped>
+  );
 }
 
-const BackendIndicator: React.FC<IBackendIndicatorProps> = ({
-  backendRegion
-}) => (
-  <International>
-    {({ formatMessage }) => (
-      <Tooltipped
-        label={`${formatMessage({id: 'app.backend'})}: ${backendRegion}`}>
-        <div className={`flag ${(backendRegion || '').toLowerCase()}`}/>
-      </Tooltipped>
-    )}
-  </International>
-)
-
-const mapStateToProps = (
-  state: Global.State,
-  ownProps: IBackendIndicatorProps
-): IBackendIndicatorProps => ({
-  ...ownProps,
-  ...state.Core.System
-});
-
-const enhance = compose(
-  connect(mapStateToProps)
-);
+const enhance = injectIntl;
 
 export default enhance(BackendIndicator);

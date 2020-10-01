@@ -1,79 +1,71 @@
-import { Epic, combineEpics, StateObservable } from 'redux-observable';
-import { EMPTY, merge, of } from 'rxjs';
+import { combineEpics } from 'redux-observable';
+import { EMPTY, of, merge } from 'rxjs';
 import { delay, filter, mergeMap } from 'rxjs/operators';
-import { isActionOf, PayloadAction } from 'typesafe-actions';
-import {
-  addNotificationAction,
-  addNotificationWithIdAction,
-  fadeNotificationOffScreenAction,
-  hideNotificationDrawerAction,
-  pinNotificationDrawerAction,
-  showNotificationDrawerAction,
-  toggleNotificationDrawerAction,
-  unpinNotificationDrawerAction,
-} from 'Action/NotificationAction';
-import { disableSplitViewAction, enableSplitViewAction } from 'Action/SplitViewAction';
-import { INotification } from 'Types/Notification';
+import { isActionOf } from 'typesafe-actions';
+import * as Action from 'Store/Action';
 import { timeToRead } from 'Component/Notification/NotificationCard';
-import Global from 'Store/Reducer/Global';
+import { Epic } from 'Types/Redux';
 
 let notificationIncrementId = 0;
 
-const addNotificationEpic: Epic = action$ =>
-  merge(
-    action$.pipe(
-      filter(isActionOf(addNotificationAction)),
-      mergeMap(({ payload: notification }) => of(
-        addNotificationWithIdAction({
-          ...notification,
-          id: ++notificationIncrementId,
-          count: 1,
-          timestamp: new Date(),
-          autoHideDelay: !notification.stayOnScreen ? timeToRead(notification) : null
-        })
-      ))
-    ),
-    action$.pipe(
-      filter(isActionOf(addNotificationWithIdAction)),
-      mergeMap(({ payload: notification }: PayloadAction<string, INotification>) =>
-        notification.autoHideDelay !== null && notification.autoHideDelay !== undefined
-          ? of(fadeNotificationOffScreenAction(notification.id)).pipe(delay(notification.autoHideDelay))
-          : EMPTY
-      )
-    ),
-  );
-
-const splitViewEpic: Epic = (action$, store: StateObservable<Global.State>) =>
-  merge(
-    action$.pipe(
-      filter(isActionOf(toggleNotificationDrawerAction)),
-      mergeMap(() => of(
-        store.value.Core.Notification.notificationDrawerVisible
-          ? hideNotificationDrawerAction()
-          : showNotificationDrawerAction()
-      ))
-    ),
-    action$.pipe(
-      filter(isActionOf(showNotificationDrawerAction)),
-      mergeMap(() => of(
-        store.value.Core.Notification.notificationDrawerPinned
-          ? enableSplitViewAction()
-          : disableSplitViewAction()
-      ))
-    ),
-    action$.pipe(
-      filter(isActionOf(pinNotificationDrawerAction)),
-      mergeMap(() => of(
-        store.value.Core.Notification.notificationDrawerVisible
-          ? enableSplitViewAction()
-          : disableSplitViewAction()
-      ))
-    ),
-    action$.pipe(
-      filter(isActionOf([hideNotificationDrawerAction, unpinNotificationDrawerAction])),
-      mergeMap(() => of(disableSplitViewAction()))
+const addNotificationEpic: Epic = action$ => merge(
+  action$.pipe(
+    filter(isActionOf(Action.addNotificationAction)),
+    mergeMap(({ payload: notification }) => of(
+      Action.addNotificationWithIdAction({
+        ...notification,
+        id: ++notificationIncrementId,
+        count: 1,
+        timestamp: new Date(),
+        autoHideDelay: !notification.stayOnScreen ? timeToRead(notification) : null
+      })
+    ))
+  ),
+  action$.pipe(
+    filter(isActionOf(Action.addNotificationWithIdAction)),
+    mergeMap(({ payload: notification }) =>
+      notification.autoHideDelay !== null && notification.autoHideDelay !== undefined
+        ? of(
+          Action.fadeNotificationOffScreenAction(notification.id)
+        ).pipe(delay(notification.autoHideDelay))
+        : EMPTY
     )
-  );
+  ),
+);
+
+const splitViewEpic: Epic = (action$, store) => merge(
+  action$.pipe(
+    filter(isActionOf(Action.toggleNotificationDrawerAction)),
+    mergeMap(() => of(
+      store.value.Core.Notification.notificationDrawerVisible
+        ? Action.hideNotificationDrawerAction()
+        : Action.showNotificationDrawerAction()
+    ))
+  ),
+  action$.pipe(
+    filter(isActionOf(Action.showNotificationDrawerAction)),
+    mergeMap(() => of(
+      store.value.Core.Notification.notificationDrawerPinned
+        ? Action.enableSplitViewAction()
+        : Action.disableSplitViewAction()
+    ))
+  ),
+  action$.pipe(
+    filter(isActionOf(Action.pinNotificationDrawerAction)),
+    mergeMap(() => of(
+      store.value.Core.Notification.notificationDrawerVisible
+        ? Action.enableSplitViewAction()
+        : Action.disableSplitViewAction()
+    ))
+  ),
+  action$.pipe(
+    filter(isActionOf([
+      Action.hideNotificationDrawerAction,
+      Action.unpinNotificationDrawerAction
+    ])),
+    mergeMap(() => of(Action.disableSplitViewAction()))
+  )
+);
 
 export default combineEpics(
   addNotificationEpic,

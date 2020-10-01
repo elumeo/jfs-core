@@ -1,54 +1,37 @@
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Drawer, { DrawerPosition } from 'react-md/lib/Drawers';
-
-import './NavigationDrawer.scss';
-
-import Global from '../../Store/Reducer/Global';
-import { closeNavigation } from '../../Store/Action/NavigationAction';
-
+import Drawer, { DrawerPosition } from 'react-md/lib/Drawers'
 import NavigationDrawerHeader from './NavigationDrawerHeader';
+import './NavigationDrawer.scss';
+import useActions from 'Action/useActions';
+import { useSelector } from 'Types/Redux';
 
-export interface INavigationDrawerProps extends RouteComponentProps {
-  navigationOpen?: boolean;
+export interface INavigationDrawerProps {
   position: DrawerPosition;
-  history;
-  version?: string;
-  navigationItems?;
-  closeNavigation?: typeof closeNavigation;
 }
 
 const NavigationDrawer: React.FC<INavigationDrawerProps> = ({
-  navigationOpen,
-  closeNavigation,
   position,
   children
-}) => (
-  <div className='navigation-drawer'>
-    <Drawer
-      visible={navigationOpen}
-      position={position}
-      navItems={children as Element[]}
-      onVisibilityChange={() => closeNavigation()}
-      header={<NavigationDrawerHeader/>}
-      type={Drawer.DrawerTypes.TEMPORARY}
-      clickableDesktopOverlay
-      overlay
-    />
-  </div>
-);
+}) => {
+  const { closeNavigation } = useActions();
+  const navigationOpen = useSelector(
+    state => state.Core.Navigation.navigationOpen
+  );
 
-const mapStateToProps = (
-  state: Global.State,
-  ownProps: INavigationDrawerProps
-): INavigationDrawerProps => ({
-  ...state.Core.Navigation,
-  ...ownProps
-});
+  return (
+    <div className='navigation-drawer'>
+      <Drawer
+        visible={navigationOpen}
+        position={position}
+        navItems={children as Element[]}
+        onVisibilityChange={() => closeNavigation()}
+        header={<NavigationDrawerHeader/>}
+        type={Drawer.DrawerTypes.TEMPORARY}
+        clickableDesktopOverlay
+        overlay
+      />
+    </div>
+  );
+}
 
-export default withRouter(
-  connect(mapStateToProps, {closeNavigation})(
-    (NavigationDrawer)
-  )
-);
+export default NavigationDrawer;

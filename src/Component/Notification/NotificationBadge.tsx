@@ -1,20 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Badge, Button } from 'react-md';
+import { INotification } from 'Types/Notification';
+import useActions from 'Action/useActions';
+import { useSelector } from 'Types/Redux';
+import './NotificationBadge.scss';
 
-import './NotificationBadge.scss'
-import Global from '../../Store/Reducer/Global';
-import { toggleNotificationDrawerAction } from '../../Store/Action/NotificationAction';
-import { INotification } from '../../Types/Notification';
-
-export interface INotificationBadgeProps {
-  notifications?: INotification[];
-  toggleNotificationDrawerAction?: typeof toggleNotificationDrawerAction;
-}
-
-const NotificationBadge: React.FC<INotificationBadgeProps> = ({
-  notifications, toggleNotificationDrawerAction: _toggleNotificationDrawerAction
-}) => {
+const NotificationBadge: React.FC = () => {
+  const notifications = useSelector<INotification[]>(
+    state => state.Core.Notification.notifications
+  );
+  const { toggleNotificationDrawerAction } = useActions();
   const empty = !notifications.length;
   return (
     <Badge
@@ -23,11 +18,10 @@ const NotificationBadge: React.FC<INotificationBadgeProps> = ({
       aria-haspopup
       badgeId='notification-badge'
       badgeContent={empty ? '' : notifications.length}
-      className={empty ? 'md-badge-container--empty' : ''}
-    >
+      className={empty ? 'md-badge-container--empty' : ''}>
       <Button
         icon
-        onClick={() => _toggleNotificationDrawerAction()}
+        onClick={() => toggleNotificationDrawerAction()}
         aria-describedby='notification-badge'>
         notifications
       </Button>
@@ -35,14 +29,4 @@ const NotificationBadge: React.FC<INotificationBadgeProps> = ({
   );
 };
 
-const mapStateToProps = (
-  state: Global.State,
-  ownProps: INotificationBadgeProps
-): INotificationBadgeProps => ({
-  ...state.Core.Notification,
-  ...ownProps
-});
-
-export default connect(mapStateToProps, {
-  toggleNotificationDrawerAction
-})(NotificationBadge);
+export default NotificationBadge;

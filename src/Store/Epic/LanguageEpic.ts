@@ -1,34 +1,29 @@
-import { combineEpics, Epic, StateObservable } from 'redux-observable';
+import { combineEpics } from 'redux-observable';
 import { of, EMPTY } from 'rxjs';
 import { filter, concatMap, switchMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { setDefaultLocale } from 'react-datepicker';
 import Cookie from 'js-cookie';
 
-import { changeLanguageAction } from 'Action/LanguageAction';
-import { configLoadedAction } from 'Action/ConfigAction';
-import { loadSession } from 'Action/SessionAction';
+import * as Action from 'Store/Action';
 import Format from '../../Utilities/Format';
-import Core from '../Reducer/Core';
+import { Epic } from 'Types/Redux';
 
-const setInitialLanguageEpic: Epic = (
-  action$,
-  state$: StateObservable<{ Core: Core.State; }>
-) => action$.pipe(
-  filter(isActionOf(configLoadedAction)),
+const setInitialLanguageEpic: Epic = (action$, state$) => action$.pipe(
+  filter(isActionOf(Action.configLoadedAction)),
   concatMap(() => of(
-    changeLanguageAction(
+    Action.changeLanguageAction(
       Cookie.get('lang') ||
       state$.value.Core.Configuration.config.Language ||
       'en'
     ),
-    loadSession()
+    Action.loadSession()
   ))
 );
 
 const setLanguageEpic: Epic = action$ => (
   action$.pipe(
-    filter(isActionOf(changeLanguageAction)),
+    filter(isActionOf(Action.changeLanguageAction)),
     switchMap(({ payload }) => {
       Format.Locale.selectLanguage(payload);
       setDefaultLocale(payload);

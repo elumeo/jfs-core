@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-
-import Global from 'Store/Reducer/Global';
-import { webSocketConnectionReducerInitialState } from 'Store/Reducer/Core/WebSocketConnectionReducer';
-import { webSocketUpdateRoomAction } from 'Action/WebSocketAction';
+import {
+  webSocketConnectionReducerInitialState
+} from 'Store/Reducer/Core/WebSocketConnectionReducer';
 import IConfig from 'Types/Configuration';
 import { WSClient } from '../../Base/WSClient';
+import useActions from 'Action/useActions';
+import { useSelector } from 'Types/Redux';
+import { webSocketUpdateRoomAction } from 'Action/WebSocketAction';
 
 export interface IWebsocketConnectionProps {
   config?: IConfig;
@@ -18,36 +19,29 @@ export interface IWebsocketConnectionState {
   isConnected: false
 }
 
-const WebSocketConnection: React.FC<IWebsocketConnectionProps> = ({
-  children,
-  webSocketUpdateRoomAction
-}) => {
+const WebSocketConnection: React.FC = ({ children }) => {
+  const { webSocketConnectionReducer, config } = useSelector<{
+    config?: IConfig;
+    webSocketConnectionReducer?: typeof webSocketConnectionReducerInitialState;
+    webSocketUpdateRoomAction?: typeof webSocketUpdateRoomAction;
+  }>(state => ({
+    config: state.Core.Configuration.config,
+    webSocketConnectionReducer: state.Core.WebSocketConnection
+  }));
+  const { webSocketUpdateRoomAction } = useActions();
   useEffect(
     () => {
-      WSClient.listenRoomsObservable$.subscribe((roomData) => webSocketUpdateRoomAction(roomData));
+      WSClient.listenRoomsObservable$
+        .subscribe((roomData) => webSocketUpdateRoomAction(roomData));
     },
     []
   );
 
   return (
-    <div>
+    <>
       {children}
-    </div>
+    </>
   )
 }
 
-const mapStateToProps = (
-  state: Global.State,
-  ownProps: IWebsocketConnectionProps
-): IWebsocketConnectionProps => ({
-  ...ownProps,
-  config: state.Core.Configuration.config,
-  webSocketConnectionReducer: state.Core.WebSocketConnection
-});
-
-export default connect(
-  mapStateToProps,
-  {
-    webSocketUpdateRoomAction
-  }
-)(WebSocketConnection);
+export default WebSocketConnection;

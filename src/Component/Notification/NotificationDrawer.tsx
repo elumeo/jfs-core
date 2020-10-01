@@ -1,95 +1,48 @@
-import * as React from 'react';
-
-import NotificationCard from './NotificationCard';
+import React from 'react';
 import Drawer from 'react-md/lib/Drawers';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import './NotificationDrawer.scss';
+import { useSelector } from 'Types/Redux';
+import useActions from 'Action/useActions';
+import NotificationsFragment from './NotificationsFragment';
+import NotificationDrawerToolbar from './NotificationDrawerToolbar';
+import useClassNames from './useNotificationDrawerClassNames';
 
-import Global from '../../Store/Reducer/Global';
-import { connect } from 'react-redux';
-import NoNotifications from './NoNotifications';
-import Toolbar from 'react-md/lib/Toolbars';
-import { INotification } from '../../Types/Notification';
+const NotificationDrawer: React.FC = () => {
+  const { pinnedClassName, overlayClassName } = useClassNames();
+  const notificationDrawerVisible = useSelector<boolean>(state => (
+    state.Core.Notification.notificationDrawerVisible
+  ));
+  const {
+    toggleNotificationDrawerAction,
+    hideNotificationDrawerAction
+  } = useActions();
 
-import './NotificationDrawer.scss'
-import SplitViewButton from './SplitViewButton';
-import DismissAllNotificationsButton from './DismissAllNotificationsButton';
-// noinspection TypeScriptPreferShortImport
-import { hideNotificationDrawerAction, toggleNotificationDrawerAction } from '../../Store/Action/NotificationAction';
-import { Button } from 'react-md';
-
-const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-
-interface INotificationDrawerProps {
-  notificationDrawerVisible?: boolean;
-  notifications?: INotification[];
-  notificationDrawerPinned?: boolean;
-  toggleNotificationDrawerAction?: typeof toggleNotificationDrawerAction;
-  hideNotificationDrawerAction?: typeof hideNotificationDrawerAction;
+  return (
+    <Drawer
+      className={`notification-drawer ${pinnedClassName}`}
+      visible={notificationDrawerVisible}
+      onVisibilityChange={toggleNotificationDrawerAction}
+      position='right'
+      header={<NotificationDrawerToolbar/>}
+      onKeyDown={(e: React.KeyboardEvent) => (
+        e.keyCode == 13 && hideNotificationDrawerAction()
+      )}
+      type={Drawer.DrawerTypes.TEMPORARY}
+      overlayClassName={overlayClassName}
+      clickableDesktopOverlay
+      overlay>
+      <ReactCSSTransitionGroup
+        transitionName={{
+          enter: 'fadein-enter',
+          leave: 'disappear-leave',
+        }}
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={200}>
+        <NotificationsFragment/>
+      </ReactCSSTransitionGroup>
+    </Drawer>
+  );
 }
 
-class NotificationDrawer extends React.Component<INotificationDrawerProps> {
-
-  closeOnESC = (e: React.KeyboardEvent) => {
-    if (e.keyCode == 13) {
-      this.props.hideNotificationDrawerAction();
-    }
-  };
-
-  render() {
-    const { notifications, notificationDrawerPinned, notificationDrawerVisible } = this.props;
-    const empty = !notifications.length;
-
-    let content;
-    if (empty) {
-      content = [<NoNotifications key='no-notifications'/>];
-    } else {
-      content = notifications.map(n => <NotificationCard config={{ ...n, hideButtonVisible: false }} key={n.id}/>);
-    }
-
-    const header = <Toolbar
-      nav={<Button icon onClick={() => this.props.hideNotificationDrawerAction()}>arrow_forward</Button>}
-      actions={[<SplitViewButton/>, <DismissAllNotificationsButton/>]}
-      className='md-divider-border md-divider-border--bottom'
-    />;
-
-    const pinnedClassName = notificationDrawerPinned ? 'notification-drawer--pinned' : '';
-    const overlayClassName = notificationDrawerPinned ? 'md-overlay--hidden' : '';
-
-    return (
-      <Drawer
-        className={`notification-drawer ${pinnedClassName}`}
-        visible={notificationDrawerVisible}
-        onVisibilityChange={this.props.toggleNotificationDrawerAction}
-        position='right'
-        header={header}
-        onKeyDown={this.closeOnESC}
-        type={Drawer.DrawerTypes.TEMPORARY}
-        overlayClassName={overlayClassName}
-        clickableDesktopOverlay
-        overlay
-      >
-        <ReactCSSTransitionGroup
-          transitionName={{
-            enter: 'fadein-enter',
-            leave: 'disappear-leave',
-          }}
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={200}
-        >
-          {content}
-        </ReactCSSTransitionGroup>
-      </Drawer>
-    );
-  }
-}
-
-// noinspection JSUnusedGlobalSymbols
-export default connect((
-  store: Global.State, ownProps: INotificationDrawerProps): INotificationDrawerProps => ({
-  ...ownProps,
-  notificationDrawerVisible: store.Core.Notification.notificationDrawerVisible,
-  notifications: store.Core.Notification.notifications,
-  notificationDrawerPinned: store.Core.Notification.notificationDrawerPinned,
-}), {
-  toggleNotificationDrawerAction,
-  hideNotificationDrawerAction
-})(NotificationDrawer)
+export default NotificationDrawer;

@@ -1,12 +1,17 @@
 import React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
 import Tooltipped from 'react-md/lib/Tooltips/Tooltipped';
 import './BackendIndicator.scss';
-import International from '../International';
-const BackendIndicator = ({ backendRegion }) => (React.createElement(International, null, ({ formatMessage }) => (React.createElement(Tooltipped, { label: `${formatMessage({ id: 'app.backend' })}: ${backendRegion}` },
-    React.createElement("div", { className: `flag ${(backendRegion || '').toLowerCase()}` })))));
-const mapStateToProps = (state, ownProps) => (Object.assign(Object.assign({}, ownProps), state.Core.System));
-const enhance = compose(connect(mapStateToProps));
+import { injectIntl } from 'react-intl';
+import { useSelector } from '../../Types/Redux';
+const BackendIndicator = ({ intl }) => {
+    const backendRegion = useSelector(state => state.Core.System.backendRegion);
+    const label = [
+        intl.formatMessage({ id: 'app.backend' }),
+        backendRegion
+    ].join(': ');
+    return (React.createElement(Tooltipped, { label: label },
+        React.createElement("div", { className: `flag ${(backendRegion || '').toLowerCase()}` })));
+};
+const enhance = injectIntl;
 export default enhance(BackendIndicator);
 //# sourceMappingURL=BackendIndicator.js.map

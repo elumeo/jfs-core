@@ -45,28 +45,32 @@ export const getContent = (notification) => {
 class NotificationCard extends React.Component {
     constructor() {
         super(...arguments);
-        this.getHeader = () => {
-            return React.createElement("header", { className: 'header' },
-                this.getIcon(),
-                this.getTimestamp());
-        };
-        this.getContent = () => getContent(this.props.config).content;
         this.getIcon = () => {
             const { config: { icon, error, isError, isSuccess } } = this.props;
             let iconName = icon;
             iconName = (error || isError) && !icon ? 'error' : iconName;
             iconName = isSuccess && !icon ? 'check' : iconName;
-            return iconName ? React.createElement(FontIcon, { className: 'icon md-text--inherit' }, iconName) : null;
+            return (iconName
+                ? React.createElement(FontIcon, { className: 'icon md-text--inherit' }, iconName)
+                : null);
         };
         this.getTimestamp = () => {
             const { config: { timestamp } } = this.props;
             const { formatDate, formatTime } = Format;
             const now = new Date();
             const displayDate = now.toDateString() != timestamp.toDateString();
-            return React.createElement("div", { className: 'timestamp' },
-                displayDate ? `${formatDate(timestamp)} ` : null,
-                formatTime(timestamp));
+            return (React.createElement("div", { className: 'timestamp' },
+                displayDate
+                    ? `${formatDate(timestamp)} `
+                    : null,
+                formatTime(timestamp)));
         };
+        this.getHeader = () => {
+            return React.createElement("header", { className: 'header' },
+                this.getIcon(),
+                this.getTimestamp());
+        };
+        this.getContent = () => getContent(this.props.config).content;
         this.getActions = () => {
             const { config, config: { customActionTooltipTranslationId, customActionIconName, onCustomAction, dismissButtonVisible, onDismiss, hideButtonVisible, onHide } } = this.props;
             const { formatMessage } = Format.Translations;
@@ -96,7 +100,23 @@ class NotificationCard extends React.Component {
             if (!(!onCustomAction)) {
                 actions.push(React.createElement(Button, { icon: true, key: 'custom-action-btn', tooltipLabel: customActionTooltipTranslationId ? fm(customActionTooltipTranslationId) : undefined, tooltipPosition: 'left', tooltipDelay: 666, onClick: () => onCustomAction(config, this) }, customActionIconName));
             }
-            return actions;
+            return (actions.length
+                ? React.createElement("div", { className: 'notification-grid-actions' }, actions)
+                : null);
+        };
+        this.cardClassName = () => {
+            const { config: { error, isSuccess, isError, onClick } } = this.props;
+            const errorClass = isError || error ? 'error' : '';
+            const successClass = isSuccess ? 'success' : '';
+            const clickClass = onClick ? 'clickable' : '';
+            if (errorClass.length && successClass.length) {
+                throw new Error('isError|error and isSuccess cannot be combined');
+            }
+            return [
+                `md-cell`, `md-cell--12`,
+                `badges__notifications__notification`,
+                successClass, errorClass, clickClass
+            ].join(' ');
         };
     }
     componentDidMount() {
@@ -106,28 +126,13 @@ class NotificationCard extends React.Component {
         }
     }
     render() {
-        const { config, config: { error, isSuccess, isError, onClick } } = this.props;
-        const errorClass = isError || error ? 'error' : '';
-        const successClass = isSuccess ? 'success' : '';
-        const clickClass = onClick ? 'clickable' : '';
-        if (errorClass.length && successClass.length) {
-            throw new Error('isError|error and isSuccess cannot be combined');
-        }
-        const actions = this.getActions();
-        return (React.createElement(Card, { onClick: () => {
-                if (onClick) {
-                    onClick(config, this);
-                }
-            }, className: [
-                `md-cell`, `md-cell--12`,
-                `badges__notifications__notification`,
-                successClass, errorClass, clickClass
-            ].join(' ') },
+        const { config } = this.props;
+        return (React.createElement(Card, { onClick: () => config.onClick && config.onClick(config, this), className: this.cardClassName() },
             React.createElement("div", { className: 'notification-grid' },
                 React.createElement("div", { className: 'notification-grid-content' },
                     this.getHeader(),
                     this.getContent()),
-                actions.length ? React.createElement("div", { className: 'notification-grid-actions' }, actions) : null)));
+                this.getActions())));
     }
 }
 export default connect((state, ownProps) => (Object.assign(Object.assign({}, ownProps), { language: state.Core.Language.language })), {

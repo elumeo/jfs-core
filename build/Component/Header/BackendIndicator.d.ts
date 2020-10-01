@@ -1,7 +1,5 @@
 import React from 'react';
 import './BackendIndicator.scss';
-export interface IBackendIndicatorProps {
-    backendRegion?: string;
-}
-declare const _default: import("react-redux").ConnectedComponent<React.FC<IBackendIndicatorProps>, Pick<IBackendIndicatorProps, never> & IBackendIndicatorProps>;
+import { InjectedIntlProps } from 'react-intl';
+declare const _default: React.FC<InjectedIntlProps>;
 export default _default;

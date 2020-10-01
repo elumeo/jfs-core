@@ -1,6 +1,6 @@
 import React from 'react';
 import ErrorContent, { errorText } from './ErrorContent';
-import { IToastConfig } from '../../Store/Reducer/Core/ToastReducer';
+import { IToastConfig } from 'Store/Reducer/Core/ToastReducer';
 import { timeToRead } from './TimeToRead';
 
 export default (toast: IToastConfig, formatMessage) => {

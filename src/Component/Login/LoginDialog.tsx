@@ -1,28 +1,31 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import DialogContainer from 'react-md/lib/Dialogs';
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
-import Global from '../../Store/Reducer/Global';
-import { checkLogin } from '../../Store/Action/LoginAction';
 import './LoginDialog.scss';
+import { useSelector } from 'Types/Redux';
 
-interface ILoginDialogProps {
-  children?: any;
-  isCheckingSession?: boolean;
-  routeType?: string;
-  loginVisible?: boolean;
-  isAuthorized?: boolean;
-  robotLoginAvailable?: boolean;
-  appInitialized?: boolean;
-}
-
-const LoginDialog: React.FC<ILoginDialogProps> = ({
-  robotLoginAvailable,
-  routeType,
-  isAuthorized,
-  isCheckingSession
-}) => {
+const LoginDialog: React.FC = () => {
+  const {
+    isAuthorized, isCheckingSession, routeType, robotLoginAvailable
+  } = useSelector<{
+    isAuthorized: boolean;
+    isCheckingSession: boolean;
+    routeType: string;
+    robotLoginAvailable: boolean;
+  }>(state => ({
+    isAuthorized: state.Core.Session.isAuthorized,
+    isCheckingSession: state.Core.Session.isCheckingSession,
+    routeType: state.Core.Router.routeType,
+    robotLoginAvailable: (
+      state.Core.Configuration.config && (
+        state.Core.Configuration.config.RobotUsername &&
+        state.Core.Configuration.config.RobotPassword
+      ) &&
+      state.Core.App.allowRobotLogin &&
+      !state.Core.Login.failedLogins
+    )
+  }));
   return (
     <div className='login-dialog'>
       <DialogContainer
@@ -36,32 +39,11 @@ const LoginDialog: React.FC<ILoginDialogProps> = ({
         title='Login'
         aria-describedby=''
         actions={<LoginButton/>}
-        modal
-      >
+        modal>
         <LoginCredentials/>
       </DialogContainer>
     </div>
   );
 }
 
-const mapStateToProps = (
-  state: Global.State,
-  ownProps: ILoginDialogProps
-): ILoginDialogProps => ({
-  ...ownProps,
-  isAuthorized: state.Core.Session.isAuthorized,
-  isCheckingSession: state.Core.Session.isCheckingSession,
-  routeType: state.Core.Router.routeType,
-  robotLoginAvailable: (
-    state.Core.Configuration.config && (
-      state.Core.Configuration.config.RobotUsername &&
-      state.Core.Configuration.config.RobotPassword
-    ) &&
-    state.Core.App.allowRobotLogin &&
-    !state.Core.Login.failedLogins
-  )
-});
-
-const enhance = connect(mapStateToProps, { checkLogin });
-
-export default enhance(LoginDialog);
+export default LoginDialog;

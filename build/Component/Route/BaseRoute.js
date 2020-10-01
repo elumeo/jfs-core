@@ -11,23 +11,22 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import React from 'react';
 import { Route } from 'react-router-dom';
-import International from '../International';
+import { injectIntl } from 'react-intl';
 const BaseRoute = (_a) => {
-    var { Component, translationId, updateDocumentTitle } = _a, rest = __rest(_a, ["Component", "translationId", "updateDocumentTitle"]);
+    var { intl: { formatMessage }, Component, translationId, updateDocumentTitle } = _a, rest = __rest(_a, ["intl", "Component", "translationId", "updateDocumentTitle"]);
     if (Component) {
         rest.component = Component;
     }
-    return (React.createElement(International, null, ({ formatMessage }) => {
-        if (updateDocumentTitle === true) {
-            if (translationId) {
-                document.title += ' | ' + formatMessage({ id: translationId });
-            }
-            else {
-                document.title = formatMessage({ id: 'app.title' });
-            }
+    if (updateDocumentTitle === true) {
+        if (translationId) {
+            document.title += ' | ' + formatMessage({ id: translationId });
         }
-        return React.createElement(Route, Object.assign({}, rest));
-    }));
+        else {
+            document.title = formatMessage({ id: 'app.title' });
+        }
+    }
+    return React.createElement(Route, Object.assign({}, rest));
 };
-export default BaseRoute;
+const enhance = injectIntl;
+export default enhance(BaseRoute);
 //# sourceMappingURL=BaseRoute.js.map

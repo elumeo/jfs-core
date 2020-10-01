@@ -1,13 +1,9 @@
 import React from 'react';
-import { PrimitiveType } from 'intl-messageformat';
-export declare type FormatMessage = (messageDescriptor: {
-    id: string;
-}, values?: Record<string, PrimitiveType> | undefined) => string;
-interface IInternationalChildrenProps {
-    formatMessage: FormatMessage;
-}
-interface IInternationalProps {
-    children: (internationalChildrenProps: IInternationalChildrenProps) => JSX.Element;
-}
-declare const International: React.FC<IInternationalProps>;
-export default International;
+import { InjectedIntl } from 'react-intl';
+declare const _default: React.FC<{
+    intl?: InjectedIntl;
+    children: (internationalChildrenProps: {
+        formatMessage: (messageDescriptor: ReactIntl.FormattedMessage.MessageDescriptor, values?: Object) => string;
+    }) => JSX.Element;
+}>;
+export default _default;

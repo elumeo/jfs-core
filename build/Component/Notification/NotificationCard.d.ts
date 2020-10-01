@@ -16,12 +16,13 @@ export interface INotificationCardProps {
     language?: string;
 }
 declare class NotificationCard extends React.Component<INotificationCardProps> {
-    getHeader: () => React.ReactNode;
-    getContent: () => JSX.Element;
     getIcon: () => JSX.Element;
     getTimestamp: () => JSX.Element;
-    getActions: () => React.ReactNode[];
+    getHeader: () => React.ReactNode;
+    getContent: () => JSX.Element;
+    getActions: () => JSX.Element;
     componentDidMount(): void;
+    cardClassName: () => string;
     render(): JSX.Element;
 }
 declare const _default: import("react-redux").ConnectedComponent<typeof NotificationCard, Pick<React.ClassAttributes<NotificationCard> & INotificationCardProps, "ref" | "key"> & INotificationCardProps>;

@@ -1,38 +1,35 @@
 import React from 'react';
 import { Route, RouteProps } from 'react-router-dom';
-import International from '../International';
+import { injectIntl, InjectedIntl } from 'react-intl';
 
 export type IBaseRouteProps = RouteProps & {
+  intl?: InjectedIntl;
   Component?: () => JSX.Element;
   translationId?: string;
   updateDocumentTitle?: boolean;
 }
 
-const BaseRoute: React.FC<IBaseRouteProps> = (
-  {
-    Component,
-    translationId,
-    updateDocumentTitle,
-    ...rest
-  }
-) => {
+const BaseRoute: React.FC<IBaseRouteProps> = ({
+  intl: { formatMessage },
+  Component,
+  translationId,
+  updateDocumentTitle,
+  ...rest
+}) => {
   if (Component) {
     rest.component = Component;
   }
-  return (
-    <International>
-      {({ formatMessage }) => {
-        if (updateDocumentTitle === true) {
-          if (translationId) {
-            document.title += ' | ' + formatMessage({ id: translationId });
-          } else {
-            document.title = formatMessage({ id: 'app.title' });
-          }
-        }
-        return <Route {...rest}/>;
-      }}
-    </International>
-  );
+  if (updateDocumentTitle === true) {
+    if (translationId) {
+      document.title += ' | ' + formatMessage({ id: translationId });
+    }
+    else {
+      document.title = formatMessage({ id: 'app.title' });
+    }
+  }
+  return <Route {...rest}/>;
 };
 
-export default BaseRoute;
+const enhance = injectIntl;
+
+export default enhance(BaseRoute);

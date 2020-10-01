@@ -1,21 +1,21 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { useSelector } from '../../Types/Redux';
 import NotificationCard from './NotificationCard';
 import './OnScreenNotifications.scss';
-const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-class OnScreenNotifications extends React.Component {
-    render() {
-        const { notifications, dismissAnimationClassName } = this.props;
-        return (React.createElement(ReactCSSTransitionGroup, { transitionName: {
-                enter: 'fadein-enter',
-                enterActive: 'fadein-enter-active',
-                leave: `${dismissAnimationClassName}-leave`,
-                leaveActive: `${dismissAnimationClassName}-leave-active`,
-            }, transitionEnterTimeout: 300, transitionLeaveTimeout: 200, className: 'notification-fadein' }, notifications
-            .filter(n => n.onScreen)
-            .map(n => React.createElement(NotificationCard, { config: n, key: n.id }))));
-    }
-}
-// noinspection JSUnusedGlobalSymbols
-export default connect((store, ownProps) => (Object.assign(Object.assign({}, ownProps), { notifications: store.Core.Notification.notifications, dismissAnimationClassName: store.Core.Notification.dismissAnimationClassName })))(OnScreenNotifications);
+const OnScreenNotifications = () => {
+    const { notifications, dismissAnimationClassName } = useSelector(state => ({
+        notifications: state.Core.Notification.notifications,
+        dismissAnimationClassName: state.Core.Notification.dismissAnimationClassName
+    }));
+    return (React.createElement(ReactCSSTransitionGroup, { transitionName: {
+            enter: 'fadein-enter',
+            enterActive: 'fadein-enter-active',
+            leave: `${dismissAnimationClassName}-leave`,
+            leaveActive: `${dismissAnimationClassName}-leave-active`,
+        }, transitionEnterTimeout: 300, transitionLeaveTimeout: 200, className: 'notification-fadein' }, notifications
+        .filter(notification => notification.onScreen)
+        .map(notification => (React.createElement(NotificationCard, { config: notification, key: notification.id })))));
+};
+export default OnScreenNotifications;
 //# sourceMappingURL=OnScreenNotifications.js.map
