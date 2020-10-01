@@ -1,3 +1,9 @@
+## 2020-10-01
+## Fixed
+- Fixed freezing of app caused by route details effect
+## Changed
+- Refactored all components to functional components
+
 ## 2020-09-29
 ## Added
 - RouteDetails to Router State
@@ -7,7 +13,6 @@
 ## [9.5.28] - 2020-09-28
 ## Fixed
 - Restored JFS.discover() fix
-- Changed all components to functional components
 
 ## [9.5.27] - 2020-09-28
 ## Fixed
