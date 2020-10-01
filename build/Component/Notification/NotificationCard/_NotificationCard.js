@@ -5,8 +5,7 @@ import Timestamp from './Timestamp';
 import Actions from './Actions';
 import useClassName from './useClassName';
 import getContent from './getContent';
-import './NotificationCard.scss';
-const _NotificationCard = ({ notification, ref }) => {
+const _NotificationCard = ({ notification, topLevelRef: ref }) => {
     const { onMount, onClick } = notification;
     useEffect(() => {
         if (typeof onMount == 'function') {
@@ -20,7 +19,7 @@ const _NotificationCard = ({ notification, ref }) => {
                     React.createElement(Icon, Object.assign({}, notification)),
                     React.createElement(Timestamp, { timestamp: notification.timestamp })),
                 getContent(notification).content),
-            React.createElement(Actions, { ref: ref, notification: notification }))));
+            React.createElement(Actions, { topLevelRef: ref, notification: notification }))));
 };
 export default _NotificationCard;
 //# sourceMappingURL=_NotificationCard.js.map

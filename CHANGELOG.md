@@ -1,3 +1,9 @@
+## 2020-09-29
+## Added
+- RouteDetails to Router State
+## Changed
+- ModalDialog to not use compatibility intl anymore.
+
 ## [9.5.28] - 2020-09-28
 ## Fixed
 - Restored JFS.discover() fix

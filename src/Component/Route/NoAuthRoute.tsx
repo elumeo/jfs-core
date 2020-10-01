@@ -9,7 +9,7 @@ const NoAuthRoute: React.FC<IBaseRouteProps> = props => {
       enterUnauthorizedRoute();
     },
     [props.path]
-  )
+  );
 
   return (
     <BaseRoute {...props}/>

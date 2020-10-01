@@ -1,7 +1,7 @@
 import React from 'react';
 import { INotification } from 'Types/Notification';
 import _NotificationCard from './_NotificationCard';
-import './NotificationCard.scss';
+import '../NotificationCard.scss';
 
 export interface INotificationCardProps {
   config: INotification;
@@ -10,7 +10,7 @@ export interface INotificationCardProps {
 class NotificationCard extends React.Component<INotificationCardProps> {
   render() {
     return (
-      <_NotificationCard notification={this.props.config} ref={this}/>
+      <_NotificationCard notification={this.props.config} topLevelRef={this}/>
     );
   }
 }

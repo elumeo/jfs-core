@@ -10,10 +10,14 @@ export type Props = {
     notification: INotification,
     ref: React.Component<INotificationCardProps>
   ) => void;
-  ref: React.Component<INotificationCardProps>;
+  topLevelRef: React.Component<INotificationCardProps>;
 }
 
-const DismissButton: React.FC<Props> = ({ notification, onClick, ref }) => {
+const DismissButton: React.FC<Props> = ({
+  notification,
+  onClick,
+  topLevelRef: ref
+}) => {
   const { dismissNotificationAction } = useActions();
   return (
     <Button

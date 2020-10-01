@@ -9,13 +9,13 @@ import { INotificationCardProps } from '.';
 export type Props = {
   intl?: InjectedIntl;
   notification: INotification;
-  ref: React.Component<INotificationCardProps>;
+  topLevelRef: React.Component<INotificationCardProps>;
 }
 
 const Actions: React.FC<Props> = ({
   intl: { formatMessage },
   notification,
-  ref
+  topLevelRef: ref
 }) => {
   const {
     customActionTooltipTranslationId, customActionIconName, onCustomAction,
@@ -31,7 +31,7 @@ const Actions: React.FC<Props> = ({
   if (dismissButtonVisible !== false) {
     actions.push(
       <DismissButton
-        ref={ref}
+        topLevelRef={ref}
         notification={notification}
         onClick={onDismiss}/>
     );
@@ -39,7 +39,7 @@ const Actions: React.FC<Props> = ({
   if (hideButtonVisible !== false) {
     actions.push(
       <HideButton
-        ref={ref}
+        topLevelRef={ref}
         notification={notification}
         onClick={onHide}/>
     );
@@ -54,7 +54,7 @@ const Actions: React.FC<Props> = ({
             ? formatMessage({ id: customActionTooltipTranslationId })
             : undefined
         }
-        ref={ref}
+        topLevelRef={ref}
         onClick={onCustomAction}/>
     );
   }

@@ -9,7 +9,7 @@ export type Props = {
     notification: INotification,
     ref: React.Component<INotificationCardProps>
   ) => void;
-  ref: React.Component<INotificationCardProps>;
+  topLevelRef: React.Component<INotificationCardProps>;
   iconName: string;
   tooltipLabel: string;
 }
@@ -17,7 +17,7 @@ export type Props = {
 const CustomActionButton: React.FC<Props> = ({
   notification,
   onClick,
-  ref,
+  topLevelRef: ref,
   iconName,
   tooltipLabel
 }) => (

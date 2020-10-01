@@ -10,10 +10,14 @@ export type Props = {
     notification: INotification,
     ref: React.Component<INotificationCardProps>
   ) => void;
-  ref: React.Component<INotificationCardProps>
+  topLevelRef: React.Component<INotificationCardProps>
 }
 
-const HideButton: React.FC<Props> = ({ notification, onClick, ref }) => {
+const HideButton: React.FC<Props> = ({
+  notification,
+  onClick,
+  topLevelRef: ref
+}) => {
   const { fadeNotificationOffScreenAction } = useActions();
   return (
     <Button

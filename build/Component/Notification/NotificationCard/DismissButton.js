@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-md/lib/Buttons/Button';
 import useActions from '../../../Store/Action/useActions';
-const DismissButton = ({ notification, onClick, ref }) => {
+const DismissButton = ({ notification, onClick, topLevelRef: ref }) => {
     const { dismissNotificationAction } = useActions();
     return (React.createElement(Button, { icon: true, key: 'dismiss-btn', onClick: event => {
             event.stopPropagation();

@@ -1,5 +1,4 @@
 import React from 'react';
-import './NotificationCard.scss';
 import Format from '../../../Utilities/Format';
 const Timestamp = ({ timestamp }) => {
     const { formatDate, formatTime } = Format;

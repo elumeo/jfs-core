@@ -5,16 +5,18 @@ import Timestamp from './Timestamp';
 import Actions from './Actions';
 import useClassName from './useClassName';
 import getContent from './getContent';
-import './NotificationCard.scss';
 import { INotification } from 'Types/Notification';
 import { INotificationCardProps } from '.';
 
 export type Props = {
   notification: INotification;
-  ref: React.Component<INotificationCardProps>;
+  topLevelRef: React.Component<INotificationCardProps>;
 }
 
-const _NotificationCard: React.FC<Props> = ({ notification, ref }) => {
+const _NotificationCard: React.FC<Props> = ({
+  notification,
+  topLevelRef: ref
+}) => {
   const { onMount, onClick } = notification;
   useEffect(
     () => {
@@ -36,7 +38,7 @@ const _NotificationCard: React.FC<Props> = ({ notification, ref }) => {
           </header>
           {getContent(notification).content}
         </div>
-        <Actions ref={ref} notification={notification}/>
+        <Actions topLevelRef={ref} notification={notification}/>
       </div>
     </Card>
   );

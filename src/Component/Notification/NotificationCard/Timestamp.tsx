@@ -1,5 +1,4 @@
 import React from 'react';
-import './NotificationCard.scss'
 import { INotification } from 'Types/Notification';
 import Format from 'Utilities/Format';
 import { timeToRead as _timeToRead } from 'Component/Snackbar/TimeToRead';

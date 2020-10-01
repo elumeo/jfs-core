@@ -24,8 +24,8 @@ const AuthRoute: React.FC<IBaseRouteProps> = props => {
     isAuthorized
       ? <BaseRoute {...props}/>
       : isCheckingSession
-        ? <CircularProgress id='check-session-progress'/>
-        : <></>
+      ? <CircularProgress id='check-session-progress'/>
+      : <></>
   );
 };
 

@@ -9,11 +9,21 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router';
+// noinspection ES6PreferShortImport
+import { updateRouteDetails } from '../../Store/Action/RouterAction';
+import { useDispatch } from 'react-redux';
 import { injectIntl } from 'react-intl';
 const BaseRoute = (_a) => {
     var { intl: { formatMessage }, Component, translationId, updateDocumentTitle } = _a, rest = __rest(_a, ["intl", "Component", "translationId", "updateDocumentTitle"]);
+    const location = useLocation();
+    const params = useParams();
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(updateRouteDetails({ location, params }));
+    }, [rest.path]);
     if (Component) {
         rest.component = Component;
     }

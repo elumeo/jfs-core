@@ -15,7 +15,7 @@ import Toast from './ToastReducer';
 import WebSocketConnection from './WebSocketConnectionReducer';
 import App from './AppReducer';
 import Login from './LoginReducer';
-import IConfig from 'Types/Configuration';
+import IConfig from '../../../Types/Configuration';
 
 namespace Core {
   export type State = {

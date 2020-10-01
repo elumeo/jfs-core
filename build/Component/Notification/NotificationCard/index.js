@@ -1,9 +1,9 @@
 import React from 'react';
 import _NotificationCard from './_NotificationCard';
-import './NotificationCard.scss';
+import '../NotificationCard.scss';
 class NotificationCard extends React.Component {
     render() {
-        return (React.createElement(_NotificationCard, { notification: this.props.config, ref: this }));
+        return (React.createElement(_NotificationCard, { notification: this.props.config, topLevelRef: this }));
     }
 }
 export { default as getContent } from './getContent';
