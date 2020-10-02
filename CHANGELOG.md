@@ -1,5 +1,9 @@
 ## 2020-10-02
 ## Added
+- Added script for automated registration of core scripts
+
+## 2020-10-02
+## Added
 - Added showcase project to core
 
 ## 2020-10-01
