@@ -59,7 +59,7 @@ const scripts = (core) => __awaiter(void 0, void 0, void 0, function* () {
                     JFS_1.default.Head instanceof Component_1.default && jfc.includes(key) ||
                     JFS_1.default.Head instanceof App_1.default && app.includes(key));
             })
-                .reduce((previous, current) => (Object.assign(Object.assign({}, previous), { [current.key]: current.command }))));
+                .reduce((previous, current) => (Object.assign(Object.assign({}, previous), { [current.key]: current.command })), {}));
         });
     });
 });
@@ -70,9 +70,7 @@ JFS_1.default.discover(() => {
         return scripts;
     };
     JFS_1.default.Head.nodePackage.json((nodePackage) => __awaiter(void 0, void 0, void 0, function* () {
-        return (JFS_1.default.Head.nodePackage.file.save(Object.assign(Object.assign({}, nodePackage), { scripts: Object.assign(Object.assign({}, nodePackage.scripts), replaceJfsBuildByBuild(yield scripts(JFS_1.default.Core))) }), () => {
-            console.log(`Registered scripts from jfs-core`);
-        }));
+        return (JFS_1.default.Head.nodePackage.file.save(Object.assign(Object.assign({}, nodePackage), { scripts: Object.assign(Object.assign({}, nodePackage.scripts), replaceJfsBuildByBuild(yield scripts(JFS_1.default.Core))) }), () => console.log(`Registered scripts from jfs-core`)));
     }));
 });
 //# sourceMappingURL=register-scripts.js.map

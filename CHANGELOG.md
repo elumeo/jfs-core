@@ -1,5 +1,9 @@
 ## 2020-10-02
 ## Fixed
+- Fixed initial value for reduce() in register-scripts
+
+## 2020-10-02
+## Fixed
 - Allow register-scripts to distinguish between project types
 
 ## 2020-10-02

@@ -61,7 +61,8 @@ const scripts = async (core: Core) => new Promise<Scripts>(resolve => {
           (previous, current) => ({
             ...previous,
             [current.key]: current.command
-          })
+          }),
+          {}
         )
     );
   });
@@ -80,8 +81,6 @@ JFS.discover(() => {
         ...nodePackage.scripts,
         ...replaceJfsBuildByBuild(await scripts(JFS.Core))
       }
-    }, () => {
-      console.log(`Registered scripts from jfs-core`);
-    })
+    }, () => console.log(`Registered scripts from jfs-core`))
   ));
 });
