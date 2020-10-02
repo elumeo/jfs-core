@@ -1,4 +1,8 @@
 ## 2020-10-02
+## Fixed
+- Allow register-scripts to distinguish between project types
+
+## 2020-10-02
 ## Added
 - Added script for automated registration of core scripts
 

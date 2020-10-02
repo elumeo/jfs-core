@@ -642,7 +642,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/register-scripts.ts": {
-        "version": "965afa88d80eef3fe7c16a6ddf954374e86d6ad5d0baaf703519b906775ee3fd",
+        "version": "13c201b042d34bf00913e3e74e4bcd6424637098a5ae7b099a7729805f3de483",
         "signature": "2f436f578e52d51eb19e920cdcdd6065c72741fa256881962f845daf3fe4121f",
         "affectsGlobalScope": false
       },
@@ -653,11 +653,6 @@
       },
       "../src/setup/sync-development.ts": {
         "version": "773344aa7495322f4a03e4ae8ccb98b7a49aaf6dcb6455b8469fe4f2776c02f3",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
-        "affectsGlobalScope": false
-      },
-      "../src/setup/sync-styles.ts": {
-        "version": "2a4e99c651a03f0dd49dff4e4e7957310845c30be8335c5aa38028640a5f372e",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -2639,6 +2634,8 @@
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../src/library/jfs/app/index.ts",
+        "../src/library/jfs/component/index.ts",
         "../src/library/jfs/core/index.ts",
         "../src/library/jfs/index.ts",
         "../src/library/os/filesystem/directory/index.ts",
@@ -2661,17 +2658,6 @@
         "../src/library/jfs/core/index.ts",
         "../src/library/jfs/index.ts",
         "../src/library/os/filesystem/synchronization.ts"
-      ],
-      "../src/setup/sync-styles.ts": [
-        "../../node_modules/date-fns/typings.d.ts",
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/ansi-colors/types/index.d.ts",
-        "../src/library/jfs/app/index.ts",
-        "../src/library/jfs/index.ts",
-        "../src/library/os/filesystem/directory/index.ts",
-        "../src/library/os/filesystem/file/index.ts",
-        "../src/library/text/index.ts"
       ]
     },
     "exportedModulesMap": {
@@ -4020,8 +4006,7 @@
       "../src/setup/jsc-generate.ts",
       "../src/setup/register-scripts.ts",
       "../src/setup/set-peer-dependencies.ts",
-      "../src/setup/sync-development.ts",
-      "../src/setup/sync-styles.ts"
+      "../src/setup/sync-development.ts"
     ]
   },
   "version": "3.9.7"

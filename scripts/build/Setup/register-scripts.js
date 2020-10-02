@@ -16,6 +16,9 @@ const JFS_1 = __importDefault(require("../Library/JFS"));
 const Directory_1 = __importDefault(require("../Library/OS/Filesystem/Directory"));
 const Text_1 = __importDefault(require("../Library/Text"));
 const path_1 = require("path");
+const Core_1 = __importDefault(require("../Library/JFS/Core"));
+const Component_1 = __importDefault(require("../Library/JFS/Component"));
+const App_1 = __importDefault(require("../Library/JFS/App"));
 const scripts = (core) => __awaiter(void 0, void 0, void 0, function* () {
     return new Promise(resolve => {
         const directory = new Directory_1.default({
@@ -30,7 +33,33 @@ const scripts = (core) => __awaiter(void 0, void 0, void 0, function* () {
                 key: Text_1.default.removeSuffix(path_1.basename(path), path_1.extname(path)),
                 command: `node ${path}`
             }))
-                .reduce((previous, current) => (Object.assign(Object.assign({}, previous), { [current.key]: current.command })), {}));
+                .filter(({ key }) => {
+                const all = [
+                    'check-translations',
+                    'deploy-config-files',
+                    'jfs-showcase',
+                    'jsc-check',
+                    'jsc-generate',
+                    'register-scripts',
+                    'set-peer-dependencies'
+                ];
+                const core = [
+                    'jfs-build',
+                    'generate-juwelo-icon-font'
+                ];
+                const jfc = [
+                    'jfs-build',
+                    'sync-development'
+                ];
+                const app = [
+                    'sync-development',
+                ];
+                return (all.includes(key) ||
+                    JFS_1.default.Head instanceof Core_1.default && core.includes(key) ||
+                    JFS_1.default.Head instanceof Component_1.default && jfc.includes(key) ||
+                    JFS_1.default.Head instanceof App_1.default && app.includes(key));
+            })
+                .reduce((previous, current) => (Object.assign(Object.assign({}, previous), { [current.key]: current.command }))));
         });
     });
 });

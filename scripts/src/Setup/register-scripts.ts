@@ -3,6 +3,8 @@ import Directory from 'Library/OS/Filesystem/Directory';
 import Text from 'Library/Text';
 import { relative, basename, extname } from 'path';
 import Core from 'Library/JFS/Core';
+import Component from 'Library/JFS/Component';
+import App from 'Library/JFS/App';
 
 export type Scripts = {
   [key: string]: string;
@@ -23,12 +25,43 @@ const scripts = async (core: Core) => new Promise<Scripts>(resolve => {
           key: Text.removeSuffix(basename(path), extname(path)),
           command: `node ${path}`
         }))
+        .filter(({ key }) => {
+          const all = [
+            'check-translations',
+            'deploy-config-files',
+            'jfs-showcase',
+            'jsc-check',
+            'jsc-generate',
+            'register-scripts',
+            'set-peer-dependencies'
+          ];
+
+          const core = [
+            'jfs-build',
+            'generate-juwelo-icon-font'
+          ];
+
+          const jfc = [
+            'jfs-build',
+            'sync-development'
+          ];
+
+          const app = [
+            'sync-development',
+          ];
+
+          return (
+            all.includes(key) ||
+            JFS.Head instanceof Core && core.includes(key) ||
+            JFS.Head instanceof Component && jfc.includes(key) ||
+            JFS.Head instanceof App && app.includes(key)
+          )
+        })
         .reduce(
           (previous, current) => ({
             ...previous,
             [current.key]: current.command
-          }),
-          {}
+          })
         )
     );
   });
