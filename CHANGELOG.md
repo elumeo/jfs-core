@@ -1,3 +1,7 @@
+## 2020-10-02
+## Added
+- Added showcase project to core
+
 ## 2020-10-01
 ## Fixed
 - Fixed freezing of app caused by route details effect
