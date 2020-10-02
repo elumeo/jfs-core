@@ -5,8 +5,9 @@ import Component from 'Library/JFS/Component';
 import Synchronization from 'Library/OS/Filesystem/Synchronization';
 import Core from 'Library/JFS/Core';
 import { cyanBright, magenta } from 'ansi-colors';
+import Script from 'Library/JFS/Core/Script';
 
-JFS.discover(() => {
+const run = () => JFS.discover(() => {
   if (JFS.Head instanceof Core) {
     console.log('sync-development can not be run from the core');
     process.exit(1);
@@ -58,4 +59,11 @@ JFS.discover(() => {
       console.log('No jfs field found in package.json.');
     }
   });
+});
+
+export default new Script({
+  path: __filename,
+  name: 'sync-development',
+  scope: ['app', 'jfc'],
+  run
 });

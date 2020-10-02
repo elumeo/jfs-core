@@ -16,12 +16,13 @@ const JFS_1 = __importDefault(require("../Library/JFS"));
 const Snapshot_1 = __importDefault(require("../Library/JFS/Project/Translations/Snapshot"));
 const Translations_1 = __importDefault(require("../Library/JFS/Project/Translations"));
 const File_1 = __importDefault(require("../Library/OS/Filesystem/File"));
+const Script_1 = __importDefault(require("../Library/JFS/Core/Script"));
 const onComplete = ({ missing, html }) => {
     if (html) {
         html.open();
     }
 };
-JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
+const run = () => JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
     const translations = new File_1.default({
         path: Translations_1.default.location(JFS_1.default.Head.path)
     });
@@ -45,4 +46,10 @@ JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
         }
     }
 }));
+exports.default = new Script_1.default({
+    path: __filename,
+    name: 'check-translations',
+    scope: ['all'],
+    run
+});
 //# sourceMappingURL=check-translations.js.map

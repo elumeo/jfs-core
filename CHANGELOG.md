@@ -1,4 +1,8 @@
 ## 2020-10-02
+## Added
+- Added mechanism for reading meta data of scripts (needed for register-scripts)
+
+## 2020-10-02
 ## Fixed
 - Fixed initial value for reduce() in register-scripts
 

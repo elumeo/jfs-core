@@ -2,6 +2,7 @@ import JFS from 'Library/JFS';
 import Snapshot from 'Library/JFS/Project/Translations/Snapshot';
 import Translations from 'Library/JFS/Project/Translations';
 import File from 'Library/OS/Filesystem/File';
+import Script from 'Library/JFS/Core/Script';
 
 const onComplete = ({ missing, html }) => {
   if (html) {
@@ -9,7 +10,7 @@ const onComplete = ({ missing, html }) => {
   }
 }
 
-JFS.discover(async () => {
+const run = () => JFS.discover(async () => {
   const translations = new File({
     path: Translations.location(JFS.Head.path)
   });
@@ -32,4 +33,11 @@ JFS.discover(async () => {
       onComplete({ missing, html: null });
     }
   }
+});
+
+export default new Script({
+  path: __filename,
+  name: 'check-translations',
+  scope: ['all'],
+  run
 });

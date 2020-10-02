@@ -5,6 +5,7 @@ import Component from 'Library/JFS/Component';
 import Core from 'Library/JFS/Core';
 import App from 'Library/JFS/App';
 import Text from 'Library/Text';
+import Script from 'Library/JFS/Core/Script';
 
 const filesNamesToCopy = [
   'tsconfig.app.json',
@@ -16,7 +17,7 @@ const filesNamesToCopy = [
   '.prettierrc',
 ];
 
-JFS.discover(
+const run = () => JFS.discover(
   () => {
     new Directory({
       path: resolve(JFS.Core.path, 'settings')
@@ -70,3 +71,10 @@ JFS.discover(
     );
   }
 );
+
+export default new Script({
+  path: __filename,
+  name: 'deploy-config-files',
+  scope: ['all'],
+  run
+});

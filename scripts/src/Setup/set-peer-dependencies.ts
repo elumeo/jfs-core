@@ -1,5 +1,6 @@
 import JFS from 'Library/JFS';
 import Core from 'Library/JFS/Core';
+import Script from 'Library/JFS/Core/Script';
 
 const message = {
   completed: (name: string) => (
@@ -7,7 +8,7 @@ const message = {
   )
 };
 
-JFS.discover(() => {
+const run = () => JFS.discover(() => {
   if (!(JFS.Head instanceof Core)) {
     JFS.Core.nodePackage.json(({ dependencies }) => {
       JFS.Head.nodePackage.json(nodePackage => {
@@ -21,4 +22,11 @@ JFS.discover(() => {
       });
     });
   }
+});
+
+export default new Script({
+  path: __filename,
+  name: 'set-peerDependencies',
+  scope: ['all'],
+  run
 });

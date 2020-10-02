@@ -10,7 +10,8 @@ const Component_1 = __importDefault(require("../Library/JFS/Component"));
 const Synchronization_1 = __importDefault(require("../Library/OS/Filesystem/Synchronization"));
 const Core_1 = __importDefault(require("../Library/JFS/Core"));
 const ansi_colors_1 = require("ansi-colors");
-JFS_1.default.discover(() => {
+const Script_1 = __importDefault(require("../Library/JFS/Core/Script"));
+const run = () => JFS_1.default.discover(() => {
     if (JFS_1.default.Head instanceof Core_1.default) {
         console.log('sync-development can not be run from the core');
         process.exit(1);
@@ -61,5 +62,11 @@ JFS_1.default.discover(() => {
             console.log('No jfs field found in package.json.');
         }
     });
+});
+exports.default = new Script_1.default({
+    path: __filename,
+    name: 'sync-development',
+    scope: ['app', 'jfc'],
+    run
 });
 //# sourceMappingURL=sync-development.js.map

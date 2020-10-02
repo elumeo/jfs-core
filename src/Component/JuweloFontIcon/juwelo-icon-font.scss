@@ -1,9 +1,9 @@
 @charset "UTF-8";
 @font-face {
   font-family: "juwelo-icon-font";
-  src: url("juwelo-icon-font.woff2?06e2851980950f4aa62c858095ff1f5d") format("woff2");
-  src: url("juwelo-icon-font.woff?06e2851980950f4aa62c858095ff1f5d") format("woff"); }
-
+  src: url("juwelo-icon-font.woff2?28158fdd239f4e33f21cbbf56a649c4d") format("woff2");
+  src: url("juwelo-icon-font.woff?28158fdd239f4e33f21cbbf56a649c4d") format("woff");
+}
 .juwelo-icon-font, .jif-icons {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -12,16 +12,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  vertical-align: middle; }
+  vertical-align: middle;
+}
 
 .jif-icons {
   width: 1em;
   height: 1em;
   position: relative;
-  fill: currentColor; }
+  fill: currentColor;
+}
 
 .juwelo-icon-font {
-  font-family: 'juwelo-icon-font';
+  font-family: "juwelo-icon-font";
   font-weight: normal;
   font-style: normal;
   display: inline-block;
@@ -38,49 +40,65 @@
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
   /* Support for IE. */
-  font-feature-settings: 'liga'; }
+  font-feature-settings: "liga";
+}
 
 .jif-apple:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-badge_percentIcon:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-bid_block:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-cash_in_advance:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-cash_on_delivery:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-check:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-delivery_address:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-ideal:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-invoice_address:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-multiple_sources:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-paypal:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-ratepay:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-test:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-webshop_bidagent:before {
-  content: ""; }
+  content: "";
+}
 
 .jif-webshop:before {
-  content: ""; }
+  content: "";
+}

@@ -556,6 +556,11 @@
         "signature": "d58daa97dbced613668b0451dfbf15731636acca2129059fff77ea921c7ef853",
         "affectsGlobalScope": false
       },
+      "../src/library/jfs/core/script.ts": {
+        "version": "84ec5148ee20eef12c3e4f60a7c9516be18387f7ead19a524c2aaffac6a4dffc",
+        "signature": "0a5f2ea606e9ce47a2e21696fce29c489a5deb54efa1d6f5676ef9777030e73c",
+        "affectsGlobalScope": false
+      },
       "../src/library/jfs/core/settings/deployment/index.ts": {
         "version": "81dc840b9173acb5f8faac089775250e8dbc448c6c7efd6a2bba97f8995452d8",
         "signature": "7beafbeed11810bd6fdbe1fec23e83df7663fe59fc7cbab0f0e89b9dd0f7a29c",
@@ -607,53 +612,53 @@
         "affectsGlobalScope": false
       },
       "../src/setup/check-translations.ts": {
-        "version": "d7419b5866c4c00d342397351b7e230ecb86b4f44d043b86651a3c20bf30069c",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "version": "6a446c10e5c77b675c3760e41c9b740ac2b29b881adda531a4bc670a744dc100",
+        "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
       "../src/setup/deploy-config-files.ts": {
-        "version": "f8487ef44b848e43eb073535c952a75fe161da932f5ae6fdb50e97e6af3fa816",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "version": "28a1529abe28d87084a802f1de361d427f1246629cb5bde360fe645324a11653",
+        "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
       "../src/setup/generate-juwelo-icon-font.ts": {
-        "version": "5b71a3feac26efb5292957f49f696f8132828324ca5d1a73c4d2ffba5d6cde2c",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "version": "93fc03c1f940f8e4f38865a68489d81a93ab15773ed3f0fb54d081547a518f30",
+        "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
       "../src/setup/jfs-build.ts": {
-        "version": "3ffacf3b00f17188caa19626377eb75488ea156d38e433e83be520e7c73df054",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "version": "72966b0baaf3751a02637e749073ef8c13cb3e7e274c3f3b2fca548788b69831",
+        "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
       "../src/setup/jfs-showcase.ts": {
-        "version": "c1fe1969ceaa9ee59460ac59acaac4123a2a2ea33e79e48523fc38f2402530ef",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "version": "333c6764aef89e6777531b11dc1dda9d13ba63face1ce1cec23683c04ebff0c7",
+        "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
       "../src/setup/jsc-check.ts": {
-        "version": "2fe06cd0fe9cf86563b395f0f77f2890be8227a114f3bcbd11114be7106c4b20",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "version": "0fac12bf3f7cb74bcb1c79b9f9ca246429461ffaba47d5862dd92d579e1454b6",
+        "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
       "../src/setup/jsc-generate.ts": {
-        "version": "1088ced1c440be4fe43f081048ffda616120bc7c54902a8bade58cc8eb48cdb7",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "version": "73c521dd48711ef5ed1e2c341a6c59088b798727d5733cbee6c79adc23b5d518",
+        "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
       "../src/setup/register-scripts.ts": {
-        "version": "0385c58b22d21b8b398fd4e48ebed851805319468e8b2c12849036e683dcaa19",
-        "signature": "2f436f578e52d51eb19e920cdcdd6065c72741fa256881962f845daf3fe4121f",
+        "version": "663855c07705c57997996e4a55a8136cba1f431596ff796b6c56e9b9b65289f7",
+        "signature": "f87e8d5bd2da55789accae9e103cb73f6c577d3079fcbd1c5e34f40adbc7a144",
         "affectsGlobalScope": false
       },
       "../src/setup/set-peer-dependencies.ts": {
-        "version": "9516cabaac381b04eef87f3fc38f7f8b8e58455bc52e38bf42a6eacd6b6105fe",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "version": "bccf2097a581890a463f66d8bb2f0e212da2771a6585f6a53daec4196b0b958d",
+        "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
       "../src/setup/sync-development.ts": {
-        "version": "773344aa7495322f4a03e4ae8ccb98b7a49aaf6dcb6455b8469fe4f2776c02f3",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "version": "e1f3cc3f39fef3dcd7e01bab3c1758165718ec3f156eacb4f047b8bf6794883d",
+        "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/color-name/index.d.ts": {
@@ -2102,6 +2107,12 @@
         "../src/library/jfs/project/index.ts",
         "../src/library/os/filesystem/directory/index.ts"
       ],
+      "../src/library/jfs/core/script.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../src/library/text/index.ts"
+      ],
       "../src/library/jfs/core/settings/deployment/index.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -2578,6 +2589,7 @@
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../src/library/jfs/core/script.ts",
         "../src/library/jfs/index.ts",
         "../src/library/jfs/project/translations/index.ts",
         "../src/library/jfs/project/translations/snapshot.ts",
@@ -2590,6 +2602,7 @@
         "../src/library/jfs/app/index.ts",
         "../src/library/jfs/component/index.ts",
         "../src/library/jfs/core/index.ts",
+        "../src/library/jfs/core/script.ts",
         "../src/library/jfs/index.ts",
         "../src/library/os/filesystem/directory/index.ts",
         "../src/library/text/index.ts"
@@ -2599,6 +2612,7 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../src/library/jfs/core/index.ts",
+        "../src/library/jfs/core/script.ts",
         "../src/library/jfs/index.ts"
       ],
       "../src/setup/jfs-build.ts": [
@@ -2606,12 +2620,14 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../src/library/jfs/app/index.ts",
+        "../src/library/jfs/core/script.ts",
         "../src/library/jfs/index.ts"
       ],
       "../src/setup/jfs-showcase.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../src/library/jfs/core/script.ts",
         "../src/library/jfs/index.ts",
         "../src/library/os/filesystem/directory/index.ts",
         "../src/library/os/process/index.ts"
@@ -2620,6 +2636,7 @@
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../src/library/jfs/core/script.ts",
         "../src/library/jfs/index.ts",
         "../src/library/job/index.ts"
       ],
@@ -2628,6 +2645,7 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../src/library/jfs/core/index.ts",
+        "../src/library/jfs/core/script.ts",
         "../src/library/jfs/index.ts"
       ],
       "../src/setup/register-scripts.ts": [
@@ -2637,8 +2655,11 @@
         "../src/library/jfs/app/index.ts",
         "../src/library/jfs/component/index.ts",
         "../src/library/jfs/core/index.ts",
+        "../src/library/jfs/core/script.ts",
         "../src/library/jfs/index.ts",
+        "../src/library/jfs/project/index.ts",
         "../src/library/os/filesystem/directory/index.ts",
+        "../src/library/os/filesystem/file/index.ts",
         "../src/library/text/index.ts"
       ],
       "../src/setup/set-peer-dependencies.ts": [
@@ -2646,6 +2667,7 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../src/library/jfs/core/index.ts",
+        "../src/library/jfs/core/script.ts",
         "../src/library/jfs/index.ts"
       ],
       "../src/setup/sync-development.ts": [
@@ -2656,6 +2678,7 @@
         "../src/library/jfs/app/index.ts",
         "../src/library/jfs/component/index.ts",
         "../src/library/jfs/core/index.ts",
+        "../src/library/jfs/core/script.ts",
         "../src/library/jfs/index.ts",
         "../src/library/os/filesystem/synchronization.ts"
       ]
@@ -3787,6 +3810,36 @@
       "../src/library/os/process/index.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../src/library/os/filesystem/directory/index.ts"
+      ],
+      "../src/setup/check-translations.ts": [
+        "../src/library/jfs/core/script.ts"
+      ],
+      "../src/setup/deploy-config-files.ts": [
+        "../src/library/jfs/core/script.ts"
+      ],
+      "../src/setup/generate-juwelo-icon-font.ts": [
+        "../src/library/jfs/core/script.ts"
+      ],
+      "../src/setup/jfs-build.ts": [
+        "../src/library/jfs/core/script.ts"
+      ],
+      "../src/setup/jfs-showcase.ts": [
+        "../src/library/jfs/core/script.ts"
+      ],
+      "../src/setup/jsc-check.ts": [
+        "../src/library/jfs/core/script.ts"
+      ],
+      "../src/setup/jsc-generate.ts": [
+        "../src/library/jfs/core/script.ts"
+      ],
+      "../src/setup/register-scripts.ts": [
+        "../src/library/jfs/core/script.ts"
+      ],
+      "../src/setup/set-peer-dependencies.ts": [
+        "../src/library/jfs/core/script.ts"
+      ],
+      "../src/setup/sync-development.ts": [
+        "../src/library/jfs/core/script.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -3932,6 +3985,7 @@
       "../src/library/jfs/component/index.ts",
       "../src/library/jfs/config.ts",
       "../src/library/jfs/core/index.ts",
+      "../src/library/jfs/core/script.ts",
       "../src/library/jfs/core/settings/deployment/index.ts",
       "../src/library/jfs/core/settings/index.ts",
       "../src/library/jfs/index.ts",

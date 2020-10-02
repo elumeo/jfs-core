@@ -37,6 +37,7 @@
     "node_modules/@elumeo/jfs-core/scripts",
     "scripts",
     "build",
-    "./helper.js"
+    "./helper.js",
+    "showcase"
   ]
 }

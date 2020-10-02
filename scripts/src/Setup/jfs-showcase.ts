@@ -3,6 +3,7 @@ import JFS from 'Library/JFS';
 import fs from 'fs';
 import Directory from 'Library/OS/Filesystem/Directory';
 import { ChildProcess } from 'child_process';
+import Script from 'Library/JFS/Core/Script';
 
 const install = (path: string) => new Promise((resolve, reject) => {
   const installer = new Process({
@@ -42,7 +43,7 @@ const start = (path: string, onSpawn?: (child: ChildProcess) => void) => {
   server.run(onSpawn);
 }
 
-JFS.discover(async () => {
+const run = () => JFS.discover(async () => {
   const showcase = new Directory({
     path: JFS.Core.directory.resolve('showcase')
   });
@@ -55,4 +56,11 @@ JFS.discover(async () => {
     await install(showcase.path);
     start(showcase.path);
   }
+});
+
+export default new Script({
+  path: __filename,
+  name: 'core-showcase',
+  scope: ['all'],
+  run
 });

@@ -10,6 +10,7 @@ const Component_1 = __importDefault(require("../Library/JFS/Component"));
 const Core_1 = __importDefault(require("../Library/JFS/Core"));
 const App_1 = __importDefault(require("../Library/JFS/App"));
 const Text_1 = __importDefault(require("../Library/Text"));
+const Script_1 = __importDefault(require("../Library/JFS/Core/Script"));
 const filesNamesToCopy = [
     'tsconfig.app.json',
     'tsconfig.component.json',
@@ -19,7 +20,7 @@ const filesNamesToCopy = [
     '.prettierconfig',
     '.prettierrc',
 ];
-JFS_1.default.discover(() => {
+const run = () => JFS_1.default.discover(() => {
     new Directory_1.default({
         path: path_1.resolve(JFS_1.default.Core.path, 'settings')
     }).files(files => {
@@ -51,5 +52,11 @@ JFS_1.default.discover(() => {
             }
         });
     });
+});
+exports.default = new Script_1.default({
+    path: __filename,
+    name: 'deploy-config-files',
+    scope: ['all'],
+    run
 });
 //# sourceMappingURL=deploy-config-files.js.map

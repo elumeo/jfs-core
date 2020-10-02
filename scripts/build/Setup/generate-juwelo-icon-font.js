@@ -18,23 +18,33 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const JFS_1 = __importDefault(require("../Library/JFS"));
 const Core_1 = __importDefault(require("../Library/JFS/Core"));
-const fontagon_1 = __importDefault(require("fontagon"));
 const DartSass = __importStar(require("dart-sass"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = require("path");
-JFS_1.default.discover(() => {
+const Script_1 = __importDefault(require("../Library/JFS/Core/Script"));
+const run = () => JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
     if (JFS_1.default.Head instanceof Core_1.default) {
+        const Fontagon = (yield Promise.resolve().then(() => __importStar(require('fontagon')))).default;
         const resources = path_1.resolve(JFS_1.default.Head.path, 'scripts', 'Resources');
         const scss = path_1.resolve(resources, 'juwelo-icon-font', 'scss');
         const dist = path_1.resolve(resources, 'juwelo-icon-font', 'dist');
         const target = path_1.resolve(JFS_1.default.Head.path, 'src', 'Component', 'JuweloFontIcon');
-        fontagon_1.default({
+        Fontagon({
             files: [
                 path_1.resolve(resources, 'juwelo-icon-font', 'svg', '*.svg')
             ],
@@ -74,5 +84,11 @@ JFS_1.default.discover(() => {
             });
         }).catch(err => console.error('fail! ', err));
     }
+}));
+exports.default = new Script_1.default({
+    path: __filename,
+    name: 'generate-juwelo-icon-font',
+    scope: ['core'],
+    run
 });
 //# sourceMappingURL=generate-juwelo-icon-font.js.map

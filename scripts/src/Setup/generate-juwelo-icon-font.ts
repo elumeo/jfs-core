@@ -1,13 +1,14 @@
 import JFS from 'Library/JFS';
 import Core from 'Library/JFS/Core';
-import { default as Fontagon } from 'fontagon'
 import * as DartSass from 'dart-sass';
 import fs from 'fs';
 import { resolve } from 'path';
+import Script from 'Library/JFS/Core/Script';
 
-JFS.discover(
-  () => {
+const run = () => JFS.discover(
+  async () => {
     if (JFS.Head instanceof Core) {
+      const Fontagon = (await import('fontagon')).default;
       const resources = resolve(JFS.Head.path, 'scripts', 'Resources');
       const scss = resolve(resources, 'juwelo-icon-font', 'scss')
       const dist = resolve(resources, 'juwelo-icon-font', 'dist');
@@ -75,3 +76,10 @@ JFS.discover(
     }
   }
 );
+
+export default new Script({
+  path: __filename,
+  name: 'generate-juwelo-icon-font',
+  scope: ['core'],
+  run
+});

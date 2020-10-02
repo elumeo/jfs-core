@@ -16,6 +16,7 @@ const Process_1 = __importDefault(require("../Library/OS/Process"));
 const JFS_1 = __importDefault(require("../Library/JFS"));
 const fs_1 = __importDefault(require("fs"));
 const Directory_1 = __importDefault(require("../Library/OS/Filesystem/Directory"));
+const Script_1 = __importDefault(require("../Library/JFS/Core/Script"));
 const install = (path) => new Promise((resolve, reject) => {
     const installer = new Process_1.default({
         command: 'npm',
@@ -50,7 +51,7 @@ const start = (path, onSpawn) => {
     });
     server.run(onSpawn);
 };
-JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
+const run = () => JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
     const showcase = new Directory_1.default({
         path: JFS_1.default.Core.directory.resolve('showcase')
     });
@@ -63,4 +64,10 @@ JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
         start(showcase.path);
     }
 }));
+exports.default = new Script_1.default({
+    path: __filename,
+    name: 'core-showcase',
+    scope: ['all'],
+    run
+});
 //# sourceMappingURL=jfs-showcase.js.map

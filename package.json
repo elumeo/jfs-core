@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "9.6.2",
+  "version": "9.6.3",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
@@ -11,13 +11,12 @@
     "postinstall": "subpkg install && node ./scripts/build/Setup/deploy-config-files.js && node ./scripts/build/Setup/set-peer-dependencies.js && node scripts/build/Setup/register-scripts.js",
     "register-scripts": "node scripts/build/Setup/register-scripts.js",
     "check-translations": "node scripts/build/Setup/check-translations.js",
-    "generate-juwelo-icon-font": "node scripts/build/Setup/generate-juwelo-icon-font.js",
     "deploy-config-files": "node scripts/build/Setup/deploy-config-files.js",
-    "jfs-showcase": "node scripts/build/Setup/jfs-showcase.js",
+    "generate-juwelo-icon-font": "node scripts/build/Setup/generate-juwelo-icon-font.js",
+    "core-showcase": "node scripts/build/Setup/jfs-showcase.js",
     "jsc-check": "node scripts/build/Setup/jsc-check.js",
     "jsc-generate": "node scripts/build/Setup/jsc-generate.js",
-    "set-peer-dependencies": "node scripts/build/Setup/set-peer-dependencies.js",
-    "sync-development": "node scripts/build/Setup/sync-development.js"
+    "set-peerDependencies": "node scripts/build/Setup/set-peer-dependencies.js"
   },
   "repository": {
     "type": "git",
