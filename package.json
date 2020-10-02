@@ -15,7 +15,8 @@
     "release": "npm publish --access public",
     "postinstall": "subpkg install && node ./scripts/build/Setup/deploy-config-files.js && node ./scripts/build/Setup/set-peer-dependencies.js",
     "clean-install": "rm -rf ./node_modules ./package-lock.json ./scripts/node_modules ./scripts/package-lock.json && npm i",
-    "clean-install-and-rebuild": "rm -rf ./build ./node_modules ./package-lock.json ./scripts/node_modules ./scripts/package-lock.json ./scripts/build && npm i && npm run build"
+    "clean-install-and-rebuild": "rm -rf ./build ./node_modules ./package-lock.json ./scripts/node_modules ./scripts/package-lock.json ./scripts/build && npm i && npm run build",
+    "showcase": "node scripts/build/Setup/jfs-showcase"
   },
   "repository": {
     "type": "git",

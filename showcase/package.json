@@ -1,0 +1,23 @@
+{
+  "name": "jfs-showcase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config node_modules/@elumeo/jfs-core/settings/webpack.development.js",
+    "build": "webpack --config node_modules/@elumeo/jfs-core/settings/webpack.production.js",
+    "sync-development": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/sync-development.js"
+  },
+  "jfs": {
+    "sync": {
+      "@elumeo/jfs-core": ".."
+    }
+  },
+  "dependencies": {
+    "@elumeo/jfs-core": "9.5.30",
+    "jfc-hello-world": "https://github.com/scharfohnezwiebeln/jfc_HelloWorld.git#f89cfaeb21c32118471bf4cd5f0fcb3ad732bd51"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -631,6 +631,11 @@
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
+      "../src/setup/jfs-showcase.ts": {
+        "version": "c1fe1969ceaa9ee59460ac59acaac4123a2a2ea33e79e48523fc38f2402530ef",
+        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "affectsGlobalScope": false
+      },
       "../src/setup/jsc-check.ts": {
         "version": "2fe06cd0fe9cf86563b395f0f77f2890be8227a114f3bcbd11114be7106c4b20",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
@@ -2609,6 +2614,14 @@
         "../src/library/os/process/index.ts",
         "../src/library/types/tsconfig.ts"
       ],
+      "../src/setup/jfs-showcase.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../src/library/jfs/index.ts",
+        "../src/library/os/filesystem/directory/index.ts",
+        "../src/library/os/process/index.ts"
+      ],
       "../src/setup/jsc-check.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -3989,6 +4002,7 @@
       "../src/setup/generate-juwelo-icon-font.ts",
       "../src/setup/jfs-build.ts",
       "../src/setup/jfs-prebuild.ts",
+      "../src/setup/jfs-showcase.ts",
       "../src/setup/jsc-check.ts",
       "../src/setup/jsc-generate.ts",
       "../src/setup/set-peer-dependencies.ts",

@@ -1,0 +1,11 @@
+{
+  "local": {
+    "namespace": "JSCApi"
+  },
+  "remote": {
+    "WebSocketController": [
+      "subscribePingRoom",
+      "subscribeCurrentGameRoom"
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "de": {
+    "app.title": "Boilerplate (de-DE)",
+    "app.hello": "Hallo Welt",
+    "app.notification.change.language": "Klicke mich, um die Sprache der App zu ändern",
+    "Add Notification": "Benachrichtigung erzeugen",
+    "Add Toast": "Toast anzeigen",
+    "Open Dialog": "Dialog öffnen",
+    "Close Dialog": "Dialog schließen",
+    "jscWebSocket.pingJoinRoom": "JSC WS: Ping Raum betreten",
+    "jscWebSocket.pingLeaveRoom": "JSC WS: Ping Raum verlassen",
+    "jscWebSocket.currentGameJoinRoom": "JSC WS: CurrentGame Raum betreten",
+    "jscWebSocket.currentGameLeaveRoom": "JSC WS: CurrentGame Raum verlassen",
+    "jfsWebSocket.pingJoinRoom": "JFS WS: Ping Raum betreten",
+    "jfsWebSocket.pingLeaveRoom": "JFS WS: Ping Raum verlassen",
+    "configurable.message": "<b>Ich bin ein konfigurierbarer Text: {text} {other}</b>"
+  },
+  "en": {
+    "app.title": "Boilerplate (en-US)",
+    "app.hello": "Hello World",
+    "app.notification.change.language": "Click me to change the apps language",
+    "Add Notification": "Add Notification",
+    "Add Toast": "Add Toast",
+    "Open Dialog": "Open Dialog",
+    "Close Dialog": "Close Dialog",
+    "jscWebSocket.pingJoinRoom": "JSC WS: Ping Join Room",
+    "jscWebSocket.pingLeaveRoom": "JSC WS: Ping Leave Room",
+    "jscWebSocket.currentGameJoinRoom": "JSC WS: CurrentGame Join Room",
+    "jscWebSocket.currentGameLeaveRoom": "JSC WS: CurrentGame Leave Room",
+    "jfsWebSocket.pingJoinRoom": "JFS WS: Ping Join Room",
+    "jfsWebSocket.pingLeaveRoom": "JFS WS: Ping Leave Room"
+  },
+  "it": {
+    "app.title": "Boilerplate (it-IT)",
+    "app.hello": "Ciao Mondo",
+    "app.notification.change.language": "Fare clic su di me per cambiare la lingua delle app",
+    "Add Notification": "Aggiungi Notifica",
+    "Add Toast": "Aggiungi toast",
+    "Open Dialog": "Apri finestra di dialogo",
+    "Close Dialog": "Chiudi finestra di dialogo",
+    "jscWebSocket.pingJoinRoom": "JSC WS: Ping Iscriviti alla camera",
+    "jscWebSocket.pingLeaveRoom": "JSC WS: Ping Lascia la camera",
+    "jscWebSocket.currentGameJoinRoom": "JSC WS: CurrentGame Iscriviti alla camera",
+    "jscWebSocket.currentGameLeaveRoom": "JSC WS: CurrentGame Lascia la camera",
+    "jfsWebSocket.pingJoinRoom": "JFS WS: Ping Iscriviti alla camera",
+    "jfsWebSocket.pingLeaveRoom": "JFS WS: Ping Lascia la camera"
+  }
+}

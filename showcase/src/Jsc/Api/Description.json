@@ -1,0 +1,392 @@
+{
+  "dtos": [
+    {
+      "name": "Game",
+      "constants": [
+        {
+          "name": "GAME_DTO_STATUS_PLANNED",
+          "value": "planned"
+        },
+        {
+          "name": "GAME_DTO_STATUS_PREPARED",
+          "value": "prepared"
+        },
+        {
+          "name": "GAME_DTO_STATUS_STARTING",
+          "value": "starting"
+        },
+        {
+          "name": "GAME_DTO_STATUS_RUNNING",
+          "value": "running"
+        },
+        {
+          "name": "GAME_DTO_STATUS_ENDED",
+          "value": "ended"
+        },
+        {
+          "name": "GAME_DTO_STATUS_CLOSED",
+          "value": "closed"
+        },
+        {
+          "name": "GAME_DTO_STATUS_CLEANUP_CLOSED",
+          "value": "cleanupClosed"
+        },
+        {
+          "name": "GAME_DTO_STATUS_CANCELLED",
+          "value": "cancelled"
+        },
+        {
+          "name": "GAME_DTO_STATUS_KILLED",
+          "value": "killed"
+        },
+        {
+          "name": "GAME_DTO_GAME_MODE_NORMAL",
+          "value": "normal"
+        },
+        {
+          "name": "GAME_DTO_GAME_MODE_ONDEMAND",
+          "value": "ondemand"
+        },
+        {
+          "name": "GAME_DTO_GAME_MODE_MULTISIZE",
+          "value": "multisize"
+        },
+        {
+          "name": "GAME_DTO_GAME_TYPE_SINGLE_VARIANT",
+          "value": "singleVariant"
+        },
+        {
+          "name": "GAME_DTO_GAME_TYPE_ONDEMAND",
+          "value": "ondemand"
+        },
+        {
+          "name": "GAME_DTO_GAME_TYPE_MULTI_VARIANT",
+          "value": "multiVariant"
+        },
+        {
+          "name": "GAME_DTO_GAME_TYPE_MULTI_CREATION",
+          "value": "multiCreation"
+        },
+        {
+          "name": "GAME_DTO_GAME_TYPE_MULTI_PRODUCT",
+          "value": "multiProduct"
+        },
+        {
+          "name": "GAME_DTO_SALE_MODE_DEFAULT",
+          "value": "default"
+        },
+        {
+          "name": "GAME_DTO_SALE_MODE_RETAIL",
+          "value": "retail"
+        },
+        {
+          "name": "GAME_DTO_BID_STATUS_ENABLED",
+          "value": "enabled"
+        },
+        {
+          "name": "GAME_DTO_BID_STATUS_DISABLED",
+          "value": "disabled"
+        }
+      ],
+      "dtos": [
+        {
+          "name": "GameDTO",
+          "generics": [],
+          "properties": {
+            "gameType": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "currentPriceInCent": {
+              "type": "number",
+              "array": false,
+              "generics": []
+            },
+            "endPriceInCent": {
+              "type": "number",
+              "array": false,
+              "generics": []
+            },
+            "freeDelivery": {
+              "type": "boolean",
+              "array": false,
+              "generics": []
+            },
+            "gameEndedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "gameMode": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "gameStartedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "id": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "isHighlight": {
+              "type": "boolean",
+              "array": false,
+              "generics": []
+            },
+            "plannedFor": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "presenter": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "producer": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "productId": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "quantityAtStart": {
+              "type": "number",
+              "array": false,
+              "generics": []
+            },
+            "quantityCurrent": {
+              "type": "number",
+              "array": false,
+              "generics": []
+            },
+            "pretendedQuantityAtStart": {
+              "type": "number",
+              "array": false,
+              "generics": []
+            },
+            "remark": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "specialBrand": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "specialGuest": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "startPriceInCent": {
+              "type": "number",
+              "array": false,
+              "generics": []
+            },
+            "status": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "startId": {
+              "type": "number",
+              "array": false,
+              "generics": []
+            },
+            "showGame": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "articleId": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "runtimeEntryId": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "saleMode": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "shift": {
+              "type": "number",
+              "array": false,
+              "generics": []
+            },
+            "bidStatus": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "isProductBundle": {
+              "type": "boolean",
+              "array": false,
+              "generics": []
+            },
+            "relatedProductIds": {
+              "type": "string",
+              "array": true,
+              "generics": []
+            },
+            "productBundleIdentifier": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "planer": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "withRemoteStock": {
+              "type": "boolean",
+              "array": false,
+              "generics": []
+            },
+            "showSpecial": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "isRobotGame": {
+              "type": "boolean",
+              "array": false,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        }
+      ],
+      "namespaces": []
+    },
+    {
+      "name": "WebSocket",
+      "constants": [],
+      "dtos": [
+        {
+          "name": "WebSocketRoomUpdateDTO",
+          "generics": [
+            "T1"
+          ],
+          "properties": {
+            "room": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "namespace": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "data": {
+              "type": "T1",
+              "array": false,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        }
+      ],
+      "namespaces": []
+    }
+  ],
+  "clients": [
+    {
+      "name": "WebSocketController",
+      "methods": [
+        {
+          "name": "subscribeCurrentGameRoom",
+          "resource": {
+            "path": null,
+            "type": {
+              "name": "DTO.Game.GameDTO",
+              "generics": [
+                "DTO.Game.GameCollectionDTO"
+              ],
+              "array": true
+            },
+            "room": "currentGame"
+          },
+          "protocol": {
+            "name": "WS",
+            "method": "join",
+            "namespace": "Jsc2Jfs"
+          },
+          "parameters": []
+        },
+        {
+          "name": "subscribePingRoom",
+          "resource": {
+            "path": null,
+            "type": {
+              "name": "string",
+              "generics": [],
+              "array": false
+            },
+            "room": "ping"
+          },
+          "protocol": {
+            "name": "WS",
+            "method": "join",
+            "namespace": "Jsc2Jfs"
+          },
+          "parameters": []
+        }
+      ]
+    }
+  ]
+}

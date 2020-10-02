@@ -1,0 +1,9 @@
+{
+  "name": "Ährror", "message": "Something went wrong",
+  "config": { "method": "POST", "url": "/item", "baseURL": "http://somewhere.local" },
+  "response": {
+    "data": { "message": "Something went really wrong", "id": "OUT_OF_BOUNDS" },
+    "status": 400,
+    "statusText": "Bad Request"
+  }
+}
