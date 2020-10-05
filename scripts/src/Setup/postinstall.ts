@@ -9,9 +9,6 @@ export default new Script({
   name: 'jfs-postinstall',
   scope: ['all'],
   run: () => JFS.discover(async () => {
-    if (JFS.Head instanceof Core) {
-      Subpackage.install(JFS.Core);
-    }
     await JFS.Head.addRegisterScripts(JFS.Core);
     await JFS.Head.registerScripts();
     await JFS.Head.deployConfigFiles();

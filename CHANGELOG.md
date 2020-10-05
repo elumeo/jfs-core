@@ -1,5 +1,9 @@
 ## 2020-10-05
 ## Fixed
+- Removed Subpackage.install() from postinstall script
+
+## 2020-10-05
+## Fixed
 - Reenabled subpkg install
 
 ## 2020-10-05

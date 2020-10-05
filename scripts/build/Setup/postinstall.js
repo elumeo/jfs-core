@@ -14,17 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const JFS_1 = __importDefault(require("../Library/JFS"));
 const Script_1 = __importDefault(require("../Library/JFS/Core/Script"));
-const Core_1 = __importDefault(require("../Library/JFS/Core"));
-const Subpackage_1 = __importDefault(require("../Library/JFS/Core/Subpackage"));
 const Process_1 = __importDefault(require("../Library/OS/Process"));
 exports.default = new Script_1.default({
     path: __filename,
     name: 'jfs-postinstall',
     scope: ['all'],
     run: () => JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
-        if (JFS_1.default.Head instanceof Core_1.default) {
-            Subpackage_1.default.install(JFS_1.default.Core);
-        }
         yield JFS_1.default.Head.addRegisterScripts(JFS_1.default.Core);
         yield JFS_1.default.Head.registerScripts();
         yield JFS_1.default.Head.deployConfigFiles();

@@ -652,7 +652,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/postinstall.ts": {
-        "version": "e5a4becc1b13ca7bbe3ae2717be0c6ac3ab97404bc7f6c16c1b44eb306c3fd74",
+        "version": "56ce74818d48c6aedb9f7238a4223898ba9de1e0abdeb4e5c6e9eb2db4175d6d",
         "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
@@ -1126,7 +1126,6 @@
           "./Library/*"
         ]
       },
-      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
