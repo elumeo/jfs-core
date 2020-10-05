@@ -1,10 +1,6 @@
 ## 2020-10-05
 ## Fixed
-- Fixed propagation of postinstall script
-
-## 2020-10-05
-## Fixed
-- Fixed propagation of postinstall script
+- Fixed path separator bug in register-scripts
 
 ## 2020-10-05
 ## Fixed

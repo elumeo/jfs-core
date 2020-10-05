@@ -55,7 +55,7 @@ const extract = async () => await imports(
 
 const add = (anker: string, scripts: Scripts, script: Script) => ({
   ...scripts,
-  [script.name]: `node ${relative(anker, script.path).replace(sep, '/')}`
+  [script.name]: `node ${relative(anker, script.path).replace('\\', '/')}`
 });
 
 const match = (head: Project, script: Script) => (

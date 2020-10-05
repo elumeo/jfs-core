@@ -63,7 +63,7 @@ const imports = (names) => (names.map((name) => __awaiter(void 0, void 0, void 0
 const extract = () => __awaiter(void 0, void 0, void 0, function* () {
     return yield imports(yield names(yield files()));
 });
-const add = (anker, scripts, script) => (Object.assign(Object.assign({}, scripts), { [script.name]: `node ${path_1.relative(anker, script.path).replace(path_1.sep, '/')}` }));
+const add = (anker, scripts, script) => (Object.assign(Object.assign({}, scripts), { [script.name]: `node ${path_1.relative(anker, script.path).replace('\\', '/')}` }));
 const match = (head, script) => (script.scope.includes(scope(head)) ||
     script.scope.includes('all'));
 const collect = (head) => (scripts, script) => {

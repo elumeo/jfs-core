@@ -25,8 +25,8 @@ exports.default = new Script_1.default({
         yield JFS_1.default.Head.deployConfigFiles();
         yield JFS_1.default.Head.setPeerDependencies();
         const parent = yield JFS_1.default.Head.parent();
-        console.log(parent);
         if (parent) {
+            parent.addPostinstallScript(JFS_1.default.Core);
             const propagation = new Process_1.default({
                 command: process.platform === 'win32' ? 'npm.cmd' : 'npm',
                 parameters: ['run', 'jfs-postinstall'],

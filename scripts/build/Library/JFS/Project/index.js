@@ -57,11 +57,21 @@ class Project {
             });
             child.run(instance => instance.on('exit', resolve));
         });
-        this.registerScriptsPath = (core) => path_1.resolve(path_1.relative(this.path, core.path), 'scripts', 'build', 'Setup', 'register-scripts').replace(path_1.sep, '/');
+        this.scriptPath = (core, name) => path_1.resolve(path_1.relative(this.path, core.path), 'scripts', 'build', 'Setup', name).replace(path_1.sep, '/');
+        this.addPostinstallScript = (core) => new Promise(resolve => {
+            this.nodePackage.json(data => {
+                if (!data.scripts['jfs-postinstall']) {
+                    this.nodePackage.file.save(Object.assign(Object.assign({}, data), { scripts: Object.assign(Object.assign({}, data.scripts), { 'jfs-postinstall': `node ${this.scriptPath(core, 'postinstall')}` }) }), resolve);
+                }
+                else {
+                    resolve();
+                }
+            });
+        });
         this.addRegisterScripts = (core) => new Promise(resolve => {
             this.nodePackage.json(data => {
                 if (!data.scripts['register-scripts']) {
-                    this.nodePackage.file.save(Object.assign(Object.assign({}, data), { scripts: Object.assign(Object.assign({}, data.scripts), { 'register-scripts': `node ${this.registerScriptsPath(core)}` }) }), resolve);
+                    this.nodePackage.file.save(Object.assign(Object.assign({}, data), { scripts: Object.assign(Object.assign({}, data.scripts), { 'register-scripts': `node ${this.scriptPath(core, 'register-scripts')}` }) }), resolve);
                 }
                 else {
                     resolve();
