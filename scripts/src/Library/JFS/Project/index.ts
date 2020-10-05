@@ -64,7 +64,7 @@ abstract class Project {
 
   public setPeerDependencies = () => new Promise(resolve => {
     const child = new Process({
-      command: 'npm',
+      command: process.platform === 'win32' ? 'npm.cmd' : 'npm',
       parameters: ['run', 'set-peer-dependencies'],
       options: {
         cwd: this.path,
@@ -76,7 +76,7 @@ abstract class Project {
 
   public deployConfigFiles = () => new Promise(resolve => {
     const child = new Process({
-      command: 'npm',
+      command: process.platform === 'win32' ? 'npm.cmd' : 'npm',
       parameters: ['run', 'deploy-config-files'],
       options: {
         cwd: this.path,
@@ -113,7 +113,7 @@ abstract class Project {
 
   public registerScripts = () => new Promise(resolve => {
     const child = new Process({
-      command: 'npm',
+      command: process.platform === 'win32' ? 'npm.cmd' : 'npm',
       parameters: ['run', 'register-scripts'],
       options: {
         cwd: this.path,

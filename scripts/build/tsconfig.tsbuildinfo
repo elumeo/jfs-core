@@ -537,7 +537,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/index.ts": {
-        "version": "f32c66678559c1a269dd3ddf8dc45a0b237ddb11f471f45c13934210dcfe13b4",
+        "version": "dd605cca687fd62696bc346bd8a15e8755d2f63b841a2818eb90a5d239c5af42",
         "signature": "8b0afb116b790a8b7e60b8aa631d17fa80775339ee4a9d56f707e3049f353a60",
         "affectsGlobalScope": false
       },
@@ -1126,6 +1126,7 @@
           "./Library/*"
         ]
       },
+      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
