@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import WebSocketConnection from 'Component/Websocket/WebSocketConnection';
 import Loader from './Loader';
+import { HashRouter } from 'react-router-dom';
 
 export type Props = {
   store: Store;
@@ -20,12 +21,14 @@ const App: React.FC<Props> = ({
 }) => (
   <Provider store={store}>
     <WebSocketConnection>
-      <Loader
-        allowRobotLogin={allowRobotLogin}
-        translations={translations}
-        packageJson={packageJson}>
-        {children}
-      </Loader>
+      <HashRouter>
+        <Loader
+          allowRobotLogin={allowRobotLogin}
+          translations={translations}
+          packageJson={packageJson}>
+          {children}
+        </Loader>
+      </HashRouter>
     </WebSocketConnection>
   </Provider>
 );

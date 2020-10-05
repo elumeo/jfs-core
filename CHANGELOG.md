@@ -1,3 +1,7 @@
+## 2020-10-05
+## Fixed
+- Fixed issues causing the app to re-render too often
+
 ## 2020-10-02
 ## Added
 - Added mechanism for reading meta data of scripts (needed for register-scripts)

@@ -6,5 +6,8 @@ declare const useLoader: ({ allowRobotLogin, packageJson, translations }: {
             [key: string]: string;
         };
     };
-}) => void;
+}) => {
+    appInitialized: boolean;
+    language: string;
+};
 export default useLoader;

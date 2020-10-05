@@ -1,4 +1,12 @@
 import React from 'react';
 import './_styles.scss';
-declare const Initialized: React.FC;
-export default Initialized;
+declare const _default: React.NamedExoticComponent<{
+    translations: {
+        [language: string]: {
+            [key: string]: string;
+        };
+    };
+    language: string;
+    children: React.ReactNode;
+}>;
+export default _default;

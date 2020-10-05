@@ -1252,8 +1252,18 @@
         "affectsGlobalScope": false
       },
       "../src/component/app/useloader.tsx": {
-        "version": "9da9ea3b2c7932bcca64583cc3512e0802b09402e437a9c7b33ef34224f90744",
-        "signature": "9b267dd0173026c2aaa8677c07cd1feecf2d99fadfa909d7a97d6ca5322350c9",
+        "version": "58ef91a1b38f42a15666f12bddad2cf1c962ef31b93b904f09c3c344cd590690",
+        "signature": "d09a7dd412607792f1f472a93d40398cb7ebb592734269f68011927f417b783e",
+        "affectsGlobalScope": false
+      },
+      "../src/component/app/initialized.tsx": {
+        "version": "48eef98ef5889f92f6b4811abcdd989e06b0dfd4ab9c758669dbbad57bcb4aac",
+        "signature": "08d520dfb34f83a738b5fa89da20ec096a2443dc3742c7a5cbb312cf60e76667",
+        "affectsGlobalScope": false
+      },
+      "../src/component/app/loader.tsx": {
+        "version": "5312c14279c485b4799dd6f64e4c53c145fcf7089d9e55043ed8d09c302aa59c",
+        "signature": "57c52f96d77ac3e6b88f1f0aaffef85a47510daa36cd4052e9ffd5c2a46fc2ec",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react-router/index.d.ts": {
@@ -1266,18 +1276,8 @@
         "signature": "5859c951fdc2f03f96a25661b33eec6c3747b461dc9331bb1096690a8924edc5",
         "affectsGlobalScope": false
       },
-      "../src/component/app/initialized.tsx": {
-        "version": "567941f2940602405f3705d0b494db3437cd58f396a5bfe9e58ad72631bfb14a",
-        "signature": "e9660ee1f793fa77fb9d782845f0b66b94d7105d055d78bdf832fe2fa10388a1",
-        "affectsGlobalScope": false
-      },
-      "../src/component/app/loader.tsx": {
-        "version": "5ff3861169463c2d83115ca60b6bd24b66ed9a90e44e770432f53a86475165f5",
-        "signature": "57c52f96d77ac3e6b88f1f0aaffef85a47510daa36cd4052e9ffd5c2a46fc2ec",
-        "affectsGlobalScope": false
-      },
       "../src/component/app/app.tsx": {
-        "version": "e0f43ff75115eeed7c9663c0182cabbd463a113e64c50b48d1f80e2abcb87848",
+        "version": "daf4bf7dffed2b78fdfa9cb4739502233cfdcaf4655408157dbfdc5e7d546ef8",
         "signature": "79f96cf726c9421b0ba39b342f64efe16df5ea7f3b9e759ae04f73bd7c4b6870",
         "affectsGlobalScope": false
       },
@@ -6363,6 +6363,7 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-redux/index.d.ts",
+        "../node_modules/@types/react-router-dom/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/redux/index.d.ts",
@@ -6373,22 +6374,17 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-intl/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react-router-dom/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts",
-        "../src/store/reducer/global.ts"
+        "../node_modules/date-fns/typings.d.ts"
       ],
       "../src/component/app/loader.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/progress/circularprogress.d.ts",
         "../src/component/app/initialized.tsx",
-        "../src/component/app/useloader.tsx",
-        "../src/store/reducer/global.ts"
+        "../src/component/app/useloader.tsx"
       ],
       "../src/component/app/useloader.tsx": [
         "../node_modules/@types/node/base.d.ts",
@@ -6396,7 +6392,8 @@
         "../node_modules/@types/react-intl/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
-        "../src/store/action/useactions.ts"
+        "../src/store/action/useactions.ts",
+        "../src/types/redux.ts"
       ],
       "../src/component/content/content.tsx": [
         "../node_modules/@types/node/base.d.ts",
