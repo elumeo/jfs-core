@@ -537,7 +537,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/index.ts": {
-        "version": "555a568201e2003175fa2001469b0a1b9b37b47974d57a92c9c7f9578460445a",
+        "version": "488ec4397f2dfc0540e8ed029d31a8be9d767749c47e95a014b98d2a418d587e",
         "signature": "8b0afb116b790a8b7e60b8aa631d17fa80775339ee4a9d56f707e3049f353a60",
         "affectsGlobalScope": false
       },
@@ -652,7 +652,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/postinstall.ts": {
-        "version": "e4c45eb84cf4810138e9f7329b6b51387663c2d559828e5812cb60774e051d05",
+        "version": "e01d41d610e6a78e5241d81c67a2fa5f34dedf3b1b15d0d58e5a73044fab92f6",
         "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
@@ -2670,9 +2670,7 @@
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../src/library/jfs/core/index.ts",
         "../src/library/jfs/core/script.ts",
-        "../src/library/jfs/core/subpackage.ts",
         "../src/library/jfs/index.ts",
         "../src/library/os/process/index.ts"
       ],

@@ -5,7 +5,7 @@ import Text from 'Library/Text';
 import Translations from './Translations';
 import JSC from './Api';
 import File from 'Library/OS/Filesystem/File';
-import { resolve, sep, relative } from 'path';
+import { resolve, sep, relative, dirname } from 'path';
 import Build from './Build';
 import Process from 'Library/OS/Process';
 import JFS from '..';
@@ -86,10 +86,30 @@ abstract class Project {
     child.run(instance => instance.on('exit', resolve));
   });
 
-  public registerScriptsPath = (core: Core) => resolve(
+  public scriptPath = (core: Core, name: string) => resolve(
     relative(this.path, core.path),
-    'scripts', 'build', 'Setup', 'register-scripts'
+    'scripts', 'build', 'Setup', name
   ).replace(sep, '/');
+
+  public addPostinstallScript = (core: Core) => new Promise(resolve => {
+    this.nodePackage.json(data => {
+      if (!data.scripts['jfs-postinstall']) {
+        this.nodePackage.file.save(
+          {
+            ...data,
+            scripts: {
+              ...data.scripts,
+              'jfs-postinstall': `node ${this.scriptPath(core, 'postinstall')}`
+            }
+          },
+          resolve
+        );
+      }
+      else {
+        resolve();
+      }
+    })
+  });
 
   public addRegisterScripts = (core: Core) => new Promise(resolve => {
     this.nodePackage.json(data => {
@@ -99,7 +119,7 @@ abstract class Project {
             ...data,
             scripts: {
               ...data.scripts,
-              'register-scripts': `node ${this.registerScriptsPath(core)}`
+              'register-scripts': `node ${this.scriptPath(core, 'register-scripts')}`
             }
           },
           resolve
@@ -124,36 +144,17 @@ abstract class Project {
   });
 
   public parent = () => new Promise<Project>(async resolvePromise => {
-    const path = (
-      this.path
-        .split(sep)
-        .reduce(
-          (paths, segment, index) => {
-            return [
-              ...paths,
-              index
-                ? resolve(paths[index -1], segment)
-                : process.platform === 'win32'
-                  ? segment
-                  : sep
-            ]
-          },
-          []
-        )
-        .filter(path => (
-          path !== this.path &&
-          new File({ path: resolve(path, 'package.json') }).exists()
-        ))
-    )[0];
-    if (path) {
-      const nodePackage = new NodePackage(NodePackage.location(path));
-      JFS.project(nodePackage, project => {
-        resolvePromise(project);
-      });
+    const parent = path => new NodePackage(NodePackage.location(dirname(path)));
+    let path = this.path;
+    for (let i = 0; i < this.path.split(sep).length; i++) {
+      const nodePackage = parent(path);
+      if (nodePackage.file.exists()) {
+        JFS.project(nodePackage, resolvePromise);
+        return;
+      }
+      path = dirname(path);
     }
-    else {
-      return resolvePromise(null);
-    }
+    resolvePromise(null);
   })
 }
 

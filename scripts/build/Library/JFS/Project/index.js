@@ -80,29 +80,17 @@ class Project {
             child.run(instance => instance.on('exit', resolve));
         });
         this.parent = () => new Promise((resolvePromise) => __awaiter(this, void 0, void 0, function* () {
-            const path = (this.path
-                .split(path_1.sep)
-                .reduce((paths, segment, index) => {
-                return [
-                    ...paths,
-                    index
-                        ? path_1.resolve(paths[index - 1], segment)
-                        : process.platform === 'win32'
-                            ? segment
-                            : path_1.sep
-                ];
-            }, [])
-                .filter(path => (path !== this.path &&
-                new File_1.default({ path: path_1.resolve(path, 'package.json') }).exists())))[0];
-            if (path) {
-                const nodePackage = new Package_1.default(Package_1.default.location(path));
-                __1.default.project(nodePackage, project => {
-                    resolvePromise(project);
-                });
+            const parent = path => new Package_1.default(Package_1.default.location(path_1.dirname(path)));
+            let path = this.path;
+            for (let i = 0; i < this.path.split(path_1.sep).length; i++) {
+                const nodePackage = parent(path);
+                if (nodePackage.file.exists()) {
+                    __1.default.project(nodePackage, resolvePromise);
+                    return;
+                }
+                path = path_1.dirname(path);
             }
-            else {
-                return resolvePromise(null);
-            }
+            resolvePromise(null);
         }));
         this.path = path;
         this.directory = new Directory_1.default({ path });

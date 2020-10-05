@@ -1,7 +1,5 @@
 import JFS from 'Library/JFS';
 import Script from 'Library/JFS/Core/Script';
-import Core from 'Library/JFS/Core';
-import Subpackage from 'Library/JFS/Core/Subpackage';
 import Process from 'Library/OS/Process';
 
 export default new Script({
@@ -16,6 +14,7 @@ export default new Script({
 
     const parent = await JFS.Head.parent();
     if (parent) {
+      parent.addPostinstallScript(JFS.Core);
       const propagation = new Process({
         command: process.platform === 'win32' ? 'npm.cmd' : 'npm',
         parameters: ['run', 'jfs-postinstall'],
