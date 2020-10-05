@@ -1,6 +1,6 @@
 ## 2020-10-05
 ## Fixed
-- Fixed handling undefined values in PriceInput component 
+- Fixed handling of undefined values in PriceInput component 
 
 ## 2020-10-05
 ## Fixed
