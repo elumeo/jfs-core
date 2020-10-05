@@ -1,5 +1,9 @@
 ## 2020-10-05
 ## Fixed
+- Fixed handling undefined values in PriceInput component 
+
+## 2020-10-05
+## Fixed
 - Fixed issues causing the app to re-render too often
 
 ## 2020-10-02

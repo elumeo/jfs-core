@@ -21,7 +21,9 @@ const PriceInput = (_a) => {
     const [localValue, setLocalValue] = useState('');
     const [focused, setFocused] = useState(false);
     useEffect(() => {
-        setLocalValue(parseFloat(value.toString()).toFixed(2));
+        if (value) {
+            setLocalValue(parseFloat(value.toString()).toFixed(2));
+        }
     }, [value]);
     const _onChange = (e, ev) => {
         setLocalValue(e.toString().replace(Currency.replaceAllNonNumericOrSeperatorRegex, ''));

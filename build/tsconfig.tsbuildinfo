@@ -2057,7 +2057,7 @@
         "affectsGlobalScope": false
       },
       "../src/component/priceinput/index.tsx": {
-        "version": "7a116d68bfe18fdd97f6df6f56cf593b4ae9ea7081aa8218e37b4282fc1f9792",
+        "version": "80917fbc2dd0aa6d42d2c1b8ba8a58449671e3d8b6bab8f39da249655a195714",
         "signature": "58c43006af6dfb304dc97dbe2569345e6e2be251ac743b1024aa4341eccdbb5a",
         "affectsGlobalScope": false
       },
