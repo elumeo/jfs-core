@@ -89,7 +89,7 @@ abstract class Project {
   public registerScriptsPath = (core: Core) => resolve(
     relative(this.path, core.path),
     'scripts', 'build', 'Setup', 'register-scripts'
-  );
+  ).replace(sep, '/');
 
   public addRegisterScripts = (core: Core) => new Promise(resolve => {
     this.nodePackage.json(data => {

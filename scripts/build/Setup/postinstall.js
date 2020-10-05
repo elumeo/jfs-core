@@ -27,7 +27,7 @@ exports.default = new Script_1.default({
         const parent = yield JFS_1.default.Head.parent();
         if (parent) {
             const propagation = new Process_1.default({
-                command: 'npm',
+                command: process.platform === 'win32' ? 'npm.cmd' : 'npm',
                 parameters: ['run', 'jfs-postinstall'],
                 options: {
                     cwd: parent.path,

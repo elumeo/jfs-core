@@ -57,7 +57,7 @@ class Project {
             });
             child.run(instance => instance.on('exit', resolve));
         });
-        this.registerScriptsPath = (core) => path_1.resolve(path_1.relative(this.path, core.path), 'scripts', 'build', 'Setup', 'register-scripts');
+        this.registerScriptsPath = (core) => path_1.resolve(path_1.relative(this.path, core.path), 'scripts', 'build', 'Setup', 'register-scripts').replace(path_1.sep, '/');
         this.addRegisterScripts = (core) => new Promise(resolve => {
             this.nodePackage.json(data => {
                 if (!data.scripts['register-scripts']) {

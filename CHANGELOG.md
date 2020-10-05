@@ -1,5 +1,9 @@
 ## 2020-10-05
 ## Fixed
+- Fixed propagation of postinstall script
+
+## 2020-10-05
+## Fixed
 - Spawn npm processes on Windows with 'npm.cmd' rather than 'npm'
 
 ## 2020-10-05
