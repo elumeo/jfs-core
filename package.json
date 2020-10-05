@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "9.7.0",
+  "version": "9.7.1",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
@@ -8,9 +8,8 @@
     "build:watch": "node scripts/build/Setup/jfs-build --watch",
     "prepublish": "cd scripts && npm run build",
     "release": "npm publish --access public",
-    "subpkg:install": "echo subpkg install",
     "jfs-postinstall": "node scripts/build/Setup/postinstall.js",
-    "postinstall": "npm run jfs-postinstall",
+    "postinstall": "subpkg install && npm run jfs-postinstall",
     "register-scripts": "node scripts/build/Setup/register-scripts.js",
     "check-translations": "node scripts/build/Setup/check-translations.js",
     "deploy-config-files": "node scripts/build/Setup/deploy-config-files.js",

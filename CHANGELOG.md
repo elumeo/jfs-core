@@ -1,4 +1,8 @@
 ## 2020-10-05
+## Fixed
+- Reenabled subpkg install
+
+## 2020-10-05
 ## Added
 - Added postinstall script which cascades jfs projects
 - Added history to epic middleware dependencies
