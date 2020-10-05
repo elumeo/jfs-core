@@ -5,8 +5,10 @@ import { routerMiddleware } from 'connected-react-router';
 import { createHashHistory } from 'history';
 import { Epic, EpicMiddleware } from 'Types/Redux';
 
-const epicMiddleware: EpicMiddleware = createEpicMiddleware();
 export const history = createHashHistory();
+const epicMiddleware: EpicMiddleware = createEpicMiddleware({
+  dependencies: history
+});
 const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
 const storeEnhancer = applyMiddleware(epicMiddleware, routerMiddleware(history));
 const middleware = composeEnhancers(storeEnhancer);
