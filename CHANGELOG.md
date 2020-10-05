@@ -1,6 +1,11 @@
 ## 2020-10-05
+## Added
+- Added postinstall script which cascades jfs projects
+- Added history to epic middleware dependencies
+
+## 2020-10-05
 ## Fixed
-- Fixed handling of undefined values in PriceInput component 
+- Fixed handling of undefined values in PriceInput component
 
 ## 2020-10-05
 ## Fixed
