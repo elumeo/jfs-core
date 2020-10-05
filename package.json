@@ -8,7 +8,9 @@
     "build:watch": "node scripts/build/Setup/jfs-build --watch",
     "prepublish": "cd scripts && npm run build",
     "release": "npm publish --access public",
-    "postinstall": "subpkg install && node ./scripts/build/Setup/deploy-config-files.js && node ./scripts/build/Setup/set-peer-dependencies.js && node scripts/build/Setup/register-scripts.js",
+    "subpkg:install": "echo subpkg install",
+    "jfs-postinstall": "node scripts/build/Setup/postinstall.js",
+    "postinstall": "npm run jfs-postinstall",
     "register-scripts": "node scripts/build/Setup/register-scripts.js",
     "check-translations": "node scripts/build/Setup/check-translations.js",
     "deploy-config-files": "node scripts/build/Setup/deploy-config-files.js",
@@ -16,7 +18,7 @@
     "core-showcase": "node scripts/build/Setup/jfs-showcase.js",
     "jsc-check": "node scripts/build/Setup/jsc-check.js",
     "jsc-generate": "node scripts/build/Setup/jsc-generate.js",
-    "set-peerDependencies": "node scripts/build/Setup/set-peer-dependencies.js"
+    "set-peer-dependencies": "node scripts/build/Setup/set-peer-dependencies.js"
   },
   "repository": {
     "type": "git",

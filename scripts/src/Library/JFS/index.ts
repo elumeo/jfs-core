@@ -1,12 +1,10 @@
 import App from './App';
 import Core from './Core';
 import Component from './Component';
-import File from 'Library/OS/Filesystem/File'
 import NodePackage from 'Library/Node/Package';
 import Text from 'Library/Text';
 import Project from './Project';
 import { resolve } from 'path';
-import Directory from 'Library/OS/Filesystem/Directory';
 
 class JFS {
   public static Head: Project;
@@ -38,7 +36,7 @@ class JFS {
     const nodePackage = new NodePackage(
       NodePackage.location(process.cwd())
     );
-    
+
     nodePackage.json(({ name }) => {
       if (name === '@elumeo/jfs-core') {
         resolve(new Core({ path }));

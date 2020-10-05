@@ -20,7 +20,7 @@ const run = () => JFS_1.default.discover(() => {
 });
 exports.default = new Script_1.default({
     path: __filename,
-    name: 'set-peerDependencies',
+    name: 'set-peer-dependencies',
     scope: ['all'],
     run
 });

@@ -5,8 +5,11 @@ import Text from 'Library/Text';
 import Translations from './Translations';
 import JSC from './Api';
 import File from 'Library/OS/Filesystem/File';
-import { resolve } from 'path';
+import { resolve, sep, relative } from 'path';
 import Build from './Build';
+import Process from 'Library/OS/Process';
+import JFS from '..';
+import Core from '../Core';
 
 namespace Project {
   export type Props = {
@@ -58,6 +61,100 @@ abstract class Project {
       Build.single(this.directory);
     }
   }
+
+  public setPeerDependencies = () => new Promise(resolve => {
+    const child = new Process({
+      command: 'npm',
+      parameters: ['run', 'set-peer-dependencies'],
+      options: {
+        cwd: this.path,
+        stdio: 'inherit'
+      }
+    });
+    child.run(instance => instance.on('exit', resolve));
+  });
+
+  public deployConfigFiles = () => new Promise(resolve => {
+    const child = new Process({
+      command: 'npm',
+      parameters: ['run', 'deploy-config-files'],
+      options: {
+        cwd: this.path,
+        stdio: 'inherit'
+      }
+    });
+    child.run(instance => instance.on('exit', resolve));
+  });
+
+  public registerScriptsPath = (core: Core) => resolve(
+    relative(this.path, core.path),
+    'scripts', 'build', 'Setup', 'register-scripts'
+  );
+
+  public addRegisterScripts = (core: Core) => new Promise(resolve => {
+    this.nodePackage.json(data => {
+      if (!data.scripts['register-scripts']) {
+        this.nodePackage.file.save(
+          {
+            ...data,
+            scripts: {
+              ...data.scripts,
+              'register-scripts': `node ${this.registerScriptsPath(core)}`
+            }
+          },
+          resolve
+        );
+      }
+      else {
+        resolve();
+      }
+    })
+  });
+
+  public registerScripts = () => new Promise(resolve => {
+    const child = new Process({
+      command: 'npm',
+      parameters: ['run', 'register-scripts'],
+      options: {
+        cwd: this.path,
+        stdio: 'inherit'
+      }
+    });
+    child.run(instance => instance.on('exit', resolve));
+  });
+
+  public parent = () => new Promise<Project>(async resolvePromise => {
+    const path = (
+      this.path
+        .split(sep)
+        .reduce(
+          (paths, segment, index) => {
+            return [
+              ...paths,
+              index
+                ? resolve(paths[index -1], segment)
+                : process.platform === 'win32'
+                  ? segment
+                  : sep
+            ]
+          },
+          []
+        )
+        .filter(path => (
+          path !== this.path &&
+          new File({ path: resolve(path, 'package.json') }).exists()
+        ))
+    )[0];
+    if (path) {
+      const nodePackage = new NodePackage(NodePackage.location(path));
+      JFS.project(nodePackage, project => {
+        resolvePromise(project);
+      });
+    }
+    else {
+      return resolvePromise(null);
+    }
+  })
 }
 
 export default Project;

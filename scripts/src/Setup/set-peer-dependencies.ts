@@ -26,7 +26,7 @@ const run = () => JFS.discover(() => {
 
 export default new Script({
   path: __filename,
-  name: 'set-peerDependencies',
+  name: 'set-peer-dependencies',
   scope: ['all'],
   run
 });

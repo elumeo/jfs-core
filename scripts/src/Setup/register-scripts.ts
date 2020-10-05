@@ -1,7 +1,7 @@
 import JFS from 'Library/JFS';
 import Directory from 'Library/OS/Filesystem/Directory';
 import Text from 'Library/Text';
-import { relative, basename } from 'path';
+import { relative, basename, sep } from 'path';
 import Core from 'Library/JFS/Core';
 import Component from 'Library/JFS/Component';
 import Script, { Scope } from 'Library/JFS/Core/Script';
@@ -55,7 +55,7 @@ const extract = async () => await imports(
 
 const add = (anker: string, scripts: Scripts, script: Script) => ({
   ...scripts,
-  [script.name]: `node ${relative(anker, script.path)}`
+  [script.name]: `node ${relative(anker, script.path).replace(sep, '/')}`
 });
 
 const match = (head: Project, script: Script) => (
@@ -84,22 +84,24 @@ const scripts = (
   (await extract())
     .forEach(async script => {
       scripts.push(await script);
-      if (scripts.length === imports.length +1) {
+      if (scripts.length === imports(await names(await files())).length +1) {
         resolve(merge(head, scripts));
       }
     })
 ));
 
 const run = () => JFS.discover(async () => {
-  JFS.Head.nodePackage.json(async nodePackage => (
-    JFS.Head.nodePackage.file.save({
-      ...nodePackage,
-      scripts: {
-        ...nodePackage.scripts,
-        ...(await scripts(JFS.Head))
-      }
-    }, () => console.log(`Registered scripts from jfs-core`))
-  ));
+  JFS.Head.nodePackage.json(async nodePackage => {
+      JFS.Head.nodePackage.file.save({
+        ...nodePackage,
+        scripts: {
+          ...nodePackage.scripts,
+          ...(await scripts(JFS.Head))
+        }
+      },
+      () => console.log(`Registered scripts from jfs-core`)
+    )
+  });
 });
 
 export default script(true);

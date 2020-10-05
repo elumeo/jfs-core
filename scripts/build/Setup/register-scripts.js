@@ -63,7 +63,7 @@ const imports = (names) => (names.map((name) => __awaiter(void 0, void 0, void 0
 const extract = () => __awaiter(void 0, void 0, void 0, function* () {
     return yield imports(yield names(yield files()));
 });
-const add = (anker, scripts, script) => (Object.assign(Object.assign({}, scripts), { [script.name]: `node ${path_1.relative(anker, script.path)}` }));
+const add = (anker, scripts, script) => (Object.assign(Object.assign({}, scripts), { [script.name]: `node ${path_1.relative(anker, script.path).replace(path_1.sep, '/')}` }));
 const match = (head, script) => (script.scope.includes(scope(head)) ||
     script.scope.includes('all'));
 const collect = (head) => (scripts, script) => {
@@ -79,14 +79,14 @@ const scripts = (head, scripts = [script()]) => new Promise((resolve) => __await
     return ((yield extract())
         .forEach((script) => __awaiter(void 0, void 0, void 0, function* () {
         scripts.push(yield script);
-        if (scripts.length === imports.length + 1) {
+        if (scripts.length === imports(yield names(yield files())).length + 1) {
             resolve(merge(head, scripts));
         }
     })));
 }));
 const run = () => JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
     JFS_1.default.Head.nodePackage.json((nodePackage) => __awaiter(void 0, void 0, void 0, function* () {
-        return (JFS_1.default.Head.nodePackage.file.save(Object.assign(Object.assign({}, nodePackage), { scripts: Object.assign(Object.assign({}, nodePackage.scripts), (yield scripts(JFS_1.default.Head))) }), () => console.log(`Registered scripts from jfs-core`)));
+        JFS_1.default.Head.nodePackage.file.save(Object.assign(Object.assign({}, nodePackage), { scripts: Object.assign(Object.assign({}, nodePackage.scripts), (yield scripts(JFS_1.default.Head))) }), () => console.log(`Registered scripts from jfs-core`));
     }));
 }));
 exports.default = script(true);
