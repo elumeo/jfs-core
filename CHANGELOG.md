@@ -1,3 +1,7 @@
+## [8.16.8] - 2020-10-06
+### Added
+- Added new juwelo font icon for bid block 
+
 ## [8.16.7] - 2020-09-01
 ### Changed
 - ModalDialog 
