@@ -1,5 +1,10 @@
 ## 2020-10-05
 ## Fixed
+- Fixed issues with postinstall script
+- Added keys to actions of notification card
+
+## 2020-10-05
+## Fixed
 - Fixed path separator bug in register-scripts
 
 ## 2020-10-05

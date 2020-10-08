@@ -537,7 +537,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/index.ts": {
-        "version": "9a9e7b7c5581ac6c1e2f9bc35eda16c8a2f7e3cffe053b86e01add1f5150eee7",
+        "version": "f145e209a16046f7d5f00db6e4a72778ee9ff2b775a10d154c991b5eebe2a28d",
         "signature": "7f881d30ae6efdf88930bb030589c0dc57cf30577f4d6b4e833758abdfd7b9f8",
         "affectsGlobalScope": false
       },

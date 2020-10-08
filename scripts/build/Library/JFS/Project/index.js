@@ -57,7 +57,7 @@ class Project {
             });
             child.run(instance => instance.on('exit', resolve));
         });
-        this.scriptPath = (core, name) => path_1.resolve(path_1.relative(this.path, core.path), 'scripts', 'build', 'Setup', name).replace(path_1.sep, '/');
+        this.scriptPath = (core, name) => path_1.join(path_1.relative(this.path, core.path), 'scripts', 'build', 'Setup', name).replace(path_1.sep, '/');
         this.addPostinstallScript = (core) => new Promise(resolve => {
             this.nodePackage.json(data => {
                 if (!data.scripts['jfs-postinstall']) {

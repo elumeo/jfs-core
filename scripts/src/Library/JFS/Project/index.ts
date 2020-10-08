@@ -5,7 +5,7 @@ import Text from 'Library/Text';
 import Translations from './Translations';
 import JSC from './Api';
 import File from 'Library/OS/Filesystem/File';
-import { resolve, sep, relative, dirname } from 'path';
+import { resolve, sep, relative, dirname, join } from 'path';
 import Build from './Build';
 import Process from 'Library/OS/Process';
 import JFS from '..';
@@ -86,7 +86,7 @@ abstract class Project {
     child.run(instance => instance.on('exit', resolve));
   });
 
-  public scriptPath = (core: Core, name: string) => resolve(
+  public scriptPath = (core: Core, name: string) => join(
     relative(this.path, core.path),
     'scripts', 'build', 'Setup', name
   ).replace(sep, '/');

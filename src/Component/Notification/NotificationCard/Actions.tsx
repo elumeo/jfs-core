@@ -31,6 +31,7 @@ const Actions: React.FC<Props> = ({
   if (dismissButtonVisible !== false) {
     actions.push(
       <DismissButton
+        key={notification.id}
         topLevelRef={ref}
         notification={notification}
         onClick={onDismiss}/>
@@ -39,6 +40,7 @@ const Actions: React.FC<Props> = ({
   if (hideButtonVisible !== false) {
     actions.push(
       <HideButton
+        key={notification.id}
         topLevelRef={ref}
         notification={notification}
         onClick={onHide}/>
@@ -47,6 +49,7 @@ const Actions: React.FC<Props> = ({
   if (!!onCustomAction) {
     actions.push(
       <CustomActionButton
+        key={notification.id}
         notification={notification}
         iconName={customActionIconName}
         tooltipLabel={

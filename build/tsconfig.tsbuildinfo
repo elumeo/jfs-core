@@ -1092,7 +1092,7 @@
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/actions.tsx": {
-        "version": "b7c25499ba87e7a1beba46af3d9c3a6d4d1b0b8dfd7d808f6717dca124dfb03c",
+        "version": "a50027c699337c512b0fa1bfdd36909a4bede48e4f917b0866bae9f49a5c2508",
         "signature": "c5befdb26c6a23955bf781354edf816daf2c3cc2ba9747b74b9f5e9e6d1c9e01",
         "affectsGlobalScope": false
       },
