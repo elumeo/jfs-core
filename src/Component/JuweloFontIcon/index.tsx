@@ -1,9 +1,9 @@
 import React from 'react';
 import './_styles.scss';
 
-type Icon = (
+export type Icon = (
   'apple' |
-  'badge_percentIcon' | 'bid_block' |
+  'badge_percentIcon' | 'bid_block' | 'box_open' |
   'cash_in_advance' | 'cash_on_delivery' | 'check' |
   'delivery_address' |
   'ideal' |

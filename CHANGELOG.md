@@ -1,3 +1,7 @@
+## [9.7.11] - 2020-10-08
+## Fixed
+- Added new icon to juwelo icon font (box_open)
+
 ## [9.7.10] - 2020-10-08
 ## Fixed
 - Added missing build files for release 9.7.9

@@ -1347,8 +1347,8 @@
         "affectsGlobalScope": false
       },
       "../src/component/juwelofonticon/index.tsx": {
-        "version": "db3f19f43ff1893ad6e4e14432bc3f4efe4dcd991023bc04dd5a4c56c63a992e",
-        "signature": "3853bf6f76df589b239436fedf5842bf943ebb7765fd3266df7b061dfcf35ae8",
+        "version": "7732c8b436fd4785ce0f7ac89285ebe6dad64fc336d77d84c9aae776f0e7301a",
+        "signature": "b3c19247e9d7b580ebdb7f610697239a6ff1989561301c235c0c5ccc36c9b0bc",
         "affectsGlobalScope": false
       },
       "../src/component/login/loginbutton.tsx": {
