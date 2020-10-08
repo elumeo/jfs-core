@@ -10,13 +10,13 @@ const Actions = ({ intl: { formatMessage }, notification, topLevelRef: ref }) =>
     }
     const actions = [];
     if (dismissButtonVisible !== false) {
-        actions.push(React.createElement(DismissButton, { key: notification.id, topLevelRef: ref, notification: notification, onClick: onDismiss }));
+        actions.push(React.createElement(DismissButton, { key: `${notification.id}-dismiss`, topLevelRef: ref, notification: notification, onClick: onDismiss }));
     }
     if (hideButtonVisible !== false) {
-        actions.push(React.createElement(HideButton, { key: notification.id, topLevelRef: ref, notification: notification, onClick: onHide }));
+        actions.push(React.createElement(HideButton, { key: `${notification.id}-hide`, topLevelRef: ref, notification: notification, onClick: onHide }));
     }
     if (!!onCustomAction) {
-        actions.push(React.createElement(CustomActionButton, { key: notification.id, notification: notification, iconName: customActionIconName, tooltipLabel: customActionTooltipTranslationId
+        actions.push(React.createElement(CustomActionButton, { key: `${notification.id}-custom`, notification: notification, iconName: customActionIconName, tooltipLabel: customActionTooltipTranslationId
                 ? formatMessage({ id: customActionTooltipTranslationId })
                 : undefined, topLevelRef: ref, onClick: onCustomAction }));
     }

@@ -1,42 +1,46 @@
-## [9.7.9] - 2020-10-05
+## [9.7.10] - 2020-10-08
+## Fixed
+- Added missing build files for release 9.7.9
+
+## [9.7.9] - 2020-10-08
 ## Fixed
 - Fixed keys to actions of notification card
 
-## 2020-10-08
+## [9.7.8] - 2020-10-08
 ## Fixed
 - Fixed issues with postinstall script
 - Added keys to actions of notification card
 
-## 2020-10-05
+## [9.7.7] - 2020-10-05
 ## Fixed
 - Fixed path separator bug in register-scripts
 
-## 2020-10-05
+## [9.7.6] - 2020-10-05
 ## Fixed
 - Fixed propagation of postinstall script
 
-## 2020-10-05
+## [9.7.5] - 2020-10-05
 ## Fixed
 - Spawn npm processes on Windows with 'npm.cmd' rather than 'npm'
 
-## 2020-10-05
+## [9.7.4] - 2020-10-05
 ## Fixed
 - Removed Subpackage.install() from postinstall script
 
-## 2020-10-05
+## [9.7.3] - 2020-10-05
 ## Fixed
 - Reenabled subpkg install
 
-## 2020-10-05
+## [9.7.2] - 2020-10-05
 ## Added
 - Added postinstall script which cascades jfs projects
 - Added history to epic middleware dependencies
 
-## 2020-10-05
+## [9.7.1] - 2020-10-05
 ## Fixed
 - Fixed handling of undefined values in PriceInput component
 
-## 2020-10-05
+## [9.7.0] - 2020-10-05
 ## Fixed
 - Fixed issues causing the app to re-render too often
 

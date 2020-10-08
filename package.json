@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "9.7.9",
+  "version": "9.7.10",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
@@ -17,7 +17,8 @@
     "core-showcase": "node scripts/build/Setup/jfs-showcase.js",
     "jsc-check": "node scripts/build/Setup/jsc-check.js",
     "jsc-generate": "node scripts/build/Setup/jsc-generate.js",
-    "set-peer-dependencies": "node scripts/build/Setup/set-peer-dependencies.js"
+    "set-peer-dependencies": "node scripts/build/Setup/set-peer-dependencies.js",
+    "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i"
   },
   "repository": {
     "type": "git",
