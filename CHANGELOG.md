@@ -1,4 +1,8 @@
-## 2020-10-05
+## [9.7.9] - 2020-10-05
+## Fixed
+- Fixed keys to actions of notification card
+
+## 2020-10-08
 ## Fixed
 - Fixed issues with postinstall script
 - Added keys to actions of notification card
