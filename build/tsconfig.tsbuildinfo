@@ -1957,7 +1957,7 @@
         "affectsGlobalScope": false
       },
       "../src/component/modal/modaldialog.tsx": {
-        "version": "6e171bbc99a4eafafce940b5dc41d16c05389acda00817d8a2900bdad7804865",
+        "version": "2a0adf21dd59196cb79648c6202c411659c094f09b7e295a1805b06ebfc16712",
         "signature": "b3bfa6b367eb0c139781c5b19e829295d50900dea57a431922f539809ee2e464",
         "affectsGlobalScope": false
       },

@@ -1,8 +1,8 @@
 import React from 'react';
-import DialogContainer from 'react-md/lib/Dialogs';
-import { IconSeparator } from 'react-md';
 import './_styles.scss';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
+import { IconSeparator } from 'react-md';
+import DialogContainer from 'react-md/lib/Dialogs';
 
 interface IModalDialog extends InjectedIntlProps {
   visible: boolean;
@@ -23,12 +23,14 @@ interface IModalDialog extends InjectedIntlProps {
 
 const ModalDialog: React.FC<IModalDialog> = (
   {
-    title,
+    title = 'Modal Dialog',
     titleIcon,
-    description,
+    description = '',
     closeDialog,
     visible,
-    closeButtonText,
+    closeButtonText = 'app.closeBtnLabelModalDialog',
+    focusOnMount = undefined,
+    closeOnEsc = undefined,
     children,
     confirmButtonText,
     onConfirm,
@@ -36,10 +38,38 @@ const ModalDialog: React.FC<IModalDialog> = (
     intl,
     ...rest
   }
-) =>
-  (
+) => {
+  const fM = id => intl.formatMessage({ id });
+  const combinedActions = [];
+
+  if (closeButtonText && closeDialog) {
+    combinedActions.push({
+      primary: true,
+      className: 'jfs-close-btn',
+      label: typeof closeButtonText == 'string' ? fM(closeButtonText) : closeButtonText,
+      onClick: () => closeDialog(false),
+    });
+  }
+
+  if (confirmButtonText && onConfirm) {
+    combinedActions.push({
+      primary: true,
+      className: 'jfs-confirm-btn',
+      label: typeof confirmButtonText == 'string' ? fM(confirmButtonText) : confirmButtonText,
+      onClick: () => onConfirm(),
+    })
+  }
+
+  if (!!actions?.length) {
+    actions.forEach(a => combinedActions.push(a));
+  }
+
+  focusOnMount = focusOnMount === undefined ? !!combinedActions.length : focusOnMount;
+  closeOnEsc = closeOnEsc === undefined ? !!closeDialog : false;
+
+  return (
     <DialogContainer
-      id={`modal-dialog-${Math.round(Math.random() * 1000)}`}
+      id={`modal-dialog-${new Date().getTime()}-${Math.round(Math.random() * 100000)}`}
       visible={visible}
       title={
         titleIcon
@@ -49,46 +79,14 @@ const ModalDialog: React.FC<IModalDialog> = (
       aria-describedby={description}
       modal
       onHide={closeDialog}
-      actions={[
-        ...(
-          (closeButtonText && closeDialog) && [
-            {
-              onClick: () => {
-                closeDialog(false);
-              },
-              primary: true,
-              label: typeof closeButtonText == 'string'
-                ? intl.formatMessage({ id: closeButtonText })
-                : closeButtonText,
-              className: 'jfs-close-btn'
-            }] || []),
-        ...(
-          (confirmButtonText && onConfirm) && [
-            {
-              onClick: () => {
-                onConfirm();
-              },
-              primary: true,
-              label: typeof confirmButtonText == 'string'
-                ? intl.formatMessage({ id: confirmButtonText })
-                : confirmButtonText,
-              className: 'jfs-confirm-btn'
-            }
-          ] || []
-        ),
-        ...(actions || [])
-      ]}
+      actions={combinedActions}
+      focusOnMount={focusOnMount}
+      closeOnEsc={closeOnEsc}
       {...rest}
     >
       {children}
     </DialogContainer>
   );
-
-ModalDialog.defaultProps = {
-  title: 'Modal Dialog',
-  description: '',
-  closeButtonText: 'app.closeBtnLabelModalDialog',
-  focusOnMount: true,
 };
 
 export default injectIntl(ModalDialog);
