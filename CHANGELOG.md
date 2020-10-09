@@ -1,3 +1,7 @@
+## 2020-10-09
+## Fixed
+- ModalDialog initialFocus and closeOnEsc issues
+
 ## [9.7.11] - 2020-10-08
 ## Fixed
 - Added new icon to juwelo icon font (box_open)
