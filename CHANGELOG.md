@@ -1,4 +1,4 @@
-## 2020-10-09
+## [9.7.12] 2020-10-09
 ## Fixed
 - ModalDialog initialFocus and closeOnEsc issues
 
