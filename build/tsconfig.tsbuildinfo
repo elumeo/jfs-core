@@ -652,8 +652,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/@types/socket.io-client/index.d.ts": {
-        "version": "61b47b5916240af10c044424efe51a551ec47d9e799b18225e0e3a7c19903b03",
-        "signature": "61b47b5916240af10c044424efe51a551ec47d9e799b18225e0e3a7c19903b03",
+        "version": "829cee346cb86de54e7a633a42d0ea1f5b3408f2de26759b1084e6e9ffe9fbcc",
+        "signature": "829cee346cb86de54e7a633a42d0ea1f5b3408f2de26759b1084e6e9ffe9fbcc",
         "affectsGlobalScope": true
       },
       "../node_modules/typesafe-actions/dist/type-helpers.d.ts": {
@@ -877,8 +877,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react/index.d.ts": {
-        "version": "7614c17962ba34bde824c485d7bbe056317fc0bfc3f963f3464f99d6438c8604",
-        "signature": "7614c17962ba34bde824c485d7bbe056317fc0bfc3f963f3464f99d6438c8604",
+        "version": "0290ce481d9430774f1d41e757d087e9324b497e1ee0a9e908cf57a9f8bc6e0d",
+        "signature": "0290ce481d9430774f1d41e757d087e9324b497e1ee0a9e908cf57a9f8bc6e0d",
         "affectsGlobalScope": true
       },
       "../node_modules/react-md/lib/index.d.ts": {
@@ -1272,8 +1272,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react-router-dom/index.d.ts": {
-        "version": "fd0330b691c4c697c5a8c6b68bdb6727cbf966156a2e131108696a98716a5396",
-        "signature": "fd0330b691c4c697c5a8c6b68bdb6727cbf966156a2e131108696a98716a5396",
+        "version": "5859c951fdc2f03f96a25661b33eec6c3747b461dc9331bb1096690a8924edc5",
+        "signature": "5859c951fdc2f03f96a25661b33eec6c3747b461dc9331bb1096690a8924edc5",
         "affectsGlobalScope": false
       },
       "../src/component/app/app.tsx": {
@@ -2756,6 +2756,11 @@
         "signature": "d22e870fef25a052477d24f34356470262881420c8b058c89d86392de6502c42",
         "affectsGlobalScope": false
       },
+      "../node_modules/@types/color-name/index.d.ts": {
+        "version": "f0cb4b3ab88193e3e51e9e2622e4c375955003f1f81239d72c5b7a95415dad3e",
+        "signature": "f0cb4b3ab88193e3e51e9e2622e4c375955003f1f81239d72c5b7a95415dad3e",
+        "affectsGlobalScope": false
+      },
       "../node_modules/@types/node/inspector.d.ts": {
         "version": "7e49dbf1543b3ee54853ade4c5e9fa460b6a4eca967efe6bf943e0c505d087ed",
         "signature": "7e49dbf1543b3ee54853ade4c5e9fa460b6a4eca967efe6bf943e0c505d087ed",
@@ -2907,8 +2912,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/@types/uglify-js/index.d.ts": {
-        "version": "530d0618491a50ab5aedbb42374af28560c319c1997d238a0c8053ca8d00685d",
-        "signature": "530d0618491a50ab5aedbb42374af28560c319c1997d238a0c8053ca8d00685d",
+        "version": "dbef1822091af2c0ee24d2be8222502dc1160473ea0b4709ba5f3856cec93537",
+        "signature": "dbef1822091af2c0ee24d2be8222502dc1160473ea0b4709ba5f3856cec93537",
         "affectsGlobalScope": false
       },
       "../node_modules/anymatch/index.d.ts": {
@@ -2926,64 +2931,9 @@
         "signature": "b90c59ac4682368a01c83881b814738eb151de8a58f52eb7edadea2bcffb11b9",
         "affectsGlobalScope": false
       },
-      "../node_modules/@types/webpack-sources/lib/source.d.ts": {
-        "version": "8560a87b2e9f8e2c3808c8f6172c9b7eb6c9b08cb9f937db71c285ecf292c81d",
-        "signature": "8560a87b2e9f8e2c3808c8f6172c9b7eb6c9b08cb9f937db71c285ecf292c81d",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/webpack-sources/lib/compatsource.d.ts": {
-        "version": "ffe3931ff864f28d80ae2f33bd11123ad3d7bad9896b910a1e61504cc093e1f5",
-        "signature": "ffe3931ff864f28d80ae2f33bd11123ad3d7bad9896b910a1e61504cc093e1f5",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/webpack-sources/lib/concatsource.d.ts": {
-        "version": "083c1bd82f8dc3a1ed6fc9e8eaddf141f7c05df418eca386598821e045253af9",
-        "signature": "083c1bd82f8dc3a1ed6fc9e8eaddf141f7c05df418eca386598821e045253af9",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/webpack-sources/lib/originalsource.d.ts": {
-        "version": "274ebe605bd7f71ce161f9f5328febc7d547a2929f803f04b44ec4a7d8729517",
-        "signature": "274ebe605bd7f71ce161f9f5328febc7d547a2929f803f04b44ec4a7d8729517",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/webpack-sources/lib/prefixsource.d.ts": {
-        "version": "6ca0207e70d985a24396583f55836b10dc181063ab6069733561bfde404d1bad",
-        "signature": "6ca0207e70d985a24396583f55836b10dc181063ab6069733561bfde404d1bad",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/webpack-sources/lib/rawsource.d.ts": {
-        "version": "5908142efeaab38ffdf43927ee0af681ae77e0d7672b956dfb8b6c705dbfe106",
-        "signature": "5908142efeaab38ffdf43927ee0af681ae77e0d7672b956dfb8b6c705dbfe106",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/webpack-sources/lib/replacesource.d.ts": {
-        "version": "f772b188b943549b5c5eb803133314b8aa7689eced80eed0b70e2f30ca07ab9c",
-        "signature": "f772b188b943549b5c5eb803133314b8aa7689eced80eed0b70e2f30ca07ab9c",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/webpack-sources/lib/sizeonlysource.d.ts": {
-        "version": "0026b816ef05cfbf290e8585820eef0f13250438669107dfc44482bac007b14f",
-        "signature": "0026b816ef05cfbf290e8585820eef0f13250438669107dfc44482bac007b14f",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/webpack-sources/lib/sourcemapsource.d.ts": {
-        "version": "8ef5aad624890acfe0fa48230edce255f00934016d16acb8de0edac0ea5b21bb",
-        "signature": "8ef5aad624890acfe0fa48230edce255f00934016d16acb8de0edac0ea5b21bb",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/webpack-sources/lib/index.d.ts": {
-        "version": "608f7279e195a33959d62ac32f42ca201a225a4c820a872f9af8562120b2865a",
-        "signature": "608f7279e195a33959d62ac32f42ca201a225a4c820a872f9af8562120b2865a",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/webpack-sources/lib/cachedsource.d.ts": {
-        "version": "d84398556ba4595ee6be554671da142cfe964cbdebb2f0c517a10f76f2b016c0",
-        "signature": "d84398556ba4595ee6be554671da142cfe964cbdebb2f0c517a10f76f2b016c0",
-        "affectsGlobalScope": false
-      },
       "../node_modules/@types/webpack-sources/index.d.ts": {
-        "version": "004efa076dda36645bc670b0daaafb83a2d10ef60b6c6ed1cb39168d7e7fbfa8",
-        "signature": "004efa076dda36645bc670b0daaafb83a2d10ef60b6c6ed1cb39168d7e7fbfa8",
+        "version": "7602c4f661609b5595f558ff7292e00d85ee854d253ad1a2912e8c65d09ace19",
+        "signature": "7602c4f661609b5595f558ff7292e00d85ee854d253ad1a2912e8c65d09ace19",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/webpack/index.d.ts": {
@@ -3157,6 +3107,11 @@
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/classnames/types.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../node_modules/@types/color-name/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
@@ -3818,107 +3773,7 @@
       "../node_modules/@types/webpack-sources/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/cachedsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/compatsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/concatsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/originalsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/prefixsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/rawsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/replacesource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/sizeonlysource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/@types/webpack-sources/lib/sourcemapsource.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/cachedsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/compatsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/concatsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/source-list-map/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/index.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/cachedsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/compatsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/concatsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/originalsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/prefixsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/rawsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/replacesource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/sizeonlysource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/@types/webpack-sources/lib/sourcemapsource.d.ts",
-        "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/originalsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/source-list-map/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/prefixsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/rawsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/replacesource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/sizeonlysource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/source.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/sourcemapsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
         "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
@@ -7821,6 +7676,11 @@
         "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
+      "../node_modules/@types/color-name/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
       "../node_modules/@types/diacritics/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts",
@@ -8478,107 +8338,7 @@
       "../node_modules/@types/webpack-sources/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/cachedsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/compatsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/concatsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/originalsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/prefixsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/rawsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/replacesource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/sizeonlysource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/@types/webpack-sources/lib/sourcemapsource.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/cachedsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/compatsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/concatsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/source-list-map/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/index.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/cachedsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/compatsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/concatsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/originalsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/prefixsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/rawsource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/replacesource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/sizeonlysource.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/@types/webpack-sources/lib/sourcemapsource.d.ts",
-        "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/originalsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/source-list-map/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/prefixsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/rawsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/replacesource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/sizeonlysource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/source.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
-      ],
-      "../node_modules/@types/webpack-sources/lib/sourcemapsource.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/index.d.ts",
-        "../node_modules/@types/webpack-sources/lib/source.d.ts",
         "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
@@ -11705,6 +11465,7 @@
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@types/classnames/index.d.ts",
       "../node_modules/@types/classnames/types.d.ts",
+      "../node_modules/@types/color-name/index.d.ts",
       "../node_modules/@types/diacritics/index.d.ts",
       "../node_modules/@types/engine.io/index.d.ts",
       "../node_modules/@types/glob/index.d.ts",
@@ -11785,17 +11546,6 @@
       "../node_modules/@types/uglify-js/index.d.ts",
       "../node_modules/@types/uglify-js/node_modules/source-map/source-map.d.ts",
       "../node_modules/@types/webpack-sources/index.d.ts",
-      "../node_modules/@types/webpack-sources/lib/cachedsource.d.ts",
-      "../node_modules/@types/webpack-sources/lib/compatsource.d.ts",
-      "../node_modules/@types/webpack-sources/lib/concatsource.d.ts",
-      "../node_modules/@types/webpack-sources/lib/index.d.ts",
-      "../node_modules/@types/webpack-sources/lib/originalsource.d.ts",
-      "../node_modules/@types/webpack-sources/lib/prefixsource.d.ts",
-      "../node_modules/@types/webpack-sources/lib/rawsource.d.ts",
-      "../node_modules/@types/webpack-sources/lib/replacesource.d.ts",
-      "../node_modules/@types/webpack-sources/lib/sizeonlysource.d.ts",
-      "../node_modules/@types/webpack-sources/lib/source.d.ts",
-      "../node_modules/@types/webpack-sources/lib/sourcemapsource.d.ts",
       "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/webpack/node_modules/source-map/source-map.d.ts",

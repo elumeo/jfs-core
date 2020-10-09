@@ -74,7 +74,7 @@
 ## Changed
 - Refactored all components to functional components
 
-## 2020-09-29
+## [9.5.29] 2020-09-29
 ## Added
 - RouteDetails to Router State
 ## Changed

@@ -3482,6 +3482,11 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../../node_modules/@types/uglify-js/node_modules/source-map/source-map.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
       "../../node_modules/@types/webpack-sources/index.d.ts": [
         "../../node_modules/@types/webpack-sources/lib/cachedsource.d.ts",
         "../../node_modules/@types/webpack-sources/lib/compatsource.d.ts",
