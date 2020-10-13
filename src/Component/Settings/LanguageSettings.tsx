@@ -1,63 +1,44 @@
 import React from 'react';
 import Cookie from 'js-cookie';
-import { connect } from 'react-redux';
 import { SelectField } from 'react-md';
+import { Language } from 'Types/Language';
+import International from 'Component/International'
+import useActions from 'Action/useActions';
+import { useSelector } from 'Types/Redux';
 
-import Global from '../../Store/Reducer/Global';
-import { LANGUAGE } from '../../Types/Language';
-import { changeLanguageAction } from '../../Store/Action/LanguageAction';
-import International from '../International'
-
-export interface ILanguageSettingsProps {
-  language?: string;
-  changeLanguageAction?: typeof changeLanguageAction;
-}
-
-const LANGUAGES = [
-  {label: 'Deutsch', value: LANGUAGE.GERMAN },
-  {label: 'English', value: LANGUAGE.ENGLISH },
-  {label: 'Italiano', value: LANGUAGE.ITALIAN }
-];
-
-const LanguageSettings: React.FC<ILanguageSettingsProps> = (
-  {
-    language,
-    changeLanguageAction: _changeLanguageAction
-  }
-) =>
-  <div className='language-settings'>
-    <International>
-      {({ formatMessage }) => (
-        <SelectField
-          id='language'
-          label={formatMessage({ id: 'settings.language' })}
-          menuItems={LANGUAGES}
-          value={language}
-          itemLabel='label'
-          itemValue='value'
-          fullWidth
-          simplifiedMenu={false}
-          onChange={
-            lang => {
-              Cookie.set('lang', lang);
-              _changeLanguageAction(lang.toString());
-            }
-          }/>
-      )}
-    </International>
-  </div>;
-
-const mapStateToProps = (
-  state: Global.State,
-  ownProps: ILanguageSettingsProps
-): ILanguageSettingsProps => ({
-  ...ownProps,
-  language: (
+const LanguageSettings: React.FC = () => {
+  const language = useSelector<Language>(state => (
     state.Core.Language.language ||
     state.Core.Configuration.config.Language
-  ),
-});
+  ));
+  const { changeLanguageAction } = useActions();
+  return (
+    <div className='language-settings'>
+      <International>
+        {({ formatMessage }) => (
+          <SelectField
+            id='language'
+            label={formatMessage({ id: 'settings.language' })}
+            menuItems={[
+              {label: 'Deutsch', value: 'de' },
+              {label: 'English', value: 'en' },
+              {label: 'Italiano', value: 'it' }
+            ]}
+            value={language}
+            itemLabel='label'
+            itemValue='value'
+            fullWidth
+            simplifiedMenu={false}
+            onChange={
+              lang => {
+                Cookie.set('lang', lang);
+                changeLanguageAction(lang as Language);
+              }
+            }/>
+        )}
+      </International>
+    </div>
+  );
+};
 
-const enhance = connect(mapStateToProps, {changeLanguageAction});
-
-export default enhance(LanguageSettings);
+export default LanguageSettings;

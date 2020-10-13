@@ -1,3 +1,7 @@
+## [9.7.13] 2020-10-09
+## Fixed
+- Fixed locale for formatting
+
 ## [9.7.12] 2020-10-09
 ## Fixed
 - ModalDialog initialFocus and closeOnEsc issues

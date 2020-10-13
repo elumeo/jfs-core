@@ -296,14 +296,24 @@
         "signature": "931b372e558e5ed4fb05674dd5f594057c8d22a1599d9bf57c5cbb8bc5ddd95b",
         "affectsGlobalScope": false
       },
+      "../src/types/language.ts": {
+        "version": "0962515b4bbbaea3cd9b4e248fb497c5f477dbaad18276e58dd72fdb974ff031",
+        "signature": "5c5d2c458b4e70b29a1e99a404183a6b9d427d9c2541ad0c34480ad4558ed586",
+        "affectsGlobalScope": false
+      },
+      "../src/types/country.ts": {
+        "version": "93b77068bd2fcf111105a247681016839003027f14b4bc8e085f6901ca631a9b",
+        "signature": "25d9d9ee6d7c3a1b3888e50a2216103be8dfbcceb9f78f2f5bc8bc8ec7c1288d",
+        "affectsGlobalScope": false
+      },
       "../src/utilities/format/locale.ts": {
-        "version": "5df956827253a59d30ecb8d619e35e5142f64cc56b27f416b600f60b6720221a",
-        "signature": "377d148ce44bf56a8a1aed2f61fe238891f7c0e1f8b2f4fd3f88027070b38bed",
+        "version": "0d2ee2e7631e2f7451838283dc7fc33e5a117aa2ccc3b87fd43f2c5720185e9d",
+        "signature": "b0c2ed719c1bdc0dae922d2dce556dbd3c33829a2afe30bf9e9991161a4c3b6a",
         "affectsGlobalScope": false
       },
       "../src/utilities/format/translations/index.ts": {
-        "version": "7952ca2c96a5a2b6855ecf18808805176b770d72ae4be1d41653190070040558",
-        "signature": "77578f478415e1f0c80d71dad053e9b7e6e095fef7a7b1a4c08aa7db698fba84",
+        "version": "880476e5ca3cec2b8a08fb875015ab89d13ad2ce97b0204417781233105e459a",
+        "signature": "ff7e40ed61bdea058799496cf927311b70a8af17919382beaca68d24f7eeb8c3",
         "affectsGlobalScope": false
       },
       "../src/setup/translations.json": {
@@ -717,8 +727,8 @@
         "affectsGlobalScope": false
       },
       "../src/types/configuration.ts": {
-        "version": "e376d4c5e3e0ddb7fed1f5c71fe51f9dbfdbfd9616524410a49cf848fc675875",
-        "signature": "2bd8496cc70942ba5c391dec55948df37a159b606a3577a187472d49d108ac66",
+        "version": "4ce7c47c160c74690807da03bb042a234ec43805d8077abaeb8615637cec969c",
+        "signature": "8428972dd79e4a7ab626dc6581c71732485f5b3e6394240b0ed9471484b9d8a2",
         "affectsGlobalScope": false
       },
       "../src/jsc/client.ts": {
@@ -816,24 +826,19 @@
         "signature": "6fa06fe415db05c822ef5ec7253dfb5db6db7b86c95aa4aca328d73a54569da5",
         "affectsGlobalScope": false
       },
-      "../src/store/action/languageaction.ts": {
-        "version": "e10a74b39244576d0563e68fa3b1577f7560dcc781c336a8a031e062ac98b57d",
-        "signature": "74b19bcaa16fb026cacd4dfe1bdbce99bd5c89fc5478813a74d71db1f1eb358b",
-        "affectsGlobalScope": false
-      },
       "../src/store/action/appaction.ts": {
         "version": "f78cf5c382212f3a9ae6b8b83c6cce02aa52b2c0d0b023f687e5e44e0cb41369",
         "signature": "4601bae26b663da760d468c6f13e3eac6660fa0bd3a8824e9041c1500a5a5faa",
         "affectsGlobalScope": false
       },
-      "../src/shared/index.ts": {
-        "version": "536d24978732f321e69a3d759dbf0cee99663e30938a7f13247cdf7fecfe9ac5",
-        "signature": "9e6c5fc2b14e611755f8112683cd88d6ab1cc75fe3065d184f04b7020e2b5e07",
+      "../src/store/action/languageaction.ts": {
+        "version": "7c10697ac1479d38fa64929b32bd3e33733587a976e3c702f01d4976483b35c3",
+        "signature": "bccbdc639c388b02ea7bfa2e77b7a1c29f039ba75c9402618fb0831ba428fb92",
         "affectsGlobalScope": false
       },
-      "../src/store/reducer/core/languagereducer.ts": {
-        "version": "762ae3d14c0a74b794da1d409309569cf1b29f8cbcf43d0b5a2bdedb84c42e40",
-        "signature": "68309d851b1ff140843d7ac109259abdfb2ae6004842b741d416a02b1b8b24d7",
+      "../src/store/action/loginaction.ts": {
+        "version": "424d3e1fd938039471ca427ca26eefd2bd50844209976f30d8294d282302f353",
+        "signature": "e3cc7bb12991c8c7188d998a1a4e8d174ecf352a76a688904364f1c3502313d5",
         "affectsGlobalScope": false
       },
       "../src/store/action/logoutaction.ts": {
@@ -841,24 +846,9 @@
         "signature": "885a8643260d9590d42b3165f48efcf3a60d48da84130848da47b48dc7d781df",
         "affectsGlobalScope": false
       },
-      "../src/store/action/sessionaction.ts": {
-        "version": "a6294cb816c3de45917e24f99b4886cbc10949d34065863fd78736edbe2efec6",
-        "signature": "5f1cf83d970179393847db60c9d68e6f16a896ec927366713eb0cc90d0cfbb71",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/logoutreducer.ts": {
-        "version": "17aac5eebfef5f107167cb11662dde55bb2c25c0877a04ccb643c79b1640ae3a",
-        "signature": "a2c418b2b9259a655a1b224695c88a99232c2da5d728a26bade685872e168ec9",
-        "affectsGlobalScope": false
-      },
       "../src/store/action/navigationaction.ts": {
         "version": "e593b1e43ae9f603414a792ee97c7461e8ba2fdf768ac1154be2a58415e6a401",
         "signature": "e7204469d243bfb209a8daf80a9dcd8df817e64bf6b00ffc5fa8ca978d1d3568",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/navigationreducer.ts": {
-        "version": "c03b260d3f379bf7c86699b59836804c873fc4373fbc5120eb3589f633328512",
-        "signature": "7b81c949e6628e7befb5a59ec182b53c28120b26507343acd1dcebd7d06be960",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react/global.d.ts": {
@@ -937,7 +927,7 @@
         "affectsGlobalScope": false
       },
       "../src/utilities/format/currency.ts": {
-        "version": "07e5daa3911df8917c205a0987d7ebe64d2a42d297bb098127015d7b7e7a78f2",
+        "version": "224949d8481be13ddcb3b813521f7d1950f8232eede14861207b58c1454343d4",
         "signature": "a080458d13829dff695de618414698447431608a0b5a61a424656917d1413652",
         "affectsGlobalScope": false
       },
@@ -952,7 +942,7 @@
         "affectsGlobalScope": false
       },
       "../src/utilities/format/index.ts": {
-        "version": "57a07da768306d34131937cab1f42c80c5ec2657c52b0ed90f062e4c402ca3c1",
+        "version": "6d86bdca37e0a33af7befdd86da9230d689b07c556ee2201781a6c0c4be29e7e",
         "signature": "0d9b782a794faf431765d1028f6cfdf7be03cc49acd13353f54bfdde3d5cb0d3",
         "affectsGlobalScope": false
       },
@@ -989,86 +979,6 @@
       "../node_modules/@types/react-redux/index.d.ts": {
         "version": "1bda2f0ea3e43d36d496ea9a21e37961d2712726c0255ef4098ef585474777b6",
         "signature": "1bda2f0ea3e43d36d496ea9a21e37961d2712726c0255ef4098ef585474777b6",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/loginaction.ts": {
-        "version": "424d3e1fd938039471ca427ca26eefd2bd50844209976f30d8294d282302f353",
-        "signature": "e3cc7bb12991c8c7188d998a1a4e8d174ecf352a76a688904364f1c3502313d5",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/domutils.d.ts": {
-        "version": "271cde49dfd9b398ccc91bb3aaa43854cf76f4d14e10fed91cbac649aa6cbc63",
-        "signature": "271cde49dfd9b398ccc91bb3aaa43854cf76f4d14e10fed91cbac649aa6cbc63",
-        "affectsGlobalScope": true
-      },
-      "../node_modules/@types/history/createbrowserhistory.d.ts": {
-        "version": "c6f2572e21f626260d2e4a65e4e1e42b9b273b6f43b5c3bc115c2926417d3eca",
-        "signature": "c6f2572e21f626260d2e4a65e4e1e42b9b273b6f43b5c3bc115c2926417d3eca",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/createhashhistory.d.ts": {
-        "version": "374ab77e05e0bf5a52acad6d65121d4bd31068108f23d70186dba5fcd7d6a1a3",
-        "signature": "374ab77e05e0bf5a52acad6d65121d4bd31068108f23d70186dba5fcd7d6a1a3",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/creatememoryhistory.d.ts": {
-        "version": "a4ecd4bb653aa71093375845fba6250ca0f3c633d0e933fc9bf4b301834eab27",
-        "signature": "a4ecd4bb653aa71093375845fba6250ca0f3c633d0e933fc9bf4b301834eab27",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/locationutils.d.ts": {
-        "version": "25d91fb9ed77a828cc6c7a863236fb712dafcd52f816eec481bd0c1f589f4404",
-        "signature": "25d91fb9ed77a828cc6c7a863236fb712dafcd52f816eec481bd0c1f589f4404",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/pathutils.d.ts": {
-        "version": "4cd14cea22eed1bfb0dc76183e56989f897ac5b14c0e2a819e5162eafdcfe243",
-        "signature": "4cd14cea22eed1bfb0dc76183e56989f897ac5b14c0e2a819e5162eafdcfe243",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/index.d.ts": {
-        "version": "cc53cba64efb30576f2a36f1d7107e4453e84cbd0f371d49cd1dfd208e11233b",
-        "signature": "cc53cba64efb30576f2a36f1d7107e4453e84cbd0f371d49cd1dfd208e11233b",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/routeraction.ts": {
-        "version": "e7aed8e0e7421833cf521ff0a4a937bf7e9b4932596787ca5ae18bed66a9a043",
-        "signature": "9c98d79b2f2d13af82c90564d6f3325184d1188256c9a155f2129bea080b547f",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/settingsaction.ts": {
-        "version": "1b5df445e37f79cb60d6cc7f70d020872497ddbe83695e1b4ab7152bb51d1bc7",
-        "signature": "93e39ed452d8ab5a520bea43bf0520dff7858482f22b78d869ded1d7a3fa8886",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/splitviewaction.ts": {
-        "version": "641936589f47654323f728b844191301b8de4e51dff1970c954743a4f40a6176",
-        "signature": "6c70a3bda1db2b8177a0c471c89dc0f86052a00b641605652fe3f2c81b2bccdf",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/systemaction.ts": {
-        "version": "d74d50363210e96149420041a19b265a625cf272a92da59c624fe419721eeab4",
-        "signature": "4164d8ca0809c0998e764ea79ba002082e411a8c86b5b921a49033542378bc4c",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/immutable/dist/immutable-nonambient.d.ts": {
-        "version": "407b11f5c8edb4fdb4871a666f15d2ea4a8ca30153f0f74ceee6c247dcc2cceb",
-        "signature": "407b11f5c8edb4fdb4871a666f15d2ea4a8ca30153f0f74ceee6c247dcc2cceb",
-        "affectsGlobalScope": false
-      },
-      "../src/store/reducer/core/toastreducer.ts": {
-        "version": "5676f306cc1b77bfab3befb5714d00711083f7e92889d845dc75f3736f382691",
-        "signature": "3b9aeecae4e75d8cf5b1cfeec8a8e1a1f1e46ed213bd2df821e99de0b3fec254",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/toastaction.ts": {
-        "version": "2282c4ced592fa7811ab74c9048d0f3cde7c6bfef968818b4cfa03c1b54cbeea",
-        "signature": "8650e4b85167085c116e31608036fdd19180ed7a2103335eca42b290e5b8232a",
-        "affectsGlobalScope": false
-      },
-      "../src/store/action/index.ts": {
-        "version": "53752eed1d16a858fbce7c3ecdffc410b122cb1782344b6a22185f040b4f88dc",
-        "signature": "53752eed1d16a858fbce7c3ecdffc410b122cb1782344b6a22185f040b4f88dc",
         "affectsGlobalScope": false
       },
       "../src/store/action/useactions.ts": {
@@ -1151,6 +1061,111 @@
         "signature": "c65f333f27543c9ba0d7f08dceb567a35baa7cce4c08a1475b8717aa78ad10f4",
         "affectsGlobalScope": false
       },
+      "../node_modules/@types/history/domutils.d.ts": {
+        "version": "271cde49dfd9b398ccc91bb3aaa43854cf76f4d14e10fed91cbac649aa6cbc63",
+        "signature": "271cde49dfd9b398ccc91bb3aaa43854cf76f4d14e10fed91cbac649aa6cbc63",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/history/createbrowserhistory.d.ts": {
+        "version": "c6f2572e21f626260d2e4a65e4e1e42b9b273b6f43b5c3bc115c2926417d3eca",
+        "signature": "c6f2572e21f626260d2e4a65e4e1e42b9b273b6f43b5c3bc115c2926417d3eca",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/createhashhistory.d.ts": {
+        "version": "374ab77e05e0bf5a52acad6d65121d4bd31068108f23d70186dba5fcd7d6a1a3",
+        "signature": "374ab77e05e0bf5a52acad6d65121d4bd31068108f23d70186dba5fcd7d6a1a3",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/creatememoryhistory.d.ts": {
+        "version": "a4ecd4bb653aa71093375845fba6250ca0f3c633d0e933fc9bf4b301834eab27",
+        "signature": "a4ecd4bb653aa71093375845fba6250ca0f3c633d0e933fc9bf4b301834eab27",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/locationutils.d.ts": {
+        "version": "25d91fb9ed77a828cc6c7a863236fb712dafcd52f816eec481bd0c1f589f4404",
+        "signature": "25d91fb9ed77a828cc6c7a863236fb712dafcd52f816eec481bd0c1f589f4404",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/pathutils.d.ts": {
+        "version": "4cd14cea22eed1bfb0dc76183e56989f897ac5b14c0e2a819e5162eafdcfe243",
+        "signature": "4cd14cea22eed1bfb0dc76183e56989f897ac5b14c0e2a819e5162eafdcfe243",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/index.d.ts": {
+        "version": "cc53cba64efb30576f2a36f1d7107e4453e84cbd0f371d49cd1dfd208e11233b",
+        "signature": "cc53cba64efb30576f2a36f1d7107e4453e84cbd0f371d49cd1dfd208e11233b",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/routeraction.ts": {
+        "version": "e7aed8e0e7421833cf521ff0a4a937bf7e9b4932596787ca5ae18bed66a9a043",
+        "signature": "9c98d79b2f2d13af82c90564d6f3325184d1188256c9a155f2129bea080b547f",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/sessionaction.ts": {
+        "version": "a6294cb816c3de45917e24f99b4886cbc10949d34065863fd78736edbe2efec6",
+        "signature": "5f1cf83d970179393847db60c9d68e6f16a896ec927366713eb0cc90d0cfbb71",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/settingsaction.ts": {
+        "version": "1b5df445e37f79cb60d6cc7f70d020872497ddbe83695e1b4ab7152bb51d1bc7",
+        "signature": "93e39ed452d8ab5a520bea43bf0520dff7858482f22b78d869ded1d7a3fa8886",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/splitviewaction.ts": {
+        "version": "641936589f47654323f728b844191301b8de4e51dff1970c954743a4f40a6176",
+        "signature": "6c70a3bda1db2b8177a0c471c89dc0f86052a00b641605652fe3f2c81b2bccdf",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/systemaction.ts": {
+        "version": "d74d50363210e96149420041a19b265a625cf272a92da59c624fe419721eeab4",
+        "signature": "4164d8ca0809c0998e764ea79ba002082e411a8c86b5b921a49033542378bc4c",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/immutable/dist/immutable-nonambient.d.ts": {
+        "version": "407b11f5c8edb4fdb4871a666f15d2ea4a8ca30153f0f74ceee6c247dcc2cceb",
+        "signature": "407b11f5c8edb4fdb4871a666f15d2ea4a8ca30153f0f74ceee6c247dcc2cceb",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/toastreducer.ts": {
+        "version": "5676f306cc1b77bfab3befb5714d00711083f7e92889d845dc75f3736f382691",
+        "signature": "3b9aeecae4e75d8cf5b1cfeec8a8e1a1f1e46ed213bd2df821e99de0b3fec254",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/toastaction.ts": {
+        "version": "2282c4ced592fa7811ab74c9048d0f3cde7c6bfef968818b4cfa03c1b54cbeea",
+        "signature": "8650e4b85167085c116e31608036fdd19180ed7a2103335eca42b290e5b8232a",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/locale.ts": {
+        "version": "8a0aee251ea55b2c78cb1263ccb74396ba31f4b3b11736d4b7fb2a814c476fce",
+        "signature": "12dca037e14c579e0e3740079c10a3e35d92f0f41a3e92a2dd053091963fb35d",
+        "affectsGlobalScope": false
+      },
+      "../src/store/action/index.ts": {
+        "version": "d6117dd52c9dc39da00a9a3aa52c2c68e43de7095f5c3efce47134dd01283142",
+        "signature": "d6117dd52c9dc39da00a9a3aa52c2c68e43de7095f5c3efce47134dd01283142",
+        "affectsGlobalScope": false
+      },
+      "../src/shared/index.ts": {
+        "version": "536d24978732f321e69a3d759dbf0cee99663e30938a7f13247cdf7fecfe9ac5",
+        "signature": "9e6c5fc2b14e611755f8112683cd88d6ab1cc75fe3065d184f04b7020e2b5e07",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/languagereducer.ts": {
+        "version": "c34f9c81e01f3dfc23c7d0e4890745f9719dee77ccb270f73981b91f9ae1a823",
+        "signature": "1f990721a7659f386d4c2831a13f35eeae2b047328515b3a879613ffb891c4c4",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/logoutreducer.ts": {
+        "version": "17aac5eebfef5f107167cb11662dde55bb2c25c0877a04ccb643c79b1640ae3a",
+        "signature": "a2c418b2b9259a655a1b224695c88a99232c2da5d728a26bade685872e168ec9",
+        "affectsGlobalScope": false
+      },
+      "../src/store/reducer/core/navigationreducer.ts": {
+        "version": "c03b260d3f379bf7c86699b59836804c873fc4373fbc5120eb3589f633328512",
+        "signature": "7b81c949e6628e7befb5a59ec182b53c28120b26507343acd1dcebd7d06be960",
+        "affectsGlobalScope": false
+      },
       "../src/constant/notification.ts": {
         "version": "8e6020aac106098a90958f06b3a63b5f0ede51eefc811badde7fd951d8398d58",
         "signature": "20e1adfe22a5bd7f86c64d30b61c06360d07ef06f13d4bd761215506de40c3aa",
@@ -1196,9 +1211,14 @@
         "signature": "ab6f1ab78763db197473359cf0519b976414e6925139db0eb0d9031f69b24b34",
         "affectsGlobalScope": false
       },
+      "../src/store/reducer/core/localereducer.ts": {
+        "version": "d00b90945f0cc99d0abb3475f0110eedfd4c314f514bad202ab3eb793ae67e94",
+        "signature": "ba2ddb1e181b452476270f6d802b9697a539bdf8aaa8e1fa54cd0fa41270a177",
+        "affectsGlobalScope": false
+      },
       "../src/store/reducer/core/index.ts": {
-        "version": "3e4a22496e45815a7d81bf271143ebfc3390c11b505cafd8243d427df57752b6",
-        "signature": "65ce6b6d4e9e6b5439a3b160f3ba974c5f969cb045e6db2da88a5383aafda183",
+        "version": "1c6028d1893d585b1c8c6543ea8b280e8b9bf643dc5defab43416f5f858ceeff",
+        "signature": "7adc08abdba4a6775b667b45124865c541e33bc5b5fa5484c753b504f8b3cfb2",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/global.ts": {
@@ -1309,11 +1329,6 @@
       "../node_modules/@types/react-outside-click-handler/index.d.ts": {
         "version": "f2d11abcba45c9f1647dbb3b52e60f50718fc4dba4c549d562155aa64a0fbe42",
         "signature": "f2d11abcba45c9f1647dbb3b52e60f50718fc4dba4c549d562155aa64a0fbe42",
-        "affectsGlobalScope": false
-      },
-      "../src/types/language.ts": {
-        "version": "35fa026ba23474be962f7f5e0c257cc8b3c6ebb24ea897492606c26647550b78",
-        "signature": "39983c90e1ec3b80bb2f66eece7d11973c9e0f21692f5731ad09e3505da0fc28",
         "affectsGlobalScope": false
       },
       "../src/component/datepicker/index.tsx": {
@@ -2082,8 +2097,8 @@
         "affectsGlobalScope": false
       },
       "../src/component/settings/languagesettings.tsx": {
-        "version": "ac7ae6985c24e47f2269bd127749664c0faa9f58f76ccfc71fe8d3a214b12cd9",
-        "signature": "3fffee11cce76b244b6a1da7507083c89629a3aeccea031e0ef258539c0e0912",
+        "version": "c041e77a0d2777de47c11f4c192335543cf906338374627a1e9e61a095028b21",
+        "signature": "47e671405f5dbec2b0d09ae5529c509e68b599396ab852b823ac6240a6ad8b0b",
         "affectsGlobalScope": false
       },
       "../src/component/settings/settingsbutton.tsx": {
@@ -2092,8 +2107,8 @@
         "affectsGlobalScope": false
       },
       "../src/component/settings/settingscontainer.tsx": {
-        "version": "a487e2e8b97a65ee903419b8f5d98234152f322e66587571b5f2f992c14bc275",
-        "signature": "9c94224dbb5339773a37d34f726eb8fe0981e9918ddc2b7b8207ffddd6630f1a",
+        "version": "1e19c6f991d708f48fde3175157e3c82a24b369e6158261bcce6a90206631654",
+        "signature": "2b0e9c56cfae6327b1cad96d35871000fcffe1c8ee085e0e8b442f6ca150dbd2",
         "affectsGlobalScope": false
       },
       "../src/component/settings/settingsdialog.tsx": {
@@ -2673,47 +2688,52 @@
       },
       "../src/store/epic/appepic.ts": {
         "version": "b3e7a95ff82d7c8288de3b2fe32d72238a8106841d6f6aa231d8dc2e3dc02fc6",
-        "signature": "bd2b2e8fc2c2880dbb83d57efda2a178fc81301623a33a67de5ec37f5af53864",
+        "signature": "b2a29566a80ca98127896bd9a7ffe9a463a09397ab8c3f4341965233c5a6f2f1",
         "affectsGlobalScope": false
       },
       "../src/store/epic/configepic.ts": {
         "version": "e4c06821d09d042f9b0fba1b745e30ec87b2d477ea4b1b23a0e256553a89df74",
-        "signature": "bd2b2e8fc2c2880dbb83d57efda2a178fc81301623a33a67de5ec37f5af53864",
+        "signature": "b2a29566a80ca98127896bd9a7ffe9a463a09397ab8c3f4341965233c5a6f2f1",
         "affectsGlobalScope": false
       },
       "../src/store/epic/sessionepic.ts": {
         "version": "0710f95b3d9b1f2b5c08b2bc81054461331b677a9e9041e080a099f247d7b462",
-        "signature": "01cb2aafa67bef54d2bfc2d6323b21ce800262b3a98d82cb68864dc3bf775d53",
+        "signature": "3b28b4075f111ebea589f2eae7470f891a8d41e55de7132f491229faf2bececd",
         "affectsGlobalScope": false
       },
       "../src/store/epic/systemepic.ts": {
         "version": "264ae28558ef4d74b05919cbe49ed37bc252fa05f18af576699501e6200e98c7",
-        "signature": "4d77fc4015225419f249743a320b3358a454ce8f7593a4f64c6163d1a54c799d",
+        "signature": "40ffbd8c17c0afae25285cd4d892aba7b1e8eba76f4f93d84c03d9ebf58ade3e",
         "affectsGlobalScope": false
       },
       "../src/store/epic/loginepic.ts": {
         "version": "e4f3fa913b9d4abd051aa78f0a5db672dfb30786f8af2c16628210e30545ba7c",
-        "signature": "d9b3f330bf3221bb4e10cf6102ebb452f75f249ca06bab04d9643e5d84297039",
+        "signature": "bbaaa7a24eccc0a15987bdca0cfbafc6f70ce6321c9974e1337e641b88ba8227",
         "affectsGlobalScope": false
       },
       "../src/store/epic/notificationepic.ts": {
         "version": "f7447259d11620eeb81e03c6563c26de49a4c0dce66d31ac1525e2a9e9713e65",
-        "signature": "bd2b2e8fc2c2880dbb83d57efda2a178fc81301623a33a67de5ec37f5af53864",
+        "signature": "b2a29566a80ca98127896bd9a7ffe9a463a09397ab8c3f4341965233c5a6f2f1",
         "affectsGlobalScope": false
       },
       "../src/store/epic/websocketepic.ts": {
         "version": "57c108f28c6e296248805d0c0e1d1ec32203c025efcd3c2315dc98df863a8cf0",
-        "signature": "bb72bdd6b2263b37feae7b7f8ee7debccda4868bab88ea037c2e9471c5914688",
+        "signature": "c8f340864f50908adc65c625a247a9e1da08073c5ba2028e1219ca64705c1d57",
         "affectsGlobalScope": false
       },
       "../src/store/epic/languageepic.ts": {
-        "version": "49e6e0ab830fe4d42f321bf779f6099c6c7f7b4ff73c80dd6032ac56f2eed33a",
-        "signature": "bd2b2e8fc2c2880dbb83d57efda2a178fc81301623a33a67de5ec37f5af53864",
+        "version": "a4ba0d6601e679ef69cafd51f0203c155d757f354d2cbccdd769a6e508db09bc",
+        "signature": "b2a29566a80ca98127896bd9a7ffe9a463a09397ab8c3f4341965233c5a6f2f1",
         "affectsGlobalScope": false
       },
       "../src/store/epic/hooks.ts": {
         "version": "24e203f48b40a33054f7842745c2c3c49a6e739a1db4dac5c873b7e86c8d5315",
-        "signature": "1ca99efcd5d7f649fca3144dbe095bdbb349bfb0a6ca62f990a93c9e66b1424b",
+        "signature": "efc68f62b49d6d65356445672560939f7b92b5edb1c589488cd1d91999a23504",
+        "affectsGlobalScope": false
+      },
+      "../src/store/epic/localeepic.ts": {
+        "version": "5ff0bb8047c2a9c659082335c24d4c80b6e7fd27b92024d685db8bf50671774e",
+        "signature": "404026b659b183e6ee8fcf8d02b1f94b9a46e25ee5ad9bf4c908a2c9e2bae7f3",
         "affectsGlobalScope": false
       },
       "../src/store/epic/catcherror.ts": {
@@ -2723,7 +2743,7 @@
       },
       "../src/store/epic/index.ts": {
         "version": "d44a5ce54bd8edf946cdbc8a23b9ed6fff658b9d63848c6a8f8ac068e6ecfaee",
-        "signature": "3fd77e478bcd602f7be18d5718c0bff02d8d3431327cc4efebf23c563b30aa89",
+        "signature": "1de12c730f15717607a39bcb9c99db312948dcfe416dc213dd79ee7afd914f7c",
         "affectsGlobalScope": false
       },
       "../src/utilities/filter.ts": {
@@ -6876,14 +6896,13 @@
       "../src/component/settings/languagesettings.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/index.d.ts",
         "../src/component/international/index.tsx",
-        "../src/store/action/languageaction.ts",
-        "../src/store/reducer/global.ts",
-        "../src/types/language.ts"
+        "../src/store/action/useactions.ts",
+        "../src/types/language.ts",
+        "../src/types/redux.ts"
       ],
       "../src/component/settings/settingsbutton.tsx": [
         "../node_modules/@types/node/base.d.ts",
@@ -6912,7 +6931,8 @@
         "../node_modules/redux/index.d.ts",
         "../src/component/international/index.tsx",
         "../src/store/action/languageaction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/store/reducer/global.ts",
+        "../src/types/language.ts"
       ],
       "../src/component/settings/settingsdialog.tsx": [
         "../node_modules/@types/node/base.d.ts",
@@ -7059,6 +7079,7 @@
         "../src/store/action/appaction.ts",
         "../src/store/action/configaction.ts",
         "../src/store/action/languageaction.ts",
+        "../src/store/action/locale.ts",
         "../src/store/action/loginaction.ts",
         "../src/store/action/logoutaction.ts",
         "../src/store/action/navigationaction.ts",
@@ -7075,7 +7096,15 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
-        "../node_modules/typesafe-actions/dist/index.d.ts"
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/types/language.ts"
+      ],
+      "../src/store/action/locale.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/types/country.ts"
       ],
       "../src/store/action/loginaction.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -7223,7 +7252,19 @@
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/store/action/index.ts",
         "../src/types/redux.ts",
-        "../src/utilities/format/index.ts"
+        "../src/utilities/format/locale.ts"
+      ],
+      "../src/store/epic/localeepic.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/redux-observable/index.d.ts",
+        "../node_modules/rxjs/index.d.ts",
+        "../node_modules/rxjs/operators/index.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/store/action/index.ts",
+        "../src/utilities/format/index.ts",
+        "../src/utilities/format/locale.ts"
       ],
       "../src/store/epic/loginepic.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -7338,6 +7379,7 @@
         "../src/store/reducer/core/appreducer.ts",
         "../src/store/reducer/core/configreducer.ts",
         "../src/store/reducer/core/languagereducer.ts",
+        "../src/store/reducer/core/localereducer.ts",
         "../src/store/reducer/core/loginreducer.ts",
         "../src/store/reducer/core/logoutreducer.ts",
         "../src/store/reducer/core/navigationreducer.ts",
@@ -7358,9 +7400,17 @@
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/setup/translations.json",
         "../src/shared/index.ts",
-        "../src/store/action/appaction.ts",
-        "../src/store/action/languageaction.ts",
+        "../src/store/action/index.ts",
+        "../src/types/language.ts",
         "../src/utilities/format/translations/messages.ts"
+      ],
+      "../src/store/reducer/core/localereducer.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/store/action/index.ts",
+        "../src/types/country.ts"
       ],
       "../src/store/reducer/core/loginreducer.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -7464,6 +7514,12 @@
       "../src/types/configuration.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/types/language.ts"
+      ],
+      "../src/types/country.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../src/types/language.ts": [
@@ -7514,7 +7570,9 @@
       "../src/utilities/format/locale.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts"
+        "../node_modules/date-fns/typings.d.ts",
+        "../src/types/country.ts",
+        "../src/types/language.ts"
       ],
       "../src/utilities/format/phonenumber.ts": [
         "../node_modules/@types/google-libphonenumber/index.d.ts",
@@ -7533,6 +7591,8 @@
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/intl-messageformat/lib/intl-messageformat.d.ts",
+        "../src/types/country.ts",
+        "../src/types/language.ts",
         "../src/utilities/format/locale.ts",
         "../src/utilities/format/translations/messages.ts",
         "../src/utilities/notifier.ts"
@@ -7564,23 +7624,23 @@
       "../node_modules/@formatjs/intl-unified-numberformat/lib/intl-unified-numberformat.d.ts": [
         "../node_modules/@formatjs/intl-utils/dist/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/diff.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/displaynames-types.d.ts": [
         "../node_modules/@formatjs/intl-utils/dist/types.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/get-canonical-locales.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/index.d.ts": [
@@ -7597,83 +7657,83 @@
         "../node_modules/@formatjs/intl-utils/dist/unified-numberformat-types.d.ts",
         "../node_modules/@formatjs/intl-utils/dist/units.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/invariant.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/list-types.d.ts": [
         "../node_modules/@formatjs/intl-utils/dist/types.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/number-types.d.ts": [
         "../node_modules/@formatjs/intl-utils/dist/plural-rules-types.d.ts",
         "../node_modules/@formatjs/intl-utils/dist/types.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/plural-rules-types.d.ts": [
         "../node_modules/@formatjs/intl-utils/dist/types.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/polyfill-utils.d.ts": [
         "../node_modules/@formatjs/intl-utils/dist/number-types.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/relative-time-types.d.ts": [
         "../node_modules/@formatjs/intl-utils/dist/plural-rules-types.d.ts",
         "../node_modules/@formatjs/intl-utils/dist/types.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/resolve-locale.d.ts": [
         "../node_modules/@formatjs/intl-utils/dist/types.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/types.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/unified-numberformat-types.d.ts": [
         "../node_modules/@formatjs/intl-utils/dist/number-types.d.ts",
         "../node_modules/@formatjs/intl-utils/dist/types.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@formatjs/intl-utils/dist/units.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/anymatch/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/classnames/index.d.ts": [
         "../node_modules/@types/classnames/types.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/classnames/types.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/color-name/index.d.ts": [
@@ -7683,49 +7743,49 @@
       ],
       "../node_modules/@types/diacritics/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/engine.io/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/glob/index.d.ts": [
         "../node_modules/@types/minimatch/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/google-libphonenumber/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/history/createbrowserhistory.d.ts": [
         "../node_modules/@types/history/domutils.d.ts",
         "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/history/createhashhistory.d.ts": [
         "../node_modules/@types/history/domutils.d.ts",
         "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/history/creatememoryhistory.d.ts": [
         "../node_modules/@types/history/domutils.d.ts",
         "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/history/domutils.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/history/index.d.ts": [
@@ -7741,29 +7801,29 @@
       "../node_modules/@types/history/locationutils.d.ts": [
         "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/history/pathutils.d.ts": [
         "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/hoist-non-react-statics/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/json-schema/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/json5/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/lodash/common/array.d.ts": [
@@ -7984,18 +8044,18 @@
         "../node_modules/@types/lodash/common/string.d.ts",
         "../node_modules/@types/lodash/common/util.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/minimatch/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/node/base.d.ts": [
         "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/node/inspector.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/node/index.d.ts": [
@@ -8004,7 +8064,7 @@
       ],
       "../node_modules/@types/node/inspector.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/prettier/index.d.ts": [
@@ -8014,64 +8074,64 @@
       ],
       "../node_modules/@types/prop-types/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-addons-css-transition-group/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-addons-transition-group/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-addons-transition-group/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-addons-css-transition-group/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-datepicker/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/popper.js/index.d.ts"
       ],
       "../node_modules/@types/react-dom/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-dom/server/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-infinite/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-intl/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-outside-click-handler/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-redux/index.d.ts": [
         "../node_modules/@types/hoist-non-react-statics/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/redux/index.d.ts"
@@ -8086,14 +8146,14 @@
       ],
       "../node_modules/@types/react-router-redux/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-router-redux/node_modules/@types/history/index.d.ts",
         "../node_modules/@types/react-router-redux/node_modules/redux/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-router-redux/node_modules/@types/history/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-router-redux/node_modules/@types/history/lib/actions.d.ts",
         "../node_modules/@types/react-router-redux/node_modules/@types/history/lib/createbrowserhistory.d.ts",
         "../node_modules/@types/react-router-redux/node_modules/@types/history/lib/createhashhistory.d.ts",
@@ -8106,66 +8166,66 @@
       ],
       "../node_modules/@types/react-router-redux/node_modules/@types/history/lib/actions.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-router-redux/node_modules/@types/history/lib/createbrowserhistory.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-router-redux/node_modules/@types/history/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-router-redux/node_modules/@types/history/lib/createhashhistory.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-router-redux/node_modules/@types/history/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-router-redux/node_modules/@types/history/lib/creatememoryhistory.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-router-redux/node_modules/@types/history/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-router-redux/node_modules/@types/history/lib/locationutils.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-router-redux/node_modules/@types/history/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-router-redux/node_modules/@types/history/lib/usebasename.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-router-redux/node_modules/@types/history/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-router-redux/node_modules/@types/history/lib/usebeforeunload.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-router-redux/node_modules/@types/history/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-router-redux/node_modules/@types/history/lib/usequeries.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-router-redux/node_modules/@types/history/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-router-redux/node_modules/redux/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-router/index.d.ts": [
         "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-virtualized/dist/es/arrowkeystepper.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/prop-types/index.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/grid.d.ts",
         "../node_modules/@types/react/index.d.ts",
@@ -8173,33 +8233,33 @@
       ],
       "../node_modules/@types/react-virtualized/dist/es/autosizer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/prop-types/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-virtualized/dist/es/cellmeasurer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-virtualized/dist/es/collection.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-virtualized/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-virtualized/dist/es/columnsizer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-virtualized/dist/es/grid.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/cellmeasurer.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/list.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/table.d.ts",
@@ -8209,14 +8269,14 @@
       ],
       "../node_modules/@types/react-virtualized/dist/es/infiniteloader.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-virtualized/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-virtualized/dist/es/list.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/cellmeasurer.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/grid.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/scrollsync.d.ts",
@@ -8226,7 +8286,7 @@
       ],
       "../node_modules/@types/react-virtualized/dist/es/masonry.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/cellmeasurer.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/grid.d.ts",
         "../node_modules/@types/react-virtualized/index.d.ts",
@@ -8235,7 +8295,7 @@
       ],
       "../node_modules/@types/react-virtualized/dist/es/multigrid.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/cellmeasurer.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/grid.d.ts",
         "../node_modules/@types/react/index.d.ts",
@@ -8243,13 +8303,13 @@
       ],
       "../node_modules/@types/react-virtualized/dist/es/scrollsync.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-virtualized/dist/es/table.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/cellmeasurer.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/grid.d.ts",
         "../node_modules/@types/react-virtualized/index.d.ts",
@@ -8258,13 +8318,13 @@
       ],
       "../node_modules/@types/react-virtualized/dist/es/windowscroller.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/react-virtualized/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/arrowkeystepper.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/autosizer.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/cellmeasurer.d.ts",
@@ -8301,27 +8361,27 @@
       "../node_modules/@types/socket.io/index.d.ts": [
         "../node_modules/@types/engine.io/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/source-list-map/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/strip-bom/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/strip-json-comments/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/tapable/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/uglify-js/index.d.ts": [
@@ -8344,7 +8404,7 @@
       ],
       "../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/@types/webpack/index.d.ts": [
@@ -8364,18 +8424,18 @@
       ],
       "../node_modules/anymatch/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/axios/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/connected-react-router/index.d.ts": [
         "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/redux/index.d.ts"
@@ -8387,34 +8447,34 @@
       ],
       "../node_modules/date-fns/typings.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/immutable/dist/immutable-nonambient.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/intl-messageformat-parser/lib/intl-messageformat-parser.d.ts": [
         "../node_modules/@formatjs/intl-unified-numberformat/lib/intl-unified-numberformat.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/intl-messageformat/lib/intl-messageformat.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/intl-messageformat-parser/lib/intl-messageformat-parser.d.ts"
       ],
       "../node_modules/popper.js/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/react-md/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/autocompletes/index.d.ts",
         "../node_modules/react-md/lib/avatars/index.d.ts",
@@ -8454,7 +8514,7 @@
       ],
       "../node_modules/react-md/lib/autocompletes/autocomplete.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/helpers/layover.d.ts",
@@ -8463,52 +8523,52 @@
       ],
       "../node_modules/react-md/lib/autocompletes/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/autocompletes/autocomplete.d.ts"
       ],
       "../node_modules/react-md/lib/avatars/avatar.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/avatars/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/avatars/avatar.d.ts"
       ],
       "../node_modules/react-md/lib/badges/badge.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/badges/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/badges/badge.d.ts"
       ],
       "../node_modules/react-md/lib/bottomnavigations/bottomnavigation.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/bottomnavigations/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/bottomnavigations/bottomnavigation.d.ts"
       ],
       "../node_modules/react-md/lib/buttons/button.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts",
@@ -8517,13 +8577,13 @@
       ],
       "../node_modules/react-md/lib/buttons/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/buttons/button.d.ts"
       ],
       "../node_modules/react-md/lib/cards/card.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts",
@@ -8531,28 +8591,28 @@
       ],
       "../node_modules/react-md/lib/cards/cardactions.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/cards/cardtext.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/cards/cardtitle.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/cards/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/cards/card.d.ts",
         "../node_modules/react-md/lib/cards/cardactions.d.ts",
@@ -8561,27 +8621,27 @@
       ],
       "../node_modules/react-md/lib/chips/chip.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/chips/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/chips/chip.d.ts"
       ],
       "../node_modules/react-md/lib/datatables/datatable.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/datatables/dropdownmenucolumn.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/helpers/layover.d.ts",
@@ -8590,7 +8650,7 @@
       ],
       "../node_modules/react-md/lib/datatables/editdialogcolumn.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/helpers/layover.d.ts",
@@ -8600,7 +8660,7 @@
       ],
       "../node_modules/react-md/lib/datatables/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/datatables/datatable.d.ts",
         "../node_modules/react-md/lib/datatables/dropdownmenucolumn.d.ts",
@@ -8617,7 +8677,7 @@
       ],
       "../node_modules/react-md/lib/datatables/menubuttoncolumn.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/helpers/layover.d.ts",
@@ -8626,7 +8686,7 @@
       ],
       "../node_modules/react-md/lib/datatables/selectfieldcolumn.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/helpers/layover.d.ts",
@@ -8635,21 +8695,21 @@
       ],
       "../node_modules/react-md/lib/datatables/tablebody.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/datatables/tablecardheader.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/datatables/tablecolumn.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts",
@@ -8657,35 +8717,35 @@
       ],
       "../node_modules/react-md/lib/datatables/tablefooter.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/datatables/tableheader.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/datatables/tablepagination.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/datatables/tablerow.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/dialogs/dialog.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/buttons/index.d.ts",
@@ -8693,7 +8753,7 @@
       ],
       "../node_modules/react-md/lib/dialogs/dialogcontainer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/dialogs/dialog.d.ts",
@@ -8701,47 +8761,47 @@
       ],
       "../node_modules/react-md/lib/dialogs/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/dialogs/dialog.d.ts",
         "../node_modules/react-md/lib/dialogs/dialogcontainer.d.ts"
       ],
       "../node_modules/react-md/lib/dividers/divider.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/dividers/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/dividers/divider.d.ts"
       ],
       "../node_modules/react-md/lib/drawers/drawer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/drawers/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/drawers/drawer.d.ts"
       ],
       "../node_modules/react-md/lib/expansionpanels/expansionlist.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/expansionpanels/expansionpanel.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/buttons/index.d.ts",
@@ -8749,47 +8809,47 @@
       ],
       "../node_modules/react-md/lib/expansionpanels/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/expansionpanels/expansionlist.d.ts",
         "../node_modules/react-md/lib/expansionpanels/expansionpanel.d.ts"
       ],
       "../node_modules/react-md/lib/fileinputs/fileinput.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/fileinputs/fileupload.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/fileinputs/fileinput.d.ts"
       ],
       "../node_modules/react-md/lib/fileinputs/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/fileinputs/fileinput.d.ts",
         "../node_modules/react-md/lib/fileinputs/fileupload.d.ts"
       ],
       "../node_modules/react-md/lib/fonticons/fonticon.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/fonticons/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/fonticons/fonticon.d.ts"
       ],
       "../node_modules/react-md/lib/grids/cell.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/grids/index.d.ts",
@@ -8797,7 +8857,7 @@
       ],
       "../node_modules/react-md/lib/grids/grid.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/grids/index.d.ts",
@@ -8805,7 +8865,7 @@
       ],
       "../node_modules/react-md/lib/grids/gridlist.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/grids/index.d.ts",
@@ -8813,7 +8873,7 @@
       ],
       "../node_modules/react-md/lib/grids/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/grids/cell.d.ts",
@@ -8822,21 +8882,21 @@
       ],
       "../node_modules/react-md/lib/helpers/accessiblefakebutton.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/helpers/accessiblefakeinkedbutton.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/helpers/accessiblefakebutton.d.ts",
         "../node_modules/react-md/lib/inks/index.d.ts"
       ],
       "../node_modules/react-md/lib/helpers/collapse.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
@@ -8844,20 +8904,20 @@
       "../node_modules/react-md/lib/helpers/focuscontainer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
-        "../node_modules/react-md/lib/index.d.ts",
-        "../showcase/node_modules/@types/react/index.d.ts"
+        "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/helpers/iconseparator.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/helpers/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/helpers/accessiblefakebutton.d.ts",
         "../node_modules/react-md/lib/helpers/accessiblefakeinkedbutton.d.ts",
@@ -8870,46 +8930,46 @@
       ],
       "../node_modules/react-md/lib/helpers/layover.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/helpers/portal.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/helpers/resizeobserver.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/react-md/lib/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/react-md/lib/inks/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/inks/injectink.d.ts"
       ],
       "../node_modules/react-md/lib/inks/injectink.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/lists/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/lists/list.d.ts",
         "../node_modules/react-md/lib/lists/listitem.d.ts",
@@ -8917,14 +8977,14 @@
       ],
       "../node_modules/react-md/lib/lists/list.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/lists/listitem.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts",
@@ -8932,7 +8992,7 @@
       ],
       "../node_modules/react-md/lib/lists/listitemcontrol.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts",
@@ -8940,28 +9000,28 @@
       ],
       "../node_modules/react-md/lib/media/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/media/media.d.ts",
         "../node_modules/react-md/lib/media/mediaoverlay.d.ts"
       ],
       "../node_modules/react-md/lib/media/media.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/media/mediaoverlay.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/menus/dropdownmenu.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/helpers/layover.d.ts",
@@ -8970,7 +9030,7 @@
       ],
       "../node_modules/react-md/lib/menus/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/menus/dropdownmenu.d.ts",
         "../node_modules/react-md/lib/menus/menu.d.ts",
@@ -8978,7 +9038,7 @@
       ],
       "../node_modules/react-md/lib/menus/menu.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/helpers/layover.d.ts",
@@ -8986,7 +9046,7 @@
       ],
       "../node_modules/react-md/lib/menus/menubutton.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/buttons/button.d.ts",
@@ -8998,14 +9058,14 @@
       ],
       "../node_modules/react-md/lib/navigationdrawers/closebutton.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/navigationdrawers/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/navigationdrawers/closebutton.d.ts",
         "../node_modules/react-md/lib/navigationdrawers/jumptocontentlink.d.ts",
@@ -9013,14 +9073,14 @@
       ],
       "../node_modules/react-md/lib/navigationdrawers/jumptocontentlink.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/navigationdrawers/navigationdrawer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/drawers/index.d.ts",
@@ -9028,27 +9088,27 @@
       ],
       "../node_modules/react-md/lib/papers/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/papers/paper.d.ts"
       ],
       "../node_modules/react-md/lib/papers/paper.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/pickers/datepickercontainer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/pickers/index.d.ts"
       ],
       "../node_modules/react-md/lib/pickers/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts",
@@ -9058,20 +9118,20 @@
       ],
       "../node_modules/react-md/lib/pickers/timepickercontainer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/pickers/index.d.ts"
       ],
       "../node_modules/react-md/lib/progress/circularprogress.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/progress/index.d.ts"
       ],
       "../node_modules/react-md/lib/progress/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts",
@@ -9080,19 +9140,19 @@
       ],
       "../node_modules/react-md/lib/progress/linearprogress.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/progress/index.d.ts"
       ],
       "../node_modules/react-md/lib/selectfields/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/selectfields/selectfield.d.ts"
       ],
       "../node_modules/react-md/lib/selectfields/selectfield.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/helpers/layover.d.ts",
@@ -9104,13 +9164,13 @@
       ],
       "../node_modules/react-md/lib/selectioncontrols/checkbox.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/selectioncontrols/selectioncontrol.d.ts"
       ],
       "../node_modules/react-md/lib/selectioncontrols/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/selectioncontrols/checkbox.d.ts",
         "../node_modules/react-md/lib/selectioncontrols/radio.d.ts",
@@ -9120,85 +9180,85 @@
       ],
       "../node_modules/react-md/lib/selectioncontrols/radio.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/selectioncontrols/selectioncontrol.d.ts"
       ],
       "../node_modules/react-md/lib/selectioncontrols/selectioncontrol.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
-        "../node_modules/react-md/lib/index.d.ts",
-        "../showcase/node_modules/@types/react/index.d.ts"
+        "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/selectioncontrols/selectioncontrolgroup.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/selectioncontrols/switch.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/selectioncontrols/selectioncontrol.d.ts"
       ],
       "../node_modules/react-md/lib/sliders/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/sliders/slider.d.ts"
       ],
       "../node_modules/react-md/lib/sliders/slider.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/snackbars/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/snackbars/snackbarcontainer.d.ts"
       ],
       "../node_modules/react-md/lib/snackbars/snackbarcontainer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/subheaders/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/subheaders/subheader.d.ts"
       ],
       "../node_modules/react-md/lib/subheaders/subheader.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/svgicons/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/svgicons/svgicon.d.ts"
       ],
       "../node_modules/react-md/lib/svgicons/svgicon.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/tabs/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/tabs/menutab.d.ts",
         "../node_modules/react-md/lib/tabs/tab.d.ts",
@@ -9208,7 +9268,7 @@
       ],
       "../node_modules/react-md/lib/tabs/menutab.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts",
@@ -9216,21 +9276,21 @@
       ],
       "../node_modules/react-md/lib/tabs/tab.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/tabs/tabpanel.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/tabs/tabs.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/drawers/index.d.ts",
@@ -9239,7 +9299,7 @@
       ],
       "../node_modules/react-md/lib/tabs/tabscontainer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts",
@@ -9247,46 +9307,46 @@
       ],
       "../node_modules/react-md/lib/textfields/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/textfields/textfield.d.ts"
       ],
       "../node_modules/react-md/lib/textfields/textfield.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/toolbars/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/toolbars/toolbar.d.ts"
       ],
       "../node_modules/react-md/lib/toolbars/toolbar.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts"
       ],
       "../node_modules/react-md/lib/tooltips/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/tooltips/injecttooltip.d.ts",
         "../node_modules/react-md/lib/tooltips/tooltipped.d.ts"
       ],
       "../node_modules/react-md/lib/tooltips/injecttooltip.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/react-md/lib/tooltips/tooltipped.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/index.d.ts",
@@ -9294,36 +9354,36 @@
       ],
       "../node_modules/react-md/lib/utils/bem.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/redux-devtools-extension/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/redux/index.d.ts"
       ],
       "../node_modules/redux-observable/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/redux/index.d.ts",
         "../node_modules/rxjs/index.d.ts"
       ],
       "../node_modules/redux/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/symbol-observable/index.d.ts"
       ],
       "../node_modules/reselect/lib/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/rxjs/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/asyncsubject.d.ts",
         "../node_modules/rxjs/internal/behaviorsubject.d.ts",
@@ -9383,7 +9443,7 @@
       ],
       "../node_modules/rxjs/internal/asyncsubject.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/subject.d.ts",
         "../node_modules/rxjs/internal/subscriber.d.ts",
@@ -9391,7 +9451,7 @@
       ],
       "../node_modules/rxjs/internal/behaviorsubject.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/subject.d.ts",
         "../node_modules/rxjs/internal/subscriber.d.ts",
@@ -9399,7 +9459,7 @@
       ],
       "../node_modules/rxjs/internal/config.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/rxjs/internal/innersubscribe.d.ts": [
@@ -9411,21 +9471,21 @@
       ],
       "../node_modules/rxjs/internal/innersubscriber.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/outersubscriber.d.ts",
         "../node_modules/rxjs/internal/subscriber.d.ts"
       ],
       "../node_modules/rxjs/internal/notification.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable/iif.d.ts",
         "../node_modules/rxjs/internal/observable/throwerror.d.ts",
@@ -9436,21 +9496,21 @@
       ],
       "../node_modules/rxjs/internal/observable/bindcallback.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/bindnodecallback.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/combinelatest.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/operator.d.ts",
@@ -9460,14 +9520,14 @@
       ],
       "../node_modules/rxjs/internal/observable/concat.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/connectableobservable.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/subject.d.ts",
@@ -9476,96 +9536,96 @@
       ],
       "../node_modules/rxjs/internal/observable/defer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/empty.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/forkjoin.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/from.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/fromevent.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/fromeventpattern.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/observable/fromevent.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/generate.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/iif.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/interval.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/merge.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/never.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/of.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/onerrorresumenext.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/pairs.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/subscriber.d.ts",
@@ -9574,14 +9634,14 @@
       ],
       "../node_modules/rxjs/internal/observable/partition.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/race.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/operator.d.ts",
@@ -9591,35 +9651,35 @@
       ],
       "../node_modules/rxjs/internal/observable/range.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/throwerror.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/timer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/using.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/observable/zip.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/operator.d.ts",
@@ -9628,146 +9688,146 @@
       ],
       "../node_modules/rxjs/internal/operator.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/subscriber.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/audit.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/audittime.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/buffer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/buffercount.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/buffertime.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/buffertoggle.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/bufferwhen.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/catcherror.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/combineall.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/combinelatest.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/concat.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/concatall.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/concatmap.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/concatmapto.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/count.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/debounce.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/debouncetime.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/defaultifempty.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/delay.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/delaywhen.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/dematerialize.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/notification.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/distinct.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/innersubscribe.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
@@ -9776,50 +9836,50 @@
       ],
       "../node_modules/rxjs/internal/operators/distinctuntilchanged.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/distinctuntilkeychanged.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/elementat.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/endwith.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/every.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/exhaust.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/exhaustmap.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/expand.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/innersubscribe.d.ts",
         "../node_modules/rxjs/internal/operator.d.ts",
@@ -9828,19 +9888,19 @@
       ],
       "../node_modules/rxjs/internal/operators/filter.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/finalize.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/find.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/operator.d.ts",
@@ -9849,21 +9909,21 @@
       ],
       "../node_modules/rxjs/internal/operators/findindex.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/first.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/groupby.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/subject.d.ts",
@@ -9873,26 +9933,26 @@
       ],
       "../node_modules/rxjs/internal/operators/ignoreelements.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/isempty.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/last.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/map.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/operator.d.ts",
         "../node_modules/rxjs/internal/subscriber.d.ts",
@@ -9900,38 +9960,38 @@
       ],
       "../node_modules/rxjs/internal/operators/mapto.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/materialize.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/notification.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/max.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/merge.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/mergeall.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/mergemap.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/innersubscribe.d.ts",
         "../node_modules/rxjs/internal/operator.d.ts",
@@ -9940,13 +10000,13 @@
       ],
       "../node_modules/rxjs/internal/operators/mergemapto.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/mergescan.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/innersubscribe.d.ts",
         "../node_modules/rxjs/internal/operator.d.ts",
@@ -9955,13 +10015,13 @@
       ],
       "../node_modules/rxjs/internal/operators/min.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/multicast.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/observable/connectableobservable.d.ts",
@@ -9972,7 +10032,7 @@
       ],
       "../node_modules/rxjs/internal/operators/observeon.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/notification.d.ts",
         "../node_modules/rxjs/internal/operator.d.ts",
@@ -9981,33 +10041,33 @@
       ],
       "../node_modules/rxjs/internal/operators/onerrorresumenext.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/pairwise.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/partition.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/pluck.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/publish.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/observable/connectableobservable.d.ts",
@@ -10015,7 +10075,7 @@
       ],
       "../node_modules/rxjs/internal/operators/publishbehavior.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/observable/connectableobservable.d.ts",
@@ -10023,7 +10083,7 @@
       ],
       "../node_modules/rxjs/internal/operators/publishlast.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/observable/connectableobservable.d.ts",
@@ -10031,78 +10091,78 @@
       ],
       "../node_modules/rxjs/internal/operators/publishreplay.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/race.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/reduce.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/refcount.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/repeat.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/repeatwhen.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/retry.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/retrywhen.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/sample.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/sampletime.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/scan.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/sequenceequal.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/operator.d.ts",
@@ -10111,221 +10171,221 @@
       ],
       "../node_modules/rxjs/internal/operators/share.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/sharereplay.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/single.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/skip.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/skiplast.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/skipuntil.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/skipwhile.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/startwith.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/subscribeon.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/switchall.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/switchmap.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/switchmapto.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/take.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/takelast.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/takeuntil.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/takewhile.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/tap.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/throttle.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/throttletime.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/operators/throttle.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/throwifempty.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/timeinterval.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/timeout.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/timeoutwith.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/timestamp.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/toarray.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/window.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/windowcount.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/windowtime.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/windowtoggle.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/windowwhen.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/withlatestfrom.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/zip.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/operators/zipall.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/outersubscriber.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/innersubscriber.d.ts",
         "../node_modules/rxjs/internal/subscriber.d.ts"
       ],
       "../node_modules/rxjs/internal/replaysubject.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/subject.d.ts",
         "../node_modules/rxjs/internal/subscriber.d.ts",
@@ -10334,13 +10394,13 @@
       ],
       "../node_modules/rxjs/internal/scheduled/scheduled.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/index.d.ts"
       ],
       "../node_modules/rxjs/internal/scheduler.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/scheduler/action.d.ts",
         "../node_modules/rxjs/internal/subscription.d.ts",
@@ -10348,7 +10408,7 @@
       ],
       "../node_modules/rxjs/internal/scheduler/action.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/scheduler.d.ts",
         "../node_modules/rxjs/internal/subscription.d.ts",
@@ -10356,39 +10416,39 @@
       ],
       "../node_modules/rxjs/internal/scheduler/animationframe.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/scheduler/animationframescheduler.d.ts"
       ],
       "../node_modules/rxjs/internal/scheduler/animationframescheduler.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/scheduler/asyncaction.d.ts",
         "../node_modules/rxjs/internal/scheduler/asyncscheduler.d.ts"
       ],
       "../node_modules/rxjs/internal/scheduler/asap.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/scheduler/asapscheduler.d.ts"
       ],
       "../node_modules/rxjs/internal/scheduler/asapscheduler.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/scheduler/asyncaction.d.ts",
         "../node_modules/rxjs/internal/scheduler/asyncscheduler.d.ts"
       ],
       "../node_modules/rxjs/internal/scheduler/async.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/scheduler/asyncscheduler.d.ts"
       ],
       "../node_modules/rxjs/internal/scheduler/asyncaction.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/scheduler/action.d.ts",
         "../node_modules/rxjs/internal/scheduler/asyncscheduler.d.ts",
@@ -10397,7 +10457,7 @@
       ],
       "../node_modules/rxjs/internal/scheduler/asyncscheduler.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/scheduler.d.ts",
         "../node_modules/rxjs/internal/scheduler/action.d.ts",
@@ -10407,19 +10467,19 @@
       ],
       "../node_modules/rxjs/internal/scheduler/queue.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/scheduler/queuescheduler.d.ts"
       ],
       "../node_modules/rxjs/internal/scheduler/queuescheduler.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/scheduler/asyncscheduler.d.ts"
       ],
       "../node_modules/rxjs/internal/scheduler/virtualtimescheduler.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/scheduler/asyncaction.d.ts",
         "../node_modules/rxjs/internal/scheduler/asyncscheduler.d.ts",
@@ -10428,7 +10488,7 @@
       ],
       "../node_modules/rxjs/internal/subject.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/operator.d.ts",
@@ -10438,79 +10498,79 @@
       ],
       "../node_modules/rxjs/internal/subscriber.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/subscription.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/subscription.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/symbol/observable.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/rxjs/internal/types.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts",
         "../node_modules/rxjs/internal/subscription.d.ts"
       ],
       "../node_modules/rxjs/internal/util/argumentoutofrangeerror.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/rxjs/internal/util/emptyerror.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/rxjs/internal/util/identity.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/rxjs/internal/util/isobservable.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/observable.d.ts"
       ],
       "../node_modules/rxjs/internal/util/noop.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/rxjs/internal/util/objectunsubscribederror.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/rxjs/internal/util/pipe.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../node_modules/rxjs/internal/util/timeouterror.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/rxjs/internal/util/unsubscriptionerror.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/rxjs/operators/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/rxjs/internal/operators/audit.d.ts",
         "../node_modules/rxjs/internal/operators/audittime.d.ts",
@@ -10618,60 +10678,60 @@
       ],
       "../node_modules/symbol-observable/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typesafe-actions/dist/action.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/typesafe-actions/dist/type-helpers.d.ts"
       ],
       "../node_modules/typesafe-actions/dist/create-action-deprecated.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/typesafe-actions/dist/type-helpers.d.ts"
       ],
       "../node_modules/typesafe-actions/dist/create-action.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/typesafe-actions/dist/type-helpers.d.ts"
       ],
       "../node_modules/typesafe-actions/dist/create-async-action.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/typesafe-actions/dist/type-helpers.d.ts"
       ],
       "../node_modules/typesafe-actions/dist/create-custom-action.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/typesafe-actions/dist/type-helpers.d.ts"
       ],
       "../node_modules/typesafe-actions/dist/create-reducer.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/typesafe-actions/dist/type-helpers.d.ts"
       ],
       "../node_modules/typesafe-actions/dist/create-standard-action.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/typesafe-actions/dist/type-helpers.d.ts"
       ],
       "../node_modules/typesafe-actions/dist/get-type.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/typesafe-actions/dist/type-helpers.d.ts"
       ],
       "../node_modules/typesafe-actions/dist/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/typesafe-actions/dist/action.d.ts",
         "../node_modules/typesafe-actions/dist/create-action-deprecated.d.ts",
@@ -10687,218 +10747,218 @@
       ],
       "../node_modules/typesafe-actions/dist/is-action-of.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/typesafe-actions/dist/type-helpers.d.ts"
       ],
       "../node_modules/typesafe-actions/dist/is-of-type.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typesafe-actions/dist/type-helpers.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.dom.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2015.collection.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2015.core.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2015.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2015.generator.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2015.iterable.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2015.promise.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2015.proxy.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2015.reflect.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2015.symbol.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2016.array.include.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2016.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2017.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2017.intl.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2017.object.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2017.string.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2017.typedarrays.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2018.asynciterable.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2018.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2018.intl.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2018.promise.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2018.regexp.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2019.array.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2019.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2019.object.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2019.string.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2019.symbol.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2020.bigint.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2020.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2020.promise.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2020.string.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.es5.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.esnext.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.esnext.promise.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../node_modules/typescript/lib/lib.esnext.string.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
       "../src/base/httpclient.ts": [
@@ -11099,9 +11159,7 @@
         "../src/store/action/toastaction.ts"
       ],
       "../src/component/settings/languagesettings.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/languageaction.ts"
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/settings/settingsbutton.tsx": [
         "../node_modules/@types/react-redux/index.d.ts",
@@ -11167,6 +11225,7 @@
         "../src/store/action/appaction.ts",
         "../src/store/action/configaction.ts",
         "../src/store/action/languageaction.ts",
+        "../src/store/action/locale.ts",
         "../src/store/action/loginaction.ts",
         "../src/store/action/logoutaction.ts",
         "../src/store/action/navigationaction.ts",
@@ -11180,7 +11239,12 @@
         "../src/store/action/websocketaction.ts"
       ],
       "../src/store/action/languageaction.ts": [
-        "../node_modules/typesafe-actions/dist/index.d.ts"
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/types/language.ts"
+      ],
+      "../src/store/action/locale.ts": [
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/types/country.ts"
       ],
       "../src/store/action/loginaction.ts": [
         "../node_modules/typesafe-actions/dist/index.d.ts"
@@ -11232,6 +11296,7 @@
         "../src/store/reducer/core/toastreducer.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
         "../src/store/reducer/global.ts",
+        "../src/types/language.ts",
         "../src/types/notification.ts"
       ],
       "../src/store/epic/catcherror.ts": [
@@ -11245,6 +11310,7 @@
         "../src/store/reducer/core/toastreducer.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
         "../src/store/reducer/global.ts",
+        "../src/types/language.ts",
         "../src/types/notification.ts"
       ],
       "../src/store/epic/hooks.ts": [
@@ -11256,6 +11322,7 @@
         "../src/store/reducer/core/toastreducer.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
         "../src/store/reducer/global.ts",
+        "../src/types/language.ts",
         "../src/types/notification.ts",
         "../src/types/redux.ts"
       ],
@@ -11268,6 +11335,7 @@
         "../src/store/reducer/core/toastreducer.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
         "../src/store/reducer/global.ts",
+        "../src/types/language.ts",
         "../src/types/notification.ts"
       ],
       "../src/store/epic/languageepic.ts": [
@@ -11278,7 +11346,11 @@
         "../src/store/reducer/core/toastreducer.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
         "../src/store/reducer/global.ts",
+        "../src/types/language.ts",
         "../src/types/notification.ts"
+      ],
+      "../src/store/epic/localeepic.ts": [
+        "../node_modules/redux-observable/index.d.ts"
       ],
       "../src/store/epic/loginepic.ts": [
         "../node_modules/redux-observable/index.d.ts",
@@ -11288,6 +11360,7 @@
         "../src/store/reducer/core/toastreducer.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
         "../src/store/reducer/global.ts",
+        "../src/types/language.ts",
         "../src/types/notification.ts"
       ],
       "../src/store/epic/notificationepic.ts": [
@@ -11298,6 +11371,7 @@
         "../src/store/reducer/core/toastreducer.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
         "../src/store/reducer/global.ts",
+        "../src/types/language.ts",
         "../src/types/notification.ts"
       ],
       "../src/store/epic/sessionepic.ts": [
@@ -11308,6 +11382,7 @@
         "../src/store/reducer/core/toastreducer.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
         "../src/store/reducer/global.ts",
+        "../src/types/language.ts",
         "../src/types/notification.ts"
       ],
       "../src/store/epic/systemepic.ts": [
@@ -11320,6 +11395,7 @@
         "../src/store/reducer/core/toastreducer.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
         "../src/store/reducer/global.ts",
+        "../src/types/language.ts",
         "../src/types/notification.ts"
       ],
       "../src/store/epic/websocketepic.ts": [
@@ -11331,6 +11407,7 @@
         "../src/store/reducer/core/toastreducer.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts",
         "../src/store/reducer/global.ts",
+        "../src/types/language.ts",
         "../src/types/notification.ts",
         "../src/types/redux.ts"
       ],
@@ -11356,6 +11433,7 @@
         "../src/store/reducer/core/appreducer.ts",
         "../src/store/reducer/core/configreducer.ts",
         "../src/store/reducer/core/languagereducer.ts",
+        "../src/store/reducer/core/localereducer.ts",
         "../src/store/reducer/core/loginreducer.ts",
         "../src/store/reducer/core/logoutreducer.ts",
         "../src/store/reducer/core/navigationreducer.ts",
@@ -11371,7 +11449,12 @@
       ],
       "../src/store/reducer/core/languagereducer.ts": [
         "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/types/language.ts",
         "../src/utilities/format/translations/messages.ts"
+      ],
+      "../src/store/reducer/core/localereducer.ts": [
+        "../node_modules/typesafe-actions/dist/index.d.ts",
+        "../src/types/country.ts"
       ],
       "../src/store/reducer/core/loginreducer.ts": [
         "../node_modules/typesafe-actions/dist/index.d.ts"
@@ -11418,6 +11501,9 @@
         "../node_modules/reselect/lib/index.d.ts",
         "../src/store/reducer/core/websocketconnectionreducer.ts"
       ],
+      "../src/types/configuration.ts": [
+        "../src/types/language.ts"
+      ],
       "../src/types/notification.ts": [
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/axios/index.d.ts",
@@ -11436,6 +11522,10 @@
         "../src/utilities/format/phonenumber.ts",
         "../src/utilities/format/text.ts",
         "../src/utilities/format/translations/index.ts"
+      ],
+      "../src/utilities/format/locale.ts": [
+        "../src/types/country.ts",
+        "../src/types/language.ts"
       ],
       "../src/utilities/format/translations/index.ts": [
         "../node_modules/intl-messageformat/lib/intl-messageformat.d.ts",
@@ -11978,6 +12068,7 @@
       "../src/store/action/configaction.ts",
       "../src/store/action/index.ts",
       "../src/store/action/languageaction.ts",
+      "../src/store/action/locale.ts",
       "../src/store/action/loginaction.ts",
       "../src/store/action/logoutaction.ts",
       "../src/store/action/navigationaction.ts",
@@ -11996,6 +12087,7 @@
       "../src/store/epic/hooks.ts",
       "../src/store/epic/index.ts",
       "../src/store/epic/languageepic.ts",
+      "../src/store/epic/localeepic.ts",
       "../src/store/epic/loginepic.ts",
       "../src/store/epic/notificationepic.ts",
       "../src/store/epic/sessionepic.ts",
@@ -12007,6 +12099,7 @@
       "../src/store/reducer/core/configreducer.ts",
       "../src/store/reducer/core/index.ts",
       "../src/store/reducer/core/languagereducer.ts",
+      "../src/store/reducer/core/localereducer.ts",
       "../src/store/reducer/core/loginreducer.ts",
       "../src/store/reducer/core/logoutreducer.ts",
       "../src/store/reducer/core/navigationreducer.ts",
@@ -12021,6 +12114,7 @@
       "../src/store/reducer/global.ts",
       "../src/store/selectors/websocketselectors.ts",
       "../src/types/configuration.ts",
+      "../src/types/country.ts",
       "../src/types/language.ts",
       "../src/types/notification.ts",
       "../src/types/redux.ts",

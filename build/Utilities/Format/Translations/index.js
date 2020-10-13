@@ -4,18 +4,32 @@ import Messages from './Messages';
 import Locale from '../Locale';
 class Translations {
 }
+Translations.mapLocaleToLanguage = (locale) => {
+    if (locale === 'de-DE') {
+        return 'de';
+    }
+    else if (locale === 'en-GB') {
+        return 'en';
+    }
+    else if (locale === 'it-IT') {
+        return 'it';
+    }
+    else {
+        return null;
+    }
+};
 Translations.messages = {};
 Translations.addMessages = (newMessages) => {
     Translations.messages = Messages.merge(Translations.messages, newMessages);
 };
 Translations.formatMessage = ({ id }, values) => {
-    if (Translations.messages[Locale.selectedLanguage][id]) {
-        const message = new IntlMessageFormat(Translations.messages[Locale.selectedLanguage][id]);
+    const language = Translations.mapLocaleToLanguage(Locale.locale);
+    if (Translations.messages[language][id]) {
+        const message = new IntlMessageFormat(Translations.messages[language][id]);
         return message.format(values);
     }
     else {
-        const locale = Locale.selectedLanguage;
-        Notifier.warn(`Missing translation for '${id}' in locale '${locale}'`);
+        Notifier.warn(`Missing translation for '${id}' in locale '${Locale.locale}'`);
         return id;
     }
 };

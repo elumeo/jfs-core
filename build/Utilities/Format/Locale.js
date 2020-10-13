@@ -1,7 +1,8 @@
 class Locale {
 }
-Locale.selectLanguage = (language) => {
-    Locale.selectedLanguage = language;
+Locale.locale = 'en-GB';
+Locale.setLocale = (locale) => {
+    Locale.locale = locale;
 };
 Locale.mapProductLanguageToLocale = (productLanguage) => {
     switch (productLanguage) {
@@ -18,6 +19,20 @@ Locale.mapProductLanguageToLocale = (productLanguage) => {
         case 'de':
         default:
             return 'de_de';
+    }
+};
+Locale.mapLanguageToLocale = (language) => {
+    if (language === 'de') {
+        return 'de-DE';
+    }
+    else if (language === 'en') {
+        return 'en-GB';
+    }
+    else if (language === 'it') {
+        return 'it-IT';
+    }
+    else {
+        return null;
     }
 };
 export default Locale;

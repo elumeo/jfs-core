@@ -1,7 +1,8 @@
 import Messages from '../../../Utilities/Format/Translations/Messages';
+import { Language } from '../../../Types/Language';
 declare namespace Language {
     type State = {
-        language: string;
+        language: Language;
         messages: Messages.LanguageMap;
     };
 }

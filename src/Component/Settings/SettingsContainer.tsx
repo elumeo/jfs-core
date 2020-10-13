@@ -9,13 +9,14 @@ import CardTitle from 'react-md/lib/Cards/CardTitle';
 import CardActions from 'react-md/lib/Cards/CardActions';
 import SelectField from 'react-md/lib/SelectFields';
 
-import { changeLanguageAction } from '../../Store/Action/LanguageAction';
-import Global from '../../Store/Reducer/Global';
+import { changeLanguageAction } from 'Store/Action/LanguageAction';
+import Global from 'Store/Reducer/Global';
 import Cookie from 'js-cookie';
 
 import './SettingsContainer.scss';
 import { compose } from 'redux';
-import International from '../International';
+import International from 'Component/International';
+import { Language } from 'Types/Language';
 
 // ToDo: Duplikat entfernen => Siehe LanguageSettings.tsx
 const LANGUAGES = [
@@ -33,9 +34,7 @@ interface ISettingsContainerProps {
 class SettingsContainer extends React.Component<ISettingsContainerProps> {
   render() {
     const {
-      props: {
-        history: {goBack}, language, changeLanguageAction
-      }
+      props: { history: {goBack}, language, changeLanguageAction }
     } = this;
 
     return (
@@ -56,7 +55,7 @@ class SettingsContainer extends React.Component<ISettingsContainerProps> {
                     itemValue='value'
                     onChange={lang => {
                       Cookie.set('lang', lang);
-                      changeLanguageAction(lang.toString());
+                      changeLanguageAction(lang as Language);
                     }}/>
                   <CardActions className='md-dialog-footer'>
                     <Button primary flat onClick={goBack}>

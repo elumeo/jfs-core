@@ -2,6 +2,8 @@ import { IntlMessageFormat, PrimitiveType } from 'intl-messageformat';
 import Notifier from '../../Notifier';
 import Messages from './Messages';
 import Locale from '../Locale';
+import * as Country from 'Types/Country';
+import { Language } from 'Types/Language';
 
 namespace Translations {
   export type Set = {
@@ -10,6 +12,21 @@ namespace Translations {
 }
 
 class Translations {
+
+  private static mapLocaleToLanguage = (locale: Country.Locale): Language => {
+    if (locale === 'de-DE') {
+      return 'de';
+    }
+    else if (locale === 'en-GB') {
+      return 'en';
+    }
+    else if (locale === 'it-IT') {
+      return 'it';
+    }
+    else {
+      return null;
+    }
+  }
 
   private static messages: Translations.Set = {};
 
@@ -24,15 +41,15 @@ class Translations {
     { id },
     values?: Record<string, PrimitiveType>
   ) => {
-    if (Translations.messages[Locale.selectedLanguage][id]) {
+    const language = Translations.mapLocaleToLanguage(Locale.locale);
+    if (Translations.messages[language][id]) {
       const message = new IntlMessageFormat(
-        Translations.messages[Locale.selectedLanguage][id]
+        Translations.messages[language][id]
       );
       return message.format(values);
     } else {
-      const locale = Locale.selectedLanguage;
       Notifier.warn(
-        `Missing translation for '${id}' in locale '${locale}'`
+        `Missing translation for '${id}' in locale '${Locale.locale}'`
       );
       return id;
     }

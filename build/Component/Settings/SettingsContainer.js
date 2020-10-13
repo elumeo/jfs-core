@@ -28,7 +28,7 @@ class SettingsContainer extends React.Component {
                         React.createElement(CardTitle, { title: formatMessage({ id: 'settings.title' }) }),
                         React.createElement(SelectField, { id: 'language', label: formatMessage({ id: 'settings.language' }), className: 'md-cell md-cell--12', menuItems: LANGUAGES, value: language, itemLabel: 'label', itemValue: 'value', onChange: lang => {
                                 Cookie.set('lang', lang);
-                                changeLanguageAction(lang.toString());
+                                changeLanguageAction(lang);
                             } }),
                         React.createElement(CardActions, { className: 'md-dialog-footer' },
                             React.createElement(Button, { primary: true, flat: true, onClick: goBack }, formatMessage({ id: 'app.settings.done' }))))))))));

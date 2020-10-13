@@ -1,3 +1,4 @@
+import { Language } from "./Language";
 declare type IWebSockClient = {
     Host: string;
     Path: string;
@@ -7,7 +8,7 @@ declare type IWebSockClient = {
 declare type IConfig = {
     RobotUsername: string;
     RobotPassword: string;
-    Language: string;
+    Language: Language;
     Currency: string;
     ForceHTTPS: boolean;
     AppName: string;

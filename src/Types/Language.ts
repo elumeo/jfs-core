@@ -1,3 +1,5 @@
+export type Language = 'de' | 'en' | 'it';
+
 export enum LANGUAGE {
   GERMAN = 'de',
   ENGLISH = 'en',

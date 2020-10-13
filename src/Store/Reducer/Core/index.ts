@@ -15,6 +15,7 @@ import Toast from './ToastReducer';
 import WebSocketConnection from './WebSocketConnectionReducer';
 import App from './AppReducer';
 import Login from './LoginReducer';
+import Locale from './LocaleReducer';
 import IConfig from '../../../Types/Configuration';
 
 namespace Core {
@@ -34,6 +35,7 @@ namespace Core {
     Toast?: Toast.State;
     WebSocketConnection?: WebSocketConnection.State;
     Configuration?: Configuration.State<IConfig>;
+    Locale?: Locale.State;
   }
 }
 
@@ -52,7 +54,8 @@ const Core = combineReducers<Core.State>({
   SplitView,
   System,
   Toast,
-  WebSocketConnection
+  WebSocketConnection,
+  Locale
 });
 
 export default Core;

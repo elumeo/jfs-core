@@ -12,3 +12,4 @@ export * from './SplitViewAction';
 export * from './SystemAction';
 export * from './ToastAction';
 export * from './WebSocketAction';
+export * from './Locale';

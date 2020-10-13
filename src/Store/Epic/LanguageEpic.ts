@@ -6,7 +6,7 @@ import { setDefaultLocale } from 'react-datepicker';
 import Cookie from 'js-cookie';
 
 import * as Action from 'Store/Action';
-import Format from '../../Utilities/Format';
+import Locale from 'Utilities/Format/Locale';
 import { Epic } from 'Types/Redux';
 
 const setInitialLanguageEpic: Epic = (action$, state$) => action$.pipe(
@@ -25,7 +25,8 @@ const setLanguageEpic: Epic = action$ => (
   action$.pipe(
     filter(isActionOf(Action.changeLanguageAction)),
     switchMap(({ payload }) => {
-      Format.Locale.selectLanguage(payload);
+      const locale = Locale.mapLanguageToLocale(payload);
+      Locale.setLocale(locale);
       setDefaultLocale(payload);
       return EMPTY;
     })

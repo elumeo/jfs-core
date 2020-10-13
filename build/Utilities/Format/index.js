@@ -6,9 +6,9 @@ import Locale from './Locale';
 class Format {
     static formatNumber(value, showFraction = false) {
         if (showFraction) {
-            return new Intl.NumberFormat(Locale.selectedLanguage).format(value);
+            return new Intl.NumberFormat(Locale.locale).format(value);
         }
-        return new Intl.NumberFormat(Locale.selectedLanguage, { minimumFractionDigits: 0 }).format(value);
+        return new Intl.NumberFormat(Locale.locale, { minimumFractionDigits: 0 }).format(value);
     }
 }
 Format.Locale = Locale;
@@ -33,7 +33,8 @@ Format.mapProductLanguageToLocale = (productLanguage) => {
             return 'de_de';
     }
 };
-Format.formatTime = (value, options = { hour: '2-digit', minute: '2-digit' }) => new Intl.DateTimeFormat(Locale.selectedLanguage, options).format(new Date(value));
-Format.formatDate = (value) => new Intl.DateTimeFormat(Locale.selectedLanguage).format(new Date(value));
+Format.formatTime = (value, options = { hour: '2-digit', minute: '2-digit' }) => new Intl.DateTimeFormat(Locale.locale, options).format(new Date(value));
+Format.formatDate = (value) => (new Intl.DateTimeFormat(Locale.locale)
+    .format(new Date(value)));
 export default Format;
 //# sourceMappingURL=index.js.map

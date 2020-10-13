@@ -1,13 +1,13 @@
 import { createReducer, PayloadAction } from 'typesafe-actions';
-import { changeLanguageAction } from 'Action/LanguageAction';
-import { initializeApp } from 'Action/AppAction';
+import * as Action from 'Store/Action';
 import Messages from 'Utilities/Format/Translations/Messages';
 import coreTranslations from 'Setup/Translations.json';
+import { Language } from 'Types/Language';
 import Shared from '../../../Shared';
 
 namespace Language {
   export type State = {
-    language: string;
+    language: Language;
     messages: Messages.LanguageMap;
   };
 }
@@ -19,18 +19,20 @@ const initialState: Language.State = {
 
 const Language = createReducer(initialState)
   .handleAction(
-    changeLanguageAction,
+    Action.changeLanguageAction,
     (
       state: Language.State,
-      action: PayloadAction<string, string>
-    ): Language.State => (
-      {...state, language: action.payload}
-    ))
+      action: PayloadAction<string, Language>
+    ): Language.State => ({
+      ...state,
+      language: action.payload
+    })
+  )
   .handleAction(
-    initializeApp,
+    Action.initializeApp,
     (
       state: Language.State,
-      {payload: {translations: appTranslations}}: PayloadAction<string, initializeApp.Payload>
+      {payload: {translations: appTranslations}}: PayloadAction<string, Action.initializeApp.Payload>
     ): Language.State => ({
       ...state,
       messages: Messages.merge(

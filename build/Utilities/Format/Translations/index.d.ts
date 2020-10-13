@@ -6,6 +6,7 @@ declare namespace Translations {
     };
 }
 declare class Translations {
+    private static mapLocaleToLanguage;
     private static messages;
     static addMessages: (newMessages: Translations.Set) => void;
     static formatMessage: ({ id }: {

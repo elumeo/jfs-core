@@ -14,6 +14,7 @@ import Toast from './ToastReducer';
 import WebSocketConnection from './WebSocketConnectionReducer';
 import App from './AppReducer';
 import Login from './LoginReducer';
+import Locale from './LocaleReducer';
 const Core = combineReducers({
     App,
     reactRouterReducer,
@@ -29,7 +30,8 @@ const Core = combineReducers({
     SplitView,
     System,
     Toast,
-    WebSocketConnection
+    WebSocketConnection,
+    Locale
 });
 export default Core;
 //# sourceMappingURL=index.js.map

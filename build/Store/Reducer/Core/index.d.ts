@@ -13,6 +13,7 @@ import Toast from './ToastReducer';
 import WebSocketConnection from './WebSocketConnectionReducer';
 import App from './AppReducer';
 import Login from './LoginReducer';
+import Locale from './LocaleReducer';
 import IConfig from '../../../Types/Configuration';
 declare namespace Core {
     type State = {
@@ -31,6 +32,7 @@ declare namespace Core {
         Toast?: Toast.State;
         WebSocketConnection?: WebSocketConnection.State;
         Configuration?: Configuration.State<IConfig>;
+        Locale?: Locale.State;
     };
 }
 declare const Core: import("redux").Reducer<import("redux").CombinedState<Core.State>, import("redux").AnyAction>;
