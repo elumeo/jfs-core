@@ -15,6 +15,7 @@ import { toastReducer, IToastReducerState } from './ToastReducer';
 import { webSocketConnectionReducer, IWebSocketConnectionReducerState } from './WebSocketConnectionReducer';
 import { appReducer, IAppReducerState } from './AppReducer';
 import { loginReducer, ILoginReducerState } from './LoginReducer';
+import { localeReducer, ILocaleReducerState } from './LocaleReducer';
 import IConfig from '../../Base/IConfig';
 import Shared from '../../Shared';
 
@@ -34,6 +35,7 @@ export interface IRootReducer<T_IConfig> {
   toastReducer?: IToastReducerState;
   webSocketConnectionReducer?: IWebSocketConnectionReducerState;
   configReducer?: IConfigReducerState<T_IConfig>;
+  localeReducer?: ILocaleReducerState;
 }
 
 export interface ICoreRootReducer extends IRootReducer<IConfig> {
@@ -56,6 +58,7 @@ export default reducers => combineReducers({
   systemReducer,
   toastReducer,
   webSocketConnectionReducer,
+  localeReducer,
   ...reducers,
   ...Shared.Reducer()
 });

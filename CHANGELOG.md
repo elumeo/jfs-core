@@ -1,10 +1,14 @@
+## 2020-10-06
+### Fixed
+- Use locales instead of language for formatting
+
 ## [8.16.8] - 2020-10-06
 ### Added
-- Added new juwelo font icon for bid block 
+- Added new juwelo font icon for bid block
 
 ## [8.16.7] - 2020-09-01
 ### Changed
-- ModalDialog 
+- ModalDialog
     * confirmButtonText and closeButtonText may contain an ReactElement
     * closeButton is now optional (for those who need to arrange the footer actions individually)
 - Notifications
@@ -17,13 +21,13 @@
 
 ## [8.16.5] - 2020-08-28
 ### Added
-- Added translationValues to Notifications to enable intl variable replacements 
+- Added translationValues to Notifications to enable intl variable replacements
 
 ## [8.16.4] - 2020-08-28
 ### Bugfix
 - Fixed an issue in the datepicker component where a custom input field is not compatible with react-md
   * the custom field isn't supported anymore
-  * added styling and logic to be aligned with react md 
+  * added styling and logic to be aligned with react md
 
 ## [8.16.3] - 2020-08-27
 ### Changed
@@ -35,7 +39,7 @@
 ### Changed
 - Added clean-install script to package.json
 - Updated node modules
-- Added an option to pass a custom "clear button id" to datepicker component to listen to click events on that button a call the internal clear method of react datepicker 
+- Added an option to pass a custom "clear button id" to datepicker component to listen to click events on that button a call the internal clear method of react datepicker
 
 ## [8.16.1] - 2020-08-12
 ### Fixed
