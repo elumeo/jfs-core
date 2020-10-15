@@ -942,8 +942,8 @@
         "affectsGlobalScope": false
       },
       "../src/utilities/format/index.ts": {
-        "version": "6d86bdca37e0a33af7befdd86da9230d689b07c556ee2201781a6c0c4be29e7e",
-        "signature": "0d9b782a794faf431765d1028f6cfdf7be03cc49acd13353f54bfdde3d5cb0d3",
+        "version": "93d730ea082549a1cb2bd740aa854939e8939f9f2b6714db9a7a2b57829a4cc3",
+        "signature": "50b451a9d6639ae5604ddad66e1b3bdbfff4cc3b0bee2f8341955d22e8b56e28",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/timestamp.tsx": {

@@ -1,3 +1,7 @@
+## [9.7.16] 2020-10-15
+## Fixed
+- Fixed format of dates
+
 ## [9.7.15] 2020-10-15
 ## Fixed
 - Fixed replacement of path parameters of type number in jsc-generate

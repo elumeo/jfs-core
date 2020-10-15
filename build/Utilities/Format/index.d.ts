@@ -13,6 +13,6 @@ declare class Format {
     static mapProductLanguageToLocale: (productLanguage: string) => "en_gb" | "es_es" | "fr_fr" | "it_it" | "nl_nl" | "de_de";
     static formatNumber(value: number, showFraction?: boolean): string;
     static formatTime: (value: string | Date, options?: DateTimeFormatOptions) => string;
-    static formatDate: (value: string | Date) => string;
+    static formatDate: (value: string | Date, options?: DateTimeFormatOptions) => string;
 }
 export default Format;

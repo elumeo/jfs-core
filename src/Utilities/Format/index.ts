@@ -43,13 +43,24 @@ class Format {
     ).format(value);
   }
 
-  public static formatTime = (value: string | Date, options: DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit' }) => new Intl.DateTimeFormat(
-    Locale.locale,
-    options
-  ).format(new Date(value));
+  public static formatTime = (
+    value: string | Date,
+    options: DateTimeFormatOptions = {
+      hour: '2-digit',
+      minute: '2-digit'
+  }) => (
+    new Intl.DateTimeFormat(Locale.locale, options)
+      .format(new Date(value))
+  );
 
-  public static formatDate = (value: string | Date) => (
-    new Intl.DateTimeFormat(Locale.locale)
+  public static formatDate = (
+    value: string | Date,
+    options: DateTimeFormatOptions = {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    }) => (
+    new Intl.DateTimeFormat(Locale.locale, options)
       .format(new Date(value))
   );
 
