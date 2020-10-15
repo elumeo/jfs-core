@@ -452,8 +452,8 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/api/generator/api/client.ts": {
-        "version": "3bc73782995b2b1b1f37e689a22cb86d35657709148eeaf4a352741d0e04c017",
-        "signature": "722b79a606520ed7866253a3f95c783ba48203eb9411dc8e1312c8e11a0819b4",
+        "version": "b1693cbcbd275befa5842580d4010ac712f69f98bd27283638b394e14bee3af3",
+        "signature": "66e2d748a16ad419d37946c9eab47eb4e1160b707d78ea10e003f7a63c47866a",
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/api/generator/api/dto/constant.ts": {
@@ -1126,6 +1126,7 @@
           "./Library/*"
         ]
       },
+      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {

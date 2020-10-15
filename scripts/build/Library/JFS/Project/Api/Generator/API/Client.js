@@ -9,13 +9,18 @@ const roomName = (resource) => ('ROOM_' + Array.from(resource.room).reduce((text
     : character.toUpperCase()), ''));
 class Client {
 }
+Client.encodeURI = (name) => `encodeURI(
+    typeof ${name} === 'number'
+      ? (${name} as number).toString()
+      : ${name}
+  )`;
 Client.replacePathParameters = (path) => {
     const match = path.match(/:[^\/]*/gm);
     if (!match) {
         return path;
     }
     else {
-        return (path.match(/:[^\/]*/gm).reduce((path, sequence) => path.replace(sequence, `' + encodeURI(${sequence.substring(1)}) + '`), path));
+        return (path.match(/:[^\/]*/gm).reduce((path, sequence) => path.replace(sequence, `' + ${Client.encodeURI(sequence.substring(1))} + '`), path));
     }
 };
 Client.stream = ({ protocol, resource }) => Render_1.default.Text.lines(Render_1.default.EcmaScript.export(Render_1.default.TypeScript.variable({
@@ -89,7 +94,7 @@ Client.request = ({ parameters, protocol, resource }) => {
             parameters: [
                 ...parameters
                     .filter(({ name }) => (!Client.replacePathParameters(resource.path)
-                    .includes(`encodeURI(${name})`)))
+                    .includes(Client.encodeURI(name))))
                     .map(({ name }) => name),
                 'config'
             ]

@@ -80,6 +80,12 @@ namespace Client {
 }
 
 class Client {
+  static encodeURI = (name: string) => `encodeURI(
+    typeof ${name} === 'number'
+      ? (${name} as number).toString()
+      : ${name}
+  )`;
+
   static replacePathParameters = (path: string) => {
     const match = path.match(/:[^\/]*/gm);
     if (!match) {
@@ -90,7 +96,7 @@ class Client {
         path.match(/:[^\/]*/gm).reduce(
           (path: string, sequence: string): string => path.replace(
             sequence,
-            `' + encodeURI(${sequence.substring(1)}) + '`
+            `' + ${Client.encodeURI(sequence.substring(1))} + '`
           ),
           path
         )
@@ -211,7 +217,7 @@ class Client {
             ...parameters
               .filter(({ name }) => (
                 !Client.replacePathParameters(resource.path)
-                  .includes(`encodeURI(${name})`)
+                  .includes(Client.encodeURI(name))
               ))
               .map(({ name }) => name),
             'config'
