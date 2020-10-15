@@ -1,5 +1,5 @@
 type Language = 'de' | 'en' | 'it';
-type TLocale = 'de-DE' | 'en-GB' | 'it-IT';
+type TLocale = 'de-DE' | 'en-GB' | 'it-IT';
 
 class Locale {
 
