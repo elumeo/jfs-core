@@ -1,8 +1,12 @@
-## [9.7.14] 2020-10-09
+## [9.7.15] 2020-10-15
+## Fixed
+- Fixed replacement of path parameters of type number in jsc-generate
+
+## [9.7.14] 2020-10-13
 ## Fixed
 - Added missing woff files
 
-## [9.7.13] 2020-10-09
+## [9.7.13] 2020-10-13
 ## Fixed
 - Fixed locale for formatting
 
