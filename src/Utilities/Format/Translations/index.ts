@@ -20,13 +20,30 @@ class Translations {
     );
   };
 
+  private static mapLocaleToLanguage = (
+    locale: 'de-DE' | 'en-GB' | 'it-IT'
+  ): 'de' | 'en' | 'it' => {
+    if (locale === 'de-DE') {
+      return 'de';
+    }
+    else if (locale === 'en-GB') {
+      return 'en';
+    }
+    else if (locale === 'it-IT') {
+      return 'it';
+    }
+    else {
+      return null;
+    }
+  }
+
   public static formatMessage = (
     { id },
     values?: Record<string, PrimitiveType>
   ) => {
-    if (Translations.messages[Locale.locale][id]) {
+    if (Translations.messages[Translations.mapLocaleToLanguage(Locale.locale)][id]) {
       const message = new IntlMessageFormat(
-        Translations.messages[Locale.locale][id]
+        Translations.messages[Translations.mapLocaleToLanguage(Locale.locale)][id]
       );
       return message.format(values);
     } else {
