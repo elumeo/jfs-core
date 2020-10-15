@@ -1,3 +1,7 @@
+## [9.7.14] 2020-10-09
+## Fixed
+- Added missing woff files
+
 ## [9.7.13] 2020-10-09
 ## Fixed
 - Fixed locale for formatting
