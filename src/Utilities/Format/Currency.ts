@@ -4,7 +4,7 @@ class Currency {
 
   public static getCurrencySign(currency: string) {
     const tmpValue = new Intl.NumberFormat(
-      Format.Locale.selectedLanguage,
+      Format.Locale.locale,
       {style: 'currency', currency}
     );
     // We must use ts-ignore because typescript seems not to know that formatToParts exists but it does
@@ -32,13 +32,13 @@ class Currency {
 
     if (showFraction) {
       return new Intl.NumberFormat(
-        Format.Locale.selectedLanguage,
+        Format.Locale.locale,
         {style: 'currency', currency}
       ).format(value);
     }
 
     return new Intl.NumberFormat(
-      Format.Locale.selectedLanguage,
+      Format.Locale.locale,
       {style: 'currency', currency, minimumFractionDigits: 0}
     ).format(value);
   }

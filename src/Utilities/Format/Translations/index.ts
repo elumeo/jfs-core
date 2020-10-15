@@ -24,13 +24,13 @@ class Translations {
     { id },
     values?: Record<string, PrimitiveType>
   ) => {
-    if (Translations.messages[Locale.selectedLanguage][id]) {
+    if (Translations.messages[Locale.locale][id]) {
       const message = new IntlMessageFormat(
-        Translations.messages[Locale.selectedLanguage][id]
+        Translations.messages[Locale.locale][id]
       );
       return message.format(values);
     } else {
-      const locale = Locale.selectedLanguage;
+      const locale = Locale.locale;
       Notifier.warn(
         `Missing translation for '${id}' in locale '${locale}'`
       );

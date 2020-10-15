@@ -29,7 +29,9 @@ export const setLanguageEpic: Epic = (action$) => (
     action$.pipe(
         filter(isActionOf(changeLanguageAction)),
         switchMap(({ payload }) => {
-            Format.Locale.selectLanguage(payload);
+            Format.Locale.setLocale(
+              Format.Locale.mapLanguageToLocale(payload as 'de' | 'en' | 'it')
+            );
             setDefaultLocale(payload);
             return EMPTY;
         })
