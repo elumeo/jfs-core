@@ -69,56 +69,54 @@ Client.stream = ({ protocol, resource }) => Render_1.default.Text.lines(Render_1
     }),
     constant: true
 })));
-Client.request = ({ parameters, protocol, resource }) => {
-    return (Render_1.default.TypeScript.function({
-        fatArrow: {
-            shortSyntax: true
-        },
-        parameters: [
-            ...parameters.map(({ name, annotation }) => (Object.assign({ name }, annotation))),
-            {
-                name: 'config',
-                type: 'IJscClientConfig',
-                optional: true
-            }
-        ],
-        body: Render_1.default.Axios.request({
-            client: 'JscClient',
-            method: protocol.method,
-            type: [
-                resource.type.name,
-                Render_1.default.TypeScript.generics(...resource.type.generics),
-                resource.type.array ? '[]' : ''
-            ].join(''),
-            path: Client.replacePathParameters(resource.path),
-            parameters: [
-                ...parameters
-                    .filter(({ name }) => (!Client.replacePathParameters(resource.path)
-                    .includes(Client.encodeURI(name))))
-                    .map(({ name }) => name),
-                'config'
-            ]
-        }),
-        returnAnnotation: {
-            type: 'Promise' + Render_1.default.TypeScript.generics('AxiosResponse' + Render_1.default.TypeScript.generics(resource.type.name + Render_1.default.TypeScript.generics(...resource.type.generics) + (resource.type.array ? '[]' : '')))
+Client.request = ({ parameters, protocol, resource }) => (Render_1.default.TypeScript.function({
+    fatArrow: {
+        shortSyntax: true
+    },
+    parameters: [
+        ...parameters.map(({ name, annotation }) => (Object.assign({ name }, annotation))),
+        {
+            name: 'config',
+            type: 'IJscClientConfig',
+            optional: true
         }
-    }));
-};
+    ],
+    body: Render_1.default.Axios.request({
+        client: 'JscClient',
+        method: protocol.method,
+        type: [
+            resource.type.name,
+            Render_1.default.TypeScript.generics(...resource.type.generics),
+            resource.type.array ? '[]' : ''
+        ].join(''),
+        path: Client.replacePathParameters(resource.path),
+        parameters: [
+            ...parameters
+                .filter(({ name }) => (!Client.replacePathParameters(resource.path)
+                .includes(Client.encodeURI(name))))
+                .map(({ name }) => name),
+            'config'
+        ]
+    }),
+    returnAnnotation: {
+        type: 'Promise' + Render_1.default.TypeScript.generics('AxiosResponse' + Render_1.default.TypeScript.generics(resource.type.name + Render_1.default.TypeScript.generics(...resource.type.generics) + (resource.type.array ? '[]' : '')))
+    }
+}));
 Client.namespace = ({ name, methods }) => (Render_1.default.TypeScript.namespace({
     name: name,
     what: Render_1.default.Text.lines(...methods
         .filter(({ protocol }) => protocol.name === 'HTTP')
-        .map(({ name, protocol, resource, parameters }) => Render_1.default.EcmaScript.export(Render_1.default.TypeScript.variable({
+        .map(({ name, protocol, resource, parameters }) => (Render_1.default.EcmaScript.export(Render_1.default.TypeScript.variable({
         name,
         value: Client.request({
-            parameters: parameters.map(({ name, type, optional }) => ({
+            parameters: parameters.map(({ name, type, optional, array }) => ({
                 name,
-                annotation: { type, optional }
+                annotation: { type, optional, array }
             })),
             protocol,
             resource
         })
-    }))), ...methods
+    })))), ...methods
         .filter(({ protocol }) => protocol.name === 'WS')
         .map(description => Client.stream(description)))
 }));

@@ -8,7 +8,6 @@ class Namespace {
 
   static generate = ({ name, remote }: {
     name: string;
-
     remote: {
       dtos: DTO.Group[];
       clients: Client.Description[];

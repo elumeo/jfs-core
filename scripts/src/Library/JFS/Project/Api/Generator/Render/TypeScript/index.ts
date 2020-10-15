@@ -2,15 +2,14 @@ import JavaScript from '../JavaScript';
 import { TypeScript } from './Types';
 
 class TypeScript {
-  static annotation: TypeScript.Static.Annotation = ({ type, optional }) => (
-    type
-      ? `${
-        optional
-          ? '?'
-          : ''
-        }: ${type}`
-      : ''
-  );
+  static annotation: TypeScript.Static.Annotation = ({ type, optional, array }) => {
+    if (type) {
+      return `${optional ? '?' : ''}: ${type}${array ? '[]' : ''}`;
+    }
+    else {
+      return '';
+    }
+  };
 
   static generics: TypeScript.Static.Generics = (...generics: string[]) => (
     generics.length

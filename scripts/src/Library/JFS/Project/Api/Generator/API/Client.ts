@@ -6,6 +6,7 @@ namespace Callback {
     annotation?: {
       type?: string;
       optional?: boolean;
+      array?: boolean;
     }
     type?: string;
     optional?: boolean;
@@ -45,6 +46,7 @@ namespace Client {
       name: string;
       type: string;
       optional: boolean;
+      array: boolean;
     }
     export type Description = {
       name: Name;
@@ -183,58 +185,52 @@ class Client {
     )
   )
 
-  static request: Client.Request = ({
-    parameters,
-    protocol,
-    resource
-  }) => {
-    return (
-      Render.TypeScript.function({
-        fatArrow: {
-          shortSyntax: true
-        },
-        parameters: [
-          ...parameters.map(({ name, annotation }) => ({
-            name,
-            ...annotation
-          })),
-          {
-            name: 'config',
-            type: 'IJscClientConfig',
-            optional: true
-          }
-        ],
-        body: Render.Axios.request({
-          client: 'JscClient',
-          method: protocol.method,
-          type: [
-            resource.type.name,
-            Render.TypeScript.generics(...resource.type.generics),
-            resource.type.array ? '[]' : ''
-          ].join(''),
-          path: Client.replacePathParameters(resource.path),
-          parameters: [
-            ...parameters
-              .filter(({ name }) => (
-                !Client.replacePathParameters(resource.path)
-                  .includes(Client.encodeURI(name))
-              ))
-              .map(({ name }) => name),
-            'config'
-          ]
-        }),
-        returnAnnotation: {
-          type: 'Promise' + Render.TypeScript.generics(
-            'AxiosResponse' + Render.TypeScript.generics(
-              resource.type.name + Render.TypeScript.generics(
-                ...resource.type.generics
-              ) + (resource.type.array ? '[]' : '')
-            )
-          )
+  static request: Client.Request = ({ parameters, protocol, resource }) => (
+    Render.TypeScript.function({
+      fatArrow: {
+        shortSyntax: true
+      },
+      parameters: [
+        ...parameters.map(({ name, annotation }) => ({
+          name,
+          ...annotation
+        })),
+        {
+          name: 'config',
+          type: 'IJscClientConfig',
+          optional: true
         }
-      })
-    );
-  }
+      ],
+      body: Render.Axios.request({
+        client: 'JscClient',
+        method: protocol.method,
+        type: [
+          resource.type.name,
+          Render.TypeScript.generics(...resource.type.generics),
+          resource.type.array ? '[]' : ''
+        ].join(''),
+        path: Client.replacePathParameters(resource.path),
+        parameters: [
+          ...parameters
+            .filter(({ name }) => (
+              !Client.replacePathParameters(resource.path)
+                .includes(Client.encodeURI(name))
+            ))
+            .map(({ name }) => name),
+          'config'
+        ]
+      }),
+      returnAnnotation: {
+        type: 'Promise' + Render.TypeScript.generics(
+          'AxiosResponse' + Render.TypeScript.generics(
+            resource.type.name + Render.TypeScript.generics(
+              ...resource.type.generics
+            ) + (resource.type.array ? '[]' : '')
+          )
+        )
+      }
+    })
+  )
 
   static namespace: Client.Namespace = ({ name, methods }) => (
     Render.TypeScript.namespace({
@@ -242,20 +238,22 @@ class Client {
       what: Render.Text.lines(
         ...methods
           .filter(({ protocol }) => protocol.name === 'HTTP')
-          .map(({ name, protocol, resource, parameters }) => Render.EcmaScript.export(
-            Render.TypeScript.variable({
-              name,
-              value: Client.request({
-                parameters: parameters.map(
-                  ({ name, type, optional }) => ({
-                    name,
-                    annotation: { type, optional }
-                  })
-                ),
-                protocol,
-                resource
+          .map(({ name, protocol, resource, parameters }) => (
+            Render.EcmaScript.export(
+              Render.TypeScript.variable({
+                name,
+                value: Client.request({
+                  parameters: parameters.map(
+                    ({ name, type, optional, array }) => ({
+                      name,
+                      annotation: { type, optional, array }
+                    })
+                  ),
+                  protocol,
+                  resource
+                })
               })
-            })
+            )
           )),
         ...methods
           .filter(({ protocol }) => protocol.name === 'WS')

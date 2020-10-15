@@ -17,11 +17,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const JavaScript_1 = __importDefault(require("../JavaScript"));
 class TypeScript {
 }
-TypeScript.annotation = ({ type, optional }) => (type
-    ? `${optional
-        ? '?'
-        : ''}: ${type}`
-    : '');
+TypeScript.annotation = ({ type, optional, array }) => {
+    if (type) {
+        return `${optional ? '?' : ''}: ${type}${array ? '[]' : ''}`;
+    }
+    else {
+        return '';
+    }
+};
 TypeScript.generics = (...generics) => (generics.length
     ? `<${generics.join(', ')}>`
     : '');

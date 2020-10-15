@@ -3,7 +3,8 @@ import { JavaScript } from '../JavaScript/Types';
 export namespace TypeScript {
   export type Annotation = {
     type?: string,
-    optional?: boolean
+    optional?: boolean;
+    array?: boolean;
   };
 
   export type Namespace = {
