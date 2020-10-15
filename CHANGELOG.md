@@ -1,3 +1,7 @@
+## [9.7.17] 2020-10-15
+## Fixed
+- Fixed array type parameters in jsc-generate
+
 ## [9.7.16] 2020-10-15
 ## Fixed
 - Fixed format of dates
