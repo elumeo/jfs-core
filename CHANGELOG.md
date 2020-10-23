@@ -1,3 +1,7 @@
+## [9.7.18] 2020-10-23
+## Fixed
+- ModalDialog wrong title font size when titleIcon is present
+
 ## [9.7.17] 2020-10-15
 ## Fixed
 - Fixed array type parameters in jsc-generate

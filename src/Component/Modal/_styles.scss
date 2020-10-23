@@ -1,6 +1,16 @@
 .md-dialog-container {
   display: flex;
 
+  .md-title {
+    &--dialog {
+      .md-icon-separator,
+      .md-icon-separator .md-icon-text {
+        font-size: inherit;
+        color: inherit;
+      }
+    }
+  }
+
   .md-dialog.md-dialog--centered {
     transform-origin: unset !important;
     transform: none;
