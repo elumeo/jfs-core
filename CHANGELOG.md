@@ -1,3 +1,7 @@
+## [9.7.19] 2020-10-25
+## Added
+- DialogContainerProps to ModalDialog
+
 ## [9.7.18] 2020-10-23
 ## Fixed
 - ModalDialog wrong title font size when titleIcon is present
