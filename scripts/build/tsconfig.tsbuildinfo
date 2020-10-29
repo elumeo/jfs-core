@@ -481,8 +481,13 @@
         "signature": "a9c9bb7a5588e5866aedca2893abf41a2d8fcba8a133bfe2a9e0fbba8d807e58",
         "affectsGlobalScope": false
       },
+      "../src/library/jfs/project/api/generator/api/preprocessor.ts": {
+        "version": "07693023a3b49f2f4269778ad359562eb54dd3233f67f93d3c1963b76bd154f3",
+        "signature": "494292ed077558c7cb27b26d6a5ad921ae12e8659a7ad2980a26e432fb58d9c0",
+        "affectsGlobalScope": false
+      },
       "../src/library/jfs/project/api/generator/api/index.ts": {
-        "version": "fbd694dec08cc5c164b33d03285c8ca8508978c32968c4e24943ccdb631789f5",
+        "version": "3cb72f5800b20bd6535e9a18f34bf3cac7206bd1b942b4c988d5968d49f12833",
         "signature": "51d7caf32cf50763d25bc825319cf2caa3c1c719a74b7b872c855eab9c15dacb",
         "affectsGlobalScope": false
       },
@@ -2205,6 +2210,7 @@
         "../src/library/jfs/project/api/generator/api/dto/index.ts",
         "../src/library/jfs/project/api/generator/api/imports.ts",
         "../src/library/jfs/project/api/generator/api/namespace.ts",
+        "../src/library/jfs/project/api/generator/api/preprocessor.ts",
         "../src/library/jfs/project/api/generator/api/types.ts",
         "../src/library/jfs/project/api/generator/render/index.ts",
         "../src/library/text/index.ts"
@@ -2216,6 +2222,15 @@
         "../src/library/jfs/project/api/generator/api/client.ts",
         "../src/library/jfs/project/api/generator/api/dto/index.ts",
         "../src/library/jfs/project/api/generator/render/index.ts"
+      ],
+      "../src/library/jfs/project/api/generator/api/preprocessor.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../src/library/jfs/project/api/generator/api/client.ts",
+        "../src/library/jfs/project/api/generator/api/dto/description.ts",
+        "../src/library/jfs/project/api/generator/api/dto/index.ts",
+        "../src/library/text/index.ts"
       ],
       "../src/library/jfs/project/api/generator/api/types.ts": [
         "../../node_modules/date-fns/typings.d.ts",
@@ -3717,6 +3732,11 @@
         "../src/library/jfs/project/api/generator/api/client.ts",
         "../src/library/jfs/project/api/generator/api/dto/index.ts"
       ],
+      "../src/library/jfs/project/api/generator/api/preprocessor.ts": [
+        "../src/library/jfs/project/api/generator/api/client.ts",
+        "../src/library/jfs/project/api/generator/api/dto/description.ts",
+        "../src/library/jfs/project/api/generator/api/dto/index.ts"
+      ],
       "../src/library/jfs/project/api/generator/api/types.ts": [
         "../src/library/jfs/project/api/generator/api/client.ts",
         "../src/library/jfs/project/api/generator/api/dto/index.ts"
@@ -4031,6 +4051,7 @@
       "../src/library/jfs/project/api/generator/api/imports.ts",
       "../src/library/jfs/project/api/generator/api/index.ts",
       "../src/library/jfs/project/api/generator/api/namespace.ts",
+      "../src/library/jfs/project/api/generator/api/preprocessor.ts",
       "../src/library/jfs/project/api/generator/api/types.ts",
       "../src/library/jfs/project/api/generator/legacy/api.ts",
       "../src/library/jfs/project/api/generator/legacy/index.ts",

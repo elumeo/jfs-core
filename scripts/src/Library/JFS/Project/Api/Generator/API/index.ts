@@ -7,6 +7,7 @@ import DTO from './DTO';
 import Namespace from './Namespace';
 import { API } from './Types';
 import Text from 'Library/Text';
+import Preprocessor from './Preprocessor';
 
 class API {
   static Client = Client;
@@ -18,120 +19,8 @@ class API {
     api, description
   ) => ({
     ...description,
-    dtos: description.dtos.map(
-      ({ dtos, ...group }) => ({
-        ...group,
-        dtos: dtos.map(
-          ({ properties, ...dto }) => ({
-            ...dto,
-            properties: Object.keys(properties).reduce(
-              (mappedProperties, key) => ({
-                ...mappedProperties,
-                [key]: {
-                  ...properties[key],
-                  type: (
-                    properties[key].type.substring(0, 3) === 'DTO'
-                      ? `${api.namespace}.${properties[key].type.split('.').reduce(
-                        (text, sequence, index, array) => {
-                          return text +(index ? '.' : '') +(index === array.length -1 ? 'I' : '') +sequence;
-                        },
-                        ''
-                      )}`
-                      : properties[key].type
-                  )
-                }
-              }),
-              {}
-            )
-          })
-        )
-      })
-    ),
-    clients: description.clients.map(
-      ({ methods, ...client }) => ({
-        methods: methods.map(
-          ({ resource, ...method }) => ({
-            ...method,
-            resource: {
-              ...resource,
-              type: {
-                ...resource.type,
-                name: (
-                  resource.type.name.substring(0, 3) === 'DTO'
-                    ? `${api.namespace}.${resource.type.name.split('.').reduce(
-                      (typeName, sequence, index, array) => (
-                        typeName.length
-                          ? (
-                            [
-                              typeName,
-                              index === array.length -1
-                                ? 'I' + sequence
-                                : sequence
-                            ].join('.')
-                          )
-                          : sequence
-                      ),
-                      ''
-                    )}`
-                    : resource.type.name
-                ),
-                generics: resource.type.generics.map(
-                  generic => [
-                    api.namespace,
-                    generic.substring(0, 3) === 'DTO'
-                      ? generic.split('.').reduce(
-                        (typeName, sequence, index, array) => (
-                          typeName.length
-                            ? (
-                              [
-                                typeName,
-                                index === array.length -1
-                                  ? 'I' + sequence
-                                  : sequence
-                              ].join('.')
-                            )
-                            : sequence
-                        ),
-                        ''
-                      )
-                      : generic
-                  ].join('.')
-                )
-              }
-            },
-            parameters: method.parameters.map(parameter => {
-              if (Text.beginsWith(parameter.type, 'DTO')) {
-                return {
-                  ...parameter,
-                  type: parameter.type.substring(0, 3) === 'DTO'
-                    ? `${api.namespace}.${parameter.type.split('.').reduce(
-                      (typeName, sequence, index, array) => (
-                        typeName.length
-                          ? (
-                            [
-                              typeName,
-                              index === array.length -1
-                                ? 'I' + sequence
-                                : sequence
-                            ].join('.')
-                          )
-                          : sequence
-                      ),
-                      ''
-                    )}`
-                    : parameter.type
-                }
-              }
-              else {
-                return parameter;
-              }
-            })
-          })
-        ),
-        ...client,
-        name: client.name.replace('Controller', 'Client')
-      })
-    )
+    dtos: Preprocessor.mapDTOs(description.dtos, api),
+    clients: Preprocessor.mapClients(description.clients, api)
   });
 
   static describe: API.Static.Describe = ({
