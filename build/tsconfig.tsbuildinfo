@@ -1972,8 +1972,8 @@
         "affectsGlobalScope": false
       },
       "../src/component/modal/modaldialog.tsx": {
-        "version": "2a0adf21dd59196cb79648c6202c411659c094f09b7e295a1805b06ebfc16712",
-        "signature": "b3bfa6b367eb0c139781c5b19e829295d50900dea57a431922f539809ee2e464",
+        "version": "93ca13c1c968f6325eb29aa6dd90d8dadb3fbe6c478915755bb97ef1f6ec1291",
+        "signature": "b3f8511570b8b352c076152c1e0fd2f0d1ca42319676fddea9f5c514d1d9cba8",
         "affectsGlobalScope": false
       },
       "../src/component/navigation/navigationdrawerheader.tsx": {
@@ -6560,6 +6560,7 @@
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/index.d.ts",
+        "../node_modules/react-md/lib/dialogs/dialogcontainer.d.ts",
         "../node_modules/react-md/lib/dialogs/index.d.ts"
       ],
       "../src/component/navigation/navigationbutton.tsx": [
@@ -11033,7 +11034,8 @@
       ],
       "../src/component/modal/modaldialog.tsx": [
         "../node_modules/@types/react-intl/index.d.ts",
-        "../node_modules/@types/react/index.d.ts"
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/react-md/lib/dialogs/dialogcontainer.d.ts"
       ],
       "../src/component/navigation/navigationbutton.tsx": [
         "../node_modules/@types/react/index.d.ts"

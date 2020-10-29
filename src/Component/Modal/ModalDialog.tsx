@@ -3,6 +3,7 @@ import './_styles.scss';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { IconSeparator } from 'react-md';
 import DialogContainer from 'react-md/lib/Dialogs';
+import { DialogContainerProps } from 'react-md/lib/Dialogs/DialogContainer';
 
 interface IModalDialog extends InjectedIntlProps {
   visible: boolean;
@@ -21,7 +22,7 @@ interface IModalDialog extends InjectedIntlProps {
   initialFocus?: string;
 }
 
-const ModalDialog: React.FC<IModalDialog> = (
+const ModalDialog: React.FC<IModalDialog & Partial<DialogContainerProps>> = (
   {
     title = 'Modal Dialog',
     titleIcon,
