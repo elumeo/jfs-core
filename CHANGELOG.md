@@ -1,3 +1,7 @@
+## [9.7.20] 2020-10-29
+## Fixed
+- Fixed jsc-generate for nested dto namespaces
+
 ## [9.7.19] 2020-10-25
 ## Added
 - DialogContainerProps to ModalDialog
