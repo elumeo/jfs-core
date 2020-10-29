@@ -6,11 +6,12 @@ import { PayloadAction } from "typesafe-actions";
 import { ROOM_UPDATE_ACTION_ID } from "Action/WebSocketAction";
 import { IWebSocketRoom } from "Store/Reducer/Core/WebSocketConnectionReducer";
 namespace JSCApi {
-  interface IUrlParams {
+  export interface IUrlParams {
     filter?: string;
     options?: string;
+    searchString?: string;
   }
-  interface IJscClientConfig {
+  export interface IJscClientConfig {
     params?: IUrlParams;
   }
   export namespace DTO {
@@ -48,11 +49,11 @@ namespace JSCApi {
       }
     }
     export namespace Authorization {
-      export const ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ = "1";
-      export const ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE = "2";
-      export const ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE = "4";
-      export const ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE = "8";
-      export const ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE = "3";
+      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ = "1";
+      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE = "2";
+      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE = "4";
+      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE = "8";
+      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE = "3";
       export interface IPropertyDTO {
         key?: string;
         value?: string;
@@ -76,8 +77,8 @@ namespace JSCApi {
       }
     }
     export namespace App {
-      export const APP_DTO_FRONTEND_APP_DOCK = "appDock";
-      export const APP_DTO_FRONTEND_JFS = "jfs";
+      export const I_APP_DTO_FRONTEND_APP_DOCK = "appDock";
+      export const I_APP_DTO_FRONTEND_JFS = "jfs";
       export interface IAppDTO {
         name?: string;
         description?: string;
@@ -109,27 +110,39 @@ namespace JSCApi {
   }
   export namespace LoginClient {
     export const loginFrontend = (
-      appName,
-      credentials,
+      appName: string,
+      credentials: JSCApi.DTO.Login.ICredentialsDTO,
       config?: IJscClientConfig
     ): Promise<AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>> =>
       JscClient.post<JSCApi.DTO.Session.IFrontendSessionDTO>(
-        "/session/" + encodeURI(appName) + "",
+        "/session/" +
+          encodeURI(
+            typeof appName === "number"
+              ? (appName as number).toString()
+              : appName
+          ) +
+          "",
         credentials,
         config
       );
   }
   export namespace SessionClient {
     export const getCurrentSessionFrontend = (
-      appName,
+      appName: string,
       config?: IJscClientConfig
     ): Promise<AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>> =>
       JscClient.get<JSCApi.DTO.Session.IFrontendSessionDTO>(
-        "/session/" + encodeURI(appName) + "",
+        "/session/" +
+          encodeURI(
+            typeof appName === "number"
+              ? (appName as number).toString()
+              : appName
+          ) +
+          "",
         config
       );
     export const logout = (
-      session,
+      session: JSCApi.DTO.Session.ISessionDTO,
       config?: IJscClientConfig
     ): Promise<AxiosResponse<void>> =>
       JscClient.delete<void>("/session", session, config);
@@ -142,11 +155,15 @@ namespace JSCApi {
   }
   export namespace UserClient {
     export const getUserRights = (
-      login,
+      login: string,
       config?: IJscClientConfig
     ): Promise<AxiosResponse<JSCApi.DTO.Authorization.IUserRightsDTO>> =>
       JscClient.get<JSCApi.DTO.Authorization.IUserRightsDTO>(
-        "/user/" + encodeURI(login) + "/rights",
+        "/user/" +
+          encodeURI(
+            typeof login === "number" ? (login as number).toString() : login
+          ) +
+          "/rights",
         config
       );
   }
