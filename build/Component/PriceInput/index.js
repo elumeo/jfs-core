@@ -16,7 +16,7 @@ import { TextField } from 'react-md';
 import Currency from '../../Utilities/Format/Currency';
 import uuid from 'uuid';
 const PriceInput = (_a) => {
-    var { id = `price-input-${uuid()}`, value, onChange, label, error, currency, errorText, inputClassName = '', className = 'price-input', helpText, min, max } = _a, rest = __rest(_a, ["id", "value", "onChange", "label", "error", "currency", "errorText", "inputClassName", "className", "helpText", "min", "max"]);
+    var { id = `price-input-${uuid()}`, selectValue, value, onChange, label, error, currency, errorText, inputClassName = '', className = 'price-input', helpText, min, max } = _a, rest = __rest(_a, ["id", "selectValue", "value", "onChange", "label", "error", "currency", "errorText", "inputClassName", "className", "helpText", "min", "max"]);
     const { getCurrency: currencyFormatter } = Currency;
     const [localValue, setLocalValue] = useState('');
     const [focused, setFocused] = useState(false);
@@ -25,6 +25,13 @@ const PriceInput = (_a) => {
             setLocalValue(parseFloat(value.toString()).toFixed(2));
         }
     }, [value]);
+    useEffect(() => {
+        if (selectValue) {
+            refTextFieldInput.focus();
+            refTextFieldInput.getField().select();
+        }
+    }, []);
+    let refTextFieldInput; // ToDo: What is the correct type? => React.Component<TextFieldProps, any, any>;
     const _onChange = (e, ev) => {
         setLocalValue(e.toString().replace(Currency.replaceAllNonNumericOrSeperatorRegex, ''));
     };
@@ -49,7 +56,7 @@ const PriceInput = (_a) => {
             onChange(0, null);
         }
     };
-    return (React.createElement(TextField, Object.assign({ id: id, value: focused ? localValue : currencyFormatter(currency, value, true), onFocus: () => {
+    return (React.createElement(TextField, Object.assign({ ref: field => refTextFieldInput = field, id: id, value: focused ? localValue : currencyFormatter(currency, value, true), onFocus: () => {
             setFocused(true);
         }, onBlur: (e) => {
             setFocused(false);

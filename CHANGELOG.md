@@ -1,3 +1,7 @@
+## [9.7.21] 2020-11-04
+## Added
+- selectAll prop for price input field
+
 ## [9.7.20] 2020-10-29
 ## Fixed
 - Fixed jsc-generate for nested dto namespaces
