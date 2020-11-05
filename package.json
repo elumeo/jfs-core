@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "9.8.0",
+  "version": "9.8.1",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
@@ -165,13 +165,13 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.(ts|tsx)$": "typescript-babel-jest"
+      "^.+/.(ts|tsx)$": "typescript-babel-jest"
     },
     "moduleFileExtensions": [
       "ts",
       "tsx",
       "js"
     ],
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+    "testRegex": "(/__tests__/.*|/.(test|spec))/.(ts|tsx|js)$"
   }
 }

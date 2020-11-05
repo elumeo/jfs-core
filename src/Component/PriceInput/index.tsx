@@ -1,17 +1,15 @@
-import React, { useState, useEffect, LegacyRef } from 'react';
-import { injectIntl, InjectedIntlProps } from 'react-intl';
-import { compose } from 'redux';
+import React, { useState, useEffect,  useRef } from 'react';
 import { TextField, TextFieldProps } from 'react-md';
 import Currency from 'Utilities/Format/Currency';
 import uuid from 'uuid'
 
 type TPriceInputProps = {
   currency: string;
-  selectValue: boolean;
+  selectOnFocus?: boolean;
 }
 const PriceInput = ({
                       id = `price-input-${uuid()}`,
-                      selectValue,
+                      selectOnFocus,
                       value,
                       onChange,
                       label,
@@ -24,9 +22,10 @@ const PriceInput = ({
                       min,
                       max,
                       ...rest
-                    }: TPriceInputProps & InjectedIntlProps & TextFieldProps) => {
+                    }: TPriceInputProps &  TextFieldProps) => {
   const {getCurrency: currencyFormatter} = Currency;
   const [localValue, setLocalValue] = useState('');
+  const inputref = useRef(null)
   const [focused, setFocused] = useState(false)
   useEffect(() => {
     if (value) {
@@ -34,12 +33,12 @@ const PriceInput = ({
     }
   }, [value])
   useEffect(() => {
-    if (selectValue) {
-      refTextFieldInput.focus();
-      refTextFieldInput.getField().select();
+    if (selectOnFocus) {
+      if ( focused && inputref?.current?.getField?.()?.select){
+        inputref?.current?.getField?.()?.select()
+      }
     }
-  }, [])
-  let refTextFieldInput: any // ToDo: What is the correct type? => React.Component<TextFieldProps, any, any>;
+  }, [inputref?.current, selectOnFocus, focused])
   const _onChange = (e: React.ReactText, ev) => {
     setLocalValue(e.toString().replace(Currency.replaceAllNonNumericOrSeperatorRegex, ''))
   }
@@ -67,7 +66,7 @@ const PriceInput = ({
   }
   return (
     <TextField
-      ref={field => refTextFieldInput = field}
+      ref={inputref}
       id={id}
       value={focused ? localValue : currencyFormatter(currency, value as number, true)}
       onFocus={() => {
@@ -88,5 +87,4 @@ const PriceInput = ({
     />
   );
 };
-const enhance = compose(injectIntl);
-export default enhance(PriceInput);
+export default PriceInput
