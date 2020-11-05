@@ -7,25 +7,33 @@ var JSCApi;
     (function (DTO) {
         let Authorization;
         (function (Authorization) {
-            Authorization.ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ = "1";
-            Authorization.ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE = "2";
-            Authorization.ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE = "4";
-            Authorization.ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE = "8";
-            Authorization.ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE = "3";
+            Authorization.I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ = "1";
+            Authorization.I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE = "2";
+            Authorization.I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE = "4";
+            Authorization.I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE = "8";
+            Authorization.I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE = "3";
         })(Authorization = DTO.Authorization || (DTO.Authorization = {}));
         let App;
         (function (App) {
-            App.APP_DTO_FRONTEND_APP_DOCK = "appDock";
-            App.APP_DTO_FRONTEND_JFS = "jfs";
+            App.I_APP_DTO_FRONTEND_APP_DOCK = "appDock";
+            App.I_APP_DTO_FRONTEND_JFS = "jfs";
         })(App = DTO.App || (DTO.App = {}));
     })(DTO = JSCApi.DTO || (JSCApi.DTO = {}));
     let LoginClient;
     (function (LoginClient) {
-        LoginClient.loginFrontend = (appName, credentials, config) => JscClient.post("/session/" + encodeURI(appName) + "", credentials, config);
+        LoginClient.loginFrontend = (appName, credentials, config) => JscClient.post("/session/" +
+            encodeURI(typeof appName === "number"
+                ? appName.toString()
+                : appName) +
+            "", credentials, config);
     })(LoginClient = JSCApi.LoginClient || (JSCApi.LoginClient = {}));
     let SessionClient;
     (function (SessionClient) {
-        SessionClient.getCurrentSessionFrontend = (appName, config) => JscClient.get("/session/" + encodeURI(appName) + "", config);
+        SessionClient.getCurrentSessionFrontend = (appName, config) => JscClient.get("/session/" +
+            encodeURI(typeof appName === "number"
+                ? appName.toString()
+                : appName) +
+            "", config);
         SessionClient.logout = (session, config) => JscClient.delete("/session", session, config);
     })(SessionClient = JSCApi.SessionClient || (JSCApi.SessionClient = {}));
     let SystemClient;
@@ -34,7 +42,9 @@ var JSCApi;
     })(SystemClient = JSCApi.SystemClient || (JSCApi.SystemClient = {}));
     let UserClient;
     (function (UserClient) {
-        UserClient.getUserRights = (login, config) => JscClient.get("/user/" + encodeURI(login) + "/rights", config);
+        UserClient.getUserRights = (login, config) => JscClient.get("/user/" +
+            encodeURI(typeof login === "number" ? login.toString() : login) +
+            "/rights", config);
     })(UserClient = JSCApi.UserClient || (JSCApi.UserClient = {}));
     let WebSocketClient;
     (function (WebSocketClient) {

@@ -1,10 +1,10 @@
-## [9.8.0] 2020-10-29
+## [9.8.0] 2020-11-05
 ## Added
 - Added outlined material icon font to styles
 
-## [9.7.21] 2020-10-29
-## Fixed
-- Fixed jsc-generate for nested dto namespaces
+## [9.7.21] 2020-11-04
+## Added
+- selectAll prop for price input field
 
 ## [9.7.20] 2020-10-29
 ## Fixed

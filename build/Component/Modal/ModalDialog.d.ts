@@ -1,6 +1,7 @@
 import React from 'react';
 import './_styles.scss';
 import { InjectedIntlProps } from 'react-intl';
+import { DialogContainerProps } from 'react-md/lib/Dialogs/DialogContainer';
 interface IModalDialog extends InjectedIntlProps {
     visible: boolean;
     children?: any;
@@ -17,5 +18,5 @@ interface IModalDialog extends InjectedIntlProps {
     focusOnMount?: boolean;
     initialFocus?: string;
 }
-declare const _default: React.FC<IModalDialog>;
+declare const _default: React.FC<IModalDialog & Partial<DialogContainerProps>>;
 export default _default;
