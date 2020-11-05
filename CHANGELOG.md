@@ -1,3 +1,11 @@
+## [9.8.0] 2020-10-29
+## Added
+- Added outlined material icon font to styles
+
+## [9.7.21] 2020-10-29
+## Fixed
+- Fixed jsc-generate for nested dto namespaces
+
 ## [9.7.20] 2020-10-29
 ## Fixed
 - Fixed jsc-generate for nested dto namespaces
