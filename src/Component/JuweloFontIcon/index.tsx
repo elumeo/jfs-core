@@ -20,12 +20,14 @@ export interface IJuweloFontIconProps {
   icon: Icon;
   error?: boolean;
   light?: boolean;
+  style?: React.CSSProperties;
 }
 
 const JuweloFontIcon: React.FC<IJuweloFontIconProps> = ({
   icon,
   error,
-  light
+  light,
+  style
 }) => {
   error = error === undefined ? false : error;
   light = light === undefined ? false : light;
@@ -39,7 +41,7 @@ const JuweloFontIcon: React.FC<IJuweloFontIconProps> = ({
   if (error) {
     className += ' -error';
   }
-  return <i className={className}/>;
+  return <i style={style || {}} className={className}/>;
 }
 
 export default JuweloFontIcon;

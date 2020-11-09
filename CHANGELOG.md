@@ -1,10 +1,14 @@
+## [9.9.0] 2020-11-09
+## Added
+- Added optional style attribute for <JuweloFontIcon/> component
+
 ## [9.8.2] 2020-11-09
 ## Changed
 - fixed the version to `1.1.1` for `tsc-alias` which had a bug in the latest version (`1.1.4`)
 
 ## [9.8.1] 2020-11-05
 ## Modified
-- PriceInputComponent : changed property name from selectValue to optional param selectOnFocus 
+- PriceInputComponent : changed property name from selectValue to optional param selectOnFocus
 - Modified PriceInput Component to handle selection of input value on focus
 
 ## [9.8.0] 2020-11-05

@@ -5,6 +5,7 @@ export interface IJuweloFontIconProps {
     icon: Icon;
     error?: boolean;
     light?: boolean;
+    style?: React.CSSProperties;
 }
 declare const JuweloFontIcon: React.FC<IJuweloFontIconProps>;
 export default JuweloFontIcon;
