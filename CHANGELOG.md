@@ -1,3 +1,7 @@
+## [9.8.4] 2020-11-09
+## Added
+- added more callback function to PriceInput field: onFocus, onBlur, rawOnChange
+
 ## [9.8.3] 2020-11-09
 ## Changed
 - fixed the version to `^1.1.5` for `tsc-alias` which had a bugfix for 1.1.4

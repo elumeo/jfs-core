@@ -1,7 +1,7 @@
 import React from 'react';
-import { webSocketConnectionReducerInitialState } from '../../Store/Reducer/Core/WebSocketConnectionReducer';
-import IConfig from '../../Types/Configuration';
-import { webSocketUpdateRoomAction } from '../../Store/Action/WebSocketAction';
+import { webSocketConnectionReducerInitialState } from 'Store/Reducer/Core/WebSocketConnectionReducer';
+import IConfig from 'Types/Configuration';
+import { webSocketUpdateRoomAction } from 'Action/WebSocketAction';
 export interface IWebsocketConnectionProps {
     config?: IConfig;
     webSocketConnectionReducer?: typeof webSocketConnectionReducerInitialState;

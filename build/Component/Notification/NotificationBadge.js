@@ -1,7 +1,7 @@
 import React from 'react';
 import { Badge, Button } from 'react-md';
-import useActions from '../../Store/Action/useActions';
-import { useSelector } from '../../Types/Redux';
+import useActions from 'Action/useActions';
+import { useSelector } from 'Types/Redux';
 import './NotificationBadge.scss';
 const NotificationBadge = () => {
     const notifications = useSelector(state => state.Core.Notification.notifications);

@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { Observable } from "rxjs";
 import { PayloadAction } from "typesafe-actions";
-import { IWebSocketRoom } from "../../Store/Reducer/Core/WebSocketConnectionReducer";
+import { IWebSocketRoom } from "Store/Reducer/Core/WebSocketConnectionReducer";
 declare namespace JSCApi {
     interface IUrlParams {
         filter?: string;

@@ -17,7 +17,7 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import { injectIntl } from 'react-intl';
 import './Setup';
 import International from '../International';
-import { LANGUAGE, DATE_FORMAT } from '../../Types/Language';
+import { LANGUAGE, DATE_FORMAT } from 'Types/Language';
 import './_styles.scss';
 const mapLanguageToDateFormat = (language) => {
     switch (language) {

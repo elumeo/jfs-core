@@ -1,8 +1,8 @@
 import { PayloadAction } from 'typesafe-actions';
-import { IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/Core/WebSocketConnectionReducer';
-import { authorizeSession, logout } from '../Action/SessionAction';
-import { INotificationContent } from '../../Types/Notification';
-import { Epic } from '../../Types/Redux';
+import { IWebSocketRoom, IWebSocketRoomConnection } from 'Store/Reducer/Core/WebSocketConnectionReducer';
+import { authorizeSession, logout } from 'Action/SessionAction';
+import { INotificationContent } from 'Types/Notification';
+import { Epic } from 'Types/Redux';
 export declare const webSocketAppIsInitializedEpic: Epic;
 export declare const webSocketConnectRequestEpic: Epic;
 export declare const webSocketLogoutEpic: Epic;

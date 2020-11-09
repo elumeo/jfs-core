@@ -3,7 +3,7 @@ import DialogContainer from 'react-md/lib/Dialogs';
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
 import './LoginDialog.scss';
-import { useSelector } from '../../Types/Redux';
+import { useSelector } from 'Types/Redux';
 const LoginDialog = () => {
     const { isAuthorized, isCheckingSession, routeType, robotLoginAvailable } = useSelector(state => ({
         isAuthorized: state.Core.Session.isAuthorized,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { INotification } from '../../../Types/Notification';
+import { INotification } from 'Types/Notification';
 import { INotificationCardProps } from '.';
 export declare type Props = {
     notification: INotification;

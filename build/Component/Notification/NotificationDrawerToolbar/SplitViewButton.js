@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-md';
-import useActions from '../../../Store/Action/useActions';
-import { useSelector } from '../../../Types/Redux';
+import useActions from 'Action/useActions';
+import { useSelector } from 'Types/Redux';
 const SplitViewButton = () => {
     const notificationDrawerPinned = useSelector(state => (state.Core.Notification.notificationDrawerPinned));
     const { unpinNotificationDrawerAction, pinNotificationDrawerAction } = useActions();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { AxiosError } from 'axios';
-import { INotificationCardProps } from '../Component/Notification/NotificationCard';
+import { INotificationCardProps } from 'Component/Notification/NotificationCard';
 import { PrimitiveType } from 'intl-messageformat';
 export interface INotificationContent {
     error?: Error | AxiosError | any;

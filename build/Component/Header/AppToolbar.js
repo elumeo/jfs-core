@@ -1,7 +1,7 @@
 import React from 'react';
 import Toolbar from 'react-md/lib/Toolbars/Toolbar';
-import NavigationButton from '../Navigation/NavigationButton';
-import International from '../International';
+import NavigationButton from 'Component/Navigation/NavigationButton';
+import International from 'Component/International';
 import './AppToolbar.scss';
 const AppToolbar = ({ LeftTools, RightTools }) => (React.createElement(International, null, ({ formatMessage }) => (React.createElement(Toolbar, { title: formatMessage({ id: 'app.title' }), nav: React.createElement(NavigationButton, { iconName: "menu" }), colored: true, fixed: true },
     React.createElement("div", { className: "tools" },

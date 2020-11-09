@@ -1,5 +1,5 @@
 import React from 'react';
-import { INotification } from '../../../Types/Notification';
+import { INotification } from 'Types/Notification';
 export declare type Props = {
     icon?: INotification['icon'];
     error?: INotification['error'];

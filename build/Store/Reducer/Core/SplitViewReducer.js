@@ -1,5 +1,5 @@
 import { createReducer } from 'typesafe-actions';
-import { disableSplitViewAction, enableSplitViewAction } from '../../Action/SplitViewAction';
+import { disableSplitViewAction, enableSplitViewAction } from 'Action/SplitViewAction';
 const initialState = {
     splitViewEnabled: false
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import Format from '../../../Utilities/Format';
+import Format from 'Utilities/Format';
 const Timestamp = ({ timestamp }) => {
     const { formatDate, formatTime } = Format;
     const now = new Date();

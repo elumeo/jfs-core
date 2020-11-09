@@ -2,7 +2,7 @@ import React from 'react';
 import Tooltipped from 'react-md/lib/Tooltips/Tooltipped';
 import './BackendIndicator.scss';
 import { injectIntl } from 'react-intl';
-import { useSelector } from '../../Types/Redux';
+import { useSelector } from 'Types/Redux';
 const BackendIndicator = ({ intl }) => {
     const backendRegion = useSelector(state => state.Core.System.backendRegion);
     const label = [

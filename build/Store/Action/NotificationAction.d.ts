@@ -1,5 +1,5 @@
 import { PayloadAction } from 'typesafe-actions';
-import { INotification, INotificationContent } from '../../Types/Notification';
+import { INotification, INotificationContent } from 'Types/Notification';
 export declare const addNotificationAction: (notification: INotificationContent) => PayloadAction<string, INotificationContent>;
 export declare const addNotificationWithIdAction: (notification: INotification) => PayloadAction<string, INotification>;
 export declare const fadeNotificationOffScreenAction: (id: number) => PayloadAction<string, number>;

@@ -1,8 +1,8 @@
 import React from "react";
-import Format from "../../../Utilities/Format";
-import ErrorContent, { errorText } from "../../Snackbar/ErrorContent";
+import Format from "Utilities/Format";
+import ErrorContent, { errorText } from "Component/Snackbar/ErrorContent";
 import CardText from "react-md/lib/Cards/CardText";
-import { timeToRead as _timeToRead } from '../../Snackbar/TimeToRead';
+import { timeToRead as _timeToRead } from 'Component/Snackbar/TimeToRead';
 const getContent = (notification) => {
     const { message, translationId, translationValues, error } = notification;
     const { formatMessage } = Format.Translations;

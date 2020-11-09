@@ -1,4 +1,4 @@
-import * as Country from '../../../Types/Country';
+import * as Country from 'Types/Country';
 declare namespace Locale {
     type State = {
         locale: Country.Locale;

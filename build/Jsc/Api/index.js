@@ -1,6 +1,6 @@
 import JscClient from "../Client";
 import { Subject } from "rxjs";
-import { ROOM_UPDATE_ACTION_ID } from "../../Store/Action/WebSocketAction";
+import { ROOM_UPDATE_ACTION_ID } from "Action/WebSocketAction";
 var JSCApi;
 (function (JSCApi) {
     let DTO;

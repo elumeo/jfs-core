@@ -1,5 +1,5 @@
 import React from 'react';
-import Translations from '../Utilities/Format/Translations';
+import Translations from 'Utilities/Format/Translations';
 declare const _default: import("react-redux").ConnectedComponent<(<T>({ id, values, mapValues }: React.PropsWithChildren<{
     messages?: Translations.Set;
     language?: string;

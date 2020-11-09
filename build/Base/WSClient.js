@@ -1,6 +1,6 @@
 import { Observable, Subject } from 'rxjs';
 import io from 'socket.io-client';
-import { ROOM_UPDATE_ACTION_ID } from '../Store/Action/WebSocketAction';
+import { ROOM_UPDATE_ACTION_ID } from 'Action/WebSocketAction';
 export class WSClient {
     static connect(host, path, namespace, token, ip, username, appName) {
         if (appName === undefined || appName === null) {

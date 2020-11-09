@@ -1,4 +1,4 @@
-import IConfig from '../../../Types/Configuration';
+import IConfig from 'Types/Configuration';
 declare namespace Configuration {
     type State<T> = {
         config: T;

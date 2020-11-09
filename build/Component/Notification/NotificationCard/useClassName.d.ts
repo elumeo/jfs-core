@@ -1,4 +1,4 @@
-import { INotification } from "../../../Types/Notification";
+import { INotification } from "Types/Notification";
 declare const useClassName: ({ error, isSuccess, isError, onClick }: {
     error?: INotification['error'];
     isSuccess?: INotification['isSuccess'];

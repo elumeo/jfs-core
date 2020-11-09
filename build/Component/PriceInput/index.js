@@ -14,7 +14,7 @@ import { TextField } from 'react-md';
 import Currency from '../../Utilities/Format/Currency';
 import uuid from 'uuid';
 const PriceInput = (_a) => {
-    var { id = `price-input-${uuid()}`, selectOnFocus, value, onChange, label, error, currency, errorText, inputClassName = '', className = 'price-input', helpText, min, max } = _a, rest = __rest(_a, ["id", "selectOnFocus", "value", "onChange", "label", "error", "currency", "errorText", "inputClassName", "className", "helpText", "min", "max"]);
+    var { id = `price-input-${uuid()}`, selectOnFocus, value, onChange, label, error, currency, errorText, inputClassName = '', className = 'price-input', helpText, min, max, onFocus, onBlur, rawOnChange } = _a, rest = __rest(_a, ["id", "selectOnFocus", "value", "onChange", "label", "error", "currency", "errorText", "inputClassName", "className", "helpText", "min", "max", "onFocus", "onBlur", "rawOnChange"]);
     const { getCurrency: currencyFormatter } = Currency;
     const [localValue, setLocalValue] = useState('');
     const inputref = useRef(null);
@@ -56,12 +56,17 @@ const PriceInput = (_a) => {
             onChange(0, null);
         }
     };
-    return (React.createElement(TextField, Object.assign({ ref: inputref, id: id, value: focused ? localValue : currencyFormatter(currency, value, true), onFocus: () => {
+    return (React.createElement(TextField, Object.assign({ ref: inputref, id: id, value: focused ? localValue : currencyFormatter(currency, value, true), onFocus: (e) => {
             setFocused(true);
+            onFocus === null || onFocus === void 0 ? void 0 : onFocus(e);
         }, onBlur: (e) => {
             setFocused(false);
             submitValue();
-        }, inputClassName: inputClassName, className: className, onChange: _onChange, label: label, error: error, errorText: errorText, helpText: helpText }, rest)));
+            onBlur === null || onBlur === void 0 ? void 0 : onBlur(e);
+        }, inputClassName: inputClassName, className: className, onChange: (v, e) => {
+            this._onChange(v);
+            rawOnChange === null || rawOnChange === void 0 ? void 0 : rawOnChange(v, e);
+        }, label: label, error: error, errorText: errorText, helpText: helpText }, rest)));
 };
 export default PriceInput;
 //# sourceMappingURL=index.js.map

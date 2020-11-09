@@ -1,4 +1,4 @@
-import IConfig from '../Types/Configuration';
+import IConfig from 'Types/Configuration';
 import { HttpClient } from '../Base/HttpClient';
 export default class JscClient extends HttpClient {
     static Config: IConfig;

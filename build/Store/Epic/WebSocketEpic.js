@@ -2,10 +2,10 @@ import { combineEpics } from 'redux-observable';
 import { filter, switchMap, concatMap, map, catchError } from 'rxjs/operators';
 import { of, EMPTY } from 'rxjs';
 import { isActionOf } from 'typesafe-actions';
-import { webSocketConnectFailedAction, webSocketConnectRequestAction, webSocketConnectSuccessAction, webSocketJoinRoomRequestAction, webSocketJoinRoomLoadingAction, webSocketJoinRoomSuccessAction, webSocketLeaveRoomRequestAction, webSocketLeaveRoomSuccessAction, webSocketJoinRoomFailureAction, webSocketDisconnectRequestAction, webSocketDisconnectSuccessAction, webSocketAddNamespaceAction } from '../Action/WebSocketAction';
-import { getRoomConnectionState } from '../Selectors/WebSocketSelectors';
-import { addNotificationAction } from '../Action/NotificationAction';
-import { authorizeSession, logout } from '../Action/SessionAction';
+import { webSocketConnectFailedAction, webSocketConnectRequestAction, webSocketConnectSuccessAction, webSocketJoinRoomRequestAction, webSocketJoinRoomLoadingAction, webSocketJoinRoomSuccessAction, webSocketLeaveRoomRequestAction, webSocketLeaveRoomSuccessAction, webSocketJoinRoomFailureAction, webSocketDisconnectRequestAction, webSocketDisconnectSuccessAction, webSocketAddNamespaceAction } from 'Action/WebSocketAction';
+import { getRoomConnectionState } from 'Store/Selectors/WebSocketSelectors';
+import { addNotificationAction } from 'Action/NotificationAction';
+import { authorizeSession, logout } from 'Action/SessionAction';
 import { WSClient } from '../../Base/WSClient';
 import _ from 'lodash';
 export const webSocketAppIsInitializedEpic = (action$, state$) => {

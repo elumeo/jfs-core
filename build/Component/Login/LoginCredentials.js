@@ -1,8 +1,8 @@
 import React from 'react';
 import TextField from 'react-md/lib/TextFields/TextField';
-import International from '../International';
-import useActions from '../../Store/Action/useActions';
-import { useSelector } from '../../Types/Redux';
+import International from 'Component/International';
+import useActions from 'Action/useActions';
+import { useSelector } from 'Types/Redux';
 const LoginCredentials = () => {
     const { username, password } = useSelector(state => ({
         username: state.Core.Login.username,

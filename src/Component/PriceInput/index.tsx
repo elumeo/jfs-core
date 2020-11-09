@@ -1,11 +1,12 @@
 import React, { useState, useEffect,  useRef } from 'react';
 import { TextField, TextFieldProps } from 'react-md';
-import Currency from 'Utilities/Format/Currency';
+import Currency from '../../Utilities/Format/Currency';
 import uuid from 'uuid'
 
 type TPriceInputProps = {
   currency: string;
   selectOnFocus?: boolean;
+  rawOnChange?: (value: number | string, event: Event) => void
 }
 const PriceInput = ({
                       id = `price-input-${uuid()}`,
@@ -21,6 +22,9 @@ const PriceInput = ({
                       helpText,
                       min,
                       max,
+                      onFocus,
+                      onBlur,
+                      rawOnChange,
                       ...rest
                     }: TPriceInputProps &  TextFieldProps) => {
   const {getCurrency: currencyFormatter} = Currency;
@@ -69,16 +73,21 @@ const PriceInput = ({
       ref={inputref}
       id={id}
       value={focused ? localValue : currencyFormatter(currency, value as number, true)}
-      onFocus={() => {
-        setFocused(true)
+      onFocus={(e) => {
+        setFocused(true);
+        onFocus?.(e);
       }}
       onBlur={(e) => {
         setFocused(false);
         submitValue();
+        onBlur?.(e);
       }}
       inputClassName={inputClassName}
       className={className}
-      onChange={_onChange}
+      onChange={(v, e) => {
+        this._onChange(v);
+        rawOnChange?.(v, e);
+      }}
       label={label}
       error={error}
       errorText={errorText}

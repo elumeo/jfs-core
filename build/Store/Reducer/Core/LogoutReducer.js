@@ -1,5 +1,5 @@
-import { openLogout, closeLogout, logoutFinished } from '../../Action/LogoutAction';
-import { logout } from '../../Action/SessionAction';
+import { openLogout, closeLogout, logoutFinished } from 'Action/LogoutAction';
+import { logout } from 'Action/SessionAction';
 import { createReducer } from 'typesafe-actions';
 const initialState = {
     logoutOpen: false,

@@ -1,6 +1,6 @@
 import React from 'react';
 import './_styles.scss';
-import { useSelector } from '../../Types/Redux';
+import { useSelector } from 'Types/Redux';
 const Content = ({ children }) => {
     const splitViewEnabled = useSelector(state => state.Core.SplitView.splitViewEnabled);
     const contentClassName = [

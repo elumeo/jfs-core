@@ -1,5 +1,5 @@
 import { createReducer } from 'typesafe-actions';
-import { checkSession, authorizeSession, unauthorizeSession } from '../../Action/SessionAction';
+import { checkSession, authorizeSession, unauthorizeSession } from 'Action/SessionAction';
 const initialState = {
     isCheckingSession: false,
     isAuthorized: false,
