@@ -1,0 +1,573 @@
+{
+  "dtos": [
+    {
+      "name": "Login",
+      "constants": [],
+      "dtos": [
+        {
+          "name": "CredentialsDTO",
+          "generics": [],
+          "properties": {
+            "username": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "password": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "token": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        }
+      ],
+      "namespaces": []
+    },
+    {
+      "name": "Session",
+      "constants": [],
+      "dtos": [
+        {
+          "name": "FrontendSessionDTO",
+          "generics": [],
+          "properties": {
+            "session": {
+              "type": "DTO.Session.SessionDTO",
+              "array": false,
+              "generics": []
+            },
+            "appProperties": {
+              "type": "DTO.Authorization.PropertyDTO",
+              "array": true,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        },
+        {
+          "name": "SessionDTO",
+          "generics": [],
+          "properties": {
+            "allowedMethods": {
+              "type": "string",
+              "array": true,
+              "generics": []
+            },
+            "token": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "username": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "lastIPAddress": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "lastActivity": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "lastHostName": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        }
+      ],
+      "namespaces": []
+    },
+    {
+      "name": "Authorization",
+      "constants": [
+        {
+          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ",
+          "value": 1
+        },
+        {
+          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE",
+          "value": 2
+        },
+        {
+          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE",
+          "value": 4
+        },
+        {
+          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE",
+          "value": 8
+        },
+        {
+          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE",
+          "value": 3
+        }
+      ],
+      "dtos": [
+        {
+          "name": "PropertyDTO",
+          "generics": [],
+          "properties": {
+            "key": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "value": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        },
+        {
+          "name": "UserRightsDTO",
+          "generics": [],
+          "properties": {
+            "entityAttributeAccesses": {
+              "type": "DTO.Authorization.EntityAttributeAccessDTO",
+              "array": true,
+              "generics": []
+            },
+            "assignedApps": {
+              "type": "DTO.App.AppDTO",
+              "array": true,
+              "generics": []
+            }
+          }
+        },
+        {
+          "name": "EntityAttributeAccessDTO",
+          "generics": [],
+          "properties": {
+            "entity": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "attribute": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "access": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        }
+      ],
+      "namespaces": []
+    },
+    {
+      "name": "App",
+      "constants": [
+        {
+          "name": "APP_DTO_FRONTEND_APP_DOCK",
+          "value": "appDock"
+        },
+        {
+          "name": "APP_DTO_FRONTEND_JFS",
+          "value": "jfs"
+        }
+      ],
+      "dtos": [
+        {
+          "name": "AppDTO",
+          "generics": [],
+          "properties": {
+            "name": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "description": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "version": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "url": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "iconUrl": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "windowWidth": {
+              "type": "number",
+              "array": false,
+              "generics": []
+            },
+            "windowHeight": {
+              "type": "number",
+              "array": false,
+              "generics": []
+            },
+            "fullscreen": {
+              "type": "boolean",
+              "array": false,
+              "generics": []
+            },
+            "frontend": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "displayName": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        }
+      ],
+      "namespaces": []
+    },
+    {
+      "name": "WebSocket",
+      "constants": [],
+      "dtos": [
+        {
+          "name": "WebSocketRoomUpdateDTO",
+          "generics": [
+            "T1"
+          ],
+          "properties": {
+            "room": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "namespace": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "data": {
+              "type": "T1",
+              "array": false,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        }
+      ],
+      "namespaces": []
+    }
+  ],
+  "clients": [
+    {
+      "name": "LoginController",
+      "methods": [
+        {
+          "name": "loginFrontend",
+          "resource": {
+            "path": "/session/:appName",
+            "type": {
+              "name": "DTO.Session.FrontendSessionDTO",
+              "generics": [],
+              "array": false
+            }
+          },
+          "protocol": {
+            "name": "HTTP",
+            "method": "post"
+          },
+          "parameters": [
+            {
+              "name": "appName",
+              "type": "string",
+              "optional": false,
+              "array": false
+            },
+            {
+              "name": "credentials",
+              "type": "DTO.Login.CredentialsDTO",
+              "optional": false,
+              "array": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SessionController",
+      "methods": [
+        {
+          "name": "getCurrentSessionFrontend",
+          "resource": {
+            "path": "/session/:appName",
+            "type": {
+              "name": "DTO.Session.FrontendSessionDTO",
+              "generics": [],
+              "array": false
+            }
+          },
+          "protocol": {
+            "name": "HTTP",
+            "method": "get"
+          },
+          "parameters": [
+            {
+              "name": "appName",
+              "type": "string",
+              "optional": false,
+              "array": false
+            }
+          ]
+        },
+        {
+          "name": "logout",
+          "resource": {
+            "path": "/session",
+            "type": {
+              "name": "void",
+              "generics": [],
+              "array": false
+            }
+          },
+          "protocol": {
+            "name": "HTTP",
+            "method": "delete"
+          },
+          "parameters": [
+            {
+              "name": "session",
+              "type": "DTO.Session.SessionDTO",
+              "optional": false,
+              "array": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SystemController",
+      "methods": [
+        {
+          "name": "getRegion",
+          "resource": {
+            "path": "/region",
+            "type": {
+              "name": "string",
+              "generics": [],
+              "array": false
+            }
+          },
+          "protocol": {
+            "name": "HTTP",
+            "method": "get"
+          },
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "UserController",
+      "methods": [
+        {
+          "name": "getUserRights",
+          "resource": {
+            "path": "/user/:login/rights",
+            "type": {
+              "name": "DTO.Authorization.UserRightsDTO",
+              "generics": [],
+              "array": false
+            }
+          },
+          "protocol": {
+            "name": "HTTP",
+            "method": "get"
+          },
+          "parameters": [
+            {
+              "name": "login",
+              "type": "string",
+              "optional": false,
+              "array": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WebSocketController",
+      "methods": [
+        {
+          "name": "subscribePingRoom",
+          "resource": {
+            "path": null,
+            "type": {
+              "name": "string",
+              "generics": [],
+              "array": false
+            },
+            "room": "ping"
+          },
+          "protocol": {
+            "name": "WS",
+            "method": "join",
+            "namespace": "Jsc2Jfs"
+          },
+          "parameters": []
+        }
+      ]
+    }
+  ]
+}

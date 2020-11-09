@@ -1,6 +1,6 @@
 import React from 'react';
 import './_styles.scss';
-const JuweloFontIcon = ({ icon, error, light }) => {
+const JuweloFontIcon = ({ icon, error, light, style }) => {
     error = error === undefined ? false : error;
     light = light === undefined ? false : light;
     let className = 'juwelo-icon-font jif-' + icon;
@@ -10,7 +10,7 @@ const JuweloFontIcon = ({ icon, error, light }) => {
     if (error) {
         className += ' -error';
     }
-    return React.createElement("i", { className: className });
+    return React.createElement("i", { style: style || {}, className: className });
 };
 export default JuweloFontIcon;
 //# sourceMappingURL=index.js.map
