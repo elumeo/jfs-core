@@ -1,3 +1,7 @@
+## [9.9.3] 2020-11-10
+## Fixed
+- fixed an issue inside scripts/package.json with downgrading tsc-alias module (^1.1.5 => 1.1.1)
+
 ## [9.9.2] 2020-11-10
 ## Fixed
 - fixed corrupted build (rebuild)
