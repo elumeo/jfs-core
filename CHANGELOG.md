@@ -1,4 +1,8 @@
 ## [9.10.0] 2020-11-10
+## Fixed
+- fixed an issue with the PriceInput component
+
+## [9.10.0] 2020-11-10
 ## Added
 - added className attribute for <JuweloFontIcon/> component
 

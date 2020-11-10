@@ -43,8 +43,9 @@ const PriceInput = ({
       }
     }
   }, [inputref?.current, selectOnFocus, focused])
-  const _onChange = (e: React.ReactText, ev) => {
-    setLocalValue(e.toString().replace(Currency.replaceAllNonNumericOrSeperatorRegex, ''))
+  const _onChange = (value: React.ReactText, event) => {
+    setLocalValue(value.toString().replace(Currency.replaceAllNonNumericOrSeperatorRegex, ''))
+    rawOnChange?.(value, event);
   }
   const submitValue = () => {
     const formattedValue = parseFloat(
@@ -72,7 +73,7 @@ const PriceInput = ({
     <TextField
       ref={inputref}
       id={id}
-      value={focused ? localValue : currencyFormatter(currency, value as number, true)}
+      value={focused ? localValue : currencyFormatter(currency, +value, true)}
       onFocus={(e) => {
         setFocused(true);
         onFocus?.(e);
@@ -84,10 +85,7 @@ const PriceInput = ({
       }}
       inputClassName={inputClassName}
       className={className}
-      onChange={(v, e) => {
-        this._onChange(v);
-        rawOnChange?.(v, e);
-      }}
+      onChange={_onChange}
       label={label}
       error={error}
       errorText={errorText}

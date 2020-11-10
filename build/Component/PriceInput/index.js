@@ -32,8 +32,9 @@ const PriceInput = (_a) => {
             }
         }
     }, [inputref === null || inputref === void 0 ? void 0 : inputref.current, selectOnFocus, focused]);
-    const _onChange = (e, ev) => {
-        setLocalValue(e.toString().replace(Currency.replaceAllNonNumericOrSeperatorRegex, ''));
+    const _onChange = (value, event) => {
+        setLocalValue(value.toString().replace(Currency.replaceAllNonNumericOrSeperatorRegex, ''));
+        rawOnChange === null || rawOnChange === void 0 ? void 0 : rawOnChange(value, event);
     };
     const submitValue = () => {
         const formattedValue = parseFloat(parseFloat(localValue
@@ -56,17 +57,14 @@ const PriceInput = (_a) => {
             onChange(0, null);
         }
     };
-    return (React.createElement(TextField, Object.assign({ ref: inputref, id: id, value: focused ? localValue : currencyFormatter(currency, value, true), onFocus: (e) => {
+    return (React.createElement(TextField, Object.assign({ ref: inputref, id: id, value: focused ? localValue : currencyFormatter(currency, +value, true), onFocus: (e) => {
             setFocused(true);
             onFocus === null || onFocus === void 0 ? void 0 : onFocus(e);
         }, onBlur: (e) => {
             setFocused(false);
             submitValue();
             onBlur === null || onBlur === void 0 ? void 0 : onBlur(e);
-        }, inputClassName: inputClassName, className: className, onChange: (v, e) => {
-            this._onChange(v);
-            rawOnChange === null || rawOnChange === void 0 ? void 0 : rawOnChange(v, e);
-        }, label: label, error: error, errorText: errorText, helpText: helpText }, rest)));
+        }, inputClassName: inputClassName, className: className, onChange: _onChange, label: label, error: error, errorText: errorText, helpText: helpText }, rest)));
 };
 export default PriceInput;
 //# sourceMappingURL=index.js.map
