@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import * as Action from 'Store/Action';
+import * as Action from '../Action';
 const useActions = () => {
     const dispatch = useDispatch();
     return Object.keys(Action).reduce((previous, key) => {

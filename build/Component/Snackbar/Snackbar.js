@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Snackbar from 'react-md/lib/Snackbars';
 import snackbarContent from './SnackBarContent';
-import International from 'Component/International';
-import { useSelector } from 'Types/Redux';
-import useActions from 'Action/useActions';
+import International from '../International';
+import { useSelector } from '../../Types/Redux';
+import useActions from '../../Store/Action/useActions';
 const AppSnackBar = () => {
     const { dismissToastAction } = useActions();
     const toasts = useSelector(state => (state.Core.Toast.toasts));

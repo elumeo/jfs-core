@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-md';
-import useActions from 'Action/useActions';
-import { useSelector } from 'Types/Redux';
+import useActions from '../../../Store/Action/useActions';
+import { useSelector } from '../../../Types/Redux';
 const DismissAllNotificationsButton = () => {
     const notifications = useSelector(state => state.Core.Notification.notifications);
     const { dismissAllNotificationsAction } = useActions();

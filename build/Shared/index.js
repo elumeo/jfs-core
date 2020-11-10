@@ -1,4 +1,4 @@
-import Messages from 'Utilities/Format/Translations/Messages';
+import Messages from '../Utilities/Format/Translations/Messages';
 class Shared {
 }
 Shared.translations = {};

@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from 'react-md/lib/Buttons/Button';
-import useActions from 'Action/useActions';
+import useActions from '../../../Store/Action/useActions';
 const DismissButton = ({ notification, onClick, topLevelRef: ref }) => {
     const { dismissNotificationAction } = useActions();
     return (React.createElement(Button, { icon: true, key: 'dismiss-btn', onClick: event => {

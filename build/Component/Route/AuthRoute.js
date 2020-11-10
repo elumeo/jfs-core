@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import BaseRoute from './BaseRoute';
-import useActions from 'Action/useActions';
-import { useSelector } from 'Types/Redux';
+import useActions from '../../Store/Action/useActions';
+import { useSelector } from '../../Types/Redux';
 const AuthRoute = props => {
     const { enterAuthorizedRoute } = useActions();
     const { isAuthorized, isCheckingSession } = useSelector(state => ({

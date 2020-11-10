@@ -1,3 +1,3 @@
-import * as Action from 'Store/Action';
+import * as Action from '../Action';
 declare const useActions: () => typeof Action;
 export default useActions;

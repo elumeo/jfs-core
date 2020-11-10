@@ -1,6 +1,6 @@
 import { createReducer } from 'typesafe-actions';
-import { getRegionFailed, regionLoaded } from 'Action/SystemAction';
-import { configLoadedAction } from 'Action/ConfigAction';
+import { getRegionFailed, regionLoaded } from '../../Action/SystemAction';
+import { configLoadedAction } from '../../Action/ConfigAction';
 const initialState = {
     backendRegion: null,
     pending: false

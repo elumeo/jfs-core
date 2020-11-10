@@ -1,7 +1,7 @@
 import React from 'react';
 import NoNotifications from './NoNotifications';
-import NotificationCard from 'Component/Notification/NotificationCard';
-import { useSelector } from 'Types/Redux';
+import NotificationCard from '../../Notification/NotificationCard';
+import { useSelector } from '../../../Types/Redux';
 const NotificationsFragment = () => {
     const notifications = useSelector(state => state.Core.Notification.notifications);
     return (notifications.length

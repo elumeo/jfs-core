@@ -1,4 +1,4 @@
-import JSCApi from 'Jsc/Api';
+import JSCApi from '../../../Jsc/Api';
 declare type ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 declare type IPropertyDTO = JSCApi.DTO.Authorization.IPropertyDTO;
 declare namespace Session {

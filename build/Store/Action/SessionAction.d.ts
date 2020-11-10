@@ -1,4 +1,4 @@
-import JSCApi from 'Jsc/Api';
+import JSCApi from '../../Jsc/Api';
 import IFrontendSessionDTO = JSCApi.DTO.Session.IFrontendSessionDTO;
 import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 export declare const loadSession: import("typesafe-actions").EmptyAC<string>;

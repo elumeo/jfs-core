@@ -1,4 +1,4 @@
-import { closeSettings, openSettings } from 'Action/SettingsAction';
+import { closeSettings, openSettings } from '../../Action/SettingsAction';
 import { createReducer } from 'typesafe-actions';
 const initialState = {
     settingsOpen: false

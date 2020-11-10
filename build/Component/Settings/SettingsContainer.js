@@ -7,11 +7,11 @@ import Card from 'react-md/lib/Cards/Card';
 import CardTitle from 'react-md/lib/Cards/CardTitle';
 import CardActions from 'react-md/lib/Cards/CardActions';
 import SelectField from 'react-md/lib/SelectFields';
-import { changeLanguageAction } from 'Store/Action/LanguageAction';
+import { changeLanguageAction } from '../../Store/Action/LanguageAction';
 import Cookie from 'js-cookie';
 import './SettingsContainer.scss';
 import { compose } from 'redux';
-import International from 'Component/International';
+import International from '../International';
 // ToDo: Duplikat entfernen => Siehe LanguageSettings.tsx
 const LANGUAGES = [
     { label: 'Deutsch', value: 'de' },

@@ -2,8 +2,8 @@ import { combineEpics } from 'redux-observable';
 import { catchError, concatMap, filter, map, switchMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { from, of, concat, EMPTY } from 'rxjs';
-import * as Action from 'Store/Action';
-import JSCApi from 'Jsc/Api';
+import * as Action from '../Action';
+import JSCApi from '../../Jsc/Api';
 import Session from '../../Base/Session';
 const loadSessionEpic = (action$, store) => (action$.pipe(filter(isActionOf(Action.loadSession)), map(() => {
     const { RobotUsername: username, RobotPassword: password } = store.value.Core.Configuration.config;

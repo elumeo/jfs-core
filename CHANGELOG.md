@@ -1,3 +1,7 @@
+## [9.9.2] 2020-11-10
+## Fixed
+- fixed corrupted build (rebuild)
+
 ## [9.9.1] 2020-11-09
 ## Added
 - added more callback function to PriceInput field: onFocus, onBlur, rawOnChange

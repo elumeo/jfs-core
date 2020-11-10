@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { useSelector } from 'Types/Redux';
+import { useSelector } from '../../Types/Redux';
 import NotificationCard from './NotificationCard';
 import './OnScreenNotifications.scss';
 const OnScreenNotifications = () => {

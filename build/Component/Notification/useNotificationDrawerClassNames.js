@@ -1,4 +1,4 @@
-import { useSelector } from "Types/Redux";
+import { useSelector } from "../../Types/Redux";
 const usePinnedClassName = () => {
     const notificationDrawerPinned = useSelector(state => state.Core.Notification.notificationDrawerPinned);
     return (notificationDrawerPinned

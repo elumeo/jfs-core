@@ -1,5 +1,5 @@
 import React from 'react';
-import { openLogout } from 'Store/Action/LogoutAction';
+import { openLogout } from '../../Store/Action/LogoutAction';
 export interface ILogoutNavigationItemProps {
     robotLoginAvailable?: boolean;
     openLogout?: typeof openLogout;

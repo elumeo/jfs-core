@@ -1,5 +1,5 @@
-import Messages from 'Utilities/Format/Translations/Messages';
-import { Language } from 'Types/Language';
+import Messages from '../../../Utilities/Format/Translations/Messages';
+import { Language } from '../../../Types/Language';
 declare namespace Language {
     type State = {
         language: Language;

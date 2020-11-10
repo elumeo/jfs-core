@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-md/lib/Buttons/Button';
-import useActions from 'Action/useActions';
-import { useSelector } from 'Types/Redux';
+import useActions from '../../Store/Action/useActions';
+import { useSelector } from '../../Types/Redux';
 const NavigationButton = ({ iconName }) => {
     const navigationOpen = useSelector(state => state.Core.Navigation.navigationOpen);
     const { openNavigation, closeNavigation } = useActions();

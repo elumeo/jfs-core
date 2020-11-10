@@ -3,9 +3,9 @@ import { uniqueId } from 'lodash';
 import FontIcon from 'react-md/lib/FontIcons';
 import ListItem from 'react-md/lib/Lists/ListItem';
 import { useHistory } from 'react-router-dom';
-import International from 'Component/International';
-import { useSelector } from 'Types/Redux';
-import useActions from 'Action/useActions';
+import International from '../International';
+import { useSelector } from '../../Types/Redux';
+import useActions from '../../Store/Action/useActions';
 const NavigationItem = ({ iconName, messageId, onClick, active, messageString, authorizedOnly, unauthorizedOnly, onClickRoute }) => {
     const history = useHistory();
     const { closeNavigation } = useActions();

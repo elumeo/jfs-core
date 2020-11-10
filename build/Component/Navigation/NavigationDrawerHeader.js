@@ -1,7 +1,7 @@
 import React from 'react';
 import Toolbar from 'react-md/lib/Toolbars';
 import NavigationButton from './NavigationButton';
-import { useSelector } from 'Types/Redux';
+import { useSelector } from '../../Types/Redux';
 const NavigationDrawerHeader = () => {
     const username = useSelector(state => (state.Core.Session.sessionDTO &&
         state.Core.Session.sessionDTO.username));

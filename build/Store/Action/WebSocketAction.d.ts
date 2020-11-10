@@ -1,4 +1,4 @@
-import JSCApi from 'Jsc/Api';
+import JSCApi from '../../Jsc/Api';
 import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/Core/WebSocketConnectionReducer';
 export declare const ROOM_UPDATE_ACTION_ID: string;
 export declare const webSocketAddNamespaceAction: import("typesafe-actions").PayloadAC<string, string>;

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { addLocaleData } from 'react-intl';
-import useActions from 'Action/useActions';
-import { useSelector } from 'Types/Redux';
+import useActions from '../../Store/Action/useActions';
+import { useSelector } from '../../Types/Redux';
 const useLoader = ({ allowRobotLogin, packageJson, translations }) => {
     const { initializeApp } = useActions();
     useEffect(() => {

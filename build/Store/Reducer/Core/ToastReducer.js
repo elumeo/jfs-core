@@ -1,6 +1,6 @@
 import { createReducer } from 'typesafe-actions';
 import { List } from 'immutable';
-import { addToastAction, dismissToastAction, } from 'Action/ToastAction';
+import { addToastAction, dismissToastAction, } from '../../Action/ToastAction';
 const initialState = {
     toasts: List(),
 };

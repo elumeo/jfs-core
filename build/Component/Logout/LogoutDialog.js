@@ -2,9 +2,9 @@ import React from 'react';
 import Dialog from 'react-md/lib/Dialogs';
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
-import International from 'Component/International';
-import { useSelector } from 'Types/Redux';
-import useActions from 'Action/useActions';
+import International from '../International';
+import { useSelector } from '../../Types/Redux';
+import useActions from '../../Store/Action/useActions';
 const LogoutDialog = ({ children }) => {
     const { logout, closeLogout } = useActions();
     const { logoutOpen, logoutPending } = useSelector(state => ({

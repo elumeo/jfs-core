@@ -1,5 +1,5 @@
 import React from 'react';
-import { INotification } from 'Types/Notification';
+import { INotification } from '../../../Types/Notification';
 import '../NotificationCard.scss';
 export interface INotificationCardProps {
     config: INotification;

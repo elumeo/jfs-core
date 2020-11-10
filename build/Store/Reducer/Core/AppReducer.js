@@ -1,5 +1,5 @@
 import { createReducer } from 'typesafe-actions';
-import * as AppAction from 'Action/AppAction';
+import * as AppAction from '../../Action/AppAction';
 const initialState = {
     appInitialized: false,
     allowRobotLogin: false,

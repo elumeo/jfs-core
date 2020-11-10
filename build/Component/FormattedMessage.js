@@ -1,5 +1,5 @@
 import React from 'react';
-import Translations from 'Utilities/Format/Translations';
+import Translations from '../Utilities/Format/Translations';
 import ReactDOMServer from 'react-dom/server';
 import { connect } from 'react-redux';
 const FormattedMessage = ({ id, values, mapValues }) => {

@@ -1,5 +1,5 @@
-import { Language } from "Types/Language";
-import * as Country from 'Types/Country';
+import { Language } from "../../Types/Language";
+import * as Country from '../../Types/Country';
 declare class Locale {
     static locale: Country.Locale;
     static setLocale: (locale: Country.Locale) => void;

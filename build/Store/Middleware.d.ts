@@ -1,4 +1,4 @@
-import { Epic } from 'Types/Redux';
+import { Epic } from '../Types/Redux';
 export declare const history: import("history").History<unknown>;
 declare const middleware: import("redux").StoreEnhancer<{
     dispatch: {};

@@ -1,5 +1,5 @@
 import { History } from 'history';
-import { changeLanguageAction } from 'Store/Action/LanguageAction';
+import { changeLanguageAction } from '../../Store/Action/LanguageAction';
 import './SettingsContainer.scss';
 interface ISettingsContainerProps {
     language?: string;

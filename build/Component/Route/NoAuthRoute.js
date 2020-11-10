@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import BaseRoute from './BaseRoute';
-import useActions from 'Action/useActions';
+import useActions from '../../Store/Action/useActions';
 const NoAuthRoute = props => {
     const { enterUnauthorizedRoute } = useActions();
     useEffect(() => {

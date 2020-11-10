@@ -1,7 +1,7 @@
 import { createReducer } from 'typesafe-actions';
-import * as Action from 'Store/Action';
-import Messages from 'Utilities/Format/Translations/Messages';
-import coreTranslations from 'Setup/Translations.json';
+import * as Action from '../../Action';
+import Messages from '../../../Utilities/Format/Translations/Messages';
+import coreTranslations from '../../../Setup/Translations.json';
 import Shared from '../../../Shared';
 const initialState = {
     language: null,

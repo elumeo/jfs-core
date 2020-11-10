@@ -2,8 +2,8 @@ import { combineEpics } from 'redux-observable';
 import { filter, switchMap, catchError } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { from, of } from 'rxjs';
-import JSCApi from 'Jsc/Api';
-import * as Action from 'Store/Action';
+import JSCApi from '../../Jsc/Api';
+import * as Action from '../Action';
 import Session from '../../Base/Session';
 const loginEpic = (action$, state$) => (action$.pipe(filter(isActionOf(Action.checkLogin)), switchMap(action => from(JSCApi.LoginClient.loginFrontend(state$.value.Core.Configuration.config.AppName, {
     username: action.payload.username,

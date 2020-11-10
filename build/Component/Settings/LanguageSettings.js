@@ -1,9 +1,9 @@
 import React from 'react';
 import Cookie from 'js-cookie';
 import { SelectField } from 'react-md';
-import International from 'Component/International';
-import useActions from 'Action/useActions';
-import { useSelector } from 'Types/Redux';
+import International from '../International';
+import useActions from '../../Store/Action/useActions';
+import { useSelector } from '../../Types/Redux';
 const LanguageSettings = () => {
     const language = useSelector(state => (state.Core.Language.language ||
         state.Core.Configuration.config.Language));

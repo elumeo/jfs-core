@@ -1,4 +1,4 @@
-import { INotification } from 'Types/Notification';
+import { INotification } from '../../../Types/Notification';
 declare namespace Notification {
     type State = {
         notifications?: INotification[];

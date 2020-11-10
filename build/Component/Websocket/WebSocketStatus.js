@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './WebSocketStatus.scss';
-import { isWebSocketNamespaceConnectedState } from 'Store/Selectors/WebSocketSelectors';
+import { isWebSocketNamespaceConnectedState } from '../../Store/Selectors/WebSocketSelectors';
 class WebSocketStatus extends React.Component {
     render() {
         const { webSocketConnectionReducer, config: { JscWebSocketClient, JfsWebSocketClient } } = this.props;

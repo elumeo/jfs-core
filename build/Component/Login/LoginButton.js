@@ -1,9 +1,9 @@
 import React from 'react';
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
-import International from 'Component/International';
-import { useSelector } from 'Types/Redux';
-import useActions from 'Action/useActions';
+import International from '../International';
+import { useSelector } from '../../Types/Redux';
+import useActions from '../../Store/Action/useActions';
 const LoginButton = () => {
     const { checkLogin } = useActions();
     const { isCheckingLogin, username, password } = useSelector(state => ({

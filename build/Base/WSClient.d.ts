@@ -1,7 +1,7 @@
 import { Observable, Subject } from 'rxjs';
 import io from 'socket.io-client';
 import { PayloadAction } from 'typesafe-actions';
-import JSCApi from 'Jsc/Api';
+import JSCApi from '../Jsc/Api';
 import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../Store/Reducer/Core/WebSocketConnectionReducer';
 import IWebSocketRoomUpdateDTO = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO;
 import Global from '../Store/Reducer/Global';
