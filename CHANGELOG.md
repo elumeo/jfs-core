@@ -1,3 +1,7 @@
+## [9.10.3] 2020-11-10
+## Fixed
+- Fixed a bug within Notification spam prevention feature were consecutive but unequal notifications got ignored
+
 ## [9.10.2] 2020-11-10
 ## Fixed
 - quickfix for sync: delayed copy by 400ms

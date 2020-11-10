@@ -1,8 +1,8 @@
-import React from "react";
-import { INotificationContent } from "Types/Notification";
-import Format from "Utilities/Format";
-import ErrorContent, { errorText } from "Component/Snackbar/ErrorContent";
-import CardText from "react-md/lib/Cards/CardText";
+import React from 'react';
+import { INotificationContent } from 'Types/Notification';
+import Format from 'Utilities/Format';
+import ErrorContent, { errorText } from 'Component/Snackbar/ErrorContent';
+import CardText from 'react-md/lib/Cards/CardText';
 import { timeToRead as _timeToRead } from 'Component/Snackbar/TimeToRead';
 
 const getContent = (notification: INotificationContent) => {
@@ -38,7 +38,7 @@ const getContent = (notification: INotificationContent) => {
           .map(tId => formatMessage({ id: tId }, translationValues))
           .join(' ')
       )
-      : translationId;
+      : formatMessage({ id: translationId }, translationValues);
     content = typeof translationId == 'object'
       ? (
         <ul>
