@@ -1,3 +1,7 @@
+## [9.10.1] 2020-11-10
+## Fixed
+- quickfix for sync: delayed copy by 400ms
+
 ## [9.10.0] 2020-11-10
 ## Added
 - added className attribute for <JuweloFontIcon/> component

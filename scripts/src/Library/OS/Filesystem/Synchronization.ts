@@ -65,7 +65,12 @@ class Synchronization {
           target.remove(onComplete);
         }
         else if (event === 'FILE_CHANGED') {
-          (source as File).copy(target.path, onComplete);
+          setTimeout(
+            () => {
+              (source as File).copy(target.path, onComplete);
+            },
+            400
+          );
         }
       }
     ));
