@@ -1,7 +1,7 @@
-import React from "react";
-import Format from "../../../Utilities/Format";
-import ErrorContent, { errorText } from "../../Snackbar/ErrorContent";
-import CardText from "react-md/lib/Cards/CardText";
+import React from 'react';
+import Format from '../../../Utilities/Format';
+import ErrorContent, { errorText } from '../../Snackbar/ErrorContent';
+import CardText from 'react-md/lib/Cards/CardText';
 import { timeToRead as _timeToRead } from '../../Snackbar/TimeToRead';
 const getContent = (notification) => {
     const { message, translationId, translationValues, error } = notification;
@@ -24,7 +24,7 @@ const getContent = (notification) => {
             ? (translationId
                 .map(tId => formatMessage({ id: tId }, translationValues))
                 .join(' '))
-            : translationId;
+            : formatMessage({ id: translationId }, translationValues);
         content = typeof translationId == 'object'
             ? (React.createElement("ul", null, translationId.map((tId, i) => (React.createElement("li", { key: i }, formatMessage({ id: tId }, translationValues))))))
             : formatMessage({ id: translationId }, translationValues);
