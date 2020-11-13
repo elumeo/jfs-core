@@ -34,7 +34,7 @@ export const getContent = (notification: INotificationContent) => {
   if (translationId) {
     words = typeof translationId == 'object'
       ? translationId.map(tId => formatMessage({ id: tId }, translationValues)).join(' ')
-      : translationId;
+      : formatMessage({ id: translationId }, translationValues);
     content = typeof translationId == 'object'
       ? <ul>{translationId.map((tId, i) => <li key={i}>{formatMessage({ id: tId }, translationValues)}</li>)}</ul>
       : formatMessage({ id: translationId }, translationValues);
