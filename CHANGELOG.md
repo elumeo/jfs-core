@@ -1,3 +1,7 @@
+## [9.10.4] 2020-11-13
+## Changed
+- The Notification spam prevention will now display the new, duplicate Notification and hide the existing one, instead.   
+
 ## [9.10.3] 2020-11-10
 ## Fixed
 - Fixed a bug within Notification spam prevention feature were consecutive but unequal notifications got ignored

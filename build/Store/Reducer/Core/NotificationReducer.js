@@ -14,10 +14,9 @@ const Notification = createReducer(initialState)
     const notifications = [...state.notifications];
     const isDuplicate = notifications.length > 0 && getPlainText(notification) == getPlainText(notifications[0]);
     if (isDuplicate) {
-        notifications[0].id = notification.id;
-        notifications[0].count++;
-        notifications[0].timestamp = new Date();
-        notifications[0].onScreen = true;
+        notification.count = notifications[0].count + 1;
+        notification.onScreen = true;
+        notifications[0] = notification;
         return Object.assign(Object.assign({}, state), { notifications });
     }
     else {
