@@ -1,13 +1,15 @@
 import React from 'react';
-import { addToastAction } from '../../Store/Action/ToastAction';
 import './SearchComponent.scss';
-export interface ISearchComponentProps {
-    addToastAction?: typeof addToastAction;
+import { InjectedIntlProps } from 'react-intl';
+export declare type SearchComponentProps = {
     autocompleteData?: string[] | number[] | {
         dataLabel: string;
         dataValue: string;
     }[];
+    blurOnEsc?: boolean;
     centered?: boolean;
+    className?: string;
+    disabled?: boolean;
     focusInputOnAutocomplete?: boolean;
     focusInputOnClear?: boolean;
     forceNumericInput?: boolean;
@@ -16,36 +18,16 @@ export interface ISearchComponentProps {
     labelTranslationId?: string;
     onChange?: (value: string) => void;
     onClear?: () => void;
-    onSearch: (props: ISearchComponentProps, state: ISearchComponentState) => void;
+    onRefAvailable?: (ref: any) => void;
+    onSearch: (props: SearchComponentProps, state: SearchComponentState) => void;
     placeholderTranslationId: string;
     searchOnAutocomplete?: boolean;
     style?: React.CSSProperties;
-    className?: string;
     value?: string;
-    disabled?: boolean;
-}
-export interface ISearchComponentState {
+};
+export declare type SearchComponentState = {
     value?: string;
     inputFocused?: boolean;
-}
-declare class SearchComponent extends React.Component<ISearchComponentProps, ISearchComponentState> {
-    state: ISearchComponentState;
-    static defaultProps: {
-        autocompleteData: any[];
-        focusInputOnAutocomplete: boolean;
-        focusInputOnClear: boolean;
-        forceNumericInput: boolean;
-        searchOnAutocomplete: boolean;
-        value: string;
-        disabled: boolean;
-    };
-    constructor(props: any);
-    handleChange: (value: string) => void;
-    handleKeyDown: (e: any) => void;
-    handleAutocomplete: (v: any) => void;
-    handleSearch: (value?: string) => void;
-    handleClear: () => void;
-    render(): JSX.Element;
-}
-declare const _default: import("react-redux").ConnectedComponent<typeof SearchComponent, Pick<React.ClassAttributes<SearchComponent> & ISearchComponentProps, "ref" | "key"> & ISearchComponentProps>;
-export default _default;
+};
+declare const SearchComponent: React.FC<SearchComponentProps & InjectedIntlProps>;
+export default SearchComponent;

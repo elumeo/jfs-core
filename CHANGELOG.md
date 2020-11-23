@@ -1,3 +1,11 @@
+## [9.10.7] 2020-11-23
+## Changed
+- core SearchComponent (not to be confused with jfc_SearchComponent) became a functional component.
+It's internal HtmlInputElement is now accessible using the onRefAvailable callback. 
+
+## [9.10.6] ???
+## ??? Who forgot to update this file on release? Please do it!
+
 ## [9.10.5] 2020-11-23
 ## Fixed
 - fix for clear button for react date picker component

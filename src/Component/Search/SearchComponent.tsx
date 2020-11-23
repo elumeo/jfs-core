@@ -1,17 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useRef, useState } from 'react';
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
-import { addToastAction } from '../../Store/Action/ToastAction';
-import Global from '../../Store/Reducer/Global';
 import './SearchComponent.scss';
-import International from '../International';
+import { useDispatch } from 'react-redux';
+import { InjectedIntlProps, injectIntl } from 'react-intl';
+// noinspection ES6PreferShortImport
+import { addToastAction } from '../../Store/Action/ToastAction';
 
-export interface ISearchComponentProps {
-  addToastAction?: typeof addToastAction;
+export type SearchComponentProps = {
   autocompleteData?: string[] | number[] | { dataLabel: string, dataValue: string }[];
+  blurOnEsc?: boolean;
   centered?: boolean;
+  className?: string;
+  disabled?: boolean;
   focusInputOnAutocomplete?: boolean;
   focusInputOnClear?: boolean;
   forceNumericInput?: boolean;
@@ -20,98 +22,113 @@ export interface ISearchComponentProps {
   labelTranslationId?: string;
   onChange?: (value: string) => void;
   onClear?: () => void;
-  onSearch: (props: ISearchComponentProps, state: ISearchComponentState) => void;
+  onRefAvailable?: (ref) => void;
+  onSearch: (props: SearchComponentProps, state: SearchComponentState) => void;
   placeholderTranslationId: string;
   searchOnAutocomplete?: boolean;
   style?: React.CSSProperties;
-  className?: string;
   value?: string;
-  disabled?: boolean;
 }
 
-export interface ISearchComponentState {
+export type SearchComponentState = {
   value?: string;
   inputFocused?: boolean;
 }
 
-class SearchComponent extends React.Component<ISearchComponentProps, ISearchComponentState> {
-  state: ISearchComponentState = { inputFocused: false };
-  static defaultProps = {
-    autocompleteData: [],
-    focusInputOnAutocomplete: false,
-    focusInputOnClear: true,
-    forceNumericInput: false,
-    searchOnAutocomplete: true,
-    value: '',
-    disabled: false,
-  };
+const SearchComponent: React.FC<SearchComponentProps & InjectedIntlProps> = injectIntl(
+  ({
+     intl,
+     autocompleteData = [],
+     blurOnEsc = true,
+     centered,
+     className,
+     disabled = false,
+     focusInputOnAutocomplete = false,
+     focusInputOnClear = true,
+     forceNumericInput = false,
+     id,
+     indicateSearchProgress,
+     labelTranslationId,
+     onChange,
+     onClear,
+     onRefAvailable,
+     onSearch,
+     placeholderTranslationId,
+     searchOnAutocomplete = true,
+     style,
+     value = '',
+   }) => {
+    const fM = id => intl.formatMessage({ id });
 
-  constructor(props) {
-    super(props);
-    this.state = {value: this.props.value ? this.props.value : ''};
-  }
+    const [internValue, setInternValue] = useState<string>('');
+    const [inputFocused, setInputFocused] = useState<boolean>(false);
 
-  handleChange = (value: string) => {
-    if (this.props.forceNumericInput) {
-      value = value
-        .toString()
-        .match(/^(\d*)/)[0]
-        .toString();
-    }
-    if (this.props.onChange) {
-      this.props.onChange(value);
-    }
-    this.setState({value});
-  };
+    useEffect(() => setInternValue(value), [value]);
 
-  handleKeyDown = e => {
-    switch (e.keyCode) {
-      case 13: /* Return */
-        this.handleSearch();
-        break;
-      case 27: /* ESC */
-        document.getElementById(this.props.id).blur();
-        break;
-      default:
-        break;
-    }
-  };
+    const dispatch = useDispatch();
+    const ref = useRef(null);
 
-  handleAutocomplete = (v) => {
-    const {searchOnAutocomplete} = this.props;
-    this.setState({value: v});
-    if (searchOnAutocomplete) {
-      this.handleSearch(v);
-    }
-  };
+    useEffect(() => {
+      if (!!ref) {
+        onRefAvailable?.(ref)
+      }
+    }, [ref]);
 
-  handleSearch = (value?: string) => {
-    value = value == undefined ? this.state.value : value;
-    if (value == '') {
-      document.getElementById(this.props.id).focus();
-      this.props.addToastAction({contentTranslationId: 'app.enterSearchValue'});
-      return;
-    }
-    this.props.onSearch(this.props, {...this.state, value});
-  };
-
-  handleClear = () => {
-    const { focusInputOnClear, id } = this.props;
-    if (focusInputOnClear) {
-      document.getElementById(`${id}-autocomplete`).focus();
-    }
-    this.setState({ value: '' });
-    if (this.props.onClear) {
-      this.props.onClear();
-    }
-  };
-
-  render() {
-    const {
-      id, style, className, placeholderTranslationId, autocompleteData, indicateSearchProgress,
-      labelTranslationId, focusInputOnAutocomplete, searchOnAutocomplete, disabled
-    } = this.props;
     const menuId = `${id}Menu`;
+
+    const handleChange = (value: string) => {
+      if (forceNumericInput) {
+        value = value.toString().match(/^(\d*)/)[0].toString();
+      }
+      setInternValue(value);
+      onChange?.(value);
+    };
+
+    const handleKeyDown = e => {
+      switch (e.keyCode) {
+        case 13: /* Return */
+          handleSearch(internValue);
+          break;
+        case 27: /* ESC */
+          if (blurOnEsc) {
+            ref?.current?._field?.blur();
+          }
+          break;
+        default:
+          break;
+      }
+    };
+
+    const handleAutocomplete = (value: string) => {
+      setInternValue(value)
+      if (searchOnAutocomplete) {
+        handleSearch(value);
+      }
+    };
+
+    const handleSearch = (value: string) => {
+      if (!value) {
+        ref?.current?._field?.focus();
+        dispatch(addToastAction({ contentTranslationId: 'app.enterSearchValue' }));
+        return;
+      }
+      onSearch({
+          autocompleteData, centered, className, disabled, focusInputOnAutocomplete, focusInputOnClear,
+          forceNumericInput, id, indicateSearchProgress, labelTranslationId, onChange, onClear, onSearch,
+          placeholderTranslationId, searchOnAutocomplete, style, value,
+        },
+        { inputFocused, value: internValue }
+      );
+    };
+
+    const handleClear = () => {
+      if (focusInputOnClear) {
+        ref?.current?._field?.focus();
+      }
+      setInternValue('');
+      onClear?.();
+    };
+
     return (
       <div
         id={id}
@@ -119,70 +136,48 @@ class SearchComponent extends React.Component<ISearchComponentProps, ISearchComp
         className={[
           'search-component md-text-field-icon-container',
           disabled ? 'search-component--disabled' : undefined,
-          this.state.inputFocused ? 'search-component--focused' : undefined,
+          inputFocused ? 'search-component--focused' : undefined,
           className
         ].join(' ')}>
         <div className='icon-view-box'>
           {
             indicateSearchProgress
-              ? (
-                <CircularProgress
-                  id={`${id}SearchProgress`}
-                  className='search-progress'/>
-              )
-              : (
-                <Button
-                  icon
-                  className='search-component-search-btn'
-                  onClick={() => this.handleSearch()}
-                  disabled={indicateSearchProgress || disabled}>
-                  search
-                </Button>
-              )
+              ? <CircularProgress id={`${id}SearchProgress`} className='search-progress'/>
+              : <Button icon
+                        className='search-component-search-btn'
+                        onClick={() => handleSearch(internValue)}
+                        disabled={indicateSearchProgress || disabled}>
+                search
+              </Button>
           }
         </div>
-        <International>
-          {({ formatMessage }) => (
-            <Autocomplete
-              id={`${id}-autocomplete`}
-              data={autocompleteData}
-              focusInputOnAutocomplete={focusInputOnAutocomplete && !searchOnAutocomplete}
-              inputClassName={`search ${this.state.value != '' && 'search-active' || ''}`}
-              label={labelTranslationId ? formatMessage({ id: labelTranslationId }) : null}
-              menuId={menuId}
-              onAutocomplete={this.handleAutocomplete}
-              onChange={this.handleChange}
-              onKeyDown={this.handleKeyDown}
-              placeholder={placeholderTranslationId ? formatMessage({ id: placeholderTranslationId }) : null}
-              textFieldClassName={'md-text-field-icon'}
-              disabled={disabled}
-              value={this.state.value}
-              onFocus={() => this.setState({ inputFocused: true })}
-              onBlur={() => this.setState({ inputFocused: false })}
-            />
-          )}
-        </International>
+        <Autocomplete
+          id={`${id}-autocomplete`}
+          ref={ref}
+          data={autocompleteData}
+          focusInputOnAutocomplete={focusInputOnAutocomplete && !searchOnAutocomplete}
+          inputClassName={`search ${internValue != '' && 'search-active' || ''}`}
+          label={labelTranslationId ? fM(labelTranslationId) : null}
+          menuId={menuId}
+          onAutocomplete={value => handleAutocomplete(value as string)}
+          onChange={value => handleChange(value)}
+          onKeyDown={event => handleKeyDown(event)}
+          placeholder={placeholderTranslationId ? fM(placeholderTranslationId) : null}
+          textFieldClassName={'md-text-field-icon'}
+          disabled={disabled}
+          value={internValue}
+          onFocus={() => setInputFocused(true)}
+          onBlur={() => setInputFocused(false)}
+        />
         <Button
           icon
-          className={`clear-btn ${this.state.value != '' ? 'visible' : ''}`}
+          className={`clear-btn ${internValue != '' ? 'visible' : ''}`}
           disabled={disabled}
-          onClick={this.handleClear}
+          onClick={handleClear}
         >clear</Button>
       </div>
     );
   }
-}
+)
 
-// higher order components -----------------------------------------------------
-const mapStateToProps = (
-  state: Global.State,
-  ownProps: ISearchComponentProps
-): ISearchComponentProps => ({
-  ...state.Core.Toast,
-  ...ownProps
-});
-
-const enhance = connect(mapStateToProps, {addToastAction});
-
-// noinspection JSUnusedGlobalSymbols
-export default enhance(SearchComponent);
+export default SearchComponent;

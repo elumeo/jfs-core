@@ -1332,7 +1332,7 @@
         "affectsGlobalScope": false
       },
       "../src/component/datepicker/index.tsx": {
-        "version": "1275cb7acdae6064b527283811dd49f25f6c887b7bcc6fea9ff92f2ce4d773de",
+        "version": "182cb3c3ca833361e0df258691cb3e1e2ddd3b7d0132ea9b34f954d60b0a94c6",
         "signature": "78d52b142d5c63a118ecc118a63ed4daa19af8d6314c780bcb6c0bf8cf77fb2d",
         "affectsGlobalScope": false
       },
@@ -2092,8 +2092,8 @@
         "affectsGlobalScope": false
       },
       "../src/component/search/searchcomponent.tsx": {
-        "version": "8b6db4b790def15e58a2df5cf0a9bd8b8e92b0e97bc2ded26aee6636756487da",
-        "signature": "d101b3d9b1ebb8b90b3c74a365b13cb3a51fd2b082dd96f7e1cc6a9b86cf13ba",
+        "version": "87db591e6487ea98d1ca8b9bc7d586c45219407e0499d9be245caa41a2a9f3a3",
+        "signature": "6c352b27eeda95bb1b20649f9c04840e35c3c1ebc8952c65261c29c101d75add",
         "affectsGlobalScope": false
       },
       "../src/component/settings/languagesettings.tsx": {
@@ -6882,15 +6882,14 @@
       "../src/component/search/searchcomponent.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react-intl/index.d.ts",
         "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/autocompletes/autocomplete.d.ts",
         "../node_modules/react-md/lib/buttons/button.d.ts",
         "../node_modules/react-md/lib/progress/circularprogress.d.ts",
-        "../src/component/international/index.tsx",
-        "../src/store/action/toastaction.ts",
-        "../src/store/reducer/global.ts"
+        "../src/store/action/toastaction.ts"
       ],
       "../src/component/settings/languagesettings.tsx": [
         "../node_modules/@types/node/base.d.ts",
@@ -11153,9 +11152,8 @@
         "../src/component/route/baseroute.tsx"
       ],
       "../src/component/search/searchcomponent.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/toastaction.ts"
+        "../node_modules/@types/react-intl/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/settings/languagesettings.tsx": [
         "../node_modules/@types/react/index.d.ts"

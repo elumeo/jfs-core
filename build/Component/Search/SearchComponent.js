@@ -1,95 +1,85 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useRef, useState } from 'react';
 import Button from 'react-md/lib/Buttons/Button';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
-import { addToastAction } from '../../Store/Action/ToastAction';
 import './SearchComponent.scss';
-import International from '../International';
-class SearchComponent extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { inputFocused: false };
-        this.handleChange = (value) => {
-            if (this.props.forceNumericInput) {
-                value = value
-                    .toString()
-                    .match(/^(\d*)/)[0]
-                    .toString();
-            }
-            if (this.props.onChange) {
-                this.props.onChange(value);
-            }
-            this.setState({ value });
-        };
-        this.handleKeyDown = e => {
-            switch (e.keyCode) {
-                case 13: /* Return */
-                    this.handleSearch();
-                    break;
-                case 27: /* ESC */
-                    document.getElementById(this.props.id).blur();
-                    break;
-                default:
-                    break;
-            }
-        };
-        this.handleAutocomplete = (v) => {
-            const { searchOnAutocomplete } = this.props;
-            this.setState({ value: v });
-            if (searchOnAutocomplete) {
-                this.handleSearch(v);
-            }
-        };
-        this.handleSearch = (value) => {
-            value = value == undefined ? this.state.value : value;
-            if (value == '') {
-                document.getElementById(this.props.id).focus();
-                this.props.addToastAction({ contentTranslationId: 'app.enterSearchValue' });
-                return;
-            }
-            this.props.onSearch(this.props, Object.assign(Object.assign({}, this.state), { value }));
-        };
-        this.handleClear = () => {
-            const { focusInputOnClear, id } = this.props;
-            if (focusInputOnClear) {
-                document.getElementById(`${id}-autocomplete`).focus();
-            }
-            this.setState({ value: '' });
-            if (this.props.onClear) {
-                this.props.onClear();
-            }
-        };
-        this.state = { value: this.props.value ? this.props.value : '' };
-    }
-    render() {
-        const { id, style, className, placeholderTranslationId, autocompleteData, indicateSearchProgress, labelTranslationId, focusInputOnAutocomplete, searchOnAutocomplete, disabled } = this.props;
-        const menuId = `${id}Menu`;
-        return (React.createElement("div", { id: id, style: style, className: [
-                'search-component md-text-field-icon-container',
-                disabled ? 'search-component--disabled' : undefined,
-                this.state.inputFocused ? 'search-component--focused' : undefined,
-                className
-            ].join(' ') },
-            React.createElement("div", { className: 'icon-view-box' }, indicateSearchProgress
-                ? (React.createElement(CircularProgress, { id: `${id}SearchProgress`, className: 'search-progress' }))
-                : (React.createElement(Button, { icon: true, className: 'search-component-search-btn', onClick: () => this.handleSearch(), disabled: indicateSearchProgress || disabled }, "search"))),
-            React.createElement(International, null, ({ formatMessage }) => (React.createElement(Autocomplete, { id: `${id}-autocomplete`, data: autocompleteData, focusInputOnAutocomplete: focusInputOnAutocomplete && !searchOnAutocomplete, inputClassName: `search ${this.state.value != '' && 'search-active' || ''}`, label: labelTranslationId ? formatMessage({ id: labelTranslationId }) : null, menuId: menuId, onAutocomplete: this.handleAutocomplete, onChange: this.handleChange, onKeyDown: this.handleKeyDown, placeholder: placeholderTranslationId ? formatMessage({ id: placeholderTranslationId }) : null, textFieldClassName: 'md-text-field-icon', disabled: disabled, value: this.state.value, onFocus: () => this.setState({ inputFocused: true }), onBlur: () => this.setState({ inputFocused: false }) }))),
-            React.createElement(Button, { icon: true, className: `clear-btn ${this.state.value != '' ? 'visible' : ''}`, disabled: disabled, onClick: this.handleClear }, "clear")));
-    }
-}
-SearchComponent.defaultProps = {
-    autocompleteData: [],
-    focusInputOnAutocomplete: false,
-    focusInputOnClear: true,
-    forceNumericInput: false,
-    searchOnAutocomplete: true,
-    value: '',
-    disabled: false,
-};
-// higher order components -----------------------------------------------------
-const mapStateToProps = (state, ownProps) => (Object.assign(Object.assign({}, state.Core.Toast), ownProps));
-const enhance = connect(mapStateToProps, { addToastAction });
-// noinspection JSUnusedGlobalSymbols
-export default enhance(SearchComponent);
+import { useDispatch } from 'react-redux';
+import { injectIntl } from 'react-intl';
+// noinspection ES6PreferShortImport
+import { addToastAction } from '../../Store/Action/ToastAction';
+const SearchComponent = injectIntl(({ intl, autocompleteData = [], blurOnEsc = true, centered, className, disabled = false, focusInputOnAutocomplete = false, focusInputOnClear = true, forceNumericInput = false, id, indicateSearchProgress, labelTranslationId, onChange, onClear, onRefAvailable, onSearch, placeholderTranslationId, searchOnAutocomplete = true, style, value = '', }) => {
+    const fM = id => intl.formatMessage({ id });
+    const [internValue, setInternValue] = useState('');
+    const [inputFocused, setInputFocused] = useState(false);
+    useEffect(() => setInternValue(value), [value]);
+    const dispatch = useDispatch();
+    const ref = useRef(null);
+    useEffect(() => {
+        if (!!ref) {
+            onRefAvailable === null || onRefAvailable === void 0 ? void 0 : onRefAvailable(ref);
+        }
+    }, [ref]);
+    const menuId = `${id}Menu`;
+    const handleChange = (value) => {
+        if (forceNumericInput) {
+            value = value.toString().match(/^(\d*)/)[0].toString();
+        }
+        setInternValue(value);
+        onChange === null || onChange === void 0 ? void 0 : onChange(value);
+    };
+    const handleKeyDown = e => {
+        var _a, _b;
+        switch (e.keyCode) {
+            case 13: /* Return */
+                handleSearch(internValue);
+                break;
+            case 27: /* ESC */
+                if (blurOnEsc) {
+                    (_b = (_a = ref === null || ref === void 0 ? void 0 : ref.current) === null || _a === void 0 ? void 0 : _a._field) === null || _b === void 0 ? void 0 : _b.blur();
+                }
+                break;
+            default:
+                break;
+        }
+    };
+    const handleAutocomplete = (value) => {
+        setInternValue(value);
+        if (searchOnAutocomplete) {
+            handleSearch(value);
+        }
+    };
+    const handleSearch = (value) => {
+        var _a, _b;
+        if (!value) {
+            (_b = (_a = ref === null || ref === void 0 ? void 0 : ref.current) === null || _a === void 0 ? void 0 : _a._field) === null || _b === void 0 ? void 0 : _b.focus();
+            dispatch(addToastAction({ contentTranslationId: 'app.enterSearchValue' }));
+            return;
+        }
+        onSearch({
+            autocompleteData, centered, className, disabled, focusInputOnAutocomplete, focusInputOnClear,
+            forceNumericInput, id, indicateSearchProgress, labelTranslationId, onChange, onClear, onSearch,
+            placeholderTranslationId, searchOnAutocomplete, style, value,
+        }, { inputFocused, value: internValue });
+    };
+    const handleClear = () => {
+        var _a, _b;
+        if (focusInputOnClear) {
+            (_b = (_a = ref === null || ref === void 0 ? void 0 : ref.current) === null || _a === void 0 ? void 0 : _a._field) === null || _b === void 0 ? void 0 : _b.focus();
+        }
+        setInternValue('');
+        onClear === null || onClear === void 0 ? void 0 : onClear();
+    };
+    return (React.createElement("div", { id: id, style: style, className: [
+            'search-component md-text-field-icon-container',
+            disabled ? 'search-component--disabled' : undefined,
+            inputFocused ? 'search-component--focused' : undefined,
+            className
+        ].join(' ') },
+        React.createElement("div", { className: 'icon-view-box' }, indicateSearchProgress
+            ? React.createElement(CircularProgress, { id: `${id}SearchProgress`, className: 'search-progress' })
+            : React.createElement(Button, { icon: true, className: 'search-component-search-btn', onClick: () => handleSearch(internValue), disabled: indicateSearchProgress || disabled }, "search")),
+        React.createElement(Autocomplete, { id: `${id}-autocomplete`, ref: ref, data: autocompleteData, focusInputOnAutocomplete: focusInputOnAutocomplete && !searchOnAutocomplete, inputClassName: `search ${internValue != '' && 'search-active' || ''}`, label: labelTranslationId ? fM(labelTranslationId) : null, menuId: menuId, onAutocomplete: value => handleAutocomplete(value), onChange: value => handleChange(value), onKeyDown: event => handleKeyDown(event), placeholder: placeholderTranslationId ? fM(placeholderTranslationId) : null, textFieldClassName: 'md-text-field-icon', disabled: disabled, value: internValue, onFocus: () => setInputFocused(true), onBlur: () => setInputFocused(false) }),
+        React.createElement(Button, { icon: true, className: `clear-btn ${internValue != '' ? 'visible' : ''}`, disabled: disabled, onClick: handleClear }, "clear")));
+});
+export default SearchComponent;
 //# sourceMappingURL=SearchComponent.js.map

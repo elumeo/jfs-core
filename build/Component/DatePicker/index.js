@@ -46,9 +46,10 @@ const DatePicker = (_a) => {
     useEffect(() => {
         var _a;
         (_a = document.getElementById(customClearButtonId)) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
+            var _a;
             // The clear method does exists => its just not in the typing
             // @ts-ignore
-            datePickerRef.current.clear();
+            (_a = datePickerRef.current) === null || _a === void 0 ? void 0 : _a.clear();
         });
         const input = getInput();
         if (input !== undefined) {
