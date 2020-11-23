@@ -1,6 +1,12 @@
+## [9.10.5] 2020-11-23
+## Fixed
+- fix for clear button for react date picker component
+## Changed
+- Updated react date picker version
+
 ## [9.10.4] 2020-11-13
 ## Changed
-- The Notification spam prevention will now display the new, duplicate Notification and hide the existing one, instead.   
+- The Notification spam prevention will now display the new, duplicate Notification and hide the existing one, instead.
 
 ## [9.10.3] 2020-11-10
 ## Fixed
