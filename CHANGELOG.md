@@ -1,3 +1,7 @@
+## [9.10.6] 2020-11-23
+## Fixed
+- fix for clear button for react date picker component
+
 ## [9.10.5] 2020-11-23
 ## Fixed
 - fix for clear button for react date picker component

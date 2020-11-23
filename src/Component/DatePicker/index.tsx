@@ -63,9 +63,11 @@ const DatePicker: React.FC<DatePicker.Props> = ({
 
   useEffect(() => {
     document.getElementById(customClearButtonId)?.addEventListener('click', () => {
-      // The clear method does exists => its just not in the typing
-      // @ts-ignore
-      datePickerRef.current?.clear();
+      if (datePickerRef.current !== null) {
+        // The clear method does exists => its just not in the typing
+        // @ts-ignore
+        datePickerRef.current.clear();
+      }
     });
     const input = getInput();
     if (input !== undefined) {
