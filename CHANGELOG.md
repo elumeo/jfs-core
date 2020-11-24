@@ -1,6 +1,11 @@
-## [9.10.7] 2020-11-24
+## [9.10.8] 2020-11-24
 ## Fixed
 - forgot to run `npm run build` in version `9.10.6` and did it now
+
+## [9.10.7] 2020-11-23
+## Changed
+- core SearchComponent (not to be confused with jfc_SearchComponent) became a functional component.
+It's internal HtmlInputElement is now accessible using the onRefAvailable callback. 
 
 ## [9.10.6] 2020-11-23
 ## Fixed
