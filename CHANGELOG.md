@@ -1,3 +1,7 @@
+## [9.10.7] 2020-11-24
+## Fixed
+- forgot to run `npm run build` in version `9.10.6` and did it now
+
 ## [9.10.6] 2020-11-23
 ## Fixed
 - fix for clear button for react date picker component
