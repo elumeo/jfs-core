@@ -2,6 +2,7 @@ import { List } from 'immutable';
 export interface IToastConfig {
     contentMessage?: string | null;
     contentTranslationId?: string | null;
+    contentTranslationValues?: {};
     contentError?: any | null;
     isError?: boolean;
     isSuccess?: boolean;

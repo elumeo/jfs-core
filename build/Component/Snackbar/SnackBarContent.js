@@ -1,11 +1,11 @@
 import React from 'react';
 import ErrorContent, { errorText } from './ErrorContent';
 import { timeToRead } from './TimeToRead';
-export default (toast, formatMessage) => {
-    const { contentTranslationId, contentMessage, contentError } = toast;
+export default (toast, intl) => {
+    const { contentTranslationId, contentTranslationValues, contentMessage, contentError } = toast;
     let text, toastContent;
     if (contentTranslationId) {
-        text = formatMessage({ id: contentTranslationId }, Object.assign({}, toast));
+        text = intl.formatMessage({ id: contentTranslationId }, Object.assign(Object.assign({}, toast), contentTranslationValues));
         toastContent = text;
     }
     else if (contentMessage) {
@@ -14,7 +14,7 @@ export default (toast, formatMessage) => {
     }
     else {
         const { body, head } = errorText(contentError);
-        text = `${formatMessage({ id: 'app.error' })}: ${body} ${head}`;
+        text = `${intl.formatMessage({ id: 'app.error' })}: ${body} ${head}`;
         toastContent = (React.createElement(ErrorContent, { contentError: contentError }));
     }
     return {

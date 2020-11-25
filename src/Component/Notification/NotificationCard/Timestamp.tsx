@@ -1,7 +1,6 @@
 import React from 'react';
 import { INotification } from 'Types/Notification';
 import Format from 'Utilities/Format';
-import { timeToRead as _timeToRead } from 'Component/Snackbar/TimeToRead';
 
 export type Props = {
   timestamp: INotification['timestamp']

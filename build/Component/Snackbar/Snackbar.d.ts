@@ -1,3 +1,4 @@
 import * as React from 'react';
-declare const AppSnackBar: React.FC;
+import { InjectedIntlProps } from 'react-intl';
+declare const AppSnackBar: React.FC<InjectedIntlProps>;
 export default AppSnackBar;

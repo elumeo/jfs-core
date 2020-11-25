@@ -5,6 +5,7 @@ import { addToastAction, dismissToastAction, } from 'Action/ToastAction';
 export interface IToastConfig {
   contentMessage?: string | null;
   contentTranslationId?: string | null;
+  contentTranslationValues?: {};
   contentError?: any | null;
   isError?: boolean;
   isSuccess?: boolean;

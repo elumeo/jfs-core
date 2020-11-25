@@ -1,5 +1,6 @@
 import { IToastConfig } from '../../Store/Reducer/Core/ToastReducer';
-declare const _default: (toast: IToastConfig, formatMessage: any) => {
+import { InjectedIntl } from 'react-intl';
+declare const _default: (toast: IToastConfig, intl: InjectedIntl) => {
     text: any;
     action: string;
     autohideTimeout: number;

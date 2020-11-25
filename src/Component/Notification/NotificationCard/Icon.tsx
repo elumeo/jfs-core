@@ -1,7 +1,6 @@
 import React from 'react';
 import FontIcon from 'react-md/lib/FontIcons/FontIcon';
 import { INotification } from 'Types/Notification';
-import { timeToRead as _timeToRead } from 'Component/Snackbar/TimeToRead';
 
 export type Props = {
   icon?: INotification['icon'];
