@@ -1,53 +1,99 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { connect } from 'react-redux';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import OutsideClickHandler from 'react-outside-click-handler';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
+import { InjectedIntl, injectIntl } from 'react-intl';
 
 import './Setup';
-import International from '../International';
-import Global from 'Store/Reducer/Global';
-import { LANGUAGE, DATE_FORMAT } from 'Types/Language';
+import { LANGUAGE } from 'Types/Language';
 import './_styles.scss'
+import { useSelector } from 'Types/Redux';
+import mapLanguageToDateFormat from './mapLanguageToDateFormat';
 
-const mapLanguageToDateFormat = (language: LANGUAGE) => {
-  switch (language) {
-    case LANGUAGE.GERMAN:
-      return DATE_FORMAT.DE;
-    case LANGUAGE.ENGLISH:
-      return DATE_FORMAT.EN;
-    case LANGUAGE.ITALIAN:
-      return DATE_FORMAT.IT;
-    default:
-      return DATE_FORMAT.DE;
+export type Props = ReactDatePickerProps & {
+  intl?: InjectedIntl;
+  label?: string;
+  customClearButtonId?: string;
+  value: Date;
+  state?: { language: string };
+  errorText?: string;
+  onChange: (
+    newDate: Date,
+    oldDate: Date,
+    event: (React.SyntheticEvent<any> | undefined)
+  ) => void;
+};
+
+const setActive = (domNode: HTMLElement, isActive: boolean) => {
+  if (domNode !== undefined) {
+    if (isActive) {
+      domNode.classList.add('is-active');
+    } else {
+      domNode.classList.remove('is-active');
+    }
   }
 }
 
-namespace DatePicker {
-  export type Props = {
-    label?: string;
-    customClearButtonId?: string;
-    value: Date;
-    state?: { language: string };
-    onChange: (newDate: Date, oldDate: Date, event: (React.SyntheticEvent<any> | undefined)) => void;
-  } & ReactDatePickerProps & InjectedIntlProps;
+const setHasValue = (domNode: HTMLElement, hasValue: boolean) => {
+  if (domNode !== undefined) {
+    if (hasValue) {
+      domNode.classList.add('has-value');
+    } else {
+      domNode.classList.remove('has-value');
+    }
+  }
 }
 
-const DatePicker: React.FC<DatePicker.Props> = ({
-                                                  label,
-                                                  customClearButtonId,
-                                                  dateFormat,
-                                                  value,
-                                                  onChange,
-                                                  intl: {formatMessage},
-                                                  state: {language},
-                                                  ...rest
-                                                }) => {
+const setError = (domNode: HTMLElement, error: boolean) => {
+  if (domNode !== undefined) {
+    if (error && !domNode.classList.contains('error')) {
+      domNode.classList.add('error');
+    }
+    else if (!error && domNode.classList.contains('error')) {
+      domNode.classList.remove('error');
+    }
+  }
+}
+
+const DatePicker: React.FC<Props> = ({
+  label,
+  customClearButtonId,
+  dateFormat,
+  value,
+  onChange,
+  errorText,
+  intl: {formatMessage},
+  ...rest
+}) => {
+  const language = useSelector(state => state.Core.Language.language);
   const [date, setDate] = useState<Date>(value);
   const [open, setOpen] = useState(false);
   const [id] = useState(Math.floor(Math.random() * 100));
   const datePickerRef = useRef<ReactDatePicker>();
+
+  const getInput = () => {
+    // The clear method does exists => its just not in the typing
+    // @ts-ignore
+    return datePickerRef.current?.input as HTMLInputElement;
+  };
+
+  const getInputParent = () => {
+    const input = getInput();
+    if (input) {
+      return input.parentElement;
+    }
+    return undefined;
+  };
+
+  useEffect(
+    () => {
+      const parent = getInputParent();
+      if (parent) {
+        setError(parent, Boolean(errorText));
+      }
+    },
+    [errorText || '']
+  );
 
   useEffect(
     () => {
@@ -61,130 +107,116 @@ const DatePicker: React.FC<DatePicker.Props> = ({
     }
   );
 
-  useEffect(() => {
-    document.getElementById(customClearButtonId)?.addEventListener('click', () => {
-      if (datePickerRef.current !== null) {
-        // The clear method does exists => its just not in the typing
-        // @ts-ignore
-        datePickerRef.current.clear();
+  useEffect(
+    () => {
+      if (value && document.getElementById(id.toString()).parentNode) {
+        setHasValue(
+          document.getElementById(id.toString()).parentNode as HTMLElement,
+          true
+        );
       }
-    });
-    const input = getInput();
-    if (input !== undefined) {
-      input.addEventListener('keydown', _handleKeyupEventOnCustomInputField);
-      input.addEventListener('blur', _handleBlurEventOnCustomInputField);
-    }
-    const inputParent = getInputParent();
-    if (inputParent !== undefined) {
-      const finalLabel = label !== null ? label : formatMessage({id: 'form.datePicker.label'});
-      inputParent.setAttribute('data-label', finalLabel);
-    }
-  }, []);
+    },
+    [document.getElementById(id.toString())]
+  );
 
-  const _handleKeyupEventOnCustomInputField = (e: KeyboardEvent) => {
-    const input = getInput();
-    if (document.activeElement.id === input.id && e.keyCode === 9 && e.shiftKey) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  };
-
-  const _handleBlurEventOnCustomInputField = () => {
-    checkRawHasValue();
-    if (datePickerRef.current.isCalendarOpen() === false) {
-      setActive(false);
-    }
-  };
-
-  const checkRawHasValue = () => {
-    const input = getInput();
-    if (input !== undefined) {
-      if (input.value === '') {
-        setHasValue(false);
-      } else {
-        setHasValue(true);
+  useEffect(
+    () => {
+      document.getElementById(customClearButtonId)
+        ?.addEventListener('click', () => {
+          if (datePickerRef.current !== null) {
+            // The clear method does exists => its just not in the typing
+            // @ts-ignore
+            datePickerRef.current.clear();
+          }
+        });
+      const input = getInput();
+      if (input) {
+        input.addEventListener('keydown', (e: KeyboardEvent) => {
+          const input = getInput();
+          if (
+            document.activeElement.id === input.id &&
+            e.keyCode === 9 &&
+            e.shiftKey
+          ) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        });
+        input.addEventListener('blur', () => {
+          const input = getInput();
+          if (input) {
+            if (input.value === '') {
+              setHasValue(getInputParent(), false);
+            } else {
+              setHasValue(getInputParent(), true);
+            }
+          }
+          if (datePickerRef.current.isCalendarOpen() === false) {
+            setActive(getInputParent(), false);
+          }
+        });
       }
-    }
-  }
-
-  const setHasValue = (hasValue: boolean) => {
-    const inputParent = getInputParent();
-    if (inputParent !== undefined) {
-      if (hasValue) {
-        inputParent.classList.add('has-value');
-      } else {
-        inputParent.classList.remove('has-value');
+      const inputParent = getInputParent();
+      if (inputParent !== undefined) {
+        const finalLabel = (
+          label !== null
+            ? label
+            : formatMessage({id: 'form.datePicker.label'})
+        );
+        inputParent.setAttribute('data-label', finalLabel);
       }
-    }
-  }
-
-  const setActive = (isActive: boolean) => {
-    const inputParent = getInputParent();
-    if (inputParent !== undefined) {
-      if (isActive) {
-        inputParent.classList.add('is-active');
-      } else {
-        inputParent.classList.remove('is-active');
-      }
-    }
-  }
-
-  const getInput = () => {
-    // The clear method does exists => its just not in the typing
-    // @ts-ignore
-    return datePickerRef.current.input as HTMLInputElement;
-  };
-
-  const getInputParent = () => {
-    const input = getInput();
-    if (input !== undefined) {
-      return input.parentElement;
-    }
-    return undefined;
-  };
+    },
+    []
+  );
 
   return (
-    <International>
-      {() => (
-        <OutsideClickHandler onOutsideClick={() => setOpen(false)}>
-          <ReactDatePicker
-            {...rest}
-            ref={datePickerRef}
-            selected={date}
-            onChange={(newDate, event) => {
-              setHasValue(newDate !== null);
-              setDate(newDate as Date);
-              onChange(newDate as Date, date, event);
-              if (datePickerRef.current.props.shouldCloseOnSelect) {
-                setOpen(false);
-              }
-            }}
-            onCalendarOpen={() => {
-              setActive(true);
-              // addEventListenerToCustomInputField();
-            }}
-            onCalendarClose={() => {
-              setActive(false);
-              // removeEventListenerToCustomInputField();
-            }}
-            dateFormat={dateFormat || mapLanguageToDateFormat(
-              language as LANGUAGE
-            )}
-            locale='de'
-            open={open}
-            id={id.toString()}
-            customInput={<input className='md-full-width md-text md-text-field customDatePickerInputField'/>}/>
-        </OutsideClickHandler>
-      )}
-    </International>
+    <OutsideClickHandler onOutsideClick={() => setOpen(false)}>
+      <span>
+        <ReactDatePicker
+          {...rest}
+          ref={datePickerRef}
+          selected={date}
+          onChange={(newDate, event) => {
+            setHasValue(getInputParent(), newDate !== null);
+            setDate(newDate as Date);
+            onChange(newDate as Date, date, event);
+            if (datePickerRef.current.props.shouldCloseOnSelect) {
+              setOpen(false);
+            }
+          }}
+          onCalendarOpen={() => {
+            setActive(getInputParent(), true);
+          }}
+          onCalendarClose={() => {
+            setActive(getInputParent(), false);
+          }}
+          dateFormat={dateFormat || mapLanguageToDateFormat(
+            language as LANGUAGE
+          )}
+          locale='de'
+          open={open}
+          id={id.toString()}
+          customInput={
+            <input
+              className={[
+                'md-full-width',
+                'md-text',
+                'md-text-field',
+                'customDatePickerInputField'
+              ].join(' ')}/>
+          }/>
+        {errorText && (
+          <div
+            className='md-text-field-message-container md-full-width'
+            style={{color: 'rgb(183, 28, 28)'}}>
+            {errorText}
+          </div>
+        )}
+      </span>
+    </OutsideClickHandler>
   );
 }
 
-const enhance = connect(
-  (state: Global.State, ownProps: DatePicker.Props): DatePicker.Props => ({
-    ...ownProps,
-    state: state.Core.Language
-  })
-);
+const enhance = injectIntl;
 
-export default injectIntl(enhance(DatePicker));
+export default enhance(DatePicker);

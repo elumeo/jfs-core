@@ -1,3 +1,7 @@
+## [9.10.10] 2020-11-30
+## Fixed
+- fixed view of <ReactDatePicker/>
+
 ## [9.10.9] 2020-11-26
 ## Added
 - contentTranslationValues to IToastConfig
@@ -9,7 +13,7 @@
 ## [9.10.7] 2020-11-23
 ## Changed
 - core SearchComponent (not to be confused with jfc_SearchComponent) became a functional component.
-It's internal HtmlInputElement is now accessible using the onRefAvailable callback. 
+It's internal HtmlInputElement is now accessible using the onRefAvailable callback.
 
 ## [9.10.6] 2020-11-23
 ## Fixed

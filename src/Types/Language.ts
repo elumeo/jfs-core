@@ -7,10 +7,10 @@ export enum LANGUAGE {
 };
 
 export enum DATE_FORMAT {
-  DE = 'dd.MM.yy',
-  EN = 'dd/MM/yy',
-  ES = 'dd/MM/yy',
-  FR = 'dd/MM/yy',
-  NL = 'dd-MM-yy',
-  IT = 'dd/MM/yy'
+  DE = 'dd.MM.yyyy',
+  EN = 'dd/MM/yyyy',
+  ES = 'dd/MM/yyyy',
+  FR = 'dd/MM/yyyy',
+  NL = 'dd-MM-yyyy',
+  IT = 'dd/MM/yyyy'
 }

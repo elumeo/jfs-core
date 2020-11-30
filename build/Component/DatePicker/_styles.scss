@@ -47,6 +47,15 @@
     }
   }
 
+  &.error {
+    &::before {
+      color: colors.$juw-error-color;
+    }
+    &::after {
+      
+    }
+  }
+
   &:after {
     margin: 8px 0 4px 0;
     content: '';
