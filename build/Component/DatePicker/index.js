@@ -48,8 +48,18 @@ const setError = (domNode, error) => {
         }
     }
 };
+const setFloating = (domNode, floating) => {
+    if (domNode !== undefined) {
+        if (floating && !domNode.classList.contains('floating')) {
+            domNode.classList.add('floating');
+        }
+        else if (!floating && domNode.classList.contains('floating')) {
+            domNode.classList.remove('floating');
+        }
+    }
+};
 const DatePicker = (_a) => {
-    var { label, customClearButtonId, dateFormat, value, onChange, errorText, intl: { formatMessage } } = _a, rest = __rest(_a, ["label", "customClearButtonId", "dateFormat", "value", "onChange", "errorText", "intl"]);
+    var { label, customClearButtonId, dateFormat, value, onChange, errorText, floating, intl: { formatMessage } } = _a, rest = __rest(_a, ["label", "customClearButtonId", "dateFormat", "value", "onChange", "errorText", "floating", "intl"]);
     const language = useSelector(state => state.Core.Language.language);
     const [date, setDate] = useState(value);
     const [open, setOpen] = useState(false);
@@ -72,6 +82,7 @@ const DatePicker = (_a) => {
         const parent = getInputParent();
         if (parent) {
             setError(parent, Boolean(errorText));
+            setFloating(parent, floating);
         }
     }, [errorText || '']);
     useEffect(() => {
@@ -108,7 +119,7 @@ const DatePicker = (_a) => {
             input.addEventListener('blur', () => {
                 const input = getInput();
                 if (input) {
-                    if (input.value === '') {
+                    if (input.value === '' && !floating) {
                         setHasValue(getInputParent(), false);
                     }
                     else {
@@ -131,7 +142,7 @@ const DatePicker = (_a) => {
     return (React.createElement(OutsideClickHandler, { onOutsideClick: () => setOpen(false) },
         React.createElement("span", null,
             React.createElement(ReactDatePicker, Object.assign({}, rest, { ref: datePickerRef, selected: date, onChange: (newDate, event) => {
-                    setHasValue(getInputParent(), newDate !== null);
+                    setHasValue(getInputParent(), newDate !== null || floating);
                     setDate(newDate);
                     onChange(newDate, date, event);
                     if (datePickerRef.current.props.shouldCloseOnSelect) {

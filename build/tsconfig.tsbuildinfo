@@ -1332,13 +1332,13 @@
         "affectsGlobalScope": false
       },
       "../src/component/datepicker/maplanguagetodateformat.ts": {
-        "version": "4f34cc9741e2c850403f7189ce23f8d180fe6fe053aca5b629a593a2fbccf099",
+        "version": "002eb7abd390ecbc88ae43c83139e0b6477e711fe51c10c85ceff707474da16b",
         "signature": "45ea98b9fac4e32ce36bfe8932aadd9a814b56a4a278b8c880af9fa32d779948",
         "affectsGlobalScope": false
       },
       "../src/component/datepicker/index.tsx": {
-        "version": "09c7d73d1fd094de295fb043dccda880e0489acff920be0033be38d9618737af",
-        "signature": "785490a2d5f662db837605c2102a31e39b45255ee078b9425313a44ca97768af",
+        "version": "1a769e170b53c5e543165d8010a1e0da6bfe0578e1620ae4c7cab7217d0af1ea",
+        "signature": "90e36ec962e71a5936178d8ffbd274448c547204fa90a2a4804ca1d5dc30bc43",
         "affectsGlobalScope": false
       },
       "../src/component/datepicker/usedomnode.ts": {

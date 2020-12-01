@@ -1,3 +1,7 @@
+## [9.10.12] 2020-12-01
+## Fixed
+- Added floating prop for <DatePicker/>
+
 ## [9.10.11] 2020-12-01
 ## Fixed
 - Adjustment for <DatePicker/> format/Color below input

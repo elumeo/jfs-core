@@ -13,6 +13,7 @@ export declare type Props = ReactDatePickerProps & {
         language: string;
     };
     errorText?: string;
+    floating?: boolean;
     onChange: (newDate: Date, oldDate: Date, event: (React.SyntheticEvent<any> | undefined)) => void;
 };
 declare const _default: React.FC<Props>;

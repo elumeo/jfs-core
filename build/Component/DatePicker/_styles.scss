@@ -41,7 +41,7 @@
     }
   }
 
-  &.is-active, &.has-value {
+  &.is-active, &.has-value, &.floating {
     &::before {
       transform: translate3d(0, 10px, 0);
     }

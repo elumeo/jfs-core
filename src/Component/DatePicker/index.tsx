@@ -17,6 +17,7 @@ export type Props = ReactDatePickerProps & {
   value: Date;
   state?: { language: string };
   errorText?: string;
+  floating?: boolean;
   onChange: (
     newDate: Date,
     oldDate: Date,
@@ -55,6 +56,17 @@ const setError = (domNode: HTMLElement, error: boolean) => {
   }
 }
 
+const setFloating = (domNode: HTMLElement, floating: boolean) => {
+  if (domNode !== undefined) {
+    if (floating && !domNode.classList.contains('floating')) {
+      domNode.classList.add('floating');
+    }
+    else if (!floating && domNode.classList.contains('floating')) {
+      domNode.classList.remove('floating');
+    }
+  }
+}
+
 const DatePicker: React.FC<Props> = ({
   label,
   customClearButtonId,
@@ -62,6 +74,7 @@ const DatePicker: React.FC<Props> = ({
   value,
   onChange,
   errorText,
+  floating,
   intl: {formatMessage},
   ...rest
 }) => {
@@ -90,6 +103,7 @@ const DatePicker: React.FC<Props> = ({
       const parent = getInputParent();
       if (parent) {
         setError(parent, Boolean(errorText));
+        setFloating(parent, floating);
       }
     },
     [errorText || '']
@@ -145,7 +159,7 @@ const DatePicker: React.FC<Props> = ({
         input.addEventListener('blur', () => {
           const input = getInput();
           if (input) {
-            if (input.value === '') {
+            if (input.value === '' && !floating) {
               setHasValue(getInputParent(), false);
             } else {
               setHasValue(getInputParent(), true);
@@ -177,7 +191,7 @@ const DatePicker: React.FC<Props> = ({
           ref={datePickerRef}
           selected={date}
           onChange={(newDate, event) => {
-            setHasValue(getInputParent(), newDate !== null);
+            setHasValue(getInputParent(), newDate !== null || floating);
             setDate(newDate as Date);
             onChange(newDate as Date, date, event);
             if (datePickerRef.current.props.shouldCloseOnSelect) {
