@@ -1,3 +1,7 @@
+## [9.10.11] 2020-12-01
+## Fixed
+- Adjustment for <DatePicker/> format/Color below input
+
 ## [9.10.10] 2020-11-30
 ## Fixed
 - fixed view of <ReactDatePicker/>

@@ -7,11 +7,11 @@ export var LANGUAGE;
 ;
 export var DATE_FORMAT;
 (function (DATE_FORMAT) {
-    DATE_FORMAT["DE"] = "dd.MM.yy";
-    DATE_FORMAT["EN"] = "dd/MM/yy";
-    DATE_FORMAT["ES"] = "dd/MM/yy";
-    DATE_FORMAT["FR"] = "dd/MM/yy";
-    DATE_FORMAT["NL"] = "dd-MM-yy";
-    DATE_FORMAT["IT"] = "dd/MM/yy";
+    DATE_FORMAT["DE"] = "dd.MM.yyyy";
+    DATE_FORMAT["EN"] = "dd/MM/yyyy";
+    DATE_FORMAT["ES"] = "dd/MM/yyyy";
+    DATE_FORMAT["FR"] = "dd/MM/yyyy";
+    DATE_FORMAT["NL"] = "dd-MM-yyyy";
+    DATE_FORMAT["IT"] = "dd/MM/yyyy";
 })(DATE_FORMAT || (DATE_FORMAT = {}));
 //# sourceMappingURL=Language.js.map
