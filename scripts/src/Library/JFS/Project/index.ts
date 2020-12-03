@@ -23,7 +23,7 @@ abstract class Project {
   public readonly directory: Directory;
   public readonly nodePackage: NodePackage;
   public readonly JSC: JSC;
-  public readonly config: Config;
+  public config: Config;
   public readonly tsconfig: File;
 
   constructor({path}: Project.Props) {

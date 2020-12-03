@@ -1,3 +1,8 @@
+## [9.10.13] 2020-12-03
+## Fixed
+- Fixed value prop for <DatePicker/>
+- Adjusted project config to dist/config.json for JFS-Apps when present
+
 ## [9.10.12] 2020-12-01
 ## Fixed
 - Added floating prop for <DatePicker/>

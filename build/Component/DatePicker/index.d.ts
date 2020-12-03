@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { InjectedIntl } from 'react-intl';
 import './Setup';
 import './_styles.scss';
-export declare type Props = ReactDatePickerProps & {
+export declare type Props = Omit<ReactDatePickerProps, 'value'> & {
     intl?: InjectedIntl;
     label?: string;
     customClearButtonId?: string;

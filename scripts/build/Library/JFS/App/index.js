@@ -4,7 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = require("path");
+const fs_1 = require("fs");
 const Project_1 = __importDefault(require("../../JFS/Project"));
+const Config_1 = __importDefault(require("../../JFS/Config"));
 const Component_1 = __importDefault(require("../Component"));
 class App extends Project_1.default {
     constructor({ path }) {
@@ -15,6 +17,9 @@ class App extends Project_1.default {
             onComplete();
         }));
         this.components = [];
+        if (fs_1.existsSync(path_1.resolve(this.path, 'dist', 'config.json'))) {
+            this.config = new Config_1.default(path_1.resolve(this.path, 'dist', 'config.json'));
+        }
     }
 }
 exports.default = App;

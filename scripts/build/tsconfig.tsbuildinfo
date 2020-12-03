@@ -542,8 +542,8 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/index.ts": {
-        "version": "f145e209a16046f7d5f00db6e4a72778ee9ff2b775a10d154c991b5eebe2a28d",
-        "signature": "7f881d30ae6efdf88930bb030589c0dc57cf30577f4d6b4e833758abdfd7b9f8",
+        "version": "4394ae08617cad53019d8756b0e203b59b7acf4aa097c965655eecc6429722cc",
+        "signature": "ab561a04668246ddc0cba9029ce2671f38f10e0b0be08fbb8e951896677a42ec",
         "affectsGlobalScope": false
       },
       "../src/library/jfs/component/index.ts": {
@@ -552,7 +552,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/app/index.ts": {
-        "version": "0819176dd8cda99e35d842981c4a40663f5ab6796c2e7bff48a7426b9b10a056",
+        "version": "36cf5256c4241c30eda5bd5433efa7496f44ac3c58c154bcd55a663cef5d89ba",
         "signature": "53d24874d81af7b332a90425c9c9fabfc41fb1556024487345b5f9ec18e45f42",
         "affectsGlobalScope": false
       },
@@ -2097,6 +2097,7 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../src/library/jfs/component/index.ts",
+        "../src/library/jfs/config.ts",
         "../src/library/jfs/project/index.ts"
       ],
       "../src/library/jfs/component/index.ts": [

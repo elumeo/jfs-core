@@ -1,5 +1,7 @@
-import { join } from 'path';
+import { join, resolve } from 'path';
+import { existsSync } from 'fs';
 import Project from 'Library/JFS/Project';
+import Config from 'Library/JFS/Config';
 import Component from '../Component';
 
 namespace App {
@@ -14,6 +16,9 @@ class App extends Project {
   constructor({ path }: App.Props) {
     super({ path });
     this.components = [];
+    if (existsSync(resolve(this.path, 'dist', 'config.json'))) {
+      this.config = new Config(resolve(this.path, 'dist', 'config.json'));
+    }
   }
 
   jfcPath = (jfc: Component) => join(

@@ -1337,8 +1337,8 @@
         "affectsGlobalScope": false
       },
       "../src/component/datepicker/index.tsx": {
-        "version": "1a769e170b53c5e543165d8010a1e0da6bfe0578e1620ae4c7cab7217d0af1ea",
-        "signature": "90e36ec962e71a5936178d8ffbd274448c547204fa90a2a4804ca1d5dc30bc43",
+        "version": "833481b1557963d8ac1a5b902bdc19e1f3ae08ce11bf4d23e697ab1eb838f16d",
+        "signature": "287a7a3b9438bfedb2f52788855c32d60a8c5b5b7db7b50bf78e765c7ea7c5c2",
         "affectsGlobalScope": false
       },
       "../src/component/datepicker/usedomnode.ts": {

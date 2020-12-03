@@ -10,7 +10,7 @@ import './_styles.scss'
 import { useSelector } from 'Types/Redux';
 import mapLanguageToDateFormat from './mapLanguageToDateFormat';
 
-export type Props = ReactDatePickerProps & {
+export type Props = Omit<ReactDatePickerProps, 'value'> & {
   intl?: InjectedIntl;
   label?: string;
   customClearButtonId?: string;
