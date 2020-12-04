@@ -1,3 +1,7 @@
+## [9.10.15] 2020-12-04
+## Changed
+- version of @types/react-datepicker to 3.1.2
+
 ## [9.10.14] 2020-12-04
 ## Fixed
 - Fixed behaviour for formatNumber when passing showFraction = false
