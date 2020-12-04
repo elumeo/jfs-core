@@ -33,14 +33,14 @@ class Format {
   }
 
   public static formatNumber(value: number, showFraction = false) {
-    if (showFraction) {
-      return new Intl.NumberFormat(Locale.locale).format(value);
-    }
-
-    return new Intl.NumberFormat(
-      Locale.locale,
-      { minimumFractionDigits: 0 }
-    ).format(value);
+    return (
+      new Intl.NumberFormat(Locale.locale)
+        .format(value - (
+          showFraction
+            ? 0
+            : value % 1
+        ))
+    );
   }
 
   public static formatTime = (

@@ -5,10 +5,10 @@ import PhoneNumber from './PhoneNumber';
 import Locale from './Locale';
 class Format {
     static formatNumber(value, showFraction = false) {
-        if (showFraction) {
-            return new Intl.NumberFormat(Locale.locale).format(value);
-        }
-        return new Intl.NumberFormat(Locale.locale, { minimumFractionDigits: 0 }).format(value);
+        return (new Intl.NumberFormat(Locale.locale)
+            .format(value - (showFraction
+            ? 0
+            : value % 1)));
     }
 }
 Format.Locale = Locale;

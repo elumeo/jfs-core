@@ -1,3 +1,7 @@
+## [9.10.14] 2020-12-04
+## Fixed
+- Fixed behaviour for formatNumber when passing showFraction = false
+
 ## [9.10.13] 2020-12-03
 ## Fixed
 - Fixed value prop for <DatePicker/>
