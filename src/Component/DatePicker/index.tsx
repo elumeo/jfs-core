@@ -3,6 +3,7 @@ import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { InjectedIntl, injectIntl } from 'react-intl';
+import classNames from 'classnames';
 
 import './Setup';
 import { LANGUAGE } from 'Types/Language';
@@ -35,22 +36,11 @@ const setActive = (domNode: HTMLElement, isActive: boolean) => {
   }
 }
 
-const setHasValue = (domNode: HTMLElement, hasValue: boolean) => {
-  if (domNode !== undefined) {
-    if (hasValue) {
-      domNode.classList.add('has-value');
-    } else {
-      domNode.classList.remove('has-value');
-    }
-  }
-}
-
 const setError = (domNode: HTMLElement, error: boolean) => {
   if (domNode !== undefined) {
     if (error && !domNode.classList.contains('error')) {
       domNode.classList.add('error');
-    }
-    else if (!error && domNode.classList.contains('error')) {
+    } else if (!error && domNode.classList.contains('error')) {
       domNode.classList.remove('error');
     }
   }
@@ -60,34 +50,31 @@ const setFloating = (domNode: HTMLElement, floating: boolean) => {
   if (domNode !== undefined) {
     if (floating && !domNode.classList.contains('floating')) {
       domNode.classList.add('floating');
-    }
-    else if (!floating && domNode.classList.contains('floating')) {
+    } else if (!floating && domNode.classList.contains('floating')) {
       domNode.classList.remove('floating');
     }
   }
 }
 
 const DatePicker: React.FC<Props> = ({
-  label,
-  customClearButtonId,
-  dateFormat,
-  value,
-  onChange,
-  errorText,
-  floating,
-  intl: {formatMessage},
-  ...rest
-}) => {
+                                       label,
+                                       customClearButtonId,
+                                       dateFormat,
+                                       value,
+                                       onChange,
+                                       errorText,
+                                       floating,
+                                       intl: {formatMessage},
+                                       ...rest
+                                     }) => {
   const language = useSelector(state => state.Core.Language.language);
   const [date, setDate] = useState<Date>(value);
   const [open, setOpen] = useState(false);
-  const [id] = useState(Math.floor(Math.random() * 100));
+  const [id] = useState('reactDatePicker_' + Math.floor(Math.random() * 100));
   const datePickerRef = useRef<ReactDatePicker>();
 
   const getInput = () => {
-    // The clear method does exists => its just not in the typing
-    // @ts-ignore
-    return datePickerRef.current?.input as HTMLInputElement;
+    return document.getElementById(id) as HTMLInputElement;
   };
 
   const getInputParent = () => {
@@ -95,7 +82,7 @@ const DatePicker: React.FC<Props> = ({
     if (input) {
       return input.parentElement;
     }
-    return undefined;
+    return null;
   };
 
   useEffect(
@@ -110,27 +97,8 @@ const DatePicker: React.FC<Props> = ({
   );
 
   useEffect(
-    () => {
-      const domNode = document.getElementById(id.toString());
-      if (domNode) {
-        domNode.parentNode.addEventListener(
-          'click',
-          () => setOpen(true)
-        );
-      }
-    }
-  );
-
-  useEffect(
-    () => {
-      if (value && document.getElementById(id.toString()).parentNode) {
-        setHasValue(
-          document.getElementById(id.toString()).parentNode as HTMLElement,
-          true
-        );
-      }
-    },
-    [document.getElementById(id.toString())]
+    () => setDate(value),
+    [value]
   );
 
   useEffect(
@@ -157,21 +125,16 @@ const DatePicker: React.FC<Props> = ({
           }
         });
         input.addEventListener('blur', () => {
-          const input = getInput();
-          if (input) {
-            if (input.value === '' && !floating) {
-              setHasValue(getInputParent(), false);
-            } else {
-              setHasValue(getInputParent(), true);
-            }
-          }
           if (datePickerRef.current.isCalendarOpen() === false) {
             setActive(getInputParent(), false);
           }
         });
+        input.addEventListener('focus', () => {
+          setActive(getInputParent(), true);
+        });
       }
       const inputParent = getInputParent();
-      if (inputParent !== undefined) {
+      if (inputParent !== null) {
         const finalLabel = (
           label !== null
             ? label
@@ -182,16 +145,18 @@ const DatePicker: React.FC<Props> = ({
     },
     []
   );
-
   return (
     <OutsideClickHandler onOutsideClick={() => setOpen(false)}>
       <span>
         <ReactDatePicker
           {...rest}
+          wrapperClassName={classNames({
+            'has-value': !!value
+          })}
+          onInputClick={() => setOpen(true)}
           ref={datePickerRef}
           selected={date}
           onChange={(newDate, event) => {
-            setHasValue(getInputParent(), newDate !== null || floating);
             setDate(newDate as Date);
             onChange(newDate as Date, date, event);
             if (datePickerRef.current.props.shouldCloseOnSelect) {
@@ -209,7 +174,7 @@ const DatePicker: React.FC<Props> = ({
           )}
           locale='de'
           open={open}
-          id={id.toString()}
+          id={id}
           customInput={
             <input
               className={[

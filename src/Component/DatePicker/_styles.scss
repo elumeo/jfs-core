@@ -8,6 +8,12 @@
   padding-right: 10px;
 }
 
+.react-datepicker-wrapper.has-value > div {
+  &::before {
+    transform: translate3d(0, 10px, 0);
+  }
+}
+
 .react-datepicker__input-container {
   flex: 1;
   width: 100%;
@@ -41,7 +47,7 @@
     }
   }
 
-  &.is-active, &.has-value, &.floating {
+  &.is-active, &.floating {
     &::before {
       transform: translate3d(0, 10px, 0);
     }

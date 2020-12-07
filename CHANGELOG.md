@@ -1,3 +1,7 @@
+## [9.10.16] 2020-12-07
+## Fixed
+- fixed an issue with react-datepicker that inline datepicker results in an error because no text input was rendered
+
 ## [9.10.15] 2020-12-04
 ## Changed
 - version of @types/react-datepicker to 3.1.2
