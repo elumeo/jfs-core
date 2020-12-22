@@ -1,3 +1,7 @@
+## [9.10.18] 2020-12-22
+## Changed
+- Added missing type for new "phone_block" icon
+
 ## [9.10.17] 2020-12-22
 ## Added
 - Added new font icon "phone_block"

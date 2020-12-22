@@ -11,6 +11,7 @@ export type Icon = (
   'multiple_sources' |
   'paypal' |
   'ratepay' |
+  'phone_block' |
   'test' |
   'webshop' |
   'webshop_bidagent'
@@ -29,7 +30,7 @@ const JuweloFontIcon: React.FC<IJuweloFontIconProps> = ({
   error,
   light,
   style,
-  className: customeClassName
+  className: customerClassName
 }) => {
   error = error === undefined ? false : error;
   light = light === undefined ? false : light;
@@ -46,7 +47,7 @@ const JuweloFontIcon: React.FC<IJuweloFontIconProps> = ({
   return (
     <i
       style={style || {}}
-      className={`${className} ${customeClassName || ''}`}/>
+      className={`${className} ${customerClassName || ''}`}/>
   );
 }
 
