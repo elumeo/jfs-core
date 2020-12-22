@@ -1,3 +1,7 @@
+## [9.10.19] 2020-12-22
+## Added
+- Added new font icon "webshop_block"
+
 ## [9.10.18] 2020-12-22
 ## Changed
 - Added missing type for new "phone_block" icon

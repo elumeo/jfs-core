@@ -14,7 +14,8 @@ export type Icon = (
   'phone_block' |
   'test' |
   'webshop' |
-  'webshop_bidagent'
+  'webshop_bidagent' |
+  'webshop_block'
 );
 
 export interface IJuweloFontIconProps {
