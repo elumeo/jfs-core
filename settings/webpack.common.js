@@ -5,6 +5,7 @@ copyLocal();
 // ----------------------------------------------------------------------------
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const generateAliases = () => {
   const tsConfigPath = resolve('tsconfig.json');
@@ -119,6 +120,9 @@ module.exports = {
       filename: 'index.html',
       template: resolve('static', 'index.html'),
       inject: false
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerPort: 6000
     })
   ],
   performance: { hints: false },

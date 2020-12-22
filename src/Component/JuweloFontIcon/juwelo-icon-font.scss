@@ -1,8 +1,8 @@
 @charset "UTF-8";
 @font-face {
   font-family: "juwelo-icon-font";
-  src: url("juwelo-icon-font.woff2?114c30e6b5ebebac840e651e8dec839b") format("woff2");
-  src: url("juwelo-icon-font.woff?114c30e6b5ebebac840e651e8dec839b") format("woff");
+  src: url("juwelo-icon-font.woff2?1f04f3d74c19d97f409274c7ec587772") format("woff2");
+  src: url("juwelo-icon-font.woff?1f04f3d74c19d97f409274c7ec587772") format("woff");
 }
 .juwelo-icon-font, .jif-icons {
   -webkit-user-select: none;
@@ -91,18 +91,22 @@
   content: "";
 }
 
-.jif-ratepay:before {
+.jif-phone_block:before {
   content: "";
 }
 
-.jif-test:before {
+.jif-ratepay:before {
   content: "";
 }
 
-.jif-webshop_bidagent:before {
+.jif-test:before {
   content: "";
 }
 
-.jif-webshop:before {
+.jif-webshop_bidagent:before {
   content: "";
+}
+
+.jif-webshop:before {
+  content: "";
 }
