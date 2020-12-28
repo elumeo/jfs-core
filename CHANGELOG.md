@@ -1,3 +1,7 @@
+## [9.10.20] 2020-12-28
+## Changed
+- changed version to be latest
+
 ## [9.10.19] 2020-12-22
 ## Added
 - Added new font icon "webshop_block"
