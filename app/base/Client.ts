@@ -47,6 +47,12 @@ export default {
       .catch(error => checkDestroySession(error));
   },
 
+  patch: (url: string, data: any, config?: any) => {
+    return clientInstance()
+      .patch(url, data, config)
+      .catch(error => checkDestroySession(error));
+  },
+
   delete: (url: string, data: any, config?: any) => {
     config = generateAxiosConfig(config);
     config.data = data; // need to use our jsc kind of DELETE request
