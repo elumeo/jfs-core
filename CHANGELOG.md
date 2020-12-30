@@ -1,3 +1,7 @@
+## [9.10.22] 2020-12-30
+## Changed
+- fixed issue after removing web bundle analyzer
+
 ## [9.10.21] 2020-12-30
 ## Changed
 - removed web bundle analyzer

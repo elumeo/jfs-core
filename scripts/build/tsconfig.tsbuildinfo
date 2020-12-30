@@ -797,8 +797,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/common/common.d.ts": {
-        "version": "29304d38d619bac17128f20c21af1a03256f9edf8f0b82e6674565e09e956dff",
-        "signature": "29304d38d619bac17128f20c21af1a03256f9edf8f0b82e6674565e09e956dff",
+        "version": "3594c022901a1c8993b0f78a3f534cfb81e7b619ed215348f7f6882f3db02abc",
+        "signature": "3594c022901a1c8993b0f78a3f534cfb81e7b619ed215348f7f6882f3db02abc",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/common/array.d.ts": {
@@ -837,8 +837,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/common/object.d.ts": {
-        "version": "28b1db2ffc8a10c84c7286cca8062c44e7e46a12fd028d10bb04d462f6e3dd85",
-        "signature": "28b1db2ffc8a10c84c7286cca8062c44e7e46a12fd028d10bb04d462f6e3dd85",
+        "version": "c311349ec71bb69399ffc4092853e7d8a86c1ca39ddb4cd129e775c19d985793",
+        "signature": "c311349ec71bb69399ffc4092853e7d8a86c1ca39ddb4cd129e775c19d985793",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/common/seq.d.ts": {
@@ -917,13 +917,13 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-redux/index.d.ts": {
-        "version": "fc50daa26c0b4a589e25624be6a34830796eed8bc7f038fca54cf6da1996e82a",
-        "signature": "fc50daa26c0b4a589e25624be6a34830796eed8bc7f038fca54cf6da1996e82a",
+        "version": "f01d0b2e38a2bfdf37c6c4dfd9fe60a8a1defc740054563927c03672c12bc73c",
+        "signature": "f01d0b2e38a2bfdf37c6c4dfd9fe60a8a1defc740054563927c03672c12bc73c",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@types/react-router/index.d.ts": {
-        "version": "0caf70f74777ccb2fff9869da0c51fb832923e9625a84249e00bf107b399bfaa",
-        "signature": "0caf70f74777ccb2fff9869da0c51fb832923e9625a84249e00bf107b399bfaa",
+      "../../node_modules/@types/react-router/ts4.0/index.d.ts": {
+        "version": "b99bf35fc6e5501b2cfb971d2124213afa9f2b1fb474b08f48d04bed44b3f465",
+        "signature": "b99bf35fc6e5501b2cfb971d2124213afa9f2b1fb474b08f48d04bed44b3f465",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-router-dom/index.d.ts": {
@@ -1570,7 +1570,7 @@
       ],
       "../../node_modules/@types/react-router-dom/index.d.ts": [
         "../../node_modules/@types/history/index.d.ts",
-        "../../node_modules/@types/react-router/index.d.ts",
+        "../../node_modules/@types/react-router/ts4.0/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -1648,7 +1648,7 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
-      "../../node_modules/@types/react-router/index.d.ts": [
+      "../../node_modules/@types/react-router/ts4.0/index.d.ts": [
         "../../node_modules/@types/history/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/date-fns/typings.d.ts",
@@ -3040,7 +3040,7 @@
         "../../node_modules/@types/lodash/index.d.ts",
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts"
+        "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/lodash/common/date.d.ts": [
         "../../node_modules/@types/lodash/common/array.d.ts",
@@ -3350,12 +3350,12 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/ts3.2/index.d.ts"
       ],
-      "../../node_modules/@types/react-router/index.d.ts": [
+      "../../node_modules/@types/react-router/ts4.0/index.d.ts": [
         "../../node_modules/@types/history/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts"
+        "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/react-virtualized/dist/es/ArrowKeyStepper.d.ts": [
         "../../node_modules/@types/prop-types/index.d.ts",
@@ -4232,7 +4232,7 @@
       "../../node_modules/@types/react-router-redux/node_modules/@types/history/lib/useBeforeUnload.d.ts",
       "../../node_modules/@types/react-router-redux/node_modules/@types/history/lib/useQueries.d.ts",
       "../../node_modules/@types/react-router-redux/node_modules/redux/index.d.ts",
-      "../../node_modules/@types/react-router/index.d.ts",
+      "../../node_modules/@types/react-router/ts4.0/index.d.ts",
       "../../node_modules/@types/react-virtualized/dist/es/ArrowKeyStepper.d.ts",
       "../../node_modules/@types/react-virtualized/dist/es/AutoSizer.d.ts",
       "../../node_modules/@types/react-virtualized/dist/es/CellMeasurer.d.ts",
