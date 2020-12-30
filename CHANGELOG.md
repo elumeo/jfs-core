@@ -1,6 +1,6 @@
-## [9.10.20] 2020-12-28
+## [9.10.21] 2020-12-30
 ## Changed
-- changed version to be latest
+- removed web bundle analyzer
 
 ## [9.10.19] 2020-12-22
 ## Added
