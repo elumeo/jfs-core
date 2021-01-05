@@ -1,3 +1,7 @@
+## [9.10.23] 2021-01-05
+## Changed
+- added optional middle content for app header
+
 ## [9.10.22] 2020-12-30
 ## Changed
 - fixed issue after removing web bundle analyzer

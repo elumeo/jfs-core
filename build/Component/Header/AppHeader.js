@@ -1,5 +1,5 @@
 import React from 'react';
 import AppToolbar from './AppToolbar';
-export default ({ leftTools, rightTools }) => (React.createElement("div", { className: 'app-header' },
-    React.createElement(AppToolbar, { LeftTools: leftTools, RightTools: rightTools })));
+export default ({ leftTools, middleTools, rightTools }) => (React.createElement("div", { className: 'app-header' },
+    React.createElement(AppToolbar, { LeftTools: leftTools, MiddleTools: middleTools, RightTools: rightTools })));
 //# sourceMappingURL=AppHeader.js.map

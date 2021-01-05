@@ -8,7 +8,7 @@
 
 ### Dependencies
 
-- all dependencies that are used outside of the core have to be listed in the ```dependencies``` in package.json
+- all dependencies that are used outside of the core have to be listed in the `dependencies` in package.json
 - webpack creates a dependency graph for the build -> bundle size is not effected
 - jfc components only have a peer dependency to the core
 
@@ -47,11 +47,11 @@ type ExtendedType = Popover.Props & {
 - root directories (with path aliases) for defining types and constants
 
 #### Moved files
-- JscClient: ```'Core/Base/JscClient'``` -> ```'Jsc/Client'```
-- Translations: ```'Core/Base/Translation'``` -> ```'Core/Utilities/Format/Translations'```
-- Toast utilities (timeToRead(), constants) ```'Core/Base/Utilities'``` -> ```'Core/Constant/Toast'```, ```'Core/Component/Snackbar/TimeToRead'```
-- IConfig: ```'Core/Base/IConfig'``` -> ```'Core/Types/Configuration'```
-- INotification: ```'Core/Store/Reducer/Notification'``` -> ```'Core/Types/Notification'```
+- JscClient: `Core/Base/JscClient` -> `Jsc/Client`
+- Translations: `Core/Base/Translation` -> `Core/Utilities/Format/Translations`
+- Toast utilities (timeToRead(), constants) `Core/Base/Utilities` -> `Core/Constant/Toast`, `Core/Component/Snackbar/TimeToRead`
+- IConfig: `Core/Base/IConfig` -> `Core/Types/Configuration`
+- INotification: `Core/Store/Reducer/Notification` -> `Core/Types/Notification`
 
 ### Core Scripts
 
