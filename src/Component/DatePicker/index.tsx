@@ -159,7 +159,7 @@ const DatePicker: React.FC<DatePicker.Props> = ({
                   dateFormat={dateFormat || mapLanguageToDateFormat(
                     language as 'de' | 'it' | 'en'
                   )}
-                  locale='de'
+                  locale={language as 'de' | 'it' | 'en'}
                   open={open}
                   id={id.toString()}
                   customInput={<input className='md-full-width md-text md-text-field customDatePickerInputField'/>}
