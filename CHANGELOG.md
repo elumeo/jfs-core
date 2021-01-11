@@ -1,3 +1,7 @@
+## [9.10.24] 2021-01-11
+## Fixed
+- fixed an issue that datepicker was not localized
+
 ## [9.10.23] 2021-01-05
 ## Changed
 - added optional middle content for app header

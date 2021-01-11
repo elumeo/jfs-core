@@ -86,7 +86,6 @@ const DatePicker = (_a) => {
         const input = getInput();
         if (input) {
             input.addEventListener('keydown', (e) => {
-                const input = getInput();
                 if (document.activeElement.id === input.id &&
                     e.keyCode === 9 &&
                     e.shiftKey) {
@@ -125,7 +124,7 @@ const DatePicker = (_a) => {
                     setActive(getInputParent(), true);
                 }, onCalendarClose: () => {
                     setActive(getInputParent(), false);
-                }, dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: 'de', open: open, id: id, customInput: React.createElement("input", { className: [
+                }, dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: language, open: open, id: id, customInput: React.createElement("input", { className: [
                         'md-full-width',
                         'md-text',
                         'md-text-field',

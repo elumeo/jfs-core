@@ -114,7 +114,6 @@ const DatePicker: React.FC<Props> = ({
       const input = getInput();
       if (input) {
         input.addEventListener('keydown', (e: KeyboardEvent) => {
-          const input = getInput();
           if (
             document.activeElement.id === input.id &&
             e.keyCode === 9 &&
@@ -172,7 +171,7 @@ const DatePicker: React.FC<Props> = ({
           dateFormat={dateFormat || mapLanguageToDateFormat(
             language as LANGUAGE
           )}
-          locale='de'
+          locale={language as LANGUAGE}
           open={open}
           id={id}
           customInput={

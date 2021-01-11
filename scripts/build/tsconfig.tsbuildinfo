@@ -722,8 +722,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/engine.io/index.d.ts": {
-        "version": "2bc5a885dc91b4006192c477dfae4f2856e5809c6ffbf62cc242ac010f15ab51",
-        "signature": "2bc5a885dc91b4006192c477dfae4f2856e5809c6ffbf62cc242ac010f15ab51",
+        "version": "854089953b8bdf60437d229c41544eb8fd374206b49f99647298ff7824f4932e",
+        "signature": "854089953b8bdf60437d229c41544eb8fd374206b49f99647298ff7824f4932e",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/google-libphonenumber/index.d.ts": {
@@ -772,8 +772,8 @@
         "affectsGlobalScope": true
       },
       "../../node_modules/csstype/index.d.ts": {
-        "version": "ea58e4cbcf3d760a15f9300978a360c46360f544b355c737b60c733a385b8858",
-        "signature": "ea58e4cbcf3d760a15f9300978a360c46360f544b355c737b60c733a385b8858",
+        "version": "2421504d4ad8486abdb522b7bcdd4caafbcf4a320cdf7b19e780df258c639d7f",
+        "signature": "2421504d4ad8486abdb522b7bcdd4caafbcf4a320cdf7b19e780df258c639d7f",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/prop-types/index.d.ts": {
@@ -802,8 +802,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/common/array.d.ts": {
-        "version": "d03a1ae3d39f757c9f22e4e775b940a98d86bb50ec85529b59e32a17b65c2b90",
-        "signature": "d03a1ae3d39f757c9f22e4e775b940a98d86bb50ec85529b59e32a17b65c2b90",
+        "version": "438284c7c455a29b9c0e2d1e72abc62ee93d9a163029ffe918a34c5db3b92da2",
+        "signature": "438284c7c455a29b9c0e2d1e72abc62ee93d9a163029ffe918a34c5db3b92da2",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/common/collection.d.ts": {
@@ -917,8 +917,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-redux/index.d.ts": {
-        "version": "f01d0b2e38a2bfdf37c6c4dfd9fe60a8a1defc740054563927c03672c12bc73c",
-        "signature": "f01d0b2e38a2bfdf37c6c4dfd9fe60a8a1defc740054563927c03672c12bc73c",
+        "version": "e6152875dc5f6ed1f3c26cd3f3f1aa1108b68bcf8425637ffb9511c08625077a",
+        "signature": "e6152875dc5f6ed1f3c26cd3f3f1aa1108b68bcf8425637ffb9511c08625077a",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-router/ts4.0/index.d.ts": {
@@ -927,8 +927,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-router-dom/index.d.ts": {
-        "version": "fd0330b691c4c697c5a8c6b68bdb6727cbf966156a2e131108696a98716a5396",
-        "signature": "fd0330b691c4c697c5a8c6b68bdb6727cbf966156a2e131108696a98716a5396",
+        "version": "b89701b714364b5bcb0b58e83725aa02a4f41df8357000b4e8fe60566bf805ac",
+        "signature": "b89701b714364b5bcb0b58e83725aa02a4f41df8357000b4e8fe60566bf805ac",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-router-redux/node_modules/redux/index.d.ts": {
@@ -2925,7 +2925,7 @@
       "../../node_modules/@types/engine.io/index.d.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts"
+        "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/google-libphonenumber/index.d.ts": [
         "../../node_modules/date-fns/typings.d.ts",
@@ -3006,7 +3006,7 @@
         "../../node_modules/@types/lodash/index.d.ts",
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts"
+        "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/lodash/common/collection.d.ts": [
         "../../node_modules/@types/lodash/common/array.d.ts",
@@ -3272,7 +3272,7 @@
       ],
       "../../node_modules/@types/react-router-dom/index.d.ts": [
         "../../node_modules/@types/history/index.d.ts",
-        "../../node_modules/@types/react-router/index.d.ts",
+        "../../node_modules/@types/react-router/ts4.0/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",

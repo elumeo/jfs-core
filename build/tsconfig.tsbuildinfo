@@ -857,8 +857,8 @@
         "affectsGlobalScope": true
       },
       "../node_modules/csstype/index.d.ts": {
-        "version": "ea58e4cbcf3d760a15f9300978a360c46360f544b355c737b60c733a385b8858",
-        "signature": "ea58e4cbcf3d760a15f9300978a360c46360f544b355c737b60c733a385b8858",
+        "version": "2421504d4ad8486abdb522b7bcdd4caafbcf4a320cdf7b19e780df258c639d7f",
+        "signature": "2421504d4ad8486abdb522b7bcdd4caafbcf4a320cdf7b19e780df258c639d7f",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/prop-types/index.d.ts": {
@@ -967,8 +967,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react-redux/index.d.ts": {
-        "version": "f01d0b2e38a2bfdf37c6c4dfd9fe60a8a1defc740054563927c03672c12bc73c",
-        "signature": "f01d0b2e38a2bfdf37c6c4dfd9fe60a8a1defc740054563927c03672c12bc73c",
+        "version": "e6152875dc5f6ed1f3c26cd3f3f1aa1108b68bcf8425637ffb9511c08625077a",
+        "signature": "e6152875dc5f6ed1f3c26cd3f3f1aa1108b68bcf8425637ffb9511c08625077a",
         "affectsGlobalScope": false
       },
       "../src/Store/Action/useActions.ts": {
@@ -1292,8 +1292,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react-router-dom/index.d.ts": {
-        "version": "fd0330b691c4c697c5a8c6b68bdb6727cbf966156a2e131108696a98716a5396",
-        "signature": "fd0330b691c4c697c5a8c6b68bdb6727cbf966156a2e131108696a98716a5396",
+        "version": "b89701b714364b5bcb0b58e83725aa02a4f41df8357000b4e8fe60566bf805ac",
+        "signature": "b89701b714364b5bcb0b58e83725aa02a4f41df8357000b4e8fe60566bf805ac",
         "affectsGlobalScope": false
       },
       "../src/Component/App/App.tsx": {
@@ -1347,7 +1347,7 @@
         "affectsGlobalScope": false
       },
       "../src/Component/DatePicker/index.tsx": {
-        "version": "8c43067371013c1c6a08e7eacc24c996641378c68c69ffb356f1976ea5e568a6",
+        "version": "13047ddcb547dc4ed47ac870e1c7866899f179edb5eec14510a1b63393f5b05c",
         "signature": "287a7a3b9438bfedb2f52788855c32d60a8c5b5b7db7b50bf78e765c7ea7c5c2",
         "affectsGlobalScope": false
       },
@@ -1442,8 +1442,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/@types/lodash/common/array.d.ts": {
-        "version": "d03a1ae3d39f757c9f22e4e775b940a98d86bb50ec85529b59e32a17b65c2b90",
-        "signature": "d03a1ae3d39f757c9f22e4e775b940a98d86bb50ec85529b59e32a17b65c2b90",
+        "version": "438284c7c455a29b9c0e2d1e72abc62ee93d9a163029ffe918a34c5db3b92da2",
+        "signature": "438284c7c455a29b9c0e2d1e72abc62ee93d9a163029ffe918a34c5db3b92da2",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/lodash/common/collection.d.ts": {
@@ -2713,47 +2713,47 @@
       },
       "../src/Store/Epic/AppEpic.ts": {
         "version": "b3e7a95ff82d7c8288de3b2fe32d72238a8106841d6f6aa231d8dc2e3dc02fc6",
-        "signature": "8a1fa35cd98bdf966b5059a1dcbca54ca4bf75c6493da05c240c245f8ae50cc1",
+        "signature": "643a88ad33dcc636c37a33cf38f4a453fa40bb29253c63520db2470dd0bbdec2",
         "affectsGlobalScope": false
       },
       "../src/Store/Epic/ConfigEpic.ts": {
         "version": "e4c06821d09d042f9b0fba1b745e30ec87b2d477ea4b1b23a0e256553a89df74",
-        "signature": "4f47dd7fd2ba5e27fb1e86493e728575b0e8dce39e71615831215999c44ed4f6",
+        "signature": "643a88ad33dcc636c37a33cf38f4a453fa40bb29253c63520db2470dd0bbdec2",
         "affectsGlobalScope": false
       },
       "../src/Store/Epic/SessionEpic.ts": {
         "version": "0710f95b3d9b1f2b5c08b2bc81054461331b677a9e9041e080a099f247d7b462",
-        "signature": "ec9680128df01f9808bf6dc7acbd076155ba6f5f13a86abf0f01c55c4c5d32b8",
+        "signature": "59aee302ec11ffdb0e25a3748c43be16ce667c3c6a77e6b0895f80615995b27a",
         "affectsGlobalScope": false
       },
       "../src/Store/Epic/SystemEpic.ts": {
         "version": "264ae28558ef4d74b05919cbe49ed37bc252fa05f18af576699501e6200e98c7",
-        "signature": "17a0bf032dadc1f92aa0193a0ad1232836a3175ff5ffb39a9c1afc9c2e0c2121",
+        "signature": "46eba454072c6841be0c6d42856a29cbfc5f86db8fff746e36f545081b9d7193",
         "affectsGlobalScope": false
       },
       "../src/Store/Epic/LoginEpic.ts": {
         "version": "e4f3fa913b9d4abd051aa78f0a5db672dfb30786f8af2c16628210e30545ba7c",
-        "signature": "dd8125efe87f3e25424ebb34b3a7f2840fb8ce923c4a85ed71446e1930aaa579",
+        "signature": "47303da2a1f8e2c9e06ce00473448eeb43d384c8127348b3dff3b15ccd6df109",
         "affectsGlobalScope": false
       },
       "../src/Store/Epic/NotificationEpic.ts": {
         "version": "f7447259d11620eeb81e03c6563c26de49a4c0dce66d31ac1525e2a9e9713e65",
-        "signature": "4f47dd7fd2ba5e27fb1e86493e728575b0e8dce39e71615831215999c44ed4f6",
+        "signature": "643a88ad33dcc636c37a33cf38f4a453fa40bb29253c63520db2470dd0bbdec2",
         "affectsGlobalScope": false
       },
       "../src/Store/Epic/WebSocketEpic.ts": {
         "version": "57c108f28c6e296248805d0c0e1d1ec32203c025efcd3c2315dc98df863a8cf0",
-        "signature": "ae696325e9f91a03cc0ef4a81028e3932c13a0fc199d0735598da558c8d4aa9f",
+        "signature": "8ca1612af97b1b7a8f57bfd968934be56a7acb01785be3a5bf4f6acf3acaff34",
         "affectsGlobalScope": false
       },
       "../src/Store/Epic/LanguageEpic.ts": {
         "version": "a4ba0d6601e679ef69cafd51f0203c155d757f354d2cbccdd769a6e508db09bc",
-        "signature": "4f47dd7fd2ba5e27fb1e86493e728575b0e8dce39e71615831215999c44ed4f6",
+        "signature": "643a88ad33dcc636c37a33cf38f4a453fa40bb29253c63520db2470dd0bbdec2",
         "affectsGlobalScope": false
       },
       "../src/Store/Epic/Hooks.ts": {
         "version": "24e203f48b40a33054f7842745c2c3c49a6e739a1db4dac5c873b7e86c8d5315",
-        "signature": "8e7e34e44374df87ebbdf0c52ff2b34c9c8059cefa4e193d2b337aea27667dcc",
+        "signature": "cc73394f7ee3f3615dc4b6e5cf4cbc179eac1fce60d47cd882f706fac65e1470",
         "affectsGlobalScope": false
       },
       "../src/Store/Epic/LocaleEpic.ts": {
@@ -2768,7 +2768,7 @@
       },
       "../src/Store/Epic/index.ts": {
         "version": "d44a5ce54bd8edf946cdbc8a23b9ed6fff658b9d63848c6a8f8ac068e6ecfaee",
-        "signature": "589f67657199ad5e4ad4faaf7429c326f4bd93e25886a95ed7645f671616f9ec",
+        "signature": "7bd56645a5407f1f4a8a88d90882ef9f5dac9aa33fe4578803617e843bdf3c19",
         "affectsGlobalScope": false
       },
       "../src/Utilities/Filter.ts": {
@@ -2807,8 +2807,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/@types/engine.io/index.d.ts": {
-        "version": "2bc5a885dc91b4006192c477dfae4f2856e5809c6ffbf62cc242ac010f15ab51",
-        "signature": "2bc5a885dc91b4006192c477dfae4f2856e5809c6ffbf62cc242ac010f15ab51",
+        "version": "854089953b8bdf60437d229c41544eb8fd374206b49f99647298ff7824f4932e",
+        "signature": "854089953b8bdf60437d229c41544eb8fd374206b49f99647298ff7824f4932e",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/minimatch/index.d.ts": {
@@ -8321,7 +8321,7 @@
         "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/react-router/index.d.ts",
+        "../node_modules/@types/react-router/ts4.0/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
