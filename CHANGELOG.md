@@ -1,3 +1,7 @@
+## [9.10.25] 2021-02-02
+## Added
+- customActionTooltipTranslationValues to Notification
+
 ## [9.10.24] 2021-01-11
 ## Fixed
 - fixed an issue that datepicker was not localized
