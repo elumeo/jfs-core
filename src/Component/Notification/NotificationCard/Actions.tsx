@@ -58,7 +58,7 @@ const Actions: React.FC<Props> = ({
             : undefined
         }
         topLevelRef={ref}
-        onClick={onCustomAction}/>
+        onClick={() => onCustomAction(notification, ref)}/>
     );
   }
   return (

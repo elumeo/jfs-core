@@ -19,6 +19,7 @@ export interface INotificationContent {
     hideButtonVisible?: boolean;
     onHide?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
     customActionTooltipTranslationId?: string;
+    customActionTooltipTranslationValues?: Record<string, PrimitiveType>;
     customActionIconName?: string;
     onCustomAction?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
 }

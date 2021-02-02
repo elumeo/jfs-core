@@ -18,7 +18,7 @@ const Actions = ({ intl: { formatMessage }, notification, topLevelRef: ref }) =>
     if (!!onCustomAction) {
         actions.push(React.createElement(CustomActionButton, { key: `${notification.id}-custom`, notification: notification, iconName: customActionIconName, tooltipLabel: customActionTooltipTranslationId
                 ? formatMessage({ id: customActionTooltipTranslationId })
-                : undefined, topLevelRef: ref, onClick: onCustomAction }));
+                : undefined, topLevelRef: ref, onClick: () => onCustomAction(notification, ref) }));
     }
     return (actions.length
         ? (React.createElement("div", { className: 'notification-grid-actions' }, actions))
