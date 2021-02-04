@@ -1,3 +1,7 @@
+## [9.10.26] 2021-02-04
+## Added
+- Added new font icon "filter_reset"
+
 ## [9.10.25] 2021-02-02
 ## Added
 - customActionTooltipTranslationValues to Notification
