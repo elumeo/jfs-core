@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>filter_reset</title>
+    <g id="filter_reset" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(2.000000, 2.000000)" fill="#000000" fill-rule="nonzero">
+            <path d="M0.5,1.5 L26.5,27.5 L27.5,26.5 L1.5,0.5 L0.5,1.5 Z M12,20 L16,20 L16,18 L12,18 L12,20 Z M5,8 L5,10 L10.9968669,10 L9,8 L5,8 Z M11,8 L13,10 L23,10 L23,8 L11,8 Z M8,15 L15.9972602,15 L14,13 L8,13 L8,15 Z M18,15 L20,15 L20,13 L16,13 L18,15 Z" id="Shape-Copy"></path>
+        </g>
+    </g>
+</svg>
