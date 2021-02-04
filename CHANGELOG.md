@@ -1,3 +1,7 @@
+## [9.10.31] 2021-02-04
+## Changed
+- updated "filter_reset" icon
+
 ## [9.10.30] 2021-02-04
 ## Changed
 - updated "filter_reset" icon
