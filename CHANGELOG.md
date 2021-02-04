@@ -1,3 +1,7 @@
+## [9.10.27] 2021-02-04
+## Fixed
+- Added new font icon "filter_reset" to possible type string list
+
 ## [9.10.26] 2021-02-04
 ## Added
 - Added new font icon "filter_reset"

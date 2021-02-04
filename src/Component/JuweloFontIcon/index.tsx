@@ -15,7 +15,8 @@ export type Icon = (
   'test' |
   'webshop' |
   'webshop_bidagent' |
-  'webshop_block'
+  'webshop_block' |
+  'filter_reset'
 );
 
 export interface IJuweloFontIconProps {
