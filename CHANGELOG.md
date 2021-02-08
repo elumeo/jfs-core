@@ -1,3 +1,7 @@
+## [9.10.33] 2021-02-04
+## Changed
+- increased Notification minimum time on screen to 5 seconds
+
 ## [9.10.32] 2021-02-04
 ## Changed
 - updated "filter_reset" icon

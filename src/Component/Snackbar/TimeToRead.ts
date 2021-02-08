@@ -1,5 +1,5 @@
 import { AVERAGE_READING_WORDS_PER_SECOND } from 'Constant/Toast';
-export const timeToRead = (text: string | String, min: number = 3000): number => {
+export const timeToRead = (text: string | String, min: number = 5000): number => {
   const isString = (typeof text === 'string') || (text instanceof String);
   if (!isString) {
     return min;
