@@ -11,6 +11,7 @@ export interface INotificationContent {
 
   icon?: string;
   isError?: boolean;
+  isWarning?: boolean;
   isSuccess?: boolean;
   stayOnScreen?: boolean;
   groupId?: string;

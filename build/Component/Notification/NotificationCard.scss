@@ -93,6 +93,27 @@
       }
     }
 
+    &.warning {
+      color: react-md.$md-light-theme-text-color !important;
+      background: colors.$juw-warning-color;
+
+      .badge .md-badge {
+        color: react-md.$md-light-theme-text-color !important;
+        background: colors.$juw-warning-color;
+      }
+
+      .md-btn {
+        &--icon,
+        &--text {
+          color: react-md.$md-light-theme-text-color !important;
+        }
+      }
+
+      .timestamp {
+        color: react-md.$md-light-theme-text-color !important;
+      }
+    }
+
     &.success {
       background: colors.$juw-success-color;
 

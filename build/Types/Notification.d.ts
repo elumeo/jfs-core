@@ -9,6 +9,7 @@ export interface INotificationContent {
     translationValues?: Record<string, PrimitiveType>;
     icon?: string;
     isError?: boolean;
+    isWarning?: boolean;
     isSuccess?: boolean;
     stayOnScreen?: boolean;
     groupId?: string;

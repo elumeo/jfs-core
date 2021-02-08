@@ -60,6 +60,7 @@ $juw-grey-300: rgba(0, 0, 0, 0.1);
 $juw-grey: $juw-grey-900;
 
 $juw-error-color: react-md.$md-red-900;
+$juw-warning-color: react-md.$md-yellow-700;
 $juw-success-color: react-md.$md-green-900;
 $juw-primary: $juw-rodolith-800;
 $juw-secondary: $juw-apatith;
@@ -68,6 +69,3 @@ $juw-font-color: $juw-grey-900;
 $md-primary-color: $juw-primary;
 $md-secondary-color: $juw-secondary;
 $md-error-color: $juw-error-color;
-
-/* disable material design color warnings */
-$md-colors-warn-md: false;

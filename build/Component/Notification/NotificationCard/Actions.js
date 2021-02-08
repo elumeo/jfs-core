@@ -5,7 +5,7 @@ import HideButton from './HideButton';
 import CustomActionButton from './CustomActionButton';
 const Actions = ({ intl: { formatMessage }, notification, topLevelRef: ref }) => {
     const { customActionTooltipTranslationId, customActionIconName, onCustomAction, dismissButtonVisible, onDismiss, hideButtonVisible, onHide } = notification;
-    if (!(!onCustomAction) && !customActionIconName) {
+    if (!!onCustomAction && !customActionIconName) {
         throw new Error('If you provide a onCustomAction you should also provide a customActionIconName');
     }
     const actions = [];

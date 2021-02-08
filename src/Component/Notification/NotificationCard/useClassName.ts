@@ -1,21 +1,23 @@
-import { INotification } from "Types/Notification";
+import { INotification } from 'Types/Notification';
 
-const useClassName = ({ error, isSuccess, isError, onClick }: {
+const useClassName = ({ error, isSuccess, isWarning, isError, onClick }: {
   error?: INotification['error'];
   isSuccess?: INotification['isSuccess'];
+  isWarning?: INotification['isWarning'];
   isError?: INotification['isError'];
   onClick?: INotification['onClick'];
 }) => {
   const errorClass = isError || error ? 'error' : '';
+  const warningClass = isWarning ? 'warning' : '';
   const successClass = isSuccess ? 'success' : '';
   const clickClass = onClick ? 'clickable' : '';
-  if (errorClass.length && successClass.length) {
-    throw new Error('isError|error and isSuccess cannot be combined');
+  if ([errorClass, warningClass, successClass].filter(c => !!c).length > 1) {
+    throw new Error('isError|error, isWarning and isSuccess cannot be combined');
   }
   return [
     `md-cell`, `md-cell--12`,
     `badges__notifications__notification`,
-    successClass, errorClass, clickClass
+    successClass, warningClass, errorClass, clickClass
   ].join(' ');
 }
 
