@@ -22,7 +22,7 @@ const Actions: React.FC<Props> = ({
     dismissButtonVisible, onDismiss,
     hideButtonVisible, onHide
   } = notification;
-  if (!(!onCustomAction) && !customActionIconName) {
+  if (!!onCustomAction && !customActionIconName) {
     throw new Error(
       'If you provide a onCustomAction you should also provide a customActionIconName'
     );

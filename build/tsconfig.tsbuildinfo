@@ -992,7 +992,7 @@
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/actions.tsx": {
-        "version": "14ffd76e14603c8a390adfe05188a7802d92d53ee4671dfd77f3f5d69e13c244",
+        "version": "31dc94e942fb5bf51c58aa0492fa3d2c74d26603317e996700718017f31bacb6",
         "signature": "c5befdb26c6a23955bf781354edf816daf2c3cc2ba9747b74b9f5e9e6d1c9e01",
         "affectsGlobalScope": false
       },
@@ -1052,8 +1052,8 @@
         "affectsGlobalScope": false
       },
       "../src/types/notification.ts": {
-        "version": "259fa43b77de4b66a0db6dd079a0485cbf5f18926b9bc84498c8cfdd93b13ec6",
-        "signature": "48c19df1bdb9f9aabd6043e5d6fbfdd2f2a37f65cf3da42c8ed384059817fd2d",
+        "version": "a75c5a1cfdaebba4bc801d88311f25b4c3938259d714581e82edddafc2f1f9af",
+        "signature": "26b3107001d65e72c3a07af2fdd3f0834fcd68db4dba1095195ff8304f4bdc09",
         "affectsGlobalScope": false
       },
       "../src/store/action/notificationaction.ts": {

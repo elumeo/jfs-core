@@ -1,4 +1,8 @@
-## [9.10.34] 2021-02-04
+## [9.10.35] 2021-02-08
+## Added
+- isWarning option for Notifications
+
+## [9.10.34] 2021-02-08
 ## Changed
 - increased Notification minimum time on screen to 5 seconds
 
