@@ -1,4 +1,4 @@
-## [9.10.33] 2021-02-04
+## [9.10.34] 2021-02-04
 ## Changed
 - increased Notification minimum time on screen to 5 seconds
 
