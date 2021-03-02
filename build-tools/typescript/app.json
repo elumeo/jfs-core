@@ -5,6 +5,8 @@
   },
   "exclude": [
     "dist",
-    "node_modules/@elumeo/jfs-core/scripts"
+    "node_modules/@elumeo/jfs-core/scripts",
+    "**/node_modules",
+    "**/.*/"
   ]
 }
