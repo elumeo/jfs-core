@@ -15,7 +15,7 @@ class Imports {
       from: (
         core
           ? '../Client'
-          : '@elumeo/jfs-core/build/Jsc/Client'
+          : '@elumeo/jfs-core/build/API/JSC/Client'
       )
     }),
     ...(

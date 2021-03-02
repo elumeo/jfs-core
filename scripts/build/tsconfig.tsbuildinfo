@@ -632,7 +632,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/deploy-config-files.ts": {
-        "version": "e2737856e3f834e2fc465c3f80edbbba316770bff13a0b1cacc21b2e67ca2f1a",
+        "version": "bb95aae5b5591667d120dd3617f4ed777a0dd185e96e41cd10b87c106bd8d57b",
         "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
@@ -2681,14 +2681,11 @@
       "../src/setup/deploy-config-files.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../src/library/jfs/app/index.ts",
         "../src/library/jfs/component/index.ts",
         "../src/library/jfs/core/index.ts",
         "../src/library/jfs/core/script.ts",
         "../src/library/jfs/index.ts",
-        "../src/library/os/filesystem/directory/index.ts",
-        "../src/library/os/filesystem/file/index.ts",
-        "../src/library/text/index.ts"
+        "../src/library/os/filesystem/file/index.ts"
       ],
       "../src/setup/generate-juwelo-icon-font.ts": [
         "../node_modules/@types/node/base.d.ts",

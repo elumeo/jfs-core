@@ -1,22 +1,9 @@
 import JFS from 'Library/JFS';
-import Directory from 'Library/OS/Filesystem/Directory';
 import File from 'Library/OS/Filesystem/File';
 import path from 'path';
 import Component from 'Library/JFS/Component';
 import Core from 'Library/JFS/Core';
-import App from 'Library/JFS/App';
-import Text from 'Library/Text';
 import Script from 'Library/JFS/Core/Script';
-
-const filesNamesToCopy = [
-  'tsconfig.app.json',
-  'tsconfig.component.json',
-  'tsconfig.core.json',
-  'tslint.json',
-  '.editorconfig',
-  '.prettierconfig',
-  '.prettierrc',
-];
 
 const run = () => JFS.discover(
   async () => {

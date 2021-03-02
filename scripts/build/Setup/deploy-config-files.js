@@ -18,15 +18,6 @@ const path_1 = __importDefault(require("path"));
 const Component_1 = __importDefault(require("../Library/JFS/Component"));
 const Core_1 = __importDefault(require("../Library/JFS/Core"));
 const Script_1 = __importDefault(require("../Library/JFS/Core/Script"));
-const filesNamesToCopy = [
-    'tsconfig.app.json',
-    'tsconfig.component.json',
-    'tsconfig.core.json',
-    'tslint.json',
-    '.editorconfig',
-    '.prettierconfig',
-    '.prettierrc',
-];
 const run = () => JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
     yield new Promise(resolve => (new File_1.default({ path: path_1.default.resolve(JFS_1.default.Core.path, 'build-tools', 'typescript', JFS_1.default.Head instanceof Core_1.default
             ? 'core.json'
