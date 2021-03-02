@@ -1,4 +1,3 @@
-import { combineEpics } from 'redux-observable';
 import { of } from 'rxjs';
 import { filter, concatMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
@@ -22,6 +21,4 @@ const initializeAppEpic: Epic = (
   )
 );
 
-export default combineEpics(
-  initializeAppEpic
-);
+export default initializeAppEpic;

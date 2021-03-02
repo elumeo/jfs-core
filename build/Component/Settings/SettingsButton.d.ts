@@ -1,9 +1,9 @@
 import React from 'react';
-import { closeSettings, openSettings } from '../../Store/Action/SettingsAction';
-export interface ISettingsButtonProps {
+import * as Action from '../../Store/Action';
+export declare type ISettingsButtonProps = Partial<typeof Action> & {
     settingsOpen?: boolean;
-    openSettings?: typeof openSettings;
-    closeSettings?: typeof closeSettings;
-}
-declare const _default: import("react-redux").ConnectedComponent<React.FC<ISettingsButtonProps>, Pick<ISettingsButtonProps, never> & ISettingsButtonProps>;
+};
+declare const _default: import("react-redux").ConnectedComponent<React.FC<ISettingsButtonProps>, Pick<ISettingsButtonProps, never> & Partial<typeof Action> & {
+    settingsOpen?: boolean;
+}>;
 export default _default;

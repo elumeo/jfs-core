@@ -1,26 +1,26 @@
 import { createReducer } from 'typesafe-actions';
-import { webSocketAddNamespaceAction, webSocketConnectFailedAction, webSocketConnectRequestAction, webSocketConnectSuccessAction, webSocketDisconnectSuccessAction, webSocketJoinRoomFailureAction, webSocketJoinRoomLoadingAction, webSocketJoinRoomSuccessAction, webSocketLeaveRoomSuccessAction } from '../../Action/WebSocketAction';
+import * as Action from '../../Action';
 export const webSocketConnectionReducerInitialState = {
 // It is not possible to set initial state values for any namespace here because namespaces will be created
 // dynamically with the action: webSocketAddNamespaceAction
 };
 const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState)
-    .handleAction(webSocketConnectRequestAction, (state, action) => {
+    .handleAction(Action.webSocketConnectRequestAction, (state, action) => {
     return Object.assign(Object.assign({}, state), { [action.payload]: Object.assign(Object.assign({}, state[action.payload]), { isConnecting: true, isConnected: false, connectionError: null }) });
 })
-    .handleAction(webSocketConnectSuccessAction, (state, action) => {
+    .handleAction(Action.webSocketConnectSuccessAction, (state, action) => {
     return Object.assign(Object.assign({}, state), { [action.payload]: Object.assign(Object.assign({}, state[action.payload]), { isConnecting: false, isConnected: true, connectionError: null }) });
 })
-    .handleAction(webSocketConnectFailedAction, (state, action) => {
+    .handleAction(Action.webSocketConnectFailedAction, (state, action) => {
     return Object.assign(Object.assign({}, state), { [action.payload.namespace]: Object.assign(Object.assign({}, state[action.payload.namespace]), { isConnecting: false, isConnected: false, connectionError: action.payload.message }) });
 })
-    .handleAction(webSocketDisconnectSuccessAction, (state, action) => {
+    .handleAction(Action.webSocketDisconnectSuccessAction, (state, action) => {
     return Object.assign(Object.assign({}, state), { [action.payload]: Object.assign(Object.assign({}, state[action.payload]), { isConnecting: false, isConnected: false, connectionError: null, rooms: [] }) });
 })
     .handleAction([
-    webSocketJoinRoomLoadingAction,
-    webSocketJoinRoomSuccessAction,
-    webSocketJoinRoomFailureAction
+    Action.webSocketJoinRoomLoadingAction,
+    Action.webSocketJoinRoomSuccessAction,
+    Action.webSocketJoinRoomFailureAction
 ], (state, action) => {
     const newRooms = [];
     if (state[action.payload.namespace] !== undefined) {
@@ -33,7 +33,7 @@ const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState
     newRooms.push(action.payload);
     return Object.assign(Object.assign({}, state), { [action.payload.namespace]: Object.assign(Object.assign({}, state[action.payload.namespace]), { rooms: newRooms }) });
 })
-    .handleAction(webSocketLeaveRoomSuccessAction, (state, action) => {
+    .handleAction(Action.webSocketLeaveRoomSuccessAction, (state, action) => {
     const newRooms = [];
     for (const room of state[action.payload.namespace].rooms) {
         if (room.name !== action.payload.room) {
@@ -48,7 +48,7 @@ const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState
     }
     return Object.assign(Object.assign({}, state), { [action.payload.namespace]: Object.assign(Object.assign({}, state[action.payload.namespace]), { rooms: newRooms }) });
 })
-    .handleAction(webSocketAddNamespaceAction, (state, action) => {
+    .handleAction(Action.webSocketAddNamespaceAction, (state, action) => {
     return Object.assign(Object.assign({}, state), { [action.payload]: {
             isConnected: false,
             isConnecting: false,

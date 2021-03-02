@@ -7,15 +7,16 @@ import NotificationEpic from './NotificationEpic';
 import WebSocketEpic from './WebSocketEpic';
 import LanguageEpic from './LanguageEpic';
 import { combineEpics } from 'redux-observable';
-import { Observable, EMPTY } from 'rxjs';
 
-export default combineEpics(
-    AppEpic,
-    SessionEpic,
-    SystemEpic,
-    LoginEpic,
-    ConfigurationEpic,
-    NotificationEpic,
-    WebSocketEpic,
-    LanguageEpic
-    )
+const Core = combineEpics(
+  AppEpic,
+  SessionEpic,
+  SystemEpic,
+  LoginEpic,
+  ConfigurationEpic,
+  NotificationEpic,
+  WebSocketEpic,
+  LanguageEpic
+);
+
+export default Core;

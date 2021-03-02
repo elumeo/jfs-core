@@ -1,14 +1,18 @@
 import React from 'react';
-import { Badge, Button } from 'react-md';
 import useActions from '../../Store/Action/useActions';
 import { useSelector } from '../../Types/Redux';
 import './NotificationBadge.scss';
+import Badge from '@material-ui/core/Badge';
+import IconButton from '@material-ui/core/IconButton';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 const NotificationBadge = () => {
     const notifications = useSelector(state => state.Core.Notification.notifications);
     const { toggleNotificationDrawerAction } = useActions();
-    const empty = !notifications.length;
-    return (React.createElement(Badge, { primary: true, circular: true, "aria-haspopup": true, badgeId: 'notification-badge', badgeContent: empty ? '' : notifications.length, className: empty ? 'md-badge-container--empty' : '' },
-        React.createElement(Button, { icon: true, onClick: () => toggleNotificationDrawerAction(), "aria-describedby": 'notification-badge' }, "notifications")));
+    return (React.createElement(IconButton, { color: 'inherit', onClick: toggleNotificationDrawerAction },
+        React.createElement(Badge, { color: 'secondary', 
+            // badgeId='notification-badge'
+            badgeContent: notifications.length },
+            React.createElement(NotificationsIcon, null))));
 };
 export default NotificationBadge;
 //# sourceMappingURL=NotificationBadge.js.map

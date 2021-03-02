@@ -1,7 +1,6 @@
 import React from 'react';
-import { Store } from 'redux';
-export declare type Props = {
-    store: Store;
+import { Props as HOCProps } from './HOC';
+export declare type Props = HOCProps & {
     allowRobotLogin?: boolean;
     translations: {
         [language: string]: {

@@ -1,11 +1,9 @@
 import React from 'react';
 import { INotification } from '../../../Types/Notification';
-import { InjectedIntl } from 'react-intl';
 import { INotificationCardProps } from '.';
 export declare type Props = {
-    intl?: InjectedIntl;
     notification: INotification;
     topLevelRef: React.Component<INotificationCardProps>;
 };
-declare const _default: React.FC<Props>;
-export default _default;
+declare const Actions: React.FC<Props>;
+export default Actions;

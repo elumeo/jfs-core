@@ -1,5 +1,4 @@
 import { createStandardAction } from 'typesafe-actions';
-const featureName = 'toast';
-export const addToastAction = createStandardAction(featureName + '/ADD')();
-export const dismissToastAction = createStandardAction(featureName + '/DELETE')();
+export const addToastAction = createStandardAction('toast/ADD')();
+export const dismissToastAction = createStandardAction('toast/DELETE')();
 //# sourceMappingURL=ToastAction.js.map

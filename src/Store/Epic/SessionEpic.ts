@@ -1,14 +1,12 @@
 import { combineEpics } from 'redux-observable'
 import { catchError, concatMap, filter, map, switchMap } from 'rxjs/operators';
-import { isActionOf, PayloadAction } from 'typesafe-actions';
+import { isActionOf } from 'typesafe-actions';
 import { from, of, concat, EMPTY } from 'rxjs';
 import { AxiosResponse } from 'axios';
 import * as Action from 'Store/Action';
-
-import JSCApi from 'Jsc/Api/index';
-import * as Token from '../../API/LOCAL_STORAGE/Token';
+import JSCApi from 'API/JSC';
+import * as Token from 'API/LOCAL_STORAGE/Token';
 import { Epic } from 'Types/Redux';
-import { logout } from 'Store/Action';
 
 const loadSessionEpic: Epic = (action$, store) => (
   action$.pipe(
@@ -22,7 +20,7 @@ const loadSessionEpic: Epic = (action$, store) => (
       return [allowRobotLogin, {  username, password }] as [
         boolean, { username: string; password: string; }
       ];
-    }), 
+    }),
     switchMap(
       ([allowRobotLogin, {username, password}]) => of(
         Token.getToken() || allowRobotLogin && username && password
@@ -60,23 +58,22 @@ const checkSessionEpic: Epic = (action$, store) => (
         toastableErrorIds.find(id => id === error.response.id)
       );
 
-      const contentTranslationId = (
+      return concat(
         isToastable
-          ? (
-            error.response.id === 'authorizationRequired'
-              ? 'userRights.checkFailed'
-              : 'session.expired'
-          )
-          : null
-      );
-
-      return of(
-        ...(
-          isToastable
-            ? [Action.addToastAction({contentTranslationId, isError: true})]
-            : []
-        ),
-        Action.unauthorizeSession()
+          ? of(Action.addToastAction({
+            contentTranslationId: (
+              isToastable
+                ? (
+                  error.response.id === 'authorizationRequired'
+                    ? 'userRights.checkFailed'
+                    : 'session.expired'
+                )
+                : null
+            ),
+            isError: true
+          }))
+          : EMPTY,
+        of(Action.unauthorizeSession())
       )
     })
   )
@@ -92,44 +89,44 @@ export const beforeLogoutHookEpic = handleLogoutHook => (action$, store) => (
   )
 );
 
-const logoutEpic: Epic = (action$, store) => (
-  action$.pipe(
-    filter(isActionOf(Action.beforeLogoutHookFinished)),
-    concatMap((action: PayloadAction<string, logout.Payload>) => {
-      const session = (
-        action.payload && action.payload.sessionDTO
-          ? action.payload.sessionDTO
-          : store.value.Core.Session.sessionDTO
-      );
-      if (session) {
-        return from(JSCApi.SessionClient.logout(session)).pipe(
-          switchMap(() => of(Action.logoutFinished())),
-          catchError((error) => {
-            if (error && error.response && error.response.status === 401) {
-              return of(Action.logoutFinished());
-            }
-            throw error;
-          })
-        )
-      } else {
-        return of(Action.logoutFinished());
-      }
-    })
-  )
-);
+// const logoutEpic: Epic = (action$, store) => (
+//   action$.pipe(
+//     filter(isActionOf(Action.beforeLogoutHookFinished)),
+//     concatMap(action => {
+//       const session = (
+//         action.payload && action.payload.sessionDTO
+//           ? action.payload.sessionDTO
+//           : store.value.Core.Session.sessionDTO
+//       );
+//       if (session) {
+//         return from(JSCApi.SessionClient.logout(session)).pipe(
+//           switchMap(() => of(Action.logoutFinished())),
+//           catchError((error) => {
+//             if (error && error.response && error.response.status === 401) {
+//               return of(Action.logoutFinished());
+//             }
+//             throw error;
+//           })
+//         )
+//       } else {
+//         return of(Action.logoutFinished());
+//       }
+//     })
+//   )
+// );
 
-export const afterLogoutHookEpic = handleLogoutFinished => action$ => (
-  action$.pipe(
-    filter(isActionOf(Action.logoutFinished)),
-    concatMap(
-      action => concat(
-        handleLogoutFinished(action),
-        of(Action.closeLogout()),
-        of(Action.unauthorizeSession())
-      )
-    )
-  )
-)
+// export const afterLogoutHookEpic = handleLogoutFinished => action$ => (
+//   action$.pipe(
+//     filter(isActionOf(Action.logoutFinished)),
+//     concatMap(
+//       action => concat(
+//         handleLogoutFinished(action),
+//         of(Action.closeLogout()),
+//         of(Action.unauthorizeSession())
+//       )
+//     )
+//   )
+// )
 
 const unauthorizeSessionEpic: Epic = (action$, store) => (
   action$.pipe(
@@ -157,7 +154,7 @@ const authorizeSessionEpic: Epic = (action$, state$) => (
 );
 
 export default combineEpics(
-  logoutEpic,
+  // logoutEpic,
   loadSessionEpic,
   checkSessionEpic,
   authorizeSessionEpic,

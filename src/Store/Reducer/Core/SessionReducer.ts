@@ -1,44 +1,34 @@
 import { createReducer, PayloadAction } from 'typesafe-actions';
-
-import JSCApi from 'Jsc/Api/index';
-import {
-  checkSession,
-  authorizeSession,
-  unauthorizeSession
-} from 'Action/SessionAction';
+import JSCApi from 'API/JSC';
+import * as Action from 'Store/Action';
+import { ActionType } from 'Types/Redux';
 
 type ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 type IPropertyDTO = JSCApi.DTO.Authorization.IPropertyDTO;
 
-namespace Session {
-  export type State = {
-    isCheckingSession: boolean;
-    isAuthorized: boolean;
-    sessionDTO: ISessionDTO;
-    appProperties: Array<IPropertyDTO>;
-  }
-  
+export type State = {
+  isCheckingSession: boolean;
+  isAuthorized: boolean;
+  sessionDTO: ISessionDTO;
+  appProperties: Array<IPropertyDTO>;
 }
 
-const initialState: Session.State = {
+const initialState: State = {
   isCheckingSession: false,
   isAuthorized: null,
   sessionDTO: null,
   appProperties: []
 };
 
-const Session = createReducer<Session.State>(initialState)
-  .handleAction(checkSession, (state): Session.State => ({
+const Session = createReducer<State, ActionType>(initialState)
+  .handleAction(Action.checkSession, (state): State => ({
     ...state,
     isCheckingSession: true,
     })
   )
   .handleAction(
-    authorizeSession,
-    (
-      state: Session.State,
-      action: PayloadAction<string, authorizeSession.Payload>
-    ): Session.State => ({
+    Action.authorizeSession,
+    (state, action) => ({
       ...state,
       isCheckingSession: false,
       sessionDTO: action.payload.frontendSessionDTO.session,
@@ -47,8 +37,8 @@ const Session = createReducer<Session.State>(initialState)
     })
   )
   .handleAction(
-    unauthorizeSession,
-    (state: Session.State): Session.State => ({
+    Action.unauthorizeSession,
+    state => ({
       ...state,
       isCheckingSession: false,
       sessionDTO: null,

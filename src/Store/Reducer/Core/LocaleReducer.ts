@@ -1,21 +1,20 @@
 import { createReducer } from 'typesafe-actions';
 import * as Action from 'Store/Action';
 import * as Country from 'Types/Country';
+import { ActionType } from 'Types/Redux';
 
-namespace Locale {
-  export type State =  {
-    locale: Country.Locale;
-  }
-}
+export type State =  {
+  locale: Country.Locale;
+};
 
-export const initialState: Locale.State = {
+export const initialState: State = {
   locale: 'en-GB'
-}
+};
 
-const Locale = createReducer<Locale.State>(initialState)
+const Locale = createReducer<State, ActionType>(initialState)
   .handleAction(
     Action.setLocale,
-    (state, action: Action.setLocale.Type) => ({
+    (state, action) => ({
       ...state,
       locale: action.payload.locale
     })

@@ -1,5 +1,7 @@
 import React from 'react';
-import DialogContainer from 'react-md/lib/Dialogs';
+import DialogContainer from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
 import './LoginDialog.scss';
@@ -15,11 +17,14 @@ const LoginDialog = () => {
             !state.Core.Login.failedLogins)
     }));
     return (React.createElement("div", { className: 'login-dialog' },
-        React.createElement(DialogContainer, { id: 'login-dialog', visible: routeType === 'authorized' &&
+        React.createElement(DialogContainer, { id: 'login-dialog', open: routeType === 'authorized' &&
                 !isAuthorized &&
                 !robotLoginAvailable &&
-                !isCheckingSession, title: 'Login', "aria-describedby": '', actions: React.createElement(LoginButton, null), modal: true },
-            React.createElement(LoginCredentials, null))));
+                !isCheckingSession, "aria-describedby": '' },
+            React.createElement(DialogTitle, null, "Login"),
+            React.createElement(LoginCredentials, null),
+            React.createElement(DialogActions, null,
+                React.createElement(LoginButton, null)))));
 };
 export default LoginDialog;
 //# sourceMappingURL=LoginDialog.js.map

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import CircularProgress from 'react-md/lib/Progress/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import BaseRoute from './BaseRoute';
 import useActions from '../../Store/Action/useActions';
 import { useSelector } from '../../Types/Redux';

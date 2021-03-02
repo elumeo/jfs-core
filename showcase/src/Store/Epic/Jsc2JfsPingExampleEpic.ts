@@ -1,7 +1,7 @@
 import { Epic, StateObservable } from 'redux-observable';
 import { of } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
-import { webSocketLeaveRoomSuccessAction } from 'Core/Store/Action/WebSocketAction';
+import { webSocketLeaveRoomSuccessAction }from '@elumeo/jfs-core/build/Store/Action/WebSocketAction';
 
 
 import JSCApi from 'Jsc/Api/index';

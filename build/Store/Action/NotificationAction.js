@@ -1,15 +1,14 @@
 import { createStandardAction } from 'typesafe-actions';
-const featureName = 'notification';
-export const addNotificationAction = createStandardAction(featureName + '/ADD')();
-export const addNotificationWithIdAction = createStandardAction(featureName + '/withId/ADD')();
-export const fadeNotificationOffScreenAction = createStandardAction(featureName + '/FADE_OUT')();
-export const dismissNotificationAction = createStandardAction(featureName + '/DELETE')();
-export const dismissNotificationByGroupIdAction = createStandardAction(featureName + '/DELETE_BY_GROUP_ID')();
-export const dismissAllNotificationsAction = createStandardAction(featureName + '/DELETE_ALL')();
-export const dismissNextNotificationAction = createStandardAction(featureName + '/DELETE_NEXT')();
-export const toggleNotificationDrawerAction = createStandardAction(featureName + '/drawer/TOGGLE')();
-export const showNotificationDrawerAction = createStandardAction(featureName + '/drawer/SHOW')();
-export const hideNotificationDrawerAction = createStandardAction(featureName + '/drawer/HIDE')();
-export const pinNotificationDrawerAction = createStandardAction(featureName + '/drawer/PIN')();
-export const unpinNotificationDrawerAction = createStandardAction(featureName + '/drawer/UNPIN')();
+export const addNotificationAction = createStandardAction('notification/ADD')();
+export const addNotificationWithIdAction = createStandardAction('notification/withId/ADD')();
+export const fadeNotificationOffScreenAction = createStandardAction('notification/FADE_OUT')();
+export const dismissNotificationAction = createStandardAction('notification/DELETE')();
+export const dismissNotificationByGroupIdAction = createStandardAction('notification/DELETE_BY_GROUP_ID')();
+export const dismissAllNotificationsAction = createStandardAction('notification/DELETE_ALL')();
+export const dismissNextNotificationAction = createStandardAction('notification/DELETE_NEXT')();
+export const toggleNotificationDrawerAction = createStandardAction('notification/drawer/TOGGLE')();
+export const showNotificationDrawerAction = createStandardAction('notification/drawer/SHOW')();
+export const hideNotificationDrawerAction = createStandardAction('notification/drawer/HIDE')();
+export const pinNotificationDrawerAction = createStandardAction('notification/drawer/PIN')();
+export const unpinNotificationDrawerAction = createStandardAction('notification/drawer/UNPIN')();
 //# sourceMappingURL=NotificationAction.js.map

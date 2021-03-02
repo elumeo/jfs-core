@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Button from 'react-md/lib/Buttons/Button';
-import CircularProgress from 'react-md/lib/Progress/CircularProgress';
-import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
+import * as MUI from '@material-ui/core';
+import * as ICON from '@material-ui/icons';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import './SearchComponent.scss';
 import { useDispatch } from 'react-redux';
-import { injectIntl } from 'react-intl';
-// noinspection ES6PreferShortImport
 import { addToastAction } from '../../Store/Action/ToastAction';
-const SearchComponent = injectIntl(({ intl, autocompleteData = [], blurOnEsc = true, centered, className, disabled = false, focusInputOnAutocomplete = false, focusInputOnClear = true, forceNumericInput = false, id, indicateSearchProgress, labelTranslationId, onChange, onClear, onRefAvailable, onSearch, placeholderTranslationId, searchOnAutocomplete = true, style, value = '', }) => {
+import { useIntl } from 'react-intl';
+const SearchComponent = ({ autocompleteData = [], blurOnEsc = true, centered, className, disabled = false, focusInputOnAutocomplete = false, focusInputOnClear = true, forceNumericInput = false, id, indicateSearchProgress, labelTranslationId, onChange, onClear, onRefAvailable, onSearch, placeholderTranslationId, searchOnAutocomplete = true, style, value = '', }) => {
+    const intl = useIntl();
     const fM = id => intl.formatMessage({ id });
     const [internValue, setInternValue] = useState('');
     const [inputFocused, setInputFocused] = useState(false);
@@ -76,10 +76,11 @@ const SearchComponent = injectIntl(({ intl, autocompleteData = [], blurOnEsc = t
             className
         ].join(' ') },
         React.createElement("div", { className: 'icon-view-box' }, indicateSearchProgress
-            ? React.createElement(CircularProgress, { id: `${id}SearchProgress`, className: 'search-progress' })
-            : React.createElement(Button, { icon: true, className: 'search-component-search-btn', onClick: () => handleSearch(internValue), disabled: indicateSearchProgress || disabled }, "search")),
-        React.createElement(Autocomplete, { id: `${id}-autocomplete`, ref: ref, data: autocompleteData, focusInputOnAutocomplete: focusInputOnAutocomplete && !searchOnAutocomplete, inputClassName: `search ${internValue != '' && 'search-active' || ''}`, label: labelTranslationId ? fM(labelTranslationId) : null, menuId: menuId, onAutocomplete: value => handleAutocomplete(value), onChange: value => handleChange(value), onKeyDown: event => handleKeyDown(event), placeholder: placeholderTranslationId ? fM(placeholderTranslationId) : null, textFieldClassName: 'md-text-field-icon', disabled: disabled, value: internValue, onFocus: () => setInputFocused(true), onBlur: () => setInputFocused(false) }),
-        React.createElement(Button, { icon: true, className: `clear-btn ${internValue != '' ? 'visible' : ''}`, disabled: disabled, onClick: handleClear }, "clear")));
-});
+            ? (React.createElement(MUI.CircularProgress, { id: `${id}SearchProgress`, className: 'search-progress' }))
+            : (React.createElement(MUI.IconButton, { className: 'search-component-search-btn', onClick: () => handleSearch(internValue), disabled: indicateSearchProgress || disabled },
+                React.createElement(ICON.Search, null)))),
+        React.createElement(Autocomplete, { id: `${id}-autocomplete`, ref: ref, options: autocompleteData, renderInput: params => (React.createElement(MUI.TextField, Object.assign({}, params, { label: "Choose a country", variant: "outlined", inputProps: Object.assign(Object.assign({}, params.inputProps), { autoComplete: 'new-password' }) }))), getOptionLabel: option => option.dataLabel, title: labelTranslationId ? fM(labelTranslationId) : null, onChange: event => handleChange(event.target.value), onKeyDown: event => handleKeyDown(event), placeholder: placeholderTranslationId ? fM(placeholderTranslationId) : null, disabled: disabled, value: internValue, onFocus: () => setInputFocused(true), onBlur: () => setInputFocused(false) }),
+        React.createElement(MUI.IconButton, { className: `clear-btn ${internValue != '' ? 'visible' : ''}`, disabled: disabled, onClick: handleClear }, "clear")));
+};
 export default SearchComponent;
 //# sourceMappingURL=SearchComponent.js.map

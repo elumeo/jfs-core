@@ -1,13 +1,7 @@
 import React from 'react';
-// import Grid from '@material-ui/core/Grids/Grid';
-// import Card from '@material-ui/core/Card';
-// import CardText from '@material-ui/core/Cards/CardText';
-// import CardTitle from '@material-ui/core/Cards/CardTitle';
-// import Toolbar from '@material-ui/core/Toolbars';
-// import CardActions from '@material-ui/core/Cards/CardActions';
-
-import { connect } from 'react-redux';
-import Search from 'Component/Search';
+import * as MUI from '@material-ui/core';
+import { useIntl } from 'react-intl';
+// import Search from '@elumeo/jfs-core/build/Component/Search/SearchComponent';
 import DialogExample from 'Component/DialogExample';
 import AddToastButton from 'Component/AddToastButton';
 import LoremIpsumText from 'Component/LoremIpsumText';
@@ -16,78 +10,56 @@ import { parallelAsyncLoopExampleRequestAction } from 'Action/parallelAsyncLoopE
 import JscWebSocketExampleButton from 'Component/JscWebSocketPingButton';
 import JscWebSocketCurrentGameButton from 'Component/JscWebSocketCurrentGameButton';
 import JfsWebSocketExampleButton from 'Component/JfsWebSocketPingButton';
-import { injectIntl, InjectedIntl } from 'react-intl';
-import DatePicker from 'Core/Component/DatePicker';
 
-import FormattedMessage from 'Core/Component/FormattedMessage';
-
-export interface IBoilerplateProps {
-  intl?: InjectedIntl;
+export interface Props {
   parallelAsyncLoopExampleRequestAction?: typeof parallelAsyncLoopExampleRequestAction;
 }
 
 // const { SharedHelloWorld } = Shared.mount((state: IRootReducer) => state.helloWorldReducer);
 
-class Boilerplate extends React.Component<IBoilerplateProps> {
+const Boilerplate: React.FC<Props> = () => {
+  const intl = useIntl();
+  const { formatMessage } = intl;
 
-  componentDidMount(): void {
-    this.props.parallelAsyncLoopExampleRequestAction(['1', '2', '3', '4', '5', '6']);
-  }
+  React.useEffect(
+    () => {
+      parallelAsyncLoopExampleRequestAction(['1', '2', '3', '4', '5', '6'])
+    },
+    []
+  );
 
-  render() {
-    const {intl: {formatMessage}} = this.props;
-
-    return (
-      <Grid>
-        <Card className='md-block-centered'>
-          <Toolbar>
-            <Search
-              id={'ToolbarSearchExample'}
-              labelTranslationId={'app.search'}
-              style={{width: '100%'}}
-            />
-          </Toolbar>
-          <CardTitle
-            title={formatMessage({id: 'app.title'})}
-            subtitle={formatMessage({id: 'app.hello'})}/>
-          <CardText>
-            <p>
-              The <code>CardText</code> component is really just useful for displaying any content with some additional
-              padding.
-            </p>
-            <LoremIpsumText lines={40}/>
-            {/* {<SharedHelloWorld/>} */}
-          </CardText>
-          <CardActions>
-            <DialogExample/>
-            <AddToastButton/>
-            <AddNotificationButton/>
-            <JfsWebSocketExampleButton/>
-            <JscWebSocketCurrentGameButton/>
-            <JscWebSocketExampleButton/>
-            <DatePicker value={new Date}/>
-            <FormattedMessage
-              id='configurable.message'
-              values={{
-                text: 'TEST123',
-                other: (
-                  <u>
-                    <i>
-                      Ich bin ein unterstrichener, kursiver, fetter Text
-                    </i>
-                  </u>
-                )
-              }}/>
-          </CardActions>
-        </Card>
-      </Grid>
-    );
-  }
+  return (
+    <MUI.Grid>
+      <MUI.Card className='md-block-centered'>
+        <MUI.Toolbar>
+          {/*<Search
+            id='ToolbarSearchExample'
+            labelTranslationId={'app.search'}
+            style={{width: '100%'}}/>*/}
+        </MUI.Toolbar>
+        <MUI.CardHeader
+          title={formatMessage({id: 'app.title'})}
+          subtitle={formatMessage({id: 'app.hello'})}/>
+        <MUI.CardContent>
+          <p>
+            The <code>CardText</code> component is really just useful for displaying any content with some additional
+            padding.
+          </p>
+          <LoremIpsumText lines={40}/>
+          {/* {<SharedHelloWorld/>} */}
+        </MUI.CardContent>
+        <MUI.CardActions>
+          <DialogExample/>
+          <AddToastButton/>
+          <AddNotificationButton/>
+          <JfsWebSocketExampleButton/>
+          <JscWebSocketCurrentGameButton/>
+          <JscWebSocketExampleButton/>
+          {/*<MUI.DatePicker value={new Date}/>*/}
+        </MUI.CardActions>
+      </MUI.Card>
+    </MUI.Grid>
+  );
 }
 
-export default injectIntl(
-  connect(
-    null,
-    { parallelAsyncLoopExampleRequestAction }
-  )(Boilerplate)
-);
+export default Boilerplate;

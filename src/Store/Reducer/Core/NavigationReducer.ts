@@ -1,23 +1,21 @@
 import { createReducer } from 'typesafe-actions';
+import * as Action from 'Store/Action';
+import { ActionType } from 'Types/Redux';
 
-import { openNavigation, closeNavigation } from '../../Action/NavigationAction';
-
-namespace Navigation {
-  export type State = {
-    navigationOpen: boolean;
-  }
+export type State = {
+  navigationOpen: boolean;
 }
 
-const initialState: Navigation.State = {
+const initialState: State = {
   navigationOpen: false
 };
 
-const Navigation = createReducer(initialState)
-  .handleAction(openNavigation, (state: Navigation.State) => ({
+const Navigation = createReducer<State, ActionType>(initialState)
+  .handleAction(Action.openNavigation, state => ({
     ...state,
     navigationOpen: true
   }))
-  .handleAction(closeNavigation, (state: Navigation.State) => ({
+  .handleAction(Action.closeNavigation, state => ({
     ...state,
     navigationOpen: false
   }));

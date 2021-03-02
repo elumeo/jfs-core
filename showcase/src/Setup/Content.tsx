@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Switch, Redirect } from 'react-router-dom';
 
-import Content from 'Core/Component/Content/Content';
-import AuthRoute from 'Core/Component/Route/AuthRoute';
-import NoAuthRoute from 'Core/Component/Route/NoAuthRoute';
-import Settings from 'Core/Component/Settings/SettingsContainer';
+import Content from '@elumeo/jfs-core/build/Component/Content/Content';
+import AuthRoute from '@elumeo/jfs-core/build/Component/Route/AuthRoute';
+import NoAuthRoute from '@elumeo/jfs-core/build/Component/Route/NoAuthRoute';
+import Settings from '@elumeo/jfs-core/build/Component/Settings/SettingsContainer';
 
 import Boilerplate from 'Component/Boilerplate';
 

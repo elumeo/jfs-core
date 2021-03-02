@@ -3,5 +3,5 @@ export declare namespace regionLoaded {
         regionName: string;
     };
 }
-export declare const regionLoaded: import("typesafe-actions").PayloadAC<string, regionLoaded.Payload>;
-export declare const getRegionFailed: import("typesafe-actions").EmptyAC<string>;
+export declare const regionLoaded: import("typesafe-actions").PayloadAC<"region/LOADED", regionLoaded.Payload>;
+export declare const getRegionFailed: import("typesafe-actions").EmptyAC<"region/GET_FAILED">;

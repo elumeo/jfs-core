@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { routerReducer as reactRouterReducer } from 'react-router-redux';
+// import { connectRouter, RouterState } from 'connected-react-router'
 import Configuration from './ConfigReducer';
 import Language from './LanguageReducer';
 import Logout from './LogoutReducer';
@@ -17,7 +17,7 @@ import Login from './LoginReducer';
 import Locale from './LocaleReducer';
 const Core = combineReducers({
     App,
-    reactRouterReducer,
+    // router : connectRouter(history),
     Configuration,
     Language,
     Login,

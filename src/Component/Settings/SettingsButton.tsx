@@ -1,15 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/IconButton';
+import * as Action from 'Store/Action';
+import * as Global from 'Store/Reducer/Global';
 
-import { closeSettings, openSettings } from '../../Store/Action/SettingsAction';
-import Global from '../../Store/Reducer/Global';
-
-export interface ISettingsButtonProps {
+export type ISettingsButtonProps = Partial<typeof Action> & {
   settingsOpen?: boolean;
-  openSettings?: typeof openSettings;
-  closeSettings?: typeof closeSettings;
-}
+};
 
 const SettingsButton: React.FC<ISettingsButtonProps> = ({
   settingsOpen,
@@ -30,6 +27,6 @@ const mapStateToProps = (
   settingsOpen: state.Core.Settings.settingsOpen
 });
 
-const enhance = connect(mapStateToProps, {openSettings, closeSettings});
+const enhance = connect(mapStateToProps, Action);
 
 export default enhance(SettingsButton);

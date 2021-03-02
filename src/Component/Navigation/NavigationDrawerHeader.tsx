@@ -1,12 +1,10 @@
 import React from 'react';
-import Toolbar from '@material-ui/core/Toolbar';
 import NavigationButton from './NavigationButton';
-import { useSelector } from 'react-redux';
-import { CardContent, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
-import Global from 'Store/Reducer/Global';
+import { useSelector } from 'Types/Redux';
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 
 const NavigationDrawerHeader: React.FC = () => {
-  const username = useSelector((state: Global.State) => (
+  const username = useSelector(state => (
     state.Core?.Session?.sessionDTO?.username
   ))
   return (
@@ -17,7 +15,7 @@ const NavigationDrawerHeader: React.FC = () => {
           <NavigationButton iconName="arrow_back"/></ListItemIcon>
           <ListItemText primary={username}/>
         </ListItem>
-          
+
         {/* </CardContent> */}
       </>
   );

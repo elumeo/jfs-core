@@ -1,34 +1,30 @@
-import { createReducer, PayloadAction } from 'typesafe-actions';
-import * as AppAction from 'Action/AppAction';
+import * as TA from 'typesafe-actions';
+import * as Action from 'Store/Action';
+import { ActionType } from 'Types/Redux';
 
-namespace App {
-  export type State = {
-    appInitialized: boolean;
-    allowRobotLogin: boolean;
-    packageJson: { version?: string };
-  }
-}
+export type State = {
+  appInitialized: boolean;
+  allowRobotLogin: boolean;
+  packageJson: { version?: string };
+};
 
-const initialState: App.State = {
+const initialState: State = {
   appInitialized: false,
   allowRobotLogin: false,
   packageJson: null
 };
 
-const App = createReducer(initialState)
+const App = TA.createReducer<State, ActionType>(initialState)
   .handleAction(
-    AppAction.initializeApp,
-    (
-      state: App.State,
-      action: PayloadAction<string, AppAction.initializeApp.Payload>
-    ) => ({
+    Action.initializeApp,
+    (state, action) => ({
       ...state,
       allowRobotLogin: action.payload.allowRobotLogin,
       packageJson: action.payload.packageJson
     })
   )
   .handleAction(
-    AppAction.appInitialized,
+    Action.appInitialized,
     state => ({
       ...state,
       appInitialized: true

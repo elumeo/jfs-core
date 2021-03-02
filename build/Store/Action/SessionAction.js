@@ -1,8 +1,7 @@
 import { createStandardAction } from 'typesafe-actions';
-const featureName = 'session';
-export const loadSession = createStandardAction(`${featureName}/LOAD`)();
-export const checkSession = createStandardAction(featureName + '/CHECK')();
-export const logout = (createStandardAction(featureName + '/LOGOUT')());
-export const authorizeSession = (createStandardAction(featureName + '/AUTHORIZE')());
-export const unauthorizeSession = (createStandardAction(featureName + '/UNAUTHORIZE')());
+export const loadSession = createStandardAction(`session/LOAD`)();
+export const checkSession = createStandardAction('route/CHECK')();
+export const logout = (createStandardAction('route/LOGOUT')());
+export const authorizeSession = (createStandardAction('route/AUTHORIZE')());
+export const unauthorizeSession = (createStandardAction('route/UNAUTHORIZE')());
 //# sourceMappingURL=SessionAction.js.map

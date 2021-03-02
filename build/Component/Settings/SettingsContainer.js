@@ -1,43 +1,75 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import Button from 'react-md/lib/Buttons/Button';
-import Cell from 'react-md/lib/Grids/Cell';
-import Card from 'react-md/lib/Cards/Card';
-import CardTitle from 'react-md/lib/Cards/CardTitle';
-import CardActions from 'react-md/lib/Cards/CardActions';
-import SelectField from 'react-md/lib/SelectFields';
-import { changeLanguageAction } from '../../Store/Action/LanguageAction';
+import { useHistory } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardActions from '@material-ui/core/CardActions';
+import SelectField from '@material-ui/core/Select';
+// import { changeLanguageAction } from '../../Store/Action/LanguageAction';
+// import Global from '../../Store/Reducer/Global'
 import Cookie from 'js-cookie';
 import './SettingsContainer.scss';
-import { compose } from 'redux';
-import International from '../International';
+import { MenuItem } from '@material-ui/core';
+import useActions from '../../Store/Action/useActions';
+import { useIntl } from 'react-intl';
+import { useSelector } from '../../Types/Redux';
+import { getLanguageStateSelector } from '../../Store/Selectors/Core/Language';
 // ToDo: Duplikat entfernen => Siehe LanguageSettings.tsx
 const LANGUAGES = [
     { label: 'Deutsch', value: 'de' },
     { label: 'English', value: 'en' },
     { label: 'Italiano', value: 'it' }
 ];
-class SettingsContainer extends React.Component {
-    render() {
-        const { props: { history: { goBack }, language, changeLanguageAction } } = this;
-        return (React.createElement("div", { className: 'md-grid settings-grid' },
-            React.createElement(Cell, { size: 12 },
-                React.createElement(Card, { style: { width: 330, margin: 'auto' }, raise: true },
-                    React.createElement(International, null, ({ formatMessage }) => (React.createElement(React.Fragment, null,
-                        React.createElement(CardTitle, { title: formatMessage({ id: 'settings.title' }) }),
-                        React.createElement(SelectField, { id: 'language', label: formatMessage({ id: 'settings.language' }), className: 'md-cell md-cell--12', menuItems: LANGUAGES, value: language, itemLabel: 'label', itemValue: 'value', onChange: lang => {
-                                Cookie.set('lang', lang);
-                                changeLanguageAction(lang);
-                            } }),
-                        React.createElement(CardActions, { className: 'md-dialog-footer' },
-                            React.createElement(Button, { primary: true, flat: true, onClick: goBack }, formatMessage({ id: 'app.settings.done' }))))))))));
-    }
-}
-const mapStateToProps = (state, ownProps) => (Object.assign({ language: (state.Core.Language.language
-        ? state.Core.Language.language
-        : state.Core.Configuration.config.Language) }, ownProps));
-const enhance = compose(connect(mapStateToProps, { changeLanguageAction }), withRouter);
+// interface ISettingsContainerProps {
+//   language?: string;
+//   changeLanguageAction?: typeof changeLanguageAction;
+//   history?: History;
+// }
+const SettingsContainer = () => {
+    const { changeLanguageAction } = useActions();
+    const { back: goBack } = useHistory();
+    const { formatMessage } = useIntl();
+    const language = useSelector(getLanguageStateSelector);
+    // const {
+    //   props: { history: {goBack}, language, changeLanguageAction }
+    // } 
+    const menuItems = LANGUAGES.map(lang => React.createElement(MenuItem, { key: `settings-menu-item--${lang.value}`, value: lang.value }, lang.label));
+    return (
+    // <Grid container>
+    //   <Grid xs={12} item>
+    React.createElement(Card, { style: { width: 330, margin: 'auto' } },
+        React.createElement(React.Fragment, null,
+            React.createElement(CardHeader, { title: formatMessage({ id: 'settings.title' }) }),
+            React.createElement(SelectField, { id: 'language', label: formatMessage({ id: 'settings.language' }), 
+                // className='md-cell md-cell--12'
+                value: language, 
+                // itemLabel='label'
+                // itemValue='value'
+                onChange: (e) => {
+                    Cookie.set('lang', e.target.value);
+                    changeLanguageAction(e.target.value);
+                } }, menuItems),
+            React.createElement(CardActions, { className: 'md-dialog-footer' },
+                React.createElement(Button, { onClick: goBack }, formatMessage({ id: 'app.settings.done' })))))
+    //   </Grid>
+    // </Grid>
+    );
+};
+// const mapStateToProps = (
+//   state: Global.State,
+//   ownProps: ISettingsContainerProps
+// ): ISettingsContainerProps => ({
+//   language: (
+//     state.Core.Language.language
+//       ? state.Core.Language.language
+//       : state.Core.Configuration.config.Language
+//   ),
+//   ...ownProps
+// });
+// const enhance = compose(
+//   connect(mapStateToProps, {changeLanguageAction}),
+//   withRouter
+// );
 // noinspection JSUnusedGlobalSymbols
-export default enhance(SettingsContainer);
+export default SettingsContainer;
 //# sourceMappingURL=SettingsContainer.js.map

@@ -1,10 +1,9 @@
 import React from 'react';
 import './_styles.scss';
-import { useSelector } from 'react-redux';
-import Global from 'Store/Reducer/Global';
+import { useSelector } from 'Types/Redux';
 
 const Content: React.FC = ({ children }) => {
-  const splitViewEnabled = useSelector<Global.State,boolean>(
+  const splitViewEnabled = useSelector<boolean>(
     state => state.Core.SplitView.splitViewEnabled
   );
   const contentClassName = [

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 // import Button from '@material-ui/core/Button';
-import { addToastAction } from 'Core/Store/Action/ToastAction'
-import { IToastConfig } from 'Core/Store/Reducer/Core/ToastReducer';
+import { addToastAction }from '@elumeo/jfs-core/build/Store/Action/ToastAction'
+import { IToastConfig }from '@elumeo/jfs-core/build/Store/Reducer/Core/ToastReducer';
 
 import { injectIntl, InjectedIntlProps } from 'react-intl';
 

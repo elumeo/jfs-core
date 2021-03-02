@@ -1,12 +1,12 @@
 import { createReducer } from 'typesafe-actions';
 import { List } from 'immutable';
-import { addToastAction, dismissToastAction, } from '../../Action/ToastAction';
+import * as Action from '../../Action/ToastAction';
 const initialState = {
     toasts: List(),
 };
 const Toast = createReducer(initialState)
-    .handleAction(addToastAction, (state, action) => (Object.assign(Object.assign({}, state), { toasts: state.toasts.unshift(action.payload) })))
-    .handleAction(dismissToastAction, (state) => {
+    .handleAction(Action.addToastAction, (state, action) => (Object.assign(Object.assign({}, state), { toasts: state.toasts.unshift(action.payload) })))
+    .handleAction(Action.dismissToastAction, state => {
     let toastsCount;
     let lastToast, previousToast;
     let toastsAreEqual, messagesAreEqual, translationIdsAreEqual, errorsAreEqual;

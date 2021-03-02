@@ -1,23 +1,22 @@
 import React from 'react';
-import { uniqueId } from 'lodash';
-import FontIcon from 'react-md/lib/FontIcons';
-import ListItem from 'react-md/lib/Lists/ListItem';
+import FontIcon from '@material-ui/core/Icon';
+import ListItem from '@material-ui/core/ListItem';
 import { useHistory } from 'react-router-dom';
-import International from '../International';
 import { useSelector } from '../../Types/Redux';
 import useActions from '../../Store/Action/useActions';
+import { useIntl } from 'react-intl';
+import { ListItemIcon, ListItemText } from '@material-ui/core';
 const NavigationItem = ({ iconName, messageId, onClick, active, messageString, authorizedOnly, unauthorizedOnly, onClickRoute }) => {
     const history = useHistory();
     const { closeNavigation } = useActions();
+    const { formatMessage } = useIntl();
     const isAuthorized = useSelector(state => state.Core.Session.isAuthorized);
     const visible = (!authorizedOnly && !unauthorizedOnly || // always display these
         isAuthorized && authorizedOnly || // only when authorized
         !isAuthorized && unauthorizedOnly // only when unauthorized
     );
     return (visible
-        ? (React.createElement(International, null, ({ formatMessage }) => (React.createElement(ListItem, { key: uniqueId('navItem_'), primaryText: messageString
-                ? messageString
-                : formatMessage({ id: messageId }), leftIcon: React.createElement(FontIcon, null, iconName), onClick: (event) => {
+        ? (React.createElement(ListItem, { button: true, onClick: (event) => {
                 const { location: { pathname } } = history;
                 if (onClickRoute != undefined && pathname !== onClickRoute) {
                     history.push(onClickRoute);
@@ -26,7 +25,12 @@ const NavigationItem = ({ iconName, messageId, onClick, active, messageString, a
                 if (onClick) {
                     onClick(event);
                 }
-            }, active: active }))))
+            }, selected: active },
+            React.createElement(ListItemIcon, null,
+                React.createElement(FontIcon, null, iconName)),
+            React.createElement(ListItemText, { primary: messageString
+                    ? messageString
+                    : formatMessage({ id: messageId }) })))
         : React.createElement(React.Fragment, null));
 };
 export default NavigationItem;

@@ -1,8 +1,6 @@
 import { createStandardAction, PayloadAction } from 'typesafe-actions';
 import { Language } from 'Types/Language';
 
-const featureName = 'language';
-
 export namespace changeLanguageAction {
   export type Payload = Language;
 
@@ -10,8 +8,8 @@ export namespace changeLanguageAction {
 }
 
 export const changeLanguageAction = (
-  createStandardAction(featureName + '/CHANGE')<changeLanguageAction.Payload>()
+  createStandardAction('language/CHANGE')<changeLanguageAction.Payload>()
 );
 export const initializeLanguage = (
-  createStandardAction(`${featureName}/INITIALIZE`)()
+  createStandardAction(`language/INITIALIZE`)()
 );

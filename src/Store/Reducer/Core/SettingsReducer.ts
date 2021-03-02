@@ -1,22 +1,21 @@
 import { closeSettings, openSettings } from 'Action/SettingsAction';
 import { createReducer } from 'typesafe-actions';
+import { ActionType } from 'Types/Redux';
 
-namespace Settings {
-  export type State = {
-    settingsOpen: boolean;
-  }
+export type State = {
+  settingsOpen: boolean;
 }
 
-const initialState: Settings.State = {
+const initialState: State = {
   settingsOpen: false
 };
 
-const Settings = createReducer<Settings.State>(initialState)
-  .handleAction(openSettings, (state) => ({
+const Settings = createReducer<State, ActionType>(initialState)
+  .handleAction(openSettings, state => ({
     ...state,
     settingsOpen: true
   }))
-  .handleAction(closeSettings, (state) => ({
+  .handleAction(closeSettings, state => ({
     ...state,
     settingsOpen: false
   }));

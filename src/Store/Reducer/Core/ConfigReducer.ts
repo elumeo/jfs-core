@@ -1,14 +1,13 @@
 import { configLoadedAction, loadConfig } from '../../Action/ConfigAction';
-import { createReducer, PayloadAction } from 'typesafe-actions';
+import { createReducer } from 'typesafe-actions';
 import IConfig from 'Types/Configuration';
+import { ActionType } from 'Types/Redux';
 
-namespace Configuration {
-  export type State<T> = {
-    config: T;
-    pending: boolean;
-    loaded: boolean;
-  }
-}
+export type State<T> = {
+  config: T;
+  pending: boolean;
+  loaded: boolean;
+};
 
 const initialState = {
   config: null,
@@ -16,19 +15,16 @@ const initialState = {
   loaded: false
 };
 
-const Configuration = createReducer<Configuration.State<IConfig>>(initialState)
+const Configuration = createReducer<State<IConfig>, ActionType>(initialState)
   .handleAction(
     loadConfig,
-    (state: Configuration.State<IConfig>) => (
+    state => (
       {...state, pending: true, loaded: false}
     )
   )
   .handleAction(
     configLoadedAction,
-    (
-      state: Configuration.State<IConfig>,
-      action: PayloadAction<string, any>
-    ) => (
+    (state, action) => (
       {...state, ...action.payload, pending: false, loaded: true}
     )
   );

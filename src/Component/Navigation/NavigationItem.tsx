@@ -1,15 +1,11 @@
 import React from 'react';
-import { uniqueId } from 'lodash';
-// import FontIcon from '@material-ui/core/FontIcons';
-// import ListItem from '@material-ui/core/Lists/ListItem';
 import FontIcon from '@material-ui/core/Icon'
 import ListItem from '@material-ui/core/ListItem'
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'Types/Redux';
 import useActions from 'Action/useActions';
 import { useIntl } from 'react-intl';
-import Global from 'Store/Reducer/Global';
-import { ListItemIcon, ListItemText, MenuItem } from '@material-ui/core';
+import { ListItemIcon, ListItemText } from '@material-ui/core';
 
 export interface INavigationItemProps {
   iconName?: string;
@@ -29,9 +25,7 @@ const NavigationItem: React.FC<INavigationItemProps> = ({
   const history = useHistory();
   const { closeNavigation } = useActions();
   const {formatMessage} = useIntl()
-  const isAuthorized = useSelector(
-    (state: Global.State) => state.Core.Session.isAuthorized
-  );
+  const isAuthorized = useSelector(state => state.Core.Session.isAuthorized);
   const visible = (
     !authorizedOnly && !unauthorizedOnly || // always display these
     isAuthorized && authorizedOnly || // only when authorized
@@ -42,7 +36,7 @@ const NavigationItem: React.FC<INavigationItemProps> = ({
     visible
       ? (
             <ListItem
-              button 
+              button
               onClick={(event: React.MouseEvent<HTMLElement>) => {
                 const {location: {pathname}} = history;
                 if (onClickRoute != undefined && pathname !== onClickRoute) {
@@ -60,7 +54,7 @@ const NavigationItem: React.FC<INavigationItemProps> = ({
               <ListItemText primary={
                 messageString
                   ? messageString
-                  : formatMessage({id: messageId})} /> 
+                  : formatMessage({id: messageId})} />
             </ListItem>
       )
       : <></>

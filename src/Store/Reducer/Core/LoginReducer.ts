@@ -1,60 +1,55 @@
-import { createReducer, PayloadAction } from 'typesafe-actions';
-import {
-  checkLogin, loggedIn, loginFailed, updateCredentials
-} from '../../Action/LoginAction';
+import { createReducer } from 'typesafe-actions';
+import * as Action from 'Store/Action';
+import { ActionType } from 'Types/Redux';
 
-namespace Login {
-  export type State = {
-    username: string;
-    password: string;
-    isCheckingLogin: boolean;
-    failedLogins: number;
-  }
+export type State = {
+  username: string;
+  password: string;
+  isCheckingLogin: boolean;
+  failedLogins: number;
 }
 
-const initialState: Login.State = {
+const initialState: State = {
   username: '',
   password: '',
   isCheckingLogin: false,
   failedLogins: 0
 };
 
-const Login = createReducer<Login.State>(initialState)
+const Login = createReducer<State, ActionType>(initialState)
   .handleAction(
-    checkLogin,
-    (state: Login.State): Login.State => ({
+    Action.updateCredentials,
+    (state, { payload: { username, password } }) => ({
+      ...state,
+      username,
+      password
+    })
+  )
+  .handleAction(
+    Action.checkLogin,
+    state => ({
       ...state,
       isCheckingLogin: true
     })
   )
   .handleAction(
-    updateCredentials,
-    (
-      state: Login.State,
-      action: PayloadAction<string, updateCredentials.Payload>
-    ): Login.State => ({
+    Action.loginFailed,
+    state => ({
       ...state,
-      username: action.payload.username,
-      password: action.payload.password
+      failedLogins: state.failedLogins + 1,
+      isCheckingLogin: false
     })
   )
   .handleAction(
-    loggedIn,
-    (state: Login.State) => ({
+    Action.loggedIn,
+    state => ({
       ...state,
       failedLogins: 0,
       isCheckingLogin: false,
       username: '',
       password: ''
     })
-  )
-  .handleAction(
-    loginFailed,
-    (state: Login.State) => ({
-      ...state,
-      failedLogins: state.failedLogins + 1,
-      isCheckingLogin: false
-    })
-  )
+  );
+
 
 export default Login;

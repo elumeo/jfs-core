@@ -1,17 +1,14 @@
 import React from 'react';
 import useActions from 'Action/useActions';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'Types/Redux';
 import { useIntl } from 'react-intl';
 import TextField from '@material-ui/core/TextField';
 import DialogContent from '@material-ui/core/DialogContent';
 import { getIsAuthorizedSelector, getIsCheckingSessionSelector } from 'Store/Selectors/Core/Session';
-import Global from 'Store/Reducer/Global';
+
 
 const LoginCredentials: React.FC = () => {
-  const { username, password } = useSelector<Global.State,{
-    username: string;
-    password: string;
-  }>(state => ({
+  const { username, password } = useSelector(state => ({
     username: state.Core.Login.username,
     password: state.Core.Login.password
   }));

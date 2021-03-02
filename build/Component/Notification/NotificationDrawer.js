@@ -1,21 +1,22 @@
 import React from 'react';
-import Drawer from 'react-md/lib/Drawers';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Drawer from '@material-ui/core/Drawer';
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './NotificationDrawer.scss';
 import { useSelector } from '../../Types/Redux';
 import useActions from '../../Store/Action/useActions';
 import NotificationsFragment from './NotificationsFragment';
-import NotificationDrawerToolbar from './NotificationDrawerToolbar';
+import NotificationDrawerToolbar from './NotificationDrawerToolbar/index';
 import useClassNames from './useNotificationDrawerClassNames';
+import { CardContent } from '@material-ui/core';
 const NotificationDrawer = () => {
     const { pinnedClassName, overlayClassName } = useClassNames();
     const notificationDrawerVisible = useSelector(state => (state.Core.Notification.notificationDrawerVisible));
     const { toggleNotificationDrawerAction, hideNotificationDrawerAction } = useActions();
-    return (React.createElement(Drawer, { className: `notification-drawer ${pinnedClassName}`, visible: notificationDrawerVisible, onVisibilityChange: toggleNotificationDrawerAction, position: 'right', header: React.createElement(NotificationDrawerToolbar, null), onKeyDown: (e) => (e.keyCode == 13 && hideNotificationDrawerAction()), type: Drawer.DrawerTypes.TEMPORARY, overlayClassName: overlayClassName, clickableDesktopOverlay: true, overlay: true },
-        React.createElement(ReactCSSTransitionGroup, { transitionName: {
-                enter: 'fadein-enter',
-                leave: 'disappear-leave',
-            }, transitionEnterTimeout: 300, transitionLeaveTimeout: 200 },
+    return (React.createElement(Drawer, { className: `notification-drawer ${pinnedClassName}`, open: notificationDrawerVisible, onClose: toggleNotificationDrawerAction, anchor: 'right', 
+        // header={<NotificationDrawerToolbar/>}
+        onKeyDown: (e) => (e.keyCode == 13 && hideNotificationDrawerAction()) },
+        React.createElement(NotificationDrawerToolbar, null),
+        React.createElement(CardContent, { className: 'notification-drawer__content' },
             React.createElement(NotificationsFragment, null))));
 };
 export default NotificationDrawer;

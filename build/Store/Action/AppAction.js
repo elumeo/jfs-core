@@ -1,5 +1,4 @@
 import { createStandardAction } from 'typesafe-actions';
-const featureName = 'app';
-export const initializeApp = (createStandardAction(featureName + '/INITIALZE')());
-export const appInitialized = createStandardAction(featureName + '/INITIALZED')();
+export const initializeApp = (createStandardAction('app/INITIALZE')());
+export const appInitialized = createStandardAction('app/INITIALZED')();
 //# sourceMappingURL=AppAction.js.map

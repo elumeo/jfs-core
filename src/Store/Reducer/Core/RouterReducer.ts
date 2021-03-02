@@ -1,35 +1,28 @@
-// noinspection ES6PreferShortImport
-import {
-  enterAuthorizedRoute,
-  enterUnauthorizedRoute,
-  RouteDetails,
-  updateRouteDetails
-} from '../../Action/RouterAction';
+import * as Action from 'Store/Action';
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import { Location } from 'history';
+import { ActionType } from 'Types/Redux';
 
-namespace Router {
-  export type State = {
-    routeType: 'authorized' | 'unauthorized';
-    location: Location;
-    params
-  }
+export type State = {
+  routeType: 'authorized' | 'unauthorized';
+  location: Location;
+  params
 }
 
-const initialState: Router.State = {
+const initialState: State = {
   routeType: null,
   location: undefined,
   params: undefined
 };
 
-const Router = createReducer<Router.State>(initialState)
-  .handleAction(enterAuthorizedRoute, (state): Router.State => (
+const Router = createReducer<State, ActionType>(initialState)
+  .handleAction(Action.enterAuthorizedRoute, state => (
     { ...state, routeType: 'authorized' }
   ))
-  .handleAction(enterUnauthorizedRoute, (state): Router.State => (
+  .handleAction(Action.enterUnauthorizedRoute, state => (
     { ...state, routeType: 'unauthorized' }
   ))
-  .handleAction(updateRouteDetails, (state: Router.State, { payload: { location, params } }: PayloadAction<string, RouteDetails>): Router.State => (
+  .handleAction(Action.updateRouteDetails, (state, { payload: { location, params } }) => (
     { ...state, location, params }
   ))
 ;

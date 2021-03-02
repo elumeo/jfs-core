@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
-import Core from 'Store/Reducer/Core';
-import Global from 'Store/Reducer/Global';
+import { State } from 'Store/Reducer/Global';
+import { State as CoreState } from 'Store/Reducer/Core';
 
 
-const selfSelector = (self :Global.State)=> self;
-const coreSelector = state => state.Core as Core.State
+const selfSelector = (self: State)=> self;
+const coreSelector = (state: State) => state.Core as CoreState
 
 const getCoreStateSelector = createSelector(selfSelector,coreSelector)
 

@@ -1,12 +1,11 @@
-import * as React from 'react';
-import * as _ from 'lodash';
-import Divider from '@material-ui/core/Dividers';
-import NavigationDrawer from 'Component/Navigation/NavigationDrawer';
-import NavigationItem from 'Core/Component/Navigation/NavigationItem';
+import React from 'react';
+import _ from 'lodash';
+import Divider from '@material-ui/core/Divider';
+import NavigationDrawer from '@elumeo/jfs-core/build/Component/Navigation/NavigationDrawer';
+import NavigationItem from '@elumeo/jfs-core/build/Component/Navigation/NavigationItem';
 
-import SettingsNavigationItem from 'Core/Component/Settings/SettingsNavigationItem';
-import LogoutNavigationItem from 'Core/Component/Logout/LogoutNavigationItem';
-import VersionNavigationItem from 'Core/Component/Misc/VersionNavigationItem';
+import SettingsNavigationItem from '@elumeo/jfs-core/build/Component/Settings/SettingsNavigationItem';
+import LogoutNavigationItem from '@elumeo/jfs-core/build/Component/Logout/LogoutNavigationItem';
 
 export default () => (
   <NavigationDrawer position='left'>
@@ -26,6 +25,5 @@ export default () => (
     <SettingsNavigationItem/>
     <Divider key={_.uniqueId('navItem_')}/>
     <LogoutNavigationItem/>
-    <VersionNavigationItem/>
   </NavigationDrawer>
 );

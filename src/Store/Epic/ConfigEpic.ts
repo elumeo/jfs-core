@@ -1,4 +1,3 @@
-import { combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import { catchError, filter, concatMap, } from 'rxjs/operators';
 import axios, { AxiosResponse } from 'axios';
@@ -21,6 +20,4 @@ const loadConfigEpic: Epic = action$ => (
   )
 );
 
-export default combineEpics(
-  loadConfigEpic
-);
+export default loadConfigEpic;

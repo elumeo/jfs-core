@@ -1,7 +1,5 @@
 import { createStandardAction } from 'typesafe-actions';
 
-const featureName = 'app';
-
 export namespace initializeApp {
   export type Payload = {
     allowRobotLogin?: boolean;
@@ -12,6 +10,6 @@ export namespace initializeApp {
 }
 
 export const initializeApp = (
-  createStandardAction(featureName + '/INITIALZE')<initializeApp.Payload>()
+  createStandardAction('app/INITIALZE')<initializeApp.Payload>()
 );
-export const appInitialized = createStandardAction(featureName + '/INITIALZED')();
+export const appInitialized = createStandardAction('app/INITIALZED')();

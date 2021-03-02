@@ -2,7 +2,7 @@ import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './NotificationDrawer.scss';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'Types/Redux';
 import useActions from 'Action/useActions';
 import NotificationsFragment from './NotificationsFragment';
 import NotificationDrawerToolbar from './NotificationDrawerToolbar/index';
@@ -13,7 +13,7 @@ import Global from 'Store/Reducer/Global';
 
 const NotificationDrawer: React.FC = () => {
   const { pinnedClassName, overlayClassName } = useClassNames();
-  const notificationDrawerVisible = useSelector<Global.State,boolean>(state => (
+  const notificationDrawerVisible = useSelector<boolean>(state => (
     state.Core.Notification.notificationDrawerVisible
   ));
   const {

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { uniqueId } from 'lodash';
 import Divider from '@material-ui/core/Divider';
-import { useDispatch, useSelector } from 'react-redux';
 import NavigationDrawer from 'Component/Navigation/NavigationDrawer';
 import NavigationItem from 'Component/Navigation/NavigationItem';
 

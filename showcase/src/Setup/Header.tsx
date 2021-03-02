@@ -1,10 +1,9 @@
 import * as React from 'react';
-import AppHeader from 'Core/Component/Header/AppHeader';
-import BackendIndicator from 'Core/Component/Header/BackendIndicator';
-import SettingsButton from 'Core/Component/Settings/SettingsButton';
-import WebSocketStatus from 'Core/Component/Websocket/WebSocketStatus';
-import NotificationBadge from 'Core/Component/Notification/NotificationBadge';
-import Search from 'Component/Search';
+import AppHeader from '@elumeo/jfs-core/build/Component/Header/AppHeader';
+import BackendIndicator from '@elumeo/jfs-core/build/Component/Header/BackendIndicator';
+import SettingsButton from '@elumeo/jfs-core/build/Component/Settings/SettingsButton';
+import NotificationBadge from '@elumeo/jfs-core/build/Component/Notification/NotificationBadge';
+// import Search from '@elumeo/jfs-core/build/Component/Search/SearchComponent';
 
 export default () => (
   <AppHeader
@@ -18,8 +17,7 @@ export default () => (
     rightTools={
       () => (
         <>
-          <WebSocketStatus />
-          <Search className='tool'/>
+          {/* <Search/> */}
           <SettingsButton/>
           <NotificationBadge/>
         </>

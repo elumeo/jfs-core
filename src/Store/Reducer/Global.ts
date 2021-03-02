@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux';
-import Core from './Core';
+import Core, { State as CoreState } from './Core';
 
-namespace Global {
-  export type State = {
-    Core: Core.State;
-  }
-}
+export type State = {
+  Core: CoreState;
+};
 
-const Global = combineReducers<Global.State>({
-  Core,
+const Global = combineReducers<State>({
+  Core
 });
 
 export default Global;

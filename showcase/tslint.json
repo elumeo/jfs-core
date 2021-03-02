@@ -1,0 +1,74 @@
+{
+  "rules": {
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "no-any": false,
+    "no-var-requires": false,
+    "curly": true,
+    "no-conditional-assignment": true,
+    "no-var-keyword": true,
+    "no-shadowed-variable": false,
+    "no-unused-expression": true,
+    "no-unused-variable": false,
+    "switch-default": true,
+    "indent": [
+      true,
+      "spaces",
+      2
+    ],
+    "max-line-length": [
+      true,
+      200
+    ],
+    "no-trailing-whitespace": true,
+    "trailing-comma": [
+      false,
+      {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ],
+    "align": [
+      true,
+      "parameters",
+      "statements"
+    ],
+    "class-name": true,
+    "interface-name": [
+      true,
+      "always-prefix"
+    ],
+    "no-consecutive-blank-lines": [
+      true
+    ],
+    "ordered-imports": [
+      false,
+      {
+        "named-imports-order": "case-insensitive"
+      }
+    ],
+    "semicolon": [
+      false,
+      "always"
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case",
+      "allow-leading-underscore"
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-operator",
+      "check-typecast",
+      "check-type",
+      "check-separator",
+      "check-decl",
+      "check-module"
+    ]
+  }
+}

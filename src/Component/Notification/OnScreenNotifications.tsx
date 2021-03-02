@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { INotification } from 'Types/Notification';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'Types/Redux';
 import NotificationCard from './NotificationCard';
 import './OnScreenNotifications.scss';
 import Global from 'Store/Reducer/Global';
 
 const OnScreenNotifications: React.FC = () => {
-  const { notifications, dismissAnimationClassName } = useSelector<Global.State,{
+  const { notifications, dismissAnimationClassName } = useSelector<{
     notifications: INotification[];
     dismissAnimationClassName: string;
   }>(

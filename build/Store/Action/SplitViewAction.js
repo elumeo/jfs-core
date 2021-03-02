@@ -1,5 +1,4 @@
 import { createStandardAction } from 'typesafe-actions';
-const featureName = 'splitView';
-export const enableSplitViewAction = createStandardAction(featureName + '/ENABLE')();
-export const disableSplitViewAction = createStandardAction(featureName + '/DISABLE')();
+export const enableSplitViewAction = createStandardAction('splitView/ENABLE')();
+export const disableSplitViewAction = createStandardAction('splitView/DISABLE')();
 //# sourceMappingURL=SplitViewAction.js.map

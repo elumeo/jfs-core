@@ -1,1 +1,0 @@
-{"version":3,"file":"SystemAction.js","sourceRoot":"","sources":["../../../../src/Store/Action/SystemAction.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oBAAoB,EAAE,MAAM,kBAAkB,CAAC;AAExD,MAAM,WAAW,GAAG,WAAW,CAAC;AAQhC,MAAM,CAAC,MAAM,YAAY,GAAG,CAC1B,oBAAoB,CAAC,WAAW,GAAG,SAAS,CAAC,EAAwB,CACtE,CAAC;AACF,MAAM,CAAC,MAAM,eAAe,GAAG,oBAAoB,CAAC,WAAW,GAAG,aAAa,CAAC,EAAE,CAAC"}

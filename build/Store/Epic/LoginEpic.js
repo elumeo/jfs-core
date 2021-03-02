@@ -2,14 +2,14 @@ import { combineEpics } from 'redux-observable';
 import { filter, switchMap, catchError } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { from, of } from 'rxjs';
-import JSCApi from '../../Jsc/Api';
+import JSCApi from '../../API/JSC';
 import * as Action from '../Action';
-import Session from '../../Base/Session';
+import * as Token from '../../API/LOCAL_STORAGE/Token';
 const loginEpic = (action$, state$) => (action$.pipe(filter(isActionOf(Action.checkLogin)), switchMap(action => from(JSCApi.LoginClient.loginFrontend(state$.value.Core.Configuration.config.AppName, {
     username: action.payload.username,
     password: action.payload.password
 })).pipe(switchMap(response => {
-    Session.setToken(response.data.session.token);
+    Token.setToken(response.data.session.token);
     return of(Action.authorizeSession({ frontendSessionDTO: response.data }), Action.loggedIn());
 }), catchError(error => {
     let contentTranslationId = 'login.failed';

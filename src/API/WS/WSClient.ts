@@ -9,7 +9,7 @@ import {
 } from '../../Store/Reducer/Core/WebSocketConnectionReducer';
 import IWebSocketRoomUpdateDTO = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO;
 import { ROOM_UPDATE_ACTION_ID } from 'Store/Action/WebSocketAction';
-import Global from '../../Store/Reducer/Global';
+import { State } from 'Store/Reducer/Global';
 
 export class WSClient {
   public static EVENT_NOT_AUTHORIZED = 'notAuthorized';
@@ -189,7 +189,7 @@ export class WSClient {
     }
   }
 
-  public static prepareRoomName(roomName: string, allReducers: Global.State) {
+  public static prepareRoomName(roomName: string, allReducers: State) {
     if (allReducers.Core.Session.sessionDTO !== null) {
       roomName = roomName.replace('[userId]', allReducers.Core.Session.sessionDTO.username);
     }

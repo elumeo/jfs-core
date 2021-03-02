@@ -1,7 +1,5 @@
 import { createStandardAction } from 'typesafe-actions';
 
-const featureName = 'splitView';
-
 export namespace regionLoaded {
   export type Payload = {
     regionName: string;
@@ -9,6 +7,6 @@ export namespace regionLoaded {
 }
 
 export const regionLoaded = (
-  createStandardAction(featureName + '/LOADED')<regionLoaded.Payload>()
+  createStandardAction('region/LOADED')<regionLoaded.Payload>()
 );
-export const getRegionFailed = createStandardAction(featureName + '/GET_FAILED')();
+export const getRegionFailed = createStandardAction('region/GET_FAILED')();

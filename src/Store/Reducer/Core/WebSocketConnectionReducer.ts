@@ -1,15 +1,5 @@
-import { createReducer, PayloadAction } from 'typesafe-actions';
-import {
-  webSocketAddNamespaceAction,
-  webSocketConnectFailedAction,
-  webSocketConnectRequestAction,
-  webSocketConnectSuccessAction,
-  webSocketDisconnectSuccessAction,
-  webSocketJoinRoomFailureAction,
-  webSocketJoinRoomLoadingAction,
-  webSocketJoinRoomSuccessAction,
-  webSocketLeaveRoomSuccessAction
-} from 'Action/WebSocketAction';
+import { createReducer } from 'typesafe-actions';
+import * as Action from 'Store/Action';
 
 export interface IWebSocketError {
   namespace: string;
@@ -23,10 +13,8 @@ export interface IWebSocketRoom<T = string> {
   data?: T;
 }
 
-namespace WebSocketConnection {
-  export type State = {
-    [webSocketNamespace: string]: IWebSocketNamespace;
-  }
+export type State = {
+  [webSocketNamespace: string]: IWebSocketNamespace;
 }
 
 export interface IWebSocketNamespace {
@@ -36,7 +24,7 @@ export interface IWebSocketNamespace {
   rooms: IWebSocketRoomConnection[];
 }
 
-export const webSocketConnectionReducerInitialState: WebSocketConnection.State = {
+export const webSocketConnectionReducerInitialState: State = {
   // It is not possible to set initial state values for any namespace here because namespaces will be created
   // dynamically with the action: webSocketAddNamespaceAction
 };
@@ -51,7 +39,7 @@ export interface IWebSocketRoomConnection {
 
 const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState)
 
-  .handleAction(webSocketConnectRequestAction, (state: WebSocketConnection.State, action: PayloadAction<string, string>): WebSocketConnection.State => {
+  .handleAction(Action.webSocketConnectRequestAction, (state, action) => {
     return {
       ...state,
       [action.payload]: {
@@ -63,7 +51,7 @@ const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState
     };
   })
 
-  .handleAction(webSocketConnectSuccessAction, (state: WebSocketConnection.State, action: PayloadAction<string, string>): WebSocketConnection.State => {
+  .handleAction(Action.webSocketConnectSuccessAction, (state, action) => {
     return {
       ...state,
       [action.payload]: {
@@ -74,8 +62,7 @@ const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState
       }
     };
   })
-
-  .handleAction(webSocketConnectFailedAction, (state: WebSocketConnection.State, action: PayloadAction<string, IWebSocketError>): WebSocketConnection.State => {
+  .handleAction(Action.webSocketConnectFailedAction, (state, action) => {
     return {
       ...state,
       [action.payload.namespace]: {
@@ -86,8 +73,7 @@ const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState
       }
     };
   })
-
-  .handleAction(webSocketDisconnectSuccessAction, (state: WebSocketConnection.State, action: PayloadAction<string, string>): WebSocketConnection.State => {
+  .handleAction(Action.webSocketDisconnectSuccessAction, (state, action) => {
     return {
       ...state,
       [action.payload]: {
@@ -101,10 +87,10 @@ const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState
   })
 
   .handleAction([
-    webSocketJoinRoomLoadingAction,
-    webSocketJoinRoomSuccessAction,
-    webSocketJoinRoomFailureAction
-  ], (state: WebSocketConnection.State, action: PayloadAction<string, IWebSocketRoomConnection>): WebSocketConnection.State => {
+    Action.webSocketJoinRoomLoadingAction,
+    Action.webSocketJoinRoomSuccessAction,
+    Action.webSocketJoinRoomFailureAction
+  ], (state, action) => {
     const newRooms: IWebSocketRoomConnection[] = [];
     if (state[action.payload.namespace] !== undefined) {
       for (const room of state[action.payload.namespace].rooms) {
@@ -124,7 +110,7 @@ const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState
     };
   })
 
-  .handleAction(webSocketLeaveRoomSuccessAction, (state: WebSocketConnection.State, action: PayloadAction<string, IWebSocketRoom>): WebSocketConnection.State => {
+  .handleAction(Action.webSocketLeaveRoomSuccessAction, (state, action) => {
     const newRooms: IWebSocketRoomConnection[] = [];
     for (const room of state[action.payload.namespace].rooms) {
       if (room.name !== action.payload.room) {
@@ -146,8 +132,7 @@ const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState
       }
     }
   })
-
-  .handleAction(webSocketAddNamespaceAction, (state: WebSocketConnection.State, action: PayloadAction<string, string>): WebSocketConnection.State => {
+  .handleAction(Action.webSocketAddNamespaceAction, (state, action) => {
     return {
       ...state,
       [action.payload]: {

@@ -4,10 +4,9 @@ import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'Types/Redux';
 import useActions from 'Action/useActions';
 import { useIntl } from 'react-intl';
-import Global from 'Store/Reducer/Global';
 import  Typography  from '@material-ui/core/Typography';
 
 const LogoutDialog: React.FC = ({
@@ -15,7 +14,7 @@ const LogoutDialog: React.FC = ({
 }) => {
   const { logout, closeLogout } = useActions();
   const {formatMessage} = useIntl()
-  const { logoutOpen, logoutPending } = useSelector<Global.State,{
+  const { logoutOpen, logoutPending } = useSelector<{
     logoutOpen: boolean;
     logoutPending: boolean;
   }>(state => ({
@@ -57,7 +56,7 @@ const LogoutDialog: React.FC = ({
             </Button>
           </DialogActions>
         </Dialog>
-    
+
   );
 }
 

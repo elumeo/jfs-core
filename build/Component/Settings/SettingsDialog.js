@@ -1,11 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import International from '../International';
-import ModalDialog from '../Modal/ModalDialog';
-import { closeSettings } from '../../Store/Action/SettingsAction';
+import * as Action from '../../Store/Action';
 import './SettingsDialog.scss';
-const SettingsDialog = ({ closeSettings: _closeSettings, settingsOpen, children }) => (React.createElement(International, null, ({ formatMessage }) => (React.createElement(ModalDialog, { title: formatMessage({ id: 'app.settings' }), className: 'settings-dialog', visible: settingsOpen, closeDialog: () => _closeSettings() }, children))));
+import { Dialog, DialogActions, DialogTitle, Button } from '@material-ui/core';
+import { useIntl } from 'react-intl';
+const SettingsDialog = ({ closeSettings, settingsOpen, children }) => {
+    const { formatMessage } = useIntl();
+    return React.createElement(Dialog, { className: 'settings-dialog', open: settingsOpen, fullWidth: true, onClose: closeSettings },
+        React.createElement(DialogTitle, null, formatMessage({ id: 'app.settings' })),
+        children,
+        React.createElement(DialogActions, null,
+            React.createElement(Button, { variant: 'contained', color: 'secondary', onClick: closeSettings }, formatMessage({ id: 'app.closeBtnLabelModalDialog' }))));
+};
 const mapStateToProps = (state, ownProps) => (Object.assign(Object.assign({}, ownProps), { settingsOpen: state.Core.Settings.settingsOpen }));
-const enhance = connect(mapStateToProps, { closeSettings });
+const enhance = connect(mapStateToProps, Action);
 export default enhance(SettingsDialog);
 //# sourceMappingURL=SettingsDialog.js.map

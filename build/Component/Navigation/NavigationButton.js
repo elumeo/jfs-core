@@ -1,13 +1,15 @@
 import React from 'react';
-import Button from 'react-md/lib/Buttons/Button';
+import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
 import useActions from '../../Store/Action/useActions';
 import { useSelector } from '../../Types/Redux';
 const NavigationButton = ({ iconName }) => {
     const navigationOpen = useSelector(state => state.Core.Navigation.navigationOpen);
     const { openNavigation, closeNavigation } = useActions();
-    return (React.createElement(Button, { icon: true, onClick: () => (navigationOpen
+    return (React.createElement(IconButton, { onClick: () => (navigationOpen
             ? closeNavigation()
-            : openNavigation()) }, iconName));
+            : openNavigation()) },
+        React.createElement(Icon, { fontSize: "small" }, iconName)));
 };
 export default NavigationButton;
 //# sourceMappingURL=NavigationButton.js.map

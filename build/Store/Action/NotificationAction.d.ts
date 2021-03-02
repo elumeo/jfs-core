@@ -5,10 +5,10 @@ export declare const addNotificationWithIdAction: (notification: INotification) 
 export declare const fadeNotificationOffScreenAction: (id: number) => PayloadAction<string, number>;
 export declare const dismissNotificationAction: (id: number) => PayloadAction<string, number>;
 export declare const dismissNotificationByGroupIdAction: (groupId: string) => PayloadAction<string, string>;
-export declare const dismissAllNotificationsAction: import("typesafe-actions").EmptyAC<string>;
-export declare const dismissNextNotificationAction: import("typesafe-actions").EmptyAC<string>;
-export declare const toggleNotificationDrawerAction: import("typesafe-actions").EmptyAC<string>;
-export declare const showNotificationDrawerAction: import("typesafe-actions").EmptyAC<string>;
-export declare const hideNotificationDrawerAction: import("typesafe-actions").EmptyAC<string>;
-export declare const pinNotificationDrawerAction: import("typesafe-actions").EmptyAC<string>;
-export declare const unpinNotificationDrawerAction: import("typesafe-actions").EmptyAC<string>;
+export declare const dismissAllNotificationsAction: import("typesafe-actions").EmptyAC<"notification/DELETE_ALL">;
+export declare const dismissNextNotificationAction: import("typesafe-actions").EmptyAC<"notification/DELETE_NEXT">;
+export declare const toggleNotificationDrawerAction: import("typesafe-actions").EmptyAC<"notification/drawer/TOGGLE">;
+export declare const showNotificationDrawerAction: import("typesafe-actions").EmptyAC<"notification/drawer/SHOW">;
+export declare const hideNotificationDrawerAction: import("typesafe-actions").EmptyAC<"notification/drawer/HIDE">;
+export declare const pinNotificationDrawerAction: import("typesafe-actions").EmptyAC<"notification/drawer/PIN">;
+export declare const unpinNotificationDrawerAction: import("typesafe-actions").EmptyAC<"notification/drawer/UNPIN">;

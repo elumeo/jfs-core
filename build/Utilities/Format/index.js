@@ -1,4 +1,4 @@
-import Translations from './Translations';
+// import Translations from './Translations';
 import Text from './Text';
 import Currency from './Currency';
 import PhoneNumber from './PhoneNumber';
@@ -12,7 +12,7 @@ class Format {
     }
 }
 Format.Locale = Locale;
-Format.Translations = Translations;
+// static Translations = Translations;
 Format.Text = Text;
 Format.Currency = Currency;
 Format.PhoneNumber = PhoneNumber;

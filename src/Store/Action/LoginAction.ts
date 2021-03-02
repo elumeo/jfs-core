@@ -1,9 +1,7 @@
 import { createStandardAction } from 'typesafe-actions';
 
-const featureName = 'login';
-
-export const openLoginDialog = createStandardAction(featureName + '/OPEN')();
-export const closeLoginDialog = createStandardAction(featureName + '/CLOSE')();
+export const openLoginDialog = createStandardAction('login/OPEN')();
+export const closeLoginDialog = createStandardAction('login/CLOSE')();
 
 export namespace updateCredentials {
   export type Payload = {
@@ -13,7 +11,9 @@ export namespace updateCredentials {
 }
 
 export const updateCredentials = (
-  createStandardAction(`${featureName}/UPDATE_CREDENTIALS`)<updateCredentials.Payload>()
+  createStandardAction(
+    `login/UPDATE_CREDENTIALS`
+  )<updateCredentials.Payload>()
 );
 
 export namespace checkLogin {
@@ -24,7 +24,7 @@ export namespace checkLogin {
 }
 
 export const checkLogin = (
-  createStandardAction(featureName + '/CHECK')<checkLogin.Payload>()
+  createStandardAction('login/CHECK')<checkLogin.Payload>()
 );
-export const loggedIn = createStandardAction(featureName + '/LOGGED_IN')();
-export const loginFailed = createStandardAction(featureName + '/LOGIN_FAILED')();
+export const loggedIn = createStandardAction('login/LOGGED_IN')();
+export const loginFailed = createStandardAction('login/LOGIN_FAILED')();

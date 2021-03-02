@@ -1,14 +1,13 @@
-import { combineEpics, StateObservable } from 'redux-observable';
+import { combineEpics } from 'redux-observable';
 import { filter, switchMap, catchError } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { from, of } from 'rxjs';
-import JSCApi from 'Jsc/Api/index';
+import JSCApi from 'API/JSC';
 import * as Action from 'Store/Action';
-import * as Token from '../../API/LOCAL_STORAGE/Token';
+import * as Token from 'API/LOCAL_STORAGE/Token';
 import { Epic } from 'Types/Redux';
-import Global from 'Store/Reducer/Global';
 
-const loginEpic: Epic = (action$, state$: StateObservable<Global.State>) => (
+const loginEpic: Epic = (action$, state$) => (
   action$.pipe(
     filter(isActionOf(Action.checkLogin)),
     switchMap(

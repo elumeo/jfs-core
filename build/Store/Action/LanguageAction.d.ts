@@ -4,5 +4,5 @@ export declare namespace changeLanguageAction {
     type Payload = Language;
     type Type = PayloadAction<string, Payload>;
 }
-export declare const changeLanguageAction: import("typesafe-actions").PayloadAC<string, Language>;
-export declare const initializeLanguage: import("typesafe-actions").EmptyAC<string>;
+export declare const changeLanguageAction: import("typesafe-actions").PayloadAC<"language/CHANGE", Language>;
+export declare const initializeLanguage: import("typesafe-actions").EmptyAC<"language/INITIALIZE">;

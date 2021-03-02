@@ -1,4 +1,4 @@
-import createStore from 'Core/Store';
+import createStore from '@elumeo/jfs-core/build/Store';
 import rootEpic from './Epic';
 import rootReducer from './Reducer';
 

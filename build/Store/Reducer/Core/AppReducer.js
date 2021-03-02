@@ -1,12 +1,12 @@
-import { createReducer } from 'typesafe-actions';
-import * as AppAction from '../../Action/AppAction';
+import * as TA from 'typesafe-actions';
+import * as Action from '../../Action';
 const initialState = {
     appInitialized: false,
     allowRobotLogin: false,
     packageJson: null
 };
-const App = createReducer(initialState)
-    .handleAction(AppAction.initializeApp, (state, action) => (Object.assign(Object.assign({}, state), { allowRobotLogin: action.payload.allowRobotLogin, packageJson: action.payload.packageJson })))
-    .handleAction(AppAction.appInitialized, state => (Object.assign(Object.assign({}, state), { appInitialized: true })));
+const App = TA.createReducer(initialState)
+    .handleAction(Action.initializeApp, (state, action) => (Object.assign(Object.assign({}, state), { allowRobotLogin: action.payload.allowRobotLogin, packageJson: action.payload.packageJson })))
+    .handleAction(Action.appInitialized, state => (Object.assign(Object.assign({}, state), { appInitialized: true })));
 export default App;
 //# sourceMappingURL=AppReducer.js.map

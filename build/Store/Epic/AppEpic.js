@@ -1,9 +1,8 @@
-import { combineEpics } from 'redux-observable';
 import { of } from 'rxjs';
 import { filter, concatMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import * as Action from '../Action';
-import JscClient from '../../Jsc/Client';
+import JscClient from '../../API/JSC/Client';
 const initializeAppEpic = (action$ => action$.pipe(filter(isActionOf(Action.initializeApp)), concatMap(action => {
     JscClient.setPackageJson(action.payload.packageJson);
     const isHTTPS = window.location.protocol.toLowerCase() === 'https:';
@@ -12,5 +11,5 @@ const initializeAppEpic = (action$ => action$.pipe(filter(isActionOf(Action.init
     }
     return of(Action.loadConfig());
 })));
-export default combineEpics(initializeAppEpic);
+export default initializeAppEpic;
 //# sourceMappingURL=AppEpic.js.map

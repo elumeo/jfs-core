@@ -1,17 +1,17 @@
 import React from 'react';
-import Tooltipped from 'react-md/lib/Tooltips/Tooltipped';
+import { Tooltip } from '@material-ui/core';
 import './BackendIndicator.scss';
-import { injectIntl } from 'react-intl';
 import { useSelector } from '../../Types/Redux';
-const BackendIndicator = ({ intl }) => {
+import { useIntl } from 'react-intl';
+const BackendIndicator = () => {
+    const { formatMessage } = useIntl();
     const backendRegion = useSelector(state => state.Core.System.backendRegion);
     const label = [
-        intl.formatMessage({ id: 'app.backend' }),
+        formatMessage({ id: 'app.backend' }),
         backendRegion
     ].join(': ');
-    return (React.createElement(Tooltipped, { label: label },
+    return (React.createElement(Tooltip, { title: label },
         React.createElement("div", { className: `flag ${(backendRegion || '').toLowerCase()}` })));
 };
-const enhance = injectIntl;
-export default enhance(BackendIndicator);
+export default BackendIndicator;
 //# sourceMappingURL=BackendIndicator.js.map

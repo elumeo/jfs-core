@@ -1,6 +1,7 @@
-import { createReducer, PayloadAction } from 'typesafe-actions';
+import { createReducer } from 'typesafe-actions';
 import { List } from 'immutable';
-import { addToastAction, dismissToastAction, } from 'Action/ToastAction';
+import * as Action from 'Action/ToastAction';
+import { ActionType } from 'Types/Redux';
 
 export interface IToastConfig {
   contentMessage?: string | null;
@@ -14,21 +15,19 @@ export interface IToastConfig {
   [messageParameters: string]: any;
 }
 
-namespace Toast {
-  export type State = {
-    toasts?: List<IToastConfig>;
-  }
+export type State = {
+  toasts?: List<IToastConfig>;
 }
 
-const initialState: Toast.State = {
+const initialState: State = {
   toasts: List<IToastConfig>(),
 };
 
-const Toast = createReducer<Toast.State>(initialState)
-  .handleAction(addToastAction, (state: Toast.State, action: PayloadAction<string, IToastConfig>): Toast.State => (
+const Toast = createReducer<State, ActionType>(initialState)
+  .handleAction(Action.addToastAction, (state: State, action) => (
     {...state, toasts: state.toasts.unshift(action.payload)}
   ))
-  .handleAction(dismissToastAction, (state: Toast.State): Toast.State => {
+  .handleAction(Action.dismissToastAction, state => {
     let toastsCount: number;
     let lastToast: IToastConfig, previousToast: IToastConfig;
     let toastsAreEqual: boolean, messagesAreEqual: boolean, translationIdsAreEqual, errorsAreEqual: boolean;

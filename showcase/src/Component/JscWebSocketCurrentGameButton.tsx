@@ -4,10 +4,10 @@ import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-import { webSocketConnectionReducerInitialState } from 'Core/Store/Reducer/Core/WebSocketConnectionReducer';
-import { getRoomConnectionState } from 'Core/Store/Selectors/WebSocketSelectors';
-import { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction } from 'Core/Store/Action/WebSocketAction';
-import { isWebSocketNamespaceConnectedState } from 'Core/Store/Selectors/WebSocketSelectors';
+import { webSocketConnectionReducerInitialState }from '@elumeo/jfs-core/build/Store/Reducer/Core/WebSocketConnectionReducer';
+import { getRoomConnectionState }from '@elumeo/jfs-core/build/Store/Selectors/WebSocketSelectors';
+import { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction }from '@elumeo/jfs-core/build/Store/Action/WebSocketAction';
+import { isWebSocketNamespaceConnectedState }from '@elumeo/jfs-core/build/Store/Selectors/WebSocketSelectors';
 
 import Global from 'Store/Reducer';
 

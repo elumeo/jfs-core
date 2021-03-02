@@ -1,8 +1,6 @@
 import { createStandardAction } from 'typesafe-actions';
 import IConfig from 'Types/Configuration';
 
-const featureName = 'config';
-
 export const loadConfig = createStandardAction('config/LOAD')();
 
 export namespace ConfigLoaded {
@@ -10,5 +8,5 @@ export namespace ConfigLoaded {
     config: IConfig;
   }
 }
-export const configLoadedAction = createStandardAction(featureName + '/LOADED')<ConfigLoaded.Payload>();
-export const loadConfigFailed = createStandardAction(featureName + '/LOAD_FAILED')();
+export const configLoadedAction = createStandardAction('config/LOADED')<ConfigLoaded.Payload>();
+export const loadConfigFailed = createStandardAction('config/LOAD_FAILED')();

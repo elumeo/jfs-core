@@ -3,11 +3,11 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-import { INotification, INotificationContent } from 'Core/Types/Notification';
-import { addNotificationAction, dismissNotificationAction } from 'Core/Store/Action/NotificationAction';
-import { addToastAction } from 'Core/Store/Action/ToastAction';
-import { changeLanguageAction } from 'Core/Store/Action/LanguageAction';
-import { IToastConfig } from 'Core/Store/Reducer/Core/ToastReducer';
+import { INotification, INotificationContent }from '@elumeo/jfs-core/build/Types/Notification';
+import { addNotificationAction, dismissNotificationAction }from '@elumeo/jfs-core/build/Store/Action/NotificationAction';
+import { addToastAction }from '@elumeo/jfs-core/build/Store/Action/ToastAction';
+import { changeLanguageAction }from '@elumeo/jfs-core/build/Store/Action/LanguageAction';
+import { IToastConfig }from '@elumeo/jfs-core/build/Store/Reducer/Core/ToastReducer';
 
 import Global from 'Store/Reducer';
 

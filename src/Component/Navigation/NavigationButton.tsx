@@ -2,7 +2,7 @@ import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import useActions from 'Action/useActions';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'Types/Redux';
 import Global from 'Store/Reducer/Global';
 
 export interface INavigationButtonProps {
@@ -10,7 +10,7 @@ export interface INavigationButtonProps {
 }
 
 const NavigationButton: React.FC<INavigationButtonProps> = ({ iconName }) => {
-  const navigationOpen = useSelector<Global.State,boolean>(
+  const navigationOpen = useSelector<boolean>(
     state => state.Core.Navigation.navigationOpen
   );
   const { openNavigation, closeNavigation } = useActions();

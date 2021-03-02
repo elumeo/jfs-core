@@ -3,7 +3,7 @@ import NavigationItem from 'Component/Navigation/NavigationItem';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { openLogout } from 'Store/Action/LogoutAction';
-import Global from 'Store/Reducer/Global';
+import { State } from 'Store/Reducer/Global';
 
 export interface ILogoutNavigationItemProps {
   robotLoginAvailable?: boolean;
@@ -27,7 +27,7 @@ const LogoutNavigationItem: React.FC<ILogoutNavigationItemProps> = ({
 );
 
 const mapStateToProps = (
-  state: Global.State,
+  state: State,
   ownProps: ILogoutNavigationItemProps
 ): ILogoutNavigationItemProps => ({
   ...ownProps,

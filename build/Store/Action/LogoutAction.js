@@ -1,7 +1,6 @@
 import { createStandardAction } from 'typesafe-actions';
-const featureName = 'logout';
-export const openLogout = createStandardAction(featureName + '/OPEN')();
-export const closeLogout = createStandardAction(featureName + '/CLOSE')();
-export const beforeLogoutHookFinished = createStandardAction(featureName + '/BEFORE_LOGOUT_HOOK')();
-export const logoutFinished = createStandardAction(`${featureName}/FINISHED`)();
+export const openLogout = createStandardAction('logout/OPEN')();
+export const closeLogout = createStandardAction('logout/CLOSE')();
+export const beforeLogoutHookFinished = createStandardAction('logout/BEFORE_LOGOUT_HOOK')();
+export const logoutFinished = createStandardAction(`logout/FINISHED`)();
 //# sourceMappingURL=LogoutAction.js.map

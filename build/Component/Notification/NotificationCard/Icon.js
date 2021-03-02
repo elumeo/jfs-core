@@ -1,5 +1,5 @@
 import React from 'react';
-import FontIcon from 'react-md/lib/FontIcons/FontIcon';
+import { Icon as FontIcon } from '@material-ui/core';
 const Icon = ({ icon, error, isError, isWarning, isSuccess }) => {
     let iconName = icon;
     iconName = (error || isError) && !icon ? 'error' : iconName;

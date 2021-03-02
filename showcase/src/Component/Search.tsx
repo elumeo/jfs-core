@@ -1,13 +1,10 @@
 import * as React from 'react';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
-import SearchComponent, {
-  ISearchComponentProps,
-  ISearchComponentState
-} from 'Core/Component/Search/SearchComponent';
+import { injectIntl } from 'react-intl';
+import SearchComponent from '@elumeo/jfs-core/build/Component/Search/SearchComponent';
 
 import autocompleteData from 'Mock/Names.json';
 
-export interface IBoilerplateSearchProps extends InjectedIntlProps {
+export interface IBoilerplateSearchProps {
   id?: string;
   labelTranslationId?: string;
   placeholderTranslationId?: string;
@@ -42,7 +39,7 @@ class Search extends React.Component<IBoilerplateSearchProps, IBoilerplateSearch
         placeholderTranslationId={placeholderTranslationId}
         indicateSearchProgress={this.state.searchProgress}
         autocompleteData={autocompleteData as string[]}
-        onSearch={(props: ISearchComponentProps, state: ISearchComponentState) => {
+        onSearch={(props, state) => {
           this.setState({searchProgress: true});
           window.setTimeout(() => {
             this.setState({searchProgress: false});

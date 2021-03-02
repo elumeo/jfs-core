@@ -1,14 +1,22 @@
 import { createSelector } from 'reselect'
-import WebSocketConnection, {
+import {
+  State as WebSocketConnectionState,
   IWebSocketRoom,
   IWebSocketRoomConnection
-} from '../Reducer/Core/WebSocketConnectionReducer';
+} from 'Store/Reducer/Core/WebSocketConnectionReducer';
 
-const isWebSocketNamespaceConnectedSelector = (state: WebSocketConnection.State, namespace: string) => {
-  return state[namespace] !== undefined && state[namespace].isConnected;
-};
+const isWebSocketNamespaceConnectedSelector = (
+  state: WebSocketConnectionState,
+  namespace: string
+) => (
+  state[namespace] !== undefined &&
+  state[namespace].isConnected
+);
 
-const getRoomByNameSelector = (state: WebSocketConnection.State, room: IWebSocketRoom) => {
+const getRoomByNameSelector = (
+  state: WebSocketConnectionState,
+  room: IWebSocketRoom
+) => {
   let foundRoom: IWebSocketRoomConnection = null;
   for(const stateRoom of state[room.namespace].rooms) {
     if(stateRoom.name === room.room) {

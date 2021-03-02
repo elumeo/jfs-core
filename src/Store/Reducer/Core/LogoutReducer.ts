@@ -1,25 +1,24 @@
 import { openLogout, closeLogout, logoutFinished } from 'Action/LogoutAction';
 import { logout } from 'Action/SessionAction';
 import { createReducer } from 'typesafe-actions';
+import { ActionType } from 'Types/Redux';
 
-namespace Logout {
-  export type State = {
-    logoutOpen: boolean;
-    logoutPending: boolean;
-  }
+export type State = {
+  logoutOpen: boolean;
+  logoutPending: boolean;
 }
 
-const initialState: Logout.State = {
+const initialState: State = {
   logoutOpen: false,
   logoutPending: false
 };
 
-const Logout = createReducer<Logout.State>(initialState)
-  .handleAction(openLogout, (state: Logout.State) => ({
+const Logout = createReducer<State, ActionType>(initialState)
+  .handleAction(openLogout, (state: State) => ({
     ...state,
     logoutOpen: true
   }))
-  .handleAction(closeLogout, (state: Logout.State) => ({
+  .handleAction(closeLogout, (state: State) => ({
     ...state,
     logoutOpen: false
   }))

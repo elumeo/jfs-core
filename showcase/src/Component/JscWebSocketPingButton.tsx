@@ -4,9 +4,9 @@ import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-import { webSocketConnectionReducerInitialState } from 'Core/Store/Reducer/Core/WebSocketConnectionReducer';
-import { getRoomConnectionState, isWebSocketNamespaceConnectedState } from 'Core/Store/Selectors/WebSocketSelectors';
-import { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction } from 'Core/Store/Action/WebSocketAction';
+import { webSocketConnectionReducerInitialState }from '@elumeo/jfs-core/build/Store/Reducer/Core/WebSocketConnectionReducer';
+import { getRoomConnectionState, isWebSocketNamespaceConnectedState }from '@elumeo/jfs-core/build/Store/Selectors/WebSocketSelectors';
+import { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction }from '@elumeo/jfs-core/build/Store/Action/WebSocketAction';
 
 import Global from 'Store/Reducer';
 import { IJsc2JfsPingExampleState } from 'Store/Reducer/App/Jsc2JfsPingExampleReducer';

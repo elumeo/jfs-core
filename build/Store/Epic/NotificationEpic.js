@@ -3,7 +3,7 @@ import { EMPTY, of, merge } from 'rxjs';
 import { delay, filter, mergeMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import * as Action from '../Action';
-import { timeToRead } from '../../Component/Notification/NotificationCard';
+import timeToRead from '../../Component/Notification/NotificationCard/timeToRead';
 let notificationIncrementId = 0;
 const addNotificationEpic = action$ => merge(action$.pipe(filter(isActionOf(Action.addNotificationAction)), mergeMap(({ payload: notification }) => of(Action.addNotificationWithIdAction(Object.assign(Object.assign({}, notification), { id: ++notificationIncrementId, count: 1, timestamp: new Date(), autoHideDelay: !notification.stayOnScreen ? timeToRead(notification) : null }))))), action$.pipe(filter(isActionOf(Action.addNotificationWithIdAction)), mergeMap(({ payload: notification }) => notification.autoHideDelay !== null && notification.autoHideDelay !== undefined
     ? of(Action.fadeNotificationOffScreenAction(notification.id)).pipe(delay(notification.autoHideDelay))

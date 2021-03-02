@@ -1,21 +1,20 @@
 import { createReducer } from 'typesafe-actions';
-import { disableSplitViewAction, enableSplitViewAction } from 'Action/SplitViewAction';
+import * as Action from 'Store/Action';
+import { ActionType } from 'Types/Redux';
 
-namespace SplitView {
-  export type State = {
-    splitViewEnabled: boolean;
-  }
+export type State = {
+  splitViewEnabled: boolean;
 }
 
-const initialState: SplitView.State = {
+const initialState: State = {
   splitViewEnabled: false
 };
 
-const SplitView = createReducer<SplitView.State>(initialState)
-  .handleAction(enableSplitViewAction, (state): SplitView.State => (
+const SplitView = createReducer<State, ActionType>(initialState)
+  .handleAction(Action.enableSplitViewAction, state => (
     {...state, splitViewEnabled: true}
   ))
-  .handleAction(disableSplitViewAction, (state): SplitView.State => (
+  .handleAction(Action.disableSplitViewAction, state => (
     {...state, splitViewEnabled: false}
   ));
 

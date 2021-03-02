@@ -1,5 +1,5 @@
 import { createReducer } from 'typesafe-actions';
-import { checkLogin, loggedIn, loginFailed, updateCredentials } from '../../Action/LoginAction';
+import * as Action from '../../Action';
 const initialState = {
     username: '',
     password: '',
@@ -7,9 +7,10 @@ const initialState = {
     failedLogins: 0
 };
 const Login = createReducer(initialState)
-    .handleAction(checkLogin, (state) => (Object.assign(Object.assign({}, state), { isCheckingLogin: true })))
-    .handleAction(updateCredentials, (state, action) => (Object.assign(Object.assign({}, state), { username: action.payload.username, password: action.payload.password })))
-    .handleAction(loggedIn, (state) => (Object.assign(Object.assign({}, state), { failedLogins: 0, isCheckingLogin: false, username: '', password: '' })))
-    .handleAction(loginFailed, (state) => (Object.assign(Object.assign({}, state), { failedLogins: state.failedLogins + 1, isCheckingLogin: false })));
+    .handleAction(Action.updateCredentials, (state, { payload: { username, password } }) => (Object.assign(Object.assign({}, state), { username,
+    password })))
+    .handleAction(Action.checkLogin, state => (Object.assign(Object.assign({}, state), { isCheckingLogin: true })))
+    .handleAction(Action.loginFailed, state => (Object.assign(Object.assign({}, state), { failedLogins: state.failedLogins + 1, isCheckingLogin: false })))
+    .handleAction(Action.loggedIn, state => (Object.assign(Object.assign({}, state), { failedLogins: 0, isCheckingLogin: false, username: '', password: '' })));
 export default Login;
 //# sourceMappingURL=LoginReducer.js.map

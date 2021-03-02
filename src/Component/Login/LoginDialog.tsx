@@ -1,20 +1,16 @@
 import React from 'react';
 import DialogContainer from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
 import './LoginDialog.scss';
-import { useSelector } from 'react-redux';
-import { useIntl } from 'react-intl';
-import Global from 'Store/Reducer/Global';
+import { useSelector } from 'Types/Redux';
 
 const LoginDialog: React.FC = () => {
-  const {formatMessage} = useIntl()
   const {
     isAuthorized, isCheckingSession, routeType, robotLoginAvailable
-  } = useSelector<Global.State,{
+  } = useSelector<{
     isAuthorized: boolean;
     isCheckingSession: boolean;
     routeType: string;
@@ -44,7 +40,7 @@ const LoginDialog: React.FC = () => {
         }
         aria-describedby=''>
           <DialogTitle >Login</DialogTitle>
-          
+
           <LoginCredentials/>
 
           <DialogActions >

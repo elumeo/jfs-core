@@ -1,5 +1,7 @@
 import React from 'react';
-import Button from 'react-md/lib/Buttons/Button';
-const CustomActionButton = ({ notification, onClick, topLevelRef: ref, iconName, tooltipLabel }) => (React.createElement(Button, { icon: true, key: 'custom-action-btn', tooltipLabel: tooltipLabel, tooltipPosition: 'left', tooltipDelay: 666, onClick: () => onClick(notification, ref) }, iconName));
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+const CustomActionButton = ({ notification, onClick, topLevelRef: ref, iconName, tooltipLabel }) => (React.createElement(Tooltip, { title: tooltipLabel },
+    React.createElement(IconButton, { onClick: () => onClick(notification, ref) }, iconName)));
 export default CustomActionButton;
 //# sourceMappingURL=CustomActionButton.js.map

@@ -1,4 +1,4 @@
-import IConfig from 'Core/Types/Configuration';
+import IConfigfrom '@elumeo/jfs-core/build/Types/Configuration';
 interface IAppConfig extends IConfig {
 
 }

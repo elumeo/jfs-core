@@ -2,11 +2,8 @@ import React, { useCallback } from 'react';
 import Drawer from '@material-ui/core/Drawer'
 import './NavigationDrawer.scss';
 import useActions from 'Action/useActions';
-import { useSelector } from 'react-redux';
-import CardHeader from '@material-ui/core/CardHeader';
+import { useSelector } from 'Types/Redux';
 import NavigationDrawerHeader from './NavigationDrawerHeader';
-import Card from '@material-ui/core/Card';
-import Global from 'Store/Reducer/Global';
 import List from '@material-ui/core/List';
 
 export interface INavigationDrawerProps {
@@ -19,7 +16,7 @@ const NavigationDrawer: React.FC<INavigationDrawerProps> = ({
 }) => {
   const { closeNavigation } = useActions();
   const navigationOpen = useSelector(
-    (state:Global.State) => state.Core.Navigation.navigationOpen
+    state => state.Core.Navigation.navigationOpen
   );
   const close = useCallback(closeNavigation,[])
 
@@ -37,7 +34,7 @@ const NavigationDrawer: React.FC<INavigationDrawerProps> = ({
       >
         <NavigationDrawerHeader/>
         <List  >
-        {children} 
+        {children}
         </List>
         </Drawer>
     </div>

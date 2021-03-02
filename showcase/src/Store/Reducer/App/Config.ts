@@ -1,6 +1,6 @@
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import IAppConfig from 'Setup/IAppConfig';
-import { configLoadedAction, ConfigLoaded } from 'Core/Store/Action/ConfigAction';
+import { configLoadedAction, ConfigLoaded }from '@elumeo/jfs-core/build/Store/Action/ConfigAction';
 
 namespace Config {
   export type State = {

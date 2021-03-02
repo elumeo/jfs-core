@@ -1,4 +1,3 @@
-import Translations from './Translations';
 import Text from './Text';
 import Currency from './Currency';
 import PhoneNumber from './PhoneNumber';
@@ -6,7 +5,6 @@ import Locale from './Locale';
 import DateTimeFormatOptions = Intl.DateTimeFormatOptions;
 declare class Format {
     static Locale: typeof Locale;
-    static Translations: typeof Translations;
     static Text: typeof Text;
     static Currency: typeof Currency;
     static PhoneNumber: typeof PhoneNumber;

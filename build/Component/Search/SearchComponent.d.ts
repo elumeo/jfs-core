@@ -1,7 +1,6 @@
 import React from 'react';
 import './SearchComponent.scss';
-import { InjectedIntlProps } from 'react-intl';
-export declare type SearchComponentProps = {
+export declare type Props = {
     autocompleteData?: string[] | number[] | {
         dataLabel: string;
         dataValue: string;
@@ -19,7 +18,7 @@ export declare type SearchComponentProps = {
     onChange?: (value: string) => void;
     onClear?: () => void;
     onRefAvailable?: (ref: any) => void;
-    onSearch: (props: SearchComponentProps, state: SearchComponentState) => void;
+    onSearch: (props: Props, state: SearchComponentState) => void;
     placeholderTranslationId: string;
     searchOnAutocomplete?: boolean;
     style?: React.CSSProperties;
@@ -29,5 +28,5 @@ export declare type SearchComponentState = {
     value?: string;
     inputFocused?: boolean;
 };
-declare const SearchComponent: React.FC<SearchComponentProps & InjectedIntlProps>;
+declare const SearchComponent: React.FC<Props>;
 export default SearchComponent;

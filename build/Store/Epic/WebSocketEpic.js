@@ -6,7 +6,7 @@ import { webSocketConnectFailedAction, webSocketConnectRequestAction, webSocketC
 import { getRoomConnectionState } from '../Selectors/WebSocketSelectors';
 import { addNotificationAction } from '../Action/NotificationAction';
 import { authorizeSession, logout } from '../Action/SessionAction';
-import { WSClient } from '../../Base/WSClient';
+import { WSClient } from '../../API/WS/WSClient';
 import _ from 'lodash';
 export const webSocketAppIsInitializedEpic = (action$, state$) => {
     return action$.pipe(filter(isActionOf(authorizeSession)), filter(() => (state$.value.Core.Configuration.loaded &&

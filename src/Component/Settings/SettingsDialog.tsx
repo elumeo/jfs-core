@@ -1,14 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import Global from '../../Store/Reducer/Global';
-import { closeSettings } from '../../Store/Action/SettingsAction';
+import * as Action from 'Store/Action';
 import './SettingsDialog.scss';
 import { Dialog, DialogActions, DialogTitle, Button } from '@material-ui/core';
 import { useIntl } from 'react-intl';
+import { State } from 'Store/Reducer/Global';
 
-export interface ISettingsDialogProps {
-  closeSettings?: typeof closeSettings;
+export type ISettingsDialogProps = Partial<typeof Action> & {
   settingsOpen?: boolean;
 }
 
@@ -29,17 +27,17 @@ const SettingsDialog: React.FC<ISettingsDialogProps> = ({
           <Button variant='contained' color='secondary' onClick={closeSettings}>{formatMessage({id: 'app.closeBtnLabelModalDialog'})}</Button>
         </DialogActions>
       </Dialog>
-    
+
 };
 
 const mapStateToProps = (
-  state: Global.State,
+  state: State,
   ownProps: ISettingsDialogProps
 ): ISettingsDialogProps => ({
   ...ownProps,
   settingsOpen: state.Core.Settings.settingsOpen
 });
 
-const enhance = connect(mapStateToProps, {closeSettings});
+const enhance = connect(mapStateToProps, Action);
 
 export default enhance(SettingsDialog);

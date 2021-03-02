@@ -1,13 +1,17 @@
 import React from 'react';
-import { Button } from 'react-md';
+import Button from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
 import useActions from '../../../Store/Action/useActions';
 import { useSelector } from '../../../Types/Redux';
 const SplitViewButton = () => {
     const notificationDrawerPinned = useSelector(state => (state.Core.Notification.notificationDrawerPinned));
     const { unpinNotificationDrawerAction, pinNotificationDrawerAction } = useActions();
-    return (React.createElement(Button, { icon: true, primary: notificationDrawerPinned, className: 'split-view-button', onClick: () => (notificationDrawerPinned
+    return (React.createElement(Button, { color: notificationDrawerPinned ? 'primary' : 'secondary', 
+        // className={'split-view-button'}
+        onClick: () => (notificationDrawerPinned
             ? unpinNotificationDrawerAction()
-            : pinNotificationDrawerAction()) }, "vertical_split"));
+            : pinNotificationDrawerAction()) },
+        React.createElement(Icon, null, "vertical_split")));
 };
 export default SplitViewButton;
 //# sourceMappingURL=SplitViewButton.js.map

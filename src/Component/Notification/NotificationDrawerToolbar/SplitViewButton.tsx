@@ -2,11 +2,11 @@ import React from 'react';
 import  Button  from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import useActions from 'Action/useActions';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'Types/Redux';
 import Global from 'Store/Reducer/Global';
 
 const SplitViewButton: React.FC = () => {
-  const notificationDrawerPinned = useSelector<Global.State, boolean>(state => (
+  const notificationDrawerPinned = useSelector<boolean>(state => (
     state.Core.Notification.notificationDrawerPinned
   ));
   const {

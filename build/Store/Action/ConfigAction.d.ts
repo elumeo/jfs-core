@@ -5,5 +5,5 @@ export declare namespace ConfigLoaded {
         config: IConfig;
     };
 }
-export declare const configLoadedAction: import("typesafe-actions").PayloadAC<string, ConfigLoaded.Payload>;
-export declare const loadConfigFailed: import("typesafe-actions").EmptyAC<string>;
+export declare const configLoadedAction: import("typesafe-actions").PayloadAC<"config/LOADED", ConfigLoaded.Payload>;
+export declare const loadConfigFailed: import("typesafe-actions").EmptyAC<"config/LOAD_FAILED">;

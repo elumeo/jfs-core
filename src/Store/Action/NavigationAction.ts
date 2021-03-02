@@ -1,6 +1,4 @@
 import { createStandardAction } from 'typesafe-actions';
 
-const featureName = 'navigation';
-
-export const openNavigation = createStandardAction(featureName + '/OPEN')();
-export const closeNavigation = createStandardAction(featureName + '/CLOSE')();
+export const openNavigation = createStandardAction('navigation/OPEN')();
+export const closeNavigation = createStandardAction('navigation/CLOSE')();

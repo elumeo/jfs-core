@@ -1,28 +1,30 @@
 import { createReducer, PayloadAction } from 'typesafe-actions';
-import { getRegionFailed, regionLoaded } from 'Action/SystemAction';
-import { configLoadedAction } from 'Action/ConfigAction';
+import * as Action from 'Store/Action';
+import { ActionType } from 'Types/Redux';
 
-namespace System {
-  export type State = {
-    backendRegion: string;
-    pending: boolean;
-  }
-}
+export type State = {
+  backendRegion: string;
+  pending: boolean;
+};
 
-const initialState: System.State = {
+const initialState: State = {
   backendRegion: null,
   pending: false
 };
 
-const System = createReducer<System.State>(initialState)
-  .handleAction(configLoadedAction, (state) => (
-    {...state, pending: true}
-  ))
-  .handleAction(regionLoaded, (state, action: PayloadAction<string, any>) => (
-    {...state, backendRegion: action.payload, pending: false}
-  ))
-  .handleAction(getRegionFailed, (state) => (
-    {...state, pending: false}
-  ));
+const System = createReducer<State, ActionType>(initialState)
+  .handleAction(Action.configLoadedAction, state => ({
+    ...state,
+    pending: true
+  }))
+  .handleAction(Action.regionLoaded, (state, action) => ({
+    ...state,
+    backendRegion: action.payload.regionName,
+    pending: false
+  }))
+  .handleAction(Action.getRegionFailed, state => ({
+    ...state,
+    pending: false
+  }));
 
 export default System;

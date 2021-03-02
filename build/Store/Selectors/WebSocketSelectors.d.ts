@@ -1,5 +1,5 @@
-import WebSocketConnection, { IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/Core/WebSocketConnectionReducer';
-export declare const getRoomConnectionState: import("reselect").OutputParametricSelector<WebSocketConnection.State, IWebSocketRoom<string>, {
+import { State as WebSocketConnectionState, IWebSocketRoom, IWebSocketRoomConnection } from '../Reducer/Core/WebSocketConnectionReducer';
+export declare const getRoomConnectionState: import("reselect").OutputParametricSelector<WebSocketConnectionState, IWebSocketRoom<string>, {
     namespace: string;
     isJoining: boolean;
     hasJoined: boolean;
@@ -12,4 +12,4 @@ export declare const getRoomConnectionState: import("reselect").OutputParametric
     name: string;
     error: string;
 }>;
-export declare const isWebSocketNamespaceConnectedState: import("reselect").OutputParametricSelector<WebSocketConnection.State, string, boolean, (res: boolean) => boolean>;
+export declare const isWebSocketNamespaceConnectedState: import("reselect").OutputParametricSelector<WebSocketConnectionState, string, boolean, (res: boolean) => boolean>;

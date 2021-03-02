@@ -10,17 +10,18 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import React, { useEffect } from 'react';
-import { Route } from 'react-router-dom';
-import { useLocation, useParams } from 'react-router';
+import { Route, useLocation, useParams } from 'react-router-dom';
+// import { useLocation, useParams } from 'react-router';
 // noinspection ES6PreferShortImport
 import { updateRouteDetails } from '../../Store/Action/RouterAction';
 import { useDispatch } from 'react-redux';
-import { injectIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 const BaseRoute = (_a) => {
-    var { intl: { formatMessage }, Component, translationId, updateDocumentTitle } = _a, rest = __rest(_a, ["intl", "Component", "translationId", "updateDocumentTitle"]);
+    var { Component, translationId, updateDocumentTitle } = _a, rest = __rest(_a, ["Component", "translationId", "updateDocumentTitle"]);
     const location = useLocation();
     const params = useParams();
     const dispatch = useDispatch();
+    const { formatMessage } = useIntl();
     useEffect(() => {
         dispatch(updateRouteDetails({ location, params }));
     }, [rest.path]);
@@ -37,6 +38,5 @@ const BaseRoute = (_a) => {
     }
     return React.createElement(Route, Object.assign({}, rest));
 };
-const enhance = injectIntl;
-export default enhance(BaseRoute);
+export default BaseRoute;
 //# sourceMappingURL=BaseRoute.js.map

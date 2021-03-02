@@ -18,7 +18,7 @@ import { Language } from 'Types/Language';
 import { Grid, MenuItem } from '@material-ui/core';
 import useActions from 'Store/Action/useActions';
 import { useIntl } from 'react-intl';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'Types/Redux';
 import { getLanguageStateSelector } from 'Store/Selectors/Core/Language';
 
 // ToDo: Duplikat entfernen => Siehe LanguageSettings.tsx
