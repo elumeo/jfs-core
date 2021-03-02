@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from 'react-md/lib/Buttons/Button';
+// import Button from '@material-ui/core/Button';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -10,7 +10,8 @@ import { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction } from 
 
 import Global from 'Store/Reducer';
 import { IJsc2JfsPingExampleState } from 'Store/Reducer/App/Jsc2JfsPingExampleReducer';
-import JSCApi from 'Jsc/Api';
+
+import JSCApi from 'Jsc/Api/index';
 import ROOM_PING = JSCApi.WebSocketClient.ROOM_PING;
 import IAppConfig from 'Setup/IAppConfig';
 

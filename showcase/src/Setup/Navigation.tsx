@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import Divider from 'react-md/lib/Dividers';
-import NavigationDrawer from 'Core/Component/Navigation/NavigationDrawer';
+import Divider from '@material-ui/core/Dividers';
+import NavigationDrawer from 'Component/Navigation/NavigationDrawer';
 import NavigationItem from 'Core/Component/Navigation/NavigationItem';
 
 import SettingsNavigationItem from 'Core/Component/Settings/SettingsNavigationItem';

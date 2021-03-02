@@ -1,22 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { openSettings } from '../../Store/Action/SettingsAction';
+import React, { useCallback } from 'react';
+import useActions from 'Store/Action/useActions';
 import NavigationItem from '../Navigation/NavigationItem';
 
-export interface ISettingsNavigationItemProps {
-  openSettings?: () => void;
-}
-
-const SettingsNavigationItem: React.FC<ISettingsNavigationItemProps> = ({
-  openSettings
-}) => (
-  <NavigationItem
+const SettingsNavigationItem: React.FC = () => {
+  const {openSettings} =  useActions()
+  const memoizedCallback = useCallback(
+      openSettings,
+    [openSettings],
+  )
+  return <NavigationItem
     iconName="settings"
     messageId="app.settings"
-    onClick={() => openSettings()}
+    onClick={memoizedCallback}
   />
-);
+};
 
-const enhance = connect(null, {openSettings});
 
-export default enhance(SettingsNavigationItem);
+export default SettingsNavigationItem;

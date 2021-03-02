@@ -1,5 +1,6 @@
 import { createStandardAction } from 'typesafe-actions';
-import JSCApi from 'Jsc/Api';
+
+import JSCApi from 'Jsc/Api/index';
 
 const featureName = 'currentGame';
 

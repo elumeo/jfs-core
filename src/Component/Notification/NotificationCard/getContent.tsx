@@ -1,26 +1,19 @@
 import React from 'react';
 import { INotificationContent } from 'Types/Notification';
 import Format from 'Utilities/Format';
-import ErrorContent, { errorText } from 'Component/Snackbar/ErrorContent';
-import CardText from 'react-md/lib/Cards/CardText';
-import { timeToRead as _timeToRead } from 'Component/Snackbar/TimeToRead';
+// import ErrorContent, { errorText } from 'Component/Snackbar/ErrorContent';
+import CardText from '@material-ui/core/CardContent';
+// import { timeToRead as _timeToRead } from 'Component/Snackbar/TimeToRead';
+import { useIntl } from 'react-intl';
+import timeToRead, { _timeToRead } from './timeToRead';
+import getPlainText from './getPlainText';
 
-const getContent = (notification: INotificationContent) => {
+const _getContent = (notification) =>{
   const { message, translationId, translationValues, error } = notification;
-  const { formatMessage } = Format.Translations;
-  if (!((message ? 1 : 0) ^ (translationId ? 1 : 0) ^ (error ? 1 : 0))) {
-    throw new Error(
-      `Either 'message', 'translationId' or 'error' must be specified.`
-    );
-  }
-  let content = null;
-  let words = '';
+  const {formatMessage} = useIntl();
+  let content;
   if (message) {
-    words = (
-      typeof message == 'object'
-        ? message.join(' ')
-        : message
-    )
+    
     content = (
       typeof message == 'object'
         ? (
@@ -31,14 +24,7 @@ const getContent = (notification: INotificationContent) => {
         : message
     );
   }
-  if (translationId) {
-    words = typeof translationId == 'object'
-      ? (
-        translationId
-          .map(tId => formatMessage({ id: tId }, translationValues))
-          .join(' ')
-      )
-      : formatMessage({ id: translationId }, translationValues);
+  else if (translationId) {
     content = typeof translationId == 'object'
       ? (
         <ul>
@@ -52,10 +38,25 @@ const getContent = (notification: INotificationContent) => {
       : formatMessage({ id: translationId }, translationValues);
   }
   if (error) {
-    const { body, head } = errorText(error);
-    words = `${formatMessage({ id: 'app.error' }, translationValues)}: ${body} ${head}`;
-    content = <ErrorContent contentError={error}/>
+    // const { body, head } = errorText(error);
+    // words = `${formatMessage({ id: 'app.error' }, translationValues)}: ${body} ${head}`;
+    // content = <ErrorContent contentError={error}/>
   }
+  return content
+}
+
+
+const getContent = (notification: INotificationContent) => {
+  const { message, translationId, translationValues, error } = notification;
+  const  {formatMessage}  = useIntl()// ({id}, asd?) => id
+  if (!(!!message|| !!translationId || !!error)) {
+    throw new Error(
+      `Either 'message', 'translationId' or 'error' must be specified.`
+    );
+  }
+  let content = _getContent(notification);
+  let words = getPlainText(notification);
+  
   return {
     words,
     content: (
@@ -63,7 +64,7 @@ const getContent = (notification: INotificationContent) => {
         {content}
       </CardText>
     ),
-    timeToRead: _timeToRead(words)
+    timeToRead: timeToRead(notification)
   };
 };
 

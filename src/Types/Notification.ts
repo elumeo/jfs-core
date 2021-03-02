@@ -1,13 +1,13 @@
-import React from 'react';
+import React,{ReactText} from 'react';
 import { AxiosError } from 'axios';
 import { INotificationCardProps } from 'Component/Notification/NotificationCard';
-import { PrimitiveType } from 'intl-messageformat';
+// import { PrimitiveType } from 'react-intl';
 
 export interface INotificationContent {
   error?: Error | AxiosError | any;
   message?: string | string[];
   translationId?: string | string[];
-  translationValues?: Record<string, PrimitiveType>;
+  translationValues?: Record<string, ReactText>;
 
   icon?: string;
   isError?: boolean;
@@ -26,7 +26,7 @@ export interface INotificationContent {
   onHide?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
 
   customActionTooltipTranslationId?: string;
-  customActionTooltipTranslationValues?: Record<string, PrimitiveType>;
+  customActionTooltipTranslationValues?: Record<string, ReactText>;
   customActionIconName?: string;
   onCustomAction?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
 }

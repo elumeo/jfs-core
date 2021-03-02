@@ -15,13 +15,14 @@ class JSC {
   public static location = (path: string) => resolve(
     path,
     'src',
-    'Jsc'
+    'API',
+    'JSC'
   );
 
   constructor(path: string) {
     this.path = path;
     this.config = new Config(
-      resolve(path, 'Api', 'config.json')
+      resolve(path, 'Config.json')
     );
   }
 
@@ -39,7 +40,7 @@ class JSC {
         onComplete: result => {
           if (result) {
             console.log([
-              `Jsc/Api/Description.json did change.\n`,
+              `API/JSC/Description.json did change.\n`,
               bgRedBright(' --> Generating new API...')
             ].join(''));
             API.generate({
@@ -55,7 +56,7 @@ class JSC {
             })
           } else {
             console.log([
-              `Jsc/Api/Description.json did not change.\n`,
+              `API/JSC/Description.json did not change.\n`,
               bgGreenBright(' --> Nothing to be done here.')
             ].join(''));
           }
@@ -65,7 +66,7 @@ class JSC {
   }
 
   public saveCode = (code: string, onComplete?: () => void) => (
-    new File({path: resolve(this.path, 'Api', 'index.ts')})
+    new File({path: resolve(this.path, 'index.ts')})
       .write(code, onComplete)
   )
 
@@ -93,7 +94,7 @@ class JSC {
 
   public saveDescription = (description: Generator.API.Description) => {
     writeFile(
-      resolve(this.path, 'Api', 'Description.json'),
+      resolve(this.path, 'Description.json'),
       JSON.stringify(description, null, 2),
       () => {
 
@@ -105,11 +106,11 @@ class JSC {
     description: Generator.API.Description,
     onComplete: (diffSequence: string) => void
   }) => {
-    if (!existsSync(resolve(this.path, 'Api', 'Description.json'))) {
+    if (!existsSync(resolve(this.path, 'Description.json'))) {
       onComplete('No description found.');
     } else {
       readFile(
-        resolve(this.path, 'Api', 'Description.json'),
+        resolve(this.path, 'Description.json'),
         'utf8',
         (error, data) => {
           if (error) {

@@ -1,31 +1,30 @@
 import React from 'react';
-import { Badge, Button } from 'react-md';
+// import { Badge, Button } from '@material-ui/core';
 import { INotification } from 'Types/Notification';
 import useActions from 'Action/useActions';
-import { useSelector } from 'Types/Redux';
+import { useSelector } from 'react-redux';
 import './NotificationBadge.scss';
-
+import Badge from '@material-ui/core/Badge';
+import IconButton from '@material-ui/core/IconButton';
+import NotificationsIcon from '@material-ui/icons/Notifications'
+import Global from 'Store/Reducer/Global';
 const NotificationBadge: React.FC = () => {
-  const notifications = useSelector<INotification[]>(
+  const notifications = useSelector<Global.State, INotification[]>(
     state => state.Core.Notification.notifications
   );
   const { toggleNotificationDrawerAction } = useActions();
-  const empty = !notifications.length;
   return (
-    <Badge
-      primary
-      circular
-      aria-haspopup
-      badgeId='notification-badge'
-      badgeContent={empty ? '' : notifications.length}
-      className={empty ? 'md-badge-container--empty' : ''}>
-      <Button
-        icon
-        onClick={() => toggleNotificationDrawerAction()}
-        aria-describedby='notification-badge'>
-        notifications
-      </Button>
-    </Badge>
+    <IconButton
+      color={'inherit'}
+      onClick={toggleNotificationDrawerAction}>
+      <Badge
+        color={'secondary'}
+        // badgeId='notification-badge'
+        badgeContent={notifications.length}
+      >
+        <NotificationsIcon />
+      </Badge>
+    </IconButton>
   );
 };
 

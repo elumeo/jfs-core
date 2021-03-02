@@ -3,7 +3,8 @@ import { of } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
 import { webSocketLeaveRoomSuccessAction } from 'Core/Store/Action/WebSocketAction';
 
-import JSCApi from 'Jsc/Api';
+
+import JSCApi from 'Jsc/Api/index';
 import { Jsc2JfsPingExampleUpdateRoomAction } from 'Action/Jsc2JfsPingExampleAction';
 
 import { isActionOf } from 'typesafe-actions';

@@ -1,5 +1,5 @@
 import React from 'react';
-import FontIcon from 'react-md/lib/FontIcons/FontIcon';
+import {Icon as FontIcon} from '@material-ui/core'
 import { INotification } from 'Types/Notification';
 
 export type Props = {

@@ -1,19 +1,22 @@
-@use '~react-md/src/scss/react-md';
-@use '../../Style/layout';
-
-.notification-fadein {
-  transition-property: right;
-  transition-duration: react-md.$md-drawer-transition-time;
-  position: fixed;
-  width: 300px;
-  top: calc(64px + -1 * #{react-md.$md-default-padding} / 4);
-  right: calc(-1 * #{react-md.$md-default-padding} / 4);
-  z-index: 16;
+// // @use '~react-md/src/scss/react-md';
+// @use '../../Style/layout';
+.notifications__on-screen{
+    right: 0;
+    position: fixed;
 }
+// .notification-fadein {
+//   transition-property: right;
+//   transition-duration: react-md.$md-drawer-transition-time;
+//   position: fixed;
+//   width: 300px;
+//   top: calc(64px + -1 * #{react-md.$md-default-padding} / 4);
+//   right: calc(-1 * #{react-md.$md-default-padding} / 4);
+//   z-index: 16;
+// }
 
 
-.notification-drawer--visible {
-  .notification-fadein {
-    right: calc(-1 * #{layout.$notification-drawer-width} - calc(#{react-md.$md-default-padding} / 4));
-  }
-}
+// .notification-drawer--visible {
+//   .notification-fadein {
+//     right: calc(-1 * #{layout.$notification-drawer-width} - calc(#{react-md.$md-default-padding} / 4));
+//   }
+// }

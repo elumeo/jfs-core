@@ -1,25 +1,26 @@
 import React from 'react';
-import Tooltipped from 'react-md/lib/Tooltips/Tooltipped';
+import {Tooltip} from '@material-ui/core';
 import './BackendIndicator.scss';
-import { injectIntl, InjectedIntlProps } from 'react-intl';
-import { useSelector } from 'Types/Redux';
+import { useSelector } from 'react-redux';
+import { useIntl } from 'react-intl';
+import Global from 'Store/Reducer/Global';
 
-const BackendIndicator: React.FC<InjectedIntlProps> = ({ intl }) => {
-  const backendRegion = useSelector<string>(
+const BackendIndicator: React.FC = () => {
+  const {formatMessage} = useIntl()
+  const backendRegion = useSelector<Global.State,string>(
     state => state.Core.System.backendRegion
   );
-  const label = [
-    intl.formatMessage({ id: 'app.backend' }),
+  const label: string = [
+    formatMessage({ id: 'app.backend' }),
     backendRegion
   ].join(': ');
   return (
-    <Tooltipped
-      label={label}>
+    <Tooltip
+      title={label}>
       <div className={`flag ${(backendRegion || '').toLowerCase()}`}/>
-    </Tooltipped>
+    </Tooltip>
   );
 }
 
-const enhance = injectIntl;
 
-export default enhance(BackendIndicator);
+export default BackendIndicator;

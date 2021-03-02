@@ -1,0 +1,12 @@
+{
+    "extends": "./node_modules/@elumeo/jfs-core/build-tools/typescript/common.json",
+    "compilerOptions": {
+      "outDir": "./build",
+      "baseUrl": "./src"
+    },
+    "exclude": [
+      "dist",
+      "build"
+      "node_modules/@elumeo/jfs-core/scripts"
+    ]
+  }

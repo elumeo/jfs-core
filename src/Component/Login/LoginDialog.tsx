@@ -1,14 +1,20 @@
 import React from 'react';
-import DialogContainer from 'react-md/lib/Dialogs';
+import DialogContainer from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogTitle from '@material-ui/core/DialogTitle'
 import LoginCredentials from './LoginCredentials';
 import LoginButton from './LoginButton';
 import './LoginDialog.scss';
-import { useSelector } from 'Types/Redux';
+import { useSelector } from 'react-redux';
+import { useIntl } from 'react-intl';
+import Global from 'Store/Reducer/Global';
 
 const LoginDialog: React.FC = () => {
+  const {formatMessage} = useIntl()
   const {
     isAuthorized, isCheckingSession, routeType, robotLoginAvailable
-  } = useSelector<{
+  } = useSelector<Global.State,{
     isAuthorized: boolean;
     isCheckingSession: boolean;
     routeType: string;
@@ -30,18 +36,21 @@ const LoginDialog: React.FC = () => {
     <div className='login-dialog'>
       <DialogContainer
         id={'login-dialog'}
-        visible={
+        open={
           routeType === 'authorized' &&
           !isAuthorized &&
           !robotLoginAvailable &&
           !isCheckingSession
         }
-        title='Login'
-        aria-describedby=''
-        actions={<LoginButton/>}
-        modal>
-        <LoginCredentials/>
-      </DialogContainer>
+        aria-describedby=''>
+          <DialogTitle >Login</DialogTitle>
+          
+          <LoginCredentials/>
+
+          <DialogActions >
+            <LoginButton/>
+            </DialogActions>
+        </DialogContainer>
     </div>
   );
 }

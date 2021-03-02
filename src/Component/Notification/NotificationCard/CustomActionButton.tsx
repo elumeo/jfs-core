@@ -1,5 +1,6 @@
 import React from 'react';
-import Button from 'react-md/lib/Buttons/Button';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip'
 import { INotification } from 'Types/Notification';
 import { INotificationCardProps } from '.';
 
@@ -20,16 +21,12 @@ const CustomActionButton: React.FC<Props> = ({
   topLevelRef: ref,
   iconName,
   tooltipLabel
-}) => (
-  <Button
-    icon
-    key='custom-action-btn'
-    tooltipLabel={tooltipLabel}
-    tooltipPosition={'left'}
-    tooltipDelay={666}
+}) => (<Tooltip title={tooltipLabel} >
+  <IconButton
     onClick={() => onClick(notification, ref)}>
     {iconName}
-  </Button>
+  </IconButton>
+  </Tooltip>
 );
 
 export default CustomActionButton;

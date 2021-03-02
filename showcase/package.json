@@ -14,7 +14,7 @@
     }
   },
   "dependencies": {
-    "@elumeo/jfs-core": "9.5.30",
+    "@elumeo/jfs-core": "10.0.0",
     "jfc-hello-world": "https://github.com/scharfohnezwiebeln/jfc_HelloWorld.git#f89cfaeb21c32118471bf4cd5f0fcb3ad732bd51"
   },
   "keywords": [],

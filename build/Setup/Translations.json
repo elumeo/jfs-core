@@ -1,5 +1,6 @@
 {
     "de": {
+        "app.title":"jfs-core",
         "app.backend": "Backend",
         "app.cancel.action": "Abbrechen",
         "app.closeBtnLabelModalDialog": "Schließen",

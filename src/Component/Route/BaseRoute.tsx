@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
-import { Route, RouteProps } from 'react-router-dom';
-import { useLocation, useParams } from 'react-router';
+import { Route, RouteProps, useLocation, useParams } from 'react-router-dom';
+// import { useLocation, useParams } from 'react-router';
 // noinspection ES6PreferShortImport
 import { updateRouteDetails } from '../../Store/Action/RouterAction';
 import { useDispatch } from 'react-redux';
-import { InjectedIntl, injectIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 export type IBaseRouteProps = RouteProps & {
-  intl?: InjectedIntl;
   Component?: () => JSX.Element;
   translationId?: string;
   updateDocumentTitle?: boolean;
 }
 
 const BaseRoute: React.FC<IBaseRouteProps> = ({
-  intl: { formatMessage },
   Component,
   translationId,
   updateDocumentTitle,
@@ -23,6 +21,7 @@ const BaseRoute: React.FC<IBaseRouteProps> = ({
   const location = useLocation();
   const params = useParams();
   const dispatch = useDispatch();
+  const {formatMessage} = useIntl()
   useEffect(
     () => {
       dispatch(updateRouteDetails({ location, params }));
@@ -43,6 +42,5 @@ const BaseRoute: React.FC<IBaseRouteProps> = ({
   return <Route {...rest}/>;
 };
 
-const enhance = injectIntl;
 
-export default enhance(BaseRoute);
+export default BaseRoute;

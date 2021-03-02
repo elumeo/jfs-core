@@ -1,13 +1,14 @@
-import { combineEpics } from 'redux-observable';
+import { combineEpics, StateObservable } from 'redux-observable';
 import { filter, switchMap, catchError } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { from, of } from 'rxjs';
-import JSCApi from 'Jsc/Api';
+import JSCApi from 'Jsc/Api/index';
 import * as Action from 'Store/Action';
-import Session from '../../Base/Session';
+import * as Token from '../../API/LOCAL_STORAGE/Token';
 import { Epic } from 'Types/Redux';
+import Global from 'Store/Reducer/Global';
 
-const loginEpic: Epic = (action$, state$) => (
+const loginEpic: Epic = (action$, state$: StateObservable<Global.State>) => (
   action$.pipe(
     filter(isActionOf(Action.checkLogin)),
     switchMap(
@@ -22,7 +23,7 @@ const loginEpic: Epic = (action$, state$) => (
       ).pipe(
         switchMap(
           response => {
-            Session.setToken(response.data.session.token);
+            Token.setToken(response.data.session.token);
             return of(
               Action.authorizeSession({frontendSessionDTO: response.data}),
               Action.loggedIn()

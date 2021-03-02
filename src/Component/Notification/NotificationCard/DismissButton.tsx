@@ -1,7 +1,7 @@
 import React from 'react';
 import { INotification } from 'Types/Notification';
 import { INotificationCardProps } from '.';
-import Button from 'react-md/lib/Buttons/Button';
+import {IconButton, Icon} from '@material-ui/core'
 import useActions from 'Action/useActions';
 
 export type Props = {
@@ -20,9 +20,9 @@ const DismissButton: React.FC<Props> = ({
 }) => {
   const { dismissNotificationAction } = useActions();
   return (
-    <Button
-      icon
-      key='dismiss-btn'
+    <IconButton
+      // icon
+      // key='dismiss-btn'
       onClick={event => {
         event.stopPropagation();
         dismissNotificationAction(notification.id);
@@ -30,8 +30,8 @@ const DismissButton: React.FC<Props> = ({
           onClick(notification, ref);
         }
       }}>
-      close
-    </Button>
+     <Icon> close</Icon>
+    </IconButton>
   )
 };
 

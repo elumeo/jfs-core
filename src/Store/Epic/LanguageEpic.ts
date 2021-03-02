@@ -2,7 +2,7 @@ import { combineEpics } from 'redux-observable';
 import { of, EMPTY } from 'rxjs';
 import { filter, concatMap, switchMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
-import { setDefaultLocale } from 'react-datepicker';
+// import { setDefaultLocale } from 'react-datepicker';
 import Cookie from 'js-cookie';
 
 import * as Action from 'Store/Action';
@@ -14,7 +14,7 @@ const setInitialLanguageEpic: Epic = (action$, state$) => action$.pipe(
   concatMap(() => of(
     Action.changeLanguageAction(
       Cookie.get('lang') ||
-      state$.value.Core.Configuration.config.Language ||
+      state$.value.Core.Language.language ||
       'en'
     ),
     Action.loadSession()
@@ -26,8 +26,10 @@ const setLanguageEpic: Epic = action$ => (
     filter(isActionOf(Action.changeLanguageAction)),
     switchMap(({ payload }) => {
       const locale = Locale.mapLanguageToLocale(payload);
+      Cookie.set('lang', payload);
+
       Locale.setLocale(locale);
-      setDefaultLocale(payload);
+      // setDefaultLocale(payload);
       return EMPTY;
     })
   )

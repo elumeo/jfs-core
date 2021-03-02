@@ -1,14 +1,15 @@
 import { createReducer, PayloadAction } from 'typesafe-actions';
 import * as Action from 'Store/Action';
-import Messages from 'Utilities/Format/Translations/Messages';
+// import Messages from 'Utilities/Format/Translations/Messages';
 import coreTranslations from 'Setup/Translations.json';
 import { Language } from 'Types/Language';
-import Shared from '../../../Shared';
+// import Shared from 'Shared';
+import _ from 'lodash';
 
 namespace Language {
   export type State = {
     language: Language;
-    messages: Messages.LanguageMap;
+    messages//Messages.LanguageMap;
   };
 }
 
@@ -32,14 +33,14 @@ const Language = createReducer(initialState)
     Action.initializeApp,
     (
       state: Language.State,
-      {payload: {translations: appTranslations}}: PayloadAction<string, Action.initializeApp.Payload>
+      {payload: {translations}}: PayloadAction<string, Action.initializeApp.Payload>
     ): Language.State => ({
       ...state,
-      messages: Messages.merge(
-        coreTranslations as unknown as Messages.LanguageMap,
-        Shared.translations,
-        appTranslations
-      )
+      messages:// _.merge(
+        translations//,// as unknown as Messages.LanguageMap,
+        // Shared.translations,
+        //appTranslations
+      //)
     })
   );
 
