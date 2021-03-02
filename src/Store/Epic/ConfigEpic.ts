@@ -4,7 +4,7 @@ import { catchError, filter, concatMap, } from 'rxjs/operators';
 import axios, { AxiosResponse } from 'axios';
 import { isActionOf } from 'typesafe-actions';
 import * as Action from 'Store/Action';
-import JscClient from 'Jsc/Client';
+import JscClient from 'API/JSC/Client';
 import IConfig from 'Types/Configuration';
 import { Epic } from 'Types/Redux';
 

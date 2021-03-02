@@ -1,11 +1,12 @@
 import React from 'react';
 import NoNotifications from './NoNotifications';
 import NotificationCard from 'Component/Notification/NotificationCard';
-import { useSelector } from 'Types/Redux';
+import { useSelector } from 'react-redux';
 import { INotification } from 'Types/Notification';
+import Global from 'Store/Reducer/Global';
 
 const NotificationsFragment: React.FC = () => {
-  const notifications = useSelector<INotification[]>(
+  const notifications = useSelector<Global.State,INotification[]>(
     state => state.Core.Notification.notifications
   );
 

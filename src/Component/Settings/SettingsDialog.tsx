@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import International from '../International';
-import ModalDialog from '../Modal/ModalDialog';
 import Global from '../../Store/Reducer/Global';
 import { closeSettings } from '../../Store/Action/SettingsAction';
 import './SettingsDialog.scss';
+import { Dialog, DialogActions, DialogTitle, Button } from '@material-ui/core';
+import { useIntl } from 'react-intl';
 
 export interface ISettingsDialogProps {
   closeSettings?: typeof closeSettings;
@@ -13,22 +13,24 @@ export interface ISettingsDialogProps {
 }
 
 const SettingsDialog: React.FC<ISettingsDialogProps> = ({
-  closeSettings: _closeSettings,
+  closeSettings,
   settingsOpen,
   children
-}) => (
-  <International>
-    {({ formatMessage }) => (
-      <ModalDialog
-        title={formatMessage({id: 'app.settings'})}
+}) => {
+  const {formatMessage} = useIntl();
+      return <Dialog
         className='settings-dialog'
-        visible={settingsOpen}
-        closeDialog={() => _closeSettings()}>
+        open={settingsOpen}
+        fullWidth={true}
+        onClose={ closeSettings}>
+          <DialogTitle>{formatMessage({id: 'app.settings'})}</DialogTitle>
         {children}
-      </ModalDialog>
-    )}
-  </International>
-);
+        <DialogActions>
+          <Button variant='contained' color='secondary' onClick={closeSettings}>{formatMessage({id: 'app.closeBtnLabelModalDialog'})}</Button>
+        </DialogActions>
+      </Dialog>
+    
+};
 
 const mapStateToProps = (
   state: Global.State,

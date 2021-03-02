@@ -1,21 +1,21 @@
 import React from 'react';
-import { Button } from 'react-md';
+import { IconButton, Icon } from '@material-ui/core';
 import { INotification } from 'Types/Notification';
 import useActions from 'Action/useActions';
-import { useSelector } from 'Types/Redux';
+import { useSelector } from 'react-redux';
+import Global from 'Store/Reducer/Global';
 
 const DismissAllNotificationsButton: React.FC = () => {
-  const notifications = useSelector<INotification[]>(
+  const notifications = useSelector<Global.State, INotification[]>(
     state => state.Core.Notification.notifications
   );
   const { dismissAllNotificationsAction } = useActions();
   return (
-    <Button
-      icon
+    <IconButton
       onClick={() => dismissAllNotificationsAction()}
       disabled={!notifications.length}>
-      delete
-    </Button>
+     <Icon>delete</Icon>
+    </IconButton>
   );
 }
 

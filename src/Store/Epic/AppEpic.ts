@@ -4,7 +4,7 @@ import { filter, concatMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { Epic } from 'Types/Redux';
 import * as Action from 'Store/Action';
-import JscClient from 'Jsc/Client';
+import JscClient from 'API/JSC/Client';
 
 const initializeAppEpic: Epic = (
   action$ => action$.pipe(

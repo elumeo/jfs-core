@@ -1,14 +1,21 @@
 import React from 'react';
-import Toolbar from 'react-md/lib/Toolbars';
 import SplitViewButton from './SplitViewButton';
 import DismissAllNotificationsButton from './DismissAllNotificationsButton';
 import HideNotificationDrawerButton from './HideNotificationDrawerButton';
+import { CardActions, CardHeader } from '@material-ui/core';
 
-const NotificationDrawerToolbar: React.FC = () => (
-  <Toolbar
-    nav={<HideNotificationDrawerButton/>}
-    actions={[<SplitViewButton/>, <DismissAllNotificationsButton/>]}
-    className='md-divider-border md-divider-border--bottom'/>
-);
+const NotificationDrawerToolbar: React.FC = () =>  (
+  <CardHeader 
+    title={
+      <>
+        <HideNotificationDrawerButton />
+        <CardActions>
+          <SplitViewButton /> 
+          <DismissAllNotificationsButton />
+        </CardActions>
+      </>
+    } 
+  />
+)
 
 export default NotificationDrawerToolbar;

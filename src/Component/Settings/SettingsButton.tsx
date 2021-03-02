@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Button from 'react-md/lib/Buttons/Button';
+import Button from '@material-ui/core/IconButton';
 
 import { closeSettings, openSettings } from '../../Store/Action/SettingsAction';
 import Global from '../../Store/Reducer/Global';
@@ -17,7 +17,6 @@ const SettingsButton: React.FC<ISettingsButtonProps> = ({
   closeSettings
 }) => (
   <Button
-    icon
     onClick={() => settingsOpen ? closeSettings() : openSettings()}>
     settings
   </Button>

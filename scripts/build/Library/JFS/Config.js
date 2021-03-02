@@ -15,7 +15,7 @@ var JFS;
             this.file = new File_1.default({ path: this.path });
         }
     }
-    Config.location = (path) => path_1.resolve(path, 'config.json.dist');
+    Config.location = (path) => path_1.resolve(path, 'config', 'development.json');
     JFS.Config = Config;
 })(JFS = exports.JFS || (exports.JFS = {}));
 exports.default = JFS.Config;

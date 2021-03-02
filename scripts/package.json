@@ -41,7 +41,6 @@
     "tsc-watch": "^4.2.8",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.0",
-    "typescript": "^3.8.3",
     "validate-npm-package-license": "^3.0.4",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",

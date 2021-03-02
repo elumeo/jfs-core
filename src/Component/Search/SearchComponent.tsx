@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Button from 'react-md/lib/Buttons/Button';
-import CircularProgress from 'react-md/lib/Progress/CircularProgress';
-import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/Progress/CircularProgress';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import './SearchComponent.scss';
 import { useDispatch } from 'react-redux';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
+// import {  injectIntl } from 'react-intl';
 // noinspection ES6PreferShortImport
 import { addToastAction } from '../../Store/Action/ToastAction';
 

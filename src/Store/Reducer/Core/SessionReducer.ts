@@ -1,5 +1,6 @@
 import { createReducer, PayloadAction } from 'typesafe-actions';
-import JSCApi from 'Jsc/Api';
+
+import JSCApi from 'Jsc/Api/index';
 import {
   checkSession,
   authorizeSession,
@@ -16,11 +17,12 @@ namespace Session {
     sessionDTO: ISessionDTO;
     appProperties: Array<IPropertyDTO>;
   }
+  
 }
 
 const initialState: Session.State = {
   isCheckingSession: false,
-  isAuthorized: false,
+  isAuthorized: null,
   sessionDTO: null,
   appProperties: []
 };
@@ -28,7 +30,7 @@ const initialState: Session.State = {
 const Session = createReducer<Session.State>(initialState)
   .handleAction(checkSession, (state): Session.State => ({
     ...state,
-    isCheckingSession: true
+    isCheckingSession: true,
     })
   )
   .handleAction(

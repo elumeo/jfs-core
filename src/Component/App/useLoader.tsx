@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
-import { addLocaleData } from 'react-intl';
-import useActions from 'Action/useActions';
-import { useSelector } from 'Types/Redux';
+import useActions from 'Store/Action/useActions';
+import { useSelector } from 'react-redux';
+// import '@formatjs/intl-pluralrules/polyfill'
+// import '@formatjs/intl-relativetimeformat/polyfill'
+import Global from 'Store/Reducer/Global';
 
 const useLoader = ({ allowRobotLogin, packageJson, translations }: {
   allowRobotLogin: boolean;
@@ -9,22 +11,23 @@ const useLoader = ({ allowRobotLogin, packageJson, translations }: {
   translations: {
     [language: string]: {
       [key: string]: string;
-    }
+    } 
   }
 }) => {
   const { initializeApp } = useActions();
   useEffect(
-    () => {
+    () => { 
       initializeApp({ allowRobotLogin, packageJson, translations });
       ['de', 'en', 'fr', 'it'].forEach(
-        locale => addLocaleData(
-          require(`react-intl/locale-data/${locale}`)
-        )
+        locale => {
+        // require(`@formatjs/intl-pluralrules/locale-data/${locale}`)       
+        // require(`@formatjs/intl-relativetimeformat/locale-data/${locale}`) 
+      } 
       );
     },
     []
   );
-  return useSelector<{
+  return useSelector<Global.State,{
     appInitialized: boolean;
     language: string;
   }>(

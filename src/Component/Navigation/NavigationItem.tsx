@@ -1,11 +1,15 @@
 import React from 'react';
 import { uniqueId } from 'lodash';
-import FontIcon from 'react-md/lib/FontIcons';
-import ListItem from 'react-md/lib/Lists/ListItem';
+// import FontIcon from '@material-ui/core/FontIcons';
+// import ListItem from '@material-ui/core/Lists/ListItem';
+import FontIcon from '@material-ui/core/Icon'
+import ListItem from '@material-ui/core/ListItem'
 import { useHistory } from 'react-router-dom';
-import International from 'Component/International';
-import { useSelector } from 'Types/Redux';
+import { useSelector } from 'react-redux';
 import useActions from 'Action/useActions';
+import { useIntl } from 'react-intl';
+import Global from 'Store/Reducer/Global';
+import { ListItemIcon, ListItemText, MenuItem } from '@material-ui/core';
 
 export interface INavigationItemProps {
   iconName?: string;
@@ -24,8 +28,9 @@ const NavigationItem: React.FC<INavigationItemProps> = ({
 }) => {
   const history = useHistory();
   const { closeNavigation } = useActions();
-  const isAuthorized = useSelector<boolean>(
-    state => state.Core.Session.isAuthorized
+  const {formatMessage} = useIntl()
+  const isAuthorized = useSelector(
+    (state: Global.State) => state.Core.Session.isAuthorized
   );
   const visible = (
     !authorizedOnly && !unauthorizedOnly || // always display these
@@ -36,15 +41,8 @@ const NavigationItem: React.FC<INavigationItemProps> = ({
   return (
     visible
       ? (
-        <International>
-          {({ formatMessage }) => (
             <ListItem
-              key={uniqueId('navItem_')}
-              primaryText={
-                messageString
-                  ? messageString
-                  : formatMessage({id: messageId})}
-              leftIcon={<FontIcon>{iconName}</FontIcon>}
+              button 
               onClick={(event: React.MouseEvent<HTMLElement>) => {
                 const {location: {pathname}} = history;
                 if (onClickRoute != undefined && pathname !== onClickRoute) {
@@ -55,9 +53,15 @@ const NavigationItem: React.FC<INavigationItemProps> = ({
                   onClick(event);
                 }
               }}
-              active={active}/>
-          )}
-        </International>
+              selected={active}>
+                <ListItemIcon>
+                  <FontIcon>{iconName}</FontIcon>
+                </ListItemIcon>
+              <ListItemText primary={
+                messageString
+                  ? messageString
+                  : formatMessage({id: messageId})} /> 
+            </ListItem>
       )
       : <></>
   )

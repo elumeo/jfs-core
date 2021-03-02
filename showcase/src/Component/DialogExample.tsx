@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Button from 'react-md/lib/Buttons/Button';
-import Dialog from 'react-md/lib/Dialogs';
+// import Button from '@material-ui/core/Button';
+// import Dialog from '@material-ui/core/Dialogs';
 import { injectIntl, InjectedIntlProps } from 'react-intl';
 
 import LoremIpsumText from "Component/LoremIpsumText";

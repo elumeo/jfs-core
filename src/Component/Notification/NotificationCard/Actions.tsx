@@ -1,19 +1,20 @@
 import React from 'react';
 import { INotification } from 'Types/Notification';
-import { InjectedIntl, injectIntl } from 'react-intl';
+// import { InjectedIntl, injectIntl } from 'react-intl';
 import DismissButton from './DismissButton';
 import HideButton from './HideButton';
 import CustomActionButton from './CustomActionButton';
 import { INotificationCardProps } from '.';
+import { useIntl } from 'react-intl';
 
 export type Props = {
-  intl?: InjectedIntl;
+  // intl?: InjectedIntl;
   notification: INotification;
   topLevelRef: React.Component<INotificationCardProps>;
 }
 
 const Actions: React.FC<Props> = ({
-  intl: { formatMessage },
+  // intl: { formatMessage },
   notification,
   topLevelRef: ref
 }) => {
@@ -22,6 +23,7 @@ const Actions: React.FC<Props> = ({
     dismissButtonVisible, onDismiss,
     hideButtonVisible, onHide
   } = notification;
+  const {formatMessage} =  useIntl();
   if (!!onCustomAction && !customActionIconName) {
     throw new Error(
       'If you provide a onCustomAction you should also provide a customActionIconName'
@@ -72,6 +74,6 @@ const Actions: React.FC<Props> = ({
   )
 }
 
-const enhance = injectIntl;
+// const enhance = injectIntl;
 
-export default enhance(Actions);
+export default Actions;

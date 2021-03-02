@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from 'react-md/lib/Buttons/Button';
+// import Button from '@material-ui/core/Button';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -10,7 +10,8 @@ import { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction } from 
 import { isWebSocketNamespaceConnectedState } from 'Core/Store/Selectors/WebSocketSelectors';
 
 import Global from 'Store/Reducer';
-import JSCApi from 'Jsc/Api';
+
+import JSCApi from 'Jsc/Api/index';
 import { ICurrentGameState } from 'Store/Reducer/App/currentGameReducer';
 import ROOM_CURRENT_GAME = JSCApi.WebSocketClient.ROOM_CURRENT_GAME;
 import IAppConfig from 'Setup/IAppConfig';

@@ -21,8 +21,8 @@ import {
 } from 'Store/Reducer/Core/WebSocketConnectionReducer';
 import { addNotificationAction } from 'Action/NotificationAction';
 import { authorizeSession, logout } from 'Action/SessionAction';
-import { WSClient } from '../../Base/WSClient';
-import { INotificationContent } from 'Types/Notification';
+import { WSClient } from 'API/WS/WSClient';
+import { INotificationContent } from 'Types/Notification'; 
 import _ from 'lodash';
 import { Epic } from 'Types/Redux';
 

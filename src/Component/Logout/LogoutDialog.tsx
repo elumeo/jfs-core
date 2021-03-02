@@ -1,36 +1,48 @@
 import React from 'react';
-import Dialog from 'react-md/lib/Dialogs';
-import Button from 'react-md/lib/Buttons/Button';
-import CircularProgress from 'react-md/lib/Progress/CircularProgress';
-import International from 'Component/International';
-import { useSelector } from 'Types/Redux';
+import Dialog from '@material-ui/core/Dialog';
+import Button from '@material-ui/core/Button';
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { useSelector } from 'react-redux';
 import useActions from 'Action/useActions';
+import { useIntl } from 'react-intl';
+import Global from 'Store/Reducer/Global';
+import  Typography  from '@material-ui/core/Typography';
 
 const LogoutDialog: React.FC = ({
   children
 }) => {
   const { logout, closeLogout } = useActions();
-  const { logoutOpen, logoutPending } = useSelector<{
+  const {formatMessage} = useIntl()
+  const { logoutOpen, logoutPending } = useSelector<Global.State,{
     logoutOpen: boolean;
     logoutPending: boolean;
   }>(state => ({
     logoutOpen: state.Core.Logout.logoutOpen,
     logoutPending: state.Core.Logout.logoutPending
   }));
+
   return (
-    <International>
-      {({ formatMessage }) => (
         <Dialog
           id="logout"
-          visible={logoutOpen}
+          open={logoutOpen}
           title={formatMessage({id: 'app.logout.title'})}
-          onHide={() => closeLogout()}
+          onClose={() => closeLogout()}
           aria-labelledby="logoutDescription"
-          modal
-          actions={[
-            <Button
-              flat
-              primary
+        >
+          <DialogContent >
+          <Typography id="logoutDescription" className="md-color--secondary-text">
+            {
+              children
+                ? children
+                : formatMessage({id: 'app.logout.message'})
+            }
+          </Typography>
+          </DialogContent>
+          <DialogActions>
+
+          <Button
               disabled={logoutPending}
               onClick={() => logout({})}>
               {
@@ -40,21 +52,12 @@ const LogoutDialog: React.FC = ({
               }
             </Button>,
             <Button
-              flat
               onClick={() => closeLogout()}>
               {formatMessage({id: 'app.cancel.action'})}
             </Button>
-          ]}>
-          <p id="logoutDescription" className="md-color--secondary-text">
-            {
-              children
-                ? children
-                : formatMessage({id: 'app.logout.message'})
-            }
-          </p>
+          </DialogActions>
         </Dialog>
-      )}
-    </International>
+    
   );
 }
 

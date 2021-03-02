@@ -13,7 +13,8 @@ export namespace JFS {
 
     static location = (path: string) => resolve(
       path,
-      'config.json.dist'
+      'config',
+      'development.json'
     )
 
     constructor(path: string) {

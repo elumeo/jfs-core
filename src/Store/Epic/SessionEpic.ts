@@ -4,8 +4,9 @@ import { isActionOf, PayloadAction } from 'typesafe-actions';
 import { from, of, concat, EMPTY } from 'rxjs';
 import { AxiosResponse } from 'axios';
 import * as Action from 'Store/Action';
-import JSCApi from 'Jsc/Api';
-import Session from '../../Base/Session';
+
+import JSCApi from 'Jsc/Api/index';
+import * as Token from '../../API/LOCAL_STORAGE/Token';
 import { Epic } from 'Types/Redux';
 import { logout } from 'Store/Action';
 
@@ -21,12 +22,12 @@ const loadSessionEpic: Epic = (action$, store) => (
       return [allowRobotLogin, {  username, password }] as [
         boolean, { username: string; password: string; }
       ];
-    }),
+    }), 
     switchMap(
       ([allowRobotLogin, {username, password}]) => of(
-        Session.getToken() || allowRobotLogin && username && password
+        Token.getToken() || allowRobotLogin && username && password
           ? (
-            Session.getToken()
+            Token.getToken()
               ? Action.checkSession()
               : Action.checkLogin({username, password})
           )
@@ -134,7 +135,7 @@ const unauthorizeSessionEpic: Epic = (action$, store) => (
   action$.pipe(
     filter(isActionOf(Action.unauthorizeSession)),
     concatMap(() => {
-      Session.removeToken();
+      Token.removeToken();
       return (
         store.value.Core.App.appInitialized
           ? EMPTY

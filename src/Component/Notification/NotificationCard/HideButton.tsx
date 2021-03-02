@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'react-md/lib/Buttons/Button';
+import {IconButton, Icon} from '@material-ui/core';
 import { INotification } from 'Types/Notification';
 import { INotificationCardProps } from '.';
 import useActions from 'Action/useActions';
@@ -20,8 +20,8 @@ const HideButton: React.FC<Props> = ({
 }) => {
   const { fadeNotificationOffScreenAction } = useActions();
   return (
-    <Button
-      icon
+    <IconButton
+      
       key='hide-btn'
       onClick={event => {
         event.stopPropagation();
@@ -30,8 +30,11 @@ const HideButton: React.FC<Props> = ({
           onClick(notification, ref);
         }
       }}>
+        <Icon>
+
       arrow_forward
-    </Button>
+        </Icon>
+    </IconButton>
   )
 }
 

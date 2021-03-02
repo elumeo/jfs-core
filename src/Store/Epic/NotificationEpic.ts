@@ -1,12 +1,13 @@
 import { combineEpics } from 'redux-observable';
 import { EMPTY, of, merge } from 'rxjs';
-import { delay, filter, mergeMap } from 'rxjs/operators';
+import { concatMap, delay, filter, mergeMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import * as Action from 'Store/Action';
-import { timeToRead } from 'Component/Notification/NotificationCard';
+import  timeToRead  from 'Component/Notification/NotificationCard/timeToRead';
 import { Epic } from 'Types/Redux';
 
 let notificationIncrementId = 0;
+ 
 
 const addNotificationEpic: Epic = action$ => merge(
   action$.pipe(
@@ -27,7 +28,9 @@ const addNotificationEpic: Epic = action$ => merge(
       notification.autoHideDelay !== null && notification.autoHideDelay !== undefined
         ? of(
           Action.fadeNotificationOffScreenAction(notification.id)
-        ).pipe(delay(notification.autoHideDelay))
+        ).pipe(
+          delay(notification.autoHideDelay)
+        )
         : EMPTY
     )
   ),

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { INotification } from 'Types/Notification';
-import { useSelector } from 'Types/Redux';
+import { useSelector } from 'react-redux';
 import NotificationCard from './NotificationCard';
 import './OnScreenNotifications.scss';
+import Global from 'Store/Reducer/Global';
 
 const OnScreenNotifications: React.FC = () => {
-  const { notifications, dismissAnimationClassName } = useSelector<{
+  const { notifications, dismissAnimationClassName } = useSelector<Global.State,{
     notifications: INotification[];
     dismissAnimationClassName: string;
   }>(
@@ -16,28 +16,31 @@ const OnScreenNotifications: React.FC = () => {
     })
   );
 
-  return (
-    <ReactCSSTransitionGroup
-      transitionName={{
-        enter: 'fadein-enter',
-        enterActive: 'fadein-enter-active',
-        leave: `${dismissAnimationClassName}-leave`,
-        leaveActive: `${dismissAnimationClassName}-leave-active`,
-      }}
-      transitionEnterTimeout={300}
-      transitionLeaveTimeout={200}
-      className={'notification-fadein'}>
-      {
-        notifications
+  return (<section className='notifications__on-screen'>
+     {/* <ReactCSSTransitionGroup */}
+    {/* //   transitionName={{
+    //     enter: 'fadein-enter',
+    //     enterActive: 'fadein-enter-active',
+    //     leave: `${dismissAnimationClassName}-leave`,
+    //     leaveActive: `${dismissAnimationClassName}-leave-active`,
+    //   }}
+    //   transitionEnterTimeout={300}
+    //   transitionLeaveTimeout={200}
+    //   className={'notification-fadein'}
+    >
+     */}
+        {notifications
           .filter(notification => notification.onScreen)
           .map(notification => (
             <NotificationCard
               config={notification}
               key={notification.id}/>
-          ))
-      }
-    </ReactCSSTransitionGroup>
+          ))}
+{/*       
+    /* </ReactCSSTransitionGroup> */ }
+   </section>
   );
 }
 
 export default OnScreenNotifications;
+ 

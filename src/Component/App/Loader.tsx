@@ -1,7 +1,8 @@
 import React from 'react';
-import CircularProgress from 'react-md/lib/Progress/CircularProgress';
+import {CircularProgress} from '@material-ui/core';
 import useLoader from './useLoader';
 import Initialized from './Initialized';
+import { isEmpty } from 'lodash';
 
 export type Props = {
   allowRobotLogin: boolean;
@@ -19,7 +20,8 @@ const Loader: React.FC<Props> = ({
   });
 
 
-  if (appInitialized && translations) {
+  if (appInitialized && !isEmpty(translations)) {
+    console.log('hier noch?',{appInitialized, translations, children, language})
     return (
       <Initialized translations={translations} language={language}>
         {children}
@@ -31,7 +33,7 @@ const Loader: React.FC<Props> = ({
       <div className='app-initialize-progress'>
         <CircularProgress
           id='app-initialize-progress'
-          scale={2}/>
+          />
       </div>
     );
   }

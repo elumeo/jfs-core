@@ -1,12 +1,15 @@
 import React from 'react';
-import Button from 'react-md/lib/Buttons/Button';
-import CircularProgress from 'react-md/lib/Progress/CircularProgress';
-import International from 'Component/International';
-import { useSelector } from 'Types/Redux';
+// import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+// import International from 'Component/International';
+import { useSelector } from 'react-redux';
 import useActions from 'Action/useActions';
+import Button from '@material-ui/core/Button';
+import { useIntl } from 'react-intl';
 
 const LoginButton: React.FC = () => {
   const { checkLogin } = useActions();
+  const {formatMessage} = useIntl()
   const { isCheckingLogin, username, password } = useSelector<{
     username: string;
     password: string;
@@ -17,11 +20,9 @@ const LoginButton: React.FC = () => {
     isCheckingLogin: state.Core.Login.isCheckingLogin
   }));
   return (
-    <International>
-      {({ formatMessage }) => (
         <Button
-          primary
-          flat
+          variant={'contained'}
+          color={'secondary'}
           onClick={() => checkLogin({ username, password })}
           disabled={isCheckingLogin}>
           {
@@ -30,8 +31,6 @@ const LoginButton: React.FC = () => {
               : formatMessage({ id: 'login.button' })
           }
         </Button>
-      )}
-    </International>
   );
 }
 

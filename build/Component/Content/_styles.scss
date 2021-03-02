@@ -1,24 +1,24 @@
-@use '~react-md/src/scss/react-md';
+// @use '~react-md/src/scss/react-md';
 @use '../../Style/layout';
 
 .authorized-content {
-  transition-property: right;
-  transition-duration: react-md.$md-drawer-transition-time;
+  // transition-property: right;
+  // transition-duration: react-md.$md-drawer-transition-time;
 
-  position: fixed;
-  overflow: auto;
-  top: 56px;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  // position: fixed;
+  // overflow: auto;
+  // top: 56px;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
 
-  @media #{react-md.$md-desktop-media} {
-    &.split-view--active {
-      right: layout.$notification-drawer-width;
-    }
-  }
+  // @media #{react-md.$md-desktop-media} {
+  //   &.split-view--active {
+  //     right: layout.$notification-drawer-width;
+  //   }
+  // }
 
-  @media #{react-md.$md-tablet-media} {
-    top: 64px;
-  }
+  // @media #{react-md.$md-tablet-media} {
+  //   top: 64px;
+  // }
 }
