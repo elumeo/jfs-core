@@ -1,3 +1,7 @@
+## [9.10.36] 2021-03-03
+## Added
+- option to dispatch actions from Notifications
+
 ## [9.10.35] 2021-02-08
 ## Added
 - isWarning option for Notifications
