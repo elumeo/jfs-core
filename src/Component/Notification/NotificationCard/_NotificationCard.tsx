@@ -7,6 +7,7 @@ import useClassName from './useClassName';
 import getContent from './getContent';
 import { INotification } from 'Types/Notification';
 import { INotificationCardProps } from '.';
+import { useDispatch } from 'react-redux';
 
 export type Props = {
   notification: INotification;
@@ -17,7 +18,8 @@ const _NotificationCard: React.FC<Props> = ({
   notification,
   topLevelRef: ref
 }) => {
-  const { onMount, onClick } = notification;
+  const { onMount, onClick, onClickDispatch = [] } = notification;
+  const dispatch = useDispatch();
   useEffect(
     () => {
       if (typeof onMount == 'function') {
@@ -28,7 +30,16 @@ const _NotificationCard: React.FC<Props> = ({
   );
   return (
     <Card
-      onClick={() => onClick && onClick(notification, ref)}
+      onClick={!onClick && !onClickDispatch.length ? undefined : (
+        () => {
+          if (!!onClick) {
+            onClick(notification, ref)
+          }
+          if (!!onClickDispatch.length) {
+            onClickDispatch.forEach(a => dispatch(a))
+          }
+        }
+      )}
       className={useClassName(notification)}>
       <div className='notification-grid'>
         <div className='notification-grid-content'>

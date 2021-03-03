@@ -2,6 +2,7 @@ import React from 'react';
 import { AxiosError } from 'axios';
 import { INotificationCardProps } from '../Component/Notification/NotificationCard';
 import { PrimitiveType } from 'intl-messageformat';
+import { PayloadAction } from 'typesafe-actions';
 export interface INotificationContent {
     error?: Error | AxiosError | any;
     message?: string | string[];
@@ -14,6 +15,7 @@ export interface INotificationContent {
     stayOnScreen?: boolean;
     groupId?: string;
     onClick?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
+    onClickDispatch?: PayloadAction<string, any>[];
     onMount?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
     dismissButtonVisible?: boolean;
     onDismiss?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
@@ -23,6 +25,7 @@ export interface INotificationContent {
     customActionTooltipTranslationValues?: Record<string, PrimitiveType>;
     customActionIconName?: string;
     onCustomAction?: (notification: INotification, ref: React.Component<INotificationCardProps>) => void;
+    onCustomActionDispatch?: PayloadAction<string, any>[];
 }
 export interface INotification extends INotificationContent {
     id: number;

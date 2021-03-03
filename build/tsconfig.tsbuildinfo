@@ -992,13 +992,13 @@
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/actions.tsx": {
-        "version": "31dc94e942fb5bf51c58aa0492fa3d2c74d26603317e996700718017f31bacb6",
+        "version": "55d418df7ee76e46bb83dd9181f301772b4d8909cfcdd8f2f6f7ddb54fe615c2",
         "signature": "c5befdb26c6a23955bf781354edf816daf2c3cc2ba9747b74b9f5e9e6d1c9e01",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/useclassname.ts": {
-        "version": "51b273a282b56106218c389c9e1be744f857aaac7b91c83db5bb072ba15cf5d7",
-        "signature": "778780eefd7e2aa934d858bcd72ca28fc5a9f26ba6600ffd8e36c31b5b80d61e",
+        "version": "04945bc7f98b34a7c0fc70c872be0be73def4d5ad191ff01cd4180341c3b13dd",
+        "signature": "7c733db74b3ec1eeb54aea581eb7a964484fef6c72462e8d50d34453f59b0e08",
         "affectsGlobalScope": false
       },
       "../src/component/international/index.tsx": {
@@ -1032,7 +1032,7 @@
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/_notificationcard.tsx": {
-        "version": "aeaa2c71da03ea43825f54b72ecb96dc57b49b49e6d11e91e5bdddef520d25b0",
+        "version": "bcbaf12181fbe99e68a04c01a85aeef9e315f548f5abc9d7d85ddd61e0d9808c",
         "signature": "283ff5f71d0510addb985311b08979dd5a229c0dd136e08ccf21c7848ca9c0fb",
         "affectsGlobalScope": false
       },
@@ -1052,8 +1052,8 @@
         "affectsGlobalScope": false
       },
       "../src/types/notification.ts": {
-        "version": "a75c5a1cfdaebba4bc801d88311f25b4c3938259d714581e82edddafc2f1f9af",
-        "signature": "26b3107001d65e72c3a07af2fdd3f0834fcd68db4dba1095195ff8304f4bdc09",
+        "version": "b5e8f8a6e06cbf4809c68c5525f4d183cfe61d82b4324f2ee23a32b765f37e15",
+        "signature": "102f565c63eec6c2c550656836fc374a2142cadf84cc87b51ea33dd30773ff50",
         "affectsGlobalScope": false
       },
       "../src/store/action/notificationaction.ts": {
@@ -6806,6 +6806,7 @@
       "../src/component/notification/notificationcard/_notificationcard.tsx": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/react-md/lib/cards/card.d.ts",
@@ -6821,6 +6822,7 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-intl/index.d.ts",
+        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../src/component/notification/notificationcard/customactionbutton.tsx",
@@ -7720,6 +7722,7 @@
         "../node_modules/axios/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../node_modules/intl-messageformat/lib/intl-messageformat.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/component/notification/notificationcard/index.tsx"
       ],
       "../src/types/redux.ts": [
@@ -11798,6 +11801,7 @@
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/axios/index.d.ts",
         "../node_modules/intl-messageformat/lib/intl-messageformat.d.ts",
+        "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/component/notification/notificationcard/index.tsx"
       ],
       "../src/types/redux.ts": [

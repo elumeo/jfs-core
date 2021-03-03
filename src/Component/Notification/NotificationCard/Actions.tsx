@@ -5,6 +5,7 @@ import DismissButton from './DismissButton';
 import HideButton from './HideButton';
 import CustomActionButton from './CustomActionButton';
 import { INotificationCardProps } from '.';
+import { useDispatch } from 'react-redux';
 
 export type Props = {
   intl?: InjectedIntl;
@@ -17,14 +18,15 @@ const Actions: React.FC<Props> = ({
   notification,
   topLevelRef: ref
 }) => {
+  const dispatch = useDispatch();
   const {
     customActionTooltipTranslationId, customActionIconName, onCustomAction,
     dismissButtonVisible, onDismiss,
-    hideButtonVisible, onHide
+    hideButtonVisible, onHide, onCustomActionDispatch = []
   } = notification;
-  if (!!onCustomAction && !customActionIconName) {
+  if ((!!onCustomAction || !!onCustomActionDispatch.length) && !customActionIconName) {
     throw new Error(
-      'If you provide a onCustomAction you should also provide a customActionIconName'
+      'If you provide a onCustomAction or onCustomActionDispatch you should also provide a customActionIconName'
     );
   }
   const actions = [];
@@ -46,7 +48,7 @@ const Actions: React.FC<Props> = ({
         onClick={onHide}/>
     );
   }
-  if (!!onCustomAction) {
+  if (!!onCustomAction || !!onCustomActionDispatch.length) {
     actions.push(
       <CustomActionButton
         key={`${notification.id}-custom`}
@@ -58,7 +60,13 @@ const Actions: React.FC<Props> = ({
             : undefined
         }
         topLevelRef={ref}
-        onClick={() => onCustomAction(notification, ref)}/>
+        onClick={() => {
+          if (!!onCustomAction) {
+            onCustomAction(notification, ref)
+          } else {
+            onCustomActionDispatch.forEach(a => dispatch(a))
+          }
+        }}/>
     );
   }
   return (
