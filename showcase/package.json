@@ -23,8 +23,8 @@
     }
   },
   "dependencies": {
-    "@elumeo/jfs-core": "https://github.com/elumeo/jfs-core.git#3ebe75ee0fb2c49145cdb5364110aa118bd39b93",
-    "jfc-hello-world": "https://github.com/scharfohnezwiebeln/jfc_HelloWorld.git#f89cfaeb21c32118471bf4cd5f0fcb3ad732bd51"
+    "@elumeo/jfs-core": "https://github.com/elumeo/jfs-core.git#bbd417d6d7ba697d0509fc947829312f2389a2cf",
+    "jfc-hello-world": "https://github.com/scharfohnezwiebeln/jfc_HelloWorld.git#027a20d52d692b132e25e75316f9427e0354a30e"
   },
   "keywords": [],
   "author": "",

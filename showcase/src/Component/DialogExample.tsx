@@ -1,47 +1,34 @@
 import * as React from 'react';
-// import Button from '@material-ui/core/Button';
-// import Dialog from '@material-ui/core/Dialogs';
-import { injectIntl, InjectedIntlProps } from 'react-intl';
-
+import * as MUI from '@material-ui/core';
+import { useIntl } from 'react-intl';
 import LoremIpsumText from "Component/LoremIpsumText";
 
-interface IDialogExampleState {
-  dialogVisible: boolean;
-}
-
-class DialogExample extends React.Component<InjectedIntlProps, IDialogExampleState> {
-  state = { dialogVisible: false };
-
-  render() {
-    const { intl: { formatMessage } } = this.props;
-    return (
-      <>
-        <Dialog
-          id='TestDialogContainer'
-          visible={this.state.dialogVisible}
-          onHide={() => false}
-          focusOnMount={false}
-          aria-labelledby='add-credit-card-dialog'
-          actions={
-            <div>
-              <Button
-                flat
-                onClick={() => this.setState({ dialogVisible: false })}>
-                {formatMessage({ id: 'Close Dialog' })}
-              </Button>
-            </div>
-          }>
+const DialogExample: React.FC = () => {
+  const [dialogVisible, setDialogVisible] = React.useState(false);
+  const intl = useIntl();
+  const { formatMessage } = intl;
+  return (
+    <>
+      <MUI.Dialog
+        id='TestDialogContainer'
+        open={dialogVisible}
+        onClose={() => false}
+        aria-labelledby='add-credit-card-dialog'>
+        <MUI.DialogContent>
           <br/>
           <LoremIpsumText lines={5}/>
-        </Dialog>
-        <Button
-          flat
-          onClick={() => this.setState({ dialogVisible: true })}>
-          {formatMessage({ id: 'Open Dialog' })}
-        </Button>
-      </>
-    );
-  }
+        </MUI.DialogContent>
+        <MUI.DialogActions>
+          <MUI.Button onClick={() => setDialogVisible(false)}>
+            {formatMessage({ id: 'Close Dialog' })}
+          </MUI.Button>
+        </MUI.DialogActions>
+      </MUI.Dialog>
+      <MUI.Button onClick={() => setDialogVisible(true)}>
+        {formatMessage({ id: 'Open Dialog' })}
+      </MUI.Button>
+    </>
+  );
 }
 
-export default injectIntl(DialogExample);
+export default DialogExample;

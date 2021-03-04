@@ -1,32 +1,19 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-// import Button from '@material-ui/core/Button';
-import { addToastAction }from '@elumeo/jfs-core/build/Store/Action/ToastAction'
-import { IToastConfig }from '@elumeo/jfs-core/build/Store/Reducer/Core/ToastReducer';
+import * as MUI from '@material-ui/core';
+import useActions from '@elumeo/jfs-core/build/Store/Action/useActions';
+import { useIntl } from 'react-intl';
 
-import { injectIntl, InjectedIntlProps } from 'react-intl';
-
-export interface IAddToastButtonProps extends InjectedIntlProps {
-  addToastAction?: (c: IToastConfig) => void;
+const AddToastButton: React.FC = () => {
+  const { formatMessage } = useIntl();
+  const { addToastAction } = useActions();
+  return (
+    <MUI.Button
+      onClick={() => addToastAction({
+        contentMessage: 'Hi, I\'ve been slide up here.'
+      })}>
+      {formatMessage({ id: 'Add Toast' })}
+    </MUI.Button>
+  );
 }
 
-class AddToastButton extends React.Component<IAddToastButtonProps> {
-  render() {
-    const { intl: { formatMessage } } = this.props;
-    return (
-      <Button
-        flat
-        onClick={() => this.props.addToastAction({ contentMessage: 'Hi, I\'ve been slide up here.' })}>
-        {formatMessage({ id: 'Add Toast' })}
-      </Button>
-    );
-  }
-}
-
-const enhance = compose(
-  connect(null, { addToastAction }),
-  injectIntl
-);
-
-export default enhance(AddToastButton);
+export default AddToastButton;

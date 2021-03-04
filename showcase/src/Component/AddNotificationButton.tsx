@@ -1,84 +1,72 @@
 import * as React from 'react';
-// import Button from '@material-ui/core/Button';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-
-import { INotification, INotificationContent }from '@elumeo/jfs-core/build/Types/Notification';
-import { addNotificationAction, dismissNotificationAction }from '@elumeo/jfs-core/build/Store/Action/NotificationAction';
-import { addToastAction }from '@elumeo/jfs-core/build/Store/Action/ToastAction';
-import { changeLanguageAction }from '@elumeo/jfs-core/build/Store/Action/LanguageAction';
-import { IToastConfig }from '@elumeo/jfs-core/build/Store/Reducer/Core/ToastReducer';
-
-import Global from 'Store/Reducer';
-
+import * as MUI from '@material-ui/core';
+import { INotificationContent }from '@elumeo/jfs-core/build/Types/Notification';
 import ErrorObject from 'Mock/ErrorObject.json';
+import { useIntl } from 'react-intl';
+import useActions from '@elumeo/jfs-core/build/Store/Action/useActions';
+import useSelector from 'Types/Redux';
+import { Language } from '@elumeo/jfs-core/build/Types/Language';
+import { getLanguageStateSelector } from '@elumeo/jfs-core/build/Store/Selectors/Core/Language';
 
-import { injectIntl, InjectedIntlProps } from 'react-intl';
-
-export interface IAddNotificationButtonProps extends InjectedIntlProps {
-  addNotificationAction?: typeof addNotificationAction;
-  dismissNotificationAction?: typeof dismissNotificationAction;
-  addToastAction?: (c: IToastConfig) => void;
-  changeLanguageAction?: (lang) => void;
-  language?: string;
-}
-
-class AddNotificationButton extends React.Component<IAddNotificationButtonProps> {
-
-  constructor(props) {
-    super(props);
-    // Array(50).fill(null).map(() => {
-    //   this.props.addNotificationAction(this.notifications[Math.round(Math.random() * 3)]);
-    // });
-    if (props.notifications.length < 1) {
-      this.props.addNotificationAction(this.getSampleNotifications()[0]);
+const useSampleNotifications = (): INotificationContent[] => {
+  const Action = useActions();
+  const language = useSelector(getLanguageStateSelector);
+  return [
+    {
+      icon: 'star',
+      translationId: 'app.notification.change.language',
+      onClick: () => {
+        const languages = ['de', 'en', 'it'];
+        const newLanguage = languages[(languages.indexOf(language) + 1) % 3];
+        Action.changeLanguageAction(newLanguage as Language);
+      }
+    },
+    {
+      translationId: 'app.title',
+      onClick: ({ id }) => Action.dismissNotificationAction(id)
+    },
+    {
+      icon: 'check',
+      message: 'You did it, dude!\nEverything is done.\n – I can\'t get clicked',
+      isSuccess: true
+    },
+    {
+      error: ErrorObject,
+      onClick: ({ error }) => Action.addToastAction({ contentError: error }),
+      stayOnScreen: true,
     }
-  }
-
-  getSampleNotifications = (): INotificationContent[] => [
-    { icon: 'star', translationId: 'app.notification.change.language', onClick: this.changeLanguage },
-    { translationId: 'app.title', onClick: n => this.props.dismissNotificationAction(n.id) },
-    { icon: 'check', message: 'You did it, dude!\nEverything is done.\n – I can\'t get clicked', isSuccess: true },
-    { error: ErrorObject, onClick: this.copyErrorToToast, stayOnScreen: true,  }
   ];
-
-  copyErrorToToast = (n: INotification) => {
-    this.props.addToastAction({ contentError: n.error });
-  };
-
-  changeLanguage = () => {
-    const { language } = this.props;
-    const languages = ['de', 'en', 'it'];
-    const newLanguage = languages[(languages.indexOf(language) + 1) % 3];
-    this.props.changeLanguageAction(newLanguage);
-  };
-
-  addRandomNotification = () => {
-    const notifications = this.getSampleNotifications();
-    const randomIndex = Math.round(Math.random() * (notifications.length - 1));
-    this.props.addNotificationAction(notifications[randomIndex]);
-  };
-
-  render() {
-    const { intl: { formatMessage } } = this.props;
-    return <Button flat onClick={this.addRandomNotification}>{formatMessage({ id: 'Add Notification' })}</Button>;
-  }
 }
 
-const mapStateToProps = (s: Global.State, p) => ({
-  ...p,
-  ...s.Core.Notification,
-  ...s.Core.Language
-});
+const AddNotificationButton: React.FC = () => {
+  const { formatMessage } = useIntl();
+  const Action = useActions();
+  const notifications = useSelector(
+    state => state.Core.Notification.notifications
+  );
 
-const enhance = compose(
-  connect(mapStateToProps, {
-    changeLanguageAction,
-    addNotificationAction,
-    dismissNotificationAction,
-    addToastAction
-  }),
-  injectIntl
-);
+  const sampleNotifications = useSampleNotifications();
 
-export default enhance(AddNotificationButton);
+  React.useEffect(
+    () => {
+      if (notifications.length < 1) {
+        Action.addNotificationAction(sampleNotifications[0]);
+      }
+    },
+    []
+  );
+
+  const addRandomNotification = () => {
+    const notifications = [...sampleNotifications];
+    const randomIndex = Math.round(Math.random() * (notifications.length - 1));
+    Action.addNotificationAction(notifications[randomIndex]);
+  };
+
+  return (
+    <MUI.Button onClick={addRandomNotification}>
+      {formatMessage({ id: 'Add Notification' })}
+    </MUI.Button>
+  );
+}
+
+export default AddNotificationButton;

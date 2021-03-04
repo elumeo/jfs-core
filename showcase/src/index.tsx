@@ -1,5 +1,4 @@
 import '@elumeo/jfs-core/build/Setup';
-import 'jfc-hello-world/build';
 
 declare const module: any;
 if (module.hot) {
@@ -8,6 +7,7 @@ if (module.hot) {
 
 import React from 'react';
 import { render } from 'react-dom';
+import _ from 'lodash';
 
 import App from '@elumeo/jfs-core/build/Component/App/App';
 import LoginDialog from '@elumeo/jfs-core/build/Component/Login/LoginDialog';
@@ -21,15 +21,21 @@ import Header from 'Setup/Header';
 import NavigationDrawer from 'Setup/Navigation';
 import SettingsDialog from 'Setup/Settings';
 import Content from 'Setup/Content';
+import CoreTranslations from '@elumeo/jfs-core/build/Setup/Translations.json';
+import HelloWorldTranslations from 'jfc-hello-world/build/Setup/Translations.json';
 import Translations from 'Setup/Translations.json';
 
 render(
   <App
     store={Store}
-    translations={Translations}
+    translations={_.merge(
+      CoreTranslations,
+      HelloWorldTranslations,
+      Translations
+    )}
     packageJson={packageJson}>
-    <Content/>
     <Header/>
+    <Content/>
     <LoginDialog/>
     <NavigationDrawer/>
     <SettingsDialog/>
