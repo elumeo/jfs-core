@@ -4,6 +4,7 @@ node_modules
 /.prettierrc
 /.prettierignore
 /tsconfig.json
+/showcase/tsconfig.json
 /tslint.json
 .autohidefiles
 .DS_Store
