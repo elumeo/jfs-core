@@ -95,6 +95,7 @@ declare namespace JSCApi {
         }
         namespace WebSocket {
             interface IWebSocketRoomUpdateDTO<T1> {
+                crc?: string;
                 room?: string;
                 namespace?: string;
                 data?: T1;
