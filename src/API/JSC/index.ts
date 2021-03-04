@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { Observable } from "rxjs";
-import JscClient from "../../API/JSC/Client";
+import JscClient from "./Client";
 import { Subject } from "rxjs";
 import { PayloadAction } from "typesafe-actions";
 import { ROOM_UPDATE_ACTION_ID } from "Action/WebSocketAction";
@@ -98,6 +98,7 @@ namespace JSCApi {
     }
     export namespace WebSocket {
       export interface IWebSocketRoomUpdateDTO<T1> {
+        crc?: string;
         room?: string;
         namespace?: string;
         data?: T1;

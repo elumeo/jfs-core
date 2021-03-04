@@ -370,6 +370,11 @@
             "T1"
           ],
           "properties": {
+            "crc": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
             "room": {
               "type": "string",
               "array": false,
