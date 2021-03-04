@@ -6,8 +6,6 @@
   "scripts": {
     "start": "webpack serve --config build-tools/webpack/dev-server --port 8080 --host localhost",
     "build": "node scripts/build/Setup/jfs-build.js",
-    "build:production": "webpack --config build-tools/webpack/production",
-    "build:development": "webpack --config build-tools/webpack/development --watch",
     "build:watch": "node scripts/build/Setup/jfs-build --watch",
     "test": "webpack",
     "prepublish": "cd scripts && npm run build",
