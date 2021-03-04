@@ -9,8 +9,8 @@ class Imports {
 Imports.generate = ({ webSocketClient, core }) => Render_1.default.Text.lines(Render_1.default.EcmaScript.import({ what: '{ AxiosResponse }', from: 'axios' }), Render_1.default.EcmaScript.import({ what: '{ Observable }', from: 'rxjs' }), Render_1.default.EcmaScript.import({
     what: 'JscClient',
     from: (core
-        ? '../Client'
-        : '@elumeo/jfs-core/build/Jsc/Client')
+        ? './Client'
+        : '@elumeo/jfs-core/build/API/JSC/Client')
 }), ...(webSocketClient
     ? [
         Render_1.default.EcmaScript.import({ what: '{ Subject }', from: 'rxjs' }),

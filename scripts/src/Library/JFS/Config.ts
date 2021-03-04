@@ -11,11 +11,7 @@ export namespace JFS {
     private path: string;
     public file: File;
 
-    static location = (path: string) => resolve(
-      path,
-      'config',
-      'development.json'
-    )
+    static location = (path: string) => resolve(path, 'config.dist.json');
 
     constructor(path: string) {
       this.path = path;
