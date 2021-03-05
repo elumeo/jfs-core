@@ -202,12 +202,12 @@
         "affectsGlobalScope": true
       },
       "../src/setup.ts": {
-        "version": "55b8bb432b1a4db74e81ecd12a4b60eed1af22a6774388833963ccefcd5ed435",
-        "signature": "d3cb89dbc515da1700ccd75bf2da356ff2f5b80de0e9b83fd126b0793fce60c9",
+        "version": "d19e76fd6b39b4091a47d1be5cf59514df1ea691e21d0b65a6c2ba9fbe8ce7ba",
+        "signature": "9948a8f5784f71fff61c3f42f35287530cdc1351ffb31da2afe19a612771bea9",
         "affectsGlobalScope": false
       },
       "../src/index.tsx": {
-        "version": "c759f166479cd8777904e5538ffee193e2f3f28ccfcf57be9e11f6ad90b3bed0",
+        "version": "818b99164afccfa88a971dd99648d5e8d2f5ceb69fabae97cf5fbc657f02e36c",
         "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "affectsGlobalScope": false
       },
@@ -217,33 +217,33 @@
         "affectsGlobalScope": false
       },
       "../src/api/http/httpclient.ts": {
-        "version": "d9591645979ff9b1e01b8634072d36520e4787cb66d3d1ca6e0e2058eabc26c2",
-        "signature": "a641af8f1c265fefff7b1b1a9e9be1c0a296b6a977856bc038d632206588998f",
+        "version": "d0b2d9f7593f5bfe56da3871c440c9c359ffb07d2e0ffc3977c332973e8d4b73",
+        "signature": "86a6bc0a16a253c007e1da5949725ffada11e3516b06b7bab96c4ec94dca4758",
         "affectsGlobalScope": false
       },
       "../src/api/local_storage/session.ts": {
-        "version": "a1696021eee7fad12d8be9846e8a832afa43ee97def5b88ebb8657079a815619",
-        "signature": "4d154294b6facdc41ffeb2d4c5272b67b99eaec222f5878fdc90bcc0e9b255d0",
+        "version": "fea38d052a6bcdafabdaac557b199c559521482f3a7928e5ec3558ef6869dfb5",
+        "signature": "0345e0c3372e92b918636f3bf695b8bd2126831fefe94df5c36e7af0a35f53e6",
         "affectsGlobalScope": false
       },
       "../src/api/local_storage/token.ts": {
-        "version": "4a515c55367507fddcb3a5524decf5da9b5d7a25a54099fa9b9204318531f4f8",
-        "signature": "7bba9cef5e4a45df5de5ae73d6a81103570355b624357775f718b1c43b1b3017",
+        "version": "aeae4ec0eb5402ad6cae142ba104e5cb4b49481f3087de3c336e9d42c4794dfa",
+        "signature": "1d60a0fd24d5b8c523cd4e26ac2d4935eee22a9913a1ab30a4dede2665c536e5",
         "affectsGlobalScope": false
       },
       "../src/types/language.ts": {
-        "version": "2ccfd4582dbaf536cc05011773e453c27065dba38894d920147f1b66462d733c",
-        "signature": "59ba284bba3a1b637fc5ae7e5558e8d2a94d0febc1e31cc8ee5d01abefbc921b",
+        "version": "221aec48db19bb83c011b783655b49b7b5bbd56998d40638c5b6379907d0bf66",
+        "signature": "b4fa4e0e2d6300425dc2be5ae4026a8c038d4f0af5d0be3787a0ccc1d087c477",
         "affectsGlobalScope": false
       },
       "../src/types/configuration.ts": {
-        "version": "4ce7c47c160c74690807da03bb042a234ec43805d8077abaeb8615637cec969c",
-        "signature": "8428972dd79e4a7ab626dc6581c71732485f5b3e6394240b0ed9471484b9d8a2",
+        "version": "5a2e70b9dd220ee7a2f65a6ab79bf4d34a13daa788548c48e356d15f3b91df25",
+        "signature": "13ab59c59e484513e6191e775c2fd65e805b66305b47cc272e2873ce424b1bf9",
         "affectsGlobalScope": false
       },
       "../src/api/jsc/client.ts": {
-        "version": "803838726a78885e8697fc5e3abd63510a099a39120b733f4cfd20872ec84bfc",
-        "signature": "a430fa31972b257ef819ac5508f391b0b442b6e62a2bbe63f46e266f3c07e19d",
+        "version": "b1bf56da4e92bdebe8fe487dc61b09d7e772a2504266e6894e783f373a3346fa",
+        "signature": "68c9820491710007b9595bff732fa5bc71273751274fb21f444f80b10d4039b4",
         "affectsGlobalScope": false
       },
       "../node_modules/rxjs/internal/subscription.d.ts": {
@@ -627,33 +627,33 @@
         "affectsGlobalScope": false
       },
       "../src/store/action/appaction.ts": {
-        "version": "253ddbb4f59d559f1c3fb5a73869e63922afbeaf374699fe50359b9ec22e64a7",
-        "signature": "a0ab1750ac99bea21cf40096a668fb8f4b4ad47cf36ececdeca54d972b8982fe",
+        "version": "5b95c6d16225a5e1002d4e949b378de94e8213da88692dca86c480d20d986036",
+        "signature": "b535a5e74cac2c3ed89ed2c57ec9902fe0c97bcd6e67d19aa13d03f01642e684",
         "affectsGlobalScope": false
       },
       "../src/store/action/configaction.ts": {
-        "version": "17e7b78f0a0f80657ad3456efa0c8063366bda806e2ebf31fb7fb4551dd84590",
-        "signature": "3b17e1ba88de64cfbb12ab2ce1dd206ac2d53ac3291c60faf9fcb4612771ae8b",
+        "version": "d584c107dd2f6076013c6ed13df183a1d943f97ac801e60c674172296a1924f0",
+        "signature": "c091144e8ed181ef268d9b9c35fc3bf81c92fefb8e90224b60135efa4f53c8b7",
         "affectsGlobalScope": false
       },
       "../src/store/action/languageaction.ts": {
-        "version": "e68aaa4b9bbbefe673c3b95f99f3a8e2f22f6553a17d396ec5326c4016aa9de1",
-        "signature": "983ab9f67a45f9ed42eb70a545ea83ca32cf45e3bde758c2e78e9ce34192d4c3",
+        "version": "2d4c66b1e250b84d4b74809e0ef199f2a3637ca0d6203266af05821d132d4358",
+        "signature": "dbe01083f1c2eef14461eba3ac31caf28f9f7a3d8b98d8ae5ea6894d6155eb61",
         "affectsGlobalScope": false
       },
       "../src/store/action/loginaction.ts": {
-        "version": "b086a23c94dcb5adbb703598e733f83f15b20a9b7af36b04eced2bacd1a8fc88",
-        "signature": "862540ae8c1168acfd696b921cf04a6c2b53264cca8feb5c1a065399f0caba28",
+        "version": "62c9803c726c8f98e0bea4aef1ed75ab5d3d65580e2ff1c62b3b5c13c514a8a5",
+        "signature": "a8c72959ad21f5e0650128af76bfaa3b6e591791fc8e4b8dc58a085900bfe643",
         "affectsGlobalScope": false
       },
       "../src/store/action/logoutaction.ts": {
-        "version": "209e72450c71eab1c5ce45d5e6a27f600785d45ba735c05e581775c71668d69c",
-        "signature": "23cefa012652a1665d4645ebb4e08498dac15286c4df4f82bf5ff33a0ea9ce92",
+        "version": "2a56bd8eced40af595d52ced6d5be44b416edb7abe160b86755185975f2b2cf6",
+        "signature": "6dc343e3b4647e5d9ef314a81062f5c030463c14002026d5efa899015ad68eef",
         "affectsGlobalScope": false
       },
       "../src/store/action/navigationaction.ts": {
-        "version": "e91754d1c60ac875700995507afcfa869aba762c11afba29d89fb4122a72cb1b",
-        "signature": "92d86213faaf81ca7ad455d18150488fdfffb638574784d7b43848e7e44e5901",
+        "version": "08bdec4aa78f3b0b4efb68cd730f10668650b119ed1dbe3cefb1dd0045706f5e",
+        "signature": "bc5549dd9cf27f5ae58a7e0a29d7e0e3e318d7274ae1ccfad33eb0c198896d82",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react/global.d.ts": {
@@ -939,6 +939,16 @@
       "../node_modules/@material-ui/core/cardactions/index.d.ts": {
         "version": "1273c4de6505e194f604f6ffbebbf6187f6b93e25e19e32212046b7ff15e397d",
         "signature": "1273c4de6505e194f604f6ffbebbf6187f6b93e25e19e32212046b7ff15e397d",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/core/card/card.d.ts": {
+        "version": "9c4e77630b160e607ebdc7dbd063b8f475462cfd40f469c3fd1b386578b8d9c6",
+        "signature": "9c4e77630b160e607ebdc7dbd063b8f475462cfd40f469c3fd1b386578b8d9c6",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/core/card/index.d.ts": {
+        "version": "d2123abd4048ff8b69205a0bd420b08033d9e4d376b2d4ab9447a3eecd572598",
+        "signature": "d2123abd4048ff8b69205a0bd420b08033d9e4d376b2d4ab9447a3eecd572598",
         "affectsGlobalScope": false
       },
       "../node_modules/@material-ui/core/cardcontent/cardcontent.d.ts": {
@@ -2426,19 +2436,9 @@
         "signature": "c5b05c78d6a07b91e727ca7e11e7dc1d54fc0fa118276eccd67d1d355226c68c",
         "affectsGlobalScope": false
       },
-      "../node_modules/@material-ui/core/card/card.d.ts": {
-        "version": "9c4e77630b160e607ebdc7dbd063b8f475462cfd40f469c3fd1b386578b8d9c6",
-        "signature": "9c4e77630b160e607ebdc7dbd063b8f475462cfd40f469c3fd1b386578b8d9c6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@material-ui/core/card/index.d.ts": {
-        "version": "d2123abd4048ff8b69205a0bd420b08033d9e4d376b2d4ab9447a3eecd572598",
-        "signature": "d2123abd4048ff8b69205a0bd420b08033d9e4d376b2d4ab9447a3eecd572598",
-        "affectsGlobalScope": false
-      },
       "../src/component/notification/notificationcard/icon.tsx": {
-        "version": "cd92263418d693a789ba7d13b2609635d56e7a81408c7f66eb718777742463a5",
-        "signature": "941b14eea8d75f8e67a4da6c93f348d3dc7c45ff8d014aa269937d8380f2ef2d",
+        "version": "6e4133f5319d5457a50ca67c699c71e0a60096376e03e902306cccfb06f19b93",
+        "signature": "cdade1c52379000a7666d108848d8767a66022fd8e524a4006f15ad11e526f1a",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/diacritics/index.d.ts": {
@@ -2447,13 +2447,13 @@
         "affectsGlobalScope": false
       },
       "../src/utilities/format/text.ts": {
-        "version": "69d815f55f7f9ace585d1b445efac4d4e9b822568d60822f0c321810c545783e",
-        "signature": "8f56b7bb0f236e115306242a510e837d651379bd3495d0d5d4f31d6e132d2ba9",
+        "version": "1ef49298dd3decd338d775f16f23c2c755496bc97c1faea11e2dd59a4df5bea3",
+        "signature": "62729729b261d708e2a13c1f39321238248ee04eb6f856f61e8b87fb53826c9a",
         "affectsGlobalScope": false
       },
       "../src/utilities/format/currency.ts": {
-        "version": "224949d8481be13ddcb3b813521f7d1950f8232eede14861207b58c1454343d4",
-        "signature": "a080458d13829dff695de618414698447431608a0b5a61a424656917d1413652",
+        "version": "24e4b2ee8c3a35c973eb34174ab16b56a05cd1831a6ca4512f39a4f2cfd96d4f",
+        "signature": "b7820c5ccb48428ae1d91530ed7325df291104612a5d104ec682817f5abae3b0",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/google-libphonenumber/index.d.ts": {
@@ -2462,28 +2462,28 @@
         "affectsGlobalScope": true
       },
       "../src/utilities/format/phonenumber.ts": {
-        "version": "7c26b01627be0147791bf1f84a69913abc4626a021f2daa6c4d36167ffcb6f8d",
-        "signature": "c7d54db1b10a222b6c926fb8e87473a874d6ca6946b0d9b089f0e565c3db96c4",
+        "version": "31398e445f0ac85d3ed99d06e7684e5dcf722dc024c33515d91004e58b983d32",
+        "signature": "64be2552c5c60d0cd32a090ed6dad37daae58264bfd090afc1a87f9610237abc",
         "affectsGlobalScope": false
       },
       "../src/types/country.ts": {
-        "version": "93b77068bd2fcf111105a247681016839003027f14b4bc8e085f6901ca631a9b",
-        "signature": "25d9d9ee6d7c3a1b3888e50a2216103be8dfbcceb9f78f2f5bc8bc8ec7c1288d",
+        "version": "dad1efd63f466ab1adccc6dceb2784f7c7756bfe0765395ee584ffcef2dab668",
+        "signature": "b0091c0c605af8d2ff8194f408374767bfa1e6cb106a58b97c899c0b46f37eac",
         "affectsGlobalScope": false
       },
       "../src/utilities/format/locale.ts": {
-        "version": "0d2ee2e7631e2f7451838283dc7fc33e5a117aa2ccc3b87fd43f2c5720185e9d",
-        "signature": "b0c2ed719c1bdc0dae922d2dce556dbd3c33829a2afe30bf9e9991161a4c3b6a",
+        "version": "dd66af91f2788c7cc9f78a716a54d1f0c244f2331f862a238b9318bb6f42d578",
+        "signature": "e68f08fb62b8da1be9af0a14c1e434680cd669e37847d342c53f99b3c9ea57eb",
         "affectsGlobalScope": false
       },
       "../src/utilities/format/index.ts": {
-        "version": "139d5539df848cba4e0a8f0fb686dfee86d4efbec227646793ee5f3eb8487f56",
-        "signature": "fa0d3c736983330122f745e976e121d83e23b6e68094f4bbe9ca18ff28bdf198",
+        "version": "1eb0c92ccf60ff7489686ce4691bc7ea0b87573a495dacce8eff8b702e7d796b",
+        "signature": "6c7275392e9a199e8bd19fbe472e9d24a54d9666683ba900b2d2109980c05fff",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/timestamp.tsx": {
-        "version": "bdb3a085fee998875ad6a55b89659c60a67d68916231f7023888523c10d68099",
-        "signature": "2ec9f49473d1c19b571286cf633c721a3a07caf668be1260cb28d03033300035",
+        "version": "f4d1fef6f4c85afa9f6457edcb094c389395d3a44a4ef88079e9b36d71f4dc86",
+        "signature": "e4db869d69ec83e0dacafcdf15833c5432cb2836f0cf6630984a423ab64da6db",
         "affectsGlobalScope": false
       },
       "../node_modules/symbol-observable/index.d.ts": {
@@ -2507,23 +2507,23 @@
         "affectsGlobalScope": false
       },
       "../src/store/action/useactions.ts": {
-        "version": "43354885db0ade11e9f32bab64f0d17bd50b9167c77c515d9f07eb8da6cd534f",
-        "signature": "d67e7c399448143bf13f55da29bde46ac8827d9cf8e08c195035d39fe2e91db3",
+        "version": "10fc38a706b4e7cdcf57f3921f7f9a6e1b3f413cfe9c97863a50fa1491d7cca6",
+        "signature": "d70aaebe6cb3f0ea59f68a176768b7d495275077262e0084334c14372d733303",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/dismissbutton.tsx": {
-        "version": "419a9659dc0999f1a712866a8a93494b41908557f4902f255fc605049f1edd24",
-        "signature": "c151f95a0fd9808195070d6c7f67980bb46467c9718301e08ae34c8712214c71",
+        "version": "6832f1d0f96f4c594bc23ac5f6c8bd716fdfd2f82b22d51fdf8179fe0fd0baf4",
+        "signature": "48c17365b5900b56a17629f39b49b5d3c58b33d95c09dc909f66d2c0828b6baa",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/hidebutton.tsx": {
-        "version": "9c8928944664e0f8db2042c21e74f67fd189b69c52ad7b072b73b7838a3c6244",
-        "signature": "4b5849e258ce2559c014498b127942ea7a8b53581fd1252db149de2e5c71f0a7",
+        "version": "43b1ab0dd6c9d25392b5d1f5c5d844c01542303c72496dca6f8f68c742942a87",
+        "signature": "8d245eb8c10bce00acd96e433835cddaf8a05660f9e09c1f4314eb011b671f83",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/customactionbutton.tsx": {
-        "version": "7b7d28ae6da1e4bed70c68d592807cec9cd851e3233b8267374f949c87a1ff84",
-        "signature": "5b57d65573754f1e604c256368fe22a6a908bc18ebe58df88a3262010ad3dda9",
+        "version": "017d16307980b4c708bc18c36991d15c09bd2aeb2bf694ebe58b3ebf539d5913",
+        "signature": "908fd948ec54d38355460e827ed03e1c596ad3ce5b3e7f5b637c07972fbab37f",
         "affectsGlobalScope": false
       },
       "../node_modules/@formatjs/ecma402-abstract/types/date-time.d.ts": {
@@ -2977,53 +2977,53 @@
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/actions.tsx": {
-        "version": "f2d693c439731d81d4ead1c19297bde0fa2254f86a1879f95f7a905eee90039c",
-        "signature": "cd10b1dde47692569c6b892c76bb6c609afeb158cd07ebc80fd5ded3b9e9b20a",
+        "version": "8f6cfb892fb8bade1928e3669884590cbafebb938f36aa98acf2ec7a5691ec1d",
+        "signature": "dc46d67bd5a0e7e4f5e928c0ccbd6b34b9f3429a5709748568dccbd4885f2336",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/useclassname.ts": {
-        "version": "51b273a282b56106218c389c9e1be744f857aaac7b91c83db5bb072ba15cf5d7",
-        "signature": "778780eefd7e2aa934d858bcd72ca28fc5a9f26ba6600ffd8e36c31b5b80d61e",
+        "version": "2ee33aef89a80bde7bebdca0344ba12bdb3a5a20c31d94edfd6011199603ce3d",
+        "signature": "6ef4b5653965e72ea9cf46f6801506049b3f4049c189c4de85136c2532445f63",
         "affectsGlobalScope": false
       },
       "../src/constant/toast.ts": {
-        "version": "f851037efaea4d65870d40f33a3f0a78811ea81ef9e778b2cc3a315a562bafa8",
-        "signature": "c85679763951854fce49f4f7e8d73500dc1534f2b27ae0c6308eac4b680d7f93",
+        "version": "a25a4c9d018494fb0c8f0ff891853ac291cf70eb3faf99b3a36e393a4adf5744",
+        "signature": "0a9e30ace4c100563967b355a9cd324d4a348475e06ddc0d2c33a9b91c9ef18b",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/getplaintext.ts": {
-        "version": "bb3b83954595a0c72eb6e532c189bb8ce93c657a4eae54cc48b35813f5e71a83",
-        "signature": "239e1feec6496fa1a3c9648687a7d4402ff3427fdce4ef4aa90239ab52b1867a",
+        "version": "0de73d69a32ccc31d82c3ba21f6398f7079fd1b02b96de1f7fece7fac954e88c",
+        "signature": "14192bb340486a1c2c214220e1000efac2e999ec10979c41fd3c0536df0b30c0",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/timetoread.ts": {
-        "version": "5865332222c4760296a39126afc0c114542fca19edfd584802baf0d0f719f0cc",
-        "signature": "ab3ef8a82e4a53f168c70e90f9d7b8c4e4cbd3732d5283082c91198c934f32a6",
+        "version": "4dc1a397571cd3e8aeccaf871351fff95085094e52870fb5e466c89453aaa1e3",
+        "signature": "a9931c0fa8911c051d0a783d7ded4ddb8004890496e2dc29632319f3938989db",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/getcontent.tsx": {
-        "version": "68d447d9f996ec5fee040294ad64bbdf3b382d7f5b264bb2ef6fcecb40058d7e",
-        "signature": "5afbd6b71dfd85860df67b214d19d760ac6354a1c7aaca0e02bb35e59a8c7f0d",
+        "version": "06dfc117cd43a7fa1824068f4c93b261d96c5db62c42ac71c80dfb5a16aae5ec",
+        "signature": "cb533ee905dd64ead5145927f4482c847e9c58bd8c0168b0b882c6ced80546ad",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/_notificationcard.tsx": {
-        "version": "35a3f39a168e646804b5230d2045d99085ac73fe98c59b53e622f8d74370634b",
-        "signature": "283ff5f71d0510addb985311b08979dd5a229c0dd136e08ccf21c7848ca9c0fb",
+        "version": "438c33f23aef875e0c8fb4ead3bf0c5182168bfc77db77593c2cb7ab1c9e53b0",
+        "signature": "62d7045051642a74d8dcebeebc1c6aa9b9c12a84358d8fb148e6c6234fd4ca69",
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationcard/index.tsx": {
-        "version": "854abcf6bc5bcec07d2666a2cb21bbbb8e4ac6fff0e7e3c9ef7237595cffa659",
-        "signature": "851491290b04eac8660ffeaf5bee28ddbdc6c1287fa8193e71b841c7a7c28c84",
+        "version": "aa1a06f7d7ed8338c21bbaa1acde86b834b010a6b330f62fd857e25b3572ff16",
+        "signature": "47ce0ec8ba303d5c557923b7bbeb9c74cf7ceddc92ea1590cec3fb904b1cfe26",
         "affectsGlobalScope": false
       },
       "../src/types/notification.ts": {
-        "version": "8d3ea7fa8106acf13090877f9a13966c0cb0a891e046c9d71ebb1e15be4c2f10",
-        "signature": "8f4eaedec754ab8404ed0c84f298f47865255521a539cc4cd7731726f4ecb8dc",
+        "version": "d94ef445ffdf4d510a220e2923841d99d56b13e6b544230cc05e47086feecb3a",
+        "signature": "65cc60fbf68e0c917a277a415aaf81fe3b1dd7813b3d18945e13f23c59f6618e",
         "affectsGlobalScope": false
       },
       "../src/store/action/notificationaction.ts": {
-        "version": "5556201053a3b002c9da5b52af584ba9a5b350f0460fe91f1515d16c20ec0685",
-        "signature": "d8eaabeea9df05350e7d160737a53c155e55b0fe3fd940183fc7095246bed2d3",
+        "version": "1e4b4d3c790fff60b66d2333d89bc4c66948a0d81520298ffc0f8443bd75249a",
+        "signature": "74eb6f8347ff0ab95c7d21e975f9fa8b7b77048176e58e6799e202ee86230376",
         "affectsGlobalScope": false
       },
       "../node_modules/history/index.d.ts": {
@@ -3032,28 +3032,28 @@
         "affectsGlobalScope": false
       },
       "../src/store/action/routeraction.ts": {
-        "version": "fdcc0f8d64deaa9aef29624ded65b9fb11c9167bfbbcda0c4996277ad8951b7a",
-        "signature": "0ee6962087797fa4d79aa01da7624f82e343d3a6919bf219f4c91a636e01368c",
+        "version": "83ffbb1aeb26bcfd3e3174bd1dc8ab9d426f2975617511a43a3ccb54f493e5de",
+        "signature": "5afad4e0c39149d279b8bfa9d7bcd3d87c6e59c66775aac9c96f6775f87b25ab",
         "affectsGlobalScope": false
       },
       "../src/store/action/sessionaction.ts": {
-        "version": "43f2fb9a61a73b614da35a390e081a1510f1078fd2a8f34ad8ceaefe62909ecd",
-        "signature": "735f076ba06074c366600845ba52783e49506bdb1c2f0b5c94a15f1432946e6b",
+        "version": "9300dc1edc6326ab8edbf4e21a0c3992c62c2eaf04e47aa6ffc55a470d165db7",
+        "signature": "eeda32eb900e426e8e34774f42fdce43ba1670ab093cf13d2c581cde3b3646b4",
         "affectsGlobalScope": false
       },
       "../src/store/action/settingsaction.ts": {
-        "version": "3a9af86443fe62d2998aceda7305c285c3d3bf3729c065aa397ba1d60eb0af38",
-        "signature": "99baea824d0306c03182cde3f4a1192373639845bceaae18a4519ed9303193c7",
+        "version": "2e8448d76dd7efb4c27709ff6b424caa91be91e634baa4434709845a7c8e6cf7",
+        "signature": "fb5623e19030d33487b159a8d655fe2ef8a99acf98b71cb98753fbe04ab66cf2",
         "affectsGlobalScope": false
       },
       "../src/store/action/splitviewaction.ts": {
-        "version": "b6fbee8cfbdb18c04285aa484e9b5900354e144f05504b03d559498a5a4c30d8",
-        "signature": "4ae24d2783ef900fd6e249b05fdcad0a2dac011278c75ae7f302d50ad09802d2",
+        "version": "c6308efc6d7162a745ef3b7787173b010d1b2da9b01a388e31738f4b2a3b29af",
+        "signature": "4da13c203fbdea6cde1a08b5aac316c4e690fedd1e51e46976a037a40e410e2b",
         "affectsGlobalScope": false
       },
       "../src/store/action/systemaction.ts": {
-        "version": "b515a8206e50923f4b7a457e5886a2e153628ea6d1cdcb8cebaceac58f2c8548",
-        "signature": "fafac263fc167535fc27b41f4e48b7f4247988c32e94e49b25427c916a710281",
+        "version": "484cdadb74598ebcb4e0d72ddd28194f5691d288128d7de0d1e63903f28f60f1",
+        "signature": "a8722f600728c067338183bd0e243b61dbf8104539722a363cd6d83a49f7bb52",
         "affectsGlobalScope": false
       },
       "../node_modules/immutable/dist/immutable-nonambient.d.ts": {
@@ -3067,8 +3067,8 @@
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/configreducer.ts": {
-        "version": "44bb8f1864b069fd1c0de28f7a6ec84fdfaeb6920368432343398e1b5596325a",
-        "signature": "c7d930e03c17c907b1c7be24c52532b5bd11119c18e09dd68c89338d471edcf0",
+        "version": "0d16d1ffc58b626abdf130d4e49b39028c70b21ee3e334a774d00e2d94881d95",
+        "signature": "8e470e543e782fd5fea1e30045b3c127afe9f29c71147ac5b5936cc493867cd6",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/lodash/common/common.d.ts": {
@@ -3137,118 +3137,118 @@
         "affectsGlobalScope": true
       },
       "../src/store/reducer/core/languagereducer.ts": {
-        "version": "c1855402f3e5fcd3a4a94c33e0ec4e831767d450842c8afcfce5f0d6ed07d01c",
-        "signature": "9d5dab02d5a9973ebe103a7d5eb9bd3b2685837bc66804878d3d3f6170cdb750",
+        "version": "f2d32220a223c28b3b4340ced246546818c9a59db36ed51ee91cc01e9edf68da",
+        "signature": "8bf8badf18d61fc75a0742c064dc81a482ef5113c49eab0fdcaed4629a30c9e4",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/logoutreducer.ts": {
-        "version": "633ae81de2584bbdab0e7a4fbb6098390981e516bbec108c228d21b5e6c6cee4",
-        "signature": "17da7289a267218eb2a1cdb0aee06767d9240b9597f38db8d8b4f8daa39b4876",
+        "version": "5ec2973f8d3f215d970eaa7a12c3c32271765841f7216ce8080e9ec6f29dad47",
+        "signature": "4215263d6249ea894546da882eeac08a1a84df514961036dc74879a1a098befe",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/navigationreducer.ts": {
-        "version": "e4f27e935fad19609f3d4da6f6970f5aeec7dc76547dba7a0153cdc3c80d5a8d",
-        "signature": "7bdc94fb96dbd4075fec3ac53e4781dd964e4f22e793bad8ebb86a2c458c9f1f",
+        "version": "7b669f7dfd1c6a92950ba354f788d71c6974d34fd70ed18426e4e1544dd6132b",
+        "signature": "e692f5e2ec3bda53bb3282235831791bd40745affc7e8cb596139d1d61387865",
         "affectsGlobalScope": false
       },
       "../src/constant/notification.ts": {
-        "version": "8e6020aac106098a90958f06b3a63b5f0ede51eefc811badde7fd951d8398d58",
-        "signature": "20e1adfe22a5bd7f86c64d30b61c06360d07ef06f13d4bd761215506de40c3aa",
+        "version": "1d500d62705b9bc281fbd89278c937fd111282352bfec80f644c5fc6e5497021",
+        "signature": "b2af51e58c375915951f3dd2cfea71e0f50ea98c222610ab6cf6c8206a04f09e",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/notificationreducer.ts": {
-        "version": "2028ea0846f3b6d5c1ab0f504dd725e529c9b25f0490e3576f8f442d07a9176f",
-        "signature": "ee4e525a131ee560b669de4c7eda41552563c6e85a8274e64129ec1a6b2e0b67",
+        "version": "4f844940622c4b7cf2d44b800901ffa91a4ae646b9b7061172c11c2da77f2ff6",
+        "signature": "22aff297e6c84171cb906f35c31dcdf2a83e2401176476f196593f67f8f31f23",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/routerreducer.ts": {
-        "version": "142acc5e6f76ad0b5c25a55396e6f36b82a91c80f06f032949609022620f5bbe",
-        "signature": "73b845781f643a40630e9bc64e31be2dc0cd4126ef7491e9e47f85b6c93b0ebb",
+        "version": "500652db32785418bce780c2af16fb037cee8edfa011e381022aa7b6d29f1120",
+        "signature": "285aa7332f227e48e6ae40ace4568130b19dddc06650a176ca6c683180266383",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/sessionreducer.ts": {
-        "version": "d241fdd95f673ba7f8e8159801c6cc65749c65326c21437f340bf35552011487",
-        "signature": "3b2578a5c4b0f3bf47edc33acf406796c5b78a123b28f0bc29f4153c9232aaa9",
+        "version": "647a9226ec7f2946bb97eab1e7b5bb45060fc1868b0593b415b160dc71d9d866",
+        "signature": "d5a3a44dfe299f043d6e9361d05683c00203a891f4b0e6214ee34f5af4b99ce0",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/settingsreducer.ts": {
-        "version": "0e96ef3e1c610eb9b384d8a8179d1641cd741d3d61b0bf9bbb3b4df182cfde02",
-        "signature": "ac105ecc09dbc2a950c4f1df23d82a417d63b5a1ff473eadb515244f88807436",
+        "version": "ba31431d6665cf30a652f92e0ee538b32c371742b4cc09a8b6e213ab323ab09d",
+        "signature": "115402468a27db46d5c0d183189f8b93962603d84a185e248da1744acf4cdae4",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/splitviewreducer.ts": {
-        "version": "0777928588c2c9d578a435011997136acd3f3a7346bdf5fd6bbc2fdebafe7e35",
-        "signature": "d1dedd4e07cf027665baa2713df8f0383ce9a4f5320db8a290111f5356da826c",
+        "version": "d15c09512ef1af8dd6286c9dfa9c392106f547a839bdfe1cdc60a5e93f58a263",
+        "signature": "195ce8edce765c7b4388429330099dd5edbce2ff4c585b9c670326ec49b9da25",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/systemreducer.ts": {
-        "version": "9ecb255501ae4602b4a450900ce1565d5a001daab28635ab9891793e366e43d2",
-        "signature": "2cb4b1b3ecde2138a628c9afeef4c6ad4514f530760cebfe8f6cb27e9da49ec9",
+        "version": "b77ef754388805cced40f9deb6eded0d2906b0ba12dc38523f9b926f828908c3",
+        "signature": "0466d9f8b165da9fa49fa78e62e4328885d8a5dd70075736fcd9f6952ba3f273",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/appreducer.ts": {
-        "version": "9d7a61033a36cd539478b0dc6e15a8e96a9f98e152c6fe1dccf4e11583d178bf",
-        "signature": "4383b7ee5af44b7bb1bd47ab8a6824fdee2fb412f6d91a31b0d20afa9f01e660",
+        "version": "2490a1ef5244a0ed36efa1bc2c2ec90908147bafcd059cea67e1821f5bf51dfb",
+        "signature": "22859afbf76fdaa521ef956e2813300371322d2ab922fbc9dfdf9cdedb77e8fc",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/loginreducer.ts": {
-        "version": "f0ba97d0e64d1c9db7577fbc600a0eeeab2b625f22018d40d6b67af861b9800e",
-        "signature": "42154e410cdc19dc2ad347c93465e407d015c24ffc303d99b8db564f248e0df1",
+        "version": "8f8e7853d764fe07f61e2ad0ee053e4f88ceb5fdc10e768dab2bc7314a78407c",
+        "signature": "a59b021919f9588ad5ba503f41d5c6557c86a4601cb38fd63d667892cbae7411",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/localereducer.ts": {
-        "version": "e2abcb60899fae078a050ead146ef4098fb44bd6bc6d9497c760558c8597accb",
-        "signature": "6361c043b06280f8791b3b1bb730161f4c8423d41668a24cd8df4a87dcb7348e",
+        "version": "a8ab4929d456293ce506900e88c18f8cd45e707717b05e15809b6b030afaf132",
+        "signature": "18eac7fedf38a8399ac1ec87936c700493faa28a05e60bfe3e40b0667f5965fe",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/index.ts": {
-        "version": "b6ed6fd74146ee807b1c3945c9fdcaee43f0bd0f693db554b2c21eb2db24841c",
-        "signature": "4086d5932a48cc3894aea17759ee877c4f38864ee6df8d2832b3ecacab430ff9",
+        "version": "1d2b870601668fc6c364c6f6bdd0817965dd24cfedd9ed87d7d3e59488e2a504",
+        "signature": "1eabe2f92bd3a383b10ed4e34866d015cfe65acea1eae8a963dbca42cfcaa4d0",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/global.ts": {
-        "version": "54c4cb60b4f94031b131b4e30afb1c5f43eaaf5c6f0ce72e6c279c8c57e9f388",
-        "signature": "ac4fffd59135813371e87f502445c8a51ec33fba3d1add8f7d09475340732eb4",
+        "version": "5c14530d77535a40777534cf5407089258c2d4d56dfc04e4da0b945914a8b6b5",
+        "signature": "c3b5b5771a333a862ddb024afac6f666ed7343dbb9e6d02e2fbc83665678fb84",
         "affectsGlobalScope": false
       },
       "../src/types/redux.ts": {
-        "version": "22d8c9554d712a8145a7ee29556f5c9a82678b4d789f8561c7a4f63d34b14902",
-        "signature": "a45ca81845f95ce27d332960ec191bbfe7b97bb0d144d1eb15cb3e8fcb56bd9a",
+        "version": "93455a0d153f44614a7b94cbabfb8f0677bd6b16ede9f2fde608412ac6d27890",
+        "signature": "9d17d1f08b813499f3f55ff69e3192188977c47f00ffaadccd4063eb09521cf4",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/toastreducer.ts": {
-        "version": "9d55bd56a038a6d36accfa104ddf7dc43f2bbd07ce53e439b2d102a73260ed94",
-        "signature": "8f2ee4d92512ac0d4a1f5559db8d7cc527eded355054d83318b33d5f9fefdd15",
+        "version": "cda7e21d8eb7e596892554bdfed5381a692f4413d2732b14249959bdfa8c4d59",
+        "signature": "ab1765883e888f2cfc616b3c9b02c31cc198322d6895c4a116c7e36c5d442f2f",
         "affectsGlobalScope": false
       },
       "../src/store/action/toastaction.ts": {
-        "version": "19f063c368f62524bf6c0c655c3f4de3b0aafc92ce7498c13ffa18a7e42cbd7d",
-        "signature": "bc245bc2969ea42234a4be0847ec4598156c07ecf7b8a69c90e86aaf7cdc312e",
+        "version": "5c261c294e236118692516c2b7a8ea4abb1388f68a43397db1438993d5f7d6e7",
+        "signature": "8df50bfc73f5201b445aeebeffce39c38f9f016dc66f954b842c57b87535641e",
         "affectsGlobalScope": false
       },
       "../src/store/action/locale.ts": {
-        "version": "8a0aee251ea55b2c78cb1263ccb74396ba31f4b3b11736d4b7fb2a814c476fce",
-        "signature": "12dca037e14c579e0e3740079c10a3e35d92f0f41a3e92a2dd053091963fb35d",
+        "version": "698e22b447b557c4ce440957d8e66123cb4cc7cc4455412e84fb8f4dc9f2d68a",
+        "signature": "61536e7f312d555241798e79a0b572509926e90c25668cc20abe58826ea3bc7e",
         "affectsGlobalScope": false
       },
       "../src/store/action/index.ts": {
-        "version": "d6117dd52c9dc39da00a9a3aa52c2c68e43de7095f5c3efce47134dd01283142",
-        "signature": "d6117dd52c9dc39da00a9a3aa52c2c68e43de7095f5c3efce47134dd01283142",
+        "version": "1116445950dc86bb5948516d3f7e70eb6553fbc11209aba5d6f4c1eb597b1ae4",
+        "signature": "1116445950dc86bb5948516d3f7e70eb6553fbc11209aba5d6f4c1eb597b1ae4",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/websocketconnectionreducer.ts": {
-        "version": "301d456ed380938270ae366f67cc25768d6fbeab8cf22c16a8aa6dff35f9c700",
-        "signature": "b7c32881c8eb588ab1a78705c3c84f2f5d26957f927b129a5da214c630bfc0c0",
+        "version": "a5b3b8778d1c8baac6efb28fe1daff7318c8c07cd39de66156e95f4dde631156",
+        "signature": "b7d2c406a2da2461f14b799bfc3badaf2f21d90b95b7a766aab4a751d395972d",
         "affectsGlobalScope": false
       },
       "../src/store/action/websocketaction.ts": {
-        "version": "1853936c10c0b7d18a64b39b65ce177735eeffab85de3ac92b247ccdaafa228c",
-        "signature": "f347e5325d26091f2fd3e0f611fa63c77107debab6ffd787d5a260b15044883e",
+        "version": "18a289ddfc3e3bbefc7fee744f6271b808223520695ad460520db72d72ca8cc0",
+        "signature": "98f14d560d2c9c0a145616b68ce0fcf9818819a26b528ac2ce5ee7b82f79bc58",
         "affectsGlobalScope": false
       },
       "../src/api/jsc/index.ts": {
-        "version": "2a36fb279335b5a796161898b3984d31e740416a82a1e95b10d7ddb52ad925a9",
-        "signature": "e918da2b4d4c92866191479339425c9638a0092aed1f554147ed1fb84264798d",
+        "version": "865d4322b6b079bba793a10552e048459accab7e01d9a4f2c832fb3f307354a0",
+        "signature": "1aaa3f6a102ba434e32229dfb57461ea18e5a2ff13a1c5cd3f4859084025860a",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/socket.io-client/index.d.ts": {
@@ -3257,23 +3257,213 @@
         "affectsGlobalScope": true
       },
       "../src/api/ws/wsclient.ts": {
-        "version": "91d24b821d07dbdfeadd2099a017496c8e04175813055a07ee917ccf9ec420d3",
-        "signature": "b59c755d82d01bc1ec8e5773e863958aacf1697c18f53c184b8cd36066093dc4",
+        "version": "b029ab8849ebabb848590a9106bd6595d30b0c51c990ee5e3d89a3d96c504187",
+        "signature": "b9032a10e71b007298f7567c7b01fca2da66b391e39abf6316f5b517b9d63391",
         "affectsGlobalScope": false
       },
       "../src/component/app/useloader.tsx": {
-        "version": "35dfde90d18e5ee9b674ac9c71171fc35197fcdb3ebef332d3d0e27ec7763fa4",
-        "signature": "d09a7dd412607792f1f472a93d40398cb7ebb592734269f68011927f417b783e",
+        "version": "2e160b40545610c7d396e06acaf1b57d0df4360ccc11b34708094e99f09995fa",
+        "signature": "96bfa375ad343cec669a9747a85ec2250e1637a32eca52b893933681f8233fa4",
         "affectsGlobalScope": false
       },
       "../src/component/app/initialized.tsx": {
-        "version": "48eef98ef5889f92f6b4811abcdd989e06b0dfd4ab9c758669dbbad57bcb4aac",
-        "signature": "08d520dfb34f83a738b5fa89da20ec096a2443dc3742c7a5cbb312cf60e76667",
+        "version": "3884a9b16308988cf20c12b57529339b8b8819368bb1a5305037e3a23f094658",
+        "signature": "38b000ff885f2be8230226af5f085a4bcd3fe3ad00d75993d974fb1e331031a6",
         "affectsGlobalScope": false
       },
       "../src/component/app/loader.tsx": {
-        "version": "490b9786d8831ff20d4d8eb62c9d6ca25190130031b35b179db35295d647b0e2",
-        "signature": "57c52f96d77ac3e6b88f1f0aaffef85a47510daa36cd4052e9ffd5c2a46fc2ec",
+        "version": "d3bee24dba0993f238efe6b2ee66a10fde5afaaef4f06b9e2c218e9fac77afde",
+        "signature": "1e25330242a2de5b258bfd6c08266c02299063601f43f39968df872f9d6dcdd3",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/styled-jsx/css.d.ts": {
+        "version": "9fd84c479ce3dc77858b0c91264db2f4932afc1e5808082811c8d13ca4fa90b2",
+        "signature": "9fd84c479ce3dc77858b0c91264db2f4932afc1e5808082811c8d13ca4fa90b2",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/styled-jsx/server.d.ts": {
+        "version": "68798ea1e1f2e5386d98f88ccc250ed0aea9b8911ecd60889a22432f2b163a1f",
+        "signature": "68798ea1e1f2e5386d98f88ccc250ed0aea9b8911ecd60889a22432f2b163a1f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/styled-jsx/index.d.ts": {
+        "version": "8039ef2c3710cee312c2f31196542e7709b884273f0d59c6085f2f2a3982c6bc",
+        "signature": "8039ef2c3710cee312c2f31196542e7709b884273f0d59c6085f2f2a3982c6bc",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/typings/date.d.ts": {
+        "version": "5e884678237fb09106d9525e378ac71532aa3b1be58f00372cbcfb6b86b64dd0",
+        "signature": "5e884678237fb09106d9525e378ac71532aa3b1be58f00372cbcfb6b86b64dd0",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/views/calendar/slidetransition.d.ts": {
+        "version": "08546df9c1496fdb4aea8533ce02c983f61d6343e5725ccc6f09bb84521a9875",
+        "signature": "08546df9c1496fdb4aea8533ce02c983f61d6343e5725ccc6f09bb84521a9875",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@date-io/core/iutils.d.ts": {
+        "version": "da92f8f43d4b83ff21c3f81f002d94625fefd0c33771d292bbd149efaab2894b",
+        "signature": "da92f8f43d4b83ff21c3f81f002d94625fefd0c33771d292bbd149efaab2894b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/_shared/withutils.d.ts": {
+        "version": "1c080b0527aed66568496279bf28d2da12fc941fa49fbe0b89dca04c8675d7b9",
+        "signature": "1c080b0527aed66568496279bf28d2da12fc941fa49fbe0b89dca04c8675d7b9",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/views/calendar/calendar.d.ts": {
+        "version": "7d0a165ea4ed28a0d90f77ded6a64792c16aaf89b5b722a30c0fad25dec9182b",
+        "signature": "7d0a165ea4ed28a0d90f77ded6a64792c16aaf89b5b722a30c0fad25dec9182b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/_helpers/utils.d.ts": {
+        "version": "8e591af503539cd11596f6eeaf0963644530f8a4ef22bf0639de4412826863da",
+        "signature": "8e591af503539cd11596f6eeaf0963644530f8a4ef22bf0639de4412826863da",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/wrappers/modalwrapper.d.ts": {
+        "version": "660a76240f17b54eeeda7d42edc5ef4d6d6d21f2fa0a5cf9d711302026472c03",
+        "signature": "660a76240f17b54eeeda7d42edc5ef4d6d6d21f2fa0a5cf9d711302026472c03",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/wrappers/inlinewrapper.d.ts": {
+        "version": "c1473fec5ed96c7ef66158bbd622d87c38a6a4f17acb991fb0bac173ef035232",
+        "signature": "c1473fec5ed96c7ef66158bbd622d87c38a6a4f17acb991fb0bac173ef035232",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/typings/extendmui.d.ts": {
+        "version": "30254baa7f1376b01d82583f445f9187a6a5ddf01ac63fc01932ce1c0e09558e",
+        "signature": "30254baa7f1376b01d82583f445f9187a6a5ddf01ac63fc01932ce1c0e09558e",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/_shared/keyboarddateinput.d.ts": {
+        "version": "5b62c52ca05ef7e46119c2058b459375a8f63473fc71091230460abdadf3dc9e",
+        "signature": "5b62c52ca05ef7e46119c2058b459375a8f63473fc71091230460abdadf3dc9e",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/_shared/puredateinput.d.ts": {
+        "version": "003a00dfa4585c293578d2d5859ac12f72a7ac3109927878e1515a120393534a",
+        "signature": "003a00dfa4585c293578d2d5859ac12f72a7ac3109927878e1515a120393534a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/wrappers/wrapper.d.ts": {
+        "version": "d83d8c57a3436bb4612efbe4c1606d36a5f47332c4234bdc47e2cc58f92ee241",
+        "signature": "d83d8c57a3436bb4612efbe4c1606d36a5f47332c4234bdc47e2cc58f92ee241",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/views/year/yearview.d.ts": {
+        "version": "7348dac385128144de2bf29cb3f69a747e16d4e5a2a19717dc1705b6b842eca1",
+        "signature": "7348dac385128144de2bf29cb3f69a747e16d4e5a2a19717dc1705b6b842eca1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/views/month/monthview.d.ts": {
+        "version": "104c524723feb8d9133648c138fdaeaa4f48e2d7b10920f56185f0a61939b775",
+        "signature": "104c524723feb8d9133648c138fdaeaa4f48e2d7b10920f56185f0a61939b775",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/views/clock/clockview.d.ts": {
+        "version": "16677fbe4acf9144ec451587935e033faf4cf9c89b74ec0b7d1df7b919194df1",
+        "signature": "16677fbe4acf9144ec451587935e033faf4cf9c89b74ec0b7d1df7b919194df1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/picker/picker.d.ts": {
+        "version": "e073d45050ead84e245db78e41456827ffea7f127366bd7e49053e35344abc96",
+        "signature": "e073d45050ead84e245db78e41456827ffea7f127366bd7e49053e35344abc96",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/typings/basepicker.d.ts": {
+        "version": "c5a2ab379156f9a8c0e161d8d82b2f229edac02e19b7de2d375b92d9da48f537",
+        "signature": "c5a2ab379156f9a8c0e161d8d82b2f229edac02e19b7de2d375b92d9da48f537",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/_helpers/text-field-helper.d.ts": {
+        "version": "23243df254a4ed0b3a31b13ced7038aa313c0d0f6de45968d66f663d782c715b",
+        "signature": "23243df254a4ed0b3a31b13ced7038aa313c0d0f6de45968d66f663d782c715b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/_shared/hooks/usepickerstate.d.ts": {
+        "version": "819092b6faf42374280dee9989aab6280539862bf9a43ce251e0e4add362bde4",
+        "signature": "819092b6faf42374280dee9989aab6280539862bf9a43ce251e0e4add362bde4",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/_shared/hooks/usekeyboardpickerstate.d.ts": {
+        "version": "e696a2bdc38b65c31735f1154e67c5e1084700bd6f042cfb33360b9fe4d488ad",
+        "signature": "e696a2bdc38b65c31735f1154e67c5e1084700bd6f042cfb33360b9fe4d488ad",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/picker/makepickerwithstate.d.ts": {
+        "version": "02e20c5e074e9020d45b0f1d7d7e42e056e721b5ed33b5ba5c445d8ac321bc6c",
+        "signature": "02e20c5e074e9020d45b0f1d7d7e42e056e721b5ed33b5ba5c445d8ac321bc6c",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/timepicker/timepicker.d.ts": {
+        "version": "bf01d9f1b7776d4cb0733372084a4cc4930d5ec2318450ec85f44950fe46ebf4",
+        "signature": "bf01d9f1b7776d4cb0733372084a4cc4930d5ec2318450ec85f44950fe46ebf4",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/constants/prop-types.d.ts": {
+        "version": "ac9686afd1ffd4e186274ec12e11fbe2400502587a255343f9110e6ea692b6f8",
+        "signature": "ac9686afd1ffd4e186274ec12e11fbe2400502587a255343f9110e6ea692b6f8",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts": {
+        "version": "cefb0de651d08612b0af94f1a9489d04c1fe2d08c07103c65ca33bed2b6c6abc",
+        "signature": "cefb0de651d08612b0af94f1a9489d04c1fe2d08c07103c65ca33bed2b6c6abc",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/datepicker/index.d.ts": {
+        "version": "2da4d6dcff816b06ffcfb77755b7eafb05f7b9a72d5202d7c1ffa9873385892b",
+        "signature": "2da4d6dcff816b06ffcfb77755b7eafb05f7b9a72d5202d7c1ffa9873385892b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/timepicker/index.d.ts": {
+        "version": "4fe645da84417f66e34946a1227a3c3c307675179fa8541c0f3637167e38fc35",
+        "signature": "4fe645da84417f66e34946a1227a3c3c307675179fa8541c0f3637167e38fc35",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/datetimepicker/datetimepicker.d.ts": {
+        "version": "fab52be5c79dc99bef0954e2b5246bd2e90067037c7310688a332b272458d2ef",
+        "signature": "fab52be5c79dc99bef0954e2b5246bd2e90067037c7310688a332b272458d2ef",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/datetimepicker/index.d.ts": {
+        "version": "3833c591ba069ada0790cf469d1d69237963031141fe06e9d5054356210a0b36",
+        "signature": "3833c591ba069ada0790cf469d1d69237963031141fe06e9d5054356210a0b36",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/views/calendar/day.d.ts": {
+        "version": "cdeb341666cb0da1e34dd7ae6cfc5ad79a4f27a56c756a20a10ebcda58401a8b",
+        "signature": "cdeb341666cb0da1e34dd7ae6cfc5ad79a4f27a56c756a20a10ebcda58401a8b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/constants/clocktype.d.ts": {
+        "version": "719efbd09cc17387f917f1c36ac629895c11111f39044c6bf3e58811b4b36db8",
+        "signature": "719efbd09cc17387f917f1c36ac629895c11111f39044c6bf3e58811b4b36db8",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/views/clock/clock.d.ts": {
+        "version": "ccd45b28a7cec99a1fd5b32276550a93d97544d866c5caaf4c8ec714cb212169",
+        "signature": "ccd45b28a7cec99a1fd5b32276550a93d97544d866c5caaf4c8ec714cb212169",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/_shared/hooks/useutils.d.ts": {
+        "version": "18e9c5e7f9e18a1ded78a038820f9252483a7fd2c1af67a86ef9941c69e85473",
+        "signature": "18e9c5e7f9e18a1ded78a038820f9252483a7fd2c1af67a86ef9941c69e85473",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/_shared/hooks/usestaticstate.d.ts": {
+        "version": "f488d16296a512aee9c1b3e81a9d37abbc11d56180bbf2a3ce2cd4a7cb542766",
+        "signature": "f488d16296a512aee9c1b3e81a9d37abbc11d56180bbf2a3ce2cd4a7cb542766",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/muipickersutilsprovider.d.ts": {
+        "version": "bfbcfe520a4d79bda063554330851061a89f2fa060a867e0834e220bdd80d1cc",
+        "signature": "bfbcfe520a4d79bda063554330851061a89f2fa060a867e0834e220bdd80d1cc",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@material-ui/pickers/index.d.ts": {
+        "version": "7ead93d1aafb83c3f6b2a413d94761bd0e1ce1440562718e57687957595fd3ef",
+        "signature": "7ead93d1aafb83c3f6b2a413d94761bd0e1ce1440562718e57687957595fd3ef",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/react-router/ts4.0/index.d.ts": {
@@ -3287,23 +3477,88 @@
         "affectsGlobalScope": false
       },
       "../src/style/theme.tsx": {
-        "version": "98fa303dd27bf8d859ba20cefb45f86071991c2e9094d898f85d70e1d74b99fe",
-        "signature": "825947a582ba82ec9c6350efa1925327027b5c1faa22044f98c74b15019e5e64",
+        "version": "3a70c9546de6540e1b1a0c1a48373b9458e1d12693a26dde648acc7337fac5f5",
+        "signature": "2030a76ea3d6a04f47935218b9388e94d024e25a93dfbf4f88b90ed03fcd1231",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/moment/moment.d.ts": {
+        "version": "d62fa6fe33566fa743b3d6715a1a2fe46e937ba9d2ba158563c5744315d438a7",
+        "signature": "d62fa6fe33566fa743b3d6715a1a2fe46e937ba9d2ba158563c5744315d438a7",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@date-io/moment/type/index.d.ts": {
+        "version": "9d1c476018fd565c9ff4c48ef085526c97ab2e824fa08f171ca92ae062bfab4f",
+        "signature": "9d1c476018fd565c9ff4c48ef085526c97ab2e824fa08f171ca92ae062bfab4f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@date-io/moment/build/moment-utils.d.ts": {
+        "version": "5a01ea617fa30cd5d2d2c677c5f7939bf6f5ff23ad0d908981549c080ebb14e0",
+        "signature": "5a01ea617fa30cd5d2d2c677c5f7939bf6f5ff23ad0d908981549c080ebb14e0",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@date-io/moment/build/index.d.ts": {
+        "version": "b2c69a3541a0e9d4da3f71e90765aab89b8fa46d9fafedf1eb66d35fd2fec5d0",
+        "signature": "b2c69a3541a0e9d4da3f71e90765aab89b8fa46d9fafedf1eb66d35fd2fec5d0",
+        "affectsGlobalScope": false
+      },
+      "../src/component/websocket/websocketconnection.tsx": {
+        "version": "1fb0c8712d29f74f5258ac41f6309191d22dec8d159334d4f4fcf1b071136355",
+        "signature": "56cbc4dc0c45b98a49504603bd83cde0c27e9f2de02ae2ee00c87736b4709e43",
         "affectsGlobalScope": false
       },
       "../src/component/app/hoc.tsx": {
-        "version": "d6e2a7908d6918ed70207022d27ac3e44b0adb51762ebe0eb936ed0eca372033",
-        "signature": "b66a18f6da9dd42949656feff833e4edabccb91f3c9035e009c03740d4e4df75",
+        "version": "825dff69cd815d304fc962ac32e90c11023ce83edf76d3ac4b897ea5241754f8",
+        "signature": "33cabab8ff3202f31828a96aea5c8f7077c1c2e076b9b3813b4540297e60f1b6",
         "affectsGlobalScope": false
       },
       "../src/component/app/app.tsx": {
-        "version": "8f0032ea2332fd73cec490410b4cb8e233e2aac9ba5f912c14df6d52f08c839f",
-        "signature": "b763396179579cb25d4ca45c3c09f6f21f057d93ac48a9e3cc380d284f78a2bc",
+        "version": "f7786793606257d606a6c03d2a8e5f311e20d1ab2b4a6c1cd83044e2fedc21e7",
+        "signature": "85ad44da94ba3bf2366ec4003a34aa0a4652e4054f5712d508fcadcd0560cdd9",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationsfragment/nonotifications.tsx": {
+        "version": "57c2e6c98e6f1bb628d61da16158b453f1a7cfb07a1da3ae3ab6db6463666140",
+        "signature": "ecb33ec3121b95060a309e5608857c6458d5a6dd8a6a89eb7a555d12062b9230",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationsfragment/index.tsx": {
+        "version": "45494cdd786f33c19569d9998ea30b82de18027001896fe8a7b0e9e76b763583",
+        "signature": "83c4d9630b16c5dc727a0f50ee79e892b313fa7a562166d2de4a51cff57a4b99",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationdrawertoolbar/splitviewbutton.tsx": {
+        "version": "20073f65f1c96e7810b71b23d2e44788ac2756101fd620e71d851da4949953ba",
+        "signature": "a96c46b855ba11cce08f83343ba7d6a6403f216884859020b01ac40efef9aed9",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationdrawertoolbar/dismissallnotificationsbutton.tsx": {
+        "version": "c6f98f8ccb2ddbfaded66fa6fcc58846acdd799d1cdfe948fbd1a2a84b93c82b",
+        "signature": "5bf3f52f188290e500f8c8df73142e9f42afc766823c1a148931665ee619e8e7",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationdrawertoolbar/hidenotificationdrawerbutton.tsx": {
+        "version": "c943495926517b480a7c65a3c9586e600dff613b9ff84290f8b7c8798c1b594e",
+        "signature": "ddb48d83c45a332672b8a8fbe9d631fbf7f4cd581c8932f16e3fc50fe43343ec",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationdrawertoolbar/index.tsx": {
+        "version": "727f20275ad698d024cd4f9433a8a971984727c0964d07aa6e4f1a9fd373ce7d",
+        "signature": "6ce9410277c1660e9e9669605dc8ff85991e32f1e1a4fbf37e13f6b3f548e12b",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/usenotificationdrawerclassnames.tsx": {
+        "version": "0b929dadb4140ee63a0566ca76b0f7b4c242340fd5598e921a1de6fd62c23db0",
+        "signature": "2f3209d825c3915af46f44fdee2396978931440049fe9b1f21707ff4f932dbe8",
+        "affectsGlobalScope": false
+      },
+      "../src/component/notification/notificationdrawer.tsx": {
+        "version": "1289d27e429c44e4de27056b704823c9b17c39fda3383aad52a1c7ec8c5df6d6",
+        "signature": "763a1c8b9ebc0cc670c0dd03213f04b94de568dc6a54a1a8c004535c76000133",
         "affectsGlobalScope": false
       },
       "../src/component/content/content.tsx": {
-        "version": "3b90d6f1709d675de481cca2fd4ed9e75e36f114a1b45be22ba9fb229b1b3d42",
-        "signature": "23efce4cbad1a0d519f5a994ad36b296766ac9e2a254bc01fdfb3b951a7f7b83",
+        "version": "587d9b64114b14a537d72c5281f3865226d45a951a3f299437d28f99932cf003",
+        "signature": "e127129bab84de5de4adf4e2473d94ec2d348c6b1f60a4ddcec2f1842340eabd",
         "affectsGlobalScope": false
       },
       "../node_modules/@material-ui/icons/menu.d.ts": {
@@ -3312,28 +3567,28 @@
         "affectsGlobalScope": false
       },
       "../src/component/header/apptoolbar.tsx": {
-        "version": "c9752e0f194a34144a0e84f415fb5183e8c496b8cd7b1faadfcfe1247c9cde25",
-        "signature": "feb7a0f5b3b2c924c79aa337228f50825f4b45c7a4c26cff15a637ec05e2eb9f",
+        "version": "c506a6d777d9b2600ebba8eca700d95ec2b23b0c9aaa1513fc7b2e162a8a3ae5",
+        "signature": "c77d1a343da420b53d9964ddf7d39cbbf02533a0eaf1fe9c1f53bb3bdfd473b2",
         "affectsGlobalScope": false
       },
       "../src/component/header/appheader.tsx": {
-        "version": "568bf0d24b50800955195ba845de1cf6b55305cd725b3397e3d7bf4d373ee4bb",
-        "signature": "f5298f4e3454937fb0542b4c0fe5685bbdf1e4270254b1eef3fef5f3e28e42ee",
+        "version": "9cb5afea6312c4598dede02edc163df628ccae7a8369af62a77eaaa031be77bf",
+        "signature": "9b301bec7ca040c13f2d8eb0388a669b9f4698aa7ea6f4b0fac5809a5845f9b1",
         "affectsGlobalScope": false
       },
       "../src/component/header/backendindicator.tsx": {
-        "version": "eb690be08521497682c8263826b4e8f48d2dbbb6c2140da249497b58e7eda4f8",
-        "signature": "f0781c0a6382ba317fe589601008300f399cf02b36ca33b545db491d72dcfc66",
+        "version": "fb64cedec69c1f38569c602225726005f8451b457c081832023a3a61e98245b6",
+        "signature": "8b67f1cb1fc73402c43952b459d6ead972df5baad1e0282899993aa24e5f55ac",
         "affectsGlobalScope": false
       },
       "../src/component/juwelofonticon/index.tsx": {
-        "version": "4ff436fb4889f12a473d0bdb6e3199acb73acb8d6fd9793a8202e54dcf0e5869",
-        "signature": "4ec365339bc053a7da2a8c63033a9dbe2a3cb8b616f4802ef329fc8da149f96b",
+        "version": "8e64695307edc59f380aafa84a67f770476c388dcb5716b404aef0f4c2728aed",
+        "signature": "8110dcafcd5461b9b09680fb53885314087c22c653daf0ba50962a3941952312",
         "affectsGlobalScope": false
       },
       "../src/component/login/loginbutton.tsx": {
-        "version": "729fed2f44a3c4a9f7413aaaceb212a9d537e7baeab162aa723387ab41de2f54",
-        "signature": "7a333dcdee0f468e98d7582e53a7e6d59abd050790bfcf9ab2cdcb8abfa9cc63",
+        "version": "3f4feb2433c0e37b5ccd81a5104f64d5dd19545b0c2510ed4bd344f5dec8b140",
+        "signature": "f41be5357c3f2fc52c1a1f62d78f223bb593cd978364df832aa8294f88b1ec7d",
         "affectsGlobalScope": false
       },
       "../node_modules/reselect/lib/index.d.ts": {
@@ -3342,58 +3597,58 @@
         "affectsGlobalScope": false
       },
       "../src/store/selectors/index.ts": {
-        "version": "717d228c045f3faf4df17854877ea7636beda254ae8a5a731f856021d5dab9b6",
-        "signature": "833e1c4a22cfb3605465e622373c09364e68cb41a58b277082b07cc0397f47ad",
+        "version": "01c2dfda2f7a2765fb2792e7dca52c1bbfb8db00ea62f9dcf8778eb9cd13cbaf",
+        "signature": "f8f3676266db316f3e1e5638f42a79b7965dc530ecc87a25b29331b1fd7f97aa",
         "affectsGlobalScope": false
       },
       "../src/store/selectors/core/session.ts": {
-        "version": "33e1c0eb5e9be0a16d73d0a73289101aac16a96e23214606d8345f4357565f45",
-        "signature": "04c43ade562333b3204caebe2ccf5f0ad96b5f3e557a55f3690bcdc4d002b12d",
+        "version": "d76a568df62904b859f1b8c6bded27c193214821bb1b5686b9a263b4bdd8f9ed",
+        "signature": "55580bc3276166e2d6db85b945be46cbe4105894572f88e4171dbe4e5cb72505",
         "affectsGlobalScope": false
       },
       "../src/component/login/logincredentials.tsx": {
-        "version": "3522333e175a3e2997ffb1433c0ba20d5c01b3be0eb33f0b8c1ddd6ec2e27d1d",
-        "signature": "b5c979eef6aba997c78f95bae2a251fd5d367639eca4b1f8e63ca578e4dbd6e3",
+        "version": "656821a5d8cd7aa1a726ac329d0e92bf47a2f37408b11f1ed36b90c3a0d11869",
+        "signature": "ec7933025569ab51843ccfcaf3fe4947ca096210372128df2e5d4ce2029f9c55",
         "affectsGlobalScope": false
       },
       "../src/component/login/logindialog.tsx": {
-        "version": "d2d0397624a6091580f7c422e351f5fe22d444c054732a2b75b2619f9cc0112a",
-        "signature": "c498ef9d87201d9be1518827b64192e19b8c23934abbc4ae33301e365e6e058e",
+        "version": "d427a9afe3863b2cdc05b96d5958456dd2f9b007a39a0fea6290adcdc30d43e2",
+        "signature": "60afb9a534bb9ec6c5f583f11690b1d7a66dd5147468dccb3b3f37d83f3926b2",
         "affectsGlobalScope": false
       },
       "../src/component/login/index.ts": {
-        "version": "5991f9c17f8652ee33d522b16f6412996a321dd7b6c5a7f9b9667d99f07f1799",
-        "signature": "5991f9c17f8652ee33d522b16f6412996a321dd7b6c5a7f9b9667d99f07f1799",
+        "version": "e5e0271e04e483ed4b41e0cd9aa85f5176b5bd895a7d27a7be276c39ebd7b6ea",
+        "signature": "e5e0271e04e483ed4b41e0cd9aa85f5176b5bd895a7d27a7be276c39ebd7b6ea",
         "affectsGlobalScope": false
       },
       "../src/component/logout/logoutdialog.tsx": {
-        "version": "97880c9d61c76c325a285020a51a3450f57d2d2070f928c79039da12480ce2fe",
-        "signature": "a5e83246de04d4309ae3abbed37e06c320d5d9e34381d77cebd3c71fc4a7bccd",
+        "version": "1912bcf2596dd6da1d4f6fbed1ed105de84f6429118d517e2342206238e854d8",
+        "signature": "6f58522512e30467c09e0fb1d15222cac615fbea333406f98ead97989eb16a8f",
         "affectsGlobalScope": false
       },
       "../src/component/navigation/navigationitem.tsx": {
-        "version": "22ec4758cb3cb01fae3d91d1fc349d2354aa2498f31f435426ea88e4dcc8b2f0",
-        "signature": "6715863702e62e419a7930484d9c46038232a96f080258e8b246feabe65a19a7",
+        "version": "5b0e2153454b84cddd5aac57d21c09b70ee7d9b0bb6483cfdd6ed0bff0740cac",
+        "signature": "cf42a5b500d712112e4f29aa225a33c9f1a8a548f456881691d03ac5279789af",
         "affectsGlobalScope": false
       },
       "../src/component/logout/logoutnavigationitem.tsx": {
-        "version": "9c2432605ebced3632ff9740a5356a10e3bcbd69ebfff5bc5632de07390b9bca",
-        "signature": "ee145f0613fb339d25e1ecc81eb0316226cfd0b4943bb99fa3e14c8119474b33",
+        "version": "673dae685c3c424016c6a32535ebcca2733a01739866248e2522aac6434b4188",
+        "signature": "6ccadffd68422af68b9e031050eb305815d143377363319d3cab6c1978545172",
         "affectsGlobalScope": false
       },
       "../src/component/navigation/navigationbutton.tsx": {
-        "version": "5177cc2691b197e0917f048d9ca0e64f947458fe0d2fbbf90665a0efe81128ba",
-        "signature": "da4210be94d1a1b7ca480776993ad37b1fd4f8a9963bd41625ea63f603dce0b0",
+        "version": "aa669893d39f93ec1698e6a98901a50cfe6c0525628db0a1f703d1bd5e36859d",
+        "signature": "18e71b7bdb74e2dceeb70767831b2ab9489b924a5064f1e7cd6b4afe3386f0cf",
         "affectsGlobalScope": false
       },
       "../src/component/navigation/navigationdrawerheader.tsx": {
-        "version": "bf1170ccfd8c443ec3d0e2a880ca72acc86982e972a08d14415413d7fcb9ad8f",
-        "signature": "e696659917bc7448c983c433a9b3c3921f78f82aad007d15b41a78d64fab4713",
+        "version": "2576f5bd243e3a538285540efebab7e9b617e7da7f4a3bb214d6a1f193e8dac5",
+        "signature": "391f3642b5aa69e482fd1e529b11a0f9d6a03e29b353f5238aac68ef9ffc702d",
         "affectsGlobalScope": false
       },
       "../src/component/navigation/navigationdrawer.tsx": {
-        "version": "4e3eba25f977860a88ba350e83abef436fceb5a921bef3c6a29307d6b762ec10",
-        "signature": "e72ace9ae654388bc1e4a6f04b3618d24d4531d6726d9290656ae358199657d2",
+        "version": "6f7ee027c61ab7938cc3b3dff4a3c69b1e7aa0eefe4eeefe96f81bc572c6bacb",
+        "signature": "e9afad3734f921fe3ceea83211e518af226cd70f3def8fe5ddf082640826a2e5",
         "affectsGlobalScope": false
       },
       "../node_modules/@material-ui/icons/notifications.d.ts": {
@@ -3402,68 +3657,28 @@
         "affectsGlobalScope": false
       },
       "../src/component/notification/notificationbadge.tsx": {
-        "version": "b4898bfd83927e6755e48800612b2864c8a4a73fc1a95f5ee0fdb93b9dafe06f",
-        "signature": "61bb18ab31842c6bd80b1ab2c99387c3c3d746a5641ece6f56f0d8a27b7232df",
-        "affectsGlobalScope": false
-      },
-      "../src/component/notification/notificationsfragment/nonotifications.tsx": {
-        "version": "fb2c209dd2c7df0eb79fed51537d2ffe228906fbded98b791ef8b7091cca6065",
-        "signature": "11034baa008de10a5526252f4b08857d495b6bf579a79e9975a4ed81df3d1203",
-        "affectsGlobalScope": false
-      },
-      "../src/component/notification/notificationsfragment/index.tsx": {
-        "version": "79b27636bd64ea2dfbbeaf6befc2d910c49d9321b1e3be6ef2098dd1d38f20bb",
-        "signature": "35bffba979d1e844d02d24f52a413a5ef6eb4b1221f426daee901f6d2641720b",
-        "affectsGlobalScope": false
-      },
-      "../src/component/notification/notificationdrawertoolbar/splitviewbutton.tsx": {
-        "version": "bcc23a0dca979f7643887a4679f24fbee155de833608cdb3115f93926c33c0f8",
-        "signature": "359d190861c592807e9b16492923799ef1b808ae66af7313a1d3881049b6f837",
-        "affectsGlobalScope": false
-      },
-      "../src/component/notification/notificationdrawertoolbar/dismissallnotificationsbutton.tsx": {
-        "version": "6c4355b22e79f2db3c6f0c4236a0a347b1db234b8644b7abf71cafe1991e47c0",
-        "signature": "d7507ac4eccad99a733a0dc1aa64ea728eed4d449e0cc2594fedb8f8a915367d",
-        "affectsGlobalScope": false
-      },
-      "../src/component/notification/notificationdrawertoolbar/hidenotificationdrawerbutton.tsx": {
-        "version": "bbb763f122b2dd7f1393b867af70de0f6b69d413e15efbaed2c8c0faa4b49b57",
-        "signature": "1249894a5f5706ed09d75826470661c3e3b2713dae5074a0b96f4c77f36b396f",
-        "affectsGlobalScope": false
-      },
-      "../src/component/notification/notificationdrawertoolbar/index.tsx": {
-        "version": "23a7a2e6425f87858e38055b992409959dfd25517e1cd738eb46d4ed49ab744a",
-        "signature": "8ccff351b58d3cc90dc1b60204e908c1fb3ef7f15e5ee64956ecba0016fc9f02",
-        "affectsGlobalScope": false
-      },
-      "../src/component/notification/usenotificationdrawerclassnames.tsx": {
-        "version": "5bd0c3239f86f82f31b02c2b3d95136e747f6be37dcb801d1a65d04b0948c3cd",
-        "signature": "7e5f64136c2e2e7e36c56c62ca8ca09dc106defe700f53158de8762fb83c1a17",
-        "affectsGlobalScope": false
-      },
-      "../src/component/notification/notificationdrawer.tsx": {
-        "version": "af0c9e702253944a6d08bc9301bac607cdef5d64964550218f90667e5866094b",
-        "signature": "dc030946f3316360135446e4fab70bba7e787e2b2e8b1e843d95cea763e5a502",
+        "version": "7fbbe3888900d7a840944cf6529ba0fed9860ef9e035c75040c0527e16ca5d0e",
+        "signature": "e78a6cab86620cebbe4d74749a75b15ffa322d54eacd21b952c1bf45ddf6fa48",
         "affectsGlobalScope": false
       },
       "../src/component/notification/onscreennotifications.tsx": {
-        "version": "f6a6ac90126c53119cf3471a3d5c089cd884dba93a7e01b34a16424c5612d020",
-        "signature": "8919a66aea809a39d47b0c0d0da4de8f5f80809d549bd1b1055ea99e6e574ca3",
+        "version": "149585f2add24e4e2eaa2d0d854f1620022878a6f3a4bbd7c38b510c4b05eca4",
+        "signature": "fab0df81f2ebea9ea584b97e1e81d708fc3cbe54fa2804ada26c015915f20b52",
         "affectsGlobalScope": false
       },
       "../src/component/route/baseroute.tsx": {
-        "version": "6eeaeb0c351b3c79d26d6b4e1289c31672224d142fbba034246dd5aa8f9a093b",
-        "signature": "63e6e35c7827569893a6eb74418135141932c4834c7112611564ed13b44085ce",
+        "version": "f210bf6293d83776f7752707de37b1c7ce51a3ce3f3a9c0d214b445453338774",
+        "signature": "82c82e0911414f7d48671e692ff5fb0acb375cf95fa877729a3f3bfde837f26c",
         "affectsGlobalScope": false
       },
       "../src/component/route/authroute.tsx": {
-        "version": "cf46f7b0b33832cca4c63300ef3149a762a4ff8fc559c8245b695822d49f40a7",
-        "signature": "77eb5757235ae3fcec44c910d9c3337463418154320ac33f9aa0abc17c99d6a0",
+        "version": "c546bf5891300375276e1142ccf08c264a6d92d91e2cd97f0b9d3de0e633d049",
+        "signature": "b9a80fa33f56630c252fae4d8c080a5fb543e6d546657fbcc7c3411f28dd3d87",
         "affectsGlobalScope": false
       },
       "../src/component/route/noauthroute.tsx": {
-        "version": "b5be14a63d192d860b601f8df2b76b5c43831c3a09b03411ba682af3f1a3967a",
-        "signature": "b1ceeaa3f58a497fa89359cf49b6fe0ce928e5bd0ee099ac9a5b08abcafc00f5",
+        "version": "81dc804f206817eca8cd37079c4a85650e8efa5999283288d55f606bf52e7b74",
+        "signature": "71768eced69e24215a3db8b20b656d1b872708aa2118490df408cee8063e30b6",
         "affectsGlobalScope": false
       },
       "../node_modules/@material-ui/icons/index.d.ts": {
@@ -3492,58 +3707,68 @@
         "affectsGlobalScope": false
       },
       "../src/component/search/searchcomponent.tsx": {
-        "version": "2942d7c5cc408ea67a9917d4b71644426f3fb29a181889c6b6d4409d69cf439d",
-        "signature": "858f1ea086964ce3e52c7fb78b7aca7f25abe3d47f15aa109d79b893d8666b88",
+        "version": "d926ede0c445efe480dfb6acb795ba4825d766ba39e1b4975ce699061ec87988",
+        "signature": "ab7057f34af439a27a07238bfadae9731df284ce2286436c1a194a1fb9d91490",
         "affectsGlobalScope": false
       },
       "../src/component/settings/languagesettings.tsx": {
-        "version": "a039cd7d6341f9951c1523a18e55b1833664fcdc28da370c573ba48444003aab",
-        "signature": "47e671405f5dbec2b0d09ae5529c509e68b599396ab852b823ac6240a6ad8b0b",
+        "version": "3be56a6fb97153fae79090e4efb22610cd6637c59ebce44870bc6eae368f8127",
+        "signature": "63b87d3c725f1038956ac4bac65901dad30691ae64d9fa3826fb3a842f32eb43",
         "affectsGlobalScope": false
       },
       "../src/component/settings/settingsbutton.tsx": {
-        "version": "21bf58605889bdb6668e1048e7d7f594b90be744991bd6fede5018b163e2e989",
-        "signature": "c4e7bdcfc32ca10721005b322462caeec5006044f1bc0f1c89eeb7ca298623ea",
+        "version": "123a868577caa4e1492783aa86967f72b27c969030d5835672d1cb74539f14f0",
+        "signature": "28895845538f68ec298eb4086dd8c087daa8c02d32936c2a2fbea889d1aff4eb",
         "affectsGlobalScope": false
       },
       "../src/store/selectors/core/language.ts": {
-        "version": "d3c05be8e64d1b7008bc5ce378310144990c55c363260ddcb99aaf89b39b64f0",
-        "signature": "e30b933214f7ca6d96a121728dcf26192cfca4f65f332901ea1dc428b512fe29",
+        "version": "2198b76b9f6b99ac5ca125a6ffb0e536f1a38160a91183ecd963703ac171a03b",
+        "signature": "99923e0f7835ba1527502ed69dd8522d6b530700f5c8500c34ac129876d93f33",
         "affectsGlobalScope": false
       },
       "../src/component/settings/settingscontainer.tsx": {
-        "version": "db446bb3c0bd6f31b6edbbf85870fe5b91447c6afe366f75360ff08e0246a853",
-        "signature": "72ebe0795c6d7b88035e63c9c15da706f1a232d98ba5fd635fc0c834b4653d1f",
+        "version": "d0abe1fa376e804f06dc98a5ba09ef8900ad4e3b1491baf8a81c193ddff43576",
+        "signature": "2f40aff3ac06a89d6973c95fb4896af9d7c01342b0f345c9c1563d8b003b090f",
         "affectsGlobalScope": false
       },
       "../src/component/settings/settingsdialog.tsx": {
-        "version": "16944495e042e7f57d2552f16010861763d6c6f86a5c6362a2539dce6f684b19",
-        "signature": "01e1909b264246e7712c7f5a6ee46818b5f4291bfba38e300759a991860d0700",
+        "version": "8f6d92bf0b2d3b14ac61f3dcba4e6e53c40e2c0bcfd2efc8113da93286f7abc3",
+        "signature": "3257430e6dc9aee59eded71064c4e20807bf62d71a9c31d34c0e1a051c7e4e52",
         "affectsGlobalScope": false
       },
       "../src/component/settings/settingsnavigationitem.tsx": {
-        "version": "5501166af833e2b5e1f340fa9a55c2e014e498116c9cc9f369fd991ba8c1e0b7",
-        "signature": "eee4194d3a98722c9db6be15faef38c7c49401e9a8dfc9fb5b5aa1c60b051069",
+        "version": "d4dc015e43097a24d23b494c5327a2f8e313e746d4f7ba9f3f92530844442553",
+        "signature": "24f1df12d75d6bdc9b0672779ea953416193693038f4cda5a909a2f0fb6250f7",
+        "affectsGlobalScope": false
+      },
+      "../src/store/selectors/websocketselectors.ts": {
+        "version": "997601ff38a54172c8c6621740a2326c9c47fea2b719bfc1321f56df1555bacd",
+        "signature": "b22930a1e82374bd8e53bc9619e74d9fef25e76fcd1e621d02fe504929b0ab9b",
+        "affectsGlobalScope": false
+      },
+      "../src/component/websocket/websocketstatus.tsx": {
+        "version": "13b17d942c495184080d0848653ec79be04e1235c6c38dfd853d4de2af8092cd",
+        "signature": "0dfd190bf00628cee3e20883ddeb00f4576377c27eb34c54a1332636b18c00a4",
         "affectsGlobalScope": false
       },
       "../src/setup/drawer.tsx": {
-        "version": "b185b8edd5ccdb9b226c36049f42066e1a414540db5d4127baf096d29eb136b3",
-        "signature": "a8fda5cf772c01cf57e001302998e7de3f26b15f595653c3454639cc99eef702",
+        "version": "df83e46efe19dfb051ea067a402fb2dd25200d0f89e4e81a5d082f0778441e7f",
+        "signature": "c0ae2b90041e7022f99623c297d6288d79d4a0575f3984b5ff1a5e1806798b42",
         "affectsGlobalScope": false
       },
       "../src/setup/header.tsx": {
-        "version": "aca1381409918263522a9271ae7809f64237d9b88bfff21b626c4f8bb669e124",
-        "signature": "c1d78a4727b30096846b2e4ef2b04f58d5a9b4b869b732fc0816d15f4b211177",
+        "version": "9ea2ae24b9edc63053b564a1a615c21ca1c5c831491cbc65366a78cd35cd54ba",
+        "signature": "a8ef29afee9f0abfd4a341163acabec019e5b36ff423992c54333093c08e7c51",
         "affectsGlobalScope": false
       },
       "../src/setup/routes.tsx": {
-        "version": "49e94914682eae51c5bb967a8e2eb25e022fffe36cfc4df638f8919a9d3816be",
-        "signature": "e1813a786015083763ccbe5debe038fdee3432f39916f79c2ce5ca5c8dbf37c9",
+        "version": "90306b2f6df148db0424f50663c4dc114133d849eb26b3ac069a08bde6c9a126",
+        "signature": "86af8b24cca036162205a2a5dea49dc3c04cfd404972daa4127a0b8efbace823",
         "affectsGlobalScope": false
       },
       "../src/setup/settings.tsx": {
-        "version": "9a8e294986c96a8b096c8742d7f5170ec2779531f1001492be14cb82415e3015",
-        "signature": "41469ab9c84d19178049a6f893c0a642710b3be2fa9c53bc7fcf0c0b42a67003",
+        "version": "67748da98858c73e59488240d66ec5ae56779811e77def44ce0008a0a266c169",
+        "signature": "85da62fb83bfd81c30d62ca33a9897b36169f82f34072a62735e330b0bb42649",
         "affectsGlobalScope": false
       },
       "../node_modules/redux-devtools-extension/index.d.ts": {
@@ -3552,13 +3777,13 @@
         "affectsGlobalScope": false
       },
       "../src/store/middleware.ts": {
-        "version": "c28c2d46159f2b6d5870857d55ec2fe8b2398f31c8f82d566113526584c0879a",
-        "signature": "6798b075a940aca2ae9d8707ecd2d3e3d37f6da3b2979b4cc30075a562bd0cf0",
+        "version": "cb9339b07e678f8135ebaf3411054a125f7fb55ae00ac2c92ab3d10eccedcff1",
+        "signature": "be06d58d8695b715267fc38cf87778cd00d90df3136c145265bb27440a254965",
         "affectsGlobalScope": false
       },
       "../src/store/index.ts": {
-        "version": "33d51270c6c1bffe15c688ca43468289bf2b643a18a3e6fae182d902b2d6e727",
-        "signature": "b780c43115ad5a008b068093f37ecd973021163259dbf7c677baea7170eb9b3e",
+        "version": "6cf8176991d8bd08384a768eb971034d71f940b9168104bc217e51b6bd5421b7",
+        "signature": "2813fe8e78e9b35c934339128d84f519aa8a74db1b4ee41e8edf18379db3c660",
         "affectsGlobalScope": false
       },
       "../node_modules/rxjs/internal/operators/audit.d.ts": {
@@ -4082,73 +4307,68 @@
         "affectsGlobalScope": false
       },
       "../src/store/epic/appepic.ts": {
-        "version": "45e2a9683766d6011353ef03e2d96de01d15d41ddf51bfe4f4bc74688550f9cf",
-        "signature": "e06cd7a5cd808dedf3c347bb3697c0e1bfbbe634c4375eb55973e5f68f3a867a",
+        "version": "29f7d69f90c89bd8c75043f5f69d13c640aa6ce42659cdd34acdc7d854171232",
+        "signature": "259b551e8d38052e2e60a51e6988f34cdab184069627a20da5fdbc9fc33562f4",
         "affectsGlobalScope": false
       },
       "../src/store/epic/configepic.ts": {
-        "version": "d9e6f00bdcd44e6dfc7a3cb20793de0bb2d680849c4745ab7913847e1486fe3d",
-        "signature": "0becd77a1c2ef319d7e605457e580bb4b7a0a2d9265b4eb2c0477ecfb0b61f4b",
+        "version": "1da3cd1b00328df968dcf5229a21141d499a32c9f869cc7ea48a00004f2266b6",
+        "signature": "7920fb29c4520eb8330f23af4d6eb49442bb062ab703cf18008e8ad1fe0c66df",
         "affectsGlobalScope": false
       },
       "../src/store/epic/localeepic.ts": {
-        "version": "5ff0bb8047c2a9c659082335c24d4c80b6e7fd27b92024d685db8bf50671774e",
-        "signature": "404026b659b183e6ee8fcf8d02b1f94b9a46e25ee5ad9bf4c908a2c9e2bae7f3",
+        "version": "8708d9011079216ea7630da4ccb7050350a07f26a1f0c5406ca719b603360bb7",
+        "signature": "788666a529371370b92988e20e61a3122a33a96610ca45ec8a54c963684a905f",
         "affectsGlobalScope": false
       },
       "../src/store/epic/loginepic.ts": {
-        "version": "6ad70c547444dea9f88001ca96a0abfd1561ecc1f6e70dc5a6cb6422a0f3ec84",
-        "signature": "f9eeaaaa2428d977507587a30db0a25c43af5b818ec809276827da6bdf34dd58",
+        "version": "102cce455b5eb9da38e68c2d7a548f4f7cd1c94bcbd77f51d3256b05c6bef924",
+        "signature": "9b8208d7f629f9920a50aa4ce0a8f30dfdc6366a8e36b8de203a52d586669959",
         "affectsGlobalScope": false
       },
       "../src/store/epic/notificationepic.ts": {
-        "version": "45cd6afead1093fc67ad1f40efc9085555be235d37bdd77aa2dc227ecd1c6eb1",
-        "signature": "0842d2e1ae1f925c9f65a813f037a4264ec9efe384fd747468650d59700e3840",
+        "version": "5c7c46093263bbb0c8e3eb9012565d9a9a8066222420d57e0542e0af4afaf8ad",
+        "signature": "1cb03dbd8dedcae55452547273d8e0e6ed7a3d79b1670e30ef2b38796364a774",
         "affectsGlobalScope": false
       },
       "../src/store/epic/sessionepic.ts": {
-        "version": "6b28343a4fb2666068c0aafa8d3e2f2587882a9157b6f14f6015e168c212ebdf",
-        "signature": "a45192a21672196ee7b6c1cc85bb6de3ee68aa40e921b58abae810007e7fcb0d",
+        "version": "e662fc039d4bd85e06119c4eccd18437d72f55cf7ba4090869cd22a06ffc8220",
+        "signature": "ad1ffd04b9d8cfb8d275b691ebe88eb3a36ad34de2e1fe52d3130f65f8f08db1",
         "affectsGlobalScope": false
       },
       "../src/store/epic/systemepic.ts": {
-        "version": "aaf8f9bf1adab9c6730006d838c39c03d8c47741ac3a27f57f1865bf0cbb97d8",
-        "signature": "c832cb1839b5901234340bc841b90edeaf2c5f077fad427d468083eab89e295a",
-        "affectsGlobalScope": false
-      },
-      "../src/store/selectors/websocketselectors.ts": {
-        "version": "7889c65a9c79e3eb304cd5b0ee1d8800a21ddf1b5ef15d132d17d80c6b39b507",
-        "signature": "f4d6a27f373479e9701dc5441d3d1549efb034f44db7703cf40efe91f7decee2",
+        "version": "56ab047a55a26ba7c431499f9238c2dae875fac37faeeaafd2f8ab31fb339b3a",
+        "signature": "544ec189de14fcc4ab502112e6f5de41cb78ffe4e8097632e31c75b71ad3ced6",
         "affectsGlobalScope": false
       },
       "../src/store/epic/websocketepic.ts": {
-        "version": "e4a6dc7f1e7e496b1b49ad9a79e3114a2e90ec16e8b5eece4dd1db14bfc4591b",
-        "signature": "9d81598ff1cab34ba4bdd9eb0cb61516c95a794d2fcba05fecc1aee7d881b98d",
+        "version": "f6f17004593ae6d28f4cb7890ec33146ace34e46e0ddd494aee460034136418d",
+        "signature": "eade1c2c4a7b847e62a8a924b5c01cf9a71d613e05585af54fdf3701b4d69f26",
         "affectsGlobalScope": false
       },
       "../src/store/epic/catcherror.ts": {
-        "version": "068618670b40682c0682632b366520d0abe1b9eee52996f3aeab1eb80c38ae91",
-        "signature": "6cd5756f423e1a32624c3e752636f088ed77c00806330e4e37e27a4da7a1d414",
+        "version": "c35441e08c41ea164ac4521e2b2fd76a923db11a9a6114ee1a650f81d3590c44",
+        "signature": "b227b7899ec52a13cef2e74caca38b131d89c22eec08174a94d563690b2581b4",
         "affectsGlobalScope": false
       },
       "../src/store/epic/languageepic/setinitiallanguageepic.ts": {
-        "version": "a42379b2983db33e51ab256cb45d0124a46d90f1fcb5f8c3e7e0736e2907aa57",
-        "signature": "a1c2014b2cb92be3064c4debb7b133b8510a4a4795d8a2409c4d7d81bced38fe",
+        "version": "0b2557adf09622c8c9704e0012331c553d78c4c437978231888f14baa1ed07da",
+        "signature": "8999c7e41289898fe2c2052d7c526f642045cf8c50d62acc3d69b5ea1b779f41",
         "affectsGlobalScope": false
       },
       "../src/store/epic/languageepic/setlanguageepic.ts": {
-        "version": "d9fe9b4a13f8d36b694060161baff2776855223c47d16f155e0aa6034394ba97",
-        "signature": "c1eb8c306e242bda3bab34cbf1ce7e12c788a13453fb747497308e0064775862",
+        "version": "8b7d39751ae6b9a3b4f4b590db7dc465a2f6654b03ff80072e4fa1a228e5458f",
+        "signature": "144ee7dc8233489bf70ab122ba7fcf48377a07bab71c5d73a6c17fe94da79cbb",
         "affectsGlobalScope": false
       },
       "../src/store/epic/languageepic/index.ts": {
-        "version": "5723f6b6bc395dc9a69deea665981900b9c5ed1477b95e6eb43e6cfee1858e9e",
-        "signature": "4b47c05f043f6890b3f6b5a5ac2b7f75e1a93d7773f4b803264c93a4f84b64e4",
+        "version": "afff93805f9c458380947d1750e35c7382c27015238e4d84f1494437f3483c3f",
+        "signature": "15fbefd9c9e4dd37b5be847496360f12371c0a5da9814042247fd67ad98499fd",
         "affectsGlobalScope": false
       },
       "../src/store/epic/index.ts": {
-        "version": "70ba84a598aef2713d1d2f9da14e7f02d77ebd8a17a7c9222069c29f58adac73",
-        "signature": "bd1f66a0a2d2a464b10fda1f418d9ee363fd2bb6c09d59c8bb0fa22adbaf59ec",
+        "version": "55c008da12e6d5d93893f3da8f5a583775bdee4e32fc121bd653ae00a4664732",
+        "signature": "0f10f91da7c0348b43a4b4512768a7266f327f3133b4bf47310c0d9877b336a1",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/anymatch/index.d.ts": {
@@ -4626,6 +4846,26 @@
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
+      "../node_modules/@date-io/core/iutils.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@date-io/moment/build/index.d.ts": [
+        "../node_modules/@date-io/moment/build/moment-utils.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@date-io/moment/build/moment-utils.d.ts": [
+        "../node_modules/@date-io/core/iutils.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/moment/moment.d.ts"
+      ],
+      "../node_modules/@date-io/moment/type/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/moment/moment.d.ts"
+      ],
       "../node_modules/@formatjs/ecma402-abstract/262.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
@@ -7246,6 +7486,274 @@
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
+      "../node_modules/@material-ui/pickers/_helpers/text-field-helper.d.ts": [
+        "../node_modules/@date-io/core/iutils.d.ts",
+        "../node_modules/@material-ui/pickers/constants/prop-types.d.ts",
+        "../node_modules/@material-ui/pickers/index.d.ts",
+        "../node_modules/@material-ui/pickers/typings/basepicker.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_helpers/utils.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/hooks/usekeyboardpickerstate.d.ts": [
+        "../node_modules/@material-ui/pickers/_helpers/utils.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/usepickerstate.d.ts",
+        "../node_modules/@material-ui/pickers/typings/basepicker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/hooks/usepickerstate.d.ts": [
+        "../node_modules/@material-ui/pickers/typings/basepicker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/hooks/usestaticstate.d.ts": [
+        "../node_modules/@material-ui/pickers/constants/prop-types.d.ts",
+        "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/hooks/useutils.d.ts": [
+        "../node_modules/@date-io/core/iutils.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/keyboarddateinput.d.ts": [
+        "../node_modules/@material-ui/core/iconbutton/index.d.ts",
+        "../node_modules/@material-ui/core/inputadornment/index.d.ts",
+        "../node_modules/@material-ui/core/textfield/index.d.ts",
+        "../node_modules/@material-ui/pickers/typings/extendmui.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/puredateinput.d.ts": [
+        "../node_modules/@material-ui/core/textfield/index.d.ts",
+        "../node_modules/@material-ui/pickers/typings/extendmui.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/withutils.d.ts": [
+        "../node_modules/@date-io/core/iutils.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/constants/clocktype.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/constants/prop-types.d.ts": [
+        "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts",
+        "../node_modules/@material-ui/pickers/timepicker/timepicker.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/prop-types/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts": [
+        "../node_modules/@material-ui/pickers/constants/prop-types.d.ts",
+        "../node_modules/@material-ui/pickers/picker/makepickerwithstate.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@material-ui/pickers/views/calendar/calendar.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/datepicker/index.d.ts": [
+        "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/datetimepicker/datetimepicker.d.ts": [
+        "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts",
+        "../node_modules/@material-ui/pickers/picker/makepickerwithstate.d.ts",
+        "../node_modules/@material-ui/pickers/timepicker/timepicker.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/datetimepicker/index.d.ts": [
+        "../node_modules/@material-ui/pickers/datetimepicker/datetimepicker.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/index.d.ts": [
+        "../node_modules/@material-ui/pickers/_helpers/text-field-helper.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/usekeyboardpickerstate.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/usepickerstate.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/usestaticstate.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/useutils.d.ts",
+        "../node_modules/@material-ui/pickers/datepicker/index.d.ts",
+        "../node_modules/@material-ui/pickers/datetimepicker/index.d.ts",
+        "../node_modules/@material-ui/pickers/muipickersutilsprovider.d.ts",
+        "../node_modules/@material-ui/pickers/picker/makepickerwithstate.d.ts",
+        "../node_modules/@material-ui/pickers/picker/picker.d.ts",
+        "../node_modules/@material-ui/pickers/timepicker/index.d.ts",
+        "../node_modules/@material-ui/pickers/views/calendar/calendar.d.ts",
+        "../node_modules/@material-ui/pickers/views/calendar/day.d.ts",
+        "../node_modules/@material-ui/pickers/views/clock/clock.d.ts",
+        "../node_modules/@material-ui/pickers/views/clock/clockview.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/muipickersutilsprovider.d.ts": [
+        "../node_modules/@date-io/core/iutils.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/picker/makepickerwithstate.d.ts": [
+        "../node_modules/@material-ui/pickers/_helpers/text-field-helper.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/usekeyboardpickerstate.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/usepickerstate.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/keyboarddateinput.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/puredateinput.d.ts",
+        "../node_modules/@material-ui/pickers/picker/picker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/basepicker.d.ts",
+        "../node_modules/@material-ui/pickers/wrappers/wrapper.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/picker/picker.d.ts": [
+        "../node_modules/@material-ui/core/styles/index.d.ts",
+        "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts",
+        "../node_modules/@material-ui/pickers/timepicker/timepicker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/basepicker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@material-ui/pickers/views/calendar/calendar.d.ts",
+        "../node_modules/@material-ui/pickers/views/clock/clockview.d.ts",
+        "../node_modules/@material-ui/pickers/views/month/monthview.d.ts",
+        "../node_modules/@material-ui/pickers/views/year/yearview.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/timepicker/index.d.ts": [
+        "../node_modules/@material-ui/pickers/timepicker/timepicker.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/timepicker/timepicker.d.ts": [
+        "../node_modules/@material-ui/pickers/picker/makepickerwithstate.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/typings/basepicker.d.ts": [
+        "../node_modules/@material-ui/pickers/constants/prop-types.d.ts",
+        "../node_modules/@material-ui/pickers/picker/picker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@material-ui/pickers/wrappers/wrapper.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/typings/date.d.ts": [
+        "../node_modules/@date-io/moment/type/index.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/typings/extendmui.d.ts": [
+        "../node_modules/@material-ui/pickers/_helpers/utils.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/calendar/calendar.d.ts": [
+        "../node_modules/@material-ui/core/iconbutton/index.d.ts",
+        "../node_modules/@material-ui/core/styles/index.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/withutils.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@material-ui/pickers/views/calendar/slidetransition.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/calendar/day.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/calendar/slidetransition.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/clock/clock.d.ts": [
+        "../node_modules/@material-ui/core/styles/index.d.ts",
+        "../node_modules/@material-ui/core/styles/withstyles.d.ts",
+        "../node_modules/@material-ui/pickers/constants/clocktype.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/clock/clockview.d.ts": [
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/month/monthview.d.ts": [
+        "../node_modules/@material-ui/pickers/constants/prop-types.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/year/yearview.d.ts": [
+        "../node_modules/@date-io/moment/type/index.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/wrappers/inlinewrapper.d.ts": [
+        "../node_modules/@material-ui/core/popover/index.d.ts",
+        "../node_modules/@material-ui/core/textfield/index.d.ts",
+        "../node_modules/@material-ui/pickers/wrappers/wrapper.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/wrappers/modalwrapper.d.ts": [
+        "../node_modules/@material-ui/core/dialog/index.d.ts",
+        "../node_modules/@material-ui/pickers/_helpers/utils.d.ts",
+        "../node_modules/@material-ui/pickers/wrappers/wrapper.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/wrappers/wrapper.d.ts": [
+        "../node_modules/@material-ui/pickers/_helpers/utils.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/keyboarddateinput.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/puredateinput.d.ts",
+        "../node_modules/@material-ui/pickers/wrappers/inlinewrapper.d.ts",
+        "../node_modules/@material-ui/pickers/wrappers/modalwrapper.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
       "../node_modules/@material-ui/styles/creategenerateclassname/creategenerateclassname.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
@@ -8015,6 +8523,22 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../node_modules/@types/styled-jsx/css.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@types/styled-jsx/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/css.d.ts",
+        "../node_modules/@types/styled-jsx/server.d.ts"
+      ],
+      "../node_modules/@types/styled-jsx/server.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
       "../node_modules/@types/tapable/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
@@ -8229,6 +8753,10 @@
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/csstype/index.d.ts",
         "../node_modules/indefinite-observable/dist/index.d.ts"
+      ],
+      "../node_modules/moment/moment.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
       ],
       "../node_modules/react-intl/index.d.ts": [
         "../node_modules/@formatjs/ecma402-abstract/index.d.ts",
@@ -9777,14 +10305,17 @@
         "../src/component/app/loader.tsx"
       ],
       "../src/component/app/hoc.tsx": [
+        "../node_modules/@date-io/moment/build/index.d.ts",
         "../node_modules/@material-ui/core/cssbaseline/index.d.ts",
         "../node_modules/@material-ui/core/styles/index.d.ts",
+        "../node_modules/@material-ui/pickers/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react-router-dom/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../node_modules/redux/index.d.ts",
+        "../src/component/websocket/websocketconnection.tsx",
         "../src/style/theme.tsx"
       ],
       "../src/component/app/initialized.tsx": [
@@ -9811,9 +10342,11 @@
         "../src/types/redux.ts"
       ],
       "../src/component/content/content.tsx": [
+        "../node_modules/@material-ui/core/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
+        "../src/component/notification/notificationdrawer.tsx",
         "../src/types/redux.ts"
       ],
       "../src/component/header/appheader.tsx": [
@@ -9960,10 +10493,7 @@
         "../src/types/redux.ts"
       ],
       "../src/component/notification/notificationcard/_notificationcard.tsx": [
-        "../node_modules/@material-ui/core/card/index.d.ts",
-        "../node_modules/@material-ui/core/cardactions/index.d.ts",
-        "../node_modules/@material-ui/core/cardcontent/index.d.ts",
-        "../node_modules/@material-ui/core/cardheader/index.d.ts",
+        "../node_modules/@material-ui/core/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
@@ -10068,8 +10598,6 @@
         "../src/types/notification.ts"
       ],
       "../src/component/notification/notificationdrawer.tsx": [
-        "../node_modules/@material-ui/core/cardheader/index.d.ts",
-        "../node_modules/@material-ui/core/drawer/index.d.ts",
         "../node_modules/@material-ui/core/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
@@ -10078,7 +10606,6 @@
         "../src/component/notification/notificationsfragment/index.tsx",
         "../src/component/notification/usenotificationdrawerclassnames.tsx",
         "../src/store/action/useactions.ts",
-        "../src/store/reducer/global.ts",
         "../src/types/redux.ts"
       ],
       "../src/component/notification/notificationdrawertoolbar/dismissallnotificationsbutton.tsx": [
@@ -10119,6 +10646,7 @@
         "../src/types/redux.ts"
       ],
       "../src/component/notification/notificationsfragment/index.tsx": [
+        "../node_modules/@material-ui/core/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
@@ -10200,13 +10728,14 @@
         "../src/types/redux.ts"
       ],
       "../src/component/settings/settingsbutton.tsx": [
-        "../node_modules/@material-ui/core/iconbutton/index.d.ts",
+        "../node_modules/@material-ui/core/index.d.ts",
+        "../node_modules/@material-ui/icons/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/index.ts",
-        "../src/store/reducer/global.ts"
+        "../src/store/action/useactions.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/redux.ts"
       ],
       "../src/component/settings/settingscontainer.tsx": [
         "../node_modules/@material-ui/core/button/index.d.ts",
@@ -10244,6 +10773,24 @@
         "../node_modules/@types/react/index.d.ts",
         "../src/component/navigation/navigationitem.tsx",
         "../src/store/action/useactions.ts"
+      ],
+      "../src/component/websocket/websocketconnection.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../src/api/ws/wsclient.ts",
+        "../src/store/action/useactions.ts",
+        "../src/store/action/websocketaction.ts",
+        "../src/store/reducer/core/websocketconnectionreducer.ts",
+        "../src/types/configuration.ts",
+        "../src/types/redux.ts"
+      ],
+      "../src/component/websocket/websocketstatus.tsx": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../src/store/selectors/websocketselectors.ts",
+        "../src/types/redux.ts"
       ],
       "../src/constant/notification.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -10800,6 +11347,26 @@
       ]
     },
     "exportedModulesMap": {
+      "../node_modules/@date-io/core/iutils.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@date-io/moment/build/index.d.ts": [
+        "../node_modules/@date-io/moment/build/moment-utils.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@date-io/moment/build/moment-utils.d.ts": [
+        "../node_modules/@date-io/core/iutils.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/moment/moment.d.ts"
+      ],
+      "../node_modules/@date-io/moment/type/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/moment/moment.d.ts"
+      ],
       "../node_modules/@formatjs/ecma402-abstract/262.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
@@ -13420,6 +13987,274 @@
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
+      "../node_modules/@material-ui/pickers/_helpers/text-field-helper.d.ts": [
+        "../node_modules/@date-io/core/iutils.d.ts",
+        "../node_modules/@material-ui/pickers/constants/prop-types.d.ts",
+        "../node_modules/@material-ui/pickers/index.d.ts",
+        "../node_modules/@material-ui/pickers/typings/basepicker.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_helpers/utils.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/hooks/usekeyboardpickerstate.d.ts": [
+        "../node_modules/@material-ui/pickers/_helpers/utils.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/usepickerstate.d.ts",
+        "../node_modules/@material-ui/pickers/typings/basepicker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/hooks/usepickerstate.d.ts": [
+        "../node_modules/@material-ui/pickers/typings/basepicker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/hooks/usestaticstate.d.ts": [
+        "../node_modules/@material-ui/pickers/constants/prop-types.d.ts",
+        "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/hooks/useutils.d.ts": [
+        "../node_modules/@date-io/core/iutils.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/keyboarddateinput.d.ts": [
+        "../node_modules/@material-ui/core/iconbutton/index.d.ts",
+        "../node_modules/@material-ui/core/inputadornment/index.d.ts",
+        "../node_modules/@material-ui/core/textfield/index.d.ts",
+        "../node_modules/@material-ui/pickers/typings/extendmui.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/puredateinput.d.ts": [
+        "../node_modules/@material-ui/core/textfield/index.d.ts",
+        "../node_modules/@material-ui/pickers/typings/extendmui.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/_shared/withutils.d.ts": [
+        "../node_modules/@date-io/core/iutils.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/constants/clocktype.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/constants/prop-types.d.ts": [
+        "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts",
+        "../node_modules/@material-ui/pickers/timepicker/timepicker.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/prop-types/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts": [
+        "../node_modules/@material-ui/pickers/constants/prop-types.d.ts",
+        "../node_modules/@material-ui/pickers/picker/makepickerwithstate.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@material-ui/pickers/views/calendar/calendar.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/datepicker/index.d.ts": [
+        "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/datetimepicker/datetimepicker.d.ts": [
+        "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts",
+        "../node_modules/@material-ui/pickers/picker/makepickerwithstate.d.ts",
+        "../node_modules/@material-ui/pickers/timepicker/timepicker.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/datetimepicker/index.d.ts": [
+        "../node_modules/@material-ui/pickers/datetimepicker/datetimepicker.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/index.d.ts": [
+        "../node_modules/@material-ui/pickers/_helpers/text-field-helper.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/usekeyboardpickerstate.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/usepickerstate.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/usestaticstate.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/useutils.d.ts",
+        "../node_modules/@material-ui/pickers/datepicker/index.d.ts",
+        "../node_modules/@material-ui/pickers/datetimepicker/index.d.ts",
+        "../node_modules/@material-ui/pickers/muipickersutilsprovider.d.ts",
+        "../node_modules/@material-ui/pickers/picker/makepickerwithstate.d.ts",
+        "../node_modules/@material-ui/pickers/picker/picker.d.ts",
+        "../node_modules/@material-ui/pickers/timepicker/index.d.ts",
+        "../node_modules/@material-ui/pickers/views/calendar/calendar.d.ts",
+        "../node_modules/@material-ui/pickers/views/calendar/day.d.ts",
+        "../node_modules/@material-ui/pickers/views/clock/clock.d.ts",
+        "../node_modules/@material-ui/pickers/views/clock/clockview.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/muipickersutilsprovider.d.ts": [
+        "../node_modules/@date-io/core/iutils.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/picker/makepickerwithstate.d.ts": [
+        "../node_modules/@material-ui/pickers/_helpers/text-field-helper.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/usekeyboardpickerstate.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/hooks/usepickerstate.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/keyboarddateinput.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/puredateinput.d.ts",
+        "../node_modules/@material-ui/pickers/picker/picker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/basepicker.d.ts",
+        "../node_modules/@material-ui/pickers/wrappers/wrapper.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/picker/picker.d.ts": [
+        "../node_modules/@material-ui/core/styles/index.d.ts",
+        "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts",
+        "../node_modules/@material-ui/pickers/timepicker/timepicker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/basepicker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@material-ui/pickers/views/calendar/calendar.d.ts",
+        "../node_modules/@material-ui/pickers/views/clock/clockview.d.ts",
+        "../node_modules/@material-ui/pickers/views/month/monthview.d.ts",
+        "../node_modules/@material-ui/pickers/views/year/yearview.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/timepicker/index.d.ts": [
+        "../node_modules/@material-ui/pickers/timepicker/timepicker.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/timepicker/timepicker.d.ts": [
+        "../node_modules/@material-ui/pickers/picker/makepickerwithstate.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/typings/basepicker.d.ts": [
+        "../node_modules/@material-ui/pickers/constants/prop-types.d.ts",
+        "../node_modules/@material-ui/pickers/picker/picker.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@material-ui/pickers/wrappers/wrapper.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/typings/date.d.ts": [
+        "../node_modules/@date-io/moment/type/index.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/typings/extendmui.d.ts": [
+        "../node_modules/@material-ui/pickers/_helpers/utils.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/calendar/calendar.d.ts": [
+        "../node_modules/@material-ui/core/iconbutton/index.d.ts",
+        "../node_modules/@material-ui/core/styles/index.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/withutils.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@material-ui/pickers/views/calendar/slidetransition.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/calendar/day.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/calendar/slidetransition.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/clock/clock.d.ts": [
+        "../node_modules/@material-ui/core/styles/index.d.ts",
+        "../node_modules/@material-ui/core/styles/withstyles.d.ts",
+        "../node_modules/@material-ui/pickers/constants/clocktype.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/clock/clockview.d.ts": [
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/month/monthview.d.ts": [
+        "../node_modules/@material-ui/pickers/constants/prop-types.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/views/year/yearview.d.ts": [
+        "../node_modules/@date-io/moment/type/index.d.ts",
+        "../node_modules/@material-ui/pickers/typings/date.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/wrappers/inlinewrapper.d.ts": [
+        "../node_modules/@material-ui/core/popover/index.d.ts",
+        "../node_modules/@material-ui/core/textfield/index.d.ts",
+        "../node_modules/@material-ui/pickers/wrappers/wrapper.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/wrappers/modalwrapper.d.ts": [
+        "../node_modules/@material-ui/core/dialog/index.d.ts",
+        "../node_modules/@material-ui/pickers/_helpers/utils.d.ts",
+        "../node_modules/@material-ui/pickers/wrappers/wrapper.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../node_modules/@material-ui/pickers/wrappers/wrapper.d.ts": [
+        "../node_modules/@material-ui/pickers/_helpers/utils.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/keyboarddateinput.d.ts",
+        "../node_modules/@material-ui/pickers/_shared/puredateinput.d.ts",
+        "../node_modules/@material-ui/pickers/wrappers/inlinewrapper.d.ts",
+        "../node_modules/@material-ui/pickers/wrappers/modalwrapper.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
       "../node_modules/@material-ui/styles/creategenerateclassname/creategenerateclassname.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
@@ -14189,6 +15024,22 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../node_modules/@types/styled-jsx/css.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../node_modules/@types/styled-jsx/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/styled-jsx/css.d.ts",
+        "../node_modules/@types/styled-jsx/server.d.ts"
+      ],
+      "../node_modules/@types/styled-jsx/server.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
       "../node_modules/@types/tapable/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
@@ -14403,6 +15254,10 @@
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/csstype/index.d.ts",
         "../node_modules/indefinite-observable/dist/index.d.ts"
+      ],
+      "../node_modules/moment/moment.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
       ],
       "../node_modules/react-intl/index.d.ts": [
         "../node_modules/@formatjs/ecma402-abstract/index.d.ts",
@@ -16078,9 +16933,7 @@
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/settings/settingsbutton.tsx": [
-        "../node_modules/@types/react-redux/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../src/store/action/index.ts"
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../src/component/settings/settingsdialog.tsx": [
         "../node_modules/@types/react-redux/index.d.ts",
@@ -16088,6 +16941,15 @@
         "../src/store/action/index.ts"
       ],
       "../src/component/settings/settingsnavigationitem.tsx": [
+        "../node_modules/@types/react/index.d.ts"
+      ],
+      "../src/component/websocket/websocketconnection.tsx": [
+        "../node_modules/@types/react/index.d.ts",
+        "../src/store/action/websocketaction.ts",
+        "../src/store/reducer/core/websocketconnectionreducer.ts",
+        "../src/types/configuration.ts"
+      ],
+      "../src/component/websocket/websocketstatus.tsx": [
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/store/action/appaction.ts": [
@@ -16476,6 +17338,10 @@
       ]
     },
     "semanticDiagnosticsPerFile": [
+      "../node_modules/@date-io/core/iutils.d.ts",
+      "../node_modules/@date-io/moment/build/index.d.ts",
+      "../node_modules/@date-io/moment/build/moment-utils.d.ts",
+      "../node_modules/@date-io/moment/type/index.d.ts",
       "../node_modules/@formatjs/ecma402-abstract/262.d.ts",
       "../node_modules/@formatjs/ecma402-abstract/canonicalizelocalelist.d.ts",
       "../node_modules/@formatjs/ecma402-abstract/canonicalizetimezonename.d.ts",
@@ -16869,6 +17735,40 @@
       "../node_modules/@material-ui/lab/autocomplete/index.d.ts",
       "../node_modules/@material-ui/lab/useautocomplete/index.d.ts",
       "../node_modules/@material-ui/lab/useautocomplete/useautocomplete.d.ts",
+      "../node_modules/@material-ui/pickers/_helpers/text-field-helper.d.ts",
+      "../node_modules/@material-ui/pickers/_helpers/utils.d.ts",
+      "../node_modules/@material-ui/pickers/_shared/hooks/usekeyboardpickerstate.d.ts",
+      "../node_modules/@material-ui/pickers/_shared/hooks/usepickerstate.d.ts",
+      "../node_modules/@material-ui/pickers/_shared/hooks/usestaticstate.d.ts",
+      "../node_modules/@material-ui/pickers/_shared/hooks/useutils.d.ts",
+      "../node_modules/@material-ui/pickers/_shared/keyboarddateinput.d.ts",
+      "../node_modules/@material-ui/pickers/_shared/puredateinput.d.ts",
+      "../node_modules/@material-ui/pickers/_shared/withutils.d.ts",
+      "../node_modules/@material-ui/pickers/constants/clocktype.d.ts",
+      "../node_modules/@material-ui/pickers/constants/prop-types.d.ts",
+      "../node_modules/@material-ui/pickers/datepicker/datepicker.d.ts",
+      "../node_modules/@material-ui/pickers/datepicker/index.d.ts",
+      "../node_modules/@material-ui/pickers/datetimepicker/datetimepicker.d.ts",
+      "../node_modules/@material-ui/pickers/datetimepicker/index.d.ts",
+      "../node_modules/@material-ui/pickers/index.d.ts",
+      "../node_modules/@material-ui/pickers/muipickersutilsprovider.d.ts",
+      "../node_modules/@material-ui/pickers/picker/makepickerwithstate.d.ts",
+      "../node_modules/@material-ui/pickers/picker/picker.d.ts",
+      "../node_modules/@material-ui/pickers/timepicker/index.d.ts",
+      "../node_modules/@material-ui/pickers/timepicker/timepicker.d.ts",
+      "../node_modules/@material-ui/pickers/typings/basepicker.d.ts",
+      "../node_modules/@material-ui/pickers/typings/date.d.ts",
+      "../node_modules/@material-ui/pickers/typings/extendmui.d.ts",
+      "../node_modules/@material-ui/pickers/views/calendar/calendar.d.ts",
+      "../node_modules/@material-ui/pickers/views/calendar/day.d.ts",
+      "../node_modules/@material-ui/pickers/views/calendar/slidetransition.d.ts",
+      "../node_modules/@material-ui/pickers/views/clock/clock.d.ts",
+      "../node_modules/@material-ui/pickers/views/clock/clockview.d.ts",
+      "../node_modules/@material-ui/pickers/views/month/monthview.d.ts",
+      "../node_modules/@material-ui/pickers/views/year/yearview.d.ts",
+      "../node_modules/@material-ui/pickers/wrappers/inlinewrapper.d.ts",
+      "../node_modules/@material-ui/pickers/wrappers/modalwrapper.d.ts",
+      "../node_modules/@material-ui/pickers/wrappers/wrapper.d.ts",
       "../node_modules/@material-ui/styles/creategenerateclassname/creategenerateclassname.d.ts",
       "../node_modules/@material-ui/styles/creategenerateclassname/index.d.ts",
       "../node_modules/@material-ui/styles/createstyles/createstyles.d.ts",
@@ -16983,6 +17883,9 @@
       "../node_modules/@types/socket.io-parser/index.d.ts",
       "../node_modules/@types/socket.io/index.d.ts",
       "../node_modules/@types/source-list-map/index.d.ts",
+      "../node_modules/@types/styled-jsx/css.d.ts",
+      "../node_modules/@types/styled-jsx/index.d.ts",
+      "../node_modules/@types/styled-jsx/server.d.ts",
       "../node_modules/@types/tapable/index.d.ts",
       "../node_modules/@types/uglify-js/index.d.ts",
       "../node_modules/@types/webpack-dev-server/index.d.ts",
@@ -17018,6 +17921,7 @@
       "../node_modules/intl-messageformat/src/error.d.ts",
       "../node_modules/intl-messageformat/src/formatters.d.ts",
       "../node_modules/jss/src/index.d.ts",
+      "../node_modules/moment/moment.d.ts",
       "../node_modules/react-intl/index.d.ts",
       "../node_modules/react-intl/src/components/createformattedcomponent.d.ts",
       "../node_modules/react-intl/src/components/datetimerange.d.ts",
@@ -17316,6 +18220,8 @@
       "../src/component/settings/settingscontainer.tsx",
       "../src/component/settings/settingsdialog.tsx",
       "../src/component/settings/settingsnavigationitem.tsx",
+      "../src/component/websocket/websocketconnection.tsx",
+      "../src/component/websocket/websocketstatus.tsx",
       "../src/constant/notification.ts",
       "../src/constant/toast.ts",
       "../src/index.tsx",

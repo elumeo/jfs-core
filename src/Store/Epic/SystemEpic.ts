@@ -21,6 +21,8 @@ const getRegionEpic: Epic = action$ =>
             addNotificationAction({ message: 'ASDADASD1', isError: true }),
             addNotificationAction({  message: 'ASDADASD2', isError: true }),
             addNotificationAction({  message: 'ASDADASD3 ', isError: true }),
+            addNotificationAction({  message: 'ASDADASD4 ', isError: true }),
+            addNotificationAction({  message: 'ASDADASD5 ', isError: true }),
             )
         )
       )

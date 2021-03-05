@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 // import Toolbar from '@material-ui/core/Toolbars/Toolbar';
-import './AppToolbar.scss';
+import './AppToolbar.scss'; 
 import { useIntl } from 'react-intl';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar, { ToolbarClassKey } from '@material-ui/core/Toolbar';

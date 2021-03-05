@@ -10,6 +10,9 @@ import { parallelAsyncLoopExampleRequestAction } from 'Action/parallelAsyncLoopE
 import JscWebSocketExampleButton from 'Component/JscWebSocketPingButton';
 import JscWebSocketCurrentGameButton from 'Component/JscWebSocketCurrentGameButton';
 import JfsWebSocketExampleButton from 'Component/JfsWebSocketPingButton';
+// import { useSnackbar } from 'notistack';
+import  * as  MUIPickers from '@material-ui/pickers'
+
 
 export interface Props {
   parallelAsyncLoopExampleRequestAction?: typeof parallelAsyncLoopExampleRequestAction;
@@ -20,6 +23,8 @@ export interface Props {
 const Boilerplate: React.FC<Props> = () => {
   const intl = useIntl();
   const { formatMessage } = intl;
+  // const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const [ date, setDate] = React.useState(new Date())
 
   React.useEffect(
     () => {
@@ -55,10 +60,10 @@ const Boilerplate: React.FC<Props> = () => {
           <JfsWebSocketExampleButton/>
           <JscWebSocketCurrentGameButton/>
           <JscWebSocketExampleButton/>
-          {/*<MUI.DatePicker value={new Date}/>*/}
+          <MUIPickers.DatePicker value={date} onChange={setDate}/>
         </MUI.CardActions>
       </MUI.Card>
-    </MUI.Grid>
+    </MUI.Grid> 
   );
 }
 

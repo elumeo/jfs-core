@@ -1,8 +1,7 @@
-/// <reference types="react" />
 import { INotificationContent } from '../../../Types/Notification';
 declare const getContent: (notification: INotificationContent) => {
     words: string;
-    content: JSX.Element;
+    content: any;
     timeToRead: number;
 };
 export default getContent;

@@ -1,6 +1,4 @@
 import React from 'react';
-// import ErrorContent, { errorText } from '../../Snackbar/ErrorContent';
-import CardText from '@material-ui/core/CardContent';
 // import { timeToRead as _timeToRead } from '../../Snackbar/TimeToRead';
 import { useIntl } from 'react-intl';
 import timeToRead from './timeToRead';
@@ -36,7 +34,11 @@ const getContent = (notification) => {
     let words = getPlainText(notification);
     return {
         words,
-        content: (React.createElement(CardText, { className: 'md-text--inherit' }, content)),
+        content: 
+        // <CardText className='md-text--inherit'>
+        content
+        // </CardText>
+        ,
         timeToRead: timeToRead(notification)
     };
 };

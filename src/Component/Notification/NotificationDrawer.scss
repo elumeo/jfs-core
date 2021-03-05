@@ -1,6 +1,14 @@
 // // @use '~react-md/src/scss/react-md';
-// @use '../../Style/layout';
+@use '../../Style/layout';
 
+.notification-drawer {
+    width : layout.$notification-drawer-width;
+    &__content{
+        display: flex;
+        flex-direction: column;
+        gap : 8px;
+    }
+}
 // @mixin caret($direction, $color, $size: 8px) {
 //   $noops: null;
 //   $position: null;

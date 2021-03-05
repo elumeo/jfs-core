@@ -17,11 +17,9 @@ const Theme = () => {
             contrastText: '#fff',
           },
           text :{
-            
-          }
+          },
+
         },
-        
-    
     })
 } 
 export default Theme

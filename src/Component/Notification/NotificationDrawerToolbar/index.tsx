@@ -5,17 +5,17 @@ import HideNotificationDrawerButton from './HideNotificationDrawerButton';
 import { CardActions, CardHeader } from '@material-ui/core';
 
 const NotificationDrawerToolbar: React.FC = () =>  (
-  <CardHeader 
-    title={
+  // <CardHeader 
+  //   title={
       <>
-        <HideNotificationDrawerButton />
         <CardActions>
+        <HideNotificationDrawerButton />
           <SplitViewButton /> 
           <DismissAllNotificationsButton />
         </CardActions>
       </>
-    } 
-  />
+  //   } 
+  // />
 )
 
 export default NotificationDrawerToolbar;

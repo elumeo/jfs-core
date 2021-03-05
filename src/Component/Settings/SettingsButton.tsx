@@ -1,32 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import Button from '@material-ui/core/IconButton';
-import * as Action from 'Store/Action';
+import {  useSelector } from 'Types/Redux';
+import * as MUI from '@material-ui/core';
+import * as MUIIcon from '@material-ui/icons';
+// import * as Action from 'Store/Action';
 import * as Global from 'Store/Reducer/Global';
+import useActions from 'Store/Action/useActions';
 
-export type ISettingsButtonProps = Partial<typeof Action> & {
-  settingsOpen?: boolean;
-};
 
-const SettingsButton: React.FC<ISettingsButtonProps> = ({
-  settingsOpen,
-  openSettings,
-  closeSettings
-}) => (
-  <Button
-    onClick={() => settingsOpen ? closeSettings() : openSettings()}>
-    settings
-  </Button>
-);
 
-const mapStateToProps = (
-  state: Global.State,
-  ownProps: ISettingsButtonProps
-): ISettingsButtonProps => ({
-  ...ownProps,
-  settingsOpen: state.Core.Settings.settingsOpen
-});
+const SettingsButton: React.FC = () => {
+  console.log('he')
+  const Action = useActions();
+  const settingsOpen = useSelector((state)  => state.Core.Settings.settingsOpen)
+  return  <MUI.IconButton
+    color='inherit'
+    onClick={() => settingsOpen ? Action.closeSettings() : Action.openSettings()}>
+    <MUIIcon.Settings />
+  </MUI.IconButton>
+}; 
 
-const enhance = connect(mapStateToProps, Action);
 
-export default enhance(SettingsButton);
+export default SettingsButton;

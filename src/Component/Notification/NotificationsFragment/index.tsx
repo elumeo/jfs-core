@@ -4,6 +4,7 @@ import NotificationCard from 'Component/Notification/NotificationCard';
 import { useSelector } from 'Types/Redux';
 import { INotification } from 'Types/Notification';
 import Global from 'Store/Reducer/Global';
+import * as MUI from '@material-ui/core'
 
 const NotificationsFragment: React.FC = () => {
   const notifications = useSelector<INotification[]>(
@@ -16,9 +17,13 @@ const NotificationsFragment: React.FC = () => {
         <>
           {notifications.map(
             notification => (
+              <MUI.ListItem key={notification.id}>
+
               <NotificationCard
-                config={{ ...notification, hideButtonVisible: false }}
-                key={notification.id}/>
+              key={`card-${notification.id}`}
+                config={{ ...notification, hideButtonVisible: true }}
+                />
+                </MUI.ListItem>
             )
           )}
         </>

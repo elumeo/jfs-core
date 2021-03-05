@@ -6,6 +6,6 @@ import JSCApi from '../../API/JSC';
 import { getRegionFailed, regionLoaded } from '../Action/SystemAction';
 import { configLoadedAction } from '../Action/ConfigAction';
 import { addNotificationAction } from '../Action';
-const getRegionEpic = action$ => action$.pipe(filter(isActionOf(configLoadedAction)), switchMap(() => from(JSCApi.SystemClient.getRegion()).pipe(switchMap((response) => of(regionLoaded(response && response.data || null), addNotificationAction({ message: 'ASDADASD1', isError: true }), addNotificationAction({ message: 'ASDADASD2', isError: true }))))), catchError(() => of(getRegionFailed())));
+const getRegionEpic = action$ => action$.pipe(filter(isActionOf(configLoadedAction)), switchMap(() => from(JSCApi.SystemClient.getRegion()).pipe(switchMap((response) => of(regionLoaded(response && response.data || null), addNotificationAction({ message: 'ASDADASD1', isError: true }), addNotificationAction({ message: 'ASDADASD2', isError: true }), addNotificationAction({ message: 'ASDADASD3 ', isError: true }), addNotificationAction({ message: 'ASDADASD4 ', isError: true }), addNotificationAction({ message: 'ASDADASD5 ', isError: true }))))), catchError(() => of(getRegionFailed())));
 export default combineEpics(getRegionEpic);
 //# sourceMappingURL=SystemEpic.js.map

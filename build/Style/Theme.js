@@ -14,7 +14,7 @@ const Theme = () => {
                 //   dark: '#ba000d',
                 contrastText: '#fff',
             },
-            text: {}
+            text: {},
         },
     });
 };

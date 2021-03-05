@@ -1,20 +1,35 @@
 import React from 'react';
-import Drawer from '@material-ui/core/Drawer';
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import './NotificationDrawer.scss';
 import { useSelector } from 'Types/Redux';
 import useActions from 'Action/useActions';
 import NotificationsFragment from './NotificationsFragment';
 import NotificationDrawerToolbar from './NotificationDrawerToolbar/index';
-import CardHeader from '@material-ui/core/CardHeader'
 import useClassNames from './useNotificationDrawerClassNames';
-import { CardContent } from '@material-ui/core';
-import Global from 'Store/Reducer/Global';
+import * as MUI from '@material-ui/core';
+import './NotificationDrawer.scss';
 
+ 
+
+export const NavigationDrawerStyles = {
+  drawer : {
+    maxWidth:  '300px'
+  },
+  header:{
+    height: '64px'
+  },
+  container: {
+    maxWidth:  '300px',
+    overflow: 'auto scroll',
+    maxHeight: `calc(100% - 64px)` 
+  }
+}
 const NotificationDrawer: React.FC = () => {
   const { pinnedClassName, overlayClassName } = useClassNames();
   const notificationDrawerVisible = useSelector<boolean>(state => (
     state.Core.Notification.notificationDrawerVisible
+  ));
+  
+  const notificationDrawerPinned = useSelector<boolean>(state => (
+    state.Core.Notification.notificationDrawerPinned
   ));
   const {
     toggleNotificationDrawerAction,
@@ -22,28 +37,36 @@ const NotificationDrawer: React.FC = () => {
   } = useActions();
 
   return (
-    <Drawer
+    <MUI.Drawer
       className={`notification-drawer ${pinnedClassName}`}
       open={notificationDrawerVisible}
       onClose={toggleNotificationDrawerAction}
       anchor='right'
+      variant={notificationDrawerPinned ? 'persistent' : 'temporary'}
       // header={<NotificationDrawerToolbar/>}
       onKeyDown={(e: React.KeyboardEvent) => (
         e.keyCode == 13 && hideNotificationDrawerAction()
       )}
+      style={NavigationDrawerStyles.drawer} 
       // type={Drawer.DrawerTypes.TEMPORARY}
       // overlayClassName={overlayClassName}
       // clickableDesktopOverlay
       // overlay
       >
-        
-        <NotificationDrawerToolbar/>
-      
-        <CardContent className='notification-drawer__content'>
+        <MUI.Card elevation={0} >
+          {/* <MUI.CardHeader title={ */} 
+          <NotificationDrawerToolbar/>
+          {/*  } /> */}
 
-        <NotificationsFragment/>
+          
+          {/* </MUI.CardHeader> */}
 
-        </CardContent>
+          {/* <MUI.Container  */}
+          <MUI.List style={NavigationDrawerStyles.container}>
+            <NotificationsFragment/>
+          </MUI.List>
+
+        {/* </MUI.Container> */}
       {/* <ReactCSSTransitionGroup
         transitionName={{
           enter: 'fadein-enter',
@@ -52,7 +75,8 @@ const NotificationDrawer: React.FC = () => {
         transitionEnterTimeout={300}
         transitionLeaveTimeout={200}> */}
       {/* </ReactCSSTransitionGroup> */}
-    </Drawer>
+      </MUI.Card>
+    </MUI.Drawer>
   );
 }
 

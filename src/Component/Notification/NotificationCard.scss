@@ -1,5 +1,5 @@
 // // @use '~react-md/src/scss/react-md';
-// @use '../../Style/layout';
+@use '../../Style/layout';
 // @use '../../Style/colors';
 
 .badges__notifications {
@@ -8,7 +8,7 @@
         right:0;
 //     transition-property: transform, max-height, opacity;
 //     transition-duration: 300ms;
-        width:  300px;
+        width:  layout.$notification-drawer-width;
   } }
 //     &.fadein-enter {
 //       max-height: 0;

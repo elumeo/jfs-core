@@ -59,11 +59,11 @@ const getContent = (notification: INotificationContent) => {
   
   return {
     words,
-    content: (
-      <CardText className='md-text--inherit'>
-        {content}
-      </CardText>
-    ),
+    content: 
+      // <CardText className='md-text--inherit'>
+        content
+      // </CardText>
+    ,
     timeToRead: timeToRead(notification)
   };
 };

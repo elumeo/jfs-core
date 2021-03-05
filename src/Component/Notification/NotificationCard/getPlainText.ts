@@ -8,7 +8,7 @@ const getPlainText = (notification: INotificationContent): string =>{
   if (message) {
     words = (
       typeof message == 'object'
-        ? message.join(' ')
+        ? message?.join(' ')
         : message
     )
   }
@@ -17,7 +17,7 @@ const getPlainText = (notification: INotificationContent): string =>{
       ? (
         translationId
           // .map(tId => formatMessage({ id: tId }, translationValues))
-          .join(' ')
+          ?.join(' ')
       )
       :  translationId//formatMessage({ id: translationId }, translationValues);
   }
@@ -26,7 +26,7 @@ const getPlainText = (notification: INotificationContent): string =>{
     ? (
       error
         // .map(tId => formatMessage({ id: tId }, translationValues))
-        .join(' ')
+        ?.join(' ')
     )
     :  error
     // const { body, head } = errorText(error);

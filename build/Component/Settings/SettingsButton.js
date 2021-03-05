@@ -1,9 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import Button from '@material-ui/core/IconButton';
-import * as Action from '../../Store/Action';
-const SettingsButton = ({ settingsOpen, openSettings, closeSettings }) => (React.createElement(Button, { onClick: () => settingsOpen ? closeSettings() : openSettings() }, "settings"));
-const mapStateToProps = (state, ownProps) => (Object.assign(Object.assign({}, ownProps), { settingsOpen: state.Core.Settings.settingsOpen }));
-const enhance = connect(mapStateToProps, Action);
-export default enhance(SettingsButton);
+import { useSelector } from '../../Types/Redux';
+import * as MUI from '@material-ui/core';
+import * as MUIIcon from '@material-ui/icons';
+import useActions from '../../Store/Action/useActions';
+const SettingsButton = () => {
+    console.log('he');
+    const Action = useActions();
+    const settingsOpen = useSelector((state) => state.Core.Settings.settingsOpen);
+    return React.createElement(MUI.IconButton, { color: 'inherit', onClick: () => settingsOpen ? Action.closeSettings() : Action.openSettings() },
+        React.createElement(MUIIcon.Settings, null));
+};
+export default SettingsButton;
 //# sourceMappingURL=SettingsButton.js.map

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Card from '@material-ui/core/Card';
 import Icon from './Icon';
 import Timestamp from './Timestamp';
 import Actions from './Actions';
@@ -7,10 +6,7 @@ import useClassName from './useClassName';
 import getContent from './getContent';
 import { INotification } from 'Types/Notification';
 import { INotificationCardProps } from '.';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-
+import * as MUI from '@material-ui/core';
 export type Props = {
   notification: INotification;
   topLevelRef: React.Component<INotificationCardProps>;
@@ -31,21 +27,19 @@ const _NotificationCard: React.FC<Props> = ({
     []
   );
   return (
-    <Card
+    <MUI.Card
       onClick={() => onClick && onClick(notification, ref)}
       className={useClassName(notification)}
       >
-        <CardHeader
+        <MUI.CardHeader
           avatar={<Icon {...notification}/>} 
           subheader={<Timestamp timestamp={notification.timestamp}/>}
-          action={<CardActions>
-          <Actions topLevelRef={ref} notification={notification}/>
-          </CardActions>}
-          />
-          <CardContent>
+          action={<Actions topLevelRef={ref} notification={notification}/>}
+        />
+          <MUI.CardContent>
           {content} 
 
-          </CardContent>
+          </MUI.CardContent>
           
       {/* <div className='notification-grid'>
         <div className='notification-grid-content'>
@@ -57,7 +51,7 @@ const _NotificationCard: React.FC<Props> = ({
         </div>
         <Actions topLevelRef={ref} notification={notification}/>
       </div> */}
-    </Card>
+    </MUI.Card>
   );
 }
 

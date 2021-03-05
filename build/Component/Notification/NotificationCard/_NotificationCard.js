@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
-import Card from '@material-ui/core/Card';
 import Icon from './Icon';
 import Timestamp from './Timestamp';
 import Actions from './Actions';
 import useClassName from './useClassName';
 import getContent from './getContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+import * as MUI from '@material-ui/core';
 const _NotificationCard = ({ notification, topLevelRef: ref }) => {
     const { onMount, onClick } = notification;
     const { content } = getContent(notification);
@@ -16,10 +13,9 @@ const _NotificationCard = ({ notification, topLevelRef: ref }) => {
             onMount(notification, ref);
         }
     }, []);
-    return (React.createElement(Card, { onClick: () => onClick && onClick(notification, ref), className: useClassName(notification) },
-        React.createElement(CardHeader, { avatar: React.createElement(Icon, Object.assign({}, notification)), subheader: React.createElement(Timestamp, { timestamp: notification.timestamp }), action: React.createElement(CardActions, null,
-                React.createElement(Actions, { topLevelRef: ref, notification: notification })) }),
-        React.createElement(CardContent, null, content)));
+    return (React.createElement(MUI.Card, { onClick: () => onClick && onClick(notification, ref), className: useClassName(notification) },
+        React.createElement(MUI.CardHeader, { avatar: React.createElement(Icon, Object.assign({}, notification)), subheader: React.createElement(Timestamp, { timestamp: notification.timestamp }), action: React.createElement(Actions, { topLevelRef: ref, notification: notification }) }),
+        React.createElement(MUI.CardContent, null, content)));
 };
 export default _NotificationCard;
 //# sourceMappingURL=_NotificationCard.js.map
