@@ -89,7 +89,7 @@ abstract class Project {
   public scriptPath = (core: Core, name: string) => join(
     relative(this.path, core.path),
     'scripts', 'build', 'Setup', name
-  ).replace(sep, '/');
+  ).replace(/\\/g, '/');
 
   public addPostinstallScript = (core: Core) => new Promise(resolve => {
     this.nodePackage.json(data => {

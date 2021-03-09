@@ -1,3 +1,7 @@
+## [9.10.37] 2021-03-09
+## Fixed
+- Fixed script path generation for package.json on Windows
+
 ## [9.10.36] 2021-03-03
 ## Added
 - option to dispatch actions from Notifications
