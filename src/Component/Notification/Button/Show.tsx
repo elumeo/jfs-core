@@ -29,8 +29,8 @@ const ShowButton: React.FC<Props> = ({ keepOpenOnOutsideClick }) => {
     [open]
   );
 
-  return (
-    <>
+  return (<>
+    
       <MUI.IconButton
         color='inherit'
         ref={buttonRef}
@@ -39,9 +39,11 @@ const ShowButton: React.FC<Props> = ({ keepOpenOnOutsideClick }) => {
           open
             ? null
             : buttonRef.current
-        )}>
+        )}><MUI.Badge badgeContent={all.length} color='secondary'>
         <ICON.Notifications/>
+    </MUI.Badge>
       </MUI.IconButton>
+
       {createPortal(
         keepOpenOnOutsideClick
           ? (

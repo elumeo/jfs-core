@@ -9,6 +9,7 @@ import LanguageEpic from './LanguageEpic';
 import { combineEpics } from 'redux-observable';
 import { Epic } from 'Types/Redux';
 import * as Rx from 'rxjs/operators';
+import ErrorNotificationEpic from './ErrorNotificationEpic';
 
 const Core = combineEpics(
   AppEpic,
@@ -18,7 +19,8 @@ const Core = combineEpics(
   ConfigurationEpic,
   // NotificationEpic,
   WebSocketEpic,
-  LanguageEpic
+  LanguageEpic,
+  ErrorNotificationEpic
 );
 
 // const handleErrors = (combined: Epic): Epic => (

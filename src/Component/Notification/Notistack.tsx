@@ -12,19 +12,21 @@ const Notistack: React.FC = () => {
   React.useEffect(
     () => {
       const missing = _.differenceBy(all, shown, 'id');
-      console.log(missing);
-      missing.forEach(notification => snackbar.enqueueSnackbar(
-        notification.content,
+      missing.forEach(({title,subtitle,content, id,action, variant}) => {
+        const existing  =  [title, subtitle, content].filter(data => !!data).join(' - ');
+        return snackbar.enqueueSnackbar(
+          existing,
         {
-          key: notification.id,
-          variant: notification.error ? 'error' : 'default',
+          key: id,
+          variant: variant,
           ...(
-            notification.action
-              ? { action: notification?.action(snackbar, notification.id) }
+            action
+              ? { action: action(snackbar, id) }
               : {}
           )
         }
-      ));
+      )}
+      );
       setShown([...shown, ...missing]);
     },
     [all]

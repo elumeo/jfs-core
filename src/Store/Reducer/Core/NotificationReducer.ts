@@ -18,6 +18,16 @@ const Notification = TA.createReducer<State, ActionType>(initialState)
       action.payload,
       ...state.history
     ]
-  }));
+  }))
+  .handleAction(Action.removeNotification, (state, {payload: id}) => ({
+    ...state,
+    history: state.history.filter(notification => notification.id !== id)
+  }))
+
+  .handleAction(Action.removeAllNotifications, (state) => ({
+    ...state,
+    history: []
+  }))
+  ;
 
 export default Notification;

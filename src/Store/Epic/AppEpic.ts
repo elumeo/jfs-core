@@ -1,5 +1,5 @@
 import { of } from 'rxjs';
-import { filter, concatMap } from 'rxjs/operators';
+import { filter, concatMap, catchError } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { Epic } from 'Types/Redux';
 import * as Action from 'Store/Action';

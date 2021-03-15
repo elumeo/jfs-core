@@ -27,7 +27,7 @@ export type State = {
   Router?: RouterState;
   Session?: SessionState;
   Settings?: SettingsState;
-  SplitView?: SplitViewState;
+  // SplitView?: SplitViewState;
   System?: SystemState;
   Toast?: ToastState;
   WebSocketConnection?: WebSocketConnectionState;

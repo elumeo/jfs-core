@@ -1,31 +1,36 @@
 import React from 'react';
 import {Icon as FontIcon} from '@material-ui/core'
-import { INotification } from 'Types/Notification';
+import {useTheme, makeStyles, Theme, createStyles} from '@material-ui/core/styles'
+// import { INotification } from 'Types/Notification';
+import { VariantType } from 'notistack';
 
 export type Props = {
-  icon?: INotification['icon'];
-  error?: INotification['error'];
-  isError?: INotification['isError'];
-  isWarning?: INotification['isWarning'];
-  isSuccess?: INotification['isSuccess'];
+  variant: VariantType;
 };
 
 const Icon: React.FC<Props> =
   ({
-     icon,
-     error,
-     isError,
-     isWarning,
-     isSuccess
+   variant
    }) => {
-    let iconName = icon;
-    iconName = (error || isError) && !icon ? 'error' : iconName;
-    iconName = isWarning && !icon ? 'warning' : iconName;
-    iconName = isSuccess && !icon ? 'check' : iconName;
+    const {palette} = useTheme();
+    const iconName = React.useMemo(() => {
+      if (variant === 'error'){
+        return 'cancel'
+      } else if (variant === 'default') {
+        return 'alert'
+      } else if (variant === 'success'){
+        return 'check'
+      } else {
+        return variant
+      }
+    }, [variant])
+    // const classes = useStyles(variant)();
+    console.log({variant,  iconName, test1:  palette?.[variant]})
     return (
       iconName
         ? (
-          <FontIcon className='icon md-text--inherit'>
+          <FontIcon color='inherit' >
+            
             {iconName}
           </FontIcon>
         )

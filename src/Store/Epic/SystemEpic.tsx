@@ -7,8 +7,14 @@ import JSCApi from 'API/JSC';
 import { Epic } from 'Types/Redux';
 import * as Action from 'Store/Action';
 import uuid from 'uuid';
+import * as MUI from '@material-ui/core'
 import * as Notification from 'Component/Notification';
-
+import { X } from 'Setup/Header';
+const noti = {
+  id: uuid(),
+  content: 'test noti',
+  variant: 'info',
+}
 const getRegionEpic: Epic = action$ =>
   action$.pipe(
     filter(isActionOf(Action.configLoadedAction)),
@@ -27,17 +33,32 @@ const getRegionEpic: Epic = action$ =>
                   id
                 )}/>
               ),
-              error: true
+              variant: 'error',
             }),
             Action.addNotification({
               id: uuid(),
-              content: 'ASDADASD2',
-              error: true
+              title: 'ASDADASD2',
+              variant: 'warning',
+              action : (snackbar, id) =>  <X/>
+              
+            }),
+            Action.addNotification({
+              id: uuid(),
+              subtitle: 'untertitle',
+              title:'titel',
+              content:'inhalte',
+              variant: 'success',
             }),
             Action.addNotification({
               id: uuid(),
               content: 'ASDADASD3',
-              error: true
+              variant: 'default',
+
+            }),
+            Action.addNotification({
+              id: uuid(),
+              content: 'ASDADASD3',
+              variant: 'info',
             }),
           )
         )

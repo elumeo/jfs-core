@@ -41,7 +41,8 @@ const loginEpic: Epic = (action$, state$) => (
               Action.addToastAction({
                 contentTranslationId: contentTranslationId,
                 isError: true
-              })
+              }),
+              Action.catchErrorNotification(error)
             )
           }
         )
