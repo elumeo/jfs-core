@@ -1,34 +1,18 @@
 import { combineEpics } from 'redux-observable';
 import { filter, switchMap, concatMap, map, catchError } from 'rxjs/operators';
 import { of, EMPTY } from 'rxjs';
-import { isActionOf, PayloadAction } from 'typesafe-actions';
-import {
-  webSocketConnectFailedAction,
-  webSocketConnectRequestAction,
-  webSocketConnectSuccessAction,
-  webSocketJoinRoomRequestAction,
-  webSocketJoinRoomLoadingAction,
-  webSocketJoinRoomSuccessAction,
-  webSocketLeaveRoomRequestAction,
-  webSocketLeaveRoomSuccessAction,
-  webSocketJoinRoomFailureAction,
-  webSocketDisconnectRequestAction,
-  webSocketDisconnectSuccessAction, webSocketAddNamespaceAction
-} from 'Action/WebSocketAction';
+import * as TA from 'typesafe-actions';
+import * as Action from 'Store/Action';
 import { getRoomConnectionState } from 'Store/Selectors/WebSocketSelectors';
-import {
-  IWebSocketRoom, IWebSocketRoomConnection
-} from 'Store/Reducer/Core/WebSocketConnectionReducer';
-import { addNotificationAction } from 'Action/NotificationAction';
-import { authorizeSession, logout } from 'Action/SessionAction';
+import * as WebSocket from 'Types/WebSocket';
 import { WSClient } from 'API/WS/WSClient';
-import { INotificationContent } from 'Types/Notification'; 
 import _ from 'lodash';
+import uuid from 'uuid';
 import { Epic } from 'Types/Redux';
 
 export const webSocketAppIsInitializedEpic: Epic = (action$, state$) => {
   return action$.pipe(
-    filter(isActionOf(authorizeSession)),
+    filter(TA.isActionOf(Action.authorizeSession)),
     filter(() => (
       state$.value.Core.Configuration.loaded &&
       state$.value.Core.Session.isAuthorized
@@ -37,12 +21,12 @@ export const webSocketAppIsInitializedEpic: Epic = (action$, state$) => {
       const actions = [];
       const config = state$.value.Core.Configuration.config;
       if (config.JscWebSocketClient !== undefined) {
-        actions.push(webSocketAddNamespaceAction(config.JscWebSocketClient.PrivateNamespace));
-        actions.push(webSocketConnectRequestAction(config.JscWebSocketClient.PrivateNamespace));
+        actions.push(Action.webSocketAddNamespaceAction(config.JscWebSocketClient.PrivateNamespace));
+        actions.push(Action.webSocketConnectRequestAction(config.JscWebSocketClient.PrivateNamespace));
       }
       if (config.JfsWebSocketClient !== undefined) {
-        actions.push(webSocketAddNamespaceAction(config.JfsWebSocketClient.PrivateNamespace));
-        actions.push(webSocketConnectRequestAction(config.JfsWebSocketClient.PrivateNamespace));
+        actions.push(Action.webSocketAddNamespaceAction(config.JfsWebSocketClient.PrivateNamespace));
+        actions.push(Action.webSocketConnectRequestAction(config.JfsWebSocketClient.PrivateNamespace));
       }
       return actions;
     })
@@ -51,11 +35,17 @@ export const webSocketAppIsInitializedEpic: Epic = (action$, state$) => {
 
 export const webSocketConnectRequestEpic: Epic = (action$, state$) => {
   return action$.pipe(
-    filter(isActionOf(webSocketConnectRequestAction)),
-    filter(() => state$.value.Core.Configuration.loaded && state$.value.Core.Session.isAuthorized),
-    concatMap((action) => WSClient.leaveAllRooms(action.payload, state$.value.Core.WebSocketConnection[action.payload].rooms)),
-    concatMap((namespace) => WSClient.disconnect(namespace)),
-    concatMap((namespace) => {
+    filter(TA.isActionOf(Action.webSocketConnectRequestAction)),
+    filter(() => (
+      state$.value.Core.Configuration.loaded &&
+      state$.value.Core.Session.isAuthorized
+    )),
+    concatMap(action => WSClient.leaveAllRooms(
+      action.payload,
+      state$.value.Core.WebSocketConnection[action.payload].rooms
+    )),
+    concatMap(namespace => WSClient.disconnect(namespace)),
+    concatMap(namespace => {
       let host: string = null;
       const config = state$.value.Core.Configuration.config;
       let path = '/socket.io';
@@ -80,24 +70,32 @@ export const webSocketConnectRequestEpic: Epic = (action$, state$) => {
         state$.value.Core.Configuration.config.AppName
       );
     }),
-    switchMap((namespace) => {
-      return of(webSocketConnectSuccessAction(namespace));
+    switchMap(namespace => {
+      return of(Action.webSocketConnectSuccessAction(namespace));
     })
   );
 };
 
 export const webSocketLogoutEpic: Epic = (action$, state) => {
   return action$.pipe(
-    filter(isActionOf(logout)),
+    filter(TA.isActionOf(Action.logout)),
     // filter(() => (state.value.configReducer.config.JscWebSocketClient !== undefined && state.value.configReducer.loaded)),
     switchMap(() => {
       const disconnectRequestActions = [];
       const config = state.value.Core.Configuration.config;
       if (config.JscWebSocketClient !== undefined) {
-        disconnectRequestActions.push(webSocketDisconnectRequestAction(config.JscWebSocketClient.PrivateNamespace));
+        disconnectRequestActions.push(
+          Action.webSocketDisconnectRequestAction(
+            config.JscWebSocketClient.PrivateNamespace
+          )
+        );
       }
       if (config.JfsWebSocketClient !== undefined) {
-        disconnectRequestActions.push(webSocketDisconnectRequestAction(config.JfsWebSocketClient.PrivateNamespace));
+        disconnectRequestActions.push(
+          Action.webSocketDisconnectRequestAction(
+            config.JfsWebSocketClient.PrivateNamespace
+          )
+        );
       }
       return disconnectRequestActions;
       // return of(webSocketDisconnectRequestAction(WS_NAMESPACES.JSC2JFS), webSocketDisconnectRequestAction(WS_NAMESPACES.JFS2JFS))
@@ -107,15 +105,22 @@ export const webSocketLogoutEpic: Epic = (action$, state) => {
 
 export const webSocketCheckForConnectionErrorEpic: Epic = (action$, state) => {
   return action$.pipe(
-    filter(isActionOf(webSocketConnectRequestAction)),
+    filter(TA.isActionOf(Action.webSocketConnectRequestAction)),
     concatMap(() => WSClient.connectionErrorObservable$),
     switchMap((err) => {
         if (state.value.Core.WebSocketConnection[err.namespace].isConnecting) {
           return of(
-            addNotificationAction({
-              message: 'Unable to connect to websocket server (' + err.namespace + ')' + (err.message !== null && err.message !== '' ? ' because of ' + err.message : '') + '!', isError: true
+            Action.addNotification({
+              id: uuid(),
+              content: (
+                'Unable to connect to websocket server (' + err.namespace + ')'
+                + (err.message !== null && err.message !== ''
+                  ? ' because of ' + err.message
+                  : '')
+                + '!'
+              ),
             }),
-            webSocketConnectFailedAction(err)
+            Action.webSocketConnectFailedAction(err)
           );
         }
 
@@ -127,15 +132,15 @@ export const webSocketCheckForConnectionErrorEpic: Epic = (action$, state) => {
 
 export const webSocketCheckForReconnectEpic: Epic = action$ => {
   return action$.pipe(
-    filter(isActionOf(webSocketConnectRequestAction)),
+    filter(TA.isActionOf(Action.webSocketConnectRequestAction)),
     concatMap(() => WSClient.reconnectObservable$),
-    switchMap((namespace) => of(webSocketConnectSuccessAction(namespace)))
+    switchMap(namespace => of(Action.webSocketConnectSuccessAction(namespace)))
   );
 };
 
 export const webSocketConnectSuccessEpic: Epic = (action$, state$) => {
   return action$.pipe(
-    filter(isActionOf(webSocketConnectSuccessAction)),
+    filter(TA.isActionOf(Action.webSocketConnectSuccessAction)),
     switchMap((action) => {
       // Filter configRooms against information in state (hasJoined true/false)
       let configRooms: string[] = [];
@@ -174,13 +179,13 @@ export const webSocketConnectSuccessEpic: Epic = (action$, state$) => {
         }
       }
       let mergedRooms: string[] = _.uniq([...cleanedConfigRooms, ...stateJoinedRooms]);
-      const roomActions: PayloadAction<string, IWebSocketRoom>[] = [];
+      const roomActions: TA.PayloadAction<string, WebSocket.IWebSocketRoom>[] = [];
       for (const room of mergedRooms) {
         const roomData = {
           namespace: action.payload,
           room
-        } as IWebSocketRoom;
-        roomActions.push(webSocketJoinRoomRequestAction(roomData));
+        } as WebSocket.IWebSocketRoom;
+        roomActions.push(Action.webSocketJoinRoomRequestAction(roomData));
       }
       return roomActions;
     })
@@ -189,58 +194,66 @@ export const webSocketConnectSuccessEpic: Epic = (action$, state$) => {
 
 export const webSocketDisconnectRequestEpic: Epic = (action$, state$) => {
   return action$.pipe(
-    filter(isActionOf(webSocketDisconnectRequestAction)),
+    filter(TA.isActionOf(Action.webSocketDisconnectRequestAction)),
     filter((action) => Boolean(state$.value.Core.WebSocketConnection[action.payload])),
     concatMap((action) => WSClient.leaveAllRooms(
       action.payload, state$.value.Core.WebSocketConnection[action.payload].rooms
     )),
-    concatMap((namespace) => WSClient.disconnect(namespace)),
-    switchMap((namespace) => of(webSocketDisconnectSuccessAction(namespace)))
+    concatMap(namespace => WSClient.disconnect(namespace)),
+    switchMap(namespace => of(
+      Action.webSocketDisconnectSuccessAction(namespace)
+    ))
   );
 };
 
 export const webSocketJoinRoomRequestEpic: Epic = (action$, state$) => {
   return action$.pipe(
-    filter(isActionOf(webSocketJoinRoomRequestAction)),
-    map((action) => {
-      let roomName = WSClient.prepareRoomName(action.payload.room, state$.value);
+    filter(TA.isActionOf(Action.webSocketJoinRoomRequestAction)),
+    map(action => {
       return {
         isJoining: true,
         hasJoined: false,
         error: null,
-        name: roomName,
+        name: WSClient.prepareRoomName(
+          action.payload.room,
+          state$.value
+        ),
         namespace: action.payload.namespace
-      } as IWebSocketRoomConnection;
+      } as WebSocket.IWebSocketRoomConnection;
     }),
-    switchMap((roomState) => of(webSocketJoinRoomLoadingAction(roomState)))
+    switchMap((roomState) => of(Action.webSocketJoinRoomLoadingAction(roomState)))
   );
 };
 
 export const webSocketJoinRoomLoadingEpic: Epic = (action$, state$) => {
   return action$.pipe(
-    filter(isActionOf(webSocketJoinRoomLoadingAction)),
+    filter(TA.isActionOf(Action.webSocketJoinRoomLoadingAction)),
     concatMap((action) => {
       return WSClient.join(action.payload.namespace, action.payload.name).pipe(
         map((room) => {
-          const roomObj: IWebSocketRoom = {
-            room: room,
-            namespace: action.payload.namespace
-          };
-          let roomState = getRoomConnectionState(state$.value.Core.WebSocketConnection, roomObj);
+          let roomState = getRoomConnectionState(
+            state$.value.Core.WebSocketConnection,
+            {
+              room: room,
+              namespace: action.payload.namespace
+            }
+          );
           roomState.isJoining = false;
           roomState.hasJoined = true;
           return roomState;
         }),
-        switchMap((roomState) => of(webSocketJoinRoomSuccessAction(roomState))),
+        switchMap(roomState => of(
+          Action.webSocketJoinRoomSuccessAction(roomState)
+        )),
         catchError((err) => {
-          const update: IWebSocketRoomConnection = {
+          const update: WebSocket.IWebSocketRoomConnection = {
             name: action.payload.name,
             error: err.error.message,
             hasJoined: false,
             isJoining: false,
             namespace: action.payload.namespace
           };
-          const error: INotificationContent = {
+          const error = {
             error: {
               response: {
                 data: {
@@ -260,8 +273,12 @@ export const webSocketJoinRoomLoadingEpic: Epic = (action$, state$) => {
             icon: 'error'
           };
           return of(
-            webSocketJoinRoomFailureAction(update),
-            addNotificationAction(error)
+            Action.webSocketJoinRoomFailureAction(update),
+            Action.addNotification({
+              id: uuid(),
+              content: JSON.stringify(error, null, 2),
+              error: true
+            })
           );
         })
       );
@@ -271,9 +288,11 @@ export const webSocketJoinRoomLoadingEpic: Epic = (action$, state$) => {
 
 export const webSocketLeaveRoomRequestEpic: Epic = action$ => {
   return action$.pipe(
-    filter(isActionOf(webSocketLeaveRoomRequestAction)),
-    concatMap((action) => WSClient.leave(action.payload)),
-    switchMap((room) => of(webSocketLeaveRoomSuccessAction(room)))
+    filter(TA.isActionOf(Action.webSocketLeaveRoomRequestAction)),
+    concatMap(action => WSClient.leave(action.payload)),
+    switchMap(room => of(
+      Action.webSocketLeaveRoomSuccessAction(room)
+    ))
   );
 };
 

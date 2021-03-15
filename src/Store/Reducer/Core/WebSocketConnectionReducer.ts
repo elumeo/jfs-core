@@ -1,41 +1,15 @@
 import { createReducer } from 'typesafe-actions';
 import * as Action from 'Store/Action';
-
-export interface IWebSocketError {
-  namespace: string;
-  message: string;
-}
-
-export interface IWebSocketRoom<T = string> {
-  room: string;
-  namespace?: string;
-  error?: string;
-  data?: T;
-}
+import * as WebSocket from 'Types/WebSocket';
 
 export type State = {
-  [webSocketNamespace: string]: IWebSocketNamespace;
-}
-
-export interface IWebSocketNamespace {
-  isConnected: boolean;
-  isConnecting: boolean;
-  connectionError: string;
-  rooms: IWebSocketRoomConnection[];
+  [webSocketNamespace: string]: WebSocket.IWebSocketNamespace;
 }
 
 export const webSocketConnectionReducerInitialState: State = {
   // It is not possible to set initial state values for any namespace here because namespaces will be created
   // dynamically with the action: webSocketAddNamespaceAction
 };
-
-export interface IWebSocketRoomConnection {
-  namespace: string;
-  isJoining: boolean;
-  hasJoined: boolean;
-  name: string;
-  error: string;
-}
 
 const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState)
 
@@ -91,7 +65,7 @@ const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState
     Action.webSocketJoinRoomSuccessAction,
     Action.webSocketJoinRoomFailureAction
   ], (state, action) => {
-    const newRooms: IWebSocketRoomConnection[] = [];
+    const newRooms: WebSocket.IWebSocketRoomConnection[] = [];
     if (state[action.payload.namespace] !== undefined) {
       for (const room of state[action.payload.namespace].rooms) {
         if (room.name !== action.payload.name) {
@@ -111,7 +85,7 @@ const WebSocketConnection = createReducer(webSocketConnectionReducerInitialState
   })
 
   .handleAction(Action.webSocketLeaveRoomSuccessAction, (state, action) => {
-    const newRooms: IWebSocketRoomConnection[] = [];
+    const newRooms: WebSocket.IWebSocketRoomConnection[] = [];
     for (const room of state[action.payload.namespace].rooms) {
       if (room.name !== action.payload.room) {
         newRooms.push(room);

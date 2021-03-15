@@ -8,7 +8,7 @@ export * from './NotificationAction';
 export * from './RouterAction';
 export * from './SessionAction';
 export * from './SettingsAction';
-export * from './SplitViewAction';
+// export * from './SplitViewAction';
 export * from './SystemAction';
 export * from './ToastAction';
 export * from './WebSocketAction';

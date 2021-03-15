@@ -1,29 +1,39 @@
-import React, { useState, useEffect, useMemo} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {useIntl} from 'react-intl';
+import React from 'react';
 import AppHeader from 'Component/Header/AppHeader';
-import NotificationBadge from 'Component/Notification/NotificationBadge';
+import * as Notification from 'Component/Notification';
 import BackendIndicator from 'Component/Header/BackendIndicator';
-type THeaderProps = {
+import useActions from 'Store/Action/useActions';
+import * as MUI from '@material-ui/core';
+import * as ICON from '@material-ui/icons';
+import uuid from 'uuid';
+
+export type Props = {};
+
+const X = () => {
+  const { addNotification } = useActions();
+
+  return (
+    <MUI.IconButton onClick={() => {
+      const id = uuid();
+      addNotification({
+        id,
+        content: id,
+        action: snackbar => (
+          <Notification.Button.Dismiss
+            onClick={() => snackbar.closeSnackbar(id)}/>
+        )
+      })}
+    }>
+      <ICON.Send/>
+    </MUI.IconButton>
+  )
 }
-const Header = ({
-}: THeaderProps) => {
-  const { formatMessage } = useIntl();
-  return (<AppHeader
-    leftTools={
-      () => <>
-            <BackendIndicator/>
-        </>
-      
-    }
-    rightTools={
-      () => (
-        <>
-          <NotificationBadge/>
-        </>
-      )
-    }
-  />
-  );
-};
+
+const Header: React.FC<Props> = () => (
+  <AppHeader
+    leftTools={() => <BackendIndicator/>}
+    middleTools={() => <X/>}
+    rightTools={() => <Notification.Button.Show/>}/>
+);
+
 export default Header;

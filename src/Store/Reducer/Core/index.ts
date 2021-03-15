@@ -8,14 +8,13 @@ import Notification, { State as NotificationState } from './NotificationReducer'
 import Router, { State as RouterState } from './RouterReducer';
 import Session, { State as SessionState } from './SessionReducer';
 import Settings, { State as SettingsState } from './SettingsReducer';
-import SplitView, { State as SplitViewState } from './SplitViewReducer';
 import System, { State as SystemState } from './SystemReducer';
 import Toast, { State as ToastState } from './ToastReducer';
 import WebSocketConnection, { State as WebSocketConnectionState } from './WebSocketConnectionReducer';
 import App, { State as AppState } from './AppReducer';
 import Login, { State as LoginState } from './LoginReducer';
 import Locale, { State as LocaleState } from './LocaleReducer';
-import IConfig from '../../../Types/Configuration';
+import IConfig from 'Types/Configuration';
 
 export type State = {
   App?: AppState;
@@ -48,7 +47,6 @@ const Core = combineReducers<State>({
   Router,
   Session,
   Settings,
-  SplitView,
   System,
   Toast,
   WebSocketConnection,
