@@ -1,4 +1,0 @@
-import { createStandardAction } from 'typesafe-actions';
-export const openSettings = createStandardAction('settings/OPEN')();
-export const closeSettings = createStandardAction('settings/CLOSE')();
-//# sourceMappingURL=SettingsAction.js.map

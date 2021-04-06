@@ -1,4 +1,3 @@
-/// <reference types="react" />
-declare type TRoutesProps = {};
-declare const Routes: ({}: TRoutesProps) => JSX.Element;
+import React from 'react';
+declare const Routes: React.FC;
 export default Routes;

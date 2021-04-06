@@ -1,20 +1,20 @@
 import { combineReducers } from 'redux';
 // import { connectRouter, RouterState } from 'connected-react-router'
-import Configuration, { State as ConfigurationState } from './ConfigReducer';
-import Language, { State as LanguageState } from './LanguageReducer';
-import Logout, { State as LogoutState } from './LogoutReducer';
-import Navigation, { State as NavigationState } from './NavigationReducer';
-import Notification, { State as NotificationState } from './NotificationReducer';
-import Router, { State as RouterState } from './RouterReducer';
-import Session, { State as SessionState } from './SessionReducer';
-import Settings, { State as SettingsState } from './SettingsReducer';
-import System, { State as SystemState } from './SystemReducer';
-import Toast, { State as ToastState } from './ToastReducer';
-import WebSocketConnection, { State as WebSocketConnectionState } from './WebSocketConnectionReducer';
-import App, { State as AppState } from './AppReducer';
-import Login, { State as LoginState } from './LoginReducer';
-import Locale, { State as LocaleState } from './LocaleReducer';
-import IConfig from 'Types/Configuration';
+import App, { State as AppState } from './App';
+import Configuration, { State as ConfigurationState } from './Configuration';
+import Language, { State as LanguageState } from './Language';
+import Logout, { State as LogoutState } from './Logout';
+import Navigation, { State as NavigationState } from './Navigation';
+import Notification, { State as NotificationState } from './Notification';
+import Router, { State as RouterState } from './Router';
+import Session, { State as SessionState } from './Session';
+import Settings, { State as SettingsState } from './Settings';
+import System, { State as SystemState } from './System';
+import Toast, { State as ToastState } from './Toast';
+import Login, { State as LoginState } from './Login';
+import Locale, { State as LocaleState } from './Locale';
+import WebSocket, { State as WebSocketState } from './WebSocket';
+import * as Type from 'Types/Configuration';
 
 export type State = {
   App?: AppState;
@@ -30,8 +30,8 @@ export type State = {
   // SplitView?: SplitViewState;
   System?: SystemState;
   Toast?: ToastState;
-  WebSocketConnection?: WebSocketConnectionState;
-  Configuration?: ConfigurationState<IConfig>;
+  WebSocket?: WebSocketState;
+  Configuration?: ConfigurationState<Type.Configuration>;
   Locale?: LocaleState;
 }
 
@@ -49,7 +49,7 @@ const Core = combineReducers<State>({
   Settings,
   System,
   Toast,
-  WebSocketConnection,
+  WebSocket,
   Locale
 });
 

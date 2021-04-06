@@ -1,42 +1,40 @@
 import React from 'react';
 import * as MUI from '@material-ui/core';
-import { useTheme } from '@material-ui/core';
-// import { useIntl,  } from 'react-intl';
+import { useSnackbar } from 'notistack';
+import * as Type from 'Types/Notification';
 
-export type Props =  {
-    id: string;
-    title: React.ReactNode,
-    subtitle: React.ReactNode,
-    content: React.ReactNode,
-    actions: React.ReactNode,
-    translate?: boolean;
-}
+export type Props = {
+  notification: Type.Notification;
+  temporary?: boolean;
+};
 
 const DefaultNotificationCard : React.FC<Props> = ({
-    id,
-    title,
-    subtitle,
-    content,
-    actions,
-    translate
+  notification: {
+    title, subtitle, content, action, id
+  },
+  temporary
 }) => {
-    // const {formatMessage} = useIntl()
-    
-    return <>
+    const snackbar = useSnackbar();
+
+    return (
+      <>
         <MUI.CardContent color='inherit'>
-            <MUI.Typography variant='subtitle1'>
-                {title}
-            </MUI.Typography>
-            <MUI.Typography variant='subtitle2'>
-                {subtitle}
-            </MUI.Typography>
-            <MUI.Typography variant='caption'>
-                {content}
-            </MUI.Typography>
+          <MUI.Typography variant='subtitle1'>
+            {title}
+          </MUI.Typography>
+          <MUI.Typography variant='subtitle2'>
+            {subtitle}
+          </MUI.Typography>
+          <MUI.Typography variant='caption'>
+            {content}
+          </MUI.Typography>
         </MUI.CardContent>
-        <MUI.CardActions>
-            {actions}
-        </MUI.CardActions>
-    </>
+        {temporary && action && (
+          <MUI.CardActions>
+            {action(snackbar, id)}
+          </MUI.CardActions>
+        )}
+      </>
+    )
 }
 export default DefaultNotificationCard

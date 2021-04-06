@@ -1,10 +1,8 @@
-class Locale {
-}
-Locale.locale = 'en-GB';
-Locale.setLocale = (locale) => {
-    Locale.locale = locale;
+export let locale = 'en-GB';
+export const setLocale = (next) => {
+    locale = next;
 };
-Locale.mapProductLanguageToLocale = (productLanguage) => {
+export const mapProductLanguageToLocale = (productLanguage) => {
     switch (productLanguage) {
         case 'en':
             return 'en_gb';
@@ -21,7 +19,7 @@ Locale.mapProductLanguageToLocale = (productLanguage) => {
             return 'de_de';
     }
 };
-Locale.mapLanguageToLocale = (language) => {
+export const mapLanguageToLocale = (language) => {
     if (language === 'de') {
         return 'de-DE';
     }
@@ -35,5 +33,4 @@ Locale.mapLanguageToLocale = (language) => {
         return null;
     }
 };
-export default Locale;
 //# sourceMappingURL=Locale.js.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"Configuration.js","sourceRoot":"","sources":["../../../src/Store/Action/Configuration.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oBAAoB,EAAE,MAAM,kBAAkB,CAAC;AAGxD,MAAM,CAAC,MAAM,UAAU,GAAG,oBAAoB,CAAC,aAAa,CAAC,EAAE,CAAC;AAOhE,MAAM,CAAC,MAAM,kBAAkB,GAAG,oBAAoB,CAAC,eAAe,CAAC,EAAwB,CAAC;AAChG,MAAM,CAAC,MAAM,gBAAgB,GAAG,oBAAoB,CAAC,oBAAoB,CAAC,EAAE,CAAC"}

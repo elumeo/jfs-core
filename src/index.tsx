@@ -1,33 +1,43 @@
-import App from 'Component/App/App';
+import './Setup';
 import React from 'react';
-import translations from './Setup/Translations.json'
-import rootReducer from './Store/Reducer/Global'
-import rootEpic from './Store/Epic/index'
-import packageJson from '../package.json'
-import ReactDOM from 'react-dom'
-import Store from 'Store';
-import LoginDialog from 'Component/Login/LoginDialog'
-import LogoutDialog from 'Component/Logout/LogoutDialog';
-import Routes from 'Setup/Routes';
-import Header from 'Setup/Header';
-import './Style/main.scss'
-import NavigationDrawer from 'Setup/Drawer';
-import Settings from 'Setup/Settings';
+import ReactDOM from 'react-dom';
+import * as App from 'Component/App';
+import * as Login from 'Component/Login';
+import * as Logout from 'Component/Logout';
+import * as Settings from 'Component/Settings';
+import * as Language from 'Component/Language';
+import * as Header from 'Component/Header';
+import * as Notification from 'Component/Notification';
+import Overlay from 'Component/Overlay';
+import { Translations, Navigation, Routes } from 'Setup';
+import packageJson from '../package.json';
+import store from 'Store';
 
-const store = Store(rootEpic,rootReducer);
+import RandomNotificationButton from './RandomNotificationButton';
 
 ReactDOM.render(
-  <App
+  <App.Container
     store={store}
-    translations={translations}
+    translations={Translations}
     packageJson={packageJson}>
-    <Header/>
+    <Overlay>
+      <Header.Toolbar
+        left={<Header.BackendIndicator/>}
+        middle={<RandomNotificationButton/>}
+        right={
+          <>
+            <Settings.Button/>
+            <Notification.Button.Show/>
+          </>
+        }/>
+      <Navigation/>
+      <Login.Dialog/>
+      <Logout.Dialog/>
+      <Settings.Dialog>
+        <Language.Settings/>
+      </Settings.Dialog>
+    </Overlay>
     <Routes/>
-    <LoginDialog/>
-    <NavigationDrawer/>
-    <Settings/>
-    <LogoutDialog/>
-    {/* <Snackbar/> */}
-  </App>,
+  </App.Container>,
   document.getElementById('root')
-)
+);

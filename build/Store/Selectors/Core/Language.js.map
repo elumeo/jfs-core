@@ -1,1 +1,0 @@
-{"version":3,"file":"Language.js","sourceRoot":"","sources":["../../../../src/Store/Selectors/Core/Language.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,UAAU,CAAC;AAC1C,OAAO,oBAAoB,MAAM,IAAI,CAAC;AAGtC,MAAM,gBAAgB,GAAG,IAAI,CAAC,EAAE,CAAC,IAAI,CAAC,QAAQ,CAAA;AAC9C,MAAM,CAAC,MAAM,wBAAwB,GAAG,cAAc,CAAC,oBAAoB,EAAE,gBAAgB,CAAE,CAAA"}

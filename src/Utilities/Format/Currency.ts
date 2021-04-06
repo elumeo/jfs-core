@@ -1,52 +1,56 @@
-import Format from '.';
+import * as Locale from './Locale';
 
-class Currency {
+export const getCurrencySign = (currency: string) => {
+  const value = new Intl.NumberFormat(
+    Locale.locale,
+    {style: 'currency', currency}
+  );
+  // We must use ts-ignore because typescript seems not to know that formatToParts exists but it does
+  // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/formatToParts
+  // Still in draft mode but browser support is available
+  // @ts-ignore
+  const valueParts = value.formatToParts(0) as string[];
+  let sign = '';
+  valueParts.forEach(part => {
+    if (part['type'] === 'currency') {
+      sign = part['value'];
+    }
+  });
+  return sign;
+}
 
-  public static getCurrencySign(currency: string) {
-    const tmpValue = new Intl.NumberFormat(
-      Format.Locale.locale,
-      {style: 'currency', currency}
-    );
-    // We must use ts-ignore because typescript seems not to know that formatToParts exists but it does
-    // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/formatToParts
-    // Still in draft mode but browser support is available
-    // @ts-ignore
-    const tmpValueParts = tmpValue.formatToParts(0) as string[];
-    let sign = '';
-    tmpValueParts.forEach((part) => {
-      if (part['type'] === 'currency') {
-        sign = part['value'];
-      }
-    });
-    return sign;
+export const getCurrency = (
+  currency: string,
+  value: number,
+  showFraction = false
+) => {
+  if (isNaN(value) || value === null || value.toString() === '') {
+    value = 0;
   }
 
-  public static getCurrency(
-    currency: string,
-    value: number,
-    showFraction = false
-  ) {
-    if (isNaN(value) || value === null || value.toString() === '') {
-      value = 0;
-    }
-
-    if (showFraction) {
-      return new Intl.NumberFormat(
-        Format.Locale.locale,
-        {style: 'currency', currency}
-      ).format(value);
-    }
-
+  if (showFraction) {
     return new Intl.NumberFormat(
-      Format.Locale.locale,
-      {style: 'currency', currency, minimumFractionDigits: 0}
+      Locale.locale,
+      {style: 'currency', currency}
     ).format(value);
   }
 
-  public static intlThousandsSeperator = new Intl.NumberFormat().format(1111).replace(/1/g, '')
-  public static intlDecSeparator =  new Intl.NumberFormat().format(1.1).replace(/1/g, '');
-  public static replaceAllNonNumericOrSeperatorRegex = /[^0-9.,-]/
-
+  return new Intl.NumberFormat(
+    Locale.locale,
+    {style: 'currency', currency, minimumFractionDigits: 0}
+  ).format(value);
 }
 
-export default Currency;
+export const intlThousandsSeperator = (
+  new Intl.NumberFormat()
+    .format(1111)
+    .replace(/1/g, '')
+);
+
+export const intlDecSeparator = (
+  new Intl.NumberFormat()
+    .format(1.1)
+    .replace(/1/g, '')
+);
+
+export const replaceAllNonNumericOrSeperatorRegex = /[^0-9.,-]/;

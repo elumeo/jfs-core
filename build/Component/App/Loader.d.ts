@@ -6,7 +6,7 @@ export declare type Props = {
             [key: string]: string;
         };
     };
-    packageJson: object;
+    packageJson: any;
 };
 declare const Loader: React.FC<Props>;
 export default Loader;

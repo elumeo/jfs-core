@@ -4,12 +4,13 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { Store } from 'redux';
 import { HashRouter } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
-import Theme from 'Style/Theme';
+import Theme from './Theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { SnackbarProvider } from 'notistack';
 import MomentUtils from '@date-io/moment';
 import WebSocketConnection from 'Component/Websocket/WebSocketConnection';
 import * as Notification from 'Component/Notification';
+import Head from './Head';
 
 export type Props = {
   store: Store;
@@ -28,9 +29,10 @@ const HOC: React.FC<Props> = ({
               vertical: 'bottom',
               horizontal: 'right'
             }}
-            maxSnack={10}
+            maxSnack={5}
             domRoot={document.getElementById('overlay')}>
             <Notification.Notistack/>
+            <Head/>
             <CssBaseline />
             <WebSocketConnection>
               {/* <ConnectedRouter history={history}> */}

@@ -1,5 +1,4 @@
 import React from 'react';
-import './_styles.scss';
 declare const _default: React.NamedExoticComponent<{
     translations: {
         [language: string]: {

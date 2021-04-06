@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, RouteProps, useLocation, useParams } from 'react-router-dom';
-// import { useLocation, useParams } from 'react-router';
-// noinspection ES6PreferShortImport
-import { updateRouteDetails } from '../../Store/Action/RouterAction';
+import * as Action from 'Store/Action';
 import { useDispatch } from 'react-redux';
 import { useIntl } from 'react-intl';
 
@@ -24,7 +22,7 @@ const BaseRoute: React.FC<IBaseRouteProps> = ({
   const {formatMessage} = useIntl()
   useEffect(
     () => {
-      dispatch(updateRouteDetails({ location, params }));
+      dispatch(Action.updateRouteDetails({ location, params }));
     },
     [rest.path]
   )

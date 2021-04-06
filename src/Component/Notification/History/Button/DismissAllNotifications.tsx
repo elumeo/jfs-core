@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton, Icon } from '@material-ui/core';
-import useActions from 'Action/useActions';
+import useActions from 'Store/useActions';
 import { useSelector } from 'Types/Redux';
 
 const DismissAllNotificationsButton: React.FC = () => {

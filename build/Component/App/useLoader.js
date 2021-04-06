@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
-import useActions from '../../Store/Action/useActions';
+import useActions from '../../Store/useActions';
 import { useSelector } from '../../Types/Redux';
+// import '@formatjs/intl-pluralrules/polyfill';
+// import '@formatjs/intl-relativetimeformat/polyfill';
 const useLoader = ({ allowRobotLogin, packageJson, translations }) => {
     const { initializeApp } = useActions();
     useEffect(() => {

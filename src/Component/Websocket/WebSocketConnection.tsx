@@ -1,33 +1,17 @@
 import React, { useEffect } from 'react';
-import {
-  webSocketConnectionReducerInitialState
-} from 'Store/Reducer/Core/WebSocketConnectionReducer';
-import IConfig from 'Types/Configuration';
+import { initialState } from 'Store/Reducer/Core/WebSocket';
+import * as Type from 'Types/Configuration';
 import { WSClient } from 'API/WS/WSClient';
-import useActions from 'Action/useActions';
-import { useSelector } from 'Types/Redux';
-import { webSocketUpdateRoomAction } from 'Action/WebSocketAction';
+import useActions from 'Store/useActions';
+import * as Action from 'Store/Action';
 
-export interface IWebsocketConnectionProps {
-  config?: IConfig;
-  webSocketConnectionReducer?: typeof webSocketConnectionReducerInitialState;
-  webSocketUpdateRoomAction?: typeof webSocketUpdateRoomAction;
-}
+export type Props = {
+  config?: Type.Configuration;
+  webSocketConnectionReducer?: typeof initialState;
+  webSocketUpdateRoomAction?: typeof Action.webSocketUpdateRoomAction;
+};
 
-export interface IWebsocketConnectionState {
-  isConnecting: false,
-  isConnected: false
-}
-
-const WebSocketConnection: React.FC = ({ children }) => {
-  const { webSocketConnectionReducer, config } = useSelector<{
-    config?: IConfig;
-    webSocketConnectionReducer?: typeof webSocketConnectionReducerInitialState;
-    webSocketUpdateRoomAction?: typeof webSocketUpdateRoomAction;
-  }>(state => ({
-    config: state.Core.Configuration.config,
-    webSocketConnectionReducer: state.Core.WebSocketConnection
-  }));
+const WebSocketProvider: React.FC = ({ children }) => {
   const { webSocketUpdateRoomAction } = useActions();
   useEffect(
     () => {
@@ -44,4 +28,4 @@ const WebSocketConnection: React.FC = ({ children }) => {
   )
 }
 
-export default WebSocketConnection;
+export default WebSocketProvider;

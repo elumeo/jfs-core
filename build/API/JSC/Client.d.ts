@@ -8,8 +8,8 @@ export default class JscClient extends HttpClient {
     static setConfig: (Config: any) => void;
     static setPackageJson: (PackageJson: any) => void;
     static generateAxiosConfig: () => {
-        baseURL: string;
-        timeout: number;
+        baseURL: any;
+        timeout: any;
         validateStatus: (status: number) => boolean;
         headers: {
             'X-JSC-TOKEN'?: string;

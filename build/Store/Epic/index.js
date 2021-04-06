@@ -1,12 +1,14 @@
-import AppEpic from './AppEpic';
-import SessionEpic from './SessionEpic';
-import SystemEpic from './SystemEpic';
-import LoginEpic from './LoginEpic';
-import ConfigurationEpic from './ConfigEpic';
-import NotificationEpic from './NotificationEpic';
-import WebSocketEpic from './WebSocketEpic';
-import LanguageEpic from './LanguageEpic';
 import { combineEpics } from 'redux-observable';
-const Core = combineEpics(AppEpic, SessionEpic, SystemEpic, LoginEpic, ConfigurationEpic, NotificationEpic, WebSocketEpic, LanguageEpic);
+import App from './App';
+import Configuration from './Configuration';
+import Language from './Language';
+import Login from './Login';
+import Locale from './Locale';
+import Session from './Session';
+import System from './System';
+import WebSocket from './WebSocket';
+import Notification from './Notification';
+export const wrap = (epic, wrapper) => ((action$, state$, dependencies) => (wrapper(epic(action$, state$, dependencies))));
+const Core = combineEpics(App, Session, System, Login, Locale, Configuration, WebSocket, Language, Notification);
 export default Core;
 //# sourceMappingURL=index.js.map

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BaseRoute from './BaseRoute';
-import useActions from '../../Store/Action/useActions';
+import useActions from '../../Store/useActions';
 import { useSelector } from '../../Types/Redux';
 const AuthRoute = props => {
     const { enterAuthorizedRoute } = useActions();

@@ -1,6 +1,5 @@
 import React, { memo, ReactNode } from 'react';
 import { IntlProvider } from 'react-intl';
-import './_styles.scss';
 
 const Initialized: React.FC<{
   translations: {

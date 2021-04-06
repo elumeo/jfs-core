@@ -1,49 +1,62 @@
 import React from 'react';
 import * as MUI from '@material-ui/core';
-// import DefaultNotificationCard from './Default';
 import { default as Default } from './Default';
 import { useTheme } from '@material-ui/core';
 import Icon from './Icon';
 import { Notification } from 'Types/Notification';
-// import {} from  './Default'
+import useActions from 'Store/useActions';
+import * as ICON from '@material-ui/icons';
+import { useSnackbar } from 'notistack';
+
 export type Props = {
-  actions?: JSX.Element[];
-  // variant : VariantType
   notification: Notification;
 };
 
 const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = ({
   children,
-  actions,
-  notification:{variant,
-    title,
-    subtitle,
-    content}
+  notification
 }) => {
   const { palette } = useTheme();
-  console.log('test log', { palette,  children });
+  const { removeNotification } = useActions();
+  const snackbar = useSnackbar();
+
   return (
     <MUI.Card
       style={{
         width: '100%',
-        maxHeight: '100%',
         minHeight: 'fit-content',
-        backgroundColor: palette[variant]?.['main'],
-        color: palette[variant]?.['contrastText']
-      }}
-    >
+        backgroundColor: palette[notification.variant]?.['main'],
+        color: palette[notification.variant]?.['contrastText']
+      }}>
       <MUI.CardHeader
-        avatar={<Icon variant={variant} />}
-        title={<MUI.Typography component='h4'>{title}</MUI.Typography>}
-        subheader={<MUI.Typography component='h6'>{subtitle}</MUI.Typography>}
-        subheaderTypographyProps={{color: 'inherit' }}
-        action={actions && <MUI.CardActions>{actions}</MUI.CardActions>}
-      />
+        avatar={<Icon variant={notification.variant}/>}
+        title={
+          <MUI.Typography component='h4'>
+            {notification.title}
+          </MUI.Typography>
+        }
+        subheader={
+          <MUI.Typography component='h6'>
+            {notification.subtitle}
+          </MUI.Typography>
+        }
+        subheaderTypographyProps={{ color: 'inherit' }}
+        action={
+          <MUI.CardActions>
+            <MUI.IconButton
+              onClick={() => removeNotification(notification.id)}>
+              <ICON.Delete
+                style={{ color: palette[notification.variant]?.contrastText }}/>
+            </MUI.IconButton>
+            {notification.action
+              ? notification.action(snackbar, notification.id)
+              : null}
+          </MUI.CardActions>
+        }/>
       <MUI.CardContent>
         <MUI.Typography>
-
-        {content}
-        {children}
+          {notification.content}
+          {children}
         </MUI.Typography>
       </MUI.CardContent>
     </MUI.Card>
@@ -51,4 +64,5 @@ const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = (
 };
 Card.Default = Default;
 Card.Icon = Icon;
+
 export default Card;

@@ -1,13 +1,13 @@
 import { Language } from "./Language";
 
-type IWebSockClient = {
+export type WebSocketClient = {
   Host: string;
   Path: string;
   PrivateNamespace: string;
   AutoRoomSubscriptions: string[];
 }
 
-type IConfig = {
+export type Configuration = {
   RobotUsername: string;
   RobotPassword: string;
   Language: Language;
@@ -22,8 +22,6 @@ type IConfig = {
     Host: string;
     Timeout?: number;
   };
-  JscWebSocketClient: IWebSockClient;
-  JfsWebSocketClient: IWebSockClient;
-}
-
-export default IConfig;
+  JscWebSocketClient: WebSocketClient;
+  JfsWebSocketClient: WebSocketClient;
+};

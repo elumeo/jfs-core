@@ -6,9 +6,9 @@ import {
   IWebSocketError,
   IWebSocketRoom,
   IWebSocketRoomConnection
-} from '../../Store/Reducer/Core/WebSocketConnectionReducer';
+} from 'Types/WebSocket';
 import IWebSocketRoomUpdateDTO = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO;
-import { ROOM_UPDATE_ACTION_ID } from 'Store/Action/WebSocketAction';
+import { ROOM_UPDATE_ACTION_ID } from 'Constant/WebSocket';
 import { State } from 'Store/Reducer/Global';
 
 export class WSClient {

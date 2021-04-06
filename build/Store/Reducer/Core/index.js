@@ -1,20 +1,19 @@
 import { combineReducers } from 'redux';
 // import { connectRouter, RouterState } from 'connected-react-router'
-import Configuration from './ConfigReducer';
-import Language from './LanguageReducer';
-import Logout from './LogoutReducer';
-import Navigation from './NavigationReducer';
-import Notification from './NotificationReducer';
-import Router from './RouterReducer';
-import Session from './SessionReducer';
-import Settings from './SettingsReducer';
-import SplitView from './SplitViewReducer';
-import System from './SystemReducer';
-import Toast from './ToastReducer';
-import WebSocketConnection from './WebSocketConnectionReducer';
-import App from './AppReducer';
-import Login from './LoginReducer';
-import Locale from './LocaleReducer';
+import App from './App';
+import Configuration from './Configuration';
+import Language from './Language';
+import Logout from './Logout';
+import Navigation from './Navigation';
+import Notification from './Notification';
+import Router from './Router';
+import Session from './Session';
+import Settings from './Settings';
+import System from './System';
+import Toast from './Toast';
+import Login from './Login';
+import Locale from './Locale';
+import WebSocket from './WebSocket';
 const Core = combineReducers({
     App,
     // router : connectRouter(history),
@@ -27,10 +26,9 @@ const Core = combineReducers({
     Router,
     Session,
     Settings,
-    SplitView,
     System,
     Toast,
-    WebSocketConnection,
+    WebSocket,
     Locale
 });
 export default Core;

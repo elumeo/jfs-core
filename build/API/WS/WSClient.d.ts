@@ -2,7 +2,7 @@ import { Observable, Subject } from 'rxjs';
 import io from 'socket.io-client';
 import { PayloadAction } from 'typesafe-actions';
 import JSCApi from '../JSC';
-import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../../Store/Reducer/Core/WebSocketConnectionReducer';
+import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../../Types/WebSocket';
 import IWebSocketRoomUpdateDTO = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO;
 import { State } from '../../Store/Reducer/Global';
 export declare class WSClient {

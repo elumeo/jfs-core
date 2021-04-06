@@ -1,3 +1,0 @@
-export declare const getSessionStateSelector: import("reselect").OutputSelector<import("../../Reducer/Global").State, import("../../Reducer/Core/SessionReducer").State, (res: import("../../Reducer/Core").State) => import("../../Reducer/Core/SessionReducer").State>;
-export declare const getIsAuthorizedSelector: import("reselect").OutputSelector<import("../../Reducer/Global").State, boolean, (res: import("../../Reducer/Core/SessionReducer").State) => boolean>;
-export declare const getIsCheckingSessionSelector: import("reselect").OutputSelector<import("../../Reducer/Global").State, boolean, (res: import("../../Reducer/Core/SessionReducer").State) => boolean>;

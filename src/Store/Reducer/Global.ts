@@ -5,8 +5,6 @@ export type State = {
   Core: CoreState;
 };
 
-const Global = combineReducers<State>({
-  Core
-});
+const Global = combineReducers<State>({ Core });
 
 export default Global;

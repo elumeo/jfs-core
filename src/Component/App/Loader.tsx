@@ -1,14 +1,18 @@
 import React from 'react';
-import {CircularProgress} from '@material-ui/core';
 import useLoader from './useLoader';
 import Initialized from './Initialized';
 import { isEmpty } from 'lodash';
+import Progress from './Progress';
 
 export type Props = {
   allowRobotLogin: boolean;
-  translations: { [language: string]: { [key: string]: string } };
-  packageJson: object;
-}
+  translations: {
+    [language: string]: {
+      [key: string]: string
+    };
+  };
+  packageJson: any;
+};
 
 const Loader: React.FC<Props> = ({
   allowRobotLogin, translations, packageJson, children
@@ -19,24 +23,26 @@ const Loader: React.FC<Props> = ({
     packageJson
   });
 
-
   if (appInitialized && !isEmpty(translations)) {
-    console.log('hier noch?',{appInitialized, translations, children, language})
-    return (
-      <Initialized translations={translations} language={language}>
-        {children}
-      </Initialized>
-    );
+    console.log('hier noch?', {
+      appInitialized,
+      translations,
+      children,
+      language
+    });
   }
-  else {
-    return (
-      <div className='app-initialize-progress'>
-        <CircularProgress
-          id='app-initialize-progress'
-          />
-      </div>
-    );
-  }
+
+  return (
+    appInitialized && !isEmpty(translations)
+      ? (
+        <Initialized
+          translations={translations}
+          language={language}>
+          {children}
+        </Initialized>
+      )
+      : <Progress/>
+  );
 }
 
 export default Loader;
