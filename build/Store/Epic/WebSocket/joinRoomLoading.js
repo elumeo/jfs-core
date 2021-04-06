@@ -8,7 +8,7 @@ import uuid from 'uuid';
 const joinRoomLoading = (action$, state$) => {
     return action$.pipe(filter(TA.isActionOf(Action.webSocketJoinRoomLoadingAction)), concatMap((action) => {
         return WSClient.join(action.payload.namespace, action.payload.name).pipe(map((room) => {
-            let roomState = getRoomConnectionState(state$.value.Core.WebSocketConnection, {
+            let roomState = getRoomConnectionState(state$.value.Core.WebSocket, {
                 room: room,
                 namespace: action.payload.namespace
             });

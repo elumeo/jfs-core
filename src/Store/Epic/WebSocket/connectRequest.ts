@@ -15,7 +15,7 @@ export const connectRequest: Epic = (action$, state$) => {
     )),
     concatMap(action => WSClient.leaveAllRooms(
       action.payload,
-      state$.value.Core.WebSocketConnection[action.payload].rooms
+      state$.value.Core.WebSocket[action.payload].rooms
     )),
     concatMap(namespace => WSClient.disconnect(namespace)),
     concatMap(namespace => {

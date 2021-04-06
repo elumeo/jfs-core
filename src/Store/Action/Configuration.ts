@@ -1,11 +1,11 @@
 import { createStandardAction } from 'typesafe-actions';
-import IConfig from 'Types/Configuration';
+import { Configuration } from 'Types/Configuration';
 
 export const loadConfig = createStandardAction('config/LOAD')();
 
 export namespace ConfigLoaded {
   export type Payload = {
-    config: IConfig;
+    config: Configuration;
   }
 }
 export const configLoadedAction = createStandardAction('config/LOADED')<ConfigLoaded.Payload>();

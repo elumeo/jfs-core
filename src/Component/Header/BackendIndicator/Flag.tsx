@@ -1,24 +1,22 @@
 import React from 'react';
-import FlagURL from './FlagURL.json';
-
+import * as Icon from 'Component/Icon';
 export type Country = 'de' | 'uk' | 'it';
-
 export type Props = {
   country: Country;
 };
 
 const Flag: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
   ({ country }, ref) => {
-    const url = FlagURL[country];
+    const CountryIcon = Icon.Flag[country.toUpperCase()] as React.FC;    
     return (
       <div ref={ref} style={{
         width: 28,
         height: 28,
         position: 'relative',
-        margin: 10,
-        backgroundRepeat: 'no-repeat',
-        backgroundImage: `url('${url}')`
-      }}/>
+        margin: 10
+      }}>
+        {CountryIcon && <CountryIcon/>}
+      </div>
     );
   }
 )

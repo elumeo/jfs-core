@@ -11,7 +11,13 @@ const showError = action$ => (action$.pipe(filter(isActionOf(Actions.catchErrorN
     return of(Actions.addNotification({
         id,
         variant: 'error',
-        content: (React.createElement(Notification.Card.Default, { id: id, title: errorId, subtitle: error, content: message, actions: [] })),
+        content: (React.createElement(Notification.Card.Default, { notification: {
+                id,
+                title: errorId,
+                subtitle: error,
+                content: message,
+                variant: 'error'
+            } })),
         action: (snackbar, id) => (React.createElement(Notification.Button.Dismiss, { onClick: () => snackbar.closeSnackbar(id) })),
     }));
 })));

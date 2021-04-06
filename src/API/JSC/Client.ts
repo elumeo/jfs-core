@@ -1,14 +1,14 @@
 import * as Token from '../LOCAL_STORAGE/Token';
-import IConfig from 'Types/Configuration';
+import { Configuration } from 'Types/Configuration';
 
 import { HttpClient } from 'API/HTTP/HttpClient';
 
 export default class JscClient extends HttpClient {
 
-  static Config: IConfig = {} as IConfig;
-  static PackageJson: { version: string } = {} as { version: string }; 
+  static Config: Configuration = {} as Configuration;
+  static PackageJson: { version: string } = {} as { version: string };
 
-  static setConfig = Config => {
+  static setConfig = (Config: Configuration) => {
     JscClient.Config = Config;
     JscClient.setConfigGenerator(JscClient.generateAxiosConfig);
   };

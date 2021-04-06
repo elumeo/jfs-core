@@ -4,6 +4,7 @@ import * as notistack from 'notistack';
 import { useSelector } from 'Types/Redux';
 import * as Type from 'Types/Notification';
 import Card from './Card';
+import * as Button from './Button';
 
 const Notistack: React.FC = () => {
   const all = useSelector(state => state.Core.Notification.history);
@@ -23,11 +24,15 @@ const Notistack: React.FC = () => {
             {
               key: notification.id,
               variant: notification.variant,
-              ...(
-                notification.action
-                  ? { action: notification.action(snackbar, notification.id) }
-                  : {}
-              )
+              action: (
+                <>
+                  {notification.action && (
+                    notification.action(snackbar, notification.id, true)
+                  )}
+                  <Button.Dismiss
+                    onClick={() => snackbar.closeSnackbar(notification.id)}/>
+                </>
+              ),
             }
           )
         });

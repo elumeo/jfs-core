@@ -9,7 +9,7 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useIntl } from 'react-intl';
 import * as MUI from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -18,18 +18,42 @@ const Toolbar = (_a) => {
     var { variant = 'dense' } = _a, tools = __rest(_a, ["variant"]);
     const { formatMessage } = useIntl();
     const { openNavigation } = useActions();
-    const openSettings = useCallback(() => {
-        openNavigation();
-    }, [openNavigation]);
-    return (React.createElement(MUI.AppBar, { position: 'static', className: 'tools' },
-        React.createElement(MUI.Toolbar, { disableGutters: true, variant: variant },
-            React.createElement(MUI.IconButton, { color: 'inherit', "aria-label": 'menu', onClick: openSettings },
-                React.createElement(MenuIcon, null)),
-            React.createElement(MUI.Typography, { variant: 'h6' }, formatMessage({ id: 'app.title' })),
-            React.createElement("div", { className: 'tools__toolbar' },
-                React.createElement("div", { className: 'left-tools' }, tools.left || React.createElement(React.Fragment, null)),
-                React.createElement("div", { className: 'middle-tools' }, tools.middle || React.createElement(React.Fragment, null)),
-                React.createElement("div", { className: 'right-tools' }, tools.right || React.createElement(React.Fragment, null))))));
+    console.log(tools.left);
+    return (React.createElement(MUI.AppBar, { position: 'static' },
+        React.createElement(MUI.Toolbar, { disableGutters: true, variant: variant, style: {
+                height: 58
+            } },
+            React.createElement("div", { style: {
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    boxSizing: 'border-box',
+                    paddingRight: 4
+                } },
+                React.createElement("div", { style: {
+                        width: 'calc(100% / 3)',
+                        display: 'flex',
+                        justifyContent: 'flex-start',
+                        alignItems: 'center'
+                    } },
+                    React.createElement(MUI.IconButton, { color: 'inherit', "aria-label": 'menu', onClick: openNavigation },
+                        React.createElement(MenuIcon, null)),
+                    React.createElement(MUI.Typography, { variant: 'h6' }, formatMessage({ id: 'app.title' })),
+                    tools.left || React.createElement(React.Fragment, null)),
+                React.createElement("div", { style: {
+                        width: 'calc(100% / 3)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    } }, tools.middle || React.createElement(React.Fragment, null)),
+                React.createElement("div", { style: {
+                        width: 'calc(100% / 3)',
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        alignItems: 'center'
+                    } }, tools.right || React.createElement(React.Fragment, null))))));
 };
 export default Toolbar;
 //# sourceMappingURL=Toolbar.js.map

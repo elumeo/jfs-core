@@ -16,7 +16,7 @@ const joinRoomLoading: Epic = (action$, state$) => {
       return WSClient.join(action.payload.namespace, action.payload.name).pipe(
         map((room) => {
           let roomState = getRoomConnectionState(
-            state$.value.Core.WebSocketConnection,
+            state$.value.Core.WebSocket,
             {
               room: room,
               namespace: action.payload.namespace

@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import JscClient from "./Client";
 import { Subject } from "rxjs";
 import { PayloadAction } from "typesafe-actions";
-import { ROOM_UPDATE_ACTION_ID } from "Types/WebSocket";
+import { ROOM_UPDATE_ACTION_ID } from "Constant/WebSocket";
 import { IWebSocketRoom } from "Types/WebSocket";
 namespace JSCApi {
   export interface IUrlParams {

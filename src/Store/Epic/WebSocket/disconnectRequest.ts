@@ -9,9 +9,9 @@ import { Epic } from 'Types/Redux';
 const disconnectRequest: Epic = (action$, state$) => {
   return action$.pipe(
     filter(TA.isActionOf(Action.webSocketDisconnectRequestAction)),
-    filter((action) => Boolean(state$.value.Core.WebSocketConnection[action.payload])),
+    filter((action) => Boolean(state$.value.Core.WebSocket[action.payload])),
     concatMap((action) => WSClient.leaveAllRooms(
-      action.payload, state$.value.Core.WebSocketConnection[action.payload].rooms
+      action.payload, state$.value.Core.WebSocket[action.payload].rooms
     )),
     concatMap(namespace => WSClient.disconnect(namespace)),
     switchMap(namespace => of(

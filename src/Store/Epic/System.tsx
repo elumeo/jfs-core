@@ -1,13 +1,9 @@
-import React from 'react';
 import { from, of } from 'rxjs';
 import { catchError, filter, switchMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import JSCApi from 'API/JSC';
 import { Epic } from 'Types/Redux';
 import * as Action from 'Store/Action';
-import uuid from 'uuid';
-import * as Notification from 'Component/Notification';
-import RandomNotificationButton from 'RandomNotificationButton';
 
 const getRegion: Epic = action$ => (
   action$.pipe(
@@ -16,45 +12,9 @@ const getRegion: Epic = action$ => (
       from(
         JSCApi.SystemClient.getRegion()
       ).pipe(
-        switchMap((response: any) =>
-          of(
-            Action.regionLoaded(response && response.data || null),
-            Action.addNotification({
-              id: uuid(),
-              content: 'ASDADASD1',
-              action: (snackbar, id) => (
-                <Notification.Button.Dismiss
-                  onClick={() => snackbar.closeSnackbar(id)}/>
-              ),
-              variant: 'error',
-            }),
-            Action.addNotification({
-              id: uuid(),
-              title: 'ASDADASD2',
-              variant: 'warning',
-              action : () =>  <RandomNotificationButton/>
-
-            }),
-            Action.addNotification({
-              id: uuid(),
-              subtitle: 'untertitle',
-              title:'titel',
-              content:'inhalte',
-              variant: 'success',
-            }),
-            Action.addNotification({
-              id: uuid(),
-              content: 'ASDADASD3',
-              variant: 'default',
-
-            }),
-            Action.addNotification({
-              id: uuid(),
-              content: 'ASDADASD3',
-              variant: 'info',
-            }),
-          )
-        )
+        switchMap(response => of(
+          Action.regionLoaded({ regionName: response?.data || null })
+        ))
       )
     ),
     catchError(() => of(Action.getRegionFailed()))

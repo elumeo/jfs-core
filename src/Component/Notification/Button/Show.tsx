@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import * as MUI from '@material-ui/core';
 import * as ICON from '@material-ui/icons';
 import NotificationOverlay from 'Component/Notification/Overlay';
-import useActions from 'Store/Action/useActions';
+import useActions from 'Store/useActions';
 import { useSnackbar } from 'notistack';
 import { useSelector } from 'Types/Redux';
 
@@ -30,7 +30,7 @@ const ShowButton: React.FC<Props> = ({ keepOpenOnOutsideClick }) => {
   );
 
   return (<>
-    
+
       <MUI.IconButton
         color='inherit'
         ref={buttonRef}

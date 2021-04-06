@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "10.0.0",
+  "version": "10.0.0-alpha.0",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "test": "webpack",
     "prepublish": "cd scripts && npm run build",
     "release": "npm publish --access public",
+    "release:alpha": "npm publish --tag alpha --access public",
     "jfs-postinstall": "echo node scripts/build/Setup/postinstall.js",
     "postinstall": "subpkg install && npm run jfs-postinstall",
     "register-scripts": "node scripts/build/Setup/register-scripts.js",
@@ -55,6 +56,7 @@
     "@types/prettier": "^2.0.1",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.1",
+    "@types/react-helmet": "^6.1.0",
     "@types/react-redux": "^7.1.9",
     "@types/react-router": "^5.1.9",
     "@types/react-router-dom": "^5.1.7",
@@ -121,8 +123,5 @@
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"
   },
-  "devDependencies": {
-    "@types/react-helmet": "^6.1.0",
-    "@types/uuid": "^8.3.0"
-  }
+  "devDependencies": {}
 }

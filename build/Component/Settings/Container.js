@@ -10,10 +10,10 @@ import SelectField from '@material-ui/core/Select';
 import Cookie from 'js-cookie';
 import './SettingsContainer.scss';
 import { MenuItem } from '@material-ui/core';
-import useActions from '../../Store/Action/useActions';
+import useActions from '../../Store/useActions';
 import { useIntl } from 'react-intl';
 import { useSelector } from '../../Types/Redux';
-import { getLanguageStateSelector } from '../../Store/Selectors/Core/Language';
+import { getLanguageStateSelector } from '../../Store/Selector/Core/Language';
 // ToDo: Duplikat entfernen => Siehe LanguageSettings.tsx
 const LANGUAGES = [
     { label: 'Deutsch', value: 'de' },

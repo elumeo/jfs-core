@@ -3,9 +3,7 @@ import { useSelector } from 'Types/Redux';
 import Card from 'Component/Notification/Card';
 import Empty from './Empty';
 import * as MUI from '@material-ui/core';
-import useActions from 'Store/useActions';
-import {Notification} from 'Types/Notification'
-import { useTheme } from '@material-ui/core';
+import {Notification} from 'Types/Notification';
 
 const All: React.FC = () => {
   const history = useSelector(state => state.Core.Notification.history);
@@ -28,7 +26,7 @@ const All: React.FC = () => {
             <MUI.ListItem
               key={notification.id}
               style={{ width: '100%' }}>
-              <Card notification={notification}/>
+              <Card notification={notification} temporary={false}/>
             </MUI.ListItem>
           ))}
         </MUI.Box>

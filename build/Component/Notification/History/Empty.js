@@ -9,16 +9,11 @@ const Empty = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            color: 'grey'
         } },
         React.createElement(MUI.Icon, { fontSize: 'large', ref: iconRef }, "notifications"),
-        React.createElement(MUI.Popper, { open: true, modifiers: {
-                arrow: {
-                    enabled: false,
-                    element: iconRef
-                }
-            } },
-            React.createElement(MUI.Typography, null, formatMessage({ id: 'app.noNotifications' })))));
+        React.createElement(MUI.Typography, null, formatMessage({ id: 'app.noNotifications' }))));
 };
 export default Empty;
 //# sourceMappingURL=Empty.js.map

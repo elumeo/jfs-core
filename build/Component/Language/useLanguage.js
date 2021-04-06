@@ -6,7 +6,10 @@ const useLanguage = () => {
     const { changeLanguageAction } = useActions();
     return {
         value: language,
-        onChange: changeLanguageAction
+        onChange: (next) => {
+            console.log('TEST');
+            changeLanguageAction(next);
+        }
     };
 };
 export default useLanguage;

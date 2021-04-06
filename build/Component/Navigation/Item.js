@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from '../../Types/Redux';
 import useActions from '../../Store/useActions';
 import { useIntl } from 'react-intl';
-const NavigationItem = ({ iconName, messageId, onClick, active, messageString, authorizedOnly, unauthorizedOnly, onClickRoute }) => {
+const NavigationItem = React.forwardRef(({ iconName, messageId, onClick, active, messageString, authorizedOnly, unauthorizedOnly, onClickRoute }, ref) => {
     const history = useHistory();
     const { closeNavigation } = useActions();
     const { formatMessage } = useIntl();
@@ -14,7 +14,7 @@ const NavigationItem = ({ iconName, messageId, onClick, active, messageString, a
         !isAuthorized && unauthorizedOnly // only when unauthorized
     );
     return (visible
-        ? (React.createElement(MUI.ListItem, { button: true, onClick: (event) => {
+        ? (React.createElement(MUI.ListItem, { ref: ref, button: true, onClick: (event) => {
                 const { location: { pathname } } = history;
                 if (onClickRoute != undefined && pathname !== onClickRoute) {
                     history.push(onClickRoute);
@@ -30,6 +30,6 @@ const NavigationItem = ({ iconName, messageId, onClick, active, messageString, a
                     ? messageString
                     : formatMessage({ id: messageId }) })))
         : React.createElement(React.Fragment, null));
-};
+});
 export default NavigationItem;
 //# sourceMappingURL=Item.js.map

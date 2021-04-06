@@ -5,3 +5,4 @@ export declare const addNotification: TA.PayloadAC<"notification/ADD", Type.Noti
 export declare const removeNotification: TA.PayloadAC<"notification/remove", string>;
 export declare const removeAllNotifications: TA.EmptyAC<"notification/remove_all">;
 export declare const catchErrorNotification: TA.PayloadAC<"notification/ERROR_ADD", AxiosError>;
+export declare const setIsNotificationHistoryOpen: TA.PayloadAC<"notification/SET_IS_HISTORY_OPEN", boolean>;

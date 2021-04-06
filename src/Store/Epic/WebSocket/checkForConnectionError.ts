@@ -12,7 +12,7 @@ const checkForConnectionError: Epic = (action$, state) => {
     filter(TA.isActionOf(Action.webSocketConnectRequestAction)),
     concatMap(() => WSClient.connectionErrorObservable$),
     switchMap((err) => {
-        if (state.value.Core.WebSocketConnection[err.namespace].isConnecting) {
+        if (state.value.Core.WebSocket[err.namespace].isConnecting) {
           return of(
             Action.addNotification({
               id: uuid(),

@@ -10,11 +10,13 @@ import { useSnackbar } from 'notistack';
 
 export type Props = {
   notification: Notification;
+  temporary: boolean;
 };
 
 const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = ({
   children,
-  notification
+  notification,
+  temporary
 }) => {
   const { palette } = useTheme();
   const { removeNotification } = useActions();
@@ -43,14 +45,14 @@ const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = (
         subheaderTypographyProps={{ color: 'inherit' }}
         action={
           <MUI.CardActions>
+            {notification.action
+              ? notification.action(snackbar, notification.id, temporary)
+              : null}
             <MUI.IconButton
               onClick={() => removeNotification(notification.id)}>
               <ICON.Delete
                 style={{ color: palette[notification.variant]?.contrastText }}/>
             </MUI.IconButton>
-            {notification.action
-              ? notification.action(snackbar, notification.id)
-              : null}
           </MUI.CardActions>
         }/>
       <MUI.CardContent>

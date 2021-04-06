@@ -5,7 +5,7 @@ import * as Action from '../../Action';
 import { WSClient } from '../../../API/WS/WSClient';
 export const connectRequest = (action$, state$) => {
     return action$.pipe(filter(TA.isActionOf(Action.webSocketConnectRequestAction)), filter(() => (state$.value.Core.Configuration.loaded &&
-        state$.value.Core.Session.isAuthorized)), concatMap(action => WSClient.leaveAllRooms(action.payload, state$.value.Core.WebSocketConnection[action.payload].rooms)), concatMap(namespace => WSClient.disconnect(namespace)), concatMap(namespace => {
+        state$.value.Core.Session.isAuthorized)), concatMap(action => WSClient.leaveAllRooms(action.payload, state$.value.Core.WebSocket[action.payload].rooms)), concatMap(namespace => WSClient.disconnect(namespace)), concatMap(namespace => {
         let host = null;
         const config = state$.value.Core.Configuration.config;
         let path = '/socket.io';

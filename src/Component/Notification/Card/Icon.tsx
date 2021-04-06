@@ -1,6 +1,5 @@
 import React from 'react';
-import {Icon as FontIcon} from '@material-ui/core'
-import { useTheme } from '@material-ui/core/styles'
+import { Icon as FontIcon } from '@material-ui/core';
 import { VariantType } from 'notistack';
 
 export type Props = {
@@ -8,7 +7,6 @@ export type Props = {
 };
 
 const Icon: React.FC<Props> = ({ variant }) => {
-  const { palette } = useTheme();
   const iconName = React.useMemo(
     () => {
       if (variant === 'error') {

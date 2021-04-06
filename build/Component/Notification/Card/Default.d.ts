@@ -1,11 +1,8 @@
 import React from 'react';
+import * as Type from '../../../Types/Notification';
 export declare type Props = {
-    id: string;
-    title: React.ReactNode;
-    subtitle: React.ReactNode;
-    content: React.ReactNode;
-    actions: React.ReactNode;
-    translate?: boolean;
+    notification: Type.Notification;
+    temporary?: boolean;
 };
 declare const DefaultNotificationCard: React.FC<Props>;
 export default DefaultNotificationCard;

@@ -29,9 +29,9 @@ const DefaultNotificationCard : React.FC<Props> = ({
             {content}
           </MUI.Typography>
         </MUI.CardContent>
-        {temporary && action && (
+        {!temporary && action && (
           <MUI.CardActions>
-            {action(snackbar, id)}
+            {action(snackbar, id, temporary)}
           </MUI.CardActions>
         )}
       </>

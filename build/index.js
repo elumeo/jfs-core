@@ -1,4 +1,3 @@
-// import './Setup';
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 // import * as App from './Component/App';
@@ -7,28 +6,26 @@
 // import * as Settings from './Component/Settings';
 // import * as Language from './Component/Language';
 // import * as Header from './Component/Header';
-// import Overlay from './Component/Overlay';
-// import Navigation from './Setup/Navigation';
 // import * as Notification from './Component/Notification';
-// import Routes from './Setup/Routes';
-// import translations from './Setup/Translations.json';
+// import Overlay from './Component/Overlay';
+// import { Translations, Navigation, Routes } from './Setup';
 // import packageJson from '../package.json';
 // import store from './Store';
-// import './Style/main.scss';
-//
-// import RandomNotificationButton from './RandomNotificationButton';
 //
 // ReactDOM.render(
 //   <App.Container
 //     store={store}
-//     translations={translations}
+//     translations={Translations}
 //     packageJson={packageJson}>
-//     <Routes/>
 //     <Overlay>
 //       <Header.Toolbar
 //         left={<Header.BackendIndicator/>}
-//         middle={<RandomNotificationButton/>}
-//         right={<Notification.Button.Show/>}/>
+//         right={
+//           <>
+//             <Settings.Button/>
+//             <Notification.Button.Show/>
+//           </>
+//         }/>
 //       <Navigation/>
 //       <Login.Dialog/>
 //       <Logout.Dialog/>
@@ -36,6 +33,7 @@
 //         <Language.Settings/>
 //       </Settings.Dialog>
 //     </Overlay>
+//     <Routes/>
 //   </App.Container>,
 //   document.getElementById('root')
 // );
