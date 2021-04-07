@@ -23,14 +23,6 @@ const Loader: React.FC<Props> = ({
     packageJson
   });
 
-  if (appInitialized && !isEmpty(translations)) {
-    console.log('hier noch?', {
-      appInitialized,
-      translations,
-      children,
-      language
-    });
-  }
 
   return (
     appInitialized && !isEmpty(translations)

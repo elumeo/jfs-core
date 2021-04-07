@@ -15,7 +15,6 @@ const Toolbar: React.FC<Props> = ({ variant = 'dense', ...tools }) => {
   const { formatMessage } = useIntl();
   const { openNavigation } = useActions();
 
-  console.log(tools.left);
   return (
     <MUI.AppBar position='static'>
       <MUI.Toolbar disableGutters variant={variant} style={{
