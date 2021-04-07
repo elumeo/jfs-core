@@ -1,7 +1,4 @@
-import createStore from '@elumeo/jfs-core/build/Store';
-import rootEpic from './Epic';
-import rootReducer from './Reducer';
-
-const Store = createStore(rootEpic, rootReducer);
-
-export default Store;
+import * as Store from '@elumeo/jfs-core/build/Store';
+import epic from './Epic';
+import reducer from './Reducer';
+export default Store.create(epic, reducer);

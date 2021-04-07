@@ -1,14 +1,12 @@
-import { Epic, StateObservable } from 'redux-observable';
 import { of } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
-import { webSocketLeaveRoomSuccessAction }from '@elumeo/jfs-core/build/Store/Action/WebSocketAction';
+import * as Action from 'Store/Action';
 
 
 import JSCApi from 'Jsc/Api/index';
 import { Jsc2JfsPingExampleUpdateRoomAction } from 'Action/Jsc2JfsPingExampleAction';
-
 import { isActionOf } from 'typesafe-actions';
-import Global from "../Reducer";
+import { Epic } from 'Types/Redux';
 
 /**
  * This epic works also for room subscriptions using the config
@@ -22,9 +20,9 @@ export const Jsc2JfsPingUpdateExampleEpic: Epic = action$ => {
 
 export const Jsc2JfsPingLeaveExampleEpic: Epic = (
   action$,
-  state$: StateObservable<Global.State>
+  state$
 ) => action$.pipe(
-  filter(isActionOf(webSocketLeaveRoomSuccessAction)),
+  filter(isActionOf(Action.webSocketLeaveRoomSuccessAction)),
   filter((action) => (
     action.payload.room === JSCApi.WebSocketClient.ROOM_PING.room &&
     action.payload.namespace === state$.value.Core.Configuration.config.JscWebSocketClient.PrivateNamespace

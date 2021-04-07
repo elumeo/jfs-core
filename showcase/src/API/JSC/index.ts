@@ -3,8 +3,8 @@ import { Observable } from "rxjs";
 import JscClient from "@elumeo/jfs-core/build/API/JSC/Client";
 import { Subject } from "rxjs";
 import { PayloadAction } from "typesafe-actions";
-import { ROOM_UPDATE_ACTION_ID } from "@elumeo/jfs-core/build/Store/Action/WebSocketAction";
-import { IWebSocketRoom } from "@elumeo/jfs-core/build/Store/Reducer/Core/WebSocketConnectionReducer";
+import { ROOM_UPDATE_ACTION_ID } from "@elumeo/jfs-core/build/Constant/WebSocket";
+import { IWebSocketRoom } from "@elumeo/jfs-core/build/Types/WebSocket";
 namespace JSCApi {
   export interface IUrlParams {
     filter?: string;

@@ -1,71 +1,43 @@
-import * as React from 'react';
-// import Button from '@material-ui/core/Button';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-
-import { webSocketConnectionReducerInitialState }from '@elumeo/jfs-core/build/Store/Reducer/Core/WebSocketConnectionReducer';
-import { getRoomConnectionState }from '@elumeo/jfs-core/build/Store/Selectors/WebSocketSelectors';
-import { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction }from '@elumeo/jfs-core/build/Store/Action/WebSocketAction';
-import { isWebSocketNamespaceConnectedState }from '@elumeo/jfs-core/build/Store/Selectors/WebSocketSelectors';
-
-import Global from 'Store/Reducer';
+import React from 'react';
+import * as MUI from '@material-ui/core';
+import { useIntl } from 'react-intl';
+import { isWebSocketNamespaceConnectedState }from '@elumeo/jfs-core/build/Store/Selector/Core/WebSocket';
+import { getRoomConnectionState }from '@elumeo/jfs-core/build/Store/Selector/Core/WebSocket';
 
 import JSCApi from 'Jsc/Api/index';
-import { ICurrentGameState } from 'Store/Reducer/App/currentGameReducer';
 import ROOM_CURRENT_GAME = JSCApi.WebSocketClient.ROOM_CURRENT_GAME;
-import IAppConfig from 'Setup/IAppConfig';
+import useActions from '@elumeo/jfs-core/build/Store/useActions';
+import { useSelector } from 'Types/Redux';
 
-export interface IJscWebSocketCurrentGameButtonProps extends InjectedIntlProps {
-  config?: IAppConfig;
-  webSocketJoinRoomRequestAction?: typeof webSocketJoinRoomRequestAction;
-  webSocketLeaveRoomRequestAction?: typeof webSocketLeaveRoomRequestAction;
-  webSocketConnectionReducer?: typeof webSocketConnectionReducerInitialState,
-  currentGame?: ICurrentGameState
-}
+const CurrentGameButton: React.FC = () => {
+  const { formatMessage } = useIntl();
+  const { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction } = useActions();
+  const config = useSelector(state => state.Core.Configuration.config);
 
-class JscWebSocketCurrentGameButton extends React.Component<IJscWebSocketCurrentGameButtonProps> {
-  public joinWebSocketRoom = () => this.props.webSocketJoinRoomRequestAction(ROOM_CURRENT_GAME);
-  public leaveWebSocketRoom = () => this.props.webSocketLeaveRoomRequestAction(ROOM_CURRENT_GAME);
-
-  render() {
-    const {intl: {formatMessage}, config, webSocketConnectionReducer } = this.props;
-    if (isWebSocketNamespaceConnectedState(webSocketConnectionReducer, config.JscWebSocketClient.PrivateNamespace)) {
-      const room = getRoomConnectionState(webSocketConnectionReducer, ROOM_CURRENT_GAME);
-      if (room === null || room.hasJoined === undefined || room.hasJoined === false) {
-        return (
-          <Button
-            disabled={room !== null && room.isJoining}
-            flat
-            onClick={this.joinWebSocketRoom}>
-            {formatMessage({id: 'jscWebSocket.currentGameJoinRoom'})}
-          </Button>
-        );
-      } else {
-        return (
-          <Button
-            flat
-            onClick={this.leaveWebSocketRoom}>
-            {formatMessage({id: 'jscWebSocket.currentGameLeaveRoom'})}
-          </Button>
-        );
-      }
+  const webSocket = useSelector(state => state.Core.WebSocket);
+  if (isWebSocketNamespaceConnectedState(
+    webSocket,
+    config.JscWebSocketClient.PrivateNamespace
+  )) {
+    const room = getRoomConnectionState(webSocket, ROOM_CURRENT_GAME);
+    if (room === null || room.hasJoined === undefined || room.hasJoined === false) {
+      return (
+        <MUI.Button
+          disabled={room !== null && room.isJoining}
+          onClick={() => webSocketJoinRoomRequestAction(ROOM_CURRENT_GAME)}>
+          {formatMessage({ id: 'jscWebSocket.currentGameJoinRoom' })}
+        </MUI.Button>
+      );
+    } else {
+      return (
+        <MUI.Button
+          onClick={() => webSocketLeaveRoomRequestAction(ROOM_CURRENT_GAME)}>
+          {formatMessage({ id: 'jscWebSocket.currentGameLeaveRoom' })}
+        </MUI.Button>
+      );
     }
-    return 'WebSocket not connected!';
   }
+  return <>'WebSocket not connected!'</>;
 }
 
-const mapStateToProps = (state: Global.State, props) => ({
-  ...props,
-  webSocketConnectionReducer: state.Core.WebSocketConnection,
-  jsc2JfsPingExampleReducer: state.App.jsc2JfsPingExampleReducer,
-  config: state.App.configurationReducer.config,
-  ...state.Core.Language
-});
-
-const enhance = compose(
-  connect(mapStateToProps, { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction }),
-  injectIntl
-);
-
-export default enhance(JscWebSocketCurrentGameButton);
+export default CurrentGameButton;

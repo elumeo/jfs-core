@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as MUI from '@material-ui/core';
-import useActions from '@elumeo/jfs-core/build/Store/Action/useActions';
+import useActions from '@elumeo/jfs-core/build/Store/useActions';
 import { useIntl } from 'react-intl';
 
 const AddToastButton: React.FC = () => {

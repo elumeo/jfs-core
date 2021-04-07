@@ -1,72 +1,46 @@
-import * as React from 'react';
-// import Button from '@material-ui/core/Button';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import React from 'react';
+import * as MUI from '@material-ui/core';
+import { useIntl } from 'react-intl';
+import { IWebSocketRoom }from '@elumeo/jfs-core/build/Types/WebSocket';
+import {
+  getRoomConnectionState,
+  isWebSocketNamespaceConnectedState
+} from '@elumeo/jfs-core/build/Store/Selector/Core/WebSocket';
+import useActions from '@elumeo/jfs-core/build/Store/useActions';
+import { useSelector } from '@elumeo/jfs-core/build/Types/Redux';
 
-import { webSocketConnectionReducerInitialState, IWebSocketRoom }from '@elumeo/jfs-core/build/Store/Reducer/Core/WebSocketConnectionReducer';
-import { getRoomConnectionState, isWebSocketNamespaceConnectedState }from '@elumeo/jfs-core/build/Store/Selectors/WebSocketSelectors';
-import { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction }from '@elumeo/jfs-core/build/Store/Action/WebSocketAction';
+const pingRoom: IWebSocketRoom = {
+  room: 'ping',
+  namespace: 'Jfs2Jfs'
+};
 
-import Global from 'Store/Reducer';
-import { IJsc2JfsPingExampleState } from 'Store/Reducer/App/Jsc2JfsPingExampleReducer';
-import IAppConfig from 'Setup/IAppConfig';
-
-export interface IJfsWebSocketExampleButtonProps extends InjectedIntlProps {
-  config?: IAppConfig;
-  webSocketJoinRoomRequestAction?: typeof webSocketJoinRoomRequestAction;
-  webSocketLeaveRoomRequestAction?: typeof webSocketLeaveRoomRequestAction;
-  webSocketConnectionReducer?: typeof webSocketConnectionReducerInitialState,
-  exampleWebSocket?: IJsc2JfsPingExampleState
-}
-
-class JfsWebSocketPingButton extends React.Component<IJfsWebSocketExampleButtonProps> {
-  constructor(props) {
-    super(props);
-  }
-
-  public pingRoom: IWebSocketRoom = {room: 'ping', namespace: 'Jfs2Jfs'};
-  public joinWebSocketRoomPing = () => this.props.webSocketJoinRoomRequestAction(this.pingRoom);
-  public leaveWebSocketRoomPing = () => this.props.webSocketLeaveRoomRequestAction(this.pingRoom);
-
-  render() {
-    const {intl: {formatMessage}, config, webSocketConnectionReducer} = this.props;
-    if (isWebSocketNamespaceConnectedState(webSocketConnectionReducer, config.JfsWebSocketClient.PrivateNamespace)) {
-      const room = getRoomConnectionState(webSocketConnectionReducer, this.pingRoom);
-      if (room === null || room.hasJoined === undefined || room.hasJoined === false) {
-        return (
-          <Button
-            disabled={room !== null && room.isJoining}
-            flat
-            onClick={this.joinWebSocketRoomPing}>
-            {formatMessage({id: 'jfsWebSocket.pingJoinRoom'})}
-          </Button>
-        );
-      } else {
-        return (
-          <Button
-            flat
-            onClick={this.leaveWebSocketRoomPing}>
-            {formatMessage({id: 'jfsWebSocket.pingLeaveRoom'})}
-          </Button>
-        );
-      }
+const JfsPingButton: React.FC = () => {
+  const { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction } = useActions();
+  const { formatMessage } = useIntl();
+  const webSocket = useSelector(state => state.Core.WebSocket);
+  const config = useSelector(state => state.Core.Configuration.config);
+  if (isWebSocketNamespaceConnectedState(
+    webSocket,
+    config.JfsWebSocketClient.PrivateNamespace
+  )) {
+    const room = getRoomConnectionState(webSocket, pingRoom);
+    if (room === null || room.hasJoined === undefined || room.hasJoined === false) {
+      return (
+        <MUI.Button
+          disabled={room !== null && room.isJoining}
+          onClick={() => webSocketJoinRoomRequestAction(pingRoom)}>
+          {formatMessage({id: 'jfsWebSocket.pingJoinRoom'})}
+        </MUI.Button>
+      );
+    } else {
+      return (
+        <MUI.Button onClick={() => webSocketLeaveRoomRequestAction(pingRoom)}>
+          {formatMessage({id: 'jfsWebSocket.pingLeaveRoom'})}
+        </MUI.Button>
+      );
     }
-    return 'JfsWebSocket not connected!';
   }
-}
+  return <>JfsWebSocket not connected!</>;
+};
 
-const mapStateToProps = (state: Global.State, props) => ({
-  ...props,
-  webSocketConnectionReducer: state.Core.WebSocketConnection,
-  jfs2JfsPingExampleReducer: state.App.jfs2JfsPingExampleReducer,
-  config: state.App.configurationReducer.config,
-  ...state.Core.Language
-});
-
-const enhance = compose(
-  connect(mapStateToProps, { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction }),
-  injectIntl
-);
-
-export default enhance(JfsWebSocketPingButton);
+export default JfsPingButton;

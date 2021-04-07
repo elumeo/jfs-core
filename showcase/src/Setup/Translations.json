@@ -1,6 +1,6 @@
 {
   "de": {
-    "app.title": "Boilerplate (de-DE)",
+    "app.title": "Showcase (de-DE)",
     "app.hello": "Hallo Welt",
     "app.notification.change.language": "Klicke mich, um die Sprache der App zu ändern",
     "Add Notification": "Benachrichtigung erzeugen",
@@ -16,7 +16,7 @@
     "configurable.message": "<b>Ich bin ein konfigurierbarer Text: {text} {other}</b>"
   },
   "en": {
-    "app.title": "Boilerplate (en-US)",
+    "app.title": "Showcase (en-US)",
     "app.hello": "Hello World",
     "app.notification.change.language": "Click me to change the apps language",
     "Add Notification": "Add Notification",
@@ -31,7 +31,7 @@
     "jfsWebSocket.pingLeaveRoom": "JFS WS: Ping Leave Room"
   },
   "it": {
-    "app.title": "Boilerplate (it-IT)",
+    "app.title": "Showcase (it-IT)",
     "app.hello": "Ciao Mondo",
     "app.notification.change.language": "Fare clic su di me per cambiare la lingua delle app",
     "Add Notification": "Aggiungi Notifica",

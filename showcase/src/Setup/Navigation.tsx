@@ -1,29 +1,27 @@
 import React from 'react';
-import _ from 'lodash';
-import Divider from '@material-ui/core/Divider';
-import NavigationDrawer from '@elumeo/jfs-core/build/Component/Navigation/NavigationDrawer';
-import NavigationItem from '@elumeo/jfs-core/build/Component/Navigation/NavigationItem';
+import * as MUI from '@material-ui/core';
+import * as Navigation from '@elumeo/jfs-core/build/Component/Navigation';
+import * as Logout from '@elumeo/jfs-core/build/Component/Logout';
+import * as Settings from '@elumeo/jfs-core/build/Component/Settings';
 
-import SettingsNavigationItem from '@elumeo/jfs-core/build/Component/Settings/SettingsNavigationItem';
-import LogoutNavigationItem from '@elumeo/jfs-core/build/Component/Logout/LogoutNavigationItem';
-
-export default () => (
-  <NavigationDrawer position='left'>
-    <NavigationItem
+const Drawer: React.FC = () => (
+  <Navigation.Drawer>
+    <Navigation.Item
       iconName='account_box'
       messageId='app.login'
       unauthorizedOnly
-      onClickRoute='/start'
-    />
-    <NavigationItem
+      onClickRoute='/start'/>
+    <Navigation.Item
       iconName='home'
       messageId='app.title'
       onClickRoute='/start'
-      authorizedOnly
-    />
-    <Divider key={_.uniqueId('navItem_')}/>
-    <SettingsNavigationItem/>
-    <Divider key={_.uniqueId('navItem_')}/>
-    <LogoutNavigationItem/>
-  </NavigationDrawer>
+      authorizedOnly/>
+    <MUI.Divider/>
+    <Settings.NavigationItem/>
+    <MUI.Divider/>
+    <Logout.NavigationItem/>
+    {/* <VersionNavigationItem /> */}
+  </Navigation.Drawer>
 );
+
+export default Drawer;

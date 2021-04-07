@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sync-once" : "rimraf node_modules/@elumeo/jfs-core/src node_modules/@elumeo/jfs-core/build && cp -r ../build node_modules/@elumeo/jfs-core/build && cp -r ../src node_modules/@elumeo/jfs-core/src && clear && echo \"LAST UPDATE $(date)\"",
-    "start": "npm run sync-once && webpack serve --config node_modules/@elumeo/jfs-core/build-tools/webpack/dev-server",
+    "start": "webpack serve --config node_modules/@elumeo/jfs-core/build-tools/webpack/dev-server",
     "build": "webpack --config node_modules/@elumeo/jfs-core/build-tools/webpack/production",
     "sync-development": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/sync-development.js",
     "postinstall": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/postinstall",
@@ -25,7 +24,7 @@
   },
   "dependencies": {
     "@date-io/moment": "^1.3.13",
-    "@elumeo/jfs-core": "https://github.com/elumeo/jfs-core.git#bbd417d6d7ba697d0509fc947829312f2389a2cf",
+    "@elumeo/jfs-core": "^10.0.0-alpha.0",
     "@material-ui/pickers": "^3.2.10",
     "jfc-hello-world": "https://github.com/scharfohnezwiebeln/jfc_HelloWorld.git#027a20d52d692b132e25e75316f9427e0354a30e"
   },

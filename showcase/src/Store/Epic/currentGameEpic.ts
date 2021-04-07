@@ -1,25 +1,21 @@
-import { Epic } from 'redux-observable';
 import { of } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
-
-import { webSocketLeaveRoomSuccessAction } from '@elumeo/jfs-core/build/Store/Action/WebSocketAction';
-
+import * as Action from 'Store/Action';
 import JSCApi from 'API/JSC';
-import { currentGameUpdateAction } from 'Action/currentGameAction';
-
 import { isActionOf } from 'typesafe-actions';
+import { Epic } from 'Types/Redux';
 
-export const currentGameUpdateEpic: Epic = (action$) => {
-  return action$.pipe(
+export const currentGameUpdateEpic: Epic = (action$) => (
+  action$.pipe(
     switchMap(JSCApi.WebSocketClient.onRoomUpdateCurrentGame),
     filter((data) => data.length > 0),
-    switchMap((data) => of(currentGameUpdateAction(data[0])))
-  );
-};
+    switchMap((data) => of(Action.currentGameUpdateAction(data[0])))
+  )
+);
 
-export const currentGameLeaveEpic: Epic = action$ => {
-  return action$.pipe(
-    filter(isActionOf(webSocketLeaveRoomSuccessAction)),
-    switchMap(() => of(currentGameUpdateAction(null)))
-  );
-};
+export const currentGameLeaveEpic: Epic = action$ => (
+  action$.pipe(
+    filter(isActionOf(Action.webSocketLeaveRoomSuccessAction)),
+    switchMap(() => of(Action.currentGameUpdateAction(null)))
+  )
+);

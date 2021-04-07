@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
-import Core from '@elumeo/jfs-core/build/Store/Reducer/Core';
+import Core, { State as CoreState } from '@elumeo/jfs-core/build/Store/Reducer/Core';
 import Jfc from './Jfc';
-import App from './App';
+import App, { State as AppState } from './App';
 
 export type State = {
-  Core: Core.State;
+  Core: CoreState;
   Jfc: Jfc.State,
-  App: App.State;
+  App: AppState;
 }
 
-const Global = combineReducers({
+const Global = combineReducers<State>({
   Core,
   Jfc,
   App

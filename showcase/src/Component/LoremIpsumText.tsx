@@ -1,7 +1,11 @@
 import * as React from 'react'
 import LoremIpsum from 'Mock/LoremIpsum.json';
 
-export default ({ lines }) => (
+export type Props = {
+  lines: number;
+};
+
+const LoremIpsumText: React.FC<Props> = ({ lines }) => (
   <>
     {
       Array(Math.ceil(lines / 8)).fill(null).map(
@@ -13,4 +17,6 @@ export default ({ lines }) => (
       )
     }
   </>
-);
+)
+
+export default LoremIpsumText;

@@ -10,7 +10,7 @@ const DialogExample: React.FC = () => {
   return (
     <>
       <MUI.Dialog
-        id='TestDialogContainer'
+        id='example-dialog'
         open={dialogVisible}
         onClose={() => false}
         aria-labelledby='add-credit-card-dialog'>

@@ -1,47 +1,76 @@
-import '@elumeo/jfs-core/build/Setup';
-
 declare const module: any;
 if (module.hot) {
   module.hot.accept();
 }
 
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import _ from 'lodash';
-
-import App from '@elumeo/jfs-core/build/Component/App/App';
-import LoginDialog from '@elumeo/jfs-core/build/Component/Login/LoginDialog';
-import LogoutDialog from '@elumeo/jfs-core/build/Component/Logout/LogoutDialog';
-import NotificationDrawer from '@elumeo/jfs-core/build/Component/Notification/NotificationDrawer';
-import OnScreenNotifications from '@elumeo/jfs-core/build/Component/Notification/OnScreenNotifications';
-
-import packageJson from '../package.json';
-import Store from 'Store';
-import Header from 'Setup/Header';
-import NavigationDrawer from 'Setup/Navigation';
-import SettingsDialog from 'Setup/Settings';
-import Content from 'Setup/Content';
-import CoreTranslations from '@elumeo/jfs-core/build/Setup/Translations.json';
-import HelloWorldTranslations from 'jfc-hello-world/build/Setup/Translations.json';
+import * as App from '@elumeo/jfs-core/build/Component/App';
+import * as Login from '@elumeo/jfs-core/build/Component/Login';
+import * as Logout from '@elumeo/jfs-core/build/Component/Logout';
+import * as Settings from '@elumeo/jfs-core/build/Component/Settings';
+import * as Language from '@elumeo/jfs-core/build/Component/Language';
+import * as Header from '@elumeo/jfs-core/build/Component/Header';
+import * as Notification from '@elumeo/jfs-core/build/Component/Notification';
+import { Translations as CoreTranslations } from '@elumeo/jfs-core/build/Setup';
 import Translations from 'Setup/Translations.json';
+import Navigation from 'Setup/Navigation';
+import packageJson from '../package.json';
+import store from 'Store';
+import Routes from 'Setup/Routes';
+import HelloWorldTranslations from 'jfc-hello-world/build/Setup/Translations.json';
 
-render(
-  <App
-    store={Store}
+import * as MUI from '@material-ui/core';
+import * as LAB from '@material-ui/lab';
+
+ReactDOM.render(
+  <App.Container
+    store={store}
     translations={_.merge(
       CoreTranslations,
       HelloWorldTranslations,
       Translations
     )}
     packageJson={packageJson}>
-    <Header/>
-    <Content/>
-    <LoginDialog/>
-    <NavigationDrawer/>
-    <SettingsDialog/>
-    <LogoutDialog/>
-    <NotificationDrawer/>
-    <OnScreenNotifications/>
-  </App>,
+    <Header.Toolbar
+      left={<Header.BackendIndicator/>}
+      middle={
+        <div style={{
+          width: 300,
+        }}>
+          <LAB.Autocomplete
+            fullWidth
+            options={["one", "two", "three"]}
+            renderInput={params => (
+              <MUI.TextField
+                placeholder='Search for ...'
+                variant='filled'
+                {...params}
+                inputProps={{
+                  ...params.inputProps,
+                  style: {
+                    ...(params.inputProps as { style: React.CSSProperties })
+                      .style,
+                    color: 'white'
+                  }
+                }}/>
+            )}/>
+        </div>
+      }
+      right={
+        <>
+          <Settings.Button/>
+          <Notification.Button.Show/>
+        </>
+      }/>
+    <Navigation/>
+    <Login.Dialog/>
+    <Logout.Dialog/>
+    <Settings.Dialog>
+      <Language.Settings/>
+    </Settings.Dialog>
+    <Routes/>
+  </App.Container>,
   document.getElementById('root')
 );

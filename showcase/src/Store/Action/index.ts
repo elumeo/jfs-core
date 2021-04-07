@@ -1,9 +1,4 @@
-export *from '@elumeo/jfs-core/build/Store/Action/ConfigAction';
-export *from '@elumeo/jfs-core/build/Store/Action/SessionAction';
-export *from '@elumeo/jfs-core/build/Store/Action/SettingsAction';
-export *from '@elumeo/jfs-core/build/Store/Action/ToastAction';
-export *from '@elumeo/jfs-core/build/Store/Action/NotificationAction';
-export *from '@elumeo/jfs-core/build/Store/Action/WebSocketAction';
+export * from '@elumeo/jfs-core/build/Store/Action';
 export * from 'Action/Jsc2JfsPingExampleAction';
 export * from 'Action/Jfs2JfsPingExampleAction';
 export * from 'Action/parallelAsyncLoopExampleAction';

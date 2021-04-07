@@ -1,7 +1,6 @@
 import { of } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
-import { webSocketLeaveRoomSuccessAction }from '@elumeo/jfs-core/build/Store/Action/WebSocketAction';
-
+import * as Action from 'Store/Action';
 import * as TA from 'typesafe-actions';
 import { Jfs2JfsPingExampleUpdateRoomAction } from 'Action/Jfs2JfsPingExampleAction';
 import JSCApi from 'API/JSC';
@@ -33,7 +32,7 @@ export const Jfs2JfsPingUpdateExampleEpic: Epic = (
 
 export const Jfs2JfsPingLeaveExampleEpic: Epic = action$ => {
   return action$.pipe(
-    filter(TA.isActionOf(webSocketLeaveRoomSuccessAction)),
+    filter(TA.isActionOf(Action.webSocketLeaveRoomSuccessAction)),
     filter(action => (
       action.payload.room === 'ping' &&
       action.payload.namespace === 'Jfs2Jfs'

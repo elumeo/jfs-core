@@ -1,19 +1,23 @@
 import { createReducer } from 'typesafe-actions';
-import { currentGameUpdateAction } from 'Action/currentGameAction';
+import * as Action from 'Store/Action';
 
-export interface ICurrentGameState {
+export type State = {
   data: string;
-}
+};
 
-const initialState: ICurrentGameState = {
+export const initialState: State = {
   data: null
 };
 
-export const currentGameReducer = createReducer(initialState)
-  .handleAction(currentGameUpdateAction, (state, action) => {
-    return {
-      ...state,
-      data: action.payload
-    };
-  })
-;
+const currentGameReducer = (
+  createReducer(initialState)
+    .handleAction(
+      Action.currentGameUpdateAction,
+      (state, action) => ({
+        ...state,
+        data: action.payload
+      })
+    )
+);
+
+export default currentGameReducer;

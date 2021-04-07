@@ -1,42 +1,44 @@
-import { createReducer, PayloadAction } from 'typesafe-actions';
+import { createReducer } from 'typesafe-actions';
+import * as Action from 'Store/Action';
 
-import {
-  parallelAsyncLoopExampleUpdateAction,
-  parallelAsyncLoopExampleSuccessAction, parallelAsyncLoopExampleRequestAction
-} from 'Action/parallelAsyncLoopExampleAction';
-
-export interface IParallelAsyncLoopExampleState {
+export type State = {
   progress: number;
   isRunning: boolean;
   isFinished: boolean;
-}
+};
 
-const initialState: IParallelAsyncLoopExampleState = {
+export const initialState: State = {
   progress: 0,
   isRunning: false,
   isFinished: false
 };
 
-export const parallelAsyncLoopExampleReducer = createReducer(initialState)
-  .handleAction(parallelAsyncLoopExampleRequestAction, (state: IParallelAsyncLoopExampleState): IParallelAsyncLoopExampleState => (
-    {
-      ...state,
-      progress: 0,
-      isRunning: true,
-      isFinished: false
-    }
-  ))
-  .handleAction(parallelAsyncLoopExampleUpdateAction, (state: IParallelAsyncLoopExampleState, action: PayloadAction<string, number>): IParallelAsyncLoopExampleState => (
-    {
-      ...state,
-      progress: action.payload
-    }
-  ))
-  .handleAction(parallelAsyncLoopExampleSuccessAction, (state: IParallelAsyncLoopExampleState): IParallelAsyncLoopExampleState => (
-    {
-      ...state,
-      isRunning: false,
-      isFinished: true
-    }
-  ))
-;
+const ParallelAsyncLoopExample = (
+  createReducer(initialState)
+    .handleAction(
+      Action.parallelAsyncLoopExampleRequestAction,
+      state => ({
+        ...state,
+        progress: 0,
+        isRunning: true,
+        isFinished: false
+      })
+    )
+    .handleAction(
+      Action.parallelAsyncLoopExampleUpdateAction,
+      (state, action) => ({
+        ...state,
+        progress: action.payload
+      })
+    )
+    .handleAction(
+      Action.parallelAsyncLoopExampleSuccessAction,
+      state => ({
+        ...state,
+        isRunning: false,
+        isFinished: true
+      })
+    )
+);
+
+export default ParallelAsyncLoopExample;

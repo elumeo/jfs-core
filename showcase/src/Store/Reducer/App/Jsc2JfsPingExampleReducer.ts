@@ -1,19 +1,23 @@
 import { createReducer } from 'typesafe-actions';
-import { Jsc2JfsPingExampleUpdateRoomAction } from 'Action/Jsc2JfsPingExampleAction';
+import * as Action from 'Store/Action';
 
-export interface IJsc2JfsPingExampleState {
+export type State = {
   data: string;
 }
 
-const Jsc2JfsPingExampleInitialState: IJsc2JfsPingExampleState = {
+export const initialState: State = {
   data: null
 };
 
-export const jsc2JfsPingExampleReducer = createReducer(Jsc2JfsPingExampleInitialState)
-  .handleAction(Jsc2JfsPingExampleUpdateRoomAction, (state, action) => {
-    return {
-      ...state,
-      data: action.payload
-    };
-  })
-;
+const Jsc2JfsPingExample = (
+  createReducer(initialState)
+    .handleAction(
+      Action.Jsc2JfsPingExampleUpdateRoomAction,
+      (state, action) => ({
+        ...state,
+        data: action.payload
+      })
+    )
+);
+
+export default Jsc2JfsPingExample;

@@ -1,24 +1,19 @@
-import { createReducer, PayloadAction } from 'typesafe-actions';
-import IAppConfig from 'Setup/IAppConfig';
-import { configLoadedAction, ConfigLoaded }from '@elumeo/jfs-core/build/Store/Action/ConfigAction';
+import { createReducer } from 'typesafe-actions';
+import * as Action from '@elumeo/jfs-core/build/Store/Action';
+import { Configuration } from '@elumeo/jfs-core/build/Types/Configuration';
 
-namespace Config {
-  export type State = {
-    config: IAppConfig;
-  };
-}
+export type State = {
+  config: Configuration;
+};
 
 const initialState = {
   config: null
 };
 
-const Config = createReducer<Config.State>(initialState)
+const Config = createReducer<State>(initialState)
   .handleAction(
-    configLoadedAction,
-    (
-      _state,
-      action: PayloadAction<string, ConfigLoaded.Payload>
-    ) => ({
+    Action.configLoadedAction,
+    (_state, action) => ({
       config: action.payload.config
     })
   );
