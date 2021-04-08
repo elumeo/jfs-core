@@ -15,7 +15,7 @@ const connectSuccess = (action$, state$) => action$.pipe(filter(TA.isActionOf(Ac
     }
     const stateJoinedRooms = [];
     const stateLeftRooms = [];
-    for (const stateRoom of state$.value.Core.WebSocketConnection[action.payload].rooms) {
+    for (const stateRoom of state$.value.Core.WebSocket[action.payload].rooms) {
         if (stateRoom.hasJoined) {
             stateJoinedRooms.push(stateRoom.name);
         }

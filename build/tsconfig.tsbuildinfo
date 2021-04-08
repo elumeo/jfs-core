@@ -4612,7 +4612,7 @@
         "affectsGlobalScope": false
       },
       "../src/store/epic/websocket/connectsuccess.ts": {
-        "version": "8923ff94cacc7d0c9f74d2e55dac1a24092185dbb23ece33cd536d29ef1bf174",
+        "version": "21b8c2cd07e67795e40a7840bf2352914df5023659764bc3655b8a8e073ef69b",
         "signature": "94b8b80de0650ceb6543c4b930882c9bef55280d644092f235d08019ac6069fd",
         "affectsGlobalScope": false
       },

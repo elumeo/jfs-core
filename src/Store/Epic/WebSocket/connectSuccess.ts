@@ -22,7 +22,7 @@ const connectSuccess: Epic = (action$, state$) => action$.pipe(
 
     const stateJoinedRooms: string[] = [];
     const stateLeftRooms: string[] = [];
-    for (const stateRoom of state$.value.Core.WebSocketConnection[action.payload].rooms) {
+    for (const stateRoom of state$.value.Core.WebSocket[action.payload].rooms) {
       if (stateRoom.hasJoined) {
         stateJoinedRooms.push(stateRoom.name);
       } else {
