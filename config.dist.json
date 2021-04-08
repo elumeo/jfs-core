@@ -5,6 +5,13 @@
       "Host-Local": "http://localhost/jsc-api-de",
       "Timeout": 30000
     },
+    "JscWebSocketClient": {
+        "HostV": "http://localhost:8080",
+        "PathV": "",
+        "Host": "https://api-test.juwelo.de",
+        "Path": "/staging/websocket.services",
+        "PrivateNamespace": "Jsc2Jfs"
+      },
     "Language": "de",
     "Currency": "EUR",
     "Container": "juwelotv",
