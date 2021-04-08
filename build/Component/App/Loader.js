@@ -9,14 +9,6 @@ const Loader = ({ allowRobotLogin, translations, packageJson, children }) => {
         translations,
         packageJson
     });
-    if (appInitialized && !isEmpty(translations)) {
-        console.log('hier noch?', {
-            appInitialized,
-            translations,
-            children,
-            language
-        });
-    }
     return (appInitialized && !isEmpty(translations)
         ? (React.createElement(Initialized, { translations: translations, language: language }, children))
         : React.createElement(Progress, null));

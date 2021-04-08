@@ -1,8 +1,8 @@
-import IConfig from '../../Types/Configuration';
+import { Configuration } from '../../Types/Configuration';
 export declare const loadConfig: import("typesafe-actions").EmptyAC<"config/LOAD">;
 export declare namespace ConfigLoaded {
     type Payload = {
-        config: IConfig;
+        config: Configuration;
     };
 }
 export declare const configLoadedAction: import("typesafe-actions").PayloadAC<"config/LOADED", ConfigLoaded.Payload>;

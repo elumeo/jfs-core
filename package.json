@@ -5,7 +5,7 @@
   "main": "Main.js",
   "scripts": {
     "start": "webpack serve --config build-tools/webpack/dev-server --port 8080 --host localhost",
-    "build": "node scripts/build/Setup/jfs-build.js",
+    "build": "node scripts/build/Setup/jfs-build",
     "build:watch": "node scripts/build/Setup/jfs-build --watch",
     "test": "webpack",
     "prepublish": "cd scripts && npm run build",
@@ -16,7 +16,6 @@
     "register-scripts": "node scripts/build/Setup/register-scripts.js",
     "check-translations": "node scripts/build/Setup/check-translations.js",
     "deploy-config-files": "node scripts/build/Setup/deploy-config-files.js",
-    "generate-juwelo-icon-font": "node scripts/build/Setup/generate-juwelo-icon-font.js",
     "core-showcase": "node scripts/build/Setup/jfs-showcase.js",
     "jsc-check": "node scripts/build/Setup/jsc-check.js",
     "jsc-generate": "node scripts/build/Setup/jsc-generate.js",

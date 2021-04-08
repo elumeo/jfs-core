@@ -1,4 +1,4 @@
-import { IToastConfig } from 'Store/Reducer/Core/ToastReducer';
+import { IToastConfig } from 'Store/Reducer/Core/Toast';
 import { createStandardAction } from 'typesafe-actions';
 
 export const addToastAction = createStandardAction('toast/ADD')<IToastConfig>();

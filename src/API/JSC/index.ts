@@ -1,10 +1,10 @@
-import { AxiosResponse } from "axios";
-import { Observable } from "rxjs";
-import JscClient from "./Client";
-import { Subject } from "rxjs";
-import { PayloadAction } from "typesafe-actions";
-import { ROOM_UPDATE_ACTION_ID } from "Constant/WebSocket";
-import { IWebSocketRoom } from "Types/WebSocket";
+import { AxiosResponse } from 'axios';
+import { Observable } from 'rxjs';
+import JscClient from './Client';
+import { Subject } from 'rxjs';
+import { PayloadAction } from 'typesafe-actions';
+import { ROOM_UPDATE_ACTION_ID } from 'Constant/WebSocket';
+import { IWebSocketRoom } from 'Types/WebSocket';
 namespace JSCApi {
   export interface IUrlParams {
     filter?: string;
@@ -49,11 +49,11 @@ namespace JSCApi {
       }
     }
     export namespace Authorization {
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ = "1";
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE = "2";
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE = "4";
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE = "8";
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE = "3";
+      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ = '1';
+      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE = '2';
+      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE = '4';
+      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE = '8';
+      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE = '3';
       export interface IPropertyDTO {
         key?: string;
         value?: string;
@@ -77,8 +77,8 @@ namespace JSCApi {
       }
     }
     export namespace App {
-      export const I_APP_DTO_FRONTEND_APP_DOCK = "appDock";
-      export const I_APP_DTO_FRONTEND_JFS = "jfs";
+      export const I_APP_DTO_FRONTEND_APP_DOCK = 'appDock';
+      export const I_APP_DTO_FRONTEND_JFS = 'jfs';
       export interface IAppDTO {
         name?: string;
         description?: string;
@@ -116,13 +116,13 @@ namespace JSCApi {
       config?: IJscClientConfig
     ): Promise<AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>> =>
       JscClient.post<JSCApi.DTO.Session.IFrontendSessionDTO>(
-        "/session/" +
+        '/session/' +
           encodeURI(
-            typeof appName === "number"
+            typeof appName === 'number'
               ? (appName as number).toString()
               : appName
           ) +
-          "",
+          '',
         credentials,
         config
       );
@@ -133,26 +133,26 @@ namespace JSCApi {
       config?: IJscClientConfig
     ): Promise<AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>> =>
       JscClient.get<JSCApi.DTO.Session.IFrontendSessionDTO>(
-        "/session/" +
+        '/session/' +
           encodeURI(
-            typeof appName === "number"
+            typeof appName === 'number'
               ? (appName as number).toString()
               : appName
           ) +
-          "",
+          '',
         config
       );
     export const logout = (
       session: JSCApi.DTO.Session.ISessionDTO,
       config?: IJscClientConfig
     ): Promise<AxiosResponse<void>> =>
-      JscClient.delete<void>("/session", session, config);
+      JscClient.delete<void>('/session', session, config);
   }
   export namespace SystemClient {
     export const getRegion = (
       config?: IJscClientConfig
     ): Promise<AxiosResponse<string>> =>
-      JscClient.get<string>("/region", config);
+      JscClient.get<string>('/region', config);
   }
   export namespace UserClient {
     export const getUserRights = (
@@ -160,18 +160,18 @@ namespace JSCApi {
       config?: IJscClientConfig
     ): Promise<AxiosResponse<JSCApi.DTO.Authorization.IUserRightsDTO>> =>
       JscClient.get<JSCApi.DTO.Authorization.IUserRightsDTO>(
-        "/user/" +
+        '/user/' +
           encodeURI(
-            typeof login === "number" ? (login as number).toString() : login
+            typeof login === 'number' ? (login as number).toString() : login
           ) +
-          "/rights",
+          '/rights',
         config
       );
   }
   export namespace WebSocketClient {
     export const ROOM_PING: IWebSocketRoom = {
-      namespace: "Jsc2Jfs",
-      room: "ping",
+      namespace: 'Jsc2Jfs',
+      room: 'ping',
     };
     const onRoomUpdatePingSubject = new Subject<string>();
     const onRoomUpdatePing$ = onRoomUpdatePingSubject.asObservable();

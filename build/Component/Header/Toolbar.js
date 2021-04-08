@@ -18,7 +18,6 @@ const Toolbar = (_a) => {
     var { variant = 'dense' } = _a, tools = __rest(_a, ["variant"]);
     const { formatMessage } = useIntl();
     const { openNavigation } = useActions();
-    console.log(tools.left);
     return (React.createElement(MUI.AppBar, { position: 'static' },
         React.createElement(MUI.Toolbar, { disableGutters: true, variant: variant, style: {
                 height: 58
