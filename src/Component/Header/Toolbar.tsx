@@ -41,7 +41,7 @@ const Toolbar: React.FC<Props> = ({ variant = 'dense', ...tools }) => {
               onClick={openNavigation}>
               <MenuIcon/>
             </MUI.IconButton>
-            <MUI.Typography variant='h6'>
+            <MUI.Typography variant='h6' noWrap>
               {formatMessage({ id: 'app.title' })}
             </MUI.Typography>
             {tools.left || <></>}
