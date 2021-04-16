@@ -1,36 +1,18 @@
 {
-    "compileOnSave": false,
-    "buildOnSave": false,
-    "compilerOptions": {
-      "allowSyntheticDefaultImports": true,
-      "declaration": true,
-      "emitDecoratorMetadata": true,
-      "esModuleInterop": true,
-      "experimentalDecorators": true,
-      "incremental": true,
-      "jsx": "react",
-      "lib": ["es2018", "esNext", "DOM"],
-      "module": "esnext",
-      "moduleResolution": "node",
-      "noImplicitReturns": true,
-      "removeComments": false,
-      "resolveJsonModule": true,
-      "skipLibCheck": true,
-      "sourceMap": true,
-      "target": "es6",
-      "paths": {
-        "Component/*": ["./Component/*"],
-        "Constant/*": ["./Constant/*"],
-        "Mock/*": ["./Mock/*"],
-        "Setup/*": ["./Setup/*"],
-        "Store/*": ["./Store/*"],
-        "Action/*": ["./Store/Action/*"],
-        "Types/*": ["./Types/*"],
-        "Utilities/*": ["./Utilities/*"],
-        "Jsc/Api/*" : ["./API/JSC/*"],
-        "Jsc/*": ["./API/JSC/*"],
-        "API/*" : ["./API/*"],
-        "Style/*": ["./Style/*"]
-      }
-    }
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es2018", "esNext", "DOM"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "incremental": true
   }
+}

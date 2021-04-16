@@ -1,8 +1,20 @@
 {
   "extends": "./node_modules/@elumeo/jfs-core/build-tools/typescript/common.json",
   "compilerOptions": {
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "Core/*": ["@elumeo/jfs-core/build/*"],
+      "Component/*": ["./Component/*"],
+      "Constant/*": ["./Constant/*"],
+      "Mock/*": ["./Mock/*"],
+      "Setup/*": ["./Setup/*"],
+      "Store/*": ["./Store/*"],
+      "Types/*": ["./Types/*"],
+      "Utilities/*": ["./Utilities/*"],
+      "API/*" : ["./API/*"]
+    }
   },
+  "include": ["src"],
   "exclude": [
     "dist",
     "node_modules/@elumeo/jfs-core/scripts",

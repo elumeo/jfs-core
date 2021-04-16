@@ -17,7 +17,8 @@ const production = {
   mode: 'production',
   output: {
     filename: PATH.UNIQUE_BUNDLE_NAME,
-    path: PATH.PUBLIC
+    path: PATH.PUBLIC,
+    publicPath: ''
   },
   optimization: {
     minimize: true,
