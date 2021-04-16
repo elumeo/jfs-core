@@ -8,7 +8,7 @@ import Theme from './Theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { SnackbarProvider } from 'notistack';
 import MomentUtils from '@date-io/moment';
-import WebSocketConnection from 'Component/Websocket/WebSocketConnection';
+import WebSocketConnection from 'Component/WebSocket/WebSocketConnection';
 import * as Notification from 'Component/Notification';
 import Head from './Head';
 
