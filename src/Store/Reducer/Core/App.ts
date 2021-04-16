@@ -8,7 +8,7 @@ export type State = {
   packageJson: { version?: string };
 };
 
-const initialState: State = {
+export const initialState: State = {
   appInitialized: false,
   allowRobotLogin: false,
   packageJson: null

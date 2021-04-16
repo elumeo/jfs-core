@@ -27,13 +27,12 @@ export type State = {
   Router?: RouterState;
   Session?: SessionState;
   Settings?: SettingsState;
-  // SplitView?: SplitViewState;
   System?: SystemState;
   Toast?: ToastState;
   WebSocket?: WebSocketState;
   Configuration?: ConfigurationState<Type.Configuration>;
   Locale?: LocaleState;
-}
+};
 
 const Core = combineReducers<State>({
   App,

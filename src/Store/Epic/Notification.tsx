@@ -11,7 +11,7 @@ import { AxiosError } from 'axios';
 const showError: Epic = action$ => (
   action$.pipe(
     filter(isActionOf(Actions.catchErrorNotification)),
-    switchMap(({ payload: { response: {data}}}: ActionType<AxiosError>) => {
+    switchMap(({ payload: { response: { data }}}: ActionType<AxiosError>) => {
       const id = uuid();
       const { error, id: errorId, message } = data
       return of(
