@@ -1,6 +1,6 @@
 import * as Redux from 'redux';
 import middleware, { start } from './Middleware';
-import reducer from './Reducer/Global';
+import reducer, { State } from './Reducer/Global';
 import * as Rx from 'rxjs/operators';
 import epic, { wrap } from './Epic';
 import { Epic } from 'Types/Redux';
@@ -20,4 +20,4 @@ export const create = <T>(epic: Epic, reducer: Redux.Reducer<T>) => {
   return store;
 };
 
-export default create(epic, reducer);
+export default create(epic, reducer) as Redux.Store<Redux.CombinedState<State>>;
