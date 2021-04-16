@@ -14,4 +14,3 @@ export var DATE_FORMAT;
     DATE_FORMAT["NL"] = "dd-MM-yyyy";
     DATE_FORMAT["IT"] = "dd/MM/yyyy";
 })(DATE_FORMAT || (DATE_FORMAT = {}));
-//# sourceMappingURL=Language.js.map

@@ -8,4 +8,3 @@ const Username = ({ value, onChange, error }) => {
             : null, value: value, onChange: event => onChange(event.target.value) }));
 };
 export default Username;
-//# sourceMappingURL=Username.js.map

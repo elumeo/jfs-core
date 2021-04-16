@@ -1,0 +1,16 @@
+import { createSelector } from 'reselect';
+export const app = createSelector((state) => state.Core, state => state.App);
+export const configuration = createSelector((state) => state.Core, state => state.Configuration);
+export const language = createSelector((state) => state.Core, state => state.Language);
+export const locale = createSelector((state) => state.Core, state => state.Locale);
+export const login = createSelector((state) => state.Core, state => state.Login);
+export const logout = createSelector((state) => state.Core, state => state.Logout);
+export const navigation = createSelector((state) => state.Core, state => state.Navigation);
+export const notification = createSelector((state) => state.Core, state => state.Notification);
+export const router = createSelector((state) => state.Core, state => state.Router);
+export const session = createSelector((state) => state.Core, state => state.Session);
+export const settings = createSelector((state) => state.Core, state => state.Settings);
+export const system = createSelector((state) => state.Core, state => state.System);
+export const toast = createSelector((state) => state.Core, state => state.Toast);
+export const webSocket = createSelector((state) => state.Core, state => state.WebSocket);
+export * from './App';

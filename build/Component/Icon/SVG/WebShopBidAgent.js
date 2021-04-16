@@ -7,4 +7,3 @@ const WebShopBidAgent = props => (React.createElement(Wrapper, Object.assign({},
         React.createElement("g", { transform: "translate(11.000000, 9.000000)", fill: "currentcolor", fillRule: "nonzero" },
             React.createElement("path", { d: "M1.48151636,4.62145969 L4.39533789,7.71078431 L2.93816812,9.24291939 L0,6.1791939 L1.48151636,4.62145969 Z M5.87633624,0 L8.79015776,3.08932462 L7.33298799,4.62145969 L4.39481987,1.5577342 L5.87633624,0 Z M2.20984224,3.85566449 L3.66701201,2.32352941 L11,10.0337691 L9.54283023,11.5659041 L2.20984224,3.85566449 Z M4.4408921e-16,10.9019608 L6.21615258,10.9019608 L6.21615258,12 L4.4408921e-16,12 L4.4408921e-16,10.9019608 Z" })))));
 export default WebShopBidAgent;
-//# sourceMappingURL=WebShopBidAgent.js.map

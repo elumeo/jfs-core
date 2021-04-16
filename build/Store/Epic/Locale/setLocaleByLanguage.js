@@ -7,4 +7,3 @@ const setLocaleByLanguage = action$ => (action$.pipe(filter(isActionOf(Action.ch
     locale: Format.Locale.mapLanguageToLocale(language)
 })))));
 export default setLocaleByLanguage;
-//# sourceMappingURL=setLocaleByLanguage.js.map

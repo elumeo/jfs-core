@@ -20,4 +20,3 @@ const Icon = ({ variant }) => {
         : null);
 };
 export default Icon;
-//# sourceMappingURL=Icon.js.map

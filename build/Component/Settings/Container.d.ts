@@ -1,4 +1,3 @@
-/// <reference types="react" />
-import './SettingsContainer.scss';
-declare const SettingsContainer: () => JSX.Element;
-export default SettingsContainer;
+import React from 'react';
+declare const Container: React.FC;
+export default Container;

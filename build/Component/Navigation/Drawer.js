@@ -15,4 +15,3 @@ const Drawer = ({ children }) => {
             React.createElement(MUI.List, null, children))));
 };
 export default Drawer;
-//# sourceMappingURL=Drawer.js.map

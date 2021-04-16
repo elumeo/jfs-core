@@ -13,4 +13,3 @@ const Settings = () => {
         React.createElement(Select, { value: language.value, onChange: language.onChange })));
 };
 export default Settings;
-//# sourceMappingURL=Settings.js.map

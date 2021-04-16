@@ -11,4 +11,3 @@ const Drawer = () => (React.createElement(Navigation.Drawer, null,
     React.createElement(MUI.Divider, null),
     React.createElement(Logout.NavigationItem, null)));
 export default Drawer;
-//# sourceMappingURL=Navigation.js.map

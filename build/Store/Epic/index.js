@@ -11,4 +11,3 @@ import Notification from './Notification';
 export const wrap = (epic, wrapper) => ((action$, state$, dependencies) => (wrapper(epic(action$, state$, dependencies))));
 const Core = combineEpics(App, Session, System, Login, Locale, Configuration, WebSocket, Language, Notification);
 export default Core;
-//# sourceMappingURL=index.js.map

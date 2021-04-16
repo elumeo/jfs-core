@@ -19,4 +19,3 @@ JscClient.generateAxiosConfig = () => ({
         ? { 'X-JSC-TOKEN': Token.getToken() }
         : {}))
 });
-//# sourceMappingURL=Client.js.map

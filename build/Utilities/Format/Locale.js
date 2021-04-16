@@ -33,4 +33,3 @@ export const mapLanguageToLocale = (language) => {
         return null;
     }
 };
-//# sourceMappingURL=Locale.js.map

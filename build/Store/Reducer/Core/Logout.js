@@ -10,4 +10,3 @@ const Logout = createReducer(initialState)
     .handleAction(Action.logout, state => (Object.assign(Object.assign({}, state), { logoutPending: true })))
     .handleAction(Action.logoutFinished, state => (Object.assign(Object.assign({}, state), { logoutPending: false })));
 export default Logout;
-//# sourceMappingURL=Logout.js.map

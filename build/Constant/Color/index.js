@@ -53,4 +53,3 @@ export const success = '#4caf50';
 export const primary = rodolith[800];
 export const secondary = apatith[900];
 export const font = grey[900];
-//# sourceMappingURL=index.js.map

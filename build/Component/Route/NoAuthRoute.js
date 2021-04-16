@@ -9,4 +9,3 @@ const NoAuthRoute = props => {
     return (React.createElement(BaseRoute, Object.assign({}, props)));
 };
 export default NoAuthRoute;
-//# sourceMappingURL=NoAuthRoute.js.map

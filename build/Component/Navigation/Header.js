@@ -10,4 +10,3 @@ const Header = () => {
         React.createElement(MUI.ListItemText, { primary: username })));
 };
 export default Header;
-//# sourceMappingURL=Header.js.map

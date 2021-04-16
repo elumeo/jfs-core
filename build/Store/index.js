@@ -16,4 +16,3 @@ export const create = (epic, reducer) => {
     return store;
 };
 export default create(epic, reducer);
-//# sourceMappingURL=index.js.map

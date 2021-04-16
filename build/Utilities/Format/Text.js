@@ -9,4 +9,3 @@ export const removeDiacritics = (text) => remove(Array.from(text
     .replace(/ü/g, 'ue')
     .normalize('NFD')).filter((character) => (character.charCodeAt(0) >= 65 && character.charCodeAt(0) <= 90 ||
     character.charCodeAt(0) >= 97 && character.charCodeAt(0) <= 122)).join(''));
-//# sourceMappingURL=Text.js.map

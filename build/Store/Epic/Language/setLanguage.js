@@ -12,4 +12,3 @@ const setLanguage = action$ => (action$.pipe(filter(isActionOf(Action.changeLang
     return EMPTY;
 })));
 export default setLanguage;
-//# sourceMappingURL=setLanguage.js.map

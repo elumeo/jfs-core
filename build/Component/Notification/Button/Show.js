@@ -45,4 +45,3 @@ const ShowButton = ({ keepOpenOnOutsideClick }) => {
                 React.createElement(NotificationOverlay, null))), document.getElementById('overlay'))));
 };
 export default ShowButton;
-//# sourceMappingURL=Show.js.map

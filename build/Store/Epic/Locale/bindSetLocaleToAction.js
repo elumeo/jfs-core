@@ -8,4 +8,3 @@ const bindSetLocaleToAction = action$ => (action$.pipe(filter(isActionOf(Action.
     return EMPTY;
 })));
 export default bindSetLocaleToAction;
-//# sourceMappingURL=bindSetLocaleToAction.js.map

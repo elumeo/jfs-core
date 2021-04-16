@@ -11,4 +11,3 @@ const DefaultNotificationCard = ({ notification: { title, subtitle, content, act
         !temporary && action && (React.createElement(MUI.CardActions, null, action(snackbar, id, temporary)))));
 };
 export default DefaultNotificationCard;
-//# sourceMappingURL=Default.js.map

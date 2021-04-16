@@ -13,4 +13,3 @@ const loadSession = (action$, store) => (action$.pipe(filter(isActionOf(Action.l
         : Action.checkLogin({ username, password }))
     : Action.unauthorizeSession()))));
 export default loadSession;
-//# sourceMappingURL=load.js.map

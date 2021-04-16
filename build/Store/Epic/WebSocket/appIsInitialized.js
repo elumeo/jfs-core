@@ -18,4 +18,3 @@ const appIsInitialized = (action$, state$) => {
     }));
 };
 export default appIsInitialized;
-//# sourceMappingURL=appIsInitialized.js.map

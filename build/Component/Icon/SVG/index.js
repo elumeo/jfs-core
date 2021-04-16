@@ -18,4 +18,3 @@ export { default as Test } from './Test';
 export { default as WebShop } from './WebShop';
 export { default as WebShopBidAgent } from './WebShopBidAgent';
 export { default as WebShopBlock } from './WebShopBlock';
-//# sourceMappingURL=index.js.map

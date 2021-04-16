@@ -12,4 +12,3 @@ const useLanguage = () => {
     };
 };
 export default useLanguage;
-//# sourceMappingURL=useLanguage.js.map

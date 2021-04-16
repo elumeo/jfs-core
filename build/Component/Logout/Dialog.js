@@ -17,4 +17,3 @@ const Dialog = ({ children }) => {
             React.createElement(MUI.Button, { onClick: logout.close }, formatMessage({ id: 'app.cancel.action' })))));
 };
 export default Dialog;
-//# sourceMappingURL=Dialog.js.map

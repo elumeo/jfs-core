@@ -49,4 +49,3 @@ const connectSuccess = (action$, state$) => action$.pipe(filter(TA.isActionOf(Ac
     return roomActions;
 }));
 export default connectSuccess;
-//# sourceMappingURL=connectSuccess.js.map

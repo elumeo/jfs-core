@@ -12,4 +12,3 @@ const storeEnhancer = applyMiddleware(epicMiddleware);
 const middleware = composeEnhancers(storeEnhancer);
 export const start = (epic) => epicMiddleware.run(epic);
 export default middleware;
-//# sourceMappingURL=Middleware.js.map

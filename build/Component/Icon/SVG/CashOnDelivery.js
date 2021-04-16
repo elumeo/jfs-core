@@ -11,4 +11,3 @@ const CashOnDelivery = props => (React.createElement(Wrapper, Object.assign({}, 
             React.createElement("path", { fill: "currentcolor", fillRule: "nonzero", d: "M13,5.7 L15.472,5 L15.719,5 L15.719,10 C15.719,10.3 15.741,10.5 15.786,10.6 C15.836,10.7 15.936,10.7 16.086,10.8 L17,10.8 L17,11 L13.18,11 L13.18,10.8 L14.109,10.8 C14.248,10.7 14.346,10.7 14.401,10.6 C14.456,10.5 14.483,10.3 14.483,10 L14.483,6.8 C14.483,6.3 14.458,6.1 14.408,5.9 C14.373,5.8 14.308,5.8 14.213,5.7 L13.884,5.7 C13.699,5.7 13.442,5.7 13.112,5.8 L13,5.7" }),
             React.createElement("g", { transform: "translate(1.000000, 6.000000)" })))));
 export default CashOnDelivery;
-//# sourceMappingURL=CashOnDelivery.js.map

@@ -14,4 +14,3 @@ const Loader = ({ allowRobotLogin, translations, packageJson, children }) => {
         : React.createElement(Progress, null));
 };
 export default Loader;
-//# sourceMappingURL=Loader.js.map

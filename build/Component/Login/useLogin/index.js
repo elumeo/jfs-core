@@ -17,4 +17,3 @@ const useLogin = () => {
     };
 };
 export default useLogin;
-//# sourceMappingURL=index.js.map

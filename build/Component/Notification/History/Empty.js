@@ -16,4 +16,3 @@ const Empty = () => {
         React.createElement(MUI.Typography, null, formatMessage({ id: 'app.noNotifications' }))));
 };
 export default Empty;
-//# sourceMappingURL=Empty.js.map

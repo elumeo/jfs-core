@@ -10,4 +10,3 @@ const Submit = ({ onClick }) => {
         : formatMessage({ id: 'login.button' })));
 };
 export default Submit;
-//# sourceMappingURL=Submit.js.map

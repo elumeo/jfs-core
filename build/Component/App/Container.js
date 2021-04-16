@@ -19,4 +19,3 @@ const App = (_a) => {
         React.createElement(Loader, { allowRobotLogin: allowRobotLogin, translations: translations, packageJson: packageJson }, children)));
 };
 export default App;
-//# sourceMappingURL=Container.js.map

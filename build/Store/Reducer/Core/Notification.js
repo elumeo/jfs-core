@@ -13,4 +13,3 @@ const Notification = TA.createReducer(initialState)
     .handleAction(Action.removeAllNotifications, state => (Object.assign(Object.assign({}, state), { history: [] })))
     .handleAction(Action.setIsNotificationHistoryOpen, (state, { payload }) => (Object.assign(Object.assign({}, state), { isHistoryOpen: payload })));
 export default Notification;
-//# sourceMappingURL=Notification.js.map

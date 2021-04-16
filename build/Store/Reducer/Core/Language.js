@@ -8,4 +8,3 @@ const Language = createReducer(initialState)
     .handleAction(Action.changeLanguageAction, (state, action) => (Object.assign(Object.assign({}, state), { language: action.payload })))
     .handleAction(Action.initializeApp, (state, { payload: { translations } }) => (Object.assign(Object.assign({}, state), { messages: translations })));
 export default Language;
-//# sourceMappingURL=Language.js.map

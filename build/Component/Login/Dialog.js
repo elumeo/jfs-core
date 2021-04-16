@@ -12,4 +12,3 @@ const Dialog = () => {
             React.createElement(Submit, { onClick: login.check }))));
 };
 export default Dialog;
-//# sourceMappingURL=Dialog.js.map

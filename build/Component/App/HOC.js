@@ -7,7 +7,7 @@ import Theme from './Theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { SnackbarProvider } from 'notistack';
 import MomentUtils from '@date-io/moment';
-import WebSocketConnection from '../Websocket/WebSocketConnection';
+import WebSocketConnection from '../WebSocket/WebSocketConnection';
 import * as Notification from '../Notification';
 import Head from './Head';
 const HOC = ({ store, children }) => {
@@ -26,4 +26,3 @@ const HOC = ({ store, children }) => {
                         React.createElement(HashRouter, null, children)))))));
 };
 export default HOC;
-//# sourceMappingURL=HOC.js.map

@@ -32,4 +32,3 @@ const NavigationItem = React.forwardRef(({ iconName, messageId, onClick, active,
         : React.createElement(React.Fragment, null));
 });
 export default NavigationItem;
-//# sourceMappingURL=Item.js.map

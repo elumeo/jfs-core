@@ -2,19 +2,17 @@ import { filter, switchMap, concatMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as TA from 'typesafe-actions';
 import * as Action from '../../Action';
-import { getRoomConnectionState } from '../../Selector/Core/WebSocket';
 import { WSClient } from '../../../API/WS/WSClient';
 import uuid from 'uuid';
 const joinRoomLoading = (action$, state$) => {
     return action$.pipe(filter(TA.isActionOf(Action.webSocketJoinRoomLoadingAction)), concatMap((action) => {
-        return WSClient.join(action.payload.namespace, action.payload.name).pipe(map((room) => {
-            let roomState = getRoomConnectionState(state$.value.Core.WebSocket, {
-                room: room,
-                namespace: action.payload.namespace
-            });
-            roomState.isJoining = false;
-            roomState.hasJoined = true;
-            return roomState;
+        return WSClient.join(action.payload.namespace, action.payload.name).pipe(map(name => {
+            var _a;
+            const namespace = state$.value.Core.WebSocket[action.payload.namespace];
+            const room = ((_a = namespace === null || namespace === void 0 ? void 0 : namespace.rooms) === null || _a === void 0 ? void 0 : _a.find(room => room.name === name)) || null;
+            room.isJoining = false;
+            room.hasJoined = true;
+            return room;
         }), switchMap(roomState => of(Action.webSocketJoinRoomSuccessAction(roomState))), catchError((err) => {
             const update = {
                 name: action.payload.name,
@@ -51,4 +49,3 @@ const joinRoomLoading = (action$, state$) => {
     }));
 };
 export default joinRoomLoading;
-//# sourceMappingURL=joinRoomLoading.js.map

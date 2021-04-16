@@ -31,4 +31,3 @@ const Card = ({ children, notification, temporary }) => {
 Card.Default = Default;
 Card.Icon = Icon;
 export default Card;
-//# sourceMappingURL=index.js.map

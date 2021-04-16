@@ -12,4 +12,3 @@ const useLogout = () => {
     };
 };
 export default useLogout;
-//# sourceMappingURL=useLogout.js.map

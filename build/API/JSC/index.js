@@ -64,4 +64,3 @@ var JSCApi;
     })(WebSocketClient = JSCApi.WebSocketClient || (JSCApi.WebSocketClient = {}));
 })(JSCApi || (JSCApi = {}));
 export default JSCApi;
-//# sourceMappingURL=index.js.map

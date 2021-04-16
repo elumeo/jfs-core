@@ -20,4 +20,3 @@ const checkSession = (action$, store) => (action$.pipe(filter(isActionOf(Action.
         : EMPTY, of(Action.unauthorizeSession()));
 })));
 export default checkSession;
-//# sourceMappingURL=check.js.map

@@ -13,4 +13,3 @@ const Login = createReducer(initialState)
     .handleAction(Action.loginFailed, state => (Object.assign(Object.assign({}, state), { failedLogins: state.failedLogins + 1, isCheckingLogin: false })))
     .handleAction(Action.loggedIn, state => (Object.assign(Object.assign({}, state), { failedLogins: 0, isCheckingLogin: false, username: '', password: '' })));
 export default Login;
-//# sourceMappingURL=Login.js.map

@@ -4,4 +4,3 @@ export const removeNotification = TA.createStandardAction('notification/remove')
 export const removeAllNotifications = TA.createStandardAction('notification/remove_all')();
 export const catchErrorNotification = TA.createStandardAction('notification/ERROR_ADD')();
 export const setIsNotificationHistoryOpen = (TA.createStandardAction('notification/SET_IS_HISTORY_OPEN')());
-//# sourceMappingURL=Notification.js.map

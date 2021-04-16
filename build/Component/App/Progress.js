@@ -10,4 +10,3 @@ const style = {
 const Progress = () => (React.createElement("div", { style: style },
     React.createElement(MUI.CircularProgress, { id: 'app-initialize-progress' })));
 export default Progress;
-//# sourceMappingURL=Progress.js.map

@@ -12,4 +12,3 @@ const initializeApp = (action$ => action$.pipe(filter(isActionOf(Action.initiali
     return of(Action.loadConfig());
 })));
 export default initializeApp;
-//# sourceMappingURL=App.js.map

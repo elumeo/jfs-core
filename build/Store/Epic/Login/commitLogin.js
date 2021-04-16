@@ -22,4 +22,3 @@ const commitLogin = (action$, state$) => (action$.pipe(filter(isActionOf(Action.
     }), Action.catchErrorNotification(error));
 })))));
 export default commitLogin;
-//# sourceMappingURL=commitLogin.js.map

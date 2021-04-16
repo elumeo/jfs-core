@@ -12,4 +12,3 @@ const Button = () => {
         React.createElement(ICON.Settings, null)));
 };
 export default Button;
-//# sourceMappingURL=Button.js.map

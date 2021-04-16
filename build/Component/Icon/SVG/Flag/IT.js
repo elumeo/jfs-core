@@ -4,4 +4,3 @@ const IT = props => (React.createElement("svg", Object.assign({ version: "1.1", 
     React.createElement("rect", { x: "170.67", y: "88.277", fill: '#F5F5F5', width: "170.67", height: "335.45" }),
     React.createElement("path", { fill: '#FF4B55', d: "M503.172,423.721H341.333V88.273h161.839c4.875,0,8.828,3.953,8.828,8.828v317.793 C512,419.77,508.047,423.721,503.172,423.721z" })));
 export default IT;
-//# sourceMappingURL=IT.js.map

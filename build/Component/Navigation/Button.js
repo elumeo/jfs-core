@@ -11,4 +11,3 @@ const Button = ({ iconName }) => {
         React.createElement(MUI.Icon, { fontSize: "small" }, iconName)));
 };
 export default Button;
-//# sourceMappingURL=Button.js.map

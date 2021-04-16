@@ -13,4 +13,3 @@ export const webSocketJoinRoomFailureAction = createStandardAction('websocket/JO
 export const webSocketLeaveRoomRequestAction = createStandardAction('websocket/LEAVE_ROOM_REQUEST')();
 export const webSocketLeaveRoomSuccessAction = createStandardAction('websocket/LEAVE_ROOM_SUCCESS')();
 export const webSocketUpdateRoomAction = createStandardAction(ROOM_UPDATE_ACTION_ID)();
-//# sourceMappingURL=WebSocket.js.map

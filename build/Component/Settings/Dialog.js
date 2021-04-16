@@ -14,4 +14,3 @@ const Dialog = ({ children }) => {
             React.createElement(MUI.Button, { variant: 'contained', color: 'secondary', onClick: closeSettings }, formatMessage({ id: 'app.closeBtnLabelModalDialog' })))));
 };
 export default Dialog;
-//# sourceMappingURL=Dialog.js.map

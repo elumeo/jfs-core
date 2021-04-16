@@ -10,4 +10,3 @@ const loadConfiguration = action$ => (action$.pipe(filter(isActionOf(Action.load
     return of(Action.configLoadedAction({ config }));
 }), catchError(() => of(Action.loadConfigFailed()))));
 export default loadConfiguration;
-//# sourceMappingURL=Configuration.js.map

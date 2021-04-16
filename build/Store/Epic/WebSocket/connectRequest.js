@@ -32,4 +32,3 @@ export const connectRequest = (action$, state$) => {
     }), switchMap(namespace => of(Action.webSocketConnectSuccessAction(namespace))));
 };
 export default connectRequest;
-//# sourceMappingURL=connectRequest.js.map

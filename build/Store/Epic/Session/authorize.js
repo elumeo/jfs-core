@@ -6,4 +6,3 @@ const authorize = (action$, state$) => (action$.pipe(filter(isActionOf(Action.au
     ? EMPTY
     : of(Action.appInitialized())))));
 export default authorize;
-//# sourceMappingURL=authorize.js.map

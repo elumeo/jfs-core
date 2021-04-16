@@ -15,4 +15,3 @@ const joinRoomRequest = (action$, state$) => {
     }), switchMap((roomState) => of(Action.webSocketJoinRoomLoadingAction(roomState))));
 };
 export default joinRoomRequest;
-//# sourceMappingURL=joinRoomRequest.js.map

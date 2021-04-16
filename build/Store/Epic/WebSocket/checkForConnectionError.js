@@ -21,4 +21,3 @@ const checkForConnectionError = (action$, state) => {
     }));
 };
 export default checkForConnectionError;
-//# sourceMappingURL=checkForConnectionError.js.map

@@ -7,4 +7,3 @@ const setInitialLanguage = (action$, state$) => action$.pipe(filter(isActionOf(A
     state$.value.Core.Language.language ||
     'en'), Action.loadSession())));
 export default setInitialLanguage;
-//# sourceMappingURL=setInitialLanguage.js.map

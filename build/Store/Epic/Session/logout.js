@@ -17,4 +17,3 @@ const logout = (action$, store) => (action$.pipe(filter(isActionOf(Action.logout
     }
 })));
 export default logout;
-//# sourceMappingURL=logout.js.map

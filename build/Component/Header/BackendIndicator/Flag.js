@@ -10,4 +10,3 @@ const Flag = React.forwardRef(({ country }, ref) => {
         } }, CountryIcon && React.createElement(CountryIcon, null)));
 });
 export default Flag;
-//# sourceMappingURL=Flag.js.map

@@ -11,7 +11,6 @@
 // import { Translations, Navigation, Routes } from './Setup';
 // import packageJson from '../package.json';
 // import store from './Store';
-//
 // ReactDOM.render(
 //   <App.Container
 //     store={store}
@@ -37,4 +36,3 @@
 //   </App.Container>,
 //   document.getElementById('root')
 // );
-//# sourceMappingURL=index.js.map

@@ -8,4 +8,3 @@ export const setItem = (key, value) => {
 export const removeItem = (key) => {
     window.localStorage.removeItem(BASE_NAME + key);
 };
-//# sourceMappingURL=Session.js.map

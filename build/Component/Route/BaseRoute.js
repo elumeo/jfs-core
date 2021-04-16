@@ -37,4 +37,3 @@ const BaseRoute = (_a) => {
     return React.createElement(Route, Object.assign({}, rest));
 };
 export default BaseRoute;
-//# sourceMappingURL=BaseRoute.js.map

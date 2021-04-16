@@ -9,4 +9,3 @@ const DismissAllNotificationsButton = () => {
         React.createElement(Icon, null, "delete")));
 };
 export default DismissAllNotificationsButton;
-//# sourceMappingURL=DismissAllNotifications.js.map

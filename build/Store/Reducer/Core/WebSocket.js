@@ -49,4 +49,3 @@ const WebSocket = createReducer(initialState)
         rooms: []
     } })));
 export default WebSocket;
-//# sourceMappingURL=WebSocket.js.map

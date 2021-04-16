@@ -5,4 +5,3 @@ const Head = () => (React.createElement(Helmet, null,
     React.createElement("link", { rel: "stylesheet", href: "https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" }),
     React.createElement("link", { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Roboto" })));
 export default Head;
-//# sourceMappingURL=Head.js.map

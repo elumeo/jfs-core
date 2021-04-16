@@ -15,4 +15,3 @@ const Overlay = () => (React.createElement(MUI.Card, { style: {
         } },
         React.createElement(History.All, null))));
 export default Overlay;
-//# sourceMappingURL=Overlay.js.map

@@ -39,7 +39,7 @@ const Toolbar = (_a) => {
                     } },
                     React.createElement(MUI.IconButton, { color: 'inherit', "aria-label": 'menu', onClick: openNavigation },
                         React.createElement(MenuIcon, null)),
-                    React.createElement(MUI.Typography, { variant: 'h6' }, formatMessage({ id: 'app.title' })),
+                    React.createElement(MUI.Typography, { variant: 'h6', noWrap: true }, formatMessage({ id: 'app.title' })),
                     tools.left || React.createElement(React.Fragment, null)),
                 React.createElement("div", { style: {
                         width: 'calc(100% / 3)',
@@ -55,4 +55,3 @@ const Toolbar = (_a) => {
                     } }, tools.right || React.createElement(React.Fragment, null))))));
 };
 export default Toolbar;
-//# sourceMappingURL=Toolbar.js.map

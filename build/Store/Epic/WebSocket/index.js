@@ -10,4 +10,3 @@ import joinRoomRequest from './joinRoomRequest';
 import joinRoomLoading from './joinRoomLoading';
 import leaveRoomRequest from './leaveRoomRequest';
 export default combineEpics(appIsInitialized, connectRequest, connectSuccess, checkForConnectionError, checkForReconnect, disconnectRequest, joinRoomLoading, joinRoomRequest, leaveRoomRequest, logout);
-//# sourceMappingURL=index.js.map

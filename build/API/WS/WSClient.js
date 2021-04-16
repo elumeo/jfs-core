@@ -165,4 +165,3 @@ WSClient.reconnectSubject = new Subject();
 WSClient.reconnectObservable$ = WSClient.reconnectSubject.asObservable();
 WSClient.jfsOnRoomUpdateSubject = new Subject();
 WSClient.jfsOnRoomUpdate$ = WSClient.jfsOnRoomUpdateSubject.asObservable();
-//# sourceMappingURL=WSClient.js.map

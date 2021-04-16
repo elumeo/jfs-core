@@ -32,4 +32,3 @@ const Core = combineReducers({
     Locale
 });
 export default Core;
-//# sourceMappingURL=index.js.map

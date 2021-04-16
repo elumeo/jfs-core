@@ -18,4 +18,3 @@ const useLoader = ({ allowRobotLogin, packageJson, translations }) => {
     }));
 };
 export default useLoader;
-//# sourceMappingURL=useLoader.js.map

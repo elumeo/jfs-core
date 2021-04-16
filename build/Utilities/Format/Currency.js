@@ -30,4 +30,3 @@ export const intlDecSeparator = (new Intl.NumberFormat()
     .format(1.1)
     .replace(/1/g, ''));
 export const replaceAllNonNumericOrSeperatorRegex = /[^0-9.,-]/;
-//# sourceMappingURL=Currency.js.map

@@ -19,4 +19,3 @@ const AuthRoute = props => {
             : React.createElement(React.Fragment, null));
 };
 export default AuthRoute;
-//# sourceMappingURL=AuthRoute.js.map

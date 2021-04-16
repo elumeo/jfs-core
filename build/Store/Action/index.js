@@ -12,4 +12,3 @@ export * from './Settings';
 export * from './System';
 export * from './Toast';
 export * from './WebSocket';
-//# sourceMappingURL=index.js.map

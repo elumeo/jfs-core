@@ -19,4 +19,3 @@ const All = () => {
         : React.createElement(Empty, null));
 };
 export default All;
-//# sourceMappingURL=All.js.map

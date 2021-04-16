@@ -10,4 +10,3 @@ const robotLoginRefresh = (action$, state$) => (action$.pipe(filter(isActionOf(A
     password: state$.value.Core.Configuration.config.RobotPassword
 })))));
 export default robotLoginRefresh;
-//# sourceMappingURL=robotLoginRefresh.js.map

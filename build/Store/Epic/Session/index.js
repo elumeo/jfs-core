@@ -5,4 +5,3 @@ import logout from './logout';
 import authorize from './authorize';
 import unauthorize from './unauthorize';
 export default combineEpics(logout, load, check, authorize, unauthorize);
-//# sourceMappingURL=index.js.map

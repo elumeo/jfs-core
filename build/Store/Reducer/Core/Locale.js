@@ -6,4 +6,3 @@ export const initialState = {
 const Locale = createReducer(initialState)
     .handleAction(Action.setLocale, (state, action) => (Object.assign(Object.assign({}, state), { locale: action.payload.locale })));
 export default Locale;
-//# sourceMappingURL=Locale.js.map

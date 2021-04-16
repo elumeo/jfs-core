@@ -8,4 +8,3 @@ const Password = ({ value, onChange, onEnter, error }) => {
             : null, value: value, onChange: event => onChange(event.target.value), onKeyPress: e => e.keyCode === 13 && onEnter() }));
 };
 export default Password;
-//# sourceMappingURL=Password.js.map

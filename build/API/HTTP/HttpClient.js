@@ -44,4 +44,3 @@ export class HttpClient {
 HttpClient.setConfigGenerator = (generateAxiosConfig) => {
     HttpClient.generateAxiosConfig = generateAxiosConfig;
 };
-//# sourceMappingURL=HttpClient.js.map

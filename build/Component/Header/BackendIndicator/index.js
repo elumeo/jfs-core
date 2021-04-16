@@ -11,4 +11,3 @@ const BackendIndicator = () => {
             React.createElement(Flag, { country: (backendRegion || '').toLowerCase() }))));
 };
 export default BackendIndicator;
-//# sourceMappingURL=index.js.map

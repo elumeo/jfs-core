@@ -10,4 +10,3 @@ const unauthorize = (action$, store) => (action$.pipe(filter(isActionOf(Action.u
         : of(Action.appInitialized()));
 })));
 export default unauthorize;
-//# sourceMappingURL=unauthorize.js.map

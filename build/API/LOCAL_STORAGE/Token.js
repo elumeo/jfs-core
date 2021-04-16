@@ -11,4 +11,3 @@ export const removeToken = () => {
 export const isLoggedIn = () => {
     return getToken() != null && getToken().length > 0;
 };
-//# sourceMappingURL=Token.js.map

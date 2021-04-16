@@ -9,4 +9,3 @@ const UK = props => (React.createElement("svg", Object.assign({ version: "1.1", 
         React.createElement("path", { fill: '#FF4B55', d: "M0,106.849l161.779,105.014h32.428L5.143,89.137C2.123,90.54,0,93.555,0,97.104V106.849z" }),
         React.createElement("path", { fill: '#FF4B55', d: "M332.566,211.863L511.693,95.586c-0.744-4.122-4.184-7.309-8.521-7.309h-12.647L300.138,211.863 H332.566z" }))));
 export default UK;
-//# sourceMappingURL=UK.js.map

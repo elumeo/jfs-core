@@ -18,4 +18,3 @@ const logout = (action$, state) => {
     }));
 };
 export default logout;
-//# sourceMappingURL=logout.js.map
