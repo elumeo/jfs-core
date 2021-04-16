@@ -1,14 +1,20 @@
 {
   "extends": "./build-tools/typescript/common.json",
   "compilerOptions": {
+    "declaration": true,
     "outDir": "./build",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "Component/*": ["./Component/*"],
+      "Constant/*": ["./Constant/*"],
+      "Mock/*": ["./Mock/*"],
+      "Setup/*": ["./Setup/*"],
+      "Store/*": ["./Store/*"],
+      "Types/*": ["./Types/*"],
+      "Utilities/*": ["./Utilities/*"],
+      "API/*" : ["./API/*"]
+    }
   },
-  "exclude": [
-    "scripts",
-    "build",
-    "showcase",
-    "**/node_modules",
-    "**/.*/"
-  ]
+  "include": ["./src"],
+  "exclude": ["node_modules"]
 }
