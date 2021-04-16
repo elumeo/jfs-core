@@ -2,7 +2,6 @@ import { filter, switchMap, concatMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as TA from 'typesafe-actions';
 import * as Action from 'Store/Action';
-import { getRoomConnectionState } from 'Store/Selector/Core/WebSocket';
 import * as WebSocket from 'Types/WebSocket';
 import { WSClient } from 'API/WS/WSClient';
 import _ from 'lodash';
@@ -14,17 +13,12 @@ const joinRoomLoading: Epic = (action$, state$) => {
     filter(TA.isActionOf(Action.webSocketJoinRoomLoadingAction)),
     concatMap((action) => {
       return WSClient.join(action.payload.namespace, action.payload.name).pipe(
-        map((room) => {
-          let roomState = getRoomConnectionState(
-            state$.value.Core.WebSocket,
-            {
-              room: room,
-              namespace: action.payload.namespace
-            }
-          );
-          roomState.isJoining = false;
-          roomState.hasJoined = true;
-          return roomState;
+        map(name => {
+          const namespace = state$.value.Core.WebSocket[action.payload.namespace];
+          const room = namespace?.rooms?.find(room => room.name === name) || null;
+          room.isJoining = false;
+          room.hasJoined = true;
+          return room;
         }),
         switchMap(roomState => of(
           Action.webSocketJoinRoomSuccessAction(roomState)

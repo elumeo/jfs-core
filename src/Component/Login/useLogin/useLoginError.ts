@@ -1,9 +1,8 @@
 import { useSelector } from "Types/Redux";
-import * as Session from 'Store/Selector/Core/Session';
 
 const useLoginError = () => {
-  const isAuthorized = useSelector(Session.getIsAuthorizedSelector);
-  const isCheckingSession = useSelector(Session.getIsCheckingSessionSelector);
+  const isAuthorized = useSelector(state => state.Core.Session.isAuthorized);
+  const isCheckingSession = useSelector(state => state.Core.Session.isCheckingSession);
 
   return (
     (isAuthorized !== null || isAuthorized !== true) &&

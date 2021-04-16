@@ -1,11 +1,10 @@
 import useLoginRobot from "./useLoginRobot";
 import { useSelector } from "Types/Redux";
-import * as Session from 'Store/Selector/Core/Session';
 
 const useLoginDialogIsOpen = () => {
   const robot = useLoginRobot();
-  const isAuthorized = useSelector(Session.getIsAuthorizedSelector);
-  const isCheckingSession = useSelector(Session.getIsCheckingSessionSelector);
+  const isAuthorized = useSelector(state => state.Core.Session.isAuthorized);
+  const isCheckingSession = useSelector(state => state.Core.Session.isCheckingSession);
   const routeType = useSelector(state => state.Core.Router.routeType);
 
   return (

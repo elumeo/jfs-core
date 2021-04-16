@@ -1,7 +1,8 @@
 import { useSelector } from 'Types/Redux';
+import * as Selector from 'Store/Selector';
 
 const useLoginRobot = () => {
-  const allowRobotLogin = useSelector(state => state.Core.App.allowRobotLogin);
+  const allowRobotLogin = useSelector(Selector.allowRobotLogin);
   const failedLogins = useSelector(state => state.Core.Login.failedLogins);
   const config = useSelector(state => state.Core.Configuration.config);
 
