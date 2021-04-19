@@ -16,11 +16,21 @@ const development = {
   devtool: 'inline-source-map',
   plugins: [
     new ForkTsCheckerWebpackPlugin({
-      tsconfig: resolve(PATH.ROOT, 'tsconfig.json')
+      typescript: {
+        configFile: resolve(PATH.ROOT, 'tsconfig.json'),
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true
+        }
+      },
+      async: true
     }),
-    new CopyWebpackPlugin([ 
-      { from: PATH.CONFIGURATION_DEV, to: PATH.CONFIGURATION_DIST }
-    ]),
+    new ForkTsCheckerNotifierWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [ 
+        { from: PATH.CONFIGURATION_DEV, to: PATH.CONFIGURATION_DIST }
+      ],
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: PATH.HTML_TEMPLATE,

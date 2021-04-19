@@ -1,10 +1,10 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "10.0.0-alpha.5",
+  "version": "10.0.0-alpha.3",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "scripts": {
-    "start": "webpack-dev-server --config build-tools/webpack/dev-server --port 8080 --host localhost",
+    "start": "webpack serve --config build-tools/webpack/dev-server --port 8080 --host localhost",
     "build": "node scripts/build/Setup/jfs-build",
     "build:watch": "node scripts/build/Setup/jfs-build --watch",
     "test": "echo jest",
@@ -69,15 +69,15 @@
     "classnames": "^2.2.5",
     "compression-webpack-plugin": "^1.1.11",
     "connected-react-router": "5.0.1",
-    "copy-webpack-plugin": "^5.1.1",
+    "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^0.28.7",
     "dart-sass": "^1.25.0",
     "diacritics": "^1.3.0",
     "fork-ts-checker-notifier-webpack-plugin": "^3.0.0",
-    "fork-ts-checker-webpack-plugin": "^0.4.15",
+    "fork-ts-checker-webpack-plugin": "^6.2.1",
     "google-libphonenumber": "^3.2.10",
     "history": "^5.0.0",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.2.0",
     "js-cookie": "^2.2.0",
     "json-loader": "^0.5.7",
     "lodash": "^4.17.11",
@@ -103,7 +103,7 @@
     "sass-loader": "^9.0.3",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
-    "source-map-loader": "^1.0.1",
+    "source-map-loader": "^2.0.0",
     "style-loader": "^0.18.2",
     "subpackage": "^1.1.0",
     "terser-webpack-plugin": "^5.1.1",
@@ -118,11 +118,9 @@
     "typescript": "^4.2.4",
     "url-loader": "^4.1.0",
     "validate-npm-package-license": "^3.0.4",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack": "^5.10.3",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
   },
-  "devDependencies": {
-    "@babel/compat-data": "^7.13.15"
-  }
+  "devDependencies": {}
 }
