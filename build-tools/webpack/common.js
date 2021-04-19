@@ -13,6 +13,13 @@ const common = {
         test: /\.tsx?$/,
         use: [
           {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/react', ['@babel/env', { modules: false, loose: true }]],
+              plugins: ['@babel/transform-runtime', '@babel/plugin-proposal-export-namespace-from']
+            }
+          },
+          {
             loader: 'ts-loader',
             options: {
               allowTsInNodeModules: true,
@@ -21,11 +28,11 @@ const common = {
           }
         ]
       },
-      {
-        test: /\.js$/,
-        enforce: 'pre',
-        use: ['source-map-loader']
-      }
+      // {
+      //   test: /\.js$/,
+      //   enforce: 'pre',
+      //   use: ['source-map-loader']
+      // }
     ]
   },
   resolve: {
