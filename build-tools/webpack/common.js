@@ -25,6 +25,19 @@ const common = {
         test: /\.js$/,
         enforce: 'pre',
         use: ['source-map-loader']
+      },
+      {
+        test: /\.js$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            exclude: /^((?!elumeo\/jfs-core).)*$/,
+            options: {
+              presets: [['@babel/env', { modules: false, loose: true }]],
+              plugins: ["@babel/plugin-proposal-export-namespace-from"]
+            }
+          }
+        ]
       }
     ]
   },
@@ -38,13 +51,6 @@ const common = {
         configFile : resolve(PATH.ROOT, 'tsconfig.json')
       })
     ],
-
-  },
-  plugins: [
-    
-    // new BundleAnalyzerPlugin({
-    //   analyzerPort: 6000
-    // })
-  ],
+  }
 };
 module.exports =  common;
