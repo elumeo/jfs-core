@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import { PayloadAction } from 'typesafe-actions';
 import JSCApi from '../JSC';
 import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../../Types/WebSocket';
-import IWebSocketRoomUpdateDTO = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO;
+declare type IWebSocketRoomUpdateDTO<T> = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>;
 import { State } from '../../Store/Reducer/Global';
 export declare class WSClient {
     static EVENT_NOT_AUTHORIZED: string;
@@ -18,8 +18,8 @@ export declare class WSClient {
     static EVENT_ERROR: string;
     static EVENT_RECONNECT: string;
     static sockets: typeof io.Socket[];
-    protected static listenRoomsSubject: Subject<IWebSocketRoomUpdateDTO<any>>;
-    static listenRoomsObservable$: Observable<IWebSocketRoomUpdateDTO<any>>;
+    protected static listenRoomsSubject: Subject<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>;
+    static listenRoomsObservable$: Observable<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>;
     protected static connectionErrorSubject: Subject<IWebSocketError>;
     static connectionErrorObservable$: Observable<IWebSocketError>;
     protected static reconnectSubject: Subject<string>;
@@ -36,3 +36,4 @@ export declare class WSClient {
     private static checkSocket;
     static prepareRoomName(roomName: string, allReducers: State): string;
 }
+export {};

@@ -1,5 +1,5 @@
-const  development = require('./development');
-const  PATH = require('./PATH');
+const development = require('./development');
+const PATH = require('./PATH');
  
 const server = {
   ...development,

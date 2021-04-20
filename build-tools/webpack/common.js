@@ -11,12 +11,40 @@ const common = {
     rules: [
       {
         test: /\.tsx?$/,
+        include: PATH.SOURCE,
         use: [
           {
-            loader: 'ts-loader',
+            loader: 'babel-loader',
             options: {
-              allowTsInNodeModules: true,
-              transpileOnly: true
+              presets: [
+                ['@babel/preset-env', {
+                  "modules": false,
+                  "loose": true
+                }],
+                '@babel/preset-react',
+                '@babel/preset-typescript'
+              ],
+              plugins: [
+                "@babel/plugin-proposal-class-properties",
+                [
+                  'babel-plugin-import',
+                  {
+                    'libraryName': '@material-ui/core',
+                    'libraryDirectory': 'esm',
+                    'camel2DashComponentName': false
+                  },
+                  'core'
+                ],
+                [
+                  'babel-plugin-import',
+                  {
+                    'libraryName': '@material-ui/icons',
+                    'libraryDirectory': 'esm',
+                    'camel2DashComponentName': false
+                  },
+                  'icons'
+                ]
+              ]
             }
           }
         ]
@@ -25,19 +53,6 @@ const common = {
         test: /\.js$/,
         enforce: 'pre',
         use: ['source-map-loader']
-      },
-      {
-        test: /\.js$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            exclude: /^((?!elumeo\/jfs-core).)*$/,
-            options: {
-              presets: [['@babel/env', { modules: false, loose: true }]],
-              plugins: ["@babel/plugin-proposal-export-namespace-from"]
-            }
-          }
-        ]
       }
     ]
   },
@@ -50,7 +65,8 @@ const common = {
       new  PathAliasPlugin({
         configFile : resolve(PATH.ROOT, 'tsconfig.json')
       })
-    ],
-  }
+    ]
+  },
 };
-module.exports =  common;
+
+module.exports = common;

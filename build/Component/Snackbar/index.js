@@ -1,7 +1,7 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
-import * as LAB from '@material-ui/lab';
+import MUISnackbar from '@material-ui/core/Snackbar';
 import { useSelector } from '../../Types/Redux';
+import { Alert } from '@material-ui/lab';
 import useActions from '../../Store/useActions';
 import { useIntl } from 'react-intl';
 import Failure from './Failure';
@@ -51,7 +51,7 @@ const Snackbar = () => {
             setAutoHideDuration(words.length * READ_TIME_MILLISECONDS_PER_WORD);
         }
     }, [JSON.stringify(toast)]);
-    return (React.createElement(MUI.Snackbar, { autoHideDuration: autoHideDuration, onClose: () => dismissToastAction() },
-        React.createElement(LAB.Alert, { severity: severity(toast) }, message)));
+    return (React.createElement(MUISnackbar, { autoHideDuration: autoHideDuration, onClose: () => dismissToastAction() },
+        React.createElement(Alert, { severity: severity(toast) }, message)));
 };
 export default Snackbar;

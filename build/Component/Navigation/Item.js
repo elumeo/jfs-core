@@ -1,5 +1,8 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import Icon from '@material-ui/core/Icon';
+import ListItemText from '@material-ui/core/ListItemText';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from '../../Types/Redux';
 import useActions from '../../Store/useActions';
@@ -14,7 +17,7 @@ const NavigationItem = React.forwardRef(({ iconName, messageId, onClick, active,
         !isAuthorized && unauthorizedOnly // only when unauthorized
     );
     return (visible
-        ? (React.createElement(MUI.ListItem, { ref: ref, button: true, onClick: (event) => {
+        ? (React.createElement(ListItem, { ref: ref, button: true, onClick: (event) => {
                 const { location: { pathname } } = history;
                 if (onClickRoute != undefined && pathname !== onClickRoute) {
                     history.push(onClickRoute);
@@ -24,9 +27,9 @@ const NavigationItem = React.forwardRef(({ iconName, messageId, onClick, active,
                     onClick(event);
                 }
             }, selected: active },
-            React.createElement(MUI.ListItemIcon, null,
-                React.createElement(MUI.Icon, null, iconName)),
-            React.createElement(MUI.ListItemText, { primary: messageString
+            React.createElement(ListItemIcon, null,
+                React.createElement(Icon, null, iconName)),
+            React.createElement(ListItemText, { primary: messageString
                     ? messageString
                     : formatMessage({ id: messageId }) })))
         : React.createElement(React.Fragment, null));

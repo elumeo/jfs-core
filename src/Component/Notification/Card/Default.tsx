@@ -1,5 +1,7 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import CardActions from '@material-ui/core/CardActions';
 import { useSnackbar } from 'notistack';
 import * as Type from 'Types/Notification';
 
@@ -18,21 +20,21 @@ const DefaultNotificationCard : React.FC<Props> = ({
 
     return (
       <>
-        <MUI.CardContent color='inherit'>
-          <MUI.Typography variant='subtitle1'>
+        <CardContent color='inherit'>
+          <Typography variant='subtitle1'>
             {title}
-          </MUI.Typography>
-          <MUI.Typography variant='subtitle2'>
+          </Typography>
+          <Typography variant='subtitle2'>
             {subtitle}
-          </MUI.Typography>
-          <MUI.Typography variant='caption'>
+          </Typography>
+          <Typography variant='caption'>
             {content}
-          </MUI.Typography>
-        </MUI.CardContent>
+          </Typography>
+        </CardContent>
         {!temporary && action && (
-          <MUI.CardActions>
+          <CardActions>
             {action(snackbar, id, temporary)}
-          </MUI.CardActions>
+          </CardActions>
         )}
       </>
     )

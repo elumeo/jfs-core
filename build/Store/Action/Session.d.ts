@@ -1,6 +1,6 @@
 import JSCApi from '../../API/JSC';
-import IFrontendSessionDTO = JSCApi.DTO.Session.IFrontendSessionDTO;
-import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
+declare type IFrontendSessionDTO = JSCApi.DTO.Session.IFrontendSessionDTO;
+declare type ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 export declare const loadSession: import("typesafe-actions").EmptyAC<"session/LOAD">;
 export declare const checkSession: import("typesafe-actions").EmptyAC<"route/CHECK">;
 export declare namespace logout {
@@ -16,3 +16,4 @@ export declare namespace authorizeSession {
 }
 export declare const authorizeSession: import("typesafe-actions").PayloadAC<"route/AUTHORIZE", authorizeSession.Payload>;
 export declare const unauthorizeSession: import("typesafe-actions").EmptyAC<"route/UNAUTHORIZE">;
+export {};

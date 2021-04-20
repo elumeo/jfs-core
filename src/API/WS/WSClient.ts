@@ -7,7 +7,7 @@ import {
   IWebSocketRoom,
   IWebSocketRoomConnection
 } from 'Types/WebSocket';
-import IWebSocketRoomUpdateDTO = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO;
+type IWebSocketRoomUpdateDTO<T> = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>;
 import { ROOM_UPDATE_ACTION_ID } from 'Constant/WebSocket';
 import { State } from 'Store/Reducer/Global';
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import Wrapper from '../Wrapper';
 
-const Apple: React.FC<MUI.SvgIconProps> = props => (
+const Apple: React.FC<SvgIconProps> = props => (
   <Wrapper {...props}>
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g transform="translate(5.000000, 3.000000)" fill='currentcolor' fillRule="nonzero">

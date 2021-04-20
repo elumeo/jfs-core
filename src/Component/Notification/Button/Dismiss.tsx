@@ -1,17 +1,17 @@
 import React from 'react';
-import * as MUI from '@material-ui/core'
-import * as ICON from '@material-ui/icons';
+import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 export type Props = {
-  onClick: MUI.IconButtonProps['onClick'];
+  onClick: IconButtonProps['onClick'];
 };
 
 const DismissButton: React.FC<Props> = ({ onClick }) => (
-  <MUI.IconButton
+  <IconButton
     color='inherit'
     onClick={onClick}>
-    <ICON.Close/>
-  </MUI.IconButton>
+    <CloseIcon/>
+  </IconButton>
 );
 
 export default DismissButton;

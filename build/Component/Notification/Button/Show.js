@@ -1,7 +1,10 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import * as MUI from '@material-ui/core';
-import * as ICON from '@material-ui/icons';
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
+import Popper from '@material-ui/core/Popper';
+import Popover from '@material-ui/core/Popover';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 import NotificationOverlay from '../../Notification/Overlay';
 import { useSnackbar } from 'notistack';
 import { useSelector } from '../../../Types/Redux';
@@ -18,13 +21,13 @@ const ShowButton = ({ keepOpenOnOutsideClick }) => {
         }
     }, [open]);
     return (React.createElement(React.Fragment, null,
-        React.createElement(MUI.IconButton, { color: 'inherit', ref: buttonRef, "aria-describedby": id, onClick: () => setAnchorRef(open
+        React.createElement(IconButton, { color: 'inherit', ref: buttonRef, "aria-describedby": id, onClick: () => setAnchorRef(open
                 ? null
                 : buttonRef.current) },
-            React.createElement(MUI.Badge, { badgeContent: all.length, color: 'secondary' },
-                React.createElement(ICON.Notifications, null))),
+            React.createElement(Badge, { badgeContent: all.length, color: 'secondary' },
+                React.createElement(NotificationsIcon, null))),
         createPortal(keepOpenOnOutsideClick
-            ? (React.createElement(MUI.Popper, { open: open, placement: 'bottom-end', id: id, anchorEl: anchorRef, modifiers: {
+            ? (React.createElement(Popper, { open: open, placement: 'bottom-end', id: id, anchorEl: anchorRef, modifiers: {
                     flip: {
                         enabled: true,
                     },
@@ -38,7 +41,7 @@ const ShowButton = ({ keepOpenOnOutsideClick }) => {
                     },
                 } },
                 React.createElement(NotificationOverlay, null)))
-            : (React.createElement(MUI.Popover, { open: open, anchorEl: anchorRef, anchorOrigin: {
+            : (React.createElement(Popover, { open: open, anchorEl: anchorRef, anchorOrigin: {
                     vertical: 'bottom',
                     horizontal: 'right'
                 }, onClose: () => setAnchorRef(null) },

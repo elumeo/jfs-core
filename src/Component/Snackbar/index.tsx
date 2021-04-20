@@ -1,7 +1,7 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
-import * as LAB from '@material-ui/lab';
+import MUISnackbar from '@material-ui/core/Snackbar';
 import { useSelector } from 'Types/Redux';
+import { Alert, Color } from '@material-ui/lab';
 import { Toast } from 'Types/Toast';
 import useActions from 'Store/useActions';
 import { useIntl } from 'react-intl';
@@ -12,7 +12,7 @@ const DEFAULT_AUTO_HIDE_DURATION = 1000;
 const READ_TIME_WORDS_PER_MILLISECOND = 0.00375;
 const READ_TIME_MILLISECONDS_PER_WORD = 1 / READ_TIME_WORDS_PER_MILLISECOND;
 
-const severity = (toast: Toast): LAB.Color => {
+const severity = (toast: Toast): Color => {
   if (toast.isError) {
     return 'error';
   }
@@ -73,13 +73,13 @@ const Snackbar = () => {
   );
 
   return (
-    <MUI.Snackbar
+    <MUISnackbar
       autoHideDuration={autoHideDuration}
       onClose={() => dismissToastAction()}>
-      <LAB.Alert severity={severity(toast)}>
+      <Alert severity={severity(toast)}>
         {message}
-      </LAB.Alert>
-    </MUI.Snackbar>
+      </Alert>
+    </MUISnackbar>
   );
 }
 

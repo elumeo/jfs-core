@@ -1,7 +1,7 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import { IconButtonProps } from '@material-ui/core/IconButton';
 export declare type Props = {
-    onClick: MUI.IconButtonProps['onClick'];
+    onClick: IconButtonProps['onClick'];
 };
 declare const DismissButton: React.FC<Props>;
 export default DismissButton;

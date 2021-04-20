@@ -1,9 +1,11 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import * as MUI from '@material-ui/core';
-import * as ICON from '@material-ui/icons';
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
+import Popper from '@material-ui/core/Popper';
+import Popover from '@material-ui/core/Popover';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 import NotificationOverlay from 'Component/Notification/Overlay';
-import useActions from 'Store/useActions';
 import { useSnackbar } from 'notistack';
 import { useSelector } from 'Types/Redux';
 
@@ -29,9 +31,9 @@ const ShowButton: React.FC<Props> = ({ keepOpenOnOutsideClick }) => {
     [open]
   );
 
-  return (<>
-
-      <MUI.IconButton
+  return (
+    <>
+      <IconButton
         color='inherit'
         ref={buttonRef}
         aria-describedby={id}
@@ -39,15 +41,15 @@ const ShowButton: React.FC<Props> = ({ keepOpenOnOutsideClick }) => {
           open
             ? null
             : buttonRef.current
-        )}><MUI.Badge badgeContent={all.length} color='secondary'>
-        <ICON.Notifications/>
-    </MUI.Badge>
-      </MUI.IconButton>
-
+        )}>
+        <Badge badgeContent={all.length} color='secondary'>
+          <NotificationsIcon/>
+        </Badge>
+      </IconButton>
       {createPortal(
         keepOpenOnOutsideClick
           ? (
-            <MUI.Popper
+            <Popper
               open={open}
               placement='bottom-end'
               id={id}
@@ -66,10 +68,10 @@ const ShowButton: React.FC<Props> = ({ keepOpenOnOutsideClick }) => {
                 },
               }}>
               <NotificationOverlay/>
-            </MUI.Popper>
+            </Popper>
           )
           : (
-            <MUI.Popover
+            <Popover
               open={open}
               anchorEl={anchorRef}
               anchorOrigin={{
@@ -78,7 +80,7 @@ const ShowButton: React.FC<Props> = ({ keepOpenOnOutsideClick }) => {
               }}
               onClose={() => setAnchorRef(null)}>
               <NotificationOverlay/>
-            </MUI.Popover>
+            </Popover>
           ),
         document.getElementById('overlay')
       )}

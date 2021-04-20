@@ -1,5 +1,6 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import MUISelect from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 import All from './All.json';
 import { Language } from 'Types/Language';
 
@@ -9,18 +10,18 @@ export type Props = {
 };
 
 const Select: React.FC<Props> = ({ value, onChange }) => (
-  <MUI.Select
+  <MUISelect
     id='settings__language-select'
     variant='standard'
     fullWidth
     value={value}
     onChange={event => onChange(event.target.value as Language)}>
     {All.map(item => (
-      <MUI.MenuItem value={item.value} key={ 'language' + item.value}>
+      <MenuItem value={item.value} key={ 'language' + item.value}>
         {item.label}
-      </MUI.MenuItem>
+      </MenuItem>
     ))}
-  </MUI.Select>
+  </MUISelect>
 );
 
 export default Select;

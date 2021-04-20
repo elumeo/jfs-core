@@ -1,5 +1,5 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import Divider from '@material-ui/core/Divider';
 import * as Navigation from 'Component/Navigation';
 import * as Logout from 'Component/Logout';
 import * as Settings from 'Component/Settings';
@@ -16,9 +16,9 @@ const Drawer: React.FC = () => (
       messageId='app.title'
       onClickRoute='/start'
       authorizedOnly/>
-    <MUI.Divider/>
+    <Divider/>
     <Settings.NavigationItem/>
-    <MUI.Divider/>
+    <Divider/>
     <Logout.NavigationItem/>
     {/* <VersionNavigationItem /> */}
   </Navigation.Drawer>

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import CardActions from '@material-ui/core/CardActions';
 import * as Button from './Button';
 
 export type Props = {
@@ -7,9 +7,9 @@ export type Props = {
 }
 
 const Toolbar: React.FC = () => (
-  <MUI.CardActions>
+  <CardActions>
     <Button.DismissAllNotifications/>
-  </MUI.CardActions>
+  </CardActions>
 );
 
 export default Toolbar;

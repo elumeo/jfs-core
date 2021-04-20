@@ -1,10 +1,10 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
 
-export type Props = MUI.SvgIconProps;
+export type Props = SvgIconProps;
 
 const Wrapper: React.FC<Props> = props => (
-  <MUI.SvgIcon
+  <SvgIcon
     viewBox="0 0 32 32"
     fontSize='inherit'
     color='inherit'

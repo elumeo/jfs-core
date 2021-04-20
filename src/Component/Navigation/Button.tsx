@@ -1,29 +1,24 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import useActions from 'Store/useActions';
 import { useSelector } from 'Types/Redux';
 
-export type Props = {
-  iconName: string;
-};
-
-const Button: React.FC<Props> = ({ iconName }) => {
+const Button: React.FC = () => {
   const navigationOpen = useSelector<boolean>(
     state => state.Core.Navigation.navigationOpen
   );
   const { openNavigation, closeNavigation } = useActions();
   return (
-    <MUI.IconButton
+    <IconButton
       onClick={() => (
       navigationOpen
         ? closeNavigation()
         : openNavigation()
     )}>
-      <MUI.Icon fontSize="small">
-        {iconName}
-      </MUI.Icon>
-    </MUI.IconButton>
-  )
+      <ArrowBackIcon fontSize='small'/>
+    </IconButton>
+  );
 }
 
 export default Button;

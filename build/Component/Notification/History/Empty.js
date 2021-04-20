@@ -1,10 +1,12 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 import { useIntl } from 'react-intl';
 const Empty = () => {
     const { formatMessage } = useIntl();
     const iconRef = React.useRef();
-    return (React.createElement(MUI.Box, { component: 'div', style: {
+    return (React.createElement(Box, { component: 'div', style: {
             width: 'max-content',
             display: 'flex',
             justifyContent: 'center',
@@ -12,7 +14,7 @@ const Empty = () => {
             flexDirection: 'column',
             color: 'grey'
         } },
-        React.createElement(MUI.Icon, { fontSize: 'large', ref: iconRef }, "notifications"),
-        React.createElement(MUI.Typography, null, formatMessage({ id: 'app.noNotifications' }))));
+        React.createElement(NotificationsIcon, { fontSize: 'large', ref: iconRef }),
+        React.createElement(Typography, null, formatMessage({ id: 'app.noNotifications' }))));
 };
 export default Empty;

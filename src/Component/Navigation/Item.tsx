@@ -1,5 +1,8 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import Icon from '@material-ui/core/Icon';
+import ListItemText from '@material-ui/core/ListItemText';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'Types/Redux';
 import useActions from 'Store/useActions';
@@ -34,7 +37,7 @@ const NavigationItem: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
     return (
       visible
         ? (
-          <MUI.ListItem
+          <ListItem
             ref={ref}
             button
             onClick={(event: React.MouseEvent<HTMLElement>) => {
@@ -48,14 +51,14 @@ const NavigationItem: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
               }
             }}
             selected={active}>
-            <MUI.ListItemIcon>
-              <MUI.Icon>{iconName}</MUI.Icon>
-            </MUI.ListItemIcon>
-            <MUI.ListItemText primary={
+            <ListItemIcon>
+              <Icon>{iconName}</Icon>
+            </ListItemIcon>
+            <ListItemText primary={
               messageString
                 ? messageString
                 : formatMessage({id: messageId})} />
-          </MUI.ListItem>
+          </ListItem>
         )
         : <></>
     )

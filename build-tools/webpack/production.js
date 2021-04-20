@@ -34,7 +34,6 @@ const production = {
     ]
   },
   plugins: [
-    ...common.plugins,
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
@@ -44,7 +43,6 @@ const production = {
       minimize: true,
       debug: false
     }),
-    // Eliminate more unused lodash code
     new LodashModuleReplacementPlugin(),
     new CompressionPlugin({ test: [/\.tsx/, /\.ts/, /\.js/], minRatio: 0.1 }),
     new CopyWebpackPlugin({

@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import * as MUI from '@material-ui/core';
+import MUIDrawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
 import useActions from 'Store/useActions';
 import { useSelector } from 'Types/Redux';
 import Header from './Header';
@@ -12,7 +13,7 @@ const Drawer: React.FC = ({ children }) => {
   const close = useCallback(closeNavigation, []);
 
   return (
-    <MUI.Drawer
+    <MUIDrawer
       open={navigationOpen}
       anchor='left'
       onClose={close}>
@@ -20,11 +21,11 @@ const Drawer: React.FC = ({ children }) => {
         width: 270
       }}>
         <Header/>
-        <MUI.List>
+        <List>
           {children}
-        </MUI.List>
+        </List>
       </div>
-    </MUI.Drawer>
+    </MUIDrawer>
   );
 };
 

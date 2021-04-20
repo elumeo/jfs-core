@@ -1,6 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import * as MUI from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { useSelector } from 'Types/Redux';
 
 export type Props = {
@@ -11,15 +12,15 @@ const Submit: React.FC<Props> = ({ onClick }) => {
   const { formatMessage } = useIntl()
   const isCheckingLogin = useSelector(state => state.Core.Login.isCheckingLogin);
   return (
-    <MUI.Button
+    <Button
       variant='contained'
       color='secondary'
       onClick={onClick}
       disabled={isCheckingLogin}>
       {isCheckingLogin
-        ? <MUI.CircularProgress id='check-login-progress'/>
+        ? <CircularProgress id='check-login-progress'/>
         : formatMessage({ id: 'login.button' })}
-    </MUI.Button>
+    </Button>
   );
 }
 

@@ -1,17 +1,17 @@
 import { createReducer } from 'typesafe-actions';
 import * as Action from 'Store/Action';
 import { ActionType } from 'Types/Redux';
-import { Toast } from 'Types/Toast';
+import * as Type from 'Types/Toast';
 
 export type State = {
-  toasts: Toast[];
+  toasts: Type.Toast[];
 };
 
 const initialState: State = {
   toasts: []
 };
 
-const equal = (first: Toast, second: Toast) => (
+const equal = (first: Type.Toast, second: Type.Toast) => (
   first.contentMessage !== undefined &&
   first.contentMessage === second.contentMessage ||
   first.contentTranslationId !== undefined &&

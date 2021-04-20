@@ -3,7 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PATH = require('./PATH');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-// const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
+const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
 const { resolve } = require('path');
 
 const development = {
@@ -16,12 +16,23 @@ const development = {
   devtool: 'inline-source-map',
   plugins: [
     new ForkTsCheckerWebpackPlugin({
-      tsconfig: resolve(PATH.ROOT, 'tsconfig.json')
+      typescript: {
+        configFile: resolve(PATH.ROOT, 'tsconfig.json'),
+        memoryLimit: 8192,
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+        mode: "write-references",
+      },
+      async: true
     }),
-    // new ForkTsCheckerNotifierWebpackPlugin,
-    new CopyWebpackPlugin([ 
-      { from: PATH.CONFIGURATION_DEV, to: PATH.CONFIGURATION_DIST }
-    ]),
+    new ForkTsCheckerNotifierWebpackPlugin,
+    new CopyWebpackPlugin({
+      patterns: [ 
+        { from: PATH.CONFIGURATION_DEV, to: PATH.CONFIGURATION_DIST }
+      ],
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: PATH.HTML_TEMPLATE,

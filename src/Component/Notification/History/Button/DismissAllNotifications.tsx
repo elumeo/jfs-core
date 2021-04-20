@@ -1,5 +1,6 @@
 import React from 'react';
-import { IconButton, Icon } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 import useActions from 'Store/useActions';
 import { useSelector } from 'Types/Redux';
 
@@ -10,7 +11,7 @@ const DismissAllNotificationsButton: React.FC = () => {
     <IconButton
       onClick={removeAllNotifications}
       disabled={!history.length}>
-     <Icon>delete</Icon>
+      <DeleteIcon/>
     </IconButton>
   );
 }

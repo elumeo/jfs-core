@@ -1,6 +1,6 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import CardActions from '@material-ui/core/CardActions';
 import * as Button from './Button';
-const Toolbar = () => (React.createElement(MUI.CardActions, null,
+const Toolbar = () => (React.createElement(CardActions, null,
     React.createElement(Button.DismissAllNotifications, null)));
 export default Toolbar;

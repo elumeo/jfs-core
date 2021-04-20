@@ -2,7 +2,12 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Cookie from 'js-cookie';
 import { Language } from 'Types/Language';
-import * as MUI from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
 import useActions from 'Store/useActions';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'Types/Redux';
@@ -14,9 +19,9 @@ const Container: React.FC = () => {
     const language = useSelector(state => state.Core.Language.language);
   
     return (
-      <MUI.Card style={{width: 330, margin: 'auto'}}>
-        <MUI.CardHeader title={formatMessage({id: 'settings.title'})}/>
-        <MUI.Select
+      <Card style={{width: 330, margin: 'auto'}}>
+        <CardHeader title={formatMessage({id: 'settings.title'})}/>
+        <Select
           id='language'
           label={formatMessage({id: 'settings.language'})}
           value={language}
@@ -24,22 +29,22 @@ const Container: React.FC = () => {
             Cookie.set('lang', e.target.value);
             changeLanguageAction(e.target.value as Language);
           }}>
-            <MUI.MenuItem value='de'>
+            <MenuItem value='de'>
               Deutsch
-            </MUI.MenuItem>
-            <MUI.MenuItem value='en'>
+            </MenuItem>
+            <MenuItem value='en'>
               English
-            </MUI.MenuItem>
-            <MUI.MenuItem value='it'>
+            </MenuItem>
+            <MenuItem value='it'>
               Italiano
-            </MUI.MenuItem>
-          </MUI.Select>
-        <MUI.CardActions className='md-dialog-footer'>
-          <MUI.Button  onClick={goBack}>
+            </MenuItem>
+          </Select>
+        <CardActions className='md-dialog-footer'>
+          <Button  onClick={goBack}>
             {formatMessage({id: 'app.settings.done'})}
-          </MUI.Button>
-        </MUI.CardActions>
-      </MUI.Card>
+          </Button>
+        </CardActions>
+      </Card>
     );
 }
 

@@ -11,15 +11,18 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import React from 'react';
 import { useIntl } from 'react-intl';
-import * as MUI from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import MUIToolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import useActions from '../../Store/useActions';
 const Toolbar = (_a) => {
     var { variant = 'dense' } = _a, tools = __rest(_a, ["variant"]);
     const { formatMessage } = useIntl();
     const { openNavigation } = useActions();
-    return (React.createElement(MUI.AppBar, { position: 'static' },
-        React.createElement(MUI.Toolbar, { disableGutters: true, variant: variant, style: {
+    return (React.createElement(AppBar, { position: 'static' },
+        React.createElement(MUIToolbar, { disableGutters: true, variant: variant, style: {
                 height: 58
             } },
             React.createElement("div", { style: {
@@ -37,9 +40,9 @@ const Toolbar = (_a) => {
                         justifyContent: 'flex-start',
                         alignItems: 'center'
                     } },
-                    React.createElement(MUI.IconButton, { color: 'inherit', "aria-label": 'menu', onClick: openNavigation },
+                    React.createElement(IconButton, { color: 'inherit', "aria-label": 'menu', onClick: openNavigation },
                         React.createElement(MenuIcon, null)),
-                    React.createElement(MUI.Typography, { variant: 'h6', noWrap: true }, formatMessage({ id: 'app.title' })),
+                    React.createElement(Typography, { variant: 'h6', noWrap: true }, formatMessage({ id: 'app.title' })),
                     tools.left || React.createElement(React.Fragment, null)),
                 React.createElement("div", { style: {
                         width: 'calc(100% / 3)',

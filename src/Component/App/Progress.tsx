@@ -1,5 +1,5 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const style: React.CSSProperties = {
   width: '100vw',
@@ -11,8 +11,7 @@ const style: React.CSSProperties = {
 
 const Progress: React.FC = () => (
   <div style={style}>
-    <MUI.CircularProgress
-      id='app-initialize-progress'/>
+    <CircularProgress/>
   </div>
 );
 

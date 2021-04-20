@@ -1,11 +1,16 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import MUICard from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
 import { default as Default } from './Default';
-import { useTheme } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import Icon from './Icon';
 import { Notification } from 'Types/Notification';
 import useActions from 'Store/useActions';
-import * as ICON from '@material-ui/icons';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { useSnackbar } from 'notistack';
 
 export type Props = {
@@ -23,45 +28,45 @@ const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = (
   const snackbar = useSnackbar();
 
   return (
-    <MUI.Card
+    <MUICard
       style={{
         width: '100%',
         minHeight: 'fit-content',
         backgroundColor: palette[notification.variant]?.['main'],
         color: palette[notification.variant]?.['contrastText']
       }}>
-      <MUI.CardHeader
+      <CardHeader
         avatar={<Icon variant={notification.variant}/>}
         title={
-          <MUI.Typography component='h4'>
+          <Typography component='h4'>
             {notification.title}
-          </MUI.Typography>
+          </Typography>
         }
         subheader={
-          <MUI.Typography component='h6'>
+          <Typography component='h6'>
             {notification.subtitle}
-          </MUI.Typography>
+          </Typography>
         }
         subheaderTypographyProps={{ color: 'inherit' }}
         action={
-          <MUI.CardActions>
+          <CardActions>
             {notification.action
               ? notification.action(snackbar, notification.id, temporary)
               : null}
-            <MUI.IconButton
+            <IconButton
               onClick={() => removeNotification(notification.id)}>
-              <ICON.Delete
+              <DeleteIcon
                 style={{ color: palette[notification.variant]?.contrastText }}/>
-            </MUI.IconButton>
-          </MUI.CardActions>
+            </IconButton>
+          </CardActions>
         }/>
-      <MUI.CardContent>
-        <MUI.Typography>
+      <CardContent>
+        <Typography>
           {notification.content}
           {children}
-        </MUI.Typography>
-      </MUI.CardContent>
-    </MUI.Card>
+        </Typography>
+      </CardContent>
+    </MUICard>
   );
 };
 Card.Default = Default;

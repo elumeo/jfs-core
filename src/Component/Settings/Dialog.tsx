@@ -1,5 +1,9 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import MUIDialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogActions from '@material-ui/core/DialogActions';
+import Button from '@material-ui/core/Button';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'Types/Redux';
 import useActions from 'Store/useActions';
@@ -9,25 +13,24 @@ const Dialog: React.FC = ({ children }) => {
   const { formatMessage } = useIntl();
   const open = useSelector(state => state.Core.Settings.settingsOpen);
   return (
-    <MUI.Dialog
-      className='settings-dialog'
+    <MUIDialog
       open={open}
       onClose={closeSettings}>
-      <MUI.DialogTitle>
+      <DialogTitle>
         {formatMessage({id: 'app.settings'})}
-      </MUI.DialogTitle>
-      <MUI.DialogContent>
+      </DialogTitle>
+      <DialogContent>
         {children}
-      </MUI.DialogContent>
-      <MUI.DialogActions>
-        <MUI.Button
+      </DialogContent>
+      <DialogActions>
+        <Button
           variant='contained'
           color='secondary'
           onClick={closeSettings}>
           {formatMessage({id: 'app.closeBtnLabelModalDialog'})}
-        </MUI.Button>
-      </MUI.DialogActions>
-    </MUI.Dialog>
+        </Button>
+      </DialogActions>
+    </MUIDialog>
   );
 };
 

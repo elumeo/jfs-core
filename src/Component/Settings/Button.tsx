@@ -1,22 +1,22 @@
 import React from 'react';
 import { useSelector } from 'Types/Redux';
-import * as MUI from '@material-ui/core';
-import * as ICON from '@material-ui/icons';
+import IconButton from '@material-ui/core/IconButton';
+import SettingsIcon from '@material-ui/icons/Settings';
 import useActions from 'Store/useActions';
 
 const Button: React.FC = () => {
   const { openSettings, closeSettings } = useActions();
   const settingsOpen = useSelector(state  => state.Core.Settings.settingsOpen);
   return (
-    <MUI.IconButton
+    <IconButton
       color='inherit'
       onClick={() => (
         settingsOpen
           ? closeSettings()
           : openSettings()
       )}>
-      <ICON.Settings/>
-    </MUI.IconButton>
+      <SettingsIcon/>
+    </IconButton>
   )
 };
 

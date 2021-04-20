@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon as FontIcon } from '@material-ui/core';
+import FontIcon from '@material-ui/core/Icon';
 const Icon = ({ variant }) => {
     const iconName = React.useMemo(() => {
         if (variant === 'error') {

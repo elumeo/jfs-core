@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import * as MUI from '@material-ui/core';
+import InputLabel from '@material-ui/core/InputLabel';
 import Select from './Select';
 import useLanguage from './useLanguage';
 const Settings = () => {
@@ -9,7 +9,7 @@ const Settings = () => {
     return (React.createElement("div", { style: {
             width: 240
         } },
-        React.createElement(MUI.InputLabel, { id: 'settings__language-select' }, formatMessage({ id: 'settings.language' })),
+        React.createElement(InputLabel, null, formatMessage({ id: 'settings.language' })),
         React.createElement(Select, { value: language.value, onChange: language.onChange })));
 };
 export default Settings;

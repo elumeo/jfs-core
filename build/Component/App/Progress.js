@@ -1,5 +1,5 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 const style = {
     width: '100vw',
     height: '100vh',
@@ -8,5 +8,5 @@ const style = {
     alignItems: 'center'
 };
 const Progress = () => (React.createElement("div", { style: style },
-    React.createElement(MUI.CircularProgress, { id: 'app-initialize-progress' })));
+    React.createElement(CircularProgress, null)));
 export default Progress;

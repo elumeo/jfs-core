@@ -1,6 +1,9 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import * as MUI from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import MUIToolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import useActions from 'Store/useActions';
 
@@ -16,8 +19,8 @@ const Toolbar: React.FC<Props> = ({ variant = 'dense', ...tools }) => {
   const { openNavigation } = useActions();
 
   return (
-    <MUI.AppBar position='static'>
-      <MUI.Toolbar disableGutters variant={variant} style={{
+    <AppBar position='static'>
+      <MUIToolbar disableGutters variant={variant} style={{
         height: 58
       }}>
         <div style={{
@@ -35,15 +38,15 @@ const Toolbar: React.FC<Props> = ({ variant = 'dense', ...tools }) => {
             justifyContent: 'flex-start',
             alignItems: 'center'
           }}>
-            <MUI.IconButton
+            <IconButton
               color='inherit'
               aria-label='menu'
               onClick={openNavigation}>
               <MenuIcon/>
-            </MUI.IconButton>
-            <MUI.Typography variant='h6' noWrap>
+            </IconButton>
+            <Typography variant='h6' noWrap>
               {formatMessage({ id: 'app.title' })}
-            </MUI.Typography>
+            </Typography>
             {tools.left || <></>}
           </div>
           <div style={{
@@ -63,8 +66,8 @@ const Toolbar: React.FC<Props> = ({ variant = 'dense', ...tools }) => {
             {tools.right || <></>}
           </div>
         </div>
-      </MUI.Toolbar>
-    </MUI.AppBar>
+      </MUIToolbar>
+    </AppBar>
   );
 };
 export default Toolbar;

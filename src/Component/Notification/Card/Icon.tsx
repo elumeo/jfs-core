@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon as FontIcon } from '@material-ui/core';
+import FontIcon from '@material-ui/core/Icon';
 import { VariantType } from 'notistack';
 
 export type Props = {

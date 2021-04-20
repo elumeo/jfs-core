@@ -1,13 +1,15 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import CardActions from '@material-ui/core/CardActions';
 import { useSnackbar } from 'notistack';
 const DefaultNotificationCard = ({ notification: { title, subtitle, content, action, id }, temporary }) => {
     const snackbar = useSnackbar();
     return (React.createElement(React.Fragment, null,
-        React.createElement(MUI.CardContent, { color: 'inherit' },
-            React.createElement(MUI.Typography, { variant: 'subtitle1' }, title),
-            React.createElement(MUI.Typography, { variant: 'subtitle2' }, subtitle),
-            React.createElement(MUI.Typography, { variant: 'caption' }, content)),
-        !temporary && action && (React.createElement(MUI.CardActions, null, action(snackbar, id, temporary)))));
+        React.createElement(CardContent, { color: 'inherit' },
+            React.createElement(Typography, { variant: 'subtitle1' }, title),
+            React.createElement(Typography, { variant: 'subtitle2' }, subtitle),
+            React.createElement(Typography, { variant: 'caption' }, content)),
+        !temporary && action && (React.createElement(CardActions, null, action(snackbar, id, temporary)))));
 };
 export default DefaultNotificationCard;

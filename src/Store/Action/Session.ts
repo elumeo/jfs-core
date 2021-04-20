@@ -1,8 +1,8 @@
 import { createStandardAction } from 'typesafe-actions';
 
 import JSCApi from 'API/JSC';
-import IFrontendSessionDTO = JSCApi.DTO.Session.IFrontendSessionDTO;
-import ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
+type IFrontendSessionDTO = JSCApi.DTO.Session.IFrontendSessionDTO;
+type ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 
 export const loadSession = createStandardAction(`session/LOAD`)();
 
