@@ -7,6 +7,7 @@
 // import * as Language from './Component/Language';
 // import * as Header from './Component/Header';
 // import * as Notification from './Component/Notification';
+// import Snackbar from './Component/Snackbar';
 // import Overlay from './Component/Overlay';
 // import { Translations, Navigation, Routes } from './Setup';
 // import packageJson from '../package.json';
@@ -31,6 +32,7 @@
 //       <Settings.Dialog>
 //         <Language.Settings/>
 //       </Settings.Dialog>
+//       <Snackbar/>
 //     </Overlay>
 //     <Routes/>
 //   </App.Container>,
