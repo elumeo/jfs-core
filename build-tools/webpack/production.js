@@ -5,7 +5,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const rimraf = require('rimraf');
 
 rimraf.sync(PATH.PUBLIC);
@@ -49,15 +48,7 @@ const production = {
         patterns: [
             { from: PATH.CONFIGURATION_DEV, to: PATH.CONFIGURATION_DIST }
         ]
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: PATH.HTML_TEMPLATE,
-      inject: false,
-      templateParameters: {
-        BUNDLE_FILE_NAME : PATH.UNIQUE_BUNDLE_NAME
-      }      
-    }),
+    })
   ]
 };
 
