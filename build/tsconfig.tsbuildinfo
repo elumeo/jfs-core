@@ -3801,9 +3801,14 @@
         "signature": "6f3d9f93cfe36ce6f6a83080eaaa0304693e2dda1b3b64c92c8c2f1620645b69",
         "affectsGlobalScope": false
       },
+      "../src/store/selector/core/websocket.ts": {
+        "version": "cc9b5af686621982528f9962931bc03d21be804ac4e2a7e33106e39f46254b29",
+        "signature": "e87431db14ba8289ff6192ca95ce3efa11e22a2c20ae61b4a41cf9d2a3379d95",
+        "affectsGlobalScope": false
+      },
       "../src/store/selector/core/index.ts": {
-        "version": "a7e66500100a39e014ed7fcfaf166ef52e672f0f337609836252fda2efd0272d",
-        "signature": "a4d6de464b431bfada030ef32420a1835666a8286adaafa610a8e884cbd77cb1",
+        "version": "6d8f88ad7b106a34602c87a93473b758476be8ff433d65615eeaec90bb2e243c",
+        "signature": "85bbc07cb0932ad5802eb90ff139faf19595d883dee165a8841d071ecd5cf411",
         "affectsGlobalScope": false
       },
       "../src/store/selector/index.ts": {
@@ -12837,9 +12842,14 @@
       "../src/store/selector/core/index.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../src/store/selector/core/app.ts",
+        "../src/store/selector/core/websocket.ts"
+      ],
+      "../src/store/selector/core/websocket.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
         "../node_modules/reselect/lib/index.d.ts",
-        "../src/store/reducer/global.ts",
-        "../src/store/selector/core/app.ts"
+        "../src/store/reducer/global.ts"
       ],
       "../src/store/selector/index.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -19525,25 +19535,13 @@
         "../src/store/reducer/global.ts"
       ],
       "../src/store/selector/core/index.ts": [
-        "../node_modules/reselect/lib/index.d.ts",
-        "../src/store/reducer/core/app.ts",
-        "../src/store/reducer/core/configuration.ts",
-        "../src/store/reducer/core/index.ts",
-        "../src/store/reducer/core/language.ts",
-        "../src/store/reducer/core/locale.ts",
-        "../src/store/reducer/core/login.ts",
-        "../src/store/reducer/core/logout.ts",
-        "../src/store/reducer/core/navigation.ts",
-        "../src/store/reducer/core/notification.ts",
-        "../src/store/reducer/core/router.ts",
-        "../src/store/reducer/core/session.ts",
-        "../src/store/reducer/core/settings.ts",
-        "../src/store/reducer/core/system.ts",
-        "../src/store/reducer/core/toast.ts",
-        "../src/store/reducer/core/websocket.ts",
-        "../src/store/reducer/global.ts",
         "../src/store/selector/core/app.ts",
-        "../src/types/configuration.ts"
+        "../src/store/selector/core/websocket.ts"
+      ],
+      "../src/store/selector/core/websocket.ts": [
+        "../node_modules/reselect/lib/index.d.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/websocket.ts"
       ],
       "../src/store/selector/index.ts": [
         "../src/store/selector/core/index.ts"
@@ -20658,6 +20656,7 @@
       "../src/store/reducer/global.ts",
       "../src/store/selector/core/app.ts",
       "../src/store/selector/core/index.ts",
+      "../src/store/selector/core/websocket.ts",
       "../src/store/selector/index.ts",
       "../src/store/useactions.ts",
       "../src/types/configuration.ts",
