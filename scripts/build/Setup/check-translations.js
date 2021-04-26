@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -12,40 +31,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const JFS_1 = __importDefault(require("../Library/JFS"));
-const Snapshot_1 = __importDefault(require("../Library/JFS/Project/Translations/Snapshot"));
-const Translations_1 = __importDefault(require("../Library/JFS/Project/Translations"));
-const File_1 = __importDefault(require("../Library/OS/Filesystem/File"));
+const Project = __importStar(require("../Library/JFS/Project"));
 const Script_1 = __importDefault(require("../Library/JFS/Core/Script"));
-const onComplete = ({ missing, html }) => {
-    if (html) {
-        html.open();
-    }
-};
-const run = () => JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
-    const translations = new File_1.default({
-        path: Translations_1.default.location(JFS_1.default.Head.path)
-    });
-    const previous = yield Snapshot_1.default.previous(translations);
-    const current = yield Snapshot_1.default.current(translations);
-    if (previous) {
-        Snapshot_1.default.update(previous, current, onComplete);
+const path_1 = require("path");
+const ANSI = __importStar(require("ansi-colors"));
+const run = () => __awaiter(void 0, void 0, void 0, function* () {
+    const path = path_1.resolve(process.cwd(), 'src', 'Setup', 'Translations.json');
+    if (yield Project.Translations.Check.run(path)) {
+        console.info(ANSI.bgGreenBright('All translations seem to be available!'));
     }
     else {
-        const missing = current.translations.missing(current.includeCompleteRows);
-        if (missing.length) {
-            Snapshot_1.default.create(1, current, () => __awaiter(void 0, void 0, void 0, function* () {
-                return onComplete({
-                    missing,
-                    html: (yield current.file('html')) || null
-                });
-            }));
-        }
-        else {
-            onComplete({ missing, html: null });
-        }
+        console.warn(ANSI.bgRedBright('Some translations seem to be missing!'));
     }
-}));
+});
 exports.default = new Script_1.default({
     path: __filename,
     name: 'check-translations',

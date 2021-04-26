@@ -1,13 +1,9 @@
-import JFS from 'Library/JFS';
-import Directory from 'Library/OS/Filesystem/Directory';
-import Text from 'Library/Text';
-import { relative, basename, sep } from 'path';
-import Core from 'Library/JFS/Core';
-import Component from 'Library/JFS/Component';
+import * as JFS from 'Library/JFS';
+import * as Text from 'Library/Text';
+import { relative, basename, resolve } from 'path';
 import Script, { Scope } from 'Library/JFS/Core/Script';
-import Project from 'Library/JFS/Project';
-import App from 'Library/JFS/App';
-import File from 'Library/OS/Filesystem/File';
+import * as Package from 'Library/NPM/Package';
+import fs, { lstat } from 'fs-extra';
 
 export type Scripts = {
   [key: string]: string;
@@ -21,87 +17,102 @@ const script =  (force: boolean = false) => new Script({
   force
 });
 
-const scope = (head: Project): Scope => (
-  head instanceof Core
-    ? 'core'
-    : head instanceof Component
+const scope = async (path: string): Promise<Scope> => {
+  const { type } = await JFS.discover(path);
+  return (
+    type === 'component'
       ? 'jfc'
-      : head instanceof App
-        ? 'app'
-        : null
-);
+      : type
+  );
+}
 
-const files = () => new Promise<File[]>(resolve => (
-  new Directory({ path: __dirname })
-    .files(resolve)
-))
+const files = async () => {
+  const names = await fs.readdir(__dirname);
+  const paths = names.map(name => resolve(__dirname, name));
 
-const names = (files: File[]) => (
+  const match = async (path: string) => {
+    const stat = await lstat(path);
+    return {
+      path,
+      match: stat.isFile()
+    };
+  }
+
+  const matches = (
+    (await Promise.all(paths.map(match)))
+      .filter(({ match }) => match)
+      .map(({ path }) => path)
+  );
+
+  return matches;
+};
+
+const names = (files: string[]) => (
   files
-    .filter(({ path }) => Text.endsWith(path, '.js') && path !== __filename)
-    .map(({ path }) => basename(path))
-    .map(name => Text.removeSuffix(name, '.js'))
+    .filter(path => Text.Suffix.match(path, '.js') && path !== __filename)
+    .map(path => basename(path))
+    .map(name => Text.Suffix.remove(name, '.js'))
 );
 
 const imports = (names: string[]) => (
   names.map(async name => (await import(`./${name}`)).default as Script)
 );
 
-const extract = async () => await imports(
-  await names(
-    await files()
-  )
-);
+const extract = async () => imports(names(await files()));
 
-const add = (anker: string, scripts: Scripts, script: Script) => ({
-  ...scripts,
-  [script.name]: `node ${relative(anker, script.path).replace('\\', '/')}`
-});
+const merge = async (path: string, scripts: Script[]): Promise<Scripts> => {
+  const matches = scripts.map(async script => ({
+    path,
+    script,
+    match: (
+      script.scope.includes(await scope(path)) ||
+      script.scope.includes('all')
+    ),
+  }));
 
-const match = (head: Project, script: Script) => (
-  script.scope.includes(scope(head)) ||
-  script.scope.includes('all')
-);
-
-const collect = (head: Project) => (scripts: Scripts, script: Script) => {
-  if (match(head, script)) {
-    return add(head.path, scripts, script);
-  }
-  else {
-    return scripts;
-  }
+  return (
+    (await Promise.all(matches))
+      .reduce(
+        (scripts, { path, match, script }) => (
+          match
+            ? {
+              ...scripts,
+              [script.name]: `node ${relative(path, script.path).replaceAll('\\', '/')}`
+            }
+            : scripts
+        ),
+        {}
+      )
+  );
 }
 
-const merge = (head: Project, scripts: Script[]): Scripts => scripts.reduce(
-  collect(head),
-  {}
-);
-
 const scripts = (
-  head: Project,
+  path: string,
   scripts: Script[] = [script()]
 ) => new Promise<Scripts>(async resolve => (
   (await extract())
     .forEach(async script => {
       scripts.push(await script);
       if (scripts.length === imports(await names(await files())).length +1) {
-        resolve(merge(head, scripts));
+        resolve(merge(path, scripts));
       }
     })
 ));
 
-const run = () => JFS.discover(async () => {
-  JFS.Head.nodePackage.json(async nodePackage => {
-      JFS.Head.nodePackage.file.save({
-        ...nodePackage,
-        scripts: {
-          ...nodePackage.scripts,
-          ...(await scripts(JFS.Head))
-        }
-      },
-      () => console.log(`Registered scripts from jfs-core`)
-    )
+const run = async () => {
+  const path = resolve(process.cwd(), 'package.json');
+
+  const current = await Package.json(path);
+
+  await fs.writeJSON(path, {
+    ...current,
+    scripts: {
+      ...current.scripts,
+      ...(await scripts(process.cwd()))
+    }
   });
-});
+
+  console.log(`Registered scripts from jfs-core`);
+}
 
 export default script(true);

@@ -1,29 +1,43 @@
-import JFS from 'Library/JFS';
+import * as JFS from 'Library/JFS';
 import Script from 'Library/JFS/Core/Script';
-import Process from 'Library/OS/Process';
+import * as Project from 'Library/JFS/Project';
+import * as Package from 'Library/NPM/Package';
+
+import { resolve, sep, dirname } from 'path';
+import fs from 'fs-extra';
+
+const parent = (path: string): string => {
+  if (fs.existsSync(resolve(path, 'package.json'))) {
+    return path;
+  }
+  else if (path.split(sep).length > 1) {
+    return parent(dirname(path));
+  }
+  else {
+    return null;
+  }
+}
 
 export default new Script({
   path: __filename,
   name: 'jfs-postinstall',
   scope: ['all'],
-  run: () => JFS.discover(async () => {
-    await JFS.Head.addRegisterScripts(JFS.Core);
-    await JFS.Head.registerScripts();
-    await JFS.Head.deployConfigFiles();
-    await JFS.Head.setPeerDependencies();
+  run: async () => {
+    const { core } = await JFS.discover(process.cwd())
 
-    const parent = await JFS.Head.parent();
+    await Project.Package.addRegisterScripts(process.cwd(), core);
+    await Project.Package.registerScripts(process.cwd());
+    await Project.Package.deployConfigFiles(process.cwd());
+    await Project.Package.setPeerDependencies(process.cwd());
+    
+    const path = parent(process.cwd());
+
     if (parent) {
-      parent.addPostinstallScript(JFS.Core);
-      const propagation = new Process({
-        command: process.platform === 'win32' ? 'npm.cmd' : 'npm',
-        parameters: ['run', 'jfs-postinstall'],
-        options: {
-          cwd: parent.path,
-          stdio: 'inherit'
-        }
+      Project.Package.addPostinstallScript(path, core);
+      Package.run('jfs-postinstall', {
+        cwd: path,
+        stdio: 'inherit'
       });
-      propagation.run();
     }
-  })
+  }
 });

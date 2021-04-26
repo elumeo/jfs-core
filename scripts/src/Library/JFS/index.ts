@@ -1,89 +1,51 @@
-import App from './App';
-import Core from './Core';
-import Component from './Component';
-import NodePackage from 'Library/Node/Package';
-import Text from 'Library/Text';
-import Project from './Project';
+import * as Package from 'Library/NPM/Package';
+import * as Text from 'Library/Text';
 import { resolve } from 'path';
+import fs from 'fs-extra';
 
-class JFS {
-  public static Head: Project;
-  public static Core: Core = null;
-  public static projects: Project[] = [];
+type Project = 'core' | 'component' | 'app';
 
-  public static project = (
-    nodePackage: NodePackage,
-    onComplete: (project: Project) => void
-  ) => {
-    const path = nodePackage.file.parent;
-    nodePackage.json(
-      ({ name }) => {
-        if (name === '@elumeo/jfs-core') {
-          onComplete(new Core({ path }));
-        }
-        else if (Text.beginsWith(name, 'jfc')) {
-          onComplete(new Component({ path }));
-        }
-        else if (Text.beginsWith(name, 'jfs')) {
-          onComplete(new App({ path }));
-        }
-      }
-    );
+export const type = async (path: string): Promise<Project> => {
+  const { name } = (await Package.json(resolve(path, 'package.json')));
+
+  if (name === '@elumeo/jfs-core') {
+    return 'core';
   }
+  else if (Text.Prefix.match(name, 'jfc')) {
+    return 'component';
+  }
+  else if (Text.Prefix.match(name, 'jfs')) {
+    return 'app';
+  }
+  else {
+    return null;
+  }
+};
 
-  private static head = async () => new Promise<Project>((resolve, reject) => {
-    const path = process.cwd();
-    const nodePackage = new NodePackage(
-      NodePackage.location(process.cwd())
-    );
-
-    nodePackage.json(({ name }) => {
-      if (name === '@elumeo/jfs-core') {
-        resolve(new Core({ path }));
-      }
-      else if (Text.beginsWith(name, 'jfc')) {
-        resolve(new Component({ path }));
-      }
-      else if (Text.beginsWith(name, 'jfs')) {
-        resolve(new App({ path }));
-      }
-      else {
-        reject('No valid head found for jfs.');
-      }
-    });
-  });
-
-  public static discover = (
-    onComplete: () => void
-  ) => {
-    JFS.head().then(head => {
-      JFS.Head = head;
-      if (head instanceof Component || head instanceof App) {
-        JFS.Core = new Core({
-          path: resolve(head.path, 'node_modules', '@elumeo', 'jfs-core')
-        });
-
-        head.nodePackage.json(({ dependencies }) => {
-          JFS.projects = [
-            JFS.Head,
-            JFS.Core,
-            ...(
-              Object.keys(dependencies)
-                .filter(key => Text.beginsWith(key, 'jfc'))
-                .map(key => new Component({
-                  path: resolve(head.path, 'node_modules', key)
-                }))
-            )
-          ];
-          onComplete();
-        });
-      }
-      else if (head instanceof Core) {
-        JFS.Core = head;
-        onComplete();
-      }
-    });
+export const core = async (path: string) => {
+  switch (await type(path)) {
+    case 'core': return path;
+    case 'app':
+    case 'component': return resolve(path, 'node_modules', '@elumeo', 'jfs-core');
+    default: return null;
   }
 }
 
-export default JFS;
+export const components = async (path: string) => (
+  Object
+    .keys((await Package.json(resolve(path, 'package.json'))).dependencies)
+    .filter(name => Text.Prefix.match(name, 'jfc-'))
+    .map(jfc => Package.node_module(path, jfc))
+);
+
+export const discover = async (path: string) => ({
+  type: await type(path),
+  core: await core(path),
+  components: await components(path),
+});
+
+export const config = async (path: string) => (
+  (await fs.readJSON(resolve(path, 'config.dist.json'))) as {
+    [key: string]: any;
+  }
+);

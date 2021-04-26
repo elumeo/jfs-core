@@ -1,5 +1,5 @@
 import { basename, extname } from "path";
-import Text from "Library/Text";
+import * as Text from "Library/Text";
 
 export type Scope = 'all' | 'core' | 'jfc' | 'app';
 
@@ -18,7 +18,7 @@ class Script {
     this.path = path;
     this.name = name;
     this.scope = scope;
-    const original = Text.removeSuffix(
+    const original = Text.Suffix.remove(
       basename(process.argv[1]),
       extname(process.argv[1])
     );

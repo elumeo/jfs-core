@@ -1,53 +1,28 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const path_1 = require("path");
-const File_1 = __importDefault(require("../../../OS/Filesystem/File"));
-const Language_1 = __importDefault(require("./Language"));
-class Translations {
-    constructor(translations) {
-        this.languages = () => (Object.keys(Object.keys(this.translations).length
-            ? this.translations
-            : { de: {}, en: {}, it: {} }).map(languageName => new Language_1.default({
-            languageName,
-            translationList: this.translations[languageName]
-        })));
-        this.keys = () => {
-            const languages = this.languages();
-            const allTranslationKeys = new Set();
-            languages.forEach(language => (language.translationKeys()
-                .forEach(translationKey => allTranslationKeys.add(translationKey))));
-            return Array.from(allTranslationKeys);
-        };
-        // ---------------------------------------------------------------------------
-        this.rows = (includeCompleteRows = false) => {
-            const languages = this.languages();
-            const keys = this.keys();
-            const allRows = keys.map(translationKey => {
-                const row = { key: translationKey };
-                languages.forEach(language => row[language.name()] = language.lookup(translationKey));
-                return row;
-            });
-            return allRows.filter(row => includeCompleteRows || (!Object.keys(row).every(stringIndex => row[stringIndex])));
-        };
-        this.missing = (includeCompleteRows = false) => (this.rows(includeCompleteRows));
-        this.titleRow = (languages) => {
-            const titleRow = { key: `Keys (${this.missing().length})` };
-            languages.forEach(language => (titleRow[language.name()] = language.name()));
-            return titleRow;
-        };
-        this.table = (includeCompleteRows = false) => [
-            this.titleRow(this.languages()),
-            ...this.rows(includeCompleteRows)
-        ];
-        this.translations = translations;
-    }
-}
-Translations.location = (path) => path_1.resolve(path, 'src', 'Setup', 'Translations.json');
-Translations.get = (path, onComplete) => new File_1.default({
-    path: Translations.location(path)
-}).json(translations => onComplete(translations));
-exports.default = Translations;
+exports.Type = exports.Table = exports.Snapshot = exports.File = exports.Check = void 0;
+exports.Check = __importStar(require("./Check"));
+exports.File = __importStar(require("./File"));
+exports.Snapshot = __importStar(require("./Snapshot"));
+exports.Table = __importStar(require("./Table"));
+exports.Type = __importStar(require("./Type"));
 //# sourceMappingURL=index.js.map

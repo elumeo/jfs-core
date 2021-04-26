@@ -1,62 +1,35 @@
-import Process from 'Library/OS/Process';
-import JFS from 'Library/JFS';
+import * as JFS from 'Library/JFS';
 import fs from 'fs';
-import Directory from 'Library/OS/Filesystem/Directory';
 import { ChildProcess } from 'child_process';
 import Script from 'Library/JFS/Core/Script';
+import { resolve } from 'path';
+import * as Package from 'Library/NPM/Package';
 
-const install = (path: string) => new Promise((resolve, reject) => {
-  const installer = new Process({
-    command: 'npm',
-    parameters: ['i'],
-    options: {
-      cwd: path,
-      stdio: 'inherit'
-    }
-  });
+const install = (path: string) => {
+  const options = {
+    cwd: path,
+    stdio: 'inherit'
+  };
+  const onSpawn = (child: ChildProcess) => process.on('exit', () => child.kill());
+  return Package.run('install', options, onSpawn);
+};
 
-  installer.run(instance => {
-    instance.on('exit', code => {
-      if (code === 0) {
-        resolve();
-      }
-      else {
-        reject();
-      }
-    });
+const start = (path: string) => Package.start(path);
 
-    process.on('exit', () => {
-      instance.kill();
-    });
-  });
-});
+const run = async () => {
+  const { core } = await JFS.discover(process.cwd());
 
-const start = (path: string, onSpawn?: (child: ChildProcess) => void) => {
-  const server = new Process({
-    command: 'npm',
-    parameters: ['start'],
-    options: {
-      cwd: path,
-      stdio: 'inherit'
-    }
-  });
-  server.run(onSpawn);
-}
-
-const run = () => JFS.discover(async () => {
-  const showcase = new Directory({
-    path: JFS.Core.directory.resolve('showcase')
-  });
-  const installed = fs.existsSync(showcase.resolve('node_modules'));
+  const showcase = resolve(core, 'showcase');
+  const installed = fs.existsSync(resolve(showcase, 'node_modules'));
 
   if (installed) {
-    start(showcase.path);
+    start(showcase);
   }
   else {
-    await install(showcase.path);
-    start(showcase.path);
+    await install(showcase);
+    start(showcase);
   }
-});
+}
 
 export default new Script({
   path: __filename,

@@ -1,50 +1,38 @@
 import TsConfig from 'Library/Types/TsConfig';
-import Directory from 'Library/OS/Filesystem/Directory';
 const rif = require('replace-in-file');
-import Process from 'Library/OS/Process';
+import child_process from 'child_process';
+import fs from 'fs-extra';
+import { resolve } from 'path';
 
-class Format {
-  static replaceCoreAlias = (project: Directory, onComplete: () => void) => {
-    project.file('tsconfig.json').json<TsConfig>(({
-      compilerOptions: {
-        outDir
-      }
-    }) => {
-      rif.sync({
-        files: [
-          `./${outDir}/**/*.*s`
-        ],
-        from: /from 'Core/gm,
-        to: 'from \'@elumeo/jfs-core/build'
-      });
-      onComplete();
-    })
-  }
-
-  static replaceAliases = (
-    project: Directory,
-    onComplete: (code: number) => void
-  ) => new Process({
-    command: 'node',
-    parameters: [
-      project.resolve(
-        process.argv[1], '..', '..', '..',
-        'node_modules', 'tsc-alias', 'src', 'bin', 'index.js'
-      ),
-      '-p',
-      project.resolve('tsconfig.json')
+export const replaceCoreAlias = async (path: string) => {
+  const tsconfig = await fs.readJSON(resolve(path, 'tsconfig.json')) as TsConfig;
+  const { outDir } = tsconfig.compilerOptions;
+  rif.sync({
+    files: [
+      `./${outDir}/**/*.*s`
     ],
-    options: { cwd: project.path }
-  }).run(instance => instance.on('exit', onComplete));
-
-  static apply = (project: Directory) => new Promise((resolve) => {
-    Format.replaceCoreAlias(
-      project,
-      () => Format.replaceAliases(project, () => {
-        resolve();
-      })
-    );
+    from: /from 'Core/gm,
+    to: 'from \'@elumeo/jfs-core/build'
   });
 }
 
-export default Format;
+export const replaceAliases = (path: string) => {
+  const command = 'node';
+  const argv = [
+    resolve(
+      path,
+      process.argv[1], '..', '..', '..',
+      'node_modules', 'tsc-alias', 'src', 'bin', 'index.js'
+    ),
+    '-p',
+    resolve(path, 'tsconfig.json')
+  ];
+  const options = { cwd: path }
+  const child = child_process.spawn(command, argv, options);
+  return new Promise<number>(resolve => child.on('exit', resolve));
+}
+
+export const apply = async (path: string) => {
+  await replaceCoreAlias(path);
+  await replaceAliases(path);
+};

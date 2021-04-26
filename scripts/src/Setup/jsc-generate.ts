@@ -1,13 +1,14 @@
-import JFS from 'Library/JFS';
-import Core from 'Library/JFS/Core';
+import * as JFS from 'Library/JFS';
 import Script from 'Library/JFS/Core/Script';
+import * as Project from 'Library/JFS/Project';
 
-const run = () => JFS.discover(() => {
-  JFS.Head.JSC.generate(
-    JFS.Head,
-    { core: JFS.Head instanceof Core }
+const run = async () => {
+  const { type } = await JFS.discover(process.cwd());
+  Project.API.Generator.run(
+    process.cwd(),
+    { core: type === 'core' }
   );
-});
+}
 
 export default new Script({
   path: __filename,

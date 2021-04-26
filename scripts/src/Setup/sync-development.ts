@@ -1,18 +1,20 @@
 import { resolve, sep } from 'path';
-import JFS from 'Library/JFS';
-import App from 'Library/JFS/App';
-import Component from 'Library/JFS/Component';
-import Synchronization from 'Library/OS/Filesystem/Synchronization';
-import Core from 'Library/JFS/Core';
+import * as JFS from 'Library/JFS';
 import { cyanBright, magenta } from 'ansi-colors';
 import Script from 'Library/JFS/Core/Script';
+import * as Package from 'Library/NPM/Package';
+import chokidar from 'chokidar';
+import * as Text from 'Library/Text';
+import fs from 'fs-extra';
 
-const run = () => JFS.discover(() => {
-  if (JFS.Head instanceof Core) {
+const run = async () => {
+  const { type } = await JFS.discover(process.cwd());
+
+  if (type === 'core') {
     console.log('sync-development can not be run from the core');
     process.exit(1);
   }
-  else if (JFS.Head instanceof App) {
+  else if (type === 'app') {
     // JFS.Head.discover(
     //   () => {
     //     console.log({
@@ -23,43 +25,73 @@ const run = () => JFS.discover(() => {
     //   }
     // );
   }
-  else if (JFS.Head instanceof Component) {
+  else if (type === 'component') {
     // console.log({
     //   Core: JFS.Core,
     //   Component: JFS.Head,
     // });
   }
 
-  JFS.Head.nodePackage.json(({ jfs }) => {
-    if (jfs) {
-      console.log('Synchronization');
-      Object.keys(jfs.sync).map(name => {
-        console.log(`- ${name} => ${jfs.sync[name]}`);
-        const from = resolve(JFS.Head.path, jfs.sync[name]).replace('/', sep);
-        const to = resolve(JFS.Head.path, 'node_modules', name).replace('/', sep);
-        const synchronization = new Synchronization({
-          from, to,
-          ignore: [
-            'node_modules',
-            '.git',
-            '.idea'
-          ]
-        });
-        const format = (event: string, project: string, path: string) => {
-          return `${cyanBright(event)}: ${magenta(project)}${path}`
+  const { jfs } = await Package.json(resolve(process.cwd(), 'package.json'));
+
+  if (jfs) {
+    console.log('Synchronization');
+    Object.keys(jfs.sync).map(name => {
+      console.log(`- ${name} => ${jfs.sync[name]}`);
+      const from = resolve(process.cwd(), jfs.sync[name]).replace('/', sep);
+      const to = resolve(process.cwd(), 'node_modules', name).replace('/', sep);
+      const ignore = [
+        'node_modules',
+        '.git',
+        '.idea'
+      ];
+
+      const format = (event: string, project: string, path: string) => {
+        return `${cyanBright(event)}: ${magenta(project)}${path}`
+      }
+
+      const watcher = chokidar.watch(from);
+      const events = ['add', 'change', 'unlink', 'addDir', 'unlinkDir'];
+
+      events.forEach(event => watcher.on(event, async (event, source) => {
+        const target = resolve(
+          to,
+          Text.Prefix.remove(source.substring(from.length), sep)
+        );
+
+        const ignored = ignore.includes(
+          target.substring(to.length +1).split(sep)[0]
+        );
+
+        if (ignored) {
+          return;
         }
-        synchronization.run(({ event, target }) => {
-          const path = target.path.substring(to.length);
-          const message = format(event, name, path);
-          console.log(message);
-        });
-      });
-    }
-    else {
-      console.log('No jfs field found in package.json.');
-    }
-  });
-});
+        else if (event === 'add') {
+          await fs.writeFile(target, '');
+        }
+        else if (event === 'change') {
+          await fs.writeFile(target, await fs.readFile(source));
+        }
+        else if (event === 'unlink') {
+          await fs.unlink(target);
+        }
+        else if (event === 'addDir') {
+          await fs.mkdir(target);
+        }
+        else if (event === 'unlinkDir') {
+          await fs.rmdir(target);
+        }
+
+        const path = target.substring(to.length);
+        const message = format(event, name, path);
+        console.log(message);
+      }));
+    });
+  }
+  else {
+    console.log('No jfs field found in package.json.');
+  }
+}
 
 export default new Script({
   path: __filename,

@@ -1,6 +1,8 @@
-import JFS from 'Library/JFS';
-import Core from 'Library/JFS/Core';
+import * as JFS from 'Library/JFS';
 import Script from 'Library/JFS/Core/Script';
+import * as Package from 'Library/NPM/Package';
+import { resolve } from 'path';
+import fs from 'fs-extra';
 
 const message = {
   completed: (name: string) => (
@@ -8,21 +10,20 @@ const message = {
   )
 };
 
-const run = () => JFS.discover(() => {
-  if (!(JFS.Head instanceof Core)) {
-    JFS.Core.nodePackage.json(({ dependencies }) => {
-      JFS.Head.nodePackage.json(nodePackage => {
-        JFS.Head.nodePackage.file.save(
-          {
-            ...nodePackage,
-            peerDependencies: dependencies
-          },
-          () => console.log(message.completed(nodePackage.name))
-        );
-      });
+const run = async () => {
+  const { type, core } = await JFS.discover(process.cwd());
+
+  if (type !== 'core') {
+    const { name, dependencies } = await Package.json(resolve(core, 'package.json'));
+    
+    await fs.writeJSON(resolve(process.cwd(), 'package.json'), {
+      ...(Package.json(resolve(process.cwd(), 'package.json'))),
+      peerDependencies: dependencies
     });
+    
+    console.log(message.completed(`Added peerDependencies to package.json of ${name}`))
   }
-});
+}
 
 export default new Script({
   path: __filename,

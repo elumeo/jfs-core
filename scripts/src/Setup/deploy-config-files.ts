@@ -1,45 +1,54 @@
-import JFS from 'Library/JFS';
-import File from 'Library/OS/Filesystem/File';
+import * as JFS from 'Library/JFS';
+import fs from 'fs-extra';
 import path from 'path';
-import Component from 'Library/JFS/Component';
-import Core from 'Library/JFS/Core';
 import Script from 'Library/JFS/Core/Script';
 
-const run = () => JFS.discover(
-  async () => {
-    await new Promise(resolve => (
-      new File({ path: path.resolve(
-        JFS.Core.path,
-        'build-tools',
-        'typescript',
-        JFS.Head instanceof Core
-          ? 'core.json'
-          : JFS.Head instanceof Component
-            ? 'shared-component.json'
-            : 'app.json'
-        )})
-        .copy(path.resolve(JFS.Head.path, 'tsconfig.json'), resolve)
-    ));
-    await new Promise(resolve => (
-      new File({ path: path.resolve(JFS.Core.path, 'build-tools', 'typescript', 'tslint.json') })
-        .copy(path.resolve(JFS.Head.path, 'tslint.json'), resolve)
-    ));
-    await new Promise(resolve => (
-      new File({ path: path.resolve(JFS.Core.path, 'build-tools', 'editorconfig', '.editorconfig') })
-        .copy(path.resolve(JFS.Head.path, '.editorconfig'), resolve)
-    ));
-    await new Promise(resolve => (
-      new File({ path: path.resolve(JFS.Core.path, 'build-tools', 'prettier', '.prettierrc') })
-        .copy(path.resolve(JFS.Head.path, '.prettierrc'), resolve)
-    ));
-    await new Promise(resolve => (
-      new File({ path: path.resolve(JFS.Core.path, 'build-tools', 'prettier', '.prettierignore') })
-        .copy(path.resolve(JFS.Head.path, '.prettierignore'), resolve)
-    ));
+const tsconfig = async () => {
+  const { type } = await JFS.discover(process.cwd());
 
-    console.log('ALL CONFIG FILES DEPLOYED');
-  }
-);
+  switch (type) {
+    case 'core': return 'core.json';
+    case 'component': return 'shared-component.json';
+    case 'app': return 'app.json';
+    default: return null;
+  };
+};
+
+const run = async () => {
+  const { core } = await JFS.discover(process.cwd());
+
+  const tools = path.resolve(core, 'build-tools');
+  const typescript = path.resolve(tools, 'typescript');
+  const editorconfig = path.resolve(tools, 'editorconfig');
+  const prettier = path.resolve(tools, 'prettier');
+
+  const copy = [
+    {
+      from: path.resolve(typescript, await tsconfig()),
+      to: path.resolve(process.cwd(), 'tsconfig.json')
+    },
+    {
+      from: path.resolve(typescript, 'tslint.json'),
+      to: path.resolve(process.cwd(), 'tslint.json')
+    },
+    {
+      from: path.resolve(editorconfig, '.editorconfig'),
+      to: path.resolve(process.cwd(), '.editorconfig'),
+    },
+    {
+      from: path.resolve(prettier, '.prettierrc'),
+      to: path.resolve(process.cwd(), '.prettierrc')
+    },
+    {
+      from: path.resolve(prettier, '.prettierignore'),
+      to: path.resolve(process.cwd(), '.prettierignore')
+    }
+  ];
+
+  await Promise.all(copy.map(({ from, to }) => fs.copyFile(from, to)));
+
+  console.log('ALL CONFIG FILES DEPLOYED');
+}
 
 export default new Script({
   path: __filename,

@@ -12,34 +12,27 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Process_1 = __importDefault(require("../../../OS/Process"));
+exports.stop = exports.run = exports.running = exports.child = void 0;
 const ansi_colors_1 = require("ansi-colors");
-class Transpiler {
-}
-Transpiler.process = null;
-Transpiler.run = (project) => __awaiter(void 0, void 0, void 0, function* () {
-    return new Promise((resolve) => {
-        new Process_1.default({
-            command: 'node',
-            parameters: [
-                project.resolve('node_modules', 'typescript', 'bin', 'tsc')
-            ],
-            options: {
-                cwd: project.path,
-                stdio: 'inherit'
-            }
-        }).run(instance => {
-            Transpiler.running = true;
-            Transpiler.process = instance;
-            instance.on('exit', code => {
-                Transpiler.running = false;
-                if (!code) {
-                    console.log(ansi_colors_1.green('No type errors found.'));
-                }
-                resolve();
-            });
-        });
+const child_process_1 = __importDefault(require("child_process"));
+const path_1 = require("path");
+exports.child = null;
+const run = (path) => __awaiter(void 0, void 0, void 0, function* () {
+    const tsc = path_1.resolve(path, 'node_modules', 'typescript', 'bin', 'tsc');
+    exports.child = child_process_1.default.spawn('node', [tsc], {
+        cwd: path,
+        stdio: 'inherit'
+    });
+    exports.running = true;
+    exports.child.on('exit', code => {
+        exports.running = false;
+        if (!code) {
+            console.log(ansi_colors_1.green('No type errors found.'));
+        }
+        path_1.resolve();
     });
 });
-exports.default = Transpiler;
+exports.run = run;
+const stop = () => exports.running && (exports.child === null || exports.child === void 0 ? void 0 : exports.child.kill(`SIGKILL`));
+exports.stop = stop;
 //# sourceMappingURL=Transpiler.js.map

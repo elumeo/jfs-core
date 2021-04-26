@@ -1,39 +1,17 @@
-import JFS from 'Library/JFS';
-import Snapshot from 'Library/JFS/Project/Translations/Snapshot';
-import Translations from 'Library/JFS/Project/Translations';
-import File from 'Library/OS/Filesystem/File';
+import * as Project from 'Library/JFS/Project';
 import Script from 'Library/JFS/Core/Script';
+import { resolve } from 'path';
+import * as ANSI from 'ansi-colors';
 
-const onComplete = ({ missing, html }) => {
-  if (html) {
-    html.open();
-  }
-}
-
-const run = () => JFS.discover(async () => {
-  const translations = new File({
-    path: Translations.location(JFS.Head.path)
-  });
-
-  const previous = await Snapshot.previous(translations);
-  const current = await Snapshot.current(translations);
-
-  if (previous) {
-    Snapshot.update(previous, current, onComplete);
+const run = async () => {
+  const path = resolve(process.cwd(), 'src', 'Setup', 'Translations.json');
+  if (await Project.Translations.Check.run(path)) {
+    console.info(ANSI.bgGreenBright('All translations seem to be available!'));
   }
   else {
-    const missing = current.translations.missing(current.includeCompleteRows);
-    if (missing.length) {
-      Snapshot.create(1, current, async () => onComplete({
-        missing,
-        html: (await current.file('html')) || null
-      }));
-    }
-    else {
-      onComplete({ missing, html: null });
-    }
+    console.warn(ANSI.bgRedBright('Some translations seem to be missing!'));
   }
-});
+};
 
 export default new Script({
   path: __filename,

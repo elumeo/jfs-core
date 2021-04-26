@@ -14,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -31,14 +31,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const JFS_1 = __importDefault(require("../Library/JFS"));
-const Directory_1 = __importDefault(require("../Library/OS/Filesystem/Directory"));
-const Text_1 = __importDefault(require("../Library/Text"));
+const JFS = __importStar(require("../Library/JFS"));
+const Text = __importStar(require("../Library/Text"));
 const path_1 = require("path");
-const Core_1 = __importDefault(require("../Library/JFS/Core"));
-const Component_1 = __importDefault(require("../Library/JFS/Component"));
 const Script_1 = __importDefault(require("../Library/JFS/Core/Script"));
-const App_1 = __importDefault(require("../Library/JFS/App"));
+const Package = __importStar(require("../Library/NPM/Package"));
+const fs_extra_1 = __importStar(require("fs-extra"));
 const script = (force = false) => new Script_1.default({
     path: __filename,
     name: 'register-scripts',
@@ -46,48 +44,60 @@ const script = (force = false) => new Script_1.default({
     run,
     force
 });
-const scope = (head) => (head instanceof Core_1.default
-    ? 'core'
-    : head instanceof Component_1.default
+const scope = (path) => __awaiter(void 0, void 0, void 0, function* () {
+    const { type } = yield JFS.discover(path);
+    return (type === 'component'
         ? 'jfc'
-        : head instanceof App_1.default
-            ? 'app'
-            : null);
-const files = () => new Promise(resolve => (new Directory_1.default({ path: __dirname })
-    .files(resolve)));
-const names = (files) => (files
-    .filter(({ path }) => Text_1.default.endsWith(path, '.js') && path !== __filename)
-    .map(({ path }) => path_1.basename(path))
-    .map(name => Text_1.default.removeSuffix(name, '.js')));
-const imports = (names) => (names.map((name) => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require(`./${name}`)))).default; })));
-const extract = () => __awaiter(void 0, void 0, void 0, function* () {
-    return yield imports(yield names(yield files()));
+        : type);
 });
-const add = (anker, scripts, script) => (Object.assign(Object.assign({}, scripts), { [script.name]: `node ${path_1.relative(anker, script.path).replace('\\', '/')}` }));
-const match = (head, script) => (script.scope.includes(scope(head)) ||
-    script.scope.includes('all'));
-const collect = (head) => (scripts, script) => {
-    if (match(head, script)) {
-        return add(head.path, scripts, script);
-    }
-    else {
-        return scripts;
-    }
-};
-const merge = (head, scripts) => scripts.reduce(collect(head), {});
-const scripts = (head, scripts = [script()]) => new Promise((resolve) => __awaiter(void 0, void 0, void 0, function* () {
+const files = () => __awaiter(void 0, void 0, void 0, function* () {
+    const names = yield fs_extra_1.default.readdir(__dirname);
+    const paths = names.map(name => path_1.resolve(__dirname, name));
+    const match = (path) => __awaiter(void 0, void 0, void 0, function* () {
+        const stat = yield fs_extra_1.lstat(path);
+        return {
+            path,
+            match: stat.isFile()
+        };
+    });
+    const matches = ((yield Promise.all(paths.map(match)))
+        .filter(({ match }) => match)
+        .map(({ path }) => path));
+    return matches;
+});
+const names = (files) => (files
+    .filter(path => Text.Suffix.match(path, '.js') && path !== __filename)
+    .map(path => path_1.basename(path))
+    .map(name => Text.Suffix.remove(name, '.js')));
+const imports = (names) => (names.map((name) => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(require(`./${name}`)))).default; })));
+const extract = () => __awaiter(void 0, void 0, void 0, function* () { return imports(names(yield files())); });
+const merge = (path, scripts) => __awaiter(void 0, void 0, void 0, function* () {
+    const matches = scripts.map((script) => __awaiter(void 0, void 0, void 0, function* () {
+        return ({
+            path,
+            script,
+            match: (script.scope.includes(yield scope(path)) ||
+                script.scope.includes('all')),
+        });
+    }));
+    return ((yield Promise.all(matches))
+        .reduce((scripts, { path, match, script }) => (match
+        ? Object.assign(Object.assign({}, scripts), { [script.name]: `node ${path_1.relative(path, script.path).replaceAll('\\', '/')}` }) : scripts), {}));
+});
+const scripts = (path, scripts = [script()]) => new Promise((resolve) => __awaiter(void 0, void 0, void 0, function* () {
     return ((yield extract())
         .forEach((script) => __awaiter(void 0, void 0, void 0, function* () {
         scripts.push(yield script);
         if (scripts.length === imports(yield names(yield files())).length + 1) {
-            resolve(merge(head, scripts));
+            resolve(merge(path, scripts));
         }
     })));
 }));
-const run = () => JFS_1.default.discover(() => __awaiter(void 0, void 0, void 0, function* () {
-    JFS_1.default.Head.nodePackage.json((nodePackage) => __awaiter(void 0, void 0, void 0, function* () {
-        JFS_1.default.Head.nodePackage.file.save(Object.assign(Object.assign({}, nodePackage), { scripts: Object.assign(Object.assign({}, nodePackage.scripts), (yield scripts(JFS_1.default.Head))) }), () => console.log(`Registered scripts from jfs-core`));
-    }));
-}));
+const run = () => __awaiter(void 0, void 0, void 0, function* () {
+    const path = path_1.resolve(process.cwd(), 'package.json');
+    const current = yield Package.json(path);
+    yield fs_extra_1.default.writeJSON(path, Object.assign(Object.assign({}, current), { scripts: Object.assign(Object.assign({}, current.scripts), (yield scripts(process.cwd()))) }));
+    console.log(`Registered scripts from jfs-core`);
+});
 exports.default = script(true);
 //# sourceMappingURL=register-scripts.js.map

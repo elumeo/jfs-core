@@ -1,32 +1,20 @@
-import JFS from 'Library/JFS';
-import Job from 'Library/Job';
 import Script from 'Library/JFS/Core/Script';
-
-const job = new Job<string>({
-  name: 'jsc-api-check',
-  task: onComplete => JFS.discover(
-    () => JFS.Head.JSC.describe(
-      JFS.Head,
-      description => {
-        JFS.Head.JSC.check({
-          description,
-          onComplete
-        })
-      }
-    )
-  ),
-  onComplete: (diffSequence, status) => {
-    status(
-      diffSequence.length
-        ? 'NOT_OK'
-        : 'OK'
-    )
-  }
-});
+import * as Project from 'Library/JFS/Project';
+import ANSI from 'ansi-colors';
 
 export default new Script({
   path: __filename,
   name: 'jsc-check',
-  run: () => job.run(),
+  run: async () => {
+    const description = await Project.API.Description.generate(process.cwd());
+    const difference = await Project.API.Check.run(process.cwd(), description);
+
+    if (difference) {
+      console.log(difference);
+    }
+    else {
+      console.log(ANSI.bgGreenBright(' NO DIFFERENCE '))
+    }
+  },
   scope: ['all']
 });

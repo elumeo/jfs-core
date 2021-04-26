@@ -1,34 +1,25 @@
-import Directory from "Library/OS/Filesystem/Directory";
-import Process from "Library/OS/Process";
 import { green } from "ansi-colors";
-import { ChildProcess } from "child_process";
+import child_process from "child_process";
+import { resolve } from 'path';
 
-class Transpiler {
-  static process: ChildProcess = null;
-  static running: boolean;
+export let child: child_process.ChildProcess = null;
+export let running: boolean;
 
-  static run = async (project: Directory) => new Promise((resolve) => {
-    new Process({
-      command: 'node',
-      parameters: [
-        project.resolve('node_modules', 'typescript', 'bin', 'tsc')
-      ],
-      options: {
-        cwd: project.path,
-        stdio: 'inherit'
-      }
-    }).run(instance => {
-      Transpiler.running = true;
-      Transpiler.process = instance;
-      instance.on('exit', code => {
-        Transpiler.running = false;
-        if (!code) {
-          console.log(green('No type errors found.'));
-        }
-        resolve();
-      })
-    })
+export const run = async (path: string) => {
+  const tsc = resolve(path, 'node_modules', 'typescript', 'bin', 'tsc');
+  child = child_process.spawn('node', [tsc], {
+    cwd: path,
+    stdio: 'inherit'
   });
-}
+  
+  running = true;
+  child.on('exit', code => {
+    running = false;
+    if (!code) {
+      console.log(green('No type errors found.'));
+    }
+    resolve();
+  })
+};
 
-export default Transpiler;
+export const stop = () => running && child?.kill(`SIGKILL`);

@@ -1,15 +1,17 @@
-import JFS from 'Library/JFS';
-import App from 'Library/JFS/App';
+import * as JFS from 'Library/JFS';
+import * as Project from 'Library/JFS/Project';
 import Script from 'Library/JFS/Core/Script';
 
-const run = () => JFS.discover(() => {
-  if (JFS.Head instanceof App) {
-    console.log('jfs-build can not be run from an app');
+const run = async () => {
+  const { type } = await JFS.discover(process.cwd());
+
+  if (type === 'app') {
+    console.log('jfs-build can not be run from an app (please use webpack)');
   }
   else {
-    JFS.Head.build(process.argv.slice(2)[0] === '--watch');
+    Project.Build.run(process.cwd(), process.argv.slice(2)[0] === '--watch');
   }
-});
+}
 
 export default new Script({
   path: __filename,

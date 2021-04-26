@@ -4,8 +4,7 @@
   "description": "Core scripts for all JFS apps",
   "scripts": {
     "build": "tsc && node helper.js",
-    "build:watch": "tsc-watch --onCompilationComplete \"node helper.js\"",
-    "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i"
+    "build:watch": "tsc-watch --onCompilationComplete \"node helper.js\""
   },
   "author": "elumeo SE",
   "license": "ISC",
@@ -16,6 +15,7 @@
     "copyfiles": "^2.3.0",
     "dart-sass": "^1.25.0",
     "fontagon": "^1.0.10",
+    "fs-extra": "^9.1.0",
     "isbinaryfile": "^4.0.6",
     "json-2-csv": "^3.5.9",
     "json-diff": "^0.5.4",
@@ -30,6 +30,7 @@
     "simple-git": "^1.107.0"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.11",
     "@types/ncp": "^2.0.4",
     "@types/node": "^8.0.29",
     "@types/prettier": "^2.0.1",
