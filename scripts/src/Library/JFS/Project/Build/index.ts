@@ -17,27 +17,27 @@ export const run = (path: string, _watch?: boolean) => {
   }
 }
 
-export const equalize = async (path: string) => {
-  const src = resolve(path, 'src');
-  const build = resolve(path, 'build');
-  const paths = await readdir(src, ['*.ts', '*.tsx']);
-  const copied = [];
-  if (paths.length) {
-    paths.map(async path => {
-      const virtual = path.substring(src.length);
-      await fs.copyFile(
-        path,
-        resolve(build, Text.Prefix.remove(virtual, sep))
-      );
-      copied.push(path);
-      const progress = `(${copied.length}/${paths.length})`;
-      console.log(`${cyan('Equalized')}: ${virtual} ${progress}`);
-      if (copied.length === paths.length) {
-        resolve();
-      }
-    })
-  }
-};
+// export const equalize = async (path: string) => {
+//   const src = resolve(path, 'src');
+//   const build = resolve(path, 'build');
+//   const paths = await readdir(src, ['*.ts', '*.tsx']);
+//   const copied = [];
+//   if (paths.length) {
+//     paths.map(async path => {
+//       const virtual = path.substring(src.length);
+//       await fs.copyFile(
+//         path,
+//         resolve(build, Text.Prefix.remove(virtual, sep))
+//       );
+//       copied.push(path);
+//       const progress = `(${copied.length}/${paths.length})`;
+//       console.log(`${cyan('Equalized')}: ${virtual} ${progress}`);
+//       if (copied.length === paths.length) {
+//         resolve();
+//       }
+//     })
+//   }
+// };
 
 export const synchronize = async (
   path: string,
@@ -66,7 +66,7 @@ export const compile = (path: string) => new Promise<void>(async resolve => {
 });
 
 export const single = async (path: string) => new Promise<void>(async resolve => {
-  await equalize(path);
+  // await equalize(path);
   console.log('Compiling ...');
   await compile(path);
   resolve();

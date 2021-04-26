@@ -1,6 +1,6 @@
 {
     "de": {
-        "app.title":"jfs-core",
+        "app.title": "jfs-core",
         "app.backend": "Backend",
         "app.cancel.action": "Abbrechen",
         "app.closeBtnLabelModalDialog": "Schließen",
@@ -18,7 +18,6 @@
         "app.settings.done": "Fertig",
         "app.system": "System",
         "app.version": "Version {versionNumber}",
-
         "login.accessDenied": "Zugriff verweigert",
         "login.button": "Anmelden",
         "login.error": "Benutzername oder Passwort falsch",
@@ -38,7 +37,6 @@
         "settings.language": "Sprache",
         "settings.title": "Einstellungen",
         "userRights.checkFailed": "Benutzerrechte konnten nicht geladen werden",
-
         "date": "Datum"
     },
     "en": {
@@ -60,7 +58,6 @@
         "app.settings.done": "Done",
         "app.system": "System",
         "app.version": "Version {versionNumber}",
-
         "login.accessDenied": "Access Denied",
         "login.button": "Login",
         "login.error": "User or password wrong",
@@ -80,7 +77,6 @@
         "settings.language": "Language",
         "settings.title": "Settings",
         "userRights.checkFailed": "Unable to load user rights",
-
         "date": "Date"
     },
     "it": {
@@ -102,7 +98,6 @@
         "app.settings.done": "Finito",
         "app.system": "Sistema",
         "app.version": "Versione {versionNumber}",
-
         "login.accessDenied": "Accesso negato",
         "login.button": "Login",
         "login.error": "Nome utente o Password sbagliati",
@@ -122,7 +117,6 @@
         "settings.language": "Lingua",
         "settings.title": "Impostazioni",
         "userRights.checkFailed": "Impossibile caricare i diritti utente",
-
         "date": "Data"
     }
 }

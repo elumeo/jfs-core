@@ -6,7 +6,7 @@ const Theme = () => {
     overrides: {
       MuiCssBaseline: {
         '@global': {
-          html: {
+          '#root': {
             background: Color.quarz[500],
           },
           body: {

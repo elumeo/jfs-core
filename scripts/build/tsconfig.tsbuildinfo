@@ -582,8 +582,8 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/build/index.ts": {
-        "version": "82c9e2481087e50d070980daeb9deaaf89f106b02c23ce6e268b1d10eac7312b",
-        "signature": "51c0d622e141e5f0f4456bdb476fab17d08d18c8ea4766ea42195b06d6bee25b",
+        "version": "744db2cb711007c58920be49bd815565bbc1b58af75fb189af4b489bf68a93b3",
+        "signature": "6bba8005b9b9ba62f8a70dc0e9ef16e71251a580339574f278d56779d60708bb",
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/translations/snapshot/csv.ts": {
