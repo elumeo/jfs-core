@@ -702,7 +702,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/jfs-showcase.ts": {
-        "version": "e0140c1a4650cca1ce5a156329fed022d0bc72bbc20b320cae3e9eb6ab066d01",
+        "version": "24aa4adfda39a0b04f119ea34ae107ee9ceaa0d2c93467de24f5331864fc2a3d",
         "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },

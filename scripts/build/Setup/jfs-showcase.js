@@ -36,26 +36,15 @@ const fs_1 = __importDefault(require("fs"));
 const Script_1 = __importDefault(require("../Library/JFS/Core/Script"));
 const path_1 = require("path");
 const Package = __importStar(require("../Library/NPM/Package"));
-const install = (path) => {
-    const options = {
-        cwd: path,
-        stdio: 'inherit'
-    };
-    const onSpawn = (child) => process.on('exit', () => child.kill());
-    return Package.run('install', options, onSpawn);
-};
-const start = (path) => Package.start(path);
 const run = () => __awaiter(void 0, void 0, void 0, function* () {
     const { core } = yield JFS.discover(process.cwd());
     const showcase = path_1.resolve(core, 'showcase');
-    const installed = fs_1.default.existsSync(path_1.resolve(showcase, 'node_modules'));
-    if (installed) {
-        start(showcase);
+    const node_modules = path_1.resolve(showcase, 'node_modules');
+    const installed = fs_1.default.existsSync(node_modules);
+    if (!installed) {
+        yield Package.run('install', { cwd: showcase, stdio: 'inherit' }, (child) => process.on('exit', () => child.kill()));
     }
-    else {
-        yield install(showcase);
-        start(showcase);
-    }
+    Package.start(showcase);
 });
 exports.default = new Script_1.default({
     path: __filename,
