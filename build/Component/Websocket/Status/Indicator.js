@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from '../../../Types/Redux';
+import { useSelector } from 'Types/Redux';
 const Indicator = ({ client }) => {
     const isNamespaceConnected = useSelector(state => {
         var _a;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { WSClient } from '../../API/WS/WSClient';
-import useActions from '../../Store/useActions';
+import { WSClient } from 'API/WS/WSClient';
+import useActions from 'Store/useActions';
 const WebSocketProvider = ({ children }) => {
     const { webSocketUpdateRoomAction } = useActions();
     useEffect(() => {

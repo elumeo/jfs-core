@@ -1,3 +1,3 @@
-import { Epic } from '../../../Types/Redux';
+import { Epic } from 'Types/Redux';
 declare const checkSession: Epic;
 export default checkSession;

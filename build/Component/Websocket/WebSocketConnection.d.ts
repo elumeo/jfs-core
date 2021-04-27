@@ -1,7 +1,7 @@
 import React from 'react';
-import { initialState } from '../../Store/Reducer/Core/WebSocket';
-import * as Type from '../../Types/Configuration';
-import * as Action from '../../Store/Action';
+import { initialState } from 'Store/Reducer/Core/WebSocket';
+import * as Type from 'Types/Configuration';
+import * as Action from 'Store/Action';
 export declare type Props = {
     config?: Type.Configuration;
     webSocketConnectionReducer?: typeof initialState;

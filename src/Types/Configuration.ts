@@ -14,10 +14,6 @@ export type Configuration = {
   Currency: string;
   ForceHTTPS: boolean;
   AppName: string;
-  Client?: {
-    Host?: string;
-    Timeout?: number;
-  };
   JscClient: {
     Host: string;
     Timeout?: number;
