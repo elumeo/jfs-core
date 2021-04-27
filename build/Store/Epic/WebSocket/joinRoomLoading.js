@@ -4,6 +4,7 @@ import * as TA from 'typesafe-actions';
 import * as Action from '../../Action';
 import { WSClient } from '../../../API/WS/WSClient';
 import uuid from 'uuid';
+import * as Format from '../../../Utilities/Format';
 const joinRoomLoading = (action$, state$) => {
     return action$.pipe(filter(TA.isActionOf(Action.webSocketJoinRoomLoadingAction)), concatMap((action) => {
         return WSClient.join(action.payload.namespace, action.payload.name).pipe(map(name => {
@@ -22,27 +23,23 @@ const joinRoomLoading = (action$, state$) => {
                 namespace: action.payload.namespace
             };
             const error = {
-                error: {
-                    response: {
-                        data: {
-                            message: err.error.message,
-                            id: 0
-                        },
-                        headers: null,
-                        config: err.error.config,
-                        status: null,
-                        statusText: err.error.message
+                response: {
+                    data: {
+                        message: err.error.message,
+                        id: 0
                     },
-                    name: err.error.name,
+                    headers: null,
                     config: err.error.config,
-                    message: err.error.message
+                    status: null,
+                    statusText: err.error.message
                 },
-                isError: true,
-                icon: 'error'
+                name: err.error.name,
+                config: err.error.config,
+                message: err.error.message
             };
             return of(Action.webSocketJoinRoomFailureAction(update), Action.addNotification({
                 id: uuid(),
-                content: JSON.stringify(error, null, 2),
+                content: Format.Error.apply(error),
                 variant: 'error'
             }));
         }));

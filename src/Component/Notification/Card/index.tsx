@@ -18,6 +18,8 @@ export type Props = {
   temporary: boolean;
 };
 
+type Severity = 'error' | 'success' | 'warning' | 'info';
+
 const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = ({
   children,
   notification,
@@ -32,8 +34,8 @@ const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = (
       style={{
         width: '100%',
         minHeight: 'fit-content',
-        backgroundColor: palette[notification.variant]?.['main'],
-        color: palette[notification.variant]?.['contrastText']
+        backgroundColor: palette[notification.variant as Severity]?.['main'],
+        color: palette[notification.variant as Severity]?.['contrastText']
       }}>
       <CardHeader
         avatar={<Icon variant={notification.variant}/>}
@@ -56,7 +58,7 @@ const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = (
             <IconButton
               onClick={() => removeNotification(notification.id)}>
               <DeleteIcon
-                style={{ color: palette[notification.variant]?.contrastText }}/>
+                style={{ color: palette[notification.variant as Severity]?.contrastText }}/>
             </IconButton>
           </CardActions>
         }/>

@@ -4,7 +4,7 @@ export class HttpClient {
 
   static generateAxiosConfig: () => AxiosRequestConfig;
 
-  protected static setConfigGenerator = (generateAxiosConfig) => {
+  protected static setConfigGenerator = (generateAxiosConfig: () => AxiosRequestConfig) => {
     HttpClient.generateAxiosConfig = generateAxiosConfig;
   };
 

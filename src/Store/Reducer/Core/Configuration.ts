@@ -9,7 +9,7 @@ export type State<T> = {
   loaded: boolean;
 };
 
-const initialState = {
+const initialState: State<Type.Configuration> = {
   config: null,
   pending: false,
   loaded: false

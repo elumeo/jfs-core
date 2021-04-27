@@ -1,5 +1,5 @@
 import { PayloadAction } from 'typesafe-actions';
-import * as Country from '../../Types/Country';
+import * as Country from 'Types/Country';
 export declare namespace setLocale {
     type Payload = {
         locale: Country.Locale;

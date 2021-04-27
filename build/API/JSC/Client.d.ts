@@ -6,7 +6,9 @@ export default class JscClient extends HttpClient {
         version: string;
     };
     static setConfig: (Config: Configuration) => void;
-    static setPackageJson: (PackageJson: any) => void;
+    static setPackageJson: (PackageJson: {
+        version: string;
+    }) => void;
     static generateAxiosConfig: () => {
         baseURL: string;
         timeout: number;

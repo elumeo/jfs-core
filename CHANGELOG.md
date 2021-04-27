@@ -1,11 +1,93 @@
 ## [10.0.0]  **** BREAKING ****
-    - created `build-tools`
-    - replaced `react-md` with `@material-ui/core`
-    -
- 
+ - [Material UI](https://material-ui.com) instead of react-md
+  - CSS-in-JS instead of SCSS
+- Up to date webpack 5 configuration
+  - no doubled config.json needed anymore
+- Refined project structure & simpler apis
+  - Core components as compound components
 
+### __Webpack__
 
+We have updated our webpack version. Read more about webpack 5 [here](https://webpack.js.org/blog/2020-10-10-webpack-5-release/).
 
+### __Location of config files__
+
+Instead of maintaining two config files you can now simply maintain only one file:
+
+- `/config.dist.json`
+
+It will be copied to `/dist/config.json` automatically when running the dev-server or creating a production build.
+
+Changes made to the config file will cause a reload in the browser while developing.
+
+All scripts that need config data will read from `/config.dist.json`.
+
+### __Reimplemented notifications__
+
+To simplify notifications we followed the [recommendations from material-ui](https://material-ui.com/components/snackbars/#notistack) and made use of [`notistack`](https://github.com/iamhosseindhv/notistack).
+
+- To control notifications you can simply use redux actions
+- You will need to provide an id on your own when sending a notification. We recommend using `uuid` for this (already included in `@elumeo/jfs-core`).
+
+relevant sections of the implementation:
+```
+// Types/Notification.ts
+
+import { SnackbarAction, useSnackbar, VariantType, OptionsObject } from 'notistack';
+import React from 'react';
+
+export type Notification = {
+  id: string;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  content?: React.ReactNode;
+  variant: VariantType;
+  action?: (
+    snackbar: ReturnType<typeof useSnackbar>,
+    id: string,
+    temporary: boolean
+  ) => SnackbarAction;
+  notistackOptions?: OptionsObject;
+};
+```
+
+```
+// Store/Action/Notification.ts
+
+import * as TA from 'typesafe-actions';
+import * as Type from 'Types/Notification';
+import { AxiosError } from 'axios';
+
+export const addNotification = (
+  TA.createStandardAction('notification/ADD')<Type.Notification>()
+);
+export const removeNotification = TA.createStandardAction('notification/remove')<string>()
+export const removeAllNotifications = TA.createStandardAction('notification/remove_all')()
+export const catchErrorNotification = TA.createStandardAction('notification/ERROR_ADD')<AxiosError>()
+
+export const setIsNotificationHistoryOpen = (
+  TA.createStandardAction('notification/SET_IS_HISTORY_OPEN')<boolean>()
+);
+```
+
+See `HOWTO.md` for an example how to send a notification.
+
+### __Changed files & directories__
+
+__NOTE__: All webSocket types were moved to `/Types/WebSocket.ts`
+
+| Before                    | After                                                      |
+|---------------------------|------------------------------------------------------------|
+| /Base/HttpClient.ts       | /API/HTTP/HttpClient.ts                                    |
+| /Base/Session.ts          | /API/LOCAL_STORAGE/Session.ts, /API/LOCAL_STORAGE/Token.ts |
+| /Base/WSClient.ts         | /API/WS/WSClient.ts                                        |
+| /Jsc/Client.ts            | /API/JSC/Client.ts                                         |
+| /Jsc/Api/index.ts         | /API/JSC/index.ts                                          |
+| /Jsc/Api/Config.json      | /API/JSC/Config.json                                       |
+| /Jsc/Api/Description.json | /API/JSC/Description.json                                  |
+| /Jsc                      | deleted                                                    |
+| /Shared                   | deleted                                                    |
+| /Style                    | deleted                                                    |
 
 ## [9.10.35] 2021-02-08
 ## Added

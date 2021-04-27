@@ -1,23 +1,19 @@
 import * as Locale from './Locale';
 
-export const getCurrencySign = (currency: string) => {
-  const value = new Intl.NumberFormat(
-    Locale.locale,
-    {style: 'currency', currency}
-  );
-  // We must use ts-ignore because typescript seems not to know that formatToParts exists but it does
-  // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/formatToParts
-  // Still in draft mode but browser support is available
-  // @ts-ignore
-  const valueParts = value.formatToParts(0) as string[];
-  let sign = '';
-  valueParts.forEach(part => {
-    if (part['type'] === 'currency') {
-      sign = part['value'];
-    }
-  });
-  return sign;
-}
+export const getCurrencySign = (currency: string) => (
+  new Intl.NumberFormat(Locale.locale, {style: 'currency', currency})
+    .formatToParts(0)
+    .reduce(
+      (sign, { type, value }) => (
+        sign + (
+          type === 'currency'
+            ? value
+            : ''
+        )
+      ),
+      ''
+    )
+);
 
 export const getCurrency = (
   currency: string,

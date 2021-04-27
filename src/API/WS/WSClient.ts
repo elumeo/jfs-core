@@ -24,7 +24,9 @@ export class WSClient {
   public static EVENT_ERROR = 'error';
   public static EVENT_RECONNECT = 'reconnect';
 
-  public static sockets: typeof io.Socket[] = [];
+  public static sockets: {
+    [namespace: string]: typeof io.Socket
+  } = {};
 
   protected static listenRoomsSubject = new Subject<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>();
   public static listenRoomsObservable$ = WSClient.listenRoomsSubject.asObservable();
@@ -60,28 +62,43 @@ export class WSClient {
         });
         this.sockets[namespace].on(this.EVENT_AUTHENTICATED, () => {
           this.sockets[namespace].off(this.EVENT_AUTHENTICATED);
-          this.sockets[namespace].on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
+          this.sockets[namespace].on(
+            this.EVENT_UPDATE_ROOM,
+            (roomData: any) => this.listenRoomsSubject.next(roomData)
+          );
           observer.next(namespace);
           observer.complete();
         });
 
-        this.sockets[namespace].on(this.EVENT_ERROR, (err) => {
-          this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
-          this.connectionErrorSubject.next({namespace, message: err});
-        });
+        this.sockets[namespace].on(
+          this.EVENT_ERROR,
+          (err: any) => {
+            this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
+            this.connectionErrorSubject.next({namespace, message: err});
+          }
+        );
 
-        this.sockets[namespace].on(this.EVENT_CONNECT_ERROR, (err) => {
-          this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
-          this.connectionErrorSubject.next({namespace, message: err});
-        });
+        this.sockets[namespace].on(
+          this.EVENT_CONNECT_ERROR,
+          (err: any) => {
+            this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
+            this.connectionErrorSubject.next({namespace, message: err});
+          }
+        );
 
-        this.sockets[namespace].on(this.EVENT_CONNECT_TIMEOUT, (err) => {
-          this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
-          this.connectionErrorSubject.next({namespace, message: err});
-        });
+        this.sockets[namespace].on(
+          this.EVENT_CONNECT_TIMEOUT,
+          (err: any) => {
+            this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
+            this.connectionErrorSubject.next({namespace, message: err});
+          }
+        );
 
         this.sockets[namespace].on(this.EVENT_RECONNECT, () => {
-          this.sockets[namespace].on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
+          this.sockets[namespace].on(
+            this.EVENT_UPDATE_ROOM,
+            (roomData: any) => this.listenRoomsSubject.next(roomData)
+          );
           this.reconnectSubject.next(namespace);
         });
       }
@@ -108,7 +125,7 @@ export class WSClient {
       this.sockets[namespace].emit(this.EVENT_JOIN_ROOM, room);
 
       // 2.a Wait for successful join
-      this.sockets[namespace].on(this.EVENT_JOINED_ROOM, (joinedRoom) => {
+      this.sockets[namespace].on(this.EVENT_JOINED_ROOM, (joinedRoom: string) => {
         if (room === joinedRoom) {
           this.sockets[namespace].off(this.EVENT_JOIN_ROOM_FAILED);
           this.sockets[namespace].off(this.EVENT_JOINED_ROOM);
@@ -119,18 +136,21 @@ export class WSClient {
       });
 
       // 2.b Wait for failed join
-      this.sockets[namespace].on(this.EVENT_JOIN_ROOM_FAILED, (error) => {
-        const failedRoom = (JSON.parse(error.config.data) as IWebSocketRoom);
-        if (room === failedRoom.room) {
-          failedRoom.error = error;
-          failedRoom.namespace = namespace;
-          this.sockets[namespace].off(this.EVENT_JOIN_ROOM_FAILED);
-          this.sockets[namespace].off(this.EVENT_JOINED_ROOM);
-          observer.error(failedRoom);
-          observer.complete();
-          observer.unsubscribe();
+      this.sockets[namespace].on(
+        this.EVENT_JOIN_ROOM_FAILED,
+        (error: any) => {
+          const failedRoom = (JSON.parse(error.config.data) as IWebSocketRoom);
+          if (room === failedRoom.room) {
+            failedRoom.error = error;
+            failedRoom.namespace = namespace;
+            this.sockets[namespace].off(this.EVENT_JOIN_ROOM_FAILED);
+            this.sockets[namespace].off(this.EVENT_JOINED_ROOM);
+            observer.error(failedRoom);
+            observer.complete();
+            observer.unsubscribe();
+          }
         }
-      });
+      );
     });
   }
 

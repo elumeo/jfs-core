@@ -12,5 +12,4 @@ const NavigationItem: React.FC = () => {
   );
 };
 
-
 export default NavigationItem;

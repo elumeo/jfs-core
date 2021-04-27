@@ -8,7 +8,7 @@ JscClient.setConfig = (Config) => {
     JscClient.Config = Config;
     JscClient.setConfigGenerator(JscClient.generateAxiosConfig);
 };
-JscClient.setPackageJson = PackageJson => {
+JscClient.setPackageJson = (PackageJson) => {
     JscClient.PackageJson = PackageJson;
 };
 JscClient.generateAxiosConfig = () => ({

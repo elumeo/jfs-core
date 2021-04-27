@@ -13,7 +13,7 @@ export default class JscClient extends HttpClient {
     JscClient.setConfigGenerator(JscClient.generateAxiosConfig);
   };
 
-  static setPackageJson = PackageJson => {
+  static setPackageJson = (PackageJson: { version: string }) => {
     JscClient.PackageJson = PackageJson;
   }
 

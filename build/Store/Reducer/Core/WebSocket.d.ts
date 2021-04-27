@@ -1,4 +1,4 @@
-import * as Type from 'Types/WebSocket';
+import * as Type from '../../../Types/WebSocket';
 export declare type State = {
     [webSocketNamespace: string]: Type.IWebSocketNamespace;
 };

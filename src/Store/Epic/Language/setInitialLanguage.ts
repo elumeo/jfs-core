@@ -4,12 +4,13 @@ import { isActionOf } from 'typesafe-actions';
 import Cookie from 'js-cookie';
 import * as Action from 'Store/Action';
 import { Epic } from 'Types/Redux';
+import * as Type from 'Types/Language';
 
 const setInitialLanguage: Epic = (action$, state$) => action$.pipe(
   filter(isActionOf(Action.configLoadedAction)),
   concatMap(() => of(
     Action.changeLanguageAction(
-      Cookie.get('lang') ||
+      Cookie.get('lang') as Type.Language ||
       state$.value.Core.Language.language ||
       'en'
     ),

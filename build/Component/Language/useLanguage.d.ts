@@ -1,4 +1,4 @@
-import { Language } from "Types/Language";
+import { Language } from "../../Types/Language";
 declare const useLanguage: () => {
     value: Language;
     onChange: (next: Language) => void;

@@ -1,5 +1,5 @@
 import * as TA from 'typesafe-actions';
-import * as Action from '../../Action';
+import * as Action from 'Store/Action';
 export const initialState = {
     appInitialized: false,
     allowRobotLogin: false,

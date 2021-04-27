@@ -7,6 +7,8 @@ import { WSClient } from 'API/WS/WSClient';
 import _ from 'lodash';
 import uuid from 'uuid';
 import { Epic } from 'Types/Redux';
+import * as Format from 'Utilities/Format';
+import { AxiosError } from 'axios';
 
 const joinRoomLoading: Epic = (action$, state$) => {
   return action$.pipe(
@@ -31,30 +33,26 @@ const joinRoomLoading: Epic = (action$, state$) => {
             isJoining: false,
             namespace: action.payload.namespace
           };
-          const error = {
-            error: {
-              response: {
-                data: {
-                  message: err.error.message,
-                  id: 0
-                },
-                headers: null,
-                config: err.error.config,
-                status: null,
-                statusText: err.error.message
+          const error: AxiosError = {
+            response: {
+              data: {
+                message: err.error.message,
+                id: 0
               },
-              name: err.error.name,
+              headers: null as any,
               config: err.error.config,
-              message: err.error.message
+              status: null as any,
+              statusText: err.error.message
             },
-            isError: true,
-            icon: 'error'
+            name: err.error.name,
+            config: err.error.config,
+            message: err.error.message
           };
           return of(
             Action.webSocketJoinRoomFailureAction(update),
             Action.addNotification({
               id: uuid(),
-              content: JSON.stringify(error, null, 2),
+              content: Format.Error.apply(error),
               variant: 'error'
             })
           );

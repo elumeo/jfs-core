@@ -26,7 +26,7 @@ const Container: React.FC = () => {
           label={formatMessage({id: 'settings.language'})}
           value={language}
           onChange={(e) => {
-            Cookie.set('lang', e.target.value);
+            Cookie.set('lang', e.target.value as string);
             changeLanguageAction(e.target.value as Language);
           }}>
             <MenuItem value='de'>

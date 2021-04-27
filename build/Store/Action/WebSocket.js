@@ -1,5 +1,5 @@
 import { createStandardAction } from 'typesafe-actions';
-import { ROOM_UPDATE_ACTION_ID } from '../../Constant/WebSocket';
+import { ROOM_UPDATE_ACTION_ID } from 'Constant/WebSocket';
 export const webSocketAddNamespaceAction = createStandardAction('websocket/ADD_NAMESPACE')();
 export const webSocketConnectRequestAction = createStandardAction('websocket/CONNECT_REQUEST')();
 export const webSocketConnectSuccessAction = createStandardAction('websocket/CONNECT_SUCCESS')();

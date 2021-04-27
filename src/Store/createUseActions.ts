@@ -9,7 +9,7 @@ const createUseActions = <T extends {
       const action = Action[key as keyof typeof Action];
       return ({
         ...previous,
-        [key as keyof typeof Action]: (...parameters) => dispatch(
+        [key as keyof typeof Action]: (...parameters: any[]) => dispatch(
           (action as Function).apply(null, parameters)
         )
       })

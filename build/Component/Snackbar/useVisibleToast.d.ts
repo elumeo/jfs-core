@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toast } from 'Types/Toast';
+import { Toast } from '../../Types/Toast';
 declare const useVisibleToast: () => {
     toast: Toast;
     open: boolean;

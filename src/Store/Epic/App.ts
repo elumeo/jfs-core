@@ -9,7 +9,7 @@ const initializeApp: Epic = (
   action$ => action$.pipe(
     filter(isActionOf(Action.initializeApp)),
     concatMap(action => {
-      JscClient.setPackageJson(action.payload.packageJson);
+      JscClient.setPackageJson(action.payload.packageJson as { version: string });
       const isHTTPS = window.location.protocol.toLowerCase() === 'https:';
       if (!isHTTPS && action.payload.ForceHTTPS) {
         window.location.replace(
