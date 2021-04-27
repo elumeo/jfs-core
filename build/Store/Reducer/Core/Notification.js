@@ -1,4 +1,4 @@
-import * as Action from 'Store/Action';
+import * as Action from '../../Action';
 import * as TA from 'typesafe-actions';
 const initialState = {
     history: [],

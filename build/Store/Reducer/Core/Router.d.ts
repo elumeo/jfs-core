@@ -1,4 +1,4 @@
-import * as Action from 'Store/Action';
+import * as Action from '../../Action';
 import { Location } from 'history';
 export declare type State = {
     routeType: 'authorized' | 'unauthorized';

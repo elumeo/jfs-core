@@ -1,5 +1,5 @@
-import * as Action from 'Store/Action';
-import * as Type from 'Types/Configuration';
+import * as Action from '../../Action';
+import * as Type from '../../../Types/Configuration';
 export declare type State<T> = {
     config: T;
     pending: boolean;

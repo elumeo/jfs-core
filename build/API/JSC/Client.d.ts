@@ -1,5 +1,5 @@
-import { Configuration } from 'Types/Configuration';
-import { HttpClient } from 'API/HTTP/HttpClient';
+import { Configuration } from '../../Types/Configuration';
+import { HttpClient } from '../HTTP/HttpClient';
 export default class JscClient extends HttpClient {
     static Config: Configuration;
     static PackageJson: {

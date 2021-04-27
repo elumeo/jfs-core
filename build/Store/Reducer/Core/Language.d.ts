@@ -1,5 +1,5 @@
-import * as Action from 'Store/Action';
-import * as Type from 'Types/Language';
+import * as Action from '../../Action';
+import * as Type from '../../../Types/Language';
 export declare type State = {
     language: Type.Language;
     messages: {

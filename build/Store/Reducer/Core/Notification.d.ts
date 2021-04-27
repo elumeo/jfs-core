@@ -1,6 +1,6 @@
-import * as Action from 'Store/Action';
+import * as Action from '../../Action';
 import * as TA from 'typesafe-actions';
-import * as Type from 'Types/Notification';
+import * as Type from '../../../Types/Notification';
 export declare type State = {
     history: Type.Notification[];
     isHistoryOpen: boolean;

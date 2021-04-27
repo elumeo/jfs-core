@@ -1,5 +1,5 @@
 import * as Token from '../LOCAL_STORAGE/Token';
-import { HttpClient } from 'API/HTTP/HttpClient';
+import { HttpClient } from '../HTTP/HttpClient';
 export default class JscClient extends HttpClient {
 }
 JscClient.Config = {};

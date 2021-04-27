@@ -1,5 +1,5 @@
 import { PayloadAction } from 'typesafe-actions';
-import * as Action from 'Store/Action';
+import * as Action from '../../Action';
 export declare type State = {
     backendRegion: string;
     pending: boolean;

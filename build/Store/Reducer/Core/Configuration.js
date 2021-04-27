@@ -1,4 +1,4 @@
-import * as Action from 'Store/Action';
+import * as Action from '../../Action';
 import { createReducer } from 'typesafe-actions';
 const initialState = {
     config: null,

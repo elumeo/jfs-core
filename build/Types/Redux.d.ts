@@ -1,7 +1,7 @@
 import { Epic as TEpic, EpicMiddleware as TEpicMiddleware } from 'redux-observable';
-import * as TAction from 'Store/Action';
+import * as TAction from '../Store/Action';
 import * as TA from 'typesafe-actions';
-import * as Global from 'Store/Reducer/Global';
+import * as Global from '../Store/Reducer/Global';
 export declare type State<T extends {} = {}> = Global.State & T;
 export declare type ActionType<T extends {} = {}> = TA.ActionType<typeof TAction & T>;
 export declare type Dependencies<T extends {} = {}> = T & {};

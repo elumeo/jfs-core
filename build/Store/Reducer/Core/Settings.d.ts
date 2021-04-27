@@ -1,4 +1,4 @@
-import * as Action from 'Store/Action';
+import * as Action from '../../Action';
 export declare type State = {
     settingsOpen: boolean;
 };

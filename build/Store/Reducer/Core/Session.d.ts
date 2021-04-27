@@ -1,6 +1,6 @@
 import { PayloadAction } from 'typesafe-actions';
-import JSCApi from 'API/JSC';
-import * as Action from 'Store/Action';
+import JSCApi from '../../../API/JSC';
+import * as Action from '../../Action';
 declare type ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 declare type IPropertyDTO = JSCApi.DTO.Authorization.IPropertyDTO;
 export declare type State = {

@@ -1,5 +1,5 @@
 import * as TA from 'typesafe-actions';
-import * as Action from 'Store/Action';
+import * as Action from '../../Action';
 export declare type State = {
     appInitialized: boolean;
     allowRobotLogin: boolean;

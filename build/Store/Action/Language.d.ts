@@ -1,5 +1,5 @@
 import { PayloadAction } from 'typesafe-actions';
-import { Language } from 'Types/Language';
+import { Language } from '../../Types/Language';
 export declare namespace changeLanguageAction {
     type Payload = Language;
     type Type = PayloadAction<string, Payload>;
