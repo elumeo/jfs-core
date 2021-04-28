@@ -5552,6 +5552,7 @@
         ]
       },
       "pathsBasePath": "/Users/mrb/Desktop/temp/jfs-core",
+      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {

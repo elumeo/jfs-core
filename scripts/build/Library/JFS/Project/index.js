@@ -19,9 +19,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Translations = exports.Package = exports.Build = exports.API = void 0;
+exports.Translations = exports.Package = exports.API = void 0;
 exports.API = __importStar(require("./API"));
-exports.Build = __importStar(require("./Build"));
 exports.Package = __importStar(require("./Package"));
 exports.Translations = __importStar(require("./Translations"));
 //# sourceMappingURL=index.js.map

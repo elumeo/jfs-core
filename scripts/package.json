@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Core scripts for all JFS apps",
   "scripts": {
-    "build": "tsc && node helper.js",
-    "build:watch": "tsc-watch --onCompilationComplete \"node helper.js\""
+    "build": "tsc && tsc-alias",
+    "build:watch": "tsc-watch --onCompilationComplete tsc-alias"
   },
   "author": "elumeo SE",
   "license": "ISC",
@@ -27,7 +27,8 @@
     "rimraf": "^2.6.3",
     "rxjs": "^6.5.2",
     "sass": "^1.26.10",
-    "simple-git": "^1.107.0"
+    "simple-git": "^1.107.0",
+    "typescript": "^4.2.4"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.11",
