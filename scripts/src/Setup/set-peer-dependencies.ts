@@ -17,7 +17,7 @@ const run = async () => {
     const { name, dependencies } = await Package.json(resolve(core, 'package.json'));
     
     await fs.writeJSON(resolve(process.cwd(), 'package.json'), {
-      ...(Package.json(resolve(process.cwd(), 'package.json'))),
+      ...(await Package.json(resolve(process.cwd(), 'package.json'))),
       peerDependencies: dependencies
     });
     

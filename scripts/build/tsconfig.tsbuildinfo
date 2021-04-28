@@ -697,7 +697,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/set-peer-dependencies.ts": {
-        "version": "a48a729f161fadb9a3b359a9e611f7fc6bbcbc6886f8ea7701fbd1d30fe15c37",
+        "version": "34488e1349d6f2145b5f504ab0499a4c5ae5590ee036571fd9e25d81765f77e9",
         "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },

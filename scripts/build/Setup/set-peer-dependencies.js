@@ -43,7 +43,7 @@ const run = () => __awaiter(void 0, void 0, void 0, function* () {
     const { type, core } = yield JFS.discover(process.cwd());
     if (type !== 'core') {
         const { name, dependencies } = yield Package.json(path_1.resolve(core, 'package.json'));
-        yield fs_extra_1.default.writeJSON(path_1.resolve(process.cwd(), 'package.json'), Object.assign(Object.assign({}, (Package.json(path_1.resolve(process.cwd(), 'package.json')))), { peerDependencies: dependencies }));
+        yield fs_extra_1.default.writeJSON(path_1.resolve(process.cwd(), 'package.json'), Object.assign(Object.assign({}, (yield Package.json(path_1.resolve(process.cwd(), 'package.json')))), { peerDependencies: dependencies }));
         console.log(message.completed(`Added peerDependencies to package.json of ${name}`));
     }
 });
