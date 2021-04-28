@@ -82,7 +82,7 @@ const merge = (path, scripts) => __awaiter(void 0, void 0, void 0, function* () 
     }));
     return ((yield Promise.all(matches))
         .reduce((scripts, { path, match, script }) => (match
-        ? Object.assign(Object.assign({}, scripts), { [script.name]: `node ${path_1.relative(path, script.path).replaceAll('\\', '/')}` }) : scripts), {}));
+        ? Object.assign(Object.assign({}, scripts), { [script.name]: `node ${path_1.relative(path, script.path).split('\\').join('/')}` }) : scripts), {}));
 });
 const scripts = (path, scripts = [script()]) => new Promise((resolve) => __awaiter(void 0, void 0, void 0, function* () {
     return ((yield extract())

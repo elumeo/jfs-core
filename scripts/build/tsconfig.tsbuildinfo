@@ -692,7 +692,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/register-scripts.ts": {
-        "version": "427150687e4f53dcaeecf46461504f56f2a7bc149dae0431c51ebe0fbbfa8cd6",
+        "version": "d5d5b6ab7291edc11b00417ed8559cc7fb043d8a49fb5e2044bd2c302939aff0",
         "signature": "f87e8d5bd2da55789accae9e103cb73f6c577d3079fcbd1c5e34f40adbc7a144",
         "affectsGlobalScope": false
       },

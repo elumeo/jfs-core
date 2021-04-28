@@ -77,7 +77,7 @@ const merge = async (path: string, scripts: Script[]): Promise<Scripts> => {
           match
             ? {
               ...scripts,
-              [script.name]: `node ${relative(path, script.path).replaceAll('\\', '/')}`
+              [script.name]: `node ${relative(path, script.path).split('\\').join('/')}`
             }
             : scripts
         ),
