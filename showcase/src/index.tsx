@@ -1,8 +1,3 @@
-declare const module: any;
-if (module.hot) {
-  module.hot.accept();
-}
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
@@ -36,9 +31,7 @@ ReactDOM.render(
     <Header.Toolbar
       left={<Header.BackendIndicator/>}
       middle={
-        <div style={{
-          width: 300,
-        }}>
+        <div style={{ width: 300 }}>
           <LAB.Autocomplete
             fullWidth
             options={["one", "two", "three"]}

@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
-import HelloWorld from 'jfc-hello-world/build/Store/Reducer';
+import HelloWorld, { State as HelloWorldState } from 'jfc-hello-world/build/Store/Reducer/Jfc/HelloWorld';
 
-namespace Jfc {
-  export type State = {
-    HelloWorld: HelloWorld.State;
-  }
-}
+export type State = {
+  HelloWorld: HelloWorldState;
+};
 
 const Jfc = combineReducers({
   HelloWorld

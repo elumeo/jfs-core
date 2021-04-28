@@ -1,4 +1,4 @@
-import { createReducer } from 'typesafe-actions';
+import * as TA from 'typesafe-actions';
 import * as Action from 'Store/Action';
 
 export type State = {
@@ -9,15 +9,13 @@ export const initialState: State = {
   data: null
 };
 
-const currentGameReducer = (
-  createReducer(initialState)
-    .handleAction(
-      Action.currentGameUpdateAction,
-      (state, action) => ({
-        ...state,
-        data: action.payload
-      })
-    )
-);
+const currentGameReducer = TA.createReducer(initialState)
+  .handleAction(
+    Action.currentGameUpdateAction,
+    (state, action) => ({
+      ...state,
+      data: action.payload
+    })
+  );
 
 export default currentGameReducer;

@@ -1,15 +1,13 @@
 import * as React from 'react';
 import * as MUI from '@material-ui/core';
 import { useIntl } from 'react-intl';
-import {
-  getRoomConnectionState,
-  isWebSocketNamespaceConnectedState
-} from '@elumeo/jfs-core/build/Store/Selector/Core/WebSocket';
+import * as Selector from 'Store/Selector';
 
 import JSCApi from 'API/JSC';
-import ROOM_PING = JSCApi.WebSocketClient.ROOM_PING;
-import useActions from '@elumeo/jfs-core/build/Store/useActions';
-import { useSelector } from 'Types/Redux';
+import useActions from 'Store/useActions';
+import useSelector from 'Store/useSelector';
+
+const ROOM_PING = JSCApi.WebSocketClient.ROOM_PING;
 
 const JscPingButton: React.FC = () => {
   const { formatMessage } = useIntl();
@@ -19,15 +17,14 @@ const JscPingButton: React.FC = () => {
   } = useActions();
 
   const config = useSelector(state => state.Core.Configuration.config);
-  const webSocket = useSelector(state => state.Core.WebSocket);
   if (!config) {
     return null;
   }
-  if (isWebSocketNamespaceConnectedState(
-    webSocket,
-    config.JscWebSocketClient.PrivateNamespace
-  )) {
-    const room = getRoomConnectionState(webSocket, ROOM_PING);
+  const jsc2jfsConnected = useSelector(Selector.isJsc2JfsWebSocketConnected);
+  const jsc2jfsNamespace = useSelector(state => state.Core.WebSocket['Jsc2Jfs']);
+
+  if (jsc2jfsConnected) {
+    const room = jsc2jfsNamespace.rooms.find(({ name }) => name === ROOM_PING.room);
     if (room === null || room.hasJoined === undefined || room.hasJoined === false) {
       return (
         <MUI.Button

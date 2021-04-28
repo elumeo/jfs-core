@@ -2,7 +2,6 @@ import { of } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
 import * as Action from 'Store/Action';
 import * as TA from 'typesafe-actions';
-import { Jfs2JfsPingExampleUpdateRoomAction } from 'Action/Jfs2JfsPingExampleAction';
 import JSCApi from 'API/JSC';
 import { WSClient }from '@elumeo/jfs-core/build/API/WS/WSClient';
 import { Epic } from 'Types/Redux';
@@ -26,7 +25,7 @@ export const Jfs2JfsPingUpdateExampleEpic: Epic = (
         state$.value.Core.Configuration.config.JfsWebSocketClient.PrivateNamespace
       )
     })),
-    switchMap((data) => of(Jfs2JfsPingExampleUpdateRoomAction(data)))
+    switchMap((data) => of(Action.Jfs2JfsPingExampleUpdateRoomAction(data)))
   );
 };
 
@@ -37,6 +36,6 @@ export const Jfs2JfsPingLeaveExampleEpic: Epic = action$ => {
       action.payload.room === 'ping' &&
       action.payload.namespace === 'Jfs2Jfs'
     )),
-    switchMap(() => of(Jfs2JfsPingExampleUpdateRoomAction(null)))
+    switchMap(() => of(Action.Jfs2JfsPingExampleUpdateRoomAction(null)))
   );
 };

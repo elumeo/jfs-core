@@ -1,4 +1,4 @@
-import { createReducer } from 'typesafe-actions';
+import * as TA from 'typesafe-actions';
 import * as Action from 'Store/Action';
 
 export type State = {
@@ -13,32 +13,30 @@ export const initialState: State = {
   isFinished: false
 };
 
-const ParallelAsyncLoopExample = (
-  createReducer(initialState)
-    .handleAction(
-      Action.parallelAsyncLoopExampleRequestAction,
-      state => ({
-        ...state,
-        progress: 0,
-        isRunning: true,
-        isFinished: false
-      })
-    )
-    .handleAction(
-      Action.parallelAsyncLoopExampleUpdateAction,
-      (state, action) => ({
-        ...state,
-        progress: action.payload
-      })
-    )
-    .handleAction(
-      Action.parallelAsyncLoopExampleSuccessAction,
-      state => ({
-        ...state,
-        isRunning: false,
-        isFinished: true
-      })
-    )
-);
+const ParallelAsyncLoopExample = TA.createReducer(initialState)
+  .handleAction(
+    Action.parallelAsyncLoopExampleRequestAction,
+    state => ({
+      ...state,
+      progress: 0,
+      isRunning: true,
+      isFinished: false
+    })
+  )
+  .handleAction(
+    Action.parallelAsyncLoopExampleUpdateAction,
+    (state, action) => ({
+      ...state,
+      progress: action.payload
+    })
+  )
+  .handleAction(
+    Action.parallelAsyncLoopExampleSuccessAction,
+    state => ({
+      ...state,
+      isRunning: false,
+      isFinished: true
+    })
+  );
 
 export default ParallelAsyncLoopExample;
