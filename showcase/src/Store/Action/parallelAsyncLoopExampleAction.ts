@@ -1,7 +1,19 @@
-import { createStandardAction } from 'typesafe-actions';
+import * as TA from 'typesafe-actions';
 
-const featureName = 'parallelAsyncLoopExample';
+export const parallelAsyncLoopExampleRequestAction = (
+  TA.createStandardAction(
+    'parallelAsyncLoopExample/REQUEST'
+  )<string[]>()
+);
 
-export const parallelAsyncLoopExampleRequestAction = createStandardAction(featureName + '/REQUEST')<string[]>();
-export const parallelAsyncLoopExampleUpdateAction = createStandardAction(featureName + '/UPDATE')<number>();
-export const parallelAsyncLoopExampleSuccessAction = createStandardAction(featureName + '/SUCCESS')();
+export const parallelAsyncLoopExampleUpdateAction = (
+  TA.createStandardAction(
+    'parallelAsyncLoopExample/UPDATE'
+  )<number>()
+);
+
+export const parallelAsyncLoopExampleSuccessAction = (
+  TA.createStandardAction(
+    'parallelAsyncLoopExample/SUCCESS'
+  )()
+);

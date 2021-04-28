@@ -1,11 +1,11 @@
 import React from 'react';
 import * as MUI from '@material-ui/core';
 import { useIntl } from 'react-intl';
+import * as Action from 'Store/Action';
 import DialogExample from 'Component/DialogExample';
 import AddToastButton from 'Component/AddToastButton';
 import LoremIpsumText from 'Component/LoremIpsumText';
 import AddNotificationButton from 'Component/AddNotificationButton';
-import { parallelAsyncLoopExampleRequestAction } from 'Action/parallelAsyncLoopExampleAction';
 import JscWebSocketExampleButton from 'Component/JscWebSocketPingButton';
 import JscWebSocketCurrentGameButton from 'Component/JscWebSocketCurrentGameButton';
 import JfsWebSocketExampleButton from 'Component/JfsWebSocketPingButton';
@@ -20,7 +20,7 @@ const Showcase: React.FC = () => {
 
   React.useEffect(
     () => {
-      parallelAsyncLoopExampleRequestAction(['1', '2', '3', '4', '5', '6'])
+      Action.parallelAsyncLoopExampleRequestAction(['1', '2', '3', '4', '5', '6'])
     },
     []
   );

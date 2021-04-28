@@ -1,5 +1,7 @@
-import { createStandardAction } from 'typesafe-actions';
+import * as TA from 'typesafe-actions';
 
-const featureName = 'Jfs2JfsPingExample';
-
-export const Jfs2JfsPingExampleUpdateRoomAction = createStandardAction(featureName + '/UPDATE_ROOM')<string>();
+export const Jfs2JfsPingExampleUpdateRoomAction = (
+  TA.createStandardAction(
+    'Jfs2JfsPingExample/UPDATE_ROOM'
+  )<string>()
+);

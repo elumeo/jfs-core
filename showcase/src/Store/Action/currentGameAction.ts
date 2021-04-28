@@ -1,7 +1,11 @@
-import { createStandardAction } from 'typesafe-actions';
+import * as TA from 'typesafe-actions';
+import JSCApi from 'API/JSC';
 
-import JSCApi from 'Jsc/Api/index';
 
 const featureName = 'currentGame';
 
-export const currentGameUpdateAction = createStandardAction(featureName + '/UPDATE_ROOM')<JSCApi.DTO.Game.IGameDTO>();
+export const currentGameUpdateAction = (
+  TA.createStandardAction(
+    featureName + '/UPDATE_ROOM'
+  )<JSCApi.DTO.Game.IGameDTO>()
+);

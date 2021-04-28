@@ -12,7 +12,7 @@ import Jfs2JfsPingExample, {
   State as Jfs2JfsPingExampleState
 } from './Jfs2JfsPingExampleReducer';
 
-import Configuration, { State as ConfigurationState } from './Config';
+import Configuration, { State as ConfigurationState } from './Configuration';
 
 export type State = {
   ParallelAsyncLoopExample: ParallelAsyncLoopExampleState;

@@ -1,25 +1,26 @@
 import React from 'react';
 import * as MUI from '@material-ui/core';
 import { useIntl } from 'react-intl';
-import { isWebSocketNamespaceConnectedState }from '@elumeo/jfs-core/build/Store/Selector/Core/WebSocket';
-import { getRoomConnectionState }from '@elumeo/jfs-core/build/Store/Selector/Core/WebSocket';
-
-import JSCApi from 'Jsc/Api/index';
-import ROOM_CURRENT_GAME = JSCApi.WebSocketClient.ROOM_CURRENT_GAME;
-import useActions from '@elumeo/jfs-core/build/Store/useActions';
-import { useSelector } from 'Types/Redux';
+import * as Selector from 'Store/Selector';
+import JSCApi from 'API/JSC';
+const ROOM_CURRENT_GAME = JSCApi.WebSocketClient.ROOM_CURRENT_GAME;
+import useActions from 'Store/useActions';
+import useSelector from 'Store/useSelector';
 
 const CurrentGameButton: React.FC = () => {
   const { formatMessage } = useIntl();
   const { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction } = useActions();
   const config = useSelector(state => state.Core.Configuration.config);
+  if (!config) {
+    return null;
+  }
+
+  const jsc2jfsConnected = useSelector(Selector.isJsc2JfsWebSocketConnected);
+  const jsc2jfsNamespace = useSelector(state => state.Core.WebSocket['Jsc2Jfs']);
 
   const webSocket = useSelector(state => state.Core.WebSocket);
-  if (isWebSocketNamespaceConnectedState(
-    webSocket,
-    config.JscWebSocketClient.PrivateNamespace
-  )) {
-    const room = getRoomConnectionState(webSocket, ROOM_CURRENT_GAME);
+  if (jsc2jfsConnected) {
+    const room = jsc2jfsNamespace.rooms.find(({ name }) => name === ROOM_CURRENT_GAME.room);
     if (room === null || room.hasJoined === undefined || room.hasJoined === false) {
       return (
         <MUI.Button
