@@ -48,6 +48,14 @@ const production = {
         patterns: [
             { from: PATH.CONFIGURATION_DEV, to: PATH.CONFIGURATION_DIST }
         ]
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: PATH.HTML_TEMPLATE,
+      inject: false,
+      templateParameters: {
+        BUNDLE_FILE_NAME : PATH.UNIQUE_BUNDLE_NAME
+      }      
     })
   ]
 };
