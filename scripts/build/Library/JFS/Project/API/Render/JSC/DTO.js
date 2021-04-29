@@ -38,11 +38,11 @@ const _interface = (description) => TypeScript.interface({
     lines: [
         ...(Object
             .keys(description.properties)
-            .map(key => `${key}?: ${exports.property(key, description.properties[key])}`))
+            .map(key => `${key}?: ${exports.property(key, description.properties[key])};`))
     ]
 });
 exports.interface = _interface;
-const namespace = ({ name, constants = [], dtos, namespaces }) => EcmaScript.export(TypeScript.namespace({
+const namespace = ({ name, constants = [], dtos, namespaces }) => (TypeScript.namespace({
     name,
     what: Text.lines(...[
         ...constants.map(exports.constant),

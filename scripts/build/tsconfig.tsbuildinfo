@@ -462,7 +462,7 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/api/render/jsc/dto.ts": {
-        "version": "8d890144be5aa730ed6c6d9efe0caa247fcf4f49f7bb0b079f48f54142a0ef69",
+        "version": "0b866120ef02c4d0c81ddb58d63fc0421d28c7b5a9b080664110f865a20bd341",
         "signature": "7193d88ec4ad3c4f2aaa0ee87b6bf4faeb5b4d7d58325fe9670e305b337dda26",
         "affectsGlobalScope": false
       },
@@ -1297,6 +1297,7 @@
         ]
       },
       "pathsBasePath": "/Users/mrb/Desktop/temp/jfs-core/scripts",
+      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {

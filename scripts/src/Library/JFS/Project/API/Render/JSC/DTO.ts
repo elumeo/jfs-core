@@ -23,14 +23,14 @@ const _interface = (description: Render.Type.JSC.DTO.Description) => TypeScript.
     ...(
       Object
         .keys(description.properties)
-        .map(key => `${key}?: ${property(key, description.properties[key])}`)
+        .map(key => `${key}?: ${property(key, description.properties[key])};`)
     )
   ]
 });
 
 export { _interface as interface };
 
-export const namespace = ({ name, constants = [], dtos, namespaces }: Render.Type.JSC.DTO.Namespace) => EcmaScript.export(
+export const namespace = ({ name, constants = [], dtos, namespaces }: Render.Type.JSC.DTO.Namespace) => (
   TypeScript.namespace({
     name,
     what: Text.lines(
@@ -41,4 +41,4 @@ export const namespace = ({ name, constants = [], dtos, namespaces }: Render.Typ
       ].map(EcmaScript.export)
     )
   })
-)
+);
