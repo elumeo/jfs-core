@@ -6,6 +6,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const rimraf = require('rimraf');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 rimraf.sync(PATH.PUBLIC);
 
