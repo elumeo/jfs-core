@@ -3,18 +3,19 @@
     "namespace": "JSCApi"
   },
   "remote": {
-    "WebSocketController": [
-      "subscribeCurrentGameDetailsRoom",
-      "subscribePlannedGamesForCurrentDayRoom",
-      "subscribeCurrentGamePlayerRoom",
-      "subscribeCurrentGameBidsRoom",
-      "subscribeLastHalfHourViewerStatisticsRoom"
+    "SystemController": ["getRegion"],
+    "SessionController": [
+      "getCurrentSessionFrontend",
+      "logout"
     ],
-    "CustomerController": ["getCustomersRanking"],
-    "GameController": ["getGameStatistics", "getGamesSounds"],
-    "GameSettingController": ["getGlobalGameSettings"],
-    "ProductBundleController": ["getProductBundles"],
-    "AggregationProductInformationController": ["getProductDetails"],
-    "ShiftController":["getCurrentShiftConfig", "getShifts"]
+    "LoginController": [
+      "loginFrontend"
+    ],
+    "UserController": [
+      "getUserRights"
+    ],
+    "WebSocketController": [
+      "subscribePingRoom"
+    ]
   }
 }

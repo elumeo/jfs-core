@@ -1,96 +1,25 @@
 {
   "dtos": [
     {
-      "name": "Aggregation",
+      "name": "Login",
       "constants": [],
       "dtos": [
         {
-          "name": "ProductDetailsAggregationDTO",
+          "name": "CredentialsDTO",
           "generics": [],
           "properties": {
-            "product": {
-              "type": "DTO.Product.ProductDTO",
+            "username": {
+              "type": "string",
               "array": false,
               "generics": []
             },
-            "media": {
-              "type": "DTO.Product.MediaDTO",
-              "array": true,
-              "generics": []
-            },
-            "localization": {
-              "type": "DTO.Product.Localization.ContainerDTO",
-              "array": true,
-              "generics": []
-            },
-            "productTags": {
-              "type": "DTO.Product.Tag.ProductTagsDTO",
-              "array": true,
-              "generics": []
-            },
-            "availabilities": {
-              "type": "DTO.Stock.AvailableVariantStockDTO",
-              "array": true,
-              "generics": []
-            },
-            "variants": {
-              "type": "DTO.Product.Variant.ProductVariantDTO",
-              "array": true,
-              "generics": []
-            },
-            "productVariants": {
-              "type": "DTO.Product.Variant.ProductVariantDTO",
-              "array": true,
-              "generics": []
-            },
-            "ringSizeChangeabilities": {
-              "type": "DTO.Product.Variant.RingsizeChangeabilityDTO",
-              "array": true,
-              "generics": []
-            },
-            "productSalesPrice": {
-              "type": "DTO.Product.ProductSalesPriceLocalDTO",
+            "password": {
+              "type": "string",
               "array": false,
               "generics": []
             },
-            "reservations": {
-              "type": "DTO.Product.Reservation.ReservationDTO",
-              "array": true,
-              "generics": []
-            },
-            "approvalDetails": {
-              "type": "DTO.Product.ProductApprovalDetailsDTO",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "AggregatedGameDetailsDTO",
-          "generics": [],
-          "properties": {
-            "game": {
-              "type": "DTO.Game.GameDTO",
-              "array": false,
-              "generics": []
-            },
-            "gameVariants": {
-              "type": "DTO.Game.GameVariantPerformanceDTO",
-              "array": true,
-              "generics": []
-            },
-            "settings": {
-              "type": "DTO.Game.SettingsOverviewDTO",
-              "array": false,
-              "generics": []
-            },
-            "stockInfo": {
-              "type": "DTO.Game.GameStockInfoDTO",
-              "array": false,
-              "generics": []
-            },
-            "salesStatistic": {
-              "type": "DTO.Game.GameSalesStatisticDTO",
+            "token": {
+              "type": "string",
               "array": false,
               "generics": []
             },
@@ -120,757 +49,253 @@
       "namespaces": []
     },
     {
-      "name": "Product",
+      "name": "Session",
+      "constants": [],
+      "dtos": [
+        {
+          "name": "FrontendSessionDTO",
+          "generics": [],
+          "properties": {
+            "session": {
+              "type": "DTO.Session.SessionDTO",
+              "array": false,
+              "generics": []
+            },
+            "appProperties": {
+              "type": "DTO.Authorization.PropertyDTO",
+              "array": true,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        },
+        {
+          "name": "SessionDTO",
+          "generics": [],
+          "properties": {
+            "allowedMethods": {
+              "type": "string",
+              "array": true,
+              "generics": []
+            },
+            "token": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "username": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "lastIPAddress": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "lastActivity": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "lastHostName": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        }
+      ],
+      "namespaces": []
+    },
+    {
+      "name": "Authorization",
       "constants": [
         {
-          "name": "MEDIA_DTO_SIZE_SMALL",
-          "value": "small"
+          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ",
+          "value": 1
         },
         {
-          "name": "MEDIA_DTO_SIZE_LARGE",
-          "value": "large"
+          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE",
+          "value": 2
         },
         {
-          "name": "MEDIA_DTO_SIZE_HUGE",
-          "value": "huge"
+          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE",
+          "value": 4
         },
         {
-          "name": "MEDIA_DTO_TYPE_IMAGE",
-          "value": "image"
+          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE",
+          "value": 8
         },
         {
-          "name": "MEDIA_DTO_TYPE_VARIANT_IMAGE",
-          "value": "variantImage"
-        },
-        {
-          "name": "MEDIA_DTO_TYPE_VIDEO",
-          "value": "video"
-        },
-        {
-          "name": "MEDIA_DTO_TYPE_360",
-          "value": "360"
-        },
-        {
-          "name": "MEDIA_DTO_TYPE_SPRITE",
-          "value": "spriteVideo"
-        },
-        {
-          "name": "MEDIA_DTO_TYPE_SWF",
-          "value": "swfVideo"
-        },
-        {
-          "name": "MEDIA_DTO_TYPE_TEASER",
-          "value": "teaser"
-        },
-        {
-          "name": "MEDIA_DTO_TYPE_BANNER",
-          "value": "banner"
-        },
-        {
-          "name": "MEDIA_DTO_SIZE_LO_RES",
-          "value": "loRes"
-        },
-        {
-          "name": "MEDIA_DTO_SIZE_MID_RES",
-          "value": "midRes"
-        },
-        {
-          "name": "MEDIA_DTO_SIZE_HI_RES",
-          "value": "hiRes"
-        },
-        {
-          "name": "MEDIA_DTO_TYPE_STREAM_REPLAY",
-          "value": "streamReplay"
-        },
-        {
-          "name": "MEDIA_DTO_TYPE_VERTICAL_STREAM",
-          "value": "verticalStream"
-        },
-        {
-          "name": "MEDIA_DTO_TYPE_STREAM_CLEAN_FEED",
-          "value": "streamCleanFeed"
-        },
-        {
-          "name": "MEDIA_DTO_MEDIUM_AVAILABLE",
-          "value": "available"
-        },
-        {
-          "name": "MEDIA_DTO_MEDIUM_UNAVAILABLE",
-          "value": "unavailable"
-        },
-        {
-          "name": "MEDIA_DTO_STREAM_TYPE_HLS",
-          "value": "hls"
-        },
-        {
-          "name": "MEDIA_DTO_STREAM_TYPE_HDS",
-          "value": "hds"
-        },
-        {
-          "name": "MEDIA_DTO_STREAM_TYPE_MP4",
-          "value": "mp4"
-        },
-        {
-          "name": "MEDIA_DTO_STREAM_TYPE_EMBEDDABLE_HTML_PLAYER",
-          "value": "embeddableHtmlPlayer"
-        },
-        {
-          "name": "MEDIA_DTO_ENCODING_240p",
-          "value": "240p"
-        },
-        {
-          "name": "MEDIA_DTO_ORIENTATION_PORTRAIT",
-          "value": "portrait"
-        },
-        {
-          "name": "MEDIA_DTO_ORIENTATION_LANDSCAPE",
-          "value": "landscape"
-        },
-        {
-          "name": "MEDIA_DTO_CODEC_H264",
-          "value": "h.264"
-        },
-        {
-          "name": "MEDIA_DTO_CODEC_H265",
-          "value": "h.265"
-        },
-        {
-          "name": "PRODUCT_INFO_LOCAL_DTO_PRODUCT_TYPE_UNDEFINED",
-          "value": "undefined"
-        },
-        {
-          "name": "PRODUCT_INFO_LOCAL_DTO_PRODUCT_TYPE_NORMAL",
-          "value": "normal"
-        },
-        {
-          "name": "PRODUCT_INFO_LOCAL_DTO_PRODUCT_TYPE_HIGHLIGHT",
-          "value": "highlight"
-        },
-        {
-          "name": "PRODUCT_INFO_WEB_DTO_VISIBILITY_NONE",
-          "value": "none"
-        },
-        {
-          "name": "PRODUCT_INFO_WEB_DTO_VISIBILITY_CATALOG",
-          "value": "catalog"
-        },
-        {
-          "name": "PRODUCT_INFO_WEB_DTO_VISIBILITY_SEARCH",
-          "value": "search"
-        },
-        {
-          "name": "PRODUCT_INFO_WEB_DTO_VISIBILITY_CATALOG_SEARCH",
-          "value": "catalog search"
-        },
-        {
-          "name": "PRODUCT_INFO_WEB_DTO_UPLOAD_STATUS_INITIATED",
-          "value": "initiated"
-        },
-        {
-          "name": "PRODUCT_INFO_WEB_DTO_UPLOAD_STATUS_UPLOADED",
-          "value": "uploaded"
-        },
-        {
-          "name": "PRODUCT_INFO_WEB_DTO_UPLOAD_STATUS_ERROR",
-          "value": "error"
-        },
-        {
-          "name": "PRODUCT_INFO_WEB_DTO_STATUS_ENABLED",
-          "value": "enabled"
-        },
-        {
-          "name": "PRODUCT_INFO_WEB_DTO_STATUS_DISABLED",
-          "value": "disabled"
-        },
-        {
-          "name": "PRODUCT_INFO_WEB_DTO_STATUS_PAUSED_FOR_QUEUE",
-          "value": "pausedForQueue"
-        },
-        {
-          "name": "PRODUCT_INFO_WEB_DTO_STATUS_WAITING_FOR_UPLOAD",
-          "value": "waitingForUpload"
-        },
-        {
-          "name": "PRODUCT_VARIANT_DTO_SAMPLE_VARIANT_TYPE_NO_SAMPLE",
-          "value": "noSample"
-        },
-        {
-          "name": "PRODUCT_VARIANT_DTO_SAMPLE_VARIANT_TYPE_PRIMARY_SAMPLE",
-          "value": "primarySample"
-        },
-        {
-          "name": "PRODUCT_VARIANT_DTO_SAMPLE_VARIANT_TYPE_BACKUP_SAMPLE",
-          "value": "backupSample"
-        },
-        {
-          "name": "RINGSIZE_CHANGEABILITY_DTO_CHANGE_UPSIZE",
-          "value": "upsize"
-        },
-        {
-          "name": "RINGSIZE_CHANGEABILITY_DTO_CHANGE_DOWNSIZE",
-          "value": "downsize"
-        },
-        {
-          "name": "RESERVATION_DTO_ENTRY_EDITOR_CLI",
-          "value": "AS NIGHT"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_HIGHLIGHT",
-          "value": "Highlights"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_GEM",
-          "value": "Gem"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_MARKETING",
-          "value": "Marketing"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_SALE",
-          "value": "Sale"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_NOTV",
-          "value": "notv"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_FAMILY",
-          "value": "Family"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_EXPORT",
-          "value": "Export"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_EXPORT_REASON_ITALY",
-          "value": "Italy"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_EXPORT_REASON_GERMANY",
-          "value": "Germany"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_EXPORT_REASON_UNITED_KINGDOM",
-          "value": "UnitedKingdom"
-        },
-        {
-          "name": "RESERVATION_DTO_LEGACY_SAVE_TYPE_CREATE",
-          "value": "create"
-        },
-        {
-          "name": "RESERVATION_DTO_LEGACY_SAVE_TYPE_UPDATE",
-          "value": "update"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_STATE_RESET",
-          "value": "0"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_STATE_ACTIVE",
-          "value": "1"
-        },
-        {
-          "name": "RESERVATION_DTO_LOCK_STATE_DELETE",
-          "value": "2"
+          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE",
+          "value": 3
         }
       ],
       "dtos": [
         {
-          "name": "ProductDTO",
+          "name": "PropertyDTO",
           "generics": [],
           "properties": {
-            "baseDTO": {
-              "type": "DTO.Product.ProductBaseDTO",
+            "key": {
+              "type": "string",
               "array": false,
               "generics": []
             },
-            "infoDTO": {
-              "type": "DTO.Product.ProductInfoDTO",
+            "value": {
+              "type": "string",
               "array": false,
               "generics": []
             },
-            "priceLocalDTO": {
-              "type": "DTO.Product.ProductPriceLocalDTO",
+            "createdAt": {
+              "type": "string",
               "array": false,
               "generics": []
             },
-            "gemsDTO": {
-              "type": "DTO.Product.ProductGemDTO",
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        },
+        {
+          "name": "UserRightsDTO",
+          "generics": [],
+          "properties": {
+            "entityAttributeAccesses": {
+              "type": "DTO.Authorization.EntityAttributeAccessDTO",
               "array": true,
               "generics": []
             },
-            "mediaCollection": {
-              "type": "DTO.Product.MediaDTO",
-              "array": true,
-              "generics": []
-            },
-            "infoLocalDTO": {
-              "type": "DTO.Product.ProductInfoLocalDTO",
-              "array": false,
-              "generics": []
-            },
-            "infosWebDTO": {
-              "type": "DTO.Product.ProductInfoWebDTO",
-              "array": true,
-              "generics": []
-            },
-            "priceGlobalCollectionDTO": {
-              "type": "DTO.Product.ProductPriceGlobalDTO",
+            "assignedApps": {
+              "type": "DTO.App.AppDTO",
               "array": true,
               "generics": []
             }
           }
         },
         {
-          "name": "ProductBaseDTO",
+          "name": "EntityAttributeAccessDTO",
           "generics": [],
           "properties": {
-            "productId": {
+            "entity": {
               "type": "string",
               "array": false,
               "generics": []
             },
+            "attribute": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "access": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        }
+      ],
+      "namespaces": []
+    },
+    {
+      "name": "App",
+      "constants": [
+        {
+          "name": "APP_DTO_FRONTEND_APP_DOCK",
+          "value": "appDock"
+        },
+        {
+          "name": "APP_DTO_FRONTEND_JFS",
+          "value": "jfs"
+        }
+      ],
+      "dtos": [
+        {
+          "name": "AppDTO",
+          "generics": [],
+          "properties": {
             "name": {
               "type": "string",
               "array": false,
               "generics": []
             },
-            "created": {
+            "description": {
               "type": "string",
               "array": false,
               "generics": []
             },
-            "modified": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isApprovedData": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "sourceProductId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "sourceVariantId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "ProductInfoDTO",
-          "generics": [],
-          "properties": {
-            "productId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "jewelryType": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "material": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "materialFamily": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "materialWeight": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "gemsCaratSum": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "numberOfGems": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "model": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modelDesign": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "designType": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "setCode": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "family": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isMultiSize": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "isOnDemand": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "itemSize": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "itemSizeExt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "creator": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "manufacturer": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "originalProductId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "gia": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "brand": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "legacyArticleId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isInCatalogue": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "ProductPriceLocalDTO",
-          "generics": [],
-          "properties": {
-            "productId": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "purchasePriceOriginal": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "actualPurchasePriceOriginal": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "purchasePrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "purchasePriceWithVat": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "actualPurchasePrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "actualPurchasePriceWithVat": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "targetPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "startPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "targetPriceCalculated": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "startPriceCalculated": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "webPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "highestAuctionEndPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "lowestAuctionEndPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "lastAuctionEndPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "bundlingPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "ProductGemDTO",
-          "generics": [],
-          "properties": {
-            "id": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "name": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "productId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "gemFamily": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "gemShape": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "gemShapeFamily": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "numberOfGems": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "caratPerGem": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "caratSum": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "gemSetting": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isMainGem": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "gemOrder": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "gemWidth": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "gemHeight": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "gemOrigin": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "gemColor": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "MediaDTO",
-          "generics": [],
-          "properties": {
-            "productId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "variantId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "type": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "offsetMS": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "durationMS": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "streamType": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "encoding": {
+            "version": {
               "type": "string",
               "array": false,
               "generics": []
@@ -880,2966 +305,32 @@
               "array": false,
               "generics": []
             },
-            "size": {
+            "iconUrl": {
               "type": "string",
               "array": false,
               "generics": []
             },
-            "available": {
-              "type": "string",
+            "windowWidth": {
+              "type": "number",
               "array": false,
               "generics": []
             },
-            "orientation": {
-              "type": "string",
+            "windowHeight": {
+              "type": "number",
               "array": false,
               "generics": []
             },
-            "codec": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "metaInfo": {
-              "type": "DTO.Media.MediaMetaInfoDTO",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "ProductInfoLocalDTO",
-          "generics": [],
-          "properties": {
-            "productId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "productType": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "brand": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "gameFormatComment": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "additionalComment": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isDisabledOnDemand": {
+            "fullscreen": {
               "type": "boolean",
               "array": false,
               "generics": []
             },
-            "isRestrictedMultiSize": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "hasNoTvLock": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "salesChannelWebShopStatusEnabled": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "salesChannelPersonalShopStatusEnabled": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "ProductInfoWebDTO",
-          "generics": [],
-          "properties": {
-            "productId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "status": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "language": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "price": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "newFrom": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "newTo": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "visibility": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "visibleFrom": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "uploadedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "completeLocalisationData": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "color": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "uploadStatus": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "lastError": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "currentPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "inWebShopSince": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "ProductPriceGlobalDTO",
-          "generics": [],
-          "properties": {
-            "productId": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "currency": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "factoryCostOriginal": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "factoryCost": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "targetPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "startPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "ProductSalesPriceLocalDTO",
-          "generics": [],
-          "properties": {
-            "productId": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "salesPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "salesPriceStaff": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "isSalesPriceReducedByLastGames": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "ProductApprovalDetailsDTO",
-          "generics": [],
-          "properties": {
-            "productId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "approvedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "approvedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "invoiceNr": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "deliveredAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "poNumber": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        }
-      ],
-      "namespaces": [
-        {
-          "name": "Localization",
-          "dtos": [
-            {
-              "name": "ContainerDTO",
-              "generics": [],
-              "properties": {
-                "container": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "data": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                }
-              }
-            }
-          ],
-          "namespaces": []
-        },
-        {
-          "name": "Tag",
-          "dtos": [
-            {
-              "name": "ProductTagsDTO",
-              "generics": [],
-              "properties": {
-                "productId": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "tagType": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "tags": {
-                  "type": "DTO.Product.Tag.TagDTO",
-                  "array": true,
-                  "generics": []
-                },
-                "createdAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                }
-              }
-            },
-            {
-              "name": "TagDTO",
-              "generics": [],
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "expirationDate": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "count": {
-                  "type": "number",
-                  "array": false,
-                  "generics": []
-                },
-                "createdAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                }
-              }
-            }
-          ],
-          "namespaces": []
-        },
-        {
-          "name": "Variant",
-          "dtos": [
-            {
-              "name": "ProductVariantDTO",
-              "generics": [],
-              "properties": {
-                "material": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "productId": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "ringsize": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "variantId": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "isDesignated": {
-                  "type": "boolean",
-                  "array": false,
-                  "generics": []
-                },
-                "sampleVariantType": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "hasStock": {
-                  "type": "boolean",
-                  "array": false,
-                  "generics": []
-                },
-                "createdAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                }
-              }
-            },
-            {
-              "name": "RingsizeChangeabilityDTO",
-              "generics": [],
-              "properties": {
-                "productId": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "originalRingsize": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "minimalRingsize": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "maximalRingsize": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "preferredChange": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                }
-              }
-            }
-          ],
-          "namespaces": []
-        },
-        {
-          "name": "Reservation",
-          "dtos": [
-            {
-              "name": "ReservationDTO",
-              "generics": [],
-              "properties": {
-                "entryId": {
-                  "type": "number",
-                  "array": false,
-                  "generics": []
-                },
-                "entryDateTime": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "category": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "reason": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "reasonExport": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "reasonWeb": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "productId": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "startDate": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "lockEnd": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "expirationDate": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "expectedShowTime": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "comment": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "editor": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "basket": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "saveTypeForLegacyResult": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "gem1": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                }
-              }
-            }
-          ],
-          "namespaces": []
-        }
-      ]
-    },
-    {
-      "name": "Media",
-      "constants": [],
-      "dtos": [
-        {
-          "name": "MediaMetaInfoDTO",
-          "generics": [],
-          "properties": {
-            "internalVideoId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "presenter": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        }
-      ],
-      "namespaces": []
-    },
-    {
-      "name": "Stock",
-      "constants": [],
-      "dtos": [
-        {
-          "name": "AvailableVariantStockDTO",
-          "generics": [],
-          "properties": {
-            "productId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "variantId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "quantityAvailable": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "sku": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        }
-      ],
-      "namespaces": []
-    },
-    {
-      "name": "Customer",
-      "constants": [
-        {
-          "name": "CUSTOMER_MSISDN_DTO_TYPE_NONE",
-          "value": "defaultMsisdn"
-        },
-        {
-          "name": "CUSTOMER_MSISDN_DTO_TYPE_WEBSHOP_AUCTION",
-          "value": "webshopAuctionMsisdn"
-        },
-        {
-          "name": "CUSTOMER_MSISDN_DTO_TYPE_WEBSHOP_BILLING",
-          "value": "webShopBillingMsisdn"
-        },
-        {
-          "name": "CUSTOMER_MSISDN_DTO_TYPE_WEBSHOP_SHIPPING",
-          "value": "webShopShippingMsisdn"
-        },
-        {
-          "name": "CUSTOMER_MSISDN_DTO_TYPE_MOBILE_APP_DEFAULT",
-          "value": "mobile_app_default"
-        }
-      ],
-      "dtos": [
-        {
-          "name": "CustomerRankingDTO",
-          "generics": [],
-          "properties": {
-            "customerRanking": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "customerName": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "customerCity": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "customerBuyRate": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "customerHotnessRank": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "customerOrdersToday": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "customerId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "customerMedianPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "paidVolume": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "isIncognito": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "CustomerMsisdnDTO",
-          "generics": [],
-          "properties": {
-            "id": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "msisdn": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "preferred": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "creationDate": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "source": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isBlocked": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "types": {
-              "type": "string",
-              "array": true,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        }
-      ],
-      "namespaces": []
-    },
-    {
-      "name": "Game",
-      "constants": [
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_BROKEN_STATUS_OK",
-          "value": "ok"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_BROKEN_STATUS_DEFECT",
-          "value": "defect"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_BROKEN_STATUS_NOT_CHECKED",
-          "value": "notChecked"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_TYPE_CREATION",
-          "value": "creation"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_TYPE_FIXED_STOCK",
-          "value": "fixedStock"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_PLANNED_NOT",
-          "value": "notplanned"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_PLANNED_QUEUE",
-          "value": "queue"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_STATUS_INACTIVE",
-          "value": "inactive"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_STATUS_ACTIVATED",
-          "value": "activated"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_STATUS_DEACTIVATED",
-          "value": "deactivated"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_STATUS_DELETED",
-          "value": "deleted"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_PREFIX_MULTI_CREATION",
-          "value": "PC"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_PREFIX_SINGLE_VARIANTS",
-          "value": "PS"
-        },
-        {
-          "name": "PRODUCT_BUNDLE_BASE_DTO_MAX_IDENTIFIER_NUMBER",
-          "value": 8
-        },
-        {
-          "name": "GAME_DTO_STATUS_PLANNED",
-          "value": "planned"
-        },
-        {
-          "name": "GAME_DTO_STATUS_PREPARED",
-          "value": "prepared"
-        },
-        {
-          "name": "GAME_DTO_STATUS_STARTING",
-          "value": "starting"
-        },
-        {
-          "name": "GAME_DTO_STATUS_RUNNING",
-          "value": "running"
-        },
-        {
-          "name": "GAME_DTO_STATUS_ENDED",
-          "value": "ended"
-        },
-        {
-          "name": "GAME_DTO_STATUS_CLOSED",
-          "value": "closed"
-        },
-        {
-          "name": "GAME_DTO_STATUS_CLEANUP_CLOSED",
-          "value": "cleanupClosed"
-        },
-        {
-          "name": "GAME_DTO_STATUS_CANCELLED",
-          "value": "cancelled"
-        },
-        {
-          "name": "GAME_DTO_STATUS_KILLED",
-          "value": "killed"
-        },
-        {
-          "name": "GAME_DTO_GAME_MODE_NORMAL",
-          "value": "normal"
-        },
-        {
-          "name": "GAME_DTO_GAME_MODE_ONDEMAND",
-          "value": "ondemand"
-        },
-        {
-          "name": "GAME_DTO_GAME_MODE_MULTISIZE",
-          "value": "multisize"
-        },
-        {
-          "name": "GAME_DTO_GAME_TYPE_SINGLE_VARIANT",
-          "value": "singleVariant"
-        },
-        {
-          "name": "GAME_DTO_GAME_TYPE_ONDEMAND",
-          "value": "ondemand"
-        },
-        {
-          "name": "GAME_DTO_GAME_TYPE_MULTI_VARIANT",
-          "value": "multiVariant"
-        },
-        {
-          "name": "GAME_DTO_GAME_TYPE_MULTI_CREATION",
-          "value": "multiCreation"
-        },
-        {
-          "name": "GAME_DTO_GAME_TYPE_MULTI_PRODUCT",
-          "value": "multiProduct"
-        },
-        {
-          "name": "GAME_DTO_SALE_MODE_DEFAULT",
-          "value": "default"
-        },
-        {
-          "name": "GAME_DTO_SALE_MODE_RETAIL",
-          "value": "retail"
-        },
-        {
-          "name": "GAME_DTO_BID_STATUS_ENABLED",
-          "value": "enabled"
-        },
-        {
-          "name": "GAME_DTO_BID_STATUS_DISABLED",
-          "value": "disabled"
-        },
-        {
-          "name": "GAME_VARIANT_PERFORMANCE_DTO_GAME_VARIANT_STATUS_ENABLED",
-          "value": "enabled"
-        },
-        {
-          "name": "GAME_VARIANT_PERFORMANCE_DTO_GAME_VARIANT_STATUS_DISABLED",
-          "value": "disabled"
-        },
-        {
-          "name": "VIEWER_STATISTICS_CHANNEL_DTO_CHANNEL_HBBTV",
-          "value": "hbbtv"
-        },
-        {
-          "name": "VIEWER_STATISTICS_CHANNEL_DTO_CHANNEL_STREAM",
-          "value": "stream"
-        },
-        {
-          "name": "VIEWER_STATISTICS_CHANNEL_DTO_CHANNEL_API",
-          "value": "api"
-        },
-        {
-          "name": "VIEWER_STATISTICS_CHANNEL_DTO_CHANNEL_CLEAN_FEED_STREAM",
-          "value": "cleanFeedStream"
-        }
-      ],
-      "dtos": [
-        {
-          "name": "GameStatisticDTO",
-          "generics": [],
-          "properties": {
-            "showDate": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "marginInPercent": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "performancePerMinute": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "producerName": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "presenterName": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "allQuantity": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "cancellationQuantity": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "returnQuantity": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "endPriceInCent": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "specialName": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "guestName": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "gameId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "runtimeEntryId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "GameSoundDTO",
-          "generics": [],
-          "properties": {
-            "name": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "path": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "activatedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "GlobalGameSettingsDTO",
-          "generics": [],
-          "properties": {
-            "guests": {
-              "type": "string",
-              "array": true,
-              "generics": []
-            },
-            "presenters": {
-              "type": "string",
-              "array": true,
-              "generics": []
-            },
-            "producers": {
-              "type": "string",
-              "array": true,
-              "generics": []
-            },
-            "specials": {
-              "type": "string",
-              "array": true,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "ShiftDTO",
-          "generics": [],
-          "properties": {
-            "id": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "shift": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "startsAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "endsAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "pattern": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "patternStartsAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "patternEndsAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "presenter": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "producer": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "guest": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "special": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "priceCrashPresetValue": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "isPriceCrashPresetEnabled": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "GameDTO",
-          "generics": [],
-          "properties": {
-            "gameType": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "currentPriceInCent": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "endPriceInCent": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "freeDelivery": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "gameEndedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "gameMode": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "gameStartedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "id": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isHighlight": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "plannedFor": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "presenter": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "producer": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "productId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "quantityAtStart": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "quantityCurrent": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "pretendedQuantityAtStart": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "remark": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "specialBrand": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "specialGuest": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "startPriceInCent": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "status": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "startId": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "showGame": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "articleId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "runtimeEntryId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "saleMode": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "shift": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "bidStatus": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isProductBundle": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "relatedProductIds": {
-              "type": "string",
-              "array": true,
-              "generics": []
-            },
-            "productBundleIdentifier": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "planer": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "withRemoteStock": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "showSpecial": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isRobotGame": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "GameVariantPerformanceDTO",
-          "generics": [],
-          "properties": {
-            "stockAtStart": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "stockAvailable": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "sold": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "gameId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "variantId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "productId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "ringsize": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "material": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "status": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "keymap": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "disabledAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "SettingsOverviewDTO",
-          "generics": [],
-          "properties": {
-            "showCaller": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "onlineCount": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "callerCount": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "potentialBidderCount": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "isHighlightShow": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "activeTimerInSeconds": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "soundFile": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "soundActivatedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "soundFilePath": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "tickerState": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "highlightPricechange": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "highlightBidder": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "highlightBidLockEnabled": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "mottos": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "schnapp": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "jump": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "system": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "price": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "jumptime": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "shippingCost": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "autoSinkActivated": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "productInfoBoxVisible": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "infoBoxProductId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "priceCrashCount": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "maxAllowedAnonymousBids": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "GameStockInfoDTO",
-          "generics": [],
-          "properties": {
-            "stockAtStart": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "stockAvailable": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "GameSalesStatisticDTO",
-          "generics": [],
-          "properties": {
-            "confirmedPieces": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "confirmedRevenue": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "confirmedMargin": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "confirmedMarginRate": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "ViewerStatisticsDTO",
-          "generics": [],
-          "properties": {
-            "baseDTO": {
-              "type": "DTO.Game.ViewerStatisticsBaseDTO",
-              "array": false,
-              "generics": []
-            },
-            "channelCollection": {
-              "type": "DTO.Game.ViewerStatisticsChannelDTO",
-              "array": true,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "ViewerStatisticsBaseDTO",
-          "generics": [],
-          "properties": {
-            "timestamp": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "gameId": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "ViewerStatisticsChannelDTO",
-          "generics": [],
-          "properties": {
-            "channel": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "count": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            }
-          }
-        }
-      ],
-      "namespaces": [
-        {
-          "name": "ProductBundle",
-          "dtos": [
-            {
-              "name": "ProductBundleDTO",
-              "generics": [],
-              "properties": {
-                "base": {
-                  "type": "DTO.Game.ProductBundle.ProductBundleBaseDTO",
-                  "array": false,
-                  "generics": []
-                },
-                "members": {
-                  "type": "DTO.Game.ProductBundle.ProductBundleMemberDTO",
-                  "array": true,
-                  "generics": []
-                },
-                "createdAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                }
-              }
-            },
-            {
-              "name": "ProductBundleBaseDTO",
-              "generics": [],
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "name": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "type": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "bundleIdentifier": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "bundleIdentifierPrefix": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "status": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "targetPrice": {
-                  "type": "number",
-                  "array": false,
-                  "generics": []
-                },
-                "startPrice": {
-                  "type": "number",
-                  "array": false,
-                  "generics": []
-                },
-                "targetPriceRevised": {
-                  "type": "number",
-                  "array": false,
-                  "generics": []
-                },
-                "startPriceRevised": {
-                  "type": "number",
-                  "array": false,
-                  "generics": []
-                },
-                "purchasePrice": {
-                  "type": "number",
-                  "array": false,
-                  "generics": []
-                },
-                "purchasePriceVat": {
-                  "type": "number",
-                  "array": false,
-                  "generics": []
-                },
-                "legacyArticleName": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "plannedIn": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "plannedAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "brokenStatus": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "bundleMatchingValue": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                }
-              }
-            },
-            {
-              "name": "ProductBundleMemberDTO",
-              "generics": [],
-              "properties": {
-                "productId": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "variantId": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "problems": {
-                  "type": "string",
-                  "array": true,
-                  "generics": []
-                },
-                "position": {
-                  "type": "number",
-                  "array": false,
-                  "generics": []
-                },
-                "keymap": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "createdBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedAt": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                },
-                "modifiedBy": {
-                  "type": "string",
-                  "array": false,
-                  "generics": []
-                }
-              }
-            }
-          ],
-          "namespaces": []
-        }
-      ]
-    },
-    {
-      "name": "Order",
-      "constants": [
-        {
-          "name": "ORDER_ITEM_DTO_SOO_TV",
-          "value": "tv"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_BID_AGENT_NATIVE",
-          "value": "bidAgentNative"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_BID_AGENT_FR",
-          "value": "bidAgentFR"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_BID_AGENT_NL",
-          "value": "bidAgentNL"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_BID_AGENT_ES",
-          "value": "bidAgentES"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_BID_AGENT_IT",
-          "value": "bidAgentIT"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_BID_AGENT_EN",
-          "value": "bidAgentEN"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_BID_AGENT_EN_EXTERNAL",
-          "value": "bidAgentENExternal"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_WEBSHOP_NATIVE",
-          "value": "webshopNative"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_WEBSHOP_FR",
-          "value": "webshopFR"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_WEBSHOP_NL",
-          "value": "webshopNL"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_WEBSHOP_ES",
-          "value": "webshopES"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_WEBSHOP_IT",
-          "value": "webshopIT"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_PERSONAL_SHOP",
-          "value": "personalShop"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_PERSONAL_SHOP_WEB_NATIVE",
-          "value": "personalShopWebNative"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_PERSONAL_SHOP_WEB_FR",
-          "value": "personalShopWebFR"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_PERSONAL_SHOP_WEB_NL",
-          "value": "personalShopWebNL"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_PERSONAL_SHOP_WEB_ES",
-          "value": "personalShopWebES"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_PERSONAL_SHOP_WEB_IT",
-          "value": "personalShopWebIT"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_APP_MOBILE_ANDROID",
-          "value": "appMobileAndroid"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_APP_MOBILE_IOS",
-          "value": "appMobileIOS"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_APP_SMART_TV",
-          "value": "appSmartTv"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_RETROSPECTIVE_ENTRY",
-          "value": "retrospectiveEntry"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_EMPLOYEE_SALE",
-          "value": "employeeSale"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_KATSHOP_INT",
-          "value": "katShopInt"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_PERSONAL_SHOP_KAT_INT",
-          "value": "personalShopKatInt"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_APP_MOBILE_SHOP_ANDROID",
-          "value": "appShoppingAndroid"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SOO_APP_MOBILE_SHOP_IOS",
-          "value": "appShoppingIOS"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_FORMER_REFERENCE_TYPE_ORDER_ENTRY_ID",
-          "value": "orderEntryId"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_FORMER_REFERENCE_TYPE_RESERVATION_ID",
-          "value": "reservationEntryId"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_ITEM_TYPE_DEFAULT",
-          "value": "default"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_ITEM_TYPE_PROPOSED",
-          "value": "proposed"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_ITEM_TYPE_MANUAL",
-          "value": "manual"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_ITEM_STATUS_BOOKED",
-          "value": "booked"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_ITEM_STATUS_CANCELLED",
-          "value": "cancelled"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_ITEM_STATUS_PENDING",
-          "value": "pending"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_ITEM_STATUS_PRE_PENDING",
-          "value": "prePending"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_ITEM_STATUS_REJECTED",
-          "value": "rejected"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_CONTEXT_PERSONAL_SHOPPER",
-          "value": "personalShopper"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_CONTEXT_EMERGENCY_BID",
-          "value": "emergencyBid"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_CONTEXT_APP_RECENT_GAMES",
-          "value": "appRecentGames"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_CONTEXT_APP_SHOP_ACCESSORIES",
-          "value": "appShopAccessories"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_CONTEXT_APP_SIMILAR_ITEM",
-          "value": "appSimilarItem"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_CONTEXT_APP_SHOP",
-          "value": "appShop"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_CONTEXT_APP_LIKED_ITEM",
-          "value": "appLikedItem"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_CONTEXT_APP_MYJUWELO",
-          "value": "appMyJuwelo"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_CONTEXT_WEB_RECENT_GAMES",
-          "value": "webRecentGames"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_ITEM_PRODUCER_LAST_GAMES",
-          "value": "LAST GAMES"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_ORDER_ITEM_PRODUCER_PERSONAL_SHOPPER",
-          "value": "PersonalShopper"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_CANCEL_REASON_MANUAL",
-          "value": "manual"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_CANCEL_REASON_PAYMENT_DEADLINE",
-          "value": "paymentDeadline"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_CANCELLATION_REASON_CC_STORNO",
-          "value": "ccStorno"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_CANCELLATION_REASON_CUSTOMER_NOT_CREDITWORTHY",
-          "value": "customerNotCreditworthy"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_CANCELLATION_REASON_PRODUCT_NOT_AVAILABLE",
-          "value": "productNotAvailable"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_CANCELLATION_REASON_END_OF_PAYMENT_TERMS",
-          "value": "endOfPaymentTerms"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_CANCELLATION_REASON_DEFECT",
-          "value": "defect"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_CANCELLATION_REASON_LOST",
-          "value": "lost"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_CC_STORNO",
-          "value": "ccStorno"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_CUSTOMER_NOT_CREDITWORTHY",
-          "value": "customerNotCreditworthy"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_PRODUCT_NOT_AVAILABLE",
-          "value": "productNotAvailable"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_END_OF_PAYMENT_TERMS",
-          "value": "endOfPaymentTerms"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_DEFECT",
-          "value": "defect"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_LOST",
-          "value": "lost"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_RETURN_BEFORE_SHIPPING",
-          "value": "returnBeforeShipping"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_UNDELIVERABLE",
-          "value": "undeliverable"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_UNSATISFIED",
-          "value": "unsatisfied"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_REFUSED",
-          "value": "refused"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_UNRETURNABLE",
-          "value": "unreturnable"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_NOT_PICKED_UP",
-          "value": "notPickedUp"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_OTHER",
-          "value": "other"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_WRONG_ITEM",
-          "value": "wrongItem"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_DELIVERED_TOO_LATE",
-          "value": "deliveredTooLate"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_PREFERRING_ANOTHER_ITEM",
-          "value": "preferringAnotherItem"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_UNEXPECTED_COLOR",
-          "value": "unexpectedColor"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_UNEXPECTED_SIZE",
-          "value": "unexpectedSize"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_DISLIKE_THE_WORKMANSHIP",
-          "value": "dislikeTheWorkmanship"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_BAD_PRICE_PERFORMANCE_RATIO",
-          "value": "badPricePerformanceRatio"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_TOO_SMALL",
-          "value": "tooSmall"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_TOO_BIG",
-          "value": "tooBig"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_TOO_SHORT",
-          "value": "tooShort"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_TOO_LONG",
-          "value": "tooLong"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_RETURN_REASON_NOT_PROVIDED",
-          "value": "notProvided"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SORT_BY_CHRONOLOGICALLY_DESC_KEEP_ORDER_IDS_TOGETHER",
-          "value": "chronologicallyDescKeepOrderIdsTogether"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SORT_BY_VARIANT_ID",
-          "value": "variantId"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SORT_BY_DATE_TIME",
-          "value": "dateTime"
-        },
-        {
-          "name": "ORDER_ITEM_DTO_SORT_BY_SOURCE",
-          "value": "source"
-        }
-      ],
-      "dtos": [
-        {
-          "name": "OrderItemDTO",
-          "generics": [],
-          "properties": {
-            "id": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "orderId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "orderContext": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "customerId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "productId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "variantId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "packedSku": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "quantity": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "startPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "biddingPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "endPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "orderTimestamp": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "ringsize": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "material": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "referenceNumber": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isAutoBookable": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "packedEndAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "packedStartAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "sourceOfOrder": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "payform": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "cancelledAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "cancellationSendToPaymentProviderAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "biddingMsisdn": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "sellingChannel": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isPaymentFallback": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "gameId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "formerReferenceType": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "formerReferenceId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "remarks": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "remarkEntries": {
-              "type": "string",
-              "array": true,
-              "generics": []
-            },
-            "runtimeEntryId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "presenter": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "producer": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "orderItemType": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "openBasketShippingCost": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "infoText": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "cancellationInfoText": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "cancellationFormOfRefund": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "cancellationRefundInitiated": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "infoTextEntries": {
-              "type": "string",
-              "array": true,
-              "generics": []
-            },
-            "status": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "showSpecial": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "paymentVendorTransactionId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "paymentVendorName": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "preVoucherRedemptionEndPrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "redemptionVoucherAssignmentId": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "isOndemand": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "originalPayform": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "paidAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "orderDate": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "bookingDate": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "productName": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "productPurchasePrice": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "cancelReason": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "cancellationReason": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "returnId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "returnReason": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "initialRemoteBooking": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "anonymousInstanceId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isHighlight": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "parcelTrackingId": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "callAgent": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "paymentReminderAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "paymentDeadlineAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "isBid": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "isAnonymousBid": {
-              "type": "boolean",
-              "array": false,
-              "generics": []
-            },
-            "orderOffsetCreditBalance": {
-              "type": "number",
-              "array": false,
-              "generics": []
-            },
-            "packedBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "cancelledBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "returnedAt": {
+            "frontend": {
               "type": "string",
               "array": false,
               "generics": []
             },
-            "returnedBy": {
+            "displayName": {
               "type": "string",
               "array": false,
               "generics": []
@@ -3927,93 +418,99 @@
   ],
   "clients": [
     {
-      "name": "AggregationProductInformationController",
+      "name": "LoginController",
       "methods": [
         {
-          "name": "getProductDetails",
+          "name": "loginFrontend",
           "resource": {
-            "path": "/aggregation/product/details",
+            "path": "/session/:appName",
             "type": {
-              "name": "DTO.Aggregation.ProductDetailsAggregationDTO",
+              "name": "DTO.Session.FrontendSessionDTO",
               "generics": [],
-              "array": true
+              "array": false
             }
           },
           "protocol": {
             "name": "HTTP",
-            "method": "get"
+            "method": "post"
           },
-          "parameters": []
+          "parameters": [
+            {
+              "name": "appName",
+              "type": "string",
+              "optional": false,
+              "array": false
+            },
+            {
+              "name": "credentials",
+              "type": "DTO.Login.CredentialsDTO",
+              "optional": false,
+              "array": false
+            }
+          ]
         }
       ]
     },
     {
-      "name": "CustomerController",
+      "name": "SessionController",
       "methods": [
         {
-          "name": "getCustomersRanking",
+          "name": "getCurrentSessionFrontend",
           "resource": {
-            "path": "/customers/ranking",
+            "path": "/session/:appName",
             "type": {
-              "name": "DTO.Customer.CustomerRankingDTO",
+              "name": "DTO.Session.FrontendSessionDTO",
               "generics": [],
-              "array": true
+              "array": false
             }
           },
           "protocol": {
             "name": "HTTP",
             "method": "get"
           },
-          "parameters": []
-        }
-      ]
-    },
-    {
-      "name": "GameController",
-      "methods": [
-        {
-          "name": "getGameStatistics",
-          "resource": {
-            "path": "/games/statistics",
-            "type": {
-              "name": "DTO.Game.GameStatisticDTO",
-              "generics": [],
-              "array": true
+          "parameters": [
+            {
+              "name": "appName",
+              "type": "string",
+              "optional": false,
+              "array": false
             }
-          },
-          "protocol": {
-            "name": "HTTP",
-            "method": "get"
-          },
-          "parameters": []
+          ]
         },
         {
-          "name": "getGamesSounds",
+          "name": "logout",
           "resource": {
-            "path": "/games/sounds",
+            "path": "/session",
             "type": {
-              "name": "DTO.Game.GameSoundDTO",
+              "name": "void",
               "generics": [],
-              "array": true
+              "array": false
             }
           },
           "protocol": {
             "name": "HTTP",
-            "method": "get"
+            "method": "delete"
           },
-          "parameters": []
+          "parameters": [
+            {
+              "name": "session",
+              "type": "DTO.Session.SessionDTO",
+              "optional": false,
+              "array": false
+            }
+          ]
         }
       ]
     },
     {
-      "name": "GameSettingController",
+      "name": "SystemController",
       "methods": [
         {
-          "name": "getGlobalGameSettings",
+          "name": "getRegion",
           "resource": {
-            "path": "/globalgamesettings",
+            "path": "/region",
             "type": {
-              "name": "DTO.Game.GlobalGameSettingsDTO",
+              "name": "string",
               "generics": [],
               "array": false
             }
@@ -4027,35 +524,14 @@
       ]
     },
     {
-      "name": "ProductBundleController",
+      "name": "UserController",
       "methods": [
         {
-          "name": "getProductBundles",
+          "name": "getUserRights",
           "resource": {
-            "path": "/productBundles",
+            "path": "/user/:login/rights",
             "type": {
-              "name": "DTO.Game.ProductBundle.ProductBundleDTO",
-              "generics": [],
-              "array": true
-            }
-          },
-          "protocol": {
-            "name": "HTTP",
-            "method": "get"
-          },
-          "parameters": []
-        }
-      ]
-    },
-    {
-      "name": "ShiftController",
-      "methods": [
-        {
-          "name": "getCurrentShiftConfig",
-          "resource": {
-            "path": "/shift/current/config",
-            "type": {
-              "name": "DTO.Game.ShiftDTO",
+              "name": "DTO.Authorization.UserRightsDTO",
               "generics": [],
               "array": false
             }
@@ -4064,23 +540,14 @@
             "name": "HTTP",
             "method": "get"
           },
-          "parameters": []
-        },
-        {
-          "name": "getShifts",
-          "resource": {
-            "path": "/shifts",
-            "type": {
-              "name": "DTO.Game.ShiftDTO",
-              "generics": [],
-              "array": true
+          "parameters": [
+            {
+              "name": "login",
+              "type": "string",
+              "optional": false,
+              "array": false
             }
-          },
-          "protocol": {
-            "name": "HTTP",
-            "method": "get"
-          },
-          "parameters": []
+          ]
         }
       ]
     },
@@ -4088,87 +555,15 @@
       "name": "WebSocketController",
       "methods": [
         {
-          "name": "subscribeCurrentGameBidsRoom",
+          "name": "subscribePingRoom",
           "resource": {
             "path": null,
             "type": {
-              "name": "DTO.Order.OrderItemDTO",
-              "generics": [],
-              "array": true
-            },
-            "room": "currentGameBids"
-          },
-          "protocol": {
-            "name": "WS",
-            "method": "join",
-            "namespace": "Jsc2Jfs"
-          },
-          "parameters": []
-        },
-        {
-          "name": "subscribeCurrentGameDetailsRoom",
-          "resource": {
-            "path": null,
-            "type": {
-              "name": "DTO.Aggregation.AggregatedGameDetailsDTO",
+              "name": "string",
               "generics": [],
               "array": false
             },
-            "room": "currentGameDetails"
-          },
-          "protocol": {
-            "name": "WS",
-            "method": "join",
-            "namespace": "Jsc2Jfs"
-          },
-          "parameters": []
-        },
-        {
-          "name": "subscribeCurrentGamePlayerRoom",
-          "resource": {
-            "path": null,
-            "type": {
-              "name": "DTO.Customer.CustomerMsisdnDTO",
-              "generics": [],
-              "array": true
-            },
-            "room": "currentGamePlayer"
-          },
-          "protocol": {
-            "name": "WS",
-            "method": "join",
-            "namespace": "Jsc2Jfs"
-          },
-          "parameters": []
-        },
-        {
-          "name": "subscribeLastHalfHourViewerStatisticsRoom",
-          "resource": {
-            "path": null,
-            "type": {
-              "name": "DTO.Game.ViewerStatisticsDTO",
-              "generics": [],
-              "array": true
-            },
-            "room": "lastHalfHourViewerStatistics"
-          },
-          "protocol": {
-            "name": "WS",
-            "method": "join",
-            "namespace": "Jsc2Jfs"
-          },
-          "parameters": []
-        },
-        {
-          "name": "subscribePlannedGamesForCurrentDayRoom",
-          "resource": {
-            "path": null,
-            "type": {
-              "name": "DTO.Game.GameDTO",
-              "generics": [],
-              "array": true
-            },
-            "room": "plannedGamesForCurrentDay"
+            "room": "ping"
           },
           "protocol": {
             "name": "WS",
