@@ -687,7 +687,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/postinstall.ts": {
-        "version": "df5e822c81865e193c08fe3e6ac647008b9bfdaa8072f8df3004bbe5795333ae",
+        "version": "0fcbc2f48b4dad1b4f8143e45c06b590b37b018ab7987c8b687141c367d1dcdf",
         "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },

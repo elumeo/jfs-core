@@ -58,8 +58,8 @@ exports.default = new Script_1.default({
         yield Project.Package.registerScripts(process.cwd());
         yield Project.Package.deployConfigFiles(process.cwd());
         yield Project.Package.setPeerDependencies(process.cwd());
-        const path = parent(process.cwd());
-        if (parent) {
+        const path = parent(path_1.dirname(process.cwd()));
+        if (path) {
             Project.Package.addPostinstallScript(path, core);
             Package.run('jfs-postinstall', {
                 cwd: path,
