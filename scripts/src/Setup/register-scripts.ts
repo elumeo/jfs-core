@@ -104,12 +104,16 @@ const run = async () => {
 
   const current = await Package.json(path);
 
-  await fs.writeJSON(path, {
+  const next = {
     ...current,
     scripts: {
       ...current.scripts,
       ...(await scripts(process.cwd()))
     }
+  };
+
+  await fs.writeJSON(path, next, {
+    spaces: 2
   });
 
   console.log(`Registered scripts from jfs-core`);

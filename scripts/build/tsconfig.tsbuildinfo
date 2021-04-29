@@ -692,12 +692,12 @@
         "affectsGlobalScope": false
       },
       "../src/setup/register-scripts.ts": {
-        "version": "d5d5b6ab7291edc11b00417ed8559cc7fb043d8a49fb5e2044bd2c302939aff0",
+        "version": "3db55f689e06a83b384b82e1c5c2a2cac616e7433f5b1d3077a7a18feef7e8da",
         "signature": "f87e8d5bd2da55789accae9e103cb73f6c577d3079fcbd1c5e34f40adbc7a144",
         "affectsGlobalScope": false
       },
       "../src/setup/set-peer-dependencies.ts": {
-        "version": "34488e1349d6f2145b5f504ab0499a4c5ae5590ee036571fd9e25d81765f77e9",
+        "version": "e2681f552f66d19209df212dba2846917fa2574357200a6cd8ef179338964757",
         "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },

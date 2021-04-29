@@ -15,10 +15,15 @@ const run = async () => {
 
   if (type !== 'core') {
     const { name, dependencies } = await Package.json(resolve(core, 'package.json'));
-    
-    await fs.writeJSON(resolve(process.cwd(), 'package.json'), {
+
+    const path = resolve(process.cwd(), 'package.json');
+    const next = {
       ...(await Package.json(resolve(process.cwd(), 'package.json'))),
       peerDependencies: dependencies
+    };
+    
+    await fs.writeJSON(path, next, {
+      spaces: 2
     });
     
     console.log(message.completed(`Added peerDependencies to package.json of ${name}`))

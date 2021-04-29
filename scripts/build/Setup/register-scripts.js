@@ -96,7 +96,10 @@ const scripts = (path, scripts = [script()]) => new Promise((resolve) => __await
 const run = () => __awaiter(void 0, void 0, void 0, function* () {
     const path = path_1.resolve(process.cwd(), 'package.json');
     const current = yield Package.json(path);
-    yield fs_extra_1.default.writeJSON(path, Object.assign(Object.assign({}, current), { scripts: Object.assign(Object.assign({}, current.scripts), (yield scripts(process.cwd()))) }));
+    const next = Object.assign(Object.assign({}, current), { scripts: Object.assign(Object.assign({}, current.scripts), (yield scripts(process.cwd()))) });
+    yield fs_extra_1.default.writeJSON(path, next, {
+        spaces: 2
+    });
     console.log(`Registered scripts from jfs-core`);
 });
 exports.default = script(true);
