@@ -18,8 +18,7 @@ const common = {
             options: {
               presets: [
                 ['@babel/preset-env', {
-                  "modules": false,
-                  "loose": true
+                  "modules": false
                 }],
                 '@babel/preset-react',
                 '@babel/preset-typescript'
