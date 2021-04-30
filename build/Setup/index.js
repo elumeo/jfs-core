@@ -1,6 +1,4 @@
 import moment from 'moment';
-import './mp3';
-import './uuid';
 Date.prototype.toJSON = function () {
     return moment(this).format();
 };

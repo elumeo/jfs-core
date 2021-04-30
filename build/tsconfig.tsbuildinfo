@@ -4341,6 +4341,16 @@
         "signature": "77f00b0250a92428bc61790b1b96307df8207936f85cfa2bfcde6a9bdd8f1764",
         "affectsGlobalScope": false
       },
+      "../src/setup/translations.json": {
+        "version": "84cb239d67b361408c035662d385d724896e3a85b6393556ea6a264d20331e4a",
+        "signature": "68c0d872e25ccf1e6f40810842bb8b4991bc3bc15f559984dbca8b17e876ac98",
+        "affectsGlobalScope": true
+      },
+      "../src/setup/index.ts": {
+        "version": "0ffe36ed4c2ac821a37d14dc9b3e93d04d504fa91e43b7fafde0200f431ba8b3",
+        "signature": "8adbfd59bd118e76764ce9f1506a9d3a7524aded87722908fbe52dbd2d3f66fa",
+        "affectsGlobalScope": false
+      },
       "../src/setup/mp3.d.ts": {
         "version": "0a750a00bbda075b4842918fcbb72368bfe2eee862b852920bdde44bd0a1b4a2",
         "signature": "0a750a00bbda075b4842918fcbb72368bfe2eee862b852920bdde44bd0a1b4a2",
@@ -4349,16 +4359,6 @@
       "../src/setup/uuid.d.ts": {
         "version": "a2f083b34e7aa6d20672e88c8237c422c8df93901521d691e30b93ee3dff41db",
         "signature": "a2f083b34e7aa6d20672e88c8237c422c8df93901521d691e30b93ee3dff41db",
-        "affectsGlobalScope": false
-      },
-      "../src/setup/translations.json": {
-        "version": "84cb239d67b361408c035662d385d724896e3a85b6393556ea6a264d20331e4a",
-        "signature": "68c0d872e25ccf1e6f40810842bb8b4991bc3bc15f559984dbca8b17e876ac98",
-        "affectsGlobalScope": true
-      },
-      "../src/setup/index.ts": {
-        "version": "340b1fff77a31988e2233f99c5659b66bcede616d588083164737e470e31449e",
-        "signature": "52ba7e3bf35c645a7520344a85f6b8fda2ca96b2d6da2b065231ce5b6015aae1",
         "affectsGlobalScope": false
       },
       "../node_modules/redux-devtools-extension/index.d.ts": {
