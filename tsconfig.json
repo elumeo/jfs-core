@@ -15,6 +15,6 @@
       "API/*" : ["./API/*"]
     }
   },
-  "include": ["./src", "./augemtation"],
+  "include": ["./src"],
   "exclude": ["node_modules"]
 }
