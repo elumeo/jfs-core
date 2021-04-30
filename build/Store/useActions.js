@@ -1,3 +1,3 @@
-import * as Action from './/Action';
+import * as Action from './Action';
 import createUseActions from './createUseActions';
 export default createUseActions(Action);

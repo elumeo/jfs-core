@@ -52,11 +52,15 @@ const common = {
         test: /\.js$/,
         enforce: 'pre',
         use: ['source-map-loader']
+      },
+      {
+        test: /\.mp3$/,
+        use: ['file-loader']
       }
     ]
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.json', '.mp3'],
     alias: {
       Core: resolve(PATH.ROOT, 'node_modules', '@elumeo', 'jfs-core')
     },

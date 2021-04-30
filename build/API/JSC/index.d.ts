@@ -1,7 +1,7 @@
-import { AxiosResponse } from 'axios';
-import { Observable } from 'rxjs';
-import { PayloadAction } from 'typesafe-actions';
-import { IWebSocketRoom } from '../../Types/WebSocket';
+import { AxiosResponse } from "axios";
+import { Observable } from "rxjs";
+import { PayloadAction } from "typesafe-actions";
+import { IWebSocketRoom } from "../../Types/WebSocket";
 declare namespace JSCApi {
     interface IUrlParams {
         filter?: string;
@@ -25,8 +25,8 @@ declare namespace JSCApi {
         }
         namespace Session {
             interface IFrontendSessionDTO {
-                session?: JSCApi.DTO.Session.ISessionDTO;
-                appProperties?: JSCApi.DTO.Authorization.IPropertyDTO[];
+                session?: DTO.Session.ISessionDTO;
+                appProperties?: DTO.Authorization.IPropertyDTO[];
                 createdAt?: string;
                 createdBy?: string;
                 modifiedAt?: string;
@@ -60,8 +60,8 @@ declare namespace JSCApi {
                 modifiedBy?: string;
             }
             interface IUserRightsDTO {
-                entityAttributeAccesses?: JSCApi.DTO.Authorization.IEntityAttributeAccessDTO[];
-                assignedApps?: JSCApi.DTO.App.IAppDTO[];
+                entityAttributeAccesses?: DTO.Authorization.IEntityAttributeAccessDTO[];
+                assignedApps?: DTO.App.IAppDTO[];
             }
             interface IEntityAttributeAccessDTO {
                 entity?: string;
@@ -107,21 +107,21 @@ declare namespace JSCApi {
         }
     }
     namespace LoginClient {
-        const loginFrontend: (appName: string, credentials: JSCApi.DTO.Login.ICredentialsDTO, config?: IJscClientConfig) => Promise<AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>>;
+        const loginFrontend: (appName: string, credentials: DTO.Login.ICredentialsDTO, config?: IJscClientConfig) => Promise<AxiosResponse<DTO.Session.IFrontendSessionDTO>>;
     }
     namespace SessionClient {
-        const getCurrentSessionFrontend: (appName: string, config?: IJscClientConfig) => Promise<AxiosResponse<JSCApi.DTO.Session.IFrontendSessionDTO>>;
-        const logout: (session: JSCApi.DTO.Session.ISessionDTO, config?: IJscClientConfig) => Promise<AxiosResponse<void>>;
+        const getCurrentSessionFrontend: (appName: string, config?: IJscClientConfig) => Promise<AxiosResponse<DTO.Session.IFrontendSessionDTO>>;
+        const logout: (session: DTO.Session.ISessionDTO, config?: IJscClientConfig) => Promise<AxiosResponse<void>>;
     }
     namespace SystemClient {
         const getRegion: (config?: IJscClientConfig) => Promise<AxiosResponse<string>>;
     }
     namespace UserClient {
-        const getUserRights: (login: string, config?: IJscClientConfig) => Promise<AxiosResponse<JSCApi.DTO.Authorization.IUserRightsDTO>>;
+        const getUserRights: (login: string, config?: IJscClientConfig) => Promise<AxiosResponse<DTO.Authorization.IUserRightsDTO>>;
     }
     namespace WebSocketClient {
         const ROOM_PING: IWebSocketRoom;
-        const onRoomUpdatePing: (action: PayloadAction<string, JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<string>>) => Observable<string>;
+        const onRoomUpdatePing: (action: PayloadAction<string, DTO.WebSocket.IWebSocketRoomUpdateDTO<string>>) => Observable<string>;
     }
 }
 export default JSCApi;

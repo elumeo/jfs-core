@@ -14,7 +14,7 @@ namespace JSCApi {
     params?: IUrlParams;
   }
   export namespace DTO {
-    namespace Login {
+    export namespace Login {
       export interface ICredentialsDTO {
         username?: string;
         password?: string;
@@ -25,7 +25,7 @@ namespace JSCApi {
         modifiedBy?: string;
       }
     }
-    namespace Session {
+    export namespace Session {
       export interface IFrontendSessionDTO {
         session?: DTO.Session.ISessionDTO;
         appProperties?: DTO.Authorization.IPropertyDTO[];
@@ -47,7 +47,7 @@ namespace JSCApi {
         modifiedBy?: string;
       }
     }
-    namespace Authorization {
+    export namespace Authorization {
       export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ = "1";
       export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE = "2";
       export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE = "4";
@@ -75,7 +75,7 @@ namespace JSCApi {
         modifiedBy?: string;
       }
     }
-    namespace App {
+    export namespace App {
       export const I_APP_DTO_FRONTEND_APP_DOCK = "appDock";
       export const I_APP_DTO_FRONTEND_JFS = "jfs";
       export interface IAppDTO {
@@ -95,7 +95,7 @@ namespace JSCApi {
         modifiedBy?: string;
       }
     }
-    namespace WebSocket {
+    export namespace WebSocket {
       export interface IWebSocketRoomUpdateDTO<T1> {
         crc?: string;
         room?: string;
@@ -108,7 +108,7 @@ namespace JSCApi {
       }
     }
   }
-  export namespace JSCApi {
+  export namespace LoginClient {
     export const loginFrontend = (
       appName: string,
       credentials: DTO.Login.ICredentialsDTO,
@@ -126,7 +126,7 @@ namespace JSCApi {
         config
       );
   }
-  export namespace JSCApi {
+  export namespace SessionClient {
     export const getCurrentSessionFrontend = (
       appName: string,
       config?: IJscClientConfig
@@ -147,13 +147,13 @@ namespace JSCApi {
     ): Promise<AxiosResponse<void>> =>
       JscClient.delete<void>("/session", session, config);
   }
-  export namespace JSCApi {
+  export namespace SystemClient {
     export const getRegion = (
       config?: IJscClientConfig
     ): Promise<AxiosResponse<string>> =>
       JscClient.get<string>("/region", config);
   }
-  export namespace JSCApi {
+  export namespace UserClient {
     export const getUserRights = (
       login: string,
       config?: IJscClientConfig
@@ -167,7 +167,7 @@ namespace JSCApi {
         config
       );
   }
-  export namespace JSCApi {
+  export namespace WebSocketClient {
     export const ROOM_PING: IWebSocketRoom = {
       namespace: "Jsc2Jfs",
       room: "ping",
