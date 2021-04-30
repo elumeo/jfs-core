@@ -12,7 +12,7 @@
 // import { Translations, Navigation, Routes } from 'Setup';
 // import packageJson from '../package.json';
 // import store from 'Store';
-
+import funk from './Funk.mp3';
 // ReactDOM.render(
 //   <App.Container
 //     store={store}

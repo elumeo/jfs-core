@@ -15,7 +15,7 @@
       "API/*" : ["./API/*"]
     }
   },
-  "include": ["src"],
+  "include": ["./src", "./augemtation"],
   "exclude": [
     "scripts",
     "build",
