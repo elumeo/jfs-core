@@ -462,8 +462,8 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/api/render/jsc/dto.ts": {
-        "version": "0b866120ef02c4d0c81ddb58d63fc0421d28c7b5a9b080664110f865a20bd341",
-        "signature": "7193d88ec4ad3c4f2aaa0ee87b6bf4faeb5b4d7d58325fe9670e305b337dda26",
+        "version": "e11045bfe8f19c39fd52bb5fa218e042b35f4ea268e90575446bb9ccb75d758c",
+        "signature": "b9e165b2d8d1553843ffe2fb7475c0af529c098ebb4dd6d1a4fa8d32b4a3f7d0",
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/api/render/jsc/client/http.ts": {
@@ -482,8 +482,8 @@
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/api/render/jsc/index.ts": {
-        "version": "8115d6637f5b5995b0a88f6575d0b41babbc3d016f9bce70942c39384131ec04",
-        "signature": "8f1687246724e1cdf6361acd48a50c0c2d7aff280534422c6c3c9857342ce30d",
+        "version": "f26c2202bd42b64d7d81d1178513e3b7af014dd4ff298e9bccd5a861ea3e505c",
+        "signature": "aea0e585a6c67fa61efe1bf76de252d8cc8861e6ff5f14c152f9f8f9443969d6",
         "affectsGlobalScope": false
       },
       "../src/library/jfs/project/api/render/index.ts": {
@@ -1297,7 +1297,6 @@
         ]
       },
       "pathsBasePath": "/Users/mrb/Desktop/temp/jfs-core/scripts",
-      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
@@ -2562,11 +2561,13 @@
       "../src/library/jfs/project/api/render/jsc/index.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../src/library/jfs/project/api/render/index.ts",
+        "../src/library/jfs/project/api/render/ecmascript.ts",
         "../src/library/jfs/project/api/render/jsc/client/index.ts",
         "../src/library/jfs/project/api/render/jsc/dto.ts",
         "../src/library/jfs/project/api/render/jsc/import/index.ts",
-        "../src/library/jfs/project/api/render/type/index.ts"
+        "../src/library/jfs/project/api/render/text.ts",
+        "../src/library/jfs/project/api/render/type/index.ts",
+        "../src/library/jfs/project/api/render/typescript.ts"
       ],
       "../src/library/jfs/project/api/render/text.ts": [
         "../node_modules/@types/node/base.d.ts",

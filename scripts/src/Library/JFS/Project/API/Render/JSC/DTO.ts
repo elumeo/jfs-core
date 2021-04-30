@@ -30,7 +30,7 @@ const _interface = (description: Render.Type.JSC.DTO.Description) => TypeScript.
 
 export { _interface as interface };
 
-export const namespace = ({ name, constants = [], dtos, namespaces }: Render.Type.JSC.DTO.Namespace) => (
+export const namespace = ({ name, constants = [], dtos, namespaces }: Render.Type.JSC.DTO.Namespace): string => (
   TypeScript.namespace({
     name,
     what: Text.lines(

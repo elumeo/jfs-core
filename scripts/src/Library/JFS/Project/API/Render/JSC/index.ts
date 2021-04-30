@@ -1,10 +1,12 @@
 export * as Import from  './Import';
 export * as DTO from './DTO';
 export * as Client from './Client';
-
-import * as Render from '..';
 import * as DTO from './DTO';
+import * as TypeScript from '../TypeScript';
+import * as Text from '../Text';
 import * as Type from '../Type';
+import * as EcmaScript from '../EcmaScript';
+import * as Client from './Client';
 
 export const namespace = ({ name, remote }: {
   name: string;
@@ -12,11 +14,11 @@ export const namespace = ({ name, remote }: {
     dtos: Type.JSC.DTO.Namespace[];
     clients: Type.JSC.Client.Description[];
   }
-}) => Render.TypeScript.namespace({
+}) => TypeScript.namespace({
   name,
-  what: Render.Text.lines(
-    Render.EcmaScript.export(
-      Render.TypeScript.interface({
+  what: Text.lines(
+    EcmaScript.export(
+      TypeScript.interface({
         name: 'IUrlParams',
         lines: [
           'filter?: string;',
@@ -25,32 +27,38 @@ export const namespace = ({ name, remote }: {
         ]
       })
     ),
-    Render.EcmaScript.export(
-      Render.TypeScript.interface({
+    EcmaScript.export(
+      TypeScript.interface({
         name: 'IJscClientConfig',
         lines: [
           'params?: IUrlParams;',
         ]
       })
     ),
-    Render.EcmaScript.export(
-      Render.TypeScript.namespace({
+    EcmaScript.export(
+      TypeScript.namespace({
         name: 'DTO',
-        what: Render.Text.lines(...remote.dtos.map(DTO.namespace))
+        what: Text.lines(
+          ...(
+            remote.dtos
+              .map(DTO.namespace)
+              .map(EcmaScript.export)
+          )
+        )
       })
     ),
-    Render.Text.lines(
+    Text.lines(
       ...remote.clients.map(
-        client => Render.EcmaScript.export(
-          Render.TypeScript.namespace({
-            name: name,
-            what: Render.Text.lines(
+        client => EcmaScript.export(
+          TypeScript.namespace({
+            name: client.name,
+            what: Text.lines(
               ...client.methods
                 .filter(({ protocol }) => protocol.name === 'HTTP')
-                .map(Render.JSC.Client.HTTP.request),
+                .map(Client.HTTP.request),
               ...client.methods
                 .filter(({ protocol }) => protocol.name === 'WS')
-                .map(Render.JSC.Client.WebSocket.stream)
+                .map(Client.WebSocket.stream)
             )
           })
         )

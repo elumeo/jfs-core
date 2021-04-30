@@ -1,21 +1,21 @@
 {
-    "JscClient": {
-      "Host-Internal": "http://de.TECH-64_push_to_web.api.staging-jsc-app.juwelo.local",
-      "Host": "https://api-test.juwelo.de/staging/de/STORY-4754_new_game_controll_read_only",
-      "Host-Local": "http://localhost/jsc-api-de",
-      "Timeout": 30000
-    },
-    "JscWebSocketClient": {
-        "HostV": "http://localhost:8080",
-        "PathV": "",
-        "Host": "https://api-test.juwelo.de",
-        "Path": "/staging/websocket.services",
-        "PrivateNamespace": "Jsc2Jfs"
-      },
-    "Language": "de",
-    "Currency": "EUR",
-    "Container": "juwelotv",
-    "ContainerLanguage": "de",
-    "AppName": "jfs_Boilerplate"
-  }
+  "JscClient": {
+    "Host-Internal": "http://de.TECH-64_push_to_web.api.staging-jsc-app.juwelo.local",
+    "Host-Remote": "https://api-test.juwelo.de/staging/de/STORY-4754_new_game_controll_read_only",
+    "Host": "http://localhost/jsc-api-de",
+    "Timeout": 30000
+  },
+  "JscWebSocketClient": {
+    "HostV": "http://localhost:8080",
+    "PathV": "",
+    "Host": "https://api-test.juwelo.de",
+    "Path": "/staging/websocket.services",
+    "PrivateNamespace": "Jsc2Jfs"
+  },
+  "Language": "de",
+  "Currency": "EUR",
+  "Container": "juwelotv",
+  "ContainerLanguage": "de",
+  "AppName": "jfs_Boilerplate"
+}
   
