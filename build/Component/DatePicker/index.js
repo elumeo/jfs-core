@@ -50,7 +50,7 @@ const setFloating = (domNode, floating) => {
     }
 };
 const DatePicker = (_a) => {
-    var { label, customClearButtonId, dateFormat, value, onChange, errorText, floating, intl: { formatMessage } } = _a, rest = __rest(_a, ["label", "customClearButtonId", "dateFormat", "value", "onChange", "errorText", "floating", "intl"]);
+    var { label, customClearButtonId, dateFormat, value, onChange, errorText, floating, intl: { formatMessage }, isClearable } = _a, rest = __rest(_a, ["label", "customClearButtonId", "dateFormat", "value", "onChange", "errorText", "floating", "intl", "isClearable"]);
     const language = useSelector(state => state.Core.Language.language);
     const [date, setDate] = useState(value);
     const [open, setOpen] = useState(false);
@@ -115,6 +115,9 @@ const DatePicker = (_a) => {
             React.createElement(ReactDatePicker, Object.assign({}, rest, { wrapperClassName: classNames({
                     'has-value': !!value
                 }), onInputClick: () => setOpen(true), ref: datePickerRef, selected: date, onChange: (newDate, event) => {
+                    if (isClearable !== true && newDate === null) {
+                        return;
+                    }
                     setDate(newDate);
                     onChange(newDate, date, event);
                     if (datePickerRef.current.props.shouldCloseOnSelect) {

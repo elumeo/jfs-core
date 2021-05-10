@@ -1,3 +1,8 @@
+## [9.10.38] 2021-05-10
+## Fixed
+- fixed an issue with isClearable !== true and clearing the input field with the keyboard was possible
+  + now when blur the input field the previous value is used again
+
 ## [9.10.37] 2021-03-09
 ## Fixed
 - Fixed script path generation for package.json on Windows

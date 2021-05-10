@@ -65,6 +65,7 @@ const DatePicker: React.FC<Props> = ({
                                        errorText,
                                        floating,
                                        intl: {formatMessage},
+                                       isClearable,
                                        ...rest
                                      }) => {
   const language = useSelector(state => state.Core.Language.language);
@@ -156,6 +157,9 @@ const DatePicker: React.FC<Props> = ({
           ref={datePickerRef}
           selected={date}
           onChange={(newDate, event) => {
+            if (isClearable !== true && newDate === null) {
+              return;
+            }
             setDate(newDate as Date);
             onChange(newDate as Date, date, event);
             if (datePickerRef.current.props.shouldCloseOnSelect) {
