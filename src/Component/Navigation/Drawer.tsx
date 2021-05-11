@@ -10,7 +10,7 @@ const Drawer: React.FC = ({ children }) => {
   const navigationOpen = useSelector(
     state => state.Core.Navigation.navigationOpen
   );
-  const close = useCallback(closeNavigation, []);
+  const close = useCallback(() => closeNavigation(), []);
 
   return (
     <MUIDrawer

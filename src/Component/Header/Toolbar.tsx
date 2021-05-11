@@ -17,7 +17,7 @@ export type Props = {
 const Toolbar: React.FC<Props> = ({ variant = 'dense', ...tools }) => {
   const { formatMessage } = useIntl();
   const { openNavigation } = useActions();
-
+  const openDrawer = React.useCallback(() => openNavigation(), [])
   return (
     <AppBar position='static'>
       <MUIToolbar disableGutters variant={variant} style={{
@@ -41,7 +41,7 @@ const Toolbar: React.FC<Props> = ({ variant = 'dense', ...tools }) => {
             <IconButton
               color='inherit'
               aria-label='menu'
-              onClick={openNavigation}>
+              onClick={openDrawer}>
               <MenuIcon/>
             </IconButton>
             <Typography variant='h6' noWrap>

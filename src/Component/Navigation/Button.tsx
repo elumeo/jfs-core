@@ -9,13 +9,14 @@ const Button: React.FC = () => {
     state => state.Core.Navigation.navigationOpen
   );
   const { openNavigation, closeNavigation } = useActions();
+  const toggle = React.useCallback(() => (
+    navigationOpen
+      ? closeNavigation()
+      : openNavigation()
+  ), [navigationOpen])
   return (
     <IconButton
-      onClick={() => (
-      navigationOpen
-        ? closeNavigation()
-        : openNavigation()
-    )}>
+      onClick={toggle}>
       <ArrowBackIcon fontSize='small'/>
     </IconButton>
   );
