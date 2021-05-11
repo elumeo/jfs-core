@@ -3,7 +3,7 @@ import { of } from 'rxjs';
 import * as TA from 'typesafe-actions';
 import * as Action from '../../Action';
 import { WSClient } from '../../../API/WS/WSClient';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 import * as Format from '../../../Utilities/Format';
 const joinRoomLoading = (action$, state$) => {
     return action$.pipe(filter(TA.isActionOf(Action.webSocketJoinRoomLoadingAction)), concatMap((action) => {

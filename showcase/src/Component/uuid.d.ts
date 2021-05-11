@@ -1,3 +1,3 @@
-declare module 'uuid' {
-  export default (): string => {};
-}
+// declare module 'uuid' {
+//   export default (): string => {};
+// }

@@ -4,7 +4,7 @@ import * as TA from 'typesafe-actions';
 import * as Action from 'Store/Action';
 import { WSClient } from 'API/WS/WSClient';
 import _ from 'lodash';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { Epic } from 'Types/Redux';
 
 const checkForConnectionError: Epic = (action$, state) => {

@@ -21,6 +21,7 @@ const Toolbar = (_a) => {
     var { variant = 'dense' } = _a, tools = __rest(_a, ["variant"]);
     const { formatMessage } = useIntl();
     const { openNavigation } = useActions();
+    const openDrawer = React.useCallback(() => openNavigation(), []);
     return (React.createElement(AppBar, { position: 'static' },
         React.createElement(MUIToolbar, { disableGutters: true, variant: variant, style: {
                 height: 58
@@ -40,7 +41,7 @@ const Toolbar = (_a) => {
                         justifyContent: 'flex-start',
                         alignItems: 'center'
                     } },
-                    React.createElement(IconButton, { color: 'inherit', "aria-label": 'menu', onClick: openNavigation },
+                    React.createElement(IconButton, { color: 'inherit', "aria-label": 'menu', onClick: openDrawer },
                         React.createElement(MenuIcon, null)),
                     React.createElement(Typography, { variant: 'h6', noWrap: true }, formatMessage({ id: 'app.title' })),
                     tools.left || React.createElement(React.Fragment, null)),

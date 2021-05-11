@@ -6,9 +6,10 @@ import { useSelector } from '../../Types/Redux';
 const Button = () => {
     const navigationOpen = useSelector(state => state.Core.Navigation.navigationOpen);
     const { openNavigation, closeNavigation } = useActions();
-    return (React.createElement(IconButton, { onClick: () => (navigationOpen
-            ? closeNavigation()
-            : openNavigation()) },
+    const toggle = React.useCallback(() => (navigationOpen
+        ? closeNavigation()
+        : openNavigation()), [navigationOpen]);
+    return (React.createElement(IconButton, { onClick: toggle },
         React.createElement(ArrowBackIcon, { fontSize: 'small' })));
 };
 export default Button;

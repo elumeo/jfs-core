@@ -3,7 +3,7 @@ import { of, EMPTY } from 'rxjs';
 import * as TA from 'typesafe-actions';
 import * as Action from '../../Action';
 import { WSClient } from '../../../API/WS/WSClient';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 const checkForConnectionError = (action$, state) => {
     return action$.pipe(filter(TA.isActionOf(Action.webSocketConnectRequestAction)), concatMap(() => WSClient.connectionErrorObservable$), switchMap((err) => {
         if (state.value.Core.WebSocket[err.namespace].isConnecting) {

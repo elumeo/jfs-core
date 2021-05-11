@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as MUI from '@material-ui/core';
 import { useIntl } from 'react-intl';
 import useActions from '@elumeo/jfs-core/build/Store/useActions';
-import uuid from 'uuid';
+import {v4 as uuid} from 'uuid';
 
 const random_select = <T, >(array: T[]) => array[Math.floor(Math.random() * array.length)]
 

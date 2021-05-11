@@ -4,7 +4,7 @@ import { ActionType, Epic } from 'Types/Redux';
 import { isActionOf } from 'typesafe-actions';
 import * as Actions from 'Store/Action';
 import * as Notification from 'Component/Notification';
-import uuid from 'uuid';
+import {v4 as uuid} from 'uuid'; 
 import { of } from 'rxjs';
 import { AxiosError } from 'axios';
 

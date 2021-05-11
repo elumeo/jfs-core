@@ -7,7 +7,7 @@ import Header from './Header';
 const Drawer = ({ children }) => {
     const { closeNavigation } = useActions();
     const navigationOpen = useSelector(state => state.Core.Navigation.navigationOpen);
-    const close = useCallback(closeNavigation, []);
+    const close = useCallback(() => closeNavigation(), []);
     return (React.createElement(MUIDrawer, { open: navigationOpen, anchor: 'left', onClose: close },
         React.createElement("div", { style: {
                 width: 270
