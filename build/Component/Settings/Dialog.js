@@ -11,7 +11,8 @@ const Dialog = ({ children }) => {
     const { closeSettings } = useActions();
     const { formatMessage } = useIntl();
     const open = useSelector(state => state.Core.Settings.settingsOpen);
-    return (React.createElement(MUIDialog, { open: open, onClose: closeSettings },
+    const onClose = React.useCallback(() => closeSettings(), [closeSettings]);
+    return (React.createElement(MUIDialog, { open: open, onClose: onClose },
         React.createElement(DialogTitle, null, formatMessage({ id: 'app.settings' })),
         React.createElement(DialogContent, null, children),
         React.createElement(DialogActions, null,

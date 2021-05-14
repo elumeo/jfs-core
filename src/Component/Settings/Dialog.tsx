@@ -12,10 +12,11 @@ const Dialog: React.FC = ({ children }) => {
   const { closeSettings } = useActions();
   const { formatMessage } = useIntl();
   const open = useSelector(state => state.Core.Settings.settingsOpen);
+  const onClose = React.useCallback(() => closeSettings(), [closeSettings])
   return (
     <MUIDialog
       open={open}
-      onClose={closeSettings}>
+      onClose={onClose}>
       <DialogTitle>
         {formatMessage({id: 'app.settings'})}
       </DialogTitle>

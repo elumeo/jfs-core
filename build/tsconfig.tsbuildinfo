@@ -3922,7 +3922,7 @@
         "affectsGlobalScope": false
       },
       "../src/component/settings/button.tsx": {
-        "version": "1c2ba064a13972272c3a4752e48b8be961f8dfb348996286efe453481cf0513d",
+        "version": "dc8692a64d23d54d7cbb92e59487bd2a35af4ba4f74616d518ae64d6a3f8f9cd",
         "signature": "25ce4460a2d475d1779d8002fc48fd6840566bdebd5058183b992176f08597b8",
         "affectsGlobalScope": false
       },
@@ -3937,12 +3937,12 @@
         "affectsGlobalScope": false
       },
       "../src/component/settings/dialog.tsx": {
-        "version": "3d89ba5ad4e8eb41af69f686f24ff2c3089639ebb378eb202ef9647cc9fe105c",
+        "version": "f2aeeb48f63aa31bc4b017f0fb8cd13d8266b7e528e6d8526984c641b4fce6cc",
         "signature": "ed26551321e65605f2e7a5ded01da2694387f96ce7de8c057fb384dab9f7f02a",
         "affectsGlobalScope": false
       },
       "../src/component/settings/navigationitem.tsx": {
-        "version": "825dcf815c646d845fa54a0dd29187932718b5a13932e55d1d69c8a1403fe1a4",
+        "version": "2e974342a11cb6f083b25bbc745e2a259049d95b43496beeb253dafdb9c689b9",
         "signature": "f50da7b4504076da6a70301c9d3123aa995181a195847624df6b77e60605097e",
         "affectsGlobalScope": false
       },

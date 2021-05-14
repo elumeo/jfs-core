@@ -6,9 +6,12 @@ import useActions from '../../Store/useActions';
 const Button = () => {
     const { openSettings, closeSettings } = useActions();
     const settingsOpen = useSelector(state => state.Core.Settings.settingsOpen);
-    return (React.createElement(IconButton, { color: 'inherit', onClick: () => (settingsOpen
+    const onClick = React.useCallback(() => {
+        settingsOpen
             ? closeSettings()
-            : openSettings()) },
+            : openSettings();
+    }, [settingsOpen, closeSettings, openSettings]);
+    return (React.createElement(IconButton, { color: 'inherit', onClick: onClick },
         React.createElement(SettingsIcon, null)));
 };
 export default Button;
