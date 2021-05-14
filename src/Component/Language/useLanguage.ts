@@ -1,5 +1,6 @@
 import { useSelector } from "Types/Redux";
 import { Language } from "Types/Language";
+import { useCallback } from "react";
 import useActions from "Store/useActions";
 
 const useLanguage = () => {
@@ -8,12 +9,13 @@ const useLanguage = () => {
     state.Core.Configuration.config.Language
   ));
   const { changeLanguageAction } = useActions();
-
+  const onChange = useCallback(
+    (next: Language) =>
+      changeLanguageAction(next)
+  , [changeLanguageAction])
   return {
     value: language,
-    onChange: (next: Language) => {
-      changeLanguageAction(next);
-    }
+    onChange
   }
 };
 
