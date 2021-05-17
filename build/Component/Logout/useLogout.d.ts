@@ -1,7 +1,7 @@
 declare const useLogout: () => {
     open: boolean;
     pending: boolean;
-    commit: import("typesafe-actions").PayloadAC<"route/LOGOUT", import("../../Store/Action").logout.Payload>;
-    close: import("typesafe-actions").EmptyAC<"logout/CLOSE">;
+    commit: (session: any) => import("typesafe-actions").PayloadAction<"route/LOGOUT", import("../../Store/Action").logout.Payload>;
+    close: () => import("typesafe-actions").EmptyAction<"logout/CLOSE">;
 };
 export default useLogout;

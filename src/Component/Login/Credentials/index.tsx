@@ -2,7 +2,7 @@ import React from 'react';
 import Username from './Username';
 import Password from './Password';
 
-type Credentials = {
+export type Credentials = {
   username: string;
   password: string;
 }

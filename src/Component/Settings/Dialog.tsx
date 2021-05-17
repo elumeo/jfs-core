@@ -27,7 +27,7 @@ const Dialog: React.FC = ({ children }) => {
         <Button
           variant='contained'
           color='secondary'
-          onClick={closeSettings}>
+          onClick={onClose}>
           {formatMessage({id: 'app.closeBtnLabelModalDialog'})}
         </Button>
       </DialogActions>

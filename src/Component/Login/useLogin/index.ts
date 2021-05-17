@@ -2,6 +2,7 @@ import { useSelector } from 'Types/Redux';
 import useActions from 'Store/useActions';
 import useLoginDialogIsOpen from './useLoginDialogIsOpen';
 import useLoginError from './useLoginError';
+import { Credentials } from '../Credentials';
 
 const useLogin = () => {
   const { updateCredentials, checkLogin } = useActions();
@@ -13,7 +14,7 @@ const useLogin = () => {
     open: useLoginDialogIsOpen(),
     error: useLoginError(),
     credentials,
-    onChange: updateCredentials,
+    onChange: (next: Credentials) => updateCredentials(next),
     check: () => checkLogin(credentials)
   }
 };

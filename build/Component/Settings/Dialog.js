@@ -16,6 +16,6 @@ const Dialog = ({ children }) => {
         React.createElement(DialogTitle, null, formatMessage({ id: 'app.settings' })),
         React.createElement(DialogContent, null, children),
         React.createElement(DialogActions, null,
-            React.createElement(Button, { variant: 'contained', color: 'secondary', onClick: closeSettings }, formatMessage({ id: 'app.closeBtnLabelModalDialog' })))));
+            React.createElement(Button, { variant: 'contained', color: 'secondary', onClick: onClose }, formatMessage({ id: 'app.closeBtnLabelModalDialog' })))));
 };
 export default Dialog;

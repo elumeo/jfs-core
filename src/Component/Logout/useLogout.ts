@@ -1,3 +1,4 @@
+import React from 'react';
 import useActions from 'Store/useActions';
 import { useSelector } from 'Types/Redux';
 
@@ -9,12 +10,14 @@ const useLogout = () => {
   const pending = useSelector(state => (
     state.Core.Logout.logoutPending
   ));
+  const _logout = React.useCallback((session) => logout(session),[logout])
+  const _closeLogout = React.useCallback(() => closeLogout(),[closeLogout])
 
   return {
     open,
     pending,
-    commit: logout,
-    close: closeLogout,
+    commit: _logout,
+    close: _closeLogout,
   };
 };
 

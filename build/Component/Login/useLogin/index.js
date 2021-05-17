@@ -12,7 +12,7 @@ const useLogin = () => {
         open: useLoginDialogIsOpen(),
         error: useLoginError(),
         credentials,
-        onChange: updateCredentials,
+        onChange: (next) => updateCredentials(next),
         check: () => checkLogin(credentials)
     };
 };

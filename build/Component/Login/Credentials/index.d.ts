@@ -1,5 +1,5 @@
 import React from 'react';
-declare type Credentials = {
+export declare type Credentials = {
     username: string;
     password: string;
 };
