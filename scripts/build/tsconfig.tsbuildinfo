@@ -1131,6 +1131,11 @@
         "signature": "bee79f5862fe1278d2ba275298862bce3f7abf1e59d9c669c4b9a4b2bba96956",
         "affectsGlobalScope": false
       },
+      "../../node_modules/@types/uuid/index.d.ts": {
+        "version": "96b49a9de749afcf92b5bce1d8cc42cfae6816cdf5ea36584fd9256b8b2e5292",
+        "signature": "96b49a9de749afcf92b5bce1d8cc42cfae6816cdf5ea36584fd9256b8b2e5292",
+        "affectsGlobalScope": false
+      },
       "../../node_modules/anymatch/index.d.ts": {
         "version": "4fb0b7d532aa6fb850b6cd2f1ee4f00802d877b5c66a51903bc1fb0624126349",
         "signature": "4fb0b7d532aa6fb850b6cd2f1ee4f00802d877b5c66a51903bc1fb0624126349",
@@ -1296,7 +1301,7 @@
           "./Library/*"
         ]
       },
-      "pathsBasePath": "/Users/mrb/Desktop/temp/jfs-core/scripts",
+      "pathsBasePath": "/Users/mrb/Archiv/Juwelo/jfs/jfs-core/scripts",
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
@@ -1907,6 +1912,10 @@
         "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/uglify-js/node_modules/source-map/source-map.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/uuid/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -3465,6 +3474,10 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../../node_modules/@types/uuid/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
       "../../node_modules/@types/webpack-dev-server/index.d.ts": [
         "../../node_modules/@types/connect-history-api-fallback/index.d.ts",
         "../../node_modules/@types/express/index.d.ts",
@@ -3977,6 +3990,10 @@
       "../src/library/jfs/project/api/render/jsc/client/http.ts": [
         "../src/library/jfs/project/api/render/type/index.ts"
       ],
+      "../src/library/jfs/project/api/render/jsc/client/index.ts": [
+        "../src/library/jfs/project/api/render/jsc/client/http.ts",
+        "../src/library/jfs/project/api/render/jsc/client/websocket.ts"
+      ],
       "../src/library/jfs/project/api/render/jsc/client/websocket.ts": [
         "../src/library/jfs/project/api/render/type/index.ts"
       ],
@@ -4184,6 +4201,7 @@
       "../../node_modules/@types/tapable/index.d.ts",
       "../../node_modules/@types/uglify-js/index.d.ts",
       "../../node_modules/@types/uglify-js/node_modules/source-map/source-map.d.ts",
+      "../../node_modules/@types/uuid/index.d.ts",
       "../../node_modules/@types/webpack-dev-server/index.d.ts",
       "../../node_modules/@types/webpack-sources/index.d.ts",
       "../../node_modules/@types/webpack-sources/lib/cachedsource.d.ts",
