@@ -8,9 +8,7 @@ const logout = (action$, store) => (action$.pipe(filter(isActionOf(Action.logout
         ? action.payload.sessionDTO
         : store.value.Core.Session.sessionDTO);
     if (session) {
-        return from(JSC.SessionClient.logout(session)).pipe(switchMap(() => {
-            return concat(of(Action.closeLogout()), of(Action.unauthorizeSession()));
-        }));
+        return from(JSC.SessionClient.logout(session)).pipe(switchMap(() => concat(of(Action.logoutFinished()), of(Action.closeLogout()), of(Action.unauthorizeSession()))));
     }
     else {
         return of(Action.logoutFinished());

@@ -18,7 +18,7 @@ const showError = action$ => (action$.pipe(filter(isActionOf(Actions.catchErrorN
                 content: message,
                 variant: 'error'
             } })),
-        action: (snackbar, id) => (React.createElement(Notification.Button.Dismiss, { onClick: () => snackbar.closeSnackbar(id) })),
+        action: (snackbar, id) => (React.createElement(React.Fragment, null)),
     }));
 })));
 export default showError;

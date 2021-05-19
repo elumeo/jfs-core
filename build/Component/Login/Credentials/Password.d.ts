@@ -5,5 +5,5 @@ export declare type Props = {
     onEnter: () => void;
     error: boolean;
 };
-declare const Password: React.FC<Props>;
+declare const Password: React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLInputElement>>;
 export default Password;
