@@ -59,6 +59,6 @@ export const error = '#f44336';
 export const warning = '#ff9800';
 export const success = '#4caf50';
 
-export const primary = rodolith[800];
+export const primary = 'rgb(145, 25, 100)';
 export const secondary = apatith[900];
 export const font = grey[900];

@@ -50,6 +50,6 @@ export declare const grey: {
 export declare const error = "#f44336";
 export declare const warning = "#ff9800";
 export declare const success = "#4caf50";
-export declare const primary: string;
+export declare const primary = "rgb(145, 25, 100)";
 export declare const secondary: string;
 export declare const font: string;
