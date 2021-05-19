@@ -30,7 +30,7 @@ const Theme = () => {
     palette: {
       type: 'light',
       primary: {
-        main: Color.rubin[900],
+        main: Color.primary,
         // light: rodolith[700],
         // dark: '#002884',
         contrastText: '#fff'

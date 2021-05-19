@@ -24,6 +24,9 @@ const common = {
                 '@babel/preset-typescript'
               ],
               plugins: [
+                ['@babel/transform-runtime', {
+                  regenerator: true
+                }],
                 "@babel/plugin-proposal-class-properties",
                 [
                   'babel-plugin-import',

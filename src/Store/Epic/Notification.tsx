@@ -29,8 +29,7 @@ const showError: Epic = action$ => (
               }}/>
           ),
           action: (snackbar, id) => (
-            <Notification.Button.Dismiss
-              onClick={() => snackbar.closeSnackbar(id)}/>
+            <></>
           ),
         })
       )

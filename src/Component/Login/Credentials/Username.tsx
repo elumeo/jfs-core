@@ -6,14 +6,16 @@ export type Props = {
   value: string;
   onChange: (next: string) => void;
   error: boolean;
+  onEnter: () => void;
 };
 
-const Username: React.FC<Props> = ({ value, onChange, error }) => {
-  const { formatMessage } = useIntl()
+const Username = React.forwardRef<HTMLInputElement, Props>(({ value, onChange, error, onEnter }, ref) => {
+  const { formatMessage } = useIntl();
   return (
     <TextField
       id='username'
       type='text'
+      inputRef={ref}
       required
       error={error}
       placeholder={formatMessage({ id: 'login.username' })}
@@ -23,8 +25,9 @@ const Username: React.FC<Props> = ({ value, onChange, error }) => {
           : null
       }
       value={value}
-      onChange={event => onChange(event.target.value)}/>
+      onChange={event => onChange(event.target.value)}
+      onKeyPress={event => event.key === 'Enter' && onEnter()}/>
   );
-};
+});
 
 export default Username;

@@ -9,12 +9,13 @@ export type Props = {
   error: boolean;
 };
 
-const Password: React.FC<Props> = ({ value, onChange, onEnter, error }) => {
+const Password = React.forwardRef<HTMLInputElement, Props>(({ value, onChange, onEnter, error }, ref) => {
   const { formatMessage } = useIntl();
   return (
     <TextField
       id='password'
       type='password'
+      inputRef={ref}
       required
       placeholder={formatMessage({ id: 'login.password' })}
       error={error}
@@ -24,8 +25,8 @@ const Password: React.FC<Props> = ({ value, onChange, onEnter, error }) => {
           : null}
       value={value}
       onChange={event => onChange(event.target.value)}
-      onKeyPress={e => e.keyCode === 13 && onEnter()}/>
+      onKeyPress={e => e.key === 'Enter' && onEnter()}/>
   );
-}
+})
 
 export default Password;

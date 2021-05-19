@@ -16,12 +16,11 @@ const logout: Epic = (action$, store) => (
       );
       if (session) {
         return from(JSC.SessionClient.logout(session)).pipe(
-          switchMap(() => {
-            return concat(
-              of(Action.closeLogout()),
-              of(Action.unauthorizeSession())
-            )
-          })
+          switchMap(() => concat(
+            of(Action.logoutFinished()),
+            of(Action.closeLogout()),
+            of(Action.unauthorizeSession())
+          ))
         );
       } else {
         return of(Action.logoutFinished());
