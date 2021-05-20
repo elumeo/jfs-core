@@ -13,11 +13,12 @@ import * as Notification from 'Component/Notification';
 import Head from './Head';
 
 export type Props = {
+  title: string;
   store: Store;
 }
 
 const HOC: React.FC<Props> = ({
-  store, children
+  title, store, children
 }) => {
   const theme = Theme();
   return (
@@ -32,7 +33,7 @@ const HOC: React.FC<Props> = ({
             maxSnack={5}
             domRoot={document.getElementById('overlay')}>
             <Notification.Notistack/>
-            <Head/>
+            <Head title={title}/>
             <CssBaseline />
             <WebSocketConnection>
               {/* <ConnectedRouter history={history}> */}

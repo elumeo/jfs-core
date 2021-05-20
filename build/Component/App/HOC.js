@@ -10,7 +10,7 @@ import MomentUtils from '@date-io/moment';
 import WebSocketConnection from '../WebSocket/WebSocketConnection';
 import * as Notification from '../Notification';
 import Head from './Head';
-const HOC = ({ store, children }) => {
+const HOC = ({ title, store, children }) => {
     const theme = Theme();
     return (React.createElement(Provider, { store: store },
         React.createElement(MuiPickersUtilsProvider, { utils: MomentUtils },
@@ -20,7 +20,7 @@ const HOC = ({ store, children }) => {
                         horizontal: 'right'
                     }, maxSnack: 5, domRoot: document.getElementById('overlay') },
                     React.createElement(Notification.Notistack, null),
-                    React.createElement(Head, null),
+                    React.createElement(Head, { title: title }),
                     React.createElement(CssBaseline, null),
                     React.createElement(WebSocketConnection, null,
                         React.createElement(HashRouter, null, children)))))));

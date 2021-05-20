@@ -1,3 +1,6 @@
 import React from 'react';
-declare const Head: React.FC;
+export declare type Props = {
+    title: string;
+};
+declare const Head: React.FC<Props>;
 export default Head;

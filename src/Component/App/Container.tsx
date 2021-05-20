@@ -10,7 +10,10 @@ export type Props = HOCProps & {
       [key: string]: string
     };
   };
-  packageJson: object;
+  packageJson: {
+    [key: string]: string | object;
+  };
+  title?: string;
 }
 
 const App: React.FC<Props> = ({
@@ -18,9 +21,12 @@ const App: React.FC<Props> = ({
   allowRobotLogin,
   translations,
   packageJson,
-  ...props
+  title,
+  store
 }) => (
-  <HOC {...props}>
+  <HOC
+    title={title || packageJson.name as string}
+    store={store}>
     <Loader
       allowRobotLogin={allowRobotLogin}
       translations={translations}

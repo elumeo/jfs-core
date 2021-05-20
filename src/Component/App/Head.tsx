@@ -1,7 +1,11 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-const Head: React.FC = () => (
+export type Props = {
+  title: string;
+}
+
+const Head: React.FC<Props> = ({ title }) => (
   <Helmet>
     <link
       rel="stylesheet"
@@ -12,6 +16,9 @@ const Head: React.FC = () => (
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto"/>
+    <title>
+      {title}
+    </title>
   </Helmet>
 );
 

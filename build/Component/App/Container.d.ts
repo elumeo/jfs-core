@@ -7,7 +7,10 @@ export declare type Props = HOCProps & {
             [key: string]: string;
         };
     };
-    packageJson: object;
+    packageJson: {
+        [key: string]: string | object;
+    };
+    title?: string;
 };
 declare const App: React.FC<Props>;
 export default App;
