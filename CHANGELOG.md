@@ -1,3 +1,7 @@
+## [9.10.39] 2021-05-25
+## Added
+- added new font icon "shopping_cart_bolt"
+
 ## [9.10.38] 2021-05-10
 ## Fixed
 - fixed an issue in Datepicker with isClearable !== true and clearing the input field with the keyboard was possible
