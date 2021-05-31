@@ -38,7 +38,7 @@ const CurrentGameButton: React.FC = () => {
       );
     }
   }
-  return <>'WebSocket not connected!'</>;
+  return <MUI.Typography variant='button'>'WebSocket not connected!'</MUI.Typography>;
 }
 
 export default CurrentGameButton;

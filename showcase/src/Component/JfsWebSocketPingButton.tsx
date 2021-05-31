@@ -41,7 +41,7 @@ const JfsPingButton: React.FC = () => {
       );
     }
   }
-  return <>JfsWebSocket not connected!</>;
+  return <MUI.Typography variant='button'>JfsWebSocket not connected!</MUI.Typography>;
 };
 
 export default JfsPingButton;

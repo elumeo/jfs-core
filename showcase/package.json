@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@date-io/moment": "^1.3.13",
-    "@elumeo/jfs-core": "^10.0.0-beta.4",
+    "@elumeo/jfs-core": "^10.0.0-beta.24",
     "jfc-hello-world": "https://github.com/scharfohnezwiebeln/jfc_HelloWorld.git#57ab2fea52ac98334ba1b04e6d53b3d3b782c2ef"
   },
   "keywords": [],
@@ -32,7 +32,7 @@
   "license": "ISC",
   "peerDependencies": {
     "@babel/core": "^7.8.6",
-    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.14.3",
     "@babel/preset-env": "^7.8.6",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
@@ -60,6 +60,7 @@
     "@types/react-virtualized": "^9.21.10",
     "@types/socket.io": "^2.1.4",
     "@types/socket.io-client": "^1.4.32",
+    "@types/uuid": "^8.3.0",
     "@types/webpack": "^4.41.25",
     "@types/webpack-dev-server": "^3.11.1",
     "axios": "^0.18.0",
@@ -73,6 +74,7 @@
     "css-loader": "^0.28.7",
     "dart-sass": "^1.25.0",
     "diacritics": "^1.3.0",
+    "file-loader": "^6.2.0",
     "fork-ts-checker-notifier-webpack-plugin": "^3.0.0",
     "fork-ts-checker-webpack-plugin": "^6.2.1",
     "google-libphonenumber": "^3.2.10",
@@ -118,6 +120,7 @@
     "typesafe-actions": "^4.4.0",
     "typescript": "^4.2.4",
     "url-loader": "^4.1.0",
+    "uuid": "^8.3.2",
     "validate-npm-package-license": "^3.0.4",
     "webpack": "^5.10.3",
     "webpack-cli": "^4.2.0",
