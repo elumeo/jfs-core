@@ -1,31 +1,32 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import {createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import * as Color from 'Constant/Color';
 
 const Theme = () => {
-  return createMuiTheme({
+  let theme = createMuiTheme({
     overrides: {
       MuiCssBaseline: {
         '@global': {
           '#root': {
             background: Color.quarz[500],
           },
+          html:{
+            // fontSize: '87.5%'
+          },
           body: {
             margin: 0,
+            background: Color.quarz[500],
             padding: 0,
             fontFamily: 'Roboto',
-            fontSize: 13,
-            p: {
-              fontSize: 13
-            },
-            span: {
-              fontSize: 13
-            },
-            div: {
-              fontSize: 13
-            }
           }
         }
       }
+    },
+    typography: {
+      // fontSize: 13,  
+      // htmlFontSize: 14,
+    //   test : createTypography({
+    //     color : 'red'
+    //   }) as  TypographyVariant 
     },
     palette: {
       type: 'light',
@@ -73,5 +74,8 @@ const Theme = () => {
       // }
     }
   });
+
+  theme = responsiveFontSizes(theme)
+  return theme
 };
 export default Theme;
