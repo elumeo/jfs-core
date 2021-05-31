@@ -88,6 +88,7 @@ const Showcase: React.FC = () => {
           <MUI.Typography
             component='li'
             variant='overline'>variant='overline'</MUI.Typography>
+            <MUI.Typography> custom variants will be available in material-ui version 5.X (<a href="https://github.com/mui-org/material-ui/issues/22257">ISSUE</a>)</MUI.Typography>
           <MUI.Typography> We should define custom Typography styles by defining new variant types.</MUI.Typography>
         </MUI.CardContent>
         <>text without typography in Paper and outside CardContent</>
