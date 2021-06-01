@@ -27,13 +27,13 @@ const DefaultNotificationCard : React.FC<Props> = ({
           <Typography variant='subtitle2'>
             {subtitle}
           </Typography>
-          <Typography variant='body1'>
+          <Typography variant='body1'> 
             {content}
           </Typography>
         </CardContent>
         {!temporary && action && (
           <CardActions>
-            {action(snackbar, id, temporary)}
+            { action(snackbar, id, temporary) }
           </CardActions>
         )}
       </>

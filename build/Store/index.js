@@ -1,8 +1,7 @@
 import * as Redux from 'redux';
 import middleware, { start } from './Middleware';
-import reducer from './Reducer/Global';
 import * as Rx from 'rxjs/operators';
-import epic, { wrap } from './Epic';
+import { wrap } from './Epic';
 export const create = (epic, reducer) => {
     const store = Redux.createStore(reducer, middleware);
     const wrapped = wrap(epic, action$ => action$.pipe(Rx.catchError((error, source) => {
@@ -15,4 +14,4 @@ export const create = (epic, reducer) => {
     start(wrapped);
     return store;
 };
-export default create(epic, reducer);
+// export default create(epic, reducer) as Redux.Store<Redux.CombinedState<State>>;
