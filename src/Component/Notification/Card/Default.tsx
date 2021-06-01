@@ -11,13 +11,13 @@ export type Props = {
 };
 
 const DefaultNotificationCard : React.FC<Props> = ({
-  notification: {
-    title, subtitle, content, action, id
-  },
-  temporary
-}) => {
+    notification: {
+      title, subtitle, content, action, id
+    },
+      temporary
+    }) => {
     const snackbar = useSnackbar();
-
+    
     return (
       <>
         <CardContent color='inherit'>
@@ -27,7 +27,7 @@ const DefaultNotificationCard : React.FC<Props> = ({
           <Typography variant='subtitle2'>
             {subtitle}
           </Typography>
-          <Typography variant='caption'>
+          <Typography variant='body1'>
             {content}
           </Typography>
         </CardContent>

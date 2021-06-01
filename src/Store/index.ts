@@ -20,4 +20,4 @@ export const create = <T>(epic: Epic, reducer: Redux.Reducer<T>) => {
   return store;
 };
 
-export default create(epic, reducer) as Redux.Store<Redux.CombinedState<State>>;
+// export default create(epic, reducer) as Redux.Store<Redux.CombinedState<State>>;
