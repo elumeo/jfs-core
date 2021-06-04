@@ -217,7 +217,7 @@
         "affectsGlobalScope": true
       },
       "../src/index.tsx": {
-        "version": "d30dffbb4c8f70292f4b5cf329ed80cdbbc617a5601d16bd9475e68b5c794e4c",
+        "version": "c2d5efe66dd4c63f7963eec2dd6f9b6783bd71e5284245421b842c1c2dd8d4de",
         "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "affectsGlobalScope": false
       },
@@ -2568,12 +2568,12 @@
       },
       "../src/store/reducer/core/app.ts": {
         "version": "cdea66d5e5ac46b8cd7be8f9daef301dcaa3d7b4c766465e878da7a7bfde6891",
-        "signature": "ed70ec0585707d6733deb38bf5a575e0beeb647d82d01d8a8d13ac2e9c418714",
+        "signature": "bd5cfc282d99547c50cc47070abcc127c21cd0cd647fe360bf476fcfb2175305",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/configuration.ts": {
         "version": "4eecf2971fcd47b63691532e889f444def54040523bfb123b959623a93b76e97",
-        "signature": "abb47d5347012a922e7e04b2dee87184e3faa9aabfb6d9ba6121e609fe4cc1b5",
+        "signature": "0f69922e208d9b481261bc96fa1758fdcdae6287e9a81c0be62be5b2df232ee7",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/lodash/common/common.d.ts": {
@@ -2643,57 +2643,57 @@
       },
       "../src/store/reducer/core/language.ts": {
         "version": "0d95f4b9e773ed040a77930fb54741dbed7fc8c6c164759a70b7bf37bb9a4f89",
-        "signature": "5464ad746443c43d9218914a918631443f44df770ebd194006941f76ead0d58b",
+        "signature": "00768ccd07324c456087340e7b9ffc0a33646f4320ecd00344b6c10ee9a15bfb",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/logout.ts": {
         "version": "751fab1a9d7470e0cfb71c47d03f9b177687e52dca00069d9496722eaec9e863",
-        "signature": "c43e4c27eb0e3babe28e0998bc54ce5a65451655cce212d1a393ed89722b138c",
+        "signature": "d4915dd6fde6b4ed0e4571209b7d71e30dd51e91d5ac370a0ef355c41965d58d",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/navigation.ts": {
         "version": "7b669f7dfd1c6a92950ba354f788d71c6974d34fd70ed18426e4e1544dd6132b",
-        "signature": "3d244511df581651b35cbf22eb47954eb4e8519bf502c2ab4720189b1f22966a",
+        "signature": "4bc68e972b81d6732b38974d853f525474e5c325fdeb7645dad26b1b7c6c3a97",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/notification.ts": {
         "version": "c97804d4f278925dbf47389e0f611a07bad21ca6fedf4203bb213190eb3858df",
-        "signature": "282af0dcafd202791f8de75aa47381984e048ddb63cefff2754a1456f03568af",
+        "signature": "c6a0d6cb18e8c850ff4743c8d31da0da9fbcc7a99115d0cf2c43374739808c64",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/router.ts": {
         "version": "a0f955060c02faa2b5fbfd71be709d0b7b9b8325c87771193cc353afc5cd6e58",
-        "signature": "666548392413ef10870c71d292bda2527cc4db79c2fb64f3ade81ba565935489",
+        "signature": "d91ae170b0befc7761c13f50f34625067704278ce2e70d8527d6d128bb17cfa5",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/session.ts": {
         "version": "647a9226ec7f2946bb97eab1e7b5bb45060fc1868b0593b415b160dc71d9d866",
-        "signature": "f50f7c5ef88d6c7e1f574759ae746cac5a78c5b62ecee57c9536351b40decbb5",
+        "signature": "9141ef8fa45e6eda9b6a8ba65290f36dda3d15f81313b27e73d113a879241217",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/settings.ts": {
         "version": "ebef4b68da16e26c20c91a54ad1c0b9c55979875dca0f284958c6b6bbafada71",
-        "signature": "79caff8b7123002928f06f72107ab8926b5adfaf3348072409ebb4f8147f0a72",
+        "signature": "474263f68961000b7b81b2e8ca48d243ef9971987d4413b05861da7189065ee1",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/system.ts": {
         "version": "b77ef754388805cced40f9deb6eded0d2906b0ba12dc38523f9b926f828908c3",
-        "signature": "0b17e926d462b772b15cef4a6e7fb18bc83092b56e0edda24bbd7870d4b50448",
+        "signature": "5c475d6f1e69d6bdaa1ba8eb9176ae7119c45e630fe6b37e3a6cc6743cc3cd12",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/toast.ts": {
         "version": "f640de4bddcdc9635dfe8c80e7341b99f6e1dcaef21696b8554f20ab4b666b46",
-        "signature": "8099efa7889d6fe4cf8567ee6d8ec53ba2400b782044dd98ead84f2dffc894c5",
+        "signature": "defc380f9c110953cd01b0375671f36cd306377863e529fbbf885f59c40aeb25",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/login.ts": {
         "version": "8f8e7853d764fe07f61e2ad0ee053e4f88ceb5fdc10e768dab2bc7314a78407c",
-        "signature": "f174cfbc5b8393978535170c057feea1b28ddb078ccbc25b7686a4af4b204f83",
+        "signature": "97f6ae9f38f46bde472c1a961c7d4d52e189dc0897804274dd249d004426c9b7",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/locale.ts": {
         "version": "a8ab4929d456293ce506900e88c18f8cd45e707717b05e15809b6b030afaf132",
-        "signature": "c3181a68f6343d64911c6685ede8bd20aa0c4fbda642f73406235975ecfd24e1",
+        "signature": "efad4f799cb1306817897611721425c91384a74dccee1f42b5931af1528ea3d5",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/websocket.ts": {
@@ -3217,7 +3217,7 @@
         "affectsGlobalScope": false
       },
       "../src/component/app/progress.tsx": {
-        "version": "a8cf1fdebf87531de4b7093b4c0aa2c2ee838418219b99c1c35b83f026e1d77d",
+        "version": "da16225388242368ecd37e9520fa11d7f11cffb17f2bd5e23588da620f7115f9",
         "signature": "bc79f7c4d86d4ccfbe64cdacc59d940d32fe2b7eba33c70a0e94c0a59598e504",
         "affectsGlobalScope": false
       },
@@ -3562,7 +3562,7 @@
         "affectsGlobalScope": false
       },
       "../src/component/app/head.tsx": {
-        "version": "71aaca7db6461c07ab6c85122fcfcbf755436ed6efa34b10ffab60e98574cbb8",
+        "version": "f4cfd950d8101c9e77a5f2f167c0abe767487f48c60a11de4fe0fee75ac0925c",
         "signature": "ff8c90189c075936b6fb85f9e7a0eefc645665df95a9b98c67f931493fe4f72a",
         "affectsGlobalScope": false
       },
@@ -3582,7 +3582,7 @@
         "affectsGlobalScope": false
       },
       "../src/component/content/content.tsx": {
-        "version": "938f311fccfe4ed2a00995477fc5e5e0a3b7aef5544dcada38b111b42ce060e1",
+        "version": "614becd8bcc273b196d19282323002ff90df7a06e6bf4d546c5c02a42eab6659",
         "signature": "838cb49a8daadce51bfc0c519a37f1dd79172ee14315a11a4e0638f8eb28e17a",
         "affectsGlobalScope": false
       },
@@ -3592,8 +3592,8 @@
         "affectsGlobalScope": false
       },
       "../src/component/header/toolbar.tsx": {
-        "version": "c32ff360659776227d0bf099cad59366d6fe2088613e447693b2d1c53c57bbf0",
-        "signature": "b57b36481432339e69bccf31e8c415c459a9a5f12ebcb80343829b467efd8a7f",
+        "version": "b36c0ec8eda5985e10891c9c15b33f3e1ef3ba709da2e8acfe08a8c56c89fd80",
+        "signature": "75eb9932ef0f1d75bcded1979623a0b95ea3c7b3d83c5d4633d42b9eab523b06",
         "affectsGlobalScope": false
       },
       "../src/component/icon/wrapper.tsx": {
@@ -3901,6 +3901,71 @@
         "signature": "20fb7d06df65ea174ec441c56690bf88a34be9318becfac1d1a8d96d0e97299f",
         "affectsGlobalScope": false
       },
+      "../src/store/selector/core/configuration.ts": {
+        "version": "9dc082f18905663c7ae5a11a9beb303331ec31e970c6bf9ab6f9340015d6a128",
+        "signature": "97c8b6ac56df015e9f30977e7309577c19b24c2c20686ab50febb9d7dc127cca",
+        "affectsGlobalScope": false
+      },
+      "../src/effect/useconfig.ts": {
+        "version": "271fba8d63aef437298b72dc438e50a45efba14d6f7ac3883b7031c310590e20",
+        "signature": "8af6d1b0109166f1a3f1a5bfacc967a91f3ae43f6ff1da625f2e8d03b578077f",
+        "affectsGlobalScope": false
+      },
+      "../src/effect/usecurrency.ts": {
+        "version": "037b5a0fe68e8b2d304a518b6b5146cf361ab0f19762529dfbb6801c65191043",
+        "signature": "ec341435b285aed13a5d6214262a254b413232d62bc922a9f2f847a6c933c08b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/diacritics/index.d.ts": {
+        "version": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
+        "signature": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
+        "affectsGlobalScope": false
+      },
+      "../src/utilities/format/text.ts": {
+        "version": "c70fa6114bc1eb61ea3a2e75203de2f3e95dc381616e3f9aa93564485a8c8f15",
+        "signature": "78849dc8111dd4f92832a1bb74d237c93b068993d185f4918e2cfd14410ae66f",
+        "affectsGlobalScope": false
+      },
+      "../src/utilities/format/locale.ts": {
+        "version": "5ed5cb3fbdd590ab1c980cc042d2778ff926bc7314105aa59847e85b9d09e26b",
+        "signature": "e2f28e74a852e06a17baf996ea5f4376870c752a3fc196fe95c5997225625edd",
+        "affectsGlobalScope": false
+      },
+      "../src/utilities/format/currency.ts": {
+        "version": "acc2836d8a7cea0e19ae0d53ca3035e161b2571b812469cde6cb2b6e959f0a34",
+        "signature": "6ddb2ac318895a33ce30c47c05a50b837eadd092b83c0c7777ec144288c27747",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/google-libphonenumber/index.d.ts": {
+        "version": "b23a87f42a58d4d83018712f62b88c5246093c2159ea68688d739b58782178fe",
+        "signature": "b23a87f42a58d4d83018712f62b88c5246093c2159ea68688d739b58782178fe",
+        "affectsGlobalScope": true
+      },
+      "../src/utilities/format/phonenumber.ts": {
+        "version": "af8f3d34ff53d85563a3f68231579bb6d1d3aa9a45f27289297dfc0f2885f65e",
+        "signature": "e9a41dab62cf919df1a0118f8c0f5c5b3712ec4b7e01867bb8561b297d381924",
+        "affectsGlobalScope": false
+      },
+      "../src/utilities/format/error.ts": {
+        "version": "9fd2e59d998fd016ba1f641e6945768d733b82a8f061692070db757bd89b7dab",
+        "signature": "b0bfa73ccaf7a846af8e30cea0ba1e161e3509d6afd22655ea53e7fbc7494a01",
+        "affectsGlobalScope": false
+      },
+      "../src/utilities/format/index.ts": {
+        "version": "74e9bb96ed5a8f6622c21391992f60522f8a07ae52c422bf287d0f8a1a6ee3e9",
+        "signature": "ff9fc73124165cea58d6245e26b0841f3104456870d1088eac9e6de1f524f432",
+        "affectsGlobalScope": false
+      },
+      "../src/component/priceinput/textfield.tsx": {
+        "version": "b2d424f40c456e41727902fcadc1b619b18bba85e439b4df5944f2efa2a58e70",
+        "signature": "67034fbee35af30e4cb543afc5f9c390dab92bdbed6f4f1a7a0d10b0072739a9",
+        "affectsGlobalScope": false
+      },
+      "../src/component/priceinput/index.ts": {
+        "version": "74f28ec09488f717f82448c86a2c812ec22c7ef7d9bf6c0b793dd688fd02366b",
+        "signature": "e4dbd81e489557214650d97f6654c061cee105ca925d67f93f12c39e71484a84",
+        "affectsGlobalScope": false
+      },
       "../src/component/route/baseroute.tsx": {
         "version": "968228a17370d9e62a034545324cd93b625eabba3f6fabfe971bd1135fb552d9",
         "signature": "82c82e0911414f7d48671e692ff5fb0acb375cf95fa877729a3f3bfde837f26c",
@@ -3949,46 +4014,6 @@
       "../src/component/settings/index.ts": {
         "version": "25d0893432b4ccd0c2dfc88a9f035fe7f46722a0b5803f42fc4e6f3302d5dcf6",
         "signature": "25d0893432b4ccd0c2dfc88a9f035fe7f46722a0b5803f42fc4e6f3302d5dcf6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/diacritics/index.d.ts": {
-        "version": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
-        "signature": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
-        "affectsGlobalScope": false
-      },
-      "../src/utilities/format/text.ts": {
-        "version": "c70fa6114bc1eb61ea3a2e75203de2f3e95dc381616e3f9aa93564485a8c8f15",
-        "signature": "78849dc8111dd4f92832a1bb74d237c93b068993d185f4918e2cfd14410ae66f",
-        "affectsGlobalScope": false
-      },
-      "../src/utilities/format/locale.ts": {
-        "version": "5ed5cb3fbdd590ab1c980cc042d2778ff926bc7314105aa59847e85b9d09e26b",
-        "signature": "e2f28e74a852e06a17baf996ea5f4376870c752a3fc196fe95c5997225625edd",
-        "affectsGlobalScope": false
-      },
-      "../src/utilities/format/currency.ts": {
-        "version": "c62227d787258bda8055f839599008335a169e76fe17c7f892a83884a5813294",
-        "signature": "6ddb2ac318895a33ce30c47c05a50b837eadd092b83c0c7777ec144288c27747",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/google-libphonenumber/index.d.ts": {
-        "version": "b23a87f42a58d4d83018712f62b88c5246093c2159ea68688d739b58782178fe",
-        "signature": "b23a87f42a58d4d83018712f62b88c5246093c2159ea68688d739b58782178fe",
-        "affectsGlobalScope": true
-      },
-      "../src/utilities/format/phonenumber.ts": {
-        "version": "af8f3d34ff53d85563a3f68231579bb6d1d3aa9a45f27289297dfc0f2885f65e",
-        "signature": "e9a41dab62cf919df1a0118f8c0f5c5b3712ec4b7e01867bb8561b297d381924",
-        "affectsGlobalScope": false
-      },
-      "../src/utilities/format/error.ts": {
-        "version": "9fd2e59d998fd016ba1f641e6945768d733b82a8f061692070db757bd89b7dab",
-        "signature": "b0bfa73ccaf7a846af8e30cea0ba1e161e3509d6afd22655ea53e7fbc7494a01",
-        "affectsGlobalScope": false
-      },
-      "../src/utilities/format/index.ts": {
-        "version": "74e9bb96ed5a8f6622c21391992f60522f8a07ae52c422bf287d0f8a1a6ee3e9",
-        "signature": "ff9fc73124165cea58d6245e26b0841f3104456870d1088eac9e6de1f524f432",
         "affectsGlobalScope": false
       },
       "../src/component/snackbar/failure.tsx": {
@@ -4908,7 +4933,7 @@
       },
       "../src/store/epic/language/index.ts": {
         "version": "4c41b34dd0167035cd39f458c98ae5138c99e1ff87d6e2b55200e82f549486ba",
-        "signature": "34b29f4525feb73bd15c379aa02572fb6815c181a3bdeec03f4a0d08568db837",
+        "signature": "b8e2ff6cfc143c10ea97b7a0d26fd59485695afa949e20140cc4afb170bc8c4a",
         "affectsGlobalScope": false
       },
       "../src/store/epic/login/commitlogin.ts": {
@@ -4923,7 +4948,7 @@
       },
       "../src/store/epic/login/index.ts": {
         "version": "f02f856796978d51fbecb36bb2c15a932d511be49c8aa657d51f0ba89206a7c8",
-        "signature": "34b29f4525feb73bd15c379aa02572fb6815c181a3bdeec03f4a0d08568db837",
+        "signature": "b8e2ff6cfc143c10ea97b7a0d26fd59485695afa949e20140cc4afb170bc8c4a",
         "affectsGlobalScope": false
       },
       "../src/store/epic/locale/setlocalebylanguage.ts": {
@@ -4938,7 +4963,7 @@
       },
       "../src/store/epic/locale/index.ts": {
         "version": "f8f5c97e73051f82156f0dc4cadba043fd53e96aaf1c495c395c2171c5387da7",
-        "signature": "34b29f4525feb73bd15c379aa02572fb6815c181a3bdeec03f4a0d08568db837",
+        "signature": "b8e2ff6cfc143c10ea97b7a0d26fd59485695afa949e20140cc4afb170bc8c4a",
         "affectsGlobalScope": false
       },
       "../src/store/epic/session/load.ts": {
@@ -4968,7 +4993,7 @@
       },
       "../src/store/epic/session/index.ts": {
         "version": "8a9a8f8ed25b283e50c0858ccdff846f8fa4497b1f733f832d6544d81f1dd7a3",
-        "signature": "34b29f4525feb73bd15c379aa02572fb6815c181a3bdeec03f4a0d08568db837",
+        "signature": "b8e2ff6cfc143c10ea97b7a0d26fd59485695afa949e20140cc4afb170bc8c4a",
         "affectsGlobalScope": false
       },
       "../src/store/epic/system.tsx": {
@@ -11490,6 +11515,7 @@
         "../src/component/app/useloader.tsx"
       ],
       "../src/component/app/progress.tsx": [
+        "../node_modules/@material-ui/core/box/index.d.ts",
         "../node_modules/@material-ui/core/circularprogress/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
@@ -11509,6 +11535,7 @@
         "../src/types/redux.ts"
       ],
       "../src/component/content/content.tsx": [
+        "../node_modules/@material-ui/core/box/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts"
@@ -11536,7 +11563,9 @@
       ],
       "../src/component/header/toolbar.tsx": [
         "../node_modules/@material-ui/core/appbar/index.d.ts",
+        "../node_modules/@material-ui/core/box/index.d.ts",
         "../node_modules/@material-ui/core/iconbutton/index.d.ts",
+        "../node_modules/@material-ui/core/styles/usetheme.d.ts",
         "../node_modules/@material-ui/core/toolbar/index.d.ts",
         "../node_modules/@material-ui/core/typography/index.d.ts",
         "../node_modules/@material-ui/icons/menu.d.ts",
@@ -12058,6 +12087,20 @@
         "../node_modules/@types/react-dom/index.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
+      "../src/component/priceinput/index.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../src/component/priceinput/textfield.tsx"
+      ],
+      "../src/component/priceinput/textfield.tsx": [
+        "../node_modules/@material-ui/core/textfield/index.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/react-intl/index.d.ts",
+        "../src/effect/usecurrency.ts",
+        "../src/utilities/format/index.ts"
+      ],
       "../src/component/route/authroute.tsx": [
         "../node_modules/@material-ui/core/circularprogress/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -12239,6 +12282,19 @@
       "../src/constant/websocket.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
+      ],
+      "../src/effect/useconfig.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../src/store/selector/core/configuration.ts",
+        "../src/types/redux.ts"
+      ],
+      "../src/effect/usecurrency.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../src/effect/useconfig.ts",
+        "../src/store/selector/core/configuration.ts",
+        "../src/types/redux.ts"
       ],
       "../src/index.tsx": [
         "../node_modules/@types/node/base.d.ts",
@@ -12865,6 +12921,12 @@
         "../src/store/reducer/core/index.ts"
       ],
       "../src/store/selector/core/app.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/reselect/lib/index.d.ts",
+        "../src/store/reducer/global.ts"
+      ],
+      "../src/store/selector/core/configuration.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/reselect/lib/index.d.ts",
@@ -19137,6 +19199,13 @@
       "../src/component/overlay/index.ts": [
         "../node_modules/@types/react/index.d.ts"
       ],
+      "../src/component/priceinput/index.ts": [
+        "../src/component/priceinput/textfield.tsx"
+      ],
+      "../src/component/priceinput/textfield.tsx": [
+        "../node_modules/@material-ui/core/textfield/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
       "../src/component/route/authroute.tsx": [
         "../node_modules/@types/react/index.d.ts",
         "../src/component/route/baseroute.tsx"
@@ -19196,6 +19265,9 @@
         "../node_modules/@types/react/index.d.ts",
         "../src/store/action/index.ts",
         "../src/store/reducer/core/websocket.ts",
+        "../src/types/configuration.ts"
+      ],
+      "../src/effect/useconfig.ts": [
         "../src/types/configuration.ts"
       ],
       "../src/setup/index.ts": [
@@ -19579,6 +19651,12 @@
         "../node_modules/reselect/lib/index.d.ts",
         "../src/store/reducer/core/app.ts",
         "../src/store/reducer/global.ts"
+      ],
+      "../src/store/selector/core/configuration.ts": [
+        "../node_modules/reselect/lib/index.d.ts",
+        "../src/store/reducer/core/configuration.ts",
+        "../src/store/reducer/global.ts",
+        "../src/types/configuration.ts"
       ],
       "../src/store/selector/core/index.ts": [
         "../src/store/selector/core/app.ts",
@@ -20616,6 +20694,8 @@
       "../src/component/notification/notistack.tsx",
       "../src/component/notification/overlay.tsx",
       "../src/component/overlay/index.ts",
+      "../src/component/priceinput/index.ts",
+      "../src/component/priceinput/textfield.tsx",
       "../src/component/route/authroute.tsx",
       "../src/component/route/baseroute.tsx",
       "../src/component/route/noauthroute.tsx",
@@ -20640,6 +20720,8 @@
       "../src/constant/notification.ts",
       "../src/constant/toast.ts",
       "../src/constant/websocket.ts",
+      "../src/effect/useconfig.ts",
+      "../src/effect/usecurrency.ts",
       "../src/index.tsx",
       "../src/setup/index.ts",
       "../src/setup/navigation.tsx",
@@ -20712,6 +20794,7 @@
       "../src/store/reducer/core/websocket.ts",
       "../src/store/reducer/global.ts",
       "../src/store/selector/core/app.ts",
+      "../src/store/selector/core/configuration.ts",
       "../src/store/selector/core/index.ts",
       "../src/store/selector/core/language.ts",
       "../src/store/selector/core/websocket.ts",

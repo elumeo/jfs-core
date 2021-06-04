@@ -5,11 +5,10 @@ import * as Action from 'Store/Action';
 import Typography from './Typo';
 import PaperBox from './PaperBox';
 import Example from './Example';
-
 const Showcase: React.FC = () => {
   const theme = useTheme()
   React.useEffect(
-    () => { Action.parallelAsyncLoopExampleRequestAction(['1', '2', '3', '4', '5', '6']) },[]);
+    () => { Action.parallelAsyncLoopExampleRequestAction(['1', '2', '3', '4', '5', '6']) }, []);
   return (
     <MUI.Box
       gridGap={theme.spacing(1)}
@@ -22,10 +21,10 @@ const Showcase: React.FC = () => {
         display='flex'
         flexDirection='column'
         gridGap={theme.spacing(1)}
-        maxWidth='50%' 
-        >
+        maxWidth='50%'
+      >
         <PaperBox />
-        <Example/>  
+        <Example />
       </MUI.Box>
     </MUI.Box>
   );

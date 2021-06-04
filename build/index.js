@@ -1,4 +1,4 @@
-// import React from 'react';
+// import React, { ChangeEventHandler } from 'react';
 // import ReactDOM from 'react-dom';
 // import * as App from './Component/App';
 // import * as Login from './Component/Login';
@@ -12,9 +12,11 @@
 // import { Translations, Navigation, Routes } from './Setup';
 // import packageJson from '../package.json';
 // import store from './Store';
+// import PriceInput from './Component/PriceInput';
 // ReactDOM.render(
 //   <App.Container
 //     store={store}
+//     title='core'
 //     translations={Translations}
 //     packageJson={packageJson}>
 //     <Overlay>

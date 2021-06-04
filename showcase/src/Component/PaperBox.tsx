@@ -23,6 +23,7 @@ const PaperBox :React.FC<Props> = ({
           variant='subtitle1'>
         </Typography>
         <Typography>Boxes are useful to apply stylings</Typography>
+        {/* <PriceInput /> */}
       </CardContent>
     </Box>
   );

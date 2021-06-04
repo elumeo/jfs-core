@@ -1,9 +1,10 @@
+import Box from '@material-ui/core/Box';
 import React from 'react';
 
 const Content: React.FC = ({ children }) => (
-  <div style={{ width: '100%' }}>
+  <Box style={{ width: '100%' }}>
     {children}
-  </div>
+  </Box>
 );
 
 export default Content;

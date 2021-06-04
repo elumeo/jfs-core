@@ -13,10 +13,10 @@ export const getCurrency = (currency, value, showFraction = false) => {
     }
     return new Intl.NumberFormat(Locale.locale, { style: 'currency', currency, minimumFractionDigits: 0 }).format(value);
 };
-export const intlThousandsSeperator = (new Intl.NumberFormat()
+export const intlThousandsSeperator = (new Intl.NumberFormat(Locale.locale)
     .format(1111)
     .replace(/1/g, ''));
-export const intlDecSeparator = (new Intl.NumberFormat()
+export const intlDecSeparator = (new Intl.NumberFormat(Locale.locale)
     .format(1.1)
     .replace(/1/g, ''));
 export const replaceAllNonNumericOrSeperatorRegex = /[^0-9.,-]/;

@@ -1,5 +1,6 @@
 import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Box from '@material-ui/core/Box';
 
 const style: React.CSSProperties = {
   width: '100vw',
@@ -10,9 +11,9 @@ const style: React.CSSProperties = {
 };
 
 const Progress: React.FC = () => (
-  <div style={style}>
+  <Box style={style}>
     <CircularProgress/>
-  </div>
+  </Box>
 );
 
 export default Progress;
