@@ -38,13 +38,13 @@ export const getCurrency = (
 }
 
 export const intlThousandsSeperator = (
-  new Intl.NumberFormat()
+  new Intl.NumberFormat(Locale.locale)
     .format(1111)
     .replace(/1/g, '')
 );
 
 export const intlDecSeparator = (
-  new Intl.NumberFormat()
+  new Intl.NumberFormat(Locale.locale)
     .format(1.1)
     .replace(/1/g, '')
 );
