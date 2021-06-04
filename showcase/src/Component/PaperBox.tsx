@@ -4,6 +4,7 @@ import { Box, Paper,CardHeader, CardContent, Typography } from '@material-ui/cor
 import { withStyles, Theme, WithStyles} from '@material-ui/core/styles';
 import { useIntl } from 'react-intl';
 import { useTheme } from '@material-ui/core/styles';
+import PriceInput from '@elumeo/jfs-core/build/Component/PriceInput'
 type Props = {
 } & WithStyles
 const style = (theme: Theme) => ({})
@@ -12,6 +13,7 @@ const PaperBox :React.FC<Props> = ({
     }) => {
   const { formatMessage } = useIntl(); 
   const theme = useTheme()
+  const [value, setValue] = React.useState(0)
   return (
 
     <Box component={Paper}>
@@ -23,7 +25,7 @@ const PaperBox :React.FC<Props> = ({
           variant='subtitle1'>
         </Typography>
         <Typography>Boxes are useful to apply stylings</Typography>
-        {/* <PriceInput /> */}
+        <PriceInput onChange={e=> setValue(parseFloat(e.target.value))} value={value}/>
       </CardContent>
     </Box>
   );

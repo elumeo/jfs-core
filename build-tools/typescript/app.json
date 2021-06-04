@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
+      "Effect/*": ["./Effect/*"],
       "Core/*": ["@elumeo/jfs-core/build/*"],
       "Component/*": ["./Component/*"],
       "Constant/*": ["./Constant/*"],

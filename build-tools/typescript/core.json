@@ -5,6 +5,7 @@
     "outDir": "./build",
     "baseUrl": "./src",
     "paths": {
+      "Effect/*": ["./Effect/*"],
       "Component/*": ["./Component/*"],
       "Constant/*": ["./Constant/*"],
       "Mock/*": ["./Mock/*"],

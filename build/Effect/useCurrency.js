@@ -1,4 +1,4 @@
-import useConfig from 'Effect/useConfig';
+import useConfig from './useConfig';
 const useCurrency = () => {
     const { Currency } = useConfig();
     return Currency;

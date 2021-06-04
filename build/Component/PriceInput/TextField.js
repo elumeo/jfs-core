@@ -11,7 +11,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import React from 'react';
 import { default as MUITextField } from '@material-ui/core/TextField';
-import useCurrency from 'Effect/useCurrency';
+import useCurrency from '../../Effect/useCurrency';
 import { Currency } from '../../Utilities/Format';
 const TextField = (_a) => {
     var { currency = useCurrency(), value = 0.00 } = _a, rest = __rest(_a, ["currency", "value"]);
