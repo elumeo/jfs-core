@@ -5081,11 +5081,6 @@
         "signature": "9d67eb2d294375c2717cbedfd82c6ba70631d9adf3cd8a5bb08929d4a6ed7180",
         "affectsGlobalScope": false
       },
-      "../src/types/color/box.ts": {
-        "version": "566a0c1aff5d66c55d36606bace479f80642832fd89cb66130356110fbc563c5",
-        "signature": "114b7aa0c65d9ddf924c5d10410aa8617d962703aa39546ee414d5413c1038bf",
-        "affectsGlobalScope": false
-      },
       "../src/types/color/default.ts": {
         "version": "9ad49ea1923335249aa6930d8616475769f5e10eeb545f542b4761c4d23ef88f",
         "signature": "c3b912b94332e3581decfa7fc8ba0afb414141e8da83dc257e694ea2f5c227d6",
@@ -5096,14 +5091,19 @@
         "signature": "64ea8299fe6cd5ba30dd72c4b679ae8de02ba85ef43bbef78cc983d4ee2fadef",
         "affectsGlobalScope": false
       },
+      "../src/types/color/theme.ts": {
+        "version": "566a0c1aff5d66c55d36606bace479f80642832fd89cb66130356110fbc563c5",
+        "signature": "114b7aa0c65d9ddf924c5d10410aa8617d962703aa39546ee414d5413c1038bf",
+        "affectsGlobalScope": false
+      },
       "../src/types/color/typography.ts": {
         "version": "0c3208339d28c5830e199cb3a2428c54d5d368db39a0f0a29ff782210919c9cd",
         "signature": "8c1ac4d504c66357c71659f96c30d7e4fdf95ea7248cbf3ce39e9785bd44da06",
         "affectsGlobalScope": false
       },
       "../src/types/color/index.ts": {
-        "version": "5669f94e312df5069e742a7edf43683b69096cfb7f5bfbf7f5270bccd10f4ba8",
-        "signature": "40deacc20013647282b2eab8cd5b1509e88b2c75e116de8dc10bf509911a45fc",
+        "version": "189225457eee699d126c327194468bcbe90df42424301a3db9b86e903f8e47ab",
+        "signature": "057ef3f91d12d119500e9d8e680c42082d5281cabfd5b5f317ae7e2209be710c",
         "affectsGlobalScope": false
       },
       "../augmentation/mp3.d.ts": {
@@ -13004,10 +13004,6 @@
         "../src/store/createuseselector.ts",
         "../src/store/reducer/global.ts"
       ],
-      "../src/types/color/box.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts"
-      ],
       "../src/types/color/button.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
@@ -13020,9 +13016,14 @@
       "../src/types/color/index.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../src/types/color/box.ts",
         "../src/types/color/button.ts",
+        "../src/types/color/default.ts",
+        "../src/types/color/theme.ts",
         "../src/types/color/typography.ts"
+      ],
+      "../src/types/color/theme.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
       ],
       "../src/types/color/typography.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -19752,8 +19753,9 @@
         "../src/types/color/default.ts"
       ],
       "../src/types/color/index.ts": [
-        "../src/types/color/box.ts",
         "../src/types/color/button.ts",
+        "../src/types/color/default.ts",
+        "../src/types/color/theme.ts",
         "../src/types/color/typography.ts"
       ],
       "../src/types/color/typography.ts": [
@@ -20878,10 +20880,10 @@
       "../src/store/selector/index.ts",
       "../src/store/useactions.ts",
       "../src/store/useselector.ts",
-      "../src/types/color/box.ts",
       "../src/types/color/button.ts",
       "../src/types/color/default.ts",
       "../src/types/color/index.ts",
+      "../src/types/color/theme.ts",
       "../src/types/color/typography.ts",
       "../src/types/configuration.ts",
       "../src/types/country.ts",

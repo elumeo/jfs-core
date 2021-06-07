@@ -4,7 +4,7 @@ import { useTheme } from '@material-ui/core/styles';
 import * as Action from 'Store/Action';
 import Typography from './Typo';
 import PaperBox from './PaperBox';
-import Example from './Example';
+import ExampleCard from './ExampleCard';
 const Showcase: React.FC = () => {
   const theme = useTheme()
   React.useEffect(
@@ -13,19 +13,22 @@ const Showcase: React.FC = () => {
     <MUI.Box
       gridGap={theme.spacing(1)}
       display='flex'
-      width='100%'
-      flexDirection='row'>
-      <Typography />
-      <MUI.Box
+      // width='100%'
+      flexDirection='row' >
+      {/* <MUI.Box
         flexGrow={1}
         display='flex'
         flexDirection='column'
         gridGap={theme.spacing(1)}
         maxWidth='50%'
-      >
+      > */}
+      <Typography />
+      <MUI.Box gridGap={theme.spacing(1)} flexGrow={1} display='flex' flexDirection='column' maxWidth='50%'>
+
         <PaperBox />
-        <Example />
+        <ExampleCard />
       </MUI.Box>
+      {/* </MUI.Box> */}
     </MUI.Box>
   );
 }

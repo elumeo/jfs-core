@@ -1,14 +1,26 @@
 import React from 'react';
 import { useSelector } from '@elumeo/jfs-core/build/Types/Redux';
-import { Box, Paper, CardHeader, CardContent, Typography, Grid, List, ListItem, ListItemIcon, ListItemText, } from '@material-ui/core';
-import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import { withStyles, Theme, WithStyles, useTheme } from '@material-ui/core/styles';
 import { useIntl } from 'react-intl';
 import FolderIcon from '@material-ui/icons/Folder';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
-import { useTheme } from '@material-ui/core/styles';
-import PriceInput from '@elumeo/jfs-core/build/Component/PriceInput'
-function generate(element: React.ReactElement) {
+import { colors } from './Background'
+import { colors as textColors } from './Typo'
+import { PropTypes } from '@material-ui/core';
+const generate = (element: React.ReactElement) => {
   return [0, 1, 2].map((value) =>
     React.cloneElement(element, {
       key: value,
@@ -23,31 +35,48 @@ const PaperBox: React.FC<Props> = ({
 }) => {
   const { formatMessage } = useIntl();
   const theme = useTheme()
-  const [value, setValue] = React.useState<React.ReactText>()
   const [dense, setDense] = React.useState(false)
+  const [color, setColor] = React.useState(colors[0])
+  const [textColor, setTextColor] = React.useState(textColors[0])
   const [secondary, setSecondary] = React.useState(false)
+  const toggleDense = () => {
+    setDense(!dense)
+  }
+  const toggleBg = () => {
+    return setColor(colors[Math.floor(Math.random() * (colors.length - 1)) + 1])
+  }
+  const toggleText = () => {
+    return setTextColor(textColors[Math.floor(Math.random() * (textColors.length - 1)) + 1])
+
+  }
   return (
-    <Box component={Paper}>
+    <Box component={Card} width='100%'>
       <CardHeader
         title='This is a paper'
         subheader='This Paper is wrapped by a Box' />
       <CardContent>
         <Typography
-          variant='subtitle1'>
+          variant='body1'>
+          Boxes are useful to apply stylings
         </Typography>
-        <Typography>Boxes are useful to apply stylings</Typography>
-        <PriceInput onChange={e => setValue(e.target.value)} value={value} />
-        <Box>
+        <Box display='flex' gridGap={theme.spacing(1)}>
+
+          <Button variant='contained' onClick={toggleBg}>border</Button>
+          <Button variant='contained' onClick={toggleText}>textColor</Button>
+          <Button variant='contained'onClick={toggleDense }>dense</Button>
+        </Box>
+        <Box border='1px solid' borderColor={color}>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
-              <Typography variant='h6' className={classes.title} onClick={() => setDense(!dense)}>
-                Text only  {dense ? <ExpandMore /> : <ExpandLess />}
+              <Typography variant='h6' className={classes.title}  color={textColor}>
+                Text only  {dense ? 'dense' : ''}
               </Typography>
-              <List dense={dense}>
+              <List dense={dense} subheader={<ListSubheader>borderColor: {color}</ListSubheader>}>
                 {generate(
                   <ListItem button onClick={() => setSecondary(!secondary)}>
                     <ListItemText
                       primary={'Single-line item ' + (dense ? '(dense)' : '')}
+
                       secondary={secondary ? 'Secondary text' : null}
                     />
                   </ListItem>,
@@ -55,10 +84,10 @@ const PaperBox: React.FC<Props> = ({
               </List>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant='h6' className={classes.title} onClick={() => setDense(!dense)}>
-                Icon with text {dense ? <ExpandLess /> : <ExpandMore />}
+              <Typography variant='h6' className={classes.title} color={textColor}>
+                Icon with text {dense ? 'dense' : ''}
               </Typography>
-              <List dense={dense}>
+              <List dense={dense} subheader={<ListSubheader> textColor: {textColor}</ListSubheader>} >
                 {generate(
                   <ListItem button onClick={() => setSecondary(!secondary)}>
                     <ListItemIcon>

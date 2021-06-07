@@ -16,7 +16,7 @@ import { useIntl } from 'react-intl';
 type Props = {
 } & WithStyles
 const style = (theme: Theme) => ({})
-const Example :React.FC<Props> = ({
+const ExampleCard :React.FC<Props> = ({
 classes
 }) => {
   const { formatMessage } = useIntl();
@@ -51,4 +51,4 @@ classes
   </MUI.Box>
   );
 };
-export default withStyles(style)(Example);
+export default withStyles(style)(ExampleCard);
