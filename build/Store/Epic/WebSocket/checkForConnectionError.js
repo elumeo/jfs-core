@@ -10,6 +10,8 @@ const checkForConnectionError = (action$, state) => {
             return of(Action.addNotification({
                 id: uuid(),
                 variant: 'error',
+                title: 'Websocket',
+                subtitle: 'Connection Request',
                 content: ('Unable to connect to websocket server (' + err.namespace + ')'
                     + (err.message !== null && err.message !== ''
                         ? ' because of ' + err.message
