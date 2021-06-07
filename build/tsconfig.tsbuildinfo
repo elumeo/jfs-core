@@ -2663,7 +2663,7 @@
       },
       "../src/Store/Reducer/Core/Router.ts": {
         "version": "a0f955060c02faa2b5fbfd71be709d0b7b9b8325c87771193cc353afc5cd6e58",
-        "signature": "22a19d578eda64c64c717281265f997df87486bb813b83821415148e8e44a3a0",
+        "signature": "d91ae170b0befc7761c13f50f34625067704278ce2e70d8527d6d128bb17cfa5",
         "affectsGlobalScope": false
       },
       "../src/Store/Reducer/Core/Session.ts": {
@@ -5011,6 +5011,11 @@
         "signature": "30cf65cbcdda83f9321cf2c6edac2e8cc6689c69d5fb1db78f785711d91a894c",
         "affectsGlobalScope": false
       },
+      "../src/index.tsx": {
+        "version": "055f9629398e140d7a3f5a971abcef19b4872423f73ea64039e57b8d03b26d7c",
+        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
+        "affectsGlobalScope": false
+      },
       "../src/Store/Selector/Core/Configuration.ts": {
         "version": "9dc082f18905663c7ae5a11a9beb303331ec31e970c6bf9ab6f9340015d6a128",
         "signature": "97c8b6ac56df015e9f30977e7309577c19b24c2c20686ab50febb9d7dc127cca",
@@ -5027,18 +5032,13 @@
         "affectsGlobalScope": false
       },
       "../src/Component/PriceInput/TextField.tsx": {
-        "version": "b2d424f40c456e41727902fcadc1b619b18bba85e439b4df5944f2efa2a58e70",
+        "version": "b7cf373d9451c316ec866f2036578e16fe918f1038816b6562ced1b3af594a21",
         "signature": "67034fbee35af30e4cb543afc5f9c390dab92bdbed6f4f1a7a0d10b0072739a9",
         "affectsGlobalScope": false
       },
       "../src/Component/PriceInput/index.ts": {
-        "version": "74f28ec09488f717f82448c86a2c812ec22c7ef7d9bf6c0b793dd688fd02366b",
+        "version": "a951dff99c73d7cb21dbb553a0a023ac986e5907e75235ef4e6e485bc9dbdcca",
         "signature": "e4dbd81e489557214650d97f6654c061cee105ca925d67f93f12c39e71484a84",
-        "affectsGlobalScope": false
-      },
-      "../src/index.tsx": {
-        "version": "f0ae81bbd6af77a055484bb72b13af98c7a3fbe94497608fa1a08ce9e493181b",
-        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
       "../src/Component/Settings/Container.tsx": {
@@ -12116,7 +12116,6 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../node_modules/react-intl/index.d.ts",
         "../src/Effect/useCurrency.ts",
         "../src/Utilities/Format/index.ts"
       ],
@@ -13072,7 +13071,6 @@
         "../src/Component/Logout/index.ts",
         "../src/Component/Notification/index.ts",
         "../src/Component/Overlay/index.ts",
-        "../src/Component/PriceInput/index.ts",
         "../src/Component/Settings/index.ts",
         "../src/Component/Snackbar/index.tsx",
         "../src/Setup/index.ts",

@@ -16,6 +16,6 @@
       "API/*" : ["./API/*"]
     }
   },
-  "include": ["./src"],
+  "include": ["./src", "./augmentation"],
   "exclude": ["node_modules"]
 }
