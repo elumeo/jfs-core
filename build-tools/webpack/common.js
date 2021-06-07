@@ -65,7 +65,7 @@ const common = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json', '.mp3'],
     alias: {
-      Core: resolve(PATH.ROOT, 'node_modules', '@elumeo', 'jfs-core')
+      Core: resolve(PATH.ROOT, 'node_modules', '@elumeo', 'jfs-core', 'build')
     },
     plugins: [
       new  PathAliasPlugin({
