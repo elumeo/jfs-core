@@ -15,7 +15,6 @@ const PaperBox :React.FC<Props> = ({
   const theme = useTheme()
   const [value, setValue] = React.useState(0)
   return (
-
     <Box component={Paper}>
       <CardHeader
         title='This is a paper'
@@ -25,7 +24,7 @@ const PaperBox :React.FC<Props> = ({
           variant='subtitle1'>
         </Typography>
         <Typography>Boxes are useful to apply stylings</Typography>
-        <PriceInput onChange={e=> setValue(parseFloat(e.target.value))} value={value}/>
+        <PriceInput onChange={e => setValue(parseFloat(e.target.value))} value={value}/>
       </CardContent>
     </Box>
   );
