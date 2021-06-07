@@ -3,7 +3,7 @@ import { Box, CardContent, CardHeader, Paper, Typography, Link, TypographyVarian
 import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
 import { useIntl } from 'react-intl';
 import ButtonExample from './ButtonExample';
-import  * as Color from  '../../../src/Types/Color'
+import  * as Color from  '@elumeo/jfs-core/build/Types/Color'
 import Background from './Background';
 type Props = {
 } & WithStyles

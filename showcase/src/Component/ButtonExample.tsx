@@ -3,7 +3,7 @@ import { useSelector } from '@elumeo/jfs-core/build/Types/Redux';
 import { Box, Button, Grid, PropTypes, CardContent, CardHeader } from '@material-ui/core';
 import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
 import { useIntl } from 'react-intl';
-import * as Color from '../../../src/Types/Color'
+import * as Color from '@elumeo/jfs-core/build/Types/Color'
 type Props = {
 } & WithStyles
 const style = (theme: Theme) => ({
