@@ -6,17 +6,19 @@
 // import * as Settings from 'Component/Settings';
 // import * as Language from 'Component/Language';
 // import * as Header from 'Component/Header';
+// import reducer from './Store/Reducer/Global';
+// import epic from './Store/Epic';
+
 // import * as Notification from 'Component/Notification';
 // import Snackbar from 'Component/Snackbar';
 // import Overlay from 'Component/Overlay';
 // import { Translations, Navigation, Routes } from 'Setup';
 // import packageJson from '../package.json';
-// import store from 'Store';
-// import PriceInput from 'Component/PriceInput';
+// import {create} from 'Store/index';
 
 // ReactDOM.render(
 //   <App.Container
-//     store={store}
+//     store={create(epic, reducer)}
 //     title='core'
 //     translations={Translations}
 //     packageJson={packageJson}>
