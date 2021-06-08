@@ -64,6 +64,9 @@ const Theme = () => {
                 // light: '#e57373',
                 // dark: '#d32f2f',
                 contrastText: '#fff'
+            },
+            background: {
+                default: Color.quarz[500],
             }
             // error: {
             //   main: 'rgb(215, 15, 65)',
