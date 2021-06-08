@@ -65,8 +65,7 @@ const Theme = () => {
         // light: '#e57373',
         // dark: '#d32f2f',
         contrastText: '#fff'
-      },
-
+      }
       // error: {
       //   main: 'rgb(215, 15, 65)',
       //   light: 'rgb(240, 140, 140)',

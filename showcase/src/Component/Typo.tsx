@@ -3,13 +3,16 @@ import { Box, CardContent, CardHeader, Paper, Typography, Link, TypographyVarian
 import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
 import { useIntl } from 'react-intl';
 import ButtonExample from './ButtonExample';
-import  * as Color from  '@elumeo/jfs-core/build/Types/Color'
+import * as Color from '@elumeo/jfs-core/build/Types/Color'
 import Background from './Background';
 type Props = {
 } & WithStyles
 const style = (theme: Theme) => ({
   root: {
     width: '100%'
+  },
+  copycat: {
+    ...theme.typography.button
   }
 })
 
@@ -28,14 +31,14 @@ const variants: TypographyVariant[] = [
   'caption',
   'overline',
 ]
-export const colors: Color.Typography[] =  [
-'initial',
-'inherit',
-'primary',
-'secondary',
-'textPrimary',
-'textSecondary',
-'error']
+export const colors: Color.Typography[] = [
+  'initial' as Color.Typography,
+  'inherit' as Color.Typography,
+  'primary' as Color.Typography,
+  'secondary' as Color.Typography,
+  'textPrimary',
+  'textSecondary',
+  'error']
 const Typo: React.FC<Props> = ({
   classes
 }) => {
@@ -48,20 +51,20 @@ const Typo: React.FC<Props> = ({
         <Box display='flex' flexDirection='row'>
 
           <Box>
-              <Box>
-                <Typography
-                  variant='subtitle1'
-                  component='span'>
-                  You can pass different pre-defined descriptors to the
+            <Box>
+              <Typography
+                variant='subtitle1'
+                component='span'>
+                You can pass different pre-defined descriptors to the
                  </Typography>
-                <Typography variant='caption'> variant</Typography >
-                <Typography
-                  variant='subtitle1'
-                  component='span'>
-                  property of the Typography .
+              <Typography variant='caption'> variant</Typography >
+              <Typography
+                variant='subtitle1'
+                component='span'>
+                property of the Typography .
                 </Typography>
-                <Link href='https://material.io/design/typography/the-type-system.html#type-scale' >[Specs]</Link>
-              </Box>
+              <Link href='https://material.io/design/typography/the-type-system.html#type-scale' >[Specs]</Link>
+            </Box>
 
             {
               variants.map(
@@ -74,6 +77,9 @@ const Typo: React.FC<Props> = ({
           <Box>
             <ButtonExample />
             <Background />
+            <Box className={classes.copycat}>
+              This text looks like that of a button
+            </Box>
           </Box>
         </Box>
 

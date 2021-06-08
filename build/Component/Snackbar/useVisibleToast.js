@@ -6,27 +6,19 @@ import useAutoHideDuration from './useAutoHideDuration';
 import useMessage from './useMessage';
 const useVisibleToast = () => {
     const toasts = useSelector(state => state.Core.Toast.toasts);
-    const [toast, setToast] = React.useState(null);
-    React.useEffect(() => {
-        if (toasts.length) {
-            setToast(toasts[0]);
-        }
-        else {
-            setToast(null);
-        }
-    }, [toasts.length]);
+    const toast = React.useMemo(() => toasts === null || toasts === void 0 ? void 0 : toasts[0], [toasts]);
     const open = Boolean(toast);
     const words = useWords(toast);
     const message = useMessage(toast, words);
     const autoHideDuration = useAutoHideDuration(words);
     const severity = useSeverity(toast);
-    return {
+    return React.useMemo(() => ({
         toast,
         open,
         words,
         message,
         autoHideDuration,
         severity
-    };
+    }), [toast, open, words, message, autoHideDuration, severity]);
 };
 export default useVisibleToast;

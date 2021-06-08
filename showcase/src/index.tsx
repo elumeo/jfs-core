@@ -7,6 +7,7 @@ import * as Logout from '@elumeo/jfs-core/build/Component/Logout';
 import * as Settings from '@elumeo/jfs-core/build/Component/Settings';
 import * as Language from '@elumeo/jfs-core/build/Component/Language';
 import * as Header from '@elumeo/jfs-core/build/Component/Header';
+import Snackbar from '@elumeo/jfs-core/build/Component/Snackbar';
 import * as Notification from '@elumeo/jfs-core/build/Component/Notification';
 import { Translations as CoreTranslations } from '@elumeo/jfs-core/build/Setup';
 import Translations from 'Setup/Translations.json';
@@ -65,6 +66,7 @@ ReactDOM.render(
       <Language.Settings/>
     </Settings.Dialog>
     <Routes/>
+    <Snackbar/>
   </App.Container>,
   document.getElementById('root')
 );

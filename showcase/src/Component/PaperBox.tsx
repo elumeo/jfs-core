@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from '@elumeo/jfs-core/build/Types/Redux';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -12,14 +11,13 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles, Theme, WithStyles, useTheme } from '@material-ui/core/styles';
 import { useIntl } from 'react-intl';
 import FolderIcon from '@material-ui/icons/Folder';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import { colors } from './Background'
+import { colors as bgColors } from './Background'
 import { colors as textColors } from './Typo'
-import { PropTypes } from '@material-ui/core';
 const generate = (element: React.ReactElement) => {
   return [0, 1, 2].map((value) =>
     React.cloneElement(element, {
@@ -36,14 +34,14 @@ const PaperBox: React.FC<Props> = ({
   const { formatMessage } = useIntl();
   const theme = useTheme()
   const [dense, setDense] = React.useState(false)
-  const [color, setColor] = React.useState(colors[0])
+  const [bgColor, setBgColor] = React.useState(bgColors[0])
   const [textColor, setTextColor] = React.useState(textColors[0])
   const [secondary, setSecondary] = React.useState(false)
   const toggleDense = () => {
     setDense(!dense)
   }
   const toggleBg = () => {
-    return setColor(colors[Math.floor(Math.random() * (colors.length - 1)) + 1])
+    return setBgColor(bgColors[Math.floor(Math.random() * (bgColors.length - 1)) + 1])
   }
   const toggleText = () => {
     return setTextColor(textColors[Math.floor(Math.random() * (textColors.length - 1)) + 1])
@@ -61,17 +59,17 @@ const PaperBox: React.FC<Props> = ({
         </Typography>
         <Box display='flex' gridGap={theme.spacing(1)}>
 
-          <Button variant='contained' onClick={toggleBg}>border</Button>
-          <Button variant='contained' onClick={toggleText}>textColor</Button>
-          <Button variant='contained'onClick={toggleDense }>dense</Button>
+          <Button size={dense ? 'small' : 'medium'} variant='contained' onClick={toggleBg}>border</Button>
+          <Button size={dense ? 'small' : 'medium'} variant='contained' onClick={toggleText}>textColor</Button>
+          <FormControlLabel control={<Switch onChange={toggleDense} value={dense} size={dense ? 'small' : 'medium'} />} label='dense' />
         </Box>
-        <Box border='1px solid' borderColor={color}>
+        <Box border='1px solid' borderColor={bgColor}>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
-              <Typography variant='h6' className={classes.title}  color={textColor}>
+              <Typography variant='h6' className={classes.title} color={textColor}>
                 Text only  {dense ? 'dense' : ''}
               </Typography>
-              <List dense={dense} subheader={<ListSubheader>borderColor: {color}</ListSubheader>}>
+              <List dense={dense} subheader={<ListSubheader>borderColor: {bgColor}</ListSubheader>}>
                 {generate(
                   <ListItem button onClick={() => setSecondary(!secondary)}>
                     <ListItemText

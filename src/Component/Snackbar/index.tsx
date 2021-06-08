@@ -10,6 +10,7 @@ const Snackbar = () => {
   return (
     <MUISnackbar
       open={open}
+      id='snackbar-test'
       onClose={(_, reason) => {
         if (reason === 'timeout') {
           dismissToastAction();

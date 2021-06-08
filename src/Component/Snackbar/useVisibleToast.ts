@@ -8,17 +8,10 @@ import useMessage from './useMessage';
 
 const useVisibleToast = () => {
   const toasts = useSelector(state => state.Core.Toast.toasts);
-  const [toast, setToast] = React.useState<Toast>(null);
-  React.useEffect(
-    () => {
-      if (toasts.length) {
-        setToast(toasts[0]);
-      }
-      else {
-        setToast(null);
-      }
-    },
-    [toasts.length]
+  const toast = React.useMemo(
+    () => toasts?.[0]
+    ,
+    [toasts]
   );
 
   const open = Boolean(toast);
@@ -26,14 +19,14 @@ const useVisibleToast = () => {
   const message = useMessage(toast, words);
   const autoHideDuration = useAutoHideDuration(words);
   const severity = useSeverity(toast);
-  return {
+  return React.useMemo(()=> ({
     toast,
     open,
     words,
     message,
     autoHideDuration,
     severity
-  };
+  }),[toast, open, words, message, autoHideDuration, severity]);
 }
 
 export default useVisibleToast;

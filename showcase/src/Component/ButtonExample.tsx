@@ -54,7 +54,8 @@ const ButtonExample: React.FC<Props> = ({
         <CardHeader title='Buttons (variant + color)' />
         <Box className={classes.root}>
             {generate(variants, colors)}
-        </Box></CardContent>
+        </Box>
+    </CardContent>
     );
 };
 export default withStyles(style)(ButtonExample);
