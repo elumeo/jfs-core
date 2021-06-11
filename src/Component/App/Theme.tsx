@@ -7,14 +7,12 @@ const Theme = () => {
       MuiCssBaseline: {
         '@global': {
           '#root': {
-            background: Color.quarz[500],
           },
           html:{
             // fontSize: '87.5%'
           },
           body: {
             margin: 0,
-            background: Color.quarz[500],
             padding: 0,
             fontFamily: 'Roboto',
           }
