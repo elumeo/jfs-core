@@ -7,9 +7,9 @@ const DefaultNotificationCard = ({ notification: { title, subtitle, content, act
     const snackbar = useSnackbar();
     return (React.createElement(React.Fragment, null,
         React.createElement(CardContent, { color: 'inherit' },
-            React.createElement(Typography, { variant: 'subtitle1' }, title),
-            React.createElement(Typography, { variant: 'subtitle2' }, subtitle),
-            React.createElement(Typography, { variant: 'body1' }, content)),
+            React.createElement(Typography, { variant: 'subtitle1', component: 'span' }, title),
+            React.createElement(Typography, { variant: 'subtitle2', component: 'span' }, subtitle),
+            React.createElement(Typography, { variant: 'body1', component: 'span' }, content)),
         !temporary && action && (React.createElement(CardActions, null, action(snackbar, id, temporary)))));
 };
 export default DefaultNotificationCard;

@@ -3462,7 +3462,7 @@
         "affectsGlobalScope": false
       },
       "../src/component/notification/card/default.tsx": {
-        "version": "18c481f519365bdde90571f61a028a396e7f684a45b3f24b764a4603508845c6",
+        "version": "b7d241f57af9238e4eba14fd1fb7f140418e4847b16df36cba93a4f8fab06678",
         "signature": "a73066789429d0dd44f7251717161fe79fccd14502bcd1372fbf361c05ebd3ef",
         "affectsGlobalScope": false
       },
@@ -5379,6 +5379,16 @@
       "../node_modules/@types/react-virtualized/index.d.ts": {
         "version": "1372636c163a55f5eb497667ddda71393473e527c62f15ba1e9dbaafc58b4bd7",
         "signature": "1372636c163a55f5eb497667ddda71393473e527c62f15ba1e9dbaafc58b4bd7",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/react-virtualized-auto-sizer/index.d.ts": {
+        "version": "aa64b8c24b628b1ee53dc3551b54af05b1e939cb923666a06b5f1f27c238cf1d",
+        "signature": "aa64b8c24b628b1ee53dc3551b54af05b1e939cb923666a06b5f1f27c238cf1d",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/react-window/index.d.ts": {
+        "version": "3739aaf09c9c549a372939382fc29f9284226294c54eb076b6e3d1dfcce08778",
+        "signature": "3739aaf09c9c549a372939382fc29f9284226294c54eb076b6e3d1dfcce08778",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/scheduler/index.d.ts": {
@@ -9531,6 +9541,11 @@
         "../node_modules/@types/react-transition-group/transition.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
+      "../node_modules/@types/react-virtualized-auto-sizer/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
       "../node_modules/@types/react-virtualized/dist/es/arrowkeystepper.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
@@ -9633,6 +9648,11 @@
         "../node_modules/@types/react-virtualized/dist/es/scrollsync.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/table.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/windowscroller.d.ts"
+      ],
+      "../node_modules/@types/react-window/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../node_modules/@types/react/global.d.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -17021,6 +17041,11 @@
         "../node_modules/@types/react-transition-group/transition.d.ts",
         "../node_modules/@types/react/index.d.ts"
       ],
+      "../node_modules/@types/react-virtualized-auto-sizer/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
+      ],
       "../node_modules/@types/react-virtualized/dist/es/arrowkeystepper.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
@@ -17123,6 +17148,11 @@
         "../node_modules/@types/react-virtualized/dist/es/scrollsync.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/table.d.ts",
         "../node_modules/@types/react-virtualized/dist/es/windowscroller.d.ts"
+      ],
+      "../node_modules/@types/react-window/index.d.ts": [
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../node_modules/@types/react/global.d.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -20374,6 +20404,7 @@
       "../node_modules/@types/react-transition-group/switchtransition.d.ts",
       "../node_modules/@types/react-transition-group/transition.d.ts",
       "../node_modules/@types/react-transition-group/transitiongroup.d.ts",
+      "../node_modules/@types/react-virtualized-auto-sizer/index.d.ts",
       "../node_modules/@types/react-virtualized/dist/es/arrowkeystepper.d.ts",
       "../node_modules/@types/react-virtualized/dist/es/autosizer.d.ts",
       "../node_modules/@types/react-virtualized/dist/es/cellmeasurer.d.ts",
@@ -20388,6 +20419,7 @@
       "../node_modules/@types/react-virtualized/dist/es/table.d.ts",
       "../node_modules/@types/react-virtualized/dist/es/windowscroller.d.ts",
       "../node_modules/@types/react-virtualized/index.d.ts",
+      "../node_modules/@types/react-window/index.d.ts",
       "../node_modules/@types/react/global.d.ts",
       "../node_modules/@types/react/index.d.ts",
       "../node_modules/@types/react/node_modules/csstype/index.d.ts",

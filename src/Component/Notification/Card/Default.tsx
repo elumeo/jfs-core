@@ -21,13 +21,13 @@ const DefaultNotificationCard : React.FC<Props> = ({
     return (
       <>
         <CardContent color='inherit'>
-          <Typography variant='subtitle1'>
+          <Typography variant='subtitle1' component='span'>
             {title}
           </Typography>
-          <Typography variant='subtitle2'>
+          <Typography variant='subtitle2' component='span'>
             {subtitle}
           </Typography>
-          <Typography variant='body1'> 
+          <Typography variant='body1' component='span'> 
             {content}
           </Typography>
         </CardContent>
