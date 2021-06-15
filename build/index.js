@@ -1,4 +1,4 @@
-// import React, { ChangeEventHandler } from 'react';
+// import React from 'react';
 // import ReactDOM from 'react-dom';
 // import * as App from './Component/App';
 // import * as Login from './Component/Login';
@@ -15,29 +15,29 @@
 // import packageJson from '../package.json';
 // import { create } from './Store/index';
 // ReactDOM.render(
-//     <App.Container
-//         store={create(epic, reducer)}
-//         title='core'
-//         translations={Translations}
-//         packageJson={packageJson}>
-//         <Overlay>
-//             <Header.Toolbar
-//                 left={<Header.BackendIndicator />}
-//                 right={
-//                     <>
-//                         <Settings.Button />
-//                         <Notification.Button.Show />
-//                     </>
-//                 } />
-//             <Navigation />
-//             <Login.Dialog />
-//             <Logout.Dialog />
-//             <Settings.Dialog>
-//                 <Language.Settings />
-//             </Settings.Dialog>
-//             <Snackbar />
-//         </Overlay>
-//         <Routes />
-//     </App.Container>,
-//     document.getElementById('root')
+//   <App.Container
+//     store={create(epic, reducer)}
+//     title='core'
+//     translations={Translations}
+//     packageJson={packageJson}>
+//     <Overlay>
+//       <Header.Toolbar
+//         left={<Header.BackendIndicator />}
+//         right={
+//           <>
+//             <Settings.Button />
+//             <Notification.Button.Show />
+//           </>
+//         } />
+//       <Navigation />
+//       <Login.Dialog />
+//       <Logout.Dialog />
+//       <Settings.Dialog>
+//         <Language.Settings />
+//       </Settings.Dialog>
+//       <Snackbar />
+//     </Overlay>
+//     <Routes />
+//   </App.Container>,
+//   document.getElementById('root')
 // );
