@@ -2,13 +2,9 @@
 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>delete_pin</title>
     <g id="delete_pin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="push_pin_black_24dp">
-            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
-            <path d="M16,9 L16,4 L17,4 C17.55,4 18,3.55 18,3 L18,3 C18,2.45 17.55,2 17,2 L7,2 C6.45,2 6,2.45 6,3 L6,3 C6,3.55 6.45,4 7,4 L8,4 L8,9 C8,10.66 6.66,12 5,12 L5,12 L5,14 L10.97,14 L10.97,21 L11.97,22 L12.97,21 L12.97,14 L19,14 L19,12 L19,12 C17.34,12 16,10.66 16,9 Z" id="Path" fill="#000000" fill-rule="nonzero"></path>
-        </g>
-        <g id="delete" transform="translate(1.000000, -1.000000)" fill-rule="nonzero">
-            <polygon id="Shape" fill="#000000" points="0 3.1 20.9 24 22.2 22.7 1.2 1.8"></polygon>
-            <polygon id="Shape-Copy" fill="#FFFFFF" points="1.2 1.8 22.1 22.7 23.4 21.4 2.4 0.5"></polygon>
+        <g id="push_pin_black_24dp" transform="translate(1.000000, 0.000000)" fill="#000000" fill-rule="nonzero">
+            <path d="M7,6.599 L14.4,14 L11.97,14 L11.97,21 L10.97,22 L9.97,21 L9.97,14 L4,14 L4,12 L4.17658619,11.9949189 C5.7540051,11.9038776 7,10.6007143 7,9 L7,9 L7,6.599 Z M16,2 C16.55,2 17,2.45 17,3 L17,3 L16.9932398,3.11619898 C16.9352041,3.6119898 16.5107143,4 16,4 L16,4 L15,4 L15,9 C15,10.66 16.34,12 18,12 L18,12 L18,14 L16.969,14 L7,4.078 L7,4 L6.922,4 L5.25152134,2.33862787 C5.41081232,2.15868075 5.63358014,2.03605027 5.88380102,2.0067602 L6,2 Z" id="Combined-Shape"></path>
+            <polygon id="Path-Copy" points="0 2.1 20.9 23 22.2 21.7 1.2 0.8"></polygon>
         </g>
     </g>
 </svg>
