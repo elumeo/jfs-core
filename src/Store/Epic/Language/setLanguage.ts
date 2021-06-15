@@ -11,7 +11,11 @@ const setLanguage: Epic = action$ => (
     filter(isActionOf(Action.changeLanguageAction)),
     switchMap(({ payload }) => {
       const locale = Locale.mapLanguageToLocale(payload);
-      Cookie.set('lang', payload);
+      const expires = new Date;
+      expires.setFullYear(expires.getFullYear() + 100);
+      Cookie.set('lang', payload, {
+        expires
+      });
 
       Locale.setLocale(locale);
       // setDefaultLocale(payload);
