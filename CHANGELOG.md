@@ -1,3 +1,7 @@
+## [9.10.40] 2021-06-15
+## Added
+- added new font icon "delete_pin"
+
 ## [9.10.39] 2021-05-25
 ## Added
 - added new font icon "shopping_cart_bolt"

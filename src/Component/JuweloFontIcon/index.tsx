@@ -17,7 +17,8 @@ export type Icon = (
   'webshop_bidagent' |
   'webshop_block' |
   'filter_reset' |
-  'shopping_cart_bolt'
+  'shopping_cart_bolt' |
+  'delete_pin'
 );
 
 export interface IJuweloFontIconProps {
