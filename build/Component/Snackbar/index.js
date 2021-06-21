@@ -6,7 +6,7 @@ import useVisibleToast from './useVisibleToast';
 const Snackbar = () => {
     const { dismissToastAction } = useActions();
     const { open, severity, message, autoHideDuration } = useVisibleToast();
-    return (React.createElement(MUISnackbar, { open: open, id: 'snackbar-test', onClose: (_, reason) => {
+    return (React.createElement(MUISnackbar, { open: open, id: 'alert-snackbar', onClose: (_, reason) => {
             if (reason === 'timeout') {
                 dismissToastAction();
             }
