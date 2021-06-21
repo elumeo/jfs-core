@@ -3,7 +3,7 @@ import * as MUI from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import * as Action from 'Store/Action';
 import Typography from './Typo';
-import PaperBox from './PaperBox';
+import ListExample from './ListExample';
 import ExampleCard from './ExampleCard';
 const Showcase: React.FC = () => {
   const theme = useTheme()
@@ -25,7 +25,7 @@ const Showcase: React.FC = () => {
       <Typography />
       <MUI.Box gridGap={theme.spacing(1)} flexGrow={1} display='flex' flexDirection='column' maxWidth='50%'>
 
-        <PaperBox />
+        <ListExample />
         <ExampleCard />
       </MUI.Box>
       {/* </MUI.Box> */}

@@ -28,7 +28,7 @@ const generate = (element: React.ReactElement) => {
 type Props = {
 } & WithStyles
 const style = (theme: Theme) => ({})
-const PaperBox: React.FC<Props> = ({
+const ListExample: React.FC<Props> = ({
   classes
 }) => {
   const { formatMessage } = useIntl();
@@ -59,41 +59,42 @@ const PaperBox: React.FC<Props> = ({
         </Typography>
         <Box display='flex' gridGap={theme.spacing(1)}>
 
-          <Button size={dense ? 'small' : 'medium'} variant='contained' onClick={toggleBg}>border</Button>
-          <Button size={dense ? 'small' : 'medium'} variant='contained' onClick={toggleText}>textColor</Button>
+          <Button size={dense ? 'small' : 'medium'} variant='contained' onClick={toggleBg}>Box prop:border</Button>
+          <Button size={dense ? 'small' : 'medium'} variant='contained' onClick={toggleText}>Box prop:color</Button>
           <FormControlLabel control={<Switch onChange={toggleDense} value={dense} size={dense ? 'small' : 'medium'} />} label='dense' />
         </Box>
         <Box border='1px solid' borderColor={bgColor}>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
-              <Typography variant='h6' className={classes.title} color={textColor}>
+              <Typography variant='h6' color={textColor}>
                 Text only  {dense ? 'dense' : ''}
               </Typography>
               <List dense={dense} subheader={<ListSubheader>borderColor: {bgColor}</ListSubheader>}>
                 {generate(
                   <ListItem button onClick={() => setSecondary(!secondary)}>
                     <ListItemText
-                      primary={'Single-line item ' + (dense ? '(dense)' : '')}
+                      primary={'ListItemText prop:primary' + (dense ? '(dense)' : '')}
 
-                      secondary={secondary ? 'Secondary text' : null}
+                      secondary={secondary ? 'ListItemText prop:secondary' : null}
                     />
                   </ListItem>,
                 )}
               </List>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant='h6' className={classes.title} color={textColor}>
+              <Typography variant='h6'color={textColor}>
                 Icon with text {dense ? 'dense' : ''}
               </Typography>
               <List dense={dense} subheader={<ListSubheader> textColor: {textColor}</ListSubheader>} >
                 {generate(
-                  <ListItem button onClick={() => setSecondary(!secondary)}>
+                  <ListItem button onClick={() => setSecondary(!secondary)} >
                     <ListItemIcon>
                       <FolderIcon />
                     </ListItemIcon>
                     <ListItemText
-                      primary={'Single-line item ' + (dense ? '(dense)' : '')}
-                      secondary={secondary ? 'Secondary text' : null}
+                      style={{ color: textColor }}
+                      primary={'ListItemText prop:primary' + (dense ? '(dense)' : '')}
+                      secondary={secondary ? 'ListItemText prop:secondary' : null}
                     />
                   </ListItem>,
                 )}
@@ -105,4 +106,4 @@ const PaperBox: React.FC<Props> = ({
     </Box>
   );
 };
-export default withStyles(style)(PaperBox);
+export default withStyles(style)(ListExample);

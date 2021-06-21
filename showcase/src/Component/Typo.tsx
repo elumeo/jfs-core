@@ -38,7 +38,8 @@ export const colors: Color.Typography[] = [
   'secondary' as Color.Typography,
   'textPrimary',
   'textSecondary',
-  'error']
+  'error',
+]
 const Typo: React.FC<Props> = ({
   classes
 }) => {
@@ -56,13 +57,9 @@ const Typo: React.FC<Props> = ({
                 variant='subtitle1'
                 component='span'>
                 You can pass different pre-defined descriptors to the
-                 </Typography>
-              <Typography variant='caption'> variant</Typography >
-              <Typography
-                variant='subtitle1'
-                component='span'>
+                'variant'
                 property of the Typography .
-                </Typography>
+              </Typography>
               <Link href='https://material.io/design/typography/the-type-system.html#type-scale' >[Specs]</Link>
             </Box>
 
@@ -73,10 +70,7 @@ const Typo: React.FC<Props> = ({
             <Typography > custom variants will be available in material-ui version 5.X (<Link target='_blank'
               href='https://github.com/mui-org/material-ui/issues/22257'>ISSUE</Link>)</Typography >
             <Typography > We should define custom Typography  styles by defining new variant types.</Typography >
-          </Box>
-          <Box>
-            <ButtonExample />
-            <Background />
+
             <Box className={classes.copycat}>
               This text looks like that of a button
             </Box>

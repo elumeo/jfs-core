@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from '@elumeo/jfs-core/build/Types/Redux';
-import { Box, Button, Grid, PropTypes, CardContent, CardHeader } from '@material-ui/core';
+import { Box, Button, Grid, PropTypes, CardContent, CardHeader, Typography } from '@material-ui/core';
 import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
 import { useIntl } from 'react-intl';
 import * as Color from '@elumeo/jfs-core/build/Types/Color'
@@ -51,7 +51,7 @@ const ButtonExample: React.FC<Props> = ({
     classes
 }) => {
     return (<CardContent>
-        <CardHeader title='Buttons (variant + color)' />
+        <Typography variant='h5' > Buttons (variant + color)</Typography>
         <Box className={classes.root}>
             {generate(variants, colors)}
         </Box>

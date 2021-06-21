@@ -22,7 +22,7 @@ const Background: React.FC<Props> = ({
     const { formatMessage } = useIntl();
     return (
         <>
-            <CardHeader title={'styled boxes (bgColor)'} />
+            <CardHeader title={'styled boxes (prop:bgColor)'} />
             <CardContent>
 
                 <Grid container spacing={1}>
