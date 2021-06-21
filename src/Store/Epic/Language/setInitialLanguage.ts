@@ -8,10 +8,11 @@ import * as Type from 'Types/Language';
 
 const setInitialLanguage: Epic = (action$, state$) => action$.pipe(
   filter(isActionOf(Action.configLoadedAction)),
-  concatMap(() => of(
+  concatMap(({ payload: { config } }) => of(
     Action.changeLanguageAction(
-      Cookie.get('lang') as Type.Language ||
       state$.value.Core.Language.language ||
+      Cookie.get('lang') as Type.Language ||
+      config.Language ||
       'en'
     ),
     Action.loadSession()

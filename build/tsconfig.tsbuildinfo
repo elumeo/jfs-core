@@ -4922,7 +4922,7 @@
         "affectsGlobalScope": false
       },
       "../src/Store/Epic/Language/setInitialLanguage.ts": {
-        "version": "676dfe2136fc2c248922a4b93f577bc61de4d2925be39a9d8f934da3d0bd3927",
+        "version": "e5b73267915172889d20052ba1956c6113ce02f0e1a46c2f834c9a1dedd79972",
         "signature": "a1cd617ea06634a2eca62c6685b5645223294681de3b0dfebc54e8cc9695e93f",
         "affectsGlobalScope": false
       },

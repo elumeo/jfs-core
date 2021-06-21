@@ -3,7 +3,8 @@ import { filter, concatMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import Cookie from 'js-cookie';
 import * as Action from '../../Action';
-const setInitialLanguage = (action$, state$) => action$.pipe(filter(isActionOf(Action.configLoadedAction)), concatMap(() => of(Action.changeLanguageAction(Cookie.get('lang') ||
-    state$.value.Core.Language.language ||
+const setInitialLanguage = (action$, state$) => action$.pipe(filter(isActionOf(Action.configLoadedAction)), concatMap(({ payload: { config } }) => of(Action.changeLanguageAction(state$.value.Core.Language.language ||
+    Cookie.get('lang') ||
+    config.Language ||
     'en'), Action.loadSession())));
 export default setInitialLanguage;
