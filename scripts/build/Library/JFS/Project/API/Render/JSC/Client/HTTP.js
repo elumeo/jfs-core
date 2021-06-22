@@ -24,7 +24,7 @@ const Axios = __importStar(require("../../Axios"));
 const TypeScript = __importStar(require("../../TypeScript"));
 const EcmaScript = __importStar(require("../../EcmaScript"));
 const Code = __importStar(require("../../Code"));
-const encodeURI = (name) => `encodeURI(
+const encodeURI = (name) => `encodeURIComponent(
   typeof ${name} === 'number'
     ? (${name} as number).toString()
     : ${name}

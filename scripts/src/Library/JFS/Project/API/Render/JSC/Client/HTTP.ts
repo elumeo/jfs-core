@@ -4,7 +4,7 @@ import * as TypeScript from '../../TypeScript';
 import * as EcmaScript from '../../EcmaScript';
 import * as Code from '../../Code';
 
-export const encodeURI = (name: string) => `encodeURI(
+export const encodeURI = (name: string) => `encodeURIComponent(
   typeof ${name} === 'number'
     ? (${name} as number).toString()
     : ${name}

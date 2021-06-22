@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from '@elumeo/jfs-core/build/Types/Redux';
 import { Box, Card, CardContent, CardHeader, Typography, List, Collapse, ListItem, Link } from '@material-ui/core';
 import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
 import { useIntl } from 'react-intl';
@@ -15,9 +14,8 @@ const Module: React.FC<Props> = ({
     classes
 }) => {
     const { formatMessage } = useIntl();
-
     const { addToastAction } = useActions();
-    const [open, setOpen] = React.useState(0)
+    const [open, setOpen] = React.useState(0);
     return (
         <Box component={Card}>
             <CardHeader title='modules' />

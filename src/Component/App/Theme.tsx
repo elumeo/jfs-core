@@ -22,7 +22,7 @@ const Theme = () => {
     typography: {
       // fontSize: 13,  
       // htmlFontSize: 14,
-    //   test : createTypography({
+    //   test : createTypography({  
     //     color : 'red'
     //   }) as  TypographyVariant 
     },

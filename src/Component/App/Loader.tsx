@@ -15,7 +15,10 @@ export type Props = {
 };
 
 const Loader: React.FC<Props> = ({
-  allowRobotLogin, translations, packageJson, children
+  allowRobotLogin,
+  translations,
+  packageJson,
+  children
 }) => {
   const { appInitialized, language } = useLoader({
     allowRobotLogin,

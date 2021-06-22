@@ -1,6 +1,5 @@
 import React from 'react';
 import Loader from './Loader';
-// import { ConnectedRouter } from 'connected-react-router';
 import HOC, { Props as HOCProps } from './HOC';
 
 export type Props = HOCProps & {
