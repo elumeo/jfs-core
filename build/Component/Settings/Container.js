@@ -12,7 +12,7 @@ import { useIntl } from 'react-intl';
 import { useSelector } from '../../Types/Redux';
 const Container = () => {
     const { changeLanguageAction } = useActions();
-    const { back: goBack } = useHistory();
+    const { goBack } = useHistory();
     const { formatMessage } = useIntl();
     const language = useSelector(state => state.Core.Language.language);
     return (React.createElement(Card, { style: { width: 330, margin: 'auto' } },

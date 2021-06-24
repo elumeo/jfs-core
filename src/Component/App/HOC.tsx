@@ -11,6 +11,8 @@ import MomentUtils from '@date-io/moment';
 import WebSocketConnection from 'Component/WebSocket/WebSocketConnection';
 import * as Notification from 'Component/Notification';
 import Head from './Head';
+import { ConnectedRouter } from 'connected-react-router';
+import { history } from 'Store/Middleware'
 
 export type Props = {
   title: string;
@@ -32,16 +34,16 @@ const HOC: React.FC<Props> = ({
             }}
             maxSnack={5}
             domRoot={document.getElementById('overlay')}>
-            <Notification.Notistack/>
-            <Head title={title}/>
+            <Notification.Notistack />
+            <Head title={title} />
             <CssBaseline />
             <WebSocketConnection>
-              {/* <ConnectedRouter history={history}> */}
-              <HashRouter>
+              <ConnectedRouter history={history}>
+                {/* <HashRouter> */}
                 {children}
-              </HashRouter>
+                {/* </HashRouter> */}
+              </ConnectedRouter>
             </WebSocketConnection>
-            {/* </ConnectedRouter> */}
           </SnackbarProvider>
         </ThemeProvider>
       </MuiPickersUtilsProvider>

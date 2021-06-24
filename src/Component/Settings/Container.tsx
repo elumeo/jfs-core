@@ -14,7 +14,7 @@ import { useSelector } from 'Types/Redux';
 
 const Container: React.FC = () => {
     const { changeLanguageAction } = useActions();
-    const { back: goBack } = useHistory();
+    const { goBack } = useHistory();
     const { formatMessage } = useIntl();
     const language = useSelector(state => state.Core.Language.language);
   

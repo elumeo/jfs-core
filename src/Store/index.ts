@@ -10,7 +10,7 @@ export const create = <T>(epic: Epic, reducer: Redux.Reducer<T>) => {
   const wrapped = wrap(epic, action$ => action$.pipe(
     Rx.catchError((error, source) => {
       if (error?.response?.status === 401) {
-        
+
       }
       console.error(error);
       return source;

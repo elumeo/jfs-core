@@ -217,7 +217,7 @@
         "affectsGlobalScope": true
       },
       "../src/index.tsx": {
-        "version": "332716357e4019d2ea92ec7f0384c31201d808d4c58f08196b87935a479b8225",
+        "version": "bacf9f17366610fae9152f7c49938fd1a7de3a904b57e6171f2c68f861f14063",
         "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "affectsGlobalScope": false
       },
@@ -655,6 +655,41 @@
         "version": "1f2aeddad94bedd84380217ed8d64bba9566d20a87360617f2616013e1e77540",
         "signature": "1f2aeddad94bedd84380217ed8d64bba9566d20a87360617f2616013e1e77540",
         "affectsGlobalScope": true
+      },
+      "../node_modules/@types/history/domutils.d.ts": {
+        "version": "271cde49dfd9b398ccc91bb3aaa43854cf76f4d14e10fed91cbac649aa6cbc63",
+        "signature": "271cde49dfd9b398ccc91bb3aaa43854cf76f4d14e10fed91cbac649aa6cbc63",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/history/createbrowserhistory.d.ts": {
+        "version": "c6f2572e21f626260d2e4a65e4e1e42b9b273b6f43b5c3bc115c2926417d3eca",
+        "signature": "c6f2572e21f626260d2e4a65e4e1e42b9b273b6f43b5c3bc115c2926417d3eca",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/createhashhistory.d.ts": {
+        "version": "374ab77e05e0bf5a52acad6d65121d4bd31068108f23d70186dba5fcd7d6a1a3",
+        "signature": "374ab77e05e0bf5a52acad6d65121d4bd31068108f23d70186dba5fcd7d6a1a3",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/creatememoryhistory.d.ts": {
+        "version": "a4ecd4bb653aa71093375845fba6250ca0f3c633d0e933fc9bf4b301834eab27",
+        "signature": "a4ecd4bb653aa71093375845fba6250ca0f3c633d0e933fc9bf4b301834eab27",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/locationutils.d.ts": {
+        "version": "25d91fb9ed77a828cc6c7a863236fb712dafcd52f816eec481bd0c1f589f4404",
+        "signature": "25d91fb9ed77a828cc6c7a863236fb712dafcd52f816eec481bd0c1f589f4404",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/pathutils.d.ts": {
+        "version": "4cd14cea22eed1bfb0dc76183e56989f897ac5b14c0e2a819e5162eafdcfe243",
+        "signature": "4cd14cea22eed1bfb0dc76183e56989f897ac5b14c0e2a819e5162eafdcfe243",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/history/index.d.ts": {
+        "version": "cc53cba64efb30576f2a36f1d7107e4453e84cbd0f371d49cd1dfd208e11233b",
+        "signature": "cc53cba64efb30576f2a36f1d7107e4453e84cbd0f371d49cd1dfd208e11233b",
+        "affectsGlobalScope": false
       },
       "../node_modules/redux/index.d.ts": {
         "version": "d530250769a14518ebd6edda5b5f94abaaf3b9f612363c0da32082fa6acd0da8",
@@ -2501,11 +2536,6 @@
         "signature": "0e54b7128380706289041e09c3420be726b04965e9f642cdc4c92edd0ea1ffcd",
         "affectsGlobalScope": false
       },
-      "../node_modules/history/index.d.ts": {
-        "version": "e057ffada5a43ac83957a1d76dc0daaa01bbea4d7aa2eb466ffad5e3bce6424f",
-        "signature": "e057ffada5a43ac83957a1d76dc0daaa01bbea4d7aa2eb466ffad5e3bce6424f",
-        "affectsGlobalScope": false
-      },
       "../src/store/action/router.ts": {
         "version": "83ffbb1aeb26bcfd3e3174bd1dc8ab9d426f2975617511a43a3ccb54f493e5de",
         "signature": "5afad4e0c39149d279b8bfa9d7bcd3d87c6e59c66775aac9c96f6775f87b25ab",
@@ -2561,19 +2591,29 @@
         "signature": "89fb470ea4979b52a206816172c98f92141a95494b40ee2b8d75a901d0555ba7",
         "affectsGlobalScope": false
       },
+      "../node_modules/@types/react-router/index.d.ts": {
+        "version": "331ccc5c36630a5ced3990e2cd43a1b54a22179a861f9ddddd20d64ea88b3b97",
+        "signature": "331ccc5c36630a5ced3990e2cd43a1b54a22179a861f9ddddd20d64ea88b3b97",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/connected-react-router/index.d.ts": {
+        "version": "e9ed8542c182b168b11cddad1cf8e889d5ba261104d49153f1c8049fc851186a",
+        "signature": "e9ed8542c182b168b11cddad1cf8e889d5ba261104d49153f1c8049fc851186a",
+        "affectsGlobalScope": false
+      },
       "../src/types/redux.ts": {
-        "version": "93455a0d153f44614a7b94cbabfb8f0677bd6b16ede9f2fde608412ac6d27890",
-        "signature": "9d17d1f08b813499f3f55ff69e3192188977c47f00ffaadccd4063eb09521cf4",
+        "version": "3a4edec6d761cc2270b9f6c6da51ee9db8b11dc4471d1696807bdb71a899ee9f",
+        "signature": "3d2b3c3706613f39658d7d298f43e235a48603bd927ecd11bc420392cf52c1bf",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/app.ts": {
         "version": "cdea66d5e5ac46b8cd7be8f9daef301dcaa3d7b4c766465e878da7a7bfde6891",
-        "signature": "ed70ec0585707d6733deb38bf5a575e0beeb647d82d01d8a8d13ac2e9c418714",
+        "signature": "9ffefcf6ebb4cb77c9eb02552730393daa645bc296de0437dd2b0105d0d0c21c",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/configuration.ts": {
         "version": "4eecf2971fcd47b63691532e889f444def54040523bfb123b959623a93b76e97",
-        "signature": "abb47d5347012a922e7e04b2dee87184e3faa9aabfb6d9ba6121e609fe4cc1b5",
+        "signature": "c89aeeed47a9ae2570727616ee71d4d8e102bb68400f6a1489610d702f64dfe1",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/lodash/common/common.d.ts": {
@@ -2643,57 +2683,57 @@
       },
       "../src/store/reducer/core/language.ts": {
         "version": "0d95f4b9e773ed040a77930fb54741dbed7fc8c6c164759a70b7bf37bb9a4f89",
-        "signature": "5464ad746443c43d9218914a918631443f44df770ebd194006941f76ead0d58b",
+        "signature": "f69e9b8019fd763ae9117313023bb7c16af5cf9eae01859d4f4728502c9df236",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/logout.ts": {
         "version": "751fab1a9d7470e0cfb71c47d03f9b177687e52dca00069d9496722eaec9e863",
-        "signature": "c43e4c27eb0e3babe28e0998bc54ce5a65451655cce212d1a393ed89722b138c",
+        "signature": "46b818bc7b7583c8d5c25b13d90219054cbe5e6fe876ec9964fc3d285b9219f2",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/navigation.ts": {
         "version": "7b669f7dfd1c6a92950ba354f788d71c6974d34fd70ed18426e4e1544dd6132b",
-        "signature": "3d244511df581651b35cbf22eb47954eb4e8519bf502c2ab4720189b1f22966a",
+        "signature": "c1bf9a67515b84ce4968928cc8a39bb82cc4b9384b3ef0a3f53da814230a5cfd",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/notification.ts": {
         "version": "c97804d4f278925dbf47389e0f611a07bad21ca6fedf4203bb213190eb3858df",
-        "signature": "282af0dcafd202791f8de75aa47381984e048ddb63cefff2754a1456f03568af",
+        "signature": "8d8e6beabc65472b42e14666f9e0483e8d25772341443da08f3851a5614404fb",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/router.ts": {
         "version": "a0f955060c02faa2b5fbfd71be709d0b7b9b8325c87771193cc353afc5cd6e58",
-        "signature": "666548392413ef10870c71d292bda2527cc4db79c2fb64f3ade81ba565935489",
+        "signature": "f69657994948354c259cc4c2db0114266d90f87b839e8139072bd17c062f21b3",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/session.ts": {
         "version": "647a9226ec7f2946bb97eab1e7b5bb45060fc1868b0593b415b160dc71d9d866",
-        "signature": "f50f7c5ef88d6c7e1f574759ae746cac5a78c5b62ecee57c9536351b40decbb5",
+        "signature": "646000421865b72a5941b71c053e1fb60b4dcf9d1ff2601904671b5af287fd6c",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/settings.ts": {
         "version": "ebef4b68da16e26c20c91a54ad1c0b9c55979875dca0f284958c6b6bbafada71",
-        "signature": "79caff8b7123002928f06f72107ab8926b5adfaf3348072409ebb4f8147f0a72",
+        "signature": "c4f91d18f5260f9d92e3e9a5205117272b99cbe362df1e5397758bc910d77d3a",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/system.ts": {
         "version": "b77ef754388805cced40f9deb6eded0d2906b0ba12dc38523f9b926f828908c3",
-        "signature": "0b17e926d462b772b15cef4a6e7fb18bc83092b56e0edda24bbd7870d4b50448",
+        "signature": "8e7cd678b3d6fccac0db007fa0f5c6b4e19e9a4ff39f029e263bd9eaed35e0d6",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/toast.ts": {
         "version": "f640de4bddcdc9635dfe8c80e7341b99f6e1dcaef21696b8554f20ab4b666b46",
-        "signature": "8099efa7889d6fe4cf8567ee6d8ec53ba2400b782044dd98ead84f2dffc894c5",
+        "signature": "86f4a2371b3f18d9b1e81e349fa720d84c4f67c43c27959271a9f91d5a213b89",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/login.ts": {
         "version": "8f8e7853d764fe07f61e2ad0ee053e4f88ceb5fdc10e768dab2bc7314a78407c",
-        "signature": "f174cfbc5b8393978535170c057feea1b28ddb078ccbc25b7686a4af4b204f83",
+        "signature": "c5649a01653d240fcf74078c140dfbe4f0c62c1c126382d8b5be6f7cbaba02e5",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/locale.ts": {
         "version": "a8ab4929d456293ce506900e88c18f8cd45e707717b05e15809b6b030afaf132",
-        "signature": "c3181a68f6343d64911c6685ede8bd20aa0c4fbda642f73406235975ecfd24e1",
+        "signature": "c4817fb2bfedb6894568cc2a6c37d488bdec839290d5b2f5c81561fc0c305285",
         "affectsGlobalScope": false
       },
       "../src/store/reducer/core/websocket.ts": {
@@ -2707,8 +2747,8 @@
         "affectsGlobalScope": false
       },
       "../src/store/reducer/global.ts": {
-        "version": "58e051127cf6c9013cb378d3ceb05b9aed65405955a3521d55ac0422ec167a36",
-        "signature": "c3b5b5771a333a862ddb024afac6f666ed7343dbb9e6d02e2fbc83665678fb84",
+        "version": "4124d0edc5e985ddb186e81198d615d5cc9c7cc1cf7011cbda51e94db805341d",
+        "signature": "6931dc421ae970f9736ec8b1f24f9e808764d69988298922fc741f1cb7e6202f",
         "affectsGlobalScope": false
       },
       "../src/api/ws/wsclient.ts": {
@@ -3416,11 +3456,6 @@
         "signature": "7ead93d1aafb83c3f6b2a413d94761bd0e1ce1440562718e57687957595fd3ef",
         "affectsGlobalScope": false
       },
-      "../node_modules/@types/react-router/index.d.ts": {
-        "version": "331ccc5c36630a5ced3990e2cd43a1b54a22179a861f9ddddd20d64ea88b3b97",
-        "signature": "331ccc5c36630a5ced3990e2cd43a1b54a22179a861f9ddddd20d64ea88b3b97",
-        "affectsGlobalScope": false
-      },
       "../node_modules/@types/react-router-dom/index.d.ts": {
         "version": "b89701b714364b5bcb0b58e83725aa02a4f41df8357000b4e8fe60566bf805ac",
         "signature": "b89701b714364b5bcb0b58e83725aa02a4f41df8357000b4e8fe60566bf805ac",
@@ -3566,8 +3601,18 @@
         "signature": "ff8c90189c075936b6fb85f9e7a0eefc645665df95a9b98c67f931493fe4f72a",
         "affectsGlobalScope": false
       },
+      "../node_modules/redux-devtools-extension/index.d.ts": {
+        "version": "dfaf67073a7d9a43219fdca33df16a6d3beb770381e8eb88230a5c84adf90a15",
+        "signature": "dfaf67073a7d9a43219fdca33df16a6d3beb770381e8eb88230a5c84adf90a15",
+        "affectsGlobalScope": false
+      },
+      "../src/store/middleware.ts": {
+        "version": "19cb486cc596eb1644214181006b1b23d22bf6bca9ee641a530ab92ae25a972e",
+        "signature": "81d5226a1cc892ca9a3b94a553e8710021d276d644915722adf442560698b83d",
+        "affectsGlobalScope": false
+      },
       "../src/component/app/hoc.tsx": {
-        "version": "7ba635e01fffe6f62f97e2b1d09b162c892119714aecfa07cfd748ac0363f131",
+        "version": "a961ae9fa67bb698e8153e8841fe90b8ead1b40339e3c43dfd780498e22f90fb",
         "signature": "f18c8df9960f3e05b05f89e021f1d19a049ce80ffd74ec40c2f4b9cc531cdadc",
         "affectsGlobalScope": false
       },
@@ -3997,7 +4042,7 @@
         "affectsGlobalScope": false
       },
       "../src/component/settings/container.tsx": {
-        "version": "aeda435d6ef3c8ed44a865a76848c48ea3003703d3e62afb8b2ae5c5afa6f23f",
+        "version": "adb57e607a09bccf890c79181f2255ec0043e6a8373bf0432530b22650e33a45",
         "signature": "d301467916a311d071e8f13e4711a18e49d1f67f99f47e68c3845d62300c45d8",
         "affectsGlobalScope": false
       },
@@ -4374,16 +4419,6 @@
       "../src/setup/index.ts": {
         "version": "a981b91210c87cd07e53a657b1de8bcb7ba4ee17847cb98cb5c4bc5c4469296e",
         "signature": "9f7ebfc177a76b6f983ebb5f12685415f0e3cfd2f008ee897e7d3bb1d50f1b0d",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/redux-devtools-extension/index.d.ts": {
-        "version": "dfaf67073a7d9a43219fdca33df16a6d3beb770381e8eb88230a5c84adf90a15",
-        "signature": "dfaf67073a7d9a43219fdca33df16a6d3beb770381e8eb88230a5c84adf90a15",
-        "affectsGlobalScope": false
-      },
-      "../src/store/middleware.ts": {
-        "version": "cb9339b07e678f8135ebaf3411054a125f7fb55ae00ac2c92ab3d10eccedcff1",
-        "signature": "be06d58d8695b715267fc38cf87778cd00d90df3136c145265bb27440a254965",
         "affectsGlobalScope": false
       },
       "../src/store/createuseselector.ts": {
@@ -4933,7 +4968,7 @@
       },
       "../src/store/epic/language/index.ts": {
         "version": "4c41b34dd0167035cd39f458c98ae5138c99e1ff87d6e2b55200e82f549486ba",
-        "signature": "34b29f4525feb73bd15c379aa02572fb6815c181a3bdeec03f4a0d08568db837",
+        "signature": "173b6fdcdfe50dd3a543784e47c1fabf7282f2b334775ef1fc6ef8df05a98f99",
         "affectsGlobalScope": false
       },
       "../src/store/epic/login/commitlogin.ts": {
@@ -4948,7 +4983,7 @@
       },
       "../src/store/epic/login/index.ts": {
         "version": "f02f856796978d51fbecb36bb2c15a932d511be49c8aa657d51f0ba89206a7c8",
-        "signature": "34b29f4525feb73bd15c379aa02572fb6815c181a3bdeec03f4a0d08568db837",
+        "signature": "173b6fdcdfe50dd3a543784e47c1fabf7282f2b334775ef1fc6ef8df05a98f99",
         "affectsGlobalScope": false
       },
       "../src/store/epic/locale/setlocalebylanguage.ts": {
@@ -4963,7 +4998,7 @@
       },
       "../src/store/epic/locale/index.ts": {
         "version": "f8f5c97e73051f82156f0dc4cadba043fd53e96aaf1c495c395c2171c5387da7",
-        "signature": "34b29f4525feb73bd15c379aa02572fb6815c181a3bdeec03f4a0d08568db837",
+        "signature": "173b6fdcdfe50dd3a543784e47c1fabf7282f2b334775ef1fc6ef8df05a98f99",
         "affectsGlobalScope": false
       },
       "../src/store/epic/session/load.ts": {
@@ -4993,7 +5028,7 @@
       },
       "../src/store/epic/session/index.ts": {
         "version": "8a9a8f8ed25b283e50c0858ccdff846f8fa4497b1f733f832d6544d81f1dd7a3",
-        "signature": "34b29f4525feb73bd15c379aa02572fb6815c181a3bdeec03f4a0d08568db837",
+        "signature": "173b6fdcdfe50dd3a543784e47c1fabf7282f2b334775ef1fc6ef8df05a98f99",
         "affectsGlobalScope": false
       },
       "../src/store/epic/system.tsx": {
@@ -5062,7 +5097,7 @@
         "affectsGlobalScope": false
       },
       "../src/store/epic/notification.tsx": {
-        "version": "be0da5ba500201c6b571e28e582c4ca7d3a4d9cd7ff347f5020e86746b73f539",
+        "version": "e9f9db331914c5de04f94effeb876d26dbdd97e1c7ca9c0757a9f0a5bf3c4890",
         "signature": "22692627785c793cee143edf38034de42ae09f25b1b77b767a7dd7a5533ac32d",
         "affectsGlobalScope": false
       },
@@ -5072,8 +5107,8 @@
         "affectsGlobalScope": false
       },
       "../src/store/index.ts": {
-        "version": "baa4c00581e3b7053c407268349cd51a8fa556a02f8400d9b6ddb7b72e739299",
-        "signature": "30cf65cbcdda83f9321cf2c6edac2e8cc6689c69d5fb1db78f785711d91a894c",
+        "version": "6c56476a3d9e91bf70033d473b14594cc4c613b6220aa778c3f74dc4ad81b968",
+        "signature": "aa0368da989a79ca03597e70d9c9c528f9d4104892008d506271043a70799084",
         "affectsGlobalScope": false
       },
       "../src/store/useselector.ts": {
@@ -5219,41 +5254,6 @@
       "../node_modules/@types/glob/index.d.ts": {
         "version": "393137c76bd922ba70a2f8bf1ade4f59a16171a02fb25918c168d48875b0cfb0",
         "signature": "393137c76bd922ba70a2f8bf1ade4f59a16171a02fb25918c168d48875b0cfb0",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/domutils.d.ts": {
-        "version": "271cde49dfd9b398ccc91bb3aaa43854cf76f4d14e10fed91cbac649aa6cbc63",
-        "signature": "271cde49dfd9b398ccc91bb3aaa43854cf76f4d14e10fed91cbac649aa6cbc63",
-        "affectsGlobalScope": true
-      },
-      "../node_modules/@types/history/createbrowserhistory.d.ts": {
-        "version": "c6f2572e21f626260d2e4a65e4e1e42b9b273b6f43b5c3bc115c2926417d3eca",
-        "signature": "c6f2572e21f626260d2e4a65e4e1e42b9b273b6f43b5c3bc115c2926417d3eca",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/createhashhistory.d.ts": {
-        "version": "374ab77e05e0bf5a52acad6d65121d4bd31068108f23d70186dba5fcd7d6a1a3",
-        "signature": "374ab77e05e0bf5a52acad6d65121d4bd31068108f23d70186dba5fcd7d6a1a3",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/creatememoryhistory.d.ts": {
-        "version": "a4ecd4bb653aa71093375845fba6250ca0f3c633d0e933fc9bf4b301834eab27",
-        "signature": "a4ecd4bb653aa71093375845fba6250ca0f3c633d0e933fc9bf4b301834eab27",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/locationutils.d.ts": {
-        "version": "25d91fb9ed77a828cc6c7a863236fb712dafcd52f816eec481bd0c1f589f4404",
-        "signature": "25d91fb9ed77a828cc6c7a863236fb712dafcd52f816eec481bd0c1f589f4404",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/pathutils.d.ts": {
-        "version": "4cd14cea22eed1bfb0dc76183e56989f897ac5b14c0e2a819e5162eafdcfe243",
-        "signature": "4cd14cea22eed1bfb0dc76183e56989f897ac5b14c0e2a819e5162eafdcfe243",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/history/index.d.ts": {
-        "version": "cc53cba64efb30576f2a36f1d7107e4453e84cbd0f371d49cd1dfd208e11233b",
-        "signature": "cc53cba64efb30576f2a36f1d7107e4453e84cbd0f371d49cd1dfd208e11233b",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/html-minifier-terser/index.d.ts": {
@@ -9494,17 +9494,17 @@
         "../node_modules/redux/index.d.ts"
       ],
       "../node_modules/@types/react-router-dom/index.d.ts": [
+        "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-router/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../node_modules/history/index.d.ts"
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../node_modules/@types/react-router/index.d.ts": [
+        "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../node_modules/@types/react/index.d.ts",
-        "../node_modules/history/index.d.ts"
+        "../node_modules/@types/react/index.d.ts"
       ],
       "../node_modules/@types/react-transition-group/config.d.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -9867,11 +9867,16 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
-      "../node_modules/csstype/index.d.ts": [
+      "../node_modules/connected-react-router/index.d.ts": [
+        "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts"
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react-redux/index.d.ts",
+        "../node_modules/@types/react-router/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/redux/index.d.ts"
       ],
-      "../node_modules/history/index.d.ts": [
+      "../node_modules/csstype/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -11540,12 +11545,14 @@
         "../node_modules/@types/react-redux/index.d.ts",
         "../node_modules/@types/react-router-dom/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/notistack/dist/index.d.ts",
         "../node_modules/redux/index.d.ts",
         "../src/component/app/head.tsx",
         "../src/component/app/theme.tsx",
         "../src/component/notification/index.ts",
-        "../src/component/websocket/websocketconnection.tsx"
+        "../src/component/websocket/websocketconnection.tsx",
+        "../src/store/middleware.ts"
       ],
       "../src/component/app/index.ts": [
         "../node_modules/@types/node/base.d.ts",
@@ -12451,9 +12458,9 @@
         "../src/types/notification.ts"
       ],
       "../src/store/action/router.ts": [
+        "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../node_modules/history/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts"
       ],
       "../src/store/action/session.ts": [
@@ -12837,9 +12844,10 @@
         "../src/types/redux.ts"
       ],
       "../src/store/middleware.ts": [
+        "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../node_modules/history/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/redux-devtools-extension/index.d.ts",
         "../node_modules/redux-observable/index.d.ts",
         "../node_modules/redux/index.d.ts",
@@ -12927,9 +12935,9 @@
         "../src/types/redux.ts"
       ],
       "../src/store/reducer/core/router.ts": [
+        "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
-        "../node_modules/history/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/store/action/index.ts",
         "../src/types/redux.ts"
@@ -12972,8 +12980,10 @@
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/global.ts": [
+        "../node_modules/@types/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/redux/index.d.ts",
         "../src/store/reducer/core/index.ts"
       ],
@@ -13074,6 +13084,7 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
         "../node_modules/@types/react-redux/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/redux-observable/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/store/action/index.ts",
@@ -17368,11 +17379,16 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
-      "../node_modules/csstype/index.d.ts": [
+      "../node_modules/connected-react-router/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts"
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/react-redux/index.d.ts",
+        "../node_modules/@types/react-router/index.d.ts",
+        "../node_modules/@types/react/index.d.ts",
+        "../node_modules/history/index.d.ts",
+        "../node_modules/redux/index.d.ts"
       ],
-      "../node_modules/history/index.d.ts": [
+      "../node_modules/csstype/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -19457,16 +19473,9 @@
         "../src/types/redux.ts"
       ],
       "../src/store/epic/language/index.ts": [
-        "../node_modules/axios/index.d.ts",
         "../node_modules/redux-observable/index.d.ts",
-        "../node_modules/typesafe-actions/dist/index.d.ts",
-        "../src/api/jsc/index.ts",
-        "../src/store/action/index.ts",
         "../src/store/reducer/global.ts",
-        "../src/types/language.ts",
-        "../src/types/notification.ts",
-        "../src/types/toast.ts",
-        "../src/types/websocket.ts"
+        "../src/types/redux.ts"
       ],
       "../src/store/epic/language/setinitiallanguage.ts": [
         "../src/types/redux.ts"
@@ -19478,16 +19487,9 @@
         "../src/types/redux.ts"
       ],
       "../src/store/epic/locale/index.ts": [
-        "../node_modules/axios/index.d.ts",
         "../node_modules/redux-observable/index.d.ts",
-        "../node_modules/typesafe-actions/dist/index.d.ts",
-        "../src/api/jsc/index.ts",
-        "../src/store/action/index.ts",
         "../src/store/reducer/global.ts",
-        "../src/types/language.ts",
-        "../src/types/notification.ts",
-        "../src/types/toast.ts",
-        "../src/types/websocket.ts"
+        "../src/types/redux.ts"
       ],
       "../src/store/epic/locale/setlocalebylanguage.ts": [
         "../src/types/redux.ts"
@@ -19496,16 +19498,9 @@
         "../src/types/redux.ts"
       ],
       "../src/store/epic/login/index.ts": [
-        "../node_modules/axios/index.d.ts",
         "../node_modules/redux-observable/index.d.ts",
-        "../node_modules/typesafe-actions/dist/index.d.ts",
-        "../src/api/jsc/index.ts",
-        "../src/store/action/index.ts",
         "../src/store/reducer/global.ts",
-        "../src/types/language.ts",
-        "../src/types/notification.ts",
-        "../src/types/toast.ts",
-        "../src/types/websocket.ts"
+        "../src/types/redux.ts"
       ],
       "../src/store/epic/login/robotloginrefresh.ts": [
         "../src/types/redux.ts"
@@ -19520,16 +19515,9 @@
         "../src/types/redux.ts"
       ],
       "../src/store/epic/session/index.ts": [
-        "../node_modules/axios/index.d.ts",
         "../node_modules/redux-observable/index.d.ts",
-        "../node_modules/typesafe-actions/dist/index.d.ts",
-        "../src/api/jsc/index.ts",
-        "../src/store/action/index.ts",
         "../src/store/reducer/global.ts",
-        "../src/types/language.ts",
-        "../src/types/notification.ts",
-        "../src/types/toast.ts",
-        "../src/types/websocket.ts"
+        "../src/types/redux.ts"
       ],
       "../src/store/epic/session/load.ts": [
         "../src/types/redux.ts"
@@ -19581,28 +19569,32 @@
         "../src/types/redux.ts"
       ],
       "../src/store/middleware.ts": [
-        "../node_modules/history/index.d.ts",
+        "../node_modules/@types/history/index.d.ts",
         "../node_modules/redux/index.d.ts",
         "../src/types/redux.ts"
       ],
       "../src/store/reducer/core/app.ts": [
         "../node_modules/axios/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/core/configuration.ts": [
         "../node_modules/axios/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/configuration.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
@@ -19626,113 +19618,135 @@
       ],
       "../src/store/reducer/core/language.ts": [
         "../node_modules/axios/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/core/locale.ts": [
         "../node_modules/axios/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/country.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/core/login.ts": [
         "../node_modules/axios/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/core/logout.ts": [
         "../node_modules/axios/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/core/navigation.ts": [
         "../node_modules/axios/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/core/notification.ts": [
         "../node_modules/axios/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/core/router.ts": [
+        "../node_modules/@types/history/index.d.ts",
         "../node_modules/axios/index.d.ts",
-        "../node_modules/history/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/core/session.ts": [
         "../node_modules/axios/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/core/settings.ts": [
         "../node_modules/axios/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/core/system.ts": [
         "../node_modules/axios/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/core/toast.ts": [
         "../node_modules/axios/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/api/jsc/index.ts",
         "../src/store/action/index.ts",
         "../src/types/language.ts",
         "../src/types/notification.ts",
+        "../src/types/redux.ts",
         "../src/types/toast.ts",
         "../src/types/websocket.ts"
       ],
@@ -19741,6 +19755,8 @@
         "../src/types/websocket.ts"
       ],
       "../src/store/reducer/global.ts": [
+        "../node_modules/@types/history/index.d.ts",
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/redux/index.d.ts",
         "../src/store/reducer/core/index.ts"
       ],
@@ -19800,6 +19816,7 @@
         "../node_modules/notistack/dist/index.d.ts"
       ],
       "../src/types/redux.ts": [
+        "../node_modules/connected-react-router/index.d.ts",
         "../node_modules/redux-observable/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
         "../src/store/action/index.ts",
@@ -20457,8 +20474,8 @@
       "../node_modules/ajv/lib/ajv.d.ts",
       "../node_modules/anymatch/index.d.ts",
       "../node_modules/axios/index.d.ts",
+      "../node_modules/connected-react-router/index.d.ts",
       "../node_modules/csstype/index.d.ts",
-      "../node_modules/history/index.d.ts",
       "../node_modules/http-proxy-middleware/dist/handlers/fix-request-body.d.ts",
       "../node_modules/http-proxy-middleware/dist/handlers/index.d.ts",
       "../node_modules/http-proxy-middleware/dist/handlers/public.d.ts",
