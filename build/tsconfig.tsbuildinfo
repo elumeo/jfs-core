@@ -4962,7 +4962,7 @@
         "affectsGlobalScope": false
       },
       "../src/store/epic/language/setlanguage.ts": {
-        "version": "cecad1e2195dc4fb8b3a27a762802321e509de1ba6ac6990661754ddebb06a63",
+        "version": "d3d4a8d4e7d77b257175bf720ec70266cabb0230e208ce2a91fe42d3f6cf55a6",
         "signature": "e9fbf4aebae25c856c86273d9538072ceac873178ecdb9a6f5af56d1bcbedc29",
         "affectsGlobalScope": false
       },
@@ -12562,6 +12562,7 @@
         "../node_modules/@types/js-cookie/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts",
+        "../node_modules/moment/moment.d.ts",
         "../node_modules/rxjs/index.d.ts",
         "../node_modules/rxjs/operators/index.d.ts",
         "../node_modules/typesafe-actions/dist/index.d.ts",
