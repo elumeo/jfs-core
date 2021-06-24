@@ -26,13 +26,13 @@ const constant = (variable) => (`const ${variable.value
         name: variable.name,
         value: variable.value
     })
-    : name};`);
+    : variable.name};`);
 exports.constant = constant;
 const mutable = (variable) => (`let ${variable.value
     ? Expression.assignment({
         name: variable.name,
         value: variable.value
     })
-    : name};`);
+    : variable.name};`);
 exports.mutable = mutable;
 //# sourceMappingURL=Declaration.js.map

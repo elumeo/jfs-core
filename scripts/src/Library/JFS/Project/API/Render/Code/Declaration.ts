@@ -8,7 +8,7 @@ export const constant = (variable: Type.Variable) => (
         name: variable.name,
         value: variable.value
       })
-      : name
+      : variable.name
   };`
 );
 
@@ -19,6 +19,6 @@ export const mutable = (variable: Type.Variable) => (
         name: variable.name,
         value: variable.value
       })
-      : name
+      : variable.name
   };`
 );
