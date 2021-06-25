@@ -37,6 +37,7 @@ const development = {
       filename: 'index.html',
       template: PATH.HTML_TEMPLATE,
       inject: false,
+      favicon: PATH.FAVICON,
       templateParameters: {
         BUNDLE_FILE_NAME : PATH.BUNDLE_NAME
       }      
