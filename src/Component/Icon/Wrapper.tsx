@@ -5,8 +5,7 @@ export type Props = SvgIconProps;
 
 const Wrapper: React.FC<Props> = props => (
   <SvgIcon
-    viewBox="0 0 32 32"
-    fontSize='inherit'
+    viewBox='0 0 24 24'
     color='inherit'
     {...props}/>
 );
