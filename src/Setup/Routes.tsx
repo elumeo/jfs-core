@@ -10,11 +10,11 @@ const Routes: React.FC = () => (
       <AuthRoute
         key='start'
         exact path='/start'
-        component={() => <div></div>}/>
+        component={() => <div></div>} />
       <NoAuthRoute
         key='default'
         exact path='/'
-        component={() => <Redirect to={ { pathname: '/start' } }/>}/>
+        component={() => <Redirect to={{ pathname: '/start' }} />} />
     </Switch>
   </Content>
 );
