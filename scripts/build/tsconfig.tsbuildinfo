@@ -257,8 +257,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/common/function.d.ts": {
-        "version": "c9f396e71966bd3a890d8a36a6a497dbf260e9b868158ea7824d4b5421210afe",
-        "signature": "c9f396e71966bd3a890d8a36a6a497dbf260e9b868158ea7824d4b5421210afe",
+        "version": "782abf371043fc65a987f835a3acfd80602a30c3e2122f6d5756a86bf6913352",
+        "signature": "782abf371043fc65a987f835a3acfd80602a30c3e2122f6d5756a86bf6913352",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/common/lang.d.ts": {
@@ -277,8 +277,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/common/object.d.ts": {
-        "version": "c311349ec71bb69399ffc4092853e7d8a86c1ca39ddb4cd129e775c19d985793",
-        "signature": "c311349ec71bb69399ffc4092853e7d8a86c1ca39ddb4cd129e775c19d985793",
+        "version": "82251920b05f30981c9a4109cb5f3169dce4b477effc845c6d781044a30e7672",
+        "signature": "82251920b05f30981c9a4109cb5f3169dce4b477effc845c6d781044a30e7672",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/lodash/common/seq.d.ts": {
@@ -756,11 +756,6 @@
         "signature": "ab6aa3a65d473871ee093e3b7b71ed0f9c69e07d1d4295f45c9efd91a771241d",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@types/anymatch/index.d.ts": {
-        "version": "48b52264fa193879a074197839dbb4796fa07e86350ff888e5361e06aa46df76",
-        "signature": "48b52264fa193879a074197839dbb4796fa07e86350ff888e5361e06aa46df76",
-        "affectsGlobalScope": false
-      },
       "../../node_modules/@types/connect/index.d.ts": {
         "version": "81c14b89fa607b86dd726e2e3e91360cf8155ce97468404324d404a5bd65b2eb",
         "signature": "81c14b89fa607b86dd726e2e3e91360cf8155ce97468404324d404a5bd65b2eb",
@@ -769,6 +764,11 @@
       "../../node_modules/@types/body-parser/index.d.ts": {
         "version": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
         "signature": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/component-emitter/index.d.ts": {
+        "version": "a3a88c1869ba1022dfaefac47ff7a984ec62510e9b4d60988f91d5e523266c34",
+        "signature": "a3a88c1869ba1022dfaefac47ff7a984ec62510e9b4d60988f91d5e523266c34",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/range-parser/index.d.ts": {
@@ -782,8 +782,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/express-serve-static-core/index.d.ts": {
-        "version": "e41a1ce538d71d5a3389b7fc2e39c15a4972f0d4cb14bf2fe8cda8c361150028",
-        "signature": "e41a1ce538d71d5a3389b7fc2e39c15a4972f0d4cb14bf2fe8cda8c361150028",
+        "version": "b9b0f507c31eebe33faaee248ab994c77fc297b285283ae191797734957f4ac3",
+        "signature": "b9b0f507c31eebe33faaee248ab994c77fc297b285283ae191797734957f4ac3",
         "affectsGlobalScope": true
       },
       "../../node_modules/@types/connect-history-api-fallback/index.d.ts": {
@@ -817,13 +817,13 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/estree/index.d.ts": {
-        "version": "f1e8ecd1d960d12e57316fd2889b0a57635f38f8c4c976d8deafa29650bbf320",
-        "signature": "f1e8ecd1d960d12e57316fd2889b0a57635f38f8c4c976d8deafa29650bbf320",
+        "version": "9f3554130bc117f19a9d4186bd83a97145c71818c1b1c51424967e0f607324d5",
+        "signature": "9f3554130bc117f19a9d4186bd83a97145c71818c1b1c51424967e0f607324d5",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/eslint/index.d.ts": {
-        "version": "7f4366cd82a5391c7a1a196908c624c9415f731a57400ea1c3661041cab398a8",
-        "signature": "7f4366cd82a5391c7a1a196908c624c9415f731a57400ea1c3661041cab398a8",
+        "version": "e3dd9a5ce3e396a63d378146a2bce9f52ea86419ef787cd55d2e8bb2a4cd716f",
+        "signature": "e3dd9a5ce3e396a63d378146a2bce9f52ea86419ef787cd55d2e8bb2a4cd716f",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/eslint-scope/index.d.ts": {
@@ -847,8 +847,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/google-libphonenumber/index.d.ts": {
-        "version": "b23a87f42a58d4d83018712f62b88c5246093c2159ea68688d739b58782178fe",
-        "signature": "b23a87f42a58d4d83018712f62b88c5246093c2159ea68688d739b58782178fe",
+        "version": "3fb874585d55ce8af46e50e1ac86a72eedf6e1acb848f6a981a84757a3ee994d",
+        "signature": "3fb874585d55ce8af46e50e1ac86a72eedf6e1acb848f6a981a84757a3ee994d",
         "affectsGlobalScope": true
       },
       "../../node_modules/@types/history/DOMUtils.d.ts": {
@@ -907,8 +907,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react/index.d.ts": {
-        "version": "5d708266116e778d6a4140fca2ac36f71d99b4c68bc3be63a45ba8bf5ade5348",
-        "signature": "5d708266116e778d6a4140fca2ac36f71d99b4c68bc3be63a45ba8bf5ade5348",
+        "version": "ca1f4045ec1a501a114d63e2f3f24e2dba00c0cb9030b3109f579d54c1e95d63",
+        "signature": "ca1f4045ec1a501a114d63e2f3f24e2dba00c0cb9030b3109f579d54c1e95d63",
         "affectsGlobalScope": true
       },
       "../../node_modules/@types/hoist-non-react-statics/index.d.ts": {
@@ -922,8 +922,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/http-proxy/index.d.ts": {
-        "version": "62245a56a6df2b5fbe569bee7d8a95e662477e38317262070dd3e82eaa8eecb6",
-        "signature": "62245a56a6df2b5fbe569bee7d8a95e662477e38317262070dd3e82eaa8eecb6",
+        "version": "8d068614f2f0c00d6b712f16f52511c054d3cf205d749ede8d9f231c0ddac03f",
+        "signature": "8d068614f2f0c00d6b712f16f52511c054d3cf205d749ede8d9f231c0ddac03f",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/js-cookie/index.d.ts": {
@@ -937,8 +937,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-dom/index.d.ts": {
-        "version": "ee7266c6f312a6bf9612691b7fff1dfde32a609d150521c1f20d3f7972bc7586",
-        "signature": "ee7266c6f312a6bf9612691b7fff1dfde32a609d150521c1f20d3f7972bc7586",
+        "version": "b4dfafe583b829a382edccbe32303535d0785f0c02ba7f04418e2a81de97af8a",
+        "signature": "b4dfafe583b829a382edccbe32303535d0785f0c02ba7f04418e2a81de97af8a",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-helmet/index.d.ts": {
@@ -947,8 +947,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-is/index.d.ts": {
-        "version": "b7f1a07cdc650ee2aedefea1a3874f19f0ca35f5d358fd7ffd287c82a15f503d",
-        "signature": "b7f1a07cdc650ee2aedefea1a3874f19f0ca35f5d358fd7ffd287c82a15f503d",
+        "version": "65f28e7af55898eb73a0583a0d6faf03113caf287cc4cec6e127c66432a9bc7e",
+        "signature": "65f28e7af55898eb73a0583a0d6faf03113caf287cc4cec6e127c66432a9bc7e",
         "affectsGlobalScope": false
       },
       "../../node_modules/redux/index.d.ts": {
@@ -961,14 +961,9 @@
         "signature": "89fb470ea4979b52a206816172c98f92141a95494b40ee2b8d75a901d0555ba7",
         "affectsGlobalScope": false
       },
-      "../../node_modules/history/index.d.ts": {
-        "version": "e057ffada5a43ac83957a1d76dc0daaa01bbea4d7aa2eb466ffad5e3bce6424f",
-        "signature": "e057ffada5a43ac83957a1d76dc0daaa01bbea4d7aa2eb466ffad5e3bce6424f",
-        "affectsGlobalScope": false
-      },
       "../../node_modules/@types/react-router/index.d.ts": {
-        "version": "331ccc5c36630a5ced3990e2cd43a1b54a22179a861f9ddddd20d64ea88b3b97",
-        "signature": "331ccc5c36630a5ced3990e2cd43a1b54a22179a861f9ddddd20d64ea88b3b97",
+        "version": "c78b1c30f9ea6f57c2c4beb62734bf0df604a537690d7a098e6ca99157f4c2a3",
+        "signature": "c78b1c30f9ea6f57c2c4beb62734bf0df604a537690d7a098e6ca99157f4c2a3",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/react-router-dom/index.d.ts": {
@@ -1076,14 +1071,24 @@
         "signature": "1372636c163a55f5eb497667ddda71393473e527c62f15ba1e9dbaafc58b4bd7",
         "affectsGlobalScope": false
       },
+      "../../node_modules/@types/react-virtualized-auto-sizer/index.d.ts": {
+        "version": "aa64b8c24b628b1ee53dc3551b54af05b1e939cb923666a06b5f1f27c238cf1d",
+        "signature": "aa64b8c24b628b1ee53dc3551b54af05b1e939cb923666a06b5f1f27c238cf1d",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/react-window/index.d.ts": {
+        "version": "3739aaf09c9c549a372939382fc29f9284226294c54eb076b6e3d1dfcce08778",
+        "signature": "3739aaf09c9c549a372939382fc29f9284226294c54eb076b6e3d1dfcce08778",
+        "affectsGlobalScope": false
+      },
       "../../node_modules/@types/scheduler/index.d.ts": {
         "version": "3169db033165677f1d414baf0c82ba27801089ca1b66d97af464512a47df31b5",
         "signature": "3169db033165677f1d414baf0c82ba27801089ca1b66d97af464512a47df31b5",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@types/socket.io-parser/index.d.ts": {
-        "version": "8487571622eefb9421499874014fa1cc0898bd15724565002a27b67d8e285072",
-        "signature": "8487571622eefb9421499874014fa1cc0898bd15724565002a27b67d8e285072",
+      "../../node_modules/socket.io-parser/dist/index.d.ts": {
+        "version": "6ce9c4c7d976960a7f14dfe40e26c357bcab9405eb2eea38f79760ed4f323512",
+        "signature": "6ce9c4c7d976960a7f14dfe40e26c357bcab9405eb2eea38f79760ed4f323512",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/socket.io/index.d.ts": {
@@ -1212,8 +1217,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/webpack/index.d.ts": {
-        "version": "ef0b707624f7d984f07db02e61589a6e2f2474a55d6b666ab04d2b0722708a83",
-        "signature": "ef0b707624f7d984f07db02e61589a6e2f2474a55d6b666ab04d2b0722708a83",
+        "version": "99c7f3bbc03f6eb3e663c26c104d639617620c2925e76fc284f7bedf1877fa2b",
+        "signature": "99c7f3bbc03f6eb3e663c26c104d639617620c2925e76fc284f7bedf1877fa2b",
         "affectsGlobalScope": false
       },
       "../../node_modules/ajv/lib/ajv.d.ts": {
@@ -1221,14 +1226,19 @@
         "signature": "67f129ed8b372622ff36b8b10e39d03e09e363a5ff7821105f92f085b8d1ccba",
         "affectsGlobalScope": false
       },
+      "../../node_modules/webpack/node_modules/schema-utils/declarations/ValidationError.d.ts": {
+        "version": "327f42ab31ff4539ba868d0374f8825af328b104b5f78d26b2e3ce9cc17b43a0",
+        "signature": "327f42ab31ff4539ba868d0374f8825af328b104b5f78d26b2e3ce9cc17b43a0",
+        "affectsGlobalScope": false
+      },
       "../../node_modules/webpack/node_modules/schema-utils/declarations/validate.d.ts": {
         "version": "62a05210201c793349ec28254f06a01814c5b4f5591f6d1921941286db78ea2a",
         "signature": "62a05210201c793349ec28254f06a01814c5b4f5591f6d1921941286db78ea2a",
         "affectsGlobalScope": false
       },
-      "../../node_modules/webpack/node_modules/schema-utils/declarations/ValidationError.d.ts": {
-        "version": "327f42ab31ff4539ba868d0374f8825af328b104b5f78d26b2e3ce9cc17b43a0",
-        "signature": "327f42ab31ff4539ba868d0374f8825af328b104b5f78d26b2e3ce9cc17b43a0",
+      "../../node_modules/webpack/node_modules/schema-utils/declarations/index.d.ts": {
+        "version": "8f877178233f74095130e129ce86128a6a15afcfc6171d714e154863b6a65fe8",
+        "signature": "8f877178233f74095130e129ce86128a6a15afcfc6171d714e154863b6a65fe8",
         "affectsGlobalScope": false
       },
       "../../node_modules/webpack/node_modules/tapable/tapable.d.ts": {
@@ -1237,8 +1247,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/webpack/types.d.ts": {
-        "version": "dcaafb3b18658e9235ecbac5f095d4d3e8b8724e45564e0a9c8510ab67f9edbc",
-        "signature": "dcaafb3b18658e9235ecbac5f095d4d3e8b8724e45564e0a9c8510ab67f9edbc",
+        "version": "9ed5a7a81a2fd6e4985303f9cd689eeb84f0f82b3959389448c81ac013c70717",
+        "signature": "9ed5a7a81a2fd6e4985303f9cd689eeb84f0f82b3959389448c81ac013c70717",
         "affectsGlobalScope": false
       },
       "../../node_modules/http-proxy-middleware/dist/types.d.ts": {
@@ -1272,8 +1282,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/webpack-dev-server/index.d.ts": {
-        "version": "91e819331d147f8a49f17e6719d147a6464400b0546f6b8008b4037e5e47708f",
-        "signature": "91e819331d147f8a49f17e6719d147a6464400b0546f6b8008b4037e5e47708f",
+        "version": "b2bcfd1c457bf7845a5e5f81d1b34785de14f07dc97a27571d7f54c8f4873b65",
+        "signature": "b2bcfd1c457bf7845a5e5f81d1b34785de14f07dc97a27571d7f54c8f4873b65",
         "affectsGlobalScope": false
       }
     },
@@ -1301,16 +1311,16 @@
           "./Library/*"
         ]
       },
-      "pathsBasePath": "/home/pascal/Archive/jfs/jfs-core/scripts",
+      "pathsBasePath": "/home/michael/Dokumente/www/jfs/core/scripts",
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
-      "../../node_modules/@types/anymatch/index.d.ts": [
+      "../../node_modules/@types/body-parser/index.d.ts": [
+        "../../node_modules/@types/connect/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
-      "../../node_modules/@types/body-parser/index.d.ts": [
-        "../../node_modules/@types/connect/index.d.ts",
+      "../../node_modules/@types/component-emitter/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -1689,15 +1699,15 @@
         "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/react-router-dom/index.d.ts": [
+        "../../node_modules/@types/history/index.d.ts",
         "../../node_modules/@types/react-router/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
-        "../../node_modules/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/react-router/index.d.ts": [
+        "../../node_modules/@types/history/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
-        "../../node_modules/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -1733,6 +1743,11 @@
         "../../node_modules/@types/react-transition-group/Transition.d.ts",
         "../../node_modules/@types/react-transition-group/TransitionGroup.d.ts",
         "../../node_modules/@types/react-transition-group/config.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/react-virtualized-auto-sizer/index.d.ts": [
+        "../../node_modules/@types/react/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -1839,6 +1854,11 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../../node_modules/@types/react-window/index.d.ts": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
       "../../node_modules/@types/react/global.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
@@ -1872,13 +1892,9 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
-      "../../node_modules/@types/socket.io-parser/index.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts"
-      ],
       "../../node_modules/@types/socket.io/index.d.ts": [
         "../../node_modules/@types/engine.io/index.d.ts",
-        "../../node_modules/@types/socket.io-parser/index.d.ts",
+        "../../node_modules/socket.io-parser/dist/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -2048,10 +2064,6 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
-      "../../node_modules/history/index.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts"
-      ],
       "../../node_modules/http-proxy-middleware/dist/handlers/fix-request-body.d.ts": [
         "../../node_modules/http-proxy-middleware/dist/types.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -2088,9 +2100,20 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../../node_modules/socket.io-parser/dist/index.d.ts": [
+        "../../node_modules/@types/component-emitter/index.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
       "../../node_modules/webpack/node_modules/schema-utils/declarations/ValidationError.d.ts": [
         "../../node_modules/@types/json-schema/index.d.ts",
         "../../node_modules/ajv/lib/ajv.d.ts",
+        "../../node_modules/webpack/node_modules/schema-utils/declarations/validate.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/webpack/node_modules/schema-utils/declarations/index.d.ts": [
+        "../../node_modules/webpack/node_modules/schema-utils/declarations/ValidationError.d.ts",
         "../../node_modules/webpack/node_modules/schema-utils/declarations/validate.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
@@ -2108,8 +2131,7 @@
       ],
       "../../node_modules/webpack/types.d.ts": [
         "../../node_modules/@types/estree/index.d.ts",
-        "../../node_modules/@types/json-schema/index.d.ts",
-        "../../node_modules/webpack/node_modules/schema-utils/declarations/ValidationError.d.ts",
+        "../../node_modules/webpack/node_modules/schema-utils/declarations/index.d.ts",
         "../../node_modules/webpack/node_modules/schema-utils/declarations/validate.d.ts",
         "../../node_modules/webpack/node_modules/tapable/tapable.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -2864,12 +2886,12 @@
       ]
     },
     "exportedModulesMap": {
-      "../../node_modules/@types/anymatch/index.d.ts": [
+      "../../node_modules/@types/body-parser/index.d.ts": [
+        "../../node_modules/@types/connect/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
-      "../../node_modules/@types/body-parser/index.d.ts": [
-        "../../node_modules/@types/connect/index.d.ts",
+      "../../node_modules/@types/component-emitter/index.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -3248,15 +3270,15 @@
         "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/react-router-dom/index.d.ts": [
+        "../../node_modules/@types/history/index.d.ts",
         "../../node_modules/@types/react-router/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
-        "../../node_modules/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/react-router/index.d.ts": [
+        "../../node_modules/@types/history/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
-        "../../node_modules/history/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -3292,6 +3314,11 @@
         "../../node_modules/@types/react-transition-group/Transition.d.ts",
         "../../node_modules/@types/react-transition-group/TransitionGroup.d.ts",
         "../../node_modules/@types/react-transition-group/config.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/react-virtualized-auto-sizer/index.d.ts": [
+        "../../node_modules/@types/react/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -3398,6 +3425,11 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../../node_modules/@types/react-window/index.d.ts": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
       "../../node_modules/@types/react/global.d.ts": [
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
@@ -3431,13 +3463,9 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
-      "../../node_modules/@types/socket.io-parser/index.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts"
-      ],
       "../../node_modules/@types/socket.io/index.d.ts": [
         "../../node_modules/@types/engine.io/index.d.ts",
-        "../../node_modules/@types/socket.io-parser/index.d.ts",
+        "../../node_modules/socket.io-parser/dist/index.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
@@ -3607,10 +3635,6 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
-      "../../node_modules/history/index.d.ts": [
-        "../node_modules/@types/node/base.d.ts",
-        "../node_modules/@types/node/index.d.ts"
-      ],
       "../../node_modules/http-proxy-middleware/dist/handlers/fix-request-body.d.ts": [
         "../../node_modules/http-proxy-middleware/dist/types.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -3647,9 +3671,20 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../../node_modules/socket.io-parser/dist/index.d.ts": [
+        "../../node_modules/@types/component-emitter/index.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
       "../../node_modules/webpack/node_modules/schema-utils/declarations/ValidationError.d.ts": [
         "../../node_modules/@types/json-schema/index.d.ts",
         "../../node_modules/ajv/lib/ajv.d.ts",
+        "../../node_modules/webpack/node_modules/schema-utils/declarations/validate.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/webpack/node_modules/schema-utils/declarations/index.d.ts": [
+        "../../node_modules/webpack/node_modules/schema-utils/declarations/ValidationError.d.ts",
         "../../node_modules/webpack/node_modules/schema-utils/declarations/validate.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
@@ -3667,8 +3702,7 @@
       ],
       "../../node_modules/webpack/types.d.ts": [
         "../../node_modules/@types/estree/index.d.ts",
-        "../../node_modules/@types/json-schema/index.d.ts",
-        "../../node_modules/webpack/node_modules/schema-utils/declarations/ValidationError.d.ts",
+        "../../node_modules/webpack/node_modules/schema-utils/declarations/index.d.ts",
         "../../node_modules/webpack/node_modules/schema-utils/declarations/validate.d.ts",
         "../../node_modules/webpack/node_modules/tapable/tapable.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -4115,8 +4149,8 @@
       ]
     },
     "semanticDiagnosticsPerFile": [
-      "../../node_modules/@types/anymatch/index.d.ts",
       "../../node_modules/@types/body-parser/index.d.ts",
+      "../../node_modules/@types/component-emitter/index.d.ts",
       "../../node_modules/@types/connect-history-api-fallback/index.d.ts",
       "../../node_modules/@types/connect/index.d.ts",
       "../../node_modules/@types/diacritics/index.d.ts",
@@ -4171,6 +4205,7 @@
       "../../node_modules/@types/react-transition-group/TransitionGroup.d.ts",
       "../../node_modules/@types/react-transition-group/config.d.ts",
       "../../node_modules/@types/react-transition-group/index.d.ts",
+      "../../node_modules/@types/react-virtualized-auto-sizer/index.d.ts",
       "../../node_modules/@types/react-virtualized/dist/es/ArrowKeyStepper.d.ts",
       "../../node_modules/@types/react-virtualized/dist/es/AutoSizer.d.ts",
       "../../node_modules/@types/react-virtualized/dist/es/CellMeasurer.d.ts",
@@ -4185,6 +4220,7 @@
       "../../node_modules/@types/react-virtualized/dist/es/Table.d.ts",
       "../../node_modules/@types/react-virtualized/dist/es/WindowScroller.d.ts",
       "../../node_modules/@types/react-virtualized/index.d.ts",
+      "../../node_modules/@types/react-window/index.d.ts",
       "../../node_modules/@types/react/global.d.ts",
       "../../node_modules/@types/react/index.d.ts",
       "../../node_modules/@types/react/node_modules/csstype/index.d.ts",
@@ -4192,7 +4228,6 @@
       "../../node_modules/@types/scheduler/tracing.d.ts",
       "../../node_modules/@types/serve-static/index.d.ts",
       "../../node_modules/@types/socket.io-client/index.d.ts",
-      "../../node_modules/@types/socket.io-parser/index.d.ts",
       "../../node_modules/@types/socket.io/index.d.ts",
       "../../node_modules/@types/source-list-map/index.d.ts",
       "../../node_modules/@types/styled-jsx/css.d.ts",
@@ -4220,7 +4255,6 @@
       "../../node_modules/@types/webpack/node_modules/source-map/source-map.d.ts",
       "../../node_modules/ajv/lib/ajv.d.ts",
       "../../node_modules/anymatch/index.d.ts",
-      "../../node_modules/history/index.d.ts",
       "../../node_modules/http-proxy-middleware/dist/handlers/fix-request-body.d.ts",
       "../../node_modules/http-proxy-middleware/dist/handlers/index.d.ts",
       "../../node_modules/http-proxy-middleware/dist/handlers/public.d.ts",
@@ -4228,7 +4262,9 @@
       "../../node_modules/http-proxy-middleware/dist/index.d.ts",
       "../../node_modules/http-proxy-middleware/dist/types.d.ts",
       "../../node_modules/redux/index.d.ts",
+      "../../node_modules/socket.io-parser/dist/index.d.ts",
       "../../node_modules/webpack/node_modules/schema-utils/declarations/ValidationError.d.ts",
+      "../../node_modules/webpack/node_modules/schema-utils/declarations/index.d.ts",
       "../../node_modules/webpack/node_modules/schema-utils/declarations/validate.d.ts",
       "../../node_modules/webpack/node_modules/tapable/tapable.d.ts",
       "../../node_modules/webpack/types.d.ts",
