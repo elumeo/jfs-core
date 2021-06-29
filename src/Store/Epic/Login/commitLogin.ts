@@ -41,7 +41,7 @@ const commitLogin: Epic = (action$, state$) => (
                 contentTranslationId: contentTranslationId,
                 isError: true
               }),
-              Action.catchErrorNotification(error)
+              Action.addErrorNotification(error)
             )
           }
         )
