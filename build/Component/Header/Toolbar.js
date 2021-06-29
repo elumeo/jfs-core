@@ -20,7 +20,7 @@ import Box from '@material-ui/core/Box';
 import MenuIcon from '@material-ui/icons/Menu';
 import useActions from '../../Store/useActions';
 const Toolbar = (_a) => {
-    var { variant = 'dense', position = 'static' } = _a, tools = __rest(_a, ["variant", "position"]);
+    var { variant = 'dense', position = 'sticky' } = _a, tools = __rest(_a, ["variant", "position"]);
     const { formatMessage } = useIntl();
     const { openNavigation } = useActions();
     const theme = useTheme();

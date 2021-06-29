@@ -17,7 +17,7 @@ export type Props = {
   position?: 'static' | 'fixed' | 'absolute' | 'sticky' | 'relative'
 };
 
-const Toolbar: React.FC<Props> = ({ variant = 'dense', position = 'static', ...tools }) => {
+const Toolbar: React.FC<Props> = ({ variant = 'dense', position = 'sticky', ...tools }) => {
   const { formatMessage } = useIntl();
   const { openNavigation } = useActions();
   const theme = useTheme()
