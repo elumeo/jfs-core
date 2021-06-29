@@ -2,7 +2,7 @@ import { SnackbarAction, useSnackbar, VariantType, OptionsObject } from 'notista
 import React from 'react';
 
 export type Notification = {
-  id: string;
+  id?: string;
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
   content?: React.ReactNode;
@@ -13,4 +13,5 @@ export type Notification = {
     temporary: boolean
   ) => SnackbarAction;
   notistackOptions?: OptionsObject;
+  isTranslationId?: boolean
 };

@@ -12,6 +12,7 @@ import { Notification } from 'Types/Notification';
 import useActions from 'Store/useActions';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useSnackbar } from 'notistack';
+import { useIntl } from 'react-intl'
 
 export type Props = {
   notification: Notification;
@@ -28,7 +29,7 @@ const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = (
   const { palette } = useTheme();
   const { removeNotification } = useActions();
   const snackbar = useSnackbar();
-
+  const { formatMessage } = useIntl()
   return (
     <MUICard
       style={{
@@ -38,15 +39,15 @@ const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = (
         color: palette[notification.variant as Severity]?.['contrastText']
       }}>
       <CardHeader
-        avatar={<Icon variant={notification.variant}/>}
+        avatar={<Icon variant={notification.variant} />}
         title={
           <Typography component='h4'>
-            {notification.title}
+            {notification?.isTranslationId ? formatMessage({ id: (notification.title as string) }) : notification.title}
           </Typography>
         }
         subheader={
           <Typography component='h6'>
-            {notification.subtitle}
+            {notification?.isTranslationId ? formatMessage({ id: (notification.subtitle as string) }) : notification.subtitle}
           </Typography>
         }
         subheaderTypographyProps={{ color: 'inherit' }}
@@ -58,13 +59,13 @@ const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = (
             <IconButton
               onClick={() => removeNotification(notification.id)}>
               <DeleteIcon
-                style={{ color: palette[notification.variant as Severity]?.contrastText }}/>
+                style={{ color: palette[notification.variant as Severity]?.contrastText }} />
             </IconButton>
           </CardActions>
-        }/>
+        } />
       <CardContent>
         <Typography>
-          {notification.content}
+          {notification?.isTranslationId ? formatMessage({ id: (notification.content as string) }) : notification.content}
           {children}
         </Typography>
       </CardContent>
