@@ -1,4 +1,3 @@
-export { default as Apple } from './Apple';
 export { default as BadgePercent } from './BadgePercent';
 export { default as BidBlock } from './BidBlock';
 export { default as BoxOpen } from './BoxOpen';

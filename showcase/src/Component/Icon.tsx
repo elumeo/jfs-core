@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Card, CardContent, CardHeader, Container, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@material-ui/core';
 import { withStyles, Theme, WithStyles, useTheme } from '@material-ui/core/styles';
 import {
-  Apple as AppleIcon,
   BadgePercent as BadgePercentIcon,
   BidBlock as BidBlockIcon,
   BoxOpen as BoxOpenIcon,
@@ -35,18 +34,14 @@ const Icon: React.FC<Props> = ({classes}) => {
   const theme = useTheme()
 
   return (
-    <Box component={Container} height='100%' maxHeight='100%'>
-      <Box component={Card} height='100%'>
+    <Box component={Container}>
+      <Box component={Card}>
         <CardHeader title='Juwelo Icons'/>
         <Box component={CardContent}>
           <List>
             <ListItem>
               <ListItemAvatar><WarningIcon/></ListItemAvatar>
               <ListItemText>An Material UI Icon example</ListItemText>
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar><AppleIcon/></ListItemAvatar>
-              <ListItemText>{`<AppleIcon />`}</ListItemText>
             </ListItem>
             <ListItem>
               <ListItemAvatar><BadgePercentIcon/></ListItemAvatar>
