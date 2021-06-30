@@ -2,6 +2,9 @@
   "name": "@elumeo/jfs-scripts",
   "version": "1.0.0",
   "description": "Core scripts for all JFS apps",
+  "directories": {
+    "bin": "./bin"
+  },
   "scripts": {
     "build": "tsc && tsc-alias",
     "build:watch": "tsc-watch --onCompilationComplete tsc-alias"
