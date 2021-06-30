@@ -17,5 +17,11 @@
     }
   },
   "include": ["./src", "./augmentation"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "scripts",
+    "build",
+    "showcase",
+    "**/node_modules",
+    "**/.*/"
+  ]
 }
