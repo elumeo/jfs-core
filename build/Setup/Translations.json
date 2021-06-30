@@ -37,7 +37,8 @@
         "settings.language": "Sprache",
         "settings.title": "Einstellungen",
         "userRights.checkFailed": "Benutzerrechte konnten nicht geladen werden",
-        "date": "Datum"
+        "date": "Datum",
+        "table.noResults": "Keine Ergebnisse"
     },
     "en": {
         "app.title": "JFS Core",
@@ -77,7 +78,8 @@
         "settings.language": "Language",
         "settings.title": "Settings",
         "userRights.checkFailed": "Unable to load user rights",
-        "date": "Date"
+        "date": "Date",
+        "table.noResults": "No results"
     },
     "it": {
         "app.title": "JFS Core",
@@ -117,6 +119,7 @@
         "settings.language": "Lingua",
         "settings.title": "Impostazioni",
         "userRights.checkFailed": "Impossibile caricare i diritti utente",
-        "date": "Data"
+        "date": "Data",
+        "table.noResults": "Nessun risultato"
     }
 }
