@@ -1,3 +1,3 @@
 import React from 'react';
-declare const BackendIndicator: React.FC;
-export default BackendIndicator;
+declare const _default: React.MemoExoticComponent<() => JSX.Element>;
+export default _default;

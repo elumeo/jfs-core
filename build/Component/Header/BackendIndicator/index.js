@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
 import { useSelector } from '../../../Types/Redux';
 import { useIntl } from 'react-intl';
@@ -10,4 +10,4 @@ const BackendIndicator = () => {
         React.createElement("span", null,
             React.createElement(Flag, { country: (backendRegion || '').toLowerCase() }))));
 };
-export default BackendIndicator;
+export default memo(BackendIndicator);
