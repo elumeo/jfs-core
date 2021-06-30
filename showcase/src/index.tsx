@@ -33,10 +33,10 @@ ReactDOM.render(
     <Header.Toolbar
       left={<Header.BackendIndicator/>}
       middle={
-        <div style={{ width: 300 }}>
+        <div style={{width: 300}}>
           <LAB.Autocomplete
             fullWidth
-            options={["one", "two", "three"]}
+            options={['one', 'two', 'three']}
             renderInput={params => (
               <MUI.TextField
                 placeholder='Search for ...'

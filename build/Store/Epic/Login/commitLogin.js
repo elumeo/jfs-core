@@ -19,6 +19,6 @@ const commitLogin = (action$, state$) => (action$.pipe(filter(isActionOf(Action.
     return of(Action.loginFailed(), Action.addToastAction({
         contentTranslationId: contentTranslationId,
         isError: true
-    }), Action.catchErrorNotification(error));
+    }), Action.addErrorNotification(error));
 })))));
 export default commitLogin;
