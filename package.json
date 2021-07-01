@@ -3,6 +3,9 @@
   "version": "10.0.0-beta.57",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
+  "directories": {
+    "bin": "./scripts/bin"
+  },
   "scripts": {
     "start": "webpack serve --config build-tools/webpack/dev-server",
     "build": "tsc && tsc-alias",
