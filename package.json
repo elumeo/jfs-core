@@ -15,7 +15,7 @@
     "release:alpha": "npm publish --tag alpha --access public",
     "release:beta": "npm publish --tag beta --access public",
     "install:subpkg": "subpkg install",
-    "postinstall": "install:subpkg && npm run jfs-postinstall",
+    "postinstall": "npm run install:subpkg && npm run jfs-postinstall",
     "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i",
     "jfs-check-api": "jfs-check-api",
     "jfs-check-translations": "jfs-check-translations",
