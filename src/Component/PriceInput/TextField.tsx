@@ -1,17 +1,19 @@
 import React from 'react';
-import { default as MUITextField, TextFieldProps } from '@material-ui/core/TextField';
+import { default as MUITextField, StandardTextFieldProps } from '@material-ui/core/TextField';
 import useCurrency from 'Effect/useCurrency';
 import { Currency } from 'Utilities/Format';
 type Props = {
     currency?: string;
-} & TextFieldProps
+    selectOnFocus?: boolean
+} & Partial<StandardTextFieldProps>
 const TextField: React.FC<Props> = ({
     currency = useCurrency(),
     value = 0.00,
+    selectOnFocus = true,
     ...props
 }) => {
     const { getCurrency } = Currency;
-    const inputRef = React.useRef<HTMLInputElement>()
+    const inputRef = React.useRef<HTMLInputElement>(null)
     const [sanitized, setSanitized] = React.useState(`${value}`)
     const [_focused, setFocused] = React.useState(props?.focused)
     const sanitize = React.useCallback(
@@ -33,13 +35,20 @@ const TextField: React.FC<Props> = ({
         },
         [setFocused, setSanitized, sanitized, props?.onBlur]
     )
-    const _onFocus = React.useCallback(
+    const _onFocus: StandardTextFieldProps['onFocus'] = React.useCallback(
         (e) => {
             setFocused(true);
             props?.onFocus?.(e);
         },
-        [setFocused, props?.onFocus]
+        [setFocused, props?.onFocus, selectOnFocus, inputRef]
     )
+    React.useEffect(() => {
+        if (_focused) {
+            if (inputRef.current && selectOnFocus) {
+                inputRef?.current?.select()
+            }
+        }
+    }, [_focused])
     React.useEffect(
         () => {
             setSanitized(`${value}`)
@@ -49,11 +58,12 @@ const TextField: React.FC<Props> = ({
 
     return (
         <MUITextField
-            ref={inputRef}
+            inputRef={inputRef}
             value={_focused ? sanitized : display}
             onBlur={_onBlur}
             onFocus={_onFocus}
-            {...props} />
+            {...props}
+        />
     );
 };
 export default TextField;
