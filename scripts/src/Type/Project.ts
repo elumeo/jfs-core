@@ -1,0 +1,1 @@
+export type Scope = 'app' | 'component' | 'core';

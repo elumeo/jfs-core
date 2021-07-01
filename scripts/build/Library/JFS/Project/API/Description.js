@@ -44,7 +44,7 @@ const save = (path, description) => {
 exports.save = save;
 const generate = (path) => __awaiter(void 0, void 0, void 0, function* () {
     const remote = {
-        host: (yield JFS.config(path)).JscClient.Host,
+        host: (yield JFS.Config.get(path)).JscClient.Host,
         path: '/client/api/description',
         configuration: (yield Config.read(path)).remote
     };

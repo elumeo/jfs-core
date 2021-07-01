@@ -27,51 +27,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addRegisterScripts = exports.addPostinstallScript = exports.scriptPath = exports.registerScripts = exports.deployConfigFiles = exports.setPeerDependencies = void 0;
-const Package = __importStar(require("../../NPM/Package"));
-const path_1 = require("path");
-const fs = __importStar(require("fs-extra"));
-const setPeerDependencies = (path) => (Package.run('set-peer-dependencies', {
-    cwd: path,
-    stdio: 'inherit'
-}));
-exports.setPeerDependencies = setPeerDependencies;
-const deployConfigFiles = (path) => (Package.run('deploy-config-files', {
-    cwd: path,
-    stdio: 'inherit'
-}));
-exports.deployConfigFiles = deployConfigFiles;
-const registerScripts = (path) => (Package.run('register-scripts', {
-    cwd: path,
-    stdio: 'inherit'
-}));
-exports.registerScripts = registerScripts;
-const scriptPath = (path, core, name) => path_1.join(path_1.relative(path, core), 'scripts', 'build', 'Setup', name).replace(path_1.sep, '/');
-exports.scriptPath = scriptPath;
-const addPostinstallScript = (path, core) => __awaiter(void 0, void 0, void 0, function* () {
-    const _a = (yield Package.json(path_1.resolve(path, 'package.json'))), { scripts } = _a, json = __rest(_a, ["scripts"]);
-    if (!scripts['jfs-postinstall']) {
-        yield fs.writeJSON(path, Object.assign(Object.assign({}, json), { scripts: Object.assign(Object.assign({}, scripts), { 'jfs-postinstall': `node ${exports.scriptPath(path, core, 'postinstall')}` }) }));
-    }
+exports.register = void 0;
+const path_1 = __importDefault(require("path"));
+const NPM = __importStar(require("../../NPM"));
+const register = (env, scripts) => __awaiter(void 0, void 0, void 0, function* () {
+    const file = path_1.default.resolve(env.root, 'package.json');
+    const json = yield NPM.Package.json(file);
+    const next = NPM.Package.Script.add(json, scripts);
+    yield NPM.Package.save(file, next);
 });
-exports.addPostinstallScript = addPostinstallScript;
-const addRegisterScripts = (path, core) => __awaiter(void 0, void 0, void 0, function* () {
-    const _b = (yield Package.json(path_1.resolve(path, 'package.json'))), { scripts } = _b, json = __rest(_b, ["scripts"]);
-    if (!scripts['register-scripts']) {
-        yield fs.writeJSON(path, Object.assign(Object.assign({}, json), { scripts: Object.assign(Object.assign({}, scripts), { 'register-scripts': `node ${exports.scriptPath(path, core, 'register-scripts')}` }) }));
-    }
-});
-exports.addRegisterScripts = addRegisterScripts;
+exports.register = register;
 //# sourceMappingURL=Package.js.map

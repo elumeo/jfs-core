@@ -2,7 +2,7 @@ import { resolve } from 'path';
 import fs from 'fs-extra';
 import _ from 'lodash';
 import child_process from 'child_process';
-import PackageJSON from 'Library/Types/PackageJSON';
+import * as Type from 'Type';
 
 export const node_module = (path: string, name: string) => resolve(
   path,
@@ -11,8 +11,13 @@ export const node_module = (path: string, name: string) => resolve(
 );
 
 export const json = async (path: string) => (
-  (await fs.readJSON(path)) as PackageJSON
+  (await fs.readJSON(path)) as Type.Package.JSON
 );
+
+export const save = async (path: string, json: Type.Package.JSON) => {
+  const data = JSON.stringify(json, null, 2);
+  await fs.writeFile(path, data);
+}
 
 export const run = (
   script: string,
@@ -32,9 +37,7 @@ export const run = (
   return new Promise<number>(resolve => child.on('exit', resolve));
 }
 
-export const start = (path: string) => (
-  run('start', {
-    cwd: path,
-    stdio: 'inherit'
-  })
-);
+export const start = (path: string) => run('start', {
+  cwd: path,
+  stdio: 'inherit'
+});

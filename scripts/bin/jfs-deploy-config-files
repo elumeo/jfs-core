@@ -1,3 +1,6 @@
 #!/usr/bin/env node
-
-require('../build/Setup/deploy-config-files');
+const script = require('../build/Setup/jfs-deploy-config-files');
+const { detect } = require('../build/Library/JFS/Environment');
+const cwd = process.cwd();
+const main = async () => script.run(await detect(cwd));
+main();
