@@ -9,14 +9,14 @@
     "sync-development": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/sync-development.js",
     "postinstall": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/postinstall",
     "register-scripts": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/register-scripts.js",
-    "check-translations": "jfs-translation-check",
-    "deploy-config-files": "jfs-deploy-config-files",
-    "jsc-check": "jfs-check-api",
-    "jsc-generate": "jfs-generate-api",
+    "check-translations": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/check-translations.js",
+    "deploy-config-files": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/deploy-config-files.js",
+    "jsc-check": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/jsc-check.js",
+    "jsc-generate": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/jsc-generate.js",
     "jfs-postinstall": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/postinstall.js",
-    "set-peer-dependencies": "jfs-set-peer-dependencies",
+    "set-peer-dependencies": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/set-peer-dependencies.js",
     "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i",
-    "core-showcase": "jfs-open-showcase"
+    "core-showcase": "node node_modules/@elumeo/jfs-core/scripts/build/Setup/jfs-showcase.js"
   },
   "jfs": {
     "sync": {
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@date-io/moment": "^1.3.13",
-    "@elumeo/jfs-core": "https://github.com/elumeo/jfs-core.git#a25ad03eba097cc8b40325ff989af328bc79c9b9",
+    "@elumeo/jfs-core": "https://github.com/elumeo/jfs-core.git#2c0634b4",
     "jfc-hello-world": "https://github.com/scharfohnezwiebeln/jfc_HelloWorld.git#c7c4c9e5"
   },
   "keywords": [],

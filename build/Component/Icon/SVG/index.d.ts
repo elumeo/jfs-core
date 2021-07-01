@@ -3,6 +3,7 @@ export { default as BidBlock } from './BidBlock';
 export { default as BoxOpen } from './BoxOpen';
 export { default as CashInAdvance } from './CashInAdvance';
 export { default as CashOnDelivery } from './CashOnDelivery';
+export { default as DeletePin } from './DeletePin';
 export { default as Check } from './Check';
 export { default as DeliveryAddress } from './DeliveryAddress';
 export { default as FilterReset } from './FilterReset';
