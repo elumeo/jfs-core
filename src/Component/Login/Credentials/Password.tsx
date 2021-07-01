@@ -22,10 +22,12 @@ const Password = React.forwardRef<HTMLInputElement, Props>(({ value, onChange, o
       helperText={
         error && !value
           ? formatMessage({ id: 'login.password.errorText' })
-          : null}
+          : null
+      }
       value={value}
       onChange={event => onChange(event.target.value)}
-      onKeyPress={e => e.key === 'Enter' && onEnter()}/>
+      onKeyPress={e => e.key === 'Enter' && onEnter()}
+    />
   );
 })
 

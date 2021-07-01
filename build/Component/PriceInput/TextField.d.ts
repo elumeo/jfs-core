@@ -1,7 +1,8 @@
 import React from 'react';
-import { TextFieldProps } from '@material-ui/core/TextField';
+import { StandardTextFieldProps } from '@material-ui/core/TextField';
 declare type Props = {
     currency?: string;
-} & TextFieldProps;
+    selectOnFocus?: boolean;
+} & Partial<StandardTextFieldProps>;
 declare const TextField: React.FC<Props>;
 export default TextField;

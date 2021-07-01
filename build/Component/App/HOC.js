@@ -4,10 +4,8 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Theme from './Theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { SnackbarProvider } from 'notistack';
 import MomentUtils from '@date-io/moment';
 import WebSocketConnection from '../WebSocket/WebSocketConnection';
-import * as Notification from '../Notification';
 import Head from './Head';
 import { ConnectedRouter } from 'connected-react-router';
 import { history } from '../../Store/Middleware';
@@ -16,14 +14,9 @@ const HOC = ({ title, store, children }) => {
     return (React.createElement(Provider, { store: store },
         React.createElement(MuiPickersUtilsProvider, { utils: MomentUtils },
             React.createElement(ThemeProvider, { theme: theme },
-                React.createElement(SnackbarProvider, { anchorOrigin: {
-                        vertical: 'bottom',
-                        horizontal: 'right'
-                    }, maxSnack: 5, domRoot: document.getElementById('overlay') },
-                    React.createElement(Notification.Notistack, null),
-                    React.createElement(Head, { title: title }),
-                    React.createElement(CssBaseline, null),
-                    React.createElement(WebSocketConnection, null,
-                        React.createElement(ConnectedRouter, { history: history }, children)))))));
+                React.createElement(Head, { title: title }),
+                React.createElement(CssBaseline, null),
+                React.createElement(WebSocketConnection, null,
+                    React.createElement(ConnectedRouter, { history: history }, children))))));
 };
 export default HOC;

@@ -1,5 +1,7 @@
 import React, { memo, ReactNode } from 'react';
 import { IntlProvider } from 'react-intl';
+import * as Notification from 'Component/Notification';
+import { SnackbarProvider } from 'notistack';
 
 const Initialized: React.FC<{
   translations: {
@@ -14,7 +16,16 @@ const Initialized: React.FC<{
     locale={language}
     messages={translations[language]}>
     <>
-      {children}
+      <SnackbarProvider
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right'
+        }}
+        maxSnack={5}
+        domRoot={document.getElementById('overlay')}>
+        <Notification.Notistack />
+        {children}
+      </SnackbarProvider>
     </>
   </IntlProvider>
 );
