@@ -3,9 +3,6 @@
   "version": "10.0.0-beta.56",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
-  "directories": {
-    "bin": "./scripts/bin"
-  },
   "scripts": {
     "start": "webpack serve --config build-tools/webpack/dev-server",
     "build": "tsc && tsc-alias",
@@ -14,17 +11,16 @@
     "release": "npm publish --access public",
     "release:alpha": "npm publish --tag alpha --access public",
     "release:beta": "npm publish --tag beta --access public",
-    "jfs-postinstall": "node scripts/build/Setup/postinstall.js",
     "install:subpkg": "subpkg install",
-    "postinstall": "subpkg install && npm run jfs-postinstall && npm link ./scripts",
-    "register-scripts": "node scripts/build/Setup/register-scripts.js",
-    "check-translations": "jfs-translation-check",
-    "deploy-config-files": "jfs-deploy-config-files",
-    "core-showcase": "jfs-open-showcase",
-    "jsc-check": "jfs-check-api",
-    "jsc-generate": "jfs-generate-api",
-    "set-peer-dependencies": "jfs-set-peer-dependencies",
-    "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i"
+    "postinstall": "install:subpkg && npm run jfs-postinstall && npm link ./scripts",
+    "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i",
+    "jfs-check-api": "jfs-check-api",
+    "jfs-check-translations": "jfs-check-translations",
+    "jfs-deploy-config-files": "jfs-deploy-config-files",
+    "jfs-generate-api": "jfs-generate-api",
+    "jfs-open-showcase": "jfs-open-showcase",
+    "jfs-postinstall": "jfs-postinstall",
+    "jfs-register-scripts": "jfs-register-scripts"
   },
   "repository": {
     "type": "git",
