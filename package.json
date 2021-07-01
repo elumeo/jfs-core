@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "10.0.0-beta.56",
+  "version": "10.0.0-beta.57",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -18,12 +18,12 @@
     "install:subpkg": "subpkg install",
     "postinstall": "subpkg install && npm run jfs-postinstall && npm link ./scripts",
     "register-scripts": "node scripts/build/Setup/register-scripts.js",
-    "check-translations": "jfs-translation-check",
-    "deploy-config-files": "jfs-deploy-config-files",
-    "core-showcase": "jfs-open-showcase",
-    "jsc-check": "jfs-check-api",
-    "jsc-generate": "jfs-generate-api",
-    "set-peer-dependencies": "jfs-set-peer-dependencies",
+    "check-translations": "node scripts/build/Setup/check-translations.js",
+    "deploy-config-files": "node scripts/build/Setup/deploy-config-files.js",
+    "core-showcase": "node scripts/build/Setup/jfs-showcase.js",
+    "jsc-check": "node scripts/build/Setup/jsc-check.js",
+    "jsc-generate": "node scripts/build/Setup/jsc-generate.js",
+    "set-peer-dependencies": "node scripts/build/Setup/set-peer-dependencies.js",
     "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i"
   },
   "repository": {

@@ -5,14 +5,16 @@
     "Timeout": 30000
   },
   "JscWebSocketClient": {
-    "Host": "http://localhost:8080",
+    "Host": "https://api-test.juwelo.de",
+    "Path": "/staging/websocket.services",
     "PrivateNamespace": "Jsc2Jfs",
     "AutoRoomSubscriptions": [
       "ping"
     ]
   },
   "JfsWebSocketClient": {
-    "Host": "http://localhost:8080",
+    "Host": "https://api-test.juwelo.de",
+    "Path": "/staging/websocket.services",
     "PrivateNamespace": "Jfs2Jfs",
     "AutoRoomSubscriptions": [
       "ping"

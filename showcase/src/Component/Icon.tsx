@@ -8,6 +8,7 @@ import {
   CashInAdvance as CashInAdvanceIcon,
   CashOnDelivery as CashOnDeliveryIcon,
   Check as CheckIcon,
+  DeletePin as DeletePinIcon,
   DeliveryAddress as DeliveryAddressIcon,
   FilterReset as FilterResetIcon,
   Ideal as IdealIcon,
@@ -66,6 +67,10 @@ const Icon: React.FC<Props> = ({classes}) => {
             <ListItem>
               <ListItemAvatar><CheckIcon/></ListItemAvatar>
               <ListItemText>{`<CheckIcon />`}</ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemAvatar><DeletePinIcon/></ListItemAvatar>
+              <ListItemText>{`<DeletePinIcon />`}</ListItemText>
             </ListItem>
             <ListItem>
               <ListItemAvatar><DeliveryAddressIcon/></ListItemAvatar>
