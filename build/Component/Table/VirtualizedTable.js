@@ -60,7 +60,6 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
 }));
 const VirtualizedTable = React.forwardRef((_a, ref) => {
     var { columns, onRowClick, rowCount, rowGetter, headerHeight = 48, rowHeight = 48 } = _a, tableProps = __rest(_a, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight"]);
-    console.log(tableProps);
     const classes = virtualizedGlobalStyles();
     const getRowClassName = ({ index }) => {
         return clsx(classes.tableRow, classes.flexContainer, {

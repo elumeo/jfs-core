@@ -74,9 +74,6 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
      ...tableProps
    },
    ref) => {
-
-    console.log(tableProps);
-
     const classes = virtualizedGlobalStyles();
     const getRowClassName = ({index}: Row) => {
       return clsx(classes.tableRow, classes.flexContainer, {
