@@ -40,5 +40,4 @@ const BaseRoute: React.FC<IBaseRouteProps> = ({
   return <Route {...rest}/>;
 };
 
-
 export default BaseRoute;

@@ -9,7 +9,7 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import { TableCell } from '@material-ui/core';
+import { TableCell, TableSortLabel } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { AutoSizer, Column, Table } from 'react-virtualized';
 import React, { memo } from 'react';
@@ -46,6 +46,17 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
     noClick: {
         cursor: 'initial',
     },
+    visuallyHidden: {
+        border: 0,
+        clip: 'rect(0 0 0 0)',
+        height: 1,
+        margin: -1,
+        overflow: 'hidden',
+        padding: 0,
+        position: 'absolute',
+        top: 20,
+        width: 1,
+    }
 }));
 const VirtualizedTable = React.forwardRef((_a, ref) => {
     var { columns, onRowClick, rowCount, rowGetter, headerHeight = 48, rowHeight = 48 } = _a, tableProps = __rest(_a, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight"]);
@@ -60,9 +71,14 @@ const VirtualizedTable = React.forwardRef((_a, ref) => {
                 [classes.noClick]: onRowClick == null,
             }), variant: 'body', style: { height: rowHeight }, align: (columnIndex != null && columns[columnIndex].numeric) || false ? 'right' : 'left' }, cellData));
     };
-    const headerRenderer = ({ label, columnIndex }) => {
-        return (React.createElement(TableCell, { component: 'div', className: clsx(classes.tableCell, classes.flexContainer, classes.noClick), variant: 'head', style: { height: headerHeight }, align: columns[columnIndex].numeric || false ? 'right' : 'left' },
-            React.createElement("span", null, label)));
+    const mapSortDirection = (sortDirection) => sortDirection === 'ASC' ? 'asc' : 'desc';
+    const headerRenderer = (headerProps) => {
+        console.log('headerProps', headerProps);
+        return (React.createElement(TableCell, { component: 'div', className: clsx(classes.tableCell, classes.flexContainer, classes.noClick), variant: 'head', style: { height: headerHeight }, align: columns[headerProps.columnIndex].numeric || false ? 'right' : 'left' },
+            tableProps.sort !== undefined && headerProps.disableSort !== true && React.createElement(TableSortLabel, { active: headerProps.sortBy === headerProps.dataKey, direction: headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc', onClick: () => console.log('SORT', tableProps.sort) },
+                headerProps.label,
+                headerProps.sortBy === headerProps.dataKey ? (React.createElement("span", { className: classes.visuallyHidden }, headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending')) : null),
+            tableProps.sort === undefined && React.createElement("span", null, headerProps.label)));
     };
     return (React.createElement(AutoSizer, null, ({ height, width }) => (React.createElement(Table, Object.assign({ ref: ref, height: height, width: width, className: classes.table, headerHeight: headerHeight, rowHeight: rowHeight, rowCount: rowCount, rowGetter: rowGetter, rowClassName: getRowClassName, onRowClick: onRowClick, gridStyle: { direction: 'inherit' }, gridClassName: classes.tableGrid }, tableProps), columns.map((_a, index) => {
         var { dataKey } = _a, other = __rest(_a, ["dataKey"]);
