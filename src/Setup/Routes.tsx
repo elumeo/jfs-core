@@ -3,6 +3,7 @@ import { Switch, Redirect } from 'react-router-dom';
 import Content from 'Component/Content/Content';
 import AuthRoute from 'Component/Route/AuthRoute';
 import NoAuthRoute from 'Component/Route/NoAuthRoute';
+import Develop from 'Component/develop';
 
 const Routes: React.FC = () => (
   <Content>
@@ -10,7 +11,7 @@ const Routes: React.FC = () => (
       <AuthRoute
         key='start'
         exact path='/start'
-        component={() => <div></div>} />
+        component={() => <Develop />} />
       <NoAuthRoute
         key='default'
         exact path='/'

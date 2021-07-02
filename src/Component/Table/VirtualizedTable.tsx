@@ -1,6 +1,6 @@
-import { TableCell } from '@material-ui/core';
+import { TableCell, TableSortLabel } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { ColumnProps, TableProps } from 'react-virtualized/dist/es/Table';
+import { ColumnProps, SortDirectionType, TableProps } from 'react-virtualized/dist/es/Table';
 import { AutoSizer, Column, SizeInfo, Table, TableCellRenderer, TableHeaderProps } from 'react-virtualized';
 import React, { memo } from 'react';
 import clsx from 'clsx';
@@ -37,6 +37,17 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
   noClick: {
     cursor: 'initial',
   },
+  visuallyHidden: {
+    border: 0,
+    clip: 'rect(0 0 0 0)',
+    height: 1,
+    margin: -1,
+    overflow: 'hidden',
+    padding: 0,
+    position: 'absolute',
+    top: 20,
+    width: 1,
+  }
 }));
 
 type ColumnData = ColumnProps & {
@@ -84,15 +95,30 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
       );
     };
 
-    const headerRenderer = ({label, columnIndex}: TableHeaderProps & { columnIndex: number }) => {
+    const mapSortDirection = (sortDirection: SortDirectionType) => sortDirection === 'ASC' ? 'asc' : 'desc';
+
+    const headerRenderer = (headerProps: TableHeaderProps & { columnIndex: number }) => {
+      console.log('headerProps', headerProps);
       return (
         <TableCell
           component={'div'}
           className={clsx(classes.tableCell, classes.flexContainer, classes.noClick)}
           variant={'head'}
           style={{height: headerHeight}}
-          align={columns[columnIndex].numeric || false ? 'right' : 'left'}
-        ><span>{label}</span></TableCell>
+          align={columns[headerProps.columnIndex].numeric || false ? 'right' : 'left'}
+        >
+          {tableProps.sort !== undefined && headerProps.disableSort !== true && <TableSortLabel
+            active={headerProps.sortBy === headerProps.dataKey}
+            direction={headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc'}
+            onClick={() => console.log('SORT', tableProps.sort)}
+          >
+            {headerProps.label}
+            {headerProps.sortBy === headerProps.dataKey ? (
+              <span className={classes.visuallyHidden}>{headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending'}</span>
+            ) : null}
+          </TableSortLabel>}
+          {tableProps.sort === undefined && <span>{headerProps.label}</span>}
+        </TableCell>
       );
     };
 
