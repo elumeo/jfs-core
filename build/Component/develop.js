@@ -21,7 +21,7 @@ const Develop = () => {
     const theme = useTheme();
     return React.createElement(Paper, { style: { height: 'calc(100% - ' + theme.spacing(8) + 'px)' } },
         React.createElement(Box, { padding: 1, height: '100%' },
-            React.createElement(VirtualizedTable, { rowCount: rows.length, rowGetter: (row) => rows[row.index], sortBy: 'dessert', sortDirection: 'asc', sort: () => console.log('sorting'), columns: [
+            React.createElement(VirtualizedTable, { rowCount: rows.length, rowGetter: (row) => rows[row.index], sortBy: 'dessert', sortDirection: 'ASC', sort: () => console.log('sorting'), columns: [
                     {
                         width: 200,
                         flexGrow: 1,

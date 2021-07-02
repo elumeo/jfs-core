@@ -49,7 +49,7 @@ const Develop = () => {
         rowCount={rows.length}
         rowGetter={(row: Index) => rows[row.index]}
         sortBy={'dessert'}
-        sortDirection={'asc'}
+        sortDirection={'ASC'}
         sort={() => console.log('sorting')}
         columns={[
           {

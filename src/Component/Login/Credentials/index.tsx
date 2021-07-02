@@ -22,14 +22,13 @@ const LoginCredentials: React.FC<Props> = ({
 
   React.useEffect(
     () => {
-      console.log(username.current);
       if (username.current) {
         username.current.focus();
       }
     },
     [username.current]
   );
-  
+
   return (
     <form autoCorrect='false' autoComplete='off' style={{
       display: 'flex',

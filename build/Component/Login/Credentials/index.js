@@ -5,7 +5,6 @@ const LoginCredentials = ({ value, onChange, onSubmit, error }) => {
     const username = React.useRef();
     const password = React.useRef();
     React.useEffect(() => {
-        console.log(username.current);
         if (username.current) {
             username.current.focus();
         }

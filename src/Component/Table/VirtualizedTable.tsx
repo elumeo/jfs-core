@@ -74,6 +74,9 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
      ...tableProps
    },
    ref) => {
+
+    console.log(tableProps);
+
     const classes = virtualizedGlobalStyles();
     const getRowClassName = ({index}: Row) => {
       return clsx(classes.tableRow, classes.flexContainer, {
@@ -98,7 +101,6 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
     const mapSortDirection = (sortDirection: SortDirectionType) => sortDirection === 'ASC' ? 'asc' : 'desc';
 
     const headerRenderer = (headerProps: TableHeaderProps & { columnIndex: number }) => {
-      console.log('headerProps', headerProps);
       return (
         <TableCell
           component={'div'}
@@ -110,11 +112,11 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
           {tableProps.sort !== undefined && headerProps.disableSort !== true && <TableSortLabel
             active={headerProps.sortBy === headerProps.dataKey}
             direction={headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc'}
-            onClick={() => console.log('SORT', tableProps.sort)}
           >
             {headerProps.label}
             {headerProps.sortBy === headerProps.dataKey ? (
-              <span className={classes.visuallyHidden}>{headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending'}</span>
+              <span
+                className={classes.visuallyHidden}>{headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending'}</span>
             ) : null}
           </TableSortLabel>}
           {tableProps.sort === undefined && <span>{headerProps.label}</span>}
