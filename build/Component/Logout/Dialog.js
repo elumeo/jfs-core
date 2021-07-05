@@ -3,22 +3,21 @@ import { useIntl } from 'react-intl';
 import MUIDialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
-import Typography from '@material-ui/core/Typography';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Button from '@material-ui/core/Button';
+import * as Button from './Button';
 import useLogout from './useLogout';
+import Text from './Text';
+import DialogTitle from '@material-ui/core/DialogTitle';
 const Dialog = ({ children }) => {
     const logout = useLogout();
     const { formatMessage } = useIntl();
     return (React.createElement(MUIDialog, { open: logout.open, title: formatMessage({ id: 'app.logout.title' }), onClose: logout.close, "aria-labelledby": "logout-description" },
-        React.createElement(DialogContent, null,
-            React.createElement(Typography, { id: "logout-description" }, children
-                ? children
-                : formatMessage({ id: 'app.logout.message' }))),
+        React.createElement(DialogTitle, null, "Logout"),
+        React.createElement(DialogContent, { style: {
+                minHeight: 80
+            } },
+            React.createElement(Text, { override: children })),
         React.createElement(DialogActions, null,
-            React.createElement(Button, { disabled: logout.pending, onClick: () => logout.commit({}), color: 'primary' }, logout.pending
-                ? React.createElement(CircularProgress, { id: "logout-progress" })
-                : formatMessage({ id: 'app.logout.action' })),
-            React.createElement(Button, { onClick: logout.close }, formatMessage({ id: 'app.cancel.action' })))));
+            React.createElement(Button.Submit, { pending: logout.pending, onClick: () => logout.commit({}) }),
+            React.createElement(Button.Cancel, { onClick: logout.close }))));
 };
 export default Dialog;

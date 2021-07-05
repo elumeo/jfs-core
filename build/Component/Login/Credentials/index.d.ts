@@ -1,13 +1,9 @@
 import React from 'react';
-export declare type Credentials = {
-    username: string;
-    password: string;
-};
+import * as Type from '../../../Types/Login';
 export declare type Props = {
-    value: Credentials;
-    onChange: (next: Credentials) => void;
+    value: Type.Credentials;
+    onChange: (next: Type.Credentials) => void;
     onSubmit: () => void;
-    error: boolean;
 };
-declare const LoginCredentials: React.FC<Props>;
-export default LoginCredentials;
+declare const Credentials: React.FC<Props>;
+export default Credentials;
