@@ -1,14 +1,13 @@
-import {createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import * as Color from 'Constant/Color';
+import { grey } from '@material-ui/core/colors';
 
 const Theme = () => {
   let theme = createMuiTheme({
     overrides: {
       MuiCssBaseline: {
         '@global': {
-          '#root': {
-          },
-          html:{
+          html: {
             // fontSize: '87.5%'
           },
           body: {
@@ -20,59 +19,31 @@ const Theme = () => {
       }
     },
     typography: {
-      // fontSize: 13,  
-      // htmlFontSize: 14,
-    //   test : createTypography({  
-    //     color : 'red'
-    //   }) as  TypographyVariant 
+      fontSize: 13,
     },
     palette: {
       type: 'light',
-      primary: {
-        main: Color.primary,
-        // light: rodolith[700],
-        // dark: '#002884',
-        contrastText: '#fff'
-      },
-      secondary: {
-        main: Color.apatith[900],
-        // light: 'apatith[700]',
-        // dark: '#ba000d',
-        contrastText: '#fff'
-      },
+      primary: Color.rubin,
+      secondary: Color.apatith,
       text: {
-        primary: Color.grey[900],
-        secondary: Color.grey[700],
-        disabled: Color.grey[500],
-        hint: Color.grey[300],
+        primary: grey[900],
+        secondary: grey[700],
+        disabled: grey[500],
+        hint: grey[300],
       },
-      success : {
-        main: Color.success,
-        // light: '#81c784',
-        // dark: '#388e3c',
-        contrastText : '#fff'
-      },
-      warning:{
-        main: Color.warning,
-        // light: '#ffb74d',
-        // dark: '#f57c00',
-        contrastText: '#fff'
-      },
-      error: {
-        main: '#f44336',
-        // light: '#e57373',
-        // dark: '#d32f2f',
-        contrastText: '#fff'
-      },
+      success: Color.success,
+      warning: Color.warning,
+      error: Color.error,
+      rubin: Color.rubin,
+      rodolith: Color.rodolith,
+      topas: Color.topas,
+      apatith: Color.apatith,
+      peridot: Color.peridot,
+      citrin: Color.citrin,
+      quarz: Color.quarz,
       background: {
-        default:  Color.quarz[500],
-          
+        default: Color.quarz.main,
       }
-      // error: {
-      //   main: 'rgb(215, 15, 65)',
-      //   light: 'rgb(240, 140, 140)',
-      //   // dark :
-      // }
     }
   });
 

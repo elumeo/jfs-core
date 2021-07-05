@@ -1,8 +1,6 @@
 import React from 'react';
-import { Box, Paper, Theme } from '@material-ui/core';
+import { Paper, Theme } from '@material-ui/core';
 import { useTheme } from '@material-ui/styles';
-import { VirtualizedTable } from 'Component/Table';
-import { Index } from 'react-virtualized';
 
 type Data = {
   calories: number;
@@ -44,48 +42,7 @@ for (let i = 0; i < 200; i += 1) {
 const Develop = () => {
   const theme = useTheme<Theme>();
   return <Paper style={{height: 'calc(100% - ' + theme.spacing(8) + 'px)'}}>
-    <Box padding={1} height={'100%'}>
-      <VirtualizedTable
-        rowCount={rows.length}
-        rowGetter={(row: Index) => rows[row.index]}
-        sortBy={'dessert'}
-        sortDirection={'ASC'}
-        sort={() => console.log('sorting')}
-        columns={[
-          {
-            width: 200,
-            flexGrow: 1,
-            label: 'Dessert',
-            dataKey: 'dessert',
-            disableSort: false
-          },
-          {
-            width: 120,
-            label: 'Calories\u00A0(g)',
-            dataKey: 'calories',
-            numeric: true,
-          },
-          {
-            width: 120,
-            label: 'Fat\u00A0(g)',
-            dataKey: 'fat',
-            numeric: true,
-          },
-          {
-            width: 120,
-            label: 'Carbs\u00A0(g)',
-            dataKey: 'carbs',
-            numeric: true,
-          },
-          {
-            width: 120,
-            label: 'Protein\u00A0(g)',
-            dataKey: 'protein',
-            numeric: true,
-          },
-        ]}
-      />
-    </Box>
+
   </Paper>
 };
 
