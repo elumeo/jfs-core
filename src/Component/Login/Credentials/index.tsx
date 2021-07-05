@@ -1,47 +1,23 @@
 import React from 'react';
 import Username from './Username';
 import Password from './Password';
-
-export type Credentials = {
-  username: string;
-  password: string;
-}
+import * as Type from 'Types/Login';
+import useAutoFocus from './useAutoFocus';
+import Form from './Form';
 
 export type Props = {
-  value: Credentials;
-  onChange: (next: Credentials) => void;
+  value: Type.Credentials;
+  onChange: (next: Type.Credentials) => void;
   onSubmit: () => void;
-  error: boolean;
 };
 
-const LoginCredentials: React.FC<Props> = ({
-  value, onChange, onSubmit, error
-}) => {
+const Credentials: React.FC<Props> = ({ value, onChange, onSubmit }) => {
   const username = React.useRef<HTMLInputElement>();
   const password = React.useRef<HTMLInputElement>();
-
-  React.useEffect(
-    () => {
-      if (username.current) {
-        username.current.focus();
-      }
-    },
-    [username.current]
-  );
+  useAutoFocus(username);
 
   return (
-    <form autoCorrect='false' autoComplete='off' style={{
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      height: 130,
-      width: 300,
-      boxSizing: 'border-box',
-      paddingLeft: 24,
-      paddingRight: 24,
-      marginTop: 6,
-      marginBottom: 32
-    }}>
+    <Form>
       <Username
         ref={username}
         value={value.username}
@@ -49,7 +25,6 @@ const LoginCredentials: React.FC<Props> = ({
           ...value,
           username: next
         })}
-        error={error}
         onEnter={() => password.current.focus()}/>
       <Password
         ref={password}
@@ -58,10 +33,9 @@ const LoginCredentials: React.FC<Props> = ({
           ...value,
           password: next
         })}
-        error={error}
         onEnter={onSubmit}/>
-    </form>
+    </Form>
   )
 };
 
-export default LoginCredentials;
+export default Credentials;

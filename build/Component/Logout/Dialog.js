@@ -16,7 +16,7 @@ const Dialog = ({ children }) => {
                 ? children
                 : formatMessage({ id: 'app.logout.message' }))),
         React.createElement(DialogActions, null,
-            React.createElement(Button, { disabled: logout.pending, onClick: () => logout.commit({}) }, logout.pending
+            React.createElement(Button, { disabled: logout.pending, onClick: () => logout.commit({}), color: 'primary' }, logout.pending
                 ? React.createElement(CircularProgress, { id: "logout-progress" })
                 : formatMessage({ id: 'app.logout.action' })),
             React.createElement(Button, { onClick: logout.close }, formatMessage({ id: 'app.cancel.action' })))));

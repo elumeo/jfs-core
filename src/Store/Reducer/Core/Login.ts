@@ -3,28 +3,16 @@ import * as Action from 'Store/Action';
 import { ActionType } from 'Types/Redux';
 
 export type State = {
-  username: string;
-  password: string;
   isCheckingLogin: boolean;
   failedLogins: number;
 }
 
 const initialState: State = {
-  username: '',
-  password: '',
   isCheckingLogin: false,
   failedLogins: 0
 };
 
 const Login = createReducer<State, ActionType>(initialState)
-  .handleAction(
-    Action.updateCredentials,
-    (state, { payload: { username, password } }) => ({
-      ...state,
-      username,
-      password
-    })
-  )
   .handleAction(
     Action.checkLogin,
     state => ({
