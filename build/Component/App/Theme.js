@@ -37,7 +37,7 @@ export default responsiveFontSizes(createMuiTheme({
         citrin: Color.citrin,
         quarz: Color.quarz,
         background: {
-            default: '#f5f5f5',
+            default: '#e5e2dd',
         }
     }
 }));
