@@ -6,6 +6,7 @@ declare type ColumnData = ColumnProps & {
     numeric?: boolean;
 };
 declare type VirtualizedTableProps = TableProps & {
+    size: 'small' | 'medium';
     columns: ColumnData[];
     rowHeight?: number;
 };

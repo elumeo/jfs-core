@@ -59,12 +59,14 @@ type Row = {
 }
 
 type VirtualizedTableProps = TableProps & {
+  size: 'small' | 'medium',
   columns: ColumnData[];
   rowHeight?: number;
 }
 
 const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
   ({
+     size = 'medium',
      columns,
      onRowClick,
      rowCount,
@@ -84,6 +86,7 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
     const cellRenderer: TableCellRenderer = ({cellData, columnIndex}) => {
       return (
         <TableCell
+          size={size}
           component={'div'}
           className={clsx(classes.tableCell, classes.flexContainer, {
             [classes.noClick]: onRowClick == null,
@@ -100,6 +103,7 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
     const headerRenderer = (headerProps: TableHeaderProps & { columnIndex: number }) => {
       return (
         <TableCell
+          size={size}
           component={'div'}
           className={clsx(classes.tableCell, classes.flexContainer, classes.noClick)}
           variant={'head'}
