@@ -1,14 +1,15 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { Store } from 'redux';
 import { ThemeProvider } from '@material-ui/core/styles';
-import Theme from './Theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MomentUtils from '@date-io/moment';
-import WebSocketConnection from 'Component/WebSocket/WebSocketConnection';
-import Head from './Head';
+import { Store } from 'redux';
 import { ConnectedRouter } from 'connected-react-router';
+
+import JuweloTheme from './Theme';
+import WebSocketConnection from 'Component/WebSocket/WebSocketConnection';
+import HtmlHead from './HtmlHead';
 import { history } from 'Store/Middleware'
 
 export type Props = {
@@ -16,15 +17,12 @@ export type Props = {
   store: Store;
 }
 
-const HOC: React.FC<Props> = ({
-  title, store, children
-}) => {
-  const theme = Theme();
+const HOC: React.FC<Props> = ({title, store, children}) => {
   return (
     <Provider store={store}>
       <MuiPickersUtilsProvider utils={MomentUtils}>
-        <ThemeProvider theme={theme}>
-          <Head title={title} />
+        <ThemeProvider theme={JuweloTheme}>
+          <HtmlHead title={title}/>
           <CssBaseline />
           <WebSocketConnection>
             <ConnectedRouter history={history}>

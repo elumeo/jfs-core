@@ -2,7 +2,7 @@ import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import * as Color from 'Constant/Color';
 import { grey } from '@material-ui/core/colors';
 
-export const JuweloTheme = responsiveFontSizes(createMuiTheme({
+export default responsiveFontSizes(createMuiTheme({
   overrides: {
     MuiCssBaseline: {
       '@global': {
@@ -42,8 +42,3 @@ export const JuweloTheme = responsiveFontSizes(createMuiTheme({
     }
   }
 }));
-
-const Theme = () => {
-  return JuweloTheme;
-};
-export default Theme;
