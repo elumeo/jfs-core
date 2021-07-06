@@ -19,7 +19,7 @@ export default responsiveFontSizes(createMuiTheme({
   },
   palette: {
     type: 'light',
-    primary: Color.rubin,
+    primary: Color.primary,
     secondary: Color.apatith,
     text: {
       primary: grey[900],
@@ -38,7 +38,7 @@ export default responsiveFontSizes(createMuiTheme({
     citrin: Color.citrin,
     quarz: Color.quarz,
     background: {
-      default: Color.quarz.main,
+      default: '#f5f5f5',
     }
   }
 }));

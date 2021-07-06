@@ -59,3 +59,9 @@ export const success = {
     dark: '#2e7031',
     contrastText: '#fff'
 };
+export const primary = {
+    light: '#ab4783',
+    main: '#961964',
+    dark: '#691146',
+    contrastText: '#fff'
+};

@@ -70,3 +70,10 @@ export const success: PaletteColor = {
   dark: '#2e7031',
   contrastText: '#fff'
 };
+
+export const primary: PaletteColor = {
+  light: '#ab4783',
+  main: '#961964',
+  dark: '#691146',
+  contrastText: '#fff'
+};

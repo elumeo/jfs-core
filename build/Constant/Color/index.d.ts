@@ -9,3 +9,4 @@ export declare const quarz: PaletteColor;
 export declare const error: PaletteColor;
 export declare const warning: PaletteColor;
 export declare const success: PaletteColor;
+export declare const primary: PaletteColor;
