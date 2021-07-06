@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as MUI from '@material-ui/core';
 import { useIntl } from 'react-intl';
-import LoremIpsumText from "Component/LoremIpsumText";
+import LoremIpsumText from 'Component/LoremIpsumText';
 import Overlay from '@elumeo/jfs-core/build/Component/Overlay';
 
 const DialogExample: React.FC = () => {
@@ -34,7 +34,7 @@ const DialogExample: React.FC = () => {
       :
       Dialog}
     <MUI.Button onClick={() => setDialogVisible(true)}>
-      {formatMessage({ id: 'Open Dialog' })} withoverlay? :{withOverlay.toString()}
+      {formatMessage({ id: 'Open Dialog' })} withOverlay? :{withOverlay.toString()}
     </MUI.Button>
   </>
   );

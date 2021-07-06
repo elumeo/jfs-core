@@ -1,12 +1,10 @@
 import React from 'react';
-import { Box, CardContent, CardHeader, Paper, Typography, Link, TypographyVariant } from '@material-ui/core';
+import { Box, CardContent, CardHeader, Paper, Typography, Link, TypographyVariant, Grid, Container } from '@material-ui/core';
 import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
-import { useIntl } from 'react-intl';
-import ButtonExample from './ButtonExample';
 import * as Color from '@elumeo/jfs-core/build/Types/Color'
-import Background from './Background';
-type Props = {
-} & WithStyles
+import AppNavigation from 'Component/AppNavigation';
+
+type Props = {} & WithStyles
 const style = (theme: Theme) => ({
   root: {
     width: '100%'
@@ -40,46 +38,43 @@ export const colors: Color.Typography[] = [
   'textSecondary',
   'error',
 ]
-const Typo: React.FC<Props> = ({
-  classes
-}) => {
-  return (
-    <Box component={Paper} flexGrow={1} className={classes.root}>
-      <CardHeader
-        title='Typographies (Component: CardHeader {Prop: title})'
-        subheader={'(h1-6, body1-2, subtitle1-2, caption)  (Component: CardHeader {Prop: subheader}'} />
-      <CardContent>
-        <Box display='flex' flexDirection='row'>
-
-          <Box>
-            <Box>
-              <Typography
-                variant='subtitle1'
-                component='span'>
-                You can pass different pre-defined descriptors to the
-                'variant'
-                property of the Typography .
-              </Typography>
-              <Link href='https://material.io/design/typography/the-type-system.html#type-scale' >[Specs]</Link>
-            </Box>
-
-            {
-              variants.map(
-                (variant, index) => <Typography key={variant} variant={variant as TypographyVariant}>variant='{variant}'</Typography>)
-            }
-            <Typography > custom variants will be available in material-ui version 5.X (<Link target='_blank'
-              href='https://github.com/mui-org/material-ui/issues/22257'>ISSUE</Link>)</Typography >
-            <Typography > We should define custom Typography  styles by defining new variant types.</Typography >
-
-            <Box className={classes.copycat}>
-              This text looks like that of a button
-            </Box>
+const Typo: React.FC<Props> = ({classes}) => {
+  return (<Grid container>
+      <Grid item xs={2}>
+        <AppNavigation/>
+      </Grid>
+      <Grid item xs>
+        <Box component={Container}>
+          <Box component={Paper} flexGrow={1} className={classes.root}>
+            <CardHeader
+              title='Typographies (Component: CardHeader {Prop: title})'
+              subheader={'(h1-6, body1-2, subtitle1-2, caption)  (Component: CardHeader {Prop: subheader}'}/>
+            <CardContent>
+              <Box display='flex' flexDirection='row'>
+                <Box>
+                  <Box>
+                    <Typography
+                      variant='subtitle1'
+                      component='span'>
+                      You can pass different pre-defined descriptors to the
+                      'variant'
+                      property of the Typography .
+                    </Typography>
+                    <Link href='https://material.io/design/typography/the-type-system.html#type-scale'>[Specs]</Link>
+                  </Box>{variants.map((variant) => <Typography key={variant} variant={variant as TypographyVariant}>variant='{variant}'</Typography>)}
+                  <Typography>
+                    custom variants will be available in material-ui version 5.X (<Link target='_blank'
+                                                                                        href='https://github.com/mui-org/material-ui/issues/22257'>ISSUE</Link>)
+                  </Typography>
+                  <Typography> We should define custom Typography styles by defining new variant types.</Typography>
+                  <Box className={classes.copycat}>This text looks like that of a button</Box>
+                </Box>
+              </Box>
+            </CardContent>
           </Box>
         </Box>
-
-      </CardContent>
-
-    </Box>
+      </Grid>
+    </Grid>
   );
 };
 export default withStyles(style)(Typo);

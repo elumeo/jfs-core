@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from '@elumeo/jfs-core/build/Types/Redux';
 import * as MUI from '@material-ui/core';
 import DialogExample from 'Component/DialogExample';
 import { HelloWorld } from 'jfc-hello-world/build';
@@ -13,15 +12,15 @@ import JfsWebSocketExampleButton from 'Component/JfsWebSocketPingButton';
 import { Link } from '@material-ui/core';
 import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
 import { useIntl } from 'react-intl';
-type Props = {
-} & WithStyles
+
+type Props = {} & WithStyles
 const style = (theme: Theme) => ({
-  typography: { padding: theme.spacing(2) },
+  typography: {padding: theme.spacing(2)},
 })
-const ExampleCard: React.FC<Props> = ({
-  classes
-}) => {
-  const { formatMessage } = useIntl();
+const Cards: React.FC<Props> = ({
+                                  classes
+                                }) => {
+  const {formatMessage} = useIntl();
   const [date, setDate] = React.useState(new Date())
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
@@ -42,17 +41,17 @@ const ExampleCard: React.FC<Props> = ({
       <MUI.CardHeader
         title={'This is a Card '}
         subheader
-        ={formatMessage({ id: 'app.hello' })} />
-      <MUI.CardContent >
+          ={formatMessage({id: 'app.hello'})}/>
+      <MUI.CardContent>
         <MUI.Typography
           variant='body1'>
           The <MUI.Typography
-            variant='caption'>CardText</MUI.Typography> component is really just useful for
+          variant='caption'>CardText</MUI.Typography> component is really just useful for
           displaying any content with some additional padding.
         </MUI.Typography>
-        <LoremIpsumText lines={20} />
-        <HelloWorld />
-        <MUI.Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+        <LoremIpsumText lines={20}/>
+        <HelloWorld/>
+        <MUI.Button aria-describedby={id} variant='contained' color='primary' onClick={handleClick}>
           Open Popover
         </MUI.Button>
         <MUI.Popover
@@ -69,19 +68,20 @@ const ExampleCard: React.FC<Props> = ({
             horizontal: 'center',
           }}
         >
-          <MUI.Typography className={classes.typography}>The content of the <Link target='__blank' href='https://material-ui.com/components/popover/#popover'>Popover</Link>.</MUI.Typography>
+          <MUI.Typography className={classes.typography}>The content of the <Link target='__blank'
+                                                                                  href='https://material-ui.com/components/popover/#popover'>Popover</Link>.</MUI.Typography>
         </MUI.Popover>
-        <DialogExample />
+        <DialogExample/>
       </MUI.CardContent>
       <MUI.CardActions>
-        <AddToastButton />
-        <AddNotificationButton />
-        <JfsWebSocketExampleButton />
-        <JscWebSocketExampleButton />
-        <JscWebSocketCurrentGameButton />
-        <MUIPickers.DatePicker value={date} onChange={setDate} />
+        <AddToastButton/>
+        <AddNotificationButton/>
+        <JfsWebSocketExampleButton/>
+        <JscWebSocketExampleButton/>
+        <JscWebSocketCurrentGameButton/>
+        <MUIPickers.DatePicker value={date} onChange={setDate}/>
       </MUI.CardActions>
     </MUI.Box>
   );
 };
-export default withStyles(style)(ExampleCard);
+export default withStyles(style)(Cards);

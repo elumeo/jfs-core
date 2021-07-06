@@ -1,22 +1,17 @@
 import React from 'react';
-import { useSelector } from '@elumeo/jfs-core/build/Types/Redux';
 import { Box, Paper, CardContent, Typography, List, ListItem, ListItemText } from '@material-ui/core';
-import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
-import { useIntl } from 'react-intl';
+import { withStyles, WithStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-type Props = {
-} & WithStyles
-const style = (theme: Theme) => ({
+
+const style = () => ({
     link: {
         textDecoration: 'none',
         color: 'inherit'
     }
-})
-const Directory: React.FC<Props> = ({
-    classes
-}) => {
-    const { formatMessage } = useIntl();
-    const entries = ['Module', 'Icon', 'Typo', 'Styling', 'ExampleCard']
+});
+
+const Directory = ({classes}: WithStyles) => {
+    const entries = ['ExternalLinks', 'Icons', 'Colors', 'Typo', 'Buttons', 'Lists', 'Cards', 'Dialogs', 'Tables', 'Notifications']
     const listItems = entries.map(name => <Link to={'/' + name} key={name} className={classes.link}>
         <ListItem button  >
             <ListItemText> <Typography variant={'h4'} color='initial'>{name}</Typography></ListItemText>
@@ -32,4 +27,5 @@ const Directory: React.FC<Props> = ({
         </Box>
     );
 };
+
 export default withStyles(style)(Directory);
