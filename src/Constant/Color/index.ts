@@ -44,9 +44,9 @@ export const citrin: PaletteColor = {
 };
 
 export const quarz: PaletteColor = {
-  light: '#6c6254',
+  light: '#afa393',
   main: '#9b8c78',
-  dark: '#afa393',
+  dark: '#6c6254',
   contrastText: '#fff'
 };
 
