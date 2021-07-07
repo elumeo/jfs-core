@@ -8,3 +8,4 @@ node_modules
 /tslint.json
 .autohidefiles
 .DS_Store
+/showcase/dist/
