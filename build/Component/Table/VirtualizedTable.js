@@ -59,7 +59,7 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
     }
 }));
 const VirtualizedTable = React.forwardRef((_a, ref) => {
-    var { size = 'medium', columns, onRowClick, rowCount, rowGetter, headerHeight = 48, rowHeight = 48 } = _a, tableProps = __rest(_a, ["size", "columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight"]);
+    var { columns, onRowClick, rowCount, rowGetter, headerHeight = 48, rowHeight = 48 } = _a, tableProps = __rest(_a, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight"]);
     const classes = virtualizedGlobalStyles();
     const getRowClassName = ({ index }) => {
         return clsx(classes.tableRow, classes.flexContainer, {
@@ -67,13 +67,13 @@ const VirtualizedTable = React.forwardRef((_a, ref) => {
         });
     };
     const cellRenderer = ({ cellData, columnIndex }) => {
-        return (React.createElement(TableCell, { size: size, component: 'div', className: clsx(classes.tableCell, classes.flexContainer, {
+        return (React.createElement(TableCell, { component: 'div', className: clsx(classes.tableCell, classes.flexContainer, {
                 [classes.noClick]: onRowClick == null,
             }), variant: 'body', style: { height: rowHeight }, align: (columnIndex != null && columns[columnIndex].numeric) || false ? 'right' : 'left' }, cellData));
     };
     const mapSortDirection = (sortDirection) => sortDirection === 'ASC' ? 'asc' : 'desc';
     const headerRenderer = (headerProps) => {
-        return (React.createElement(TableCell, { size: size, component: 'div', className: clsx(classes.tableCell, classes.flexContainer, classes.noClick), variant: 'head', style: { height: headerHeight }, align: columns[headerProps.columnIndex].numeric || false ? 'right' : 'left' },
+        return (React.createElement(TableCell, { component: 'div', className: clsx(classes.tableCell, classes.flexContainer, classes.noClick), variant: 'head', style: { height: headerHeight }, align: columns[headerProps.columnIndex].numeric || false ? 'right' : 'left' },
             tableProps.sort !== undefined && headerProps.disableSort !== true && React.createElement(TableSortLabel, { active: headerProps.sortBy === headerProps.dataKey, direction: headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc' },
                 headerProps.label,
                 headerProps.sortBy === headerProps.dataKey ? (React.createElement("span", { className: classes.visuallyHidden }, headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending')) : null),

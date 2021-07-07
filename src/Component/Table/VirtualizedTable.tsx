@@ -100,7 +100,6 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
     const headerRenderer = (headerProps: TableHeaderProps & { columnIndex: number }) => {
       return (
         <TableCell
-          size={size}
           component={'div'}
           className={clsx(classes.tableCell, classes.flexContainer, classes.noClick)}
           variant={'head'}

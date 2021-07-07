@@ -6,5 +6,5 @@ export declare type Props = {
     variant?: 'regular' | 'dense';
     position?: 'static' | 'fixed' | 'absolute' | 'sticky' | 'relative';
 };
-declare const Toolbar: React.FC<Props>;
-export default Toolbar;
+declare const _default: React.NamedExoticComponent<Props>;
+export default _default;
