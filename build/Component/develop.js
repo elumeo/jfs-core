@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Paper } from '@material-ui/core';
+import { Box, Card, CardContent, Container, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/styles';
-import { VirtualizedTable } from './Table';
+import WarningIcon from '@material-ui/icons/Warning';
 const sample = [
     ['Frozen yoghurt', 159, 6.0, 24, 4.0],
     ['Ice cream sandwich', 237, 9.0, 37, 4.3],
@@ -17,42 +17,36 @@ for (let i = 0; i < 200; i += 1) {
     const randomSelection = sample[Math.floor(Math.random() * sample.length)];
     rows.push(createData(i, ...randomSelection));
 }
+const variants = [
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'subtitle1',
+    'subtitle2',
+    'body1',
+    'body2',
+    'button',
+    'caption',
+    'overline',
+];
 const Develop = () => {
     const theme = useTheme();
-    return React.createElement(Paper, { style: { height: 'calc(100% - ' + theme.spacing(8) + 'px)' } },
-        React.createElement(Box, { padding: 1, height: '100%' },
-            React.createElement(VirtualizedTable, { showRowHoverHighlight: true, rowCount: rows.length, rowGetter: (row) => rows[row.index], sortBy: 'dessert', sortDirection: 'ASC', sort: () => console.log('sorting'), columns: [
-                    {
-                        width: 200,
-                        flexGrow: 1,
-                        label: 'Dessert',
-                        dataKey: 'dessert',
-                        disableSort: false
-                    },
-                    {
-                        width: 120,
-                        label: 'Calories\u00A0(g)',
-                        dataKey: 'calories',
-                        numeric: true,
-                    },
-                    {
-                        width: 120,
-                        label: 'Fat\u00A0(g)',
-                        dataKey: 'fat',
-                        numeric: true,
-                    },
-                    {
-                        width: 120,
-                        label: 'Carbs\u00A0(g)',
-                        dataKey: 'carbs',
-                        numeric: true,
-                    },
-                    {
-                        width: 120,
-                        label: 'Protein\u00A0(g)',
-                        dataKey: 'protein',
-                        numeric: true,
-                    },
-                ] })));
+    return React.createElement(Box, null,
+        React.createElement(Box, null,
+            React.createElement(Container, null,
+                React.createElement(Card, null,
+                    React.createElement(CardContent, null, variants.map((variant) => React.createElement(Box, { key: variant },
+                        React.createElement(Typography, { variant: variant },
+                            "variant='",
+                            variant,
+                            "'"))))),
+                React.createElement(List, null,
+                    React.createElement(ListItem, null,
+                        React.createElement(ListItemIcon, null,
+                            React.createElement(WarningIcon, null)),
+                        React.createElement(ListItemText, null, "Text"))))));
 };
 export default Develop;

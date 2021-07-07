@@ -11,10 +11,18 @@ export default responsiveFontSizes(createTheme({
                     fontFamily: 'Roboto',
                 }
             }
+        },
+        MuiListItemIcon: {
+            root: {
+                minWidth: 32
+            }
         }
     },
     typography: {
         fontSize: 13,
+        body1: {
+            fontSize: 14
+        }
     },
     palette: {
         type: 'light',
