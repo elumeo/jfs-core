@@ -59,13 +59,11 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
     }
 }));
 const VirtualizedTable = React.forwardRef((_a, ref) => {
-    var { columns, onRowClick, rowCount, rowGetter, headerHeight = 48, rowHeight = 48 } = _a, tableProps = __rest(_a, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight"]);
+    var { columns, onRowClick, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, showRowHoverHighlight = false } = _a, tableProps = __rest(_a, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight", "showRowHoverHighlight"]);
     const classes = virtualizedGlobalStyles();
-    const getRowClassName = ({ index }) => {
-        return clsx(classes.tableRow, classes.flexContainer, {
-            [classes.tableRowHover]: index !== -1 && onRowClick != null,
-        });
-    };
+    const getRowClassName = (index) => clsx(classes.tableRow, classes.flexContainer, {
+        [classes.tableRowHover]: index.index !== -1 && showRowHoverHighlight === true,
+    });
     const cellRenderer = ({ cellData, columnIndex }) => {
         return (React.createElement(TableCell, { component: 'div', className: clsx(classes.tableCell, classes.flexContainer, {
                 [classes.noClick]: onRowClick == null,

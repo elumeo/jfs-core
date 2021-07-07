@@ -1,7 +1,6 @@
 import { TableCell, TableSortLabel } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { ColumnProps, SortDirectionType, TableProps } from 'react-virtualized/dist/es/Table';
-import { AutoSizer, Column, SizeInfo, Table, TableCellRenderer, TableHeaderProps } from 'react-virtualized';
+import { ColumnProps, AutoSizer, Column, Index, SizeInfo, Table, TableCellRenderer, TableHeaderProps, SortDirectionType, TableProps } from 'react-virtualized';
 import React, { memo } from 'react';
 import clsx from 'clsx';
 
@@ -54,13 +53,11 @@ type ColumnData = ColumnProps & {
   numeric?: boolean;
 }
 
-type Row = {
-  index: number;
-}
-
 type VirtualizedTableProps = TableProps & {
   columns: ColumnData[];
   rowHeight?: number;
+  headerHeight?: number;
+  showRowHoverHighlight?: boolean;
 }
 
 const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
@@ -71,15 +68,14 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
      rowGetter,
      headerHeight = 48,
      rowHeight = 48,
+     showRowHoverHighlight = false,
      ...tableProps
    },
    ref) => {
     const classes = virtualizedGlobalStyles();
-    const getRowClassName = ({index}: Row) => {
-      return clsx(classes.tableRow, classes.flexContainer, {
-        [classes.tableRowHover]: index !== -1 && onRowClick != null,
-      });
-    };
+    const getRowClassName = (index: Index) => clsx(classes.tableRow, classes.flexContainer, {
+      [classes.tableRowHover]: index.index !== -1 && showRowHoverHighlight === true,
+    });
 
     const cellRenderer: TableCellRenderer = ({cellData, columnIndex}) => {
       return (
