@@ -19,12 +19,10 @@ const AppToolbar: React.FC<Props> = ({variant = 'dense', position = 'sticky', ..
   const openDrawer = React.useCallback(() => openNavigation(), [])
   return (
     <AppBar position={position}>
-      <Toolbar disableGutters variant={variant} style={{
-        height: 58
-      }}>
+      <Toolbar disableGutters variant={variant} style={{height: 58}}>
         <Grid
           container
-          justify={'space-between'}
+          justifyContent={'space-between'}
           alignItems={'center'}
           // height='100%'
           // boxSizing='border-box'
@@ -34,7 +32,7 @@ const AppToolbar: React.FC<Props> = ({variant = 'dense', position = 'sticky', ..
             container
             item
             xs={4}
-            justify={'flex-start'}
+            justifyContent={'flex-start'}
             alignItems={'center'}
           >
             <IconButton
@@ -52,14 +50,14 @@ const AppToolbar: React.FC<Props> = ({variant = 'dense', position = 'sticky', ..
             container
             item
             xs={4}
-            justify={'center'}
+            justifyContent={'center'}
             alignItems={'center'}
             >{tools.middle || <></>}</Grid>
           <Grid
             container
             item
             xs={4}
-            justify={'flex-end'}
+            justifyContent={'flex-end'}
             alignItems={'center'}
             >{tools.right || <></>}</Grid>
         </Grid>

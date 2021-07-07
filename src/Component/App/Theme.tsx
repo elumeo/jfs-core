@@ -1,8 +1,8 @@
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import * as Color from 'Constant/Color';
 import { grey } from '@material-ui/core/colors';
 
-export default responsiveFontSizes(createMuiTheme({
+export default responsiveFontSizes(createTheme({
   overrides: {
     MuiCssBaseline: {
       '@global': {

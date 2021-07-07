@@ -12,9 +12,9 @@
 // import * as Notification from './Component/Notification';
 // import Snackbar from './Component/Snackbar';
 // import Overlay from './Component/Overlay';
-// import { Translations, Navigation, Routes } from './Setup';
+// import { Translations, Navigation, Routes } from 'Setup';
 // import packageJson from '../package.json';
-// import { create } from './Store';
+// import { create } from 'Store';
 // import { history } from './Store/Middleware';
 //
 // ReactDOM.render(
@@ -23,7 +23,7 @@
 //     title='core'
 //     translations={Translations}
 //     packageJson={packageJson}>
-//     <Header.Toolbar
+//     <Header.AppToolbar
 //       left={<Header.BackendIndicator/>}
 //       right={
 //         <>

@@ -23,7 +23,7 @@
 //     title='core'
 //     translations={Translations}
 //     packageJson={packageJson}>
-//     <Header.Toolbar
+//     <Header.AppToolbar
 //       left={<Header.BackendIndicator/>}
 //       right={
 //         <>

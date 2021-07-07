@@ -20,16 +20,14 @@ const AppToolbar = (_a) => {
     const { openNavigation } = useActions();
     const openDrawer = React.useCallback(() => openNavigation(), []);
     return (React.createElement(AppBar, { position: position },
-        React.createElement(Toolbar, { disableGutters: true, variant: variant, style: {
-                height: 58
-            } },
-            React.createElement(Grid, { container: true, justify: 'space-between', alignItems: 'center' },
-                React.createElement(Grid, { container: true, item: true, xs: 4, justify: 'flex-start', alignItems: 'center' },
+        React.createElement(Toolbar, { disableGutters: true, variant: variant, style: { height: 58 } },
+            React.createElement(Grid, { container: true, justifyContent: 'space-between', alignItems: 'center' },
+                React.createElement(Grid, { container: true, item: true, xs: 4, justifyContent: 'flex-start', alignItems: 'center' },
                     React.createElement(IconButton, { color: 'inherit', "aria-label": 'menu', onClick: openDrawer },
                         React.createElement(MenuIcon, null)),
                     React.createElement(Typography, { variant: 'h6', noWrap: true }, formatMessage({ id: 'app.title' })),
                     tools.left || React.createElement(React.Fragment, null)),
-                React.createElement(Grid, { container: true, item: true, xs: 4, justify: 'center', alignItems: 'center' }, tools.middle || React.createElement(React.Fragment, null)),
-                React.createElement(Grid, { container: true, item: true, xs: 4, justify: 'flex-end', alignItems: 'center' }, tools.right || React.createElement(React.Fragment, null))))));
+                React.createElement(Grid, { container: true, item: true, xs: 4, justifyContent: 'center', alignItems: 'center' }, tools.middle || React.createElement(React.Fragment, null)),
+                React.createElement(Grid, { container: true, item: true, xs: 4, justifyContent: 'flex-end', alignItems: 'center' }, tools.right || React.createElement(React.Fragment, null))))));
 };
 export default memo(AppToolbar);
