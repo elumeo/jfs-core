@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import FolderIcon from '@material-ui/icons/Folder';
-import { colors as textColors } from './Typo'
+import { colors as textColors } from './Typographies'
 import { colors as bgColors } from './Colors'
 import AppNavigation from 'Component/AppNavigation';
 import {
@@ -20,6 +20,7 @@ import {
   Switch,
   Typography
 } from '@material-ui/core';
+import CodeBox from 'Component/CodeBox';
 
 const generate = (element: React.ReactElement) => {
   return [0, 1, 2].map((value) =>
@@ -39,17 +40,15 @@ const Lists = () => {
   const toggleText = () => setTextColor(textColors[Math.floor(Math.random() * (textColors.length - 1)) + 1]);
 
   return (<Grid container>
-      <Grid item xs={2}>
-        <AppNavigation/>
-      </Grid>
+      <Grid item xs={2}><AppNavigation/></Grid>
       <Grid item xs>
-        <Box component={Container}>
-          <Box component={Card} width='100%'>
+        <Container>
+          <Card>
             <CardHeader title='Lists' subheader={'Boxes are useful to apply stylings'}/>
             <CardContent>
-              <Box marginBottom={4}>
+              <CodeBox>
                 <Box component={Typography}>{`<Box component={Card} width='100%' marginBottom={1} borderColor={theme.palette.primary.main}>...</Box>`}</Box>
-              </Box>
+              </CodeBox>
               <Box>
                 <Grid container spacing={2}>
                   <Grid item><Button variant='contained' onClick={toggleBg}>Box prop:border</Button></Grid>
@@ -87,8 +86,8 @@ const Lists = () => {
                 </Grid>
               </Box>
             </CardContent>
-          </Box>
-        </Box>
+          </Card>
+        </Container>
       </Grid>
     </Grid>
   );

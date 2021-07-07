@@ -34,21 +34,18 @@ const Buttons: React.FC<Props> = ({classes}) => {
   return (<Grid container>
     <Grid item xs={2}><AppNavigation/></Grid>
     <Grid item xs>
-      <Box component={Container}>
-        <Box component={Card}>
+      <Container>
+        <Card>
           <CardHeader title='Buttons' subheader={'variant + color'}/>
           <CardContent>
             <Box>
-              <Typography>
-                <Typography variant='h6'>Guidelines</Typography>
-                <ol>
-                  <li>Use <Typography component={'span'} color={'primary'}>primary</Typography> button only for 1 item in a view (Page, Dialog, etc.)</li>
-                  <li>Use <Typography component={'span'} color={'secondary'}>secondary</Typography> button when highlighting a function is required which is not the primary
-                    function of the view
-                  </li>
-                  <li>Use text buttons for dialog actions</li>
-                </ol>
-              </Typography>
+              <Typography variant='h6'>Guidelines</Typography>
+              <ol>
+                <li><Typography>Use <Typography component={'span'} color={'primary'}>primary</Typography> button only for 1 item in a view (Page, Dialog, etc.)</Typography></li>
+                <li><Typography>Use <Typography component={'span'} color={'secondary'}>secondary</Typography> button when highlighting a function is required which is not the primary
+                  function of the view</Typography></li>
+                <li><Typography>Use text buttons for dialog actions</Typography></li>
+              </ol>
             </Box>
             <Box>
               <FormControlLabel checked={size === 'small'} control={<Radio/>} label={'Small'} value={'small'} onChange={(event, selected) => (selected ? setSize('small') : null)}/>
@@ -58,8 +55,8 @@ const Buttons: React.FC<Props> = ({classes}) => {
             </Box>
             <Box className={classes.root}>{generate(variants, colors, size)}</Box>
           </CardContent>
-        </Box>
-      </Box>
+        </Card>
+      </Container>
     </Grid>
   </Grid>);
 };

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as MUI from '@material-ui/core';
 import { useIntl } from 'react-intl';
 import useActions from '@elumeo/jfs-core/build/Store/useActions';
 import { v4 as uuid } from 'uuid';
+import { Button } from '@material-ui/core';
 
 const randomSelect = <T, >(array: T[]) => array[Math.floor(Math.random() * array.length)]
 
@@ -10,7 +10,7 @@ const AddNotificationButton: React.FC = () => {
   const {formatMessage} = useIntl();
   const {addNotification} = useActions();
   return (
-    <MUI.Button onClick={() => addNotification({
+    <Button variant={'outlined'} onClick={() => addNotification({
       id: uuid(),
       variant: randomSelect(['default', 'error', 'success', 'warning', 'info']),
       title: 'Some title',
@@ -19,7 +19,7 @@ const AddNotificationButton: React.FC = () => {
       action: () => (<></>)
     })}>
       {formatMessage({id: 'Add Notification'})}
-    </MUI.Button>
+    </Button>
   );
 }
 

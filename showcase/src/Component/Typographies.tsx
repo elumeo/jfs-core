@@ -38,17 +38,13 @@ export const colors: Color.Typography[] = [
   'textSecondary',
   'error',
 ]
-const Typo: React.FC<Props> = ({classes}) => {
+const Typographies: React.FC<Props> = ({classes}) => {
   return (<Grid container>
-      <Grid item xs={2}>
-        <AppNavigation/>
-      </Grid>
+      <Grid item xs={2}><AppNavigation/></Grid>
       <Grid item xs>
-        <Box component={Container}>
-          <Box component={Paper} flexGrow={1} className={classes.root}>
-            <CardHeader
-              title='Typographies (Component: CardHeader {Prop: title})'
-              subheader={'(h1-6, body1-2, subtitle1-2, caption)  (Component: CardHeader {Prop: subheader}'}/>
+        <Container>
+          <Paper className={classes.root}>
+            <CardHeader title='Typographies' />
             <CardContent>
               <Box display='flex' flexDirection='row'>
                 <Box>
@@ -71,10 +67,10 @@ const Typo: React.FC<Props> = ({classes}) => {
                 </Box>
               </Box>
             </CardContent>
-          </Box>
-        </Box>
+          </Paper>
+        </Container>
       </Grid>
     </Grid>
   );
 };
-export default withStyles(style)(Typo);
+export default withStyles(style)(Typographies);

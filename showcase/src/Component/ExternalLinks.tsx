@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card, CardContent, CardHeader, Typography, List, Collapse, ListItem, Link, Grid, Container } from '@material-ui/core';
+import { Card, CardContent, CardHeader, Typography, List, Collapse, ListItem, Link, Grid, Container } from '@material-ui/core';
 import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
 import useActions from 'Store/useActions';
 import AppNavigation from 'Component/AppNavigation';
@@ -14,12 +14,10 @@ const ExternalLinks: React.FC<Props> = ({classes}) => {
   const {addToastAction} = useActions();
   const [open, setOpen] = React.useState(0);
   return (<Grid container>
-      <Grid item xs={2}>
-        <AppNavigation/>
-      </Grid>
+      <Grid item xs={2}><AppNavigation/></Grid>
       <Grid item xs>
-        <Box component={Container}>
-          <Box component={Card}>
+        <Container>
+          <Card>
             <CardHeader title='External Links'/>
             <CardContent component={List}>
               <ListItem button onClick={() => {
@@ -96,8 +94,8 @@ const ExternalLinks: React.FC<Props> = ({classes}) => {
               </ListItem>
               <Collapse in={open === 7}/>
             </CardContent>
-          </Box>
-        </Box>
+          </Card>
+        </Container>
       </Grid>
     </Grid>
   );

@@ -10,8 +10,8 @@ import {
   Dialog, DialogActions,
   DialogContent,
   DialogTitle,
-  Grid,
-  TextField
+  Grid, Link, Popover,
+  TextField, Typography
 } from '@material-ui/core';
 import AppNavigation from 'Component/AppNavigation';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) =>
       marginTop: -12,
       marginLeft: -12,
     },
+    popoverTypography: {padding: theme.spacing(2)},
   }),
 );
 
@@ -60,6 +61,7 @@ const Dialogs = () => {
   const [asyncSuccess, setAsyncSuccess] = React.useState(false);
   const [asyncLoading, setAsyncLoading] = React.useState(false);
   const asyncTimer = React.useRef<number>();
+  const [popoverEl, setPopoverEl] = React.useState<HTMLButtonElement | null>(null);
 
   const handleClickOpenBasic = () => setBasicOpen(true);
   const handleCloseBasic = () => setBasicOpen(false);
@@ -91,6 +93,10 @@ const Dialogs = () => {
       }, 2000);
     }
   };
+
+  const handlePopoverButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => setPopoverEl(event.currentTarget);
+  const handlePopoverButtonClose = () => setPopoverEl(null);
+  const popoverOpen = Boolean(popoverEl);
 
   return (<Grid container>
     <Grid item xs={2}>
@@ -163,6 +169,31 @@ const Dialogs = () => {
                     </div>
                   </DialogActions>
                 </Dialog>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs>
+            <Card>
+              <CardHeader title={'Popover'} subheader={'Don\'t know when to use these Popover Elements but it is available since Material UI and so we should make this available for new use cases'}/>
+              <CardContent>
+                <Button aria-describedby={'openPopoverButton'} variant='contained' color='primary' onClick={handlePopoverButtonClick}>Open Popover</Button>
+                <Popover
+                  id={'popover'}
+                  open={popoverOpen}
+                  anchorEl={popoverEl}
+                  onClose={handlePopoverButtonClose}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
+                  }}
+                >
+                  <Typography className={styles.popoverTypography}>The content of the <Link target='__blank'
+                                                                                            href='https://material-ui.com/components/popover/#popover'>Popover</Link>.</Typography>
+                </Popover>
               </CardContent>
             </Card>
           </Grid>

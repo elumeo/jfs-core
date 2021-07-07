@@ -30,7 +30,7 @@ ReactDOM.render(
       Translations
     )}
     packageJson={packageJson}>
-    <Header.Toolbar
+    <Header.AppToolbar
       left={<Header.BackendIndicator/>}
       middle={
         <div style={{width: 300}}>

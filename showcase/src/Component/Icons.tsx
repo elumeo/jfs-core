@@ -24,6 +24,7 @@ import {
 } from 'Core/Component/Icon'
 import WarningIcon from '@material-ui/icons/Warning'
 import AppNavigation from 'Component/AppNavigation';
+import CodeBox from 'Component/CodeBox';
 
 type Props = {} & WithStyles
 const style = (theme: Theme) => ({
@@ -36,12 +37,10 @@ const Icons: React.FC<Props> = ({classes}) => {
   const theme = useTheme()
 
   return (<Grid container>
-      <Grid item xs={2}>
-        <AppNavigation/>
-      </Grid>
+      <Grid item xs={2}><AppNavigation/></Grid>
       <Grid item xs>
-        <Box component={Container}>
-          <Box component={Card}>
+        <Container>
+          <Card>
             <CardHeader title='Juwelo Icons'/>
             <Box component={CardContent}>
               <Grid container>
@@ -137,20 +136,20 @@ const Icons: React.FC<Props> = ({classes}) => {
             </Box>
             <CardHeader title='Icon Usage' subheader={`import { BadgePercent }  from 'Core/Component/Icon'`}/>
             <Box component={CardContent}>
-
-              <Box component={Typography}>{`const style = (theme: Theme) => ({`}</Box>
-              <Box pl={2} component={Typography}>{`icon: {`}</Box>
-              <Box pl={4} component={Typography}>{`fontSize: theme.typography.pxToRem(32),`}</Box>
-              <Box pl={4} component={Typography}>{`color: theme.palette.secondary.main`}</Box>
-              <Box pl={2} component={Typography}>{`}`}</Box>
-              <Box>{` })`}</Box>
-
-              <Typography>const theme = useTheme()</Typography>
+              <CodeBox>
+                <Box component={Typography}>{`const style = (theme: Theme) => ({`}</Box>
+                <Box pl={1} component={Typography}>{`icon: {`}</Box>
+                <Box pl={2} component={Typography}>{`fontSize: theme.typography.pxToRem(32),`}</Box>
+                <Box pl={2} component={Typography}>{`color: theme.palette.secondary.main`}</Box>
+                <Box pl={1} component={Typography}>{`}`}</Box>
+                <Box>{` })`}</Box>
+                <Box component={Typography}>{`const theme = useTheme()`}</Box>
+              </CodeBox>
               <List>
 
                 <ListItem>
                   <ListItemAvatar><BadgePercentIcon/></ListItemAvatar>
-                  <ListItemText>{` <BadgePercentIcon />`}</ListItemText>
+                  <ListItemText><CodeBox>{`<BadgePercentIcon />`}</CodeBox></ListItemText>
                 </ListItem>
 
                 <ListItem>
@@ -158,21 +157,21 @@ const Icons: React.FC<Props> = ({classes}) => {
                     <Box component={BadgePercentIcon} color='secondary.main' fontSize={theme.typography.pxToRem(32)}/>
                   </ListItemAvatar>
                   <ListItemText>
-                    {`<Box component={BadgePercentIcon} color='secondary.main' fontSize={theme.typography.pxToRem(32)} />`}
+                    <CodeBox>{`<Box component={BadgePercentIcon} color='secondary.main' fontSize={theme.typography.pxToRem(32)} />`}</CodeBox>
                   </ListItemText>
                 </ListItem>
                 <ListItem>
                   <ListItemAvatar>
                     <BadgePercentIcon style={{fontSize: theme.typography.pxToRem(32), color: theme.palette.secondary.main}}/>
                   </ListItemAvatar>
-                  <ListItemText>{`<BadgePercentIcon style={{ fontSize: theme.typography.pxToRem(32), color :theme.palette.secondary.main }} />`}</ListItemText>
+                  <ListItemText><CodeBox>{`<BadgePercentIcon style={{ fontSize: theme.typography.pxToRem(32), color :theme.palette.secondary.main }} />`}</CodeBox></ListItemText>
                 </ListItem>
                 <ListItem>
                   <ListItemAvatar>
                     <BadgePercentIcon className={classes.icon}/>
                   </ListItemAvatar>
                   <ListItemText>
-                    {`<BadgePercentIcon className={classes.icon} />`}
+                    <CodeBox>{`<BadgePercentIcon className={classes.icon} />`}</CodeBox>
                   </ListItemText>
                 </ListItem>
 
@@ -181,13 +180,13 @@ const Icons: React.FC<Props> = ({classes}) => {
                     <Typography variant={'h4'} color='secondary'> <BadgePercentIcon/></Typography>
                   </ListItemAvatar>
                   <ListItemText>
-                    {`<Typography variant={'h4'} color='secondary'> <BadgePercentIcon/></Typography>`}
+                    <CodeBox>{`<Typography variant={'h4'} color='secondary'> <BadgePercentIcon/></Typography>`}</CodeBox>
                   </ListItemText>
                 </ListItem>
               </List>
             </Box>
-          </Box>
-        </Box>
+          </Card>
+        </Container>
       </Grid>
     </Grid>
   );
