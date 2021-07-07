@@ -21,9 +21,11 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
         boxSizing: 'border-box',
     },
     table: {
+        borderCollapse: 'separate',
         '& .ReactVirtualized__Table__headerRow': {
             flip: false,
             paddingRight: theme.direction === 'rtl' ? '0 !important' : undefined,
+            backgroundColor: theme.palette.background.default
         },
     },
     tableGrid: {
