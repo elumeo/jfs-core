@@ -50,106 +50,107 @@ const Icons: React.FC<Props> = ({classes}) => {
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><BadgePercentIcon/></ListItemAvatar>
-                  <ListItemText>{`<BadgePercentIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<BadgePercentIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><BidBlockIcon/></ListItemAvatar>
-                  <ListItemText>{`<BidBlockIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<BidBlockIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><BoxOpenIcon/></ListItemAvatar>
-                  <ListItemText>{`<BoxOpenIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<BoxOpenIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><CashInAdvanceIcon/></ListItemAvatar>
-                  <ListItemText>{`<CashInAdvanceIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<CashInAdvanceIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><CashOnDeliveryIcon/></ListItemAvatar>
-                  <ListItemText>{`<CashOnDeliveryIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<CashOnDeliveryIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><CheckIcon/></ListItemAvatar>
-                  <ListItemText>{`<CheckIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<CheckIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><DeletePinIcon/></ListItemAvatar>
-                  <ListItemText>{`<DeletePinIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<DeletePinIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><DeliveryAddressIcon/></ListItemAvatar>
-                  <ListItemText>{`<DeliveryAddressIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<DeliveryAddressIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><FilterResetIcon/></ListItemAvatar>
-                  <ListItemText>{`<FilterResetIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<FilterResetIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><IdealIcon/></ListItemAvatar>
-                  <ListItemText>{`<IdealIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<IdealIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><InvoiceAddressIcon/></ListItemAvatar>
-                  <ListItemText>{`<InvoiceAddressIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<InvoiceAddressIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><InvoiceAddressIcon/></ListItemAvatar>
-                  <ListItemText>{`<InvoiceAddressIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<InvoiceAddressIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><MultipleSourcesIcon/></ListItemAvatar>
-                  <ListItemText>{`<MultipleSourcesIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<MultipleSourcesIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><PayPalIcon/></ListItemAvatar>
-                  <ListItemText>{`<PayPalIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<PayPalIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><PayPalIcon/></ListItemAvatar>
-                  <ListItemText>{`<PayPalIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<PayPalIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><PhoneBlockIcon/></ListItemAvatar>
-                  <ListItemText>{`<PhoneBlockIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<PhoneBlockIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><RatePayIcon/></ListItemAvatar>
-                  <ListItemText>{`<RatePayIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<RatePayIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><TestIcon/></ListItemAvatar>
-                  <ListItemText>{`<TestIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<TestIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><WebShopIcon/></ListItemAvatar>
-                  <ListItemText>{`<WebShopIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<WebShopIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><WebShopBidAgentIcon/></ListItemAvatar>
-                  <ListItemText>{`<WebShopBidAgentIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<WebShopBidAgentIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
                 <Grid item xs={4}><ListItem>
                   <ListItemAvatar><WebShopBlockIcon/></ListItemAvatar>
-                  <ListItemText>{`<WebShopBlockIcon />`}</ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<WebShopBlockIcon />`}</CodeBox></ListItemText>
                 </ListItem></Grid>
               </Grid>
             </Box>
-            <CardHeader title='Icon Usage' subheader={`import { BadgePercent }  from 'Core/Component/Icon'`}/>
+            <CardHeader title='Icon Usage'/>
             <Box component={CardContent}>
               <CodeBox>
+                <Box component={Typography}>{`import { BadgePercent } from 'Core/Component/Icon';`}</Box>
                 <Box component={Typography}>{`const style = (theme: Theme) => ({`}</Box>
                 <Box pl={1} component={Typography}>{`icon: {`}</Box>
                 <Box pl={2} component={Typography}>{`fontSize: theme.typography.pxToRem(32),`}</Box>
                 <Box pl={2} component={Typography}>{`color: theme.palette.secondary.main`}</Box>
                 <Box pl={1} component={Typography}>{`}`}</Box>
-                <Box>{` })`}</Box>
-                <Box component={Typography}>{`const theme = useTheme()`}</Box>
+                <Box>{` });`}</Box>
+                <Box component={Typography}>{`const theme = useTheme();`}</Box>
               </CodeBox>
               <List>
 
                 <ListItem>
                   <ListItemAvatar><BadgePercentIcon/></ListItemAvatar>
-                  <ListItemText><CodeBox>{`<BadgePercentIcon />`}</CodeBox></ListItemText>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<BadgePercentIcon />`}</CodeBox></ListItemText>
                 </ListItem>
 
                 <ListItem>
@@ -157,21 +158,22 @@ const Icons: React.FC<Props> = ({classes}) => {
                     <Box component={BadgePercentIcon} color='secondary.main' fontSize={theme.typography.pxToRem(32)}/>
                   </ListItemAvatar>
                   <ListItemText>
-                    <CodeBox>{`<Box component={BadgePercentIcon} color='secondary.main' fontSize={theme.typography.pxToRem(32)} />`}</CodeBox>
+                    <CodeBox component={'span'} size={'small'}>{`<Box component={BadgePercentIcon} color='secondary.main' fontSize={theme.typography.pxToRem(32)} />`}</CodeBox>
                   </ListItemText>
                 </ListItem>
                 <ListItem>
                   <ListItemAvatar>
                     <BadgePercentIcon style={{fontSize: theme.typography.pxToRem(32), color: theme.palette.secondary.main}}/>
                   </ListItemAvatar>
-                  <ListItemText><CodeBox>{`<BadgePercentIcon style={{ fontSize: theme.typography.pxToRem(32), color :theme.palette.secondary.main }} />`}</CodeBox></ListItemText>
+                  <ListItemText><CodeBox component={'span'}
+                                         size={'small'}>{`<BadgePercentIcon style={{ fontSize: theme.typography.pxToRem(32), color :theme.palette.secondary.main }} />`}</CodeBox></ListItemText>
                 </ListItem>
                 <ListItem>
                   <ListItemAvatar>
                     <BadgePercentIcon className={classes.icon}/>
                   </ListItemAvatar>
                   <ListItemText>
-                    <CodeBox>{`<BadgePercentIcon className={classes.icon} />`}</CodeBox>
+                    <CodeBox component={'span'} size={'small'}>{`<BadgePercentIcon className={classes.icon} />`}</CodeBox>
                   </ListItemText>
                 </ListItem>
 
@@ -180,7 +182,7 @@ const Icons: React.FC<Props> = ({classes}) => {
                     <Typography variant={'h4'} color='secondary'> <BadgePercentIcon/></Typography>
                   </ListItemAvatar>
                   <ListItemText>
-                    <CodeBox>{`<Typography variant={'h4'} color='secondary'> <BadgePercentIcon/></Typography>`}</CodeBox>
+                    <CodeBox component={'span'} size={'small'}>{`<Typography variant={'h4'} color='secondary'> <BadgePercentIcon/></Typography>`}</CodeBox>
                   </ListItemText>
                 </ListItem>
               </List>

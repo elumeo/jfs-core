@@ -174,7 +174,7 @@ const Dialogs = () => {
           </Grid>
           <Grid item xs>
             <Card>
-              <CardHeader title={'Popover'} subheader={'Don\'t know when to use these Popover Elements but it is available since Material UI and so we should make this available for new use cases'}/>
+              <CardHeader title={'Popover'} subheader={'A use case could be the PSB provisional booking feature where the agent can input some comment text before saving.'}/>
               <CardContent>
                 <Button aria-describedby={'openPopoverButton'} variant='contained' color='primary' onClick={handlePopoverButtonClick}>Open Popover</Button>
                 <Popover

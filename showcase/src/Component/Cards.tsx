@@ -35,7 +35,7 @@ const Cards = () => {
                   right.</Typography>
                 <FormControlLabel control={<Switch onChange={toggleBottomActionButtonPosition} checked={bottomActionButtonPosition === 'custom'}/>} label='Custom position'/>
                 <CodeBox>
-                  <Box component={Typography}>{`<Box component={CardActions} justifyContent={'flex-end'}>`}</Box>
+                  <Typography>{`<Box component={CardActions} justifyContent={'flex-end'}>`}</Typography>
                 </CodeBox>
               </CardContent>
               <Box component={CardActions} justifyContent={bottomActionButtonPosition === 'custom' ? 'flex-end' : null}>
@@ -65,13 +65,13 @@ const Cards = () => {
               <CardContent>
                 <Typography>Material UI supports only 1 action button on the top right by default. But with the help of the Grid we can implement more of them.</Typography>
                 <CodeBox>
-                  <Box component={Typography}>{`<CardHeader`}</Box>
+                  <Typography>{`<CardHeader`}</Typography>
                   <Box component={Typography} pl={1}>{`action={<Grid container spacing={1}>`}</Box>
                   <Box component={Typography} pl={2}>{`<Grid item><Button>Cancel Action</Button></Grid>`}</Box>
                   <Box component={Typography} pl={2}>{`<Grid item><Button color='secondary' variant={'outlined'}>Secondary Action</Button></Grid>`}</Box>
                   <Box component={Typography} pl={2}>{`<Grid item><Button color='primary' variant='contained'>Primary Action</Button></Grid>`}</Box>
                   <Box component={Typography} pl={1}>{`</Grid>`}</Box>
-                  <Box component={Typography}>{`</>`}</Box>
+                  <Typography>{`</>`}</Typography>
                 </CodeBox>
                 <FormControlLabel control={<Switch onChange={toggleTopRightActionButtonNumber} checked={topRightActionButtonNumber === 3}/>}
                                   label='Custom number of action buttons'/>
@@ -79,23 +79,23 @@ const Cards = () => {
                 <Typography>Also the vertical alignment of the title and the buttons is not on one line. We can adjust this with little styling but it is not suggested because we
                   do have 2 different font sizes which will not match completely.</Typography>
                 <CodeBox>
-                  <Box component={Typography}>{`const useStyles = makeStyles((theme) => createStyles({`}</Box>
+                  <Typography>{`const useStyles = makeStyles((theme) => createStyles({`}</Typography>
                   <Box component={Typography} pl={1}>{`topRightAction: {margin: -theme.spacing(0.5)}`}</Box>
-                  <Box component={Typography}>{`}));`}</Box>
+                  <Typography>{`}));`}</Typography>
                 </CodeBox>
                 <FormControlLabel control={<Switch onChange={toggleTopRightActionButtonAlignment} checked={topRightActionButtonAlignment === 'custom'}/>}
                                   label='Custom alignment of action buttons'/>
 
                 <Typography>Another position of buttons (IconButtons) we often use is beside the card title text. To achieve this we can use a grid as well.</Typography>
                 <CodeBox>
-                  <Box component={Typography}>{`<CardHeader`}</Box>
+                  <Typography>{`<CardHeader`}</Typography>
                   <Box component={Typography} pl={1}>{`disableTypography`}</Box>
                   <Box component={Typography} pl={1}>{`title={<Grid container spacing={1}>`}</Box>
                   <Box component={Typography} pl={2}>{`<Grid item><Typography variant='h5'>This is an advanced card with more options</Typography></Grid>`}</Box>
                   <Box component={Typography} pl={2}>{`<Grid item><IconButton size={'small'} style={{padding: '2px'}}><RefreshIcon /></IconButton></Grid>`}</Box>
                   <Box component={Typography} pl={1}>{`</Grid>`}</Box>
                   <Box component={Typography} pl={1}>{`subheader={<Typography variant={'body1'} color={'textSecondary'}>... in the header</Typography>}`}</Box>
-                  <Box component={Typography}>{`/>`}</Box>
+                  <Typography>{`/>`}</Typography>
                 </CodeBox>
                 <FormControlLabel control={<Switch onChange={toggleTopLeftActionButtonsEnabled} checked={topLeftActionButtonsEnabled}/>}
                                   label='Enable custom action buttons beside card title'/>
