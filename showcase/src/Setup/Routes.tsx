@@ -17,6 +17,7 @@ import Dialogs from 'Component/Dialogs';
 import Notifications from 'Component/Notifications';
 import Boxes from 'Component/Boxes';
 import TabsDemo from 'Component/Tabs';
+import Forms from 'Component/Forms';
 
 const Routes: React.FC = () => (
   <Content>
@@ -34,6 +35,7 @@ const Routes: React.FC = () => (
       <AuthRoute key='Notifications' exact path='/Notifications' component={Notifications}/>
       <AuthRoute key='Boxes' exact path='/Boxes' component={Boxes}/>
       <AuthRoute key='Tabs' exact path='/Tabs' component={TabsDemo}/>
+      <AuthRoute key='Forms' exact path='/Forms' component={Forms}/>
       <NoAuthRoute key='default' exact path='/' component={() => <Redirect to={{pathname: '/start'}}/>}/>
     </Switch>
   </Content>

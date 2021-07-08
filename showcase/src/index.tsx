@@ -23,7 +23,7 @@ import * as LAB from '@material-ui/lab';
 ReactDOM.render(
   <App.Container
     store={store}
-    title={'showcase'}
+    title={'Showcase'}
     translations={_.merge(
       CoreTranslations,
       HelloWorldTranslations,

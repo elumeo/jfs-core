@@ -50,6 +50,7 @@ const Boxes = () => {
                   <Box component={Typography}>{`<Box component={Card} width='100%' marginBottom={1} borderColor={theme.palette.primary.main} color={theme.palette.secondary.main>...</Box>`}</Box>
                 </CodeBox>
                 <Typography variant={'body2'}>Current text color: {textColor}</Typography>
+                <Typography variant={'body2'}>Current border color: {bgColor}.main</Typography>
               </Box>
             </CardContent>
           </Card>
