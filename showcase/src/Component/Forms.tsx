@@ -15,7 +15,7 @@ import {
   Radio,
   RadioGroup, Select,
   Typography,
-  Switch, Divider, TextField
+  Switch, Divider, TextField, InputAdornment
 } from '@material-ui/core';
 import CodeBox from 'Component/CodeBox';
 import WarningIcon from '@material-ui/icons/Warning';
@@ -208,9 +208,25 @@ const Forms = () => {
                             size={selectDense ? 'small' : 'medium'}
                             margin={selectDense ? 'dense' : 'none'}
                             error={showError}
-                            label='Text field'
-                            defaultValue='This is a default value'
-                            helperText='And some important help text'
+                            label='Number Text field'
+                            defaultValue='0.5'
+                            helperText='This is a carat text field which has an endAdornment and the additional attributes: min, max and step'
+                            type={'number'}
+                            InputProps={{endAdornment: <InputAdornment position='end' style={{userSelect: 'none'}}>ct</InputAdornment>}}
+                            inputProps={{ min: '0', max: '1', step: '0.01' }}
+                          />
+                        </Grid>
+                        <Grid item xs={2}>
+                          <TextField
+                            size={selectDense ? 'small' : 'medium'}
+                            margin={selectDense ? 'dense' : 'none'}
+                            error={showError}
+                            label='Number Text field'
+                            defaultValue='50'
+                            helperText='This is a weight text field which has an endAdornment and the additional attributes: min, max and step'
+                            type={'number'}
+                            InputProps={{endAdornment: <InputAdornment position='end' style={{userSelect: 'none'}}>gr</InputAdornment>}}
+                            inputProps={{ min: '0', max: '100', step: '1' }}
                           />
                         </Grid>
                         <Grid item xs={2}>
@@ -221,16 +237,7 @@ const Forms = () => {
                             label='Text field'
                             defaultValue='This is a default value'
                             helperText='And some important help text'
-                          />
-                        </Grid>
-                        <Grid item xs={2}>
-                          <TextField
-                            size={selectDense ? 'small' : 'medium'}
-                            margin={selectDense ? 'dense' : 'none'}
-                            error={showError}
-                            label='Text field'
-                            defaultValue='This is a default value'
-                            helperText='And some important help text'
+                            InputProps={{endAdornment: <InputAdornment position='end' style={{userSelect: 'none'}}>€</InputAdornment>}}
                           />
                         </Grid>
                         <Grid item xs={2}>

@@ -10,19 +10,18 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import React from 'react';
-import { default as MUITextField } from '@material-ui/core/TextField';
+import { TextField } from '@material-ui/core';
 import useCurrency from '../../Effect/useCurrency';
 import { Currency } from '../../Utilities/Format';
-const TextField = (_a) => {
+const PriceField = (_a) => {
     var { currency = useCurrency(), value = 0.00, selectOnFocus = true } = _a, props = __rest(_a, ["currency", "value", "selectOnFocus"]);
-    const { getCurrency } = Currency;
     const inputRef = React.useRef(null);
     const [sanitized, setSanitized] = React.useState(`${value}`);
     const [_focused, setFocused] = React.useState(props === null || props === void 0 ? void 0 : props.focused);
     const sanitize = React.useCallback(() => {
         setSanitized(parseFloat(sanitized.replace(Currency.replaceAllNonNumericOrSeperatorRegex, '')).toFixed(2));
     }, [setSanitized, sanitized]);
-    const display = React.useMemo(() => getCurrency(currency, parseFloat(sanitized), true), [sanitized, currency]);
+    const display = React.useMemo(() => Currency.getCurrency(currency, parseFloat(sanitized), true), [sanitized, currency]);
     const _onBlur = React.useCallback((e) => {
         var _a;
         setFocused(false);
@@ -45,6 +44,6 @@ const TextField = (_a) => {
     React.useEffect(() => {
         setSanitized(`${value}`);
     }, [value]);
-    return (React.createElement(MUITextField, Object.assign({ inputRef: inputRef, value: _focused ? sanitized : display, onBlur: _onBlur, onFocus: _onFocus }, props)));
+    return (React.createElement(TextField, Object.assign({ inputRef: inputRef, value: _focused ? sanitized : display, onBlur: _onBlur, onFocus: _onFocus }, props)));
 };
-export default TextField;
+export default PriceField;

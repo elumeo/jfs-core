@@ -1,1 +1,1 @@
-export { default as default } from './TextField';
+export { default as default } from './PriceField';
