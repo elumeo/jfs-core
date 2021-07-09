@@ -18,57 +18,57 @@ import BallotOutlinedIcon from '@material-ui/icons/BallotOutlined';
 const AppNavigation = ({history}: RouteComponentProps) => {
   return <Card>
     <List dense>
-      <ListItem button onClick={() => history.push('/ExternalLinks')}>
-        <ListItemIcon><LinkIcon/></ListItemIcon>
-        <ListItemText primary='External Links'/>
-      </ListItem>
-      <ListItem button onClick={() => history.push('/Icons')}>
-        <ListItemIcon><AppsIcon/></ListItemIcon>
-        <ListItemText primary='Icons'/>
-      </ListItem>
-      <ListItem button onClick={() => history.push('/Colors')}>
-        <ListItemIcon><ColorLensIcon/></ListItemIcon>
-        <ListItemText primary='Colors'/>
-      </ListItem>
-      <ListItem button onClick={() => history.push('/Typographies')}>
-        <ListItemIcon><FontDownloadIcon/></ListItemIcon>
-        <ListItemText primary='Typographies'/>
-      </ListItem>
-      <ListItem button onClick={() => history.push('/Lists')}>
-        <ListItemIcon><ListIcon/></ListItemIcon>
-        <ListItemText primary='Lists'/>
+      <ListItem button onClick={() => history.push('/Boxes')}>
+        <ListItemIcon><CheckBoxOutlineBlankIcon/></ListItemIcon>
+        <ListItemText primary='Boxes'/>
       </ListItem>
       <ListItem button onClick={() => history.push('/Buttons')}>
         <ListItemIcon><ViewAgendaIcon/></ListItemIcon>
         <ListItemText primary='Buttons'/>
       </ListItem>
-      <ListItem button onClick={() => history.push('/Tables')}>
-        <ListItemIcon><TableChartIcon/></ListItemIcon>
-        <ListItemText primary='Tables'/>
+      <ListItem button onClick={() => history.push('/Cards')}>
+        <ListItemIcon><DashboardIcon/></ListItemIcon>
+        <ListItemText primary='Cards'/>
+      </ListItem>
+      <ListItem button onClick={() => history.push('/Colors')}>
+        <ListItemIcon><ColorLensIcon/></ListItemIcon>
+        <ListItemText primary='Colors'/>
       </ListItem>
       <ListItem button onClick={() => history.push('/Dialogs')}>
         <ListItemIcon><FilterNoneIcon/></ListItemIcon>
-        <ListItemText primary='Dialog'/>
+        <ListItemText primary='Dialogs / Popovers / Tooltips'/>
+      </ListItem>
+      <ListItem button onClick={() => history.push('/ExternalLinks')}>
+        <ListItemIcon><LinkIcon/></ListItemIcon>
+        <ListItemText primary='External Links'/>
+      </ListItem>
+      <ListItem button onClick={() => history.push('/Forms')}>
+        <ListItemIcon><BallotOutlinedIcon/></ListItemIcon>
+        <ListItemText primary='Forms'/>
+      </ListItem>
+      <ListItem button onClick={() => history.push('/Icons')}>
+        <ListItemIcon><AppsIcon/></ListItemIcon>
+        <ListItemText primary='Icons'/>
+      </ListItem>
+      <ListItem button onClick={() => history.push('/Lists')}>
+        <ListItemIcon><ListIcon/></ListItemIcon>
+        <ListItemText primary='Lists'/>
       </ListItem>
       <ListItem button onClick={() => history.push('/Notifications')}>
         <ListItemIcon><NotificationsIcon/></ListItemIcon>
         <ListItemText primary='Notifications'/>
       </ListItem>
-      <ListItem button onClick={() => history.push('/Cards')}>
-        <ListItemIcon><DashboardIcon/></ListItemIcon>
-        <ListItemText primary='Cards'/>
-      </ListItem>
-      <ListItem button onClick={() => history.push('/Boxes')}>
-        <ListItemIcon><CheckBoxOutlineBlankIcon/></ListItemIcon>
-        <ListItemText primary='Boxes'/>
+      <ListItem button onClick={() => history.push('/Tables')}>
+        <ListItemIcon><TableChartIcon/></ListItemIcon>
+        <ListItemText primary='Tables'/>
       </ListItem>
       <ListItem button onClick={() => history.push('/Tabs')}>
         <ListItemIcon><TabIcon/></ListItemIcon>
         <ListItemText primary='Tabs'/>
       </ListItem>
-      <ListItem button onClick={() => history.push('/Forms')}>
-        <ListItemIcon><BallotOutlinedIcon/></ListItemIcon>
-        <ListItemText primary='Forms'/>
+      <ListItem button onClick={() => history.push('/Typographies')}>
+        <ListItemIcon><FontDownloadIcon/></ListItemIcon>
+        <ListItemText primary='Typographies'/>
       </ListItem>
     </List>
   </Card>;

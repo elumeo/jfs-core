@@ -5,27 +5,35 @@ import {
   Button,
   Card,
   CardContent,
-  CardHeader, CircularProgress,
+  CardHeader,
+  CircularProgress,
   Container,
-  Dialog, DialogActions,
+  Dialog,
+  DialogActions,
   DialogContent,
   DialogTitle,
-  Grid, Link, Popover,
-  TextField, Typography
+  Grid,
+  Link,
+  Popover,
+  TextField, Tooltip,
+  Typography
 } from '@material-ui/core';
+import WarningIcon from '@material-ui/icons/Warning';
 import AppNavigation from 'Component/AppNavigation';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import LoremIpsumText from 'Component/LoremIpsumText';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'center'
     },
     wrapper: {
       margin: theme.spacing(1),
-      position: 'relative',
+      position: 'relative'
     },
     buttonSuccess: {
       // backgroundColor: theme.palette.success.main,
@@ -38,7 +46,7 @@ const useStyles = makeStyles((theme) =>
       position: 'absolute',
       top: -6,
       left: -6,
-      zIndex: 1,
+      zIndex: 1
     },
     buttonProgress: {
       color: theme.palette.primary.main,
@@ -46,10 +54,10 @@ const useStyles = makeStyles((theme) =>
       top: '50%',
       left: '50%',
       marginTop: -12,
-      marginLeft: -12,
+      marginLeft: -12
     },
-    popoverTypography: {padding: theme.spacing(2)},
-  }),
+    popoverTypography: { padding: theme.spacing(2) }
+  })
 );
 
 const Dialogs = () => {
@@ -62,6 +70,7 @@ const Dialogs = () => {
   const [asyncLoading, setAsyncLoading] = React.useState(false);
   const asyncTimer = React.useRef<number>();
   const [popoverEl, setPopoverEl] = React.useState<HTMLButtonElement | null>(null);
+  const [tooltipFontSizeIncreased, setTooltipFontSizeIncreased] = React.useState(false);
 
   const handleClickOpenBasic = () => setBasicOpen(true);
   const handleCloseBasic = () => setBasicOpen(false);
@@ -72,8 +81,10 @@ const Dialogs = () => {
   const handleClickOpenAsync = () => setAsyncOpen(true);
   const handleCloseAsync = () => setAsyncOpen(false);
 
+  const toggleTooltipFontSizeIncreased = () => setTooltipFontSizeIncreased(!tooltipFontSizeIncreased);
+
   const buttonClassname = clsx({
-    [styles.buttonSuccess]: asyncSuccess,
+    [styles.buttonSuccess]: asyncSuccess
   });
 
   React.useEffect(() => {
@@ -89,7 +100,7 @@ const Dialogs = () => {
       asyncTimer.current = window.setTimeout(() => {
         setAsyncSuccess(true);
         setAsyncLoading(false);
-        handleCloseAsync()
+        handleCloseAsync();
       }, 2000);
     }
   };
@@ -100,14 +111,14 @@ const Dialogs = () => {
 
   return (<Grid container>
     <Grid item xs={2}>
-      <AppNavigation/>
+      <AppNavigation />
     </Grid>
     <Grid item xs>
       <Box component={Container}>
         <Grid container direction={'column'} spacing={1}>
           <Grid item xs>
             <Card>
-              <CardHeader title='Dialogs'/>
+              <CardHeader title='Dialogs' />
               <CardContent>
                 <Button color='secondary' onClick={handleClickOpenBasic}>Open basic dialog</Button>
                 <Button color='secondary' onClick={handleClickOpenForm}>Open form dialog</Button>
@@ -120,7 +131,7 @@ const Dialogs = () => {
                 >
                   <DialogTitle id='basic-dialog-title'>{'Basic dialog with different action button states'}</DialogTitle>
                   <DialogContent>
-                    <LoremIpsumText lines={3}/>
+                    <LoremIpsumText lines={3} />
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={handleCloseBasic}>Cancel Action</Button>
@@ -136,7 +147,7 @@ const Dialogs = () => {
                 >
                   <DialogTitle id='form-dialog-title'>{'Form dialog with different action button states'}</DialogTitle>
                   <DialogContent>
-                    <TextField required value={formValue} error={formValue === ''} id='standard-basic' label='Test Value' onChange={(event) => setFormValue(event.target.value)}/>
+                    <TextField required value={formValue} error={formValue === ''} id='standard-basic' label='Test Value' onChange={(event) => setFormValue(event.target.value)} />
                     <Box p={2}>Action Button should relate on the form state. Is this invalid the action button should be disabled until the form becomes valid.</Box>
                   </DialogContent>
                   <DialogActions>
@@ -165,7 +176,7 @@ const Dialogs = () => {
                       >
                         Primary Action
                       </Button>
-                      {asyncLoading && <CircularProgress size={24} className={styles.buttonProgress}/>}
+                      {asyncLoading && <CircularProgress size={24} className={styles.buttonProgress} />}
                     </div>
                   </DialogActions>
                 </Dialog>
@@ -174,7 +185,7 @@ const Dialogs = () => {
           </Grid>
           <Grid item xs>
             <Card>
-              <CardHeader title={'Popover'} subheader={'A use case could be the PSB provisional booking feature where the agent can input some comment text before saving.'}/>
+              <CardHeader title={'Popovers'} subheader={'A use case could be the PSB provisional booking feature where the agent can input some comment text before saving.'} />
               <CardContent>
                 <Button aria-describedby={'openPopoverButton'} variant='contained' color='primary' onClick={handlePopoverButtonClick}>Open Popover</Button>
                 <Popover
@@ -184,16 +195,35 @@ const Dialogs = () => {
                   onClose={handlePopoverButtonClose}
                   anchorOrigin={{
                     vertical: 'bottom',
-                    horizontal: 'center',
+                    horizontal: 'center'
                   }}
                   transformOrigin={{
                     vertical: 'top',
-                    horizontal: 'center',
+                    horizontal: 'center'
                   }}
                 >
                   <Typography className={styles.popoverTypography}>The content of the <Link target='__blank'
                                                                                             href='https://material-ui.com/components/popover/#popover'>Popover</Link>.</Typography>
                 </Popover>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs>
+            <Card>
+              <CardHeader title={'Tooltips'} />
+              <CardContent>
+                <Grid container direction={'column'}>
+                  <Grid item>
+                    <FormControlLabel control={<Switch onChange={toggleTooltipFontSizeIncreased} checked={tooltipFontSizeIncreased} />} label='Increase font size' />
+                  </Grid>
+                  <Grid item>
+                    {tooltipFontSizeIncreased &&
+                    <Tooltip title={<Typography variant={'body2'}>This is a tooltip text. Default font size seems to be very small. Is it better to increase the font
+                      size?</Typography>}><WarningIcon /></Tooltip>}
+                    {tooltipFontSizeIncreased === false &&
+                    <Tooltip title={'This is a tooltip text. Default font size seems to be very small. Is it better to increase the font size by default?'}><WarningIcon /></Tooltip>}
+                  </Grid>
+                </Grid>
               </CardContent>
             </Card>
           </Grid>
