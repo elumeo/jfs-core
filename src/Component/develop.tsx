@@ -1,10 +1,13 @@
 import React from 'react';
-import { Box, Card, CardContent, Container, List, ListItem, ListItemIcon, ListItemText, Theme, Typography, TypographyVariant } from '@material-ui/core';
+import { Box, Card, Paper, CardContent, Container, List, ListItem, ListItemIcon, ListItemText, Theme, Typography, TypographyVariant, Grid } from '@material-ui/core';
 import { useTheme } from '@material-ui/styles';
 import WarningIcon from '@material-ui/icons/Warning';
 import { VirtualizedTable } from 'Component/Table';
 import { Index } from 'react-virtualized';
 import PriceField from 'Component/PriceInput/PriceField';
+import { MuiPickersUtilsProvider, KeyboardDatePicker, KeyboardDateTimePicker, KeyboardTimePicker } from '@material-ui/pickers';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
 
 type Data = {
   calories: number;
@@ -22,7 +25,7 @@ const sample: Sample[] = [
   ['Ice cream sandwich', 237, 9.0, 37, 4.3],
   ['Eclair', 262, 16.0, 24, 6.0],
   ['Cupcake', 305, 3.7, 67, 4.3],
-  ['Gingerbread', 356, 16.0, 49, 3.9],
+  ['Gingerbread', 356, 16.0, 49, 3.9]
 ];
 
 function createData(
@@ -31,9 +34,9 @@ function createData(
   calories: number,
   fat: number,
   carbs: number,
-  protein: number,
+  protein: number
 ): Data {
-  return {id, dessert, calories, fat, carbs, protein};
+  return { id, dessert, calories, fat, carbs, protein };
 }
 
 const rows: Data[] = [];
@@ -56,18 +59,64 @@ const variants: TypographyVariant[] = [
   'body2',
   'button',
   'caption',
-  'overline',
-]
+  'overline'
+];
 
 const Develop = () => {
   const theme = useTheme<Theme>();
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date('2014-08-18T21:11:54'));
+
+  const handleDateChange = (date: Date | null) => {
+    setSelectedDate(date);
+  };
+
   return <Box>
-    <Box>
-      <Container>
-        <PriceField
-          value={1000}
-        />
-      </Container>
+    <Box component={Paper} p={2}>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <Grid container spacing={1}>
+          <Grid item>
+            <KeyboardDatePicker
+              disableToolbar
+              variant='inline'
+              format='dd/MM/yyyy'
+              id='date-picker-inline'
+              label='Date picker inline'
+              value={selectedDate}
+              onChange={(date) => handleDateChange(date as any)}
+              KeyboardButtonProps={{
+                'aria-label': 'change date'
+              }}
+            />
+          </Grid>
+          <Grid item>
+            <KeyboardTimePicker
+              ampm={false}
+              id='time-picker'
+              label='Time picker'
+              value={selectedDate}
+              onChange={(date) => handleDateChange(date as any)}
+              KeyboardButtonProps={{
+                'aria-label': 'change time'
+              }}
+            />
+          </Grid>
+          <Grid item>
+            <KeyboardDateTimePicker
+              // disableToolbar
+              ampm={false}
+              variant='inline'
+              format='dd/MM/yyyy HH:mm'
+              id='date-picker-inline'
+              label='Datetime picker inline'
+              value={selectedDate}
+              onChange={(date) => handleDateChange(date as any)}
+              KeyboardButtonProps={{
+                'aria-label': 'change date and time',
+              }}
+            />
+          </Grid>
+        </Grid>
+      </MuiPickersUtilsProvider>
     </Box>
     {/*<Box>*/}
     {/*  <Container>*/}
@@ -128,7 +177,7 @@ const Develop = () => {
     {/*    ]}*/}
     {/*  />*/}
     {/*</Box>*/}
-  </Box>
+  </Box>;
 };
 
 export default Develop;
