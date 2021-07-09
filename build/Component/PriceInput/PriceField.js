@@ -9,8 +9,8 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import React from 'react';
-import { TextField } from '@material-ui/core';
+import React, { memo } from 'react';
+import { TextField, InputAdornment } from '@material-ui/core';
 import useCurrency from '../../Effect/useCurrency';
 import { Currency } from '../../Utilities/Format';
 const PriceField = (_a) => {
@@ -21,7 +21,7 @@ const PriceField = (_a) => {
     const sanitize = React.useCallback(() => {
         setSanitized(parseFloat(sanitized.replace(Currency.replaceAllNonNumericOrSeperatorRegex, '')).toFixed(2));
     }, [setSanitized, sanitized]);
-    const display = React.useMemo(() => Currency.getCurrency(currency, parseFloat(sanitized), true), [sanitized, currency]);
+    const display = React.useMemo(() => Currency.getCurrency(currency, parseFloat(sanitized), true, false), [sanitized, currency]);
     const _onBlur = React.useCallback((e) => {
         var _a;
         setFocused(false);
@@ -41,9 +41,9 @@ const PriceField = (_a) => {
             }
         }
     }, [_focused]);
-    React.useEffect(() => {
-        setSanitized(`${value}`);
-    }, [value]);
-    return (React.createElement(TextField, Object.assign({ inputRef: inputRef, value: _focused ? sanitized : display, onBlur: _onBlur, onFocus: _onFocus }, props)));
+    React.useEffect(() => setSanitized(`${value}`), [value]);
+    return React.createElement(TextField, Object.assign({ inputRef: inputRef, value: _focused ? sanitized : display, onBlur: _onBlur, onFocus: _onFocus, InputProps: {
+            [currency.toLowerCase() === 'eur' ? 'endAdornment' : 'startAdornment']: React.createElement(InputAdornment, { position: currency.toLowerCase() === 'eur' ? 'end' : 'start', style: { userSelect: 'none' } }, Currency.getCurrencySign(currency))
+        } }, props));
 };
-export default PriceField;
+export default memo(PriceField);
