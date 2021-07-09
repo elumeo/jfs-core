@@ -300,6 +300,16 @@ const Forms = () => {
                               helperText='And some important help text'
                             />
                           </Grid>
+                          <Grid item xs={2}>
+                            <TextField
+                              size={selectDense ? 'small' : 'medium'}
+                              margin={selectDense ? 'dense' : 'none'}
+                              label='A text field with an icon'
+                              defaultValue=''
+                              helperText='The icon can be implemented on start or end or both'
+                              InputProps={{ startAdornment: <InputAdornment position='start'><WarningIcon /></InputAdornment> }}
+                            />
+                          </Grid>
                           <Grid item xs>
                             <TextField
                               fullWidth
