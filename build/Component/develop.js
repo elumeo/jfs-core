@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Card, CardContent, Container, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
+import { Box, Container } from '@material-ui/core';
 import { useTheme } from '@material-ui/styles';
-import WarningIcon from '@material-ui/icons/Warning';
+import PriceField from './PriceInput/PriceField';
 const sample = [
     ['Frozen yoghurt', 159, 6.0, 24, 4.0],
     ['Ice cream sandwich', 237, 9.0, 37, 4.3],
@@ -37,16 +37,6 @@ const Develop = () => {
     return React.createElement(Box, null,
         React.createElement(Box, null,
             React.createElement(Container, null,
-                React.createElement(Card, null,
-                    React.createElement(CardContent, null, variants.map((variant) => React.createElement(Box, { key: variant },
-                        React.createElement(Typography, { variant: variant },
-                            "variant='",
-                            variant,
-                            "'"))))),
-                React.createElement(List, null,
-                    React.createElement(ListItem, null,
-                        React.createElement(ListItemIcon, null,
-                            React.createElement(WarningIcon, null)),
-                        React.createElement(ListItemText, null, "Text"))))));
+                React.createElement(PriceField, { value: 1000 }))));
 };
 export default Develop;

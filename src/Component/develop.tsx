@@ -4,6 +4,7 @@ import { useTheme } from '@material-ui/styles';
 import WarningIcon from '@material-ui/icons/Warning';
 import { VirtualizedTable } from 'Component/Table';
 import { Index } from 'react-virtualized';
+import PriceField from 'Component/PriceInput/PriceField';
 
 type Data = {
   calories: number;
@@ -63,19 +64,26 @@ const Develop = () => {
   return <Box>
     <Box>
       <Container>
-        <Card>
-          <CardContent>
-            {variants.map((variant) => <Box key={variant}><Typography variant={variant as TypographyVariant}>variant='{variant}'</Typography></Box>)}
-          </CardContent>
-        </Card>
-        <List>
-          <ListItem>
-            <ListItemIcon><WarningIcon /></ListItemIcon>
-            <ListItemText>Text</ListItemText>
-          </ListItem>
-        </List>
+        <PriceField
+          value={1000}
+        />
       </Container>
     </Box>
+    {/*<Box>*/}
+    {/*  <Container>*/}
+    {/*    <Card>*/}
+    {/*      <CardContent>*/}
+    {/*        {variants.map((variant) => <Box key={variant}><Typography variant={variant as TypographyVariant}>variant='{variant}'</Typography></Box>)}*/}
+    {/*      </CardContent>*/}
+    {/*    </Card>*/}
+    {/*    <List>*/}
+    {/*      <ListItem>*/}
+    {/*        <ListItemIcon><WarningIcon /></ListItemIcon>*/}
+    {/*        <ListItemText>Text</ListItemText>*/}
+    {/*      </ListItem>*/}
+    {/*    </List>*/}
+    {/*  </Container>*/}
+    {/*</Box>*/}
     {/*<Box width={'100%'} height={'100%'} bgcolor={theme.palette.rubin.main}>Hallo Welt!</Box>*/}
     {/*<Box padding={1} height={'100%'}>*/}
     {/*  <VirtualizedTable*/}
