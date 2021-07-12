@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "10.0.0-beta.71",
+  "version": "10.0.0-beta.72",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -17,12 +17,12 @@
     "install:subpkg": "subpkg install",
     "postinstall": "npm run install:subpkg && npm run jfs-postinstall",
     "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i",
-    "jfs-check-api": "./scripts/bin/jfs-check-api",
-    "jfs-check-translations": "./scripts/bin/jfs-check-translations",
-    "jfs-deploy-config-files": "./scripts/bin/jfs-deploy-config-files",
-    "jfs-generate-api": "./scripts/bin/jfs-generate-api",
-    "jfs-open-showcase": "./scripts/bin/jfs-open-showcase",
-    "jfs-postinstall": "./scripts/bin/jfs-postinstall"
+    "jfs-check-api": "node ./scripts/bin/jfs-check-api",
+    "jfs-check-translations": "node ./scripts/bin/jfs-check-translations",
+    "jfs-deploy-config-files": "node ./scripts/bin/jfs-deploy-config-files",
+    "jfs-generate-api": "node ./scripts/bin/jfs-generate-api",
+    "jfs-open-showcase": "node ./scripts/bin/jfs-open-showcase",
+    "jfs-postinstall": "node ./scripts/bin/jfs-postinstall"
   },
   "repository": {
     "type": "git",
