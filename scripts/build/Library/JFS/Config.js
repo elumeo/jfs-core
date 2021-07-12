@@ -16,7 +16,7 @@ exports.get = void 0;
 const path_1 = __importDefault(require("path"));
 const fs_extra_1 = __importDefault(require("fs-extra"));
 const get = (root) => __awaiter(void 0, void 0, void 0, function* () {
-    return (yield fs_extra_1.default.readJSON(path_1.default.resolve(root, 'config.json')));
+    return (yield fs_extra_1.default.readJSON(path_1.default.resolve(root, 'config.dist.json')));
 });
 exports.get = get;
 //# sourceMappingURL=Config.js.map

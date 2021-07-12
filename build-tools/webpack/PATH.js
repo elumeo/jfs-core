@@ -23,7 +23,7 @@ const FAVICON = resolve(STATIC, 'favicon.ico')
 const HTML_TEMPLATE = resolve(STATIC, 'index.html');
 const CONFIGURATION = resolve(ROOT, 'config');
 const CONFIGURATION_DIST = resolve(PUBLIC, 'config.json');
-const CONFIGURATION_DEV = resolve(ROOT, 'config.json');
+const CONFIGURATION_DEV = resolve(ROOT, 'config.dist.json');
 const ACTION = resolve(STORE, 'Action');
 
 module.exports = {

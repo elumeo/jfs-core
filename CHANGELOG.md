@@ -14,15 +14,13 @@ We have updated our webpack version. Read more about webpack 5 [here](https://we
 
 Instead of maintaining two config files you can now simply maintain only one file:
 
-- `/config.json`
+- `/config.dist.json`
 
 It will be copied to `/dist/config.json` automatically when running the dev-server or creating a production build.
 
 Changes made to the config file will cause a reload in the browser while developing.
 
-All scripts that need config data will read from `/config.json`.
-
-You should add `/config.json` to `.gitignore` in your project and only check in `/config.dist.json` as a template.
+All scripts that need config data will read from `/config.dist.json`.
 
 ### __Reimplemented notifications__
 
