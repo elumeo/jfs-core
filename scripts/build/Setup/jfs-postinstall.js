@@ -27,33 +27,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = exports.scope = exports.name = void 0;
-const path_1 = __importDefault(require("path"));
-const fs_extra_1 = __importDefault(require("fs-extra"));
 const JFS = __importStar(require("../Library/JFS"));
 const NPM = __importStar(require("../Library/NPM"));
-const parent = (root) => {
-    if (fs_extra_1.default.existsSync(path_1.default.resolve(root, 'package.json'))) {
-        return root;
-    }
-    else if (root.split(path_1.default.sep).length > 1) {
-        return parent(path_1.default.dirname(root));
-    }
-    else {
-        return null;
-    }
-};
 exports.name = 'jfs-postinstall';
 exports.scope = ['all'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
-    yield JFS.Package.register(env, yield JFS.Bin.scripts(env));
-    yield NPM.Package.run('jfs-deploy-config-files', {
-        stdio: 'inherit'
-    });
+    if (env.which !== 'core') {
+        yield JFS.Package.register(env, yield JFS.Bin.scripts(env));
+    }
+    yield NPM.Package.run('jfs-deploy-config-files');
     if (['app', 'component'].includes(env.which)) {
         yield NPM.Package.run('jfs-set-peer-dependencies');
     }

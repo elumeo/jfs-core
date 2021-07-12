@@ -17,13 +17,12 @@
     "install:subpkg": "subpkg install",
     "postinstall": "npm run install:subpkg && npm run jfs-postinstall",
     "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i",
-    "jfs-check-api": "jfs-check-api",
-    "jfs-check-translations": "jfs-check-translations",
-    "jfs-deploy-config-files": "jfs-deploy-config-files",
-    "jfs-generate-api": "jfs-generate-api",
-    "jfs-open-showcase": "jfs-open-showcase",
-    "jfs-postinstall": "jfs-postinstall",
-    "jfs-register-scripts": "jfs-register-scripts"
+    "jfs-check-api": "./scripts/bin/jfs-check-api",
+    "jfs-check-translations": "./scripts/bin/jfs-check-translations",
+    "jfs-deploy-config-files": "./scripts/bin/jfs-deploy-config-files",
+    "jfs-generate-api": "./scripts/bin/jfs-generate-api",
+    "jfs-open-showcase": "./scripts/bin/jfs-open-showcase",
+    "jfs-postinstall": "./scripts/bin/jfs-postinstall"
   },
   "repository": {
     "type": "git",
