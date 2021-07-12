@@ -19,8 +19,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Translations = exports.Package = exports.Environment = exports.Config = exports.Bin = exports.API = void 0;
+exports.Translations = exports.Package = exports.Environment = exports.Config = exports.Bin = exports.Augmentation = exports.API = void 0;
 exports.API = __importStar(require("./API"));
+exports.Augmentation = __importStar(require("./Augmentation"));
 exports.Bin = __importStar(require("./Bin"));
 exports.Config = __importStar(require("./Config"));
 exports.Environment = __importStar(require("./Environment"));
