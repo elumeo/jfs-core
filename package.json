@@ -22,8 +22,7 @@
     "jfs-deploy-config-files": "jfs-deploy-config-files",
     "jfs-generate-api": "jfs-generate-api",
     "jfs-open-showcase": "jfs-open-showcase",
-    "jfs-postinstall": "jfs-postinstall",
-    "jfs-register-scripts": "jfs-register-scripts"
+    "jfs-postinstall": "./scripts/bin/jfs-postinstall"
   },
   "repository": {
     "type": "git",

@@ -31,7 +31,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = exports.scope = exports.name = void 0;
 const JFS = __importStar(require("../Library/JFS"));
 exports.name = 'jfs-register-scripts';
-exports.scope = ['all'];
+exports.scope = ['app', 'component'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     const scripts = yield JFS.Bin.scripts(env);
     yield JFS.Package.register(env, scripts);
