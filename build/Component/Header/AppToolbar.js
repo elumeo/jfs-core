@@ -14,13 +14,15 @@ import { useIntl } from 'react-intl';
 import MenuIcon from '@material-ui/icons/Menu';
 import useActions from '../../Store/useActions';
 import { AppBar, Grid, IconButton, Toolbar, Typography } from '@material-ui/core';
+import { useTheme } from '@material-ui/styles';
 const AppToolbar = (_a) => {
     var { variant = 'dense', position = 'sticky' } = _a, tools = __rest(_a, ["variant", "position"]);
+    const theme = useTheme();
     const { formatMessage } = useIntl();
     const { openNavigation } = useActions();
     const openDrawer = React.useCallback(() => openNavigation(), []);
     return (React.createElement(AppBar, { position: position },
-        React.createElement(Toolbar, { disableGutters: true, variant: variant, style: { height: 58 } },
+        React.createElement(Toolbar, { disableGutters: true, variant: variant, style: { height: theme.mixins.toolbar.minHeight } },
             React.createElement(Grid, { container: true, justifyContent: 'space-between', alignItems: 'center' },
                 React.createElement(Grid, { container: true, item: true, xs: 4, justifyContent: 'flex-start', alignItems: 'center' },
                     React.createElement(IconButton, { color: 'inherit', "aria-label": 'menu', onClick: openDrawer },
