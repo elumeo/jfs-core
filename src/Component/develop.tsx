@@ -65,6 +65,7 @@ const variants: TypographyVariant[] = [
 const Develop = () => {
   const theme = useTheme<Theme>();
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date('2014-08-18T21:11:54'));
+  const [priceValue, setPriceValue] = React.useState('1000.55');
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
@@ -75,46 +76,53 @@ const Develop = () => {
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid container spacing={1}>
           <Grid item>
-            <KeyboardDatePicker
-              disableToolbar
-              variant='inline'
-              format='dd/MM/yyyy'
-              id='date-picker-inline'
-              label='Date picker inline'
-              value={selectedDate}
-              onChange={(date) => handleDateChange(date as any)}
-              KeyboardButtonProps={{
-                'aria-label': 'change date'
-              }}
+            <PriceField
+              id={'das_ist_ein_test'}
+              value={priceValue}
+              onChange={(event) => setPriceValue(event.target.value)}
             />
           </Grid>
-          <Grid item>
-            <KeyboardTimePicker
-              ampm={false}
-              id='time-picker'
-              label='Time picker'
-              value={selectedDate}
-              onChange={(date) => handleDateChange(date as any)}
-              KeyboardButtonProps={{
-                'aria-label': 'change time'
-              }}
-            />
-          </Grid>
-          <Grid item>
-            <KeyboardDateTimePicker
-              // disableToolbar
-              ampm={false}
-              variant='inline'
-              format='dd/MM/yyyy HH:mm'
-              id='date-picker-inline'
-              label='Datetime picker inline'
-              value={selectedDate}
-              onChange={(date) => handleDateChange(date as any)}
-              KeyboardButtonProps={{
-                'aria-label': 'change date and time',
-              }}
-            />
-          </Grid>
+          {/*<Grid item>*/}
+          {/*  <KeyboardDatePicker*/}
+          {/*    disableToolbar*/}
+          {/*    variant='inline'*/}
+          {/*    format='dd/MM/yyyy'*/}
+          {/*    id='date-picker-inline'*/}
+          {/*    label='Date picker inline'*/}
+          {/*    value={selectedDate}*/}
+          {/*    onChange={(date) => handleDateChange(date as any)}*/}
+          {/*    KeyboardButtonProps={{*/}
+          {/*      'aria-label': 'change date'*/}
+          {/*    }}*/}
+          {/*  />*/}
+          {/*</Grid>*/}
+          {/*<Grid item>*/}
+          {/*  <KeyboardTimePicker*/}
+          {/*    ampm={false}*/}
+          {/*    id='time-picker'*/}
+          {/*    label='Time picker'*/}
+          {/*    value={selectedDate}*/}
+          {/*    onChange={(date) => handleDateChange(date as any)}*/}
+          {/*    KeyboardButtonProps={{*/}
+          {/*      'aria-label': 'change time'*/}
+          {/*    }}*/}
+          {/*  />*/}
+          {/*</Grid>*/}
+          {/*<Grid item>*/}
+          {/*  <KeyboardDateTimePicker*/}
+          {/*    // disableToolbar*/}
+          {/*    ampm={false}*/}
+          {/*    variant='inline'*/}
+          {/*    format='dd/MM/yyyy HH:mm'*/}
+          {/*    id='date-picker-inline'*/}
+          {/*    label='Datetime picker inline'*/}
+          {/*    value={selectedDate}*/}
+          {/*    onChange={(date) => handleDateChange(date as any)}*/}
+          {/*    KeyboardButtonProps={{*/}
+          {/*      'aria-label': 'change date and time',*/}
+          {/*    }}*/}
+          {/*  />*/}
+          {/*</Grid>*/}
         </Grid>
       </MuiPickersUtilsProvider>
     </Box>
