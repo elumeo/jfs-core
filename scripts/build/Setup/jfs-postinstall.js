@@ -27,8 +27,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = exports.scope = exports.name = void 0;
+const path_1 = __importDefault(require("path"));
 const JFS = __importStar(require("../Library/JFS"));
 const NPM = __importStar(require("../Library/NPM"));
 exports.name = 'jfs-postinstall';
@@ -36,6 +40,7 @@ exports.scope = ['all'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     if (env.which !== 'core') {
         yield JFS.Package.register(env, yield JFS.Bin.scripts(env));
+        yield JFS.Augmentation.copy(env, path_1.default.resolve(env.root, 'augmentation'));
     }
     yield NPM.Package.run('jfs-deploy-config-files');
     if (['app', 'component'].includes(env.which)) {
