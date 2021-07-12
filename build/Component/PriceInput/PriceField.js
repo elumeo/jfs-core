@@ -10,40 +10,29 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import React, { memo } from 'react';
-import { TextField, InputAdornment } from '@material-ui/core';
 import useCurrency from '../../Effect/useCurrency';
-import { Currency } from '../../Utilities/Format';
+import Editor from './Editor';
+import Display from './Display';
 const PriceField = (_a) => {
     var { currency = useCurrency(), value = 0.00, selectOnFocus = true } = _a, props = __rest(_a, ["currency", "value", "selectOnFocus"]);
-    const inputRef = React.useRef(null);
-    const [sanitized, setSanitized] = React.useState(`${value}`);
-    const [_focused, setFocused] = React.useState(props === null || props === void 0 ? void 0 : props.focused);
-    const sanitize = React.useCallback(() => {
-        setSanitized(parseFloat(sanitized.replace(Currency.replaceAllNonNumericOrSeperatorRegex, '')).toFixed(2));
-    }, [setSanitized, sanitized]);
-    const display = React.useMemo(() => Currency.getCurrency(currency, parseFloat(sanitized), true, false), [sanitized, currency]);
+    const [_focused, setFocused] = React.useState(props.focused);
     const _onBlur = React.useCallback((e) => {
         var _a;
-        setFocused(false);
-        sanitize();
         (_a = props === null || props === void 0 ? void 0 : props.onBlur) === null || _a === void 0 ? void 0 : _a.call(props, e);
-    }, [setFocused, setSanitized, sanitized, props === null || props === void 0 ? void 0 : props.onBlur]);
+        setFocused(false);
+    }, [
+        setFocused,
+        props === null || props === void 0 ? void 0 : props.onBlur
+    ]);
     const _onFocus = React.useCallback((e) => {
         var _a;
         setFocused(true);
         (_a = props === null || props === void 0 ? void 0 : props.onFocus) === null || _a === void 0 ? void 0 : _a.call(props, e);
-    }, [setFocused, props === null || props === void 0 ? void 0 : props.onFocus, selectOnFocus, inputRef]);
-    React.useEffect(() => {
-        var _a;
-        if (_focused) {
-            if (inputRef.current && selectOnFocus) {
-                (_a = inputRef === null || inputRef === void 0 ? void 0 : inputRef.current) === null || _a === void 0 ? void 0 : _a.select();
-            }
-        }
-    }, [_focused]);
-    React.useEffect(() => setSanitized(`${value}`), [value]);
-    return React.createElement(TextField, Object.assign({ inputRef: inputRef, value: _focused ? sanitized : display, onBlur: _onBlur, onFocus: _onFocus, InputProps: {
-            [currency.toLowerCase() === 'eur' ? 'endAdornment' : 'startAdornment']: React.createElement(InputAdornment, { position: currency.toLowerCase() === 'eur' ? 'end' : 'start', style: { userSelect: 'none' } }, Currency.getCurrencySign(currency))
-        } }, props));
+    }, [setFocused, selectOnFocus, props === null || props === void 0 ? void 0 : props.onFocus]);
+    return _focused
+        ?
+            React.createElement(Editor, Object.assign({}, props, { value: value, onChange: props.onChange, onBlur: _onBlur, selectOnFocus: selectOnFocus }))
+        :
+            React.createElement(Display, Object.assign({}, props, { value: value, onChange: props.onChange, onFocus: _onFocus }));
 };
 export default memo(PriceField);
