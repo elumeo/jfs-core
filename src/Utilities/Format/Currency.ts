@@ -1,11 +1,20 @@
 import * as Locale from './Locale';
+import { ReactText } from 'react'
 
 export const getCurrencySign = (currency: string) => (
-  new Intl.NumberFormat(Locale.locale, {style: 'currency', currency})
+  new Intl.NumberFormat(Locale.locale, { style: 'currency', currency })
     .formatToParts(0)
-    .reduce((sign, {type, value}) => (sign + (type === 'currency' ? value : '')), '')
+    .reduce((sign, { type, value }) => (sign + (type === 'currency' ? value : '')), '')
 );
-
+export const formatDisplay = (value: ReactText, min?: number, max?: number) : string=> {
+  const val = parseFloat(`${value}`.replace(replaceAllNonNumericOrSeperatorRegex, ''))
+  if ((!!min || min === 0) && val < min) {
+    return min.toString()
+  } else if (max && val > max) {
+    return max.toString()
+  }
+  return val.toFixed(2)
+}
 export const getCurrency = (currency: string, value: number, showFraction = false, withCurrencySign = true) => {
   if (isNaN(value) || value === null || value.toString() === '') {
     value = 0;
@@ -13,13 +22,13 @@ export const getCurrency = (currency: string, value: number, showFraction = fals
 
   if (showFraction) {
     if (withCurrencySign) {
-      return new Intl.NumberFormat(Locale.locale, {style: 'currency', currency}).format(value);
+      return new Intl.NumberFormat(Locale.locale, { style: 'currency', currency }).format(value);
     }
-    return new Intl.NumberFormat(Locale.locale, {minimumFractionDigits: 2}).format(value);
+    return new Intl.NumberFormat(Locale.locale, { minimumFractionDigits: 2 }).format(value);
   }
 
   if (withCurrencySign) {
-    return new Intl.NumberFormat(Locale.locale, {style: 'currency', currency, minimumFractionDigits: 0}).format(value);
+    return new Intl.NumberFormat(Locale.locale, { style: 'currency', currency, minimumFractionDigits: 0 }).format(value);
   }
   return new Intl.NumberFormat(Locale.locale).format(value);
 }

@@ -1,55 +1,48 @@
 import React, { memo } from 'react';
-import { TextField, StandardTextFieldProps, InputAdornment } from '@material-ui/core';
+import { TextField, StandardTextFieldProps, InputAdornment, Input, InputProps } from '@material-ui/core';
 import useCurrency from 'Effect/useCurrency';
-import { Currency } from 'Utilities/Format';
+import Editor from './Editor';
+import Display from './Display';
 
 type Props = {
   currency?: string;
   selectOnFocus?: boolean
+  value: React.ReactText
+  min?: number
+  max?: number
 } & Partial<StandardTextFieldProps>
 
-const PriceField = ({currency = useCurrency(), value = 0.00, selectOnFocus = true, ...props}: Props) => {
-  const inputRef = React.useRef<HTMLInputElement>(null)
-  const [sanitized, setSanitized] = React.useState(`${value}`)
-  const [_focused, setFocused] = React.useState(props?.focused)
-
-  const sanitize = React.useCallback(() => {
-    setSanitized(parseFloat(sanitized.replace(Currency.replaceAllNonNumericOrSeperatorRegex, '')).toFixed(2))
-  }, [setSanitized, sanitized]);
-
-  const display = React.useMemo(() => Currency.getCurrency(currency, parseFloat(sanitized), true, false), [sanitized, currency]);
-
+const PriceField: React.FC<Props> = ({ currency = useCurrency(), value = 0.00, selectOnFocus = true, ...props }) => {
+  const [_focused, setFocused] = React.useState(props.focused)
   const _onBlur = React.useCallback((e) => {
-    setFocused(false);
-    sanitize()
     props?.onBlur?.(e)
-  }, [setFocused, setSanitized, sanitized, props?.onBlur]);
+    setFocused(false);
+  }, [
+    setFocused,
+    props?.onBlur]);
 
   const _onFocus: StandardTextFieldProps['onFocus'] = React.useCallback((e) => {
     setFocused(true);
     props?.onFocus?.(e);
-  }, [setFocused, props?.onFocus, selectOnFocus, inputRef]);
+  }, [setFocused, selectOnFocus,
+    props?.onFocus]);
 
-  React.useEffect(() => {
-    if (_focused) {
-      if (inputRef.current && selectOnFocus) {
-        inputRef?.current?.select()
-      }
-    }
-  }, [_focused]);
+  return _focused
+    ?
+    <Editor
+      {...props}
+      value={value}
+      onChange={props.onChange}
+      onBlur={_onBlur}
+      selectOnFocus={selectOnFocus}
+    />
+    :
+    <Display
+      {...props}
+      value={value}
+      onChange={props.onChange}
+      onFocus={_onFocus}
+    />
 
-  React.useEffect(() => setSanitized(`${value}`), [value]);
-
-  return <TextField
-    inputRef={inputRef}
-    value={_focused ? sanitized : display}
-    onBlur={_onBlur}
-    onFocus={_onFocus}
-    InputProps={{
-      [currency.toLowerCase() === 'eur' ? 'endAdornment' : 'startAdornment']: <InputAdornment position={currency.toLowerCase() === 'eur' ? 'end' : 'start'}
-                                                                                              style={{userSelect: 'none'}}>{Currency.getCurrencySign(currency)}</InputAdornment>
-    }}
-    {...props}
-  />;
 };
 export default memo(PriceField);
