@@ -6,6 +6,7 @@ node_modules
 /tsconfig.json
 /showcase/tsconfig.json
 /tslint.json
+/config.json
 .autohidefiles
 .DS_Store
 /showcase/dist/
