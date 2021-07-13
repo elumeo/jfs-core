@@ -23,7 +23,7 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
     outline: 'none'
   },
   tableRow: {
-    cursor: 'pointer'
+    outline: 'none'
   },
   tableRowHover: {
     '&:hover': {
@@ -35,6 +35,9 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
     fontSize: theme.typography.pxToRem(13),
     padding: theme.spacing(1),
     maxWidth: '100%'
+  },
+  onRowClick: {
+    cursor: 'pointer'
   },
   noClick: {
     cursor: 'initial'
@@ -66,7 +69,7 @@ type VirtualizedTableProps = TableProps & {
 const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
   ({
      columns,
-     onRowClick,
+     onRowClick = null,
      rowCount,
      rowGetter,
      headerHeight = 48,
@@ -79,7 +82,10 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
     const getRowClassName = (index: Index) => clsx(
       classes.tableRow,
       classes.flexContainer,
-      { [classes.tableRowHover]: index.index !== -1 && showRowHoverHighlight === true }
+      {
+        [classes.tableRowHover]: index.index !== -1 && showRowHoverHighlight === true,
+        [classes.onRowClick]: onRowClick !== null
+      }
     );
 
     const mapSortDirection = (sortDirection: SortDirectionType) => sortDirection === 'ASC' ? 'asc' : 'desc';
@@ -124,7 +130,6 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
             cellRenderer={({ cellData, columnIndex }) => <TableCellDefault
               cellData={cellData}
               rowHeight={rowHeight}
-              onRowClick={onRowClick}
               isNumeric={(columnIndex != null && columns[columnIndex].numeric) || false}
             />}
             dataKey={dataKey}

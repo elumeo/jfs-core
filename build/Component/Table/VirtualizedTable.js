@@ -33,7 +33,7 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
         outline: 'none'
     },
     tableRow: {
-        cursor: 'pointer'
+        outline: 'none'
     },
     tableRowHover: {
         '&:hover': {
@@ -45,6 +45,9 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
         fontSize: theme.typography.pxToRem(13),
         padding: theme.spacing(1),
         maxWidth: '100%'
+    },
+    onRowClick: {
+        cursor: 'pointer'
     },
     noClick: {
         cursor: 'initial'
@@ -62,9 +65,12 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
     }
 }));
 const VirtualizedTable = React.forwardRef((_a, ref) => {
-    var { columns, onRowClick, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, showRowHoverHighlight = false } = _a, tableProps = __rest(_a, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight", "showRowHoverHighlight"]);
+    var { columns, onRowClick = null, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, showRowHoverHighlight = false } = _a, tableProps = __rest(_a, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight", "showRowHoverHighlight"]);
     const classes = virtualizedGlobalStyles();
-    const getRowClassName = (index) => clsx(classes.tableRow, classes.flexContainer, { [classes.tableRowHover]: index.index !== -1 && showRowHoverHighlight === true });
+    const getRowClassName = (index) => clsx(classes.tableRow, classes.flexContainer, {
+        [classes.tableRowHover]: index.index !== -1 && showRowHoverHighlight === true,
+        [classes.onRowClick]: onRowClick !== null
+    });
     const mapSortDirection = (sortDirection) => sortDirection === 'ASC' ? 'asc' : 'desc';
     const headerRenderer = (headerProps) => React.createElement(TableCell, { component: 'div', className: clsx(classes.tableCell, classes.flexContainer, classes.noClick), variant: 'head', style: { height: headerHeight }, align: columns[headerProps.columnIndex].numeric || false ? 'right' : 'left' },
         tableProps.sort !== undefined && headerProps.disableSort !== true && React.createElement(TableSortLabel, { active: headerProps.sortBy === headerProps.dataKey, direction: headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc' },
@@ -73,7 +79,7 @@ const VirtualizedTable = React.forwardRef((_a, ref) => {
         tableProps.sort === undefined && React.createElement("span", null, headerProps.label));
     return React.createElement(AutoSizer, null, ({ height, width }) => (React.createElement(Table, Object.assign({ ref: ref, height: height, width: width, className: classes.table, headerHeight: headerHeight, rowHeight: rowHeight, rowCount: rowCount, rowGetter: rowGetter, rowClassName: getRowClassName, onRowClick: onRowClick, gridStyle: { direction: 'inherit' }, gridClassName: classes.tableGrid }, tableProps), columns.map((_a, index) => {
         var { dataKey } = _a, other = __rest(_a, ["dataKey"]);
-        return React.createElement(Column, Object.assign({ key: dataKey, headerRenderer: (headerProps) => headerRenderer(Object.assign(Object.assign({}, headerProps), { columnIndex: index })), className: classes.flexContainer, cellRenderer: ({ cellData, columnIndex }) => React.createElement(TableCellDefault, { cellData: cellData, rowHeight: rowHeight, onRowClick: onRowClick, isNumeric: (columnIndex != null && columns[columnIndex].numeric) || false }), dataKey: dataKey }, other));
+        return React.createElement(Column, Object.assign({ key: dataKey, headerRenderer: (headerProps) => headerRenderer(Object.assign(Object.assign({}, headerProps), { columnIndex: index })), className: classes.flexContainer, cellRenderer: ({ cellData, columnIndex }) => React.createElement(TableCellDefault, { cellData: cellData, rowHeight: rowHeight, isNumeric: (columnIndex != null && columns[columnIndex].numeric) || false }), dataKey: dataKey }, other));
     }))));
 });
 export default memo(VirtualizedTable);

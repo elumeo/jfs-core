@@ -4,7 +4,6 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
 import { virtualizedGlobalStyles } from 'Component/Table/VirtualizedTable';
-import { RowMouseEventHandlerParams } from 'react-virtualized/dist/es/Table';
 import { TableCellLoading } from 'Component/Table/TableCell';
 
 export const cellStyles = makeStyles(() => createStyles({
@@ -18,11 +17,10 @@ export const cellStyles = makeStyles(() => createStyles({
 export type ICellRendererDefaultProps = {
   cellData: any;
   rowHeight: number;
-  onRowClick?: (info: RowMouseEventHandlerParams) => void
   isNumeric?: boolean;
 }
 
-const TableCellDefault = ({cellData, rowHeight, onRowClick = null, isNumeric = false}: ICellRendererDefaultProps) => {
+const TableCellDefault = ({cellData, rowHeight, isNumeric = false}: ICellRendererDefaultProps) => {
   const cellClasses = cellStyles();
   const globalStyles = virtualizedGlobalStyles();
   return (cellData && <TableCell
@@ -30,7 +28,6 @@ const TableCellDefault = ({cellData, rowHeight, onRowClick = null, isNumeric = f
       className={clsx(
         globalStyles.tableCell,
         globalStyles.flexContainer,
-        { [globalStyles.noClick]: onRowClick === null }
       )}
       variant={'body'}
       style={{height: rowHeight}}
