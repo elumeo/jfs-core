@@ -1,4 +1,4 @@
-import { createStandardAction } from 'typesafe-actions';
+import { createAction } from 'typesafe-actions';
 
 export namespace initializeApp {
   export type Payload = {
@@ -10,6 +10,6 @@ export namespace initializeApp {
 }
 
 export const initializeApp = (
-  createStandardAction('app/INITIALZE')<initializeApp.Payload>()
+  createAction('app/INITIALZE')<initializeApp.Payload>()
 );
-export const appInitialized = createStandardAction('app/INITIALZED')();
+export const appInitialized = createAction('app/INITIALZED')();

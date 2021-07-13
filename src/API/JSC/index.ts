@@ -116,7 +116,7 @@ namespace JSCApi {
     ): Promise<AxiosResponse<DTO.Session.IFrontendSessionDTO>> =>
       JscClient.post<DTO.Session.IFrontendSessionDTO>(
         "/session/" +
-          encodeURI(
+          encodeURIComponent(
             typeof appName === "number"
               ? (appName as number).toString()
               : appName
@@ -133,7 +133,7 @@ namespace JSCApi {
     ): Promise<AxiosResponse<DTO.Session.IFrontendSessionDTO>> =>
       JscClient.get<DTO.Session.IFrontendSessionDTO>(
         "/session/" +
-          encodeURI(
+          encodeURIComponent(
             typeof appName === "number"
               ? (appName as number).toString()
               : appName
@@ -145,7 +145,7 @@ namespace JSCApi {
       session: DTO.Session.ISessionDTO,
       config?: IJscClientConfig
     ): Promise<AxiosResponse<void>> =>
-      JscClient.delete<void>("/session", session, config);
+      JscClient.delete<void>("/session", session, { ...config, data: session });
   }
   export namespace SystemClient {
     export const getRegion = (
@@ -160,7 +160,7 @@ namespace JSCApi {
     ): Promise<AxiosResponse<DTO.Authorization.IUserRightsDTO>> =>
       JscClient.get<DTO.Authorization.IUserRightsDTO>(
         "/user/" +
-          encodeURI(
+          encodeURIComponent(
             typeof login === "number" ? (login as number).toString() : login
           ) +
           "/rights",

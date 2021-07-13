@@ -1,4 +1,4 @@
-import { createStandardAction } from 'typesafe-actions';
+import { createAction } from 'typesafe-actions';
 
-export const openNavigation = createStandardAction('navigation/OPEN')();
-export const closeNavigation = createStandardAction('navigation/CLOSE')();
+export const openNavigation = createAction('navigation/OPEN')();
+export const closeNavigation = createAction('navigation/CLOSE')();

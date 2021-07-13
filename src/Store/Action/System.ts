@@ -1,4 +1,4 @@
-import { createStandardAction } from 'typesafe-actions';
+import { createAction } from 'typesafe-actions';
 
 export namespace regionLoaded {
   export type Payload = {
@@ -7,6 +7,6 @@ export namespace regionLoaded {
 }
 
 export const regionLoaded = (
-  createStandardAction('region/LOADED')<regionLoaded.Payload>()
+  createAction('region/LOADED')<regionLoaded.Payload>()
 );
-export const getRegionFailed = createStandardAction('region/GET_FAILED')();
+export const getRegionFailed = createAction('region/GET_FAILED')();

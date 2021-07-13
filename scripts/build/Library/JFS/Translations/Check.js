@@ -36,7 +36,7 @@ const Snapshot = __importStar(require("./Snapshot"));
 const Table = __importStar(require("./Table"));
 const path_1 = require("path");
 const File = __importStar(require("./File"));
-const opn_1 = __importDefault(require("opn"));
+const open_1 = __importDefault(require("open"));
 const run = (path) => __awaiter(void 0, void 0, void 0, function* () {
     const base = path_1.dirname(path);
     const translations = yield File.json(base);
@@ -54,11 +54,11 @@ const run = (path) => __awaiter(void 0, void 0, void 0, function* () {
     if (missing.length && (first || changed)) {
         yield Snapshot.Asset.save(base, version, asset);
         const html = Snapshot.File.path(base, version, 'html');
-        opn_1.default(html);
+        open_1.default(html);
     }
     else if (missing.length) {
         const html = Snapshot.File.path(base, last.version, 'html');
-        opn_1.default(html);
+        open_1.default(html);
     }
     return !Boolean(missing.length);
 });

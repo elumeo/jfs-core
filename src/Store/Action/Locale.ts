@@ -1,4 +1,4 @@
-import { createStandardAction, PayloadAction } from 'typesafe-actions';
+import { createAction, PayloadAction } from 'typesafe-actions';
 import * as Country from 'Types/Country';
 
 export namespace setLocale {
@@ -10,5 +10,5 @@ export namespace setLocale {
 }
 
 export const setLocale = (
-  createStandardAction('locale/SET_LOCALE')<setLocale.Payload>()
+  createAction('locale/SET_LOCALE')<setLocale.Payload>()
 );

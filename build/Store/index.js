@@ -14,4 +14,3 @@ export const create = (epic, reducer) => {
     start(wrapped);
     return store;
 };
-// export default create(epic, reducer) as Redux.Store<Redux.CombinedState<State>>;

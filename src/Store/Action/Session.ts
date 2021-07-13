@@ -1,12 +1,12 @@
-import { createStandardAction } from 'typesafe-actions';
+import { createAction } from 'typesafe-actions';
 
 import JSCApi from 'API/JSC';
 type IFrontendSessionDTO = JSCApi.DTO.Session.IFrontendSessionDTO;
 type ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
 
-export const loadSession = createStandardAction(`session/LOAD`)();
+export const loadSession = createAction(`session/LOAD`)();
 
-export const checkSession = createStandardAction('route/CHECK')();
+export const checkSession = createAction('route/CHECK')();
 
 export namespace logout {
   export type Payload = {
@@ -15,7 +15,7 @@ export namespace logout {
 }
 
 export const logout = (
-  createStandardAction('route/LOGOUT')<logout.Payload>()
+  createAction('route/LOGOUT')<logout.Payload>()
 );
 
 export namespace authorizeSession {
@@ -25,9 +25,9 @@ export namespace authorizeSession {
 }
 
 export const authorizeSession = (
-  createStandardAction('route/AUTHORIZE')<authorizeSession.Payload>()
+  createAction('route/AUTHORIZE')<authorizeSession.Payload>()
 );
 
 export const unauthorizeSession = (
-  createStandardAction('route/UNAUTHORIZE')()
+  createAction('route/UNAUTHORIZE')()
 );

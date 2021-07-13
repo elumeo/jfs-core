@@ -1,4 +1,4 @@
-import { createReducer } from 'typesafe-actions';
+import { createReducer, ActionType } from 'typesafe-actions';
 import * as Action from 'Store/Action';
 import * as Type from 'Types/WebSocket';
 
@@ -13,7 +13,7 @@ export type State = {
   */
 export const initialState: State = {};
 
-const WebSocket = createReducer(initialState)
+const WebSocket = createReducer<State, ActionType<typeof Action>>(initialState)
 
   .handleAction(Action.webSocketConnectRequestAction, (state, action) => ({
     ...state,

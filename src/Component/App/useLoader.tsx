@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import useActions from 'Store/useActions';
 import { useSelector } from 'Types/Redux';
-// import '@formatjs/intl-pluralrules/polyfill';
-// import '@formatjs/intl-relativetimeformat/polyfill';
 
 const useLoader = ({ allowRobotLogin, packageJson, translations }: {
   allowRobotLogin: boolean;
@@ -17,12 +15,6 @@ const useLoader = ({ allowRobotLogin, packageJson, translations }: {
   useEffect(
     () => {
       initializeApp({ allowRobotLogin, packageJson, translations });
-      ['de', 'en', 'fr', 'it'].forEach(
-        locale => {
-        // require(`@formatjs/intl-pluralrules/locale-data/${locale}`)
-        // require(`@formatjs/intl-relativetimeformat/locale-data/${locale}`)
-      }
-      );
     },
     []
   );

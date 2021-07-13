@@ -1,5 +1,5 @@
 import { Toast } from 'Types/Toast';
-import { createStandardAction } from 'typesafe-actions';
+import { createAction } from 'typesafe-actions';
 
-export const addToastAction = createStandardAction('toast/ADD')<Toast>();
-export const dismissToastAction = createStandardAction('toast/DELETE')();
+export const addToastAction = createAction('toast/ADD')<Toast>();
+export const dismissToastAction = createAction('toast/DELETE')();

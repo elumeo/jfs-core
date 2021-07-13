@@ -46,7 +46,9 @@ const joinRoomLoading: Epic = (action$, state$) => {
             },
             name: err.error.name,
             config: err.error.config,
-            message: err.error.message
+            message: err.error.message,
+            isAxiosError: true,
+            toJSON: () => err.error.message
           };
           return of(
             Action.webSocketJoinRoomFailureAction(update),

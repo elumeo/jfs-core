@@ -2,7 +2,7 @@ import * as Snapshot from './Snapshot';
 import * as Table from './Table';
 import { dirname } from 'path';
 import * as File from './File';
-import opn from 'opn';
+import open from 'open';
 
 export const run = async (path: string) => {
   const base = dirname(path);
@@ -32,11 +32,11 @@ export const run = async (path: string) => {
   if (missing.length && (first || changed)) {
     await Snapshot.Asset.save(base, version, asset);
     const html = Snapshot.File.path(base, version, 'html');
-    opn(html);
+    open(html);
   }
   else if (missing.length) {
     const html = Snapshot.File.path(base, last.version, 'html');
-    opn(html);
+    open(html);
   }
 
   return !Boolean(missing.length);

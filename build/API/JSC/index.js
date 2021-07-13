@@ -22,7 +22,7 @@ var JSCApi;
     let LoginClient;
     (function (LoginClient) {
         LoginClient.loginFrontend = (appName, credentials, config) => JscClient.post("/session/" +
-            encodeURI(typeof appName === "number"
+            encodeURIComponent(typeof appName === "number"
                 ? appName.toString()
                 : appName) +
             "", credentials, config);
@@ -30,7 +30,7 @@ var JSCApi;
     let SessionClient;
     (function (SessionClient) {
         SessionClient.getCurrentSessionFrontend = (appName, config) => JscClient.get("/session/" +
-            encodeURI(typeof appName === "number"
+            encodeURIComponent(typeof appName === "number"
                 ? appName.toString()
                 : appName) +
             "", config);
@@ -43,7 +43,7 @@ var JSCApi;
     let UserClient;
     (function (UserClient) {
         UserClient.getUserRights = (login, config) => JscClient.get("/user/" +
-            encodeURI(typeof login === "number" ? login.toString() : login) +
+            encodeURIComponent(typeof login === "number" ? login.toString() : login) +
             "/rights", config);
     })(UserClient = JSCApi.UserClient || (JSCApi.UserClient = {}));
     let WebSocketClient;

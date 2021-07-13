@@ -1,4 +1,4 @@
-import { createReducer, PayloadAction } from 'typesafe-actions';
+import { createReducer } from 'typesafe-actions';
 import JSCApi from 'API/JSC';
 import * as Action from 'Store/Action';
 import { ActionType } from 'Types/Redux';
@@ -21,7 +21,7 @@ const initialState: State = {
 };
 
 const Session = createReducer<State, ActionType>(initialState)
-  .handleAction(Action.checkSession, (state): State => ({
+  .handleAction(Action.checkSession, (state) => ({
     ...state,
     isCheckingSession: true,
     })
