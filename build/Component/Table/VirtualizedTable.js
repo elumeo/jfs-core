@@ -19,7 +19,8 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
     flexContainer: {
         display: 'flex',
         alignItems: 'center',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        height: '100%'
     },
     table: {
         borderCollapse: 'separate',
@@ -79,7 +80,9 @@ const VirtualizedTable = React.forwardRef((_a, ref) => {
         tableProps.sort === undefined && React.createElement("span", null, headerProps.label));
     return React.createElement(AutoSizer, null, ({ height, width }) => (React.createElement(Table, Object.assign({ ref: ref, height: height, width: width, className: classes.table, headerHeight: headerHeight, rowHeight: rowHeight, rowCount: rowCount, rowGetter: rowGetter, rowClassName: getRowClassName, onRowClick: onRowClick, gridStyle: { direction: 'inherit' }, gridClassName: classes.tableGrid }, tableProps), columns.map((_a, index) => {
         var { dataKey } = _a, other = __rest(_a, ["dataKey"]);
-        return React.createElement(Column, Object.assign({ key: dataKey, headerRenderer: (headerProps) => headerRenderer(Object.assign(Object.assign({}, headerProps), { columnIndex: index })), className: classes.flexContainer, cellRenderer: ({ cellData, columnIndex }) => React.createElement(TableCellDefault, { cellData: cellData, rowHeight: rowHeight, isNumeric: (columnIndex != null && columns[columnIndex].numeric) || false }), dataKey: dataKey }, other));
+        return React.createElement(Column, Object.assign({ key: dataKey, headerRenderer: (headerProps) => headerRenderer(Object.assign(Object.assign({}, headerProps), { columnIndex: index })), className: classes.flexContainer, cellRenderer: ({ cellData, columnIndex }) => React.createElement(TableCellDefault, { cellData: cellData, 
+                // rowHeight={rowHeight}
+                isNumeric: (columnIndex != null && columns[columnIndex].numeric) || false }), dataKey: dataKey }, other));
     }))));
 });
 export default memo(VirtualizedTable);

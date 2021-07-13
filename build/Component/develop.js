@@ -20,7 +20,9 @@ for (let i = 0; i < 200; i += 1) {
 const Develop = () => {
     return React.createElement(Box, { component: Paper },
         React.createElement(Box, { padding: 1, height: '100%' },
-            React.createElement(VirtualizedTable, { showRowHoverHighlight: true, rowCount: rows.length, rowGetter: (row) => rows[row.index], sortBy: 'dessert', sortDirection: 'ASC', sort: () => console.log('sorting'), columns: [
+            React.createElement(VirtualizedTable, { showRowHoverHighlight: true, rowCount: rows.length, rowGetter: (row) => rows[row.index], sortBy: 'dessert', sortDirection: 'ASC', sort: () => console.log('sorting'), 
+                // rowHeight={100}
+                columns: [
                     {
                         width: 200,
                         flexGrow: 1,

@@ -5,18 +5,13 @@ import clsx from 'clsx';
 
 import { virtualizedGlobalStyles } from 'Component/Table/VirtualizedTable';
 
-export type ICellRendererDefaultProps = {
-  rowHeight: number;
-}
-
-const TableCellLoading = ({rowHeight}: ICellRendererDefaultProps) => {
+const TableCellLoading = () => {
   const globalStyles = virtualizedGlobalStyles();
   return <TableCell
     component={'div'}
     className={clsx(globalStyles.tableCell, globalStyles.flexContainer)}
     variant={'body'}
-    style={{height: rowHeight}}
-  ><Skeleton variant='text' width={'100%'} animation={'wave'} /></TableCell>;
+  ><Skeleton variant='text' width={'100%'} height={'100%'} animation={'wave'} /></TableCell>;
 }
 
 export default memo(TableCellLoading);

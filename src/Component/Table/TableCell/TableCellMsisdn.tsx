@@ -23,7 +23,7 @@ const TableCellMsisdn = ({cellProps, rowHeight}: TableCellMsisdnProps) => {
       variant={'body'}
       style={{height: rowHeight}}
     ><span className={cellClasses.cellContent}><FormattedMsisdn msisdn={cellProps.cellData}/></span></TableCell>) ||
-    <TableCellLoading rowHeight={rowHeight}/>;
+    <TableCellLoading />;
 }
 
 export default memo(TableCellMsisdn);

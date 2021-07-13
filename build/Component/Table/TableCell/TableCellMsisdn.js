@@ -11,6 +11,6 @@ const TableCellMsisdn = ({ cellProps, rowHeight }) => {
     return (cellProps.cellData !== null && React.createElement(TableCell, { component: 'div', className: clsx(globalStyles.tableCell, globalStyles.flexContainer), variant: 'body', style: { height: rowHeight } },
         React.createElement("span", { className: cellClasses.cellContent },
             React.createElement(FormattedMsisdn, { msisdn: cellProps.cellData })))) ||
-        React.createElement(TableCellLoading, { rowHeight: rowHeight });
+        React.createElement(TableCellLoading, null);
 };
 export default memo(TableCellMsisdn);
