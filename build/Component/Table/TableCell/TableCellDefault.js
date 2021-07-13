@@ -3,7 +3,7 @@ import { TableCell } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import { virtualizedGlobalStyles } from '../../Table/VirtualizedTable';
-import TableCellLoading from '../../Table/TableCell/TableCellLoading';
+import { TableCellLoading } from '../../Table/TableCell';
 export const cellStyles = makeStyles(() => createStyles({
     cellContent: {
         whiteSpace: 'nowrap',
@@ -11,10 +11,10 @@ export const cellStyles = makeStyles(() => createStyles({
         overflow: 'hidden'
     }
 }));
-const TableCellDefault = ({ cellProps, rowHeight }) => {
+const TableCellDefault = ({ cellData, rowHeight, onRowClick = null, isNumeric = false }) => {
     const cellClasses = cellStyles();
     const globalStyles = virtualizedGlobalStyles();
-    return (cellProps.rowData && React.createElement(TableCell, { component: 'div', className: clsx(globalStyles.tableCell, globalStyles.flexContainer), variant: 'body', style: { height: rowHeight } },
-        React.createElement("span", { className: cellClasses.cellContent }, cellProps.cellData))) || React.createElement(TableCellLoading, { rowHeight: rowHeight });
+    return (cellData && React.createElement(TableCell, { component: 'div', className: clsx(globalStyles.tableCell, globalStyles.flexContainer, { [globalStyles.noClick]: onRowClick === null }), variant: 'body', style: { height: rowHeight }, align: isNumeric ? 'right' : 'left' },
+        React.createElement("span", { className: cellClasses.cellContent }, cellData))) || React.createElement(TableCellLoading, { rowHeight: rowHeight });
 };
 export default memo(TableCellDefault);

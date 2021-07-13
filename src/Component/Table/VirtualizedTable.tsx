@@ -1,14 +1,15 @@
 import { TableCell, TableSortLabel } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { ColumnProps, AutoSizer, Column, Index, SizeInfo, Table, TableCellRenderer, TableHeaderProps, SortDirectionType, TableProps } from 'react-virtualized';
+import { ColumnProps, AutoSizer, Column, Index, SizeInfo, Table, TableHeaderProps, SortDirectionType, TableProps } from 'react-virtualized';
 import React, { memo } from 'react';
 import clsx from 'clsx';
+import { TableCellDefault } from 'Component/Table/TableCell';
 
 export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
   flexContainer: {
     display: 'flex',
     alignItems: 'center',
-    boxSizing: 'border-box',
+    boxSizing: 'border-box'
   },
   table: {
     borderCollapse: 'separate',
@@ -16,18 +17,18 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
       flip: false,
       paddingRight: theme.direction === 'rtl' ? '0 !important' : undefined,
       backgroundColor: theme.palette.background.default
-    },
+    }
   },
   tableGrid: {
-    outline: 'none',
+    outline: 'none'
   },
   tableRow: {
-    cursor: 'pointer',
+    cursor: 'pointer'
   },
   tableRowHover: {
     '&:hover': {
-      backgroundColor: theme.palette.grey[200],
-    },
+      backgroundColor: theme.palette.grey[200]
+    }
   },
   tableCell: {
     flex: 1,
@@ -36,7 +37,7 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
     maxWidth: '100%'
   },
   noClick: {
-    cursor: 'initial',
+    cursor: 'initial'
   },
   visuallyHidden: {
     border: 0,
@@ -47,7 +48,7 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
     padding: 0,
     position: 'absolute',
     top: 20,
-    width: 1,
+    width: 1
   }
 }));
 
@@ -75,89 +76,64 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
    },
    ref) => {
     const classes = virtualizedGlobalStyles();
-    const getRowClassName = (index: Index) => clsx(classes.tableRow, classes.flexContainer, {
-      [classes.tableRowHover]: index.index !== -1 && showRowHoverHighlight === true,
-    });
-
-    const cellRenderer: TableCellRenderer = ({cellData, columnIndex}) => {
-      return (
-        <TableCell
-          component={'div'}
-          className={clsx(classes.tableCell, classes.flexContainer, {
-            [classes.noClick]: onRowClick == null,
-          })}
-          variant={'body'}
-          style={{height: rowHeight}}
-          align={(columnIndex != null && columns[columnIndex].numeric) || false ? 'right' : 'left'}
-        >{cellData}</TableCell>
-      );
-    };
+    const getRowClassName = (index: Index) => clsx(
+      classes.tableRow,
+      classes.flexContainer,
+      { [classes.tableRowHover]: index.index !== -1 && showRowHoverHighlight === true }
+    );
 
     const mapSortDirection = (sortDirection: SortDirectionType) => sortDirection === 'ASC' ? 'asc' : 'desc';
 
-    const headerRenderer = (headerProps: TableHeaderProps & { columnIndex: number }) => {
-      return (
-        <TableCell
-          component={'div'}
-          className={clsx(classes.tableCell, classes.flexContainer, classes.noClick)}
-          variant={'head'}
-          style={{height: headerHeight}}
-          align={columns[headerProps.columnIndex].numeric || false ? 'right' : 'left'}
-        >
-          {tableProps.sort !== undefined && headerProps.disableSort !== true && <TableSortLabel
-            active={headerProps.sortBy === headerProps.dataKey}
-            direction={headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc'}
-          >
-            {headerProps.label}
-            {headerProps.sortBy === headerProps.dataKey ? (
-              <span
-                className={classes.visuallyHidden}>{headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending'}</span>
-            ) : null}
-          </TableSortLabel>}
-          {tableProps.sort === undefined && <span>{headerProps.label}</span>}
-        </TableCell>
-      );
-    };
+    const headerRenderer = (headerProps: TableHeaderProps & { columnIndex: number }) => <TableCell
+      component={'div'}
+      className={clsx(classes.tableCell, classes.flexContainer, classes.noClick)}
+      variant={'head'}
+      style={{ height: headerHeight }}
+      align={columns[headerProps.columnIndex].numeric || false ? 'right' : 'left'}>
+      {tableProps.sort !== undefined && headerProps.disableSort !== true && <TableSortLabel
+        active={headerProps.sortBy === headerProps.dataKey}
+        direction={headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc'}>
+        {headerProps.label}
+        {headerProps.sortBy === headerProps.dataKey ? (
+          <span className={classes.visuallyHidden}>{headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending'}</span>) : null}
+      </TableSortLabel>}
+      {tableProps.sort === undefined && <span>{headerProps.label}</span>}
+    </TableCell>;
 
-    return (
-      <AutoSizer>
-        {({height, width}: SizeInfo) => (
-          <Table
-            ref={ref}
-            height={height}
-            width={width}
-            className={classes.table}
-            headerHeight={headerHeight!}
-            rowHeight={rowHeight!}
-            rowCount={rowCount}
-            rowGetter={rowGetter}
-            rowClassName={getRowClassName}
-            onRowClick={onRowClick}
-            gridStyle={{direction: 'inherit'}}
-            gridClassName={classes.tableGrid}
-            {...tableProps}
-          >
-            {columns.map(({dataKey, ...other}, index) => {
-              return (
-                <Column
-                  key={dataKey}
-                  headerRenderer={(headerProps) =>
-                    headerRenderer({
-                      ...headerProps,
-                      columnIndex: index,
-                    })
-                  }
-                  className={classes.flexContainer}
-                  cellRenderer={cellRenderer}
-                  dataKey={dataKey}
-                  {...other}
-                />
-              );
-            })}
-          </Table>
-        )}
-      </AutoSizer>
-    );
-  });
+    return <AutoSizer>
+      {({ height, width }: SizeInfo) => (
+        <Table
+          ref={ref}
+          height={height}
+          width={width}
+          className={classes.table}
+          headerHeight={headerHeight!}
+          rowHeight={rowHeight!}
+          rowCount={rowCount}
+          rowGetter={rowGetter}
+          rowClassName={getRowClassName}
+          onRowClick={onRowClick}
+          gridStyle={{ direction: 'inherit' }}
+          gridClassName={classes.tableGrid}
+          {...tableProps}
+        >
+          {columns.map(({ dataKey, ...other }, index) => <Column
+            key={dataKey}
+            headerRenderer={(headerProps) => headerRenderer({ ...headerProps, columnIndex: index })}
+            className={classes.flexContainer}
+            cellRenderer={({ cellData, columnIndex }) => <TableCellDefault
+              cellData={cellData}
+              rowHeight={rowHeight}
+              onRowClick={onRowClick}
+              isNumeric={(columnIndex != null && columns[columnIndex].numeric) || false}
+            />}
+            dataKey={dataKey}
+            {...other}
+          />)}
+        </Table>
+      )}
+    </AutoSizer>;
+  }
+);
 
 export default memo(VirtualizedTable);
