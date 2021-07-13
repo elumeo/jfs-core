@@ -51,6 +51,7 @@ const Develop = () => {
         sortBy={'dessert'}
         sortDirection={'ASC'}
         sort={() => console.log('sorting')}
+        // rowHeight={100}
         columns={[
           {
             width: 200,

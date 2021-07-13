@@ -9,7 +9,8 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
   flexContainer: {
     display: 'flex',
     alignItems: 'center',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    height: '100%'
   },
   table: {
     borderCollapse: 'separate',
@@ -129,7 +130,7 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
             className={classes.flexContainer}
             cellRenderer={({ cellData, columnIndex }) => <TableCellDefault
               cellData={cellData}
-              rowHeight={rowHeight}
+              // rowHeight={rowHeight}
               isNumeric={(columnIndex != null && columns[columnIndex].numeric) || false}
             />}
             dataKey={dataKey}

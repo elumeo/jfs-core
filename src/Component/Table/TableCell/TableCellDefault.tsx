@@ -16,11 +16,10 @@ export const cellStyles = makeStyles(() => createStyles({
 
 export type ICellRendererDefaultProps = {
   cellData: any;
-  rowHeight: number;
   isNumeric?: boolean;
 }
 
-const TableCellDefault = ({cellData, rowHeight, isNumeric = false}: ICellRendererDefaultProps) => {
+const TableCellDefault = ({cellData, isNumeric = false}: ICellRendererDefaultProps) => {
   const cellClasses = cellStyles();
   const globalStyles = virtualizedGlobalStyles();
   return (cellData && <TableCell
@@ -30,8 +29,8 @@ const TableCellDefault = ({cellData, rowHeight, isNumeric = false}: ICellRendere
         globalStyles.flexContainer,
       )}
       variant={'body'}
-      style={{height: rowHeight}}
+      style={{height: '100%'}}
       align={isNumeric ? 'right' : 'left'}
-    ><span className={cellClasses.cellContent}>{cellData}</span></TableCell>) || <TableCellLoading rowHeight={rowHeight}/>;
+    ><span className={cellClasses.cellContent}>{cellData}</span></TableCell>) || <TableCellLoading />;
 }
 export default memo(TableCellDefault);
