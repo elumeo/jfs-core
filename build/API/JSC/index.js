@@ -34,7 +34,7 @@ var JSCApi;
                 ? appName.toString()
                 : appName) +
             "", config);
-        SessionClient.logout = (session, config) => JscClient.delete("/session", session, config);
+        SessionClient.logout = (session, config) => JscClient.delete("/session", session, Object.assign(Object.assign({}, config), { data: session }));
     })(SessionClient = JSCApi.SessionClient || (JSCApi.SessionClient = {}));
     let SystemClient;
     (function (SystemClient) {

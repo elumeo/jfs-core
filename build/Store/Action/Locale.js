@@ -1,2 +1,2 @@
-import { createStandardAction } from 'typesafe-actions';
-export const setLocale = (createStandardAction('locale/SET_LOCALE')());
+import { createAction } from 'typesafe-actions';
+export const setLocale = (createAction('locale/SET_LOCALE')());

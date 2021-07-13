@@ -34,8 +34,8 @@ export class HttpClient {
     static delete(url, data, config = {}) {
         // Because Axios does not allow data body during delete request we have to put this in the config as a workaround
         // @See: https://github.com/axios/axios/issues/736
-        return HttpClient.createInstance({ data })
-            .delete(url, config)
+        return HttpClient.createInstance(config)
+            .delete(url, Object.assign(Object.assign({}, config), { data }))
             .catch((error) => {
             throw error;
         });

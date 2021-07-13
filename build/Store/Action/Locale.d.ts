@@ -6,4 +6,4 @@ export declare namespace setLocale {
     };
     type Type = PayloadAction<string, Payload>;
 }
-export declare const setLocale: import("typesafe-actions").PayloadAC<"locale/SET_LOCALE", setLocale.Payload>;
+export declare const setLocale: import("typesafe-actions").PayloadActionCreator<"locale/SET_LOCALE", setLocale.Payload>;

@@ -10,5 +10,5 @@ export declare namespace initializeApp {
         };
     };
 }
-export declare const initializeApp: import("typesafe-actions").PayloadAC<"app/INITIALZE", initializeApp.Payload>;
-export declare const appInitialized: import("typesafe-actions").EmptyAC<"app/INITIALZED">;
+export declare const initializeApp: import("typesafe-actions").PayloadActionCreator<"app/INITIALZE", initializeApp.Payload>;
+export declare const appInitialized: import("typesafe-actions").EmptyActionCreator<"app/INITIALZED">;

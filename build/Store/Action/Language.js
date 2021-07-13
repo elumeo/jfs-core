@@ -1,3 +1,3 @@
-import { createStandardAction } from 'typesafe-actions';
-export const changeLanguageAction = (createStandardAction('language/CHANGE')());
-export const initializeLanguage = (createStandardAction(`language/INITIALIZE`)());
+import { createAction } from 'typesafe-actions';
+export const changeLanguageAction = (createAction('language/CHANGE')());
+export const initializeLanguage = (createAction(`language/INITIALIZE`)());

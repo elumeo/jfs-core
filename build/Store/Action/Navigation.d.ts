@@ -1,2 +1,2 @@
-export declare const openNavigation: import("typesafe-actions").EmptyAC<"navigation/OPEN">;
-export declare const closeNavigation: import("typesafe-actions").EmptyAC<"navigation/CLOSE">;
+export declare const openNavigation: import("typesafe-actions").EmptyActionCreator<"navigation/OPEN">;
+export declare const closeNavigation: import("typesafe-actions").EmptyActionCreator<"navigation/CLOSE">;

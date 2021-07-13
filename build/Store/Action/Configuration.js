@@ -1,4 +1,4 @@
-import { createStandardAction } from 'typesafe-actions';
-export const loadConfig = createStandardAction('config/LOAD')();
-export const configLoadedAction = createStandardAction('config/LOADED')();
-export const loadConfigFailed = createStandardAction('config/LOAD_FAILED')();
+import { createAction } from 'typesafe-actions';
+export const loadConfig = createAction('config/LOAD')();
+export const configLoadedAction = createAction('config/LOADED')();
+export const loadConfigFailed = createAction('config/LOAD_FAILED')();
