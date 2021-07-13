@@ -16,7 +16,8 @@
     "jfs-open-showcase": "jfs-open-showcase",
     "jfs-postinstall": "jfs-postinstall",
     "jfs-set-peer-dependencies": "jfs-set-peer-dependencies",
-    "jfs-sync": "jfs-sync"
+    "jfs-sync": "jfs-sync",
+    "jfs-copy-augmentations": "jfs-copy-augmentations"
   },
   "jfs": {
     "sync": {
@@ -25,7 +26,7 @@
   },
   "dependencies": {
     "@date-io/moment": "^1.3.13",
-    "@elumeo/jfs-core": "https://github.com/elumeo/jfs-core.git#6713868c",
+    "@elumeo/jfs-core": "https://github.com/elumeo/jfs-core.git#890362c3",
     "jfc-hello-world": "https://github.com/scharfohnezwiebeln/jfc_HelloWorld.git#c7c4c9e5"
   },
   "keywords": [],
