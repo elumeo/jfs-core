@@ -1,11 +1,10 @@
 import React, { memo } from 'react';
-import { TableCellProps } from 'react-virtualized';
 import { TableCell } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
 import { virtualizedGlobalStyles } from 'Component/Table/VirtualizedTable';
-import TableCellLoading from 'Component/Table/TableCell/TableCellLoading';
+import { TableCellLoading } from 'Component/Table/TableCell';
 
 export const cellStyles = makeStyles(() => createStyles({
   cellContent: {
@@ -16,18 +15,23 @@ export const cellStyles = makeStyles(() => createStyles({
 }));
 
 export type ICellRendererDefaultProps = {
-  cellProps: TableCellProps;
+  cellData: any;
   rowHeight: number;
+  isNumeric?: boolean;
 }
 
-const TableCellDefault = ({cellProps, rowHeight}: ICellRendererDefaultProps) => {
+const TableCellDefault = ({cellData, rowHeight, isNumeric = false}: ICellRendererDefaultProps) => {
   const cellClasses = cellStyles();
   const globalStyles = virtualizedGlobalStyles();
-  return (cellProps.rowData && <TableCell
+  return (cellData && <TableCell
       component={'div'}
-      className={clsx(globalStyles.tableCell, globalStyles.flexContainer)}
+      className={clsx(
+        globalStyles.tableCell,
+        globalStyles.flexContainer,
+      )}
       variant={'body'}
       style={{height: rowHeight}}
-    ><span className={cellClasses.cellContent}>{cellProps.cellData}</span></TableCell>) || <TableCellLoading rowHeight={rowHeight}/>;
+      align={isNumeric ? 'right' : 'left'}
+    ><span className={cellClasses.cellContent}>{cellData}</span></TableCell>) || <TableCellLoading rowHeight={rowHeight}/>;
 }
 export default memo(TableCellDefault);

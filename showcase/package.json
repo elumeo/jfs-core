@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@date-io/moment": "^1.3.13",
-    "@elumeo/jfs-core": "10.0.0-beta.76",
+    "@elumeo/jfs-core": "https://github.com/elumeo/jfs-core.git#890362c3",
     "jfc-hello-world": "https://github.com/scharfohnezwiebeln/jfc_HelloWorld.git#c7c4c9e5"
   },
   "keywords": [],

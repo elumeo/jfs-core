@@ -1,5 +1,4 @@
 /// <reference types="react" />
-import { Theme } from '@material-ui/core/styles';
-export declare const getAppBarHeight: (theme: Theme) => number;
+import 'date-fns';
 declare const Develop: () => JSX.Element;
 export default Develop;

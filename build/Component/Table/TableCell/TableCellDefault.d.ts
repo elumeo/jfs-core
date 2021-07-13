@@ -1,9 +1,9 @@
 import React from 'react';
-import { TableCellProps } from 'react-virtualized';
 export declare const cellStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"cellContent">;
 export declare type ICellRendererDefaultProps = {
-    cellProps: TableCellProps;
+    cellData: any;
     rowHeight: number;
+    isNumeric?: boolean;
 };
-declare const _default: React.MemoExoticComponent<({ cellProps, rowHeight }: ICellRendererDefaultProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ cellData, rowHeight, isNumeric }: ICellRendererDefaultProps) => JSX.Element>;
 export default _default;

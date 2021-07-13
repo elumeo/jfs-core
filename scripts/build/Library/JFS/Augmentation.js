@@ -26,6 +26,9 @@ const files = (base) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.files = files;
 const copy = (env, target) => __awaiter(void 0, void 0, void 0, function* () {
+    if (!fs_extra_1.default.existsSync(target)) {
+        yield fs_extra_1.default.mkdir(target);
+    }
     return (Promise.all((yield exports.files(exports.base(env)))
         .map(file => fs_extra_1.default.copyFile(file.path, path_1.default.resolve(target, file.name)))));
 });
