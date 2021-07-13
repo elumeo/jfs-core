@@ -14,10 +14,15 @@ export const files = async (base: string) => (
     }))
 );
 
-export const copy = async (env: Type.Environment.Info, target: string) => (
-  Promise.all((await files(base(env)))
-    .map(file => fs.copyFile(
-      file.path,
-      path.resolve(target, file.name)
-    )))
-);
+export const copy = async (env: Type.Environment.Info, target: string) => {
+  if (!fs.existsSync(target)) {
+    await fs.mkdir(target);
+  }
+  return (
+    Promise.all((await files(base(env)))
+      .map(file => fs.copyFile(
+        file.path,
+        path.resolve(target, file.name)
+      )))
+  );
+}
