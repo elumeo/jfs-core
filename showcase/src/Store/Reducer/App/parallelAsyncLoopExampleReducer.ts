@@ -13,7 +13,7 @@ export const initialState: State = {
   isFinished: false
 };
 
-const ParallelAsyncLoopExample = TA.createReducer(initialState)
+const ParallelAsyncLoopExample = TA.createReducer<State, TA.ActionType<typeof Action>>(initialState)
   .handleAction(
     Action.parallelAsyncLoopExampleRequestAction,
     state => ({

@@ -3,7 +3,7 @@ import { filter, switchMap } from 'rxjs/operators';
 import * as Action from 'Store/Action';
 import JSCApi from 'API/JSC';
 import { isActionOf } from 'typesafe-actions';
-import { Epic } from 'Types/Redux';
+import { Epic } from 'redux-observable';
 
 /**
  * This epic works also for room subscriptions using the config

@@ -4,7 +4,7 @@ import * as Action from 'Store/Action';
 import * as TA from 'typesafe-actions';
 import JSCApi from 'API/JSC';
 import { WSClient }from '@elumeo/jfs-core/build/API/WS/WSClient';
-import { Epic } from 'Types/Redux';
+import { Epic } from 'redux-observable';
 
 type WebSocketAction = (
   TA.PayloadAction<string, JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<string>>

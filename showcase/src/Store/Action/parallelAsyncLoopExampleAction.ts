@@ -1,19 +1,13 @@
 import * as TA from 'typesafe-actions';
 
 export const parallelAsyncLoopExampleRequestAction = (
-  TA.createStandardAction(
-    'parallelAsyncLoopExample/REQUEST'
-  )<string[]>()
+  TA.createAction('parallelAsyncLoopExample/REQUEST')<string[]>()
 );
 
 export const parallelAsyncLoopExampleUpdateAction = (
-  TA.createStandardAction(
-    'parallelAsyncLoopExample/UPDATE'
-  )<number>()
+  TA.createAction('parallelAsyncLoopExample/UPDATE')<number>()
 );
 
 export const parallelAsyncLoopExampleSuccessAction = (
-  TA.createStandardAction(
-    'parallelAsyncLoopExample/SUCCESS'
-  )()
+  TA.createAction('parallelAsyncLoopExample/SUCCESS')()
 );
