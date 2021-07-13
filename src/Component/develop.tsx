@@ -1,13 +1,8 @@
 import React from 'react';
-import { Box, Card, Paper, CardContent, Container, List, ListItem, ListItemIcon, ListItemText, Typography, TypographyVariant, Grid } from '@material-ui/core';
-import { useTheme } from '@material-ui/styles';
-import WarningIcon from '@material-ui/icons/Warning';
+import { Box, Paper } from '@material-ui/core';
 import { VirtualizedTable } from 'Component/Table';
 import { Index } from 'react-virtualized';
-import PriceField from 'Component/PriceInput/PriceField';
-import { MuiPickersUtilsProvider, KeyboardDatePicker, KeyboardDateTimePicker, KeyboardTimePicker } from '@material-ui/pickers';
 import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
 
 type Data = {
   calories: number;
@@ -17,10 +12,8 @@ type Data = {
   id: number;
   protein: number;
 }
-import { makeStyles, Theme } from '@material-ui/core/styles';
 
 type Sample = [string, number, number, number, number];
-export const getAppBarHeight = (theme: Theme) => (parseInt(theme.mixins.toolbar.minHeight.toString()) + theme.spacing(2));
 
 const sample: Sample[] = [
   ['Frozen yoghurt', 159, 6.0, 24, 4.0],
@@ -48,112 +41,8 @@ for (let i = 0; i < 200; i += 1) {
   rows.push(createData(i, ...randomSelection));
 }
 
-const variants: TypographyVariant[] = [
-  'h1',
-  'h2',
-  'h3',
-  'h4',
-  'h5',
-  'h6',
-  'subtitle1',
-  'subtitle2',
-  'body1',
-  'body2',
-  'button',
-  'caption',
-  'overline'
-];
-const useStyles = makeStyles(theme => ({
-  root: {
-    height: 'calc(100% - ' + getAppBarHeight(theme) + 'px)',
-    width: 'calc(100% - ' + theme.spacing(2) + 'px)',
-    margin: theme.spacing(1),
-  },
-  menu: {
-    width: theme.spacing(50),
-  },
-}));
-
 const Develop = () => {
-  const theme = useTheme<Theme>();
-  const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date('2014-08-18T21:11:54'));
-  const [priceValue, setPriceValue] = React.useState('1000.55');
-
-  const handleDateChange = (date: Date | null) => {
-    setSelectedDate(date);
-  };
-
   return <Box component={Paper}>
-    {/*<Box component={Paper} p={2}>*/}
-    {/*  <MuiPickersUtilsProvider utils={DateFnsUtils}>*/}
-    {/*    <Grid container spacing={1}>*/}
-    {/*      <Grid item>*/}
-    {/*        <PriceField*/}
-    {/*          id={'das_ist_ein_test'}*/}
-    {/*          value={priceValue}*/}
-    {/*          onChange={(event) => setPriceValue(event.target.value)}*/}
-    {/*        />*/}
-    {/*      </Grid>*/}
-          {/*<Grid item>*/}
-          {/*  <KeyboardDatePicker*/}
-          {/*    disableToolbar*/}
-          {/*    variant='inline'*/}
-          {/*    format='dd/MM/yyyy'*/}
-          {/*    id='date-picker-inline'*/}
-          {/*    label='Date picker inline'*/}
-          {/*    value={selectedDate}*/}
-          {/*    onChange={(date) => handleDateChange(date as any)}*/}
-          {/*    KeyboardButtonProps={{*/}
-          {/*      'aria-label': 'change date'*/}
-          {/*    }}*/}
-          {/*  />*/}
-          {/*</Grid>*/}
-          {/*<Grid item>*/}
-          {/*  <KeyboardTimePicker*/}
-          {/*    ampm={false}*/}
-          {/*    id='time-picker'*/}
-          {/*    label='Time picker'*/}
-          {/*    value={selectedDate}*/}
-          {/*    onChange={(date) => handleDateChange(date as any)}*/}
-          {/*    KeyboardButtonProps={{*/}
-          {/*      'aria-label': 'change time'*/}
-          {/*    }}*/}
-          {/*  />*/}
-          {/*</Grid>*/}
-          {/*<Grid item>*/}
-          {/*  <KeyboardDateTimePicker*/}
-          {/*    // disableToolbar*/}
-          {/*    ampm={false}*/}
-          {/*    variant='inline'*/}
-          {/*    format='dd/MM/yyyy HH:mm'*/}
-          {/*    id='date-picker-inline'*/}
-          {/*    label='Datetime picker inline'*/}
-          {/*    value={selectedDate}*/}
-          {/*    onChange={(date) => handleDateChange(date as any)}*/}
-          {/*    KeyboardButtonProps={{*/}
-          {/*      'aria-label': 'change date and time',*/}
-          {/*    }}*/}
-          {/*  />*/}
-          {/*</Grid>*/}
-    {/*    </Grid>*/}
-    {/*  </MuiPickersUtilsProvider>*/}
-    {/*</Box>*/}
-    {/*<Box>*/}
-    {/*  <Container>*/}
-    {/*    <Card>*/}
-    {/*      <CardContent>*/}
-    {/*        {variants.map((variant) => <Box key={variant}><Typography variant={variant as TypographyVariant}>variant='{variant}'</Typography></Box>)}*/}
-    {/*      </CardContent>*/}
-    {/*    </Card>*/}
-    {/*    <List>*/}
-    {/*      <ListItem>*/}
-    {/*        <ListItemIcon><WarningIcon /></ListItemIcon>*/}
-    {/*        <ListItemText>Text</ListItemText>*/}
-    {/*      </ListItem>*/}
-    {/*    </List>*/}
-    {/*  </Container>*/}
-    {/*</Box>*/}
-    {/*<Box width={'100%'} height={'100%'} bgcolor={theme.palette.rubin.main}>Hallo Welt!</Box>*/}
     <Box padding={1} height={'100%'}>
       <VirtualizedTable
         showRowHoverHighlight
@@ -172,25 +61,25 @@ const Develop = () => {
           },
           {
             width: 120,
-            label: 'Calories\u00A0(g)',
+            label: 'Calories (g)',
             dataKey: 'calories',
             numeric: true,
           },
           {
             width: 120,
-            label: 'Fat\u00A0(g)',
+            label: 'Fat (g)',
             dataKey: 'fat',
             numeric: true,
           },
           {
             width: 120,
-            label: 'Carbs\u00A0(g)',
+            label: 'Carbs (g)',
             dataKey: 'carbs',
             numeric: true,
           },
           {
             width: 120,
-            label: 'Protein\u00A0(g)',
+            label: 'Protein (g)',
             dataKey: 'protein',
             numeric: true,
           },
