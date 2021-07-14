@@ -9,7 +9,7 @@ export const initialState: State = {
   data: null
 };
 
-const Jsc2JfsPingExample = TA.createReducer(initialState)
+const Jsc2JfsPingExample = TA.createReducer<State, TA.ActionType<typeof Action>>(initialState)
   .handleAction(
     Action.Jsc2JfsPingExampleUpdateRoomAction,
     (state, action) => ({
