@@ -56,7 +56,7 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
   }
 }));
 
-type ColumnData = ColumnProps & {
+export type ColumnData = ColumnProps & {
   numeric?: boolean;
 }
 

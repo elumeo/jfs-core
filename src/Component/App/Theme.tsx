@@ -22,7 +22,7 @@ export default responsiveFontSizes(createTheme({
       root: {
         minWidth: 32
       }
-    }
+    },
   },
   typography: {
     fontSize: 13,

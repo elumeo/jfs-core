@@ -1,7 +1,7 @@
 import { ColumnProps, Table, TableProps } from 'react-virtualized';
 import React from 'react';
 export declare const virtualizedGlobalStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"table" | "flexContainer" | "tableGrid" | "tableRow" | "tableRowHover" | "tableCell" | "onRowClick" | "noClick" | "visuallyHidden">;
-declare type ColumnData = ColumnProps & {
+export declare type ColumnData = ColumnProps & {
     numeric?: boolean;
 };
 declare type VirtualizedTableProps = TableProps & {
