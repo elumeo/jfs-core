@@ -13,11 +13,6 @@ export default responsiveFontSizes(createTheme({
         }
       }
     },
-    MuiListItemAvatar: {
-      root: {
-        minWidth: 32
-      }
-    },
     MuiListItemIcon: {
       root: {
         minWidth: 32
