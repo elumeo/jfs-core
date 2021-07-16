@@ -4,7 +4,7 @@ import { TableCell } from '@material-ui/core';
 import clsx from 'clsx';
 
 import FormattedMsisdn from 'Component/FormattedMsisdn';
-import { virtualizedGlobalStyles } from 'Component/Table/VirtualizedTable';
+import { globalStyles } from 'Component/Table/VirtualizedTable';
 import { cellStyles } from 'Component/Table/TableCell/TableCellDefault';
 import TableCellLoading from 'Component/Table/TableCell/TableCellLoading';
 
@@ -14,15 +14,15 @@ export type TableCellMsisdnProps = {
 }
 
 const TableCellMsisdn = ({cellProps, rowHeight}: TableCellMsisdnProps) => {
-  const cellClasses = cellStyles();
-  const globalStyles = virtualizedGlobalStyles();
+  const classes = cellStyles();
+  const globalClasses = globalStyles();
 
   return (cellProps.cellData !== null && <TableCell
       component={'div'}
-      className={clsx(globalStyles.tableCell, globalStyles.flexContainer)}
+      className={clsx(globalClasses.tableCell, globalClasses.flexContainer)}
       variant={'body'}
       style={{height: rowHeight}}
-    ><span className={cellClasses.cellContent}><FormattedMsisdn msisdn={cellProps.cellData}/></span></TableCell>) ||
+    ><span className={classes.cellContent}><FormattedMsisdn msisdn={cellProps.cellData}/></span></TableCell>) ||
     <TableCellLoading />;
 }
 

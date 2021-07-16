@@ -3,13 +3,13 @@ import { TableCell } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import clsx from 'clsx';
 
-import { virtualizedGlobalStyles } from 'Component/Table/VirtualizedTable';
+import { globalStyles } from 'Component/Table/VirtualizedTable';
 
 const TableCellLoading = () => {
-  const globalStyles = virtualizedGlobalStyles();
+  const globalClasses = globalStyles();
   return <TableCell
     component={'div'}
-    className={clsx(globalStyles.tableCell, globalStyles.flexContainer)}
+    className={clsx(globalClasses.tableCell, globalClasses.flexContainer)}
     variant={'body'}
   ><Skeleton variant='text' width={'100%'} height={'100%'} animation={'wave'} /></TableCell>;
 }

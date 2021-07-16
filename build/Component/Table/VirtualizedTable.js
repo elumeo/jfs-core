@@ -9,19 +9,27 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import { TableCell, TableSortLabel } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { AutoSizer, Column, Table } from 'react-virtualized';
 import React, { memo } from 'react';
 import clsx from 'clsx';
 import { TableCellDefault } from '../Table/TableCell';
-export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
+import TableHeadDefault from '../Table/TableHead/TableHeadDefault';
+export const globalStyles = makeStyles((theme) => createStyles({
     flexContainer: {
         display: 'flex',
         alignItems: 'center',
         boxSizing: 'border-box',
         height: '100%'
     },
+    tableCell: {
+        flex: 1,
+        fontSize: theme.typography.pxToRem(13),
+        padding: theme.spacing(1),
+        maxWidth: '100%'
+    },
+}));
+export const useStyles = makeStyles((theme) => createStyles({
     table: {
         borderCollapse: 'separate',
         '& .ReactVirtualized__Table__headerRow': {
@@ -41,48 +49,27 @@ export const virtualizedGlobalStyles = makeStyles(theme => createStyles({
             backgroundColor: theme.palette.grey[200]
         }
     },
-    tableCell: {
-        flex: 1,
-        fontSize: theme.typography.pxToRem(13),
-        padding: theme.spacing(1),
-        maxWidth: '100%'
-    },
     onRowClick: {
         cursor: 'pointer'
-    },
-    noClick: {
-        cursor: 'initial'
-    },
-    visuallyHidden: {
-        border: 0,
-        clip: 'rect(0 0 0 0)',
-        height: 1,
-        margin: -1,
-        overflow: 'hidden',
-        padding: 0,
-        position: 'absolute',
-        top: 20,
-        width: 1
     }
 }));
 const VirtualizedTable = React.forwardRef((_a, ref) => {
     var { columns, onRowClick = null, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, showRowHoverHighlight = false } = _a, tableProps = __rest(_a, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight", "showRowHoverHighlight"]);
-    const classes = virtualizedGlobalStyles();
-    const getRowClassName = (index) => clsx(classes.tableRow, classes.flexContainer, {
+    const globalClasses = globalStyles();
+    const classes = useStyles();
+    const getRowClassName = (index) => clsx(classes.tableRow, globalClasses.flexContainer, {
         [classes.tableRowHover]: index.index !== -1 && showRowHoverHighlight === true,
         [classes.onRowClick]: onRowClick !== null
     });
-    const mapSortDirection = (sortDirection) => sortDirection === 'ASC' ? 'asc' : 'desc';
-    const headerRenderer = (headerProps) => React.createElement(TableCell, { component: 'div', className: clsx(classes.tableCell, classes.flexContainer, classes.noClick), variant: 'head', style: { height: headerHeight }, align: columns[headerProps.columnIndex].numeric || false ? 'right' : 'left' },
-        tableProps.sort !== undefined && headerProps.disableSort !== true && React.createElement(TableSortLabel, { active: headerProps.sortBy === headerProps.dataKey, direction: headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc' },
-            headerProps.label,
-            headerProps.sortBy === headerProps.dataKey ? (React.createElement("span", { className: classes.visuallyHidden }, headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending')) : null),
-        tableProps.sort === undefined && React.createElement("span", null, headerProps.label));
     return React.createElement(AutoSizer, null, ({ height, width }) => (React.createElement(Table, Object.assign({ ref: ref, height: height, width: width, className: classes.table, headerHeight: headerHeight, rowHeight: rowHeight, rowCount: rowCount, rowGetter: rowGetter, rowClassName: getRowClassName, onRowClick: onRowClick, gridStyle: { direction: 'inherit' }, gridClassName: classes.tableGrid }, tableProps), columns.map((_a, index) => {
         var { dataKey } = _a, other = __rest(_a, ["dataKey"]);
-        return React.createElement(Column, Object.assign({ key: dataKey, headerRenderer: (headerProps) => headerRenderer(Object.assign(Object.assign({}, headerProps), { columnIndex: index })), className: classes.flexContainer, cellRenderer: ({ cellData, columnIndex }) => React.createElement(TableCellDefault, { cellData: cellData, 
-                // rowHeight={rowHeight}
-                isNumeric: (columnIndex != null && columns[columnIndex].numeric) || false }), dataKey: dataKey }, other));
+        return React.createElement(Column, Object.assign({ key: dataKey, headerStyle: { outline: 'none' }, headerRenderer: (headerProps) => {
+                const columnData = headerProps.columnData !== undefined ? headerProps.columnData : {};
+                columnData.index = index;
+                columnData.numeric = columns[index].numeric;
+                columnData.headerHeight = headerHeight;
+                return React.createElement(TableHeadDefault, { headerProps: Object.assign(Object.assign({}, headerProps), { columnData: columnData }) });
+            }, className: globalClasses.flexContainer, cellRenderer: ({ cellData, columnIndex }) => React.createElement(TableCellDefault, { cellData: cellData, isNumeric: (columnIndex != null && columns[columnIndex].numeric) || false }), dataKey: dataKey }, other));
     }))));
 });
 export default memo(VirtualizedTable);
