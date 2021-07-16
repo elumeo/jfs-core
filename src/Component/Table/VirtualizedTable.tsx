@@ -17,16 +17,17 @@ export const globalStyles = makeStyles((theme: Theme) => createStyles({
     fontSize: theme.typography.pxToRem(13),
     padding: theme.spacing(1),
     maxWidth: '100%'
-  },
+  }
 }));
 
-export const useStyles = makeStyles((theme: Theme) => createStyles({
+export const useStyles = makeStyles<Theme, VirtualizedTableProps>((theme) => createStyles({
   table: {
     borderCollapse: 'separate',
     '& .ReactVirtualized__Table__headerRow': {
       flip: false,
       paddingRight: theme.direction === 'rtl' ? '0 !important' : undefined,
-      backgroundColor: theme.palette.background.default
+      backgroundColor: theme.palette.background.default,
+      overflow: (props) => props.headerOverflow + ' !important'
     }
   },
   tableGrid: {
@@ -49,27 +50,26 @@ export type ColumnData = ColumnProps & {
   numeric?: boolean;
 }
 
-type VirtualizedTableProps = TableProps & {
+export type VirtualizedTableProps = TableProps & {
   columns: ColumnData[];
   rowHeight?: number;
   headerHeight?: number;
   showRowHoverHighlight?: boolean;
+  headerOverflow?: 'visible' | 'hidden' | 'inherit' | 'initial';
 }
 
 const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
-  ({
-     columns,
-     onRowClick = null,
-     rowCount,
-     rowGetter,
-     headerHeight = 48,
-     rowHeight = 48,
-     showRowHoverHighlight = false,
-     ...tableProps
-   },
-   ref) => {
+  (props, ref) => {
+    const { columns, onRowClick = null, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, showRowHoverHighlight = false, headerOverflow = 'hidden', ...tableProps } = props;
     const globalClasses = globalStyles();
-    const classes = useStyles();
+    const classes = useStyles({
+      ...props,
+      onRowClick: onRowClick,
+      headerHeight: headerHeight,
+      rowHeight: rowHeight,
+      showRowHoverHighlight: showRowHoverHighlight,
+      headerOverflow: headerOverflow
+    });
     const getRowClassName = (index: Index) => clsx(
       classes.tableRow,
       globalClasses.flexContainer,
@@ -99,7 +99,7 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
           {columns.map(({ dataKey, ...other }, index) => {
             return <Column
               key={dataKey}
-              headerStyle={{outline: 'none'}}
+              headerStyle={{ outline: 'none' }}
               headerRenderer={(headerProps) => {
                 const columnData = headerProps.columnData !== undefined ? headerProps.columnData : {};
                 columnData.index = index;
@@ -114,7 +114,7 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
               />}
               dataKey={dataKey}
               {...other}
-            />
+            />;
           })}
         </Table>
       )}

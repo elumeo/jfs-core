@@ -27,7 +27,7 @@ export const globalStyles = makeStyles((theme) => createStyles({
         fontSize: theme.typography.pxToRem(13),
         padding: theme.spacing(1),
         maxWidth: '100%'
-    },
+    }
 }));
 export const useStyles = makeStyles((theme) => createStyles({
     table: {
@@ -35,7 +35,8 @@ export const useStyles = makeStyles((theme) => createStyles({
         '& .ReactVirtualized__Table__headerRow': {
             flip: false,
             paddingRight: theme.direction === 'rtl' ? '0 !important' : undefined,
-            backgroundColor: theme.palette.background.default
+            backgroundColor: theme.palette.background.default,
+            overflow: (props) => props.headerOverflow + ' !important'
         }
     },
     tableGrid: {
@@ -53,10 +54,10 @@ export const useStyles = makeStyles((theme) => createStyles({
         cursor: 'pointer'
     }
 }));
-const VirtualizedTable = React.forwardRef((_a, ref) => {
-    var { columns, onRowClick = null, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, showRowHoverHighlight = false } = _a, tableProps = __rest(_a, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight", "showRowHoverHighlight"]);
+const VirtualizedTable = React.forwardRef((props, ref) => {
+    const { columns, onRowClick = null, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, showRowHoverHighlight = false, headerOverflow = 'hidden' } = props, tableProps = __rest(props, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight", "showRowHoverHighlight", "headerOverflow"]);
     const globalClasses = globalStyles();
-    const classes = useStyles();
+    const classes = useStyles(Object.assign(Object.assign({}, props), { onRowClick: onRowClick, headerHeight: headerHeight, rowHeight: rowHeight, showRowHoverHighlight: showRowHoverHighlight, headerOverflow: headerOverflow }));
     const getRowClassName = (index) => clsx(classes.tableRow, globalClasses.flexContainer, {
         [classes.tableRowHover]: index.index !== -1 && showRowHoverHighlight === true,
         [classes.onRowClick]: onRowClick !== null
