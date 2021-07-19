@@ -16,7 +16,6 @@ import { Currency } from '../../Utilities/Format';
 const Editor = (_a) => {
     var { currency = useCurrency(), value = 0.00, selectOnFocus = true, min = null, max = null } = _a, props = __rest(_a, ["currency", "value", "selectOnFocus", "min", "max"]);
     const sanitized = React.useMemo(() => Currency.formatDisplay(value, min, max), [value, min, max]);
-    console.log({ min, max, value, sanitized });
     const onFocus = React.useCallback((e) => {
         if (selectOnFocus) {
             e.target.select();
