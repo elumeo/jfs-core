@@ -1,5 +1,4 @@
 import React from 'react';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,10 +8,10 @@ const DefaultNotificationCard = ({ notification: { title, subtitle, content, act
     const snackbar = useSnackbar();
     const { formatMessage } = useIntl();
     return (React.createElement(React.Fragment, null,
-        React.createElement(Box, { component: CardContent, color: 'inherit' },
-            React.createElement(Typography, { variant: 'subtitle1' }, isTranslationId ? formatMessage({ id: title }) : title),
-            React.createElement(Typography, { variant: 'subtitle2' }, isTranslationId ? formatMessage({ id: subtitle }) : subtitle),
-            React.createElement(Typography, { variant: 'body1' }, isTranslationId ? formatMessage({ id: content }) : content)),
+        React.createElement(Box, { color: 'inherit' },
+            React.createElement(Typography, { variant: 'subtitle1', component: 'div' }, isTranslationId ? formatMessage({ id: title }) : title),
+            React.createElement(Typography, { variant: 'subtitle2', component: 'div' }, isTranslationId ? formatMessage({ id: subtitle }) : subtitle),
+            React.createElement(Typography, { variant: 'body1', component: 'div' }, isTranslationId ? formatMessage({ id: content }) : content)),
         !temporary && action && React.createElement(CardActions, null, action(snackbar, id, temporary))));
 };
 export default DefaultNotificationCard;
