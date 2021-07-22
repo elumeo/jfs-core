@@ -4,6 +4,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import { default as Default } from './Default';
 import { useTheme } from '@material-ui/core/styles';
@@ -41,12 +42,12 @@ const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = (
       <CardHeader
         avatar={<Icon variant={notification.variant} />}
         title={
-          <Typography component='h4'>
+          <Typography variant='h4' component='span'>
             {notification?.isTranslationId ? formatMessage({ id: (notification.title as string) }) : notification.title}
           </Typography>
         }
         subheader={
-          <Typography component='h6'>
+          <Typography variant='h6' component='span'>
             {notification?.isTranslationId ? formatMessage({ id: (notification.subtitle as string) }) : notification.subtitle}
           </Typography>
         }
@@ -63,12 +64,12 @@ const Card: React.FC<Props> & { Default: typeof Default; Icon: typeof Icon } = (
             </IconButton>
           </CardActions>
         } />
-      <CardContent>
-        <Typography>
+      <Box component={CardContent} pt={0}>
+        <Typography component='span'>
           {notification?.isTranslationId ? formatMessage({ id: (notification.content as string) }) : notification.content}
           {children}
         </Typography>
-      </CardContent>
+      </Box>
     </MUICard>
   );
 };

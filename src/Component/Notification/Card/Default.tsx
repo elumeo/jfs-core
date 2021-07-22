@@ -13,23 +13,23 @@ export type Props = {
 };
 
 const DefaultNotificationCard: React.FC<Props> = ({
-                                                    notification: {
-                                                      title,
-                                                      subtitle,
-                                                      content,
-                                                      action,
-                                                      id,
-                                                      isTranslationId = false
-                                                    },
-                                                    temporary
-                                                  }) => {
+  notification: {
+    title,
+    subtitle,
+    content,
+    action,
+    id,
+    isTranslationId = false
+  },
+  temporary
+}) => {
   const snackbar = useSnackbar();
-  const {formatMessage} = useIntl()
+  const { formatMessage } = useIntl()
   return (<>
-    <Box component={CardContent} color='inherit'>
-      <Typography variant='subtitle1'>{isTranslationId ? formatMessage({id: (title as string)}) : title}</Typography>
-      <Typography variant='subtitle2'>{isTranslationId ? formatMessage({id: (subtitle as string)}) : subtitle}</Typography>
-      <Typography variant='body1'>{isTranslationId ? formatMessage({id: (content as string)}) : content}</Typography>
+    <Box color='inherit'>
+      <Typography variant='subtitle1' component='div'>{isTranslationId ? formatMessage({ id: (title as string) }) : title}</Typography>
+      <Typography variant='subtitle2' component='div'>{isTranslationId ? formatMessage({ id: (subtitle as string) }) : subtitle}</Typography>
+      <Typography variant='body1' component='div'>{isTranslationId ? formatMessage({ id: (content as string) }) : content}</Typography>
     </Box>
     {!temporary && action && <CardActions>{action(snackbar, id, temporary)}</CardActions>}
   </>)
