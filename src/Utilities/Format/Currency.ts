@@ -15,22 +15,14 @@ export const formatDisplay = (value: ReactText, min?: number, max?: number) : st
   }
   return val.toFixed(2)
 }
-export const getCurrency = (currency: string, value: number, showFraction = false, withCurrencySign = true) => {
-  if (isNaN(value) || value === null || value.toString() === '') {
-    value = 0;
-  }
-
-  if (showFraction) {
-    if (withCurrencySign) {
-      return new Intl.NumberFormat(Locale.locale, { style: 'currency', currency }).format(value);
+export const getCurrency = (currency: string, value: number, showFraction: boolean = false, withCurrencySign: boolean = true) => {
+    const options: Intl.NumberFormatOptions = {
+        style: withCurrencySign ? 'currency' : 'decimal',
+        currency,
+        maximumFractionDigits: showFraction ? 2 : 0,
+        minimumFractionDigits: showFraction && (value % 1 !== 0) ? 2 : 0,
     }
-    return new Intl.NumberFormat(Locale.locale, { minimumFractionDigits: 2 }).format(value);
-  }
-
-  if (withCurrencySign) {
-    return new Intl.NumberFormat(Locale.locale, { style: 'currency', currency, minimumFractionDigits: 0 }).format(value);
-  }
-  return new Intl.NumberFormat(Locale.locale).format(value);
+    return new Intl.NumberFormat(Locale.locale, options).format(value);
 }
 
 export const intlThousandsSeperator = (new Intl.NumberFormat(Locale.locale).format(1111).replace(/1/g, ''));

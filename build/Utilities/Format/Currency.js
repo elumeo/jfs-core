@@ -13,19 +13,13 @@ export const formatDisplay = (value, min, max) => {
     return val.toFixed(2);
 };
 export const getCurrency = (currency, value, showFraction = false, withCurrencySign = true) => {
-    if (isNaN(value) || value === null || value.toString() === '') {
-        value = 0;
-    }
-    if (showFraction) {
-        if (withCurrencySign) {
-            return new Intl.NumberFormat(Locale.locale, { style: 'currency', currency }).format(value);
-        }
-        return new Intl.NumberFormat(Locale.locale, { minimumFractionDigits: 2 }).format(value);
-    }
-    if (withCurrencySign) {
-        return new Intl.NumberFormat(Locale.locale, { style: 'currency', currency, minimumFractionDigits: 0 }).format(value);
-    }
-    return new Intl.NumberFormat(Locale.locale).format(value);
+    const options = {
+        style: withCurrencySign ? 'currency' : 'decimal',
+        currency,
+        maximumFractionDigits: showFraction ? 2 : 0,
+        minimumFractionDigits: showFraction && (value % 1 !== 0) ? 2 : 0,
+    };
+    return new Intl.NumberFormat(Locale.locale, options).format(value);
 };
 export const intlThousandsSeperator = (new Intl.NumberFormat(Locale.locale).format(1111).replace(/1/g, ''));
 export const intlDecSeparator = (new Intl.NumberFormat(Locale.locale).format(1.1).replace(/1/g, ''));
