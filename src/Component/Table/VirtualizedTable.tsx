@@ -4,6 +4,7 @@ import React, { memo } from 'react';
 import clsx from 'clsx';
 import { TableCellDefault } from 'Component/Table/TableCell';
 import TableHeadDefault from 'Component/Table/TableHead/TableHeadDefault';
+import { Size } from 'react-virtualized/dist/es/AutoSizer';
 
 export const globalStyles = makeStyles((theme: Theme) => createStyles({
   flexContainer: {
@@ -51,6 +52,7 @@ export type ColumnData = ColumnProps & {
 }
 
 export type VirtualizedTableProps = TableProps & {
+  onResize?: (info: Size) => any;
   columns: ColumnData[];
   rowHeight?: number;
   headerHeight?: number;
@@ -60,7 +62,18 @@ export type VirtualizedTableProps = TableProps & {
 
 const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
   (props, ref) => {
-    const { columns, onRowClick = null, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, showRowHoverHighlight = false, headerOverflow = 'hidden', ...tableProps } = props;
+    const {
+      columns,
+      onRowClick = null,
+      rowCount,
+      rowGetter,
+      headerHeight = 48,
+      rowHeight = 48,
+      showRowHoverHighlight = false,
+      headerOverflow = 'hidden',
+      onResize,
+      ...tableProps
+    } = props;
     const globalClasses = globalStyles();
     const classes = useStyles({
       ...props,
@@ -79,7 +92,7 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
       }
     );
 
-    return <AutoSizer>
+    return <AutoSizer onResize={onResize}>
       {({ height, width }: SizeInfo) => (
         <Table
           ref={ref}

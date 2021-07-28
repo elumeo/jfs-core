@@ -55,14 +55,14 @@ export const useStyles = makeStyles((theme) => createStyles({
     }
 }));
 const VirtualizedTable = React.forwardRef((props, ref) => {
-    const { columns, onRowClick = null, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, showRowHoverHighlight = false, headerOverflow = 'hidden' } = props, tableProps = __rest(props, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight", "showRowHoverHighlight", "headerOverflow"]);
+    const { columns, onRowClick = null, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, showRowHoverHighlight = false, headerOverflow = 'hidden', onResize } = props, tableProps = __rest(props, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight", "showRowHoverHighlight", "headerOverflow", "onResize"]);
     const globalClasses = globalStyles();
     const classes = useStyles(Object.assign(Object.assign({}, props), { onRowClick: onRowClick, headerHeight: headerHeight, rowHeight: rowHeight, showRowHoverHighlight: showRowHoverHighlight, headerOverflow: headerOverflow }));
     const getRowClassName = (index) => clsx(classes.tableRow, globalClasses.flexContainer, {
         [classes.tableRowHover]: index.index !== -1 && showRowHoverHighlight === true,
         [classes.onRowClick]: onRowClick !== null
     });
-    return React.createElement(AutoSizer, null, ({ height, width }) => (React.createElement(Table, Object.assign({ ref: ref, height: height, width: width, className: classes.table, headerHeight: headerHeight, rowHeight: rowHeight, rowCount: rowCount, rowGetter: rowGetter, rowClassName: getRowClassName, onRowClick: onRowClick, gridStyle: { direction: 'inherit' }, gridClassName: classes.tableGrid }, tableProps), columns.map((_a, index) => {
+    return React.createElement(AutoSizer, { onResize: onResize }, ({ height, width }) => (React.createElement(Table, Object.assign({ ref: ref, height: height, width: width, className: classes.table, headerHeight: headerHeight, rowHeight: rowHeight, rowCount: rowCount, rowGetter: rowGetter, rowClassName: getRowClassName, onRowClick: onRowClick, gridStyle: { direction: 'inherit' }, gridClassName: classes.tableGrid }, tableProps), columns.map((_a, index) => {
         var { dataKey } = _a, other = __rest(_a, ["dataKey"]);
         return React.createElement(Column, Object.assign({ key: dataKey, headerStyle: { outline: 'none' }, headerRenderer: (headerProps) => {
                 const columnData = headerProps.columnData !== undefined ? headerProps.columnData : {};

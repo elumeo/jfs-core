@@ -1,11 +1,13 @@
 import { ColumnProps, Table, TableProps } from 'react-virtualized';
 import React from 'react';
+import { Size } from 'react-virtualized/dist/es/AutoSizer';
 export declare const globalStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"flexContainer" | "tableCell">;
 export declare const useStyles: (props: VirtualizedTableProps) => import("@material-ui/styles").ClassNameMap<string>;
 export declare type ColumnData = ColumnProps & {
     numeric?: boolean;
 };
 export declare type VirtualizedTableProps = TableProps & {
+    onResize?: (info: Size) => any;
     columns: ColumnData[];
     rowHeight?: number;
     headerHeight?: number;
