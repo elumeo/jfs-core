@@ -9,7 +9,7 @@ const TableCellMsisdn = ({ cellProps, rowHeight }) => {
     const classes = cellStyles();
     const globalClasses = globalStyles();
     return (cellProps.cellData !== null && React.createElement(TableCell, { component: 'div', className: clsx(globalClasses.tableCell, globalClasses.flexContainer), variant: 'body', style: { height: rowHeight } },
-        React.createElement("span", { className: classes.cellContent },
+        React.createElement("span", { className: classes.wrapContent },
             React.createElement(FormattedMsisdn, { msisdn: cellProps.cellData })))) ||
         React.createElement(TableCellLoading, null);
 };

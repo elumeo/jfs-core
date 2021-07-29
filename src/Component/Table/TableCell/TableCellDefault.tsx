@@ -7,7 +7,7 @@ import { globalStyles } from 'Component/Table/VirtualizedTable';
 import { TableCellLoading } from 'Component/Table/TableCell';
 
 export const cellStyles = makeStyles(() => createStyles({
-  cellContent: {
+  wrapContent: {
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
     overflow: 'hidden'
@@ -17,9 +17,10 @@ export const cellStyles = makeStyles(() => createStyles({
 export type TableCellDefaultProps = {
   cellData: any;
   isNumeric?: boolean;
+  wrapContent?: boolean;
 }
 
-const TableCellDefault = ({ cellData, isNumeric = false }: TableCellDefaultProps) => {
+const TableCellDefault = ({ cellData, isNumeric = false, wrapContent = true }: TableCellDefaultProps) => {
   const classes = cellStyles();
   const globalClasses = globalStyles();
   return (cellData && <TableCell
@@ -31,6 +32,6 @@ const TableCellDefault = ({ cellData, isNumeric = false }: TableCellDefaultProps
     variant={'body'}
     style={{ height: '100%' }}
     align={isNumeric ? 'right' : 'left'}
-  ><span className={classes.cellContent}>{cellData}</span></TableCell>) || <TableCellLoading />;
+  ><span className={clsx({ [classes.wrapContent]: wrapContent })}>{cellData}</span></TableCell>) || <TableCellLoading />;
 };
 export default memo(TableCellDefault);

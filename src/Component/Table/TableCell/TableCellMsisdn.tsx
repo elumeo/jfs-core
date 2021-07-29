@@ -22,7 +22,7 @@ const TableCellMsisdn = ({cellProps, rowHeight}: TableCellMsisdnProps) => {
       className={clsx(globalClasses.tableCell, globalClasses.flexContainer)}
       variant={'body'}
       style={{height: rowHeight}}
-    ><span className={classes.cellContent}><FormattedMsisdn msisdn={cellProps.cellData}/></span></TableCell>) ||
+    ><span className={classes.wrapContent}><FormattedMsisdn msisdn={cellProps.cellData}/></span></TableCell>) ||
     <TableCellLoading />;
 }
 
