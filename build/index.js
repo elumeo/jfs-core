@@ -34,7 +34,7 @@
 //       <Navigation/>
 //       <Login.Dialog/>
 //       <Logout.Dialog/>
-//       <Settings.Dialog>
+//       <Settings.Dialog> 
 //         <Language.Settings/>
 //       </Settings.Dialog>
 //       <Snackbar/>
