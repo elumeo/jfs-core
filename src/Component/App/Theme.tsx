@@ -6,6 +6,9 @@ export default responsiveFontSizes(createTheme({
   overrides: {
     MuiCssBaseline: {
       '@global': {
+        html:{
+          fontSize: 14
+        },
         body: {
           margin: 0,
           padding: 0,
@@ -17,12 +20,6 @@ export default responsiveFontSizes(createTheme({
       root: {
         minWidth: 32
       }
-    },
-  },
-  typography: {
-    fontSize: 13,
-    body1: {
-      fontSize: 14
     }
   },
   palette: {

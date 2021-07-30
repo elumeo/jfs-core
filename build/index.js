@@ -16,29 +16,29 @@
 // import { create } from 'Store';
 // import { history } from './Store/Middleware';
 // ReactDOM.render(
-//   <App.Container
-//     store={create(epic, reducer(history))}
-//     title='core'
-//     translations={Translations}
-//     packageJson={packageJson}>
-//     <Header.AppToolbar
-//       left={<Header.BackendIndicator/>}
-//       right={
-//         <>
-//           <Settings.Button/>
-//           <Notification.Button.Show/>
-//         </>
-//       }/>
-//     <Routes/>
-//     <Overlay>
-//       <Navigation/>
-//       <Login.Dialog/>
-//       <Logout.Dialog/>
-//       <Settings.Dialog> 
-//         <Language.Settings/>
-//       </Settings.Dialog>
-//       <Snackbar/>
-//     </Overlay>
-//   </App.Container>,
-//   document.getElementById('root')
+//     <App.Container
+//         store={create(epic, reducer(history))}
+//         title='core'
+//         translations={Translations}
+//         packageJson={packageJson}>
+//         <Header.AppToolbar
+//             left={<Header.BackendIndicator />}
+//             right={
+//                 <>
+//                     <Settings.Button />
+//                     <Notification.Button.Show />
+//                 </>
+//             } />
+//         <Routes />
+//         <Overlay>
+//             <Navigation />
+//             <Login.Dialog />
+//             <Logout.Dialog />
+//             <Settings.Dialog>
+//                 <Language.Settings />
+//             </Settings.Dialog>
+//             <Snackbar />
+//         </Overlay>
+//     </App.Container>,
+//     document.getElementById('root')
 // );
