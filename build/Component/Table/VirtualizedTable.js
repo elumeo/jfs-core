@@ -24,7 +24,6 @@ export const globalStyles = makeStyles((theme) => createStyles({
     },
     tableCell: {
         flex: 1,
-        fontSize: theme.typography.pxToRem(13),
         padding: theme.spacing(1),
         maxWidth: '100%'
     }
