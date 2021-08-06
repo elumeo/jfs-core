@@ -12,15 +12,15 @@ We have updated our webpack version. Read more about webpack 5 [here](https://we
 
 ### __Location of config files__
 
-Instead of maintaining two config files you can now simply maintain only one file:
-
-- `/config.dist.json`
+- `/config.json`
 
 It will be copied to `/dist/config.json` automatically when running the dev-server or creating a production build.
 
 Changes made to the config file will cause a reload in the browser while developing.
 
-All scripts that need config data will read from `/config.dist.json`.
+All scripts that need config data will read from `/config.json`.
+
+You should ignore `/config.json` and place a `/config.dist.json` next to it.
 
 ### __Reimplemented notifications__
 

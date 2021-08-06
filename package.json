@@ -23,7 +23,8 @@
     "jfs-deploy-config-files": "node ./scripts/bin/jfs-deploy-config-files",
     "jfs-generate-api": "node ./scripts/bin/jfs-generate-api",
     "jfs-open-showcase": "node ./scripts/bin/jfs-open-showcase",
-    "jfs-postinstall": "node ./scripts/bin/jfs-postinstall"
+    "jfs-postinstall": "node ./scripts/bin/jfs-postinstall",
+    "jfs-check-config-schema": "node ./scripts/bin/jfs-check-config-schema"
   },
   "repository": {
     "type": "git",
