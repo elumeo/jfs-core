@@ -2,7 +2,7 @@ import React from 'react';
 import Wrapper, { Props } from '../Wrapper';
 
 const RatePay: React.FC<Props> = props => (
-  <Wrapper {...props} titleAccess='ratepay'>
+  <Wrapper {...props}>
     <title>ratepay</title>
     <g stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
       <path fill='currentcolor' fillRule='nonzero' d='M22.466371,3.09470916 C20.2114754,1.75191091 17.5923509,0.978605911 14.7906748,1.00045068 C8.82331236,1.06926172 3.72126666,4.66491151 1.46637103,9.78554496 L8.82331236,17 L22.466371,3.09470916 Z'/>

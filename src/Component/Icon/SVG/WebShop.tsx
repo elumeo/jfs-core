@@ -2,7 +2,7 @@ import React from 'react';
 import Wrapper, { Props } from '../Wrapper';
 
 const WebShop: React.FC<Props> = props => (
-  <Wrapper {...props} titleAccess='webshop'>
+  <Wrapper {...props}>
     <g stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
       <g transform='translate(0.000000, 6.000000)' fill='currentcolor' fillRule='nonzero'>
         <circle cx='14.630019' cy='13.0363429' r='1'/>

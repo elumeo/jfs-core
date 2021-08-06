@@ -1,6 +1,6 @@
 import React from 'react';
 import Wrapper from '../Wrapper';
-const WebShop = props => (React.createElement(Wrapper, Object.assign({}, props, { titleAccess: 'webshop' }),
+const WebShop = props => (React.createElement(Wrapper, Object.assign({}, props),
     React.createElement("g", { stroke: 'none', strokeWidth: '1', fill: 'none', fillRule: 'evenodd' },
         React.createElement("g", { transform: 'translate(0.000000, 6.000000)', fill: 'currentcolor', fillRule: 'nonzero' },
             React.createElement("circle", { cx: '14.630019', cy: '13.0363429', r: '1' }),

@@ -1,7 +1,6 @@
 import React from 'react';
 import Wrapper from '../Wrapper';
 const CashInAdvance = props => (React.createElement(Wrapper, Object.assign({}, props),
-    React.createElement("title", null, "cash_in_advance"),
     React.createElement("g", { stroke: 'none', strokeWidth: '1', fill: 'none', fillRule: 'evenodd' },
         React.createElement("g", { transform: 'translate(11.000000, 20.000000)', fill: 'currentcolor', fillRule: 'nonzero' },
             React.createElement("polygon", { points: '4.76691302 8.67859806 1.21091529 5.25801641 0 6.41461596 4.76691302 11 15 1.15659955 13.7976123 0' })),

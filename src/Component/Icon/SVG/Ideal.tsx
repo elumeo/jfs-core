@@ -2,7 +2,7 @@ import React from 'react';
 import Wrapper, { Props } from '../Wrapper';
 
 const Ideal: React.FC<Props> = props => (
-  <Wrapper {...props} titleAccess='ideal'>
+  <Wrapper {...props}>
     <g stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
       <g transform='translate(1.000000, 2.500000)' fillRule='nonzero'>
         <path fill='currentcolor'

@@ -1,6 +1,6 @@
 import React from 'react';
 import Wrapper from '../Wrapper';
-const Ideal = props => (React.createElement(Wrapper, Object.assign({}, props, { titleAccess: 'ideal' }),
+const Ideal = props => (React.createElement(Wrapper, Object.assign({}, props),
     React.createElement("g", { stroke: 'none', strokeWidth: '1', fill: 'none', fillRule: 'evenodd' },
         React.createElement("g", { transform: 'translate(1.000000, 2.500000)', fillRule: 'nonzero' },
             React.createElement("path", { fill: 'currentcolor', d: 'M1.21874159,1.26946883 L1.21874159,25.7299332 L15.4825906,25.7299332 C24.0958999,25.7299332 28.7814459,21.5496988 28.7814459,13.4684397 C28.7814459,5.16367718 23.7025435,1.26946883 15.4825906,1.26946883 L1.21874159,1.26946883 Z M15.4825906,0 C28.1139265,0 30,8.43909571 30,13.4684397 C30,22.1945381 24.844598,27 15.4825906,27 C15.4825906,27 0.305621797,27 0,27 C0,26.6803109 0,0.31889191 0,0 C0.305621797,0 15.4825906,0 15.4825906,0 Z' }),
