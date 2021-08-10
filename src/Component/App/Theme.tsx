@@ -3,6 +3,11 @@ import * as Color from 'Constant/Color';
 import { grey } from '@material-ui/core/colors';
 
 export default responsiveFontSizes(createTheme({
+  // props: {
+  //   MuiIcon: {
+  //     color: 'action'
+  //   }
+  // },
   overrides: {
     MuiCssBaseline: {
       '@global': {

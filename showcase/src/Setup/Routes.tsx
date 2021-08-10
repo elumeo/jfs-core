@@ -18,6 +18,7 @@ import Notifications from 'Component/Notifications';
 import Boxes from 'Component/Boxes';
 import TabsDemo from 'Component/Tabs';
 import Forms from 'Component/Forms';
+import AppCardContentExample from 'Component/CoreComponents/AppCardContentExample';
 
 const Routes: React.FC = () => (
   <Content>
@@ -36,6 +37,7 @@ const Routes: React.FC = () => (
       <AuthRoute key='Boxes' exact path='/Boxes' component={Boxes}/>
       <AuthRoute key='Tabs' exact path='/Tabs' component={TabsDemo}/>
       <AuthRoute key='Forms' exact path='/Forms' component={Forms}/>
+      <AuthRoute key='AppCardContent' exact path='/AppCardContent' component={AppCardContentExample}/>
       <NoAuthRoute key='default' exact path='/' component={() => <Redirect to={{pathname: '/start'}}/>}/>
     </Switch>
   </Content>

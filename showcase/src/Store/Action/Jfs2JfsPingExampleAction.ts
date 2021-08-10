@@ -1,5 +1,5 @@
-import * as TA from 'typesafe-actions';
+import { createAction } from 'typesafe-actions';
 
 export const Jfs2JfsPingExampleUpdateRoomAction = (
-  TA.createAction('Jfs2JfsPingExample/UPDATE_ROOM')<string>()
+  createAction('Jfs2JfsPingExample/UPDATE_ROOM')<string>()
 );

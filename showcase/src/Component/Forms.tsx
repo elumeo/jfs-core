@@ -306,8 +306,9 @@ const Forms = () => {
                               margin={selectDense ? 'dense' : 'none'}
                               label='A text field with an icon'
                               defaultValue=''
-                              helperText='The icon can be implemented on start or end or both'
-                              InputProps={{ startAdornment: <InputAdornment position='start'><WarningIcon /></InputAdornment> }}
+                              error={showError}
+                              helperText='The icon can be implemented on start or end or both and should reflect error color'
+                              InputProps={{ startAdornment: <InputAdornment position='start'><WarningIcon color={showError ? 'error' : 'inherit'} /></InputAdornment> }}
                             />
                           </Grid>
                           <Grid item xs>

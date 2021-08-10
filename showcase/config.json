@@ -1,0 +1,31 @@
+{
+  "JscClient": {
+    "Host": "https://api-test.juwelo.de/staging/de/master",
+    "HostWebPackDev": "http://127.0.0.1:2008",
+    "Timeout": 30000
+  },
+  "JscWebSocketClient": {
+    "Host": "https://api-test.juwelo.de",
+    "Path": "/staging/websocket.services",
+    "PrivateNamespace": "Jsc2Jfs",
+    "AutoRoomSubscriptions": [
+      "ping"
+    ]
+  },
+  "JfsWebSocketClient": {
+    "Host": "https://api-test.juwelo.de",
+    "Path": "/staging/websocket.services",
+    "PrivateNamespace": "Jfs2Jfs",
+    "AutoRoomSubscriptions": [
+      "ping"
+    ]
+  },
+  "Language": "de",
+  "Currency": "EUR",
+  "Container": "juwelotv",
+  "ContainerLanguage": "de",
+  "AppName": "jfs_Boilerplate",
+  "RobotUsername": "testuser",
+  "RobotPassword": "geheim",
+  "ForceHTTPS": false
+}
