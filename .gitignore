@@ -9,3 +9,4 @@ node_modules
 .autohidefiles
 .DS_Store
 /showcase/dist/
+/config.json
