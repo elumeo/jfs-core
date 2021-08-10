@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const common = require('./common');
 const PATH = require('./PATH');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
@@ -45,11 +44,6 @@ const production = {
     }),
     new LodashModuleReplacementPlugin(),
     new CompressionPlugin({ test: [/\.tsx/, /\.ts/, /\.js/], minRatio: 0.1 }),
-    new CopyWebpackPlugin({
-        patterns: [
-            { from: PATH.CONFIGURATION_DEV, to: PATH.CONFIGURATION_DIST }
-        ]
-    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: PATH.HTML_TEMPLATE,
@@ -57,7 +51,7 @@ const production = {
       favicon: PATH.FAVICON,
       templateParameters: {
         BUNDLE_FILE_NAME : PATH.UNIQUE_BUNDLE_NAME
-      }      
+      }
     })
   ]
 };
