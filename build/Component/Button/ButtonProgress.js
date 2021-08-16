@@ -14,7 +14,8 @@ import { Box, Button, CircularProgress } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 export const progressStyles = makeStyles(() => createStyles({
     progressWrapper: {
-        position: 'relative'
+        position: 'relative',
+        display: 'inline-block',
     },
     progress: {
         position: 'absolute',

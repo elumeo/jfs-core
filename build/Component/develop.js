@@ -4,6 +4,7 @@ import HelpIcon from '@material-ui/icons/Help';
 import { VirtualizedTable } from './Table';
 import 'date-fns';
 import { TableCellDefault } from './Table/TableCell';
+import IconButtonProgress from './Button/IconButtonProgress';
 const sample = [
     ['Frozen yoghurt', 159, 6.0, 24, 4.0],
     ['Ice cream sandwich', 237, 9.0, 37, 4.3],
@@ -21,6 +22,9 @@ for (let i = 0; i < 200; i += 1) {
 }
 const Develop = () => {
     return React.createElement(Box, { component: Paper },
+        React.createElement(Box, { width: 500 },
+            React.createElement(IconButtonProgress, { inProgress: true },
+                React.createElement(HelpIcon, null))),
         React.createElement(Tooltip, { title: 'Hallo Welt!', interactive: true },
             React.createElement(HelpIcon, null)),
         React.createElement(Box, { padding: 1, height: '100%' },

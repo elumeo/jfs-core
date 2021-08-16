@@ -5,7 +5,8 @@ import { IconButtonProgress } from 'Component/Button/IconButtonProgress';
 
 export const progressStyles = makeStyles<Theme, ButtonProgressProps | IconButtonProgress>(() => createStyles({
   progressWrapper: {
-    position: 'relative'
+    position: 'relative',
+    display: 'inline-block',
   },
   progress: {
     position: 'absolute',

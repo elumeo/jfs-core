@@ -5,6 +5,8 @@ import { VirtualizedTable } from 'Component/Table';
 import { Index, TableCellProps } from 'react-virtualized';
 import 'date-fns';
 import { TableCellDefault } from 'Component/Table/TableCell';
+import ButtonProgress from 'Component/Button/ButtonProgress';
+import IconButtonProgress from 'Component/Button/IconButtonProgress';
 
 type Data = {
   calories: number;
@@ -45,6 +47,9 @@ for (let i = 0; i < 200; i += 1) {
 
 const Develop = () => {
   return <Box component={Paper}>
+    <Box width={500}>
+      <IconButtonProgress inProgress><HelpIcon /></IconButtonProgress>
+    </Box>
     <Tooltip title={'Hallo Welt!'} interactive><HelpIcon /></Tooltip>
     <Box padding={1} height={'100%'}>
       <VirtualizedTable
