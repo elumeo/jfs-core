@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => createStyles({
     left: -theme.spacing(2)
   },
   refreshButtonRoot: {
-    verticalAlign: '-4px',
-    padding: '2px'
+    verticalAlign: -theme.spacing(0.5), //'-4px',
+    padding: theme.spacing(0.25), // '2px'
   }
 }));
 
