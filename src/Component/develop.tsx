@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, CircularProgress, Paper } from '@material-ui/core';
+import { Box, Paper, Tooltip } from '@material-ui/core';
+import HelpIcon from '@material-ui/icons/Help';
 import { VirtualizedTable } from 'Component/Table';
 import { Index, TableCellProps } from 'react-virtualized';
 import 'date-fns';
@@ -44,9 +45,7 @@ for (let i = 0; i < 200; i += 1) {
 
 const Develop = () => {
   return <Box component={Paper}>
-    <CircularProgress />
-    <CircularProgress color={'primary'} />
-    <CircularProgress color={'secondary'} />
+    <Tooltip title={'Hallo Welt!'} interactive><HelpIcon /></Tooltip>
     <Box padding={1} height={'100%'}>
       <VirtualizedTable
         showRowHoverHighlight
