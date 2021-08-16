@@ -30,7 +30,6 @@ const Forms = () => {
   const [checkboxState, setCheckboxState] = React.useState({ checkboxA: true, checkboxB: false, checkboxC: false, checkboxD: false });
   const [switchState, setSwitchState] = React.useState({ switchA: true, switchB: false, switchC: false, switchD: false });
   const [radioValue, setRadioValue] = React.useState('radio1');
-  const [enableUserSelectCssFeature, setEnableUserSelectCssFeature] = React.useState(false);
   const [displayRowStyle, setDisplayRowStyle] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
   const [selectValue, setSelectValue] = React.useState('');
@@ -42,7 +41,6 @@ const Forms = () => {
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => setCheckboxState({ ...checkboxState, [event.target.name]: event.target.checked });
   const handleSwitchChange = (name: string, value: boolean) => setSwitchState({ ...switchState, [name]: value });
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => setRadioValue((event.target as HTMLInputElement).value);
-  const toggleUserSelectCssFeature = () => setEnableUserSelectCssFeature(!enableUserSelectCssFeature);
   const toggleDisplayRowStyle = () => setDisplayRowStyle(!displayRowStyle);
   const toggleShowError = () => setShowError(!showError);
   const handleSelectChange = (event: React.ChangeEvent<{ value: unknown }>) => setSelectValue(event.target.value as string);
@@ -56,23 +54,13 @@ const Forms = () => {
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Container>
             <Card>
-              <CardHeader title='Forms' />
+              <CardHeader title='Forms' subheader={<>Errors are controlled by the <CodeBox component={'span'} size={'small'}>{`<FormControl required error>...</FormControl>`}</CodeBox> Element.
+                The <CodeBox component={'span'} size={'small'}>required</CodeBox> attribute controls the asterisk (*) char.</>} />
               <CardContent>
                 <Grid container spacing={1}>
-                  <Grid item>
-                    <FormControlLabel
-                      control={<Switch onChange={toggleUserSelectCssFeature} checked={enableUserSelectCssFeature} />}
-                      label={<>Set <CodeBox component={'span'} size={'small'}>userSelect</CodeBox> css feature to <CodeBox component={'span'} size={'small'}>none</CodeBox></>}
-                    />
-                  </Grid>
                   <Grid item><FormControlLabel control={<Switch onChange={toggleDisplayRowStyle} checked={displayRowStyle} />} label='Enable row style' /></Grid>
                   <Grid item><FormControlLabel control={<Switch onChange={toggleShowError} checked={showError} />} label='Show error' /></Grid>
                 </Grid>
-                <Box mt={2}>
-                  <Typography>Errors are controlled by the <CodeBox component={'span'} size={'small'}>{`<FormControl required error>...</FormControl>`}</CodeBox> Element.
-                    The <CodeBox
-                      component={'span'} size={'small'}>required</CodeBox> attribute controls the asterisk (*) char.</Typography>
-                </Box>
                 <Box mt={2}>
                   <Grid container spacing={displayRowStyle ? 4 : 2}>
                     <Grid item xs={displayRowStyle ? 12 : 4}>
@@ -80,23 +68,19 @@ const Forms = () => {
                         <FormLabel>Checkbox Example</FormLabel>
                         <FormGroup row={displayRowStyle}>
                           <FormControlLabel
-                            style={{ userSelect: enableUserSelectCssFeature ? 'none' : 'inherit' }}
                             control={<Checkbox checked={checkboxState.checkboxA} onChange={handleCheckboxChange} name='checkboxA' />}
                             label='Checkbox A'
                           />
                           <FormControlLabel
-                            style={{ userSelect: enableUserSelectCssFeature ? 'none' : 'inherit' }}
                             control={<Checkbox checked={checkboxState.checkboxB} onChange={handleCheckboxChange} name='checkboxB' />}
                             label='Checkbox B'
                           />
                           <FormControlLabel
-                            style={{ userSelect: enableUserSelectCssFeature ? 'none' : 'inherit' }}
                             control={<Checkbox checked={checkboxState.checkboxC} onChange={handleCheckboxChange} name='checkboxC' />}
                             label='Checkbox C'
                           />
                           <FormControlLabel
                             disabled
-                            style={{ userSelect: enableUserSelectCssFeature ? 'none' : 'inherit' }}
                             control={<Checkbox checked={checkboxState.checkboxD} onChange={handleCheckboxChange} name='checkboxD' />}
                             label='Checkbox D'
                           />
@@ -108,10 +92,10 @@ const Forms = () => {
                       <FormControl required error={showError}>
                         <FormLabel>Radio Buttons Example</FormLabel>
                         <RadioGroup row={displayRowStyle} name='radio' value={radioValue} onChange={handleRadioChange}>
-                          <FormControlLabel style={{ userSelect: enableUserSelectCssFeature ? 'none' : 'inherit' }} value='radio1' control={<Radio />} label='Radio 1' />
-                          <FormControlLabel style={{ userSelect: enableUserSelectCssFeature ? 'none' : 'inherit' }} value='radio2' control={<Radio />} label='Radio 2' />
-                          <FormControlLabel style={{ userSelect: enableUserSelectCssFeature ? 'none' : 'inherit' }} value='radio3' control={<Radio />} label='Radio 3' />
-                          <FormControlLabel style={{ userSelect: enableUserSelectCssFeature ? 'none' : 'inherit' }} value='radio4' disabled control={<Radio />} label='Radio 4' />
+                          <FormControlLabel value='radio1' control={<Radio />} label='Radio 1' />
+                          <FormControlLabel value='radio2' control={<Radio />} label='Radio 2' />
+                          <FormControlLabel value='radio3' control={<Radio />} label='Radio 3' />
+                          <FormControlLabel value='radio4' disabled control={<Radio />} label='Radio 4' />
                         </RadioGroup>
                         <FormHelperText>{showError ? 'Ups, an error was detected!' : 'This is a helper text'}</FormHelperText>
                       </FormControl>
@@ -120,43 +104,53 @@ const Forms = () => {
                       <FormControl required error={showError}>
                         <FormLabel>Switch Buttons Example</FormLabel>
                         <FormGroup row={displayRowStyle}>
-                          <FormControlLabel style={{ userSelect: enableUserSelectCssFeature ? 'none' : 'inherit' }}
-                                            control={<Switch checked={switchState.switchA} onChange={(event, value) => handleSwitchChange('switchA', value)} name='switchA' />}
-                                            label='Switch 1' />
-                          <FormControlLabel style={{ userSelect: enableUserSelectCssFeature ? 'none' : 'inherit' }}
-                                            control={<Switch checked={switchState.switchB} onChange={(event, value) => handleSwitchChange('switchB', value)} name='switchB' />}
-                                            label='Switch 2' />
-                          <FormControlLabel style={{ userSelect: enableUserSelectCssFeature ? 'none' : 'inherit' }}
-                                            control={<Switch checked={switchState.switchC} onChange={(event, value) => handleSwitchChange('switchC', value)} name='switchC' />}
-                                            label='Switch 3' />
-                          <FormControlLabel style={{ userSelect: enableUserSelectCssFeature ? 'none' : 'inherit' }} disabled
-                                            control={<Switch checked={switchState.switchD} onChange={(event, value) => handleSwitchChange('switchD', value)} name='switchD' />}
-                                            label='Switch 4' />
+                          <FormControlLabel
+                            control={<Switch
+                              checked={switchState.switchA}
+                              onChange={(event, value) => handleSwitchChange('switchA', value)} name='switchA'
+                            />}
+                            label='Switch 1' />
+                          <FormControlLabel
+                            control={<Switch
+                              checked={switchState.switchB}
+                              onChange={(event, value) => handleSwitchChange('switchB', value)} name='switchB'
+                            />}
+                            label='Switch 2' />
+                          <FormControlLabel
+                            control={<Switch
+                              checked={switchState.switchC}
+                              onChange={(event, value) => handleSwitchChange('switchC', value)} name='switchC'
+                            />}
+                            label='Switch 3' />
+                          <FormControlLabel
+                            control={<Switch
+                              checked={switchState.switchD}
+                              onChange={(event, value) => handleSwitchChange('switchD', value)} name='switchD'
+                            />}
+                            label='Switch 4' />
                         </FormGroup>
                         <FormHelperText>{showError ? 'Ups, an error was detected!' : 'This is a helper text'}</FormHelperText>
                       </FormControl>
                     </Grid>
                     <Grid item xs={12}>
                       <Divider />
-                      <Box>
-                        <FormControlLabel control={<Switch onChange={toggleWithPlaceholder} checked={withPlaceholders} />} label={<>With placeholder</>} />
-                      </Box>
                       <Box mt={2}>
-                        <FormControlLabel control={<Switch onChange={toggleSelectDense} checked={selectDense} />} label={<>Dense</>} />
-                        <Typography>Icons in <CodeBox component={'span'} size={'small'}>Select</CodeBox>'s need a little custom styling: <CodeBox component={'span'}
-                                                                                                                                                  size={'small'}>{`<WarningIcon style={{fontSize: theme.typography.pxToRem(isDense ? 16 : 20)}}/>`}</CodeBox></Typography>
+                        <Typography variant={'h6'}>Select/Dropdown Elements</Typography>
+                        <Typography color={'textSecondary'}>Icons in <CodeBox component={'span'} size={'small'}>Select</CodeBox>'s need a little custom styling: <CodeBox
+                          component={'span'}
+                          size={'small'}>{`<WarningIcon style={{fontSize: theme.typography.pxToRem(isDense ? 16 : 20)}}/>`}</CodeBox></Typography>
                       </Box>
                       <Box mt={2}>
                         <Grid container spacing={1}>
                           <Grid item xs={6}>
-                            <FormControl style={{ minWidth: 200 }} required error={showError}>
-                              <InputLabel shrink={withPlaceholders || selectValue !== ''}>Select/Dropdown Element</InputLabel>
+                            <FormControl style={{ width: 200 }} required error={showError}>
+                              <InputLabel shrink={withPlaceholders || selectValue !== ''}>Choose Value</InputLabel>
                               <Select
                                 value={selectValue}
                                 onChange={handleSelectChange}
                                 displayEmpty={withPlaceholders}
                               >
-                                <MenuItem dense={selectDense} value=''><em>None</em></MenuItem>
+                                <MenuItem dense={selectDense} value=''><em>No value</em></MenuItem>
                                 <MenuItem dense={selectDense} value={1}><Box alignItems={'center'} display={'flex'}>
                                   <WarningIcon style={{ fontSize: theme.typography.pxToRem(selectDense ? 16 : 20) }} />
                                   <Box component={'span'} ml={1}>Value 1</Box>
@@ -181,7 +175,8 @@ const Forms = () => {
                                 <MenuItem dense={selectDense} value={13}>Value 13</MenuItem>
                                 <MenuItem dense={selectDense} value={14}>Value 14</MenuItem>
                               </Select>
-                              <FormHelperText>Label{withPlaceholders ? ' + Placeholder' : ''}</FormHelperText>
+                              <FormHelperText>We decided to display "empty" values with a human readable value in the "Select-A-Value-Box" but displaying them in the input field is
+                                optional.</FormHelperText>
                             </FormControl>
                           </Grid>
                           <Grid>
