@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, CircularProgress, Paper } from '@material-ui/core';
+import { Box, Paper, Tooltip } from '@material-ui/core';
+import HelpIcon from '@material-ui/icons/Help';
 import { VirtualizedTable } from './Table';
 import 'date-fns';
 import { TableCellDefault } from './Table/TableCell';
@@ -20,9 +21,8 @@ for (let i = 0; i < 200; i += 1) {
 }
 const Develop = () => {
     return React.createElement(Box, { component: Paper },
-        React.createElement(CircularProgress, null),
-        React.createElement(CircularProgress, { color: 'primary' }),
-        React.createElement(CircularProgress, { color: 'secondary' }),
+        React.createElement(Tooltip, { title: 'Hallo Welt!', interactive: true },
+            React.createElement(HelpIcon, null)),
         React.createElement(Box, { padding: 1, height: '100%' },
             React.createElement(VirtualizedTable, { showRowHoverHighlight: true, rowCount: rows.length, rowGetter: (row) => rows[row.index], sortBy: 'dessert', sortDirection: 'ASC', sort: () => console.log('sorting'), 
                 // rowHeight={100}

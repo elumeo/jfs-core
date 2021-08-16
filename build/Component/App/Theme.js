@@ -2,11 +2,6 @@ import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import * as Color from '../../Constant/Color';
 import { grey } from '@material-ui/core/colors';
 export default responsiveFontSizes(createTheme({
-    // props: {
-    //   MuiIcon: {
-    //     color: 'action'
-    //   }
-    // },
     overrides: {
         MuiCssBaseline: {
             '@global': {
@@ -23,6 +18,14 @@ export default responsiveFontSizes(createTheme({
         MuiListItemIcon: {
             root: {
                 minWidth: 32
+            }
+        },
+        MuiTooltip: {
+            tooltip: {
+                fontSize: '0.875rem',
+                fontWeight: 400,
+                lineHeight: 1.43,
+                letterSpacing: '0.01071em',
             }
         }
     },
