@@ -1,15 +1,15 @@
 import React from 'react';
-import { Box, Button, Grid, CardContent, CardHeader, Container, Card, Radio, Typography } from '@material-ui/core';
+import { Box, Button, Grid, CardContent, CardHeader, Container, Card, Radio, Typography, Link } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import DoneIcon from '@material-ui/icons/Done';
 import HomeIcon from '@material-ui/icons/Home';
 import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import * as Color from '@elumeo/jfs-core/build/Types/Color';
+import ButtonProgress from '@elumeo/jfs-core/build/Component/Button/ButtonProgress';
+import IconButtonProgress from '@elumeo/jfs-core/build/Component/Button/IconButtonProgress';
 import AppNavigation from 'Component/AppNavigation';
-import ButtonProgress from 'Component/CoreComponents/ButtonProgress';
 import Switch from '@material-ui/core/Switch';
-import IconButtonProgress from 'Component/CoreComponents/IconButtonProgress';
 import CodeBox from 'Component/CodeBox';
 
 type Props = {} & WithStyles
@@ -83,29 +83,46 @@ const Buttons: React.FC<Props> = ({ classes }) => {
           </Grid>
           <Grid item>
             <Card>
-              <CardHeader title={'Custom ButtonProgress'} />
+              <CardHeader title={'ButtonProgress and IconButtonProgress'} />
               <CardContent>
                 <Typography>To have a consistent ui we have decided to implement a <CodeBox component={'span'} size={'small'}>ButtonProgress</CodeBox> and
-                  a <CodeBox component={'span'} size={'small'}>IconButtonProgress</CodeBox> component which are used in the CAO app in different situations (Forms, Dialogs, etc.).<br />
-                  This component could be moved into core to be reused by other apps as well.</Typography>
-                <CodeBox>{`<ButtonProgress inProgress={inProgress} size={size}>A Progress Button</ButtonProgress>`}</CodeBox>
-                <CodeBox>{`<IconButtonProgress inProgress={inProgress} size={size}><SearchIcon /></IconButtonProgress>`}</CodeBox>
+                  a <CodeBox component={'span'} size={'small'}>IconButtonProgress</CodeBox> component.</Typography>
                 <FormControlLabel control={<Switch onChange={() => setInProgress(!inProgress)} checked={inProgress} />} label='Enable progress' />
-                <Grid container spacing={1} alignItems={'center'}>
-                  <Grid item><Typography variant={'subtitle2'}>ButtonsProgress:</Typography></Grid>
-                  <Grid item><ButtonProgress inProgress={inProgress} size={size}>A Progress Button</ButtonProgress></Grid>
-                  <Grid item><ButtonProgress inProgress={inProgress} size={size} variant={'outlined'} color={'secondary'}>A Progress Button</ButtonProgress></Grid>
-                  <Grid item><ButtonProgress inProgress={inProgress} size={size} variant={'contained'} color={'primary'}>A Progress Button</ButtonProgress></Grid>
-                </Grid>
-                <Grid container spacing={1} alignItems={'center'}>
-                  <Grid item><Typography variant={'subtitle2'}>IconButtonProgress:</Typography></Grid>
-                  <Grid item>{size !== 'large'
-                  && <IconButtonProgress inProgress={inProgress} size={size}><SearchIcon /></IconButtonProgress>
-                  || <Typography color={'error'}>Not supported!</Typography>
-                  }</Grid>
-                  <Grid item>{size !== 'large' && <IconButtonProgress inProgress={inProgress} size={size} color={'secondary'}><DoneIcon /></IconButtonProgress>}</Grid>
-                  <Grid item>{size !== 'large' && <IconButtonProgress inProgress={inProgress} size={size} color={'primary'}><HomeIcon /></IconButtonProgress>}</Grid>
-                </Grid>
+                <Box mt={4}>
+                  <Typography variant={'h6'}>ButtonProgress</Typography>
+                  <Grid container spacing={1} alignItems={'center'}>
+                    <Grid item><ButtonProgress inProgress={inProgress} size={size}>A Progress Button</ButtonProgress></Grid>
+                    <Grid item><ButtonProgress inProgress={inProgress} size={size} variant={'outlined'} color={'secondary'}>A Progress Button</ButtonProgress></Grid>
+                    <Grid item><ButtonProgress inProgress={inProgress} size={size} variant={'contained'} color={'primary'}>A Progress Button</ButtonProgress></Grid>
+                  </Grid>
+                  <CodeBox>{`<ButtonProgress inProgress={inProgress} size={size}>A Progress Button</ButtonProgress>`}</CodeBox>
+                  <CodeBox>
+                    {`onClick ? : () => void;`}<br />
+                    {`disabled ? : boolean;`}<br />
+                    {`inProgress ? : boolean;`}<br />
+                    {`color ? : PropTypes.Color;`}<br />
+                  </CodeBox>
+                  <Typography variant={'caption'}>The <Link target={'_blank'} href={'https://material-ui.com/api/button/'}>Mui ButtonProps</Link> are available as well.</Typography>
+                </Box>
+                <Box mt={4}>
+                  <Typography variant={'h6'}>IconButtonProgress</Typography>
+                  <Grid container spacing={1} alignItems={'center'}>
+                    <Grid item>{size !== 'large'
+                    && <IconButtonProgress inProgress={inProgress} size={size}><SearchIcon /></IconButtonProgress>
+                    || <Typography color={'error'}>Not supported!</Typography>
+                    }</Grid>
+                    <Grid item>{size !== 'large' && <IconButtonProgress inProgress={inProgress} size={size} color={'secondary'}><DoneIcon /></IconButtonProgress>}</Grid>
+                    <Grid item>{size !== 'large' && <IconButtonProgress inProgress={inProgress} size={size} color={'primary'}><HomeIcon /></IconButtonProgress>}</Grid>
+                  </Grid>
+                  <CodeBox>{`<IconButtonProgress inProgress={inProgress} size={size}><SearchIcon /></IconButtonProgress>`}</CodeBox>
+                  <CodeBox>
+                    {`onClick ? : () => void;`}<br />
+                    {`disabled ? : boolean;`}<br />
+                    {`inProgress ? : boolean;`}<br />
+                    {`color ? : PropTypes.Color;`}<br />
+                  </CodeBox>
+                  <Typography variant={'caption'}>The <Link target={'_blank'} href={'https://material-ui.com/api/icon-button/'}>Mui IconButtonProps</Link> are available as well.</Typography>
+                </Box>
               </CardContent>
             </Card>
           </Grid>

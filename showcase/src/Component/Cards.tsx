@@ -6,7 +6,7 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import CodeBox from 'Component/CodeBox';
 import RefreshIcon from '@material-ui/icons/Refresh';
-import AppCardHeader from 'Component/CoreComponents/AppCardHeader';
+import AppCardHeader from '@elumeo/jfs-core/build/Component/Card/AppCardHeader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 
 const useStyles = makeStyles((theme) => createStyles({

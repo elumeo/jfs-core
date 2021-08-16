@@ -16,7 +16,9 @@ const CodeBox = ({children, component, size = 'medium'}: React.PropsWithChildren
     marginBottom={size === 'medium' ? 1 : 0}
     borderRadius={theme.spacing(1)}
     padding={size === 'medium' ? 1 : 0.5}
-    bgcolor={theme.palette.grey['200']}>{children}</Box>;
+    bgcolor={theme.palette.grey['200']}
+    color={theme.palette.text.primary}
+  >{children}</Box>;
 };
 
 export default memo(CodeBox);

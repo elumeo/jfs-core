@@ -1,12 +1,10 @@
 import React, { memo } from 'react';
-import clsx from 'clsx';
 import {
   Box,
   Button,
   Card,
   CardContent,
   CardHeader,
-  CircularProgress,
   Container,
   Dialog,
   DialogActions,
@@ -19,11 +17,12 @@ import {
   Typography
 } from '@material-ui/core';
 import WarningIcon from '@material-ui/icons/Warning';
+import InfoIcon from '@material-ui/icons/Info';
 import AppNavigation from 'Component/AppNavigation';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import LoremIpsumText from 'Component/LoremIpsumText';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import ButtonProgress from '@elumeo/jfs-core/build/Component/Button/ButtonProgress';
+import CodeBox from 'Component/CodeBox';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -34,12 +33,6 @@ const useStyles = makeStyles((theme) =>
     wrapper: {
       margin: theme.spacing(1),
       position: 'relative'
-    },
-    buttonSuccess: {
-      // backgroundColor: theme.palette.success.main,
-      // '&:hover': {
-      //   backgroundColor: theme.palette.success.dark,
-      // },
     },
     fabProgress: {
       color: theme.palette.success.main,
@@ -66,11 +59,9 @@ const Dialogs = () => {
   const [formOpen, setFormOpen] = React.useState(false);
   const [formValue, setFormValue] = React.useState('');
   const [asyncOpen, setAsyncOpen] = React.useState(false);
-  const [asyncSuccess, setAsyncSuccess] = React.useState(false);
   const [asyncLoading, setAsyncLoading] = React.useState(false);
   const asyncTimer = React.useRef<number>();
   const [popoverEl, setPopoverEl] = React.useState<HTMLButtonElement | null>(null);
-  const [tooltipFontSizeIncreased, setTooltipFontSizeIncreased] = React.useState(false);
 
   const handleClickOpenBasic = () => setBasicOpen(true);
   const handleCloseBasic = () => setBasicOpen(false);
@@ -81,12 +72,6 @@ const Dialogs = () => {
   const handleClickOpenAsync = () => setAsyncOpen(true);
   const handleCloseAsync = () => setAsyncOpen(false);
 
-  const toggleTooltipFontSizeIncreased = () => setTooltipFontSizeIncreased(!tooltipFontSizeIncreased);
-
-  const buttonClassname = clsx({
-    [styles.buttonSuccess]: asyncSuccess
-  });
-
   React.useEffect(() => {
     return () => {
       clearTimeout(asyncTimer.current);
@@ -95,10 +80,8 @@ const Dialogs = () => {
 
   const handleButtonAsyncClick = () => {
     if (!asyncLoading) {
-      setAsyncSuccess(false);
       setAsyncLoading(true);
       asyncTimer.current = window.setTimeout(() => {
-        setAsyncSuccess(true);
         setAsyncLoading(false);
         handleCloseAsync();
       }, 2000);
@@ -118,11 +101,12 @@ const Dialogs = () => {
         <Grid container direction={'column'} spacing={1}>
           <Grid item xs>
             <Card>
-              <CardHeader title='Dialogs' />
+              <CardHeader title='Dialogs' subheader={<>Open the "Async Dialog" to see a recommended flow of a asynchronous call to the backend (including the <Link
+                href={'#/Buttons'}>"ButtonProgress"</Link> component).</>} />
               <CardContent>
-                <Button color='secondary' onClick={handleClickOpenBasic}>Open basic dialog</Button>
-                <Button color='secondary' onClick={handleClickOpenForm}>Open form dialog</Button>
-                <Button color='secondary' onClick={handleClickOpenAsync}>Open Async dialog</Button>
+                <Button color='secondary' onClick={handleClickOpenBasic}>Basic dialog</Button>
+                <Button color='secondary' onClick={handleClickOpenForm}>Form dialog</Button>
+                <Button color='secondary' onClick={handleClickOpenAsync}>Async dialog</Button>
                 <Dialog
                   open={basicOpen}
                   onClose={handleCloseBasic}
@@ -147,8 +131,21 @@ const Dialogs = () => {
                 >
                   <DialogTitle id='form-dialog-title'>{'Form dialog with different action button states'}</DialogTitle>
                   <DialogContent>
-                    <TextField required value={formValue} error={formValue === ''} id='standard-basic' label='Test Value' onChange={(event) => setFormValue(event.target.value)} />
-                    <Box p={2}>Action Button should relate on the form state. Is this invalid the action button should be disabled until the form becomes valid.</Box>
+                    <TextField
+                      fullWidth
+                      required
+                      value={formValue}
+                      error={formValue === ''}
+                      id='standard-basic'
+                      label='Test Value'
+                      onChange={event => setFormValue(event.target.value)}
+                    />
+                    <Box mt={2}>
+                      <Grid container spacing={1} alignItems={'center'}>
+                        <Grid item><InfoIcon /></Grid>
+                        <Grid item xs><Typography>Action Button should relate on the form state. Is the form invalid the action button should be disabled until the form becomes valid.</Typography></Grid>
+                      </Grid>
+                    </Box>
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={handleCloseForm}>Cancel</Button>
@@ -167,17 +164,7 @@ const Dialogs = () => {
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={handleCloseAsync}>Cancel</Button>
-                    <div className={styles.wrapper}>
-                      <Button
-                        color='primary'
-                        className={buttonClassname}
-                        disabled={asyncLoading}
-                        onClick={handleButtonAsyncClick}
-                      >
-                        Primary Action
-                      </Button>
-                      {asyncLoading && <CircularProgress size={24} className={styles.buttonProgress} />}
-                    </div>
+                    <ButtonProgress inProgress={asyncLoading} onClick={handleButtonAsyncClick} color={'primary'}>Primary Action</ButtonProgress>
                   </DialogActions>
                 </Dialog>
               </CardContent>
@@ -210,18 +197,19 @@ const Dialogs = () => {
           </Grid>
           <Grid item xs>
             <Card>
-              <CardHeader title={'Tooltips'} />
+              <CardHeader title={'Tooltips'}
+                          subheader={'We decided to change the default font size for tooltips to the font size of typography variant "body2". This is implemented directly in the core theme.'} />
               <CardContent>
-                <Grid container direction={'column'}>
+                <Grid container spacing={1} alignItems={'center'}>
                   <Grid item>
-                    <FormControlLabel control={<Switch onChange={toggleTooltipFontSizeIncreased} checked={tooltipFontSizeIncreased} />} label='Increase font size' />
+                    <Tooltip title={'This is a tooltip text.'}>
+                      <WarningIcon />
+                    </Tooltip>
                   </Grid>
                   <Grid item>
-                    {tooltipFontSizeIncreased &&
-                    <Tooltip title={<Typography variant={'body2'}>This is a tooltip text. Default font size seems to be very small. Is it better to increase the font
-                      size?</Typography>}><WarningIcon /></Tooltip>}
-                    {tooltipFontSizeIncreased === false &&
-                    <Tooltip title={'This is a tooltip text. Default font size seems to be very small. Is it better to increase the font size by default?'}><WarningIcon /></Tooltip>}
+                    <Tooltip title={<>The tooltip even works with disabled button if you wrap the button inside a <CodeBox component={'span'} size={'small'}>span</CodeBox> element.</>}>
+                      <span><Button disabled>Disabled button</Button></span>
+                    </Tooltip>
                   </Grid>
                 </Grid>
               </CardContent>

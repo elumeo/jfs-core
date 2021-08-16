@@ -18,7 +18,7 @@ import Notifications from 'Component/Notifications';
 import Boxes from 'Component/Boxes';
 import TabsDemo from 'Component/Tabs';
 import Forms from 'Component/Forms';
-import AppCardContentExample from 'Component/CoreComponents/AppCardContentExample';
+import AppCardContentExample from 'Component/AppCardContentExample';
 
 const Routes: React.FC = () => (
   <Content>
