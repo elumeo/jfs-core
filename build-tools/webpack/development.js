@@ -9,7 +9,7 @@ const { resolve } = require('path');
 const development = {
   ...common,
   mode: 'development',
-  output: {
+  output: {
     filename: PATH.BUNDLE_NAME,
     path: PATH.PUBLIC
   },
@@ -29,7 +29,7 @@ const development = {
     }),
     new ForkTsCheckerNotifierWebpackPlugin,
     new CopyWebpackPlugin({
-      patterns: [ 
+      patterns: [
         { from: PATH.CONFIGURATION_DEV, to: PATH.CONFIGURATION_DIST }
       ],
     }),
@@ -40,7 +40,7 @@ const development = {
       favicon: PATH.FAVICON,
       templateParameters: {
         BUNDLE_FILE_NAME : PATH.BUNDLE_NAME
-      }      
+      }
     })
 ]
 };

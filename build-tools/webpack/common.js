@@ -59,6 +59,10 @@ const common = {
       {
         test: /\.mp3$/,
         use: ['file-loader']
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
       }
     ]
   },

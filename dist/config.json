@@ -1,6 +1,6 @@
 {
   "JscClient": {
-    "Host-Internal": "http://de.TECH-64_push_to_web.api.staging-jsc-app.juwelo.local",
+    "Host-Internal": "http://de.master.api.staging-jsc-app.juwelo.local",
     "Host": "https://api-test.juwelo.de/staging/de/master",
     "Host-Local": "http://localhost/jsc-api-de",
     "Timeout": 30000
@@ -18,4 +18,3 @@
   "ContainerLanguage": "de",
   "AppName": "jfs_Boilerplate"
 }
-  
