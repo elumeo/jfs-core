@@ -7,7 +7,8 @@ import { LANGUAGE } from 'Types/Language';
 import { useSelector } from 'Types/Redux';
 import mapLanguageToDateFormat from './mapLanguageToDateFormat';
 import 'react-datepicker/dist/react-datepicker.css';
-import { ClickAwayListener, TextField, TextFieldProps } from '@material-ui/core';
+import { ClickAwayListener, IconButton, InputAdornment, TextField, TextFieldProps } from '@material-ui/core';
+import TodayIcon from '@material-ui/icons/Today';
 
 export type DatePickerProps = Omit<ReactDatePickerProps, 'value'> & {
   label?: string;
@@ -112,7 +113,6 @@ const DatePicker = ({
         <ReactDatePicker
           {...rest}
           wrapperClassName={classNames({ 'has-value': !!value })}
-          onInputClick={() => setOpen(true)}
           ref={datePickerRef}
           selected={date}
           onChange={(newDate, event) => {
@@ -131,7 +131,13 @@ const DatePicker = ({
           locale={language as LANGUAGE}
           open={open}
           id={id}
-          customInput={<TextField label={label} error={hasError()} helperText={hasError() && hasErrorText() ? errorText : helperText} {...getTextFieldProps()} />}
+          customInput={<TextField
+            {...getTextFieldProps()}
+            label={label}
+            error={hasError()}
+            helperText={hasError() && hasErrorText() ? errorText : helperText}
+            InputProps={{endAdornment: <InputAdornment position={'end'}><IconButton onClick={() => setOpen(true)}><TodayIcon /></IconButton></InputAdornment>}}
+          />}
         />
       </span>
   </ClickAwayListener>;

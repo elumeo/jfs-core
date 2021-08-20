@@ -17,7 +17,8 @@ import './Setup';
 import { useSelector } from '../../Types/Redux';
 import mapLanguageToDateFormat from './mapLanguageToDateFormat';
 import 'react-datepicker/dist/react-datepicker.css';
-import { ClickAwayListener, TextField } from '@material-ui/core';
+import { ClickAwayListener, IconButton, InputAdornment, TextField } from '@material-ui/core';
+import TodayIcon from '@material-ui/icons/Today';
 const setActive = (domNode, isActive) => {
     if (domNode !== undefined) {
         if (isActive) {
@@ -78,7 +79,7 @@ const DatePicker = (_a) => {
     const getTextFieldProps = () => textFieldProps;
     return React.createElement(ClickAwayListener, { onClickAway: () => setOpen(false) },
         React.createElement("span", null,
-            React.createElement(ReactDatePicker, Object.assign({}, rest, { wrapperClassName: classNames({ 'has-value': !!value }), onInputClick: () => setOpen(true), ref: datePickerRef, selected: date, onChange: (newDate, event) => {
+            React.createElement(ReactDatePicker, Object.assign({}, rest, { wrapperClassName: classNames({ 'has-value': !!value }), ref: datePickerRef, selected: date, onChange: (newDate, event) => {
                     if (isClearable !== true && newDate === null) {
                         return;
                     }
@@ -87,6 +88,8 @@ const DatePicker = (_a) => {
                     if (datePickerRef.current.props.shouldCloseOnSelect) {
                         setOpen(false);
                     }
-                }, onCalendarOpen: () => setActive(getInputParent(), true), onCalendarClose: () => setActive(getInputParent(), false), dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: language, open: open, id: id, customInput: React.createElement(TextField, Object.assign({ label: label, error: hasError(), helperText: hasError() && hasErrorText() ? errorText : helperText }, getTextFieldProps())) }))));
+                }, onCalendarOpen: () => setActive(getInputParent(), true), onCalendarClose: () => setActive(getInputParent(), false), dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: language, open: open, id: id, customInput: React.createElement(TextField, Object.assign({}, getTextFieldProps(), { label: label, error: hasError(), helperText: hasError() && hasErrorText() ? errorText : helperText, InputProps: { endAdornment: React.createElement(InputAdornment, { position: 'end' },
+                            React.createElement(IconButton, { onClick: () => setOpen(true) },
+                                React.createElement(TodayIcon, null))) } })) }))));
 };
 export default memo(DatePicker);
