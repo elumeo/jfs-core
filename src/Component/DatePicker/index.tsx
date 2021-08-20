@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, memo } from 'react';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
-// import OutsideClickHandler from 'react-outside-click-handler';
 import { useIntl } from 'react-intl';
 import classNames from 'classnames';
 import './Setup';
@@ -8,14 +7,17 @@ import { LANGUAGE } from 'Types/Language';
 import { useSelector } from 'Types/Redux';
 import mapLanguageToDateFormat from './mapLanguageToDateFormat';
 import 'react-datepicker/dist/react-datepicker.css';
-import { ClickAwayListener, TextField } from '@material-ui/core';
+import { ClickAwayListener, TextField, TextFieldProps } from '@material-ui/core';
 
 export type DatePickerProps = Omit<ReactDatePickerProps, 'value'> & {
   label?: string;
+  error?: boolean;
   customClearButtonId?: string;
   value: Date;
   state?: { language: string };
   errorText?: string;
+  helperText?: string;
+  textFieldProps?: Partial<TextFieldProps>;
   floating?: boolean;
   onChange: (
     newDate: Date,
@@ -34,41 +36,25 @@ const setActive = (domNode: HTMLElement, isActive: boolean) => {
   }
 };
 
-const setError = (domNode: HTMLElement, error: boolean) => {
-  if (domNode !== undefined) {
-    if (error && !domNode.classList.contains('error')) {
-      domNode.classList.add('error');
-    } else if (!error && domNode.classList.contains('error')) {
-      domNode.classList.remove('error');
-    }
-  }
-};
-
-const setFloating = (domNode: HTMLElement, floating: boolean) => {
-  if (domNode !== undefined) {
-    if (floating && !domNode.classList.contains('floating')) {
-      domNode.classList.add('floating');
-    } else if (!floating && domNode.classList.contains('floating')) {
-      domNode.classList.remove('floating');
-    }
-  }
-};
-
 const DatePicker = ({
                       label,
+                      error = false,
                       customClearButtonId,
                       dateFormat,
                       value,
                       onChange,
                       errorText,
+                      helperText = '',
                       floating,
                       isClearable,
+                      textFieldProps,
                       ...rest
                     }: DatePickerProps) => {
   const language = useSelector(state => state.Core.Language.language);
   const { formatMessage } = useIntl();
   const [date, setDate] = useState<Date>(value);
   const [open, setOpen] = useState(false);
+  const [dirty, setDirty] = useState(false);
   const [id] = useState('reactDatePicker_' + Math.floor(Math.random() * 100));
   const datePickerRef = useRef<ReactDatePicker>();
 
@@ -78,14 +64,6 @@ const DatePicker = ({
     const input = getInput();
     return input ? input.parentElement : null;
   };
-
-  useEffect(() => {
-    const parent = getInputParent();
-    if (parent) {
-      setError(parent, Boolean(errorText));
-      setFloating(parent, floating);
-    }
-  }, [errorText || '']);
 
   useEffect(() => setDate(value), [value]);
 
@@ -106,10 +84,12 @@ const DatePicker = ({
             e.stopPropagation();
           }
         });
-        input.addEventListener('blur', () => (datePickerRef.current.isCalendarOpen() === false)
-          ? setActive(getInputParent(), false)
-          : null
-        );
+        input.addEventListener('blur', () => {
+          if (datePickerRef.current.isCalendarOpen() === false) {
+            setActive(getInputParent(), false);
+          }
+          setDirty(true);
+        });
         input.addEventListener('focus', () => setActive(getInputParent(), true));
       }
       const inputParent = getInputParent();
@@ -122,6 +102,11 @@ const DatePicker = ({
     },
     []
   );
+
+  const hasErrorText = () => errorText !== undefined && errorText !== null && errorText !== '';
+  const hasError = () => error || (dirty && rest.required && date === null);
+  const getTextFieldProps = () => textFieldProps as TextFieldProps;
+
   return <ClickAwayListener onClickAway={() => setOpen(false)}>
       <span>
         <ReactDatePicker
@@ -146,9 +131,8 @@ const DatePicker = ({
           locale={language as LANGUAGE}
           open={open}
           id={id}
-          customInput={<TextField label={'Label'} />}
+          customInput={<TextField label={label} error={hasError()} helperText={hasError() && hasErrorText() ? errorText : helperText} {...getTextFieldProps()} />}
         />
-        {errorText && <div>{errorText}</div>}
       </span>
   </ClickAwayListener>;
 };

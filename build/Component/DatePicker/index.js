@@ -11,7 +11,6 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import React, { useState, useEffect, useRef, memo } from 'react';
 import ReactDatePicker from 'react-datepicker';
-// import OutsideClickHandler from 'react-outside-click-handler';
 import { useIntl } from 'react-intl';
 import classNames from 'classnames';
 import './Setup';
@@ -29,32 +28,13 @@ const setActive = (domNode, isActive) => {
         }
     }
 };
-const setError = (domNode, error) => {
-    if (domNode !== undefined) {
-        if (error && !domNode.classList.contains('error')) {
-            domNode.classList.add('error');
-        }
-        else if (!error && domNode.classList.contains('error')) {
-            domNode.classList.remove('error');
-        }
-    }
-};
-const setFloating = (domNode, floating) => {
-    if (domNode !== undefined) {
-        if (floating && !domNode.classList.contains('floating')) {
-            domNode.classList.add('floating');
-        }
-        else if (!floating && domNode.classList.contains('floating')) {
-            domNode.classList.remove('floating');
-        }
-    }
-};
 const DatePicker = (_a) => {
-    var { label, customClearButtonId, dateFormat, value, onChange, errorText, floating, isClearable } = _a, rest = __rest(_a, ["label", "customClearButtonId", "dateFormat", "value", "onChange", "errorText", "floating", "isClearable"]);
+    var { label, error = false, customClearButtonId, dateFormat, value, onChange, errorText, helperText = '', floating, isClearable, textFieldProps } = _a, rest = __rest(_a, ["label", "error", "customClearButtonId", "dateFormat", "value", "onChange", "errorText", "helperText", "floating", "isClearable", "textFieldProps"]);
     const language = useSelector(state => state.Core.Language.language);
     const { formatMessage } = useIntl();
     const [date, setDate] = useState(value);
     const [open, setOpen] = useState(false);
+    const [dirty, setDirty] = useState(false);
     const [id] = useState('reactDatePicker_' + Math.floor(Math.random() * 100));
     const datePickerRef = useRef();
     const getInput = () => document.getElementById(id);
@@ -62,13 +42,6 @@ const DatePicker = (_a) => {
         const input = getInput();
         return input ? input.parentElement : null;
     };
-    useEffect(() => {
-        const parent = getInputParent();
-        if (parent) {
-            setError(parent, Boolean(errorText));
-            setFloating(parent, floating);
-        }
-    }, [errorText || '']);
     useEffect(() => setDate(value), [value]);
     useEffect(() => {
         var _a;
@@ -87,9 +60,12 @@ const DatePicker = (_a) => {
                     e.stopPropagation();
                 }
             });
-            input.addEventListener('blur', () => (datePickerRef.current.isCalendarOpen() === false)
-                ? setActive(getInputParent(), false)
-                : null);
+            input.addEventListener('blur', () => {
+                if (datePickerRef.current.isCalendarOpen() === false) {
+                    setActive(getInputParent(), false);
+                }
+                setDirty(true);
+            });
             input.addEventListener('focus', () => setActive(getInputParent(), true));
         }
         const inputParent = getInputParent();
@@ -97,6 +73,9 @@ const DatePicker = (_a) => {
             inputParent.setAttribute('data-label', label !== null ? label : formatMessage({ id: 'form.datePicker.label' }));
         }
     }, []);
+    const hasErrorText = () => errorText !== undefined && errorText !== null && errorText !== '';
+    const hasError = () => error || (dirty && rest.required && date === null);
+    const getTextFieldProps = () => textFieldProps;
     return React.createElement(ClickAwayListener, { onClickAway: () => setOpen(false) },
         React.createElement("span", null,
             React.createElement(ReactDatePicker, Object.assign({}, rest, { wrapperClassName: classNames({ 'has-value': !!value }), onInputClick: () => setOpen(true), ref: datePickerRef, selected: date, onChange: (newDate, event) => {
@@ -108,7 +87,6 @@ const DatePicker = (_a) => {
                     if (datePickerRef.current.props.shouldCloseOnSelect) {
                         setOpen(false);
                     }
-                }, onCalendarOpen: () => setActive(getInputParent(), true), onCalendarClose: () => setActive(getInputParent(), false), dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: language, open: open, id: id, customInput: React.createElement(TextField, { label: 'Label' }) })),
-            errorText && React.createElement("div", null, errorText)));
+                }, onCalendarOpen: () => setActive(getInputParent(), true), onCalendarClose: () => setActive(getInputParent(), false), dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: language, open: open, id: id, customInput: React.createElement(TextField, Object.assign({ label: label, error: hasError(), helperText: hasError() && hasErrorText() ? errorText : helperText }, getTextFieldProps())) }))));
 };
 export default memo(DatePicker);

@@ -8,7 +8,7 @@ const Develop = () => {
 
   return <Box component={Paper} p={2}>
     <Grid container spacing={1}>
-      <Grid item><DatePicker onChange={date => setSimpleDatePickerValue(date as Date)} value={simpleDatePickerValue} /></Grid>
+      <Grid item><DatePicker required label={'Label'} helperText={'Das ist ein HelperText'} errorText={'Das ist ein ErrorText'} onChange={date => setSimpleDatePickerValue(date as Date)} value={simpleDatePickerValue} /></Grid>
       <Grid item><TextField value={demoTextFieldValue} onChange={event => setDemoTextFieldValue(event.target.value)} label={'Label'}/></Grid>
     </Grid>
   </Box>;
