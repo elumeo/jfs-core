@@ -11,7 +11,7 @@ export type Props = {
       [key: string]: string
     };
   };
-  packageJson: any;
+  packageJson: Record<string, unknown>;
 };
 
 const Loader: React.FC<Props> = ({

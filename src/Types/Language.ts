@@ -4,7 +4,7 @@ export enum LANGUAGE {
   GERMAN = 'de',
   ENGLISH = 'en',
   ITALIAN = 'it'
-};
+}
 
 export enum DATE_FORMAT {
   DE = 'dd.MM.yyyy',

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import {
   Epic as TEpic,
   EpicMiddleware as TEpicMiddleware
@@ -23,4 +24,4 @@ type Selector<T1, T2 extends {} = {}> = (state: Global.State & T2) => T1;
 
 export const useSelector = <T1, T2 extends {} = {}>(
   selector: Selector<T1, T2>
-) => Redux.useSelector<Global.State & T2, T1>(selector);
+): T1 => Redux.useSelector<Global.State & T2, T1>(selector);

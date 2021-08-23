@@ -1,5 +1,5 @@
 import { History } from 'history';
-import { combineReducers } from 'redux';
+import { combineReducers, Reducer } from 'redux';
 import Core, { State as CoreState } from './Core';
 import { connectRouter, RouterState } from 'connected-react-router'
 
@@ -8,6 +8,9 @@ export type State = {
   router: RouterState
 };
 
-const Global = (history: History) => combineReducers<State>({ Core, router: connectRouter(history) });
+const Global = (history: History): Reducer<State> => combineReducers<State>({
+  Core,
+  router: connectRouter(history)
+});
 
 export default Global;

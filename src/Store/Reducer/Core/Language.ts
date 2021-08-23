@@ -1,7 +1,6 @@
 import { createReducer } from 'typesafe-actions';
 import * as Action from 'Store/Action';
 import * as Type from 'Types/Language';
-import _ from 'lodash';
 import { ActionType } from 'Types/Redux';
 
 export type State = {

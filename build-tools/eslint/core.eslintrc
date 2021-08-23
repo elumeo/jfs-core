@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "./build-tools/eslint/common.eslintrc"
+  ],
+  "ignorePatterns": [
+    "build-tools/**",
+    "src/Component/Icon/SVG/*.tsx",
+    "src/Component/Icon/SVG/**",
+    "scripts/**"
+  ]
+}

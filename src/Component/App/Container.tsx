@@ -9,9 +9,7 @@ export type Props = HOCProps & {
       [key: string]: string
     };
   };
-  packageJson: {
-    [key: string]: string | object;
-  };
+  packageJson: Record<string, unknown>;
   title?: string;
 }
 

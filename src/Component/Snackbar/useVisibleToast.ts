@@ -5,8 +5,16 @@ import useWords from './useWords';
 import useSeverity from './useSeverity';
 import useAutoHideDuration from './useAutoHideDuration';
 import useMessage from './useMessage';
+import { Color } from '@material-ui/lab';
 
-const useVisibleToast = () => {
+const useVisibleToast = (): {
+  toast: Toast;
+  open: boolean;
+  words: string[];
+  message: React.ReactNode;
+  autoHideDuration: number;
+  severity: Color
+} => {
   const toasts = useSelector(state => state.Core.Toast.toasts);
   const toast = React.useMemo(
     () => toasts?.[0]
@@ -19,14 +27,17 @@ const useVisibleToast = () => {
   const message = useMessage(toast, words);
   const autoHideDuration = useAutoHideDuration(words);
   const severity = useSeverity(toast);
-  return React.useMemo(()=> ({
-    toast,
-    open,
-    words,
-    message,
-    autoHideDuration,
-    severity
-  }),[toast, open, words, message, autoHideDuration, severity]);
+  return React.useMemo(
+    () => ({
+      toast,
+      open,
+      words,
+      message,
+      autoHideDuration,
+      severity
+    }),
+    [toast, open, words, message, autoHideDuration, severity]
+  );
 }
 
 export default useVisibleToast;

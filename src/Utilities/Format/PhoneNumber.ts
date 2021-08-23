@@ -1,6 +1,6 @@
 import { PhoneNumberUtil, PhoneNumberFormat } from 'google-libphonenumber';
 
-export const formatPhone = (msisdn: string, backendRegion: string) => {
+export const formatPhone = (msisdn: string, backendRegion: string): string => {
   const phoneUtil = PhoneNumberUtil.getInstance();
   if (msisdn) {
     const defaultCountry = correctCountryCode(backendRegion);

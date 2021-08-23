@@ -4,7 +4,7 @@ import { Alert } from '@material-ui/lab';
 import useActions from 'Store/useActions';
 import useVisibleToast from './useVisibleToast';
 
-const Snackbar = () => {
+const Snackbar: React.FC = () => {
   const { dismissToastAction } = useActions();
   const { open, severity, message, autoHideDuration } = useVisibleToast();
   return (

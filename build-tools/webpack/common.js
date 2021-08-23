@@ -48,8 +48,9 @@ const common = {
                 ]
               ]
             }
-          }
-        ]
+          },
+          'eslint-loader'
+        ],
       },
       {
         test: /\.js$/,

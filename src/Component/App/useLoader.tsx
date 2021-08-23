@@ -4,13 +4,16 @@ import { useSelector } from 'Types/Redux';
 
 const useLoader = ({ allowRobotLogin, packageJson, translations }: {
   allowRobotLogin: boolean;
-  packageJson: object;
+  packageJson: Record<string, unknown>;
   translations: {
     [language: string]: {
       [key: string]: string;
     }
   }
-}) => {
+}): {
+  appInitialized: boolean;
+  language: string;
+} => {
   const { initializeApp } = useActions();
   useEffect(
     () => {

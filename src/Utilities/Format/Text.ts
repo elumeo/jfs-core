@@ -1,6 +1,6 @@
 import { remove } from 'diacritics';
 
-export const capitalize = (value: string) => (
+export const capitalize = (value: string): string => (
   `${value[0].toUpperCase()}${value.slice(1)}`
 );
 
@@ -8,7 +8,7 @@ export const beginsWith = (text: string, ...prefixes: string[] ): boolean => (
   prefixes.some(prefix => text.substring(0, prefix.length) === prefix)
 )
 
-export const endsWith = (text: string, ...suffixes: string[]) => (
+export const endsWith = (text: string, ...suffixes: string[]): boolean => (
   suffixes.some(suffix => text.substring(text.length -suffix.length) === suffix)
 )
 

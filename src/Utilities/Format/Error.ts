@@ -40,7 +40,10 @@ const generic = (error: Error) => ({
   details: error.message + '\n' + error.stack
 });
 
-export const apply = (error: Error) => (
+export const apply = (error: Error): {
+  title: string;
+  details: string;
+} => (
   isAxiosError(error)
     ? http(error as AxiosError)
     : generic(error)

@@ -1,6 +1,5 @@
-import { createReducer, PayloadAction } from 'typesafe-actions';
+import * as TA from 'typesafe-actions';
 import * as Action from 'Store/Action';
-import { ActionType } from 'Types/Redux';
 
 export type State = {
   backendRegion: string;
@@ -12,7 +11,7 @@ const initialState: State = {
   pending: false
 };
 
-const System = createReducer<State, ActionType>(initialState)
+const System = TA.createReducer<State, TA.ActionType<typeof Action>>(initialState)
   .handleAction(Action.configLoadedAction, state => ({
     ...state,
     pending: true

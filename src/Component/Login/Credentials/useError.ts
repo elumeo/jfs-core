@@ -1,6 +1,6 @@
 import React from 'react';
 
-const useError = (value: string) => {
+const useError = (value: string): boolean => {
   const initial = React.useRef(true);
   const [error, setError] = React.useState(false);
 

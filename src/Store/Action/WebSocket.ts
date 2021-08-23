@@ -20,4 +20,4 @@ export const webSocketJoinRoomFailureAction = createAction('websocket/JOIN_ROOM_
 export const webSocketLeaveRoomRequestAction = createAction('websocket/LEAVE_ROOM_REQUEST')<Type.IWebSocketRoom>();
 export const webSocketLeaveRoomSuccessAction = createAction('websocket/LEAVE_ROOM_SUCCESS')<Type.IWebSocketRoom>();
 
-export const webSocketUpdateRoomAction = createAction(ROOM_UPDATE_ACTION_ID)<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>();
+export const webSocketUpdateRoomAction = createAction(ROOM_UPDATE_ACTION_ID)<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>();

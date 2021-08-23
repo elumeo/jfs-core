@@ -8,24 +8,16 @@ export const loadSession = createAction(`session/LOAD`)();
 
 export const checkSession = createAction('route/CHECK')();
 
-export namespace logout {
-  export type Payload = {
-    sessionDTO?: ISessionDTO;
-  }
-}
-
 export const logout = (
-  createAction('route/LOGOUT')<logout.Payload>()
+  createAction('route/LOGOUT')<{
+    sessionDTO?: ISessionDTO;
+  }>()
 );
 
-export namespace authorizeSession {
-  export type Payload = {
-    frontendSessionDTO: IFrontendSessionDTO;
-  }
-}
-
 export const authorizeSession = (
-  createAction('route/AUTHORIZE')<authorizeSession.Payload>()
+  createAction('route/AUTHORIZE')<{
+    frontendSessionDTO: IFrontendSessionDTO;
+  }>()
 );
 
 export const unauthorizeSession = (

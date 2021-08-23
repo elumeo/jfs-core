@@ -23,7 +23,7 @@ export type DatePickerProps = Omit<ReactDatePickerProps, 'value'> & {
   onChange: (
     newDate: Date,
     oldDate: Date,
-    event: (React.SyntheticEvent<any> | undefined)
+    event: (React.SyntheticEvent<unknown> | undefined)
   ) => void;
 };
 
@@ -46,7 +46,6 @@ const DatePicker = ({
                       onChange,
                       errorText,
                       helperText = '',
-                      floating,
                       isClearable,
                       textFieldProps,
                       ...rest
@@ -73,6 +72,7 @@ const DatePicker = ({
         ?.addEventListener('click', () => {
           if (datePickerRef.current !== null) {
             // The clear method does exists => its just not in the typing
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             datePickerRef.current.clear();
           }

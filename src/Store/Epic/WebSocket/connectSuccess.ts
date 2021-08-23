@@ -45,7 +45,7 @@ const connectSuccess: Epic = (action$, state$) => action$.pipe(
         cleanedConfigRooms.push(preparedConfigRoom);
       }
     }
-    let mergedRooms: string[] = _.uniq([...cleanedConfigRooms, ...stateJoinedRooms]);
+    const mergedRooms: string[] = _.uniq([...cleanedConfigRooms, ...stateJoinedRooms]);
     const roomActions: TA.PayloadAction<string, WebSocket.IWebSocketRoom>[] = [];
     for (const room of mergedRooms) {
       const roomData = {

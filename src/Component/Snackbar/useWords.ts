@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import { Toast } from 'Types/Toast';
 import * as Format from 'Utilities/Format';
 
-const useWords = (toast: Toast) => {
+const useWords = (toast: Toast): string[] => {
   const intl = useIntl();
   const [words, setWords] = React.useState<string[]>([]);
 

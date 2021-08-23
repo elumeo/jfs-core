@@ -13,5 +13,5 @@ const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
 const storeEnhancer = applyMiddleware(epicMiddleware, routerMiddleware(history)
 );
 const middleware = composeEnhancers(storeEnhancer);
-export const start = (epic: Epic) => epicMiddleware.run(epic);
+export const start = (epic: Epic): void => epicMiddleware.run(epic);
 export default middleware;

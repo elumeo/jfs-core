@@ -3,7 +3,7 @@ import Failure from './Failure';
 import { Toast } from 'Types/Toast';
 import * as Format from 'Utilities/Format';
 
-const useMessage = (toast: Toast, words: string[]) => {
+const useMessage = (toast: Toast, words: string[]): React.ReactNode => {
   const [message, setMessage] = React.useState<React.ReactNode>('');
 
   React.useEffect(

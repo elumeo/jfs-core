@@ -1,6 +1,6 @@
 import { LANGUAGE, DATE_FORMAT } from 'Types/Language';
 
-const mapLanguageToDateFormat = (language: LANGUAGE) => {
+const mapLanguageToDateFormat = (language: LANGUAGE): DATE_FORMAT => {
   switch (language) {
     case LANGUAGE.GERMAN:
       return DATE_FORMAT.DE;

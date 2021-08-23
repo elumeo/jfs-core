@@ -6,7 +6,7 @@ import { ActionType } from 'Types/Redux';
 export type State = {
   routeType: 'authorized' | 'unauthorized';
   location: Location;
-  params: any;
+  params: Record<string, string>;
 };
 
 const initialState: State = {

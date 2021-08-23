@@ -1,7 +1,7 @@
 import * as Locale from './Locale';
 import { ReactText } from 'react'
 
-export const getCurrencySign = (currency: string) => (
+export const getCurrencySign = (currency: string): string => (
   new Intl.NumberFormat(Locale.locale, { style: 'currency', currency })
     .formatToParts(0)
     .reduce((sign, { type, value }) => (sign + (type === 'currency' ? value : '')), '')
@@ -15,7 +15,7 @@ export const formatDisplay = (value: ReactText, min?: number, max?: number) : st
   }
   return val.toFixed(2)
 }
-export const getCurrency = (currency: string, value: number, showFraction: boolean = false, withCurrencySign: boolean = true) => {
+export const getCurrency = (currency: string, value: number, showFraction = false, withCurrencySign = true): string => {
     const options: Intl.NumberFormatOptions = {
         style: withCurrencySign ? 'currency' : 'decimal',
         currency,

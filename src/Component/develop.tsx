@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Grid, Paper, TextField } from '@material-ui/core';
 import DatePicker from 'Component/DatePicker';
 
-const Develop = () => {
+const Develop: React.FC = () => {
   const [simpleDatePickerValue, setSimpleDatePickerValue] = useState<Date>(null);
   const [demoTextFieldValue, setDemoTextFieldValue] = useState<string>('');
 

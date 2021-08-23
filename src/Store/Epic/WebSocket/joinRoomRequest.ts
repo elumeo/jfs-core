@@ -4,7 +4,6 @@ import * as TA from 'typesafe-actions';
 import * as Action from 'Store/Action';
 import * as WebSocket from 'Types/WebSocket';
 import { WSClient } from 'API/WS/WSClient';
-import _ from 'lodash';
 import { Epic } from 'Types/Redux';
 
 const joinRoomRequest: Epic = (action$, state$) => {

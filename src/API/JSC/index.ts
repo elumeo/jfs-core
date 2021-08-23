@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 import { AxiosResponse } from "axios";
 import JscClient from "./Client";
 import { Observable, Subject } from "rxjs";

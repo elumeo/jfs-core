@@ -3,7 +3,6 @@ import { of, EMPTY } from 'rxjs';
 import * as TA from 'typesafe-actions';
 import * as Action from 'Store/Action';
 import { WSClient } from 'API/WS/WSClient';
-import _ from 'lodash';
 import { v4 as uuid } from 'uuid';
 import { Epic } from 'Types/Redux';
 

@@ -2,11 +2,11 @@ import { Language } from "Types/Language";
 import * as Country from 'Types/Country';
 
 export let locale: Country.Locale = 'en-GB';
-export const setLocale = (next: Country.Locale) => {
+export const setLocale = (next: Country.Locale): void => {
   locale = next;
 };
 
-export const mapProductLanguageToLocale = (productLanguage: string) => {
+export const mapProductLanguageToLocale = (productLanguage: string): string => {
   switch (productLanguage) {
     case 'en':
       return 'en_gb';

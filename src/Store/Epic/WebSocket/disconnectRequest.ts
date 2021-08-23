@@ -3,7 +3,6 @@ import { of } from 'rxjs';
 import * as TA from 'typesafe-actions';
 import * as Action from 'Store/Action';
 import { WSClient } from 'API/WS/WSClient';
-import _ from 'lodash';
 import { Epic } from 'Types/Redux';
 
 const disconnectRequest: Epic = (action$, state$) => {

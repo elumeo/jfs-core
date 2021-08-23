@@ -1,7 +1,6 @@
 import { filter, switchMap } from 'rxjs/operators';
 import * as TA from 'typesafe-actions';
 import * as Action from 'Store/Action';
-import _ from 'lodash';
 import { Epic } from 'Types/Redux';
 
 const appIsInitialized: Epic = (action$, state$) => {

@@ -17,7 +17,7 @@ export type Props = {
   store: Store;
 }
 
-const HOC: React.FC<Props> = ({title, store, children}) => {
+const HOC: React.FC<Props> = ({ title, store, children }) => {
   return (
     <Provider store={store}>
       <MuiPickersUtilsProvider utils={MomentUtils}>

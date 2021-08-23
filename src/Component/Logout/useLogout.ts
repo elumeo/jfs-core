@@ -2,7 +2,12 @@ import React from 'react';
 import useActions from 'Store/useActions';
 import { useSelector } from 'Types/Redux';
 
-const useLogout = () => {
+const useLogout = (): {
+  open: boolean;
+  pending: boolean;
+  commit: ReturnType<typeof useActions>['logout'];
+  close: () => void;
+} => {
   const { logout, closeLogout } = useActions();
   const open = useSelector(state => (
     state.Core.Logout.logoutOpen

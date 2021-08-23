@@ -1,7 +1,5 @@
 import React from 'react';
-import { AxiosError } from "axios";
 import { useIntl } from 'react-intl';
-import * as Format from 'Utilities/Format';
 
 export type Props = {
   title?: string;

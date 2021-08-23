@@ -4,7 +4,12 @@ import useActions from 'Store/useActions';
 import * as Type from 'Types/Login';
 import * as Selector from 'Store/Selector';
 
-const useLogin = () => {
+const useLogin = (): {
+  open: boolean;
+  credentials: Type.Credentials;
+  onChange: (next: Type.Credentials) => void;
+  check: () => void;
+} => {
   const { checkLogin } = useActions();
   const open = useSelector(Selector.isLoginOpen);
   const [credentials, setCredentials] = React.useState<Type.Credentials>({

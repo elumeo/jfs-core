@@ -28,7 +28,7 @@ const handle = (error: AxiosError) => {
   return null;
 }
 
-export const create = <T>(epic: Epic, reducer: Redux.Reducer<T>) => {
+export const create = <T>(epic: Epic, reducer: Redux.Reducer<T>): Redux.Store => {
   const store = Redux.createStore(reducer, middleware);
   const wrapped = wrap(epic, action$ => action$.pipe(
     Rx.catchError((error, source) => (

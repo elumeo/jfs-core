@@ -4,7 +4,7 @@ const MINIMUM_AUTO_HIDE_DURATION = 2000;
 const READ_TIME_WORDS_PER_MILLISECOND = 0.00375;
 const READ_TIME_MILLISECONDS_PER_WORD = 1 / READ_TIME_WORDS_PER_MILLISECOND;
 
-const useAutoHideDuration = (words: string[]) => {
+const useAutoHideDuration = (words: string[]): number => {
   const [autoHideDuration, setAutoHideDuration] = React.useState(MINIMUM_AUTO_HIDE_DURATION);
 
   React.useEffect(

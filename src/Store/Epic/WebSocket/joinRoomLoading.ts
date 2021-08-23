@@ -4,7 +4,6 @@ import * as TA from 'typesafe-actions';
 import * as Action from 'Store/Action';
 import * as WebSocket from 'Types/WebSocket';
 import { WSClient } from 'API/WS/WSClient';
-import _ from 'lodash';
 import { v4 as uuid } from 'uuid';
 import { Epic } from 'Types/Redux';
 import * as Format from 'Utilities/Format';
@@ -39,9 +38,9 @@ const joinRoomLoading: Epic = (action$, state$) => {
                 message: err.error.message,
                 id: 0
               },
-              headers: null as any,
+              headers: null,
               config: err.error.config,
-              status: null as any,
+              status: null,
               statusText: err.error.message
             },
             name: err.error.name,

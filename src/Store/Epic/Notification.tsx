@@ -8,7 +8,7 @@ import { v4 as uuid } from 'uuid';
 import { of } from 'rxjs';
 import { AxiosError } from 'axios';
 
-const showError: Epic = (action$, state$) => (
+const showError: Epic = action$ => (
   action$.pipe(
     filter(isActionOf(Action.addErrorNotification)),
     switchMap(({ payload: { response } }: ActionType<AxiosError>) => {
@@ -28,9 +28,7 @@ const showError: Epic = (action$, state$) => (
                 variant: 'error'
               }} />
           ),
-          action: (snackbar, id) => (
-            <></>
-          ),
+          action: () => <></>,
         })
       )
     })
