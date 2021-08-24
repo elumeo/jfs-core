@@ -1,16 +1,11 @@
-import React, { memo, ReactNode } from 'react';
+import React, { memo } from 'react';
 import { IntlProvider } from 'react-intl';
 import * as Notification from 'Component/Notification';
 import { SnackbarProvider } from 'notistack';
 
 const Initialized: React.FC<{
-  translations: {
-    [language: string]: {
-      [key: string]: string;
-    };
-  };
+  translations: Record<string, Record<string, string>>;
   language: string;
-  children: ReactNode;
 }> = ({ translations, language, children }) => (
   <IntlProvider locale={language} messages={translations[language]}>
     <>

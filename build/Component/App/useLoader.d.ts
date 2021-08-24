@@ -1,11 +1,7 @@
 declare const useLoader: ({ allowRobotLogin, packageJson, translations }: {
     allowRobotLogin: boolean;
     packageJson: object;
-    translations: {
-        [language: string]: {
-            [key: string]: string;
-        };
-    };
+    translations: Record<string, Record<string, string>>;
 }) => {
     appInitialized: boolean;
     language: string;

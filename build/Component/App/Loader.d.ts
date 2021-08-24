@@ -1,11 +1,7 @@
 import React from 'react';
 export declare type Props = {
     allowRobotLogin: boolean;
-    translations: {
-        [language: string]: {
-            [key: string]: string;
-        };
-    };
+    translations: Record<string, Record<string, string>>;
     packageJson: any;
 };
 declare const Loader: React.FC<Props>;

@@ -9,11 +9,7 @@ const useLoader = ({
 }: {
   allowRobotLogin: boolean;
   packageJson: Record<string, unknown>;
-  translations: {
-    [language: string]: {
-      [key: string]: string;
-    };
-  };
+  translations: Record<string, Record<string, string>>;
 }): {
   appInitialized: boolean;
   language: string;

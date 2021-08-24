@@ -5,11 +5,7 @@ import { ActionType } from 'Types/Redux';
 
 export type State = {
   language: Type.Language;
-  messages: {
-    [locale: string]: {
-      [key: string]: string;
-    };
-  };
+  messages: Record<string, Record<string, string>>;
 };
 
 const initialState: State = {
