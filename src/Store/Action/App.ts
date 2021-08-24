@@ -5,7 +5,7 @@ export namespace initializeApp {
     allowRobotLogin?: boolean;
     packageJson: object;
     ForceHTTPS?: boolean;
-    translations: { [language: string]: { [key: string]: string } };
+    translations: Record<string, Record<string, string>>;
   }
 }
 

@@ -4,11 +4,7 @@ import * as Notification from 'Component/Notification';
 import { SnackbarProvider } from 'notistack';
 
 const Initialized: React.FC<{
-  translations: {
-    [language: string]: {
-      [key: string]: string;
-    }
-  };
+  translations: Record<string, Record<string, string>>;
   language: string;
   children: ReactNode;
 }> = ({ translations, language, children }) => (

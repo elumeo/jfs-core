@@ -1,10 +1,6 @@
 import React from 'react';
 declare const _default: React.NamedExoticComponent<{
-    translations: {
-        [language: string]: {
-            [key: string]: string;
-        };
-    };
+    translations: Record<string, Record<string, string>>;
     language: string;
     children: React.ReactNode;
 }>;

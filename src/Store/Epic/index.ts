@@ -10,12 +10,26 @@ import WebSocket from './WebSocket';
 import Notification from './Notification';
 import { Epic } from 'Types/Redux';
 
+import { createIntl, createIntlCache } from 'react-intl';
+
+const cache = createIntlCache();
+
 export const wrap = (
   epic: Epic,
   wrapper: (action$: ReturnType<Epic>) => ReturnType<Epic>
 ): Epic => (
   (action$, state$, dependencies) => (
-    wrapper(epic(action$, state$, dependencies))
+    wrapper(epic(action$, state$, {
+      ...dependencies,
+      intl: () => (
+        state$.value.Core.Language.language
+          ? createIntl({
+            locale: state$.value.Core.Language.language,
+            messages: state$.value.Core.Language.messages[state$.value.Core.Language.language] as unknown as Record<string, string>
+          }, cache)
+          : null
+      )
+    }))
   )
 );
 

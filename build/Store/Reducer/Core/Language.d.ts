@@ -4,11 +4,7 @@ import * as Type from '../../../Types/Language';
 import { ActionType } from '../../../Types/Redux';
 export declare type State = {
     language: Type.Language;
-    messages: {
-        [locale: string]: {
-            [key: string]: string;
-        };
-    };
+    messages: Record<string, Record<string, string>>;
 };
 declare const Language: import("typesafe-actions").Reducer<State, ActionType<{}>> & {
     handlers: Record<"app/INITIALZE" | "language/CHANGE", (state: State, action: ActionType<{}>) => State>;

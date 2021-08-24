@@ -3,11 +3,7 @@ export declare namespace initializeApp {
         allowRobotLogin?: boolean;
         packageJson: object;
         ForceHTTPS?: boolean;
-        translations: {
-            [language: string]: {
-                [key: string]: string;
-            };
-        };
+        translations: Record<string, Record<string, string>>;
     };
 }
 export declare const initializeApp: import("typesafe-actions").PayloadActionCreator<"app/INITIALZE", initializeApp.Payload>;

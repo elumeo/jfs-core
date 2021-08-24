@@ -6,11 +6,7 @@ import Progress from './Progress';
 
 export type Props = {
   allowRobotLogin: boolean;
-  translations: {
-    [language: string]: {
-      [key: string]: string
-    };
-  };
+  translations: Record<string, Record<string, string>>;
   packageJson: any;
 };
 
