@@ -1,6 +1,6 @@
-declare const useLoader: ({ allowRobotLogin, packageJson, translations }: {
+declare const useLoader: ({ allowRobotLogin, packageJson, translations, }: {
     allowRobotLogin: boolean;
-    packageJson: object;
+    packageJson: Record<string, unknown>;
     translations: Record<string, Record<string, string>>;
 }) => {
     appInitialized: boolean;

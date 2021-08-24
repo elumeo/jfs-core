@@ -1,4 +1,2 @@
-declare const createUseActions: <T extends {
-    [name: string]: Function;
-}>(Action: T) => () => T;
+declare const createUseActions: <T extends Record<string, unknown>>(Action: T) => () => T;
 export default createUseActions;

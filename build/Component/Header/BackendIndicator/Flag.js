@@ -6,7 +6,7 @@ const Flag = React.forwardRef(({ country }, ref) => {
             width: 28,
             height: 28,
             position: 'relative',
-            margin: 10
+            margin: 10,
         } }, CountryIcon && React.createElement(CountryIcon, null)));
 });
 export default Flag;

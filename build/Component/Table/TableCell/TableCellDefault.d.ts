@@ -5,5 +5,5 @@ export declare type TableCellDefaultProps = {
     isNumeric?: boolean;
     wrapContent?: boolean;
 };
-declare const _default: React.MemoExoticComponent<({ cellData, isNumeric, wrapContent }: TableCellDefaultProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ cellData, isNumeric, wrapContent, }: TableCellDefaultProps) => JSX.Element>;
 export default _default;

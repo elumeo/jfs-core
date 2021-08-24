@@ -10,24 +10,26 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import React, { memo } from 'react';
-import { TextField, InputAdornment } from '@material-ui/core';
+import { TextField, InputAdornment, } from '@material-ui/core';
 import useCurrency from '../../Effect/useCurrency';
 import { Currency } from '../../Utilities/Format';
 const Editor = (_a) => {
-    var { currency = useCurrency(), value = 0.00, selectOnFocus = true, min = null, max = null } = _a, props = __rest(_a, ["currency", "value", "selectOnFocus", "min", "max"]);
+    var { currency = useCurrency(), value = 0.0, selectOnFocus = true, min = null, max = null } = _a, props = __rest(_a, ["currency", "value", "selectOnFocus", "min", "max"]);
     const sanitized = React.useMemo(() => Currency.formatDisplay(value, min, max), [value, min, max]);
-    const onFocus = React.useCallback((e) => {
+    const onFocus = React.useCallback(e => {
         if (selectOnFocus) {
             e.target.select();
         }
     }, [selectOnFocus]);
-    const _onBlur = (e) => {
+    const _onBlur = e => {
         var _a, _b;
         (_a = props === null || props === void 0 ? void 0 : props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, { target: { value: sanitized } });
         (_b = props === null || props === void 0 ? void 0 : props.onBlur) === null || _b === void 0 ? void 0 : _b.call(props, e);
     };
     return (React.createElement(TextField, Object.assign({}, props, { value: value, autoFocus: true, onFocus: onFocus, onBlur: _onBlur, InputProps: {
-            [currency.toLowerCase() === 'eur' ? 'endAdornment' : 'startAdornment']: React.createElement(InputAdornment, { position: currency.toLowerCase() === 'eur' ? 'end' : 'start', style: { userSelect: 'none' } }, Currency.getCurrencySign(currency))
+            [currency.toLowerCase() === 'eur'
+                ? 'endAdornment'
+                : 'startAdornment']: (React.createElement(InputAdornment, { position: currency.toLowerCase() === 'eur' ? 'end' : 'start', style: { userSelect: 'none' } }, Currency.getCurrencySign(currency))),
         } })));
 };
 export default memo(Editor);

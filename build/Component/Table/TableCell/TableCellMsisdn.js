@@ -8,9 +8,8 @@ import TableCellLoading from '../../Table/TableCell/TableCellLoading';
 const TableCellMsisdn = ({ cellProps, rowHeight }) => {
     const classes = cellStyles();
     const globalClasses = globalStyles();
-    return (cellProps.cellData !== null && React.createElement(TableCell, { component: 'div', className: clsx(globalClasses.tableCell, globalClasses.flexContainer), variant: 'body', style: { height: rowHeight } },
+    return ((cellProps.cellData !== null && (React.createElement(TableCell, { component: 'div', className: clsx(globalClasses.tableCell, globalClasses.flexContainer), variant: 'body', style: { height: rowHeight } },
         React.createElement("span", { className: classes.wrapContent },
-            React.createElement(FormattedMsisdn, { msisdn: cellProps.cellData })))) ||
-        React.createElement(TableCellLoading, null);
+            React.createElement(FormattedMsisdn, { msisdn: cellProps.cellData }))))) || React.createElement(TableCellLoading, null));
 };
 export default memo(TableCellMsisdn);

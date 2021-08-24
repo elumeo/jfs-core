@@ -3,6 +3,6 @@ declare const useLogin: () => {
     open: boolean;
     credentials: Type.Credentials;
     onChange: (next: Type.Credentials) => void;
-    check: () => import("typesafe-actions").PayloadAction<"login/CHECK", Type.Credentials>;
+    check: () => void;
 };
 export default useLogin;

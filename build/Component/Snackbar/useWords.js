@@ -12,9 +12,7 @@ const useWords = (toast) => {
         else if (toast === null || toast === void 0 ? void 0 : toast.contentTranslationId) {
             const id = toast.contentTranslationId;
             const values = toast.contentTranslationValues || {};
-            const next = (intl
-                .formatMessage({ id }, values)
-                .split(' '));
+            const next = intl.formatMessage({ id }, values).split(' ');
             setWords(next);
         }
         else if ((toast === null || toast === void 0 ? void 0 : toast.contentError) && (toast === null || toast === void 0 ? void 0 : toast.contentError) instanceof Error) {

@@ -1,7 +1,7 @@
 import { createReducer } from 'typesafe-actions';
 import * as Action from '../../Action';
 const initialState = {
-    navigationOpen: false
+    navigationOpen: false,
 };
 const Navigation = createReducer(initialState)
     .handleAction(Action.openNavigation, state => (Object.assign(Object.assign({}, state), { navigationOpen: true })))

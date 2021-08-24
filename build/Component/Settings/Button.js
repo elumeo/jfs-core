@@ -7,9 +7,7 @@ const Button = () => {
     const { openSettings, closeSettings } = useActions();
     const settingsOpen = useSelector(state => state.Core.Settings.settingsOpen);
     const onClick = React.useCallback(() => {
-        settingsOpen
-            ? closeSettings()
-            : openSettings();
+        settingsOpen ? closeSettings() : openSettings();
     }, [settingsOpen, closeSettings, openSettings]);
     return (React.createElement(IconButton, { color: 'inherit', onClick: onClick },
         React.createElement(SettingsIcon, null)));

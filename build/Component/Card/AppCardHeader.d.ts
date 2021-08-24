@@ -10,5 +10,5 @@ declare type AppCardTitleProps = {
     refreshButtonColor?: IconButtonProps['color'];
     refreshButtonSize?: IconButtonProps['size'];
 };
-declare const _default: React.MemoExoticComponent<({ isLoading, title, subtitle, titleIcon, onRefresh, refreshButtonColor, refreshButtonSize, action }: AppCardTitleProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ isLoading, title, subtitle, titleIcon, onRefresh, refreshButtonColor, refreshButtonSize, action, }: AppCardTitleProps) => JSX.Element>;
 export default _default;

@@ -4,9 +4,9 @@ import { from, of } from 'rxjs';
 import JSCApi from '../../../API/JSC';
 import * as Action from '../../Action';
 import * as Token from '../../../API/LOCAL_STORAGE/Token';
-const commitLogin = (action$, state$) => (action$.pipe(filter(isActionOf(Action.checkLogin)), switchMap(action => from(JSCApi.LoginClient.loginFrontend(state$.value.Core.Configuration.config.AppName, {
+const commitLogin = (action$, state$) => action$.pipe(filter(isActionOf(Action.checkLogin)), switchMap(action => from(JSCApi.LoginClient.loginFrontend(state$.value.Core.Configuration.config.AppName, {
     username: action.payload.username,
-    password: action.payload.password
+    password: action.payload.password,
 })).pipe(switchMap(response => {
     Token.setToken(response.data.session.token);
     return of(Action.authorizeSession({ frontendSessionDTO: response.data }), Action.loggedIn());
@@ -18,7 +18,7 @@ const commitLogin = (action$, state$) => (action$.pipe(filter(isActionOf(Action.
     }
     return of(Action.loginFailed(), Action.addToastAction({
         contentTranslationId: contentTranslationId,
-        isError: true
+        isError: true,
     }), Action.addErrorNotification(error));
-})))));
+}))));
 export default commitLogin;

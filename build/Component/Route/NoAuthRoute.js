@@ -6,6 +6,6 @@ const NoAuthRoute = props => {
     useEffect(() => {
         enterUnauthorizedRoute();
     }, [props.path]);
-    return (React.createElement(BaseRoute, Object.assign({}, props)));
+    return React.createElement(BaseRoute, Object.assign({}, props));
 };
 export default NoAuthRoute;

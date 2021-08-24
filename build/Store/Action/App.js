@@ -1,3 +1,3 @@
-import { createAction } from 'typesafe-actions';
-export const initializeApp = (createAction('app/INITIALZE')());
-export const appInitialized = createAction('app/INITIALZED')();
+import * as TA from 'typesafe-actions';
+export const initializeApp = TA.createAction('app/INITIALZE')();
+export const appInitialized = TA.createAction('app/INITIALZED')();

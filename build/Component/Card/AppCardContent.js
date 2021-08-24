@@ -12,22 +12,28 @@ var __rest = (this && this.__rest) || function (s, e) {
 import React, { memo } from 'react';
 import { CardContent } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-const useStyles = makeStyles((theme) => createStyles({
+const useStyles = makeStyles(theme => createStyles({
     root: {
         display: 'flex',
         flexDirection: 'column',
-        height: (props) => {
+        height: props => {
             if (props.overrideCardTitleHeight !== null) {
                 return props.overrideCardTitleHeight;
             }
-            const cardTitleHeight = props.withSubtitle ? theme.spacing(10) : theme.spacing(7);
-            return props.fullHeight ? 'calc(100% - ' + cardTitleHeight + 'px)' : 'initial';
-        }
-    }
+            const cardTitleHeight = props.withSubtitle
+                ? theme.spacing(10)
+                : theme.spacing(7);
+            return props.fullHeight
+                ? 'calc(100% - ' + cardTitleHeight + 'px)'
+                : 'initial';
+        },
+    },
 }));
 const AppCardContent = (props) => {
     const { fullHeight = false, withSubtitle = false, overrideCardTitleHeight = null, children } = props, rest = __rest(props, ["fullHeight", "withSubtitle", "overrideCardTitleHeight", "children"]);
-    const classes = useStyles(Object.assign(Object.assign({}, props), { fullHeight, withSubtitle, overrideCardTitleHeight }));
-    return React.createElement(CardContent, Object.assign({ classes: { root: classes.root } }, rest), children);
+    const classes = useStyles(Object.assign(Object.assign({}, props), { fullHeight,
+        withSubtitle,
+        overrideCardTitleHeight }));
+    return (React.createElement(CardContent, Object.assign({ classes: { root: classes.root } }, rest), children));
 };
 export default memo(AppCardContent);

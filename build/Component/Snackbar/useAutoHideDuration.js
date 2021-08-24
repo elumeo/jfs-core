@@ -6,9 +6,7 @@ const useAutoHideDuration = (words) => {
     const [autoHideDuration, setAutoHideDuration] = React.useState(MINIMUM_AUTO_HIDE_DURATION);
     React.useEffect(() => {
         const next = words.length * READ_TIME_MILLISECONDS_PER_WORD;
-        setAutoHideDuration(next >= MINIMUM_AUTO_HIDE_DURATION
-            ? next
-            : MINIMUM_AUTO_HIDE_DURATION);
+        setAutoHideDuration(next >= MINIMUM_AUTO_HIDE_DURATION ? next : MINIMUM_AUTO_HIDE_DURATION);
     }, [JSON.stringify(words)]);
     return autoHideDuration;
 };

@@ -7,15 +7,24 @@ const connectSuccess = (action$, state$) => action$.pipe(filter(TA.isActionOf(Ac
     // Filter configRooms against information in state (hasJoined true/false)
     let configRooms = [];
     const config = state$.value.Core.Configuration.config;
-    if (config.JscWebSocketClient !== undefined && action.payload === config.JscWebSocketClient.PrivateNamespace) {
-        configRooms = (config.JscWebSocketClient.AutoRoomSubscriptions === undefined) ? [] : config.JscWebSocketClient.AutoRoomSubscriptions;
+    if (config.JscWebSocketClient !== undefined &&
+        action.payload === config.JscWebSocketClient.PrivateNamespace) {
+        configRooms =
+            config.JscWebSocketClient.AutoRoomSubscriptions === undefined
+                ? []
+                : config.JscWebSocketClient.AutoRoomSubscriptions;
     }
-    if (config.JfsWebSocketClient !== undefined && action.payload === config.JfsWebSocketClient.PrivateNamespace) {
-        configRooms = (config.JfsWebSocketClient.AutoRoomSubscriptions === undefined) ? [] : config.JfsWebSocketClient.AutoRoomSubscriptions;
+    if (config.JfsWebSocketClient !== undefined &&
+        action.payload === config.JfsWebSocketClient.PrivateNamespace) {
+        configRooms =
+            config.JfsWebSocketClient.AutoRoomSubscriptions === undefined
+                ? []
+                : config.JfsWebSocketClient.AutoRoomSubscriptions;
     }
     const stateJoinedRooms = [];
     const stateLeftRooms = [];
-    for (const stateRoom of state$.value.Core.WebSocket[action.payload].rooms) {
+    for (const stateRoom of state$.value.Core.WebSocket[action.payload]
+        .rooms) {
         if (stateRoom.hasJoined) {
             stateJoinedRooms.push(stateRoom.name);
         }
@@ -37,12 +46,15 @@ const connectSuccess = (action$, state$) => action$.pipe(filter(TA.isActionOf(Ac
             cleanedConfigRooms.push(preparedConfigRoom);
         }
     }
-    let mergedRooms = _.uniq([...cleanedConfigRooms, ...stateJoinedRooms]);
+    const mergedRooms = _.uniq([
+        ...cleanedConfigRooms,
+        ...stateJoinedRooms,
+    ]);
     const roomActions = [];
     for (const room of mergedRooms) {
         const roomData = {
             namespace: action.payload,
-            room
+            room,
         };
         roomActions.push(Action.webSocketJoinRoomRequestAction(roomData));
     }

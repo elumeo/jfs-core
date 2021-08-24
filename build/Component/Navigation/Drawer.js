@@ -10,7 +10,7 @@ const Drawer = ({ children }) => {
     const close = useCallback(() => closeNavigation(), []);
     return (React.createElement(MUIDrawer, { open: navigationOpen, anchor: 'left', onClose: close },
         React.createElement("div", { style: {
-                width: 270
+                width: 270,
             } },
             React.createElement(Header, null),
             React.createElement(List, null, children))));

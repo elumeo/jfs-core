@@ -6,7 +6,7 @@ const Initialized = ({ translations, language, children }) => (React.createEleme
     React.createElement(React.Fragment, null,
         React.createElement(SnackbarProvider, { anchorOrigin: {
                 vertical: 'bottom',
-                horizontal: 'right'
+                horizontal: 'right',
             }, maxSnack: 5, domRoot: document.getElementById('overlay') },
             React.createElement(Notification.Notistack, null),
             children))));

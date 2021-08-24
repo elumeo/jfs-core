@@ -1,10 +1,8 @@
-export declare namespace initializeApp {
-    type Payload = {
-        allowRobotLogin?: boolean;
-        packageJson: object;
-        ForceHTTPS?: boolean;
-        translations: Record<string, Record<string, string>>;
-    };
-}
-export declare const initializeApp: import("typesafe-actions").PayloadActionCreator<"app/INITIALZE", initializeApp.Payload>;
-export declare const appInitialized: import("typesafe-actions").EmptyActionCreator<"app/INITIALZED">;
+import * as TA from 'typesafe-actions';
+export declare const initializeApp: TA.PayloadActionCreator<"app/INITIALZE", {
+    allowRobotLogin?: boolean;
+    packageJson: Record<string, unknown>;
+    ForceHTTPS?: boolean;
+    translations: Record<string, Record<string, string>>;
+}>;
+export declare const appInitialized: TA.EmptyActionCreator<"app/INITIALZED">;

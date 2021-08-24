@@ -10,13 +10,13 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import React, { forwardRef, memo } from 'react';
-import { Box, CircularProgress, IconButton } from '@material-ui/core';
-import { mapToCircularProgressColor, mapToCircularProgressSize, progressStyles } from '../Button/ButtonProgress';
+import { Box, CircularProgress, IconButton, } from '@material-ui/core';
+import { mapToCircularProgressColor, mapToCircularProgressSize, progressStyles, } from '../Button/ButtonProgress';
 const IconButtonProgress = forwardRef((props, ref) => {
     const { children, onClick, size = 'medium', color = 'inherit', disabled = false, inProgress = false } = props, rest = __rest(props, ["children", "onClick", "size", "color", "disabled", "inProgress"]);
     const progressClasses = progressStyles(props);
-    return React.createElement(Box, { className: progressClasses.progressWrapper },
+    return (React.createElement(Box, { className: progressClasses.progressWrapper },
         React.createElement(IconButton, Object.assign({ ref: ref, size: size, color: color, disabled: disabled || inProgress, onClick: onClick }, rest), children),
-        inProgress && React.createElement(CircularProgress, { size: mapToCircularProgressSize(size), color: mapToCircularProgressColor(color), className: progressClasses.progress }));
+        inProgress && (React.createElement(CircularProgress, { size: mapToCircularProgressSize(size), color: mapToCircularProgressColor(color), className: progressClasses.progress }))));
 });
 export default memo(IconButtonProgress);

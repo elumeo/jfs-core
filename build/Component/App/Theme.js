@@ -6,19 +6,19 @@ export default responsiveFontSizes(createTheme({
         MuiCssBaseline: {
             '@global': {
                 html: {
-                    fontSize: 14
+                    fontSize: 14,
                 },
                 body: {
                     margin: 0,
                     padding: 0,
                     fontFamily: 'Roboto',
-                }
-            }
+                },
+            },
         },
         MuiListItemIcon: {
             root: {
-                minWidth: 32
-            }
+                minWidth: 32,
+            },
         },
         MuiTooltip: {
             tooltip: {
@@ -26,8 +26,8 @@ export default responsiveFontSizes(createTheme({
                 fontWeight: 400,
                 lineHeight: 1.43,
                 letterSpacing: '0.01071em',
-            }
-        }
+            },
+        },
     },
     palette: {
         type: 'light',
@@ -51,6 +51,6 @@ export default responsiveFontSizes(createTheme({
         quarz: Color.quarz,
         background: {
             default: '#e5e2dd',
-        }
-    }
+        },
+    },
 }));

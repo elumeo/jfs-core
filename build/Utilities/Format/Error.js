@@ -1,9 +1,7 @@
-const isAxiosError = (error) => (['config', 'code', 'request', 'response']
-    .every(key => key in error));
-const isJscError = (error) => (isAxiosError(error) &&
+const isAxiosError = (error) => ['config', 'code', 'request', 'response'].every(key => key in error);
+const isJscError = (error) => isAxiosError(error) &&
     typeof error.response.data === 'object' &&
-    ['id', 'message']
-        .every(key => key in error.response.data));
+    ['id', 'message'].every(key => key in error.response.data);
 const head = (error) => {
     const { status, statusText } = error.response;
     const method = error.config.method.toUpperCase();
@@ -22,12 +20,10 @@ const body = (error) => {
 };
 const http = (error) => ({
     title: head(error),
-    details: body(error)
+    details: body(error),
 });
 const generic = (error) => ({
     title: error.name,
-    details: error.message + '\n' + error.stack
+    details: error.message + '\n' + error.stack,
 });
-export const apply = (error) => (isAxiosError(error)
-    ? http(error)
-    : generic(error));
+export const apply = (error) => (isAxiosError(error) ? http(error) : generic(error));

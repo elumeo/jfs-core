@@ -4,7 +4,6 @@ export var LANGUAGE;
     LANGUAGE["ENGLISH"] = "en";
     LANGUAGE["ITALIAN"] = "it";
 })(LANGUAGE || (LANGUAGE = {}));
-;
 export var DATE_FORMAT;
 (function (DATE_FORMAT) {
     DATE_FORMAT["DE"] = "dd.MM.yyyy";

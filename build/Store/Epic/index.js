@@ -10,11 +10,11 @@ import WebSocket from './WebSocket';
 import Notification from './Notification';
 import { createIntl, createIntlCache } from 'react-intl';
 const cache = createIntlCache();
-export const wrap = (epic, wrapper) => ((action$, state$, dependencies) => (wrapper(epic(action$, state$, Object.assign(Object.assign({}, dependencies), { intl: () => (state$.value.Core.Language.language
+export const wrap = (epic, wrapper) => (action$, state$, dependencies) => wrapper(epic(action$, state$, Object.assign(Object.assign({}, dependencies), { intl: () => state$.value.Core.Language.language
         ? createIntl({
             locale: state$.value.Core.Language.language,
-            messages: state$.value.Core.Language.messages[state$.value.Core.Language.language]
+            messages: state$.value.Core.Language.messages[state$.value.Core.Language.language],
         }, cache)
-        : null) })))));
+        : null })));
 const Core = combineEpics(App, Session, System, Login, Locale, Configuration, WebSocket, Language, Notification);
 export default Core;

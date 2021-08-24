@@ -1,7 +1,7 @@
 import * as Action from '../../Action';
 import { createReducer } from 'typesafe-actions';
 const initialState = {
-    settingsOpen: false
+    settingsOpen: false,
 };
 const Settings = createReducer(initialState)
     .handleAction(Action.openSettings, state => (Object.assign(Object.assign({}, state), { settingsOpen: true })))

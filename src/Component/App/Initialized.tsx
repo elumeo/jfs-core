@@ -6,6 +6,7 @@ import { SnackbarProvider } from 'notistack';
 const Initialized: React.FC<{
   translations: Record<string, Record<string, string>>;
   language: string;
+  children: React.ReactNode;
 }> = ({ translations, language, children }) => (
   <IntlProvider locale={language} messages={translations[language]}>
     <>

@@ -4,14 +4,12 @@ import Box from '@material-ui/core/Box';
 import CardActions from '@material-ui/core/CardActions';
 import { useSnackbar } from 'notistack';
 import { useIntl } from 'react-intl';
-const DefaultNotificationCard = ({ notification: { title, subtitle, content, action, id, isTranslationId = false }, temporary }) => {
+const DefaultNotificationCard = ({ notification: { title, subtitle, content, action, id, isTranslationId = false, }, temporary, }) => {
     const snackbar = useSnackbar();
     const { formatMessage } = useIntl();
     return (React.createElement(React.Fragment, null,
         React.createElement(Box, { color: 'inherit' },
-            title && (React.createElement(Typography, { variant: 'subtitle1', component: 'div' }, isTranslationId
-                ? formatMessage({ id: title })
-                : title)),
+            title && (React.createElement(Typography, { variant: 'subtitle1', component: 'div' }, isTranslationId ? formatMessage({ id: title }) : title)),
             subtitle && (React.createElement(Typography, { variant: 'subtitle2', component: 'div' }, isTranslationId
                 ? formatMessage({ id: subtitle })
                 : subtitle)),

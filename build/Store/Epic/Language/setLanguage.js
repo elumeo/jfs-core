@@ -5,16 +5,16 @@ import Cookie from 'js-cookie';
 import * as Action from '../../Action';
 import * as Locale from '../../../Utilities/Format/Locale';
 import moment from 'moment';
-const setLanguage = action$ => (action$.pipe(filter(isActionOf(Action.changeLanguageAction)), switchMap(({ payload }) => {
+const setLanguage = action$ => action$.pipe(filter(isActionOf(Action.changeLanguageAction)), switchMap(({ payload }) => {
     const locale = Locale.mapLanguageToLocale(payload);
-    const expires = new Date;
+    const expires = new Date();
     moment.locale(payload);
     expires.setFullYear(expires.getFullYear() + 100);
     Cookie.set('lang', payload, {
-        expires
+        expires,
     });
     Locale.setLocale(locale);
     // setDefaultLocale(payload);
     return EMPTY;
-})));
+}));
 export default setLanguage;

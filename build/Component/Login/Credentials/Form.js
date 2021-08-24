@@ -7,7 +7,7 @@ const style = {
     height: 110,
     width: 240,
     marginTop: 6,
-    marginBottom: 32
+    marginBottom: 32,
 };
 const Form = ({ children }) => (React.createElement("form", { autoCorrect: 'false', autoComplete: 'off', style: style }, children));
 export default Form;

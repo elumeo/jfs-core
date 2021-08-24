@@ -10,7 +10,7 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import React, { forwardRef, memo } from 'react';
-import { Box, Button, CircularProgress } from '@material-ui/core';
+import { Box, Button, CircularProgress, } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 export const progressStyles = makeStyles(() => createStyles({
     progressWrapper: {
@@ -21,9 +21,9 @@ export const progressStyles = makeStyles(() => createStyles({
         position: 'absolute',
         top: '50%',
         left: '50%',
-        marginTop: (props) => mapToCircularProgressSize(props.size) / 2 * -1,
-        marginLeft: (props) => mapToCircularProgressSize(props.size) / 2 * -1
-    }
+        marginTop: props => (mapToCircularProgressSize(props.size) / 2) * -1,
+        marginLeft: props => (mapToCircularProgressSize(props.size) / 2) * -1,
+    },
 }));
 export const mapToCircularProgressSize = (size) => {
     switch (size) {
@@ -39,8 +39,8 @@ export const mapToCircularProgressColor = (color) => color === 'default' ? 'inhe
 const ButtonProgress = forwardRef((props, ref) => {
     const { children, onClick, size = 'medium', color = 'inherit', disabled = false, inProgress = false } = props, rest = __rest(props, ["children", "onClick", "size", "color", "disabled", "inProgress"]);
     const progressClasses = progressStyles(props);
-    return React.createElement(Box, { className: progressClasses.progressWrapper },
+    return (React.createElement(Box, { className: progressClasses.progressWrapper },
         React.createElement(Button, Object.assign({ ref: ref, size: size, color: color, disabled: disabled || inProgress, onClick: onClick }, rest), children),
-        inProgress && React.createElement(CircularProgress, { size: mapToCircularProgressSize(size), color: mapToCircularProgressColor(color), className: progressClasses.progress }));
+        inProgress && (React.createElement(CircularProgress, { size: mapToCircularProgressSize(size), color: mapToCircularProgressColor(color), className: progressClasses.progress }))));
 });
 export default memo(ButtonProgress);

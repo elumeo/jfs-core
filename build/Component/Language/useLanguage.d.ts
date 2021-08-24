@@ -1,6 +1,6 @@
-import { Language } from "../../Types/Language";
+import { Language } from '../../Types/Language';
 declare const useLanguage: () => {
     value: Language;
-    onChange: (next: Language) => import("typesafe-actions").PayloadAction<"language/CHANGE", Language>;
+    onChange: (next: Language) => void;
 };
 export default useLanguage;

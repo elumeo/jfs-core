@@ -20,18 +20,18 @@ export declare class WSClient {
     static sockets: {
         [namespace: string]: typeof io.Socket;
     };
-    protected static listenRoomsSubject: Subject<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>;
-    static listenRoomsObservable$: Observable<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>;
+    protected static listenRoomsSubject: Subject<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>;
+    static listenRoomsObservable$: Observable<JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>;
     protected static connectionErrorSubject: Subject<IWebSocketError>;
     static connectionErrorObservable$: Observable<IWebSocketError>;
     protected static reconnectSubject: Subject<string>;
     static reconnectObservable$: Observable<string>;
-    protected static jfsOnRoomUpdateSubject: Subject<any>;
-    protected static jfsOnRoomUpdate$: Observable<any>;
+    protected static jfsOnRoomUpdateSubject: Subject<unknown>;
+    protected static jfsOnRoomUpdate$: Observable<unknown>;
     static connect(host: string, path: string, namespace: string, token?: string, ip?: string, username?: string, appName?: string): Observable<string>;
     static disconnect(namespace: string): Observable<string>;
     static join(namespace: string, room: string): Observable<string>;
-    static leave(room: IWebSocketRoom): Observable<IWebSocketRoom<string>>;
+    static leave(room: IWebSocketRoom): Observable<IWebSocketRoom>;
     static leaveAllRooms(namespace: string, rooms: IWebSocketRoomConnection[]): Observable<string>;
     static listen<T>(action: PayloadAction<string, IWebSocketRoomUpdateDTO<string>>, roomToCheck: IWebSocketRoom<T>): Observable<T>;
     static emit<T>(room: IWebSocketRoom<T>): void;

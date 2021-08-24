@@ -6,7 +6,7 @@ const style = {
     height: '100vh',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
 };
 const Progress = () => (React.createElement(Box, { style: style },
     React.createElement(CircularProgress, null)));

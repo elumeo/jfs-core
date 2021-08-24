@@ -12,7 +12,7 @@ const Empty = () => {
             justifyContent: 'center',
             alignItems: 'center',
             flexDirection: 'column',
-            color: 'grey'
+            color: 'grey',
         } },
         React.createElement(NotificationsIcon, { fontSize: 'large', ref: iconRef }),
         React.createElement(Typography, null, formatMessage({ id: 'app.noNotifications' }))));

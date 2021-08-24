@@ -21,30 +21,26 @@ const ShowButton = ({ keepOpenOnOutsideClick }) => {
         }
     }, [open]);
     return (React.createElement(React.Fragment, null,
-        React.createElement(IconButton, { color: 'inherit', ref: buttonRef, "aria-describedby": id, onClick: () => setAnchorRef(open
-                ? null
-                : buttonRef.current) },
+        React.createElement(IconButton, { color: 'inherit', ref: buttonRef, "aria-describedby": id, onClick: () => setAnchorRef(open ? null : buttonRef.current) },
             React.createElement(Badge, { badgeContent: all.length, color: 'secondary' },
                 React.createElement(NotificationsIcon, null))),
-        createPortal(keepOpenOnOutsideClick
-            ? (React.createElement(Popper, { open: open, placement: 'bottom-end', id: id, anchorEl: anchorRef, modifiers: {
-                    flip: {
-                        enabled: true,
-                    },
-                    preventOverflow: {
-                        enabled: true,
-                        boundariesElement: 'scrollParent',
-                    },
-                    arrow: {
-                        enabled: true,
-                        element: anchorRef,
-                    },
-                } },
-                React.createElement(NotificationOverlay, null)))
-            : (React.createElement(Popover, { open: open, anchorEl: anchorRef, anchorOrigin: {
-                    vertical: 'bottom',
-                    horizontal: 'right'
-                }, onClose: () => setAnchorRef(null) },
-                React.createElement(NotificationOverlay, null))), document.getElementById('overlay'))));
+        createPortal(keepOpenOnOutsideClick ? (React.createElement(Popper, { open: open, placement: 'bottom-end', id: id, anchorEl: anchorRef, modifiers: {
+                flip: {
+                    enabled: true,
+                },
+                preventOverflow: {
+                    enabled: true,
+                    boundariesElement: 'scrollParent',
+                },
+                arrow: {
+                    enabled: true,
+                    element: anchorRef,
+                },
+            } },
+            React.createElement(NotificationOverlay, null))) : (React.createElement(Popover, { open: open, anchorEl: anchorRef, anchorOrigin: {
+                vertical: 'bottom',
+                horizontal: 'right',
+            }, onClose: () => setAnchorRef(null) },
+            React.createElement(NotificationOverlay, null))), document.getElementById('overlay'))));
 };
 export default ShowButton;

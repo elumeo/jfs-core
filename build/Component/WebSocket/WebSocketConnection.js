@@ -4,9 +4,8 @@ import useActions from '../../Store/useActions';
 const WebSocketProvider = ({ children }) => {
     const { webSocketUpdateRoomAction } = useActions();
     useEffect(() => {
-        WSClient.listenRoomsObservable$
-            .subscribe((roomData) => webSocketUpdateRoomAction(roomData));
+        WSClient.listenRoomsObservable$.subscribe(roomData => webSocketUpdateRoomAction(roomData));
     }, []);
-    return (React.createElement(React.Fragment, null, children));
+    return React.createElement(React.Fragment, null, children);
 };
 export default WebSocketProvider;

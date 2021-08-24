@@ -18,7 +18,7 @@ const useVisibleToast = () => {
         words,
         message,
         autoHideDuration,
-        severity
+        severity,
     }), [toast, open, words, message, autoHideDuration, severity]);
 };
 export default useVisibleToast;

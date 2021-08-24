@@ -14,25 +14,18 @@ import useCurrency from '../../Effect/useCurrency';
 import Editor from './Editor';
 import Display from './Display';
 const PriceField = (_a) => {
-    var { currency = useCurrency(), value = 0.00, selectOnFocus = true } = _a, props = __rest(_a, ["currency", "value", "selectOnFocus"]);
+    var { currency = useCurrency(), value = 0.0, selectOnFocus = true } = _a, props = __rest(_a, ["currency", "value", "selectOnFocus"]);
     const [_focused, setFocused] = React.useState(props.focused);
-    const _onBlur = React.useCallback((e) => {
+    const _onBlur = React.useCallback(e => {
         var _a;
         (_a = props === null || props === void 0 ? void 0 : props.onBlur) === null || _a === void 0 ? void 0 : _a.call(props, e);
         setFocused(false);
-    }, [
-        setFocused,
-        props === null || props === void 0 ? void 0 : props.onBlur
-    ]);
-    const _onFocus = React.useCallback((e) => {
+    }, [setFocused, props === null || props === void 0 ? void 0 : props.onBlur]);
+    const _onFocus = React.useCallback(e => {
         var _a;
         setFocused(true);
         (_a = props === null || props === void 0 ? void 0 : props.onFocus) === null || _a === void 0 ? void 0 : _a.call(props, e);
     }, [setFocused, selectOnFocus, props === null || props === void 0 ? void 0 : props.onFocus]);
-    return _focused
-        ?
-            React.createElement(Editor, Object.assign({}, props, { value: value, onChange: props.onChange, onBlur: _onBlur, selectOnFocus: selectOnFocus }))
-        :
-            React.createElement(Display, Object.assign({}, props, { value: value, onChange: props.onChange, onFocus: _onFocus }));
+    return _focused ? (React.createElement(Editor, Object.assign({}, props, { value: value, onChange: props.onChange, onBlur: _onBlur, selectOnFocus: selectOnFocus }))) : (React.createElement(Display, Object.assign({}, props, { value: value, onChange: props.onChange, onFocus: _onFocus })));
 };
 export default memo(PriceField);

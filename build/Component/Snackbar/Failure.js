@@ -8,6 +8,6 @@ const Failure = ({ title, details }) => {
             ":\u00A0"),
         details,
         React.createElement("br", null),
-        title && (React.createElement("span", { style: { fontSize: 'x-small' } }, title))));
+        title && React.createElement("span", { style: { fontSize: 'x-small' } }, title)));
 };
 export default Failure;

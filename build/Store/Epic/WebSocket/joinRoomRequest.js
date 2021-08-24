@@ -10,8 +10,8 @@ const joinRoomRequest = (action$, state$) => {
             hasJoined: false,
             error: null,
             name: WSClient.prepareRoomName(action.payload.room, state$.value),
-            namespace: action.payload.namespace
+            namespace: action.payload.namespace,
         };
-    }), switchMap((roomState) => of(Action.webSocketJoinRoomLoadingAction(roomState))));
+    }), switchMap(roomState => of(Action.webSocketJoinRoomLoadingAction(roomState))));
 };
 export default joinRoomRequest;

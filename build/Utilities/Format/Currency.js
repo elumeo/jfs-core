@@ -1,7 +1,7 @@
 import * as Locale from './Locale';
-export const getCurrencySign = (currency) => (new Intl.NumberFormat(Locale.locale, { style: 'currency', currency })
+export const getCurrencySign = (currency) => new Intl.NumberFormat(Locale.locale, { style: 'currency', currency })
     .formatToParts(0)
-    .reduce((sign, { type, value }) => (sign + (type === 'currency' ? value : '')), ''));
+    .reduce((sign, { type, value }) => sign + (type === 'currency' ? value : ''), '');
 export const formatDisplay = (value, min, max) => {
     const val = parseFloat(`${value}`.replace(replaceAllNonNumericOrSeperatorRegex, ''));
     if ((!!min || min === 0) && val < min) {
@@ -17,10 +17,14 @@ export const getCurrency = (currency, value, showFraction = false, withCurrencyS
         style: withCurrencySign ? 'currency' : 'decimal',
         currency,
         maximumFractionDigits: showFraction ? 2 : 0,
-        minimumFractionDigits: showFraction && (value % 1 !== 0) ? 2 : 0,
+        minimumFractionDigits: showFraction && value % 1 !== 0 ? 2 : 0,
     };
     return new Intl.NumberFormat(Locale.locale, options).format(value);
 };
-export const intlThousandsSeperator = (new Intl.NumberFormat(Locale.locale).format(1111).replace(/1/g, ''));
-export const intlDecSeparator = (new Intl.NumberFormat(Locale.locale).format(1.1).replace(/1/g, ''));
+export const intlThousandsSeperator = new Intl.NumberFormat(Locale.locale)
+    .format(1111)
+    .replace(/1/g, '');
+export const intlDecSeparator = new Intl.NumberFormat(Locale.locale)
+    .format(1.1)
+    .replace(/1/g, '');
 export const replaceAllNonNumericOrSeperatorRegex = /[^0-9.,-]/;

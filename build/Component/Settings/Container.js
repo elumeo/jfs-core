@@ -17,7 +17,7 @@ const Container = () => {
     const language = useSelector(state => state.Core.Language.language);
     return (React.createElement(Card, { style: { width: 330, margin: 'auto' } },
         React.createElement(CardHeader, { title: formatMessage({ id: 'settings.title' }) }),
-        React.createElement(Select, { id: 'language', label: formatMessage({ id: 'settings.language' }), value: language, onChange: (e) => {
+        React.createElement(Select, { id: 'language', label: formatMessage({ id: 'settings.language' }), value: language, onChange: e => {
                 Cookie.set('lang', e.target.value);
                 changeLanguageAction(e.target.value);
             } },

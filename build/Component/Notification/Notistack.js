@@ -17,7 +17,8 @@ const Notistack = () => {
                     key: notification.id,
                     variant: notification.variant,
                     action: (React.createElement(React.Fragment, null,
-                        notification.action && (notification.action(snackbar, notification.id, true)),
+                        notification.action &&
+                            notification.action(snackbar, notification.id, true),
                         React.createElement(Button.Dismiss, { onClick: () => snackbar.closeSnackbar(notification.id) }))),
                 });
             });

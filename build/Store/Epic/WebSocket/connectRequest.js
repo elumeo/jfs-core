@@ -4,26 +4,28 @@ import * as TA from 'typesafe-actions';
 import * as Action from '../../Action';
 import { WSClient } from '../../../API/WS/WSClient';
 export const connectRequest = (action$, state$) => {
-    return action$.pipe(filter(TA.isActionOf(Action.webSocketConnectRequestAction)), filter(() => (state$.value.Core.Configuration.loaded &&
-        state$.value.Core.Session.isAuthorized)), concatMap(action => WSClient.leaveAllRooms(action.payload, state$.value.Core.WebSocket[action.payload].rooms)), concatMap(namespace => WSClient.disconnect(namespace)), concatMap(namespace => {
+    return action$.pipe(filter(TA.isActionOf(Action.webSocketConnectRequestAction)), filter(() => state$.value.Core.Configuration.loaded &&
+        state$.value.Core.Session.isAuthorized), concatMap(action => WSClient.leaveAllRooms(action.payload, state$.value.Core.WebSocket[action.payload].rooms)), concatMap(namespace => WSClient.disconnect(namespace)), concatMap(namespace => {
         let host = null;
         const config = state$.value.Core.Configuration.config;
         let path = '/socket.io';
         if (config.JscWebSocketClient !== undefined &&
             namespace === config.JscWebSocketClient.PrivateNamespace) {
             host = config.JscWebSocketClient.Host;
-            path = (config.JscWebSocketClient.Path !== undefined &&
-                config.JscWebSocketClient.Path !== null
-                ? config.JscWebSocketClient.Path + path
-                : path);
+            path =
+                config.JscWebSocketClient.Path !== undefined &&
+                    config.JscWebSocketClient.Path !== null
+                    ? config.JscWebSocketClient.Path + path
+                    : path;
         }
         else if (config.JfsWebSocketClient !== undefined &&
             namespace === config.JfsWebSocketClient.PrivateNamespace) {
             host = config.JfsWebSocketClient.Host;
-            path = (config.JfsWebSocketClient.Path !== undefined &&
-                config.JfsWebSocketClient.Path !== null
-                ? config.JfsWebSocketClient.Path + path
-                : path);
+            path =
+                config.JfsWebSocketClient.Path !== undefined &&
+                    config.JfsWebSocketClient.Path !== null
+                    ? config.JfsWebSocketClient.Path + path
+                    : path;
         }
         if (host === null) {
             return EMPTY;

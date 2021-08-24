@@ -9,7 +9,7 @@ import useLogin from './useLogin';
 const Dialog = () => {
     const login = useLogin();
     return (React.createElement(MUIDialog, { open: login.open, style: {
-            marginBottom: '32vh'
+            marginBottom: '32vh',
         } },
         React.createElement(DialogTitle, null, "Login"),
         React.createElement(DialogContent, null,

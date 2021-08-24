@@ -11,7 +11,7 @@
 // import * as Notification from './Component/Notification';
 // import Snackbar from './Component/Snackbar';
 // import Overlay from './Component/Overlay';
-// import { Translations, Navigation, Routes } from 'Setup';
+// import { Navigation, Routes, Translations } from 'Setup';
 // import packageJson from '../package.json';
 // import { create } from 'Store';
 // import { history } from './Store/Middleware';
@@ -28,7 +28,8 @@
 //           <Settings.Button />
 //           <Notification.Button.Show />
 //         </>
-//       } />
+//       }
+//     />
 //     <Routes />
 //     <Overlay>
 //       <Navigation />
@@ -40,5 +41,5 @@
 //       <Snackbar />
 //     </Overlay>
 //   </App.Container>,
-//   document.getElementById('root')
+//   document.getElementById('root'),
 // );

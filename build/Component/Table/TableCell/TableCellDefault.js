@@ -8,13 +8,13 @@ export const cellStyles = makeStyles(() => createStyles({
     wrapContent: {
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis',
-        overflow: 'hidden'
-    }
+        overflow: 'hidden',
+    },
 }));
-const TableCellDefault = ({ cellData, isNumeric = false, wrapContent = true }) => {
+const TableCellDefault = ({ cellData, isNumeric = false, wrapContent = true, }) => {
     const classes = cellStyles();
     const globalClasses = globalStyles();
-    return (cellData && React.createElement(TableCell, { component: 'div', className: clsx(globalClasses.tableCell, globalClasses.flexContainer), variant: 'body', style: { height: '100%' }, align: isNumeric ? 'right' : 'left' },
-        React.createElement("span", { className: clsx({ [classes.wrapContent]: wrapContent }) }, cellData))) || React.createElement(TableCellLoading, null);
+    return ((cellData && (React.createElement(TableCell, { component: 'div', className: clsx(globalClasses.tableCell, globalClasses.flexContainer), variant: 'body', style: { height: '100%' }, align: isNumeric ? 'right' : 'left' },
+        React.createElement("span", { className: clsx({ [classes.wrapContent]: wrapContent }) }, cellData)))) || React.createElement(TableCellLoading, null));
 };
 export default memo(TableCellDefault);

@@ -13,22 +13,21 @@ const handle = (error) => {
         const { method, url } = error.config;
         return of(Action.addNotification({
             variant: 'error',
-            content: `Network Error: ${method.toUpperCase()} ${url}`
+            content: `Network Error: ${method.toUpperCase()} ${url}`,
         }));
     }
     if (error.code === 'ECONNABORTED' && error.message.includes('timeout')) {
         const { method, url } = error.config;
         return of(Action.addNotification({
             variant: 'error',
-            content: `Request Timeout: ${method.toUpperCase()} ${url}`
+            content: `Request Timeout: ${method.toUpperCase()} ${url}`,
         }));
     }
     return null;
 };
 export const create = (epic, reducer) => {
     const store = Redux.createStore(reducer, middleware);
-    const wrapped = wrap(epic, action$ => action$.pipe(Rx.catchError((error, source) => ((error.isAxiosError && handle(error)) ||
-        source))));
+    const wrapped = wrap(epic, action$ => action$.pipe(Rx.catchError((error, source) => (error.isAxiosError && handle(error)) || source)));
     start(wrapped);
     return store;
 };

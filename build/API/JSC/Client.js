@@ -15,7 +15,5 @@ JscClient.generateAxiosConfig = () => ({
     baseURL: JscClient.Config.JscClient.Host,
     timeout: JscClient.Config.JscClient.Timeout,
     validateStatus: (status) => status < 400,
-    headers: Object.assign({ 'X-JSC-APP-VERSION': `${JscClient.Config.AppName}-${JscClient.PackageJson.version}` }, (Token.isLoggedIn()
-        ? { 'X-JSC-TOKEN': Token.getToken() }
-        : {}))
+    headers: Object.assign({ 'X-JSC-APP-VERSION': `${JscClient.Config.AppName}-${JscClient.PackageJson.version}` }, (Token.isLoggedIn() ? { 'X-JSC-TOKEN': Token.getToken() } : {})),
 });

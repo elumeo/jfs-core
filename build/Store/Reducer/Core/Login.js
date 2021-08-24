@@ -2,7 +2,7 @@ import { createReducer } from 'typesafe-actions';
 import * as Action from '../../Action';
 const initialState = {
     isCheckingLogin: false,
-    failedLogins: 0
+    failedLogins: 0,
 };
 const Login = createReducer(initialState)
     .handleAction(Action.checkLogin, state => (Object.assign(Object.assign({}, state), { isCheckingLogin: true })))

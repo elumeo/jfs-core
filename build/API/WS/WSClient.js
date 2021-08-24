@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { Observable, Subject } from 'rxjs';
 import io from 'socket.io-client';
 import { ROOM_UPDATE_ACTION_ID } from '../../Constant/WebSocket';
@@ -10,7 +11,7 @@ export class WSClient {
             username = 'Unknown User';
         }
         this.checkSocket(namespace);
-        return new Observable((observer) => {
+        return new Observable(observer => {
             if (this.sockets[namespace] !== null) {
                 this.disconnect(namespace).subscribe();
             }
@@ -18,7 +19,7 @@ export class WSClient {
                 this.sockets[namespace] = io.connect(host + '/' + namespace, {
                     query: { token, ip, username, appName },
                     secure: host.startsWith('https'),
-                    path: path
+                    path: path,
                 });
                 this.sockets[namespace].on(this.EVENT_AUTHENTICATED, () => {
                     this.sockets[namespace].off(this.EVENT_AUTHENTICATED);
@@ -28,15 +29,24 @@ export class WSClient {
                 });
                 this.sockets[namespace].on(this.EVENT_ERROR, (err) => {
                     this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
-                    this.connectionErrorSubject.next({ namespace, message: err });
+                    this.connectionErrorSubject.next({
+                        namespace,
+                        message: err,
+                    });
                 });
                 this.sockets[namespace].on(this.EVENT_CONNECT_ERROR, (err) => {
                     this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
-                    this.connectionErrorSubject.next({ namespace, message: err });
+                    this.connectionErrorSubject.next({
+                        namespace,
+                        message: err,
+                    });
                 });
                 this.sockets[namespace].on(this.EVENT_CONNECT_TIMEOUT, (err) => {
                     this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
-                    this.connectionErrorSubject.next({ namespace, message: err });
+                    this.connectionErrorSubject.next({
+                        namespace,
+                        message: err,
+                    });
                 });
                 this.sockets[namespace].on(this.EVENT_RECONNECT, () => {
                     this.sockets[namespace].on(this.EVENT_UPDATE_ROOM, (roomData) => this.listenRoomsSubject.next(roomData));
@@ -47,7 +57,7 @@ export class WSClient {
     }
     static disconnect(namespace) {
         this.checkSocket(namespace);
-        return new Observable((observer) => {
+        return new Observable(observer => {
             if (this.sockets[namespace] !== null) {
                 this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
                 this.sockets[namespace].disconnect();
@@ -59,7 +69,7 @@ export class WSClient {
     }
     static join(namespace, room) {
         this.checkSocket(namespace);
-        return new Observable((observer) => {
+        return new Observable(observer => {
             // 1. Tell websocket server that we joined the room
             this.sockets[namespace].emit(this.EVENT_JOIN_ROOM, room);
             // 2.a Wait for successful join
@@ -89,7 +99,7 @@ export class WSClient {
     }
     static leave(room) {
         this.checkSocket(room.namespace);
-        return new Observable((observer) => {
+        return new Observable(observer => {
             if (this.sockets[room.namespace] !== null) {
                 this.sockets[room.namespace].emit(this.EVENT_LEAVE_ROOM, room.room);
             }
@@ -99,7 +109,7 @@ export class WSClient {
     }
     static leaveAllRooms(namespace, rooms) {
         this.checkSocket(namespace);
-        return new Observable((observer) => {
+        return new Observable(observer => {
             let countLeftRooms = 0;
             if (rooms.length === 0) {
                 observer.next(namespace);
@@ -109,7 +119,7 @@ export class WSClient {
                 for (const room of rooms) {
                     const roomData = {
                         namespace: room.namespace,
-                        room: room.name
+                        room: room.name,
                     };
                     this.leave(roomData).subscribe(() => {
                         countLeftRooms++;
@@ -123,7 +133,9 @@ export class WSClient {
         });
     }
     static listen(action, roomToCheck) {
-        if (action.type === ROOM_UPDATE_ACTION_ID && action.payload.room === roomToCheck.room && action.payload.namespace === roomToCheck.namespace) {
+        if (action.type === ROOM_UPDATE_ACTION_ID &&
+            action.payload.room === roomToCheck.room &&
+            action.payload.namespace === roomToCheck.namespace) {
             WSClient.jfsOnRoomUpdateSubject.next(action.payload.data);
         }
         return WSClient.jfsOnRoomUpdate$;

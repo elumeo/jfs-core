@@ -10,15 +10,17 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import React, { memo } from 'react';
-import { TextField, InputAdornment } from '@material-ui/core';
+import { TextField, InputAdornment, } from '@material-ui/core';
 import useCurrency from '../../Effect/useCurrency';
 import { Currency } from '../../Utilities/Format';
 const Display = (_a) => {
-    var { currency = useCurrency(), value = 0.00 } = _a, props = __rest(_a, ["currency", "value"]);
+    var { currency = useCurrency(), value = 0.0 } = _a, props = __rest(_a, ["currency", "value"]);
     const sanitized = React.useMemo(() => Currency.formatDisplay(value), [value]);
     const display = React.useMemo(() => Currency.getCurrency(currency, parseFloat(sanitized), true, false), [sanitized, currency]);
     return (React.createElement(TextField, Object.assign({}, props, { value: display, InputProps: {
-            [currency.toLowerCase() === 'eur' ? 'endAdornment' : 'startAdornment']: React.createElement(InputAdornment, { position: currency.toLowerCase() === 'eur' ? 'end' : 'start', style: { userSelect: 'none' } }, Currency.getCurrencySign(currency))
+            [currency.toLowerCase() === 'eur'
+                ? 'endAdornment'
+                : 'startAdornment']: (React.createElement(InputAdornment, { position: currency.toLowerCase() === 'eur' ? 'end' : 'start', style: { userSelect: 'none' } }, Currency.getCurrencySign(currency))),
         } })));
 };
 export default memo(Display);

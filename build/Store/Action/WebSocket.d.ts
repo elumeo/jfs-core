@@ -12,4 +12,4 @@ export declare const webSocketJoinRoomSuccessAction: import("typesafe-actions").
 export declare const webSocketJoinRoomFailureAction: import("typesafe-actions").PayloadActionCreator<"websocket/JOIN_ROOM_FAILURE", Type.IWebSocketRoomConnection>;
 export declare const webSocketLeaveRoomRequestAction: import("typesafe-actions").PayloadActionCreator<"websocket/LEAVE_ROOM_REQUEST", Type.IWebSocketRoom<string>>;
 export declare const webSocketLeaveRoomSuccessAction: import("typesafe-actions").PayloadActionCreator<"websocket/LEAVE_ROOM_SUCCESS", Type.IWebSocketRoom<string>>;
-export declare const webSocketUpdateRoomAction: import("typesafe-actions").PayloadActionCreator<"websocket/UPDATE_ROOM", JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<any>>;
+export declare const webSocketUpdateRoomAction: import("typesafe-actions").PayloadActionCreator<"websocket/UPDATE_ROOM", JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>;

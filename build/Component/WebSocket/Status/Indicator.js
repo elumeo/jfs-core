@@ -9,15 +9,14 @@ const Indicator = ({ client }) => {
     return (React.createElement("div", { style: { width: 300 } },
         "WS ",
         client.PrivateNamespace,
-        " Status: ",
+        " Status:",
+        ' ',
         React.createElement("span", { style: {
-                background: (isNamespaceConnected
-                    ? 'green'
-                    : 'red'),
+                background: isNamespaceConnected ? 'green' : 'red',
                 borderRadius: '50%',
                 width: 10,
                 height: 10,
-                display: 'inline-block'
+                display: 'inline-block',
             } })));
 };
 export default Indicator;

@@ -3,7 +3,7 @@ import { createReducer } from 'typesafe-actions';
 const initialState = {
     config: null,
     pending: false,
-    loaded: false
+    loaded: false,
 };
 const Configuration = createReducer(initialState)
     .handleAction(Action.loadConfig, state => (Object.assign(Object.assign({}, state), { pending: true, loaded: false })))
