@@ -13,20 +13,20 @@ const logout: Epic = (action$, state) => {
       if (config.JscWebSocketClient !== undefined) {
         disconnectRequestActions.push(
           Action.webSocketDisconnectRequestAction(
-            config.JscWebSocketClient.PrivateNamespace
-          )
+            config.JscWebSocketClient.PrivateNamespace,
+          ),
         );
       }
       if (config.JfsWebSocketClient !== undefined) {
         disconnectRequestActions.push(
           Action.webSocketDisconnectRequestAction(
-            config.JfsWebSocketClient.PrivateNamespace
-          )
+            config.JfsWebSocketClient.PrivateNamespace,
+          ),
         );
       }
       return disconnectRequestActions;
       // return of(webSocketDisconnectRequestAction(WS_NAMESPACES.JSC2JFS), webSocketDisconnectRequestAction(WS_NAMESPACES.JFS2JFS))
-    })
+    }),
   );
 };
 

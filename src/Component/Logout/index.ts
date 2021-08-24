@@ -1,2 +1,2 @@
 export { default as Dialog } from './Dialog';
-export { default as NavigationItem } from  './NavigationItem';
+export { default as NavigationItem } from './NavigationItem';

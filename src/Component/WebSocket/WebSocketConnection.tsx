@@ -13,19 +13,13 @@ export type Props = {
 
 const WebSocketProvider: React.FC = ({ children }) => {
   const { webSocketUpdateRoomAction } = useActions();
-  useEffect(
-    () => {
-      WSClient.listenRoomsObservable$
-        .subscribe((roomData) => webSocketUpdateRoomAction(roomData));
-    },
-    []
-  );
+  useEffect(() => {
+    WSClient.listenRoomsObservable$.subscribe(roomData =>
+      webSocketUpdateRoomAction(roomData),
+    );
+  }, []);
 
-  return (
-    <>
-      {children}
-    </>
-  )
-}
+  return <>{children}</>;
+};
 
 export default WebSocketProvider;

@@ -4,12 +4,12 @@
 
 We now use SVG icons like material ui. So we do not need to create an icon font anymore.
 
-These are the steps to add an icon: 
+These are the steps to add an icon:
 
-1. create a new SVG as a react component in ```Component/Icon/SVG/YOUR_ICON_NAME```
-2. wrap your SVG with the ```<Wrapper/>``` component from ``` ```Component/Icon/Wrapper```
-3. make sure to set the fill color to ```'currentcolor'```
-4. register your icon in ```Component/Icon/SVG/index.ts```
+1. create a new SVG as a react component in `Component/Icon/SVG/YOUR_ICON_NAME`
+2. wrap your SVG with the `<Wrapper/>` component from ``Component/Icon/Wrapper```
+3. make sure to set the fill color to `'currentcolor'`
+4. register your icon in `Component/Icon/SVG/index.ts`
 
 Example svg icon component in react:
 

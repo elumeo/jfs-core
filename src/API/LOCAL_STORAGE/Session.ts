@@ -11,5 +11,3 @@ export const setItem = (key: string, value: string): void => {
 export const removeItem = (key: string): void => {
   window.localStorage.removeItem(BASE_NAME + key);
 };
-
- 

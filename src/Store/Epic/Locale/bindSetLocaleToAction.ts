@@ -5,14 +5,13 @@ import { EMPTY } from 'rxjs';
 import * as Format from 'Utilities/Format';
 import { Epic } from 'Types/Redux';
 
-const bindSetLocaleToAction: Epic = action$ => (
+const bindSetLocaleToAction: Epic = action$ =>
   action$.pipe(
     filter(isActionOf(Action.setLocale)),
-    switchMap(({ payload: { locale } }) => {
+    switchMap(({ payload: { locale } }) => {
       Format.Locale.setLocale(locale);
       return EMPTY;
-    })
-  )
-);
+    }),
+  );
 
 export default bindSetLocaleToAction;

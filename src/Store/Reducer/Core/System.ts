@@ -8,22 +8,24 @@ export type State = {
 
 const initialState: State = {
   backendRegion: null,
-  pending: false
+  pending: false,
 };
 
-const System = TA.createReducer<State, TA.ActionType<typeof Action>>(initialState)
+const System = TA.createReducer<State, TA.ActionType<typeof Action>>(
+  initialState,
+)
   .handleAction(Action.configLoadedAction, state => ({
     ...state,
-    pending: true
+    pending: true,
   }))
   .handleAction(Action.regionLoaded, (state, action) => ({
     ...state,
     backendRegion: action.payload.regionName,
-    pending: false
+    pending: false,
   }))
   .handleAction(Action.getRegionFailed, state => ({
     ...state,
-    pending: false
+    pending: false,
   }));
 
 export default System;

@@ -10,24 +10,22 @@ import { ConnectedRouter } from 'connected-react-router';
 import JuweloTheme from './Theme';
 import WebSocketConnection from 'Component/WebSocket/WebSocketConnection';
 import HtmlHead from './HtmlHead';
-import { history } from 'Store/Middleware'
+import { history } from 'Store/Middleware';
 
 export type Props = {
   title: string;
   store: Store;
-}
+};
 
 const HOC: React.FC<Props> = ({ title, store, children }) => {
   return (
     <Provider store={store}>
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <ThemeProvider theme={JuweloTheme}>
-          <HtmlHead title={title}/>
+          <HtmlHead title={title} />
           <CssBaseline />
           <WebSocketConnection>
-            <ConnectedRouter history={history}>
-              {children}
-            </ConnectedRouter>
+            <ConnectedRouter history={history}>{children}</ConnectedRouter>
           </WebSocketConnection>
         </ThemeProvider>
       </MuiPickersUtilsProvider>

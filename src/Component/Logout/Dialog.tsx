@@ -14,23 +14,22 @@ const Dialog: React.FC = ({ children }) => {
   return (
     <MUIDialog
       open={logout.open}
-      title={formatMessage({id: 'app.logout.title'})}
+      title={formatMessage({ id: 'app.logout.title' })}
       onClose={logout.close}
-      aria-labelledby="logout-description">
-      <DialogTitle>
-        Logout
-      </DialogTitle>
-      <DialogContent style={{
-        minHeight: 80
-      }}>
-        <Text override={children}/>
+      aria-labelledby='logout-description'>
+      <DialogTitle>Logout</DialogTitle>
+      <DialogContent
+        style={{
+          minHeight: 80,
+        }}>
+        <Text override={children} />
       </DialogContent>
       <DialogActions>
         <Button.Submit
           pending={logout.pending}
-          onClick={() => logout.commit({})}/>
-        <Button.Cancel
-          onClick={logout.close}/>
+          onClick={() => logout.commit({})}
+        />
+        <Button.Cancel onClick={logout.close} />
       </DialogActions>
     </MUIDialog>
   );

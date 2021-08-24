@@ -1,15 +1,13 @@
-import { State } from "Store/Reducer/Global";
+import { State } from 'Store/Reducer/Global';
 
-export const isLoginRobotAvailable = (state: State): boolean => (
+export const isLoginRobotAvailable = (state: State): boolean =>
   state.Core.Configuration?.config.RobotUsername &&
   state.Core.Configuration?.config.RobotPassword &&
   state.Core.App.allowRobotLogin &&
-  !state.Core.Login.failedLogins
-);
+  !state.Core.Login.failedLogins;
 
-export const isLoginOpen = (state: State): boolean => (
+export const isLoginOpen = (state: State): boolean =>
   state.Core.Router.routeType === 'authorized' &&
   !state.Core.Session.isAuthorized &&
   !isLoginRobotAvailable(state) &&
-  !state.Core.Session.isCheckingSession
-)
+  !state.Core.Session.isCheckingSession;

@@ -22,14 +22,11 @@ const ShowButton: React.FC<Props> = ({ keepOpenOnOutsideClick }) => {
   const all = useSelector(state => state.Core.Notification.history);
   const snackbar = useSnackbar();
 
-  React.useEffect(
-    () => {
-      if (open) {
-        all.forEach(({ id }) => snackbar.closeSnackbar(id));
-      }
-    },
-    [open]
-  );
+  React.useEffect(() => {
+    if (open) {
+      all.forEach(({ id }) => snackbar.closeSnackbar(id));
+    }
+  }, [open]);
 
   return (
     <>
@@ -37,52 +34,46 @@ const ShowButton: React.FC<Props> = ({ keepOpenOnOutsideClick }) => {
         color='inherit'
         ref={buttonRef}
         aria-describedby={id}
-        onClick={() => setAnchorRef(
-          open
-            ? null
-            : buttonRef.current
-        )}>
+        onClick={() => setAnchorRef(open ? null : buttonRef.current)}>
         <Badge badgeContent={all.length} color='secondary'>
-          <NotificationsIcon/>
+          <NotificationsIcon />
         </Badge>
       </IconButton>
       {createPortal(
-        keepOpenOnOutsideClick
-          ? (
-            <Popper
-              open={open}
-              placement='bottom-end'
-              id={id}
-              anchorEl={anchorRef}
-              modifiers={{
-                flip: {
-                  enabled: true,
-                },
-                preventOverflow: {
-                  enabled: true,
-                  boundariesElement: 'scrollParent',
-                },
-                arrow: {
-                  enabled: true,
-                  element: anchorRef,
-                },
-              }}>
-              <NotificationOverlay/>
-            </Popper>
-          )
-          : (
-            <Popover
-              open={open}
-              anchorEl={anchorRef}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right'
-              }}
-              onClose={() => setAnchorRef(null)}>
-              <NotificationOverlay/>
-            </Popover>
-          ),
-        document.getElementById('overlay')
+        keepOpenOnOutsideClick ? (
+          <Popper
+            open={open}
+            placement='bottom-end'
+            id={id}
+            anchorEl={anchorRef}
+            modifiers={{
+              flip: {
+                enabled: true,
+              },
+              preventOverflow: {
+                enabled: true,
+                boundariesElement: 'scrollParent',
+              },
+              arrow: {
+                enabled: true,
+                element: anchorRef,
+              },
+            }}>
+            <NotificationOverlay />
+          </Popper>
+        ) : (
+          <Popover
+            open={open}
+            anchorEl={anchorRef}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            onClose={() => setAnchorRef(null)}>
+            <NotificationOverlay />
+          </Popover>
+        ),
+        document.getElementById('overlay'),
       )}
     </>
   );

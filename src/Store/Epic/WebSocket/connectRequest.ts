@@ -8,14 +8,17 @@ import { Epic } from 'Types/Redux';
 export const connectRequest: Epic = (action$, state$) => {
   return action$.pipe(
     filter(TA.isActionOf(Action.webSocketConnectRequestAction)),
-    filter(() => (
-      state$.value.Core.Configuration.loaded &&
-      state$.value.Core.Session.isAuthorized
-    )),
-    concatMap(action => WSClient.leaveAllRooms(
-      action.payload,
-      state$.value.Core.WebSocket[action.payload].rooms
-    )),
+    filter(
+      () =>
+        state$.value.Core.Configuration.loaded &&
+        state$.value.Core.Session.isAuthorized,
+    ),
+    concatMap(action =>
+      WSClient.leaveAllRooms(
+        action.payload,
+        state$.value.Core.WebSocket[action.payload].rooms,
+      ),
+    ),
     concatMap(namespace => WSClient.disconnect(namespace)),
     concatMap(namespace => {
       let host: string = null;
@@ -26,23 +29,22 @@ export const connectRequest: Epic = (action$, state$) => {
         namespace === config.JscWebSocketClient.PrivateNamespace
       ) {
         host = config.JscWebSocketClient.Host;
-        path = (
+        path =
           config.JscWebSocketClient.Path !== undefined &&
           config.JscWebSocketClient.Path !== null
             ? config.JscWebSocketClient.Path + path
-            : path
-        );
-      } else if (
+            : path;
+      }
+      else if (
         config.JfsWebSocketClient !== undefined &&
         namespace === config.JfsWebSocketClient.PrivateNamespace
       ) {
         host = config.JfsWebSocketClient.Host;
-        path = (
+        path =
           config.JfsWebSocketClient.Path !== undefined &&
           config.JfsWebSocketClient.Path !== null
             ? config.JfsWebSocketClient.Path + path
-            : path
-        );
+            : path;
       }
       if (host === null) {
         return EMPTY;
@@ -55,10 +57,10 @@ export const connectRequest: Epic = (action$, state$) => {
         state$.value.Core.Session.sessionDTO.token,
         state$.value.Core.Session.sessionDTO.lastIPAddress,
         state$.value.Core.Session.sessionDTO.username,
-        state$.value.Core.Configuration.config.AppName
+        state$.value.Core.Configuration.config.AppName,
       );
     }),
-    switchMap(namespace => of(Action.webSocketConnectSuccessAction(namespace)))
+    switchMap(namespace => of(Action.webSocketConnectSuccessAction(namespace))),
   );
 };
 

@@ -6,12 +6,12 @@ export type Props = HOCProps & {
   allowRobotLogin?: boolean;
   translations: {
     [language: string]: {
-      [key: string]: string
+      [key: string]: string;
     };
   };
   packageJson: Record<string, unknown>;
   title?: string;
-}
+};
 
 const App: React.FC<Props> = ({
   children,
@@ -19,11 +19,9 @@ const App: React.FC<Props> = ({
   translations,
   packageJson,
   title,
-  store
+  store,
 }) => (
-  <HOC
-    title={title || packageJson.name as string}
-    store={store}>
+  <HOC title={title || (packageJson.name as string)} store={store}>
     <Loader
       allowRobotLogin={allowRobotLogin}
       translations={translations}

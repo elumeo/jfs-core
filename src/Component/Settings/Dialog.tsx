@@ -12,23 +12,14 @@ const Dialog: React.FC = ({ children }) => {
   const { closeSettings } = useActions();
   const { formatMessage } = useIntl();
   const open = useSelector(state => state.Core.Settings.settingsOpen);
-  const onClose = React.useCallback(() => closeSettings(), [closeSettings])
+  const onClose = React.useCallback(() => closeSettings(), [closeSettings]);
   return (
-    <MUIDialog
-      open={open}
-      onClose={onClose}>
-      <DialogTitle>
-        {formatMessage({id: 'app.settings'})}
-      </DialogTitle>
-      <DialogContent>
-        {children}
-      </DialogContent>
+    <MUIDialog open={open} onClose={onClose}>
+      <DialogTitle>{formatMessage({ id: 'app.settings' })}</DialogTitle>
+      <DialogContent>{children}</DialogContent>
       <DialogActions>
-        <Button
-          variant='contained'
-          color='secondary'
-          onClick={onClose}>
-          {formatMessage({id: 'app.closeBtnLabelModalDialog'})}
+        <Button variant='contained' color='secondary' onClick={onClose}>
+          {formatMessage({ id: 'app.closeBtnLabelModalDialog' })}
         </Button>
       </DialogActions>
     </MUIDialog>

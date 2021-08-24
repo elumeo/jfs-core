@@ -1,11 +1,11 @@
-import { Language } from "./Language";
+import { Language } from './Language';
 
 export type WebSocketClient = {
   Host: string;
   Path: string;
   PrivateNamespace: string;
   AutoRoomSubscriptions: string[];
-}
+};
 
 export type Configuration = {
   RobotUsername: string;

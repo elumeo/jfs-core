@@ -8,7 +8,7 @@ export type Props = {
   allowRobotLogin: boolean;
   translations: {
     [language: string]: {
-      [key: string]: string
+      [key: string]: string;
     };
   };
   packageJson: Record<string, unknown>;
@@ -18,26 +18,21 @@ const Loader: React.FC<Props> = ({
   allowRobotLogin,
   translations,
   packageJson,
-  children
+  children,
 }) => {
   const { appInitialized, language } = useLoader({
     allowRobotLogin,
     translations,
-    packageJson
+    packageJson,
   });
 
-
-  return (
-    appInitialized && !isEmpty(translations)
-      ? (
-        <Initialized
-          translations={translations}
-          language={language}>
-          {children}
-        </Initialized>
-      )
-      : <Progress/>
+  return appInitialized && !isEmpty(translations) ? (
+    <Initialized translations={translations} language={language}>
+      {children}
+    </Initialized>
+  ) : (
+    <Progress />
   );
-}
+};
 
 export default Loader;

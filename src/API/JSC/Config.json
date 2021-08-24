@@ -4,18 +4,9 @@
   },
   "remote": {
     "SystemController": ["getRegion"],
-    "SessionController": [
-      "getCurrentSessionFrontend",
-      "logout"
-    ],
-    "LoginController": [
-      "loginFrontend"
-    ],
-    "UserController": [
-      "getUserRights"
-    ],
-    "WebSocketController": [
-      "subscribePingRoom"
-    ]
+    "SessionController": ["getCurrentSessionFrontend", "logout"],
+    "LoginController": ["loginFrontend"],
+    "UserController": ["getUserRights"],
+    "WebSocketController": ["subscribePingRoom"]
   }
 }

@@ -14,14 +14,13 @@ const joinRoomRequest: Epic = (action$, state$) => {
         isJoining: true,
         hasJoined: false,
         error: null,
-        name: WSClient.prepareRoomName(
-          action.payload.room,
-          state$.value
-        ),
-        namespace: action.payload.namespace
+        name: WSClient.prepareRoomName(action.payload.room, state$.value),
+        namespace: action.payload.namespace,
       } as WebSocket.IWebSocketRoomConnection;
     }),
-    switchMap((roomState) => of(Action.webSocketJoinRoomLoadingAction(roomState)))
+    switchMap(roomState =>
+      of(Action.webSocketJoinRoomLoadingAction(roomState)),
+    ),
   );
 };
 

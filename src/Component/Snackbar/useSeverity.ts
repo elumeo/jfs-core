@@ -5,20 +5,17 @@ import { Toast } from 'Types/Toast';
 const useSeverity = (toast: Toast): Color => {
   const [severity, setSeverity] = React.useState<Color>('info');
 
-  React.useEffect(
-    () => {
-      if (toast?.isSuccess) {
-        setSeverity('success');
-      }
-      else if (toast?.isError) {
-        setSeverity('error')
-      }
-      else {
-        setSeverity('info')
-      }
-    },
-    [JSON.stringify(toast)]
-  );
+  React.useEffect(() => {
+    if (toast?.isSuccess) {
+      setSeverity('success');
+    }
+    else if (toast?.isError) {
+      setSeverity('error');
+    }
+    else {
+      setSeverity('info');
+    }
+  }, [JSON.stringify(toast)]);
 
   return severity;
 };

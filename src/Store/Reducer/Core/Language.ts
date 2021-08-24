@@ -8,29 +8,26 @@ export type State = {
   messages: {
     [locale: string]: {
       [key: string]: string;
-    }
+    };
   };
 };
 
 const initialState: State = {
   language: null,
-  messages: null
+  messages: null,
 };
 
 const Language = createReducer<State, ActionType>(initialState)
-  .handleAction(
-    Action.changeLanguageAction,
-    (state, action) => ({
-      ...state,
-      language: action.payload
-    })
-  )
+  .handleAction(Action.changeLanguageAction, (state, action) => ({
+    ...state,
+    language: action.payload,
+  }))
   .handleAction(
     Action.initializeApp,
     (state, { payload: { translations } }) => ({
       ...state,
-      messages: translations
-    })
+      messages: translations,
+    }),
   );
 
 export default Language;

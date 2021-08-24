@@ -12,54 +12,56 @@ import { AxiosError } from 'axios';
 const joinRoomLoading: Epic = (action$, state$) => {
   return action$.pipe(
     filter(TA.isActionOf(Action.webSocketJoinRoomLoadingAction)),
-    concatMap((action) => {
+    concatMap(action => {
       return WSClient.join(action.payload.namespace, action.payload.name).pipe(
         map(name => {
-          const namespace = state$.value.Core.WebSocket[action.payload.namespace];
-          const room = namespace?.rooms?.find(room => room.name === name) || null;
+          const namespace =
+            state$.value.Core.WebSocket[action.payload.namespace];
+          const room =
+            namespace?.rooms?.find(room => room.name === name) || null;
           room.isJoining = false;
           room.hasJoined = true;
           return room;
         }),
-        switchMap(roomState => of(
-          Action.webSocketJoinRoomSuccessAction(roomState)
-        )),
-        catchError((err) => {
+        switchMap(roomState =>
+          of(Action.webSocketJoinRoomSuccessAction(roomState)),
+        ),
+        catchError(err => {
           const update: WebSocket.IWebSocketRoomConnection = {
             name: action.payload.name,
             error: err.error.message,
             hasJoined: false,
             isJoining: false,
-            namespace: action.payload.namespace
+            namespace: action.payload.namespace,
           };
           const error: AxiosError = {
             response: {
               data: {
                 message: err.error.message,
-                id: 0
+                id: 0,
               },
               headers: null,
               config: err.error.config,
               status: null,
-              statusText: err.error.message
+              statusText: err.error.message,
             },
             name: err.error.name,
             config: err.error.config,
             message: err.error.message,
             isAxiosError: true,
-            toJSON: () => err.error.message
+            toJSON: () => err.error.message,
           };
           return of(
             Action.webSocketJoinRoomFailureAction(update),
             Action.addNotification({
               id: uuid(),
               content: Format.Error.apply(error),
-              variant: 'error'
-            })
+              variant: 'error',
+            }),
           );
-        })
+        }),
       );
-    })
+    }),
   );
 };
 

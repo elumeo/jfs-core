@@ -20,10 +20,9 @@ import { history } from 'Store/Middleware';
 ReactDOM.render(
   <App.Container
     store={create(epic, reducer(history))}
-    title="core"
+    title='core'
     translations={Translations}
-    packageJson={packageJson}
-  >
+    packageJson={packageJson}>
     <Header.AppToolbar
       left={<Header.BackendIndicator />}
       right={
@@ -44,5 +43,5 @@ ReactDOM.render(
       <Snackbar />
     </Overlay>
   </App.Container>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

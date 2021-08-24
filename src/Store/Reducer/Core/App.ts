@@ -11,24 +11,18 @@ export type State = {
 export const initialState: State = {
   appInitialized: false,
   allowRobotLogin: false,
-  packageJson: null
+  packageJson: null,
 };
 
 const App = TA.createReducer<State, ActionType>(initialState)
-  .handleAction(
-    Action.initializeApp,
-    (state, action) => ({
-      ...state,
-      allowRobotLogin: action.payload.allowRobotLogin,
-      packageJson: action.payload.packageJson
-    })
-  )
-  .handleAction(
-    Action.appInitialized,
-    state => ({
-      ...state,
-      appInitialized: true
-    })
-  );
+  .handleAction(Action.initializeApp, (state, action) => ({
+    ...state,
+    allowRobotLogin: action.payload.allowRobotLogin,
+    packageJson: action.payload.packageJson,
+  }))
+  .handleAction(Action.appInitialized, state => ({
+    ...state,
+    appInitialized: true,
+  }));
 
 export default App;

@@ -1,4 +1,4 @@
-import { Language } from "Types/Language";
+import { Language } from 'Types/Language';
 import * as Country from 'Types/Country';
 
 export let locale: Country.Locale = 'en-GB';

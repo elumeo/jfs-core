@@ -16,12 +16,10 @@ const Empty: React.FC = () => {
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        color: 'grey'
+        color: 'grey',
       }}>
-      <NotificationsIcon fontSize='large' ref={iconRef}/>
-      <Typography>
-        {formatMessage({ id: 'app.noNotifications' })}
-      </Typography>
+      <NotificationsIcon fontSize='large' ref={iconRef} />
+      <Typography>{formatMessage({ id: 'app.noNotifications' })}</Typography>
     </Box>
   );
 };

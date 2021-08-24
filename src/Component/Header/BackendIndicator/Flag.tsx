@@ -7,18 +7,22 @@ export type Props = {
 
 const Flag: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
   ({ country }, ref) => {
-    const CountryIcon = Icon.Flag[country.toUpperCase() as Uppercase<Country>] as React.FC;    
+    const CountryIcon = Icon.Flag[
+      country.toUpperCase() as Uppercase<Country>
+    ] as React.FC;
     return (
-      <div ref={ref} style={{
-        width: 28,
-        height: 28,
-        position: 'relative',
-        margin: 10
-      }}>
-        {CountryIcon && <CountryIcon/>}
+      <div
+        ref={ref}
+        style={{
+          width: 28,
+          height: 28,
+          position: 'relative',
+          margin: 10,
+        }}>
+        {CountryIcon && <CountryIcon />}
       </div>
     );
-  }
-)
+  },
+);
 
 export default Flag;

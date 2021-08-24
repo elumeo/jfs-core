@@ -8,7 +8,7 @@ export type IBaseRouteProps = RouteProps & {
   Component?: () => JSX.Element;
   translationId?: string;
   updateDocumentTitle?: boolean;
-}
+};
 
 const BaseRoute: React.FC<IBaseRouteProps> = ({
   Component,
@@ -19,13 +19,10 @@ const BaseRoute: React.FC<IBaseRouteProps> = ({
   const location = useLocation();
   const params = useParams();
   const dispatch = useDispatch();
-  const {formatMessage} = useIntl()
-  useEffect(
-    () => {
-      dispatch(Action.updateRouteDetails({ location, params }));
-    },
-    [rest.path]
-  )
+  const { formatMessage } = useIntl();
+  useEffect(() => {
+    dispatch(Action.updateRouteDetails({ location, params }));
+  }, [rest.path]);
   if (Component) {
     rest.component = Component;
   }
@@ -37,7 +34,7 @@ const BaseRoute: React.FC<IBaseRouteProps> = ({
       document.title = formatMessage({ id: 'app.title' });
     }
   }
-  return <Route {...rest}/>;
+  return <Route {...rest} />;
 };
 
 export default BaseRoute;

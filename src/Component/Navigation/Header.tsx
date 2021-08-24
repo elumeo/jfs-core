@@ -6,15 +6,17 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 const Header: React.FC = () => {
-  const username = useSelector(state => state.Core.Session.sessionDTO?.username);
+  const username = useSelector(
+    state => state.Core.Session.sessionDTO?.username,
+  );
   return (
     <ListItem>
       <ListItemIcon>
-        <Button/>
+        <Button />
       </ListItemIcon>
-      <ListItemText primary={username}/>
+      <ListItemText primary={username} />
     </ListItem>
   );
-}
+};
 
 export default Header;

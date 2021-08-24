@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import CardActions from '@material-ui/core/CardActions';
 import { useSnackbar } from 'notistack';
 import * as Type from 'Types/Notification';
-import { useIntl } from 'react-intl'
+import { useIntl } from 'react-intl';
 
 export type Props = {
   notification: Type.Notification;
@@ -18,50 +18,40 @@ const DefaultNotificationCard: React.FC<Props> = ({
     content,
     action,
     id,
-    isTranslationId = false
+    isTranslationId = false,
   },
-  temporary
+  temporary,
 }) => {
   const snackbar = useSnackbar();
-  const { formatMessage } = useIntl()
+  const { formatMessage } = useIntl();
   return (
     <>
       <Box color='inherit'>
         {title && (
-          <Typography
-            variant='subtitle1'
-            component='div'>
-            {isTranslationId
-              ? formatMessage({ id: (title as string) })
-              : title}
+          <Typography variant='subtitle1' component='div'>
+            {isTranslationId ? formatMessage({ id: title as string }) : title}
           </Typography>
         )}
         {subtitle && (
-          <Typography
-            variant='subtitle2'
-            component='div'>
+          <Typography variant='subtitle2' component='div'>
             {isTranslationId
-              ? formatMessage({ id: (subtitle as string) })
+              ? formatMessage({ id: subtitle as string })
               : subtitle}
           </Typography>
         )}
         {content && (
-          <Typography
-            variant='body1'
-            component='div'>
+          <Typography variant='body1' component='div'>
             {isTranslationId
-              ? formatMessage({ id: (content as string) })
+              ? formatMessage({ id: content as string })
               : content}
           </Typography>
         )}
       </Box>
       {!temporary && action && (
-        <CardActions>
-          {action(snackbar, id, temporary)}
-        </CardActions>
+        <CardActions>{action(snackbar, id, temporary)}</CardActions>
       )}
     </>
   );
-}
+};
 
-export default DefaultNotificationCard
+export default DefaultNotificationCard;

@@ -49,7 +49,7 @@ const Core = combineReducers<State>({
   System,
   Toast,
   WebSocket,
-  Locale
+  Locale,
 });
 
 export default Core;

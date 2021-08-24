@@ -17,7 +17,7 @@ const fs_extra_1 = __importDefault(require("fs-extra"));
 const path_1 = __importDefault(require("path"));
 exports.name = 'jfs-deploy-config-files';
 exports.scope = ['all'];
-const tsconfig = (which) => __awaiter(void 0, void 0, void 0, function* () {
+const tsconfig = (which) => {
     switch (which) {
         case 'core': return 'core.json';
         case 'component': return 'shared-component.json';
@@ -25,23 +25,28 @@ const tsconfig = (which) => __awaiter(void 0, void 0, void 0, function* () {
         default: return null;
     }
     ;
-});
+};
+const eslintrc = (which) => {
+    switch (which) {
+        case 'core': return 'core.eslintrc';
+        case 'component': return 'component.eslintrc';
+        case 'app': return 'app.eslintrc';
+        default: return null;
+    }
+    ;
+};
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     const typescript = path_1.default.resolve(env.core, 'build-tools', 'typescript');
-    const editorconfig = path_1.default.resolve(env.core, 'build-tools', 'editorconfig');
     const prettier = path_1.default.resolve(env.core, 'build-tools', 'prettier');
+    const eslint = path_1.default.resolve(env.core, 'build-tools', 'eslint');
     const copy = [
         {
-            from: path_1.default.resolve(typescript, yield tsconfig(env.which)),
+            from: path_1.default.resolve(typescript, tsconfig(env.which)),
             to: path_1.default.resolve(process.cwd(), 'tsconfig.json')
         },
         {
-            from: path_1.default.resolve(typescript, 'tslint.json'),
-            to: path_1.default.resolve(process.cwd(), 'tslint.json')
-        },
-        {
-            from: path_1.default.resolve(editorconfig, '.editorconfig'),
-            to: path_1.default.resolve(process.cwd(), '.editorconfig'),
+            from: path_1.default.resolve(eslint, eslintrc(env.which)),
+            to: path_1.default.resolve(process.cwd(), '.eslintrc')
         },
         {
             from: path_1.default.resolve(prettier, '.prettierrc'),

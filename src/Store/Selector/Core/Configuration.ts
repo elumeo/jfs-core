@@ -3,6 +3,5 @@ import { createSelector } from 'reselect';
 
 export const Configuration = createSelector(
   (state: State) => state.Core.Configuration,
-  state => state.config
+  state => state.config,
 );
-

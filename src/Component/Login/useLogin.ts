@@ -14,15 +14,15 @@ const useLogin = (): {
   const open = useSelector(Selector.isLoginOpen);
   const [credentials, setCredentials] = React.useState<Type.Credentials>({
     username: '',
-    password: ''
+    password: '',
   });
-  
+
   return {
     open,
     credentials,
     onChange: (next: Type.Credentials) => setCredentials(next),
-    check: () => checkLogin(credentials)
-  }
+    check: () => checkLogin(credentials),
+  };
 };
 
 export default useLogin;

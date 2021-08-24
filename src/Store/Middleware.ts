@@ -7,10 +7,12 @@ import { Epic, EpicMiddleware } from 'Types/Redux';
 
 export const history = createHashHistory();
 const epicMiddleware: EpicMiddleware = createEpicMiddleware({
-  dependencies: { history }
+  dependencies: { history },
 });
 const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
-const storeEnhancer = applyMiddleware(epicMiddleware, routerMiddleware(history)
+const storeEnhancer = applyMiddleware(
+  epicMiddleware,
+  routerMiddleware(history),
 );
 const middleware = composeEnhancers(storeEnhancer);
 export const start = (epic: Epic): void => epicMiddleware.run(epic);

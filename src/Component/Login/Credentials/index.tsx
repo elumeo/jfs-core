@@ -21,21 +21,27 @@ const Credentials: React.FC<Props> = ({ value, onChange, onSubmit }) => {
       <Username
         ref={username}
         value={value.username}
-        onChange={next => onChange({
-          ...value,
-          username: next
-        })}
-        onEnter={() => password.current.focus()}/>
+        onChange={next =>
+          onChange({
+            ...value,
+            username: next,
+          })
+        }
+        onEnter={() => password.current.focus()}
+      />
       <Password
         ref={password}
         value={value.password}
-        onChange={next => onChange({
-          ...value,
-          password: next
-        })}
-        onEnter={onSubmit}/>
+        onChange={next =>
+          onChange({
+            ...value,
+            password: next,
+          })
+        }
+        onEnter={onSubmit}
+      />
     </Form>
-  )
+  );
 };
 
 export default Credentials;

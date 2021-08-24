@@ -5,20 +5,17 @@ import JSCApi from 'API/JSC';
 import { Epic } from 'Types/Redux';
 import * as Action from 'Store/Action';
 
-const getRegion: Epic = action$ => (
+const getRegion: Epic = action$ =>
   action$.pipe(
     filter(isActionOf(Action.configLoadedAction)),
     switchMap(() =>
-      from(
-        JSCApi.SystemClient.getRegion()
-      ).pipe(
-        switchMap(response => of(
-          Action.regionLoaded({ regionName: response?.data || null })
-        ))
-      )
+      from(JSCApi.SystemClient.getRegion()).pipe(
+        switchMap(response =>
+          of(Action.regionLoaded({ regionName: response?.data || null })),
+        ),
+      ),
     ),
-    catchError(() => of(Action.getRegionFailed()))
-  )
-);
+    catchError(() => of(Action.getRegionFailed())),
+  );
 
 export default getRegion;

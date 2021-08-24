@@ -11,19 +11,25 @@ import TableCellLoading from 'Component/Table/TableCell/TableCellLoading';
 export type TableCellMsisdnProps = {
   cellProps: TableCellProps;
   rowHeight: number;
-}
+};
 
-const TableCellMsisdn = ({cellProps, rowHeight}: TableCellMsisdnProps) => {
+const TableCellMsisdn = ({ cellProps, rowHeight }: TableCellMsisdnProps) => {
   const classes = cellStyles();
   const globalClasses = globalStyles();
 
-  return (cellProps.cellData !== null && <TableCell
-      component={'div'}
-      className={clsx(globalClasses.tableCell, globalClasses.flexContainer)}
-      variant={'body'}
-      style={{height: rowHeight}}
-    ><span className={classes.wrapContent}><FormattedMsisdn msisdn={cellProps.cellData}/></span></TableCell>) ||
-    <TableCellLoading />;
-}
+  return (
+    (cellProps.cellData !== null && (
+      <TableCell
+        component={'div'}
+        className={clsx(globalClasses.tableCell, globalClasses.flexContainer)}
+        variant={'body'}
+        style={{ height: rowHeight }}>
+        <span className={classes.wrapContent}>
+          <FormattedMsisdn msisdn={cellProps.cellData} />
+        </span>
+      </TableCell>
+    )) || <TableCellLoading />
+  );
+};
 
 export default memo(TableCellMsisdn);

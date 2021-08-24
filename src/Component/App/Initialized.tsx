@@ -7,19 +7,17 @@ const Initialized: React.FC<{
   translations: {
     [language: string]: {
       [key: string]: string;
-    }
+    };
   };
   language: string;
   children: ReactNode;
 }> = ({ translations, language, children }) => (
-  <IntlProvider
-    locale={language}
-    messages={translations[language]}>
+  <IntlProvider locale={language} messages={translations[language]}>
     <>
       <SnackbarProvider
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'right'
+          horizontal: 'right',
         }}
         maxSnack={5}
         domRoot={document.getElementById('overlay')}>

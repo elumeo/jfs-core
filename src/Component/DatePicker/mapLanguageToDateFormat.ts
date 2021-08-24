@@ -11,6 +11,6 @@ const mapLanguageToDateFormat = (language: LANGUAGE): DATE_FORMAT => {
     default:
       return DATE_FORMAT.DE;
   }
-}
+};
 
 export default mapLanguageToDateFormat;

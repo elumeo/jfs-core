@@ -1,5 +1,16 @@
 {
-  "printWidth": 120,
-  "tabWidth": 2,
-  "singleQuote": true
+  "arrowParens": "avoid",
+  "generatorStarSpacing": true,
+  "offsetTernaryExpressions": true,
+  "printWidth": 80,
+  "quoteProps": "consistent",
+  "breakBeforeElse": true,
+  "breakLongMethodChains": true,
+  "jsxBracketSameLine": true,
+  "jsxSingleQuote": true,
+  "semi": true,
+  "computedPropertySpacing": false,
+  "singleQuote": true,
+  "spaceBeforeFunctionParen": true,
+  "trailingComma": "all"
 }

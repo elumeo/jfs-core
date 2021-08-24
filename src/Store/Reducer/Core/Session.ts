@@ -11,40 +11,33 @@ export type State = {
   isAuthorized: boolean;
   sessionDTO: ISessionDTO;
   appProperties: Array<IPropertyDTO>;
-}
+};
 
 const initialState: State = {
   isCheckingSession: false,
   isAuthorized: null,
   sessionDTO: null,
-  appProperties: []
+  appProperties: [],
 };
 
 const Session = createReducer<State, ActionType>(initialState)
-  .handleAction(Action.checkSession, (state) => ({
+  .handleAction(Action.checkSession, state => ({
     ...state,
     isCheckingSession: true,
-    })
-  )
-  .handleAction(
-    Action.authorizeSession,
-    (state, action) => ({
-      ...state,
-      isCheckingSession: false,
-      sessionDTO: action.payload.frontendSessionDTO.session,
-      appProperties: action.payload.frontendSessionDTO.appProperties,
-      isAuthorized: true
-    })
-  )
-  .handleAction(
-    Action.unauthorizeSession,
-    state => ({
-      ...state,
-      isCheckingSession: false,
-      sessionDTO: null,
-      appProperties: [],
-      isAuthorized: false
-    })
-  );
+  }))
+  .handleAction(Action.authorizeSession, (state, action) => ({
+    ...state,
+    isCheckingSession: false,
+    sessionDTO: action.payload.frontendSessionDTO.session,
+    appProperties: action.payload.frontendSessionDTO.appProperties,
+    isAuthorized: true,
+  }))
+  .handleAction(Action.unauthorizeSession, state => ({
+    ...state,
+    isCheckingSession: false,
+    sessionDTO: null,
+    appProperties: [],
+    isAuthorized: false,
+  }));
 
 export default Session;

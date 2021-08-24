@@ -11,21 +11,18 @@ const AuthRoute: React.FC<IBaseRouteProps> = props => {
     isCheckingSession: boolean;
   }>(state => ({
     isAuthorized: state.Core.Session.isAuthorized,
-    isCheckingSession: state.Core.Session.isCheckingSession
+    isCheckingSession: state.Core.Session.isCheckingSession,
   }));
-  useEffect(
-    () => {
-      enterAuthorizedRoute()
-    },
-    [props.path]
-  );
+  useEffect(() => {
+    enterAuthorizedRoute();
+  }, [props.path]);
 
-  return (
-    isAuthorized
-      ? <BaseRoute {...props}/>
-      : isCheckingSession
-      ? <CircularProgress id='check-session-progress'/>
-      : <></>
+  return isAuthorized ? (
+    <BaseRoute {...props} />
+  ) : isCheckingSession ? (
+    <CircularProgress id='check-session-progress' />
+  ) : (
+    <></>
   );
 };
 

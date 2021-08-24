@@ -17,11 +17,9 @@ const Snackbar: React.FC = () => {
         }
       }}
       autoHideDuration={autoHideDuration}>
-      <Alert severity={severity}>
-        {message}
-      </Alert>
+      <Alert severity={severity}>{message}</Alert>
     </MUISnackbar>
   );
-}
+};
 
 export default Snackbar;

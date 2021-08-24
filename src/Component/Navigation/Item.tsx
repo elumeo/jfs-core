@@ -20,49 +20,58 @@ export type Props = {
 };
 
 const NavigationItem: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
-  ({
-    iconName, messageId, onClick, active, messageString,
-    authorizedOnly, unauthorizedOnly, onClickRoute
-  }, ref) => {
+  (
+    {
+      iconName,
+      messageId,
+      onClick,
+      active,
+      messageString,
+      authorizedOnly,
+      unauthorizedOnly,
+      onClickRoute,
+    },
+    ref,
+  ) => {
     const history = useHistory();
     const { closeNavigation } = useActions();
-    const { formatMessage } = useIntl()
+    const { formatMessage } = useIntl();
     const isAuthorized = useSelector(state => state.Core.Session.isAuthorized);
-    const visible = (
-      !authorizedOnly && !unauthorizedOnly || // always display these
-      isAuthorized && authorizedOnly || // only when authorized
-      !isAuthorized && unauthorizedOnly // only when unauthorized
-    );
+    const visible =
+      (!authorizedOnly && !unauthorizedOnly) || // always display these
+      (isAuthorized && authorizedOnly) || // only when authorized
+      (!isAuthorized && unauthorizedOnly); // only when unauthorized
 
-    return (
-      visible
-        ? (
-          <ListItem
-            ref={ref}
-            button
-            onClick={(event: React.MouseEvent<HTMLElement>) => {
-              const {location: {pathname}} = history;
-              if (onClickRoute != undefined && pathname !== onClickRoute) {
-                 history.push(onClickRoute);
-              }
-              closeNavigation();
-              if (onClick) {
-                onClick(event);
-              }
-            }}
-            selected={active}>
-            <ListItemIcon>
-              <Icon>{iconName}</Icon>
-            </ListItemIcon>
-            <ListItemText primary={
-              messageString
-                ? messageString
-                : formatMessage({id: messageId})} />
-          </ListItem>
-        )
-        : <></>
-    )
-  }
+    return visible ? (
+      <ListItem
+        ref={ref}
+        button
+        onClick={(event: React.MouseEvent<HTMLElement>) => {
+          const {
+            location: { pathname },
+          } = history;
+          if (onClickRoute != undefined && pathname !== onClickRoute) {
+            history.push(onClickRoute);
+          }
+          closeNavigation();
+          if (onClick) {
+            onClick(event);
+          }
+        }}
+        selected={active}>
+        <ListItemIcon>
+          <Icon>{iconName}</Icon>
+        </ListItemIcon>
+        <ListItemText
+          primary={
+            messageString ? messageString : formatMessage({ id: messageId })
+          }
+        />
+      </ListItem>
+    ) : (
+      <></>
+    );
+  },
 );
 
 export default NavigationItem;

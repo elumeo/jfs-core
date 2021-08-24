@@ -9,18 +9,19 @@ export type Props = {
 };
 
 const Submit: React.FC<Props> = ({ onClick }) => {
-  const intl = useIntl()
-  const isCheckingLogin = useSelector(state => state.Core.Login.isCheckingLogin);
+  const intl = useIntl();
+  const isCheckingLogin = useSelector(
+    state => state.Core.Login.isCheckingLogin,
+  );
   return (
-    <Button
-      color='primary'
-      onClick={onClick}
-      disabled={isCheckingLogin}>
-      {isCheckingLogin
-        ? <CircularProgress size='1.8rem'/>
-        : intl.formatMessage({ id: 'login.button' })}
+    <Button color='primary' onClick={onClick} disabled={isCheckingLogin}>
+      {isCheckingLogin ? (
+        <CircularProgress size='1.8rem' />
+      ) : (
+        intl.formatMessage({ id: 'login.button' })
+      )}
     </Button>
   );
-}
+};
 
 export default Submit;

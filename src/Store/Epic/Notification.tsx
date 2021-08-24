@@ -8,12 +8,12 @@ import { v4 as uuid } from 'uuid';
 import { of } from 'rxjs';
 import { AxiosError } from 'axios';
 
-const showError: Epic = action$ => (
+const showError: Epic = action$ =>
   action$.pipe(
     filter(isActionOf(Action.addErrorNotification)),
     switchMap(({ payload: { response } }: ActionType<AxiosError>) => {
       const id = uuid();
-      const { error, id: errorId, message } = response?.data || {}
+      const { error, id: errorId, message } = response?.data || {};
       return of(
         Action.addNotification({
           id,
@@ -25,14 +25,14 @@ const showError: Epic = action$ => (
                 title: errorId,
                 subtitle: error,
                 content: message,
-                variant: 'error'
-              }} />
+                variant: 'error',
+              }}
+            />
           ),
           action: () => <></>,
-        })
-      )
-    })
-  )
-)
+        }),
+      );
+    }),
+  );
 
 export default showError;

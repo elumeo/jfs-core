@@ -1,4 +1,9 @@
-import { SnackbarAction, useSnackbar, VariantType, OptionsObject } from 'notistack';
+import {
+  SnackbarAction,
+  useSnackbar,
+  VariantType,
+  OptionsObject,
+} from 'notistack';
 import React from 'react';
 
 export type Notification = {
@@ -10,8 +15,8 @@ export type Notification = {
   action?: (
     snackbar: ReturnType<typeof useSnackbar>,
     id: string,
-    temporary: boolean
+    temporary: boolean,
   ) => SnackbarAction;
   notistackOptions?: OptionsObject;
-  isTranslationId?: boolean
+  isTranslationId?: boolean;
 };

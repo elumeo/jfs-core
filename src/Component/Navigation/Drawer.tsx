@@ -8,22 +8,18 @@ import Header from './Header';
 const Drawer: React.FC = ({ children }) => {
   const { closeNavigation } = useActions();
   const navigationOpen = useSelector(
-    state => state.Core.Navigation.navigationOpen
+    state => state.Core.Navigation.navigationOpen,
   );
   const close = useCallback(() => closeNavigation(), []);
 
   return (
-    <MUIDrawer
-      open={navigationOpen}
-      anchor='left'
-      onClose={close}>
-      <div style={{
-        width: 270
-      }}>
-        <Header/>
-        <List>
-          {children}
-        </List>
+    <MUIDrawer open={navigationOpen} anchor='left' onClose={close}>
+      <div
+        style={{
+          width: 270,
+        }}>
+        <Header />
+        <List>{children}</List>
       </div>
     </MUIDrawer>
   );

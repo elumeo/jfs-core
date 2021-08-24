@@ -12,12 +12,8 @@ const Failure: React.FC<Props> = ({ title, details }) => {
     <span>
       <u>{intl.formatMessage({ id: 'app.error' })}:&nbsp;</u>
       {details}
-      <br/>
-      {title && (
-        <span style={{ fontSize: 'x-small' }}>
-          {title}
-        </span>
-      )}
+      <br />
+      {title && <span style={{ fontSize: 'x-small' }}>{title}</span>}
     </span>
   );
 };

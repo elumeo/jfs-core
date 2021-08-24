@@ -10,18 +10,20 @@ const Drawer: React.FC = () => (
       iconName='account_box'
       messageId='app.login'
       unauthorizedOnly
-      onClickRoute='/start'/>
+      onClickRoute='/start'
+    />
     <Navigation.Item
       iconName='home'
       messageId='app.title'
       onClickRoute='/start'
-      authorizedOnly/>
-    <Divider/>
-    <Settings.NavigationItem/>
-    <Divider/>
-    <Logout.NavigationItem/>
+      authorizedOnly
+    />
+    <Divider />
+    <Settings.NavigationItem />
+    <Divider />
+    <Logout.NavigationItem />
     {/* <VersionNavigationItem /> */}
   </Navigation.Drawer>
 );
 
-export default Drawer
+export default Drawer;

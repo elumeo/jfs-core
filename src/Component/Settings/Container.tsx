@@ -13,39 +13,33 @@ import { useIntl } from 'react-intl';
 import { useSelector } from 'Types/Redux';
 
 const Container: React.FC = () => {
-    const { changeLanguageAction } = useActions();
-    const { goBack } = useHistory();
-    const { formatMessage } = useIntl();
-    const language = useSelector(state => state.Core.Language.language);
-  
-    return (
-      <Card style={{width: 330, margin: 'auto'}}>
-        <CardHeader title={formatMessage({id: 'settings.title'})}/>
-        <Select
-          id='language'
-          label={formatMessage({id: 'settings.language'})}
-          value={language}
-          onChange={(e) => {
-            Cookie.set('lang', e.target.value as string);
-            changeLanguageAction(e.target.value as Language);
-          }}>
-            <MenuItem value='de'>
-              Deutsch
-            </MenuItem>
-            <MenuItem value='en'>
-              English
-            </MenuItem>
-            <MenuItem value='it'>
-              Italiano
-            </MenuItem>
-          </Select>
-        <CardActions className='md-dialog-footer'>
-          <Button  onClick={goBack}>
-            {formatMessage({id: 'app.settings.done'})}
-          </Button>
-        </CardActions>
-      </Card>
-    );
-}
+  const { changeLanguageAction } = useActions();
+  const { goBack } = useHistory();
+  const { formatMessage } = useIntl();
+  const language = useSelector(state => state.Core.Language.language);
+
+  return (
+    <Card style={{ width: 330, margin: 'auto' }}>
+      <CardHeader title={formatMessage({ id: 'settings.title' })} />
+      <Select
+        id='language'
+        label={formatMessage({ id: 'settings.language' })}
+        value={language}
+        onChange={e => {
+          Cookie.set('lang', e.target.value as string);
+          changeLanguageAction(e.target.value as Language);
+        }}>
+        <MenuItem value='de'>Deutsch</MenuItem>
+        <MenuItem value='en'>English</MenuItem>
+        <MenuItem value='it'>Italiano</MenuItem>
+      </Select>
+      <CardActions className='md-dialog-footer'>
+        <Button onClick={goBack}>
+          {formatMessage({ id: 'app.settings.done' })}
+        </Button>
+      </CardActions>
+    </Card>
+  );
+};
 
 export default Container;

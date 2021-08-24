@@ -5,13 +5,16 @@ import { of } from 'rxjs';
 import * as Format from 'Utilities/Format';
 import { Epic } from 'Types/Redux';
 
-const setLocaleByLanguage: Epic = action$ => (
+const setLocaleByLanguage: Epic = action$ =>
   action$.pipe(
     filter(isActionOf(Action.changeLanguageAction)),
-    switchMap(({ payload: language }) => of(Action.setLocale({
-      locale: Format.Locale.mapLanguageToLocale(language)
-    })))
-  )
-);
+    switchMap(({ payload: language }) =>
+      of(
+        Action.setLocale({
+          locale: Format.Locale.mapLanguageToLocale(language),
+        }),
+      ),
+    ),
+  );
 
 export default setLocaleByLanguage;

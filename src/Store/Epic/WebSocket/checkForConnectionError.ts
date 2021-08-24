@@ -10,29 +10,29 @@ const checkForConnectionError: Epic = (action$, state) => {
   return action$.pipe(
     filter(TA.isActionOf(Action.webSocketConnectRequestAction)),
     concatMap(() => WSClient.connectionErrorObservable$),
-    switchMap((err) => {
-        if (state.value.Core.WebSocket[err.namespace].isConnecting) {
-          return of(
-            Action.addNotification({
-              id: uuid(),
-              variant: 'error',
-              title: 'Websocket',
-              subtitle: 'Connection Request', 
-              content: (
-                'Unable to connect to websocket server (' + err.namespace + ')'
-                + (err.message !== null && err.message !== ''
-                  ? ' because of ' + err.message
-                  : '')
-                + '!'
-              ),
-            }),
-            Action.webSocketConnectFailedAction(err)
-          );
-        }
-
-        return EMPTY;
+    switchMap(err => {
+      if (state.value.Core.WebSocket[err.namespace].isConnecting) {
+        return of(
+          Action.addNotification({
+            id: uuid(),
+            variant: 'error',
+            title: 'Websocket',
+            subtitle: 'Connection Request',
+            content:
+              'Unable to connect to websocket server (' +
+              err.namespace +
+              ')' +
+              (err.message !== null && err.message !== ''
+                ? ' because of ' + err.message
+                : '') +
+              '!',
+          }),
+          Action.webSocketConnectFailedAction(err),
+        );
       }
-    )
+
+      return EMPTY;
+    }),
   );
 };
 

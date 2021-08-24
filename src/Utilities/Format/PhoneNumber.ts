@@ -11,7 +11,7 @@ export const formatPhone = (msisdn: string, backendRegion: string): string => {
           phoneNumber,
           phoneUtil.getRegionCodeForNumber(phoneNumber) !== defaultCountry
             ? PhoneNumberFormat.INTERNATIONAL
-            : PhoneNumberFormat.NATIONAL
+            : PhoneNumberFormat.NATIONAL,
         );
       }
     } catch (e) {
@@ -19,7 +19,7 @@ export const formatPhone = (msisdn: string, backendRegion: string): string => {
     }
   }
   return msisdn;
-}
+};
 
 export const correctCountryCode = (countryCode: string): string => {
   if (!countryCode || countryCode.length == 0) {

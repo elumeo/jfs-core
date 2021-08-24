@@ -3,7 +3,7 @@ export type Language = 'de' | 'en' | 'it';
 export enum LANGUAGE {
   GERMAN = 'de',
   ENGLISH = 'en',
-  ITALIAN = 'it'
+  ITALIAN = 'it',
 }
 
 export enum DATE_FORMAT {
@@ -12,5 +12,5 @@ export enum DATE_FORMAT {
   ES = 'dd/MM/yyyy',
   FR = 'dd/MM/yyyy',
   NL = 'dd-MM-yyyy',
-  IT = 'dd/MM/yyyy'
+  IT = 'dd/MM/yyyy',
 }

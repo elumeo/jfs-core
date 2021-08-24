@@ -6,22 +6,15 @@ import useActions from 'Store/useActions';
 
 const Button: React.FC = () => {
   const { openSettings, closeSettings } = useActions();
-  const settingsOpen = useSelector(state  => state.Core.Settings.settingsOpen);
-  const  onClick = React.useCallback(
-    () =>{
-      settingsOpen
-      ? closeSettings()
-      : openSettings()
-    },
-    [settingsOpen, closeSettings, openSettings],
-  )
+  const settingsOpen = useSelector(state => state.Core.Settings.settingsOpen);
+  const onClick = React.useCallback(() => {
+    settingsOpen ? closeSettings() : openSettings();
+  }, [settingsOpen, closeSettings, openSettings]);
   return (
-    <IconButton
-      color='inherit'
-      onClick={onClick}>
-      <SettingsIcon/>
+    <IconButton color='inherit' onClick={onClick}>
+      <SettingsIcon />
     </IconButton>
-  )
+  );
 };
 
 export default Button;

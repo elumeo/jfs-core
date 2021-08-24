@@ -12,12 +12,9 @@ import { Epic } from 'Types/Redux';
 
 export const wrap = (
   epic: Epic,
-  wrapper: (action$: ReturnType<Epic>) => ReturnType<Epic>
-): Epic => (
-  (action$, state$, dependencies) => (
-    wrapper(epic(action$, state$, dependencies))
-  )
-);
+  wrapper: (action$: ReturnType<Epic>) => ReturnType<Epic>,
+): Epic => (action$, state$, dependencies) =>
+  wrapper(epic(action$, state$, dependencies));
 
 const Core = combineEpics(
   App,
@@ -28,7 +25,7 @@ const Core = combineEpics(
   Configuration,
   WebSocket,
   Language,
-  Notification
+  Notification,
 );
 
 export default Core;

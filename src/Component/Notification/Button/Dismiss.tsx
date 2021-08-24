@@ -7,10 +7,8 @@ export type Props = {
 };
 
 const DismissButton: React.FC<Props> = ({ onClick }) => (
-  <IconButton
-    color='inherit'
-    onClick={onClick}>
-    <CloseIcon/>
+  <IconButton color='inherit' onClick={onClick}>
+    <CloseIcon />
   </IconButton>
 );
 

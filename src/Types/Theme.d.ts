@@ -1,4 +1,7 @@
-import { PaletteColor, PaletteColorOptions } from '@material-ui/core/styles/createPalette';
+import {
+  PaletteColor,
+  PaletteColorOptions,
+} from '@material-ui/core/styles/createPalette';
 
 declare module '@material-ui/core/styles/createPalette' {
   // tslint:disable-next-line:interface-name

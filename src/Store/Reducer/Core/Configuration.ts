@@ -12,22 +12,22 @@ export type State<T> = {
 const initialState: State<Type.Configuration> = {
   config: null,
   pending: false,
-  loaded: false
+  loaded: false,
 };
 
-const Configuration = createReducer<State<Type.Configuration>, ActionType>(initialState)
-  .handleAction(
-    Action.loadConfig,
-    state => ({...state, pending: true, loaded: false})
-  )
-  .handleAction(
-    Action.configLoadedAction,
-    (state, action) => ({
-      ...state,
-      ...action.payload,
-      pending: false,
-      loaded: true
-    })
-  );
+const Configuration = createReducer<State<Type.Configuration>, ActionType>(
+  initialState,
+)
+  .handleAction(Action.loadConfig, state => ({
+    ...state,
+    pending: true,
+    loaded: false,
+  }))
+  .handleAction(Action.configLoadedAction, (state, action) => ({
+    ...state,
+    ...action.payload,
+    pending: false,
+    loaded: true,
+  }));
 
 export default Configuration;

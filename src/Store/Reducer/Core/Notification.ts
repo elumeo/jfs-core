@@ -11,7 +11,7 @@ export type State = {
 
 const initialState: State = {
   history: [],
-  isHistoryOpen: false
+  isHistoryOpen: false,
 };
 
 const Notification = TA.createReducer<State, ActionType>(initialState)
@@ -19,21 +19,21 @@ const Notification = TA.createReducer<State, ActionType>(initialState)
     ...state,
     history: [
       { id: action.payload?.id ?? v4(), ...action.payload },
-      ...state.history
-    ]
+      ...state.history,
+    ],
   }))
   .handleAction(Action.removeNotification, (state, { payload: id }) => ({
     ...state,
-    history: state.history.filter(notification => notification.id !== id)
+    history: state.history.filter(notification => notification.id !== id),
   }))
 
   .handleAction(Action.removeAllNotifications, state => ({
     ...state,
-    history: []
+    history: [],
   }))
   .handleAction(Action.setIsNotificationHistoryOpen, (state, { payload }) => ({
     ...state,
-    isHistoryOpen: payload
+    isHistoryOpen: payload,
   }));
 
 export default Notification;

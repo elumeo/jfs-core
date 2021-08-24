@@ -366,9 +366,7 @@
       "dtos": [
         {
           "name": "WebSocketRoomUpdateDTO",
-          "generics": [
-            "T1"
-          ],
+          "generics": ["T1"],
           "properties": {
             "crc": {
               "type": "string",

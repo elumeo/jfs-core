@@ -13,14 +13,10 @@ const useVisibleToast = (): {
   words: string[];
   message: React.ReactNode;
   autoHideDuration: number;
-  severity: Color
+  severity: Color;
 } => {
   const toasts = useSelector(state => state.Core.Toast.toasts);
-  const toast = React.useMemo(
-    () => toasts?.[0]
-    ,
-    [toasts]
-  );
+  const toast = React.useMemo(() => toasts?.[0], [toasts]);
 
   const open = Boolean(toast);
   const words = useWords(toast);
@@ -34,10 +30,10 @@ const useVisibleToast = (): {
       words,
       message,
       autoHideDuration,
-      severity
+      severity,
     }),
-    [toast, open, words, message, autoHideDuration, severity]
+    [toast, open, words, message, autoHideDuration, severity],
   );
-}
+};
 
 export default useVisibleToast;

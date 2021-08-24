@@ -10,23 +10,24 @@ import useLogin from './useLogin';
 const Dialog: React.FC = () => {
   const login = useLogin();
   return (
-    <MUIDialog open={login.open} style={{
-      marginBottom: '32vh'
-    }}>
-      <DialogTitle>
-        Login
-      </DialogTitle>
+    <MUIDialog
+      open={login.open}
+      style={{
+        marginBottom: '32vh',
+      }}>
+      <DialogTitle>Login</DialogTitle>
       <DialogContent>
         <Credentials
           value={login.credentials}
           onChange={login.onChange}
-          onSubmit={login.check}/>
+          onSubmit={login.check}
+        />
       </DialogContent>
       <DialogActions>
-        <Submit onClick={login.check}/>
+        <Submit onClick={login.check} />
       </DialogActions>
     </MUIDialog>
   );
-}
+};
 
 export default Dialog;

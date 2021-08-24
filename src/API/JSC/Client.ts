@@ -5,7 +5,6 @@ import { HttpClient } from 'API/HTTP/HttpClient';
 import { AxiosRequestConfig } from 'axios';
 
 export default class JscClient extends HttpClient {
-
   static Config: Configuration = {} as Configuration;
   static PackageJson: { version: string } = {} as { version: string };
 
@@ -16,7 +15,7 @@ export default class JscClient extends HttpClient {
 
   static setPackageJson = (PackageJson: { version: string }): void => {
     JscClient.PackageJson = PackageJson;
-  }
+  };
 
   static generateAxiosConfig = (): AxiosRequestConfig => ({
     baseURL: JscClient.Config.JscClient.Host,
@@ -24,11 +23,7 @@ export default class JscClient extends HttpClient {
     validateStatus: (status: number) => status < 400,
     headers: {
       'X-JSC-APP-VERSION': `${JscClient.Config.AppName}-${JscClient.PackageJson.version}`,
-      ...(
-        Token.isLoggedIn()
-          ? {'X-JSC-TOKEN': Token.getToken()}
-          : {}
-      )
-    }
-  })
+      ...(Token.isLoggedIn() ? { 'X-JSC-TOKEN': Token.getToken() } : {}),
+    },
+  });
 }

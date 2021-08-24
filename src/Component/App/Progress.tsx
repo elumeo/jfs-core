@@ -7,12 +7,12 @@ const style: React.CSSProperties = {
   height: '100vh',
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
 };
 
 const Progress: React.FC = () => (
   <Box style={style}>
-    <CircularProgress/>
+    <CircularProgress />
   </Box>
 );
 

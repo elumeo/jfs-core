@@ -6,5 +6,9 @@ export const template = async (root: string) => (
 );
 
 export const get = async (root: string) => (
-  (await fs.readJSON(path.resolve(root, 'config.json'))) as Record<string, unknown>
+  (await fs.readJSON(path.resolve(root, 'config.json'))) as Record<string, unknown> & {
+    JscClient: {
+      Host: string;
+    }
+  }
 );

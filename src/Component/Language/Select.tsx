@@ -17,7 +17,7 @@ const Select: React.FC<Props> = ({ value, onChange }) => (
     value={value}
     onChange={event => onChange(event.target.value as Language)}>
     {All.map(item => (
-      <MenuItem value={item.value} key={ 'language' + item.value}>
+      <MenuItem value={item.value} key={'language' + item.value}>
         {item.label}
       </MenuItem>
     ))}

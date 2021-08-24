@@ -4,16 +4,11 @@ import useActions from 'Store/useActions';
 
 const NoAuthRoute: React.FC<IBaseRouteProps> = props => {
   const { enterUnauthorizedRoute } = useActions();
-  useEffect(
-    () => {
-      enterUnauthorizedRoute();
-    },
-    [props.path]
-  );
+  useEffect(() => {
+    enterUnauthorizedRoute();
+  }, [props.path]);
 
-  return (
-    <BaseRoute {...props}/>
-  );
-}
+  return <BaseRoute {...props} />;
+};
 
 export default NoAuthRoute;

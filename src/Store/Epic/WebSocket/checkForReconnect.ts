@@ -9,7 +9,7 @@ export const checkForReconnect: Epic = action$ => {
   return action$.pipe(
     filter(TA.isActionOf(Action.webSocketConnectRequestAction)),
     concatMap(() => WSClient.reconnectObservable$),
-    switchMap(namespace => of(Action.webSocketConnectSuccessAction(namespace)))
+    switchMap(namespace => of(Action.webSocketConnectSuccessAction(namespace))),
   );
 };
 

@@ -1,4 +1,4 @@
-import Default from './Default'
-type Color = Default
+import Default from './Default';
+type Color = Default;
 
-export default Color
+export default Color;

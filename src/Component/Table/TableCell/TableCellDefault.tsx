@@ -6,32 +6,42 @@ import clsx from 'clsx';
 import { globalStyles } from 'Component/Table/VirtualizedTable';
 import { TableCellLoading } from 'Component/Table/TableCell';
 
-export const cellStyles = makeStyles(() => createStyles({
-  wrapContent: {
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    overflow: 'hidden'
-  }
-}));
+export const cellStyles = makeStyles(() =>
+  createStyles({
+    wrapContent: {
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+    },
+  }),
+);
 
 export type TableCellDefaultProps = {
   cellData: any;
   isNumeric?: boolean;
   wrapContent?: boolean;
-}
+};
 
-const TableCellDefault = ({ cellData, isNumeric = false, wrapContent = true }: TableCellDefaultProps) => {
+const TableCellDefault = ({
+  cellData,
+  isNumeric = false,
+  wrapContent = true,
+}: TableCellDefaultProps) => {
   const classes = cellStyles();
   const globalClasses = globalStyles();
-  return (cellData && <TableCell
-    component={'div'}
-    className={clsx(
-      globalClasses.tableCell,
-      globalClasses.flexContainer
-    )}
-    variant={'body'}
-    style={{ height: '100%' }}
-    align={isNumeric ? 'right' : 'left'}
-  ><span className={clsx({ [classes.wrapContent]: wrapContent })}>{cellData}</span></TableCell>) || <TableCellLoading />;
+  return (
+    (cellData && (
+      <TableCell
+        component={'div'}
+        className={clsx(globalClasses.tableCell, globalClasses.flexContainer)}
+        variant={'body'}
+        style={{ height: '100%' }}
+        align={isNumeric ? 'right' : 'left'}>
+        <span className={clsx({ [classes.wrapContent]: wrapContent })}>
+          {cellData}
+        </span>
+      </TableCell>
+    )) || <TableCellLoading />
+  );
 };
 export default memo(TableCellDefault);
