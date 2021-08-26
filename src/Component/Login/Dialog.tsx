@@ -6,16 +6,15 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Credentials from './Credentials';
 import Submit from './Submit';
 import useLogin from './useLogin';
+import { useIntl } from 'react-intl';
 
 const Dialog: React.FC = () => {
   const login = useLogin();
+  const { formatMessage } = useIntl();
+
   return (
-    <MUIDialog
-      open={login.open}
-      style={{
-        marginBottom: '32vh',
-      }}>
-      <DialogTitle>Login</DialogTitle>
+    <MUIDialog open={login.open} style={{ marginBottom: '32vh' }}>
+      <DialogTitle>{formatMessage({ id: 'app.login' })}</DialogTitle>
       <DialogContent>
         <Credentials
           value={login.credentials}
@@ -24,7 +23,13 @@ const Dialog: React.FC = () => {
         />
       </DialogContent>
       <DialogActions>
-        <Submit onClick={login.check} />
+        <Submit
+          onClick={login.check}
+          disabled={
+            login.credentials.username === '' ||
+            login.credentials.password === ''
+          }
+        />
       </DialogActions>
     </MUIDialog>
   );

@@ -11,6 +11,6 @@ const Snackbar = () => {
                 dismissToastAction();
             }
         }, autoHideDuration: autoHideDuration },
-        React.createElement(Alert, { severity: severity }, message)));
+        React.createElement(Alert, { severity: severity, variant: 'filled' }, message)));
 };
 export default Snackbar;

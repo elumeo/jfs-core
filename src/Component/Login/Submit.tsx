@@ -1,26 +1,27 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { useSelector } from 'Types/Redux';
+import ButtonProgress from 'Component/Button/ButtonProgress';
 
 export type Props = {
   onClick: () => void;
+  disabled: boolean;
 };
 
-const Submit: React.FC<Props> = ({ onClick }) => {
+const Submit: React.FC<Props> = ({ onClick, disabled }) => {
   const intl = useIntl();
   const isCheckingLogin = useSelector(
     state => state.Core.Login.isCheckingLogin,
   );
   return (
-    <Button color='primary' onClick={onClick} disabled={isCheckingLogin}>
-      {isCheckingLogin ? (
-        <CircularProgress size='1.8rem' />
-      ) : (
-        intl.formatMessage({ id: 'login.button' })
-      )}
-    </Button>
+    <ButtonProgress
+      color='primary'
+      variant={'contained'}
+      onClick={onClick}
+      disabled={disabled}
+      inProgress={isCheckingLogin}>
+      {intl.formatMessage({ id: 'login.button' })}
+    </ButtonProgress>
   );
 };
 

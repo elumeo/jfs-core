@@ -35,7 +35,7 @@ export type ButtonProgressProps = ButtonProps & {
   color?: PropTypes.Color;
 };
 
-export const mapToCircularProgressSize = (size: string) => {
+export const mapToCircularProgressSize = (size: string): number => {
   switch (size) {
     case 'large':
       return 28;
@@ -46,7 +46,9 @@ export const mapToCircularProgressSize = (size: string) => {
   }
 };
 
-export const mapToCircularProgressColor = (color: PropTypes.Color) =>
+export const mapToCircularProgressColor = (
+  color: PropTypes.Color,
+): 'inherit' | 'primary' | 'secondary' =>
   color === 'default' ? 'inherit' : color;
 
 const ButtonProgress = forwardRef<HTMLButtonElement, ButtonProgressProps>(

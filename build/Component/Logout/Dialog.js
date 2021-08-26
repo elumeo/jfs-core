@@ -10,14 +10,14 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 const Dialog = ({ children, onLogout }) => {
     const logout = useLogout();
     const { formatMessage } = useIntl();
-    return (React.createElement(MUIDialog, { open: logout.open, title: formatMessage({ id: 'app.logout.title' }), onClose: logout.close, "aria-labelledby": 'logout-description' },
-        React.createElement(DialogTitle, null, "Logout"),
+    return (React.createElement(MUIDialog, { open: logout.open, onClose: logout.close, "aria-labelledby": 'logout-description' },
+        React.createElement(DialogTitle, null, formatMessage({ id: 'app.logout.title' })),
         React.createElement(DialogContent, { style: {
                 minHeight: 80,
             } },
             React.createElement(Text, { override: children })),
         React.createElement(DialogActions, null,
-            React.createElement(Button.Submit, { pending: logout.pending, onClick: () => (onLogout ? onLogout() : logout.commit({})) }),
-            React.createElement(Button.Cancel, { onClick: logout.close }))));
+            React.createElement(Button.Cancel, { onClick: logout.close }),
+            React.createElement(Button.Submit, { pending: logout.pending, onClick: () => (onLogout ? onLogout() : logout.commit({})) }))));
 };
 export default Dialog;

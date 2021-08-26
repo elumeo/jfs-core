@@ -1,7 +1,6 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { useIntl } from 'react-intl';
+import ButtonProgress from 'Component/Button/ButtonProgress';
 
 export type Props = {
   pending: boolean;
@@ -11,13 +10,13 @@ export type Props = {
 const Submit: React.FC<Props> = ({ pending, onClick }) => {
   const intl = useIntl();
   return (
-    <Button disabled={pending} onClick={onClick} color='primary'>
-      {pending ? (
-        <CircularProgress size='1.8rem' />
-      ) : (
-        intl.formatMessage({ id: 'app.logout.action' })
-      )}
-    </Button>
+    <ButtonProgress
+      inProgress={pending}
+      onClick={onClick}
+      color='primary'
+      variant={'contained'}>
+      {intl.formatMessage({ id: 'app.logout.action' })}
+    </ButtonProgress>
   );
 };
 

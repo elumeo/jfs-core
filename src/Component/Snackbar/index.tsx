@@ -17,7 +17,9 @@ const Snackbar: React.FC = () => {
         }
       }}
       autoHideDuration={autoHideDuration}>
-      <Alert severity={severity}>{message}</Alert>
+      <Alert severity={severity} variant={'filled'}>
+        {message}
+      </Alert>
     </MUISnackbar>
   );
 };

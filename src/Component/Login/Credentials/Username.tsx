@@ -15,6 +15,7 @@ const Username = React.forwardRef<HTMLInputElement, Props>(
     const error = useError(value);
     return (
       <TextField
+        autoComplete={'username'}
         id='username'
         type='text'
         inputRef={ref}

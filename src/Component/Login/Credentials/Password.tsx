@@ -15,6 +15,7 @@ const Password = React.forwardRef<HTMLInputElement, Props>(
     const error = useError(value);
     return (
       <TextField
+        autoComplete={'current-password'}
         id='password'
         type='password'
         inputRef={ref}

@@ -4,6 +4,14 @@ import { grey } from '@material-ui/core/colors';
 
 export default responsiveFontSizes(
   createTheme({
+    props: {
+      MuiCircularProgress: {
+        color: 'secondary',
+      },
+      MuiLinearProgress: {
+        color: 'secondary',
+      },
+    },
     overrides: {
       MuiCssBaseline: {
         '@global': {

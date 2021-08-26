@@ -18,10 +18,9 @@ const Dialog: React.FC<Props> = ({ children, onLogout }) => {
   return (
     <MUIDialog
       open={logout.open}
-      title={formatMessage({ id: 'app.logout.title' })}
       onClose={logout.close}
       aria-labelledby='logout-description'>
-      <DialogTitle>Logout</DialogTitle>
+      <DialogTitle>{formatMessage({ id: 'app.logout.title' })}</DialogTitle>
       <DialogContent
         style={{
           minHeight: 80,
@@ -29,11 +28,11 @@ const Dialog: React.FC<Props> = ({ children, onLogout }) => {
         <Text override={children} />
       </DialogContent>
       <DialogActions>
+        <Button.Cancel onClick={logout.close} />
         <Button.Submit
           pending={logout.pending}
           onClick={() => (onLogout ? onLogout() : logout.commit({}))}
         />
-        <Button.Cancel onClick={logout.close} />
       </DialogActions>
     </MUIDialog>
   );
