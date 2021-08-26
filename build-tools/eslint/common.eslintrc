@@ -5,12 +5,11 @@
     "browser": true,
     "es2020": true
   },
-  "plugins": ["@typescript-eslint", "react", "prettierx"],
+  "plugins": ["@typescript-eslint", "react"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettierx/standardize"
+    "plugin:@typescript-eslint/recommended"
   ],
   "settings": {
     "react": {
@@ -31,17 +30,6 @@
     "no-duplicate-imports": "error",
     "no-irregular-whitespace": "error",
     "no-var": "error",
-    "no-cond-assign": "error",
-    "prettierx/options": ["error", {
-      "printWidth": 80,
-      "jsxBracketSameLine": true,
-      "breakBeforeElse": true,
-      "breakLongMethodChains": true,
-      "semi": true,
-      "computedPropertySpacing": false,
-      "trailingComma": "all",
-      "offsetTernaryExpressions": true,
-      "jsxSingleQuote": true
-    }]
+    "no-cond-assign": "error"
   }
 }
