@@ -10,9 +10,10 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 export type Props = {
   onLogout?: () => void;
+  pending?: boolean;
 };
 
-const Dialog: React.FC<Props> = ({ children, onLogout }) => {
+const Dialog: React.FC<Props> = ({ children, onLogout , pending = false}) => {
   const logout = useLogout();
   const { formatMessage } = useIntl();
   return (
@@ -30,7 +31,7 @@ const Dialog: React.FC<Props> = ({ children, onLogout }) => {
       <DialogActions>
         <Button.Cancel onClick={logout.close} />
         <Button.Submit
-          pending={logout.pending}
+          pending={pending || logout.pending}
           onClick={() => (onLogout ? onLogout() : logout.commit({}))}
         />
       </DialogActions>

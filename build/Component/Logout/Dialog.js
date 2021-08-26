@@ -7,7 +7,7 @@ import * as Button from './Button';
 import useLogout from './useLogout';
 import Text from './Text';
 import DialogTitle from '@material-ui/core/DialogTitle';
-const Dialog = ({ children, onLogout }) => {
+const Dialog = ({ children, onLogout, pending = false }) => {
     const logout = useLogout();
     const { formatMessage } = useIntl();
     return (React.createElement(MUIDialog, { open: logout.open, onClose: logout.close, "aria-labelledby": 'logout-description' },
@@ -18,6 +18,6 @@ const Dialog = ({ children, onLogout }) => {
             React.createElement(Text, { override: children })),
         React.createElement(DialogActions, null,
             React.createElement(Button.Cancel, { onClick: logout.close }),
-            React.createElement(Button.Submit, { pending: logout.pending, onClick: () => (onLogout ? onLogout() : logout.commit({})) }))));
+            React.createElement(Button.Submit, { pending: pending || logout.pending, onClick: () => (onLogout ? onLogout() : logout.commit({})) }))));
 };
 export default Dialog;
