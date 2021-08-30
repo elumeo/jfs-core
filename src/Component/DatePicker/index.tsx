@@ -1,21 +1,16 @@
 /* eslint-disable max-lines */
-import React, { useState, useEffect, useRef, memo } from 'react';
+import React, { useState, useEffect, useRef, memo, ChangeEvent } from 'react';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
-import { useIntl } from 'react-intl';
 import classNames from 'classnames';
 import './Setup';
 import { LANGUAGE } from 'Types/Language';
 import { useSelector } from 'Types/Redux';
 import mapLanguageToDateFormat from './mapLanguageToDateFormat';
 import 'react-datepicker/dist/react-datepicker.css';
-import {
-  ClickAwayListener,
-  IconButton,
-  InputAdornment,
-  TextField,
-  TextFieldProps,
-} from '@material-ui/core';
+import { ClickAwayListener, IconButton, InputAdornment, TextField, TextFieldProps } from '@material-ui/core';
 import TodayIcon from '@material-ui/icons/Today';
+import BackspaceIcon from '@material-ui/icons/Backspace';
+import moment from 'moment';
 
 export type DatePickerProps = Omit<ReactDatePickerProps, 'value'> & {
   label?: string;
@@ -30,36 +25,28 @@ export type DatePickerProps = Omit<ReactDatePickerProps, 'value'> & {
   onChange: (
     newDate: Date,
     oldDate: Date,
-    event: React.SyntheticEvent<unknown> | undefined,
+    event: React.SyntheticEvent<unknown> | undefined
   ) => void;
-};
-
-const setActive = (domNode: HTMLElement, isActive: boolean) => {
-  if (domNode !== undefined) {
-    if (isActive) {
-      domNode.classList.add('is-active');
-    }
-    else {
-      domNode.classList.remove('is-active');
-    }
-  }
+  shouldOpenOnFocus?: boolean;
+  disabled?: boolean;
 };
 
 const DatePicker = ({
-  label,
-  error = false,
-  customClearButtonId,
-  dateFormat,
-  value,
-  onChange,
-  errorText,
-  helperText = '',
-  isClearable,
-  textFieldProps,
-  ...rest
-}: DatePickerProps) => {
+                      label,
+                      error = false,
+                      customClearButtonId = null,
+                      dateFormat,
+                      value,
+                      onChange,
+                      errorText,
+                      helperText = '',
+                      isClearable,
+                      textFieldProps,
+                      shouldOpenOnFocus = true,
+                      disabled = false,
+                      ...rest
+                    }: DatePickerProps) => {
   const language = useSelector(state => state.Core.Language.language);
-  const { formatMessage } = useIntl();
   const [date, setDate] = useState<Date>(value);
   const [open, setOpen] = useState(false);
   const [dirty, setDirty] = useState(false);
@@ -68,57 +55,33 @@ const DatePicker = ({
 
   const getInput = () => document.getElementById(id) as HTMLInputElement;
 
-  const getInputParent = () => {
-    const input = getInput();
-    return input ? input.parentElement : null;
-  };
-
   useEffect(() => setDate(value), [value]);
 
   useEffect(() => {
-    document
-      .getElementById(customClearButtonId)
-      ?.addEventListener('click', () => {
-        if (datePickerRef.current !== null) {
-          // The clear method does exists => its just not in the typing
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          datePickerRef.current.clear();
-        }
-      });
+    if (customClearButtonId !== null) {
+      document.getElementById(customClearButtonId)?.addEventListener('click', () => handleChangeValue(null));
+    }
+
     const input = getInput();
     if (input) {
       input.addEventListener('keydown', (e: KeyboardEvent) => {
-        if (
-          document.activeElement.id === input.id &&
-          e.keyCode === 9 &&
-          e.shiftKey
-        ) {
+        if (document.activeElement.id === input.id && e.keyCode === 9 && e.shiftKey) {
           e.preventDefault();
           e.stopPropagation();
         }
       });
-      input.addEventListener('blur', () => {
-        if (datePickerRef.current.isCalendarOpen() === false) {
-          setActive(getInputParent(), false);
-        }
-        setDirty(true);
-      });
-      input.addEventListener('focus', () => setActive(getInputParent(), true));
-    }
-    const inputParent = getInputParent();
-    if (inputParent !== null) {
-      inputParent.setAttribute(
-        'data-label',
-        label !== null ? label : formatMessage({ id: 'form.datePicker.label' }),
-      );
     }
   }, []);
 
-  const hasErrorText = () =>
-    errorText !== undefined && errorText !== null && errorText !== '';
+  const hasErrorText = () => errorText !== undefined && errorText !== null && errorText !== '';
   const hasError = () => error || (dirty && rest.required && date === null);
-  const getTextFieldProps = () => textFieldProps as TextFieldProps;
+  const handleChangeValue = (newValue: Date, event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement> = null) => {
+    setDate(newValue as Date);
+    onChange(newValue as Date, date, event);
+    if (datePickerRef.current.props.shouldCloseOnSelect) {
+      setOpen(false);
+    }
+  };
 
   return (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
@@ -128,38 +91,30 @@ const DatePicker = ({
           wrapperClassName={classNames({ 'has-value': !!value })}
           ref={datePickerRef}
           selected={date}
-          onChange={(newDate, event) => {
-            if (isClearable !== true && newDate === null) {
+          onChange={(newDate, event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+            const inputDate = moment(event.target.value, (dateFormat || mapLanguageToDateFormat(language as LANGUAGE)).toString().toUpperCase(), true);
+            if (inputDate.isValid() === false) {
               return;
             }
-            setDate(newDate as Date);
-            onChange(newDate as Date, date, event);
-            if (datePickerRef.current.props.shouldCloseOnSelect) {
-              setOpen(false);
-            }
+            handleChangeValue(newDate as Date, event);
           }}
-          onCalendarOpen={() => setActive(getInputParent(), true)}
-          onCalendarClose={() => setActive(getInputParent(), false)}
-          dateFormat={
-            dateFormat || mapLanguageToDateFormat(language as LANGUAGE)
-          }
+          dateFormat={dateFormat || mapLanguageToDateFormat(language as LANGUAGE)}
           locale={language as LANGUAGE}
           open={open}
           id={id}
           customInput={
             <TextField
-              {...getTextFieldProps()}
+              {...(textFieldProps as TextFieldProps)}
               label={label}
               error={hasError()}
               helperText={hasError() && hasErrorText() ? errorText : helperText}
               InputProps={{
-                endAdornment: (
-                  <InputAdornment position={'end'}>
-                    <IconButton onClick={() => setOpen(true)}>
-                      <TodayIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
+                onFocus: () => shouldOpenOnFocus ? setOpen(true) : null,
+                onBlur: () => setDirty(true),
+                endAdornment: <InputAdornment position={'end'}>
+                  <IconButton size={'small'} onClick={() => setOpen(true)}><TodayIcon /></IconButton>
+                  {isClearable && <IconButton size={'small'} disabled={disabled} color={'secondary'} onClick={() => handleChangeValue(null)}><BackspaceIcon /></IconButton>}
+                </InputAdornment>
               }}
             />
           }

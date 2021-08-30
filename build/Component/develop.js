@@ -7,7 +7,9 @@ const Develop = () => {
     return (React.createElement(Box, { component: Paper, p: 2 },
         React.createElement(Grid, { container: true, spacing: 1 },
             React.createElement(Grid, { item: true },
-                React.createElement(DatePicker, { required: true, label: 'Label', helperText: 'Das ist ein HelperText', errorText: 'Das ist ein ErrorText', onChange: date => setSimpleDatePickerValue(date), value: simpleDatePickerValue })),
+                React.createElement(TextField, { value: demoTextFieldValue, onChange: event => setDemoTextFieldValue(event.target.value), label: 'Label' })),
+            React.createElement(Grid, { item: true },
+                React.createElement(DatePicker, { required: true, label: 'Label', helperText: 'Format: dd.mm.yyyy', errorText: 'Das ist ein ErrorText', onChange: date => setSimpleDatePickerValue(date), isClearable: true, value: simpleDatePickerValue })),
             React.createElement(Grid, { item: true },
                 React.createElement(TextField, { value: demoTextFieldValue, onChange: event => setDemoTextFieldValue(event.target.value), label: 'Label' })))));
 };
