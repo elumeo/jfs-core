@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { ReactDatePickerProps } from 'react-datepicker';
 import './Setup';
 import 'react-datepicker/dist/react-datepicker.css';
 import { TextFieldProps } from '@material-ui/core';
 export declare type DatePickerProps = Omit<ReactDatePickerProps, 'value'> & {
-    label?: string;
+    label?: ReactNode;
     error?: boolean;
     customClearButtonId?: string;
     value: Date;
     state?: {
         language: string;
     };
-    errorText?: string;
-    helperText?: string;
+    errorText?: ReactNode;
+    helperText?: ReactNode;
     textFieldProps?: Partial<TextFieldProps>;
     floating?: boolean;
     onChange: (newDate: Date, oldDate: Date, event: React.SyntheticEvent<unknown> | undefined) => void;

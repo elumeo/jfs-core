@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import React, { useState, useEffect, useRef, memo, ChangeEvent } from 'react';
+import React, { useState, useEffect, useRef, memo, ChangeEvent, ReactNode } from 'react';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import './Setup';
 import { LANGUAGE } from 'Types/Language';
@@ -12,13 +12,13 @@ import BackspaceIcon from '@material-ui/icons/Backspace';
 import moment from 'moment';
 
 export type DatePickerProps = Omit<ReactDatePickerProps, 'value'> & {
-  label?: string;
+  label?: ReactNode;
   error?: boolean;
   customClearButtonId?: string;
   value: Date;
   state?: { language: string };
-  errorText?: string;
-  helperText?: string;
+  errorText?: ReactNode;
+  helperText?: ReactNode;
   textFieldProps?: Partial<TextFieldProps>;
   floating?: boolean;
   onChange: (
@@ -110,6 +110,7 @@ const DatePicker = ({
               label={label}
               error={hasError()}
               helperText={hasError() && hasErrorText() ? errorText : helperText}
+              autoComplete={'off'}
               InputProps={{
                 onFocus: () => shouldOpenOnFocus ? setOpen(true) : null,
                 onBlur: () => setDirty(true),
