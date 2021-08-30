@@ -11,37 +11,32 @@ export const cellStyles = makeStyles(() =>
     wrapContent: {
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
-      overflow: 'hidden',
-    },
-  }),
+      overflow: 'hidden'
+    }
+  })
 );
 
 export type TableCellDefaultProps = {
-  cellData: any;
+  cellData: unknown;
+  isLoading?: boolean;
   isNumeric?: boolean;
   wrapContent?: boolean;
 };
 
-const TableCellDefault = ({
-  cellData,
-  isNumeric = false,
-  wrapContent = true,
-}: TableCellDefaultProps) => {
+const TableCellDefault = ({ cellData, isNumeric = false, wrapContent = true, isLoading = false }: TableCellDefaultProps) => {
   const classes = cellStyles();
   const globalClasses = globalStyles();
-  return (
-    (cellData && (
-      <TableCell
-        component={'div'}
-        className={clsx(globalClasses.tableCell, globalClasses.flexContainer)}
-        variant={'body'}
-        style={{ height: '100%' }}
-        align={isNumeric ? 'right' : 'left'}>
-        <span className={clsx({ [classes.wrapContent]: wrapContent })}>
-          {cellData}
-        </span>
-      </TableCell>
-    )) || <TableCellLoading />
-  );
+  return <>
+    {isLoading === false && <TableCell
+      component={'div'}
+      className={clsx(globalClasses.tableCell, globalClasses.flexContainer)}
+      variant={'body'}
+      style={{ height: '100%' }}
+      align={isNumeric ? 'right' : 'left'}
+    >
+      <span className={clsx({ [classes.wrapContent]: wrapContent })}>{cellData}</span>
+    </TableCell>}
+    {isLoading && <TableCellLoading />}
+  </>;
 };
 export default memo(TableCellDefault);
