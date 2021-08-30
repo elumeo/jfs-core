@@ -12,7 +12,6 @@ var __rest = (this && this.__rest) || function (s, e) {
 /* eslint-disable max-lines */
 import React, { useState, useEffect, useRef, memo } from 'react';
 import ReactDatePicker from 'react-datepicker';
-import classNames from 'classnames';
 import './Setup';
 import { useSelector } from '../../Types/Redux';
 import mapLanguageToDateFormat from './mapLanguageToDateFormat';
@@ -57,10 +56,14 @@ const DatePicker = (_a) => {
     };
     return (React.createElement(ClickAwayListener, { onClickAway: () => setOpen(false) },
         React.createElement("span", null,
-            React.createElement(ReactDatePicker, Object.assign({}, rest, { wrapperClassName: classNames({ 'has-value': !!value }), ref: datePickerRef, selected: date, onChange: (newDate, event) => {
-                    const inputDate = moment(event.target.value, (dateFormat || mapLanguageToDateFormat(language)).toString().toUpperCase(), true);
-                    if (inputDate.isValid() === false) {
-                        return;
+            React.createElement(ReactDatePicker, Object.assign({}, rest, { ref: datePickerRef, selected: date, onChange: (newDate, event) => {
+                    // @ts-ignore
+                    const isChangeEvent = event._reactName && event._reactName === 'onChange';
+                    if (isChangeEvent) {
+                        const inputDate = moment(event.target.value, (dateFormat || mapLanguageToDateFormat(language)).toString().toUpperCase(), true);
+                        if (inputDate.isValid() === false) {
+                            return;
+                        }
                     }
                     handleChangeValue(newDate, event);
                 }, dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: language, open: open, id: id, customInput: React.createElement(TextField, Object.assign({}, textFieldProps, { label: label, error: hasError(), helperText: hasError() && hasErrorText() ? errorText : helperText, InputProps: {
@@ -69,7 +72,7 @@ const DatePicker = (_a) => {
                         endAdornment: React.createElement(InputAdornment, { position: 'end' },
                             React.createElement(IconButton, { size: 'small', onClick: () => setOpen(true) },
                                 React.createElement(TodayIcon, null)),
-                            isClearable && React.createElement(IconButton, { size: 'small', disabled: disabled, color: 'secondary', onClick: () => handleChangeValue(null) },
+                            isClearable && React.createElement(IconButton, { size: 'small', disabled: disabled || date === null, color: 'secondary', onClick: () => handleChangeValue(null) },
                                 React.createElement(BackspaceIcon, null)))
                     } })) })))));
 };

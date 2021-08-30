@@ -1,7 +1,6 @@
 /* eslint-disable max-lines */
 import React, { useState, useEffect, useRef, memo, ChangeEvent } from 'react';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
-import classNames from 'classnames';
 import './Setup';
 import { LANGUAGE } from 'Types/Language';
 import { useSelector } from 'Types/Redux';
@@ -88,13 +87,16 @@ const DatePicker = ({
       <span>
         <ReactDatePicker
           {...rest}
-          wrapperClassName={classNames({ 'has-value': !!value })}
           ref={datePickerRef}
           selected={date}
           onChange={(newDate, event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-            const inputDate = moment(event.target.value, (dateFormat || mapLanguageToDateFormat(language as LANGUAGE)).toString().toUpperCase(), true);
-            if (inputDate.isValid() === false) {
-              return;
+            // @ts-ignore
+            const isChangeEvent = event._reactName && event._reactName === 'onChange';
+            if (isChangeEvent) {
+              const inputDate = moment(event.target.value, (dateFormat || mapLanguageToDateFormat(language as LANGUAGE)).toString().toUpperCase(), true);
+              if (inputDate.isValid() === false) {
+                return;
+              }
             }
             handleChangeValue(newDate as Date, event);
           }}
@@ -113,7 +115,7 @@ const DatePicker = ({
                 onBlur: () => setDirty(true),
                 endAdornment: <InputAdornment position={'end'}>
                   <IconButton size={'small'} onClick={() => setOpen(true)}><TodayIcon /></IconButton>
-                  {isClearable && <IconButton size={'small'} disabled={disabled} color={'secondary'} onClick={() => handleChangeValue(null)}><BackspaceIcon /></IconButton>}
+                  {isClearable && <IconButton size={'small'} disabled={disabled || date === null} color={'secondary'} onClick={() => handleChangeValue(null)}><BackspaceIcon /></IconButton>}
                 </InputAdornment>
               }}
             />
