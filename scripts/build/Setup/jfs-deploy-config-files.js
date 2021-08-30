@@ -24,7 +24,6 @@ const tsconfig = (which) => {
         case 'app': return 'app.json';
         default: return null;
     }
-    ;
 };
 const eslintrc = (which) => {
     switch (which) {
@@ -33,11 +32,10 @@ const eslintrc = (which) => {
         case 'app': return 'app.eslintrc';
         default: return null;
     }
-    ;
 };
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     const typescript = path_1.default.resolve(env.core, 'build-tools', 'typescript');
-    const prettier = path_1.default.resolve(env.core, 'build-tools', 'prettier');
+    // const prettier = path.resolve(env.core, 'build-tools', 'prettier');
     const eslint = path_1.default.resolve(env.core, 'build-tools', 'eslint');
     const copy = [
         {
@@ -48,14 +46,14 @@ const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
             from: path_1.default.resolve(eslint, eslintrc(env.which)),
             to: path_1.default.resolve(process.cwd(), '.eslintrc')
         },
-        {
-            from: path_1.default.resolve(prettier, '.prettierrc'),
-            to: path_1.default.resolve(process.cwd(), '.prettierrc')
-        },
-        {
-            from: path_1.default.resolve(prettier, '.prettierignore'),
-            to: path_1.default.resolve(process.cwd(), '.prettierignore')
-        }
+        // {
+        //   from: path.resolve(prettier, '.prettierrc'),
+        //   to: path.resolve(process.cwd(), '.prettierrc')
+        // },
+        // {
+        //   from: path.resolve(prettier, '.prettierignore'),
+        //   to: path.resolve(process.cwd(), '.prettierignore')
+        // }
     ];
     yield Promise.all(copy.map(({ from, to }) => fs_extra_1.default.copyFile(from, to)));
 });

@@ -11,7 +11,7 @@ const tsconfig = (which: Type.Environment.Info['which']) => {
     case 'component': return 'shared-component.json';
     case 'app': return 'app.json';
     default: return null;
-  };
+  }
 };
 
 const eslintrc = (which: Type.Environment.Info['which']) => {
@@ -20,12 +20,12 @@ const eslintrc = (which: Type.Environment.Info['which']) => {
     case 'component': return 'component.eslintrc';
     case 'app': return 'app.eslintrc';
     default: return null;
-  };
+  }
 }
 
 export const run = async (env: Type.Environment.Info) => {
   const typescript = path.resolve(env.core, 'build-tools', 'typescript');
-  const prettier = path.resolve(env.core, 'build-tools', 'prettier');
+  // const prettier = path.resolve(env.core, 'build-tools', 'prettier');
   const eslint = path.resolve(env.core, 'build-tools', 'eslint');
 
   const copy = [
@@ -37,14 +37,14 @@ export const run = async (env: Type.Environment.Info) => {
       from: path.resolve(eslint, eslintrc(env.which)),
       to: path.resolve(process.cwd(), '.eslintrc')
     },
-    {
-      from: path.resolve(prettier, '.prettierrc'),
-      to: path.resolve(process.cwd(), '.prettierrc')
-    },
-    {
-      from: path.resolve(prettier, '.prettierignore'),
-      to: path.resolve(process.cwd(), '.prettierignore')
-    }
+    // {
+    //   from: path.resolve(prettier, '.prettierrc'),
+    //   to: path.resolve(process.cwd(), '.prettierrc')
+    // },
+    // {
+    //   from: path.resolve(prettier, '.prettierignore'),
+    //   to: path.resolve(process.cwd(), '.prettierignore')
+    // }
   ];
 
   await Promise.all(copy.map(({ from, to }) => fs.copyFile(from, to)));
