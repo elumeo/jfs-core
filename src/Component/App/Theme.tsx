@@ -55,10 +55,16 @@ theme.overrides = {
   },
   MuiChip: {
     label: {
-      fontSize: '0.92rem',
+      fontSize: '0.925rem',
     }
   },
   MuiListItem: {
+    root: {
+      paddingTop: theme.spacing(0.5),
+      paddingBottom: theme.spacing(0.5)
+    }
+  },
+  MuiMenuItem: {
     root: {
       paddingTop: theme.spacing(0.5),
       paddingBottom: theme.spacing(0.5)
