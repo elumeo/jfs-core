@@ -10,38 +10,6 @@ const theme = responsiveFontSizes(createTheme({
             color: 'secondary',
         },
     },
-    overrides: {
-        MuiCssBaseline: {
-            '@global': {
-                html: {
-                    fontSize: 14,
-                },
-                body: {
-                    margin: 0,
-                    padding: 0,
-                    fontFamily: 'Roboto',
-                },
-            },
-        },
-        MuiChip: {
-            label: {
-                fontSize: '0.92rem',
-            }
-        },
-        MuiListItemIcon: {
-            root: {
-                minWidth: 32,
-            },
-        },
-        MuiTooltip: {
-            tooltip: {
-                fontSize: '0.875rem',
-                fontWeight: 400,
-                lineHeight: 1.43,
-                letterSpacing: '0.01071em',
-            },
-        },
-    },
     palette: {
         type: 'light',
         primary: Color.primary,
@@ -68,11 +36,41 @@ const theme = responsiveFontSizes(createTheme({
     },
 }));
 theme.overrides = {
+    MuiCssBaseline: {
+        '@global': {
+            html: {
+                fontSize: 14,
+            },
+            body: {
+                margin: 0,
+                padding: 0,
+                fontFamily: 'Roboto',
+            },
+        },
+    },
+    MuiChip: {
+        label: {
+            fontSize: '0.92rem',
+        }
+    },
     MuiListItem: {
         root: {
             paddingTop: theme.spacing(0.5),
             paddingBottom: theme.spacing(0.5)
         }
+    },
+    MuiListItemIcon: {
+        root: {
+            minWidth: 32,
+        },
+    },
+    MuiTooltip: {
+        tooltip: {
+            fontSize: '0.875rem',
+            fontWeight: 400,
+            lineHeight: 1.43,
+            letterSpacing: '0.01071em',
+        },
     },
 };
 export default theme;
