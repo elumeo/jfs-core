@@ -1,4 +1,3 @@
-import { green, orange, red } from '@material-ui/core/colors';
 import { PaletteColor } from '@material-ui/core/styles/createPalette';
 
 export const rubin: PaletteColor = {
@@ -50,24 +49,31 @@ export const quarz: PaletteColor = {
   contrastText: '#fff',
 };
 
+export const info: PaletteColor = {
+  light: '#338bab',
+  main: '#006e96',
+  dark: '#004d69',
+  contrastText: '#fff',
+};
+
 export const error: PaletteColor = {
-  light: '#ff4569',
-  main: red[400],
-  dark: '#b2102f',
+  light: '#c54949',
+  main: '#b71c1c',
+  dark: '#801313',
   contrastText: '#fff',
 };
 
 export const warning: PaletteColor = {
-  light: '#ffa733',
-  main: orange['A400'],
-  dark: '#b26500',
+  light: '#ffb333',
+  main: '#ffa000',
+  dark: '#b27000',
   contrastText: '#fff',
 };
 
 export const success: PaletteColor = {
-  light: '#68b36b',
-  main: green[600],
-  dark: '#2e7031',
+  light: '#338333',
+  main: '#006400',
+  dark: '#004600',
   contrastText: '#fff',
 };
 

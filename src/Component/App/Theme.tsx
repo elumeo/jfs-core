@@ -23,6 +23,7 @@ const theme = responsiveFontSizes(
           disabled: grey[500],
           hint: grey[300],
         },
+        info: Color.info,
         success: Color.success,
         warning: Color.warning,
         error: Color.error,
