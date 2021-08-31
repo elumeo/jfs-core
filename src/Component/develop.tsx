@@ -1,42 +1,63 @@
-import React, { useState } from 'react';
-import { Box, Grid, Paper, TextField } from '@material-ui/core';
-import DatePicker from 'Component/DatePicker';
+import React from 'react';
+import {Box, List, ListItem, Paper, Chip, ListItemIcon, ListItemText, Grid} from '@material-ui/core';
+import {
+    AccountCircle as AccountCircleIcon,
+    ContactPhone as ContactPhoneIcon,
+} from '@material-ui/icons';
 
 const Develop: React.FC = () => {
-  const [simpleDatePickerValue, setSimpleDatePickerValue] = useState<Date>(null);
-  const [demoTextFieldValue, setDemoTextFieldValue] = useState<string>('');
+    return (
+        <Grid container>
+            <Grid item xs={3}>
+                <Box component={Paper} m={2}>
+                    <List dense>
+                        <ListItem button selected={true}>
+                            <ListItemIcon>
+                                <AccountCircleIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary={"primary111"} secondary={"secondary222"}/>
+                        </ListItem>
 
-  return (
-    <Box component={Paper} p={2}>
-      <Grid container spacing={1}>
-        <Grid item>
-          <TextField
-            value={demoTextFieldValue}
-            onChange={event => setDemoTextFieldValue(event.target.value)}
-            label={'Label'}
-          />
+                        <ListItem button selected={false}>
+                            <ListItemIcon>
+                                <ContactPhoneIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary={"primary222"} secondary={"secondary222"}/>
+                        </ListItem>
+                    </List>
+                </Box>
+            </Grid>
+
+            <Grid item xs={3}>
+                <Box component={Paper} ml={0} m={2}>
+                    <List>
+                        <ListItem button selected={true}>
+                            <ListItemIcon>
+                                <AccountCircleIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary={"primary111"} secondary={"secondary222"}/>
+                        </ListItem>
+
+                        <ListItem button selected={false}>
+                            <ListItemIcon>
+                                <ContactPhoneIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary={"primary222"} secondary={"secondary222"}/>
+                        </ListItem>
+                    </List>
+                </Box>
+            </Grid>
+
+            <Grid item xs={3}>
+                <Box component={Paper} ml={0} m={2} p={2}>
+                    <Chip label={"label label1"} icon={<ContactPhoneIcon />}/>
+                    <Chip label={"label label2"} clickable icon={<AccountCircleIcon />}/>
+
+                    <Chip size={"small"} label={"label label3"} clickable icon={<AccountCircleIcon />}/>
+                </Box>
+            </Grid>
         </Grid>
-        <Grid item>
-          <DatePicker
-            required
-            label={'Label'}
-            helperText={'Format: dd.mm.yyyy'}
-            errorText={'Das ist ein ErrorText'}
-            onChange={date => setSimpleDatePickerValue(date as Date)}
-            isClearable
-            value={simpleDatePickerValue}
-          />
-        </Grid>
-        <Grid item>
-          <TextField
-            value={demoTextFieldValue}
-            onChange={event => setDemoTextFieldValue(event.target.value)}
-            label={'Label'}
-          />
-        </Grid>
-      </Grid>
-    </Box>
-  );
+    );
 };
 
 export default Develop;

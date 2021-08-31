@@ -2,7 +2,7 @@ import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import * as Color from 'Constant/Color';
 import { grey } from '@material-ui/core/colors';
 
-export default responsiveFontSizes(
+const theme = responsiveFontSizes(
   createTheme({
     props: {
       MuiCircularProgress: {
@@ -24,6 +24,11 @@ export default responsiveFontSizes(
             fontFamily: 'Roboto',
           },
         },
+      },
+      MuiChip: {
+        label: {
+          fontSize: '0.92rem',
+        }
       },
       MuiListItemIcon: {
         root: {
@@ -65,3 +70,14 @@ export default responsiveFontSizes(
     },
   }),
 );
+
+theme.overrides = {
+  MuiListItem: {
+    root: {
+      paddingTop: theme.spacing(0.5),
+      paddingBottom: theme.spacing(0.5)
+    }
+  },
+};
+
+export default theme;

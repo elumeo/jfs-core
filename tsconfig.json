@@ -13,9 +13,15 @@
       "Store/*": ["./Store/*"],
       "Types/*": ["./Types/*"],
       "Utilities/*": ["./Utilities/*"],
-      "API/*": ["./API/*"]
+      "API/*" : ["./API/*"]
     }
   },
   "include": ["./src", "./augmentation"],
-  "exclude": ["scripts", "build", "showcase", "**/node_modules", "**/.*/"]
+  "exclude": [
+    "scripts",
+    "build",
+    "showcase",
+    "**/node_modules",
+    "**/.*/"
+  ]
 }
