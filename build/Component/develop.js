@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
-import { Box, Grid, Paper, TextField } from '@material-ui/core';
-import DatePicker from './DatePicker';
+import React from 'react';
+import { Box, List, ListItem, Paper, Chip, ListItemIcon, ListItemText, Grid } from '@material-ui/core';
+import { AccountCircle as AccountCircleIcon, ContactPhone as ContactPhoneIcon, } from '@material-ui/icons';
 const Develop = () => {
-    const [simpleDatePickerValue, setSimpleDatePickerValue] = useState(null);
-    const [demoTextFieldValue, setDemoTextFieldValue] = useState('');
-    return (React.createElement(Box, { component: Paper, p: 2 },
-        React.createElement(Grid, { container: true, spacing: 1 },
-            React.createElement(Grid, { item: true },
-                React.createElement(TextField, { value: demoTextFieldValue, onChange: event => setDemoTextFieldValue(event.target.value), label: 'Label' })),
-            React.createElement(Grid, { item: true },
-                React.createElement(DatePicker, { required: true, label: 'Label', helperText: 'Format: dd.mm.yyyy', errorText: 'Das ist ein ErrorText', onChange: date => setSimpleDatePickerValue(date), isClearable: true, value: simpleDatePickerValue })),
-            React.createElement(Grid, { item: true },
-                React.createElement(TextField, { value: demoTextFieldValue, onChange: event => setDemoTextFieldValue(event.target.value), label: 'Label' })))));
+    return (React.createElement(Grid, { container: true },
+        React.createElement(Grid, { item: true, xs: 3 },
+            React.createElement(Box, { component: Paper, m: 2 },
+                React.createElement(List, { dense: true },
+                    React.createElement(ListItem, { button: true, selected: true },
+                        React.createElement(ListItemIcon, null,
+                            React.createElement(AccountCircleIcon, null)),
+                        React.createElement(ListItemText, { primary: "primary111", secondary: "secondary222" })),
+                    React.createElement(ListItem, { button: true, selected: false },
+                        React.createElement(ListItemIcon, null,
+                            React.createElement(ContactPhoneIcon, null)),
+                        React.createElement(ListItemText, { primary: "primary222", secondary: "secondary222" }))))),
+        React.createElement(Grid, { item: true, xs: 3 },
+            React.createElement(Box, { component: Paper, ml: 0, m: 2 },
+                React.createElement(List, null,
+                    React.createElement(ListItem, { button: true, selected: true },
+                        React.createElement(ListItemIcon, null,
+                            React.createElement(AccountCircleIcon, null)),
+                        React.createElement(ListItemText, { primary: "primary111", secondary: "secondary222" })),
+                    React.createElement(ListItem, { button: true, selected: false },
+                        React.createElement(ListItemIcon, null,
+                            React.createElement(ContactPhoneIcon, null)),
+                        React.createElement(ListItemText, { primary: "primary222", secondary: "secondary222" }))))),
+        React.createElement(Grid, { item: true, xs: 3 },
+            React.createElement(Box, { component: Paper, ml: 0, m: 2, p: 2 },
+                React.createElement(Chip, { label: "label label1", icon: React.createElement(ContactPhoneIcon, null) }),
+                React.createElement(Chip, { label: "label label2", clickable: true, icon: React.createElement(AccountCircleIcon, null) }),
+                React.createElement(Chip, { size: "small", label: "label label3", clickable: true, icon: React.createElement(AccountCircleIcon, null) })))));
 };
 export default Develop;

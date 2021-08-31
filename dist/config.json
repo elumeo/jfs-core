@@ -1,15 +1,11 @@
 {
   "JscClient": {
-    "Host-Internal": "http://de.master.api.staging-jsc-app.juwelo.local",
-    "Host": "https://api-test.juwelo.de/staging/de/master",
-    "Host-Local": "http://localhost/jsc-api-de",
-    "Timeout": 30000
+    "Host": "http://jsc-api.dev.local",
+    "Timeout": 60000
   },
   "JscWebSocketClient": {
-    "HostV": "http://localhost:8080",
-    "PathV": "",
-    "Host": "https://api-test.juwelo.de",
-    "Path": "/staging/websocket.services",
+    "Host": "http://localhost:8080",
+    "Path": "",
     "PrivateNamespace": "Jsc2Jfs"
   },
   "Language": "de",
