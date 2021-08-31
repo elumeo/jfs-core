@@ -27,6 +27,7 @@ export const run = async (env: Type.Environment.Info) => {
   const typescript = path.resolve(env.core, 'build-tools', 'typescript');
   // const prettier = path.resolve(env.core, 'build-tools', 'prettier');
   const eslint = path.resolve(env.core, 'build-tools', 'eslint');
+  const jest = path.resolve(env.core, 'build-tools', 'jest');
 
   const copy = [
     {
@@ -37,6 +38,14 @@ export const run = async (env: Type.Environment.Info) => {
       from: path.resolve(eslint, eslintrc(env.which)),
       to: path.resolve(process.cwd(), '.eslintrc')
     },
+    {
+      from: path.resolve(jest, 'setup.ts'),
+      to: path.resolve(process.cwd(), 'setup.ts')
+    },
+    {
+      from: path.resolve(jest, 'jest.config.ts'),
+      to: path.resolve(process.cwd(), 'jest.config.ts')
+    }
     // {
     //   from: path.resolve(prettier, '.prettierrc'),
     //   to: path.resolve(process.cwd(), '.prettierrc')
