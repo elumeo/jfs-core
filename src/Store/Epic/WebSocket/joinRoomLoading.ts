@@ -6,7 +6,6 @@ import * as WebSocket from 'Types/WebSocket';
 import { WSClient } from 'API/WS/WSClient';
 import { v4 as uuid } from 'uuid';
 import { Epic } from 'Types/Redux';
-import * as Format from 'Utilities/Format';
 import { AxiosError } from 'axios';
 
 const joinRoomLoading: Epic = (action$, state$) => {
@@ -55,7 +54,9 @@ const joinRoomLoading: Epic = (action$, state$) => {
             Action.webSocketJoinRoomFailureAction(update),
             Action.addNotification({
               id: uuid(),
-              content: Format.Error.apply(error),
+              title: 'Error',
+              subtitle: 'Join Room (' + action.payload.name + ')',
+              content: error.message,
               variant: 'error',
             }),
           );

@@ -1,11 +1,22 @@
 import React from 'react';
-import { Box, List, ListItem, Paper, Chip, ListItemIcon, ListItemText, Grid } from '@material-ui/core';
+import { Box, List, ListItem, Paper, Chip, ListItemIcon, ListItemText, Grid, Button } from '@material-ui/core';
 import { AccountCircle as AccountCircleIcon, ContactPhone as ContactPhoneIcon } from '@material-ui/icons';
 import { useTheme } from '@material-ui/core/styles';
 import { getCurrency } from '../Utilities/Format/Currency';
+import { useDispatch } from 'react-redux';
+import * as Action from '../Store/Action';
+import { v4 as uuid } from 'uuid';
 const Develop = () => {
     const theme = useTheme();
+    const dispatch = useDispatch();
     return (React.createElement(Box, null,
+        React.createElement(Button, { onClick: () => dispatch(Action.addNotification({
+                id: uuid(),
+                title: 'Error',
+                subtitle: 'Join Room (action.payload.name)',
+                content: 'MESSAGE',
+                variant: 'error',
+            })) }, "Notification"),
         React.createElement(Grid, { container: true },
             React.createElement(Grid, { item: true }, getCurrency('EUR', 100, true)),
             React.createElement(Grid, { item: true }, getCurrency('EUR', 100.5, true)),

@@ -12,13 +12,8 @@ const checkForConnectionError = (action$, state) => {
                 variant: 'error',
                 title: 'Websocket',
                 subtitle: 'Connection Request',
-                content: 'Unable to connect to websocket server (' +
-                    err.namespace +
-                    ')' +
-                    (err.message !== null && err.message !== ''
-                        ? ' because of ' + err.message
-                        : '') +
-                    '!',
+                content: 'Unable to connect to websocket server (' + err.namespace + ')' +
+                    (err.message !== null && err.message !== '' ? ' because of ' + err.message : '') + '!',
             }), Action.webSocketConnectFailedAction(err));
         }
         return EMPTY;

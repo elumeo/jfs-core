@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, ReactNode } from 'react';
 import { TableCell } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -17,7 +17,7 @@ export const cellStyles = makeStyles(() =>
 );
 
 export type TableCellDefaultProps = {
-  cellData: unknown;
+  cellData: ReactNode;
   isLoading?: boolean;
   isNumeric?: boolean;
   wrapContent?: boolean;

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 export declare const cellStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"wrapContent">;
 export declare type TableCellDefaultProps = {
-    cellData: unknown;
+    cellData: ReactNode;
     isLoading?: boolean;
     isNumeric?: boolean;
     wrapContent?: boolean;

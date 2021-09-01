@@ -19,13 +19,8 @@ const checkForConnectionError: Epic = (action$, state) => {
             title: 'Websocket',
             subtitle: 'Connection Request',
             content:
-              'Unable to connect to websocket server (' +
-              err.namespace +
-              ')' +
-              (err.message !== null && err.message !== ''
-                ? ' because of ' + err.message
-                : '') +
-              '!',
+              'Unable to connect to websocket server (' + err.namespace + ')' +
+              (err.message !== null && err.message !== '' ? ' because of ' + err.message : '') + '!',
           }),
           Action.webSocketConnectFailedAction(err),
         );
