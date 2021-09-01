@@ -37,17 +37,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   }
 }));
 
-export const mapToAlphaColor = (color: string) => {
-  let newColor = color;
-  if (color.length === 4) {
-    newColor = color[0];
-    newColor += color[1] + color[1];
-    newColor += color[2] + color[2];
-    newColor += color[3] + color[3];
-  }
-  return newColor + '8A';
-};
-
 const Icons = () => {
   const theme = useTheme();
   const classes = useStyles();
