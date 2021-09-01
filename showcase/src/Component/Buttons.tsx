@@ -12,13 +12,14 @@ import AppNavigation from 'Component/AppNavigation';
 import Switch from '@material-ui/core/Switch';
 import CodeBox from 'Component/CodeBox';
 
-type Props = {} & WithStyles
+type Props = WithStyles;
 const style = (theme: Theme) => ({
   root: {
     flexGrow: 1
   },
   paper: {
     padding: theme.spacing(1),
+    // eslint-disable-next-line @typescript-eslint/prefer-as-const
     textAlign: 'center' as 'center',
     color: theme.palette.text.secondary
   }

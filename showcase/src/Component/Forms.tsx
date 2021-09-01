@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { memo } from 'react';
 import AppNavigation from 'Component/AppNavigation';
 import {
@@ -33,8 +34,6 @@ const Forms = () => {
   const [displayRowStyle, setDisplayRowStyle] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
   const [selectValue, setSelectValue] = React.useState('');
-  const [withPlaceholders, setWithPlaceholders] = React.useState(false);
-  const [selectDense, setSelectDense] = React.useState(false);
   const [priceValue, setPriceValue] = React.useState('1000.55');
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date('2021-07-09T10:00:00'));
 
@@ -44,8 +43,6 @@ const Forms = () => {
   const toggleDisplayRowStyle = () => setDisplayRowStyle(!displayRowStyle);
   const toggleShowError = () => setShowError(!showError);
   const handleSelectChange = (event: React.ChangeEvent<{ value: unknown }>) => setSelectValue(event.target.value as string);
-  const toggleWithPlaceholder = () => setWithPlaceholders(!withPlaceholders);
-  const toggleSelectDense = () => setSelectDense(!selectDense);
   const handleDateChange = (date: Date | null) => setSelectedDate(date);
 
   return (<Grid container>
@@ -144,36 +141,36 @@ const Forms = () => {
                         <Grid container spacing={1}>
                           <Grid item xs={6}>
                             <FormControl style={{ width: 200 }} required error={showError}>
-                              <InputLabel shrink={withPlaceholders || selectValue !== ''}>Choose Value</InputLabel>
+                              <InputLabel shrink={selectValue !== ''}>Choose Value</InputLabel>
                               <Select
                                 value={selectValue}
                                 onChange={handleSelectChange}
-                                displayEmpty={withPlaceholders}
+                                displayEmpty
                               >
-                                <MenuItem dense={selectDense} value=''><em>No value</em></MenuItem>
-                                <MenuItem dense={selectDense} value={1}><Box alignItems={'center'} display={'flex'}>
-                                  <WarningIcon style={{ fontSize: theme.typography.pxToRem(selectDense ? 16 : 20) }} />
+                                <MenuItem value=''><em>No value</em></MenuItem>
+                                <MenuItem value={1}><Box alignItems={'center'} display={'flex'}>
+                                  <WarningIcon style={{ fontSize: theme.typography.pxToRem(20) }} />
                                   <Box component={'span'} ml={1}>Value 1</Box>
                                 </Box></MenuItem>
-                                <MenuItem dense={selectDense} value={2}><Box alignItems={'center'} display={'flex'}>
-                                  <WarningIcon style={{ fontSize: theme.typography.pxToRem(selectDense ? 16 : 20) }} color={'primary'} />
+                                <MenuItem value={2}><Box alignItems={'center'} display={'flex'}>
+                                  <WarningIcon style={{ fontSize: theme.typography.pxToRem(20) }} color={'primary'} />
                                   <Box component={'span'} ml={1} color={theme.palette.primary.main}>Value 2</Box>
                                 </Box></MenuItem>
-                                <MenuItem dense={selectDense} value={3} disabled>Value 3</MenuItem>
-                                <MenuItem dense={selectDense} value={4}>Value 4 with a longer label</MenuItem>
-                                <MenuItem dense={selectDense} value={5}>Value 5 with even a more longer, longer and longer label</MenuItem>
-                                <MenuItem dense={selectDense} value={6} disabled><Box alignItems={'center'} display={'flex'}>
-                                  <WarningIcon style={{ fontSize: theme.typography.pxToRem(selectDense ? 16 : 20) }} color={'primary'} />
+                                <MenuItem value={3} disabled>Value 3</MenuItem>
+                                <MenuItem value={4}>Value 4 with a longer label</MenuItem>
+                                <MenuItem value={5}>Value 5 with even a more longer, longer and longer label</MenuItem>
+                                <MenuItem value={6} disabled><Box alignItems={'center'} display={'flex'}>
+                                  <WarningIcon style={{ fontSize: theme.typography.pxToRem(20) }} color={'primary'} />
                                   <Box component={'span'} ml={1} color={theme.palette.primary.main}>Value 6</Box>
                                 </Box></MenuItem>
-                                <MenuItem dense={selectDense} value={7}>Value 7</MenuItem>
-                                <MenuItem dense={selectDense} value={8}>Value 8</MenuItem>
-                                <MenuItem dense={selectDense} value={9}>Value 9</MenuItem>
-                                <MenuItem dense={selectDense} value={10}>Value 10</MenuItem>
-                                <MenuItem dense={selectDense} value={11}>Value 11</MenuItem>
-                                <MenuItem dense={selectDense} value={12}>Value 12</MenuItem>
-                                <MenuItem dense={selectDense} value={13}>Value 13</MenuItem>
-                                <MenuItem dense={selectDense} value={14}>Value 14</MenuItem>
+                                <MenuItem value={7}>Value 7</MenuItem>
+                                <MenuItem value={8}>Value 8</MenuItem>
+                                <MenuItem value={9}>Value 9</MenuItem>
+                                <MenuItem value={10}>Value 10</MenuItem>
+                                <MenuItem value={11}>Value 11</MenuItem>
+                                <MenuItem value={12}>Value 12</MenuItem>
+                                <MenuItem value={13}>Value 13</MenuItem>
+                                <MenuItem value={14}>Value 14</MenuItem>
                               </Select>
                               <FormHelperText>We decided to display "empty" values with a human readable value in the "Select-A-Value-Box" but displaying them in the input field is
                                 optional.</FormHelperText>
@@ -181,13 +178,13 @@ const Forms = () => {
                           </Grid>
                           <Grid>
                             <FormControl style={{ minWidth: 200 }}>
-                              <InputLabel shrink={withPlaceholders || selectValue !== ''}>Disabled Element</InputLabel>
+                              <InputLabel shrink={selectValue !== ''}>Disabled Element</InputLabel>
                               <Select
                                 value={selectValue}
                                 onChange={handleSelectChange}
-                                displayEmpty={withPlaceholders}
+                                displayEmpty
                                 disabled
-                              ><MenuItem dense={selectDense} value=''><em>None</em></MenuItem></Select>
+                              ><MenuItem value=''><em>None</em></MenuItem></Select>
                             </FormControl>
                           </Grid>
                         </Grid>
@@ -198,8 +195,6 @@ const Forms = () => {
                         <Grid container spacing={1}>
                           <Grid item xs={2}>
                             <TextField
-                              size={selectDense ? 'small' : 'medium'}
-                              margin={selectDense ? 'dense' : 'none'}
                               error={showError}
                               label='Text field'
                               defaultValue='This is a default value'
@@ -208,8 +203,6 @@ const Forms = () => {
                           </Grid>
                           <Grid item xs={2}>
                             <TextField
-                              size={selectDense ? 'small' : 'medium'}
-                              margin={selectDense ? 'dense' : 'none'}
                               error={showError}
                               label='Number Text field'
                               defaultValue='0.5'
@@ -221,8 +214,6 @@ const Forms = () => {
                           </Grid>
                           <Grid item xs={2}>
                             <TextField
-                              size={selectDense ? 'small' : 'medium'}
-                              margin={selectDense ? 'dense' : 'none'}
                               error={showError}
                               label='Number Text field'
                               defaultValue='50'
@@ -234,8 +225,6 @@ const Forms = () => {
                           </Grid>
                           <Grid item xs={2}>
                             <TextField
-                              size={selectDense ? 'small' : 'medium'}
-                              margin={selectDense ? 'dense' : 'none'}
                               error={showError}
                               label='Text field'
                               defaultValue='This is the default value'
@@ -244,8 +233,6 @@ const Forms = () => {
                           </Grid>
                           <Grid item xs={2}>
                             <PriceField
-                              size={selectDense ? 'small' : 'medium'}
-                              margin={selectDense ? 'dense' : 'none'}
                               error={showError}
                               label='Core Price field'
                               value={priceValue}
@@ -270,7 +257,7 @@ const Forms = () => {
                               format={'HH:mm'}
                               ampm={false}
                               value={selectedDate}
-                              onChange={(date) => handleDateChange(date as any)}
+                              onChange={(date) => handleDateChange(date)}
                               KeyboardButtonProps={{ 'aria-label': 'change time' }}
                             />
                           </Grid>
@@ -281,15 +268,13 @@ const Forms = () => {
                               format='dd/MM/yyyy HH:mm'
                               label='Datetime picker inline'
                               value={selectedDate}
-                              onChange={(date) => handleDateChange(date as any)}
+                              onChange={(date) => handleDateChange(date)}
                               KeyboardButtonProps={{ 'aria-label': 'change date and time' }}
                             />
                           </Grid>
                           <Grid item xs={2}>
                             <TextField
                               disabled
-                              size={selectDense ? 'small' : 'medium'}
-                              margin={selectDense ? 'dense' : 'none'}
                               label='A disabled text field'
                               defaultValue=''
                               helperText='And some important help text'
@@ -297,8 +282,6 @@ const Forms = () => {
                           </Grid>
                           <Grid item xs={2}>
                             <TextField
-                              size={selectDense ? 'small' : 'medium'}
-                              margin={selectDense ? 'dense' : 'none'}
                               label='A text field with an icon'
                               defaultValue=''
                               error={showError}
@@ -309,8 +292,6 @@ const Forms = () => {
                           <Grid item xs>
                             <TextField
                               fullWidth
-                              size={selectDense ? 'small' : 'medium'}
-                              margin={selectDense ? 'dense' : 'none'}
                               error={showError}
                               label='Fullwidth text field'
                               defaultValue='This is a default value'

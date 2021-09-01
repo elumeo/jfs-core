@@ -134,24 +134,6 @@ const Cards = () => {
               </CardContent>
             </Card>
           </Grid>
-          {/*<Grid item>*/}
-          {/*  <Card>*/}
-          {/*    <CardHeader title={'Custom Card Component: AppCardContent'} />*/}
-          {/*    <CardContent>*/}
-          {/*      <Typography>To have a consistent ui we have decided to implement a <CodeBox component={'span'} size={'small'}>AppCardContent</CodeBox> component which is used in the CAO app in*/}
-          {/*        any <CodeBox component={'span'} size={'small'}>Card</CodeBox> usage. It is working like the Mui CardComponent but has a special FullSize feature which can be*/}
-          {/*        seen <Link onClick={() => history.push('/AppCardContent')}>here</Link>.</Typography>*/}
-          {/*      <CodeBox>{`<AppCardHeader*/}
-          {/*      title={'Custom Card Components'}*/}
-          {/*      titleIcon={<DashboardIcon />}*/}
-          {/*      isLoading={isRefreshing}*/}
-          {/*      onRefresh={handleRefreshClick}*/}
-          {/*      subtitle={'A custom card header component'}*/}
-          {/*      action={<Button>Save Button</Button>}*/}
-          {/*    />`}</CodeBox>*/}
-          {/*    </CardContent>*/}
-          {/*  </Card>*/}
-          {/*</Grid>*/}
         </Grid>
       </Container>
     </Grid>

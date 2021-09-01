@@ -13,12 +13,9 @@ type WebSocketAction = (
 /**
  * This epic works also for room subscriptions using the config
  */
-export const Jfs2JfsPingUpdateExampleEpic: Epic = (
-  action$,
-  state$
-) => {
+export const Jfs2JfsPingUpdateExampleEpic: Epic = (action$, state$) => {
   return action$.pipe(
-    filter(_action => state$.value.Core.Session.sessionDTO !== null),
+    filter(() => state$.value.Core.Session.sessionDTO !== null),
     switchMap((action: WebSocketAction) => WSClient.listen<string>(action, {
       room: 'ping',
       namespace: (

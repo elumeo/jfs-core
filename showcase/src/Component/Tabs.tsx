@@ -15,7 +15,7 @@ const TabsDemo = () => {
     setShowMoreTabs(!showMoreTabs);
   }
   const toggleShowMultilineTabText = () => setShowMultilineTabText(!showMultilineTabText);
-  const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => setCurrentTab(newValue);
+  const handleTabChange = (event: React.ChangeEvent<unknown>, newValue: number) => setCurrentTab(newValue);
   const handleVariantChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentTab(0);
     setCurrentVariant(((event.target as HTMLInputElement).value as 'standard' | 'scrollable' | 'fullWidth'));

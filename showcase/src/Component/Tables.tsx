@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { memo } from 'react';
 import { Box, Card, CardContent, CardHeader, Container, Grid, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
 import AppNavigation from 'Component/AppNavigation';
@@ -140,7 +141,7 @@ const Tables = () => {
                       rowGetter={(row: Index) => rows[row.index]}
                       sortBy={'dessert'}
                       sortDirection={'ASC'}
-                      sort={() => console.log('sorting')}
+                      // sort={() => console.log('sorting')}
                       columns={[
                         {
                           width: 200,
