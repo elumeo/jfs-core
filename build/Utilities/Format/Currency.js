@@ -17,7 +17,7 @@ export const getCurrency = (currency, value, showFraction = false, withCurrencyS
         style: withCurrencySign ? 'currency' : 'decimal',
         currency,
         maximumFractionDigits: showFraction ? 2 : 0,
-        minimumFractionDigits: showFraction && value % 1 !== 0 ? 2 : 0,
+        minimumFractionDigits: showFraction || value % 1 !== 0 ? 2 : 0,
     };
     return new Intl.NumberFormat(Locale.locale, options).format(value);
 };

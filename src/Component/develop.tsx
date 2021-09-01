@@ -5,12 +5,27 @@ import {
   ContactPhone as ContactPhoneIcon
 } from '@material-ui/icons';
 import { useTheme } from '@material-ui/core/styles';
+import { getCurrency } from 'Utilities/Format/Currency';
 
 const Develop: React.FC = () => {
   const theme = useTheme();
 
   return (
     <Box>
+      <Grid container>
+        <Grid item>
+          {getCurrency('EUR', 100, true)}
+        </Grid>
+        <Grid item>
+          {getCurrency('EUR', 100.5, true)}
+        </Grid>
+        <Grid item>
+          {getCurrency('EUR', 100.75, true)}
+        </Grid>
+        <Grid item>
+          {getCurrency('EUR', 100.50, true)}
+        </Grid>
+      </Grid>
       <Grid container>
         <Grid item>
           <Box p={2} m={2} style={{backgroundColor: theme.palette.info.main, color: theme.palette.getContrastText(theme.palette.info.main)}}>Info</Box>
