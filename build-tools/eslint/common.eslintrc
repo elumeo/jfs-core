@@ -20,6 +20,7 @@
   "rules": {
     "react/display-name": "off",
     "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
     "prefer-arrow-callback": ["error", {
       "allowNamedFunctions": true
     }],
