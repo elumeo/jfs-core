@@ -65,9 +65,7 @@ theme.overrides = {
     },
   },
   MuiChip: {
-    // TODO: these three lines are copied from MUI v5.0.0 (currently beta version)
-    // TODO: they can be removed as soon as we are on this version
-    clickable: { '&:hover': { backgroundColor: alpha(theme.palette.action.selected, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity ) } },
+    clickable: { '&:hover': { backgroundColor: theme.palette.grey[400] } },
     clickableColorPrimary: { '&:hover': { backgroundColor: theme.palette.primary.dark } },
     clickableColorSecondary: { '&:hover': { backgroundColor: theme.palette.secondary.dark } },
 
