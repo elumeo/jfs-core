@@ -28,19 +28,19 @@ const DefaultNotificationCard: React.FC<Props> = ({
     <>
       <Box color='inherit'>
         {title && (
-          <Typography variant='subtitle1' component='div'>
+          <Typography variant='h6' component='div'>
             {isTranslationId ? formatMessage({ id: title as string }) : title}
           </Typography>
         )}
         {subtitle && (
-          <Typography variant='subtitle2' component='div'>
+          <Typography variant='subtitle1' component='div'>
             {isTranslationId
               ? formatMessage({ id: subtitle as string })
               : subtitle}
           </Typography>
         )}
         {content && (
-          <Typography variant='body1' component='div'>
+          <Typography variant='body2' component='div'>
             {isTranslationId
               ? formatMessage({ id: content as string })
               : content}
