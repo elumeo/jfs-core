@@ -20,7 +20,9 @@ const Dialog: React.FC<Props> = ({ children, onLogout , pending = false}) => {
     <MUIDialog
       open={logout.open}
       onClose={logout.close}
-      aria-labelledby='logout-description'>
+      aria-labelledby='logout-description'
+      disableEscapeKeyDown={logout.pending === true}
+    >
       <DialogTitle>{formatMessage({ id: 'app.logout.title' })}</DialogTitle>
       <DialogContent
         style={{
