@@ -1,4 +1,4 @@
-import {alpha, createTheme, responsiveFontSizes} from '@material-ui/core/styles';
+import {createTheme, responsiveFontSizes} from '@material-ui/core/styles';
 import * as Color from 'Constant/Color';
 import { grey } from '@material-ui/core/colors';
 
@@ -10,11 +10,8 @@ const theme = responsiveFontSizes(
         },
         MuiLinearProgress: {
           color: 'secondary',
-        },
+        }
       },
-
-
-
       palette: {
         type: 'light',
         primary: Color.primary,
@@ -98,6 +95,25 @@ theme.overrides = {
       letterSpacing: '0.01071em',
     },
   },
+  MuiTableCell: {
+    stickyHeader: {
+      backgroundColor: theme.palette.background.paper
+    }
+  },
+  MuiTableSortLabel: {
+    root: {
+      color: theme.palette.secondary.main,
+      '&.MuiTableSortLabel-active': {
+        color: theme.palette.secondary.main
+      },
+      '&.MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon': {
+        color: theme.palette.secondary.main
+      }
+    },
+    icon: {
+      alignSelf: 'end'
+    }
+  }
 };
 
 export default theme;

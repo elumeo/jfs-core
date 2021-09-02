@@ -8,7 +8,7 @@ const theme = responsiveFontSizes(createTheme({
         },
         MuiLinearProgress: {
             color: 'secondary',
-        },
+        }
     },
     palette: {
         type: 'light',
@@ -90,5 +90,24 @@ theme.overrides = {
             letterSpacing: '0.01071em',
         },
     },
+    MuiTableCell: {
+        stickyHeader: {
+            backgroundColor: theme.palette.background.paper
+        }
+    },
+    MuiTableSortLabel: {
+        root: {
+            color: theme.palette.secondary.main,
+            '&.MuiTableSortLabel-active': {
+                color: theme.palette.secondary.main
+            },
+            '&.MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon': {
+                color: theme.palette.secondary.main
+            }
+        },
+        icon: {
+            alignSelf: 'end'
+        }
+    }
 };
 export default theme;

@@ -7,12 +7,12 @@ export declare type ColumnData = ColumnProps & {
     numeric?: boolean;
 };
 export declare type VirtualizedTableProps = TableProps & {
-    onResize?: (info: Size) => any;
+    onResize?: (info: Size) => unknown;
     columns: ColumnData[];
     rowHeight?: number;
     headerHeight?: number;
     showRowHoverHighlight?: boolean;
     headerOverflow?: 'visible' | 'hidden' | 'inherit' | 'initial';
 };
-declare const _default: React.MemoExoticComponent<React.ForwardRefExoticComponent<Pick<VirtualizedTableProps, string | number> & React.RefAttributes<Table>>>;
+declare const _default: React.MemoExoticComponent<React.ForwardRefExoticComponent<Pick<VirtualizedTableProps, keyof import("react-virtualized/dist/es/Grid").GridCoreProps> & React.RefAttributes<Table>>>;
 export default _default;
