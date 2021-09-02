@@ -25,9 +25,9 @@ const Card = ({ children, notification, temporary }) => {
             backgroundColor: (_a = palette[notification.variant]) === null || _a === void 0 ? void 0 : _a['main'],
             color: (_b = palette[notification.variant]) === null || _b === void 0 ? void 0 : _b['contrastText'],
         } },
-        React.createElement(CardHeader, { avatar: React.createElement(Icon, { variant: notification.variant }), title: React.createElement(Typography, { variant: 'h4', component: 'span' }, (notification === null || notification === void 0 ? void 0 : notification.isTranslationId)
+        React.createElement(CardHeader, { avatar: React.createElement(Icon, { variant: notification.variant }), title: React.createElement(Typography, { variant: 'subtitle1', component: 'div' }, (notification === null || notification === void 0 ? void 0 : notification.isTranslationId)
                 ? formatMessage({ id: notification.title })
-                : notification.title), subheader: React.createElement(Typography, { variant: 'h6', component: 'span' }, (notification === null || notification === void 0 ? void 0 : notification.isTranslationId)
+                : notification.title), subheader: React.createElement(Typography, { variant: 'subtitle2', component: 'div' }, (notification === null || notification === void 0 ? void 0 : notification.isTranslationId)
                 ? formatMessage({ id: notification.subtitle })
                 : notification.subtitle), subheaderTypographyProps: { color: 'inherit' }, action: React.createElement(CardActions, null,
                 notification.action
@@ -38,7 +38,7 @@ const Card = ({ children, notification, temporary }) => {
                             color: (_c = palette[notification.variant]) === null || _c === void 0 ? void 0 : _c.contrastText,
                         } }))) }),
         React.createElement(Box, { component: CardContent, pt: 0 },
-            React.createElement(Typography, { component: 'span' },
+            React.createElement(Typography, { variant: 'body1', component: 'div' },
                 (notification === null || notification === void 0 ? void 0 : notification.isTranslationId)
                     ? formatMessage({ id: notification.content })
                     : notification.content,

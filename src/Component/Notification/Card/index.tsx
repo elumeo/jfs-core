@@ -41,14 +41,14 @@ const Card: React.FC<Props> & {
       <CardHeader
         avatar={<Icon variant={notification.variant} />}
         title={
-          <Typography variant='h4' component='span'>
+          <Typography variant='subtitle1' component='div'>
             {notification?.isTranslationId
               ? formatMessage({ id: notification.title as string })
               : notification.title}
           </Typography>
         }
         subheader={
-          <Typography variant='h6' component='span'>
+          <Typography variant='subtitle2' component='div'>
             {notification?.isTranslationId
               ? formatMessage({ id: notification.subtitle as string })
               : notification.subtitle}
@@ -72,7 +72,7 @@ const Card: React.FC<Props> & {
         }
       />
       <Box component={CardContent} pt={0}>
-        <Typography component='span'>
+        <Typography  variant='body1' component='div'>
           {notification?.isTranslationId
             ? formatMessage({ id: notification.content as string })
             : notification.content}
