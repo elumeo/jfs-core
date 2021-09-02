@@ -1,4 +1,4 @@
-import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { alpha, createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import * as Color from '../../Constant/Color';
 import { grey } from '@material-ui/core/colors';
 const theme = responsiveFontSizes(createTheme({
@@ -19,6 +19,14 @@ const theme = responsiveFontSizes(createTheme({
             secondary: grey[700],
             disabled: grey[500],
             hint: grey[300],
+        },
+        action: {
+            hover: 'rgba(0, 0, 0, 0.12)',
+            hoverOpacity: 0.12,
+            selected: 'rgba(0, 0, 0, 0.16)',
+            selectedOpacity: 0.16,
+            focus: 'rgba(0, 0, 0, 0.2)',
+            focusOpacity: 0.2,
         },
         info: Color.info,
         success: Color.success,
@@ -50,6 +58,11 @@ theme.overrides = {
         },
     },
     MuiChip: {
+        // TODO: these three lines are copied from MUI v5.0.0 (currently beta version)
+        // TODO: they can be removed as soon as we are on this version
+        clickable: { '&:hover': { backgroundColor: alpha(theme.palette.action.selected, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity) } },
+        clickableColorPrimary: { '&:hover': { backgroundColor: theme.palette.primary.dark } },
+        clickableColorSecondary: { '&:hover': { backgroundColor: theme.palette.secondary.dark } },
         label: {
             fontSize: '0.925rem',
         }

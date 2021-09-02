@@ -11,3 +11,4 @@ node_modules
 /showcase/dist/
 /config.json
 .eslintrc
+tsconfig.tsbuildinfo
