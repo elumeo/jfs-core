@@ -3,7 +3,7 @@ import { ReactDatePickerProps } from 'react-datepicker';
 import './Setup';
 import 'react-datepicker/dist/react-datepicker.css';
 import { TextFieldProps } from '@material-ui/core';
-export declare type DatePickerProps = Omit<ReactDatePickerProps<unknown>, 'value'> & {
+export declare type DatePickerProps = Omit<ReactDatePickerProps, 'value'> & {
     label?: ReactNode;
     error?: boolean;
     customClearButtonId?: string;

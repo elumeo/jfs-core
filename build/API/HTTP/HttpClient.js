@@ -8,35 +8,83 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import axios from 'axios';
+import * as Token from '../LOCAL_STORAGE/Token';
+const catchUnauthorized = (url, error) => {
+    const isUnauthorized = (error.isAxiosError &&
+        error.response.status === 401);
+    const isGetCurrentSessionFrontend = (error.isAxiosError &&
+        error.config.method === 'GET' &&
+        url.startsWith('/session') &&
+        url.split('/').length === 3);
+    if (isUnauthorized &&
+        !isGetCurrentSessionFrontend) {
+        Token.removeToken();
+        location.reload();
+    }
+    else {
+        throw error;
+    }
+};
 export class HttpClient {
     static createInstance(axiosConfig) {
         return axios.create(Object.assign(Object.assign({}, HttpClient.generateAxiosConfig()), (axiosConfig || {})));
     }
     static get(url, config = {}) {
         return __awaiter(this, void 0, void 0, function* () {
-            return HttpClient.createInstance().get(url, config);
+            try {
+                return yield HttpClient.createInstance().get(url, config);
+            }
+            catch (error) {
+                console.log(error);
+                catchUnauthorized(url, error);
+                return null;
+            }
         });
     }
     static post(url, data, config = {}) {
         return __awaiter(this, void 0, void 0, function* () {
-            return HttpClient.createInstance().post(url, data, config);
+            try {
+                return yield HttpClient.createInstance().post(url, data, config);
+            }
+            catch (error) {
+                catchUnauthorized(url, error);
+                return null;
+            }
         });
     }
     static put(url, data, config = {}) {
         return __awaiter(this, void 0, void 0, function* () {
-            return HttpClient.createInstance().put(url, data, config);
+            try {
+                return yield HttpClient.createInstance().put(url, data, config);
+            }
+            catch (error) {
+                catchUnauthorized(url, error);
+                return null;
+            }
         });
     }
     static patch(url, data, config = {}) {
         return __awaiter(this, void 0, void 0, function* () {
-            return HttpClient.createInstance().patch(url, data, config);
+            try {
+                return yield HttpClient.createInstance().patch(url, data, config);
+            }
+            catch (error) {
+                catchUnauthorized(url, error);
+                return null;
+            }
         });
     }
     static delete(url, data, config = {}) {
         return __awaiter(this, void 0, void 0, function* () {
-            // Because Axios does not allow data body during delete request we have to put this in the config as a workaround
-            // @See: https://github.com/axios/axios/issues/736
-            return HttpClient.createInstance(config).delete(url, Object.assign(Object.assign({}, config), { data }));
+            try {
+                // Because Axios does not allow data body during delete request we have to put this in the config as a workaround
+                // @See: https://github.com/axios/axios/issues/736
+                return yield HttpClient.createInstance(config).delete(url, Object.assign(Object.assign({}, config), { data }));
+            }
+            catch (error) {
+                catchUnauthorized(url, error);
+                return null;
+            }
         });
     }
 }

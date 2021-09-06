@@ -1,7 +1,7 @@
-import { AxiosResponse } from 'axios';
-import { Observable } from 'rxjs';
-import { PayloadAction } from 'typesafe-actions';
-import { IWebSocketRoom } from '../../Types/WebSocket';
+import { AxiosResponse } from "axios";
+import { Observable } from "rxjs";
+import { PayloadAction } from "typesafe-actions";
+import { IWebSocketRoom } from "../../Types/WebSocket";
 declare namespace JSCApi {
     interface IUrlParams {
         filter?: string;
