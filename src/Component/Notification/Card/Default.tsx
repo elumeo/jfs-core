@@ -19,11 +19,13 @@ const DefaultNotificationCard: React.FC<Props> = ({
     action,
     id,
     isTranslationId = false,
+    httpDetails,
+    timeStamp
   },
   temporary,
 }) => {
   const snackbar = useSnackbar();
-  const { formatMessage } = useIntl();
+  const { formatMessage, formatDate, formatTime } = useIntl();
   return (
     <>
       <Box color='inherit'>
@@ -46,10 +48,20 @@ const DefaultNotificationCard: React.FC<Props> = ({
               : content}
           </Typography>
         )}
+
+        {
+          (httpDetails || timeStamp) &&
+          <Box pt={0.5}>
+            {httpDetails && <Typography variant='caption' component='div'>{httpDetails}</Typography>}
+            {timeStamp &&
+            <Typography variant='caption' component='div'>
+              {formatDate(timeStamp, {dateStyle: 'medium'})}&nbsp;{formatTime(timeStamp, {timeStyle: 'medium'})}
+            </Typography>
+            }
+          </Box>
+        }
       </Box>
-      {!temporary && action && (
-        <CardActions>{action(snackbar, id, temporary)}</CardActions>
-      )}
+      {!temporary && action && <CardActions>{action(snackbar, id, temporary)}</CardActions>}
     </>
   );
 };

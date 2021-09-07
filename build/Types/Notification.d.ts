@@ -9,4 +9,6 @@ export declare type Notification = {
     action?: (snackbar: ReturnType<typeof useSnackbar>, id: string, temporary: boolean) => SnackbarAction;
     notistackOptions?: OptionsObject;
     isTranslationId?: boolean;
+    httpDetails?: React.ReactNode;
+    timeStamp?: Date;
 };

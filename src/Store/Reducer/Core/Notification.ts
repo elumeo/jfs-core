@@ -18,7 +18,7 @@ const Notification = TA.createReducer<State, ActionType>(initialState)
   .handleAction(Action.addNotification, (state, action) => ({
     ...state,
     history: [
-      { id: action.payload?.id ?? v4(), ...action.payload },
+      { id: action.payload?.id ?? v4(), timeStamp: action.payload?.timeStamp ?? new Date(), ...action.payload },
       ...state.history,
     ],
   }))

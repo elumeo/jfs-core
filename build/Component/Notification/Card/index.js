@@ -13,12 +13,12 @@ import useActions from '../../../Store/useActions';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useSnackbar } from 'notistack';
 import { useIntl } from 'react-intl';
-const Card = ({ children, notification, temporary }) => {
+const Card = ({ notification, temporary }) => {
     var _a, _b, _c;
     const { palette } = useTheme();
     const { removeNotification } = useActions();
     const snackbar = useSnackbar();
-    const { formatMessage } = useIntl();
+    const { formatMessage, formatDate, formatTime } = useIntl();
     return (React.createElement(MUICard, { style: {
             width: '100%',
             minHeight: 'fit-content',
@@ -38,11 +38,17 @@ const Card = ({ children, notification, temporary }) => {
                             color: (_c = palette[notification.variant]) === null || _c === void 0 ? void 0 : _c.contrastText,
                         } }))) }),
         React.createElement(Box, { component: CardContent, pt: 0 },
-            React.createElement(Typography, { variant: 'body2', component: 'div' },
-                (notification === null || notification === void 0 ? void 0 : notification.isTranslationId)
-                    ? formatMessage({ id: notification.content })
-                    : notification.content,
-                children))));
+            React.createElement(Typography, { variant: 'body2', component: 'div' }, (notification === null || notification === void 0 ? void 0 : notification.isTranslationId)
+                ? formatMessage({ id: notification.content })
+                : notification.content),
+            ((notification === null || notification === void 0 ? void 0 : notification.httpDetails) || (notification === null || notification === void 0 ? void 0 : notification.timeStamp)) &&
+                React.createElement(Box, { pt: 0.5 },
+                    (notification === null || notification === void 0 ? void 0 : notification.httpDetails) && React.createElement(Typography, { variant: 'caption', component: 'div' }, notification.httpDetails),
+                    (notification === null || notification === void 0 ? void 0 : notification.timeStamp) &&
+                        React.createElement(Typography, { variant: 'caption', component: 'div' },
+                            formatDate(notification.timeStamp, { dateStyle: 'medium' }),
+                            "\u00A0",
+                            formatTime(notification.timeStamp, { timeStyle: 'medium' }))))));
 };
 Card.Default = Default;
 Card.Icon = Icon;

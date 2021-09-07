@@ -19,4 +19,6 @@ export type Notification = {
   ) => SnackbarAction;
   notistackOptions?: OptionsObject;
   isTranslationId?: boolean;
+  httpDetails?: React.ReactNode;
+  timeStamp?: Date;
 };

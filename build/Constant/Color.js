@@ -56,7 +56,7 @@ export const warning = {
     light: '#ffb333',
     main: '#ffa000',
     dark: '#b27000',
-    contrastText: '#fff',
+    contrastText: '#000',
 };
 export const success = {
     light: '#338333',

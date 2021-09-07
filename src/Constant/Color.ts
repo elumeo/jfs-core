@@ -67,7 +67,7 @@ export const warning: PaletteColor = {
   light: '#ffb333',
   main: '#ffa000',
   dark: '#b27000',
-  contrastText: '#fff',
+  contrastText: '#000',
 };
 
 export const success: PaletteColor = {
