@@ -14,10 +14,16 @@ const catchUnauthorized = (url: string, error: AxiosError) => {
     url.split('/').length === 3
   );
 
-  if (
-    isUnauthorized &&
-    !isGetCurrentSessionFrontend
-  ) {
+  const isLoginFrontend = (
+    error.isAxiosError &&
+    (error as AxiosError).config.method === 'POST' &&
+    url.startsWith('/session') &&
+    url.split('/').length === 3
+  );
+
+  const isBlacklisted = isGetCurrentSessionFrontend || isLoginFrontend;
+
+  if (isUnauthorized && !isBlacklisted) {
     Token.removeToken();
     location.reload();
   }

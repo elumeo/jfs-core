@@ -16,8 +16,12 @@ const catchUnauthorized = (url, error) => {
         error.config.method === 'GET' &&
         url.startsWith('/session') &&
         url.split('/').length === 3);
-    if (isUnauthorized &&
-        !isGetCurrentSessionFrontend) {
+    const isLoginFrontend = (error.isAxiosError &&
+        error.config.method === 'POST' &&
+        url.startsWith('/session') &&
+        url.split('/').length === 3);
+    const isBlacklisted = isGetCurrentSessionFrontend || isLoginFrontend;
+    if (isUnauthorized && !isBlacklisted) {
         Token.removeToken();
         location.reload();
     }

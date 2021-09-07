@@ -14,5 +14,5 @@ export declare type VirtualizedTableProps = TableProps & {
     showRowHoverHighlight?: boolean;
     headerOverflow?: 'visible' | 'hidden' | 'inherit' | 'initial';
 };
-declare const _default: React.MemoExoticComponent<React.ForwardRefExoticComponent<Pick<VirtualizedTableProps, string | number> & React.RefAttributes<Table>>>;
+declare const _default: React.MemoExoticComponent<React.ForwardRefExoticComponent<Pick<VirtualizedTableProps, keyof import("react-virtualized/dist/es/Grid").GridCoreProps> & React.RefAttributes<Table>>>;
 export default _default;
