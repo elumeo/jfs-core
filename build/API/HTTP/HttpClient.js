@@ -35,7 +35,6 @@ export class HttpClient {
                 return yield HttpClient.createInstance().get(url, config);
             }
             catch (error) {
-                console.log(error);
                 catchUnauthorized(url, error);
                 return null;
             }

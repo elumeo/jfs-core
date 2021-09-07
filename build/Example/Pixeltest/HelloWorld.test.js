@@ -11,8 +11,11 @@ import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import { generateImage } from 'jsdom-screenshot';
 import React from 'react';
+import Stateless from '../../Component/App/Stateless';
 import HelloWorld from './HelloWorld';
 test('Pixels match', () => __awaiter(void 0, void 0, void 0, function* () {
-    render(React.createElement(HelloWorld, null));
-    expect(yield generateImage()).toMatchImageSnapshot();
+    render(React.createElement(Stateless, null,
+        React.createElement(HelloWorld, null)));
+    expect(yield generateImage())
+        .toMatchImageSnapshot();
 }));

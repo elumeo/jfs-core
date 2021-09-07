@@ -1,3 +1,4 @@
 import React from 'react';
-const HelloWorld = () => (React.createElement("div", null, "Hello, world!"));
+import { Button } from '@material-ui/core';
+const HelloWorld = () => (React.createElement(Button, { color: 'primary', variant: 'contained' }, "Hello World"));
 export default HelloWorld;

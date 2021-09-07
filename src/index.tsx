@@ -1,6 +1,6 @@
 // import React from 'react';
 // import ReactDOM from 'react-dom';
-// import * as App from 'Component/App';
+// import App from 'Component/App';
 // import * as Login from 'Component/Login';
 // import * as Logout from 'Component/Logout';
 // import * as Settings from 'Component/Settings';
@@ -18,11 +18,11 @@
 // import { history } from 'Store/Middleware';
 
 // ReactDOM.render(
-//   <App.Container
+//   <App
 //     store={create(epic, reducer(history))}
 //     title='core'
 //     translations={Translations}
-//     packageJson={packageJson}>
+//     packageJSON={packageJson}>
 //     <Header.AppToolbar
 //       left={<Header.BackendIndicator />}
 //       right={
@@ -42,6 +42,6 @@
 //       </Settings.Dialog>
 //       <Snackbar />
 //     </Overlay>
-//   </App.Container>,
+//   </App>,
 //   document.getElementById('root'),
 // );

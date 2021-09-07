@@ -52,7 +52,6 @@ export class HttpClient {
       return await HttpClient.createInstance().get<R>(url, config);
     }
     catch (error) {
-      console.log(error);
       catchUnauthorized(url, error);
       return null;
     }
