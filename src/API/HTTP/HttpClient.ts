@@ -9,15 +9,21 @@ const catchUnauthorized = (url: string, error: AxiosError) => {
 
   const isGetCurrentSessionFrontend = (
     error.isAxiosError &&
-    (error as AxiosError).config.method === 'GET' &&
+    ['GET', 'get'].includes((error as AxiosError).config.method) &&
     url.startsWith('/session') &&
     url.split('/').length === 3
   );
 
-  if (
-    isUnauthorized &&
-    !isGetCurrentSessionFrontend
-  ) {
+  const isLoginFrontend = (
+    error.isAxiosError &&
+    ['POST', 'post'].includes((error as AxiosError).config.method) &&
+    url.startsWith('/session') &&
+    url.split('/').length === 3
+  );
+
+  const isBlacklisted = isGetCurrentSessionFrontend || isLoginFrontend;
+
+  if (isUnauthorized && !isBlacklisted) {
     Token.removeToken();
     location.reload();
   }
