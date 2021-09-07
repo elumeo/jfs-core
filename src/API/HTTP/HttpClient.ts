@@ -9,14 +9,14 @@ const catchUnauthorized = (url: string, error: AxiosError) => {
 
   const isGetCurrentSessionFrontend = (
     error.isAxiosError &&
-    (error as AxiosError).config.method === 'GET' &&
+    ['GET', 'get'].includes((error as AxiosError).config.method) &&
     url.startsWith('/session') &&
     url.split('/').length === 3
   );
 
   const isLoginFrontend = (
     error.isAxiosError &&
-    (error as AxiosError).config.method === 'POST' &&
+    ['POST', 'post'].includes((error as AxiosError).config.method) &&
     url.startsWith('/session') &&
     url.split('/').length === 3
   );
