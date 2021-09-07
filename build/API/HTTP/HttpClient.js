@@ -13,11 +13,11 @@ const catchUnauthorized = (url, error) => {
     const isUnauthorized = (error.isAxiosError &&
         error.response.status === 401);
     const isGetCurrentSessionFrontend = (error.isAxiosError &&
-        error.config.method === 'GET' &&
+        ['GET', 'get'].includes(error.config.method) &&
         url.startsWith('/session') &&
         url.split('/').length === 3);
     const isLoginFrontend = (error.isAxiosError &&
-        error.config.method === 'POST' &&
+        ['POST', 'post'].includes(error.config.method) &&
         url.startsWith('/session') &&
         url.split('/').length === 3);
     const isBlacklisted = isGetCurrentSessionFrontend || isLoginFrontend;

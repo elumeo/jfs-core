@@ -11,7 +11,7 @@ import TodayIcon from '@material-ui/icons/Today';
 import BackspaceIcon from '@material-ui/icons/Backspace';
 import moment from 'moment';
 
-export type DatePickerProps = Omit<ReactDatePickerProps<unknown>, 'value'> & {
+export type DatePickerProps = Omit<ReactDatePickerProps, 'value'> & {
   label?: ReactNode;
   error?: boolean;
   customClearButtonId?: string;
@@ -50,7 +50,7 @@ const DatePicker = ({
   const [open, setOpen] = useState(false);
   const [dirty, setDirty] = useState(false);
   const [id] = useState('reactDatePicker_' + Math.floor(Math.random() * 100));
-  const datePickerRef = useRef<ReactDatePicker<unknown>>();
+  const datePickerRef = useRef<ReactDatePicker>();
 
   const getInput = () => document.getElementById(id) as HTMLInputElement;
 
