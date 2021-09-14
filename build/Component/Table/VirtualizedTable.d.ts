@@ -3,10 +3,10 @@ import React from 'react';
 import { Size } from 'react-virtualized/dist/es/AutoSizer';
 export declare const globalStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"flexContainer" | "tableCell">;
 export declare const useStyles: (props: VirtualizedTableProps) => import("@material-ui/styles").ClassNameMap<string>;
-export declare type ColumnData = ColumnProps & {
+export interface ColumnData extends ColumnProps {
     numeric?: boolean;
-    width: (fullWidth: number) => number;
-};
+    width: number | ((fullWidth: number) => number);
+}
 export declare type VirtualizedTableProps = TableProps & {
     onResize?: (info: Size) => unknown;
     columns: ColumnData[];

@@ -21,7 +21,6 @@ for (let i = 0; i < 200; i += 1) {
     const randomSelection = sample[Math.floor(Math.random() * sample.length)];
     rows.push(createDataVirtualizedTable(i, ...randomSelection));
 }
-const getRandomRowHeight = (min, max) => Math.random() * (max - min) + min;
 const Develop = () => {
     const theme = useTheme();
     const dispatch = useDispatch();
@@ -112,8 +111,8 @@ const Develop = () => {
                     React.createElement(VirtualizedTable, { rowHeight: 50, rowCount: rows.length, rowGetter: (row) => rows[row.index], sortBy: 'calories', sortDirection: 'ASC', columns: [
                             {
                                 // width: 200,
-                                width: (width, height) => width - (120 * 4),
                                 // flexGrow: 1,
+                                width: (width) => width - (120 * 4),
                                 label: 'Dessert (100g serving)',
                                 dataKey: 'dessert',
                                 disableSort: true,
