@@ -52,12 +52,13 @@ export const useStyles = makeStyles<Theme, VirtualizedTableProps>(theme =>
 
 export type ColumnData = ColumnProps & {
   numeric?: boolean;
+  width: (fullWidth: number) => number;
 };
 
 export type VirtualizedTableProps = TableProps & {
   onResize?: (info: Size) => unknown;
   columns: ColumnData[];
-  rowHeight?: number;
+  rowHeight?: number | ((params: Index) => number);
   headerHeight?: number;
   showRowHoverHighlight?: boolean;
   headerOverflow?: 'visible' | 'hidden' | 'inherit' | 'initial';
@@ -110,7 +111,13 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
             gridStyle={{ direction: 'inherit' }}
             gridClassName={classes.tableGrid}
             {...tableProps}>
-            {columns.map(({ dataKey, ...other }, index) => {
+            {columns.map(({ dataKey, width: columnWidth, ...other }, index) => {
+              let finalWidth;
+              if(typeof columnWidth !== 'number') {
+                finalWidth = (columnWidth as (fullWidth: number) => number)(width);
+              } else {
+                finalWidth = columnWidth as number;
+              }
               return (
                 <Column
                   key={dataKey}
@@ -128,6 +135,7 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
                     isNumeric={(columnIndex != null && columns[columnIndex].numeric) || false}
                   />}
                   dataKey={dataKey}
+                  width={finalWidth}
                   {...other}
                 />
               );
@@ -138,5 +146,4 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
     );
   }
 );
-
 export default memo(VirtualizedTable);

@@ -12,12 +12,12 @@ export const formatDisplay = (value, min, max) => {
     }
     return val.toFixed(2);
 };
-export const getCurrency = (currency, value, showFraction = false, withCurrencySign = true) => {
+export const getCurrency = (currency, value, showFraction = false, withCurrencySign = true, withZeroDecimals = false) => {
     const options = {
         style: withCurrencySign ? 'currency' : 'decimal',
         currency,
         maximumFractionDigits: showFraction ? 2 : 0,
-        minimumFractionDigits: showFraction || value % 1 !== 0 ? 2 : 0,
+        minimumFractionDigits: showFraction && ((value % 1 !== 0) || withZeroDecimals) ? 2 : 0,
     };
     return new Intl.NumberFormat(Locale.locale, options).format(value);
 };

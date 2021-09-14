@@ -1,6 +1,6 @@
 import React from 'react';
 import { TableHeaderProps } from 'react-virtualized';
-export declare const useStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"noClick" | "visuallyHidden">;
+export declare const useStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"noClick" | "visuallyHidden" | "tableSortRoot">;
 export declare type TableHeadDefaultProps = {
     headerProps: TableHeaderProps;
 };

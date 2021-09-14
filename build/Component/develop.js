@@ -21,6 +21,7 @@ for (let i = 0; i < 200; i += 1) {
     const randomSelection = sample[Math.floor(Math.random() * sample.length)];
     rows.push(createDataVirtualizedTable(i, ...randomSelection));
 }
+const getRandomRowHeight = (min, max) => Math.random() * (max - min) + min;
 const Develop = () => {
     const theme = useTheme();
     const dispatch = useDispatch();
@@ -32,11 +33,28 @@ const Develop = () => {
                 content: 'MESSAGE',
                 variant: 'error'
             })) }, "Notification"),
-        React.createElement(Grid, { container: true },
-            React.createElement(Grid, { item: true }, getCurrency('EUR', 100, true)),
-            React.createElement(Grid, { item: true }, getCurrency('EUR', 100.5, true)),
-            React.createElement(Grid, { item: true }, getCurrency('EUR', 100.75, true)),
-            React.createElement(Grid, { item: true }, getCurrency('EUR', 100.50, true))),
+        React.createElement(Box, { m: 1 },
+            React.createElement(List, null,
+                React.createElement(ListItem, null,
+                    React.createElement(ListItemText, { secondary: 'getCurrency(\'EUR\', 100, true, true, true)' }, getCurrency('EUR', 100, true, true, true))),
+                React.createElement(ListItem, null,
+                    React.createElement(ListItemText, { secondary: 'getCurrency(\'EUR\', 100, true, true, false)' }, getCurrency('EUR', 100, true, true, false))),
+                React.createElement(ListItem, null,
+                    React.createElement(ListItemText, { secondary: 'getCurrency(\'EUR\', 100.00, true, true, true)' }, getCurrency('EUR', 100.00, true, true, true))),
+                React.createElement(ListItem, null,
+                    React.createElement(ListItemText, { secondary: 'getCurrency(\'EUR\', 100.00, true, true, false)' }, getCurrency('EUR', 100.00, true, true, false))),
+                React.createElement(ListItem, null,
+                    React.createElement(ListItemText, { secondary: 'getCurrency(\'EUR\', 100.5, true, true, true)' }, getCurrency('EUR', 100.5, true, true, true))),
+                React.createElement(ListItem, null,
+                    React.createElement(ListItemText, { secondary: 'getCurrency(\'EUR\', 100.5, true, true, false)' }, getCurrency('EUR', 100.5, true, true, false))),
+                React.createElement(ListItem, null,
+                    React.createElement(ListItemText, { secondary: 'getCurrency(\'EUR\', 100.50, true, true, true)' }, getCurrency('EUR', 100.50, true, true, true))),
+                React.createElement(ListItem, null,
+                    React.createElement(ListItemText, { secondary: 'getCurrency(\'EUR\', 100.50, true, true, false)' }, getCurrency('EUR', 100.50, true, true, false))),
+                React.createElement(ListItem, null,
+                    React.createElement(ListItemText, { secondary: 'getCurrency(\'EUR\', 100.75, true, true, true)' }, getCurrency('EUR', 100.75, true, true, true))),
+                React.createElement(ListItem, null,
+                    React.createElement(ListItemText, { secondary: 'getCurrency(\'EUR\', 100.75, true, true, false)' }, getCurrency('EUR', 100.75, true, true, false))))),
         React.createElement(Grid, { container: true },
             React.createElement(Grid, { item: true },
                 React.createElement(Box, { p: 2, m: 2, style: { backgroundColor: theme.palette.info.main, color: theme.palette.getContrastText(theme.palette.info.main) } }, "Info")),
@@ -93,11 +111,12 @@ const Develop = () => {
                 React.createElement(CardContent, { style: { height: 300 } },
                     React.createElement(VirtualizedTable, { rowHeight: 50, rowCount: rows.length, rowGetter: (row) => rows[row.index], sortBy: 'calories', sortDirection: 'ASC', columns: [
                             {
-                                width: 200,
-                                flexGrow: 1,
+                                // width: 200,
+                                width: (width, height) => width - (120 * 4),
+                                // flexGrow: 1,
                                 label: 'Dessert (100g serving)',
                                 dataKey: 'dessert',
-                                disableSort: true
+                                disableSort: true,
                             },
                             {
                                 width: 120,

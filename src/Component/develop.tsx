@@ -58,20 +58,60 @@ const Develop: React.FC = () => {
         content: 'MESSAGE',
         variant: 'error'
       }))}>Notification</Button>
-      <Grid container>
-        <Grid item>
-          {getCurrency('EUR', 100, true)}
-        </Grid>
-        <Grid item>
-          {getCurrency('EUR', 100.5, true)}
-        </Grid>
-        <Grid item>
-          {getCurrency('EUR', 100.75, true)}
-        </Grid>
-        <Grid item>
-          {getCurrency('EUR', 100.50, true)}
-        </Grid>
-      </Grid>
+      <Box m={1}>
+        <List>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, true)'}>
+              {getCurrency('EUR', 100, true, true, true)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, false)'}>
+              {getCurrency('EUR', 100, true, true, false)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, true)'}>
+              {getCurrency('EUR', 100.00, true, true, true)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, false)'}>
+              {getCurrency('EUR', 100.00, true, true, false)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, true)'}>
+              {getCurrency('EUR', 100.5, true, true, true)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, false)'}>
+              {getCurrency('EUR', 100.5, true, true, false)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, true)'}>
+              {getCurrency('EUR', 100.50, true, true, true)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, false)'}>
+              {getCurrency('EUR', 100.50, true, true, false)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, true)'}>
+              {getCurrency('EUR', 100.75, true, true, true)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, false)'}>
+              {getCurrency('EUR', 100.75, true, true, false)}
+            </ListItemText>
+          </ListItem>
+        </List>
+      </Box>
       <Grid container>
         <Grid item>
           <Box p={2} m={2} style={{ backgroundColor: theme.palette.info.main, color: theme.palette.getContrastText(theme.palette.info.main) }}>Info</Box>
@@ -174,11 +214,12 @@ const Develop: React.FC = () => {
               sortDirection={'ASC'}
               columns={[
                 {
-                  width: 200,
-                  flexGrow: 1,
+                  // width: 200,
+                  // flexGrow: 1,
+                  width: (width: number) => width - (120 * 4),
                   label: 'Dessert (100g serving)',
                   dataKey: 'dessert',
-                  disableSort: true
+                  disableSort: true,
                 },
                 {
                   width: 120,

@@ -31,12 +31,13 @@ export const getCurrency = (
   value: number,
   showFraction = false,
   withCurrencySign = true,
+  withZeroDecimals = false
 ): string => {
   const options: Intl.NumberFormatOptions = {
     style: withCurrencySign ? 'currency' : 'decimal',
     currency,
     maximumFractionDigits: showFraction ? 2 : 0,
-    minimumFractionDigits: showFraction || value % 1 !== 0 ? 2 : 0,
+    minimumFractionDigits: showFraction && ((value % 1 !== 0) || withZeroDecimals) ? 2 : 0,
   };
   return new Intl.NumberFormat(Locale.locale, options).format(value);
 };

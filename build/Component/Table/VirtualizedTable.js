@@ -62,14 +62,21 @@ const VirtualizedTable = React.forwardRef((props, ref) => {
         [classes.onRowClick]: onRowClick !== null
     });
     return (React.createElement(AutoSizer, { onResize: onResize }, ({ height, width }) => (React.createElement(Table, Object.assign({ ref: ref, height: height, width: width, className: classes.table, headerHeight: headerHeight, rowHeight: rowHeight, rowCount: rowCount, rowGetter: rowGetter, rowClassName: getRowClassName, onRowClick: onRowClick, gridStyle: { direction: 'inherit' }, gridClassName: classes.tableGrid }, tableProps), columns.map((_a, index) => {
-        var { dataKey } = _a, other = __rest(_a, ["dataKey"]);
+        var { dataKey, width: columnWidth } = _a, other = __rest(_a, ["dataKey", "width"]);
+        let finalWidth;
+        if (typeof columnWidth !== 'number') {
+            finalWidth = columnWidth(width);
+        }
+        else {
+            finalWidth = columnWidth;
+        }
         return (React.createElement(Column, Object.assign({ key: dataKey, headerStyle: { outline: 'none' }, headerRenderer: headerProps => {
                 const columnData = headerProps.columnData !== undefined ? headerProps.columnData : {};
                 columnData.index = index;
                 columnData.numeric = columns[index].numeric;
                 columnData.headerHeight = headerHeight;
                 return React.createElement(TableHeadDefault, { headerProps: Object.assign(Object.assign({}, headerProps), { columnData: columnData }) });
-            }, className: globalClasses.flexContainer, cellRenderer: ({ cellData, columnIndex }) => React.createElement(TableCellDefault, { cellData: cellData, isNumeric: (columnIndex != null && columns[columnIndex].numeric) || false }), dataKey: dataKey }, other)));
+            }, className: globalClasses.flexContainer, cellRenderer: ({ cellData, columnIndex }) => React.createElement(TableCellDefault, { cellData: cellData, isNumeric: (columnIndex != null && columns[columnIndex].numeric) || false }), dataKey: dataKey, width: finalWidth }, other)));
     })))));
 });
 export default memo(VirtualizedTable);
