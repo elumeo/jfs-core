@@ -7,10 +7,7 @@ const config: Config.InitialOptions = {
   preset: 'ts-jest',
   modulePathIgnorePatterns: ['build'],
   moduleFileExtensions: ['js', 'ts', 'tsx'],
-  moduleDirectories: ['node_modules', 'src'],
-  moduleNameMapper: pathsToModuleNameMapper(tsconfig.compilerOptions.paths, {
-    prefix: '<rootDir>/src'
-  }),
+  moduleNameMapper: pathsToModuleNameMapper(tsconfig.compilerOptions.paths),
   setupFilesAfterEnv: [
     './setup.ts'
   ]

@@ -25,7 +25,6 @@ const eslintrc = (which: Type.Environment.Info['which']) => {
 
 export const run = async (env: Type.Environment.Info) => {
   const typescript = path.resolve(env.core, 'build-tools', 'typescript');
-  // const prettier = path.resolve(env.core, 'build-tools', 'prettier');
   const eslint = path.resolve(env.core, 'build-tools', 'eslint');
   const jest = path.resolve(env.core, 'build-tools', 'jest');
 
@@ -46,14 +45,6 @@ export const run = async (env: Type.Environment.Info) => {
       from: path.resolve(jest, 'jest.config.ts'),
       to: path.resolve(process.cwd(), 'jest.config.ts')
     }
-    // {
-    //   from: path.resolve(prettier, '.prettierrc'),
-    //   to: path.resolve(process.cwd(), '.prettierrc')
-    // },
-    // {
-    //   from: path.resolve(prettier, '.prettierignore'),
-    //   to: path.resolve(process.cwd(), '.prettierignore')
-    // }
   ];
 
   await Promise.all(copy.map(({ from, to }) => fs.copyFile(from, to)));

@@ -35,7 +35,6 @@ const eslintrc = (which) => {
 };
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     const typescript = path_1.default.resolve(env.core, 'build-tools', 'typescript');
-    // const prettier = path.resolve(env.core, 'build-tools', 'prettier');
     const eslint = path_1.default.resolve(env.core, 'build-tools', 'eslint');
     const jest = path_1.default.resolve(env.core, 'build-tools', 'jest');
     const copy = [
@@ -55,14 +54,6 @@ const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
             from: path_1.default.resolve(jest, 'jest.config.ts'),
             to: path_1.default.resolve(process.cwd(), 'jest.config.ts')
         }
-        // {
-        //   from: path.resolve(prettier, '.prettierrc'),
-        //   to: path.resolve(process.cwd(), '.prettierrc')
-        // },
-        // {
-        //   from: path.resolve(prettier, '.prettierignore'),
-        //   to: path.resolve(process.cwd(), '.prettierignore')
-        // }
     ];
     yield Promise.all(copy.map(({ from, to }) => fs_extra_1.default.copyFile(from, to)));
 });

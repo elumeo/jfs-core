@@ -4,7 +4,6 @@ const PATH = require('./PATH');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
-// const PrettierWebpackPlugin = require('prettier-webpack-plugin');
 const { resolve } = require('path');
 
 const development = {
@@ -43,7 +42,6 @@ const development = {
         BUNDLE_FILE_NAME : PATH.BUNDLE_NAME
       }
     }),
-    // new PrettierWebpackPlugin()
 ]
 };
 
