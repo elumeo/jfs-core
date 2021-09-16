@@ -108,6 +108,7 @@ const DatePicker = ({
             <TextField
               {...(textFieldProps as TextFieldProps)}
               label={label}
+              disabled={disabled}
               error={hasError()}
               helperText={hasError() && hasErrorText() ? errorText : helperText}
               autoComplete={'off'}
