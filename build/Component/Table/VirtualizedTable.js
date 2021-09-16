@@ -53,7 +53,6 @@ export const useStyles = makeStyles(theme => createStyles({
         cursor: 'pointer'
     }
 }));
-;
 const VirtualizedTable = React.forwardRef((props, ref) => {
     const { columns = [], onRowClick = null, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, showRowHoverHighlight = false, headerOverflow = 'hidden', onResize } = props, tableProps = __rest(props, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight", "showRowHoverHighlight", "headerOverflow", "onResize"]);
     const globalClasses = globalStyles();

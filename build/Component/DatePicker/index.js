@@ -56,7 +56,7 @@ const DatePicker = (_a) => {
     };
     return (React.createElement(ClickAwayListener, { onClickAway: () => setOpen(false) },
         React.createElement("span", null,
-            React.createElement(ReactDatePicker, Object.assign({}, rest, { ref: datePickerRef, selected: date, onChange: (newDate, event) => {
+            React.createElement(ReactDatePicker, Object.assign({ disabled: disabled }, rest, { ref: datePickerRef, selected: date, onChange: (newDate, event) => {
                     // @ts-ignore
                     const isChangeEvent = event._reactName && event._reactName === 'onChange';
                     if (isChangeEvent) {
@@ -66,11 +66,11 @@ const DatePicker = (_a) => {
                         }
                     }
                     handleChangeValue(newDate, event);
-                }, dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: language, open: open, id: id, customInput: React.createElement(TextField, Object.assign({}, textFieldProps, { label: label, disabled: disabled, error: hasError(), helperText: hasError() && hasErrorText() ? errorText : helperText, autoComplete: 'off', InputProps: {
+                }, dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: language, open: open, id: id, customInput: React.createElement(TextField, Object.assign({}, textFieldProps, { label: label, error: hasError(), helperText: hasError() && hasErrorText() ? errorText : helperText, autoComplete: 'off', InputProps: {
                         onFocus: () => shouldOpenOnFocus ? setOpen(true) : null,
                         onBlur: () => setDirty(true),
                         endAdornment: React.createElement(InputAdornment, { position: 'end' },
-                            React.createElement(IconButton, { size: 'small', onClick: () => setOpen(true) },
+                            React.createElement(IconButton, { disabled: disabled, size: 'small', onClick: () => disabled === false ? setOpen(true) : null },
                                 React.createElement(TodayIcon, null)),
                             isClearable && React.createElement(IconButton, { size: 'small', disabled: disabled || date === null, color: 'secondary', onClick: () => handleChangeValue(null) },
                                 React.createElement(BackspaceIcon, null)))

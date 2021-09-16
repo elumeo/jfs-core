@@ -54,7 +54,7 @@ export const useStyles = makeStyles<Theme, VirtualizedTableProps>(theme =>
 export interface ColumnData extends ColumnProps {
   numeric?: boolean;
   width: number | ((fullWidth: number) => number);
-};
+}
 
 export type VirtualizedTableProps = TableProps & {
   onResize?: (info: Size) => unknown;

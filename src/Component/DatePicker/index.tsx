@@ -86,6 +86,7 @@ const DatePicker = ({
     <ClickAwayListener onClickAway={() => setOpen(false)}>
       <span>
         <ReactDatePicker
+          disabled={disabled}
           {...rest}
           ref={datePickerRef}
           selected={date}
@@ -108,7 +109,6 @@ const DatePicker = ({
             <TextField
               {...(textFieldProps as TextFieldProps)}
               label={label}
-              disabled={disabled}
               error={hasError()}
               helperText={hasError() && hasErrorText() ? errorText : helperText}
               autoComplete={'off'}
@@ -116,7 +116,7 @@ const DatePicker = ({
                 onFocus: () => shouldOpenOnFocus ? setOpen(true) : null,
                 onBlur: () => setDirty(true),
                 endAdornment: <InputAdornment position={'end'}>
-                  <IconButton size={'small'} onClick={() => setOpen(true)}><TodayIcon /></IconButton>
+                  <IconButton disabled={disabled} size={'small'} onClick={() => disabled === false ? setOpen(true) : null}><TodayIcon /></IconButton>
                   {isClearable && <IconButton size={'small'} disabled={disabled || date === null} color={'secondary'} onClick={() => handleChangeValue(null)}><BackspaceIcon /></IconButton>}
                 </InputAdornment>
               }}
