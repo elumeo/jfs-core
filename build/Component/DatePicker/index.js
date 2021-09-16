@@ -66,7 +66,7 @@ const DatePicker = (_a) => {
                         }
                     }
                     handleChangeValue(newDate, event);
-                }, dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: language, open: open, id: id, customInput: React.createElement(TextField, Object.assign({}, textFieldProps, { label: label, error: hasError(), helperText: hasError() && hasErrorText() ? errorText : helperText, autoComplete: 'off', InputProps: {
+                }, dateFormat: dateFormat || mapLanguageToDateFormat(language), locale: language, open: open, id: id, customInput: React.createElement(TextField, Object.assign({}, textFieldProps, { label: label, disabled: disabled, error: hasError(), helperText: hasError() && hasErrorText() ? errorText : helperText, autoComplete: 'off', InputProps: {
                         onFocus: () => shouldOpenOnFocus ? setOpen(true) : null,
                         onBlur: () => setDirty(true),
                         endAdornment: React.createElement(InputAdornment, { position: 'end' },
