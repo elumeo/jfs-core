@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
-import * as App from '@elumeo/jfs-core/build/Component/App';
+import App from '@elumeo/jfs-core/build/Component/App';
 import * as Login from '@elumeo/jfs-core/build/Component/Login';
 import * as Logout from '@elumeo/jfs-core/build/Component/Logout';
 import * as Settings from '@elumeo/jfs-core/build/Component/Settings';
@@ -21,7 +21,7 @@ import * as MUI from '@material-ui/core';
 import * as LAB from '@material-ui/lab';
 
 ReactDOM.render(
-  <App.Container
+  <App
     store={store}
     title={'Showcase'}
     translations={_.merge(
@@ -29,7 +29,7 @@ ReactDOM.render(
       HelloWorldTranslations,
       Translations
     )}
-    packageJson={packageJson}>
+    packageJSON={packageJson}>
     <Header.AppToolbar
       left={<Header.BackendIndicator/>}
       middle={
@@ -67,6 +67,6 @@ ReactDOM.render(
     </Settings.Dialog>
     <Routes/>
     <Snackbar/>
-  </App.Container>,
+  </App>,
   document.getElementById('root')
 );

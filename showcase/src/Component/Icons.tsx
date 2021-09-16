@@ -2,6 +2,7 @@
 import React, { memo } from 'react';
 import { Box, Card, CardContent, CardHeader, Container, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@material-ui/core';
 import { useTheme, makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { alpha } from '@material-ui/core/styles/colorManipulator';
 import {
   BadgePercent as BadgePercentIcon,
   BidBlock as BidBlockIcon,
@@ -28,7 +29,6 @@ import CodeBox from 'Component/CodeBox';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import DoneIcon from '@material-ui/icons/Done';
-import { Theme as ThemeUtility } from 'Core/Utilities'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   icon: {
@@ -199,7 +199,7 @@ const Icons = () => {
                 />
                 <Box mt={1}>
                   <Grid container spacing={1}>
-                    <Grid item><BadgePercentIcon style={iconColor === 'reactMd' ? { color: ThemeUtility.addAlphaToHexColor(theme.palette.common.black, 0.54) } : null} /></Grid>
+                    <Grid item><BadgePercentIcon style={iconColor === 'reactMd' ? { color: alpha(theme.palette.common.black, 0.54) } : null} /></Grid>
                     <Grid item><DoneIcon color={'secondary'} /></Grid>
                     <Grid item><WebShopBidAgentIcon color={'primary'} /></Grid>
                   </Grid>

@@ -22,9 +22,10 @@ import CodeBox from 'Component/CodeBox';
 import WarningIcon from '@material-ui/icons/Warning';
 import { useTheme } from '@material-ui/core/styles';
 import PriceField from '@elumeo/jfs-core/build/Component/PriceInput';
-import { MuiPickersUtilsProvider, KeyboardDatePicker, KeyboardDateTimePicker, KeyboardTimePicker } from '@material-ui/pickers';
+import { MuiPickersUtilsProvider, KeyboardTimePicker, DatePicker, DateTimePicker } from '@material-ui/pickers';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
+import KeyboardDatePicker from 'Core/Component/DatePicker';
 
 const Forms = () => {
   const theme = useTheme();
@@ -241,14 +242,14 @@ const Forms = () => {
                             />
                           </Grid>
                           <Grid item xs={2}>
-                            <KeyboardDatePicker
+                            <DatePicker
                               disableToolbar
-                              label='Date picker inline'
+                              label='Date picker'
                               variant='inline'
                               format='dd/MM/yyyy'
                               value={selectedDate}
                               onChange={handleDateChange}
-                              KeyboardButtonProps={{ 'aria-label': 'change date' }}
+                              helperText={'The keyboard support in native MUI is very buggy when validating input! For keyboard support you have to use core component date picker.'}
                             />
                           </Grid>
                           <Grid item xs={2}>
@@ -262,14 +263,33 @@ const Forms = () => {
                             />
                           </Grid>
                           <Grid item xs={2}>
-                            <KeyboardDateTimePicker
+                            <DateTimePicker
                               ampm={false}
                               variant='inline'
                               format='dd/MM/yyyy HH:mm'
-                              label='Datetime picker inline'
+                              label='Datetime picker'
                               value={selectedDate}
                               onChange={(date) => handleDateChange(date)}
-                              KeyboardButtonProps={{ 'aria-label': 'change date and time' }}
+                              helperText={'The keyboard support in native MUI is very buggy when validating input! For keyboard support you have to use core component date picker.'}
+                            />
+                          </Grid>
+                          <Grid item xs={2}>
+                            <KeyboardDatePicker
+                              label={'Keyboard date picker'}
+                              value={selectedDate}
+                              onChange={(date) => handleDateChange(date as Date)}
+                              shouldOpenOnFocus
+                              helperText={'This Datepicker supports keyboard inputs'}
+                            />
+                          </Grid>
+                          <Grid item xs={2}>
+                            <KeyboardDatePicker
+                              label={'Keyboard date picker'}
+                              value={selectedDate}
+                              onChange={(date) => handleDateChange(date as Date)}
+                              shouldOpenOnFocus
+                              disabled
+                              helperText={'This Datepicker supports keyboard inputs'}
                             />
                           </Grid>
                           <Grid item xs={2}>
