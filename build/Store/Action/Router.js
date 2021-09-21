@@ -1,4 +1,7 @@
-import { createAction } from 'typesafe-actions';
-export const enterAuthorizedRoute = createAction('route/ENTER_AUTHORIZED')();
-export const enterUnauthorizedRoute = createAction('route/ENTER_UNAUTHORIZED')();
-export const updateRouteDetails = createAction('route/UPDATE')();
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateRouteDetails = exports.enterUnauthorizedRoute = exports.enterAuthorizedRoute = void 0;
+var typesafe_actions_1 = require("typesafe-actions");
+exports.enterAuthorizedRoute = (0, typesafe_actions_1.createAction)('route/ENTER_AUTHORIZED')();
+exports.enterUnauthorizedRoute = (0, typesafe_actions_1.createAction)('route/ENTER_UNAUTHORIZED')();
+exports.updateRouteDetails = (0, typesafe_actions_1.createAction)('route/UPDATE')();

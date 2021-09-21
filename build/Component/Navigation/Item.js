@@ -1,22 +1,28 @@
-import React from 'react';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Icon from '@material-ui/core/Icon';
-import ListItemText from '@material-ui/core/ListItemText';
-import { useHistory } from 'react-router-dom';
-import { useSelector } from '../../Types/Redux';
-import useActions from '../../Store/useActions';
-import { useIntl } from 'react-intl';
-const NavigationItem = React.forwardRef(({ iconName, messageId, onClick, active, messageString, authorizedOnly, unauthorizedOnly, onClickRoute, }, ref) => {
-    const history = useHistory();
-    const { closeNavigation } = useActions();
-    const { formatMessage } = useIntl();
-    const isAuthorized = useSelector(state => state.Core.Session.isAuthorized);
-    const visible = (!authorizedOnly && !unauthorizedOnly) || // always display these
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_1 = __importDefault(require("react"));
+var ListItem_1 = __importDefault(require("@material-ui/core/ListItem"));
+var ListItemIcon_1 = __importDefault(require("@material-ui/core/ListItemIcon"));
+var Icon_1 = __importDefault(require("@material-ui/core/Icon"));
+var ListItemText_1 = __importDefault(require("@material-ui/core/ListItemText"));
+var react_router_dom_1 = require("react-router-dom");
+var Redux_1 = require("../../Types/Redux");
+var useActions_1 = __importDefault(require("../../Store/useActions"));
+var react_intl_1 = require("react-intl");
+var NavigationItem = react_1.default.forwardRef(function (_a, ref) {
+    var iconName = _a.iconName, messageId = _a.messageId, onClick = _a.onClick, active = _a.active, messageString = _a.messageString, authorizedOnly = _a.authorizedOnly, unauthorizedOnly = _a.unauthorizedOnly, onClickRoute = _a.onClickRoute;
+    var history = (0, react_router_dom_1.useHistory)();
+    var closeNavigation = (0, useActions_1.default)().closeNavigation;
+    var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
+    var isAuthorized = (0, Redux_1.useSelector)(function (state) { return state.Core.Session.isAuthorized; });
+    var visible = (!authorizedOnly && !unauthorizedOnly) || // always display these
         (isAuthorized && authorizedOnly) || // only when authorized
         (!isAuthorized && unauthorizedOnly); // only when unauthorized
-    return visible ? (React.createElement(ListItem, { ref: ref, button: true, onClick: (event) => {
-            const { location: { pathname }, } = history;
+    return visible ? (react_1.default.createElement(ListItem_1.default, { ref: ref, button: true, onClick: function (event) {
+            var pathname = history.location.pathname;
             if (onClickRoute != undefined && pathname !== onClickRoute) {
                 history.push(onClickRoute);
             }
@@ -25,8 +31,8 @@ const NavigationItem = React.forwardRef(({ iconName, messageId, onClick, active,
                 onClick(event);
             }
         }, selected: active },
-        React.createElement(ListItemIcon, null,
-            React.createElement(Icon, null, iconName)),
-        React.createElement(ListItemText, { primary: messageString ? messageString : formatMessage({ id: messageId }) }))) : (React.createElement(React.Fragment, null));
+        react_1.default.createElement(ListItemIcon_1.default, null,
+            react_1.default.createElement(Icon_1.default, null, iconName)),
+        react_1.default.createElement(ListItemText_1.default, { primary: messageString ? messageString : formatMessage({ id: messageId }) }))) : (react_1.default.createElement(react_1.default.Fragment, null));
 });
-export default NavigationItem;
+exports.default = NavigationItem;

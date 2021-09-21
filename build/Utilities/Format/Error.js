@@ -1,29 +1,37 @@
-const isAxiosError = (error) => ['config', 'code', 'request', 'response'].every(key => key in error);
-const isJscError = (error) => isAxiosError(error) &&
-    typeof error.response.data === 'object' &&
-    ['id', 'message'].every(key => key in error.response.data);
-const head = (error) => {
-    const { status, statusText } = error.response;
-    const method = error.config.method.toUpperCase();
-    const url = error.config.url.substring(error.config.baseURL.length);
-    return `(http: ${status} ${statusText} // ${method} ${url})`;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.apply = void 0;
+var isAxiosError = function (error) {
+    return ['config', 'code', 'request', 'response'].every(function (key) { return key in error; });
 };
-const body = (error) => {
-    const { data } = error.response;
+var isJscError = function (error) {
+    return isAxiosError(error) &&
+        typeof error.response.data === 'object' &&
+        ['id', 'message'].every(function (key) { return key in error.response.data; });
+};
+var head = function (error) {
+    var _a = error.response, status = _a.status, statusText = _a.statusText;
+    var method = error.config.method.toUpperCase();
+    var url = error.config.url.substring(error.config.baseURL.length);
+    return "(http: " + status + " " + statusText + " // " + method + " " + url + ")";
+};
+var body = function (error) {
+    var data = error.response.data;
     if (isJscError(error)) {
-        const { id, message } = data;
-        return `${message} (${id})`;
+        var id = data.id, message = data.message;
+        return message + " (" + id + ")";
     }
     else {
         return JSON.stringify(data, null, 2);
     }
 };
-const http = (error) => ({
+var http = function (error) { return ({
     title: head(error),
     details: body(error),
-});
-const generic = (error) => ({
+}); };
+var generic = function (error) { return ({
     title: error.name,
     details: error.message + '\n' + error.stack,
-});
-export const apply = (error) => (isAxiosError(error) ? http(error) : generic(error));
+}); };
+var apply = function (error) { return (isAxiosError(error) ? http(error) : generic(error)); };
+exports.apply = apply;

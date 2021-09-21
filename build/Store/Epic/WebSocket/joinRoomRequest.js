@@ -1,17 +1,40 @@
-import { filter, switchMap, map } from 'rxjs/operators';
-import { of } from 'rxjs';
-import * as TA from 'typesafe-actions';
-import * as Action from '../../Action';
-import { WSClient } from '../../../API/WS/WSClient';
-const joinRoomRequest = (action$, state$) => {
-    return action$.pipe(filter(TA.isActionOf(Action.webSocketJoinRoomRequestAction)), map(action => {
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var operators_1 = require("rxjs/operators");
+var rxjs_1 = require("rxjs");
+var TA = __importStar(require("typesafe-actions"));
+var Action = __importStar(require("../../Action"));
+var WSClient_1 = require("../../../API/WS/WSClient");
+var joinRoomRequest = function (action$, state$) {
+    return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.webSocketJoinRoomRequestAction)), (0, operators_1.map)(function (action) {
         return {
             isJoining: true,
             hasJoined: false,
             error: null,
-            name: WSClient.prepareRoomName(action.payload.room, state$.value),
+            name: WSClient_1.WSClient.prepareRoomName(action.payload.room, state$.value),
             namespace: action.payload.namespace,
         };
-    }), switchMap(roomState => of(Action.webSocketJoinRoomLoadingAction(roomState))));
+    }), (0, operators_1.switchMap)(function (roomState) {
+        return (0, rxjs_1.of)(Action.webSocketJoinRoomLoadingAction(roomState));
+    }));
 };
-export default joinRoomRequest;
+exports.default = joinRoomRequest;

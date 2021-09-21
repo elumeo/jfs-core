@@ -1,14 +1,18 @@
-import { applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { createEpicMiddleware } from 'redux-observable';
-import { routerMiddleware } from 'connected-react-router';
-import { createHashHistory } from 'history';
-export const history = createHashHistory();
-const epicMiddleware = createEpicMiddleware({
-    dependencies: { history },
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.start = exports.history = void 0;
+var redux_1 = require("redux");
+var redux_devtools_extension_1 = require("redux-devtools-extension");
+var redux_observable_1 = require("redux-observable");
+var connected_react_router_1 = require("connected-react-router");
+var history_1 = require("history");
+exports.history = (0, history_1.createHashHistory)();
+var epicMiddleware = (0, redux_observable_1.createEpicMiddleware)({
+    dependencies: { history: exports.history },
 });
-const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
-const storeEnhancer = applyMiddleware(epicMiddleware, routerMiddleware(history));
-const middleware = composeEnhancers(storeEnhancer);
-export const start = (epic) => epicMiddleware.run(epic);
-export default middleware;
+var composeEnhancers = (0, redux_devtools_extension_1.composeWithDevTools)({ trace: true, traceLimit: 25 });
+var storeEnhancer = (0, redux_1.applyMiddleware)(epicMiddleware, (0, connected_react_router_1.routerMiddleware)(exports.history));
+var middleware = composeEnhancers(storeEnhancer);
+var start = function (epic) { return epicMiddleware.run(epic); };
+exports.start = start;
+exports.default = middleware;

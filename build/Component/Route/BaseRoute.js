@@ -1,3 +1,34 @@
+"use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -9,19 +40,20 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import React, { useEffect } from 'react';
-import { Route, useLocation, useParams } from 'react-router-dom';
-import * as Action from '../../Store/Action';
-import { useDispatch } from 'react-redux';
-import { useIntl } from 'react-intl';
-const BaseRoute = (_a) => {
-    var { Component, translationId, updateDocumentTitle } = _a, rest = __rest(_a, ["Component", "translationId", "updateDocumentTitle"]);
-    const location = useLocation();
-    const params = useParams();
-    const dispatch = useDispatch();
-    const { formatMessage } = useIntl();
-    useEffect(() => {
-        dispatch(Action.updateRouteDetails({ location, params }));
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_1 = __importStar(require("react"));
+var react_router_dom_1 = require("react-router-dom");
+var Action = __importStar(require("../../Store/Action"));
+var react_redux_1 = require("react-redux");
+var react_intl_1 = require("react-intl");
+var BaseRoute = function (_a) {
+    var Component = _a.Component, translationId = _a.translationId, updateDocumentTitle = _a.updateDocumentTitle, rest = __rest(_a, ["Component", "translationId", "updateDocumentTitle"]);
+    var location = (0, react_router_dom_1.useLocation)();
+    var params = (0, react_router_dom_1.useParams)();
+    var dispatch = (0, react_redux_1.useDispatch)();
+    var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
+    (0, react_1.useEffect)(function () {
+        dispatch(Action.updateRouteDetails({ location: location, params: params }));
     }, [rest.path]);
     if (Component) {
         rest.component = Component;
@@ -34,6 +66,6 @@ const BaseRoute = (_a) => {
             document.title = formatMessage({ id: 'app.title' });
         }
     }
-    return React.createElement(Route, Object.assign({}, rest));
+    return react_1.default.createElement(react_router_dom_1.Route, __assign({}, rest));
 };
-export default BaseRoute;
+exports.default = BaseRoute;

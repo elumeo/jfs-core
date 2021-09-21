@@ -1,13 +1,18 @@
-import React from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import useActions from '../../Store/useActions';
-import { useSelector } from '../../Types/Redux';
-const Button = () => {
-    const navigationOpen = useSelector(state => state.Core.Navigation.navigationOpen);
-    const { openNavigation, closeNavigation } = useActions();
-    const toggle = React.useCallback(() => (navigationOpen ? closeNavigation() : openNavigation()), [navigationOpen]);
-    return (React.createElement(IconButton, { onClick: toggle },
-        React.createElement(ArrowBackIcon, { fontSize: 'small' })));
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-export default Button;
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_1 = __importDefault(require("react"));
+var IconButton_1 = __importDefault(require("@material-ui/core/IconButton"));
+var ArrowBack_1 = __importDefault(require("@material-ui/icons/ArrowBack"));
+var useActions_1 = __importDefault(require("../../Store/useActions"));
+var Redux_1 = require("../../Types/Redux");
+var Button = function () {
+    var navigationOpen = (0, Redux_1.useSelector)(function (state) { return state.Core.Navigation.navigationOpen; });
+    var _a = (0, useActions_1.default)(), openNavigation = _a.openNavigation, closeNavigation = _a.closeNavigation;
+    var toggle = react_1.default.useCallback(function () { return (navigationOpen ? closeNavigation() : openNavigation()); }, [navigationOpen]);
+    return (react_1.default.createElement(IconButton_1.default, { onClick: toggle },
+        react_1.default.createElement(ArrowBack_1.default, { fontSize: 'small' })));
+};
+exports.default = Button;

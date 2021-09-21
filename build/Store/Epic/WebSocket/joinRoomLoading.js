@@ -1,27 +1,50 @@
-import { filter, switchMap, concatMap, map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
-import * as TA from 'typesafe-actions';
-import * as Action from '../../Action';
-import { WSClient } from '../../../API/WS/WSClient';
-import { v4 as uuid } from 'uuid';
-const joinRoomLoading = (action$, state$) => {
-    return action$.pipe(filter(TA.isActionOf(Action.webSocketJoinRoomLoadingAction)), concatMap(action => {
-        return WSClient.join(action.payload.namespace, action.payload.name).pipe(map(name => {
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var operators_1 = require("rxjs/operators");
+var rxjs_1 = require("rxjs");
+var TA = __importStar(require("typesafe-actions"));
+var Action = __importStar(require("../../Action"));
+var WSClient_1 = require("../../../API/WS/WSClient");
+var uuid_1 = require("uuid");
+var joinRoomLoading = function (action$, state$) {
+    return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.webSocketJoinRoomLoadingAction)), (0, operators_1.concatMap)(function (action) {
+        return WSClient_1.WSClient.join(action.payload.namespace, action.payload.name).pipe((0, operators_1.map)(function (name) {
             var _a;
-            const namespace = state$.value.Core.WebSocket[action.payload.namespace];
-            const room = ((_a = namespace === null || namespace === void 0 ? void 0 : namespace.rooms) === null || _a === void 0 ? void 0 : _a.find(room => room.name === name)) || null;
+            var namespace = state$.value.Core.WebSocket[action.payload.namespace];
+            var room = ((_a = namespace === null || namespace === void 0 ? void 0 : namespace.rooms) === null || _a === void 0 ? void 0 : _a.find(function (room) { return room.name === name; })) || null;
             room.isJoining = false;
             room.hasJoined = true;
             return room;
-        }), switchMap(roomState => of(Action.webSocketJoinRoomSuccessAction(roomState))), catchError(err => {
-            const update = {
+        }), (0, operators_1.switchMap)(function (roomState) {
+            return (0, rxjs_1.of)(Action.webSocketJoinRoomSuccessAction(roomState));
+        }), (0, operators_1.catchError)(function (err) {
+            var update = {
                 name: action.payload.name,
                 error: err.error.message,
                 hasJoined: false,
                 isJoining: false,
                 namespace: action.payload.namespace,
             };
-            const error = {
+            var error = {
                 response: {
                     data: {
                         message: err.error.message,
@@ -36,10 +59,10 @@ const joinRoomLoading = (action$, state$) => {
                 config: err.error.config,
                 message: err.error.message,
                 isAxiosError: true,
-                toJSON: () => err.error.message,
+                toJSON: function () { return err.error.message; },
             };
-            return of(Action.webSocketJoinRoomFailureAction(update), Action.addNotification({
-                id: uuid(),
+            return (0, rxjs_1.of)(Action.webSocketJoinRoomFailureAction(update), Action.addNotification({
+                id: (0, uuid_1.v4)(),
                 title: 'Error',
                 subtitle: 'Join Room (' + action.payload.name + ')',
                 content: error.message,
@@ -48,4 +71,4 @@ const joinRoomLoading = (action$, state$) => {
         }));
     }));
 };
-export default joinRoomLoading;
+exports.default = joinRoomLoading;

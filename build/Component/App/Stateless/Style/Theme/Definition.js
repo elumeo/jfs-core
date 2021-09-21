@@ -1,7 +1,28 @@
-import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
-import * as Color from '../../../../../Constant/Color';
-import { grey } from '@material-ui/core/colors';
-const definition = responsiveFontSizes(createTheme({
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var styles_1 = require("@material-ui/core/styles");
+var Color = __importStar(require("../../../../../Constant/Color"));
+var colors_1 = require("@material-ui/core/colors");
+var definition = (0, styles_1.responsiveFontSizes)((0, styles_1.createTheme)({
     props: {
         MuiCircularProgress: {
             color: 'secondary',
@@ -15,10 +36,10 @@ const definition = responsiveFontSizes(createTheme({
         primary: Color.primary,
         secondary: Color.apatith,
         text: {
-            primary: grey[900],
-            secondary: grey[700],
-            disabled: grey[500],
-            hint: grey[300],
+            primary: colors_1.grey[900],
+            secondary: colors_1.grey[700],
+            disabled: colors_1.grey[500],
+            hint: colors_1.grey[300],
         },
         action: {
             hover: 'rgba(0, 0, 0, 0.12)',
@@ -110,4 +131,4 @@ definition.overrides = {
         }
     }
 };
-export default definition;
+exports.default = definition;

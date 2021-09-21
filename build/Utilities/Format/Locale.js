@@ -1,8 +1,12 @@
-export let locale = 'en-GB';
-export const setLocale = (next) => {
-    locale = next;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mapLanguageToLocale = exports.mapProductLanguageToLocale = exports.setLocale = exports.locale = void 0;
+exports.locale = 'en-GB';
+var setLocale = function (next) {
+    exports.locale = next;
 };
-export const mapProductLanguageToLocale = (productLanguage) => {
+exports.setLocale = setLocale;
+var mapProductLanguageToLocale = function (productLanguage) {
     switch (productLanguage) {
         case 'en':
             return 'en_gb';
@@ -19,7 +23,8 @@ export const mapProductLanguageToLocale = (productLanguage) => {
             return 'de_de';
     }
 };
-export const mapLanguageToLocale = (language) => {
+exports.mapProductLanguageToLocale = mapProductLanguageToLocale;
+var mapLanguageToLocale = function (language) {
     if (language === 'de') {
         return 'de-DE';
     }
@@ -33,3 +38,4 @@ export const mapLanguageToLocale = (language) => {
         return null;
     }
 };
+exports.mapLanguageToLocale = mapLanguageToLocale;

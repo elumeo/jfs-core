@@ -1,29 +1,35 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import CardActions from '@material-ui/core/CardActions';
-import { useSnackbar } from 'notistack';
-import { useIntl } from 'react-intl';
-const DefaultNotificationCard = ({ notification: { title, subtitle, content, action, id, isTranslationId = false, httpDetails, timeStamp }, temporary, }) => {
-    const snackbar = useSnackbar();
-    const { formatMessage, formatDate, formatTime } = useIntl();
-    return (React.createElement(React.Fragment, null,
-        React.createElement(Box, { color: 'inherit' },
-            title && (React.createElement(Typography, { variant: 'h6', component: 'div' }, isTranslationId ? formatMessage({ id: title }) : title)),
-            subtitle && (React.createElement(Typography, { variant: 'subtitle1', component: 'div' }, isTranslationId
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_1 = __importDefault(require("react"));
+var Typography_1 = __importDefault(require("@material-ui/core/Typography"));
+var Box_1 = __importDefault(require("@material-ui/core/Box"));
+var CardActions_1 = __importDefault(require("@material-ui/core/CardActions"));
+var notistack_1 = require("notistack");
+var react_intl_1 = require("react-intl");
+var DefaultNotificationCard = function (_a) {
+    var _b = _a.notification, title = _b.title, subtitle = _b.subtitle, content = _b.content, action = _b.action, id = _b.id, _c = _b.isTranslationId, isTranslationId = _c === void 0 ? false : _c, httpDetails = _b.httpDetails, timeStamp = _b.timeStamp, temporary = _a.temporary;
+    var snackbar = (0, notistack_1.useSnackbar)();
+    var _d = (0, react_intl_1.useIntl)(), formatMessage = _d.formatMessage, formatDate = _d.formatDate, formatTime = _d.formatTime;
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(Box_1.default, { color: 'inherit' },
+            title && (react_1.default.createElement(Typography_1.default, { variant: 'h6', component: 'div' }, isTranslationId ? formatMessage({ id: title }) : title)),
+            subtitle && (react_1.default.createElement(Typography_1.default, { variant: 'subtitle1', component: 'div' }, isTranslationId
                 ? formatMessage({ id: subtitle })
                 : subtitle)),
-            content && (React.createElement(Typography, { variant: 'body2', component: 'div' }, isTranslationId
+            content && (react_1.default.createElement(Typography_1.default, { variant: 'body2', component: 'div' }, isTranslationId
                 ? formatMessage({ id: content })
                 : content)),
             (httpDetails || timeStamp) &&
-                React.createElement(Box, { pt: 0.5 },
-                    httpDetails && React.createElement(Typography, { variant: 'caption', component: 'div' }, httpDetails),
+                react_1.default.createElement(Box_1.default, { pt: 0.5 },
+                    httpDetails && react_1.default.createElement(Typography_1.default, { variant: 'caption', component: 'div' }, httpDetails),
                     timeStamp &&
-                        React.createElement(Typography, { variant: 'caption', component: 'div' },
+                        react_1.default.createElement(Typography_1.default, { variant: 'caption', component: 'div' },
                             formatDate(timeStamp, { dateStyle: 'medium' }),
                             "\u00A0",
                             formatTime(timeStamp, { timeStyle: 'medium' })))),
-        !temporary && action && React.createElement(CardActions, null, action(snackbar, id, temporary))));
+        !temporary && action && react_1.default.createElement(CardActions_1.default, null, action(snackbar, id, temporary))));
 };
-export default DefaultNotificationCard;
+exports.default = DefaultNotificationCard;

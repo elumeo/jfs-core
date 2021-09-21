@@ -1,14 +1,17 @@
-import { PhoneNumberUtil, PhoneNumberFormat } from 'google-libphonenumber';
-export const formatPhone = (msisdn, backendRegion) => {
-    const phoneUtil = PhoneNumberUtil.getInstance();
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.correctCountryCode = exports.formatPhone = void 0;
+var google_libphonenumber_1 = require("google-libphonenumber");
+var formatPhone = function (msisdn, backendRegion) {
+    var phoneUtil = google_libphonenumber_1.PhoneNumberUtil.getInstance();
     if (msisdn) {
-        const defaultCountry = correctCountryCode(backendRegion);
+        var defaultCountry = (0, exports.correctCountryCode)(backendRegion);
         try {
-            const phoneNumber = phoneUtil.parse(msisdn, defaultCountry);
+            var phoneNumber = phoneUtil.parse(msisdn, defaultCountry);
             if (phoneNumber && phoneUtil.isValidNumber(phoneNumber)) {
                 return phoneUtil.format(phoneNumber, phoneUtil.getRegionCodeForNumber(phoneNumber) !== defaultCountry
-                    ? PhoneNumberFormat.INTERNATIONAL
-                    : PhoneNumberFormat.NATIONAL);
+                    ? google_libphonenumber_1.PhoneNumberFormat.INTERNATIONAL
+                    : google_libphonenumber_1.PhoneNumberFormat.NATIONAL);
             }
         }
         catch (e) {
@@ -17,7 +20,8 @@ export const formatPhone = (msisdn, backendRegion) => {
     }
     return msisdn;
 };
-export const correctCountryCode = (countryCode) => {
+exports.formatPhone = formatPhone;
+var correctCountryCode = function (countryCode) {
     if (!countryCode || countryCode.length == 0) {
         return 'DE';
     }
@@ -27,3 +31,4 @@ export const correctCountryCode = (countryCode) => {
     }
     return countryCode;
 };
+exports.correctCountryCode = correctCountryCode;

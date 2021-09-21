@@ -1,7 +1,12 @@
-import React from 'react';
-const useSeverity = (toast) => {
-    const [severity, setSeverity] = React.useState('info');
-    React.useEffect(() => {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_1 = __importDefault(require("react"));
+var useSeverity = function (toast) {
+    var _a = react_1.default.useState('info'), severity = _a[0], setSeverity = _a[1];
+    react_1.default.useEffect(function () {
         if (toast === null || toast === void 0 ? void 0 : toast.isSuccess) {
             setSeverity('success');
         }
@@ -14,4 +19,4 @@ const useSeverity = (toast) => {
     }, [JSON.stringify(toast)]);
     return severity;
 };
-export default useSeverity;
+exports.default = useSeverity;

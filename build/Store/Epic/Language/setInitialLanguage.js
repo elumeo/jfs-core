@@ -1,10 +1,39 @@
-import { of } from 'rxjs';
-import { filter, concatMap } from 'rxjs/operators';
-import { isActionOf } from 'typesafe-actions';
-import Cookie from 'js-cookie';
-import * as Action from '../../Action';
-const setInitialLanguage = (action$, state$) => action$.pipe(filter(isActionOf(Action.configLoadedAction)), concatMap(({ payload: { config } }) => of(Action.changeLanguageAction(state$.value.Core.Language.language ||
-    Cookie.get('lang') ||
-    config.Language ||
-    'en'), Action.loadSession())));
-export default setInitialLanguage;
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var rxjs_1 = require("rxjs");
+var operators_1 = require("rxjs/operators");
+var typesafe_actions_1 = require("typesafe-actions");
+var js_cookie_1 = __importDefault(require("js-cookie"));
+var Action = __importStar(require("../../Action"));
+var setInitialLanguage = function (action$, state$) {
+    return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.configLoadedAction)), (0, operators_1.concatMap)(function (_a) {
+        var config = _a.payload.config;
+        return (0, rxjs_1.of)(Action.changeLanguageAction(state$.value.Core.Language.language ||
+            js_cookie_1.default.get('lang') ||
+            config.Language ||
+            'en'), Action.loadSession());
+    }));
+};
+exports.default = setInitialLanguage;

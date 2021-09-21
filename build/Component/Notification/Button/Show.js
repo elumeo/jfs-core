@@ -1,30 +1,39 @@
-import React from 'react';
-import { createPortal } from 'react-dom';
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import Popper from '@material-ui/core/Popper';
-import Popover from '@material-ui/core/Popover';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import NotificationOverlay from '../../Notification/Overlay';
-import { useSnackbar } from 'notistack';
-import { useSelector } from '../../../Types/Redux';
-const ShowButton = ({ keepOpenOnOutsideClick }) => {
-    const [anchorRef, setAnchorRef] = React.useState(null);
-    const buttonRef = React.useRef();
-    const open = Boolean(anchorRef);
-    const id = open ? 'notification-popper' : undefined;
-    const all = useSelector(state => state.Core.Notification.history);
-    const snackbar = useSnackbar();
-    React.useEffect(() => {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_1 = __importDefault(require("react"));
+var react_dom_1 = require("react-dom");
+var IconButton_1 = __importDefault(require("@material-ui/core/IconButton"));
+var Badge_1 = __importDefault(require("@material-ui/core/Badge"));
+var Popper_1 = __importDefault(require("@material-ui/core/Popper"));
+var Popover_1 = __importDefault(require("@material-ui/core/Popover"));
+var Notifications_1 = __importDefault(require("@material-ui/icons/Notifications"));
+var Overlay_1 = __importDefault(require("../../Notification/Overlay"));
+var notistack_1 = require("notistack");
+var Redux_1 = require("../../../Types/Redux");
+var ShowButton = function (_a) {
+    var keepOpenOnOutsideClick = _a.keepOpenOnOutsideClick;
+    var _b = react_1.default.useState(null), anchorRef = _b[0], setAnchorRef = _b[1];
+    var buttonRef = react_1.default.useRef();
+    var open = Boolean(anchorRef);
+    var id = open ? 'notification-popper' : undefined;
+    var all = (0, Redux_1.useSelector)(function (state) { return state.Core.Notification.history; });
+    var snackbar = (0, notistack_1.useSnackbar)();
+    react_1.default.useEffect(function () {
         if (open) {
-            all.forEach(({ id }) => snackbar.closeSnackbar(id));
+            all.forEach(function (_a) {
+                var id = _a.id;
+                return snackbar.closeSnackbar(id);
+            });
         }
     }, [open]);
-    return (React.createElement(React.Fragment, null,
-        React.createElement(IconButton, { color: 'inherit', ref: buttonRef, "aria-describedby": id, onClick: () => setAnchorRef(open ? null : buttonRef.current) },
-            React.createElement(Badge, { badgeContent: all.length, color: 'secondary' },
-                React.createElement(NotificationsIcon, null))),
-        createPortal(keepOpenOnOutsideClick ? (React.createElement(Popper, { open: open, placement: 'bottom-end', id: id, anchorEl: anchorRef, modifiers: {
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(IconButton_1.default, { color: 'inherit', ref: buttonRef, "aria-describedby": id, onClick: function () { return setAnchorRef(open ? null : buttonRef.current); } },
+            react_1.default.createElement(Badge_1.default, { badgeContent: all.length, color: 'secondary' },
+                react_1.default.createElement(Notifications_1.default, null))),
+        (0, react_dom_1.createPortal)(keepOpenOnOutsideClick ? (react_1.default.createElement(Popper_1.default, { open: open, placement: 'bottom-end', id: id, anchorEl: anchorRef, modifiers: {
                 flip: {
                     enabled: true,
                 },
@@ -37,10 +46,10 @@ const ShowButton = ({ keepOpenOnOutsideClick }) => {
                     element: anchorRef,
                 },
             } },
-            React.createElement(NotificationOverlay, null))) : (React.createElement(Popover, { open: open, anchorEl: anchorRef, anchorOrigin: {
+            react_1.default.createElement(Overlay_1.default, null))) : (react_1.default.createElement(Popover_1.default, { open: open, anchorEl: anchorRef, anchorOrigin: {
                 vertical: 'bottom',
                 horizontal: 'right',
-            }, onClose: () => setAnchorRef(null) },
-            React.createElement(NotificationOverlay, null))), document.getElementById('overlay'))));
+            }, onClose: function () { return setAnchorRef(null); } },
+            react_1.default.createElement(Overlay_1.default, null))), document.getElementById('overlay'))));
 };
-export default ShowButton;
+exports.default = ShowButton;

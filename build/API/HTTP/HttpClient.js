@@ -1,3 +1,34 @@
+"use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,20 +38,52 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import axios from 'axios';
-import * as Token from '../LOCAL_STORAGE/Token';
-const catchUnauthorized = (url, error) => {
-    const isUnauthorized = (error.isAxiosError &&
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.HttpClient = void 0;
+var axios_1 = __importDefault(require("axios"));
+var Token = __importStar(require("../LOCAL_STORAGE/Token"));
+var catchUnauthorized = function (url, error) {
+    var isUnauthorized = (error.isAxiosError &&
         error.response.status === 401);
-    const isGetCurrentSessionFrontend = (error.isAxiosError &&
+    var isGetCurrentSessionFrontend = (error.isAxiosError &&
         ['GET', 'get'].includes(error.config.method) &&
         url.startsWith('/session') &&
         url.split('/').length === 3);
-    const isLoginFrontend = (error.isAxiosError &&
+    var isLoginFrontend = (error.isAxiosError &&
         ['POST', 'post'].includes(error.config.method) &&
         url.startsWith('/session') &&
         url.split('/').length === 3);
-    const isBlacklisted = isGetCurrentSessionFrontend || isLoginFrontend;
+    var isBlacklisted = isGetCurrentSessionFrontend || isLoginFrontend;
     if (isUnauthorized && !isBlacklisted) {
         Token.removeToken();
         location.reload();
@@ -29,68 +92,113 @@ const catchUnauthorized = (url, error) => {
         throw error;
     }
 };
-export class HttpClient {
-    static createInstance(axiosConfig) {
-        return axios.create(Object.assign(Object.assign({}, HttpClient.generateAxiosConfig()), (axiosConfig || {})));
+var HttpClient = /** @class */ (function () {
+    function HttpClient() {
     }
-    static get(url, config = {}) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield HttpClient.createInstance().get(url, config);
-            }
-            catch (error) {
-                catchUnauthorized(url, error);
-                return null;
-            }
+    HttpClient.createInstance = function (axiosConfig) {
+        return axios_1.default.create(__assign(__assign({}, HttpClient.generateAxiosConfig()), (axiosConfig || {})));
+    };
+    HttpClient.get = function (url, config) {
+        if (config === void 0) { config = {}; }
+        return __awaiter(this, void 0, void 0, function () {
+            var error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, HttpClient.createInstance().get(url, config)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                    case 2:
+                        error_1 = _a.sent();
+                        catchUnauthorized(url, error_1);
+                        return [2 /*return*/, null];
+                    case 3: return [2 /*return*/];
+                }
+            });
         });
-    }
-    static post(url, data, config = {}) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield HttpClient.createInstance().post(url, data, config);
-            }
-            catch (error) {
-                catchUnauthorized(url, error);
-                return null;
-            }
+    };
+    HttpClient.post = function (url, data, config) {
+        if (config === void 0) { config = {}; }
+        return __awaiter(this, void 0, void 0, function () {
+            var error_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, HttpClient.createInstance().post(url, data, config)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                    case 2:
+                        error_2 = _a.sent();
+                        catchUnauthorized(url, error_2);
+                        return [2 /*return*/, null];
+                    case 3: return [2 /*return*/];
+                }
+            });
         });
-    }
-    static put(url, data, config = {}) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield HttpClient.createInstance().put(url, data, config);
-            }
-            catch (error) {
-                catchUnauthorized(url, error);
-                return null;
-            }
+    };
+    HttpClient.put = function (url, data, config) {
+        if (config === void 0) { config = {}; }
+        return __awaiter(this, void 0, void 0, function () {
+            var error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, HttpClient.createInstance().put(url, data, config)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                    case 2:
+                        error_3 = _a.sent();
+                        catchUnauthorized(url, error_3);
+                        return [2 /*return*/, null];
+                    case 3: return [2 /*return*/];
+                }
+            });
         });
-    }
-    static patch(url, data, config = {}) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield HttpClient.createInstance().patch(url, data, config);
-            }
-            catch (error) {
-                catchUnauthorized(url, error);
-                return null;
-            }
+    };
+    HttpClient.patch = function (url, data, config) {
+        if (config === void 0) { config = {}; }
+        return __awaiter(this, void 0, void 0, function () {
+            var error_4;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, HttpClient.createInstance().patch(url, data, config)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                    case 2:
+                        error_4 = _a.sent();
+                        catchUnauthorized(url, error_4);
+                        return [2 /*return*/, null];
+                    case 3: return [2 /*return*/];
+                }
+            });
         });
-    }
-    static delete(url, data, config = {}) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                // Because Axios does not allow data body during delete request we have to put this in the config as a workaround
-                // @See: https://github.com/axios/axios/issues/736
-                return yield HttpClient.createInstance(config).delete(url, Object.assign(Object.assign({}, config), { data }));
-            }
-            catch (error) {
-                catchUnauthorized(url, error);
-                return null;
-            }
+    };
+    HttpClient.delete = function (url, data, config) {
+        if (config === void 0) { config = {}; }
+        return __awaiter(this, void 0, void 0, function () {
+            var error_5;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, HttpClient.createInstance(config).delete(url, __assign(__assign({}, config), { data: data }))];
+                    case 1: 
+                    // Because Axios does not allow data body during delete request we have to put this in the config as a workaround
+                    // @See: https://github.com/axios/axios/issues/736
+                    return [2 /*return*/, _a.sent()];
+                    case 2:
+                        error_5 = _a.sent();
+                        catchUnauthorized(url, error_5);
+                        return [2 /*return*/, null];
+                    case 3: return [2 /*return*/];
+                }
+            });
         });
-    }
-}
-HttpClient.setConfigGenerator = (generateAxiosConfig) => {
-    HttpClient.generateAxiosConfig = generateAxiosConfig;
-};
+    };
+    HttpClient.setConfigGenerator = function (generateAxiosConfig) {
+        HttpClient.generateAxiosConfig = generateAxiosConfig;
+    };
+    return HttpClient;
+}());
+exports.HttpClient = HttpClient;
