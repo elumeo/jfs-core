@@ -1,4 +1,5 @@
 import { Config } from '@jest/types';
+import path from 'path';
 import { pathsToModuleNameMapper } from 'ts-jest/utils';
 import tsconfig from './tsconfig.json';
 
@@ -7,7 +8,9 @@ const config: Config.InitialOptions = {
   preset: 'ts-jest',
   modulePathIgnorePatterns: ['build'],
   moduleFileExtensions: ['js', 'ts', 'tsx'],
-  moduleNameMapper: pathsToModuleNameMapper(tsconfig.compilerOptions.paths),
+  moduleNameMapper: pathsToModuleNameMapper(tsconfig.compilerOptions.paths, {
+    prefix: path.resolve(__dirname, 'src')
+  }),
   setupFilesAfterEnv: [
     './setup.ts'
   ]

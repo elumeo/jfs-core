@@ -5,6 +5,7 @@ import Title from './Title';
 
 export type Props = StatefulProps & {
   allowRobotLogin?: boolean;
+  packageJSON: Record<string, unknown>;
   translations: Record<string, Record<string, string>>;
   title?: string;
 };
@@ -17,17 +18,31 @@ const App: React.FC<Props> = ({
   title,
   store,
 }) => (
-  <Stateless>
+  <Stateful store={store}>
     <Title
       value={title || (packageJSON.name as string)}/>
-    <Stateful
-      store={store}
-      allowRobotLogin={allowRobotLogin}
-      packageJSON={packageJSON}
-      translations={translations}>
-      {children}
-    </Stateful>
-  </Stateless>
+    <Stateful.Initialized>
+      <Stateful.International translations={translations}>
+        {({ locale }) => (
+          <Stateless
+            locale={locale}
+            messages={translations[locale]}>
+            <Stateful.Snackbar>
+              {children}
+            </Stateful.Snackbar>
+          </Stateless>
+        )}
+      </Stateful.International>
+    </Stateful.Initialized>
+    <Stateful.Uninitialized>
+      <Stateless.Style>
+        <Stateful.Initializer
+          allowRobotLogin={allowRobotLogin}
+          packageJSON={packageJSON}
+          translations={translations}/>
+      </Stateless.Style>
+    </Stateful.Uninitialized>
+  </Stateful>
 );
 
 export default App;

@@ -1,7 +1,14 @@
 import React from 'react';
+import { CircularProgress, Box } from '@material-ui/core';
 import useActions from 'Store/useActions';
-import useSelector from 'Store/useSelector';
-import Progress from './Progress';
+
+const style: React.CSSProperties = {
+  width: '100vw',
+  height: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
 
 export type Props = {
   allowRobotLogin: boolean;
@@ -9,11 +16,9 @@ export type Props = {
   translations: Record<string, Record<string, string>>;
 };
 
-const Initialized: React.FC<Props> = ({
-  allowRobotLogin, packageJSON, translations, children
+const Initializer: React.FC<Props> = ({
+  allowRobotLogin, packageJSON, translations
 }) => {
-  const initialized = useSelector(state => state.Core.App.appInitialized);
-
   const { initializeApp } = useActions();
 
   React.useEffect(
@@ -28,10 +33,10 @@ const Initialized: React.FC<Props> = ({
   );
 
   return (
-    initialized
-      ? <>{children}</>
-      : <Progress/>
+    <Box style={style}>
+      <CircularProgress />
+    </Box>
   );
 }
 
-export default Initialized;
+export default Initializer;

@@ -3,40 +3,39 @@ import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import WebSocket from './WebSocket';
 import Router from './Router';
-import Initialized from './Initialized';
+import Initializer from './Initializer';
 import International from './International';
 import Snackbar from './Snackbar';
+import Initialized from './Initialized';
+import Uninitialized from './Uninitialized';
 
 export type Props = {
   store: Store;
-  translations: Record<string, Record<string, string>>;
-  packageJSON: Record<string, unknown>;
-  allowRobotLogin?: boolean;
 };
 
-const Stateful: React.FC<Props> = ({
+const Stateful: React.FC<Props> & {
+  Snackbar: typeof Snackbar;
+  Initializer: typeof Initializer;
+  International: typeof International;
+  Initialized: typeof Initialized;
+  Uninitialized: typeof Uninitialized;
+} = ({
   store,
-  translations,
-  allowRobotLogin,
-  packageJSON,
   children,
 }) => (
   <Provider store={store}>
     <WebSocket>
       <Router>
-        <Initialized
-          allowRobotLogin={allowRobotLogin}
-          packageJSON={packageJSON}
-          translations={translations}>
-          <International translations={translations}>
-            <Snackbar>
-              {children}
-            </Snackbar>
-          </International>
-        </Initialized>
+        {children}
       </Router>
     </WebSocket>
   </Provider>
 );
+
+Stateful.Snackbar = Snackbar;
+Stateful.Initializer = Initializer;
+Stateful.International = International;
+Stateful.Initialized = Initialized;
+Stateful.Uninitialized = Uninitialized;
 
 export default Stateful;

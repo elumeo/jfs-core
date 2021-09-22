@@ -3,10 +3,22 @@ import * as Table from './Table';
 import { dirname } from 'path';
 import * as File from './File';
 import open from 'open';
+import { resolve } from 'path';
+import * as Locale from './Locale';
 
 export const run = async (path: string) => {
   const base = dirname(path);
-  const translations = await File.json(base);
+
+  const locales = await Locale.all(resolve(base, 'Locale'));
+
+  const translations = locales.reduce(
+    (translations, locale) => ({
+      ...translations,
+      [locale.name]: locale.messages,
+    }),
+    {}
+  );
+
   const missing = Table.missing(translations);
 
   const last = await Snapshot.last(base);

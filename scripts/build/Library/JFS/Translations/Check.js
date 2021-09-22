@@ -37,9 +37,12 @@ const Table = __importStar(require("./Table"));
 const path_1 = require("path");
 const File = __importStar(require("./File"));
 const open_1 = __importDefault(require("open"));
+const path_2 = require("path");
+const Locale = __importStar(require("./Locale"));
 const run = (path) => __awaiter(void 0, void 0, void 0, function* () {
     const base = path_1.dirname(path);
-    const translations = yield File.json(base);
+    const locales = yield Locale.all(path_2.resolve(base, 'Locale'));
+    const translations = locales.reduce((translations, locale) => (Object.assign(Object.assign({}, translations), { [locale.name]: locale.messages })), {});
     const missing = Table.missing(translations);
     const last = yield Snapshot.last(base);
     const version = Snapshot.Version.next(last.version);

@@ -5,10 +5,13 @@ import { generateImage } from 'jsdom-screenshot';
 import React from 'react';
 import Stateless from 'Component/App/Stateless';
 import HelloWorld from './HelloWorld';
+import de from 'Setup/Locale/de.json';
 
 test('Pixels match', async () => {
   render(
-    <Stateless>
+    <Stateless
+      locale='de'
+      messages={de}>
       <HelloWorld/>
     </Stateless>
   );
