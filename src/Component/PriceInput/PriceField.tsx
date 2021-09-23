@@ -16,12 +16,14 @@ type Props = {
   value: React.ReactText;
   min?: number;
   max?: number;
+  showDecimals?: boolean
 } & Partial<StandardTextFieldProps>;
 
 const PriceField: React.FC<Props> = ({
   currency = useCurrency(),
   value = 0.0,
   selectOnFocus = true,
+  showDecimals = false,
   ...props
 }) => {
   const [_focused, setFocused] = React.useState(props.focused);
@@ -43,18 +45,19 @@ const PriceField: React.FC<Props> = ({
 
   return _focused ? (
     <Editor
-      {...props}
       value={value}
       onChange={props.onChange}
       onBlur={_onBlur}
       selectOnFocus={selectOnFocus}
+      {...props}
     />
   ) : (
     <Display
-      {...props}
       value={value}
       onChange={props.onChange}
+      showDecimals={showDecimals}
       onFocus={_onFocus}
+      {...props}
     />
   );
 };

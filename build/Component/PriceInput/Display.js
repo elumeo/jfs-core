@@ -50,9 +50,16 @@ var useCurrency_1 = __importDefault(require("../../Effect/useCurrency"));
 var Format_1 = require("../../Utilities/Format");
 var Display = function (_a) {
     var _b;
-    var _c = _a.currency, currency = _c === void 0 ? (0, useCurrency_1.default)() : _c, _d = _a.value, value = _d === void 0 ? 0.0 : _d, props = __rest(_a, ["currency", "value"]);
-    var sanitized = react_1.default.useMemo(function () { return Format_1.Currency.formatDisplay(value); }, [value]);
-    var display = react_1.default.useMemo(function () { return Format_1.Currency.getCurrency(currency, parseFloat(sanitized), true, false); }, [sanitized, currency]);
+    var _c = _a.currency, currency = _c === void 0 ? (0, useCurrency_1.default)() : _c, _d = _a.value, value = _d === void 0 ? 0.0 : _d, showDecimals = _a.showDecimals, min = _a.min, max = _a.max, props = __rest(_a, ["currency", "value", "showDecimals", "min", "max"]);
+    var sanitized = react_1.default.useMemo(function () {
+        return Format_1.Currency.formatDisplay(value, min, max);
+    }, [value, min, max]);
+    react_1.default.useEffect(function () {
+        props === null || props === void 0 ? void 0 : props.onChange({ target: { value: sanitized } });
+    }, [sanitized]);
+    var display = react_1.default.useMemo(function () {
+        return Format_1.Currency.getCurrency(currency, parseFloat(sanitized), true, false, showDecimals);
+    }, [sanitized, currency, showDecimals]);
     return (react_1.default.createElement(core_1.TextField, __assign({}, props, { value: display, InputProps: (_b = {},
             _b[currency.toLowerCase() === 'eur'
                 ? 'endAdornment'

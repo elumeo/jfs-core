@@ -49,8 +49,8 @@ var useCurrency_1 = __importDefault(require("../../Effect/useCurrency"));
 var Editor_1 = __importDefault(require("./Editor"));
 var Display_1 = __importDefault(require("./Display"));
 var PriceField = function (_a) {
-    var _b = _a.currency, currency = _b === void 0 ? (0, useCurrency_1.default)() : _b, _c = _a.value, value = _c === void 0 ? 0.0 : _c, _d = _a.selectOnFocus, selectOnFocus = _d === void 0 ? true : _d, props = __rest(_a, ["currency", "value", "selectOnFocus"]);
-    var _e = react_1.default.useState(props.focused), _focused = _e[0], setFocused = _e[1];
+    var _b = _a.currency, currency = _b === void 0 ? (0, useCurrency_1.default)() : _b, _c = _a.value, value = _c === void 0 ? 0.0 : _c, _d = _a.selectOnFocus, selectOnFocus = _d === void 0 ? true : _d, _e = _a.showDecimals, showDecimals = _e === void 0 ? false : _e, props = __rest(_a, ["currency", "value", "selectOnFocus", "showDecimals"]);
+    var _f = react_1.default.useState(props.focused), _focused = _f[0], setFocused = _f[1];
     var _onBlur = react_1.default.useCallback(function (e) {
         var _a;
         (_a = props === null || props === void 0 ? void 0 : props.onBlur) === null || _a === void 0 ? void 0 : _a.call(props, e);
@@ -61,6 +61,6 @@ var PriceField = function (_a) {
         setFocused(true);
         (_a = props === null || props === void 0 ? void 0 : props.onFocus) === null || _a === void 0 ? void 0 : _a.call(props, e);
     }, [setFocused, selectOnFocus, props === null || props === void 0 ? void 0 : props.onFocus]);
-    return _focused ? (react_1.default.createElement(Editor_1.default, __assign({}, props, { value: value, onChange: props.onChange, onBlur: _onBlur, selectOnFocus: selectOnFocus }))) : (react_1.default.createElement(Display_1.default, __assign({}, props, { value: value, onChange: props.onChange, onFocus: _onFocus })));
+    return _focused ? (react_1.default.createElement(Editor_1.default, __assign({ value: value, onChange: props.onChange, onBlur: _onBlur, selectOnFocus: selectOnFocus }, props))) : (react_1.default.createElement(Display_1.default, __assign({ value: value, onChange: props.onChange, showDecimals: showDecimals, onFocus: _onFocus }, props)));
 };
 exports.default = (0, react_1.memo)(PriceField);

@@ -48,7 +48,6 @@ for (let i = 0; i < 200; i += 1) {
 const Develop: React.FC = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
-
   return (
     <Box>
       <Button onClick={() => dispatch(Action.addNotification({
@@ -180,7 +179,7 @@ const Develop: React.FC = () => {
       <Box m={1}>
         <Card>
           <CardContent style={{ height: 300 }}>
-            <TableContainer style={{maxHeight: 300}}>
+            <TableContainer style={{ maxHeight: 300 }}>
               <Table stickyHeader>
                 <TableHead>
                   <TableRow>

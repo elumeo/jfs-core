@@ -51,21 +51,15 @@ var Format_1 = require("../../Utilities/Format");
 var Editor = function (_a) {
     var _b;
     var _c = _a.currency, currency = _c === void 0 ? (0, useCurrency_1.default)() : _c, _d = _a.value, value = _d === void 0 ? 0.0 : _d, _e = _a.selectOnFocus, selectOnFocus = _e === void 0 ? true : _e, _f = _a.min, min = _f === void 0 ? null : _f, _g = _a.max, max = _g === void 0 ? null : _g, props = __rest(_a, ["currency", "value", "selectOnFocus", "min", "max"]);
-    var sanitized = react_1.default.useMemo(function () { return Format_1.Currency.formatDisplay(value, min, max); }, [value, min, max]);
     var onFocus = react_1.default.useCallback(function (e) {
         if (selectOnFocus) {
             e.target.select();
         }
     }, [selectOnFocus]);
-    var _onBlur = function (e) {
-        var _a, _b;
-        (_a = props === null || props === void 0 ? void 0 : props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, { target: { value: sanitized } });
-        (_b = props === null || props === void 0 ? void 0 : props.onBlur) === null || _b === void 0 ? void 0 : _b.call(props, e);
-    };
-    return (react_1.default.createElement(core_1.TextField, __assign({}, props, { value: value, autoFocus: true, onFocus: onFocus, onBlur: _onBlur, InputProps: (_b = {},
+    return (react_1.default.createElement(core_1.TextField, __assign({ value: value, autoFocus: true, onFocus: onFocus, type: 'number', InputProps: (_b = {},
             _b[currency.toLowerCase() === 'eur'
                 ? 'endAdornment'
                 : 'startAdornment'] = (react_1.default.createElement(core_1.InputAdornment, { position: currency.toLowerCase() === 'eur' ? 'end' : 'start', style: { userSelect: 'none' } }, Format_1.Currency.getCurrencySign(currency))),
-            _b) })));
+            _b) }, props)));
 };
 exports.default = (0, react_1.memo)(Editor);

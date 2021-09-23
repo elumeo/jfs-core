@@ -23,10 +23,6 @@ const Editor: React.FC<Props> = ({
   max = null,
   ...props
 }) => {
-  const sanitized = React.useMemo(
-    () => Currency.formatDisplay(value, min, max),
-    [value, min, max],
-  );
   const onFocus = React.useCallback(
     e => {
       if (selectOnFocus) {
@@ -35,31 +31,25 @@ const Editor: React.FC<Props> = ({
     },
     [selectOnFocus],
   );
-  const _onBlur: StandardTextFieldProps['onBlur'] = e => {
-    props?.onChange?.({ target: { value: sanitized } } as React.ChangeEvent<
-      HTMLInputElement
-    >);
-    props?.onBlur?.(e);
-  };
 
   return (
     <TextField
-      {...props}
       value={value}
       autoFocus
       onFocus={onFocus}
-      onBlur={_onBlur}
+      type={'number'}
       InputProps={{
         [currency.toLowerCase() === 'eur'
           ? 'endAdornment'
           : 'startAdornment']: (
-          <InputAdornment
-            position={currency.toLowerCase() === 'eur' ? 'end' : 'start'}
-            style={{ userSelect: 'none' }}>
-            {Currency.getCurrencySign(currency)}
-          </InputAdornment>
-        ),
+            <InputAdornment
+              position={currency.toLowerCase() === 'eur' ? 'end' : 'start'}
+              style={{ userSelect: 'none' }}>
+              {Currency.getCurrencySign(currency)}
+            </InputAdornment>
+          ),
       }}
+      {...props}
     />
   );
 };

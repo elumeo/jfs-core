@@ -6,6 +6,7 @@ declare type Props = {
     value: React.ReactText;
     min?: number;
     max?: number;
+    showDecimals?: boolean;
 } & Partial<StandardTextFieldProps>;
 declare const _default: React.NamedExoticComponent<Props>;
 export default _default;
