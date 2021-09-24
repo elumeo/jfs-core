@@ -41,6 +41,7 @@ var react_redux_1 = require("react-redux");
 var Action = __importStar(require("../Store/Action"));
 var uuid_1 = require("uuid");
 var Table_1 = require("./Table");
+var TextFieldClearButton_1 = __importDefault(require("./TextFieldClearButton"));
 var sample = [
     ['Frozen yoghurt', 159, 6.0, 24, 4.0],
     ['Ice cream sandwich', 237, 9.0, 37, 4.3],
@@ -58,6 +59,7 @@ var Develop = function () {
     var theme = (0, styles_1.useTheme)();
     var dispatch = (0, react_redux_1.useDispatch)();
     return (react_1.default.createElement(core_1.Box, null,
+        react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: console.log, iconButtonSize: 'small' }),
         react_1.default.createElement(core_1.Button, { onClick: function () { return dispatch(Action.addNotification({
                 id: (0, uuid_1.v4)(),
                 title: 'Error',

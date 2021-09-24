@@ -9,6 +9,7 @@ import * as Action from 'Store/Action';
 import { v4 as uuid } from 'uuid';
 import { VirtualizedTable } from 'Component/Table';
 import { Index } from 'react-virtualized';
+import TextFieldClearButton from 'Component/TextFieldClearButton';
 
 type DataVirtualizedTable = {
   calories: number;
@@ -50,6 +51,11 @@ const Develop: React.FC = () => {
   const dispatch = useDispatch();
   return (
     <Box>
+      <TextFieldClearButton
+        label={'Textfield'}
+        onChange={console.log}
+        iconButtonSize={'small'}
+      />
       <Button onClick={() => dispatch(Action.addNotification({
         id: uuid(),
         title: 'Error',
