@@ -19,9 +19,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Error = exports.Locale = exports.PhoneNumber = exports.Currency = exports.Text = void 0;
+exports.DateTime = exports.Error = exports.Locale = exports.PhoneNumber = exports.Currency = exports.Text = void 0;
 exports.Text = __importStar(require("./Text"));
 exports.Currency = __importStar(require("./Currency"));
 exports.PhoneNumber = __importStar(require("./PhoneNumber"));
 exports.Locale = __importStar(require("./Locale"));
 exports.Error = __importStar(require("./Error"));
+exports.DateTime = __importStar(require("./DateTime"));

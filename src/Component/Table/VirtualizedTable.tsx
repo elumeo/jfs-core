@@ -53,7 +53,7 @@ export const useStyles = makeStyles<Theme, VirtualizedTableProps>(theme =>
 // @ts-ignore
 export interface ColumnData extends ColumnProps {
   numeric?: boolean;
-  width: number | ((fullWidth: number) => number);
+  width?: number | ((fullWidth: number) => number);
 }
 
 export type VirtualizedTableProps = TableProps & {

@@ -5,7 +5,7 @@ export declare const globalStyles: (props?: any) => import("@material-ui/styles"
 export declare const useStyles: (props: VirtualizedTableProps) => import("@material-ui/styles").ClassNameMap<string>;
 export interface ColumnData extends ColumnProps {
     numeric?: boolean;
-    width: number | ((fullWidth: number) => number);
+    width?: number | ((fullWidth: number) => number);
 }
 export declare type VirtualizedTableProps = TableProps & {
     onResize?: (info: Size) => unknown;
