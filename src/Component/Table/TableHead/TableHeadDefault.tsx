@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { TableCell, TableSortLabel } from '@material-ui/core';
+import { Box, TableCell, TableSortLabel } from '@material-ui/core';
 import clsx from 'clsx';
 
 import { globalStyles } from 'Component/Table/VirtualizedTable';
@@ -24,7 +24,10 @@ export const useStyles = makeStyles((theme: Theme) => createStyles({
   tableSortRoot: {
     '&:hover': {
       color: theme.palette.secondary.main
-    }
+    },
+  },
+  sortIconRoot: {
+    alignSelf: 'flex-start'
   }
 }));
 
@@ -52,14 +55,15 @@ const TableHeadDefault = ({ headerProps }: TableHeadDefaultProps) => {
         align={headerProps.columnData.numeric || false ? 'right' : 'left'}>
         {headerProps.disableSort !== true && (
           <TableSortLabel
-            classes={{ root: classes.tableSortRoot }}
+            classes={{ root: classes.tableSortRoot, icon: classes.sortIconRoot}}
             active={headerProps.sortBy === headerProps.dataKey}
-            direction={headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc'}>
-            {headerProps.label}
+            direction={headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc'}
+          >
+            <Box>{headerProps.label}</Box>
             {headerProps.sortBy === headerProps.dataKey ? (
               <span className={classes.visuallyHidden}>
-                {headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending'}
-              </span>
+                  {headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                </span>
             ) : null}
           </TableSortLabel>
         )}

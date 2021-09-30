@@ -47,6 +47,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
 var Backspace_1 = __importDefault(require("@material-ui/icons/Backspace"));
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 var TextFieldClearButton = function (_a) {
     var onChange = _a.onChange, _b = _a.iconButtonSize, iconButtonSize = _b === void 0 ? 'medium' : _b, _c = _a.variant, variant = _c === void 0 ? 'standard' : _c, rest = __rest(_a, ["onChange", "iconButtonSize", "variant"]);
     var getIconSize = function () { return iconButtonSize === 'medium' ? 24 : 18; };

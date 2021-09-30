@@ -46,7 +46,10 @@ exports.useStyles = (0, styles_1.makeStyles)(function (theme) { return (0, style
     tableSortRoot: {
         '&:hover': {
             color: theme.palette.secondary.main
-        }
+        },
+    },
+    sortIconRoot: {
+        alignSelf: 'flex-start'
     }
 }); });
 var TableHeadDefault = function (_a) {
@@ -57,8 +60,8 @@ var TableHeadDefault = function (_a) {
         return sortDirection === 'ASC' ? 'asc' : 'desc';
     };
     return (headerProps && (react_1.default.createElement(core_1.TableCell, { component: 'div', className: (0, clsx_1.default)(globalClasses.tableCell, globalClasses.flexContainer, classes.noClick), variant: 'head', style: { height: headerProps.columnData.headerHeight }, align: headerProps.columnData.numeric || false ? 'right' : 'left' },
-        headerProps.disableSort !== true && (react_1.default.createElement(core_1.TableSortLabel, { classes: { root: classes.tableSortRoot }, active: headerProps.sortBy === headerProps.dataKey, direction: headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc' },
-            headerProps.label,
+        headerProps.disableSort !== true && (react_1.default.createElement(core_1.TableSortLabel, { classes: { root: classes.tableSortRoot, icon: classes.sortIconRoot }, active: headerProps.sortBy === headerProps.dataKey, direction: headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc' },
+            react_1.default.createElement(core_1.Box, null, headerProps.label),
             headerProps.sortBy === headerProps.dataKey ? (react_1.default.createElement("span", { className: classes.visuallyHidden }, headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending')) : null)),
         headerProps.disableSort && react_1.default.createElement("span", null, headerProps.label))));
 };
