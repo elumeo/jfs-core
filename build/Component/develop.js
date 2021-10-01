@@ -42,8 +42,9 @@ var Action = __importStar(require("../Store/Action"));
 var uuid_1 = require("uuid");
 var Table_1 = require("./Table");
 var TextFieldClearButton_1 = __importDefault(require("./TextFieldClearButton"));
+var TableCellDefault_1 = __importStar(require("./Table/TableCell/TableCellDefault"));
 var sample = [
-    ['Frozen yoghurt', 159, 6.0, 24, 4.0],
+    ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, 4.0],
     ['Ice cream sandwich', 237, 9.0, 37, 4.3],
     ['Eclair', 262, 16.0, 24, 6.0],
     ['Cupcake', 305, 3.7, 67, 4.3],
@@ -151,6 +152,7 @@ var Develop = function () {
                                 label: 'Dessert (100g serving)',
                                 dataKey: 'dessert',
                                 disableSort: true,
+                                cellRenderer: function (cellProps) { return react_1.default.createElement(TableCellDefault_1.default, { cellData: cellProps.cellData, contentEllipseMode: TableCellDefault_1.ContentEllipseMode.Lines, contentEllipseLines: 2 }); }
                             },
                             {
                                 width: 120,

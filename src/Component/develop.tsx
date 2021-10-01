@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 import React from 'react';
-import { Box, List, ListItem, Paper, Chip, ListItemIcon, ListItemText, Grid, Button, CardContent, Card, Table, TableHead, TableContainer, TableRow, TableCell, TableBody } from '@material-ui/core';
+import { Box, Button, Card, CardContent, Chip, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { AccountCircle as AccountCircleIcon, ContactPhone as ContactPhoneIcon } from '@material-ui/icons';
 import { useTheme } from '@material-ui/core/styles';
 import { getCurrency } from 'Utilities/Format/Currency';
@@ -8,8 +8,9 @@ import { useDispatch } from 'react-redux';
 import * as Action from 'Store/Action';
 import { v4 as uuid } from 'uuid';
 import { VirtualizedTable } from 'Component/Table';
-import { Index } from 'react-virtualized';
+import { Index, TableCellProps } from 'react-virtualized';
 import TextFieldClearButton from 'Component/TextFieldClearButton';
+import TableCellDefault, { ContentEllipseMode } from 'Component/Table/TableCell/TableCellDefault';
 
 type DataVirtualizedTable = {
   calories: number;
@@ -23,7 +24,7 @@ type DataVirtualizedTable = {
 type SampleVirtualizedTable = [string, number, number, number, number];
 
 const sample: SampleVirtualizedTable[] = [
-  ['Frozen yoghurt', 159, 6.0, 24, 4.0],
+  ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, 4.0],
   ['Ice cream sandwich', 237, 9.0, 37, 4.3],
   ['Eclair', 262, 16.0, 24, 6.0],
   ['Cupcake', 305, 3.7, 67, 4.3],
@@ -225,6 +226,7 @@ const Develop: React.FC = () => {
                   label: 'Dessert (100g serving)',
                   dataKey: 'dessert',
                   disableSort: true,
+                  cellRenderer: (cellProps: TableCellProps) => <TableCellDefault cellData={cellProps.cellData} contentEllipseMode={ContentEllipseMode.Lines} contentEllipseLines={2}  />
                 },
                 {
                   width: 120,

@@ -31,7 +31,7 @@ var TableCellDefault_1 = require("../../Table/TableCell/TableCellDefault");
 var TableCellLoading_1 = __importDefault(require("../../Table/TableCell/TableCellLoading"));
 var TableCellMsisdn = function (_a) {
     var cellProps = _a.cellProps, rowHeight = _a.rowHeight, _b = _a.isLoading, isLoading = _b === void 0 ? false : _b;
-    var classes = (0, TableCellDefault_1.cellStyles)();
+    var classes = (0, TableCellDefault_1.cellStyles)({});
     var globalClasses = (0, VirtualizedTable_1.globalStyles)();
     return react_1.default.createElement(react_1.default.Fragment, null,
         isLoading === false && react_1.default.createElement(core_1.TableCell, { component: 'div', className: (0, clsx_1.default)(globalClasses.tableCell, globalClasses.flexContainer), variant: 'body', style: { height: rowHeight } }, cellProps.cellData && react_1.default.createElement("span", { className: classes.wrapContent },

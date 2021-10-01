@@ -15,7 +15,7 @@ export type TableCellMsisdnProps = {
 };
 
 const TableCellMsisdn = ({ cellProps, rowHeight, isLoading = false }: TableCellMsisdnProps) => {
-  const classes = cellStyles();
+  const classes = cellStyles({});
   const globalClasses = globalStyles();
 
   return <>
