@@ -25,13 +25,14 @@
       "allowNamedFunctions": true
     }],
     "no-console": "warn",
-    "max-lines": [2, 150],
-    "no-trailing-spaces": "error",
+    "max-lines": ["warn", 150],
+    "no-trailing-spaces": "warn",
     "curly": "error",
-    "no-duplicate-imports": "error",
-    "no-irregular-whitespace": "error",
+    "no-duplicate-imports": "warn",
+    "no-irregular-whitespace": "warn",
     "no-var": "error",
     "no-cond-assign": "error",
+    "no-prototype-builtins": "off",
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off"
