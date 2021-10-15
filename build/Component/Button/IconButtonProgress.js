@@ -45,10 +45,9 @@ var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
 var ButtonProgress_1 = require("../Button/ButtonProgress");
 var IconButtonProgress = (0, react_1.forwardRef)(function (props, ref) {
-    var children = props.children, onClick = props.onClick, _a = props.size, size = _a === void 0 ? 'medium' : _a, _b = props.color, color = _b === void 0 ? 'inherit' : _b, _c = props.disabled, disabled = _c === void 0 ? false : _c, _d = props.inProgress, inProgress = _d === void 0 ? false : _d, rest = __rest(props, ["children", "onClick", "size", "color", "disabled", "inProgress"]);
-    var progressClasses = (0, ButtonProgress_1.progressStyles)(props);
-    return (react_1.default.createElement(core_1.Box, { className: progressClasses.progressWrapper },
+    var children = props.children, onClick = props.onClick, _a = props.size, size = _a === void 0 ? 'medium' : _a, _b = props.color, color = _b === void 0 ? 'inherit' : _b, _c = props.disabled, disabled = _c === void 0 ? false : _c, _d = props.inProgress, inProgress = _d === void 0 ? false : _d, _e = props.className, className = _e === void 0 ? '' : _e, rest = __rest(props, ["children", "onClick", "size", "color", "disabled", "inProgress", "className"]);
+    return (react_1.default.createElement("div", { className: "button-progress__wrapper " + className },
         react_1.default.createElement(core_1.IconButton, __assign({ ref: ref, size: size, color: color, disabled: disabled || inProgress, onClick: onClick }, rest), children),
-        inProgress && (react_1.default.createElement(core_1.CircularProgress, { size: (0, ButtonProgress_1.mapToCircularProgressSize)(size), color: (0, ButtonProgress_1.mapToCircularProgressColor)(color), className: progressClasses.progress }))));
+        inProgress && (react_1.default.createElement(core_1.CircularProgress, { size: (0, ButtonProgress_1.mapToCircularProgressSize)(size), color: (0, ButtonProgress_1.mapToCircularProgressColor)(color), className: 'button-progress__progress' }))));
 });
 exports.default = (0, react_1.memo)(IconButtonProgress);

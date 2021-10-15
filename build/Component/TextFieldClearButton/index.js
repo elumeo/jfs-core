@@ -53,9 +53,9 @@ var TextFieldClearButton = function (_a) {
     var getIconSize = function () { return iconButtonSize === 'medium' ? 24 : 18; };
     var getIconButtonPadding = function () { return iconButtonSize === 'medium' ? 12 : 6; };
     var endAdornment = (react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
-        react_1.default.createElement(core_1.IconButton, { size: iconButtonSize, disabled: rest.disabled, color: 'secondary', onClick: function () { return onChange(''); }, style: { padding: getIconButtonPadding() } },
+        react_1.default.createElement(core_1.IconButton, { size: iconButtonSize, disabled: rest.disabled, color: 'secondary', onClick: function () { return onChange(null); }, style: { padding: getIconButtonPadding() } },
             react_1.default.createElement(Backspace_1.default, { style: { fontSize: getIconSize() } }))));
     var preparedInputProps = __assign(__assign({}, rest.InputProps), { endAdornment: endAdornment });
-    return (react_1.default.createElement(core_1.TextField, __assign({ onChange: function (event) { return onChange(event.target.value); }, InputProps: preparedInputProps, autoComplete: 'new-password' }, rest)));
+    return (react_1.default.createElement(core_1.TextField, __assign({ onChange: onChange, InputProps: preparedInputProps, autoComplete: 'new-password' }, rest)));
 };
 exports.default = (0, react_1.memo)(TextFieldClearButton);

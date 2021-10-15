@@ -1,26 +1,17 @@
 import React, { forwardRef, memo } from 'react';
-import {
-  Box,
-  CircularProgress,
-  IconButton,
-  IconButtonProps,
-  PropTypes,
-} from '@material-ui/core';
-import {
-  mapToCircularProgressColor,
-  mapToCircularProgressSize,
-  progressStyles,
-} from 'Component/Button/ButtonProgress';
+import { CircularProgress, IconButton, IconButtonProps, PropTypes } from '@material-ui/core';
+import { mapToCircularProgressColor, mapToCircularProgressSize } from 'Component/Button/ButtonProgress';
 
-export type IconButtonProgress = IconButtonProps & {
+export type IconButtonProgressProps = IconButtonProps & {
   onClick?: () => void;
   disabled?: boolean;
   inProgress?: boolean;
   color?: PropTypes.Color;
+  className?: string;
 };
 
-const IconButtonProgress = forwardRef<HTMLButtonElement, IconButtonProgress>(
-  (props: IconButtonProgress, ref) => {
+const IconButtonProgress = forwardRef<HTMLButtonElement, IconButtonProgressProps>(
+  (props: IconButtonProgressProps, ref) => {
     const {
       children,
       onClick,
@@ -28,12 +19,12 @@ const IconButtonProgress = forwardRef<HTMLButtonElement, IconButtonProgress>(
       color = 'inherit',
       disabled = false,
       inProgress = false,
+      className = '',
       ...rest
     } = props;
-    const progressClasses = progressStyles(props);
 
     return (
-      <Box className={progressClasses.progressWrapper}>
+      <div className={`button-progress__wrapper ${className}`}>
         <IconButton
           ref={ref}
           size={size}
@@ -47,10 +38,10 @@ const IconButtonProgress = forwardRef<HTMLButtonElement, IconButtonProgress>(
           <CircularProgress
             size={mapToCircularProgressSize(size)}
             color={mapToCircularProgressColor(color)}
-            className={progressClasses.progress}
+            className={'button-progress__progress'}
           />
         )}
-      </Box>
+      </div>
     );
   },
 );

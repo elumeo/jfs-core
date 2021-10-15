@@ -1,10 +1,8 @@
-import { TableCell } from '@material-ui/core';
 import React, { memo, ReactNode } from 'react';
-import clsx from 'clsx';
-import { globalStyles } from '../VirtualizedTable';
 import { useIntl } from 'react-intl';
 import { DateTime } from 'Utilities/Format';
 import { DateTimeRangeCellProps } from 'Types/Table/DateTimeRangeCellProps';
+import TableCellBase from 'Component/Table/TableCell/TableCellBase';
 
 export type TableCellDateTimeRangeProps = {
   cellData: DateTimeRangeCellProps;
@@ -13,7 +11,6 @@ export type TableCellDateTimeRangeProps = {
 
 const TableCellDateTimeRange = ({cellData = null, noValueElement = '-'}: TableCellDateTimeRangeProps) => {
   const {formatDate, formatTime} = useIntl();
-  const globalClasses = globalStyles();
 
   let startDate: string;
   let startTime: string;
@@ -28,13 +25,7 @@ const TableCellDateTimeRange = ({cellData = null, noValueElement = '-'}: TableCe
     endTime = formatTime(cellData.end, DateTime.getDefaultTimeFormatOptions(true));
     hasSameDate = startDate === endDate;
   }
-  return <TableCell
-    component={'div'}
-    className={clsx(globalClasses.tableCell, globalClasses.flexContainer)}
-    variant={'body'}
-    style={{height: '100%'}}
-    align={'left'}
-  >
+  return <TableCellBase>
     {(cellData === null || cellData.start === null) && noValueElement}
     {cellData !== null && cellData.start !== null && <>
       {hasSameDate && <>
@@ -46,7 +37,7 @@ const TableCellDateTimeRange = ({cellData = null, noValueElement = '-'}: TableCe
         {endDate} {endTime}
       </>}
     </>}
-  </TableCell>;
+  </TableCellBase>;
 }
 
 export default memo(TableCellDateTimeRange);

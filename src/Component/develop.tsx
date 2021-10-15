@@ -1,16 +1,37 @@
 /* eslint-disable max-lines */
 import React from 'react';
-import { Box, Button, Card, CardContent, Chip, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import {
+  Button,
+  Card,
+  CardContent,
+  Chip,
+  Grid,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography
+} from '@material-ui/core';
 import { AccountCircle as AccountCircleIcon, ContactPhone as ContactPhoneIcon } from '@material-ui/icons';
 import { useTheme } from '@material-ui/core/styles';
 import { getCurrency } from 'Utilities/Format/Currency';
 import { useDispatch } from 'react-redux';
 import * as Action from 'Store/Action';
 import { v4 as uuid } from 'uuid';
-import { VirtualizedTable } from 'Component/Table';
+import { StyledVirtualizedTable, VirtualizedTable } from 'Component/Table';
 import { Index, TableCellProps } from 'react-virtualized';
 import TextFieldClearButton from 'Component/TextFieldClearButton';
 import TableCellDefault, { ContentEllipseMode } from 'Component/Table/TableCell/TableCellDefault';
+import { StyledTableCellDefault } from 'Component/Table/TableCell';
+import { addToastAction } from 'Store/Action';
+import { StyledButtonProgress } from 'Component/Button';
 
 type DataVirtualizedTable = {
   calories: number;
@@ -51,20 +72,43 @@ const Develop: React.FC = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   return (
-    <Box>
-      <TextFieldClearButton
-        label={'Textfield'}
-        onChange={console.log}
-        iconButtonSize={'small'}
-      />
-      <Button onClick={() => dispatch(Action.addNotification({
-        id: uuid(),
-        title: 'Error',
-        subtitle: 'Join Room (action.payload.name)',
-        content: 'MESSAGE',
-        variant: 'error'
-      }))}>Notification</Button>
-      <Box m={1}>
+    <div style={{ margin: theme.spacing(1) }}>
+      <Grid container spacing={1} alignItems={'center'}>
+        <Grid item>
+          <TextFieldClearButton
+            label={'Textfield'}
+            onChange={console.log}
+            iconButtonSize={'small'}
+          />
+        </Grid>
+        <Grid item>
+          <Button onClick={() => dispatch(Action.addNotification({
+            id: uuid(),
+            title: 'Error',
+            subtitle: 'Join Room (action.payload.name)',
+            content: 'MESSAGE',
+            variant: 'error'
+          }))}>Notification</Button>
+        </Grid>
+        <Grid item>
+          <Button onClick={() => dispatch(Action.addToastAction({
+            contentMessage: 'Toast Test',
+            dismissLabel: 'Dismiss',
+            isSuccess: true
+          }))}>Toast</Button>
+        </Grid>
+        <Grid item>
+          <StyledButtonProgress
+            inProgress
+            onClick={() => dispatch(Action.addToastAction({
+              contentMessage: 'Toast Test',
+              dismissLabel: 'Dismiss',
+              isSuccess: true
+            }))}
+          >Toast</StyledButtonProgress>
+        </Grid>
+      </Grid>
+      <div style={{ marginTop: theme.spacing(1) }}>
         <List>
           <ListItem>
             <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, true)'}>
@@ -117,102 +161,126 @@ const Develop: React.FC = () => {
             </ListItemText>
           </ListItem>
         </List>
-      </Box>
-      <Grid container>
-        <Grid item>
-          <Box p={2} m={2} style={{ backgroundColor: theme.palette.info.main, color: theme.palette.getContrastText(theme.palette.info.main) }}>Info</Box>
+      </div>
+      <div style={{ marginTop: theme.spacing(1) }}>
+        <Grid container>
+          <Grid item>
+            <Typography
+              style={{ margin: theme.spacing(1), padding: theme.spacing(1), backgroundColor: theme.palette.info.main, color: theme.palette.getContrastText(theme.palette.info.main) }}>Info</Typography>
+          </Grid>
+          <Grid item>
+            <Typography style={{
+              margin: theme.spacing(1),
+              padding: theme.spacing(1),
+              backgroundColor: theme.palette.error.main,
+              color: theme.palette.getContrastText(theme.palette.error.main)
+            }}>Error</Typography>
+          </Grid>
+          <Grid item>
+            <Typography style={{
+              margin: theme.spacing(1),
+              padding: theme.spacing(1),
+              backgroundColor: theme.palette.warning.main,
+              color: theme.palette.getContrastText(theme.palette.warning.main)
+            }}>Warning</Typography>
+          </Grid>
+          <Grid item>
+            <Typography style={{
+              margin: theme.spacing(1),
+              padding: theme.spacing(1),
+              backgroundColor: theme.palette.success.main,
+              color: theme.palette.getContrastText(theme.palette.success.main)
+            }}>Success</Typography>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Box p={2} m={2} style={{ backgroundColor: theme.palette.error.main, color: theme.palette.getContrastText(theme.palette.error.main) }}>Error</Box>
-        </Grid>
-        <Grid item>
-          <Box p={2} m={2} style={{ backgroundColor: theme.palette.warning.main, color: theme.palette.getContrastText(theme.palette.warning.main) }}>Warning</Box>
-        </Grid>
-        <Grid item>
-          <Box p={2} m={2} style={{ backgroundColor: theme.palette.success.main, color: theme.palette.getContrastText(theme.palette.success.main) }}>Success</Box>
-        </Grid>
-      </Grid>
-      <Grid container>
-        <Grid item xs={3}>
-          <Box component={Paper} m={2}>
-            <List dense>
-              <ListItem button selected={true}>
-                <ListItemIcon>
-                  <AccountCircleIcon />
-                </ListItemIcon>
-                <ListItemText primary={'primary111'} secondary={'secondary222'} />
-              </ListItem>
+      </div>
+      <div style={{ marginTop: theme.spacing(1) }}>
+        <Grid container spacing={1}>
+          <Grid item xs={3}>
+            <Paper>
+              <List dense>
+                <ListItem button selected={true}>
+                  <ListItemIcon>
+                    <AccountCircleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={'primary111'} secondary={'secondary222'} />
+                </ListItem>
 
-              <ListItem button selected={false}>
-                <ListItemIcon>
-                  <ContactPhoneIcon />
-                </ListItemIcon>
-                <ListItemText primary={'primary222'} secondary={'secondary222'} />
-              </ListItem>
-            </List>
-          </Box>
+                <ListItem button selected={false}>
+                  <ListItemIcon>
+                    <ContactPhoneIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={'primary222'} secondary={'secondary222'} />
+                </ListItem>
+              </List>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={3}>
+            <Paper>
+              <List>
+                <ListItem button selected={true}>
+                  <ListItemIcon>
+                    <AccountCircleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={'primary111'} secondary={'secondary222'} />
+                </ListItem>
+
+                <ListItem button selected={false}>
+                  <ListItemIcon>
+                    <ContactPhoneIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={'primary222'} secondary={'secondary222'} />
+                </ListItem>
+              </List>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={3}>
+            <Card>
+              <CardContent>
+                <Grid container spacing={1}>
+                  <Grid item><Chip label={'label label1'} icon={<ContactPhoneIcon />} /></Grid>
+                  <Grid item><Chip label={'label label2'} clickable icon={<AccountCircleIcon />} /></Grid>
+                  <Grid item><Chip size={'small'} label={'label label3'} clickable icon={<AccountCircleIcon />} /></Grid>
+                </Grid>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
+      </div>
 
-        <Grid item xs={3}>
-          <Box component={Paper} ml={0} m={2}>
-            <List>
-              <ListItem button selected={true}>
-                <ListItemIcon>
-                  <AccountCircleIcon />
-                </ListItemIcon>
-                <ListItemText primary={'primary111'} secondary={'secondary222'} />
-              </ListItem>
+      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
+      {/*  <Card>*/}
+      {/*    <CardContent style={{ height: 300 }}>*/}
+      {/*      <TableContainer style={{ maxHeight: 300 }}>*/}
+      {/*        <Table stickyHeader>*/}
+      {/*          <TableHead>*/}
+      {/*            <TableRow>*/}
+      {/*              {['calories', 'carbs', 'dessert', 'fat', 'id', 'protein'].map((column, index) => <TableCell key={'column-head-index-' + index}>{column}</TableCell>)}*/}
+      {/*            </TableRow>*/}
+      {/*          </TableHead>*/}
+      {/*          <TableBody>*/}
+      {/*            {rows.map((row, index) => <TableRow key={'row-body-index' + index}>*/}
+      {/*              <TableCell>{row.calories}</TableCell>*/}
+      {/*              <TableCell>{row.carbs}</TableCell>*/}
+      {/*              <TableCell>{row.dessert}</TableCell>*/}
+      {/*              <TableCell>{row.fat}</TableCell>*/}
+      {/*              <TableCell>{row.id}</TableCell>*/}
+      {/*              <TableCell>{row.protein}</TableCell>*/}
+      {/*            </TableRow>)}*/}
+      {/*          </TableBody>*/}
+      {/*        </Table>*/}
+      {/*      </TableContainer>*/}
+      {/*    </CardContent>*/}
+      {/*  </Card>*/}
+      {/*</div>*/}
 
-              <ListItem button selected={false}>
-                <ListItemIcon>
-                  <ContactPhoneIcon />
-                </ListItemIcon>
-                <ListItemText primary={'primary222'} secondary={'secondary222'} />
-              </ListItem>
-            </List>
-          </Box>
-        </Grid>
-
-        <Grid item xs={3}>
-          <Box component={Paper} ml={0} m={2} p={2}>
-            <Chip label={'label label1'} icon={<ContactPhoneIcon />} />
-            <Chip label={'label label2'} clickable icon={<AccountCircleIcon />} />
-
-            <Chip size={'small'} label={'label label3'} clickable icon={<AccountCircleIcon />} />
-          </Box>
-        </Grid>
-      </Grid>
-
-      <Box m={1}>
+      <div style={{ marginTop: theme.spacing(1) }}>
         <Card>
-          <CardContent style={{ height: 300 }}>
-            <TableContainer style={{ maxHeight: 300 }}>
-              <Table stickyHeader>
-                <TableHead>
-                  <TableRow>
-                    {['calories', 'carbs', 'dessert', 'fat', 'id', 'protein'].map((column, index) => <TableCell key={'column-head-index-' + index}>{column}</TableCell>)}
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.map((row, index) => <TableRow key={'row-body-index' + index}>
-                    <TableCell>{row.calories}</TableCell>
-                    <TableCell>{row.carbs}</TableCell>
-                    <TableCell>{row.dessert}</TableCell>
-                    <TableCell>{row.fat}</TableCell>
-                    <TableCell>{row.id}</TableCell>
-                    <TableCell>{row.protein}</TableCell>
-                  </TableRow>)}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </CardContent>
-        </Card>
-      </Box>
-
-      <Box m={1}>
-        <Card>
-          <CardContent style={{ height: 300 }}>
-            <VirtualizedTable
+          <CardContent style={{ height: 600 }}>
+            <StyledVirtualizedTable
+              showRowHoverHighlight
               rowHeight={50}
               rowCount={rows.length}
               rowGetter={(row: Index) => rows[row.index]}
@@ -226,7 +294,7 @@ const Develop: React.FC = () => {
                   label: 'Dessert (100g serving)',
                   dataKey: 'dessert',
                   disableSort: true,
-                  cellRenderer: (cellProps: TableCellProps) => <TableCellDefault cellData={cellProps.cellData} contentEllipseMode={ContentEllipseMode.Lines} contentEllipseLines={2}  />
+                  cellRenderer: (cellProps: TableCellProps) => <StyledTableCellDefault cellData={cellProps.cellData} contentEllipseMode={ContentEllipseMode.Lines} contentEllipseLines={2} />
                 },
                 {
                   width: 120,
@@ -256,8 +324,8 @@ const Develop: React.FC = () => {
             />
           </CardContent>
         </Card>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

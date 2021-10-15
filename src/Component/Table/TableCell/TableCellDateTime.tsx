@@ -1,9 +1,7 @@
-import { TableCell } from '@material-ui/core';
 import React, { memo, ReactNode } from 'react';
-import clsx from 'clsx';
-import { globalStyles } from '../VirtualizedTable';
 import { useIntl } from 'react-intl';
 import { DateTime } from 'Utilities/Format';
+import TableCellBase from 'Component/Table/TableCell/TableCellBase';
 
 export type TableCellDateTimeProps = {
   cellData: string;
@@ -12,20 +10,13 @@ export type TableCellDateTimeProps = {
 
 const TableCellDateTime = ({cellData = null, noValueElement = '-'}: TableCellDateTimeProps) => {
   const {formatDate, formatTime} = useIntl();
-  const globalClasses = globalStyles();
-  return <TableCell
-    component={'div'}
-    className={clsx(globalClasses.tableCell, globalClasses.flexContainer)}
-    variant={'body'}
-    style={{height: '100%'}}
-    align={'left'}
-  >
+  return <TableCellBase>
     {cellData === null && noValueElement}
     {cellData !== null && <>
       {formatDate(cellData, DateTime.getDefaultDateFormatOptions())}<br/>
       {formatTime(cellData, DateTime.getDefaultTimeFormatOptions(true))}
     </>}
-  </TableCell>;
+  </TableCellBase>;
 }
 
 export default memo(TableCellDateTime);

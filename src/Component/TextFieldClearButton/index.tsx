@@ -5,7 +5,7 @@ import { InputProps as StandardInputProps } from '@material-ui/core/Input/Input'
 import { IconButtonProps } from '@material-ui/core/IconButton';
 
 type TextFieldClearButtonProps = Partial<TextFieldProps> & {
-  onChange: (value: string) => void;
+  onChange: TextFieldProps['onChange'];
   iconButtonSize?: IconButtonProps['size'];
 };
 
@@ -16,7 +16,7 @@ const TextFieldClearButton = ({onChange, iconButtonSize = 'medium', variant = 's
 
   const endAdornment = (
     <InputAdornment position={'end'}>
-      <IconButton size={iconButtonSize} disabled={rest.disabled} color={'secondary'} onClick={() => onChange('')} style={{padding: getIconButtonPadding()}}>
+      <IconButton size={iconButtonSize} disabled={rest.disabled} color={'secondary'} onClick={() => onChange(null)} style={{padding: getIconButtonPadding()}}>
         <BackspaceIcon style={{fontSize: getIconSize()}}/>
       </IconButton>
     </InputAdornment>
@@ -25,7 +25,7 @@ const TextFieldClearButton = ({onChange, iconButtonSize = 'medium', variant = 's
 
   return (
     <TextField
-      onChange={event => onChange(event.target.value)}
+      onChange={onChange}
       InputProps={preparedInputProps}
       autoComplete={'new-password'}
       {...rest}

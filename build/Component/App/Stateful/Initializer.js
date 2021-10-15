@@ -23,7 +23,7 @@ var Initializer = function (_a) {
             translations: translations
         });
     }, []);
-    return (react_1.default.createElement(core_1.Box, { style: style },
+    return (react_1.default.createElement("div", { style: style },
         react_1.default.createElement(core_1.CircularProgress, null)));
 };
 exports.default = Initializer;

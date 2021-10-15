@@ -41,25 +41,9 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mapToCircularProgressColor = exports.mapToCircularProgressSize = exports.progressStyles = void 0;
+exports.mapToCircularProgressColor = exports.mapToCircularProgressSize = void 0;
 var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
-var styles_1 = require("@material-ui/core/styles");
-exports.progressStyles = (0, styles_1.makeStyles)(function () {
-    return (0, styles_1.createStyles)({
-        progressWrapper: {
-            position: 'relative',
-            display: 'inline-block',
-        },
-        progress: {
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            marginTop: function (props) { return ((0, exports.mapToCircularProgressSize)(props.size) / 2) * -1; },
-            marginLeft: function (props) { return ((0, exports.mapToCircularProgressSize)(props.size) / 2) * -1; },
-        },
-    });
-});
 var mapToCircularProgressSize = function (size) {
     switch (size) {
         case 'large':
@@ -71,15 +55,12 @@ var mapToCircularProgressSize = function (size) {
     }
 };
 exports.mapToCircularProgressSize = mapToCircularProgressSize;
-var mapToCircularProgressColor = function (color) {
-    return color === 'default' ? 'inherit' : color;
-};
+var mapToCircularProgressColor = function (color) { return color === 'default' ? 'inherit' : color; };
 exports.mapToCircularProgressColor = mapToCircularProgressColor;
 var ButtonProgress = (0, react_1.forwardRef)(function (props, ref) {
-    var children = props.children, onClick = props.onClick, _a = props.size, size = _a === void 0 ? 'medium' : _a, _b = props.color, color = _b === void 0 ? 'inherit' : _b, _c = props.disabled, disabled = _c === void 0 ? false : _c, _d = props.inProgress, inProgress = _d === void 0 ? false : _d, rest = __rest(props, ["children", "onClick", "size", "color", "disabled", "inProgress"]);
-    var progressClasses = (0, exports.progressStyles)(props);
-    return (react_1.default.createElement(core_1.Box, { className: progressClasses.progressWrapper },
+    var children = props.children, onClick = props.onClick, _a = props.size, size = _a === void 0 ? 'medium' : _a, _b = props.color, color = _b === void 0 ? 'inherit' : _b, _c = props.disabled, disabled = _c === void 0 ? false : _c, _d = props.inProgress, inProgress = _d === void 0 ? false : _d, _e = props.className, className = _e === void 0 ? '' : _e, rest = __rest(props, ["children", "onClick", "size", "color", "disabled", "inProgress", "className"]);
+    return (react_1.default.createElement("div", { className: "button-progress__wrapper " + className },
         react_1.default.createElement(core_1.Button, __assign({ ref: ref, size: size, color: color, disabled: disabled || inProgress, onClick: onClick }, rest), children),
-        inProgress && (react_1.default.createElement(core_1.CircularProgress, { size: (0, exports.mapToCircularProgressSize)(size), color: (0, exports.mapToCircularProgressColor)(color), className: progressClasses.progress }))));
+        inProgress && (react_1.default.createElement(core_1.CircularProgress, { size: (0, exports.mapToCircularProgressSize)(size), color: (0, exports.mapToCircularProgressColor)(color), className: "button-progress__progress" }))));
 });
 exports.default = (0, react_1.memo)(ButtonProgress);

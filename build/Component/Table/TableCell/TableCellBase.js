@@ -18,18 +18,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
-var lab_1 = require("@material-ui/lab");
-var clsx_1 = __importDefault(require("clsx"));
-var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
-var TableCellLoading = function () {
-    var globalClasses = (0, VirtualizedTable_1.globalStyles)();
-    return (react_1.default.createElement(core_1.TableCell, { component: 'div', className: (0, clsx_1.default)(globalClasses.tableCell, globalClasses.flexContainer), variant: 'body' },
-        react_1.default.createElement(lab_1.Skeleton, { variant: 'text', width: '100%', height: '100%', animation: 'wave' })));
+var TableCellBase = function (_a) {
+    var children = _a.children, _b = _a.isNumeric, isNumeric = _b === void 0 ? false : _b, _c = _a.className, className = _c === void 0 ? '' : _c;
+    return react_1.default.createElement(core_1.TableCell, { component: 'div', className: "virtualized-table__cell virtualized-table__flex-container " + className, variant: 'body', align: isNumeric ? 'right' : 'left' }, children);
 };
-exports.default = (0, react_1.memo)(TableCellLoading);
+exports.default = (0, react_1.memo)(TableCellBase);

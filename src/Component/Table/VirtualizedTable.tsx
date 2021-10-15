@@ -1,54 +1,8 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { ColumnProps, AutoSizer, Column, Index, SizeInfo, Table, TableProps } from 'react-virtualized';
 import React, { memo } from 'react';
-import clsx from 'clsx';
-import { TableCellDefault } from 'Component/Table/TableCell';
-import TableHeadDefault from 'Component/Table/TableHead/TableHeadDefault';
+import { StyledTableCellDefault } from 'Component/Table/TableCell';
 import { Size } from 'react-virtualized/dist/es/AutoSizer';
-
-export const globalStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    flexContainer: {
-      display: 'flex',
-      alignItems: 'center',
-      boxSizing: 'border-box',
-      height: '100%'
-    },
-    tableCell: {
-      flex: 1,
-      padding: theme.spacing(1),
-      maxWidth: '100%'
-    }
-  })
-);
-
-export const useStyles = makeStyles<Theme, VirtualizedTableProps>(theme =>
-  createStyles({
-    table: {
-      'borderCollapse': 'separate',
-      '& .ReactVirtualized__Table__headerRow': {
-        flip: false,
-        paddingRight: theme.direction === 'rtl' ? '0 !important' : undefined,
-        backgroundColor: theme.palette.background.paper,
-        overflow: props => props.headerOverflow + ' !important'
-      }
-    },
-    tableGrid: {
-      outline: 'none'
-    },
-    tableRow: {
-      outline: 'none'
-    },
-    tableRowHover: {
-      '&:hover': {
-        backgroundColor: theme.palette.grey[200]
-      }
-    },
-    onRowClick: {
-      cursor: 'pointer'
-    }
-  })
-);
+import StyledTableHeadDefault from 'Component/Table/TableHead/StyledTableHeadDefault';
 
 // @ts-ignore
 export interface ColumnData extends ColumnProps {
@@ -66,34 +20,29 @@ export type VirtualizedTableProps = TableProps & {
 };
 
 const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
-  (props, ref) => {
-    const {
-      columns = [],
-      onRowClick = null,
-      rowCount,
-      rowGetter,
-      headerHeight = 48,
-      rowHeight = 48,
-      showRowHoverHighlight = false,
-      headerOverflow = 'hidden',
-      onResize,
-      ...tableProps
-    } = props;
-    const globalClasses = globalStyles();
-    const classes = useStyles({
-      ...props,
-      onRowClick: onRowClick,
-      headerHeight: headerHeight,
-      rowHeight: rowHeight,
-      showRowHoverHighlight: showRowHoverHighlight,
-      headerOverflow: headerOverflow
-    });
-    const getRowClassName = (index: Index) =>
-      clsx(classes.tableRow, globalClasses.flexContainer, {
-        [classes.tableRowHover]:
-        index.index !== -1 && showRowHoverHighlight === true,
-        [classes.onRowClick]: onRowClick !== null
-      });
+  ({
+     columns = [],
+     onRowClick = null,
+     rowCount,
+     rowGetter,
+     headerHeight = 48,
+     rowHeight = 48,
+     showRowHoverHighlight = false,
+     onResize,
+     ...tableProps
+   }, ref) => {
+    const getRowClassName = (index: Index) => 'virtualized-table__row virtualized-table__flex-container'
+      + (
+        index.index !== -1 && showRowHoverHighlight === true
+          ? ' virtualized-table__row--hover'
+          : ''
+      )
+      + (
+        onRowClick !== null
+          ? ' virtualized-table--click'
+          : ''
+      )
+    ;
 
     return (
       <AutoSizer onResize={onResize}>
@@ -102,23 +51,20 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
             ref={ref}
             height={height}
             width={width}
-            className={classes.table}
+            rowClassName={getRowClassName}
             headerHeight={headerHeight}
             rowHeight={rowHeight}
             rowCount={rowCount}
             rowGetter={rowGetter}
-            rowClassName={getRowClassName}
             onRowClick={onRowClick}
-            gridStyle={{ direction: 'inherit' }}
-            gridClassName={classes.tableGrid}
-            {...tableProps}>
+            gridClassName={'virtualized-table__grid'}
+            {...tableProps}
+          >
             {columns.map(({ dataKey, width: columnWidth, ...other }, index) => {
-              let finalWidth;
-              if(typeof columnWidth !== 'number') {
-                finalWidth = (columnWidth as (fullWidth: number) => number)(width);
-              } else {
-                finalWidth = columnWidth as number;
-              }
+              const finalWidth = (typeof columnWidth !== 'number')
+                ? (columnWidth as (fullWidth: number) => number)(width)
+                : columnWidth as number
+              ;
               return (
                 <Column
                   key={dataKey}
@@ -128,10 +74,10 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
                     columnData.index = index;
                     columnData.numeric = columns[index].numeric;
                     columnData.headerHeight = headerHeight;
-                    return <TableHeadDefault headerProps={{ ...headerProps, columnData: columnData }} />;
+                    return <StyledTableHeadDefault headerProps={{ ...headerProps, columnData: columnData }} />;
                   }}
-                  className={globalClasses.flexContainer}
-                  cellRenderer={({ cellData, columnIndex }) => <TableCellDefault
+                  className={'virtualized-table__flex-container'}
+                  cellRenderer={({ cellData, columnIndex }) => <StyledTableCellDefault
                     cellData={cellData}
                     isNumeric={(columnIndex != null && columns[columnIndex].numeric) || false}
                   />}

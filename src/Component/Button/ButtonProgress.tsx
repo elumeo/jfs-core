@@ -1,39 +1,5 @@
 import React, { forwardRef, memo } from 'react';
-import {
-  Box,
-  Button,
-  ButtonProps,
-  CircularProgress,
-  PropTypes,
-} from '@material-ui/core';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { IconButtonProgress } from 'Component/Button/IconButtonProgress';
-
-export const progressStyles = makeStyles<
-  Theme,
-  ButtonProgressProps | IconButtonProgress
->(() =>
-  createStyles({
-    progressWrapper: {
-      position: 'relative',
-      display: 'inline-block',
-    },
-    progress: {
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      marginTop: props => (mapToCircularProgressSize(props.size) / 2) * -1,
-      marginLeft: props => (mapToCircularProgressSize(props.size) / 2) * -1,
-    },
-  }),
-);
-
-export type ButtonProgressProps = ButtonProps & {
-  onClick?: () => void;
-  disabled?: boolean;
-  inProgress?: boolean;
-  color?: PropTypes.Color;
-};
+import { Button, ButtonProps, CircularProgress, PropTypes } from '@material-ui/core';
 
 export const mapToCircularProgressSize = (size: string): number => {
   switch (size) {
@@ -46,10 +12,15 @@ export const mapToCircularProgressSize = (size: string): number => {
   }
 };
 
-export const mapToCircularProgressColor = (
-  color: PropTypes.Color,
-): 'inherit' | 'primary' | 'secondary' =>
-  color === 'default' ? 'inherit' : color;
+export const mapToCircularProgressColor = (color: PropTypes.Color,): 'inherit' | 'primary' | 'secondary' => color === 'default' ? 'inherit' : color;
+
+export type ButtonProgressProps = ButtonProps & {
+  onClick?: () => void;
+  disabled?: boolean;
+  inProgress?: boolean;
+  color?: PropTypes.Color;
+  className?: string;
+};
 
 const ButtonProgress = forwardRef<HTMLButtonElement, ButtonProgressProps>(
   (props: ButtonProgressProps, ref) => {
@@ -60,12 +31,12 @@ const ButtonProgress = forwardRef<HTMLButtonElement, ButtonProgressProps>(
       color = 'inherit',
       disabled = false,
       inProgress = false,
+      className = '',
       ...rest
     } = props;
-    const progressClasses = progressStyles(props);
 
     return (
-      <Box className={progressClasses.progressWrapper}>
+      <div className={`button-progress__wrapper ${className}`}>
         <Button
           ref={ref}
           size={size}
@@ -79,12 +50,12 @@ const ButtonProgress = forwardRef<HTMLButtonElement, ButtonProgressProps>(
           <CircularProgress
             size={mapToCircularProgressSize(size)}
             color={mapToCircularProgressColor(color)}
-            className={progressClasses.progress}
+            className={`button-progress__progress`}
           />
         )}
-      </Box>
+      </div>
     );
-  },
+  }
 );
 
 export default memo(ButtonProgress);

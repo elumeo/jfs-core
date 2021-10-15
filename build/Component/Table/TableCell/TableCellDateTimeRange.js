@@ -22,16 +22,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@material-ui/core");
 var react_1 = __importStar(require("react"));
-var clsx_1 = __importDefault(require("clsx"));
-var VirtualizedTable_1 = require("../VirtualizedTable");
 var react_intl_1 = require("react-intl");
 var Format_1 = require("../../../Utilities/Format");
+var TableCellBase_1 = __importDefault(require("../../Table/TableCell/TableCellBase"));
 var TableCellDateTimeRange = function (_a) {
     var _b = _a.cellData, cellData = _b === void 0 ? null : _b, _c = _a.noValueElement, noValueElement = _c === void 0 ? '-' : _c;
     var _d = (0, react_intl_1.useIntl)(), formatDate = _d.formatDate, formatTime = _d.formatTime;
-    var globalClasses = (0, VirtualizedTable_1.globalStyles)();
     var startDate;
     var startTime;
     var endDate;
@@ -44,7 +41,7 @@ var TableCellDateTimeRange = function (_a) {
         endTime = formatTime(cellData.end, Format_1.DateTime.getDefaultTimeFormatOptions(true));
         hasSameDate = startDate === endDate;
     }
-    return react_1.default.createElement(core_1.TableCell, { component: 'div', className: (0, clsx_1.default)(globalClasses.tableCell, globalClasses.flexContainer), variant: 'body', style: { height: '100%' }, align: 'left' },
+    return react_1.default.createElement(TableCellBase_1.default, null,
         (cellData === null || cellData.start === null) && noValueElement,
         cellData !== null && cellData.start !== null && react_1.default.createElement(react_1.default.Fragment, null,
             hasSameDate && react_1.default.createElement(react_1.default.Fragment, null,

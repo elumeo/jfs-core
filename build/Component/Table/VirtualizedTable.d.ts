@@ -1,8 +1,6 @@
 import { ColumnProps, Index, Table, TableProps } from 'react-virtualized';
 import React from 'react';
 import { Size } from 'react-virtualized/dist/es/AutoSizer';
-export declare const globalStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"flexContainer" | "tableCell">;
-export declare const useStyles: (props: VirtualizedTableProps) => import("@material-ui/styles").ClassNameMap<string>;
 export interface ColumnData extends ColumnProps {
     numeric?: boolean;
     width?: number | ((fullWidth: number) => number);

@@ -1,8 +1,8 @@
 import React from 'react';
 import { TableHeaderProps } from 'react-virtualized';
-export declare const useStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"noClick" | "visuallyHidden" | "tableSortRoot" | "sortIconRoot">;
 export declare type TableHeadDefaultProps = {
     headerProps: TableHeaderProps;
+    className?: string;
 };
-declare const _default: React.MemoExoticComponent<({ headerProps }: TableHeadDefaultProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ headerProps, className }: TableHeadDefaultProps) => JSX.Element>;
 export default _default;
