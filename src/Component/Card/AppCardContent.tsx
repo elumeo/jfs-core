@@ -1,54 +1,22 @@
-import React, { memo } from 'react';
-import { CardContent } from '@material-ui/core';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { CardContentProps } from '@material-ui/core/CardContent/CardContent';
+import { memo } from 'react';
+import styled from 'styled-components';
+import Definition from 'Component/App/Stateless/Style/Theme/Definition';
+import AppCardContentBase, { AppCardContentBaseProps } from './AppCardContentBase';
 
-const useStyles = makeStyles<Theme, AppCardContentProps>(theme =>
-  createStyles({
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      height: props => {
-        if (props.overrideCardTitleHeight !== null) {
-          return props.overrideCardTitleHeight;
-        }
-        const cardTitleHeight = props.withSubtitle
-          ? theme.spacing(10)
-          : theme.spacing(7);
-        return props.fullHeight
-          ? 'calc(100% - ' + cardTitleHeight + 'px)'
-          : 'initial';
-      },
-    },
-  }),
-);
+type StylePropsType = { theme: typeof Definition } & AppCardContentBaseProps;
 
-type AppCardContentProps = CardContentProps & {
-  fullHeight?: boolean;
-  withSubtitle?: boolean;
-  overrideCardTitleHeight?: string;
-};
-
-const AppCardContent = (props: AppCardContentProps) => {
-  const {
-    fullHeight = false,
-    withSubtitle = false,
-    overrideCardTitleHeight = null,
-    children,
-    ...rest
-  } = props;
-  const classes = useStyles({
-    ...props,
-    fullHeight,
-    withSubtitle,
-    overrideCardTitleHeight,
-  });
-
-  return (
-    <CardContent classes={{ root: classes.root }} {...rest}>
-      {children}
-    </CardContent>
-  );
-};
+const AppCardContent = styled<typeof AppCardContentBase>(AppCardContentBase)`
+  flex-direction: column;
+  height: ${({ theme, fullHeight = false, withSubtitle = false, overrideCardTitleHeight = null }: StylePropsType) => {
+    if (overrideCardTitleHeight !== null) {
+      return overrideCardTitleHeight;
+    }
+    const cardTitleHeight = withSubtitle ? theme.spacing(10) : theme.spacing(7);
+    return fullHeight
+      ? 'calc(100% - ' + cardTitleHeight + 'px)'
+      : 'initial'
+      ;
+  }}
+`;
 
 export default memo(AppCardContent);

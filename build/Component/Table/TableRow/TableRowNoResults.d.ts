@@ -1,3 +1,3 @@
-import React from 'react';
-declare const _default: React.MemoExoticComponent<() => JSX.Element>;
-export default _default;
+/// <reference types="react" />
+declare const TableRowNoResults: import("styled-components").StyledComponent<import("react").MemoExoticComponent<({ className }: import("../../Table/TableRow/TableRowNoResultsBase").TableRowNoResultsBaseProps) => JSX.Element>, any, {}, never>;
+export default TableRowNoResults;

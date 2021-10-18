@@ -1,96 +1,68 @@
-import { ColumnProps, AutoSizer, Column, Index, SizeInfo, Table, TableProps } from 'react-virtualized';
-import React, { memo } from 'react';
-import { StyledTableCellDefault } from 'Component/Table/TableCell';
-import { Size } from 'react-virtualized/dist/es/AutoSizer';
-import StyledTableHeadDefault from 'Component/Table/TableHead/StyledTableHeadDefault';
+import styled from 'styled-components';
+import Definition from 'Component/App/Stateless/Style/Theme/Definition';
+import VirtualizedTableBase, { VirtualizedTableBaseProps } from 'Component/Table/VirtualizedTableBase';
 
-// @ts-ignore
-export interface ColumnData extends ColumnProps {
-  numeric?: boolean;
-  width?: number | ((fullWidth: number) => number);
-}
+type StylePropsType = { theme: typeof Definition } & VirtualizedTableBaseProps;
 
-export type VirtualizedTableProps = TableProps & {
-  onResize?: (info: Size) => unknown;
-  columns: ColumnData[];
-  rowHeight?: number | ((params: Index) => number);
-  headerHeight?: number;
-  showRowHoverHighlight?: boolean;
-  headerOverflow?: 'visible' | 'hidden' | 'inherit' | 'initial';
-};
+const VirtualizedTable = styled<typeof VirtualizedTableBase>(VirtualizedTableBase)`
+    border-collapse: separate;
 
-const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
-  ({
-     columns = [],
-     onRowClick = null,
-     rowCount,
-     rowGetter,
-     headerHeight = 48,
-     rowHeight = 48,
-     showRowHoverHighlight = false,
-     onResize,
-     ...tableProps
-   }, ref) => {
-    const getRowClassName = (index: Index) => 'virtualized-table__row virtualized-table__flex-container'
-      + (
-        index.index !== -1 && showRowHoverHighlight === true
-          ? ' virtualized-table__row--hover'
-          : ''
-      )
-      + (
-        onRowClick !== null
-          ? ' virtualized-table--click'
-          : ''
-      )
-    ;
+    & .ReactVirtualized__Table__headerRow {
+      flip: false;
+      padding-right: ${(props: StylePropsType) => props.theme.direction === 'rtl' ? '0 !important' : 'initial'};
+      background-color: ${(props: StylePropsType) => props.theme.palette.background.paper};
+      overflow: ${(props: StylePropsType) => props.headerOverflow} !important;
+    }
 
-    return (
-      <AutoSizer onResize={onResize}>
-        {({ height, width }: SizeInfo) => (
-          <Table
-            ref={ref}
-            height={height}
-            width={width}
-            rowClassName={getRowClassName}
-            headerHeight={headerHeight}
-            rowHeight={rowHeight}
-            rowCount={rowCount}
-            rowGetter={rowGetter}
-            onRowClick={onRowClick}
-            gridClassName={'virtualized-table__grid'}
-            {...tableProps}
-          >
-            {columns.map(({ dataKey, width: columnWidth, ...other }, index) => {
-              const finalWidth = (typeof columnWidth !== 'number')
-                ? (columnWidth as (fullWidth: number) => number)(width)
-                : columnWidth as number
-              ;
-              return (
-                <Column
-                  key={dataKey}
-                  headerStyle={{ outline: 'none' }}
-                  headerRenderer={headerProps => {
-                    const columnData = headerProps.columnData !== undefined ? headerProps.columnData : {};
-                    columnData.index = index;
-                    columnData.numeric = columns[index].numeric;
-                    columnData.headerHeight = headerHeight;
-                    return <StyledTableHeadDefault headerProps={{ ...headerProps, columnData: columnData }} />;
-                  }}
-                  className={'virtualized-table__flex-container'}
-                  cellRenderer={({ cellData, columnIndex }) => <StyledTableCellDefault
-                    cellData={cellData}
-                    isNumeric={(columnIndex != null && columns[columnIndex].numeric) || false}
-                  />}
-                  dataKey={dataKey}
-                  width={finalWidth}
-                  {...other}
-                />
-              );
-            })}
-          </Table>
-        )}
-      </AutoSizer>
-    );
-  }
-);
-export default memo(VirtualizedTable);
+    .virtualized-table {
+      &__cell {
+        flex: 1;
+        padding: ${(props: StylePropsType) => props.theme.spacing(1)};
+        max-width: 100%;
+      }
+
+      &__flex-container {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        height: 100%;
+      }
+
+      &__grid {
+        outline: none;
+      }
+
+      &__row {
+        outline: none;
+        direction: inherit;
+
+        &--hover {
+          &:hover {
+            background-color: ${(props: StylePropsType) => props.theme.palette.grey[200]};
+          }
+        }
+      }
+
+      &--click {
+        cursor: pointer;
+      }
+
+      &--no-click {
+        cursor: initial;
+      }
+
+      &--visually-hidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        top: 20px;
+        width: 1px;
+      }
+    }
+`;
+
+export default VirtualizedTable;

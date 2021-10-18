@@ -2,7 +2,7 @@ import React, { memo, ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import { DateTime } from 'Utilities/Format';
 import { DateTimeRangeCellProps } from 'Types/Table/DateTimeRangeCellProps';
-import TableCellBase from 'Component/Table/TableCell/TableCellBase';
+import TableCellBase from 'Component/Table/TableCell/TableCellRootBase';
 
 export type TableCellDateTimeRangeProps = {
   cellData: DateTimeRangeCellProps;

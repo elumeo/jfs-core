@@ -11,12 +11,6 @@ import {
   ListItemIcon,
   ListItemText,
   Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
   Typography
 } from '@material-ui/core';
 import { AccountCircle as AccountCircleIcon, ContactPhone as ContactPhoneIcon } from '@material-ui/icons';
@@ -25,13 +19,14 @@ import { getCurrency } from 'Utilities/Format/Currency';
 import { useDispatch } from 'react-redux';
 import * as Action from 'Store/Action';
 import { v4 as uuid } from 'uuid';
-import { StyledVirtualizedTable, VirtualizedTable } from 'Component/Table';
+import { VirtualizedTable } from 'Component/Table';
 import { Index, TableCellProps } from 'react-virtualized';
 import TextFieldClearButton from 'Component/TextFieldClearButton';
-import TableCellDefault, { ContentEllipseMode } from 'Component/Table/TableCell/TableCellDefault';
-import { StyledTableCellDefault } from 'Component/Table/TableCell';
-import { addToastAction } from 'Store/Action';
-import { StyledButtonProgress } from 'Component/Button';
+import { ContentEllipseMode } from 'Component/Table/TableCell/TableCellDefaultBase';
+import { TableCellDefault } from 'Component/Table/TableCell';
+import { ButtonProgress } from 'Component/Button';
+import { AppCardHeader, AppCardContent } from 'Component/Card';
+import { TableRowLoading } from 'Component/Table/TableRow';
 
 type DataVirtualizedTable = {
   calories: number;
@@ -73,6 +68,12 @@ const Develop: React.FC = () => {
   const dispatch = useDispatch();
   return (
     <div style={{ margin: theme.spacing(1) }}>
+      <Card>
+        <AppCardHeader title={'Test'} />
+        <AppCardContent>
+          Das ist der Inhalt
+        </AppCardContent>
+      </Card>
       <Grid container spacing={1} alignItems={'center'}>
         <Grid item>
           <TextFieldClearButton
@@ -98,14 +99,14 @@ const Develop: React.FC = () => {
           }))}>Toast</Button>
         </Grid>
         <Grid item>
-          <StyledButtonProgress
+          <ButtonProgress
             inProgress
             onClick={() => dispatch(Action.addToastAction({
               contentMessage: 'Toast Test',
               dismissLabel: 'Dismiss',
               isSuccess: true
             }))}
-          >Toast</StyledButtonProgress>
+          >Toast</ButtonProgress>
         </Grid>
       </Grid>
       <div style={{ marginTop: theme.spacing(1) }}>
@@ -279,11 +280,12 @@ const Develop: React.FC = () => {
       <div style={{ marginTop: theme.spacing(1) }}>
         <Card>
           <CardContent style={{ height: 600 }}>
-            <StyledVirtualizedTable
+            <VirtualizedTable
               showRowHoverHighlight
               rowHeight={50}
               rowCount={rows.length}
               rowGetter={(row: Index) => rows[row.index]}
+              noRowsRenderer={() => <TableRowLoading/>}
               sortBy={'calories'}
               sortDirection={'ASC'}
               columns={[
@@ -294,7 +296,7 @@ const Develop: React.FC = () => {
                   label: 'Dessert (100g serving)',
                   dataKey: 'dessert',
                   disableSort: true,
-                  cellRenderer: (cellProps: TableCellProps) => <StyledTableCellDefault cellData={cellProps.cellData} contentEllipseMode={ContentEllipseMode.Lines} contentEllipseLines={2} />
+                  cellRenderer: (cellProps: TableCellProps) => <TableCellDefault cellData={cellProps.cellData} contentEllipseMode={ContentEllipseMode.Lines} contentEllipseLines={2} />
                 },
                 {
                   width: 120,

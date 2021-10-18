@@ -1,39 +1,19 @@
-import React, { memo } from 'react';
-import { TableCell, TableSortLabel } from '@material-ui/core';
-import { SortDirectionType, TableHeaderProps } from 'react-virtualized';
+import styled from 'styled-components';
+import Definition from 'Component/App/Stateless/Style/Theme/Definition';
+import TableHeadDefaultBase, { TableHeadDefaultBaseProps } from 'Component/Table/TableHead/TableHeadDefaultBase';
 
-export type TableHeadDefaultProps = {
-  headerProps: TableHeaderProps;
-  className?: string;
-};
+type StylePropsType = { theme: typeof Definition } & TableHeadDefaultBaseProps;
 
-const TableHeadDefault = ({ headerProps, className = '' }: TableHeadDefaultProps) => {
-  const mapSortDirection = (sortDirection: SortDirectionType) => sortDirection === 'ASC' ? 'asc' : 'desc';
-  return (
-    headerProps && (
-      <TableCell
-        component={'div'}
-        className={`virtualized-table__cell virtualized-table__flex-container virtualized-table--no-click ${className}`}
-        variant={'head'}
-        style={{ height: headerProps.columnData.headerHeight }}
-        align={headerProps.columnData.numeric || false ? 'right' : 'left'}>
-        {headerProps.disableSort !== true && (
-          <TableSortLabel
-            active={headerProps.sortBy === headerProps.dataKey}
-            direction={headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc'}
-          >
-            <div>{headerProps.label}</div>
-            {headerProps.sortBy === headerProps.dataKey ? (
-              <span className={'virtualized-table--visually-hidden'}>
-                {headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending'}
-              </span>
-            ) : null}
-          </TableSortLabel>
-        )}
-        {headerProps.disableSort && <span>{headerProps.label}</span>}
-      </TableCell>
-    )
-  );
-};
+const TableHeadDefault = styled<typeof TableHeadDefaultBase>(TableHeadDefaultBase)`
+  .MuiTableSortLabel-root {
+    &:hover {
+      color: ${(props: StylePropsType) => props.theme.palette.secondary.main};
+    }
+  }
 
-export default memo(TableHeadDefault);
+  .MuiTableSortLabel-icon {
+    align-self: flex-start;
+  }
+`;
+
+export default TableHeadDefault;

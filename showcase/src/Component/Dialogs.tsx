@@ -22,8 +22,8 @@ import InfoIcon from '@material-ui/icons/Info';
 import AppNavigation from 'Component/AppNavigation';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import LoremIpsumText from 'Component/LoremIpsumText';
-import ButtonProgress from '@elumeo/jfs-core/build/Component/Button/ButtonProgress';
 import CodeBox from 'Component/CodeBox';
+import { ButtonProgress } from '../../../src/Component/Button';
 
 const useStyles = makeStyles((theme) =>
   createStyles({

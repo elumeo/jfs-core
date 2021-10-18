@@ -21,8 +21,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
-var TableCellBase = function (_a) {
-    var children = _a.children, _b = _a.isNumeric, isNumeric = _b === void 0 ? false : _b, _c = _a.className, className = _c === void 0 ? '' : _c;
-    return react_1.default.createElement(core_1.TableCell, { component: 'div', className: "virtualized-table__cell virtualized-table__flex-container " + className, variant: 'body', align: isNumeric ? 'right' : 'left' }, children);
+var TableRowLoadingBase = function (_a) {
+    var className = _a.className;
+    return (react_1.default.createElement("div", { className: className },
+        react_1.default.createElement(core_1.CircularProgress, null)));
 };
-exports.default = (0, react_1.memo)(TableCellBase);
+exports.default = (0, react_1.memo)(TableRowLoadingBase);

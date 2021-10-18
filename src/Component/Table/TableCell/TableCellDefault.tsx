@@ -1,36 +1,24 @@
-import React, { memo, ReactNode } from 'react';
-import { StyledTableCellBase, TableCellLoadingContent } from 'Component/Table/TableCell';
+import Definition from 'Component/App/Stateless/Style/Theme/Definition';
+import styled from 'styled-components';
+import TableCellDefaultBase, { TableCellDefaultBaseProps } from 'Component/Table/TableCell/TableCellDefaultBase';
 
-export enum ContentEllipseMode {
-  None = 'none',
-  Normal = 'normal',
-  Lines = 'lines'
-}
+type StylePropsType = { theme: typeof Definition } & TableCellDefaultBaseProps;
 
-export type TableCellDefaultProps = {
-  cellData: ReactNode;
-  isLoading?: boolean;
-  isNumeric?: boolean;
-  contentEllipseMode?: ContentEllipseMode;
-  contentEllipseLines?: number;
-  className?: string;
-};
-
-const TableCellDefault = ({ cellData, isNumeric = false, className = '', contentEllipseMode = ContentEllipseMode.Lines, isLoading = false }: TableCellDefaultProps) => {
-  const getClassName = () => {
-    switch (contentEllipseMode) {
-      case ContentEllipseMode.Lines:
-        return 'virtualized-table__content-ellipses-lines';
-      case ContentEllipseMode.Normal:
-        return 'virtualized-table__content-ellipses';
-      case ContentEllipseMode.None:
-      default:
-        return '';
+const TableCellDefault = styled<typeof TableCellDefaultBase>(TableCellDefaultBase)`
+  .virtualized-table {
+    &__content-ellipses {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
-  };
-  return <StyledTableCellBase isNumeric={isNumeric} className={className}>
-    {isLoading === false && <span className={getClassName()}>{cellData}</span>}
-    {isLoading && <TableCellLoadingContent />}
-  </StyledTableCellBase>;
-};
-export default memo(TableCellDefault);
+    &__content-ellipses-lines {
+      overflow: hidden;
+      white-space: normal;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: ${(props: StylePropsType) => props.contentEllipseLines ?? 4};
+      display: -webkit-box;
+    }
+  }
+`;
+
+export default TableCellDefault;

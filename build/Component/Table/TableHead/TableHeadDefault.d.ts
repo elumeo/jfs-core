@@ -1,8 +1,4 @@
-import React from 'react';
-import { TableHeaderProps } from 'react-virtualized';
-export declare type TableHeadDefaultProps = {
-    headerProps: TableHeaderProps;
-    className?: string;
-};
-declare const _default: React.MemoExoticComponent<({ headerProps, className }: TableHeadDefaultProps) => JSX.Element>;
-export default _default;
+/// <reference types="react" />
+import { TableHeadDefaultBaseProps } from '../../Table/TableHead/TableHeadDefaultBase';
+declare const TableHeadDefault: import("styled-components").StyledComponent<import("react").MemoExoticComponent<({ headerProps, className }: TableHeadDefaultBaseProps) => JSX.Element>, any, {}, never>;
+export default TableHeadDefault;

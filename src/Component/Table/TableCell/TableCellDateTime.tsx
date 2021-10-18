@@ -1,7 +1,7 @@
 import React, { memo, ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import { DateTime } from 'Utilities/Format';
-import TableCellBase from 'Component/Table/TableCell/TableCellBase';
+import TableCellBase from 'Component/Table/TableCell/TableCellRootBase';
 
 export type TableCellDateTimeProps = {
   cellData: string;

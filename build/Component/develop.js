@@ -42,9 +42,11 @@ var Action = __importStar(require("../Store/Action"));
 var uuid_1 = require("uuid");
 var Table_1 = require("./Table");
 var TextFieldClearButton_1 = __importDefault(require("./TextFieldClearButton"));
-var TableCellDefault_1 = require("./Table/TableCell/TableCellDefault");
+var TableCellDefaultBase_1 = require("./Table/TableCell/TableCellDefaultBase");
 var TableCell_1 = require("./Table/TableCell");
 var Button_1 = require("./Button");
+var Card_1 = require("./Card");
+var TableRow_1 = require("./Table/TableRow");
 var sample = [
     ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, 4.0],
     ['Ice cream sandwich', 237, 9.0, 37, 4.3],
@@ -62,6 +64,9 @@ var Develop = function () {
     var theme = (0, styles_1.useTheme)();
     var dispatch = (0, react_redux_1.useDispatch)();
     return (react_1.default.createElement("div", { style: { margin: theme.spacing(1) } },
+        react_1.default.createElement(core_1.Card, null,
+            react_1.default.createElement(Card_1.AppCardHeader, { title: 'Test' }),
+            react_1.default.createElement(Card_1.AppCardContent, null, "Das ist der Inhalt")),
         react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center' },
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: console.log, iconButtonSize: 'small' })),
@@ -80,7 +85,7 @@ var Develop = function () {
                         isSuccess: true
                     })); } }, "Toast")),
             react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(Button_1.StyledButtonProgress, { inProgress: true, onClick: function () { return dispatch(Action.addToastAction({
+                react_1.default.createElement(Button_1.ButtonProgress, { inProgress: true, onClick: function () { return dispatch(Action.addToastAction({
                         contentMessage: 'Toast Test',
                         dismissLabel: 'Dismiss',
                         isSuccess: true
@@ -169,7 +174,7 @@ var Develop = function () {
         react_1.default.createElement("div", { style: { marginTop: theme.spacing(1) } },
             react_1.default.createElement(core_1.Card, null,
                 react_1.default.createElement(core_1.CardContent, { style: { height: 600 } },
-                    react_1.default.createElement(Table_1.StyledVirtualizedTable, { showRowHoverHighlight: true, rowHeight: 50, rowCount: rows.length, rowGetter: function (row) { return rows[row.index]; }, sortBy: 'calories', sortDirection: 'ASC', columns: [
+                    react_1.default.createElement(Table_1.VirtualizedTable, { showRowHoverHighlight: true, rowHeight: 50, rowCount: rows.length, rowGetter: function (row) { return rows[row.index]; }, noRowsRenderer: function () { return react_1.default.createElement(TableRow_1.TableRowLoading, null); }, sortBy: 'calories', sortDirection: 'ASC', columns: [
                             {
                                 // width: 200,
                                 // flexGrow: 1,
@@ -177,7 +182,7 @@ var Develop = function () {
                                 label: 'Dessert (100g serving)',
                                 dataKey: 'dessert',
                                 disableSort: true,
-                                cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.StyledTableCellDefault, { cellData: cellProps.cellData, contentEllipseMode: TableCellDefault_1.ContentEllipseMode.Lines, contentEllipseLines: 2 }); }
+                                cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDefault, { cellData: cellProps.cellData, contentEllipseMode: TableCellDefaultBase_1.ContentEllipseMode.Lines, contentEllipseLines: 2 }); }
                             },
                             {
                                 width: 120,
