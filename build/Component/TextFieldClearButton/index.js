@@ -80,7 +80,7 @@ var TextFieldClearButton = function (_a) {
     var endAdornmentClearButton = showClearButton && (react_1.default.createElement(core_1.IconButton, { size: clearButtonSize, disabled: rest.disabled, color: 'secondary', onClick: function () { return handleOnChange(null); }, style: { padding: getIconButtonPadding() } },
         react_1.default.createElement(Close_1.default, { fontSize: getIconSize() })));
     var preparedInputProps = __assign(__assign({}, InputProps), { endAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
-            InputProps.endAdornment && InputProps.endAdornment.props.children,
+            InputProps && InputProps.endAdornment && InputProps.endAdornment.props.children,
             endAdornmentClearButton) });
     return (react_1.default.createElement(core_1.TextField, __assign({}, rest, { onChange: handleOnChange, InputProps: preparedInputProps, autoComplete: 'new-password', value: inputValue })));
 };

@@ -49,7 +49,7 @@ const TextFieldClearButton = ({ onChange, clearButtonSize = 'small', clearIconSi
   );
   const preparedInputProps: Partial<StandardInputProps> = {
     ...InputProps, endAdornment: <InputAdornment position={'end'}>
-      {InputProps.endAdornment && (InputProps.endAdornment as ReactElement).props.children}
+      {InputProps && InputProps.endAdornment && (InputProps.endAdornment as ReactElement).props.children}
       {endAdornmentClearButton}
     </InputAdornment>
   };
