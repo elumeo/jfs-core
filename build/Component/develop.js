@@ -48,6 +48,7 @@ var Button_1 = require("./Button");
 var Card_1 = require("./Card");
 var TableRow_1 = require("./Table/TableRow");
 var SelectClearButton_1 = __importDefault(require("./SelectClearButton"));
+var Search_1 = __importDefault(require("@material-ui/icons/Search"));
 var sample = [
     ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, 4.0],
     ['Ice cream sandwich', 237, 9.0, 37, 4.3],
@@ -72,7 +73,12 @@ var Develop = function () {
             react_1.default.createElement(Card_1.AppCardContent, null, "Das ist der Inhalt")),
         react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center' },
             react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: function (event) { return setTestTextFieldValue(event === null ? '' : event.target.value); }, value: testTextFieldValue, clearButtonSize: 'small' })),
+                react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: function (event) { return setTestTextFieldValue(event === null ? '' : event.target.value); }, value: testTextFieldValue, clearButtonSize: 'small', InputProps: {
+                        startAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'start' },
+                            react_1.default.createElement(Search_1.default, null)),
+                    } })),
+            react_1.default.createElement(core_1.Grid, { item: true },
+                react_1.default.createElement(TextFieldClearButton_1.default, { disabled: true, label: 'Textfield', onChange: function (event) { return setTestTextFieldValue(event === null ? '' : event.target.value); }, value: testTextFieldValue, clearButtonSize: 'small' })),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(SelectClearButton_1.default, { label: 'Select with Clear Button', onChange: function (event) { return setTestSelectValue(event === null ? '' : event.target.value); }, value: testSelectValue, clearButtonSize: 'small' },
                     react_1.default.createElement(core_1.MenuItem, { value: 'test 1' }, "Test 1"),

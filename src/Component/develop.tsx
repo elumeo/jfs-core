@@ -5,7 +5,7 @@ import {
   Card,
   CardContent,
   Chip,
-  Grid,
+  Grid, InputAdornment,
   List,
   ListItem,
   ListItemIcon,
@@ -28,6 +28,7 @@ import { ButtonProgress } from 'Component/Button';
 import { AppCardHeader, AppCardContent } from 'Component/Card';
 import { TableRowLoading } from 'Component/Table/TableRow';
 import SelectClearButton from 'Component/SelectClearButton';
+import SearchIcon from '@material-ui/icons/Search';
 
 type DataVirtualizedTable = {
   calories: number;
@@ -84,9 +85,18 @@ const Develop: React.FC = () => {
             onChange={event => setTestTextFieldValue(event === null ? '' : event.target.value)}
             value={testTextFieldValue}
             clearButtonSize={'small'}
-            // InputProps={{
-            //   startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment>,
-            // }}
+            InputProps={{
+              startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment>,
+            }}
+          />
+        </Grid>
+        <Grid item>
+          <TextFieldClearButton
+            disabled
+            label={'Textfield'}
+            onChange={event => setTestTextFieldValue(event === null ? '' : event.target.value)}
+            value={testTextFieldValue}
+            clearButtonSize={'small'}
           />
         </Grid>
         <Grid item>

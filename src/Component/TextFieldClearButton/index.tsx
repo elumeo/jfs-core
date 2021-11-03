@@ -43,6 +43,7 @@ const TextFieldClearButton = ({ onChange, clearButtonSize = 'small', clearIconSi
 
   const endAdornmentClearButton = showClearButton && (
     <IconButton
+      disabled={rest.disabled}
       size={clearButtonSize}
       color={'secondary'}
       onClick={() => handleOnChange(null)}

@@ -76,7 +76,7 @@ var SelectClearButton = function (_a) {
         }
         onChange(event, changeValue);
     };
-    var endAdornmentClearButton = showClearButton && (react_1.default.createElement(core_1.IconButton, { size: clearButtonSize, color: 'secondary', onClick: function () { return handleOnChange(null, null); }, style: { marginRight: '21px' } },
+    var endAdornmentClearButton = showClearButton && (react_1.default.createElement(core_1.IconButton, { disabled: rest.disabled, size: clearButtonSize, color: 'secondary', onClick: function () { return handleOnChange(null, null); }, style: { marginRight: '21px' } },
         react_1.default.createElement(Close_1.default, { fontSize: getIconSize() })));
     var preparedEndAdornment = react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
         endAdornment && endAdornment.props.children,

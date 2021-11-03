@@ -43,6 +43,7 @@ const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clea
 
   const endAdornmentClearButton = showClearButton && (
     <IconButton
+      disabled={rest.disabled}
       size={clearButtonSize}
       color={'secondary'}
       onClick={() => handleOnChange(null, null)}
