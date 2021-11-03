@@ -32,7 +32,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable max-lines */
-var react_1 = __importDefault(require("react"));
+var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
 var icons_1 = require("@material-ui/icons");
 var styles_1 = require("@material-ui/core/styles");
@@ -47,6 +47,7 @@ var TableCell_1 = require("./Table/TableCell");
 var Button_1 = require("./Button");
 var Card_1 = require("./Card");
 var TableRow_1 = require("./Table/TableRow");
+var Search_1 = __importDefault(require("@material-ui/icons/Search"));
 var sample = [
     ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, 4.0],
     ['Ice cream sandwich', 237, 9.0, 37, 4.3],
@@ -63,13 +64,17 @@ for (var i = 0; i < 200; i += 1) {
 var Develop = function () {
     var theme = (0, styles_1.useTheme)();
     var dispatch = (0, react_redux_1.useDispatch)();
+    var _a = (0, react_1.useState)(''), testValue = _a[0], setTestValue = _a[1];
     return (react_1.default.createElement("div", { style: { margin: theme.spacing(1) } },
         react_1.default.createElement(core_1.Card, null,
             react_1.default.createElement(Card_1.AppCardHeader, { title: 'Test' }),
             react_1.default.createElement(Card_1.AppCardContent, null, "Das ist der Inhalt")),
         react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center' },
             react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: console.log, iconButtonSize: 'small' })),
+                react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: function (event) { return setTestValue(event === null ? '' : event.target.value); }, value: testValue, clearButtonSize: 'small', InputProps: {
+                        startAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'start' },
+                            react_1.default.createElement(Search_1.default, null)),
+                    } })),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(core_1.Button, { onClick: function () { return dispatch(Action.addNotification({
                         id: (0, uuid_1.v4)(),

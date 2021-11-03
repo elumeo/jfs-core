@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "10.0.0-beta.161",
+  "version": "10.0.0-beta.162",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {

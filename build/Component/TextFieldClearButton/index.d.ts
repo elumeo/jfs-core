@@ -1,9 +1,10 @@
 import React from 'react';
-import { TextFieldProps } from '@material-ui/core';
+import { IconProps, TextFieldProps } from '@material-ui/core';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 declare type TextFieldClearButtonProps = Partial<TextFieldProps> & {
     onChange: TextFieldProps['onChange'];
-    iconButtonSize?: IconButtonProps['size'];
+    clearButtonSize?: IconButtonProps['size'];
+    clearIconSize?: IconProps['fontSize'];
 };
-declare const _default: React.MemoExoticComponent<({ onChange, iconButtonSize, variant, ...rest }: TextFieldClearButtonProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ onChange, clearButtonSize, clearIconSize, variant, InputProps, ...rest }: TextFieldClearButtonProps) => JSX.Element>;
 export default _default;

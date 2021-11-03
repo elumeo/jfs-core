@@ -1,11 +1,11 @@
 /* eslint-disable max-lines */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Card,
   CardContent,
   Chip,
-  Grid,
+  Grid, InputAdornment,
   List,
   ListItem,
   ListItemIcon,
@@ -27,6 +27,7 @@ import { TableCellDefault } from 'Component/Table/TableCell';
 import { ButtonProgress } from 'Component/Button';
 import { AppCardHeader, AppCardContent } from 'Component/Card';
 import { TableRowLoading } from 'Component/Table/TableRow';
+import SearchIcon from '@material-ui/icons/Search';
 
 type DataVirtualizedTable = {
   calories: number;
@@ -66,6 +67,7 @@ for (let i = 0; i < 200; i += 1) {
 const Develop: React.FC = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const [testValue, setTestValue] = useState('');
   return (
     <div style={{ margin: theme.spacing(1) }}>
       <Card>
@@ -78,8 +80,12 @@ const Develop: React.FC = () => {
         <Grid item>
           <TextFieldClearButton
             label={'Textfield'}
-            onChange={console.log}
-            iconButtonSize={'small'}
+            onChange={event => setTestValue(event === null ? '' : event.target.value)}
+            value={testValue}
+            clearButtonSize={'small'}
+            InputProps={{
+              startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment>,
+            }}
           />
         </Grid>
         <Grid item>

@@ -46,16 +46,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
-var Backspace_1 = __importDefault(require("@material-ui/icons/Backspace"));
+var Close_1 = __importDefault(require("@material-ui/icons/Close"));
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var TextFieldClearButton = function (_a) {
-    var onChange = _a.onChange, _b = _a.iconButtonSize, iconButtonSize = _b === void 0 ? 'medium' : _b, _c = _a.variant, variant = _c === void 0 ? 'standard' : _c, rest = __rest(_a, ["onChange", "iconButtonSize", "variant"]);
-    var getIconSize = function () { return iconButtonSize === 'medium' ? 24 : 18; };
-    var getIconButtonPadding = function () { return iconButtonSize === 'medium' ? 12 : 6; };
-    var endAdornment = (react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
-        react_1.default.createElement(core_1.IconButton, { size: iconButtonSize, disabled: rest.disabled, color: 'secondary', onClick: function () { return onChange(null); }, style: { padding: getIconButtonPadding() } },
-            react_1.default.createElement(Backspace_1.default, { style: { fontSize: getIconSize() } }))));
-    var preparedInputProps = __assign(__assign({}, rest.InputProps), { endAdornment: endAdornment });
-    return (react_1.default.createElement(core_1.TextField, __assign({ onChange: onChange, InputProps: preparedInputProps, autoComplete: 'new-password' }, rest)));
+    var onChange = _a.onChange, _b = _a.clearButtonSize, clearButtonSize = _b === void 0 ? 'small' : _b, _c = _a.clearIconSize, clearIconSize = _c === void 0 ? 'small' : _c, _d = _a.variant, variant = _d === void 0 ? 'standard' : _d, InputProps = _a.InputProps, rest = __rest(_a, ["onChange", "clearButtonSize", "clearIconSize", "variant", "InputProps"]);
+    var getIconSize = function () { return clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small'; };
+    var getIconButtonPadding = function () { return clearButtonSize === 'medium' ? 12 : 6; };
+    var _e = (0, react_1.useState)(false), showClearButton = _e[0], setShowClearButton = _e[1];
+    var _f = (0, react_1.useState)(''), inputValue = _f[0], setInputValue = _f[1];
+    (0, react_1.useEffect)(function () {
+        if (rest.value !== undefined) {
+            if (rest.value !== '') {
+                setShowClearButton(true);
+            }
+            else {
+                setShowClearButton(false);
+            }
+            setInputValue(rest.value);
+        }
+    }, [rest.value]);
+    var handleOnChange = function (event) {
+        if (event !== null && event.target.value !== '') {
+            setShowClearButton(true);
+        }
+        else {
+            setShowClearButton(false);
+        }
+        if (rest.value === undefined) {
+            setInputValue(event === null ? '' : event.target.value);
+        }
+        onChange(event);
+    };
+    var endAdornmentClearButton = showClearButton && (react_1.default.createElement(core_1.IconButton, { size: clearButtonSize, disabled: rest.disabled, color: 'secondary', onClick: function () { return handleOnChange(null); }, style: { padding: getIconButtonPadding() } },
+        react_1.default.createElement(Close_1.default, { fontSize: getIconSize() })));
+    var preparedInputProps = __assign(__assign({}, InputProps), { endAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
+            InputProps.endAdornment && InputProps.endAdornment.props.children,
+            endAdornmentClearButton) });
+    return (react_1.default.createElement(core_1.TextField, __assign({}, rest, { onChange: handleOnChange, InputProps: preparedInputProps, autoComplete: 'new-password', value: inputValue })));
 };
 exports.default = (0, react_1.memo)(TextFieldClearButton);
