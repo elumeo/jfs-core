@@ -10,7 +10,7 @@ import IconButtonProgress from '@elumeo/jfs-core/build/Component/Button/IconButt
 import AppNavigation from 'Component/AppNavigation';
 import Switch from '@material-ui/core/Switch';
 import CodeBox from 'Component/CodeBox';
-import { ButtonProgress } from '../../../src/Component/Button';
+import { ButtonProgress } from '@elumeo/jfs-core/build/Component/Button';
 
 type Props = WithStyles;
 const style = (theme: Theme) => ({
