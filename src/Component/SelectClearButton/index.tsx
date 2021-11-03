@@ -1,17 +1,17 @@
 import React, { memo, ReactElement, useEffect, useState } from 'react';
-import { IconButton, IconProps, InputAdornment, TextField, TextFieldProps } from '@material-ui/core';
+import { IconButton, IconProps, InputAdornment, Select, SelectProps } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import { InputProps as StandardInputProps } from '@material-ui/core/Input/Input';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 
-type TextFieldClearButtonProps = Partial<TextFieldProps> & {
-  onChange: TextFieldProps['onChange'];
+type SelectClearButtonProps = Partial<SelectProps> & {
+  onChange: SelectProps['onChange'];
   clearButtonSize?: IconButtonProps['size'];
   clearIconSize?: IconProps['fontSize'];
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const TextFieldClearButton = ({ onChange, clearButtonSize = 'small', clearIconSize = 'small', variant = 'standard', InputProps, ...rest }: TextFieldClearButtonProps) => {
+const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clearIconSize = 'small', variant = 'standard', endAdornment, ...rest }: SelectClearButtonProps) => {
   const getIconSize = (): IconProps['fontSize'] => clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small';
   const [showClearButton, setShowClearButton] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -28,44 +28,45 @@ const TextFieldClearButton = ({ onChange, clearButtonSize = 'small', clearIconSi
     }
   }, [rest.value]);
 
-  const handleOnChange: TextFieldProps['onChange'] = (event) => {
-    if (event !== null && event.target.value !== '') {
+  const handleOnChange: SelectProps['onChange'] = (event, changeValue: string) => {
+    if (changeValue !== null && changeValue !== '') {
       setShowClearButton(true);
     } else {
       setShowClearButton(false);
     }
 
     if (rest.value === undefined) {
-      setInputValue(event === null ? '' : event.target.value);
+      setInputValue(changeValue === null ? '' : changeValue);
     }
-    onChange(event);
+    onChange(event, changeValue);
   };
 
   const endAdornmentClearButton = showClearButton && (
     <IconButton
       size={clearButtonSize}
       color={'secondary'}
-      onClick={() => handleOnChange(null)}
+      onClick={() => handleOnChange(null, null)}
+      style={{ marginRight: '21px' }}
     >
       <CloseIcon fontSize={getIconSize()} />
     </IconButton>
   );
-  const preparedInputProps: Partial<StandardInputProps> = {
-    ...InputProps, endAdornment: <InputAdornment position={'end'}>
-      {InputProps && InputProps.endAdornment && (InputProps.endAdornment as ReactElement).props.children}
-      {endAdornmentClearButton}
-    </InputAdornment>
-  };
+  const preparedEndAdornment: Partial<StandardInputProps> = <InputAdornment position={'end'}>
+    {endAdornment && (endAdornment as ReactElement).props.children}
+    {endAdornmentClearButton}
+  </InputAdornment>;
 
   return (
-    <TextField
+    <Select
       {...rest}
       onChange={handleOnChange}
-      InputProps={preparedInputProps}
+      endAdornment={preparedEndAdornment}
       autoComplete={'new-password'}
       value={inputValue}
-    />
+    >
+      {children}
+    </Select>
   );
 };
 
-export default memo(TextFieldClearButton);
+export default memo(SelectClearButton);

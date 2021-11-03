@@ -9,7 +9,7 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText,
+  ListItemText, MenuItem,
   Paper,
   Typography
 } from '@material-ui/core';
@@ -27,6 +27,7 @@ import { TableCellDefault } from 'Component/Table/TableCell';
 import { ButtonProgress } from 'Component/Button';
 import { AppCardHeader, AppCardContent } from 'Component/Card';
 import { TableRowLoading } from 'Component/Table/TableRow';
+import SelectClearButton from 'Component/SelectClearButton';
 
 type DataVirtualizedTable = {
   calories: number;
@@ -66,7 +67,8 @@ for (let i = 0; i < 200; i += 1) {
 const Develop: React.FC = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const [testValue, setTestValue] = useState('');
+  const [testTextFieldValue, setTestTextFieldValue] = useState('');
+  const [testSelectValue, setTestSelectValue] = useState('');
   return (
     <div style={{ margin: theme.spacing(1) }}>
       <Card>
@@ -79,13 +81,26 @@ const Develop: React.FC = () => {
         <Grid item>
           <TextFieldClearButton
             label={'Textfield'}
-            onChange={event => setTestValue(event === null ? '' : event.target.value)}
-            value={testValue}
+            onChange={event => setTestTextFieldValue(event === null ? '' : event.target.value)}
+            value={testTextFieldValue}
             clearButtonSize={'small'}
             // InputProps={{
             //   startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment>,
             // }}
           />
+        </Grid>
+        <Grid item>
+          <SelectClearButton
+            label={'Select with Clear Button'}
+            onChange={event => setTestSelectValue(event === null ? '' : event.target.value as string)}
+            value={testSelectValue}
+            clearButtonSize={'small'}
+          >
+            <MenuItem value={'test 1'}>Test 1</MenuItem>
+            <MenuItem value={'test 2'}>Test 2</MenuItem>
+            <MenuItem value={'test 3'}>Test 3</MenuItem>
+            <MenuItem value={'test 4'}>Test 4</MenuItem>
+          </SelectClearButton>
         </Grid>
         <Grid item>
           <Button onClick={() => dispatch(Action.addNotification({

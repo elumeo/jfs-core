@@ -47,6 +47,7 @@ var TableCell_1 = require("./Table/TableCell");
 var Button_1 = require("./Button");
 var Card_1 = require("./Card");
 var TableRow_1 = require("./Table/TableRow");
+var SelectClearButton_1 = __importDefault(require("./SelectClearButton"));
 var sample = [
     ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, 4.0],
     ['Ice cream sandwich', 237, 9.0, 37, 4.3],
@@ -63,14 +64,21 @@ for (var i = 0; i < 200; i += 1) {
 var Develop = function () {
     var theme = (0, styles_1.useTheme)();
     var dispatch = (0, react_redux_1.useDispatch)();
-    var _a = (0, react_1.useState)(''), testValue = _a[0], setTestValue = _a[1];
+    var _a = (0, react_1.useState)(''), testTextFieldValue = _a[0], setTestTextFieldValue = _a[1];
+    var _b = (0, react_1.useState)(''), testSelectValue = _b[0], setTestSelectValue = _b[1];
     return (react_1.default.createElement("div", { style: { margin: theme.spacing(1) } },
         react_1.default.createElement(core_1.Card, null,
             react_1.default.createElement(Card_1.AppCardHeader, { title: 'Test' }),
             react_1.default.createElement(Card_1.AppCardContent, null, "Das ist der Inhalt")),
         react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center' },
             react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: function (event) { return setTestValue(event === null ? '' : event.target.value); }, value: testValue, clearButtonSize: 'small' })),
+                react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: function (event) { return setTestTextFieldValue(event === null ? '' : event.target.value); }, value: testTextFieldValue, clearButtonSize: 'small' })),
+            react_1.default.createElement(core_1.Grid, { item: true },
+                react_1.default.createElement(SelectClearButton_1.default, { label: 'Select with Clear Button', onChange: function (event) { return setTestSelectValue(event === null ? '' : event.target.value); }, value: testSelectValue, clearButtonSize: 'small' },
+                    react_1.default.createElement(core_1.MenuItem, { value: 'test 1' }, "Test 1"),
+                    react_1.default.createElement(core_1.MenuItem, { value: 'test 2' }, "Test 2"),
+                    react_1.default.createElement(core_1.MenuItem, { value: 'test 3' }, "Test 3"),
+                    react_1.default.createElement(core_1.MenuItem, { value: 'test 4' }, "Test 4"))),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(core_1.Button, { onClick: function () { return dispatch(Action.addNotification({
                         id: (0, uuid_1.v4)(),
