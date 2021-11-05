@@ -29,6 +29,7 @@ import { AppCardHeader, AppCardContent } from 'Component/Card';
 import { TableRowLoading } from 'Component/Table/TableRow';
 import SelectClearButton from 'Component/SelectClearButton';
 import SearchIcon from '@material-ui/icons/Search';
+import { CustomerCard } from 'Component/Icon';
 
 type DataVirtualizedTable = {
   calories: number;
@@ -111,6 +112,9 @@ const Develop: React.FC = () => {
             <MenuItem value={'test 3'}>Test 3</MenuItem>
             <MenuItem value={'test 4'}>Test 4</MenuItem>
           </SelectClearButton>
+        </Grid>
+        <Grid item>
+          <CustomerCard />
         </Grid>
         <Grid item>
           <Button onClick={() => dispatch(Action.addNotification({

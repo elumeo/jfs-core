@@ -49,6 +49,7 @@ var Card_1 = require("./Card");
 var TableRow_1 = require("./Table/TableRow");
 var SelectClearButton_1 = __importDefault(require("./SelectClearButton"));
 var Search_1 = __importDefault(require("@material-ui/icons/Search"));
+var Icon_1 = require("./Icon");
 var sample = [
     ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, 4.0],
     ['Ice cream sandwich', 237, 9.0, 37, 4.3],
@@ -85,6 +86,8 @@ var Develop = function () {
                     react_1.default.createElement(core_1.MenuItem, { value: 'test 2' }, "Test 2"),
                     react_1.default.createElement(core_1.MenuItem, { value: 'test 3' }, "Test 3"),
                     react_1.default.createElement(core_1.MenuItem, { value: 'test 4' }, "Test 4"))),
+            react_1.default.createElement(core_1.Grid, { item: true },
+                react_1.default.createElement(Icon_1.CustomerCard, null)),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(core_1.Button, { onClick: function () { return dispatch(Action.addNotification({
                         id: (0, uuid_1.v4)(),
