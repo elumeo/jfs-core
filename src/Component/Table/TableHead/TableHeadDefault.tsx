@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Definition from 'Component/App/Stateless/Style/Theme/Definition';
 import TableHeadDefaultBase, { TableHeadDefaultBaseProps } from 'Component/Table/TableHead/TableHeadDefaultBase';
+import { memo } from 'react';
 
 type StylePropsType = { theme: typeof Definition } & TableHeadDefaultBaseProps;
 
@@ -16,4 +17,4 @@ const TableHeadDefault = styled<typeof TableHeadDefaultBase>(TableHeadDefaultBas
   }
 `;
 
-export default TableHeadDefault;
+export default memo(TableHeadDefault);

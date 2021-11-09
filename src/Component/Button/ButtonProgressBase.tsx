@@ -15,7 +15,7 @@ export const mapToCircularProgressSize = (size: string): number => {
 export const mapToCircularProgressColor = (color: PropTypes.Color,): 'inherit' | 'primary' | 'secondary' => color === 'default' ? 'inherit' : color;
 
 export type ButtonProgressBaseProps = ButtonProps & {
-  onClick?: () => void;
+  onClick?: ButtonProps['onClick'];
   disabled?: boolean;
   inProgress?: boolean;
   color?: PropTypes.Color;

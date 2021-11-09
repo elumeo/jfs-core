@@ -1,21 +1,20 @@
-import { ColumnProps, AutoSizer, Column, Index, SizeInfo, Table, TableProps } from 'react-virtualized';
+import { ColumnProps, AutoSizer, Column, Index, SizeInfo, Table, TableProps, AutoSizerProps } from 'react-virtualized';
 import React, { memo } from 'react';
 import { TableCellDefault } from 'Component/Table/TableCell';
-import { Size } from 'react-virtualized/dist/es/AutoSizer';
 import TableHeadDefault from 'Component/Table/TableHead/TableHeadDefault';
 
 // @ts-ignore
-export interface ColumnData extends ColumnProps {
+export type ColumnData = ColumnProps & {
   numeric?: boolean;
-  width?: number | ((fullWidth: number) => number);
+  width?: ColumnProps['width'] | ((fullWidth: number) => number);
 }
 
 export type VirtualizedTableBaseProps = Partial<TableProps> & {
-  onResize?: (info: Size) => unknown;
   columns: ColumnData[];
-  rowHeight?: number | ((params: Index) => number);
   showRowHoverHighlight?: boolean;
   headerOverflow?: 'visible' | 'hidden' | 'inherit' | 'initial';
+  onResize?: AutoSizerProps['onResize'];
+  rowHeight?: TableProps['rowHeight'];
 };
 
 const VirtualizedTableBase = React.forwardRef<Table, VirtualizedTableBaseProps>(
@@ -31,17 +30,18 @@ const VirtualizedTableBase = React.forwardRef<Table, VirtualizedTableBaseProps>(
      ...tableProps
    }, ref) => {
     const getRowClassName = (index: Index) => 'virtualized-table__row virtualized-table__flex-container'
-      + (
-        index.index !== -1 && showRowHoverHighlight === true
-          ? ' virtualized-table__row--hover'
-          : ''
-      )
-      + (
-        onRowClick !== null
-          ? ' virtualized-table--click'
-          : ''
-      )
+      + (index.index !== -1 && showRowHoverHighlight === true ? ' virtualized-table__row--hover' : '')
+      + (onRowClick !== null ? ' virtualized-table--click' : '')
     ;
+
+    const headerRenderer: ColumnProps['headerRenderer'] = (headerProps) => <TableHeadDefault
+      height={headerHeight}
+      disableSort={headerProps.disableSort}
+      sortBy={headerProps.sortBy}
+      sortDirection={headerProps.sortDirection}
+      label={headerProps.label}
+      dataKey={headerProps.dataKey}
+    />;
 
     return (
       <AutoSizer onResize={onResize}>
@@ -59,7 +59,7 @@ const VirtualizedTableBase = React.forwardRef<Table, VirtualizedTableBaseProps>(
             gridClassName={'virtualized-table__grid'}
             {...tableProps}
           >
-            {columns.map(({ dataKey, width: columnWidth, ...other }, index) => {
+            {columns.map(({ dataKey, width: columnWidth, ...other }) => {
               const finalWidth = (typeof columnWidth !== 'number')
                 ? (columnWidth as (fullWidth: number) => number)(width)
                 : columnWidth as number
@@ -68,13 +68,7 @@ const VirtualizedTableBase = React.forwardRef<Table, VirtualizedTableBaseProps>(
                 <Column
                   key={dataKey}
                   headerStyle={{ outline: 'none' }}
-                  headerRenderer={headerProps => {
-                    const columnData = headerProps.columnData !== undefined ? headerProps.columnData : {};
-                    columnData.index = index;
-                    columnData.numeric = columns[index].numeric;
-                    columnData.headerHeight = headerHeight;
-                    return <TableHeadDefault headerProps={{ ...headerProps, columnData: columnData }} />;
-                  }}
+                  headerRenderer={headerRenderer}
                   className={'virtualized-table__flex-container'}
                   cellRenderer={({ cellData, columnIndex }) => <TableCellDefault
                     cellData={cellData}

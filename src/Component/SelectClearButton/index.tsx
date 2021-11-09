@@ -4,7 +4,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { InputProps as StandardInputProps } from '@material-ui/core/Input/Input';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 
-type SelectClearButtonProps = Partial<SelectProps> & {
+export type SelectClearButtonProps = Partial<SelectProps> & {
   onChange: SelectProps['onChange'];
   clearButtonSize?: IconButtonProps['size'];
   clearIconSize?: IconProps['fontSize'];

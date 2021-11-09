@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "10.0.0-beta.166",
+  "version": "10.0.0-beta.167",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -152,6 +152,7 @@
   },
   "devDependencies": {
     "@types/react-datepicker": "^4.1.4",
-    "@types/styled-components": "^5.1.15"
+    "@types/styled-components": "^5.1.15",
+    "@welldone-software/why-did-you-render": "^6.2.1"
   }
 }

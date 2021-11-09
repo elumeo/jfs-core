@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
-  Button,
+  Button, ButtonProps,
   Card,
   CardContent,
   Chip,
@@ -10,7 +10,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText, MenuItem,
-  Paper,
+  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
   Typography
 } from '@material-ui/core';
 import { AccountCircle as AccountCircleIcon, ContactPhone as ContactPhoneIcon } from '@material-ui/icons';
@@ -21,13 +21,13 @@ import * as Action from 'Store/Action';
 import { v4 as uuid } from 'uuid';
 import { VirtualizedTable } from 'Component/Table';
 import { Index, TableCellProps } from 'react-virtualized';
-import TextFieldClearButton from 'Component/TextFieldClearButton';
+import TextFieldClearButton, { TextFieldClearButtonProps } from 'Component/TextFieldClearButton';
 import { ContentEllipseMode } from 'Component/Table/TableCell/TableCellDefaultBase';
 import { TableCellDefault } from 'Component/Table/TableCell';
 import { ButtonProgress } from 'Component/Button';
 import { AppCardHeader, AppCardContent } from 'Component/Card';
 import { TableRowLoading } from 'Component/Table/TableRow';
-import SelectClearButton from 'Component/SelectClearButton';
+import SelectClearButton, { SelectClearButtonProps } from 'Component/SelectClearButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { CustomerCard } from 'Component/Icon';
 
@@ -66,11 +66,72 @@ for (let i = 0; i < 200; i += 1) {
   rows.push(createDataVirtualizedTable(i, ...randomSelection));
 }
 
+const columns = [
+  {
+    // width: 200,
+    // flexGrow: 1,
+    width: (width: number) => width - (120 * 4),
+    label: 'Dessert (100g serving)',
+    dataKey: 'dessert',
+    disableSort: true,
+    cellRenderer: (cellProps: TableCellProps) => <TableCellDefault cellData={cellProps.cellData} contentEllipseMode={ContentEllipseMode.Lines} contentEllipseLines={2} />
+  },
+  {
+    width: 120,
+    label: 'Calories\u00A0(g)',
+    dataKey: 'calories',
+    numeric: true
+  },
+  {
+    width: 120,
+    label: 'Fat\u00A0(g)',
+    dataKey: 'fat',
+    numeric: true
+  },
+  {
+    width: 120,
+    label: 'Carbs\u00A0(g)',
+    dataKey: 'carbs',
+    numeric: true
+  },
+  {
+    width: 120,
+    label: 'Protein\u00A0(g)',
+    dataKey: 'protein',
+    numeric: true
+  }
+];
+const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon /></InputAdornment> };
+
+const selectMenuItems = [
+  <MenuItem value={'test 1'} key={'menu-item-1'}>Test 1</MenuItem>,
+  <MenuItem value={'test 2'} key={'menu-item-2'}>Test 2</MenuItem>,
+  <MenuItem value={'test 3'} key={'menu-item-3'}>Test 3</MenuItem>,
+  <MenuItem value={'test 4'} key={'menu-item-4'}>Test 4</MenuItem>
+];
+
 const Develop: React.FC = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [testTextFieldValue, setTestTextFieldValue] = useState('');
   const [testSelectValue, setTestSelectValue] = useState('');
+  const noRowsRenderer = useCallback(() => <TableRowLoading />, []);
+  const rowGetter = useCallback((row: Index) => rows[row.index], []);
+  const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
+  const handleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => setTestSelectValue(event === null ? '' : event.target.value as string), []);
+  const handleOnClickNotification: ButtonProps['onClick'] = useCallback(() => dispatch(Action.addNotification({
+    id: uuid(),
+    title: 'Error',
+    subtitle: 'Join Room (action.payload.name)',
+    content: 'MESSAGE',
+    variant: 'error'
+  })), []);
+  const handleOnClickToast: ButtonProps['onClick'] = useCallback(() => dispatch(Action.addToastAction({
+    contentMessage: 'Toast Test',
+    dismissLabel: 'Dismiss',
+    isSuccess: true
+  })), []);
+
   return (
     <div style={{ margin: theme.spacing(1) }}>
       <Card>
@@ -79,23 +140,37 @@ const Develop: React.FC = () => {
           Das ist der Inhalt
         </AppCardContent>
       </Card>
+      <div style={{ marginTop: theme.spacing(1) }}>
+        <Card>
+          <CardContent style={{ height: 600 }}>
+            <VirtualizedTable
+              showRowHoverHighlight
+              rowHeight={50}
+              rowCount={rows.length}
+              rowGetter={rowGetter}
+              noRowsRenderer={noRowsRenderer}
+              sortBy={'calories'}
+              sortDirection={'ASC'}
+              columns={columns}
+            />
+          </CardContent>
+        </Card>
+      </div>
       <Grid container spacing={1} alignItems={'center'}>
         <Grid item>
           <TextFieldClearButton
             label={'Textfield'}
-            onChange={event => setTestTextFieldValue(event === null ? '' : event.target.value)}
+            onChange={handleTextFieldUpdate}
             value={testTextFieldValue}
             clearButtonSize={'small'}
-            InputProps={{
-              startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment>,
-            }}
+            InputProps={textFieldInputProps}
           />
         </Grid>
         <Grid item>
           <TextFieldClearButton
             disabled
             label={'Textfield'}
-            onChange={event => setTestTextFieldValue(event === null ? '' : event.target.value)}
+            onChange={handleTextFieldUpdate}
             value={testTextFieldValue}
             clearButtonSize={'small'}
           />
@@ -103,44 +178,22 @@ const Develop: React.FC = () => {
         <Grid item>
           <SelectClearButton
             label={'Select with Clear Button'}
-            onChange={event => setTestSelectValue(event === null ? '' : event.target.value as string)}
+            onChange={handleSelectUpdate}
             value={testSelectValue}
             clearButtonSize={'small'}
-          >
-            <MenuItem value={'test 1'}>Test 1</MenuItem>
-            <MenuItem value={'test 2'}>Test 2</MenuItem>
-            <MenuItem value={'test 3'}>Test 3</MenuItem>
-            <MenuItem value={'test 4'}>Test 4</MenuItem>
-          </SelectClearButton>
+          >{selectMenuItems}</SelectClearButton>
         </Grid>
         <Grid item>
           <CustomerCard />
         </Grid>
         <Grid item>
-          <Button onClick={() => dispatch(Action.addNotification({
-            id: uuid(),
-            title: 'Error',
-            subtitle: 'Join Room (action.payload.name)',
-            content: 'MESSAGE',
-            variant: 'error'
-          }))}>Notification</Button>
+          <Button onClick={handleOnClickNotification}>Notification</Button>
         </Grid>
         <Grid item>
-          <Button onClick={() => dispatch(Action.addToastAction({
-            contentMessage: 'Toast Test',
-            dismissLabel: 'Dismiss',
-            isSuccess: true
-          }))}>Toast</Button>
+          <Button onClick={handleOnClickToast}>Toast</Button>
         </Grid>
         <Grid item>
-          <ButtonProgress
-            inProgress
-            onClick={() => dispatch(Action.addToastAction({
-              contentMessage: 'Toast Test',
-              dismissLabel: 'Dismiss',
-              isSuccess: true
-            }))}
-          >Toast</ButtonProgress>
+          <ButtonProgress inProgress onClick={handleOnClickToast}>Toast</ButtonProgress>
         </Grid>
       </Grid>
       <div style={{ marginTop: theme.spacing(1) }}>
@@ -285,79 +338,28 @@ const Develop: React.FC = () => {
         </Grid>
       </div>
 
-      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
-      {/*  <Card>*/}
-      {/*    <CardContent style={{ height: 300 }}>*/}
-      {/*      <TableContainer style={{ maxHeight: 300 }}>*/}
-      {/*        <Table stickyHeader>*/}
-      {/*          <TableHead>*/}
-      {/*            <TableRow>*/}
-      {/*              {['calories', 'carbs', 'dessert', 'fat', 'id', 'protein'].map((column, index) => <TableCell key={'column-head-index-' + index}>{column}</TableCell>)}*/}
-      {/*            </TableRow>*/}
-      {/*          </TableHead>*/}
-      {/*          <TableBody>*/}
-      {/*            {rows.map((row, index) => <TableRow key={'row-body-index' + index}>*/}
-      {/*              <TableCell>{row.calories}</TableCell>*/}
-      {/*              <TableCell>{row.carbs}</TableCell>*/}
-      {/*              <TableCell>{row.dessert}</TableCell>*/}
-      {/*              <TableCell>{row.fat}</TableCell>*/}
-      {/*              <TableCell>{row.id}</TableCell>*/}
-      {/*              <TableCell>{row.protein}</TableCell>*/}
-      {/*            </TableRow>)}*/}
-      {/*          </TableBody>*/}
-      {/*        </Table>*/}
-      {/*      </TableContainer>*/}
-      {/*    </CardContent>*/}
-      {/*  </Card>*/}
-      {/*</div>*/}
-
       <div style={{ marginTop: theme.spacing(1) }}>
         <Card>
-          <CardContent style={{ height: 600 }}>
-            <VirtualizedTable
-              showRowHoverHighlight
-              rowHeight={50}
-              rowCount={rows.length}
-              rowGetter={(row: Index) => rows[row.index]}
-              noRowsRenderer={() => <TableRowLoading/>}
-              sortBy={'calories'}
-              sortDirection={'ASC'}
-              columns={[
-                {
-                  // width: 200,
-                  // flexGrow: 1,
-                  width: (width: number) => width - (120 * 4),
-                  label: 'Dessert (100g serving)',
-                  dataKey: 'dessert',
-                  disableSort: true,
-                  cellRenderer: (cellProps: TableCellProps) => <TableCellDefault cellData={cellProps.cellData} contentEllipseMode={ContentEllipseMode.Lines} contentEllipseLines={2} />
-                },
-                {
-                  width: 120,
-                  label: 'Calories\u00A0(g)',
-                  dataKey: 'calories',
-                  numeric: true
-                },
-                {
-                  width: 120,
-                  label: 'Fat\u00A0(g)',
-                  dataKey: 'fat',
-                  numeric: true
-                },
-                {
-                  width: 120,
-                  label: 'Carbs\u00A0(g)',
-                  dataKey: 'carbs',
-                  numeric: true
-                },
-                {
-                  width: 120,
-                  label: 'Protein\u00A0(g)',
-                  dataKey: 'protein',
-                  numeric: true
-                }
-              ]}
-            />
+          <CardContent style={{ height: 300 }}>
+            <TableContainer style={{ maxHeight: 300 }}>
+              <Table stickyHeader>
+                <TableHead>
+                  <TableRow>
+                    {['calories', 'carbs', 'dessert', 'fat', 'id', 'protein'].map((column, index) => <TableCell key={'column-head-index-' + index}>{column}</TableCell>)}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row, index) => <TableRow key={'row-body-index' + index}>
+                    <TableCell>{row.calories}</TableCell>
+                    <TableCell>{row.carbs}</TableCell>
+                    <TableCell>{row.dessert}</TableCell>
+                    <TableCell>{row.fat}</TableCell>
+                    <TableCell>{row.id}</TableCell>
+                    <TableCell>{row.protein}</TableCell>
+                  </TableRow>)}
+                </TableBody>
+              </Table>
+            </TableContainer>
           </CardContent>
         </Card>
       </div>
