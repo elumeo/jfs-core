@@ -1,9 +1,9 @@
 import { ColumnProps, Table, TableProps, AutoSizerProps } from 'react-virtualized';
 import React from 'react';
-export interface ColumnData extends ColumnProps {
+export declare type ColumnData = Omit<ColumnProps, 'width'> & {
     numeric?: boolean;
     width?: number | ((fullWidth: number) => number);
-}
+};
 export declare type VirtualizedTableBaseProps = Partial<TableProps> & {
     columns: ColumnData[];
     showRowHoverHighlight?: boolean;

@@ -3,8 +3,7 @@ import React, { memo } from 'react';
 import { TableCellDefault } from 'Component/Table/TableCell';
 import TableHeadDefault from 'Component/Table/TableHead/TableHeadDefault';
 
-// @ts-ignore
-export interface ColumnData extends ColumnProps {
+export type ColumnData = Omit<ColumnProps, 'width'> & {
   numeric?: boolean;
   width?: number | ((fullWidth: number) => number);
 }
