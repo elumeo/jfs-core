@@ -22,12 +22,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
 var TableHeadDefaultBase = function (_a) {
-    var headerProps = _a.headerProps, _b = _a.className, className = _b === void 0 ? '' : _b;
+    var _b = _a.height, height = _b === void 0 ? 48 : _b, _c = _a.isNumeric, isNumeric = _c === void 0 ? false : _c, _d = _a.disableSort, disableSort = _d === void 0 ? false : _d, sortBy = _a.sortBy, sortDirection = _a.sortDirection, label = _a.label, dataKey = _a.dataKey, _e = _a.className, className = _e === void 0 ? '' : _e;
     var mapSortDirection = function (sortDirection) { return sortDirection === 'ASC' ? 'asc' : 'desc'; };
-    return (headerProps && (react_1.default.createElement(core_1.TableCell, { component: 'div', className: "virtualized-table__cell virtualized-table__flex-container virtualized-table--no-click " + className, variant: 'head', style: { height: headerProps.columnData.headerHeight }, align: headerProps.columnData.numeric || false ? 'right' : 'left' },
-        headerProps.disableSort !== true && (react_1.default.createElement(core_1.TableSortLabel, { active: headerProps.sortBy === headerProps.dataKey, direction: headerProps.sortBy === headerProps.dataKey ? mapSortDirection(headerProps.sortDirection) : 'asc' },
-            react_1.default.createElement("div", null, headerProps.label),
-            headerProps.sortBy === headerProps.dataKey ? (react_1.default.createElement("span", { className: 'virtualized-table--visually-hidden' }, headerProps.sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending')) : null)),
-        headerProps.disableSort && react_1.default.createElement("span", null, headerProps.label))));
+    return (react_1.default.createElement(core_1.TableCell, { component: 'div', className: "virtualized-table__cell virtualized-table__flex-container virtualized-table--no-click " + className, variant: 'head', style: { height: height }, align: isNumeric || false ? 'right' : 'left' },
+        disableSort !== true && (react_1.default.createElement(core_1.TableSortLabel, { active: sortBy === dataKey, direction: sortBy === dataKey ? mapSortDirection(sortDirection) : 'asc' },
+            react_1.default.createElement("div", null, label),
+            sortBy === dataKey ? (react_1.default.createElement("span", { className: 'virtualized-table--visually-hidden' }, sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending')) : null)),
+        disableSort && react_1.default.createElement("span", null, label)));
 };
 exports.default = (0, react_1.memo)(TableHeadDefaultBase);

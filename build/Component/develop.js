@@ -63,51 +63,93 @@ for (var i = 0; i < 200; i += 1) {
     var randomSelection = sample[Math.floor(Math.random() * sample.length)];
     rows.push(createDataVirtualizedTable.apply(void 0, __spreadArray([i], randomSelection, false)));
 }
+var columns = [
+    {
+        // width: 200,
+        // flexGrow: 1,
+        width: function (width) { return width - (120 * 4); },
+        label: 'Dessert (100g serving)',
+        dataKey: 'dessert',
+        disableSort: true,
+        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDefault, { cellData: cellProps.cellData, contentEllipseMode: TableCellDefaultBase_1.ContentEllipseMode.Lines, contentEllipseLines: 2 }); }
+    },
+    {
+        width: 120,
+        label: 'Calories\u00A0(g)',
+        dataKey: 'calories',
+        numeric: true
+    },
+    {
+        width: 120,
+        label: 'Fat\u00A0(g)',
+        dataKey: 'fat',
+        numeric: true
+    },
+    {
+        width: 120,
+        label: 'Carbs\u00A0(g)',
+        dataKey: 'carbs',
+        numeric: true
+    },
+    {
+        width: 120,
+        label: 'Protein\u00A0(g)',
+        dataKey: 'protein',
+        numeric: true
+    }
+];
+var textFieldInputProps = { startAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'start' },
+        react_1.default.createElement(Search_1.default, null)) };
+var selectMenuItems = [
+    react_1.default.createElement(core_1.MenuItem, { value: 'test 1', key: 'menu-item-1' }, "Test 1"),
+    react_1.default.createElement(core_1.MenuItem, { value: 'test 2', key: 'menu-item-2' }, "Test 2"),
+    react_1.default.createElement(core_1.MenuItem, { value: 'test 3', key: 'menu-item-3' }, "Test 3"),
+    react_1.default.createElement(core_1.MenuItem, { value: 'test 4', key: 'menu-item-4' }, "Test 4")
+];
 var Develop = function () {
     var theme = (0, styles_1.useTheme)();
     var dispatch = (0, react_redux_1.useDispatch)();
     var _a = (0, react_1.useState)(''), testTextFieldValue = _a[0], setTestTextFieldValue = _a[1];
     var _b = (0, react_1.useState)(''), testSelectValue = _b[0], setTestSelectValue = _b[1];
+    var noRowsRenderer = (0, react_1.useCallback)(function () { return react_1.default.createElement(TableRow_1.TableRowLoading, null); }, []);
+    var rowGetter = (0, react_1.useCallback)(function (row) { return rows[row.index]; }, []);
+    var handleTextFieldUpdate = (0, react_1.useCallback)(function (event) { return setTestTextFieldValue(event === null ? '' : event.target.value); }, []);
+    var handleSelectUpdate = (0, react_1.useCallback)(function (event) { return setTestSelectValue(event === null ? '' : event.target.value); }, []);
+    var handleOnClickNotification = (0, react_1.useCallback)(function () { return dispatch(Action.addNotification({
+        id: (0, uuid_1.v4)(),
+        title: 'Error',
+        subtitle: 'Join Room (action.payload.name)',
+        content: 'MESSAGE',
+        variant: 'error'
+    })); }, []);
+    var handleOnClickToast = (0, react_1.useCallback)(function () { return dispatch(Action.addToastAction({
+        contentMessage: 'Toast Test',
+        dismissLabel: 'Dismiss',
+        isSuccess: true
+    })); }, []);
     return (react_1.default.createElement("div", { style: { margin: theme.spacing(1) } },
         react_1.default.createElement(core_1.Card, null,
             react_1.default.createElement(Card_1.AppCardHeader, { title: 'Test' }),
             react_1.default.createElement(Card_1.AppCardContent, null, "Das ist der Inhalt")),
+        react_1.default.createElement("div", { style: { marginTop: theme.spacing(1) } },
+            react_1.default.createElement(core_1.Card, null,
+                react_1.default.createElement(core_1.CardContent, { style: { height: 600 } },
+                    react_1.default.createElement(Table_1.VirtualizedTable, { showRowHoverHighlight: true, rowHeight: 50, rowCount: rows.length, rowGetter: rowGetter, noRowsRenderer: noRowsRenderer, sortBy: 'calories', sortDirection: 'ASC', columns: columns })))),
         react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center' },
             react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: function (event) { return setTestTextFieldValue(event === null ? '' : event.target.value); }, value: testTextFieldValue, clearButtonSize: 'small', InputProps: {
-                        startAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'start' },
-                            react_1.default.createElement(Search_1.default, null)),
-                    } })),
+                react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small', InputProps: textFieldInputProps })),
             react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(TextFieldClearButton_1.default, { disabled: true, label: 'Textfield', onChange: function (event) { return setTestTextFieldValue(event === null ? '' : event.target.value); }, value: testTextFieldValue, clearButtonSize: 'small' })),
+                react_1.default.createElement(TextFieldClearButton_1.default, { disabled: true, label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small' })),
             react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(SelectClearButton_1.default, { label: 'Select with Clear Button', onChange: function (event) { return setTestSelectValue(event === null ? '' : event.target.value); }, value: testSelectValue, clearButtonSize: 'small' },
-                    react_1.default.createElement(core_1.MenuItem, { value: 'test 1' }, "Test 1"),
-                    react_1.default.createElement(core_1.MenuItem, { value: 'test 2' }, "Test 2"),
-                    react_1.default.createElement(core_1.MenuItem, { value: 'test 3' }, "Test 3"),
-                    react_1.default.createElement(core_1.MenuItem, { value: 'test 4' }, "Test 4"))),
+                react_1.default.createElement(SelectClearButton_1.default, { label: 'Select with Clear Button', onChange: handleSelectUpdate, value: testSelectValue, clearButtonSize: 'small' }, selectMenuItems)),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(Icon_1.CustomerCard, null)),
             react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(core_1.Button, { onClick: function () { return dispatch(Action.addNotification({
-                        id: (0, uuid_1.v4)(),
-                        title: 'Error',
-                        subtitle: 'Join Room (action.payload.name)',
-                        content: 'MESSAGE',
-                        variant: 'error'
-                    })); } }, "Notification")),
+                react_1.default.createElement(core_1.Button, { onClick: handleOnClickNotification }, "Notification")),
             react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(core_1.Button, { onClick: function () { return dispatch(Action.addToastAction({
-                        contentMessage: 'Toast Test',
-                        dismissLabel: 'Dismiss',
-                        isSuccess: true
-                    })); } }, "Toast")),
+                react_1.default.createElement(core_1.Button, { onClick: handleOnClickToast }, "Toast")),
             react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(Button_1.ButtonProgress, { inProgress: true, onClick: function () { return dispatch(Action.addToastAction({
-                        contentMessage: 'Toast Test',
-                        dismissLabel: 'Dismiss',
-                        isSuccess: true
-                    })); } }, "Toast"))),
+                react_1.default.createElement(Button_1.ButtonProgress, { inProgress: true, onClick: handleOnClickToast }, "Toast"))),
         react_1.default.createElement("div", { style: { marginTop: theme.spacing(1) } },
             react_1.default.createElement(core_1.List, null,
                 react_1.default.createElement(core_1.ListItem, null,
@@ -191,41 +233,17 @@ var Develop = function () {
                                     react_1.default.createElement(core_1.Chip, { size: 'small', label: 'label label3', clickable: true, icon: react_1.default.createElement(icons_1.AccountCircle, null) })))))))),
         react_1.default.createElement("div", { style: { marginTop: theme.spacing(1) } },
             react_1.default.createElement(core_1.Card, null,
-                react_1.default.createElement(core_1.CardContent, { style: { height: 600 } },
-                    react_1.default.createElement(Table_1.VirtualizedTable, { showRowHoverHighlight: true, rowHeight: 50, rowCount: rows.length, rowGetter: function (row) { return rows[row.index]; }, noRowsRenderer: function () { return react_1.default.createElement(TableRow_1.TableRowLoading, null); }, sortBy: 'calories', sortDirection: 'ASC', columns: [
-                            {
-                                // width: 200,
-                                // flexGrow: 1,
-                                width: function (width) { return width - (120 * 4); },
-                                label: 'Dessert (100g serving)',
-                                dataKey: 'dessert',
-                                disableSort: true,
-                                cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDefault, { cellData: cellProps.cellData, contentEllipseMode: TableCellDefaultBase_1.ContentEllipseMode.Lines, contentEllipseLines: 2 }); }
-                            },
-                            {
-                                width: 120,
-                                label: 'Calories\u00A0(g)',
-                                dataKey: 'calories',
-                                numeric: true
-                            },
-                            {
-                                width: 120,
-                                label: 'Fat\u00A0(g)',
-                                dataKey: 'fat',
-                                numeric: true
-                            },
-                            {
-                                width: 120,
-                                label: 'Carbs\u00A0(g)',
-                                dataKey: 'carbs',
-                                numeric: true
-                            },
-                            {
-                                width: 120,
-                                label: 'Protein\u00A0(g)',
-                                dataKey: 'protein',
-                                numeric: true
-                            }
-                        ] }))))));
+                react_1.default.createElement(core_1.CardContent, { style: { height: 300 } },
+                    react_1.default.createElement(core_1.TableContainer, { style: { maxHeight: 300 } },
+                        react_1.default.createElement(core_1.Table, { stickyHeader: true },
+                            react_1.default.createElement(core_1.TableHead, null,
+                                react_1.default.createElement(core_1.TableRow, null, ['calories', 'carbs', 'dessert', 'fat', 'id', 'protein'].map(function (column, index) { return react_1.default.createElement(core_1.TableCell, { key: 'column-head-index-' + index }, column); }))),
+                            react_1.default.createElement(core_1.TableBody, null, rows.map(function (row, index) { return react_1.default.createElement(core_1.TableRow, { key: 'row-body-index' + index },
+                                react_1.default.createElement(core_1.TableCell, null, row.calories),
+                                react_1.default.createElement(core_1.TableCell, null, row.carbs),
+                                react_1.default.createElement(core_1.TableCell, null, row.dessert),
+                                react_1.default.createElement(core_1.TableCell, null, row.fat),
+                                react_1.default.createElement(core_1.TableCell, null, row.id),
+                                react_1.default.createElement(core_1.TableCell, null, row.protein)); })))))))));
 };
 exports.default = Develop;
