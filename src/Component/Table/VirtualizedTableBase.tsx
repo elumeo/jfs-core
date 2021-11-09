@@ -4,9 +4,9 @@ import { TableCellDefault } from 'Component/Table/TableCell';
 import TableHeadDefault from 'Component/Table/TableHead/TableHeadDefault';
 
 // @ts-ignore
-export type ColumnData = ColumnProps & {
+export interface ColumnData extends ColumnProps {
   numeric?: boolean;
-  width?: ColumnProps['width'] | ((fullWidth: number) => number);
+  width?: number | ((fullWidth: number) => number);
 }
 
 export type VirtualizedTableBaseProps = Partial<TableProps> & {
