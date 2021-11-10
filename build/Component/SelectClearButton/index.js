@@ -50,33 +50,44 @@ var Close_1 = __importDefault(require("@material-ui/icons/Close"));
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var SelectClearButton = function (_a) {
     var children = _a.children, onChange = _a.onChange, _b = _a.clearButtonSize, clearButtonSize = _b === void 0 ? 'small' : _b, _c = _a.clearIconSize, clearIconSize = _c === void 0 ? 'small' : _c, _d = _a.variant, variant = _d === void 0 ? 'standard' : _d, endAdornment = _a.endAdornment, rest = __rest(_a, ["children", "onChange", "clearButtonSize", "clearIconSize", "variant", "endAdornment"]);
-    var getIconSize = function () { return clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small'; };
+    var getIconSize = (0, react_1.useCallback)(function () { return clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small'; }, []);
     var _e = (0, react_1.useState)(false), showClearButton = _e[0], setShowClearButton = _e[1];
     var _f = (0, react_1.useState)(''), inputValue = _f[0], setInputValue = _f[1];
     (0, react_1.useEffect)(function () {
-        if (rest.value !== undefined) {
-            if (rest.value !== '') {
-                setShowClearButton(true);
+        if (onChange !== undefined) {
+            if (rest.value !== undefined) {
+                if (rest.value !== '' && showClearButton === false) {
+                    setShowClearButton(true);
+                }
+                else if (rest.value === '' && showClearButton === true) {
+                    setShowClearButton(false);
+                }
+                if (inputValue !== rest.value) {
+                    setInputValue(rest.value);
+                }
             }
-            else {
-                setShowClearButton(false);
-            }
-            setInputValue(rest.value);
         }
     }, [rest.value]);
-    var handleOnChange = function (event, changeValue) {
-        if (changeValue !== null && changeValue !== '') {
-            setShowClearButton(true);
+    var handleOnChange = (0, react_1.useCallback)(function (event, changeValue) {
+        if (onChange === undefined) {
+            if (changeValue !== null && changeValue !== '') {
+                if (showClearButton === false) {
+                    setShowClearButton(true);
+                }
+            }
+            else if (showClearButton === true) {
+                setShowClearButton(false);
+            }
+            if (rest.value === undefined) {
+                setInputValue(changeValue === null ? '' : changeValue);
+            }
         }
         else {
-            setShowClearButton(false);
+            onChange(event, changeValue);
         }
-        if (rest.value === undefined) {
-            setInputValue(changeValue === null ? '' : changeValue);
-        }
-        onChange(event, changeValue);
-    };
-    var endAdornmentClearButton = showClearButton && (react_1.default.createElement(core_1.IconButton, { disabled: rest.disabled, size: clearButtonSize, color: 'secondary', onClick: function () { return handleOnChange(null, null); }, style: { marginRight: '21px' } },
+    }, []);
+    var handleClearClick = (0, react_1.useCallback)(function () { return handleOnChange(null, null); }, []);
+    var endAdornmentClearButton = showClearButton && (react_1.default.createElement(core_1.IconButton, { disabled: rest.disabled, size: clearButtonSize, color: 'secondary', onClick: handleClearClick, style: { marginRight: '21px' } },
         react_1.default.createElement(Close_1.default, { fontSize: getIconSize() })));
     var preparedEndAdornment = react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
         endAdornment && endAdornment.props.children,

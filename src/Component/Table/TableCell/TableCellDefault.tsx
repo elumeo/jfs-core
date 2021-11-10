@@ -1,6 +1,7 @@
 import Definition from 'Component/App/Stateless/Style/Theme/Definition';
 import styled from 'styled-components';
 import TableCellDefaultBase, { TableCellDefaultBaseProps } from 'Component/Table/TableCell/TableCellDefaultBase';
+import { memo } from 'react';
 
 type StylePropsType = { theme: typeof Definition } & TableCellDefaultBaseProps;
 
@@ -21,4 +22,4 @@ const TableCellDefault = styled<typeof TableCellDefaultBase>(TableCellDefaultBas
   }
 `;
 
-export default TableCellDefault;
+export default memo(TableCellDefault);

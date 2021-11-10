@@ -1,4 +1,4 @@
-import React, { memo, ReactElement, useEffect, useState } from 'react';
+import React, { memo, ReactElement, useCallback, useEffect, useState } from 'react';
 import { IconButton, IconProps, InputAdornment, TextField, TextFieldProps } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import { InputProps as StandardInputProps } from '@material-ui/core/Input/Input';
@@ -12,41 +12,45 @@ export type TextFieldClearButtonProps = Partial<TextFieldProps> & {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const TextFieldClearButton = ({ onChange, clearButtonSize = 'small', clearIconSize = 'small', variant = 'standard', InputProps, ...rest }: TextFieldClearButtonProps) => {
-  const getIconSize = (): IconProps['fontSize'] => clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small';
+  const getIconSize = useCallback((): IconProps['fontSize'] => clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small', []);
   const [showClearButton, setShowClearButton] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
-    if (rest.value !== undefined) {
-      if (rest.value !== '') {
+    if (onChange !== undefined) {
+      if (rest.value !== '' && showClearButton === false) {
         setShowClearButton(true);
-      } else {
+      } else if (rest.value === '' && showClearButton === true) {
         setShowClearButton(false);
       }
 
-      setInputValue(rest.value as string);
+      if (inputValue !== rest.value) {
+        setInputValue(rest.value as string);
+      }
     }
   }, [rest.value]);
 
-  const handleOnChange: TextFieldProps['onChange'] = (event) => {
-    if (event !== null && event.target.value !== '') {
-      setShowClearButton(true);
-    } else {
-      setShowClearButton(false);
-    }
+  const handleClearClick: IconButtonProps['onClick'] = useCallback(() => handleOnChange(null), []);
 
-    if (rest.value === undefined) {
+  const handleOnChange: TextFieldProps['onChange'] = useCallback((event) => {
+    if (onChange === undefined) {
+      if (event !== null && event.target.value !== '' && showClearButton === false) {
+        setShowClearButton(true);
+      } else if (showClearButton === true) {
+        setShowClearButton(false);
+      }
       setInputValue(event === null ? '' : event.target.value);
+    } else {
+      onChange(event);
     }
-    onChange(event);
-  };
+  }, []);
 
   const endAdornmentClearButton = showClearButton && (
     <IconButton
       disabled={rest.disabled}
       size={clearButtonSize}
       color={'secondary'}
-      onClick={() => handleOnChange(null)}
+      onClick={handleClearClick}
     >
       <CloseIcon fontSize={getIconSize()} />
     </IconButton>
@@ -64,7 +68,7 @@ const TextFieldClearButton = ({ onChange, clearButtonSize = 'small', clearIconSi
       onChange={handleOnChange}
       InputProps={preparedInputProps}
       autoComplete={'new-password'}
-      value={inputValue}
+      value={rest.value !== undefined ? rest.value : inputValue}
     />
   );
 };
