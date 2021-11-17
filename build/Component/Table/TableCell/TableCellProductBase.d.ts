@@ -9,7 +9,7 @@ export declare type TableCellProductBaseProps = {
     isProductBundle?: boolean;
     bundleProductIds?: string[];
     className?: string;
-    onClick: (productIds: string[]) => void;
+    onClick?: (productIds: string[]) => void;
 };
 declare const _default: React.MemoExoticComponent<({ id, mediaUri, name, productType, inStockPool, hasNoTvLock, isProductBundle, bundleProductIds, className, onClick }: TableCellProductBaseProps) => JSX.Element>;
 export default _default;

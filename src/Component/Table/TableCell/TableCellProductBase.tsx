@@ -13,7 +13,7 @@ export type TableCellProductBaseProps = {
   isProductBundle?: boolean;
   bundleProductIds?: string[];
   className?: string;
-  onClick: (productIds: string[]) => void
+  onClick?: (productIds: string[]) => void
 }
 
 const TableCellProductBase = ({
@@ -26,18 +26,18 @@ const TableCellProductBase = ({
                                 isProductBundle = false,
                                 bundleProductIds = [],
                                 className,
-                                onClick
+                                onClick = null
                               }: TableCellProductBaseProps) => {
   const { formatMessage } = useIntl();
   const hasChip = productType !== null || inStockPool || hasNoTvLock;
 
   let productImage;
   if (isProductBundle) {
-    productImage = <div className={'virtualized-table__bundle-box'} onClick={() => onClick(bundleProductIds)}>
+    productImage = <div className={'virtualized-table__bundle-box'} onClick={() => onClick !== null ? onClick(bundleProductIds) : null}>
       Product Bundle
     </div>;
   } else if (id !== null && mediaUri !== null) {
-    productImage = <img src={mediaUri} alt={id} className={'virtualized-table__link'} onClick={() => onClick([id])} />;
+    productImage = <img src={mediaUri} alt={id} className={'virtualized-table__link'} onClick={() => onClick !== null ? onClick([id]) : null} />;
   }
   return <TableCellRoot>
     {id && <Grid container className={className}>
@@ -54,7 +54,7 @@ const TableCellProductBase = ({
           </Grid>}
           <div style={{ marginTop: '2px' }}>
             {id && (
-              <Button size={'small'} color={'secondary'} onClick={() => onClick(isProductBundle ? bundleProductIds : [id])}>
+              <Button size={'small'} color={'secondary'} onClick={() => onClick !== null ? onClick(isProductBundle ? bundleProductIds : [id]) : null}>
                 {formatMessage({ id: 'product.details' })}
               </Button>
             )}
