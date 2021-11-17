@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TableCellRoot = exports.TableCellRootBase = exports.TableCellDateTimeRange = exports.TableCellDateTime = exports.TableCellMsisdn = exports.TableCellLoadingContent = exports.TableCellDefault = exports.TableCellDefaultBase = void 0;
+exports.TableCellProduct = exports.TableCellRoot = exports.TableCellRootBase = exports.TableCellDateTimeRange = exports.TableCellDateTime = exports.TableCellMsisdn = exports.TableCellLoadingContent = exports.TableCellDefault = exports.TableCellDefaultBase = void 0;
 var TableCellDefaultBase_1 = require("./TableCellDefaultBase");
 Object.defineProperty(exports, "TableCellDefaultBase", { enumerable: true, get: function () { return __importDefault(TableCellDefaultBase_1).default; } });
 var TableCellDefault_1 = require("./TableCellDefault");
@@ -20,3 +20,5 @@ var TableCellRootBase_1 = require("./TableCellRootBase");
 Object.defineProperty(exports, "TableCellRootBase", { enumerable: true, get: function () { return __importDefault(TableCellRootBase_1).default; } });
 var TableCellRoot_1 = require("./TableCellRoot");
 Object.defineProperty(exports, "TableCellRoot", { enumerable: true, get: function () { return __importDefault(TableCellRoot_1).default; } });
+var TableCellProduct_1 = require("./TableCellProduct");
+Object.defineProperty(exports, "TableCellProduct", { enumerable: true, get: function () { return __importDefault(TableCellProduct_1).default; } });
