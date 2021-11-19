@@ -80,7 +80,7 @@ var TextFieldClearButton = function (_a) {
         else {
             onChange(event);
         }
-    }, []);
+    }, [onChange]);
     var endAdornmentClearButton = showClearButton && (react_1.default.createElement(core_1.IconButton, { disabled: rest.disabled, size: clearButtonSize, color: 'secondary', onClick: handleClearClick },
         react_1.default.createElement(Close_1.default, { fontSize: getIconSize() })));
     var preparedInputProps = __assign(__assign({}, InputProps), { endAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'end' },

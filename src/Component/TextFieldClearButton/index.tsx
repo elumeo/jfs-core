@@ -43,7 +43,7 @@ const TextFieldClearButton = ({ onChange, clearButtonSize = 'small', clearIconSi
     } else {
       onChange(event);
     }
-  }, []);
+  }, [onChange]);
 
   const endAdornmentClearButton = showClearButton && (
     <IconButton

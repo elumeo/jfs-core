@@ -48,7 +48,7 @@ const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clea
     } else {
       onChange(event, changeValue);
     }
-  }, []);
+  }, [onChange]);
 
   const handleClearClick: IconButtonProps['onClick'] = useCallback(() => handleOnChange(null, null), []);
 
