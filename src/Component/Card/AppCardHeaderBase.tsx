@@ -18,32 +18,32 @@ export type AppCardHeaderBaseProps = {
   className?: string;
   refreshButtonColor?: IconButtonProps['color'];
   refreshButtonSize?: IconButtonProps['size'];
+  additionalTitleComponent: ReactNode;
 };
 
 const AppCardHeaderBase = ({
-  isLoading = false,
-  title,
-  subtitle = null,
-  titleIcon = null,
-  onRefresh = null,
-  refreshButtonColor = 'secondary',
-  refreshButtonSize = 'small',
-  action = null,
-  className,
-}: AppCardHeaderBaseProps) => {
+                             isLoading = false,
+                             title,
+                             subtitle = null,
+                             titleIcon = null,
+                             onRefresh = null,
+                             refreshButtonColor = 'secondary',
+                             refreshButtonSize = 'small',
+                             additionalTitleComponent = null,
+                             action = null,
+                             className
+                           }: AppCardHeaderBaseProps) => {
   const buildRefreshButton = () => {
-    return (
-      <Grid item>
-        <IconButton
-          color={refreshButtonColor}
-          // classes={{ root: classes.refreshButtonRoot }}
-          size={refreshButtonSize}
-          disabled={isLoading}
-          onClick={onRefresh}>
-          <RefreshIcon />
-        </IconButton>
-      </Grid>
-    );
+    return <Grid item>
+      <IconButton
+        color={refreshButtonColor}
+        // classes={{ root: classes.refreshButtonRoot }}
+        size={refreshButtonSize}
+        disabled={isLoading}
+        onClick={onRefresh}>
+        <RefreshIcon />
+      </IconButton>
+    </Grid>;
   };
 
   const headerTitle = (
@@ -55,6 +55,7 @@ const AppCardHeaderBase = ({
           <Typography variant='h5'>{title}</Typography>
         </Grid>
         {onRefresh !== null && buildRefreshButton()}
+        {additionalTitleComponent !== null && <Grid item>{additionalTitleComponent}</Grid>}
       </Grid>
     </>
   );

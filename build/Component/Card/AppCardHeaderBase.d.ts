@@ -10,6 +10,7 @@ export declare type AppCardHeaderBaseProps = {
     className?: string;
     refreshButtonColor?: IconButtonProps['color'];
     refreshButtonSize?: IconButtonProps['size'];
+    additionalTitleComponent: ReactNode;
 };
-declare const _default: React.MemoExoticComponent<({ isLoading, title, subtitle, titleIcon, onRefresh, refreshButtonColor, refreshButtonSize, action, className, }: AppCardHeaderBaseProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ isLoading, title, subtitle, titleIcon, onRefresh, refreshButtonColor, refreshButtonSize, additionalTitleComponent, action, className }: AppCardHeaderBaseProps) => JSX.Element>;
 export default _default;

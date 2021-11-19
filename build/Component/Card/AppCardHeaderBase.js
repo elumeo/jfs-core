@@ -26,13 +26,13 @@ var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
 var Refresh_1 = __importDefault(require("@material-ui/icons/Refresh"));
 var AppCardHeaderBase = function (_a) {
-    var _b = _a.isLoading, isLoading = _b === void 0 ? false : _b, title = _a.title, _c = _a.subtitle, subtitle = _c === void 0 ? null : _c, _d = _a.titleIcon, titleIcon = _d === void 0 ? null : _d, _e = _a.onRefresh, onRefresh = _e === void 0 ? null : _e, _f = _a.refreshButtonColor, refreshButtonColor = _f === void 0 ? 'secondary' : _f, _g = _a.refreshButtonSize, refreshButtonSize = _g === void 0 ? 'small' : _g, _h = _a.action, action = _h === void 0 ? null : _h, className = _a.className;
+    var _b = _a.isLoading, isLoading = _b === void 0 ? false : _b, title = _a.title, _c = _a.subtitle, subtitle = _c === void 0 ? null : _c, _d = _a.titleIcon, titleIcon = _d === void 0 ? null : _d, _e = _a.onRefresh, onRefresh = _e === void 0 ? null : _e, _f = _a.refreshButtonColor, refreshButtonColor = _f === void 0 ? 'secondary' : _f, _g = _a.refreshButtonSize, refreshButtonSize = _g === void 0 ? 'small' : _g, _h = _a.additionalTitleComponent, additionalTitleComponent = _h === void 0 ? null : _h, _j = _a.action, action = _j === void 0 ? null : _j, className = _a.className;
     var buildRefreshButton = function () {
-        return (react_1.default.createElement(core_1.Grid, { item: true },
+        return react_1.default.createElement(core_1.Grid, { item: true },
             react_1.default.createElement(core_1.IconButton, { color: refreshButtonColor, 
                 // classes={{ root: classes.refreshButtonRoot }}
                 size: refreshButtonSize, disabled: isLoading, onClick: onRefresh },
-                react_1.default.createElement(Refresh_1.default, null))));
+                react_1.default.createElement(Refresh_1.default, null)));
     };
     var headerTitle = (react_1.default.createElement(react_1.default.Fragment, null,
         isLoading && react_1.default.createElement(core_1.LinearProgress, { color: 'secondary' }),
@@ -40,7 +40,8 @@ var AppCardHeaderBase = function (_a) {
             titleIcon !== null && react_1.default.createElement(core_1.Grid, { item: true }, titleIcon),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(core_1.Typography, { variant: 'h5' }, title)),
-            onRefresh !== null && buildRefreshButton())));
+            onRefresh !== null && buildRefreshButton(),
+            additionalTitleComponent !== null && react_1.default.createElement(core_1.Grid, { item: true }, additionalTitleComponent))));
     return (react_1.default.createElement(core_1.CardHeader, { className: className, 
         // className={classes.cardHeaderRoot}
         subheader: subtitle, title: headerTitle, action: action }));
