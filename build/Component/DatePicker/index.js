@@ -53,10 +53,10 @@ var mapLanguageToDateFormat_1 = __importDefault(require("./mapLanguageToDateForm
 require("react-datepicker/dist/react-datepicker.css");
 var core_1 = require("@material-ui/core");
 var Today_1 = __importDefault(require("@material-ui/icons/Today"));
-var Backspace_1 = __importDefault(require("@material-ui/icons/Backspace"));
 var moment_1 = __importDefault(require("moment"));
+var TextFieldClearButton_1 = __importDefault(require("../TextFieldClearButton"));
 var DatePicker = function (_a) {
-    var label = _a.label, _b = _a.error, error = _b === void 0 ? false : _b, _c = _a.customClearButtonId, customClearButtonId = _c === void 0 ? null : _c, dateFormat = _a.dateFormat, value = _a.value, onChange = _a.onChange, errorText = _a.errorText, _d = _a.helperText, helperText = _d === void 0 ? '' : _d, isClearable = _a.isClearable, textFieldProps = _a.textFieldProps, _e = _a.shouldOpenOnFocus, shouldOpenOnFocus = _e === void 0 ? true : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, rest = __rest(_a, ["label", "error", "customClearButtonId", "dateFormat", "value", "onChange", "errorText", "helperText", "isClearable", "textFieldProps", "shouldOpenOnFocus", "disabled"]);
+    var label = _a.label, _b = _a.error, error = _b === void 0 ? false : _b, _c = _a.customClearButtonId, customClearButtonId = _c === void 0 ? null : _c, dateFormat = _a.dateFormat, value = _a.value, onChange = _a.onChange, errorText = _a.errorText, _d = _a.helperText, helperText = _d === void 0 ? '' : _d, textFieldProps = _a.textFieldProps, _e = _a.shouldOpenOnFocus, shouldOpenOnFocus = _e === void 0 ? true : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, rest = __rest(_a, ["label", "error", "customClearButtonId", "dateFormat", "value", "onChange", "errorText", "helperText", "textFieldProps", "shouldOpenOnFocus", "disabled"]);
     var language = (0, Redux_1.useSelector)(function (state) { return state.Core.Language.language; });
     var _g = (0, react_1.useState)(value), date = _g[0], setDate = _g[1];
     var _h = (0, react_1.useState)(false), open = _h[0], setOpen = _h[1];
@@ -102,14 +102,12 @@ var DatePicker = function (_a) {
                         }
                     }
                     handleChangeValue(newDate, event);
-                }, dateFormat: dateFormat || (0, mapLanguageToDateFormat_1.default)(language), locale: language, open: open, id: id, customInput: react_1.default.createElement(core_1.TextField, __assign({}, textFieldProps, { label: label, error: hasError(), helperText: hasError() && hasErrorText() ? errorText : helperText, autoComplete: 'off', InputProps: {
+                }, dateFormat: dateFormat || (0, mapLanguageToDateFormat_1.default)(language), locale: language, open: open, id: id, customInput: react_1.default.createElement(TextFieldClearButton_1.default, __assign({}, textFieldProps, { label: label, error: hasError(), helperText: hasError() && hasErrorText() ? errorText : helperText, autoComplete: 'off', onClearClick: function () { return handleChangeValue(null); }, InputProps: {
                         onFocus: function () { return shouldOpenOnFocus ? setOpen(true) : null; },
                         onBlur: function () { return setDirty(true); },
                         endAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
                             react_1.default.createElement(core_1.IconButton, { disabled: disabled, size: 'small', onClick: function () { return disabled === false ? setOpen(true) : null; } },
-                                react_1.default.createElement(Today_1.default, null)),
-                            isClearable && react_1.default.createElement(core_1.IconButton, { size: 'small', disabled: disabled || date === null, color: 'secondary', onClick: function () { return handleChangeValue(null); } },
-                                react_1.default.createElement(Backspace_1.default, null)))
+                                react_1.default.createElement(Today_1.default, null)))
                     } })) })))));
 };
 exports.default = (0, react_1.memo)(DatePicker);

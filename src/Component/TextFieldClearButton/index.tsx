@@ -5,13 +5,22 @@ import { InputProps as StandardInputProps } from '@material-ui/core/Input/Input'
 import { IconButtonProps } from '@material-ui/core/IconButton';
 
 export type TextFieldClearButtonProps = Partial<TextFieldProps> & {
-  onChange: TextFieldProps['onChange'];
+  onChange?: TextFieldProps['onChange'];
   clearButtonSize?: IconButtonProps['size'];
   clearIconSize?: IconProps['fontSize'];
+  onClearClick?: () => void;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const TextFieldClearButton = ({ onChange, clearButtonSize = 'small', clearIconSize = 'small', variant = 'standard', InputProps, ...rest }: TextFieldClearButtonProps) => {
+const TextFieldClearButton = React.forwardRef<HTMLDivElement, TextFieldClearButtonProps>(({
+                                                                                            onChange,
+                                                                                            clearButtonSize = 'small',
+                                                                                            clearIconSize = 'small',
+                                                                                            onClearClick,
+                                                                                            variant = 'standard',
+                                                                                            InputProps,
+                                                                                            ...rest
+                                                                                          }, ref) => {
   const getIconSize = useCallback((): IconProps['fontSize'] => clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small', []);
   const [showClearButton, setShowClearButton] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -30,7 +39,13 @@ const TextFieldClearButton = ({ onChange, clearButtonSize = 'small', clearIconSi
     }
   }, [rest.value]);
 
-  const handleClearClick: IconButtonProps['onClick'] = useCallback(() => handleOnChange(null), [onChange]);
+  const handleClearClick: IconButtonProps['onClick'] = useCallback(() => {
+    if(onClearClick !== undefined) {
+      onClearClick();
+    } else {
+      handleOnChange(null)
+    }
+  }, [onChange, onClearClick]);
 
   const handleOnChange: TextFieldProps['onChange'] = useCallback((event) => {
     if (onChange === undefined) {
@@ -64,6 +79,7 @@ const TextFieldClearButton = ({ onChange, clearButtonSize = 'small', clearIconSi
 
   return (
     <TextField
+      ref={ref}
       {...rest}
       onChange={handleOnChange}
       InputProps={preparedInputProps}
@@ -71,6 +87,6 @@ const TextFieldClearButton = ({ onChange, clearButtonSize = 'small', clearIconSi
       value={rest.value !== undefined ? rest.value : inputValue}
     />
   );
-};
+});
 
 export default memo(TextFieldClearButton);

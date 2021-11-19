@@ -50,6 +50,7 @@ var TableRow_1 = require("./Table/TableRow");
 var SelectClearButton_1 = __importDefault(require("./SelectClearButton"));
 var Search_1 = __importDefault(require("@material-ui/icons/Search"));
 var Icon_1 = require("./Icon");
+var DatePicker_1 = __importDefault(require("./DatePicker"));
 var sample = [
     ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, 4.0],
     ['Ice cream sandwich', 237, 9.0, 37, 4.3],
@@ -111,6 +112,7 @@ var Develop = function () {
     var dispatch = (0, react_redux_1.useDispatch)();
     var _a = (0, react_1.useState)(''), testTextFieldValue = _a[0], setTestTextFieldValue = _a[1];
     var _b = (0, react_1.useState)(''), testSelectValue = _b[0], setTestSelectValue = _b[1];
+    var _c = (0, react_1.useState)(null), testDatePickerValue = _c[0], setTestDatePickerValue = _c[1];
     var noRowsRenderer = (0, react_1.useCallback)(function () { return react_1.default.createElement(TableRow_1.TableRowLoading, null); }, []);
     var rowGetter = (0, react_1.useCallback)(function (row) { return rows[row.index]; }, []);
     var handleTextFieldUpdate = (0, react_1.useCallback)(function (event) { return setTestTextFieldValue(event === null ? '' : event.target.value); }, []);
@@ -139,6 +141,8 @@ var Develop = function () {
                 react_1.default.createElement(core_1.CardContent, { style: { height: 600 } },
                     react_1.default.createElement(Table_1.VirtualizedTable, { showRowHoverHighlight: true, rowHeight: 50, rowCount: rows.length, rowGetter: rowGetter, noRowsRenderer: noRowsRenderer, sortBy: 'calories', sortDirection: 'ASC', columns: columns })))),
         react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center' },
+            react_1.default.createElement(core_1.Grid, { item: true },
+                react_1.default.createElement(DatePicker_1.default, { label: 'DatePicker', onChange: console.log, value: testDatePickerValue, isClearable: true })),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small', InputProps: textFieldInputProps })),
             react_1.default.createElement(core_1.Grid, { item: true },

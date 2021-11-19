@@ -6,10 +6,10 @@ import { LANGUAGE } from 'Types/Language';
 import { useSelector } from 'Types/Redux';
 import mapLanguageToDateFormat from './mapLanguageToDateFormat';
 import 'react-datepicker/dist/react-datepicker.css';
-import { ClickAwayListener, IconButton, InputAdornment, TextField, TextFieldProps } from '@material-ui/core';
+import { ClickAwayListener, IconButton, InputAdornment, TextFieldProps } from '@material-ui/core';
 import TodayIcon from '@material-ui/icons/Today';
-import BackspaceIcon from '@material-ui/icons/Backspace';
 import moment from 'moment';
+import TextFieldClearButton from 'Component/TextFieldClearButton';
 
 export type DatePickerProps = Omit<ReactDatePickerProps<string>, 'value'> & {
   label?: ReactNode;
@@ -39,7 +39,6 @@ const DatePicker = ({
                       onChange,
                       errorText,
                       helperText = '',
-                      isClearable,
                       textFieldProps,
                       shouldOpenOnFocus = true,
                       disabled = false,
@@ -106,18 +105,18 @@ const DatePicker = ({
           open={open}
           id={id}
           customInput={
-            <TextField
+            <TextFieldClearButton
               {...(textFieldProps as TextFieldProps)}
               label={label}
               error={hasError()}
               helperText={hasError() && hasErrorText() ? errorText : helperText}
               autoComplete={'off'}
+              onClearClick={() => handleChangeValue(null)}
               InputProps={{
                 onFocus: () => shouldOpenOnFocus ? setOpen(true) : null,
                 onBlur: () => setDirty(true),
                 endAdornment: <InputAdornment position={'end'}>
                   <IconButton disabled={disabled} size={'small'} onClick={() => disabled === false ? setOpen(true) : null}><TodayIcon /></IconButton>
-                  {isClearable && <IconButton size={'small'} disabled={disabled || date === null} color={'secondary'} onClick={() => handleChangeValue(null)}><BackspaceIcon /></IconButton>}
                 </InputAdornment>
               }}
             />

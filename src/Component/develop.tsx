@@ -30,6 +30,7 @@ import { TableRowLoading } from 'Component/Table/TableRow';
 import SelectClearButton, { SelectClearButtonProps } from 'Component/SelectClearButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { CustomerCard, FilterReset } from 'Component/Icon';
+import DatePicker from 'Component/DatePicker';
 
 type DataVirtualizedTable = {
   calories: number;
@@ -115,6 +116,7 @@ const Develop: React.FC = () => {
   const dispatch = useDispatch();
   const [testTextFieldValue, setTestTextFieldValue] = useState('');
   const [testSelectValue, setTestSelectValue] = useState('');
+  const [testDatePickerValue, setTestDatePickerValue] = useState<Date>(null);
   const noRowsRenderer = useCallback(() => <TableRowLoading />, []);
   const rowGetter = useCallback((row: Index) => rows[row.index], []);
   const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
@@ -158,6 +160,14 @@ const Develop: React.FC = () => {
         </Card>
       </div>
       <Grid container spacing={1} alignItems={'center'}>
+        <Grid item>
+          <DatePicker
+            label={'DatePicker'}
+            onChange={console.log}
+            value={testDatePickerValue}
+            isClearable
+          />
+        </Grid>
         <Grid item>
           <TextFieldClearButton
             label={'Textfield'}
