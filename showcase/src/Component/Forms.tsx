@@ -14,9 +14,9 @@ import {
   FormLabel,
   Grid, InputLabel, MenuItem,
   Radio,
-  RadioGroup, Select,
+  RadioGroup,
   Typography,
-  Switch, Divider, TextField, InputAdornment
+  Switch, Divider, TextField, InputAdornment, SelectProps
 } from '@material-ui/core';
 import CodeBox from 'Component/CodeBox';
 import WarningIcon from '@material-ui/icons/Warning';
@@ -25,7 +25,9 @@ import PriceField from '@elumeo/jfs-core/build/Component/PriceInput';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, DatePicker, DateTimePicker } from '@material-ui/pickers';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
-import KeyboardDatePicker from 'Core/Component/DatePicker';
+import KeyboardDatePicker from '@elumeo/jfs-core/build/Component/DatePicker';
+import SelectClearButton from '@elumeo/jfs-core/build/Component/SelectClearButton';
+import TextFieldClearButton from '@elumeo/jfs-core/build/Component/TextFieldClearButton';
 
 const Forms = () => {
   const theme = useTheme();
@@ -37,13 +39,14 @@ const Forms = () => {
   const [selectValue, setSelectValue] = React.useState('');
   const [priceValue, setPriceValue] = React.useState('1000.55');
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date('2021-07-09T10:00:00'));
+  const [textFieldValue, setTextFieldValue] = React.useState('This is a default value');
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => setCheckboxState({ ...checkboxState, [event.target.name]: event.target.checked });
   const handleSwitchChange = (name: string, value: boolean) => setSwitchState({ ...switchState, [name]: value });
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => setRadioValue((event.target as HTMLInputElement).value);
   const toggleDisplayRowStyle = () => setDisplayRowStyle(!displayRowStyle);
   const toggleShowError = () => setShowError(!showError);
-  const handleSelectChange = (event: React.ChangeEvent<{ value: unknown }>) => setSelectValue(event.target.value as string);
+  const handleSelectChange: SelectProps['onChange'] = event => setSelectValue(event === null ? '' : event.target.value as string);
   const handleDateChange = (date: Date | null) => setSelectedDate(date);
 
   return (<Grid container>
@@ -143,49 +146,43 @@ const Forms = () => {
                           <Grid item xs={6}>
                             <FormControl style={{ width: 200 }} required error={showError}>
                               <InputLabel shrink={selectValue !== ''}>Choose Value</InputLabel>
-                              <Select
+                              <SelectClearButton
                                 value={selectValue}
                                 onChange={handleSelectChange}
-                                displayEmpty
                               >
-                                <MenuItem value=''><em>No value</em></MenuItem>
-                                <MenuItem value={1}><Box alignItems={'center'} display={'flex'}>
+                                <MenuItem value={'1'}><Box alignItems={'center'} display={'flex'}>
                                   <WarningIcon style={{ fontSize: theme.typography.pxToRem(20) }} />
                                   <Box component={'span'} ml={1}>Value 1</Box>
                                 </Box></MenuItem>
-                                <MenuItem value={2}><Box alignItems={'center'} display={'flex'}>
+                                <MenuItem value={'2'}><Box alignItems={'center'} display={'flex'}>
                                   <WarningIcon style={{ fontSize: theme.typography.pxToRem(20) }} color={'primary'} />
                                   <Box component={'span'} ml={1} color={theme.palette.primary.main}>Value 2</Box>
                                 </Box></MenuItem>
-                                <MenuItem value={3} disabled>Value 3</MenuItem>
-                                <MenuItem value={4}>Value 4 with a longer label</MenuItem>
-                                <MenuItem value={5}>Value 5 with even a more longer, longer and longer label</MenuItem>
-                                <MenuItem value={6} disabled><Box alignItems={'center'} display={'flex'}>
+                                <MenuItem value={'3'} disabled>Value 3</MenuItem>
+                                <MenuItem value={'4'}>Value 4 with a longer label</MenuItem>
+                                <MenuItem value={'5'}>Value 5 with even a more longer, longer and longer label</MenuItem>
+                                <MenuItem value={'6'} disabled><Box alignItems={'center'} display={'flex'}>
                                   <WarningIcon style={{ fontSize: theme.typography.pxToRem(20) }} color={'primary'} />
                                   <Box component={'span'} ml={1} color={theme.palette.primary.main}>Value 6</Box>
                                 </Box></MenuItem>
-                                <MenuItem value={7}>Value 7</MenuItem>
-                                <MenuItem value={8}>Value 8</MenuItem>
-                                <MenuItem value={9}>Value 9</MenuItem>
-                                <MenuItem value={10}>Value 10</MenuItem>
-                                <MenuItem value={11}>Value 11</MenuItem>
-                                <MenuItem value={12}>Value 12</MenuItem>
-                                <MenuItem value={13}>Value 13</MenuItem>
-                                <MenuItem value={14}>Value 14</MenuItem>
-                              </Select>
-                              <FormHelperText>We decided to display "empty" values with a human readable value in the "Select-A-Value-Box" but displaying them in the input field is
-                                optional.</FormHelperText>
+                                <MenuItem value={'7'}>Value 7</MenuItem>
+                                <MenuItem value={'8'}>Value 8</MenuItem>
+                                <MenuItem value={'9'}>Value 9</MenuItem>
+                                <MenuItem value={'10'}>Value 10</MenuItem>
+                                <MenuItem value={'11'}>Value 11</MenuItem>
+                                <MenuItem value={'12'}>Value 12</MenuItem>
+                                <MenuItem value={'13'}>Value 13</MenuItem>
+                                <MenuItem value={'14'}>Value 14</MenuItem>
+                              </SelectClearButton>
+                              <FormHelperText>The <CodeBox component={'span'} size={'small'}>SelectClearButton</CodeBox> component will automatically display a clear icon button when something was selected.</FormHelperText>
                             </FormControl>
                           </Grid>
                           <Grid>
                             <FormControl style={{ minWidth: 200 }}>
                               <InputLabel shrink={selectValue !== ''}>Disabled Element</InputLabel>
-                              <Select
-                                value={selectValue}
-                                onChange={handleSelectChange}
-                                displayEmpty
-                                disabled
-                              ><MenuItem value=''><em>None</em></MenuItem></Select>
+                              <SelectClearButton value={''} onChange={console.log} disabled>
+                                <MenuItem value='1'>Value 1</MenuItem>
+                              </SelectClearButton>
                             </FormControl>
                           </Grid>
                         </Grid>
@@ -195,11 +192,12 @@ const Forms = () => {
                       <Box mt={2}>
                         <Grid container spacing={1}>
                           <Grid item xs={2}>
-                            <TextField
+                            <TextFieldClearButton
                               error={showError}
                               label='Text field'
-                              defaultValue='This is a default value'
+                              value={textFieldValue}
                               helperText='And some important help text'
+                              onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
                             />
                           </Grid>
                           <Grid item xs={2}>
@@ -225,11 +223,12 @@ const Forms = () => {
                             />
                           </Grid>
                           <Grid item xs={2}>
-                            <TextField
+                            <TextFieldClearButton
                               error={showError}
                               label='Text field'
-                              defaultValue='This is the default value'
+                              value={textFieldValue}
                               helperText='This is a text field'
+                              onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
                             />
                           </Grid>
                           <Grid item xs={2}>
@@ -293,28 +292,31 @@ const Forms = () => {
                             />
                           </Grid>
                           <Grid item xs={2}>
-                            <TextField
+                            <TextFieldClearButton
                               disabled
                               label='A disabled text field'
-                              defaultValue=''
+                              value={textFieldValue}
                               helperText='And some important help text'
+                              onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
                             />
                           </Grid>
                           <Grid item xs={2}>
-                            <TextField
+                            <TextFieldClearButton
                               label='A text field with an icon'
-                              defaultValue=''
+                              value={textFieldValue}
+                              onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
                               error={showError}
                               helperText='The icon can be implemented on start or end or both and should reflect error color'
                               InputProps={{ startAdornment: <InputAdornment position='start'><WarningIcon color={showError ? 'error' : 'inherit'} /></InputAdornment> }}
                             />
                           </Grid>
                           <Grid item xs>
-                            <TextField
+                            <TextFieldClearButton
                               fullWidth
                               error={showError}
                               label='Fullwidth text field'
-                              defaultValue='This is a default value'
+                              value={textFieldValue}
+                              onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
                               helperText='And some important help text'
                             />
                           </Grid>

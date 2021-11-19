@@ -14,7 +14,7 @@ import {
   Grid,
   Link,
   Popover,
-  TextField, Tooltip,
+  Tooltip,
   Typography
 } from '@material-ui/core';
 import WarningIcon from '@material-ui/icons/Warning';
@@ -22,8 +22,9 @@ import InfoIcon from '@material-ui/icons/Info';
 import AppNavigation from 'Component/AppNavigation';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import LoremIpsumText from 'Component/LoremIpsumText';
-import ButtonProgress from '@elumeo/jfs-core/build/Component/Button/ButtonProgress';
 import CodeBox from 'Component/CodeBox';
+import { ButtonProgress } from '@elumeo/jfs-core/build/Component/Button';
+import TextFieldClearButton from '@elumeo/jfs-core/build/Component/TextFieldClearButton';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -132,14 +133,14 @@ const Dialogs = () => {
                 >
                   <DialogTitle id='form-dialog-title'>{'Form dialog with different action button states'}</DialogTitle>
                   <DialogContent>
-                    <TextField
+                    <TextFieldClearButton
                       fullWidth
                       required
                       value={formValue}
                       error={formValue === ''}
                       id='standard-basic'
                       label='Test Value'
-                      onChange={event => setFormValue(event.target.value)}
+                      onChange={event => setFormValue(event === null ? '' : event.target.value)}
                     />
                     <Box mt={2}>
                       <Grid container spacing={1} alignItems={'center'}>

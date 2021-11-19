@@ -37,5 +37,8 @@
   "settings.title": "Impostazioni",
   "userRights.checkFailed": "Impossibile caricare i diritti utente",
   "date": "Data",
-  "table.noResults": "Nessun risultato"
+  "table.noResults": "Nessun risultato",
+  "product.type.onDemand": "Creation",
+  "product.type.disabledOnDemand": "Ex-creation",
+  "product.details": "Dettagli del prodotto"
 }

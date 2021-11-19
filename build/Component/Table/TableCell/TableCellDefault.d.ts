@@ -1,10 +1,4 @@
-import React, { ReactNode } from 'react';
-export declare const cellStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"wrapContent">;
-export declare type TableCellDefaultProps = {
-    cellData: ReactNode;
-    isLoading?: boolean;
-    isNumeric?: boolean;
-    wrapContent?: boolean;
-};
-declare const _default: React.MemoExoticComponent<({ cellData, isNumeric, wrapContent, isLoading }: TableCellDefaultProps) => JSX.Element>;
+/// <reference types="react" />
+import { TableCellDefaultBaseProps } from '../../Table/TableCell/TableCellDefaultBase';
+declare const _default: import("react").MemoExoticComponent<import("styled-components").StyledComponent<import("react").MemoExoticComponent<({ cellData, isNumeric, className, contentEllipseMode, isLoading }: TableCellDefaultBaseProps) => JSX.Element>, any, {}, never>>;
 export default _default;

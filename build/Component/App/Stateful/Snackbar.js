@@ -22,29 +22,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var Notification = __importStar(require("../../Notification"));
 var notistack_1 = require("notistack");
-var styles_1 = require("@material-ui/core/styles");
-var useStyles = (0, styles_1.makeStyles)(function (theme) { return (0, styles_1.createStyles)({
-    variantSuccess: {
-        backgroundColor: theme.palette.success.main,
-        color: theme.palette.getContrastText(theme.palette.success.main),
-    },
-    variantError: {
-        backgroundColor: theme.palette.error.main,
-        color: theme.palette.getContrastText(theme.palette.error.main),
-    },
-    variantWarning: {
-        backgroundColor: theme.palette.warning.main,
-        color: theme.palette.getContrastText(theme.palette.warning.main),
-    },
-    variantInfo: {
-        backgroundColor: theme.palette.info.main,
-        color: theme.palette.getContrastText(theme.palette.info.main),
-    }
-}); });
 var Snackbar = function (_a) {
     var children = _a.children;
-    var classes = useStyles();
-    return (react_1.default.createElement(notistack_1.SnackbarProvider, { classes: classes, anchorOrigin: {
+    return (react_1.default.createElement(notistack_1.SnackbarProvider, { anchorOrigin: {
             vertical: 'bottom',
             horizontal: 'right',
         }, maxSnack: 5, domRoot: document.getElementById('overlay') },

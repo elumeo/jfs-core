@@ -1,5 +1,5 @@
 import React from 'react';
-import { CircularProgress, Box } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
 import useActions from 'Store/useActions';
 
 const style: React.CSSProperties = {
@@ -33,9 +33,9 @@ const Initializer: React.FC<Props> = ({
   );
 
   return (
-    <Box style={style}>
+    <div style={style}>
       <CircularProgress />
-    </Box>
+    </div>
   );
 }
 

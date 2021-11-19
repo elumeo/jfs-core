@@ -23,19 +23,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
-var clsx_1 = __importDefault(require("clsx"));
 var FormattedMsisdn_1 = __importDefault(require("../../FormattedMsisdn"));
-var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
-var TableCellDefault_1 = require("../../Table/TableCell/TableCellDefault");
-var TableCellLoading_1 = __importDefault(require("../../Table/TableCell/TableCellLoading"));
+var TableCellLoadingContent_1 = __importDefault(require("../../Table/TableCell/TableCellLoadingContent"));
+var TableCellRootBase_1 = __importDefault(require("../../Table/TableCell/TableCellRootBase"));
 var TableCellMsisdn = function (_a) {
     var cellProps = _a.cellProps, rowHeight = _a.rowHeight, _b = _a.isLoading, isLoading = _b === void 0 ? false : _b;
-    var classes = (0, TableCellDefault_1.cellStyles)();
-    var globalClasses = (0, VirtualizedTable_1.globalStyles)();
     return react_1.default.createElement(react_1.default.Fragment, null,
-        isLoading === false && react_1.default.createElement(core_1.TableCell, { component: 'div', className: (0, clsx_1.default)(globalClasses.tableCell, globalClasses.flexContainer), variant: 'body', style: { height: rowHeight } }, cellProps.cellData && react_1.default.createElement("span", { className: classes.wrapContent },
-            react_1.default.createElement(FormattedMsisdn_1.default, { msisdn: cellProps.cellData })) || '-'),
-        isLoading && react_1.default.createElement(TableCellLoading_1.default, null));
+        react_1.default.createElement(TableCellRootBase_1.default, { rowHeight: rowHeight },
+            isLoading === false && cellProps.cellData && react_1.default.createElement("span", { className: 'virtualized-table__content-ellipses' },
+                react_1.default.createElement(FormattedMsisdn_1.default, { msisdn: cellProps.cellData })) || '-',
+            isLoading && react_1.default.createElement(TableCellLoadingContent_1.default, null)));
 };
 exports.default = (0, react_1.memo)(TableCellMsisdn);

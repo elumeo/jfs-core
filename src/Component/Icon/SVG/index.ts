@@ -18,3 +18,4 @@ export { default as Test } from './Test';
 export { default as WebShop } from './WebShop';
 export { default as WebShopBidAgent } from './WebShopBidAgent';
 export { default as WebShopBlock } from './WebShopBlock';
+export { default as CustomerCard } from './CustomerCard';

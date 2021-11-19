@@ -1,23 +1,13 @@
-import React, { memo } from 'react';
-import { CircularProgress } from '@material-ui/core';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
+import Definition from 'Component/App/Stateless/Style/Theme/Definition';
+import TableRowLoadingBase from 'Component/Table/TableRow/TableRowLoadingBase';
+import { memo } from 'react';
 
-const rowStyles = makeStyles(theme =>
-  createStyles({
-    CircularProgress: {
-      textAlign: 'center',
-      marginTop: theme.spacing(2),
-    },
-  }),
-);
+type StylePropsType = { theme: typeof Definition };
 
-const TableRowLoading = () => {
-  const css = rowStyles();
-  return (
-    <div className={css.CircularProgress}>
-      <CircularProgress />
-    </div>
-  );
-};
+const TableRowLoading = styled<typeof TableRowLoadingBase>(TableRowLoadingBase)`
+  text-align: center;
+  margin-top: ${(props: StylePropsType) => props.theme.spacing(2) + 'px'};
+`;
 
 export default memo(TableRowLoading);

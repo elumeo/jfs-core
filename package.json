@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "10.0.0-beta.153",
+  "version": "10.0.0-beta.173",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -132,6 +132,7 @@
     "socket.io": "^2.3.0",
     "source-map-loader": "^3.0.0",
     "style-loader": "^3.2.1",
+    "styled-components": "^5.3.1",
     "subpackage": "^1.1.0",
     "terser-webpack-plugin": "^5.1.4",
     "ts-jest": "^27.0.5",
@@ -150,6 +151,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "devDependencies": {
-    "@types/react-datepicker": "^4.1.4"
+    "@types/react-datepicker": "^4.1.4",
+    "@types/styled-components": "^5.1.15",
+    "@welldone-software/why-did-you-render": "^6.2.1"
   }
 }

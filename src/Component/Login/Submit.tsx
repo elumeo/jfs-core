@@ -1,7 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'Types/Redux';
-import ButtonProgress from 'Component/Button/ButtonProgress';
+import { ButtonProgress } from 'Component/Button';
 
 export type Props = {
   onClick: () => void;

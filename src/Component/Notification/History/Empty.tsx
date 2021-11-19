@@ -1,5 +1,4 @@
 import React from 'react';
-import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { useIntl } from 'react-intl';
@@ -8,8 +7,7 @@ const Empty: React.FC = () => {
   const { formatMessage } = useIntl();
   const iconRef = React.useRef();
   return (
-    <Box
-      component='div'
+    <div
       style={{
         width: 'max-content',
         display: 'flex',
@@ -20,7 +18,7 @@ const Empty: React.FC = () => {
       }}>
       <NotificationsIcon fontSize='large' ref={iconRef} />
       <Typography>{formatMessage({ id: 'app.noNotifications' })}</Typography>
-    </Box>
+    </div>
   );
 };
 

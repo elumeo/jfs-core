@@ -7,12 +7,11 @@ var react_1 = __importDefault(require("react"));
 var Redux_1 = require("../../../Types/Redux");
 var Card_1 = __importDefault(require("../../Notification/Card"));
 var Empty_1 = __importDefault(require("./Empty"));
-var Box_1 = __importDefault(require("@material-ui/core/Box"));
 var ListItem_1 = __importDefault(require("@material-ui/core/ListItem"));
 var All = function () {
     var history = (0, Redux_1.useSelector)(function (state) { return state.Core.Notification.history; });
     (0, Redux_1.useSelector)(function (state) { return state.Core.App.appInitialized; });
-    return history.length ? (react_1.default.createElement(Box_1.default, { component: 'div', style: {
+    return history.length ? (react_1.default.createElement("div", { style: {
             display: 'flex',
             flexDirection: 'column',
             width: '100%',

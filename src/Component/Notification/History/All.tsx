@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'Types/Redux';
 import Card from 'Component/Notification/Card';
 import Empty from './Empty';
-import Box from '@material-ui/core/Box';
 import ListItem from '@material-ui/core/ListItem';
 import { Notification } from 'Types/Notification';
 
@@ -11,8 +10,7 @@ const All: React.FC = () => {
   useSelector(state => state.Core.App.appInitialized);
 
   return history.length ? (
-    <Box
-      component='div'
+    <div
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -26,7 +24,7 @@ const All: React.FC = () => {
           <Card notification={notification} temporary={false} />
         </ListItem>
       ))}
-    </Box>
+    </div>
   ) : (
     <Empty />
   );

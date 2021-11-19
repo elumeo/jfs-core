@@ -10,14 +10,11 @@ const Icon: React.FC<Props> = ({ variant }) => {
   const iconName = React.useMemo(() => {
     if (variant === 'error') {
       return 'cancel';
-    }
-    else if (variant === 'default') {
+    } else if (variant === 'default') {
       return 'alert';
-    }
-    else if (variant === 'success') {
+    } else if (variant === 'success') {
       return 'check';
-    }
-    else {
+    } else {
       return variant;
     }
   }, [variant]);

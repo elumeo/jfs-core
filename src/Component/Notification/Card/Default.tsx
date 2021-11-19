@@ -1,6 +1,5 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import CardActions from '@material-ui/core/CardActions';
 import { useSnackbar } from 'notistack';
 import * as Type from 'Types/Notification';
@@ -28,7 +27,7 @@ const DefaultNotificationCard: React.FC<Props> = ({
   const { formatMessage, formatDate, formatTime } = useIntl();
   return (
     <>
-      <Box color='inherit'>
+      <div style={{color: 'inherit'}}>
         {title && (
           <Typography variant='h6' component='div'>
             {isTranslationId ? formatMessage({ id: title as string }) : title}
@@ -51,16 +50,16 @@ const DefaultNotificationCard: React.FC<Props> = ({
 
         {
           (httpDetails || timeStamp) &&
-          <Box pt={0.5}>
+          <div style={{padding: '4px'}}>
             {httpDetails && <Typography variant='caption' component='div'>{httpDetails}</Typography>}
             {timeStamp &&
             <Typography variant='caption' component='div'>
               {formatDate(timeStamp, {dateStyle: 'medium'})}&nbsp;{formatTime(timeStamp, {timeStyle: 'medium'})}
             </Typography>
             }
-          </Box>
+          </div>
         }
-      </Box>
+      </div>
       {!temporary && action && <CardActions>{action(snackbar, id, temporary)}</CardActions>}
     </>
   );

@@ -6,11 +6,11 @@ import HomeIcon from '@material-ui/icons/Home';
 import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import * as Color from '@elumeo/jfs-core/build/Types/Color';
-import ButtonProgress from '@elumeo/jfs-core/build/Component/Button/ButtonProgress';
 import IconButtonProgress from '@elumeo/jfs-core/build/Component/Button/IconButtonProgress';
 import AppNavigation from 'Component/AppNavigation';
 import Switch from '@material-ui/core/Switch';
 import CodeBox from 'Component/CodeBox';
+import { ButtonProgress } from '@elumeo/jfs-core/build/Component/Button';
 
 type Props = WithStyles;
 const style = (theme: Theme) => ({

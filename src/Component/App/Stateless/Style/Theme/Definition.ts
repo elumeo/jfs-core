@@ -96,6 +96,9 @@ definition.overrides = {
     },
   },
   MuiTableCell: {
+    root: {
+      fontSize: definition.typography.body1.fontSize
+    },
     stickyHeader: {
       backgroundColor: definition.palette.background.paper
     }

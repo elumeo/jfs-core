@@ -1,42 +1,25 @@
-import React, { memo, ReactNode } from 'react';
-import { TableCell } from '@material-ui/core';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
+import Definition from 'Component/App/Stateless/Style/Theme/Definition';
+import styled from 'styled-components';
+import TableCellDefaultBase, { TableCellDefaultBaseProps } from 'Component/Table/TableCell/TableCellDefaultBase';
+import { memo } from 'react';
 
-import { globalStyles } from 'Component/Table/VirtualizedTable';
-import { TableCellLoading } from 'Component/Table/TableCell';
+type StylePropsType = { theme: typeof Definition } & TableCellDefaultBaseProps;
 
-export const cellStyles = makeStyles(() =>
-  createStyles({
-    wrapContent: {
-      whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis',
-      overflow: 'hidden'
+const TableCellDefault = styled<typeof TableCellDefaultBase>(TableCellDefaultBase)`
+  .virtualized-table {
+    &__content-ellipses {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
-  })
-);
+    &__content-ellipses-lines {
+      overflow: hidden;
+      white-space: normal;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: ${(props: StylePropsType) => props.contentEllipseLines ?? 4};
+      display: -webkit-box;
+    }
+  }
+`;
 
-export type TableCellDefaultProps = {
-  cellData: ReactNode;
-  isLoading?: boolean;
-  isNumeric?: boolean;
-  wrapContent?: boolean;
-};
-
-const TableCellDefault = ({ cellData, isNumeric = false, wrapContent = true, isLoading = false }: TableCellDefaultProps) => {
-  const classes = cellStyles();
-  const globalClasses = globalStyles();
-  return <>
-    {isLoading === false && <TableCell
-      component={'div'}
-      className={clsx(globalClasses.tableCell, globalClasses.flexContainer)}
-      variant={'body'}
-      style={{ height: '100%' }}
-      align={isNumeric ? 'right' : 'left'}
-    >
-      <span className={clsx({ [classes.wrapContent]: wrapContent })}>{cellData}</span>
-    </TableCell>}
-    {isLoading && <TableCellLoading />}
-  </>;
-};
 export default memo(TableCellDefault);

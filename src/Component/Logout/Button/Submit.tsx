@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import ButtonProgress from 'Component/Button/ButtonProgress';
+import { ButtonProgress } from 'Component/Button';
 
 export type Props = {
   pending: boolean;

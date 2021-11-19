@@ -23,7 +23,7 @@ import {
   WebShop as WebShopIcon,
   WebShopBidAgent as WebShopBidAgentIcon,
   WebShopBlock as WebShopBlockIcon
-} from 'Core/Component/Icon';
+} from '@elumeo/jfs-core/build/Component/Icon';
 import AppNavigation from 'Component/AppNavigation';
 import CodeBox from 'Component/CodeBox';
 import Switch from '@material-ui/core/Switch';

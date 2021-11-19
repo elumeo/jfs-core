@@ -1,58 +1,23 @@
-import React, { forwardRef, memo } from 'react';
-import {
-  Box,
-  CircularProgress,
-  IconButton,
-  IconButtonProps,
-  PropTypes,
-} from '@material-ui/core';
-import {
-  mapToCircularProgressColor,
-  mapToCircularProgressSize,
-  progressStyles,
-} from 'Component/Button/ButtonProgress';
+import Definition from 'Component/App/Stateless/Style/Theme/Definition';
+import styled from 'styled-components';
+import IconButtonProgressBase, { IconButtonProgressBaseProps } from 'Component/Button/IconButtonProgressBase';
+import { mapToCircularProgressSize } from 'Component/Button/ButtonProgressBase';
 
-export type IconButtonProgress = IconButtonProps & {
-  onClick?: () => void;
-  disabled?: boolean;
-  inProgress?: boolean;
-  color?: PropTypes.Color;
-};
+type StylePropsType = { theme: typeof Definition } & IconButtonProgressBaseProps;
 
-const IconButtonProgress = forwardRef<HTMLButtonElement, IconButtonProgress>(
-  (props: IconButtonProgress, ref) => {
-    const {
-      children,
-      onClick,
-      size = 'medium',
-      color = 'inherit',
-      disabled = false,
-      inProgress = false,
-      ...rest
-    } = props;
-    const progressClasses = progressStyles(props);
+const IconButtonProgress = styled<typeof IconButtonProgressBase>(IconButtonProgressBase)`
+  .button-progress__wrapper {
+    position: relative;
+    display: inline-block;
+  }
 
-    return (
-      <Box className={progressClasses.progressWrapper}>
-        <IconButton
-          ref={ref}
-          size={size}
-          color={color}
-          disabled={disabled || inProgress}
-          onClick={onClick}
-          {...rest}>
-          {children}
-        </IconButton>
-        {inProgress && (
-          <CircularProgress
-            size={mapToCircularProgressSize(size)}
-            color={mapToCircularProgressColor(color)}
-            className={progressClasses.progress}
-          />
-        )}
-      </Box>
-    );
-  },
-);
+  .button-progress__progress {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: ${(props: StylePropsType) => (mapToCircularProgressSize(props.size)/ 2)* - 1};
+    margin-left: ${(props: StylePropsType) => (mapToCircularProgressSize(props.size) / 2) * -1};
+  }
+`;
 
-export default memo(IconButtonProgress);
+export default IconButtonProgress;

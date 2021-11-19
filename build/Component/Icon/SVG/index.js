@@ -22,7 +22,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WebShopBlock = exports.WebShopBidAgent = exports.WebShop = exports.Test = exports.RatePay = exports.PhoneBlock = exports.PayPal = exports.MultipleSources = exports.InvoiceAddress = exports.Ideal = exports.Flag = exports.FilterReset = exports.DeliveryAddress = exports.Check = exports.DeletePin = exports.CashOnDelivery = exports.CashInAdvance = exports.BoxOpen = exports.BidBlock = exports.BadgePercent = void 0;
+exports.CustomerCard = exports.WebShopBlock = exports.WebShopBidAgent = exports.WebShop = exports.Test = exports.RatePay = exports.PhoneBlock = exports.PayPal = exports.MultipleSources = exports.InvoiceAddress = exports.Ideal = exports.Flag = exports.FilterReset = exports.DeliveryAddress = exports.Check = exports.DeletePin = exports.CashOnDelivery = exports.CashInAdvance = exports.BoxOpen = exports.BidBlock = exports.BadgePercent = void 0;
 var BadgePercent_1 = require("./BadgePercent");
 Object.defineProperty(exports, "BadgePercent", { enumerable: true, get: function () { return __importDefault(BadgePercent_1).default; } });
 var BidBlock_1 = require("./BidBlock");
@@ -62,3 +62,5 @@ var WebShopBidAgent_1 = require("./WebShopBidAgent");
 Object.defineProperty(exports, "WebShopBidAgent", { enumerable: true, get: function () { return __importDefault(WebShopBidAgent_1).default; } });
 var WebShopBlock_1 = require("./WebShopBlock");
 Object.defineProperty(exports, "WebShopBlock", { enumerable: true, get: function () { return __importDefault(WebShopBlock_1).default; } });
+var CustomerCard_1 = require("./CustomerCard");
+Object.defineProperty(exports, "CustomerCard", { enumerable: true, get: function () { return __importDefault(CustomerCard_1).default; } });
