@@ -5,7 +5,7 @@ import {
   Card,
   CardContent,
   Chip,
-  Grid, InputAdornment,
+  Grid, IconButton, InputAdornment,
   List,
   ListItem,
   ListItemIcon,
@@ -29,7 +29,7 @@ import { AppCardHeader, AppCardContent } from 'Component/Card';
 import { TableRowLoading } from 'Component/Table/TableRow';
 import SelectClearButton, { SelectClearButtonProps } from 'Component/SelectClearButton';
 import SearchIcon from '@material-ui/icons/Search';
-import { CustomerCard } from 'Component/Icon';
+import { CustomerCard, FilterReset } from 'Component/Icon';
 
 type DataVirtualizedTable = {
   calories: number;
@@ -138,6 +138,7 @@ const Develop: React.FC = () => {
         <AppCardHeader title={'Test'} />
         <AppCardContent>
           Das ist der Inhalt
+          <IconButton size={'small'} color={'secondary'}><FilterReset/></IconButton>
         </AppCardContent>
       </Card>
       <div style={{ marginTop: theme.spacing(1) }}>
