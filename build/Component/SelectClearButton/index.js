@@ -86,7 +86,7 @@ var SelectClearButton = function (_a) {
             onChange(event, changeValue);
         }
     }, [onChange]);
-    var handleClearClick = (0, react_1.useCallback)(function () { return handleOnChange(null, null); }, []);
+    var handleClearClick = (0, react_1.useCallback)(function () { return handleOnChange(null, null); }, [onChange]);
     var endAdornmentClearButton = showClearButton && (react_1.default.createElement(core_1.IconButton, { disabled: rest.disabled, size: clearButtonSize, color: 'secondary', onClick: handleClearClick, style: { marginRight: '21px' } },
         react_1.default.createElement(Close_1.default, { fontSize: getIconSize() })));
     var preparedEndAdornment = react_1.default.createElement(core_1.InputAdornment, { position: 'end' },

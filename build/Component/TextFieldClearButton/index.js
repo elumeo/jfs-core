@@ -66,7 +66,7 @@ var TextFieldClearButton = function (_a) {
             }
         }
     }, [rest.value]);
-    var handleClearClick = (0, react_1.useCallback)(function () { return handleOnChange(null); }, []);
+    var handleClearClick = (0, react_1.useCallback)(function () { return handleOnChange(null); }, [onChange]);
     var handleOnChange = (0, react_1.useCallback)(function (event) {
         if (onChange === undefined) {
             if (event !== null && event.target.value !== '' && showClearButton === false) {

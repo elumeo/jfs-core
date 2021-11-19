@@ -30,7 +30,7 @@ const TextFieldClearButton = ({ onChange, clearButtonSize = 'small', clearIconSi
     }
   }, [rest.value]);
 
-  const handleClearClick: IconButtonProps['onClick'] = useCallback(() => handleOnChange(null), []);
+  const handleClearClick: IconButtonProps['onClick'] = useCallback(() => handleOnChange(null), [onChange]);
 
   const handleOnChange: TextFieldProps['onChange'] = useCallback((event) => {
     if (onChange === undefined) {
