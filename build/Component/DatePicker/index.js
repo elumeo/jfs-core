@@ -101,7 +101,7 @@ var DatePicker = function (_a) {
         handleChangeValue(newDate, event);
     }, []);
     var handleClearClick = (0, react_1.useCallback)(function () { return isClearable ? handleChangeValue(null) : null; }, [isClearable]);
-    var handleTodayClick = (0, react_1.useCallback)(function () { return function () { return disabled === false ? setOpen(true) : null; }; }, [disabled]);
+    var handleTodayClick = (0, react_1.useCallback)(function () { return disabled === false ? setOpen(true) : null; }, [disabled]);
     var preparedInputProps = (0, react_1.useMemo)(function () { return ({
         onFocus: function () { return shouldOpenOnFocus ? setOpen(true) : null; },
         onBlur: function () { return setDirty(true); },

@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import React, { useCallback, useState } from 'react';
+import React, { CSSProperties, useCallback, useMemo, useState } from 'react';
 import {
   Button, ButtonProps,
   Card,
@@ -20,7 +20,7 @@ import { useDispatch } from 'react-redux';
 import * as Action from 'Store/Action';
 import { v4 as uuid } from 'uuid';
 import { VirtualizedTable } from 'Component/Table';
-import { Index, TableCellProps } from 'react-virtualized';
+import { Index, TableCellProps, TableProps } from 'react-virtualized';
 import TextFieldClearButton, { TextFieldClearButtonProps } from 'Component/TextFieldClearButton';
 import { ContentEllipseMode } from 'Component/Table/TableCell/TableCellDefault';
 import { TableCellDateTime, TableCellDateTimeRange, TableCellDefault } from 'Component/Table/TableCell';
@@ -34,6 +34,7 @@ import DatePicker from 'Component/DatePicker';
 import { ColumnData } from 'Component/Table/VirtualizedTable';
 import { DateTimeRangeCellProps } from 'Types/Table/DateTimeRangeCellProps';
 import WarningIcon from '@material-ui/icons/Warning';
+// import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
 type DataVirtualizedTable = {
   calories: number;

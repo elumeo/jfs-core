@@ -1,9 +1,9 @@
 import { ColumnProps, AutoSizer, Column, SizeInfo, Table, TableProps, AutoSizerProps } from 'react-virtualized';
-import React, { memo, useCallback, useMemo, useState } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import { TableCellDefault } from 'Component/Table/TableCell';
 import TableHeadDefault from 'Component/Table/TableHead/TableHeadDefault';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
-import { useTheme } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { Theme } from '@material-ui/core';
 
 export const visuallyHiddenStyle: CSSProperties = {
@@ -21,13 +21,13 @@ export const visuallyHiddenStyle: CSSProperties = {
 export const flexContainerStyles: CSSProperties = {
   display: 'flex',
   alignItems: 'center',
-  boxSizing: 'border-box',
+  boxSizing: 'border-box'
 };
 
 export const ellipsesStyle: CSSProperties = {
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',
-  overflow: 'hidden',
+  overflow: 'hidden'
 };
 
 export const noOutlineStyles: CSSProperties = { outline: 'none' };
@@ -35,6 +35,18 @@ export const rowStyles: CSSProperties = { direction: 'inherit' };
 export const rowClickStyles: CSSProperties = { cursor: 'pointer' };
 export const rowNoClickStyles: CSSProperties = { cursor: 'initial' };
 export const columnHeaderStyles: CSSProperties = { outline: 'none' };
+
+const useRowStyles = makeStyles<Theme, VirtualizedTableProps>((theme: Theme) => createStyles({
+  root: {
+    ...noOutlineStyles,
+    ...flexContainerStyles,
+    direction: 'inherit',
+    cursor: (props) => props.onRowClick !== null ? 'pointer' : 'initial',
+    '&:hover:not(.ReactVirtualized__Table__headerRow)': {
+      backgroundColor: (props) => props.showRowHoverHighlight ? theme.palette.grey[200] : 'inherit'
+    }
+  }
+}));
 
 export type ColumnData = Omit<ColumnProps, 'width'> & {
   numeric?: boolean;
@@ -49,28 +61,9 @@ export type VirtualizedTableProps = Partial<TableProps> & {
   rowHeight?: TableProps['rowHeight'];
 };
 
-const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
-  ({
-     columns = [],
-     onRowClick = null,
-     rowCount,
-     rowGetter,
-     headerHeight = 48,
-     rowHeight = 48,
-     showRowHoverHighlight = false,
-     onResize,
-     ...tableProps
-   }, ref) => {
-    const [rowHoverIndex, setRowHoverIndex] = useState<number>(null);
-    const theme = useTheme<Theme>();
-    const getRowStyle: TableProps['rowStyle'] = useCallback((info) => ({
-      ...noOutlineStyles,
-      ...flexContainerStyles,
-      ...rowStyles,
-      ...(onRowClick !== null ? rowClickStyles : rowNoClickStyles),
-      ...(rowHoverIndex === info.index && showRowHoverHighlight ? { backgroundColor: theme.palette.grey[200] } : null)
-    }), [showRowHoverHighlight, onRowClick, rowHoverIndex]);
-
+const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>((props, ref) => {
+    const { columns = [], onRowClick = null, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, onResize, ...tableProps } = props;
+    const rowClasses = useRowStyles(props);
     const columnStyle: ColumnProps['style'] = useMemo(() => ({ ...flexContainerStyles, height: '100%' }), []);
     const tableStyle: TableProps['style'] = useMemo(() => ({ borderCollapse: 'separate' }), []);
 
@@ -88,8 +81,6 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
       : columnWidth as number, []
     );
 
-    const handleOnRowMouseOver: TableProps['onRowMouseOver'] = useCallback(info => setRowHoverIndex(info.index), []);
-    const handleOnRowMouseOut: TableProps['onRowMouseOut'] = useCallback(() => setRowHoverIndex(null), []);
     const getCellRenderer: ColumnProps['cellRenderer'] = useCallback(props => <TableCellDefault
       cellData={props.cellData}
       isNumeric={(props.columnIndex != null && columns[props.columnIndex].numeric) || false}
@@ -101,9 +92,7 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
           ref={ref}
           height={height}
           width={width}
-          rowStyle={getRowStyle}
-          onRowMouseOver={handleOnRowMouseOver}
-          onRowMouseOut={handleOnRowMouseOut}
+          rowClassName={rowClasses.root}
           headerHeight={headerHeight}
           rowHeight={rowHeight}
           rowCount={rowCount}
