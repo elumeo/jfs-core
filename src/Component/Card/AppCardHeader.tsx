@@ -1,25 +1,58 @@
-import { memo } from 'react';
-import Definition from 'Component/App/Stateless/Style/Theme/Definition';
-import styled from 'styled-components';
-import AppCardHeaderBase, { AppCardHeaderBaseProps } from 'Component/Card/AppCardHeaderBase';
+import React, { memo, ReactNode, useMemo } from 'react';
+import { CardHeader, Grid, IconButton, LinearProgress, Typography } from '@material-ui/core';
+import RefreshIcon from '@material-ui/icons/Refresh';
+import { IconButtonProps } from '@material-ui/core/IconButton';
+import { useTheme, Theme } from '@material-ui/core/styles';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
-type StylePropsType = { theme: typeof Definition } & AppCardHeaderBaseProps;
+export type AppCardHeaderBaseProps = {
+  isLoading?: boolean;
+  title: ReactNode;
+  subtitle?: ReactNode;
+  titleIcon?: ReactNode;
+  action?: ReactNode;
+  onRefresh?: () => void;
+  refreshButtonColor?: IconButtonProps['color'];
+  refreshButtonSize?: IconButtonProps['size'];
+  additionalTitleComponent?: ReactNode;
+};
 
-const AppCardHeader = styled<typeof AppCardHeaderBase>(AppCardHeaderBase)`
-  position: relative;
-  align-items: flex-start;
+const AppCardHeader = ({
+                             isLoading = false,
+                             title,
+                             subtitle = null,
+                             titleIcon = null,
+                             onRefresh = null,
+                             refreshButtonColor = 'secondary',
+                             refreshButtonSize = 'small',
+                             additionalTitleComponent = null,
+                             action = null
+                           }: AppCardHeaderBaseProps) => {
+  const theme = useTheme<Theme>();
 
-  .MuiLinearProgress-root {
-    position: absolute;
-    width: ${(props: StylePropsType) => 'calc(100% + ' + props.theme.spacing(4) + 'px);'};
-    top: 0;
-    left: ${(props: StylePropsType) => (props.theme.spacing(2) * -1) + 'px;'};
-  }
+  const cardHeaderStyles: CSSProperties = useMemo(() => ({ position: 'relative', alignItems: 'flex-start' }), []);
+  const linearProgressRootStyles: CSSProperties = useMemo(() => ({
+    position: 'absolute',
+    width: 'calc(100% + ' + theme.spacing(4) + 'px)',
+    top: 0,
+    left: (theme.spacing(2) * -1) + 'px'
+  }), []);
 
-  .MuiIconButton-root {
-    /*vertical-align: ${(props: StylePropsType) => (props.theme.spacing(0.5) * -1) + 'px;'};*/
-    padding: ${(props: StylePropsType) => props.theme.spacing(0.25) + 'px;'};
-  }
-`;
+  const buildRefreshButton = () => <Grid item>
+    <IconButton color={refreshButtonColor} size={refreshButtonSize} disabled={isLoading} onClick={onRefresh}>
+      <RefreshIcon />
+    </IconButton>
+  </Grid>;
+  const headerTitle = <>
+    {isLoading && <LinearProgress color='secondary' style={linearProgressRootStyles} />}
+    <Grid container spacing={1} alignItems='center'>
+      {titleIcon !== null && <Grid item>{titleIcon}</Grid>}
+      <Grid item><Typography variant='h5'>{title}</Typography></Grid>
+      {onRefresh !== null && buildRefreshButton()}
+      {additionalTitleComponent !== null && <Grid item>{additionalTitleComponent}</Grid>}
+    </Grid>
+  </>;
+  return <CardHeader style={cardHeaderStyles} subheader={subtitle} title={headerTitle} action={action} />;
+};
 
 export default memo(AppCardHeader);

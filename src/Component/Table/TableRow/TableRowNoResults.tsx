@@ -1,13 +1,13 @@
-import styled from 'styled-components';
-import Definition from 'Component/App/Stateless/Style/Theme/Definition';
-import TableRowNoResultsBase from 'Component/Table/TableRow/TableRowNoResultsBase';
-import { memo } from 'react';
+import React, { memo, useMemo } from 'react';
+import { useIntl } from 'react-intl';
+import { Theme, useTheme } from '@material-ui/core/styles';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
-type StylePropsType = { theme: typeof Definition };
-
-const TableRowNoResults = styled<typeof TableRowNoResultsBase>(TableRowNoResultsBase)`
-  text-align: center;
-  margin-top: ${(props: StylePropsType) => props.theme.spacing(2) + 'px'};
-`;
+const TableRowNoResults = () => {
+  const { formatMessage } = useIntl();
+  const theme = useTheme<Theme>();
+  const styles = useMemo<CSSProperties>(() => ({ textAlign: 'center', marginTop: theme.spacing(2) + 'px' }), []);
+  return <div style={styles}>{formatMessage({ id: 'table.noResults' })}</div>;
+};
 
 export default memo(TableRowNoResults);

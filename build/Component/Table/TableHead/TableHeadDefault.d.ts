@@ -1,4 +1,13 @@
-/// <reference types="react" />
-import { TableHeadDefaultBaseProps } from '../../Table/TableHead/TableHeadDefaultBase';
-declare const _default: import("react").MemoExoticComponent<import("styled-components").StyledComponent<import("react").MemoExoticComponent<({ height, isNumeric, disableSort, sortBy, sortDirection, label, dataKey, className }: TableHeadDefaultBaseProps) => JSX.Element>, any, {}, never>>;
+import React, { ReactNode } from 'react';
+import { SortDirectionType } from 'react-virtualized';
+export declare type TableHeadDefaultProps = {
+    height?: number;
+    isNumeric?: boolean;
+    disableSort?: boolean;
+    sortBy?: string;
+    sortDirection?: SortDirectionType;
+    label?: ReactNode;
+    dataKey: string;
+};
+declare const _default: React.MemoExoticComponent<({ height, isNumeric, disableSort, sortBy, sortDirection, label, dataKey }: TableHeadDefaultProps) => JSX.Element>;
 export default _default;

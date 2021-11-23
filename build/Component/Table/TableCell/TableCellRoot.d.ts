@@ -1,4 +1,8 @@
-/// <reference types="react" />
-import { TableCellRootBaseProps } from '../../Table/TableCell/TableCellRootBase';
-declare const _default: import("react").MemoExoticComponent<import("styled-components").StyledComponent<import("react").MemoExoticComponent<({ children, isNumeric, className }: TableCellRootBaseProps) => JSX.Element>, any, {}, never>>;
+import React from 'react';
+export declare type TableCellRootProps = {
+    children: React.ReactNode;
+    isNumeric?: boolean;
+    rowHeight?: number | string;
+};
+declare const _default: React.MemoExoticComponent<({ children, isNumeric, rowHeight }: TableCellRootProps) => JSX.Element>;
 export default _default;

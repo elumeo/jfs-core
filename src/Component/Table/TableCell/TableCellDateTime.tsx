@@ -1,7 +1,7 @@
 import React, { memo, ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import { DateTime } from 'Utilities/Format';
-import TableCellBase from 'Component/Table/TableCell/TableCellRootBase';
+import TableCellRoot from 'Component/Table/TableCell/TableCellRoot';
 
 export type TableCellDateTimeProps = {
   cellData: string;
@@ -10,13 +10,13 @@ export type TableCellDateTimeProps = {
 
 const TableCellDateTime = ({cellData = null, noValueElement = '-'}: TableCellDateTimeProps) => {
   const {formatDate, formatTime} = useIntl();
-  return <TableCellBase>
+  return <TableCellRoot>
     {cellData === null && noValueElement}
     {cellData !== null && <>
       {formatDate(cellData, DateTime.getDefaultDateFormatOptions())}<br/>
       {formatTime(cellData, DateTime.getDefaultTimeFormatOptions(true))}
     </>}
-  </TableCellBase>;
+  </TableCellRoot>;
 }
 
 export default memo(TableCellDateTime);

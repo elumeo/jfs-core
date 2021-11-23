@@ -25,13 +25,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var FormattedMsisdn_1 = __importDefault(require("../../FormattedMsisdn"));
 var TableCellLoadingContent_1 = __importDefault(require("../../Table/TableCell/TableCellLoadingContent"));
-var TableCellRootBase_1 = __importDefault(require("../../Table/TableCell/TableCellRootBase"));
+var TableCellRoot_1 = __importDefault(require("../../Table/TableCell/TableCellRoot"));
+var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
 var TableCellMsisdn = function (_a) {
     var cellProps = _a.cellProps, rowHeight = _a.rowHeight, _b = _a.isLoading, isLoading = _b === void 0 ? false : _b;
-    return react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(TableCellRootBase_1.default, { rowHeight: rowHeight },
-            isLoading === false && cellProps.cellData && react_1.default.createElement("span", { className: 'virtualized-table__content-ellipses' },
-                react_1.default.createElement(FormattedMsisdn_1.default, { msisdn: cellProps.cellData })) || '-',
-            isLoading && react_1.default.createElement(TableCellLoadingContent_1.default, null)));
+    return react_1.default.createElement(TableCellRoot_1.default, { rowHeight: rowHeight },
+        isLoading === false && cellProps.cellData && react_1.default.createElement("span", { style: VirtualizedTable_1.ellipsesStyle },
+            react_1.default.createElement(FormattedMsisdn_1.default, { msisdn: cellProps.cellData })) || '-',
+        isLoading && react_1.default.createElement(TableCellLoadingContent_1.default, null));
 };
 exports.default = (0, react_1.memo)(TableCellMsisdn);

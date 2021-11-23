@@ -2,7 +2,8 @@ import React, { memo } from 'react';
 import { TableCellProps } from 'react-virtualized';
 import FormattedMsisdn from 'Component/FormattedMsisdn';
 import TableCellLoading from 'Component/Table/TableCell/TableCellLoadingContent';
-import TableCellBase from 'Component/Table/TableCell/TableCellRootBase';
+import TableCellRoot from 'Component/Table/TableCell/TableCellRoot';
+import { ellipsesStyle } from 'Component/Table/VirtualizedTable';
 
 export type TableCellMsisdnProps = {
   cellProps: TableCellProps;
@@ -11,12 +12,10 @@ export type TableCellMsisdnProps = {
 };
 
 const TableCellMsisdn = ({ cellProps, rowHeight, isLoading = false }: TableCellMsisdnProps) => {
-  return <>
-    <TableCellBase rowHeight={rowHeight}>
-      {isLoading === false && cellProps.cellData && <span className={'virtualized-table__content-ellipses'}><FormattedMsisdn msisdn={cellProps.cellData} /></span> || '-'}
-      {isLoading && <TableCellLoading />}
-    </TableCellBase>
-  </>;
+  return <TableCellRoot rowHeight={rowHeight}>
+    {isLoading === false && cellProps.cellData && <span style={ellipsesStyle}><FormattedMsisdn msisdn={cellProps.cellData} /></span> || '-'}
+    {isLoading && <TableCellLoading />}
+  </TableCellRoot>;
 };
 
 export default memo(TableCellMsisdn);

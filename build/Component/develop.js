@@ -42,7 +42,7 @@ var Action = __importStar(require("../Store/Action"));
 var uuid_1 = require("uuid");
 var Table_1 = require("./Table");
 var TextFieldClearButton_1 = __importDefault(require("./TextFieldClearButton"));
-var TableCellDefaultBase_1 = require("./Table/TableCell/TableCellDefaultBase");
+var TableCellDefault_1 = require("./Table/TableCell/TableCellDefault");
 var TableCell_1 = require("./Table/TableCell");
 var Button_1 = require("./Button");
 var Card_1 = require("./Card");
@@ -51,14 +51,19 @@ var SelectClearButton_1 = __importDefault(require("./SelectClearButton"));
 var Search_1 = __importDefault(require("@material-ui/icons/Search"));
 var Icon_1 = require("./Icon");
 var DatePicker_1 = __importDefault(require("./DatePicker"));
+var Warning_1 = __importDefault(require("@material-ui/icons/Warning"));
 var sample = [
-    ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, 4.0],
-    ['Ice cream sandwich', 237, 9.0, 37, 4.3],
-    ['Eclair', 262, 16.0, 24, 6.0],
-    ['Cupcake', 305, 3.7, 67, 4.3],
-    ['Gingerbread', 356, 16.0, 49, 3.9]
+    ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, {
+            start: null,
+            end: null,
+            isLiveShow: false
+        }, null],
+    ['Ice cream sandwich', 237, 9.0, 37, { start: new Date(), end: new Date(), isLiveShow: false }, new Date()],
+    ['Eclair', 262, 16.0, 24, { start: new Date(2021, 9, 23, 8, 0, 15), end: new Date(), isLiveShow: false }, new Date()],
+    ['Cupcake', 305, 3.7, 67, { start: new Date(), end: new Date(), isLiveShow: false }, new Date()],
+    ['Gingerbread', 356, 16.0, 49, { start: new Date(), end: new Date(), isLiveShow: false }, new Date()]
 ];
-var createDataVirtualizedTable = function (id, dessert, calories, fat, carbs, protein) { return ({ id: id, dessert: dessert, calories: calories, fat: fat, carbs: carbs, protein: protein }); };
+var createDataVirtualizedTable = function (id, dessert, calories, fat, carbs, datetimeRange, datetime) { return ({ id: id, dessert: dessert, calories: calories, fat: fat, carbs: carbs, datetimeRange: datetimeRange, datetime: datetime }); };
 var rows = [];
 for (var i = 0; i < 200; i += 1) {
     var randomSelection = sample[Math.floor(Math.random() * sample.length)];
@@ -66,37 +71,38 @@ for (var i = 0; i < 200; i += 1) {
 }
 var columns = [
     {
-        // width: 200,
-        // flexGrow: 1,
         width: function (width) { return width - (120 * 4); },
         label: 'Dessert (100g serving)',
         dataKey: 'dessert',
         disableSort: true,
-        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDefault, { cellData: cellProps.cellData, contentEllipseMode: TableCellDefaultBase_1.ContentEllipseMode.Lines, contentEllipseLines: 2 }); }
+        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDefault, { cellData: cellProps.cellData, contentEllipseMode: TableCellDefault_1.ContentEllipseMode.Lines, contentEllipseLines: 2 }); }
     },
     {
         width: 120,
         label: 'Calories\u00A0(g)',
         dataKey: 'calories',
-        numeric: true
     },
     {
         width: 120,
         label: 'Fat\u00A0(g)',
         dataKey: 'fat',
-        numeric: true
     },
     {
         width: 120,
         label: 'Carbs\u00A0(g)',
         dataKey: 'carbs',
-        numeric: true
     },
     {
-        width: 120,
-        label: 'Protein\u00A0(g)',
-        dataKey: 'protein',
-        numeric: true
+        width: 220,
+        label: 'Datum (Range)',
+        dataKey: 'datetimeRange',
+        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDateTimeRange, { cellData: cellProps.cellData }); }
+    },
+    {
+        width: 180,
+        label: 'Datum',
+        dataKey: 'datetime',
+        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDateTime, { cellData: cellProps.cellData }); }
     }
 ];
 var textFieldInputProps = { startAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'start' },
@@ -131,7 +137,7 @@ var Develop = function () {
     })); }, []);
     return (react_1.default.createElement("div", { style: { margin: theme.spacing(1) } },
         react_1.default.createElement(core_1.Card, null,
-            react_1.default.createElement(Card_1.AppCardHeader, { title: 'Test' }),
+            react_1.default.createElement(Card_1.AppCardHeader, { title: 'Test', titleIcon: react_1.default.createElement(Warning_1.default, null), onRefresh: console.log }),
             react_1.default.createElement(Card_1.AppCardContent, null,
                 "Das ist der Inhalt",
                 react_1.default.createElement(core_1.IconButton, { size: 'small', color: 'secondary' },
@@ -250,7 +256,6 @@ var Develop = function () {
                                 react_1.default.createElement(core_1.TableCell, null, row.carbs),
                                 react_1.default.createElement(core_1.TableCell, null, row.dessert),
                                 react_1.default.createElement(core_1.TableCell, null, row.fat),
-                                react_1.default.createElement(core_1.TableCell, null, row.id),
-                                react_1.default.createElement(core_1.TableCell, null, row.protein)); })))))))));
+                                react_1.default.createElement(core_1.TableCell, null, row.id)); })))))))));
 };
 exports.default = Develop;

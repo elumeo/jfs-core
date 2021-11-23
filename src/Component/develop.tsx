@@ -22,8 +22,8 @@ import { v4 as uuid } from 'uuid';
 import { VirtualizedTable } from 'Component/Table';
 import { Index, TableCellProps } from 'react-virtualized';
 import TextFieldClearButton, { TextFieldClearButtonProps } from 'Component/TextFieldClearButton';
-import { ContentEllipseMode } from 'Component/Table/TableCell/TableCellDefaultBase';
-import { TableCellDefault } from 'Component/Table/TableCell';
+import { ContentEllipseMode } from 'Component/Table/TableCell/TableCellDefault';
+import { TableCellDateTime, TableCellDateTimeRange, TableCellDefault } from 'Component/Table/TableCell';
 import { ButtonProgress } from 'Component/Button';
 import { AppCardHeader, AppCardContent } from 'Component/Card';
 import { TableRowLoading } from 'Component/Table/TableRow';
@@ -31,6 +31,9 @@ import SelectClearButton, { SelectClearButtonProps } from 'Component/SelectClear
 import SearchIcon from '@material-ui/icons/Search';
 import { CustomerCard, FilterReset } from 'Component/Icon';
 import DatePicker from 'Component/DatePicker';
+import { ColumnData } from 'Component/Table/VirtualizedTable';
+import { DateTimeRangeCellProps } from 'Types/Table/DateTimeRangeCellProps';
+import WarningIcon from '@material-ui/icons/Warning';
 
 type DataVirtualizedTable = {
   calories: number;
@@ -38,27 +41,25 @@ type DataVirtualizedTable = {
   dessert: string;
   fat: number;
   id: number;
-  protein: number;
+  datetimeRange: DateTimeRangeCellProps;
+  datetime: Date;
 }
 
-type SampleVirtualizedTable = [string, number, number, number, number];
+type SampleVirtualizedTable = [string, number, number, number, DateTimeRangeCellProps, Date?];
 
 const sample: SampleVirtualizedTable[] = [
-  ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, 4.0],
-  ['Ice cream sandwich', 237, 9.0, 37, 4.3],
-  ['Eclair', 262, 16.0, 24, 6.0],
-  ['Cupcake', 305, 3.7, 67, 4.3],
-  ['Gingerbread', 356, 16.0, 49, 3.9]
+  ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, {
+    start: null,
+    end: null,
+    isLiveShow: false
+  }, null],
+  ['Ice cream sandwich', 237, 9.0, 37, {start: new Date(), end: new Date(), isLiveShow: false}, new Date()],
+  ['Eclair', 262, 16.0, 24, {start: new Date(2021, 9, 23, 8, 0, 15), end: new Date(), isLiveShow: false}, new Date()],
+  ['Cupcake', 305, 3.7, 67, {start: new Date(), end: new Date(), isLiveShow: false}, new Date()],
+  ['Gingerbread', 356, 16.0, 49, {start: new Date(), end: new Date(), isLiveShow: false}, new Date()]
 ];
 
-const createDataVirtualizedTable = (
-  id: number,
-  dessert: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number
-): DataVirtualizedTable => ({ id, dessert, calories, fat, carbs, protein });
+const createDataVirtualizedTable = (id: number, dessert: string, calories: number, fat: number, carbs: number, datetimeRange: DateTimeRangeCellProps, datetime?: Date): DataVirtualizedTable => ({ id, dessert, calories, fat, carbs, datetimeRange, datetime });
 
 const rows: DataVirtualizedTable[] = [];
 
@@ -67,10 +68,8 @@ for (let i = 0; i < 200; i += 1) {
   rows.push(createDataVirtualizedTable(i, ...randomSelection));
 }
 
-const columns = [
+const columns: ColumnData[] = [
   {
-    // width: 200,
-    // flexGrow: 1,
     width: (width: number) => width - (120 * 4),
     label: 'Dessert (100g serving)',
     dataKey: 'dessert',
@@ -81,25 +80,28 @@ const columns = [
     width: 120,
     label: 'Calories\u00A0(g)',
     dataKey: 'calories',
-    numeric: true
   },
   {
     width: 120,
     label: 'Fat\u00A0(g)',
     dataKey: 'fat',
-    numeric: true
   },
   {
     width: 120,
     label: 'Carbs\u00A0(g)',
     dataKey: 'carbs',
-    numeric: true
   },
   {
-    width: 120,
-    label: 'Protein\u00A0(g)',
-    dataKey: 'protein',
-    numeric: true
+    width: 220,
+    label: 'Datum (Range)',
+    dataKey: 'datetimeRange',
+    cellRenderer: cellProps => <TableCellDateTimeRange cellData={cellProps.cellData} />
+  },
+  {
+    width: 180,
+    label: 'Datum',
+    dataKey: 'datetime',
+    cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} />
   }
 ];
 const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon /></InputAdornment> };
@@ -137,7 +139,7 @@ const Develop: React.FC = () => {
   return (
     <div style={{ margin: theme.spacing(1) }}>
       <Card>
-        <AppCardHeader title={'Test'} />
+        <AppCardHeader title={'Test'} titleIcon={<WarningIcon />} onRefresh={console.log} />
         <AppCardContent>
           Das ist der Inhalt
           <IconButton size={'small'} color={'secondary'}><FilterReset/></IconButton>
@@ -366,7 +368,6 @@ const Develop: React.FC = () => {
                     <TableCell>{row.dessert}</TableCell>
                     <TableCell>{row.fat}</TableCell>
                     <TableCell>{row.id}</TableCell>
-                    <TableCell>{row.protein}</TableCell>
                   </TableRow>)}
                 </TableBody>
               </Table>

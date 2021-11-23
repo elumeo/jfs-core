@@ -20,14 +20,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-// import { Skeleton } from '@material-ui/lab';
-var TableCellLoadingContent = function () {
-    return react_1.default.createElement(react_1.default.Fragment, null, "Loading ...");
-    // return <Skeleton
-    //   variant='text'
-    //   width={'100%'}
-    //   height={'100%'}
-    //   animation={'wave'}
-    // />;
-};
+var lab_1 = require("@material-ui/lab");
+var TableCellLoadingContent = function () { return react_1.default.createElement(lab_1.Skeleton, { variant: 'text', width: '100%', height: '100%', animation: 'wave' }); };
 exports.default = (0, react_1.memo)(TableCellLoadingContent);

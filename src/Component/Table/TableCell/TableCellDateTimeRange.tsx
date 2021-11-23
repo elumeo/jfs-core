@@ -2,15 +2,15 @@ import React, { memo, ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import { DateTime } from 'Utilities/Format';
 import { DateTimeRangeCellProps } from 'Types/Table/DateTimeRangeCellProps';
-import TableCellBase from 'Component/Table/TableCell/TableCellRootBase';
+import TableCellRoot from 'Component/Table/TableCell/TableCellRoot';
 
 export type TableCellDateTimeRangeProps = {
   cellData: DateTimeRangeCellProps;
   noValueElement?: ReactNode;
 }
 
-const TableCellDateTimeRange = ({cellData = null, noValueElement = '-'}: TableCellDateTimeRangeProps) => {
-  const {formatDate, formatTime} = useIntl();
+const TableCellDateTimeRange = ({ cellData = null, noValueElement = '-' }: TableCellDateTimeRangeProps) => {
+  const { formatDate, formatTime } = useIntl();
 
   let startDate: string;
   let startTime: string;
@@ -25,7 +25,7 @@ const TableCellDateTimeRange = ({cellData = null, noValueElement = '-'}: TableCe
     endTime = formatTime(cellData.end, DateTime.getDefaultTimeFormatOptions(true));
     hasSameDate = startDate === endDate;
   }
-  return <TableCellBase>
+  return <TableCellRoot>
     {(cellData === null || cellData.start === null) && noValueElement}
     {cellData !== null && cellData.start !== null && <>
       {hasSameDate && <>
@@ -33,11 +33,11 @@ const TableCellDateTimeRange = ({cellData = null, noValueElement = '-'}: TableCe
         {startTime} - {endTime}
       </>}
       {hasSameDate === false && <>
-        {startDate} {startTime}<br />
+        {startDate} {startTime} -<br />
         {endDate} {endTime}
       </>}
     </>}
-  </TableCellBase>;
-}
+  </TableCellRoot>;
+};
 
 export default memo(TableCellDateTimeRange);

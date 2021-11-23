@@ -1,12 +1,21 @@
-import styled from 'styled-components';
-import Definition from 'Component/App/Stateless/Style/Theme/Definition';
-import TableCellRootBase, { TableCellRootBaseProps } from 'Component/Table/TableCell/TableCellRootBase';
-import { memo } from 'react';
+import React, { memo, useMemo } from 'react';
+import { TableCell } from '@material-ui/core';
+import { Theme, useTheme } from '@material-ui/core/styles';
+import { flexContainerStyles } from 'Component/Table/VirtualizedTable';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
-type StylePropsType = { theme: typeof Definition } & TableCellRootBaseProps;
+export type TableCellRootProps = {
+  children: React.ReactNode,
+  isNumeric?: boolean;
+  rowHeight?: number | string;
+};
 
-const TableCellRoot = styled<typeof TableCellRootBase>(TableCellRootBase)`
-  height: ${({ rowHeight = '100%'}: StylePropsType) => rowHeight};
-`;
-
+const TableCellRoot = ({ children, isNumeric = false, rowHeight = '100px' }: TableCellRootProps) => {
+  const theme = useTheme<Theme>();
+  const styles = useMemo<CSSProperties>(() => ({
+    ...flexContainerStyles,
+    height: rowHeight, flex: 1, padding: theme.spacing(1), maxWidth: '100%'
+  }), [rowHeight]);
+  return <TableCell component='div' style={styles} variant='body' align={isNumeric ? 'right' : 'left'}>{children}</TableCell>;
+};
 export default memo(TableCellRoot);

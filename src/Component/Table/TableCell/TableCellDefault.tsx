@@ -1,25 +1,45 @@
-import Definition from 'Component/App/Stateless/Style/Theme/Definition';
-import styled from 'styled-components';
-import TableCellDefaultBase, { TableCellDefaultBaseProps } from 'Component/Table/TableCell/TableCellDefaultBase';
-import { memo } from 'react';
+import React, { memo, ReactNode, useCallback, useMemo } from 'react';
+import { TableCellRoot, TableCellLoadingContent } from 'Component/Table/TableCell';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { ellipsesStyle } from 'Component/Table/VirtualizedTable';
 
-type StylePropsType = { theme: typeof Definition } & TableCellDefaultBaseProps;
+export enum ContentEllipseMode {
+  None = 'none',
+  Normal = 'normal',
+  Lines = 'lines'
+}
 
-const TableCellDefault = styled<typeof TableCellDefaultBase>(TableCellDefaultBase)`
-  .virtualized-table {
-    &__content-ellipses {
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
+export type TableCellDefaultProps = {
+  cellData: ReactNode;
+  isLoading?: boolean;
+  isNumeric?: boolean;
+  contentEllipseMode?: ContentEllipseMode;
+  contentEllipseLines?: number;
+};
+
+const TableCellDefault = ({ cellData, isNumeric = false, contentEllipseMode = ContentEllipseMode.Lines, contentEllipseLines = 4, isLoading = false }: TableCellDefaultProps) => {
+  const ellipsesLinesStyle = useMemo<CSSProperties>(() => ({
+    overflow: 'hidden',
+    whiteSpace: 'normal',
+    WebkitBoxOrient: 'vertical',
+    WebkitLineClamp: contentEllipseLines,
+    display: '-webkit-box',
+  }), [contentEllipseLines]);
+
+  const getStyles = useCallback<() => CSSProperties>(() => {
+    switch (contentEllipseMode) {
+      case ContentEllipseMode.Lines:
+        return ellipsesLinesStyle;
+      case ContentEllipseMode.Normal:
+        return ellipsesStyle;
+      case ContentEllipseMode.None:
+      default:
+        return null;
     }
-    &__content-ellipses-lines {
-      overflow: hidden;
-      white-space: normal;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: ${(props: StylePropsType) => props.contentEllipseLines ?? 4};
-      display: -webkit-box;
-    }
-  }
-`;
-
+  }, []);
+  return <TableCellRoot isNumeric={isNumeric}>
+    {isLoading === false && <span style={getStyles()}>{cellData}</span>}
+    {isLoading && <TableCellLoadingContent />}
+  </TableCellRoot>;
+};
 export default memo(TableCellDefault);

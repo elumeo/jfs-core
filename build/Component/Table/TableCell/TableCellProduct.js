@@ -1,23 +1,81 @@
 "use strict";
-var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var styled_components_1 = __importDefault(require("styled-components"));
-var TableCellProductBase_1 = __importDefault(require("./TableCellProductBase"));
-var TableCellProduct = (0, styled_components_1.default)(TableCellProductBase_1.default)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  .virtualized-table {\n    &__bundle-box {\n      width: ", ";\n      height: ", ";\n      text-align: center;\n      display: flex;\n      align-items: center;\n      background-color: ", ";\n      user-select: none;\n      cursor: pointer;\n    }\n\n    &__link {\n      cursor: pointer;\n    }\n\n    &__product-image-wrapper {\n      margin-top: auto;\n      margin-bottom: auto;\n    }\n\n    &__name-outer-wrapper {\n      margin-left: ", ";\n      display: flex;\n      flex-direction: column;\n      height: 100%;\n    }\n\n    &__name-inner-wrapper {\n      flex: 1;\n    }\n\n    &__name {\n      font-weight: ", ";\n      white-space: normal;\n      display: -webkit-box;\n      overflow: hidden;\n      -webkit-box-orient: vertical;\n      -webkit-line-clamp: ", ";\n    }\n  }\n"], ["\n  .virtualized-table {\n    &__bundle-box {\n      width: ", ";\n      height: ", ";\n      text-align: center;\n      display: flex;\n      align-items: center;\n      background-color: ", ";\n      user-select: none;\n      cursor: pointer;\n    }\n\n    &__link {\n      cursor: pointer;\n    }\n\n    &__product-image-wrapper {\n      margin-top: auto;\n      margin-bottom: auto;\n    }\n\n    &__name-outer-wrapper {\n      margin-left: ", ";\n      display: flex;\n      flex-direction: column;\n      height: 100%;\n    }\n\n    &__name-inner-wrapper {\n      flex: 1;\n    }\n\n    &__name {\n      font-weight: ", ";\n      white-space: normal;\n      display: -webkit-box;\n      overflow: hidden;\n      -webkit-box-orient: vertical;\n      -webkit-line-clamp: ", ";\n    }\n  }\n"])), function (props) { return props.theme.spacing(10); }, function (props) { return props.theme.spacing(10); }, function (props) { return props.theme.palette.grey['100']; }, function (_a) {
-    var theme = _a.theme;
-    return theme.spacing(1) + 'px';
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.typography.fontWeightBold;
-}, function (_a) {
-    var productType = _a.productType, inStockPool = _a.inStockPool, hasNoTvLock = _a.hasNoTvLock;
-    return productType !== null || inStockPool || hasNoTvLock ? 2 : 3;
-});
-exports.default = TableCellProduct;
-var templateObject_1;
+var react_1 = __importStar(require("react"));
+var react_intl_1 = require("react-intl");
+var core_1 = require("@material-ui/core");
+var _1 = require("./");
+var styles_1 = require("@material-ui/styles");
+var TableCellProduct = function (_a) {
+    var _b = _a.id, id = _b === void 0 ? null : _b, _c = _a.mediaUri, mediaUri = _c === void 0 ? null : _c, _d = _a.name, name = _d === void 0 ? null : _d, _e = _a.productType, productType = _e === void 0 ? null : _e, _f = _a.inStockPool, inStockPool = _f === void 0 ? false : _f, _g = _a.hasNoTvLock, hasNoTvLock = _g === void 0 ? false : _g, _h = _a.isProductBundle, isProductBundle = _h === void 0 ? false : _h, _j = _a.bundleProductIds, bundleProductIds = _j === void 0 ? [] : _j, _k = _a.onClick, onClick = _k === void 0 ? null : _k;
+    var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
+    var theme = (0, styles_1.useTheme)();
+    var hasChip = productType !== null || inStockPool || hasNoTvLock;
+    var productImageBundleStyle = (0, react_1.useMemo)(function () { return ({
+        width: theme.spacing(10),
+        height: theme.spacing(10),
+        textAlign: 'center',
+        display: 'flex',
+        alignItems: 'center',
+        backgroundColor: theme.palette.grey['100'],
+        userSelect: 'none',
+        cursor: 'pointer'
+    }); }, []);
+    var productImageStyle = (0, react_1.useMemo)(function () { return ({ cursor: 'pointer' }); }, []);
+    var productImageWrapperStyle = (0, react_1.useMemo)(function () { return ({ marginTop: 'auto', marginBottom: 'auto' }); }, []);
+    var productNameOuterWrapperStyle = (0, react_1.useMemo)(function () { return ({
+        marginLeft: theme.spacing(1),
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%'
+    }); }, []);
+    var productNameInnerWrapperStyle = (0, react_1.useMemo)(function () { return ({ flex: 1 }); }, []);
+    var productNameStyle = (0, react_1.useMemo)(function () { return ({
+        fontWeight: theme.typography.fontWeightBold,
+        whiteSpace: 'normal',
+        display: '-webkit-box',
+        overflow: 'hidden',
+        WebkitBoxOrient: 'vertical',
+        WebkitLineClamp: productType !== null || inStockPool || hasNoTvLock ? 2 : 3
+    }); }, [productType, inStockPool, hasNoTvLock]);
+    var productImage = (0, react_1.useMemo)(function () {
+        return isProductBundle
+            ? react_1.default.createElement("div", { style: productImageBundleStyle, onClick: function () { return onClick !== null ? onClick(bundleProductIds) : null; } }, "Product Bundle")
+            : react_1.default.createElement("img", { src: mediaUri, alt: id, style: productImageStyle, onClick: function () { return onClick !== null ? onClick([id]) : null; } });
+    }, [isProductBundle]);
+    return react_1.default.createElement(_1.TableCellRoot, null,
+        id && react_1.default.createElement(core_1.Grid, { container: true },
+            react_1.default.createElement(core_1.Grid, { item: true, style: productImageWrapperStyle }, productImage),
+            react_1.default.createElement(core_1.Grid, { item: true, xs: true },
+                react_1.default.createElement("div", { style: productNameOuterWrapperStyle },
+                    react_1.default.createElement("div", { style: productNameInnerWrapperStyle },
+                        react_1.default.createElement(core_1.Typography, { variant: 'body1', style: productNameStyle }, name)),
+                    hasChip && react_1.default.createElement(core_1.Grid, { container: true, spacing: 1 },
+                        productType !== null && react_1.default.createElement(core_1.Grid, { item: true },
+                            react_1.default.createElement(core_1.Chip, { size: 'small', label: formatMessage({ id: 'product.type.' + productType }) })),
+                        inStockPool && react_1.default.createElement(core_1.Grid, { item: true },
+                            react_1.default.createElement(core_1.Chip, { size: 'small', label: 'StockPool' })),
+                        hasNoTvLock && react_1.default.createElement(core_1.Grid, { item: true },
+                            react_1.default.createElement(core_1.Chip, { size: 'small', label: 'NoTv' }))),
+                    react_1.default.createElement("div", { style: { marginTop: '2px' } }, id && (react_1.default.createElement(core_1.Button, { size: 'small', color: 'secondary', onClick: function () { return onClick !== null ? onClick(isProductBundle ? bundleProductIds : [id]) : null; } }, formatMessage({ id: 'product.details' }))))))),
+        id === null && react_1.default.createElement(_1.TableCellLoadingContent, null));
+};
+exports.default = (0, react_1.memo)(TableCellProduct);

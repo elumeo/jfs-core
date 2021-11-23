@@ -1,68 +1,132 @@
-import styled from 'styled-components';
-import Definition from 'Component/App/Stateless/Style/Theme/Definition';
-import VirtualizedTableBase, { VirtualizedTableBaseProps } from 'Component/Table/VirtualizedTableBase';
+import { ColumnProps, AutoSizer, Column, SizeInfo, Table, TableProps, AutoSizerProps } from 'react-virtualized';
+import React, { memo, useCallback, useMemo, useState } from 'react';
+import { TableCellDefault } from 'Component/Table/TableCell';
+import TableHeadDefault from 'Component/Table/TableHead/TableHeadDefault';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { useTheme } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core';
 
-type StylePropsType = { theme: typeof Definition } & VirtualizedTableBaseProps;
+export const visuallyHiddenStyle: CSSProperties = {
+  border: 0,
+  clip: 'rect(0 0 0 0)',
+  height: '1px',
+  margin: '-1px',
+  overflow: 'hidden',
+  padding: 0,
+  position: 'absolute',
+  top: '20px',
+  width: '1px'
+};
 
-const VirtualizedTable = styled<typeof VirtualizedTableBase>(VirtualizedTableBase)`
-    border-collapse: separate;
+export const flexContainerStyles: CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  boxSizing: 'border-box',
+};
 
-    & .ReactVirtualized__Table__headerRow {
-      flip: false;
-      padding-right: ${(props: StylePropsType) => props.theme.direction === 'rtl' ? '0 !important' : 'initial'};
-      background-color: ${(props: StylePropsType) => props.theme.palette.background.paper};
-      overflow: ${(props: StylePropsType) => props.headerOverflow} !important;
-    }
+export const ellipsesStyle: CSSProperties = {
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
+  overflow: 'hidden',
+};
 
-    .virtualized-table {
-      &__cell {
-        flex: 1;
-        padding: ${(props: StylePropsType) => props.theme.spacing(1)};
-        max-width: 100%;
-      }
+export const noOutlineStyles: CSSProperties = { outline: 'none' };
+export const rowStyles: CSSProperties = { direction: 'inherit' };
+export const rowClickStyles: CSSProperties = { cursor: 'pointer' };
+export const rowNoClickStyles: CSSProperties = { cursor: 'initial' };
+export const columnHeaderStyles: CSSProperties = { outline: 'none' };
 
-      &__flex-container {
-        display: flex;
-        align-items: center;
-        box-sizing: border-box;
-        height: 100%;
-      }
+export type ColumnData = Omit<ColumnProps, 'width'> & {
+  numeric?: boolean;
+  width?: number | ((fullWidth: number) => number);
+}
 
-      &__grid {
-        outline: none;
-      }
+export type VirtualizedTableProps = Partial<TableProps> & {
+  columns: ColumnData[];
+  showRowHoverHighlight?: boolean;
+  headerOverflow?: 'visible' | 'hidden' | 'inherit' | 'initial';
+  onResize?: AutoSizerProps['onResize'];
+  rowHeight?: TableProps['rowHeight'];
+};
 
-      &__row {
-        outline: none;
-        direction: inherit;
+const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>(
+  ({
+     columns = [],
+     onRowClick = null,
+     rowCount,
+     rowGetter,
+     headerHeight = 48,
+     rowHeight = 48,
+     showRowHoverHighlight = false,
+     onResize,
+     ...tableProps
+   }, ref) => {
+    const [rowHoverIndex, setRowHoverIndex] = useState<number>(null);
+    const theme = useTheme<Theme>();
+    const getRowStyle: TableProps['rowStyle'] = useCallback((info) => ({
+      ...noOutlineStyles,
+      ...flexContainerStyles,
+      ...rowStyles,
+      ...(onRowClick !== null ? rowClickStyles : rowNoClickStyles),
+      ...(rowHoverIndex === info.index && showRowHoverHighlight ? { backgroundColor: theme.palette.grey[200] } : null)
+    }), [showRowHoverHighlight, onRowClick, rowHoverIndex]);
 
-        &--hover {
-          &:hover {
-            background-color: ${(props: StylePropsType) => props.theme.palette.grey[200]};
-          }
-        }
-      }
+    const columnStyle: ColumnProps['style'] = useMemo(() => ({ ...flexContainerStyles, height: '100%' }), []);
+    const tableStyle: TableProps['style'] = useMemo(() => ({ borderCollapse: 'separate' }), []);
 
-      &--click {
-        cursor: pointer;
-      }
+    const headerRenderer: ColumnProps['headerRenderer'] = useCallback((headerProps) => <TableHeadDefault
+      height={headerHeight}
+      disableSort={headerProps.disableSort}
+      sortBy={headerProps.sortBy}
+      sortDirection={headerProps.sortDirection}
+      label={headerProps.label}
+      dataKey={headerProps.dataKey}
+    />, [headerHeight]);
 
-      &--no-click {
-        cursor: initial;
-      }
+    const getFinalColumnWidth = useCallback((columnWidth, tableWidth) => typeof columnWidth !== 'number'
+      ? (columnWidth as (fullWidth: number) => number)(tableWidth)
+      : columnWidth as number, []
+    );
 
-      &--visually-hidden {
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        top: 20px;
-        width: 1px;
-      }
-    }
-`;
+    const handleOnRowMouseOver: TableProps['onRowMouseOver'] = useCallback(info => setRowHoverIndex(info.index), []);
+    const handleOnRowMouseOut: TableProps['onRowMouseOut'] = useCallback(() => setRowHoverIndex(null), []);
+    const getCellRenderer: ColumnProps['cellRenderer'] = useCallback(props => <TableCellDefault
+      cellData={props.cellData}
+      isNumeric={(props.columnIndex != null && columns[props.columnIndex].numeric) || false}
+    />, []);
 
-export default VirtualizedTable;
+    return <AutoSizer onResize={onResize}>
+      {({ height, width }: SizeInfo) => (
+        <Table
+          ref={ref}
+          height={height}
+          width={width}
+          rowStyle={getRowStyle}
+          onRowMouseOver={handleOnRowMouseOver}
+          onRowMouseOut={handleOnRowMouseOut}
+          headerHeight={headerHeight}
+          rowHeight={rowHeight}
+          rowCount={rowCount}
+          rowGetter={rowGetter}
+          onRowClick={onRowClick}
+          gridStyle={noOutlineStyles}
+          style={tableStyle}
+          {...tableProps}
+        >
+          {columns.map(({ dataKey, width: columnWidth, ...other }) => <Column
+              key={dataKey}
+              headerStyle={columnHeaderStyles}
+              headerRenderer={headerRenderer}
+              style={columnStyle}
+              cellRenderer={getCellRenderer}
+              dataKey={dataKey}
+              width={getFinalColumnWidth(columnWidth, width)}
+              {...other}
+            />
+          )}
+        </Table>
+      )}
+    </AutoSizer>;
+  }
+);
+export default memo(VirtualizedTable);

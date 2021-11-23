@@ -1,24 +1,58 @@
 "use strict";
-var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = require("react");
-var styled_components_1 = __importDefault(require("styled-components"));
-var AppCardContentBase_1 = __importDefault(require("./AppCardContentBase"));
-var AppCardContent = (0, styled_components_1.default)(AppCardContentBase_1.default)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  flex-direction: column;\n  height: ", "\n"], ["\n  flex-direction: column;\n  height: ", "\n"])), function (_a) {
-    var theme = _a.theme, _b = _a.fullHeight, fullHeight = _b === void 0 ? false : _b, _c = _a.withSubtitle, withSubtitle = _c === void 0 ? false : _c, _d = _a.overrideCardTitleHeight, overrideCardTitleHeight = _d === void 0 ? null : _d;
-    if (overrideCardTitleHeight !== null) {
-        return overrideCardTitleHeight;
-    }
-    var cardTitleHeight = withSubtitle ? theme.spacing(10) : theme.spacing(7);
-    return fullHeight
-        ? 'calc(100% - ' + cardTitleHeight + 'px)'
-        : 'initial';
-});
+var react_1 = __importStar(require("react"));
+var core_1 = require("@material-ui/core");
+var styles_1 = require("@material-ui/core/styles");
+var AppCardContent = function (_a) {
+    var children = _a.children, _b = _a.fullHeight, fullHeight = _b === void 0 ? false : _b, _c = _a.withSubtitle, withSubtitle = _c === void 0 ? false : _c, _d = _a.overrideCardTitleHeight, overrideCardTitleHeight = _d === void 0 ? null : _d, rest = __rest(_a, ["children", "fullHeight", "withSubtitle", "overrideCardTitleHeight"]);
+    var theme = (0, styles_1.useTheme)();
+    var styles = (0, react_1.useMemo)(function () { return ({
+        flexDirection: 'column',
+        height: overrideCardTitleHeight !== null ? overrideCardTitleHeight : fullHeight
+            ? 'calc(100% - ' + (withSubtitle ? theme.spacing(10) : theme.spacing(7)) + 'px)'
+            : 'initial'
+    }); }, [fullHeight, withSubtitle, overrideCardTitleHeight]);
+    return react_1.default.createElement(core_1.CardContent, __assign({ style: styles }, rest), children);
+};
 exports.default = (0, react_1.memo)(AppCardContent);
-var templateObject_1;

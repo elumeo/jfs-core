@@ -1,5 +1,5 @@
 export type DateTimeRangeCellProps = {
-  start: string;
-  end: string;
-  isLiveShow: boolean;
+  start: Date;
+  end: Date;
+  isLiveShow?: boolean;
 }
