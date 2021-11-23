@@ -1,5 +1,4 @@
-/* eslint-disable max-lines */
-import React, { useState, useEffect, useRef, memo, ChangeEvent, ReactNode } from 'react';
+import React, { useState, useEffect, useRef, memo, ChangeEvent, ReactNode, useCallback, useMemo } from 'react';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import './Setup';
 import { LANGUAGE } from 'Types/Language';
@@ -28,6 +27,7 @@ export type DatePickerProps = Omit<ReactDatePickerProps<string>, 'value'> & {
   ) => void;
   shouldOpenOnFocus?: boolean;
   disabled?: boolean;
+  isClearable?: boolean;
 };
 
 const DatePicker = ({
@@ -42,6 +42,7 @@ const DatePicker = ({
                       textFieldProps,
                       shouldOpenOnFocus = true,
                       disabled = false,
+                      isClearable = true,
                       ...rest
                     }: DatePickerProps) => {
   const language = useSelector(state => state.Core.Language.language);
@@ -80,6 +81,26 @@ const DatePicker = ({
       setOpen(false);
     }
   };
+  const handleOnChange: ReactDatePickerProps['onChange'] = useCallback((newDate, event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    // @ts-ignore
+    const isChangeEvent = event._reactName && event._reactName === 'onChange';
+    if (isChangeEvent) {
+      const inputDate = moment(event.target.value, (dateFormat || mapLanguageToDateFormat(language as LANGUAGE)).toString().toUpperCase(), true);
+      if (inputDate.isValid() === false) {
+        return;
+      }
+    }
+    handleChangeValue(newDate as Date, event);
+  }, []);
+  const handleClearClick = useCallback(() => isClearable ? handleChangeValue(null) : null, [isClearable]);
+  const handleTodayClick = useCallback(() => () => disabled === false ? setOpen(true) : null, [disabled]);
+  const preparedInputProps = useMemo(() => ({
+    onFocus: () => shouldOpenOnFocus ? setOpen(true) : null,
+    onBlur: () => setDirty(true),
+    endAdornment: <InputAdornment position={'end'}>
+      <IconButton disabled={disabled} size={'small'} onClick={handleTodayClick}><TodayIcon /></IconButton>
+    </InputAdornment>
+  }), [shouldOpenOnFocus, disabled]);
 
   return (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
@@ -89,17 +110,7 @@ const DatePicker = ({
           {...rest}
           ref={datePickerRef}
           selected={date}
-          onChange={(newDate, event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-            // @ts-ignore
-            const isChangeEvent = event._reactName && event._reactName === 'onChange';
-            if (isChangeEvent) {
-              const inputDate = moment(event.target.value, (dateFormat || mapLanguageToDateFormat(language as LANGUAGE)).toString().toUpperCase(), true);
-              if (inputDate.isValid() === false) {
-                return;
-              }
-            }
-            handleChangeValue(newDate as Date, event);
-          }}
+          onChange={handleOnChange}
           dateFormat={dateFormat || mapLanguageToDateFormat(language as LANGUAGE)}
           locale={language as LANGUAGE}
           open={open}
@@ -107,18 +118,13 @@ const DatePicker = ({
           customInput={
             <TextFieldClearButton
               {...(textFieldProps as TextFieldProps)}
+              isClearable={isClearable}
               label={label}
               error={hasError()}
               helperText={hasError() && hasErrorText() ? errorText : helperText}
-              autoComplete={'off'}
-              onClearClick={() => handleChangeValue(null)}
-              InputProps={{
-                onFocus: () => shouldOpenOnFocus ? setOpen(true) : null,
-                onBlur: () => setDirty(true),
-                endAdornment: <InputAdornment position={'end'}>
-                  <IconButton disabled={disabled} size={'small'} onClick={() => disabled === false ? setOpen(true) : null}><TodayIcon /></IconButton>
-                </InputAdornment>
-              }}
+              autoComplete='off'
+              onClearClick={handleClearClick}
+              InputProps={preparedInputProps}
             />
           }
         />

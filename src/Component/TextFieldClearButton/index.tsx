@@ -1,7 +1,6 @@
-import React, { memo, ReactElement, useCallback, useEffect, useState } from 'react';
+import React, { memo, ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 import { IconButton, IconProps, InputAdornment, TextField, TextFieldProps } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
-import { InputProps as StandardInputProps } from '@material-ui/core/Input/Input';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 
 export type TextFieldClearButtonProps = Partial<TextFieldProps> & {
@@ -9,6 +8,7 @@ export type TextFieldClearButtonProps = Partial<TextFieldProps> & {
   clearButtonSize?: IconButtonProps['size'];
   clearIconSize?: IconProps['fontSize'];
   onClearClick?: () => void;
+  isClearable?: boolean;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -18,6 +18,7 @@ const TextFieldClearButton = React.forwardRef<HTMLDivElement, TextFieldClearButt
                                                                                             clearIconSize = 'small',
                                                                                             onClearClick,
                                                                                             variant = 'standard',
+                                                                                            isClearable = true,
                                                                                             InputProps,
                                                                                             ...rest
                                                                                           }, ref) => {
@@ -40,10 +41,10 @@ const TextFieldClearButton = React.forwardRef<HTMLDivElement, TextFieldClearButt
   }, [rest.value]);
 
   const handleClearClick: IconButtonProps['onClick'] = useCallback(() => {
-    if(onClearClick !== undefined) {
+    if (onClearClick !== undefined) {
       onClearClick();
     } else {
-      handleOnChange(null)
+      handleOnChange(null);
     }
   }, [onChange, onClearClick]);
 
@@ -51,7 +52,7 @@ const TextFieldClearButton = React.forwardRef<HTMLDivElement, TextFieldClearButt
     if (onChange === undefined) {
       if (event !== null && event.target.value !== '' && showClearButton === false) {
         setShowClearButton(true);
-      } else if (showClearButton === true) {
+      } else if (showClearButton) {
         setShowClearButton(false);
       }
       setInputValue(event === null ? '' : event.target.value);
@@ -60,22 +61,21 @@ const TextFieldClearButton = React.forwardRef<HTMLDivElement, TextFieldClearButt
     }
   }, [onChange]);
 
-  const endAdornmentClearButton = showClearButton && (
+  const endAdornmentClearButton = showClearButton && isClearable && (
     <IconButton
       disabled={rest.disabled}
       size={clearButtonSize}
       color={'secondary'}
       onClick={handleClearClick}
-    >
-      <CloseIcon fontSize={getIconSize()} />
-    </IconButton>
+    ><CloseIcon fontSize={getIconSize()} /></IconButton>
   );
-  const preparedInputProps: Partial<StandardInputProps> = {
-    ...InputProps, endAdornment: <InputAdornment position={'end'}>
+  const preparedInputProps = useMemo<Partial<TextFieldProps['InputProps']>>(() => ({
+    ...InputProps,
+    endAdornment: <InputAdornment position={'end'}>
       {InputProps && InputProps.endAdornment && (InputProps.endAdornment as ReactElement).props.children}
       {endAdornmentClearButton}
     </InputAdornment>
-  };
+  }), []);
 
   return (
     <TextField

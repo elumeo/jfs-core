@@ -1,22 +1,44 @@
-import Definition from 'Component/App/Stateless/Style/Theme/Definition';
-import styled from 'styled-components';
-import ButtonProgressBase, { ButtonProgressBaseProps, mapToCircularProgressSize } from 'Component/Button/ButtonProgressBase';
+import React, { forwardRef, memo, useMemo } from 'react';
+import { Button, ButtonProps, CircularProgress, PropTypes } from '@material-ui/core';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
-type StylePropsType = { theme: typeof Definition } & ButtonProgressBaseProps;
+export const wrapperStyles: CSSProperties = { position: 'relative', display: 'inline-block' };
 
-const ButtonProgress = styled<typeof ButtonProgressBase>(ButtonProgressBase)`
-  &.button-progress__wrapper {
-    position: relative;
-    display: inline-block;
+export const mapToCircularProgressSize = (size: string): number => {
+  switch (size) {
+    case 'large':
+      return 28;
+    case 'small':
+      return 20;
+    default:
+      return 24;
   }
+};
 
-  .button-progress__progress {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: ${(props: StylePropsType) => (mapToCircularProgressSize(props.size)/ 2)* - 1};
-    margin-left: ${(props: StylePropsType) => (mapToCircularProgressSize(props.size) / 2) * -1};
+export const mapToCircularProgressColor = (color: PropTypes.Color): 'inherit' | 'primary' | 'secondary' => color === 'default' ? 'inherit' : color;
+
+export type ButtonProgressProps = ButtonProps & {
+  onClick?: ButtonProps['onClick'];
+  disabled?: boolean;
+  inProgress?: boolean;
+  color?: PropTypes.Color;
+};
+
+const ButtonProgress = forwardRef<HTMLButtonElement, ButtonProgressProps>((props, ref) => {
+    const { children, onClick, size = 'medium', color = 'inherit', disabled = false, inProgress = false, ...rest } = props;
+    const progressStyles = useMemo<CSSProperties>(() => ({
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginTop: mapToCircularProgressSize(size) / 2 * -1,
+      marginLeft: mapToCircularProgressSize(size) / 2 * -1
+    }), [size]);
+
+    return <div style={wrapperStyles}>
+      <Button ref={ref} size={size} color={color} disabled={disabled || inProgress} onClick={onClick}{...rest}>{children}</Button>
+      {inProgress && <CircularProgress size={mapToCircularProgressSize(size)} color={mapToCircularProgressColor(color)} style={progressStyles} />}
+    </div>;
   }
-`;
+);
 
-export default ButtonProgress;
+export default memo(ButtonProgress);

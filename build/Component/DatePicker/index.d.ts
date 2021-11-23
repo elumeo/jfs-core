@@ -18,6 +18,7 @@ export declare type DatePickerProps = Omit<ReactDatePickerProps<string>, 'value'
     onChange: (newDate: Date, oldDate: Date, event: React.SyntheticEvent<unknown> | undefined) => void;
     shouldOpenOnFocus?: boolean;
     disabled?: boolean;
+    isClearable?: boolean;
 };
-declare const _default: React.MemoExoticComponent<({ label, error, customClearButtonId, dateFormat, value, onChange, errorText, helperText, textFieldProps, shouldOpenOnFocus, disabled, ...rest }: DatePickerProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ label, error, customClearButtonId, dateFormat, value, onChange, errorText, helperText, textFieldProps, shouldOpenOnFocus, disabled, isClearable, ...rest }: DatePickerProps) => JSX.Element>;
 export default _default;

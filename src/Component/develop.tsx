@@ -167,7 +167,7 @@ const Develop: React.FC = () => {
             label={'DatePicker'}
             onChange={console.log}
             value={testDatePickerValue}
-            isClearable
+            isClearable={false}
           />
         </Grid>
         <Grid item>

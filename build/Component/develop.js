@@ -148,7 +148,7 @@ var Develop = function () {
                     react_1.default.createElement(Table_1.VirtualizedTable, { showRowHoverHighlight: true, rowHeight: 50, rowCount: rows.length, rowGetter: rowGetter, noRowsRenderer: noRowsRenderer, sortBy: 'calories', sortDirection: 'ASC', columns: columns })))),
         react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center' },
             react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(DatePicker_1.default, { label: 'DatePicker', onChange: console.log, value: testDatePickerValue, isClearable: true })),
+                react_1.default.createElement(DatePicker_1.default, { label: 'DatePicker', onChange: console.log, value: testDatePickerValue, isClearable: false })),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small', InputProps: textFieldInputProps })),
             react_1.default.createElement(core_1.Grid, { item: true },
