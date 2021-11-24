@@ -75,7 +75,7 @@ const TextFieldClearButton = React.forwardRef<HTMLDivElement, TextFieldClearButt
       {InputProps && InputProps.endAdornment && (InputProps.endAdornment as ReactElement).props.children}
       {endAdornmentClearButton}
     </InputAdornment>
-  }), [showClearButton, isClearable]);
+  }), [showClearButton, isClearable, InputProps]);
   return <TextField
     ref={ref}
     {...rest}

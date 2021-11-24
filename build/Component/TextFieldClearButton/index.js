@@ -92,7 +92,7 @@ var TextFieldClearButton = react_1.default.forwardRef(function (_a, ref) {
         react_1.default.createElement(Close_1.default, { fontSize: getIconSize() })));
     var preparedInputProps = (0, react_1.useMemo)(function () { return (__assign(__assign({}, InputProps), { endAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
             InputProps && InputProps.endAdornment && InputProps.endAdornment.props.children,
-            endAdornmentClearButton) })); }, [showClearButton, isClearable]);
+            endAdornmentClearButton) })); }, [showClearButton, isClearable, InputProps]);
     return react_1.default.createElement(core_1.TextField, __assign({ ref: ref }, rest, { onChange: handleOnChange, InputProps: preparedInputProps, autoComplete: 'new-password', value: rest.value !== undefined ? rest.value : inputValue }));
 });
 exports.default = (0, react_1.memo)(TextFieldClearButton);
