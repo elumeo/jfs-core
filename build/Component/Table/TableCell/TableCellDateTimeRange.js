@@ -34,7 +34,7 @@ var TableCellDateTimeRange = function (_a) {
     var endDate;
     var endTime;
     var hasSameDate;
-    if (cellData !== null) {
+    if (cellData) {
         startDate = formatDate(cellData.start, Format_1.DateTime.getDefaultDateFormatOptions());
         startTime = formatTime(cellData.start, Format_1.DateTime.getDefaultTimeFormatOptions(true));
         endDate = formatDate(cellData.end, Format_1.DateTime.getDefaultDateFormatOptions());
@@ -42,8 +42,8 @@ var TableCellDateTimeRange = function (_a) {
         hasSameDate = startDate === endDate;
     }
     return react_1.default.createElement(TableCellRoot_1.default, null,
-        (cellData === null || cellData.start === null) && noValueElement,
-        cellData !== null && cellData.start !== null && react_1.default.createElement(react_1.default.Fragment, null,
+        (cellData === null || cellData === undefined || cellData.start === null) && noValueElement,
+        cellData && cellData.start !== null && react_1.default.createElement(react_1.default.Fragment, null,
             hasSameDate && react_1.default.createElement(react_1.default.Fragment, null,
                 startDate,
                 react_1.default.createElement("br", null),

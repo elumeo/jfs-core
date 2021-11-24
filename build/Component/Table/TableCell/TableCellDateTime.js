@@ -30,8 +30,8 @@ var TableCellDateTime = function (_a) {
     var _b = _a.cellData, cellData = _b === void 0 ? null : _b, _c = _a.noValueElement, noValueElement = _c === void 0 ? '-' : _c;
     var _d = (0, react_intl_1.useIntl)(), formatDate = _d.formatDate, formatTime = _d.formatTime;
     return react_1.default.createElement(TableCellRoot_1.default, null,
-        cellData === null && noValueElement,
-        cellData !== null && react_1.default.createElement(react_1.default.Fragment, null,
+        (cellData === null || cellData === undefined) && noValueElement,
+        cellData && react_1.default.createElement(react_1.default.Fragment, null,
             formatDate(cellData, Format_1.DateTime.getDefaultDateFormatOptions()),
             react_1.default.createElement("br", null),
             formatTime(cellData, Format_1.DateTime.getDefaultTimeFormatOptions(true))));

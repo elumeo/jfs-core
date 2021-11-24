@@ -18,7 +18,7 @@ const TableCellDateTimeRange = ({ cellData = null, noValueElement = '-' }: Table
   let endTime: string;
   let hasSameDate: boolean;
 
-  if (cellData !== null) {
+  if (cellData) {
     startDate = formatDate(cellData.start, DateTime.getDefaultDateFormatOptions());
     startTime = formatTime(cellData.start, DateTime.getDefaultTimeFormatOptions(true));
     endDate = formatDate(cellData.end, DateTime.getDefaultDateFormatOptions());
@@ -26,8 +26,8 @@ const TableCellDateTimeRange = ({ cellData = null, noValueElement = '-' }: Table
     hasSameDate = startDate === endDate;
   }
   return <TableCellRoot>
-    {(cellData === null || cellData.start === null) && noValueElement}
-    {cellData !== null && cellData.start !== null && <>
+    {(cellData === null || cellData === undefined || cellData.start === null) && noValueElement}
+    {cellData && cellData.start !== null && <>
       {hasSameDate && <>
         {startDate}<br />
         {startTime} - {endTime}

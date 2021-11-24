@@ -11,8 +11,8 @@ export type TableCellDateTimeProps = {
 const TableCellDateTime = ({ cellData = null, noValueElement = '-' }: TableCellDateTimeProps) => {
   const { formatDate, formatTime } = useIntl();
   return <TableCellRoot>
-    {cellData === null && noValueElement}
-    {cellData !== null && <>
+    {(cellData === null || cellData === undefined) && noValueElement}
+    {cellData && <>
       {formatDate(cellData, DateTime.getDefaultDateFormatOptions())}<br />
       {formatTime(cellData, DateTime.getDefaultTimeFormatOptions(true))}
     </>}
