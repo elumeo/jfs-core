@@ -1,5 +1,5 @@
 import { ColumnProps, AutoSizer, Column, SizeInfo, Table, TableProps, AutoSizerProps } from 'react-virtualized';
-import React, { memo, useCallback, useMemo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { TableCellDefault } from 'Component/Table/TableCell';
 import TableHeadDefault from 'Component/Table/TableHead/TableHeadDefault';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
@@ -36,12 +36,15 @@ export const rowClickStyles: CSSProperties = { cursor: 'pointer' };
 export const rowNoClickStyles: CSSProperties = { cursor: 'initial' };
 export const columnHeaderStyles: CSSProperties = { outline: 'none' };
 
+const tableStyle: CSSProperties = { borderCollapse: 'separate' };
+const columnStyle: CSSProperties = { ...flexContainerStyles, height: '100%' };
+
 const useRowStyles = makeStyles<Theme, VirtualizedTableProps>((theme: Theme) => createStyles({
   root: {
     ...noOutlineStyles,
     ...flexContainerStyles,
     direction: 'inherit',
-    cursor: (props) => props.onRowClick !== null ? 'pointer' : 'initial',
+    cursor: (props) => props.onRowClick !== null && props.onRowClick !== undefined ? 'pointer' : 'initial',
     '&:hover:not(.ReactVirtualized__Table__headerRow)': {
       backgroundColor: (props) => props.showRowHoverHighlight ? theme.palette.grey[200] : 'inherit'
     }
@@ -64,8 +67,6 @@ export type VirtualizedTableProps = Partial<TableProps> & {
 const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>((props, ref) => {
     const { columns = [], onRowClick = null, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, onResize, ...tableProps } = props;
     const rowClasses = useRowStyles(props);
-    const columnStyle: ColumnProps['style'] = useMemo(() => ({ ...flexContainerStyles, height: '100%' }), []);
-    const tableStyle: TableProps['style'] = useMemo(() => ({ borderCollapse: 'separate' }), []);
 
     const headerRenderer: ColumnProps['headerRenderer'] = useCallback((headerProps) => <TableHeadDefault
       height={headerHeight}

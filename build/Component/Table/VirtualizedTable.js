@@ -76,16 +76,16 @@ exports.rowStyles = { direction: 'inherit' };
 exports.rowClickStyles = { cursor: 'pointer' };
 exports.rowNoClickStyles = { cursor: 'initial' };
 exports.columnHeaderStyles = { outline: 'none' };
+var tableStyle = { borderCollapse: 'separate' };
+var columnStyle = __assign(__assign({}, exports.flexContainerStyles), { height: '100%' });
 var useRowStyles = (0, styles_1.makeStyles)(function (theme) { return (0, styles_1.createStyles)({
-    root: __assign(__assign(__assign({}, exports.noOutlineStyles), exports.flexContainerStyles), { direction: 'inherit', cursor: function (props) { return props.onRowClick !== null ? 'pointer' : 'initial'; }, '&:hover:not(.ReactVirtualized__Table__headerRow)': {
+    root: __assign(__assign(__assign({}, exports.noOutlineStyles), exports.flexContainerStyles), { direction: 'inherit', cursor: function (props) { return props.onRowClick !== null && props.onRowClick !== undefined ? 'pointer' : 'initial'; }, '&:hover:not(.ReactVirtualized__Table__headerRow)': {
             backgroundColor: function (props) { return props.showRowHoverHighlight ? theme.palette.grey[200] : 'inherit'; }
         } })
 }); });
 var VirtualizedTable = react_1.default.forwardRef(function (props, ref) {
     var _a = props.columns, columns = _a === void 0 ? [] : _a, _b = props.onRowClick, onRowClick = _b === void 0 ? null : _b, rowCount = props.rowCount, rowGetter = props.rowGetter, _c = props.headerHeight, headerHeight = _c === void 0 ? 48 : _c, _d = props.rowHeight, rowHeight = _d === void 0 ? 48 : _d, onResize = props.onResize, tableProps = __rest(props, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight", "onResize"]);
     var rowClasses = useRowStyles(props);
-    var columnStyle = (0, react_1.useMemo)(function () { return (__assign(__assign({}, exports.flexContainerStyles), { height: '100%' })); }, []);
-    var tableStyle = (0, react_1.useMemo)(function () { return ({ borderCollapse: 'separate' }); }, []);
     var headerRenderer = (0, react_1.useCallback)(function (headerProps) { return react_1.default.createElement(TableHeadDefault_1.default, { height: headerHeight, disableSort: headerProps.disableSort, sortBy: headerProps.sortBy, sortDirection: headerProps.sortDirection, label: headerProps.label, dataKey: headerProps.dataKey }); }, [headerHeight]);
     var getFinalColumnWidth = (0, react_1.useCallback)(function (columnWidth, tableWidth) { return typeof columnWidth !== 'number'
         ? columnWidth(tableWidth)
