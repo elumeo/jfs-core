@@ -30,7 +30,7 @@ const TextFieldClearButton = React.forwardRef<HTMLDivElement, TextFieldClearButt
     if (onChange !== undefined) {
       if (rest.value !== '' && showClearButton === false) {
         setShowClearButton(true);
-      } else if (rest.value === '' && showClearButton === true) {
+      } else if (rest.value === '' && showClearButton) {
         setShowClearButton(false);
       }
 
@@ -75,18 +75,15 @@ const TextFieldClearButton = React.forwardRef<HTMLDivElement, TextFieldClearButt
       {InputProps && InputProps.endAdornment && (InputProps.endAdornment as ReactElement).props.children}
       {endAdornmentClearButton}
     </InputAdornment>
-  }), []);
-
-  return (
-    <TextField
-      ref={ref}
-      {...rest}
-      onChange={handleOnChange}
-      InputProps={preparedInputProps}
-      autoComplete={'new-password'}
-      value={rest.value !== undefined ? rest.value : inputValue}
-    />
-  );
+  }), [showClearButton, isClearable]);
+  return <TextField
+    ref={ref}
+    {...rest}
+    onChange={handleOnChange}
+    InputProps={preparedInputProps}
+    autoComplete={'new-password'}
+    value={rest.value !== undefined ? rest.value : inputValue}
+  />;
 });
 
 export default memo(TextFieldClearButton);

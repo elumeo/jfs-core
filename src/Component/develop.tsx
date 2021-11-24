@@ -164,12 +164,12 @@ const Develop: React.FC = () => {
       </div>
       <Grid container spacing={1} alignItems={'center'}>
         <Grid item>
-          <DatePicker
-            label={'DatePicker'}
-            onChange={console.log}
-            value={testDatePickerValue}
-            isClearable={false}
-          />
+          {/*<DatePicker*/}
+          {/*  label={'DatePicker'}*/}
+          {/*  onChange={console.log}*/}
+          {/*  value={testDatePickerValue}*/}
+          {/*  isClearable={false}*/}
+          {/*/>*/}
         </Grid>
         <Grid item>
           <TextFieldClearButton
@@ -181,21 +181,21 @@ const Develop: React.FC = () => {
           />
         </Grid>
         <Grid item>
-          <TextFieldClearButton
-            disabled
-            label={'Textfield'}
-            onChange={handleTextFieldUpdate}
-            value={testTextFieldValue}
-            clearButtonSize={'small'}
-          />
+          {/*<TextFieldClearButton*/}
+          {/*  disabled*/}
+          {/*  label={'Textfield'}*/}
+          {/*  onChange={handleTextFieldUpdate}*/}
+          {/*  value={testTextFieldValue}*/}
+          {/*  clearButtonSize={'small'}*/}
+          {/*/>*/}
         </Grid>
         <Grid item>
-          <SelectClearButton
-            label={'Select with Clear Button'}
-            onChange={handleSelectUpdate}
-            value={testSelectValue}
-            clearButtonSize={'small'}
-          >{selectMenuItems}</SelectClearButton>
+          {/*<SelectClearButton*/}
+          {/*  label={'Select with Clear Button'}*/}
+          {/*  onChange={handleSelectUpdate}*/}
+          {/*  value={testSelectValue}*/}
+          {/*  clearButtonSize={'small'}*/}
+          {/*>{selectMenuItems}</SelectClearButton>*/}
         </Grid>
         <Grid item>
           <CustomerCard />

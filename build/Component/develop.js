@@ -47,10 +47,8 @@ var TableCell_1 = require("./Table/TableCell");
 var Button_1 = require("./Button");
 var Card_1 = require("./Card");
 var TableRow_1 = require("./Table/TableRow");
-var SelectClearButton_1 = __importDefault(require("./SelectClearButton"));
 var Search_1 = __importDefault(require("@material-ui/icons/Search"));
 var Icon_1 = require("./Icon");
-var DatePicker_1 = __importDefault(require("./DatePicker"));
 var Warning_1 = __importDefault(require("@material-ui/icons/Warning"));
 var sample = [
     ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, {
@@ -147,14 +145,11 @@ var Develop = function () {
                 react_1.default.createElement(core_1.CardContent, { style: { height: 600 } },
                     react_1.default.createElement(Table_1.VirtualizedTable, { showRowHoverHighlight: true, rowHeight: 50, rowCount: rows.length, rowGetter: rowGetter, noRowsRenderer: noRowsRenderer, sortBy: 'calories', sortDirection: 'ASC', columns: columns })))),
         react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center' },
-            react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(DatePicker_1.default, { label: 'DatePicker', onChange: console.log, value: testDatePickerValue, isClearable: false })),
+            react_1.default.createElement(core_1.Grid, { item: true }),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small', InputProps: textFieldInputProps })),
-            react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(TextFieldClearButton_1.default, { disabled: true, label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small' })),
-            react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(SelectClearButton_1.default, { label: 'Select with Clear Button', onChange: handleSelectUpdate, value: testSelectValue, clearButtonSize: 'small' }, selectMenuItems)),
+            react_1.default.createElement(core_1.Grid, { item: true }),
+            react_1.default.createElement(core_1.Grid, { item: true }),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(Icon_1.CustomerCard, null)),
             react_1.default.createElement(core_1.Grid, { item: true },
