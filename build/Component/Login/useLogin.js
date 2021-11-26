@@ -22,7 +22,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
+var react_1 = __importStar(require("react"));
 var Redux_1 = require("../../Types/Redux");
 var useActions_1 = __importDefault(require("../../Store/useActions"));
 var Selector = __importStar(require("../../Store/Selector"));
@@ -33,11 +33,13 @@ var useLogin = function () {
         username: '',
         password: '',
     }), credentials = _a[0], setCredentials = _a[1];
+    var handleCheck = (0, react_1.useCallback)(function () { return checkLogin(credentials); }, [credentials]);
+    var handleOnChange = (0, react_1.useCallback)(function (next) { return setCredentials(next); }, []);
     return {
         open: open,
         credentials: credentials,
-        onChange: function (next) { return setCredentials(next); },
-        check: function () { return checkLogin(credentials); },
+        onChange: handleOnChange,
+        check: handleCheck,
     };
 };
 exports.default = useLogin;

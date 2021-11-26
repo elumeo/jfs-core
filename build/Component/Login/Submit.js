@@ -11,6 +11,6 @@ var Submit = function (_a) {
     var onClick = _a.onClick, disabled = _a.disabled;
     var intl = (0, react_intl_1.useIntl)();
     var isCheckingLogin = (0, Redux_1.useSelector)(function (state) { return state.Core.Login.isCheckingLogin; });
-    return (react_1.default.createElement(Button_1.ButtonProgress, { color: 'primary', variant: 'contained', onClick: onClick, disabled: disabled, inProgress: isCheckingLogin }, intl.formatMessage({ id: 'login.button' })));
+    return react_1.default.createElement(Button_1.ButtonProgress, { color: 'primary', variant: 'contained', onClick: onClick, disabled: disabled, inProgress: isCheckingLogin }, intl.formatMessage({ id: 'login.button' }));
 };
 exports.default = Submit;
