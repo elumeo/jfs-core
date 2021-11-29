@@ -1,17 +1,16 @@
 import React, { memo } from 'react';
 import FormattedMsisdn from 'Component/FormattedMsisdn';
 import TableCellLoading from 'Component/Table/TableCell/TableCellLoadingContent';
-import TableCellRoot from 'Component/Table/TableCell/TableCellRoot';
+import TableCellRoot, { TableCellRootProps } from 'Component/Table/TableCell/TableCellRoot';
 import { ellipsesStyle } from 'Component/Table/VirtualizedTable';
 
-export type TableCellMsisdnProps = {
+export type TableCellMsisdnProps = Partial<TableCellRootProps> & {
   cellData: string;
-  rowHeight: number;
-  isLoading?: boolean;
+  isLoading: boolean;
 };
 
-const TableCellMsisdn = ({ cellData, rowHeight, isLoading = false }: TableCellMsisdnProps) => {
-  return <TableCellRoot rowHeight={rowHeight}>
+const TableCellMsisdn = ({ cellData, isLoading = false, ...rest }: TableCellMsisdnProps) => {
+  return <TableCellRoot {...rest} isNumeric={false}>
     {isLoading === false && cellData && <span style={ellipsesStyle}><FormattedMsisdn msisdn={cellData} /></span> || '-'}
     {isLoading && <TableCellLoading />}
   </TableCellRoot>;

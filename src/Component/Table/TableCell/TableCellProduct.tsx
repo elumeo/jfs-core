@@ -4,8 +4,9 @@ import { Button, Chip, Grid, Theme, Typography } from '@material-ui/core';
 import { TableCellRoot, TableCellLoadingContent } from './';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
 import { useTheme } from '@material-ui/styles';
+import { TableCellRootProps } from 'Component/Table/TableCell/TableCellRoot';
 
-export type TableCellProductProps = {
+export type TableCellProductProps = Partial<TableCellRootProps> & {
   id?: string;
   mediaUri?: string;
   name?: string;
@@ -26,7 +27,8 @@ const TableCellProduct = ({
                             hasNoTvLock = false,
                             isProductBundle = false,
                             bundleProductIds = [],
-                            onClick = null
+                            onClick = null,
+                            ...rest
                           }: TableCellProductProps) => {
   const { formatMessage } = useIntl();
   const theme = useTheme<Theme>();
@@ -67,7 +69,7 @@ const TableCellProduct = ({
       : <img src={mediaUri} alt={id} style={productImageStyle} onClick={() => onClick !== null ? onClick([id]) : null} />;
   }, [isProductBundle]);
 
-  return <TableCellRoot>
+  return <TableCellRoot {...rest} isNumeric={false}>
     {id && <Grid container>
       <Grid item style={productImageWrapperStyle}>{productImage}</Grid>
       <Grid item xs>
