@@ -1,5 +1,6 @@
 import React from 'react';
-export declare type TableCellProductProps = {
+import { TableCellRootProps } from '../../Table/TableCell/TableCellRoot';
+export declare type TableCellProductProps = Partial<TableCellRootProps> & {
     id?: string;
     mediaUri?: string;
     name?: string;
@@ -10,5 +11,5 @@ export declare type TableCellProductProps = {
     bundleProductIds?: string[];
     onClick?: (productIds: string[]) => void;
 };
-declare const _default: React.MemoExoticComponent<({ id, mediaUri, name, productType, inStockPool, hasNoTvLock, isProductBundle, bundleProductIds, onClick }: TableCellProductProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ id, mediaUri, name, productType, inStockPool, hasNoTvLock, isProductBundle, bundleProductIds, onClick, ...rest }: TableCellProductProps) => JSX.Element>;
 export default _default;
