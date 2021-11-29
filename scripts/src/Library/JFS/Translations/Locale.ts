@@ -8,10 +8,10 @@ export const names = async (base: string) => (
     .map(({ name }) => name)
 );
 
-export const all = async (base: string) => (
+export const all = async (base: string) => Promise.all(
   (await names(base))
-    .map(name => ({
+    .map(async name => ({
       name,
-      messages: fs.readJSON(path.resolve(base, `${name}.json`))
+      messages: await fs.readJSON(path.resolve(base, `${name}.json`))
     }))
 );

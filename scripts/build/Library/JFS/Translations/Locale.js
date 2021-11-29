@@ -23,10 +23,12 @@ const names = (base) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.names = names;
 const all = (base) => __awaiter(void 0, void 0, void 0, function* () {
-    return ((yield exports.names(base))
-        .map(name => ({
-        name,
-        messages: fs_extra_1.default.readJSON(path_1.default.resolve(base, `${name}.json`))
+    return Promise.all((yield exports.names(base))
+        .map((name) => __awaiter(void 0, void 0, void 0, function* () {
+        return ({
+            name,
+            messages: yield fs_extra_1.default.readJSON(path_1.default.resolve(base, `${name}.json`))
+        });
     })));
 });
 exports.all = all;

@@ -19,11 +19,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Reader = exports.Type = exports.Table = exports.Snapshot = exports.File = exports.Check = void 0;
-exports.Check = __importStar(require("./Check"));
-exports.File = __importStar(require("./File"));
-exports.Snapshot = __importStar(require("./Snapshot"));
-exports.Table = __importStar(require("./Table"));
-exports.Type = __importStar(require("./Type"));
-exports.Reader = __importStar(require("./Reader"));
+exports.Translation = exports.CSV = void 0;
+exports.CSV = __importStar(require("./CSV"));
+exports.Translation = __importStar(require("./Translation"));
 //# sourceMappingURL=index.js.map

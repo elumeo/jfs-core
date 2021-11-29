@@ -1,15 +1,13 @@
 import * as Snapshot from './Snapshot';
 import * as Table from './Table';
-import { dirname } from 'path';
 import * as File from './File';
 import open from 'open';
-import { resolve } from 'path';
 import * as Locale from './Locale';
+import { dirname } from 'path';
 
 export const run = async (path: string) => {
-  const base = dirname(path);
 
-  const locales = await Locale.all(resolve(base, 'Locale'));
+  const locales = await Locale.all(path);
 
   const translations = locales.reduce(
     (translations, locale) => ({
@@ -21,11 +19,11 @@ export const run = async (path: string) => {
 
   const missing = Table.missing(translations);
 
-  const last = await Snapshot.last(base);
+  const last = await Snapshot.last(dirname(path));
   const version = Snapshot.Version.next(last.version);
   const asset = await File.asset(
     Table.get(translations, 'missing'),
-    base,
+    path,
     version
   );
 
@@ -38,16 +36,16 @@ export const run = async (path: string) => {
   );
 
   if (outdated) {
-    await Snapshot.Asset.remove(base);
+    await Snapshot.Asset.remove(dirname(path));
   }
 
   if (missing.length && (first || changed)) {
-    await Snapshot.Asset.save(base, version, asset);
-    const html = Snapshot.File.path(base, version, 'html');
+    await Snapshot.Asset.save(dirname(path), version, asset);
+    const html = Snapshot.File.path(dirname(path), version, 'html');
     open(html);
   }
   else if (missing.length) {
-    const html = Snapshot.File.path(base, last.version, 'html');
+    const html = Snapshot.File.path(dirname(path), last.version, 'html');
     open(html);
   }
 

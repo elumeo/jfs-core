@@ -27,41 +27,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.run = void 0;
-const Snapshot = __importStar(require("./Snapshot"));
-const Table = __importStar(require("./Table"));
-const File = __importStar(require("./File"));
-const open_1 = __importDefault(require("open"));
-const Locale = __importStar(require("./Locale"));
+exports.run = exports.scope = exports.name = void 0;
+const JFS = __importStar(require("../Library/JFS"));
 const path_1 = require("path");
-const run = (path) => __awaiter(void 0, void 0, void 0, function* () {
-    const locales = yield Locale.all(path);
-    const translations = locales.reduce((translations, locale) => (Object.assign(Object.assign({}, translations), { [locale.name]: locale.messages })), {});
-    const missing = Table.missing(translations);
-    const last = yield Snapshot.last(path_1.dirname(path));
-    const version = Snapshot.Version.next(last.version);
-    const asset = yield File.asset(Table.get(translations, 'missing'), path, version);
-    const first = last.version === null;
-    const changed = !first && !Snapshot.Asset.equal(asset, last.asset);
-    const outdated = (!first && !missing.length ||
-        changed);
-    if (outdated) {
-        yield Snapshot.Asset.remove(path_1.dirname(path));
-    }
-    if (missing.length && (first || changed)) {
-        yield Snapshot.Asset.save(path_1.dirname(path), version, asset);
-        const html = Snapshot.File.path(path_1.dirname(path), version, 'html');
-        open_1.default(html);
-    }
-    else if (missing.length) {
-        const html = Snapshot.File.path(path_1.dirname(path), last.version, 'html');
-        open_1.default(html);
-    }
-    return !Boolean(missing.length);
+const Check = __importStar(require("./jfs-check-translations"));
+exports.name = 'jfs-read-translations';
+exports.scope = ['all'];
+const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
+    const path = path_1.resolve(env.root, 'src', 'Setup', 'Locale');
+    const locales = yield JFS.Translations.Reader.Input.locales(path);
+    const last = yield JFS.Translations.Snapshot.last(path_1.resolve(env.root, 'src', 'Setup'));
+    const target = (JFS.Translations.Snapshot.File
+        .path(path_1.resolve(env.root, 'src', 'Setup'), last.version, 'csv'));
+    const table = yield JFS.Translations.Reader.Input.csv(target);
+    const next = yield JFS.Translations.Reader.run(locales, table);
+    yield JFS.Translations.Reader.Output.files(path, next);
+    console.info(`Succeessfully added missing translations!`);
+    yield Check.run(env);
 });
 exports.run = run;
-//# sourceMappingURL=Check.js.map
+//# sourceMappingURL=jfs-read-translations.js.map

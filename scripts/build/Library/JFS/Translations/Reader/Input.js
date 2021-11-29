@@ -31,37 +31,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.run = void 0;
-const Snapshot = __importStar(require("./Snapshot"));
-const Table = __importStar(require("./Table"));
-const File = __importStar(require("./File"));
-const open_1 = __importDefault(require("open"));
-const Locale = __importStar(require("./Locale"));
+exports.locales = exports.csv = exports.path = exports.file = void 0;
+const fs_extra_1 = __importDefault(require("fs-extra"));
 const path_1 = require("path");
-const run = (path) => __awaiter(void 0, void 0, void 0, function* () {
-    const locales = yield Locale.all(path);
-    const translations = locales.reduce((translations, locale) => (Object.assign(Object.assign({}, translations), { [locale.name]: locale.messages })), {});
-    const missing = Table.missing(translations);
-    const last = yield Snapshot.last(path_1.dirname(path));
-    const version = Snapshot.Version.next(last.version);
-    const asset = yield File.asset(Table.get(translations, 'missing'), path, version);
-    const first = last.version === null;
-    const changed = !first && !Snapshot.Asset.equal(asset, last.asset);
-    const outdated = (!first && !missing.length ||
-        changed);
-    if (outdated) {
-        yield Snapshot.Asset.remove(path_1.dirname(path));
-    }
-    if (missing.length && (first || changed)) {
-        yield Snapshot.Asset.save(path_1.dirname(path), version, asset);
-        const html = Snapshot.File.path(path_1.dirname(path), version, 'html');
-        open_1.default(html);
-    }
-    else if (missing.length) {
-        const html = Snapshot.File.path(path_1.dirname(path), last.version, 'html');
-        open_1.default(html);
-    }
-    return !Boolean(missing.length);
+const CSV = __importStar(require("./CSV"));
+const file = (target) => (fs_extra_1.default.readFile(exports.path(target), 'utf8'));
+exports.file = file;
+const path = (target) => (target.startsWith('/')
+    ? target
+    : path_1.resolve(process.cwd(), target));
+exports.path = path;
+const csv = (path) => __awaiter(void 0, void 0, void 0, function* () { return CSV.parse(yield exports.file(path)); });
+exports.csv = csv;
+const locales = (target) => __awaiter(void 0, void 0, void 0, function* () {
+    const root = exports.path(target);
+    const files = ((yield fs_extra_1.default.readdir(root))
+        .filter(name => !name.startsWith('index.')));
+    const add = (locales, name) => __awaiter(void 0, void 0, void 0, function* () {
+        const next = yield locales;
+        const path = path_1.resolve(root, name);
+        const data = yield exports.file(path);
+        const key = name.substring(0, name.length - '.json'.length);
+        next[key] = JSON.parse(data);
+        return next;
+    });
+    const initial = Promise.resolve({});
+    return files.reduce(add, initial);
 });
-exports.run = run;
-//# sourceMappingURL=Check.js.map
+exports.locales = locales;
+//# sourceMappingURL=Input.js.map

@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "10.0.0-beta.188",
+  "version": "10.0.0-beta.189",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -21,6 +21,7 @@
     "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i",
     "jfs-check-api": "node ./scripts/bin/jfs-check-api",
     "jfs-check-translations": "node ./scripts/bin/jfs-check-translations",
+    "jfs-read-translations": "node ./scripts/bin/jfs-read-translations",
     "jfs-deploy-config-files": "node ./scripts/bin/jfs-deploy-config-files",
     "jfs-generate-api": "node ./scripts/bin/jfs-generate-api",
     "jfs-open-showcase": "node ./scripts/bin/jfs-open-showcase",

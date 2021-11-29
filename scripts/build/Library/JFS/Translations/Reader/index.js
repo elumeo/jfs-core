@@ -28,20 +28,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.run = exports.scope = exports.name = void 0;
-const JFS = __importStar(require("../Library/JFS"));
-const path_1 = require("path");
-const ANSI = __importStar(require("ansi-colors"));
-exports.name = 'jfs-check-translations';
-exports.scope = ['all'];
-const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
-    const path = path_1.resolve(env.root, 'src', 'Setup', 'Locale');
-    if (yield JFS.Translations.Check.run(path)) {
-        console.info(ANSI.bgGreenBright(ANSI.black(' All translations seem to be available! ')));
-    }
-    else {
-        console.warn(ANSI.bgRedBright(ANSI.black(' Some translations seem to be missing! ')));
-    }
+exports.run = exports.Output = exports.Input = void 0;
+const Translation = __importStar(require("./Translation"));
+exports.Input = __importStar(require("./Input"));
+exports.Output = __importStar(require("./Output"));
+const run = (locales, table) => __awaiter(void 0, void 0, void 0, function* () {
+    const [head, body] = table;
+    return Translation.merge(locales, Translation.locales(body, head.slice(1)));
 });
 exports.run = run;
-//# sourceMappingURL=jfs-check-translations.js.map
+//# sourceMappingURL=index.js.map

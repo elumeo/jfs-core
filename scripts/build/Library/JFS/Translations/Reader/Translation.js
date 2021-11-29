@@ -19,11 +19,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Reader = exports.Type = exports.Table = exports.Snapshot = exports.File = exports.Check = void 0;
-exports.Check = __importStar(require("./Check"));
-exports.File = __importStar(require("./File"));
-exports.Snapshot = __importStar(require("./Snapshot"));
-exports.Table = __importStar(require("./Table"));
-exports.Type = __importStar(require("./Type"));
-exports.Reader = __importStar(require("./Reader"));
-//# sourceMappingURL=index.js.map
+exports.locales = exports.merge = void 0;
+const CSV = __importStar(require("./CSV"));
+const Locale = __importStar(require("./Locale"));
+const merge = (first, second) => {
+    const unique = (data) => Array.from(new Set(data));
+    const keys = unique([first, second].map(Object.keys).flat());
+    const add = (locales, key) => {
+        locales[key] = Locale.merge(first[key], second[key]);
+        return locales;
+    };
+    return keys.reduce(add, {});
+};
+exports.merge = merge;
+const locales = (body, languages) => (languages
+    .reduce(add(body, keys(body)), {}));
+exports.locales = locales;
+const keys = (body) => CSV.column(body, `Keys (${body.length})`);
+const add = (body, keys) => ((locales, name) => {
+    locales[name] = Locale.get(keys, CSV.column(body, name));
+    return locales;
+});
+//# sourceMappingURL=Translation.js.map
