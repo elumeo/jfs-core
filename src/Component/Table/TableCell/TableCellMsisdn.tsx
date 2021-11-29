@@ -6,7 +6,7 @@ import { ellipsesStyle } from 'Component/Table/VirtualizedTable';
 
 export type TableCellMsisdnProps = Partial<TableCellRootProps> & {
   cellData: string;
-  isLoading: boolean;
+  isLoading?: boolean;
 };
 
 const TableCellMsisdn = ({ cellData, isLoading = false, ...rest }: TableCellMsisdnProps) => {
