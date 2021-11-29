@@ -1,9 +1,8 @@
 import React from 'react';
-import { TableCellProps } from 'react-virtualized';
 export declare type TableCellMsisdnProps = {
-    cellProps: TableCellProps;
+    cellData: string;
     rowHeight: number;
     isLoading?: boolean;
 };
-declare const _default: React.MemoExoticComponent<({ cellProps, rowHeight, isLoading }: TableCellMsisdnProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ cellData, rowHeight, isLoading }: TableCellMsisdnProps) => JSX.Element>;
 export default _default;
