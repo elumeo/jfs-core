@@ -50,6 +50,8 @@ var TableRow_1 = require("./Table/TableRow");
 var Search_1 = __importDefault(require("@material-ui/icons/Search"));
 var Icon_1 = require("./Icon");
 var Warning_1 = __importDefault(require("@material-ui/icons/Warning"));
+var TableCellSelect_1 = __importDefault(require("./Table/TableCell/TableCellSelect"));
+var TableHeadSelect_1 = __importDefault(require("./Table/TableHead/TableHeadSelect"));
 var sample = [
     ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, {
             start: null,
@@ -68,6 +70,13 @@ for (var i = 0; i < 200; i += 1) {
     rows.push(createDataVirtualizedTable.apply(void 0, __spreadArray([i], randomSelection, false)));
 }
 var columns = [
+    {
+        width: 50,
+        dataKey: 'select',
+        disableSort: true,
+        headerRenderer: function (cellProps) { return react_1.default.createElement(TableHeadSelect_1.default, { checked: false, onChange: console.log }); },
+        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCellSelect_1.default, { checked: false, value: cellProps.cellData, onChange: console.log }); }
+    },
     {
         width: function (width) { return width - (120 * 4); },
         label: 'Dessert (100g serving)',

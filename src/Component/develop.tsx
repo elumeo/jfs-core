@@ -34,6 +34,8 @@ import DatePicker from 'Component/DatePicker';
 import { ColumnData } from 'Component/Table/VirtualizedTable';
 import { DateTimeRangeCellProps } from 'Types/Table/DateTimeRangeCellProps';
 import WarningIcon from '@material-ui/icons/Warning';
+import TableCellSelect from 'Component/Table/TableCell/TableCellSelect';
+import TableHeadSelect from 'Component/Table/TableHead/TableHeadSelect';
 // import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
 type DataVirtualizedTable = {
@@ -70,6 +72,13 @@ for (let i = 0; i < 200; i += 1) {
 }
 
 const columns: ColumnData[] = [
+  {
+    width: 50,
+    dataKey: 'select',
+    disableSort: true,
+    headerRenderer: (cellProps: TableCellProps) => <TableHeadSelect checked={false} onChange={console.log} />,
+    cellRenderer: (cellProps: TableCellProps) => <TableCellSelect checked={false} value={cellProps.cellData} onChange={console.log} />
+  },
   {
     width: (width: number) => width - (120 * 4),
     label: 'Dessert (100g serving)',
