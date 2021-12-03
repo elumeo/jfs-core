@@ -5,3 +5,4 @@ export { default as TableCellDateTime } from './TableCellDateTime';
 export { default as TableCellDateTimeRange } from './TableCellDateTimeRange';
 export { default as TableCellRoot } from './TableCellRoot';
 export { default as TableCellProduct } from './TableCellProduct';
+export { default as TableCellSelect } from './TableCellSelect';
