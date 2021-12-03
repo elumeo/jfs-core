@@ -4,7 +4,7 @@ import TableCellRoot, { TableCellRootProps } from './TableCellRoot';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
 const checkboxStyles: CSSProperties = { padding: '8px' };
-const tableCellStyles: CSSProperties = { padding: '4px' };
+const tableCellStyles: CSSProperties = { padding: '4px', justifyContent: 'center' };
 
 export type TableCellSelectProps = Partial<TableCellRootProps> & {
   value: string;
