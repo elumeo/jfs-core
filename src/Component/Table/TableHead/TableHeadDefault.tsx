@@ -28,7 +28,7 @@ const TableHeadDefault = ({ height = 48, isNumeric = false, disableSort = false,
     ...rowNoClickStyles,
     ...(isActiveSort ? sortingStyles : null),
     height: height + 'px', flex: 1, padding: theme.spacing(1), maxWidth: '100%'
-  }), []);
+  }), [sortBy]);
   const mapSortDirection = (sortDirection: SortDirectionType) => sortDirection === 'ASC' ? 'asc' : 'desc';
   return <TableCell
     component='div'
