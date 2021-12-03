@@ -36,7 +36,8 @@ import { DateTimeRangeCellProps } from 'Types/Table/DateTimeRangeCellProps';
 import WarningIcon from '@material-ui/icons/Warning';
 import TableCellSelect from 'Component/Table/TableCell/TableCellSelect';
 import TableHeadSelect from 'Component/Table/TableHead/TableHeadSelect';
-// import { CSSProperties } from '@material-ui/core/styles/withStyles';
+
+const tableRowHeight = 48;
 
 type DataVirtualizedTable = {
   calories: number;
@@ -76,15 +77,15 @@ const columns: ColumnData[] = [
     width: 50,
     dataKey: 'select',
     disableSort: true,
-    headerRenderer: (cellProps: TableCellProps) => <TableHeadSelect checked={false} onChange={console.log} />,
-    cellRenderer: (cellProps: TableCellProps) => <TableCellSelect checked={false} value={cellProps.cellData} onChange={console.log} />
+    headerRenderer: (cellProps: TableCellProps) => <TableHeadSelect checked={false} onChange={console.log} height={tableRowHeight} />,
+    cellRenderer: (cellProps: TableCellProps) => <TableCellSelect checked={false} value={cellProps.cellData} onChange={console.log} height={tableRowHeight} />
   },
   {
     width: (width: number) => width - (120 * 4),
     label: 'Dessert (100g serving)',
     dataKey: 'dessert',
     disableSort: true,
-    cellRenderer: (cellProps: TableCellProps) => <TableCellDefault cellData={cellProps.cellData} contentEllipseMode={ContentEllipseMode.Lines} contentEllipseLines={2} />
+    cellRenderer: (cellProps: TableCellProps) => <TableCellDefault height={tableRowHeight} cellData={cellProps.cellData} contentEllipseMode={ContentEllipseMode.Lines} contentEllipseLines={2} />
   },
   {
     width: 120,
@@ -105,13 +106,13 @@ const columns: ColumnData[] = [
     width: 220,
     label: 'Datum (Range)',
     dataKey: 'datetimeRange',
-    cellRenderer: cellProps => <TableCellDateTimeRange cellData={cellProps.cellData} />
+    cellRenderer: cellProps => <TableCellDateTimeRange cellData={cellProps.cellData} height={tableRowHeight} />
   },
   {
     width: 180,
     label: 'Datum',
     dataKey: 'datetime',
-    cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} />
+    cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} height={tableRowHeight} />
   }
 ];
 const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon /></InputAdornment> };
@@ -160,7 +161,7 @@ const Develop: React.FC = () => {
           <CardContent style={{ height: 600 }}>
             <VirtualizedTable
               showRowHoverHighlight
-              rowHeight={50}
+              rowHeight={tableRowHeight}
               rowCount={rows.length}
               rowGetter={rowGetter}
               noRowsRenderer={noRowsRenderer}

@@ -1,2 +1,2 @@
-export { default as TableHeadDefaultBase } from './TableHeadDefault';
+export { default as TableHeadSelect } from './TableHeadSelect';
 export { default as TableHeadDefault } from './TableHeadDefault';

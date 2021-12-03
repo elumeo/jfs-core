@@ -6,14 +6,15 @@ import TableCellRoot, { TableCellRootProps } from 'Component/Table/TableCell/Tab
 export type TableCellDateTimeProps = Partial<TableCellRootProps> & {
   cellData: Date | string;
   noValueElement?: ReactNode;
+  asTwoLines?: boolean;
 }
 
-const TableCellDateTime = ({ cellData = null, noValueElement = '-', ...rest }: TableCellDateTimeProps) => {
+const TableCellDateTime = ({ cellData = null, noValueElement = '-', asTwoLines = true, ...rest }: TableCellDateTimeProps) => {
   const { formatDate, formatTime } = useIntl();
   return <TableCellRoot {...rest} isNumeric={false}>
     {(cellData === null || cellData === undefined) && noValueElement}
     {cellData && <>
-      {formatDate(cellData, DateTime.getDefaultDateFormatOptions())}<br />
+      {formatDate(cellData, DateTime.getDefaultDateFormatOptions())}{asTwoLines && <br />}
       {formatTime(cellData, DateTime.getDefaultTimeFormatOptions(true))}
     </>}
   </TableCellRoot>;

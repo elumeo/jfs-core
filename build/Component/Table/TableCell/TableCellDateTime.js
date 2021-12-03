@@ -49,13 +49,13 @@ var react_intl_1 = require("react-intl");
 var Format_1 = require("../../../Utilities/Format");
 var TableCellRoot_1 = __importDefault(require("../../Table/TableCell/TableCellRoot"));
 var TableCellDateTime = function (_a) {
-    var _b = _a.cellData, cellData = _b === void 0 ? null : _b, _c = _a.noValueElement, noValueElement = _c === void 0 ? '-' : _c, rest = __rest(_a, ["cellData", "noValueElement"]);
-    var _d = (0, react_intl_1.useIntl)(), formatDate = _d.formatDate, formatTime = _d.formatTime;
+    var _b = _a.cellData, cellData = _b === void 0 ? null : _b, _c = _a.noValueElement, noValueElement = _c === void 0 ? '-' : _c, _d = _a.asTwoLines, asTwoLines = _d === void 0 ? true : _d, rest = __rest(_a, ["cellData", "noValueElement", "asTwoLines"]);
+    var _e = (0, react_intl_1.useIntl)(), formatDate = _e.formatDate, formatTime = _e.formatTime;
     return react_1.default.createElement(TableCellRoot_1.default, __assign({}, rest, { isNumeric: false }),
         (cellData === null || cellData === undefined) && noValueElement,
         cellData && react_1.default.createElement(react_1.default.Fragment, null,
             formatDate(cellData, Format_1.DateTime.getDefaultDateFormatOptions()),
-            react_1.default.createElement("br", null),
+            asTwoLines && react_1.default.createElement("br", null),
             formatTime(cellData, Format_1.DateTime.getDefaultTimeFormatOptions(true))));
 };
 exports.default = (0, react_1.memo)(TableCellDateTime);

@@ -7,15 +7,17 @@ import { CSSProperties } from '@material-ui/core/styles/withStyles';
 export type TableCellRootProps = {
   children: React.ReactNode,
   isNumeric?: boolean;
-  rowHeight?: number | string;
+  height?: number | string;
+  styles?: CSSProperties;
 };
 
-const TableCellRoot = ({ children, isNumeric = false, rowHeight = '100px' }: TableCellRootProps) => {
+const TableCellRoot = ({ children, isNumeric = false, height = '100px', styles = {} }: TableCellRootProps) => {
   const theme = useTheme<Theme>();
-  const styles = useMemo<CSSProperties>(() => ({
+  const preparedStyles = useMemo<CSSProperties>(() => ({
     ...flexContainerStyles,
-    height: rowHeight, flex: 1, padding: theme.spacing(1), maxWidth: '100%'
-  }), [rowHeight]);
-  return <TableCell component='div' style={styles} variant='body' align={isNumeric ? 'right' : 'left'}>{children}</TableCell>;
+    height: height, flex: 1, padding: theme.spacing(1), maxWidth: '100%',
+    ...styles,
+  }), [height, styles]);
+  return <TableCell component='div' style={preparedStyles} variant='body' align={isNumeric ? 'right' : 'left'}>{children}</TableCell>;
 };
 export default memo(TableCellRoot);

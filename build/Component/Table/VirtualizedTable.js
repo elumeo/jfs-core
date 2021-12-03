@@ -90,7 +90,7 @@ var VirtualizedTable = react_1.default.forwardRef(function (props, ref) {
     var getFinalColumnWidth = (0, react_1.useCallback)(function (columnWidth, tableWidth) { return typeof columnWidth !== 'number'
         ? columnWidth(tableWidth)
         : columnWidth; }, []);
-    var getCellRenderer = (0, react_1.useCallback)(function (props) { return react_1.default.createElement(TableCell_1.TableCellDefault, { cellData: props.cellData, isNumeric: (props.columnIndex != null && columns[props.columnIndex].numeric) || false }); }, []);
+    var getCellRenderer = (0, react_1.useCallback)(function (props) { return react_1.default.createElement(TableCell_1.TableCellDefault, { height: typeof rowHeight === 'number' ? rowHeight : rowHeight({ index: props.rowIndex }), cellData: props.cellData, isNumeric: (props.columnIndex != null && columns[props.columnIndex].numeric) || false }); }, []);
     return react_1.default.createElement(react_virtualized_1.AutoSizer, { onResize: onResize }, function (_a) {
         var height = _a.height, width = _a.width;
         return (react_1.default.createElement(react_virtualized_1.Table, __assign({ ref: ref, height: height, width: width, rowClassName: rowClasses.root, headerHeight: headerHeight, rowHeight: rowHeight, rowCount: rowCount, rowGetter: rowGetter, onRowClick: onRowClick, gridStyle: exports.noOutlineStyles, style: tableStyle }, tableProps), columns.map(function (_a) {

@@ -52,6 +52,7 @@ var Icon_1 = require("./Icon");
 var Warning_1 = __importDefault(require("@material-ui/icons/Warning"));
 var TableCellSelect_1 = __importDefault(require("./Table/TableCell/TableCellSelect"));
 var TableHeadSelect_1 = __importDefault(require("./Table/TableHead/TableHeadSelect"));
+var tableRowHeight = 48;
 var sample = [
     ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, {
             start: null,
@@ -74,15 +75,15 @@ var columns = [
         width: 50,
         dataKey: 'select',
         disableSort: true,
-        headerRenderer: function (cellProps) { return react_1.default.createElement(TableHeadSelect_1.default, { checked: false, onChange: console.log }); },
-        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCellSelect_1.default, { checked: false, value: cellProps.cellData, onChange: console.log }); }
+        headerRenderer: function (cellProps) { return react_1.default.createElement(TableHeadSelect_1.default, { checked: false, onChange: console.log, height: tableRowHeight }); },
+        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCellSelect_1.default, { checked: false, value: cellProps.cellData, onChange: console.log, height: tableRowHeight }); }
     },
     {
         width: function (width) { return width - (120 * 4); },
         label: 'Dessert (100g serving)',
         dataKey: 'dessert',
         disableSort: true,
-        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDefault, { cellData: cellProps.cellData, contentEllipseMode: TableCellDefault_1.ContentEllipseMode.Lines, contentEllipseLines: 2 }); }
+        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDefault, { height: tableRowHeight, cellData: cellProps.cellData, contentEllipseMode: TableCellDefault_1.ContentEllipseMode.Lines, contentEllipseLines: 2 }); }
     },
     {
         width: 120,
@@ -103,13 +104,13 @@ var columns = [
         width: 220,
         label: 'Datum (Range)',
         dataKey: 'datetimeRange',
-        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDateTimeRange, { cellData: cellProps.cellData }); }
+        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDateTimeRange, { cellData: cellProps.cellData, height: tableRowHeight }); }
     },
     {
         width: 180,
         label: 'Datum',
         dataKey: 'datetime',
-        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDateTime, { cellData: cellProps.cellData }); }
+        cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellDateTime, { cellData: cellProps.cellData, height: tableRowHeight }); }
     }
 ];
 var textFieldInputProps = { startAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'start' },
@@ -152,7 +153,7 @@ var Develop = function () {
         react_1.default.createElement("div", { style: { marginTop: theme.spacing(1) } },
             react_1.default.createElement(core_1.Card, null,
                 react_1.default.createElement(core_1.CardContent, { style: { height: 600 } },
-                    react_1.default.createElement(Table_1.VirtualizedTable, { showRowHoverHighlight: true, rowHeight: 50, rowCount: rows.length, rowGetter: rowGetter, noRowsRenderer: noRowsRenderer, sortBy: 'calories', sortDirection: 'ASC', columns: columns })))),
+                    react_1.default.createElement(Table_1.VirtualizedTable, { showRowHoverHighlight: true, rowHeight: tableRowHeight, rowCount: rows.length, rowGetter: rowGetter, noRowsRenderer: noRowsRenderer, sortBy: 'calories', sortDirection: 'ASC', columns: columns })))),
         react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center' },
             react_1.default.createElement(core_1.Grid, { item: true }),
             react_1.default.createElement(core_1.Grid, { item: true },

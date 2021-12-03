@@ -4,7 +4,7 @@ import { CSSProperties } from '@material-ui/core/styles/withStyles';
 import { Theme, useTheme } from '@material-ui/core/styles';
 
 const loadingStyles: CSSProperties = { marginLeft: '12px', marginRight: '11px' };
-const checkboxStyles: CSSProperties = { padding: '7px' };
+const checkboxStyles: CSSProperties = { padding: '8px' };
 
 export type TableHeadSelectProps = {
   height?: number;
@@ -30,7 +30,15 @@ const TableHeadSelect = ({
                            className = ''
                          }: TableHeadSelectProps) => {
   const theme = useTheme<Theme>();
-  const styles: CSSProperties = useMemo(() => ({ height: height + 'px', flex: 1, padding: theme.spacing(1), maxWidth: '100%' }), []);
+  const styles: CSSProperties = useMemo(() => ({
+    height: height + 'px',
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: theme.spacing(0.5),
+    maxWidth: '100%'
+  }), []);
   return <TableCell
     component={'div'}
     className={`virtualized-table__cell virtualized-table__flex-container virtualized-table--no-click ${className}`}

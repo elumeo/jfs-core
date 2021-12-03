@@ -25,10 +25,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
 var TableCellRoot_1 = __importDefault(require("./TableCellRoot"));
-var checkboxStyles = { padding: '7px' };
+var checkboxStyles = { padding: '8px' };
+var tableCellStyles = { padding: '4px' };
 var TableCellSelect = function (_a) {
-    var value = _a.value, checked = _a.checked, _b = _a.disabled, disabled = _b === void 0 ? false : _b, onChange = _a.onChange, _c = _a.id, id = _c === void 0 ? 'table-cell-select-' : _c, _d = _a.name, name = _d === void 0 ? 'table-cell-select[]' : _d;
-    return react_1.default.createElement(TableCellRoot_1.default, null,
+    var value = _a.value, checked = _a.checked, _b = _a.disabled, disabled = _b === void 0 ? false : _b, onChange = _a.onChange, _c = _a.id, id = _c === void 0 ? 'table-cell-select-' : _c, _d = _a.name, name = _d === void 0 ? 'table-cell-select[]' : _d, height = _a.height;
+    return react_1.default.createElement(TableCellRoot_1.default, { styles: tableCellStyles, height: height },
         react_1.default.createElement(core_1.Checkbox, { style: checkboxStyles, size: 'small', id: id + value, name: name, value: value !== null && value !== void 0 ? value : '', checked: checked, disabled: disabled, onChange: onChange }));
 };
 exports.default = (0, react_1.memo)(TableCellSelect);

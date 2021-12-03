@@ -83,6 +83,7 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>((props, 
     );
 
     const getCellRenderer: ColumnProps['cellRenderer'] = useCallback(props => <TableCellDefault
+      height={typeof rowHeight === 'number' ? rowHeight as number : rowHeight({index: props.rowIndex})}
       cellData={props.cellData}
       isNumeric={(props.columnIndex != null && columns[props.columnIndex].numeric) || false}
     />, []);
