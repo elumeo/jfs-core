@@ -51,10 +51,11 @@ var Details_1 = __importDefault(require("./Details"));
 var TableCell_1 = require("../../../Table/TableCell");
 var TableCellProduct = function (_a) {
     var _b = _a.id, id = _b === void 0 ? null : _b, _c = _a.mediaUris, mediaUris = _c === void 0 ? null : _c, _d = _a.name, name = _d === void 0 ? null : _d, _e = _a.productType, productType = _e === void 0 ? null : _e, _f = _a.inStockPool, inStockPool = _f === void 0 ? false : _f, _g = _a.hasNoTvLock, hasNoTvLock = _g === void 0 ? false : _g, _h = _a.isProductBundle, isProductBundle = _h === void 0 ? false : _h, _j = _a.onClick, onClick = _j === void 0 ? null : _j, rest = __rest(_a, ["id", "mediaUris", "name", "productType", "inStockPool", "hasNoTvLock", "isProductBundle", "onClick"]);
+    var handleOnClick = (0, react_1.useCallback)(function () { return onClick([id]); }, [onClick, id]);
     return react_1.default.createElement(TableCell_1.TableCellRoot, __assign({}, rest, { isNumeric: false }),
         id && react_1.default.createElement(core_1.Grid, { container: true },
-            react_1.default.createElement(Image_1.default, { onClick: onClick, isProductBundle: isProductBundle, id: id, mediaUris: mediaUris }),
-            react_1.default.createElement(Details_1.default, { onClick: onClick, id: id, productType: productType, name: name, inStockPool: inStockPool, hasNoTvLock: hasNoTvLock })),
+            react_1.default.createElement(Image_1.default, { onClick: handleOnClick, isProductBundle: isProductBundle, id: id, mediaUris: mediaUris }),
+            react_1.default.createElement(Details_1.default, { onClick: handleOnClick, id: id, productType: productType, name: name, inStockPool: inStockPool, hasNoTvLock: hasNoTvLock })),
         id === null && react_1.default.createElement(TableCell_1.TableCellLoadingContent, null));
 };
 exports.default = (0, react_1.memo)(TableCellProduct);

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { Grid } from '@material-ui/core';
 import Image from './Image';
 import Details from './Details';
@@ -14,7 +14,7 @@ export type TableCellProductProps = Partial<TableCellRootProps> & {
   inStockPool?: boolean;
   hasNoTvLock?: boolean;
   isProductBundle?: boolean;
-  onClick?: HTMLElement['click'];
+  onClick?: (productIds: string[]) => void;
 }
 
 const TableCellProduct = ({
@@ -28,10 +28,11 @@ const TableCellProduct = ({
                             onClick = null,
                             ...rest
                           }: TableCellProductProps) => {
+  const handleOnClick = useCallback(() => onClick([id]), [onClick, id]);
   return <TableCellRoot {...rest} isNumeric={false}>
     {id && <Grid container>
-      <Image onClick={onClick} isProductBundle={isProductBundle} id={id} mediaUris={mediaUris} />
-      <Details onClick={onClick} id={id} productType={productType} name={name} inStockPool={inStockPool} hasNoTvLock={hasNoTvLock} />
+      <Image onClick={handleOnClick} isProductBundle={isProductBundle} id={id} mediaUris={mediaUris} />
+      <Details onClick={handleOnClick} id={id} productType={productType} name={name} inStockPool={inStockPool} hasNoTvLock={hasNoTvLock} />
     </Grid>}
     {id === null && <TableCellLoadingContent />}
   </TableCellRoot>;
