@@ -14,7 +14,7 @@ export type TableCellProductProps = Partial<TableCellRootProps> & {
   inStockPool?: boolean;
   hasNoTvLock?: boolean;
   isProductBundle?: boolean;
-  onClick?: (productIds: string[]) => void;
+  onClick?: (productId: string) => void;
 }
 
 const TableCellProduct = ({
@@ -28,7 +28,7 @@ const TableCellProduct = ({
                             onClick = null,
                             ...rest
                           }: TableCellProductProps) => {
-  const handleOnClick = useCallback(() => onClick([id]), [onClick, id]);
+  const handleOnClick = useCallback(() => onClick(id), [onClick, id]);
   return <TableCellRoot {...rest} isNumeric={false}>
     {id && <Grid container>
       <Image onClick={handleOnClick} isProductBundle={isProductBundle} id={id} mediaUris={mediaUris} />
