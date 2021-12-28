@@ -57,6 +57,17 @@ class Project {
             });
             child.run(instance => instance.on('exit', resolve));
         });
+        this.setupCypress = () => new Promise(resolve => {
+            const child = new Process_1.default({
+                command: process.platform === 'win32' ? 'npm.cmd' : 'npm',
+                parameters: ['run', 'setup-cypress'],
+                options: {
+                    cwd: this.path,
+                    stdio: 'inherit'
+                }
+            });
+            child.run(instance => instance.on('exit', resolve));
+        });
         this.scriptPath = (core, name) => path_1.join(path_1.relative(this.path, core.path), 'scripts', 'build', 'Setup', name).replace(/\\/g, '/');
         this.addPostinstallScript = (core) => new Promise(resolve => {
             this.nodePackage.json(data => {

@@ -19,6 +19,11 @@ const filesNamesToCopy = [
     '.editorconfig',
     '.prettierconfig',
     '.prettierrc',
+    'cypress.json',
+    'docker-compose-snapshots.yml',
+    'Dockerfile',
+    'Jenkinsfile',
+    'cypress'
 ];
 const run = () => JFS_1.default.discover(() => {
     new Directory_1.default({

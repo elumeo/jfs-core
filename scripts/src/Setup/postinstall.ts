@@ -11,6 +11,7 @@ export default new Script({
     await JFS.Head.registerScripts();
     await JFS.Head.deployConfigFiles();
     await JFS.Head.setPeerDependencies();
+    await JFS.Head.setupCypress();
 
     const parent = await JFS.Head.parent();
     if (parent) {

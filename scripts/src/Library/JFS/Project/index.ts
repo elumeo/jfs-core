@@ -5,7 +5,7 @@ import Text from 'Library/Text';
 import Translations from './Translations';
 import JSC from './Api';
 import File from 'Library/OS/Filesystem/File';
-import { resolve, sep, relative, dirname, join } from 'path';
+import { dirname, join, relative, resolve, sep } from 'path';
 import Build from './Build';
 import Process from 'Library/OS/Process';
 import JFS from '..';
@@ -26,9 +26,9 @@ abstract class Project {
   public config: Config;
   public readonly tsconfig: File;
 
-  constructor({path}: Project.Props) {
+  constructor({ path }: Project.Props) {
     this.path = path;
-    this.directory = new Directory({path});
+    this.directory = new Directory({ path });
     this.name = this.directory.name;
     if (this.directory.name.substring('jfc-'.length) !== '') {
       this.name = this.directory.name
@@ -56,8 +56,7 @@ abstract class Project {
     console.log(`Running build in ${watch ? 'watch' : 'single'} mode`);
     if (watch) {
       Build.watch(this.directory);
-    }
-    else {
+    } else {
       Build.single(this.directory);
     }
   }
@@ -86,6 +85,18 @@ abstract class Project {
     child.run(instance => instance.on('exit', resolve));
   });
 
+  public setupCypress = () => new Promise(resolve => {
+    const child = new Process({
+      command: process.platform === 'win32' ? 'npm.cmd' : 'npm',
+      parameters: ['run', 'setup-cypress'],
+      options: {
+        cwd: this.path,
+        stdio: 'inherit'
+      }
+    });
+    child.run(instance => instance.on('exit', resolve));
+  });
+
   public scriptPath = (core: Core, name: string) => join(
     relative(this.path, core.path),
     'scripts', 'build', 'Setup', name
@@ -104,8 +115,7 @@ abstract class Project {
           },
           resolve
         );
-      }
-      else {
+      } else {
         resolve();
       }
     })
@@ -124,8 +134,7 @@ abstract class Project {
           },
           resolve
         );
-      }
-      else {
+      } else {
         resolve();
       }
     })

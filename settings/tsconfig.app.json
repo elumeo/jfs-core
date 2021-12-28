@@ -24,7 +24,8 @@
       "Setup/*": ["./Setup/*"],
       "Store/*": ["./Store/*"],
       "Types/*": ["./Types/*"],
-      "Utilities/*": ["./Utilities/*"]
+      "Utilities/*": ["./Utilities/*"],
+      "Test/*": ["../cypress/*"]
     }
   },
   "exclude": [

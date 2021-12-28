@@ -24,6 +24,7 @@ exports.default = new Script_1.default({
         yield JFS_1.default.Head.registerScripts();
         yield JFS_1.default.Head.deployConfigFiles();
         yield JFS_1.default.Head.setPeerDependencies();
+        yield JFS_1.default.Head.setupCypress();
         const parent = yield JFS_1.default.Head.parent();
         if (parent) {
             parent.addPostinstallScript(JFS_1.default.Core);

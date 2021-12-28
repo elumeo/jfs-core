@@ -1,7 +1,7 @@
 import JFS from 'Library/JFS';
 import Directory from 'Library/OS/Filesystem/Directory';
 import Text from 'Library/Text';
-import { relative, basename, sep } from 'path';
+import { basename, relative } from 'path';
 import Core from 'Library/JFS/Core';
 import Component from 'Library/JFS/Component';
 import Script, { Scope } from 'Library/JFS/Core/Script';
@@ -13,7 +13,7 @@ export type Scripts = {
   [key: string]: string;
 }
 
-const script =  (force: boolean = false) => new Script({
+const script = (force: boolean = false) => new Script({
   path: __filename,
   name: 'register-scripts',
   scope: ['all'],
@@ -66,8 +66,7 @@ const match = (head: Project, script: Script) => (
 const collect = (head: Project) => (scripts: Scripts, script: Script) => {
   if (match(head, script)) {
     return add(head.path, scripts, script);
-  }
-  else {
+  } else {
     return scripts;
   }
 }
@@ -84,7 +83,7 @@ const scripts = (
   (await extract())
     .forEach(async script => {
       scripts.push(await script);
-      if (scripts.length === imports(await names(await files())).length +1) {
+      if (scripts.length === imports(await names(await files())).length + 1) {
         resolve(merge(head, scripts));
       }
     })
@@ -92,7 +91,7 @@ const scripts = (
 
 const run = () => JFS.discover(async () => {
   JFS.Head.nodePackage.json(async nodePackage => {
-      JFS.Head.nodePackage.file.save({
+    JFS.Head.nodePackage.file.save({
         ...nodePackage,
         scripts: {
           ...nodePackage.scripts,
