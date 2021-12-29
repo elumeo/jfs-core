@@ -19,13 +19,7 @@
     "jsc-check": "node scripts/build/Setup/jsc-check.js",
     "jsc-generate": "node scripts/build/Setup/jsc-generate.js",
     "set-peer-dependencies": "node scripts/build/Setup/set-peer-dependencies.js",
-    "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i",
-    "test": "node_modules/cypress/bin/cypress run-ct --env COMPARE_IMAGE_SNAPSHOTS=true",
-    "test:open-ui": "node_modules/cypress/bin/cypress open-ct --env COMPARE_IMAGE_SNAPSHOTS=true",
-    "test:clearSnapshots": "rm -rf settings/cypress/snapshots/*",
-    "test:updateSnapshots": "npm run test:clearSnapshots && npm run test ### https://github.com/jaredpalmer/cypress-image-snapshot/issues/74 ### -> # node_modules/cypress/bin/cypress run-ct --env updateSnapshots=true",
-    "test:docker": "docker-compose -f settings/docker-compose-snapshots.yml run app npm run --rm test",
-    "test:docker:updateSnapshots": "docker-compose -f settings/docker-compose-snapshots.yml run --rm app npm run test:updateSnapshots"
+    "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i"
   },
   "repository": {
     "type": "git",
@@ -154,7 +148,7 @@
     "@cypress/react": "^5.10.3",
     "@types/cypress-image-snapshot": "^3.1.6",
     "@cypress/webpack-dev-server": "^1.7.0",
-    "cypress": "^9.1.1",
+    "cypress": "^9.2.0",
     "cypress-image-snapshot": "^4.0.1",
     "material-icons": "^1.10.4",
     "@fontsource/roboto": "^4.5.1"
