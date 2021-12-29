@@ -1,3 +1,7 @@
+## [9.11.0] 2021-12-29
+## Added
+- added snapshot test framework 'cypress' and initialisation setup
+
 ## [9.10.40] 2021-06-15
 ## Added
 - added new font icon "delete_pin"
