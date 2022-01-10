@@ -56,6 +56,7 @@ var TableCellDateTime = function (_a) {
         cellData && react_1.default.createElement(react_1.default.Fragment, null,
             formatDate(cellData, Format_1.DateTime.getDefaultDateFormatOptions()),
             asTwoLines && react_1.default.createElement("br", null),
+            asTwoLines === false && ' ',
             formatTime(cellData, Format_1.DateTime.getDefaultTimeFormatOptions(true))));
 };
 exports.default = (0, react_1.memo)(TableCellDateTime);

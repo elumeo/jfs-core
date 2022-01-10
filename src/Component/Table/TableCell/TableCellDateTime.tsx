@@ -14,7 +14,7 @@ const TableCellDateTime = ({ cellData = null, noValueElement = '-', asTwoLines =
   return <TableCellRoot {...rest} isNumeric={false}>
     {(cellData === null || cellData === undefined) && noValueElement}
     {cellData && <>
-      {formatDate(cellData, DateTime.getDefaultDateFormatOptions())}{asTwoLines && <br />}
+      {formatDate(cellData, DateTime.getDefaultDateFormatOptions())}{asTwoLines && <br />}{asTwoLines === false && ' '}
       {formatTime(cellData, DateTime.getDefaultTimeFormatOptions(true))}
     </>}
   </TableCellRoot>;
