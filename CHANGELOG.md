@@ -1,4 +1,8 @@
-## [9.11.0] 2021-12-29
+## [9.11.1] 2022-01-11
+## Added
+- made unit-/integration-tests available through npm run ...
+
+- ## [9.11.0] 2021-12-29
 ## Added
 - added snapshot test framework 'cypress' and initialisation setup
 

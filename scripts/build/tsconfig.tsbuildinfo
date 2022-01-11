@@ -677,7 +677,7 @@
         "affectsGlobalScope": false
       },
       "../src/setup/setup-cypress.ts": {
-        "version": "f677567b5c2b1ecf68d8435ca5d1ea4d744454acce24509efb7fba148a79dd18",
+        "version": "c016bc7b80271865aad37f11936d00db99d550449f33a2f0d08be1509556156f",
         "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
@@ -1221,7 +1221,6 @@
           "./Library/*"
         ]
       },
-      "watch": true,
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {

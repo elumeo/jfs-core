@@ -5,7 +5,7 @@ import Script from 'Library/JFS/Core/Script';
 
 const filesNamesToCopy = [
   'cypress.json',
-  'docker-compose-snapshots.yml',
+  'docker-compose-test.yml',
   'Dockerfile',
   'Jenkinsfile',
 ]
@@ -13,13 +13,15 @@ const filesNamesToCopy = [
 const cypressDirName = 'cypress'
 
 const scriptsToRegister = {
-  'test': 'node_modules/cypress/bin/cypress run-ct --env COMPARE_IMAGE_SNAPSHOTS=true',
-  'test:open-ui': 'node_modules/cypress/bin/cypress open-ct --env COMPARE_IMAGE_SNAPSHOTS=true',
-  'test:clearSnapshots': 'rm -rf cypress/snapshots/*',
-  'test:updateSnapshots': 'npm run test:clearSnapshots && npm run test ### https://github.com/jaredpalmer/cypress-image-snapshot/issues/74 ### -> # node_modules/cypress/bin/cypress run-ct --env updateSnapshots=true',
-  'test:docker': 'docker-compose -f docker-compose-snapshots.yml run app npm run --rm test',
-  'test:docker:updateSnapshots': 'docker-compose -f docker-compose-snapshots.yml run --rm app npm run test:updateSnapshots'
-
+  'test': 'npm run test:integration && npm run test:component',
+  'test:integration': 'node_modules/cypress/bin/cypress run',
+  'test:integration:interactive': 'node_modules/cypress/bin/cypress open',
+  'test:component': 'node_modules/cypress/bin/cypress run-ct --env COMPARE_IMAGE_SNAPSHOTS=true',
+  'test:component:interactive': 'node_modules/cypress/bin/cypress open-ct --env COMPARE_IMAGE_SNAPSHOTS=true',
+  'test:component:clearSnapshots': 'rm -rf cypress/snapshots/*',
+  'test:component:updateSnapshots': 'npm run test:component:clearSnapshots && npm run test:component ### https://github.com/jaredpalmer/cypress-image-snapshot/issues/74 ### -> # node_modules/cypress/bin/cypress run-ct --env updateSnapshots=true',
+  'test:docker': 'docker-compose -f docker-compose-test.yml run --rm app npm run test',
+  'test:docker:updateSnapshots': 'docker-compose -f docker-compose-test.yml run --rm app npm run test:component:updateSnapshots'
 }
 
 const registerScripts = () => {
