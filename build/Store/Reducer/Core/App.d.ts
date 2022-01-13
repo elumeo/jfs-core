@@ -1,4 +1,3 @@
-/// <reference types="connected-react-router" />
 import * as TA from 'typesafe-actions';
 import * as Action from '../../Action';
 import { ActionType } from '../../../Types/Redux';

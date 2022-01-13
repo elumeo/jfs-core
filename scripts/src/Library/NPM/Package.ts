@@ -1,6 +1,5 @@
 import { resolve } from 'path';
 import fs from 'fs-extra';
-import _ from 'lodash';
 import child_process from 'child_process';
 import * as Type from 'Type';
 

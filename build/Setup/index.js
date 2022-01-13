@@ -24,6 +24,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Routes = exports.Navigation = exports.Translations = void 0;
 var moment_1 = __importDefault(require("moment"));
+require("material-icons/iconfont/material-icons.css");
+require("@fontsource/roboto");
 Date.prototype.toJSON = function () {
     return (0, moment_1.default)(this).format();
 };

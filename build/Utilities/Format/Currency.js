@@ -31,7 +31,7 @@ var getCurrencySign = function (currency) {
 };
 exports.getCurrencySign = getCurrencySign;
 var formatDisplay = function (value, min, max) {
-    var val = parseFloat(("" + value).replace(exports.replaceAllNonNumericOrSeperatorRegex, ''));
+    var val = parseFloat("".concat(value).replace(exports.replaceAllNonNumericOrSeperatorRegex, ''));
     if ((!!min || min === 0) && val < min) {
         return min.toString();
     }

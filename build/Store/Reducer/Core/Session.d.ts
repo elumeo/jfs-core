@@ -1,4 +1,3 @@
-/// <reference types="connected-react-router" />
 import JSCApi from '../../../API/JSC';
 import * as Action from '../../Action';
 import { ActionType } from '../../../Types/Redux';

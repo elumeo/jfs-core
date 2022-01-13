@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  app:
+    image: jfs_testbase
+    build:
+      context: ..
+      target: jfs_testbase
+    volumes:
+      - .:/opt/jfs/app:delegated
+    entrypoint: ""
+    working_dir: /opt/jfs/app

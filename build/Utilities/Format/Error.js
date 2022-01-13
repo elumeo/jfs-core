@@ -13,13 +13,13 @@ var head = function (error) {
     var _a = error.response, status = _a.status, statusText = _a.statusText;
     var method = error.config.method.toUpperCase();
     var url = error.config.url.substring(error.config.baseURL.length);
-    return "(http: " + status + " " + statusText + " // " + method + " " + url + ")";
+    return "(http: ".concat(status, " ").concat(statusText, " // ").concat(method, " ").concat(url, ")");
 };
 var body = function (error) {
     var data = error.response.data;
     if (isJscError(error)) {
         var id = data.id, message = data.message;
-        return message + " (" + id + ")";
+        return "".concat(message, " (").concat(id, ")");
     }
     else {
         return JSON.stringify(data, null, 2);

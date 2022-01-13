@@ -36,7 +36,7 @@ var TableHeadSelect = function (_a) {
         padding: theme.spacing(0.5),
         maxWidth: '100%'
     }); }, []);
-    return react_1.default.createElement(core_1.TableCell, { component: 'div', className: "virtualized-table__cell virtualized-table__flex-container virtualized-table--no-click " + className, variant: 'head', style: styles },
+    return react_1.default.createElement(core_1.TableCell, { component: 'div', className: "virtualized-table__cell virtualized-table__flex-container virtualized-table--no-click ".concat(className), variant: 'head', style: styles },
         loading && react_1.default.createElement("div", { style: loadingStyles },
             react_1.default.createElement(core_1.CircularProgress, { size: 16 })),
         loading === false && react_1.default.createElement(core_1.Checkbox, { style: checkboxStyles, size: 'small', disabled: disabled, id: id, name: name, value: value, checked: checked, onChange: onChange }));

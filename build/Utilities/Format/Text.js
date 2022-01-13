@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.removeDiacritics = exports.endsWith = exports.beginsWith = exports.capitalize = void 0;
 var diacritics_1 = require("diacritics");
 var capitalize = function (value) {
-    return "" + value[0].toUpperCase() + value.slice(1);
+    return "".concat(value[0].toUpperCase()).concat(value.slice(1));
 };
 exports.capitalize = capitalize;
 var beginsWith = function (text) {

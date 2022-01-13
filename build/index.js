@@ -13,9 +13,9 @@
 // import * as Notification from './Component/Notification';
 // import Snackbar from './Component/Snackbar';
 // import Overlay from './Component/Overlay';
-// import { Navigation, Routes, Translations } from 'Setup';
+// import { Navigation, Routes, Translations } from './Setup';
 // import packageJson from '../package.json';
-// import { create } from 'Store';
+// import { create } from './Store';
 // import { history } from './Store/Middleware';
 //
 // ReactDOM.render(

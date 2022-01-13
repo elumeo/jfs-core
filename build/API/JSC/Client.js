@@ -65,7 +65,7 @@ var JscClient = /** @class */ (function (_super) {
         baseURL: JscClient.Config.JscClient.Host,
         timeout: JscClient.Config.JscClient.Timeout,
         validateStatus: function (status) { return status < 400; },
-        headers: __assign({ 'X-JSC-APP-VERSION': JscClient.Config.AppName + "-" + JscClient.PackageJson.version }, (Token.isLoggedIn() ? { 'X-JSC-TOKEN': Token.getToken() } : {})),
+        headers: __assign({ 'X-JSC-APP-VERSION': "".concat(JscClient.Config.AppName, "-").concat(JscClient.PackageJson.version) }, (Token.isLoggedIn() ? { 'X-JSC-TOKEN': Token.getToken() } : {})),
     }); };
     return JscClient;
 }(HttpClient_1.HttpClient));

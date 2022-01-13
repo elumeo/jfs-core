@@ -26,7 +26,7 @@ const eslintrc = (which: Type.Environment.Info['which']) => {
 export const run = async (env: Type.Environment.Info) => {
   const typescript = path.resolve(env.core, 'build-tools', 'typescript');
   const eslint = path.resolve(env.core, 'build-tools', 'eslint');
-  const jest = path.resolve(env.core, 'build-tools', 'jest');
+  const cypress = path.resolve(env.core, 'build-tools', 'cypress');
 
   const copy = [
     {
@@ -38,13 +38,13 @@ export const run = async (env: Type.Environment.Info) => {
       to: path.resolve(process.cwd(), '.eslintrc')
     },
     {
-      from: path.resolve(jest, 'setup.ts'),
-      to: path.resolve(process.cwd(), 'setup.ts')
+      from: path.resolve(cypress, 'cypress.json'),
+      to: path.resolve(process.cwd(), 'cypress.json')
     },
-    {
-      from: path.resolve(jest, 'jest.config.ts'),
-      to: path.resolve(process.cwd(), 'jest.config.ts')
-    }
+    ...['cypress.json', 'Dockerfile', 'docker-compose-test.yml', 'Jenkinsfile'].map(fileName => ({
+      from: path.resolve(cypress, fileName),
+      to: path.resolve(process.cwd(), fileName)
+    }))
   ];
 
   await Promise.all(copy.map(({ from, to }) => fs.copyFile(from, to)));

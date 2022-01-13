@@ -30,7 +30,7 @@ var Flag_1 = __importDefault(require("./Flag"));
 var BackendIndicator = function () {
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
     var backendRegion = (0, Redux_1.useSelector)(function (state) { return state.Core.System.backendRegion; });
-    return (react_1.default.createElement(Tooltip_1.default, { title: formatMessage({ id: 'app.backend' }) + ": " + backendRegion },
+    return (react_1.default.createElement(Tooltip_1.default, { title: "".concat(formatMessage({ id: 'app.backend' }), ": ").concat(backendRegion) },
         react_1.default.createElement("span", null,
             react_1.default.createElement(Flag_1.default, { country: (backendRegion || '').toLowerCase() }))));
 };

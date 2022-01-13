@@ -35,14 +35,14 @@ var handle = function (error) {
         var _b = error.config, method = _b.method, url = _b.url;
         return (0, rxjs_1.of)(Action.addNotification({
             variant: 'error',
-            content: "Network Error: " + method.toUpperCase() + " " + url,
+            content: "Network Error: ".concat(method.toUpperCase(), " ").concat(url),
         }));
     }
     if (error.code === 'ECONNABORTED' && error.message.includes('timeout')) {
         var _c = error.config, method = _c.method, url = _c.url;
         return (0, rxjs_1.of)(Action.addNotification({
             variant: 'error',
-            content: "Request Timeout: " + method.toUpperCase() + " " + url,
+            content: "Request Timeout: ".concat(method.toUpperCase(), " ").concat(url),
         }));
     }
     return null;

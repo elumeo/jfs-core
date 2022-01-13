@@ -1,3 +1,16 @@
-import { State } from '../../Reducer/Global';
-export declare const isJsc2JfsWebSocketConnected: import("reselect").OutputSelector<State, boolean, (res: import("../../../Types/WebSocket").IWebSocketNamespace) => boolean>;
-export declare const isJfs2JfsWebSocketConnected: import("reselect").OutputSelector<State, boolean, (res: import("../../../Types/WebSocket").IWebSocketNamespace) => boolean>;
+export declare const isJsc2JfsWebSocketConnected: ((state: {
+    Core: import("../../Reducer/Core").State;
+    router: import("connected-react-router").RouterState<unknown>;
+}) => boolean) & import("reselect").OutputSelectorFields<(args_0: import("../../../Types/WebSocket").IWebSocketNamespace) => boolean & {
+    clearCache: () => void;
+}> & {
+    clearCache: () => void;
+};
+export declare const isJfs2JfsWebSocketConnected: ((state: {
+    Core: import("../../Reducer/Core").State;
+    router: import("connected-react-router").RouterState<unknown>;
+}) => boolean) & import("reselect").OutputSelectorFields<(args_0: import("../../../Types/WebSocket").IWebSocketNamespace) => boolean & {
+    clearCache: () => void;
+}> & {
+    clearCache: () => void;
+};

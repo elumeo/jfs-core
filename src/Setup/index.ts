@@ -1,4 +1,6 @@
 import moment from 'moment';
+import 'material-icons/iconfont/material-icons.css'
+import '@fontsource/roboto'
 
 Date.prototype.toJSON = function () {
   return moment(this).format();
