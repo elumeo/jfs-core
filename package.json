@@ -25,12 +25,7 @@
     "jfs-generate-api": "node ./scripts/bin/jfs-generate-api",
     "jfs-open-showcase": "node ./scripts/bin/jfs-open-showcase",
     "jfs-postinstall": "node ./scripts/bin/jfs-postinstall",
-    "jfs-check-config-schema": "node ./scripts/bin/jfs-check-config-schema",
-    "test": "node_modules/cypress/bin/cypress run-ct --env COMPARE_IMAGE_SNAPSHOTS=true",
-    "test-interactive": "node_modules/cypress/bin/cypress open-ct --env COMPARE_IMAGE_SNAPSHOTS=true",
-    "test-updateSnapshots": "rm -rf settings/cypress/snapshots/* && npm run test ### https://github.com/jaredpalmer/cypress-image-snapshot/issues/74 ### -> # node_modules/cypress/bin/cypress run-ct --env updateSnapshots=true",
-    "test-docker": "docker-compose -f settings/docker-compose-test.yml run --rm app npm run test",
-    "test-docker-updateSnapshots": "docker-compose -f settings/docker-compose-test.yml run --rm app npm run test-updateSnapshots"
+    "jfs-check-config-schema": "node ./scripts/bin/jfs-check-config-schema"
   },
   "repository": {
     "type": "git",
