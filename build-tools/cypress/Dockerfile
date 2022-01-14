@@ -1,8 +1,8 @@
-FROM cypress/included:9.2.1 AS jfs_testbase
+FROM cypress/included:9.1.1 AS jfs_testbase
 
 FROM node:12 as JFS_BUILD
 ARG GIT_TOKEN
-COPY build-tools/cypress /opt/jfs/app
+COPY . /opt/jfs/app
 RUN  git config --global url."https://${GIT_TOKEN}@github.com/".insteadOf "https://github.com/"
 RUN  cd /opt/jfs/app && npm ci --unsafe-perm && npm run build
 
@@ -21,5 +21,5 @@ COPY --from=JFS_CONFIG "/opt/jfs/app/dist" "/usr/share/nginx/html"
 FROM jfs_testbase as JFS_TEST
 COPY --from=JFS_BUILD "/opt/jfs/app" "/opt/jfs/app"
 WORKDIR /opt/jfs/app
-RUN npm run test
+RUN npm test
 
