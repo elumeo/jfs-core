@@ -1,3 +1,4 @@
+/// <reference types="connected-react-router" />
 import * as Action from '../../Action';
 import { ActionType } from '../../../Types/Redux';
 export declare type State = {

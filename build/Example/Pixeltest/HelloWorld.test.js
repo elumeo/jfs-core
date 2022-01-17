@@ -9,8 +9,8 @@ var HelloWorld_1 = __importDefault(require("./HelloWorld"));
 var de_json_1 = __importDefault(require("../../Setup/Locale/de.json"));
 require("@cypress/react");
 var react_2 = require("@cypress/react");
-describe('Pixels match', function () {
-    it('compares snapshots', function () {
+describe('This test', function () {
+    it('compares pixels', function () {
         (0, react_2.mount)(react_1.default.createElement(Stateless_1.default, { locale: 'de', messages: de_json_1.default },
             react_1.default.createElement(HelloWorld_1.default, null)));
         cy.viewport(1920, 1080);

@@ -1,3 +1,4 @@
+/// <reference types="connected-react-router" />
 import * as Action from '../../Action';
 import * as TA from 'typesafe-actions';
 import * as Type from '../../../Types/Notification';

@@ -1,3 +1,4 @@
+/// <reference types="connected-react-router" />
 import * as Action from '../../Action';
 import * as Country from '../../../Types/Country';
 import { ActionType } from '../../../Types/Redux';
