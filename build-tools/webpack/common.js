@@ -64,6 +64,30 @@ const common = {
       {
         test: /\.css$/,
         use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+      },
+      {
+        test: /\.eot(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader",
+        options: {
+          esModule: false,
+          mimetype: 'application/font-woff'
+        }
+      },
+      {
+        test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader",
+        options: {
+          esModule: false,
+          mimetype: 'application/font-woff'
+        }
+      },
+      {
+        test: /\.woff2(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader",
+        options: {
+          esModule: false,
+          mimetype: 'application/font-woff2'
+        }
       }
     ]
   },
