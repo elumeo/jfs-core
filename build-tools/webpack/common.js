@@ -67,27 +67,15 @@ const common = {
       },
       {
         test: /\.eot(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader",
-        options: {
-          esModule: false,
-          mimetype: 'application/font-woff'
-        }
+        type: "asset/inline"
       },
       {
         test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader",
-        options: {
-          esModule: false,
-          mimetype: 'application/font-woff'
-        }
+        type: "asset/inline"
       },
       {
         test: /\.woff2(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader",
-        options: {
-          esModule: false,
-          mimetype: 'application/font-woff2'
-        }
+        type: "asset/inline"
       }
     ]
   },
