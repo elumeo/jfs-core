@@ -5,6 +5,7 @@ const server = {
   ...development,
   devServer: {
     publicPath: '/',
+    hot: true,
     contentBase: PATH.PUBLIC,
     proxy: {
       '/api': 'http://localhost'
