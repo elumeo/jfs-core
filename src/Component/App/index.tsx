@@ -3,11 +3,6 @@ import Stateless from './Stateless';
 import Stateful, { Props as StatefulProps } from './Stateful';
 import Title from './Title';
 import moment from 'moment';
-import 'material-icons/iconfont/material-icons.css'
-import '@fontsource/roboto/300.css'
-import '@fontsource/roboto/400.css'
-import '@fontsource/roboto/500.css'
-import '@fontsource/roboto/700.css'
 
 Date.prototype.toJSON = function () {
   return moment(this).format();

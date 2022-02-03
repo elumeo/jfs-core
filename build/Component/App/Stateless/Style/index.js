@@ -6,6 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var core_1 = require("@material-ui/core");
 var Theme_1 = __importDefault(require("./Theme"));
+require("material-icons/iconfont/material-icons.css");
+require("@fontsource/roboto/300.css");
+require("@fontsource/roboto/400.css");
+require("@fontsource/roboto/500.css");
+require("@fontsource/roboto/700.css");
 var Style = function (_a) {
     var children = _a.children;
     return (react_1.default.createElement(Theme_1.default, null,
