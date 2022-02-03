@@ -1,10 +1,11 @@
 ## [10.0.0]  **** BREAKING ****
  - [Material UI](https://material-ui.com) instead of react-md
-  - CSS-in-JS instead of SCSS
-- Up to date webpack 5 configuration
-  - no doubled config.json needed anymore
-- Refined project structure & simpler apis
-  - Core components as compound components
+ - CSS-in-JS instead of SCSS
+ - Up to date webpack 5 configuration
+   - no doubled config.json needed anymore
+ - Refined project structure & simpler apis
+   - Core components as compound components
+ - switched from tslint to eslint
 
 ### __Webpack__
 
