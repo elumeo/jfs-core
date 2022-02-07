@@ -12,7 +12,11 @@ var epicMiddleware = (0, redux_observable_1.createEpicMiddleware)({
 });
 var composeEnhancers = (0, redux_devtools_extension_1.composeWithDevTools)({ trace: true, traceLimit: 25 });
 var storeEnhancer = (0, redux_1.applyMiddleware)(epicMiddleware, (0, connected_react_router_1.routerMiddleware)(exports.history));
-var middleware = composeEnhancers(storeEnhancer);
+var middleware = (process.env.NODE_ENV == 'development'
+    && typeof window !== 'undefined'
+    && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
+    ? composeEnhancers(storeEnhancer)
+    : storeEnhancer;
 var start = function (epic) { return epicMiddleware.run(epic); };
 exports.start = start;
 exports.default = middleware;
