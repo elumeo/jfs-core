@@ -50,7 +50,7 @@ const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
             from: path_1.default.resolve(cypress, 'cypress.json'),
             to: path_1.default.resolve(process.cwd(), 'cypress.json')
         },
-        ...['cypress.json', 'Dockerfile', 'docker-compose-test.yml', 'Jenkinsfile'].map(fileName => ({
+        ...['cypress.json', 'Dockerfile', 'docker-compose-test.yml'].map(fileName => ({
             from: path_1.default.resolve(cypress, fileName),
             to: path_1.default.resolve(process.cwd(), fileName)
         }))

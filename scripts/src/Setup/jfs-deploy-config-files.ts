@@ -41,7 +41,7 @@ export const run = async (env: Type.Environment.Info) => {
       from: path.resolve(cypress, 'cypress.json'),
       to: path.resolve(process.cwd(), 'cypress.json')
     },
-    ...['cypress.json', 'Dockerfile', 'docker-compose-test.yml', 'Jenkinsfile'].map(fileName => ({
+    ...['cypress.json', 'Dockerfile', 'docker-compose-test.yml'].map(fileName => ({
       from: path.resolve(cypress, fileName),
       to: path.resolve(process.cwd(), fileName)
     }))

@@ -13,3 +13,6 @@ node_modules
 tsconfig.tsbuildinfo
 /jest.config.ts
 /setup.ts
+/Dockerfile
+/docker-compose-test.yml
+/cypress.json
