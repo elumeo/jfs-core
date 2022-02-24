@@ -20,16 +20,14 @@ class JFS {
       ({ name }) => {
         if (name === '@elumeo/jfs-core') {
           onComplete(new Core({ path }));
-        }
-        else if (Text.beginsWith(name, 'jfc')) {
+        } else if (Text.beginsWith(name, 'jfc')) {
           onComplete(new Component({ path }));
-        }
-        else if (Text.beginsWith(name, 'jfs')) {
+        } else if (Text.beginsWith(name, 'jfs')) {
           onComplete(new App({ path }));
         }
       }
     );
-  }
+  };
 
   private static head = async () => new Promise<Project>((resolve, reject) => {
     const path = process.cwd();
@@ -39,15 +37,12 @@ class JFS {
 
     nodePackage.json(({ name }) => {
       if (name === '@elumeo/jfs-core') {
-        resolve(new Core({ path }));
-      }
-      else if (Text.beginsWith(name, 'jfc')) {
-        resolve(new Component({ path }));
-      }
-      else if (Text.beginsWith(name, 'jfs')) {
-        resolve(new App({ path }));
-      }
-      else {
+        resolve(new Core({ path }));
+      } else if (Text.beginsWith(name, '@scharfohnezwiebeln/jfc')) {
+        resolve(new Component({ path }));
+      } else if (Text.beginsWith(name, 'jfs')) {
+        resolve(new App({ path }));
+      } else {
         reject('No valid head found for jfs.');
       }
     });
@@ -77,13 +72,12 @@ class JFS {
           ];
           onComplete();
         });
-      }
-      else if (head instanceof Core) {
+      } else if (head instanceof Core) {
         JFS.Core = head;
         onComplete();
       }
     });
-  }
+  };
 }
 
 export default JFS;

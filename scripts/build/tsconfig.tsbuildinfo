@@ -562,7 +562,7 @@
         "affectsGlobalScope": false
       },
       "../src/Library/JFS/index.ts": {
-        "version": "ade9122f3f8c587cfcfb7f0f42c543009e4d9675e07f1a0e8fd266f86e77ad90",
+        "version": "fee1cd1ece22931669c69b49b5d696a9b00be8994ae23f6ddfd1cdb7dd06199c",
         "signature": "d58daa97dbced613668b0451dfbf15731636acca2129059fff77ea921c7ef853",
         "affectsGlobalScope": false
       },

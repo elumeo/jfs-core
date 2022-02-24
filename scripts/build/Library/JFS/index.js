@@ -44,7 +44,7 @@ JFS.head = () => __awaiter(void 0, void 0, void 0, function* () {
             if (name === '@elumeo/jfs-core') {
                 resolve(new Core_1.default({ path }));
             }
-            else if (Text_1.default.beginsWith(name, 'jfc')) {
+            else if (Text_1.default.beginsWith(name, '@scharfohnezwiebeln/jfc')) {
                 resolve(new Component_1.default({ path }));
             }
             else if (Text_1.default.beginsWith(name, 'jfs')) {
