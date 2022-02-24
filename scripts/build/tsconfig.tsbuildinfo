@@ -547,8 +547,8 @@
         "affectsGlobalScope": false
       },
       "../src/Library/JFS/Project/index.ts": {
-        "version": "e223fa67f9e59241002fdee934363a1b8079134089c3be919b6215439b1796bd",
-        "signature": "ab561a04668246ddc0cba9029ce2671f38f10e0b0be08fbb8e951896677a42ec",
+        "version": "a149bb01239e14dd900a778c624c2d8a3dbe2b357030fbff50197e393e860feb",
+        "signature": "8b42e0e45225c357f917d767ecb5f36affe20abecf2ec501e0afb3f3ac8e2396",
         "affectsGlobalScope": false
       },
       "../src/Library/JFS/Component/index.ts": {
@@ -662,17 +662,22 @@
         "affectsGlobalScope": false
       },
       "../src/Setup/postinstall.ts": {
-        "version": "f49810a697bd19679444a0c9a3446f2a09ed8c766a4aec4994747a591ee37096",
+        "version": "322166ca2b46c2e5360108ff05eb9246818129b86aa2b5df32ab4600d9162139",
         "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
       "../src/Setup/register-scripts.ts": {
-        "version": "fb388109d49a36b84f4d784dd09ee84c65140ea3fc41d17ad22629e217323641",
+        "version": "6ef5590b07f3e499b2622d827bd0b02181207d45a953683b7c9345ac83c33d82",
         "signature": "f87e8d5bd2da55789accae9e103cb73f6c577d3079fcbd1c5e34f40adbc7a144",
         "affectsGlobalScope": false
       },
       "../src/Setup/set-peer-dependencies.ts": {
         "version": "10af77b0aea91cf291da0a8a88edb3473b209ca6612cf3297a13e5cf94408088",
+        "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
+        "affectsGlobalScope": false
+      },
+      "../src/Setup/setup-cypress.ts": {
+        "version": "c016bc7b80271865aad37f11936d00db99d550449f33a2f0d08be1509556156f",
         "signature": "8a2c284cd591a1adf16c53f1c00e8d171451c00abd44c0d76a8b52512297c6af",
         "affectsGlobalScope": false
       },
@@ -715,6 +720,11 @@
         "version": "d22e870fef25a052477d24f34356470262881420c8b058c89d86392de6502c42",
         "signature": "d22e870fef25a052477d24f34356470262881420c8b058c89d86392de6502c42",
         "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/cypress-image-snapshot/index.d.ts": {
+        "version": "6bc621ed5b939dd08461553ec03a99896c86defac4bbf4b18c65411cf679d769",
+        "signature": "6bc621ed5b939dd08461553ec03a99896c86defac4bbf4b18c65411cf679d769",
+        "affectsGlobalScope": true
       },
       "../../node_modules/@types/diacritics/index.d.ts": {
         "version": "05c76d6f50d3b4f9d311c770b704235a9d67454a69ae8158692a1939e3ffec65",
@@ -1056,6 +1066,16 @@
         "signature": "1372636c163a55f5eb497667ddda71393473e527c62f15ba1e9dbaafc58b4bd7",
         "affectsGlobalScope": false
       },
+      "../../node_modules/@types/sinonjs__fake-timers/index.d.ts": {
+        "version": "4aabed97dcdae0cb96cc51b1d46bbd94f24e233580fbe24dbe9019d2bd960f05",
+        "signature": "4aabed97dcdae0cb96cc51b1d46bbd94f24e233580fbe24dbe9019d2bd960f05",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/sizzle/index.d.ts": {
+        "version": "ec89427601297d439c961528832a75017d9356bec2ee42c1d16f2274590d9330",
+        "signature": "ec89427601297d439c961528832a75017d9356bec2ee42c1d16f2274590d9330",
+        "affectsGlobalScope": false
+      },
       "../../node_modules/@types/socket.io-parser/index.d.ts": {
         "version": "8487571622eefb9421499874014fa1cc0898bd15724565002a27b67d8e285072",
         "signature": "8487571622eefb9421499874014fa1cc0898bd15724565002a27b67d8e285072",
@@ -1170,6 +1190,11 @@
         "version": "6a11a44c28aeb36e551aad316a3c30e5edd9244396378f664dea164c4ce49fe0",
         "signature": "6a11a44c28aeb36e551aad316a3c30e5edd9244396378f664dea164c4ce49fe0",
         "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/yauzl/index.d.ts": {
+        "version": "b2d70a269840a9528db473ac7565442434333a05c1f66801a7a672e82beb903e",
+        "signature": "b2d70a269840a9528db473ac7565442434333a05c1f66801a7a672e82beb903e",
+        "affectsGlobalScope": false
       }
     },
     "options": {
@@ -1211,6 +1236,11 @@
         "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/classnames/types.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/cypress-image-snapshot/index.d.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
@@ -1785,6 +1815,16 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../../node_modules/@types/sinonjs__fake-timers/index.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/sizzle/index.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
       "../../node_modules/@types/socket.io-client/index.d.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -1946,6 +1986,11 @@
         "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/webpack/node_modules/source-map/source-map.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/yauzl/index.d.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
@@ -2887,6 +2932,14 @@
         "../src/Library/JFS/Core/index.ts",
         "../src/Library/JFS/index.ts"
       ],
+      "../src/Setup/setup-cypress.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../src/Library/JFS/Core/Script.ts",
+        "../src/Library/JFS/index.ts",
+        "../src/Library/OS/Filesystem/Directory/index.ts"
+      ],
       "../src/Setup/sync-development.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -2913,6 +2966,11 @@
         "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/classnames/types.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/cypress-image-snapshot/index.d.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
@@ -3487,6 +3545,16 @@
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../../node_modules/@types/sinonjs__fake-timers/index.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/sizzle/index.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
       "../../node_modules/@types/socket.io-client/index.d.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
@@ -3648,6 +3716,11 @@
         "../node_modules/@types/node/index.d.ts"
       ],
       "../../node_modules/@types/webpack/node_modules/source-map/source-map.d.ts": [
+        "../../node_modules/date-fns/typings.d.ts",
+        "../node_modules/@types/node/base.d.ts",
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/yauzl/index.d.ts": [
         "../../node_modules/date-fns/typings.d.ts",
         "../node_modules/@types/node/base.d.ts",
         "../node_modules/@types/node/index.d.ts"
@@ -4178,6 +4251,9 @@
       "../src/Setup/set-peer-dependencies.ts": [
         "../src/Library/JFS/Core/Script.ts"
       ],
+      "../src/Setup/setup-cypress.ts": [
+        "../src/Library/JFS/Core/Script.ts"
+      ],
       "../src/Setup/sync-development.ts": [
         "../src/Library/JFS/Core/Script.ts"
       ]
@@ -4186,6 +4262,7 @@
       "../../node_modules/@types/anymatch/index.d.ts",
       "../../node_modules/@types/classnames/index.d.ts",
       "../../node_modules/@types/classnames/types.d.ts",
+      "../../node_modules/@types/cypress-image-snapshot/index.d.ts",
       "../../node_modules/@types/diacritics/index.d.ts",
       "../../node_modules/@types/engine.io/index.d.ts",
       "../../node_modules/@types/google-libphonenumber/index.d.ts",
@@ -4249,6 +4326,8 @@
       "../../node_modules/@types/react-virtualized/index.d.ts",
       "../../node_modules/@types/react/global.d.ts",
       "../../node_modules/@types/react/index.d.ts",
+      "../../node_modules/@types/sinonjs__fake-timers/index.d.ts",
+      "../../node_modules/@types/sizzle/index.d.ts",
       "../../node_modules/@types/socket.io-client/index.d.ts",
       "../../node_modules/@types/socket.io-parser/index.d.ts",
       "../../node_modules/@types/socket.io/index.d.ts",
@@ -4271,6 +4350,7 @@
       "../../node_modules/@types/webpack-sources/node_modules/source-map/source-map.d.ts",
       "../../node_modules/@types/webpack/index.d.ts",
       "../../node_modules/@types/webpack/node_modules/source-map/source-map.d.ts",
+      "../../node_modules/@types/yauzl/index.d.ts",
       "../../node_modules/anymatch/index.d.ts",
       "../../node_modules/csstype/index.d.ts",
       "../../node_modules/date-fns/typings.d.ts",
@@ -4416,6 +4496,7 @@
       "../src/Setup/postinstall.ts",
       "../src/Setup/register-scripts.ts",
       "../src/Setup/set-peer-dependencies.ts",
+      "../src/Setup/setup-cypress.ts",
       "../src/Setup/sync-development.ts"
     ]
   },
