@@ -5,7 +5,11 @@
     "browser": true,
     "es2020": true
   },
-  "plugins": ["@typescript-eslint", "react", "react-hooks"],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "react-hooks"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -22,11 +26,18 @@
     "react/prop-types": "off",
     "react/no-unescaped-entities": "off",
     "react-hooks/rules-of-hooks": "error",
-    "prefer-arrow-callback": ["error", {
-      "allowNamedFunctions": true
-    }],
+    "react/jsx-key": "off",
+    "prefer-arrow-callback": [
+      "error",
+      {
+        "allowNamedFunctions": true
+      }
+    ],
     "no-console": "warn",
-    "max-lines": ["warn", 150],
+    "max-lines": [
+      "warn",
+      150
+    ],
     "no-trailing-spaces": "warn",
     "curly": "error",
     "no-duplicate-imports": "warn",
