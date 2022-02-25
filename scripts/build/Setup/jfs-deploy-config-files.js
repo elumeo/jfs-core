@@ -50,10 +50,11 @@ const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
             from: path_1.default.resolve(cypress, 'cypress.json'),
             to: path_1.default.resolve(process.cwd(), 'cypress.json')
         },
-        ...['cypress.json', 'Dockerfile', 'docker-compose-test.yml'].map(fileName => ({
-            from: path_1.default.resolve(cypress, fileName),
-            to: path_1.default.resolve(process.cwd(), fileName)
-        }))
+        // TODO: re-enable when testing becomes relevant
+        // ...['cypress.json', 'Dockerfile', 'docker-compose-test.yml'].map(fileName => ({
+        //   from: path.resolve(cypress, fileName),
+        //   to: path.resolve(process.cwd(), fileName)
+        // }))
     ];
     yield Promise.all(copy.map(({ from, to }) => fs_extra_1.default.copyFile(from, to)));
 });
