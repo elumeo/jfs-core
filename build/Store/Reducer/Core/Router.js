@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -34,14 +23,12 @@ var Action = __importStar(require("../../Action"));
 var typesafe_actions_1 = require("typesafe-actions");
 var initialState = {
     routeType: null,
-    location: undefined,
-    params: undefined,
 };
 var Router = (0, typesafe_actions_1.createReducer)(initialState)
-    .handleAction(Action.enterAuthorizedRoute, function (state) { return (__assign(__assign({}, state), { routeType: 'authorized' })); })
-    .handleAction(Action.enterUnauthorizedRoute, function (state) { return (__assign(__assign({}, state), { routeType: 'unauthorized' })); })
-    .handleAction(Action.updateRouteDetails, function (state, _a) {
-    var _b = _a.payload, location = _b.location, params = _b.params;
-    return (__assign(__assign({}, state), { location: location, params: params }));
-});
+    .handleAction(Action.enterAuthorizedRoute, function () { return ({
+    routeType: 'authorized',
+}); })
+    .handleAction(Action.enterUnauthorizedRoute, function () { return ({
+    routeType: 'unauthorized',
+}); });
 exports.default = Router;

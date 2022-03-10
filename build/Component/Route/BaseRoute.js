@@ -43,29 +43,18 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var react_router_dom_1 = require("react-router-dom");
-var Action = __importStar(require("../../Store/Action"));
-var react_redux_1 = require("react-redux");
 var react_intl_1 = require("react-intl");
 var BaseRoute = function (_a) {
-    var Component = _a.Component, translationId = _a.translationId, updateDocumentTitle = _a.updateDocumentTitle, rest = __rest(_a, ["Component", "translationId", "updateDocumentTitle"]);
-    var location = (0, react_router_dom_1.useLocation)();
-    var params = (0, react_router_dom_1.useParams)();
-    var dispatch = (0, react_redux_1.useDispatch)();
+    var Component = _a.Component, translationId = _a.translationId, _b = _a.component, component = _b === void 0 ? Component : _b, rest = __rest(_a, ["Component", "translationId", "component"]);
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
     (0, react_1.useEffect)(function () {
-        dispatch(Action.updateRouteDetails({ location: location, params: params }));
-    }, [rest.path]);
-    if (Component) {
-        rest.component = Component;
-    }
-    if (updateDocumentTitle === true) {
         if (translationId) {
             document.title += ' | ' + formatMessage({ id: translationId });
         }
         else {
             document.title = formatMessage({ id: 'app.title' });
         }
-    }
-    return react_1.default.createElement(react_router_dom_1.Route, __assign({}, rest));
+    }, [translationId]);
+    return react_1.default.createElement(react_router_dom_1.Route, __assign({ component: component }, rest));
 };
 exports.default = BaseRoute;

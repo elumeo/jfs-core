@@ -4,6 +4,7 @@ import { createEpicMiddleware } from 'redux-observable';
 import { routerMiddleware } from 'connected-react-router';
 import { createHashHistory } from 'history';
 import { Epic, EpicMiddleware } from 'Types/Redux';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const window: any;
 export const history = createHashHistory();

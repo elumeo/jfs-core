@@ -9,7 +9,6 @@
 // import * as Header from './Component/Header';
 // import reducer from './Store/Reducer/Global';
 // import epic from './Store/Epic';
-//
 // import * as Notification from './Component/Notification';
 // import Snackbar from './Component/Snackbar';
 // import Overlay from './Component/Overlay';
@@ -17,7 +16,6 @@
 // import packageJson from '../package.json';
 // import { create } from './Store';
 // import { history } from './Store/Middleware';
-//
 // ReactDOM.render(
 //   <App
 //     store={create(epic, reducer(history))}
