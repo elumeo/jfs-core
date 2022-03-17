@@ -14,7 +14,7 @@ process.env.NODE_ENV = 'production';
 const production = {
   ...common,
   mode: 'production',
-  output: {
+  output: {
     filename: PATH.UNIQUE_BUNDLE_NAME,
     path: PATH.PUBLIC,
     publicPath: ''
@@ -50,7 +50,7 @@ const production = {
       inject: false,
       favicon: PATH.FAVICON,
       templateParameters: {
-        BUNDLE_FILE_NAME : PATH.UNIQUE_BUNDLE_NAME
+        BUNDLE_FILE_NAME: PATH.UNIQUE_BUNDLE_NAME
       }
     })
   ]

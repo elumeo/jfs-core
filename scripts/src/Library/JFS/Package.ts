@@ -10,7 +10,7 @@ const combine = (scripts: Type.Package.Script[]) => (
       [name]: command
     }),
     {
-      "test": "echo('running tests is not yet supported')",
+      "test": "echo 'running tests is not yet supported'",
       //"test": "cypress run-ct --env COMPARE_IMAGE_SNAPSHOTS=true",
       //"test-interactive": "cypress open-ct --env COMPARE_IMAGE_SNAPSHOTS=true",
       //"test-updateSnapshots": "docker-compose -f docker-compose-test.yml run --rm app rm -rf cypress/snapshots/* && npm test ### https://github.com/jaredpalmer/cypress-image-snapshot/issues/74 ### -> # cypress run-ct --env updateSnapshots=true",
