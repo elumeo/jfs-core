@@ -9,7 +9,6 @@ import System from './System';
 import WebSocket from './WebSocket';
 import Notification from './Notification';
 import { Epic } from 'Types/Redux';
-import * as Selector from 'Store/Selector/Core'
 import { createIntl, createIntlCache } from 'react-intl';
 
 const cache = createIntlCache();
@@ -21,13 +20,13 @@ export const wrap = (
     wrapper(
       epic(action$, state$, {
         ...dependencies,
-        intl:
-          Selector.translationLanguage(state$.value)//.Core.Language.language
+        intl: () =>
+          state$.value.Core.Language.language
             ? createIntl(
               {
-                locale: Selector.translationLanguage(state$.value),
-                messages: (Selector.translations(state$.value)[
-                  Selector.translationLanguage(state$.value)
+                locale: state$.value.Core.Language.language,
+                messages: (state$.value.Core.Language.messages[
+                  state$.value.Core.Language.language
                 ] as unknown) as Record<string, string>,
               },
               cache,
