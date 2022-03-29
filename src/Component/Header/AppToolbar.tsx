@@ -19,11 +19,13 @@ export type Props = {
   right?: JSX.Element;
   variant?: 'regular' | 'dense';
   position?: 'static' | 'fixed' | 'absolute' | 'sticky' | 'relative';
+  color?: 'primary' | 'secondary'
 };
 
 const AppToolbar: React.FC<Props> = ({
   variant = 'dense',
   position = 'sticky',
+  color = 'primary',
   ...tools
 }) => {
   const theme = useTheme<Theme>();
@@ -31,7 +33,7 @@ const AppToolbar: React.FC<Props> = ({
   const { openNavigation } = useActions();
   const openDrawer = React.useCallback(() => openNavigation(), []);
   return (
-    <AppBar position={position}>
+    <AppBar position={position} color={color}>
       <Toolbar
         disableGutters
         variant={variant}
@@ -40,9 +42,9 @@ const AppToolbar: React.FC<Props> = ({
           container
           justifyContent={'space-between'}
           alignItems={'center'}
-          // height='100%'
-          // boxSizing='border-box'
-          // paddingRight={theme.typography.pxToRem(4)}
+        // height='100%'
+        // boxSizing='border-box'
+        // paddingRight={theme.typography.pxToRem(4)}
         >
           <Grid
             container

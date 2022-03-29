@@ -40,12 +40,12 @@ var useActions_1 = __importDefault(require("../../Store/useActions"));
 var core_1 = require("@material-ui/core");
 var styles_1 = require("@material-ui/styles");
 var AppToolbar = function (_a) {
-    var _b = _a.variant, variant = _b === void 0 ? 'dense' : _b, _c = _a.position, position = _c === void 0 ? 'sticky' : _c, tools = __rest(_a, ["variant", "position"]);
+    var _b = _a.variant, variant = _b === void 0 ? 'dense' : _b, _c = _a.position, position = _c === void 0 ? 'sticky' : _c, _d = _a.color, color = _d === void 0 ? 'primary' : _d, tools = __rest(_a, ["variant", "position", "color"]);
     var theme = (0, styles_1.useTheme)();
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
     var openNavigation = (0, useActions_1.default)().openNavigation;
     var openDrawer = react_1.default.useCallback(function () { return openNavigation(); }, []);
-    return (react_1.default.createElement(core_1.AppBar, { position: position },
+    return (react_1.default.createElement(core_1.AppBar, { position: position, color: color },
         react_1.default.createElement(core_1.Toolbar, { disableGutters: true, variant: variant, style: { height: theme.mixins.toolbar.minHeight } },
             react_1.default.createElement(core_1.Grid, { container: true, justifyContent: 'space-between', alignItems: 'center' },
                 react_1.default.createElement(core_1.Grid, { container: true, item: true, xs: 4, justifyContent: 'flex-start', alignItems: 'center' },
