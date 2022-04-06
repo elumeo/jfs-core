@@ -29,6 +29,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initialState = void 0;
 var typesafe_actions_1 = require("typesafe-actions");
@@ -59,7 +68,7 @@ var WebSocket = (0, typesafe_actions_1.createReducer)(exports.initialState)
     .handleAction([
     Action.webSocketJoinRoomLoadingAction,
     Action.webSocketJoinRoomSuccessAction,
-    Action.webSocketJoinRoomFailureAction,
+    Action.webSocketJoinRoomFailureAction
 ], function (state, action) {
     var _a;
     var newRooms = [];
@@ -71,8 +80,10 @@ var WebSocket = (0, typesafe_actions_1.createReducer)(exports.initialState)
             }
         }
     }
-    newRooms.push(action.payload);
-    return __assign(__assign({}, state), (_a = {}, _a[action.payload.namespace] = __assign(__assign({}, state[action.payload.namespace]), { rooms: newRooms }), _a));
+    newRooms.push(__assign({}, action.payload));
+    return __assign(__assign({}, state), (_a = {},
+        _a[action.payload.namespace] = __assign(__assign({}, state[action.payload.namespace]), { rooms: __spreadArray([], newRooms, true) }),
+        _a));
 })
     .handleAction(Action.webSocketLeaveRoomSuccessAction, function (state, action) {
     var _a;
@@ -97,7 +108,7 @@ var WebSocket = (0, typesafe_actions_1.createReducer)(exports.initialState)
         isConnected: false,
         isConnecting: false,
         connectionError: null,
-        rooms: [],
+        rooms: []
     }, _a)));
 });
 exports.default = WebSocket;
