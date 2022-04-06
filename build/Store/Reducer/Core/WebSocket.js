@@ -67,7 +67,7 @@ var WebSocket = (0, typesafe_actions_1.createReducer)(exports.initialState)
         for (var _i = 0, _b = state[action.payload.namespace].rooms; _i < _b.length; _i++) {
             var room = _b[_i];
             if (room.name !== action.payload.name) {
-                newRooms.push(room);
+                newRooms.push(__assign({}, room));
             }
         }
     }
@@ -80,7 +80,7 @@ var WebSocket = (0, typesafe_actions_1.createReducer)(exports.initialState)
     for (var _i = 0, _b = state[action.payload.namespace].rooms; _i < _b.length; _i++) {
         var room = _b[_i];
         if (room.name !== action.payload.room) {
-            newRooms.push(room);
+            newRooms.push(__assign({}, room));
         }
         else {
             var newRoom = __assign({}, room);

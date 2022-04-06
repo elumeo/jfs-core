@@ -63,7 +63,7 @@ const WebSocket = createReducer<State, ActionType<typeof Action>>(initialState)
       if (state[action.payload.namespace] !== undefined) {
         for (const room of state[action.payload.namespace].rooms) {
           if (room.name !== action.payload.name) {
-            newRooms.push(room);
+            newRooms.push({ ...room });
           }
         }
       }
@@ -82,7 +82,7 @@ const WebSocket = createReducer<State, ActionType<typeof Action>>(initialState)
     const newRooms: Type.IWebSocketRoomConnection[] = [];
     for (const room of state[action.payload.namespace].rooms) {
       if (room.name !== action.payload.room) {
-        newRooms.push(room);
+        newRooms.push({ ...room });
       }
       else {
         const newRoom = {
