@@ -32,7 +32,6 @@ const connectSuccess: Epic = (action$, state$) =>
             ? []
             : config.JfsWebSocketClient.AutoRoomSubscriptions;
       }
-
       const stateJoinedRooms: string[] = [];
       const stateLeftRooms: string[] = [];
       for (const stateRoom of state$.value.Core.WebSocket[action.payload]

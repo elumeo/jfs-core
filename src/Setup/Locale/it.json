@@ -40,5 +40,6 @@
   "table.noResults": "Nessun risultato",
   "product.type.onDemand": "Creation",
   "product.type.disabledOnDemand": "Ex-creation",
-  "product.details": "Dettagli del prodotto"
+  "product.details": "Dettagli del prodotto",
+  "webSocket.room": "WebSocket Room"
 }

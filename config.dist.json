@@ -9,8 +9,9 @@
     "HostV": "http://localhost:8080",
     "PathV": "",
     "Host": "https://api-test.juwelo.de",
-    "Path": "/staging/websocket.services",
-    "PrivateNamespace": "Jsc2Jfs"
+    "Path": "/staging/websocket2.services",
+    "PrivateNamespace": "Jsc2Jfs",
+    "AutoRoomSubscriptions": ["currentGame", "plannedGames"]
   },
   "Language": "de",
   "Currency": "EUR",
@@ -18,4 +19,3 @@
   "ContainerLanguage": "de",
   "AppName": "jfs_Boilerplate"
 }
-  

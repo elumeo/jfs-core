@@ -27,10 +27,13 @@ var WSClient_1 = require("../../../API/WS/WSClient");
 var useActions_1 = __importDefault(require("../../../Store/useActions"));
 var WebSocket = function (_a) {
     var children = _a.children;
-    var webSocketUpdateRoomAction = (0, useActions_1.default)().webSocketUpdateRoomAction;
+    var _b = (0, useActions_1.default)(), webSocketUpdateRoomAction = _b.webSocketUpdateRoomAction, webSocketConnectFailedAction = _b.webSocketConnectFailedAction;
     (0, react_1.useEffect)(function () {
         WSClient_1.WSClient.listenRoomsObservable$.subscribe(function (roomData) {
             return webSocketUpdateRoomAction(roomData);
+        });
+        WSClient_1.WSClient.connectionErrorObservable$.subscribe(function (error) {
+            webSocketConnectFailedAction(error);
         });
     }, []);
     return react_1.default.createElement(react_1.default.Fragment, null, children);

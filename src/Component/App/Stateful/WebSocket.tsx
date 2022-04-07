@@ -9,16 +9,20 @@ export type Props = {
   config?: Type.Configuration;
   webSocketConnectionReducer?: typeof initialState;
   webSocketUpdateRoomAction?: typeof Action.webSocketUpdateRoomAction;
+  webSocketConnectFailedAction?: typeof Action.webSocketConnectFailedAction;
 };
 
 const WebSocket: React.FC = ({ children }) => {
-  const { webSocketUpdateRoomAction } = useActions();
+  const { webSocketUpdateRoomAction, webSocketConnectFailedAction } = useActions();
 
   useEffect(
     () => {
       WSClient.listenRoomsObservable$.subscribe(roomData =>
-        webSocketUpdateRoomAction(roomData),
+        webSocketUpdateRoomAction(roomData)
       );
+      WSClient.connectionErrorObservable$.subscribe(error => {
+        webSocketConnectFailedAction(error);
+      });
     },
     []
   );

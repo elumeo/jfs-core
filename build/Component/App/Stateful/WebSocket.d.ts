@@ -6,6 +6,7 @@ export declare type Props = {
     config?: Type.Configuration;
     webSocketConnectionReducer?: typeof initialState;
     webSocketUpdateRoomAction?: typeof Action.webSocketUpdateRoomAction;
+    webSocketConnectFailedAction?: typeof Action.webSocketConnectFailedAction;
 };
 declare const WebSocket: React.FC;
 export default WebSocket;

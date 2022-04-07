@@ -39,7 +39,12 @@ const WebSocket = createReducer<State, ActionType<typeof Action>>(initialState)
       ...state[action.payload.namespace],
       isConnecting: false,
       isConnected: false,
-      connectionError: action.payload.message
+      connectionError: action.payload.message,
+      // rooms: state[action.payload.namespace].rooms.map(room => {
+      //   room.isJoining = false;
+      //   room.hasJoined = false;
+      //   return room;
+      // })
     }
   }))
   .handleAction(Action.webSocketDisconnectSuccessAction, (state, action) => ({

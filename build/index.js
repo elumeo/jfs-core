@@ -9,6 +9,7 @@
 // import * as Header from './Component/Header';
 // import reducer from './Store/Reducer/Global';
 // import epic from './Store/Epic';
+//
 // import * as Notification from './Component/Notification';
 // import Snackbar from './Component/Snackbar';
 // import Overlay from './Component/Overlay';
@@ -16,6 +17,8 @@
 // import packageJson from '../package.json';
 // import { create } from './Store';
 // import { history } from './Store/Middleware';
+// import Indicator from './Component/WebSocket/Room/Status/Indicator';
+//
 // ReactDOM.render(
 //   <App
 //     store={create(epic, reducer(history))}
@@ -26,6 +29,12 @@
 //       left={<Header.BackendIndicator />}
 //       right={
 //         <>
+//           <Indicator client={{
+//             Host: "https://api-test.juwelo.de",
+//             Path: "/staging/websocket2.services",
+//             PrivateNamespace: "Jsc2Jfs",
+//             AutoRoomSubscriptions: ["currentGame", "plannedGames"]
+//           }} roomName={'currentGame'}/>
 //           <Settings.Button />
 //           <Notification.Button.Show />
 //         </>
