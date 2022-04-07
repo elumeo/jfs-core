@@ -9,18 +9,16 @@ import { Epic } from 'Types/Redux';
 const joinRoomRequest: Epic = (action$, state$) => {
   return action$.pipe(
     filter(TA.isActionOf(Action.webSocketJoinRoomRequestAction)),
-    map(action => {
-      return {
-        isJoining: true,
-        hasJoined: false,
-        error: null,
-        name: WSClient.prepareRoomName(action.payload.room, state$.value),
-        namespace: action.payload.namespace,
-      } as WebSocket.IWebSocketRoomConnection;
-    }),
-    switchMap(roomState =>
-      of(Action.webSocketJoinRoomLoadingAction(roomState)),
-    ),
+    map((action): WebSocket.IWebSocketRoomConnection => ({
+      isJoining: true,
+      hasJoined: false,
+      shouldJoin: true,
+      error: null,
+      name: WSClient.prepareRoomName(action.payload.room, state$.value),
+      namespace: action.payload.namespace
+    })),
+    switchMap(roomState => of(Action.webSocketJoinRoomLoadingAction(roomState))
+    )
   );
 };
 

@@ -30,7 +30,11 @@ const WebSocket = createReducer<State, ActionType<typeof Action>>(initialState)
       ...state[action.payload],
       isConnecting: false,
       isConnected: true,
-      connectionError: null
+      connectionError: null,
+      // rooms: state[action.payload].rooms.map(room => {
+      //   room.shouldJoin = false;
+      //   return room;
+      // })
     }
   }))
   .handleAction(Action.webSocketConnectFailedAction, (state, action) => ({
@@ -40,11 +44,18 @@ const WebSocket = createReducer<State, ActionType<typeof Action>>(initialState)
       isConnecting: false,
       isConnected: false,
       connectionError: action.payload.message,
-      // rooms: state[action.payload.namespace].rooms.map(room => {
-      //   room.isJoining = false;
-      //   room.hasJoined = false;
-      //   return room;
-      // })
+    }
+  }))
+  .handleAction(Action.webSocketReconnectAction, (state, action) => ({
+    ...state,
+    [action.payload]: {
+      ...state[action.payload],
+      rooms: state[action.payload].rooms.map(room => {
+        room.shouldJoin = room.isJoining || room.hasJoined;
+        room.isJoining = false;
+        room.hasJoined = false;
+        return room;
+      })
     }
   }))
   .handleAction(Action.webSocketDisconnectSuccessAction, (state, action) => ({

@@ -14,12 +14,11 @@ const joinRoomLoading: Epic = (action$, state$) => {
     concatMap(action => {
       return WSClient.join(action.payload.namespace, action.payload.name).pipe(
         map(name => {
-          const namespace =
-            state$.value.Core.WebSocket[action.payload.namespace];
-          const room =
-            namespace?.rooms?.find(room => room.name === name) || null;
+          const namespace = state$.value.Core.WebSocket[action.payload.namespace];
+          const room = namespace?.rooms?.find(room => room.name === name) || null;
           room.isJoining = false;
           room.hasJoined = true;
+          room.shouldJoin = false;
           return room;
         }),
         switchMap(roomState =>
@@ -31,6 +30,7 @@ const joinRoomLoading: Epic = (action$, state$) => {
             error: err.error.message,
             hasJoined: false,
             isJoining: false,
+            shouldJoin: true,
             namespace: action.payload.namespace,
           };
           const error: AxiosError = {

@@ -48,8 +48,7 @@ var connectSuccess = function (action$, state$) {
                     ? []
                     : config.JscWebSocketClient.AutoRoomSubscriptions;
         }
-        if (config.JfsWebSocketClient !== undefined &&
-            action.payload === config.JfsWebSocketClient.PrivateNamespace) {
+        if (config.JfsWebSocketClient !== undefined && action.payload === config.JfsWebSocketClient.PrivateNamespace) {
             configRooms =
                 config.JfsWebSocketClient.AutoRoomSubscriptions === undefined
                     ? []
@@ -57,10 +56,9 @@ var connectSuccess = function (action$, state$) {
         }
         var stateJoinedRooms = [];
         var stateLeftRooms = [];
-        for (var _i = 0, _a = state$.value.Core.WebSocket[action.payload]
-            .rooms; _i < _a.length; _i++) {
+        for (var _i = 0, _a = state$.value.Core.WebSocket[action.payload].rooms; _i < _a.length; _i++) {
             var stateRoom = _a[_i];
-            if (stateRoom.hasJoined) {
+            if (stateRoom.shouldJoin) {
                 stateJoinedRooms.push(stateRoom.name);
             }
             else {
@@ -89,7 +87,7 @@ var connectSuccess = function (action$, state$) {
             var room = mergedRooms_1[_d];
             var roomData = {
                 namespace: action.payload,
-                room: room,
+                room: room
             };
             roomActions.push(Action.webSocketJoinRoomRequestAction(roomData));
         }

@@ -16,6 +16,9 @@ export const webSocketConnectSuccessAction = createAction(
 export const webSocketConnectFailedAction = createAction(
   'websocket/CONNECT_FAILED',
 )<Type.IWebSocketError>();
+export const webSocketReconnectAction = createAction(
+  'websocket/PREPARE_RECONNECT',
+)<string>();
 
 export const webSocketDisconnectRequestAction = createAction(
   'websocket/DISCONNECT_REQUEST',

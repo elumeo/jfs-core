@@ -58,7 +58,6 @@ var WSClient = /** @class */ (function () {
                     });
                 });
                 _this.sockets[namespace].on(_this.EVENT_RECONNECT, function () {
-                    _this.sockets[namespace].on(_this.EVENT_UPDATE_ROOM, function (roomData) { return _this.listenRoomsSubject.next(roomData); });
                     _this.reconnectSubject.next(namespace);
                 });
             }

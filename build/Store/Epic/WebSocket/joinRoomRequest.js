@@ -25,16 +25,13 @@ var TA = __importStar(require("typesafe-actions"));
 var Action = __importStar(require("../../Action"));
 var WSClient_1 = require("../../../API/WS/WSClient");
 var joinRoomRequest = function (action$, state$) {
-    return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.webSocketJoinRoomRequestAction)), (0, operators_1.map)(function (action) {
-        return {
-            isJoining: true,
-            hasJoined: false,
-            error: null,
-            name: WSClient_1.WSClient.prepareRoomName(action.payload.room, state$.value),
-            namespace: action.payload.namespace,
-        };
-    }), (0, operators_1.switchMap)(function (roomState) {
-        return (0, rxjs_1.of)(Action.webSocketJoinRoomLoadingAction(roomState));
-    }));
+    return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.webSocketJoinRoomRequestAction)), (0, operators_1.map)(function (action) { return ({
+        isJoining: true,
+        hasJoined: false,
+        shouldJoin: true,
+        error: null,
+        name: WSClient_1.WSClient.prepareRoomName(action.payload.room, state$.value),
+        namespace: action.payload.namespace
+    }); }), (0, operators_1.switchMap)(function (roomState) { return (0, rxjs_1.of)(Action.webSocketJoinRoomLoadingAction(roomState)); }));
 };
 exports.default = joinRoomRequest;

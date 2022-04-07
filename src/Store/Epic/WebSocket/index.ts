@@ -9,6 +9,7 @@ import disconnectRequest from './disconnectRequest';
 import joinRoomRequest from './joinRoomRequest';
 import joinRoomLoading from './joinRoomLoading';
 import leaveRoomRequest from './leaveRoomRequest';
+import reconnect from 'Store/Epic/WebSocket/reconnect';
 
 export default combineEpics(
   appIsInitialized,
@@ -16,6 +17,7 @@ export default combineEpics(
   connectSuccess,
   checkForConnectionError,
   checkForReconnect,
+  reconnect,
   disconnectRequest,
   joinRoomLoading,
   joinRoomRequest,

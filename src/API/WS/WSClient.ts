@@ -112,10 +112,6 @@ export class WSClient {
         );
 
         this.sockets[namespace].on(this.EVENT_RECONNECT, () => {
-          this.sockets[namespace].on(
-            this.EVENT_UPDATE_ROOM,
-            (roomData: unknown) => this.listenRoomsSubject.next(roomData),
-          );
           this.reconnectSubject.next(namespace);
         });
       }

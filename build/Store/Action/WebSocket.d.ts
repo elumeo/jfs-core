@@ -4,6 +4,7 @@ export declare const webSocketAddNamespaceAction: import("typesafe-actions").Pay
 export declare const webSocketConnectRequestAction: import("typesafe-actions").PayloadActionCreator<"websocket/CONNECT_REQUEST", string>;
 export declare const webSocketConnectSuccessAction: import("typesafe-actions").PayloadActionCreator<"websocket/CONNECT_SUCCESS", string>;
 export declare const webSocketConnectFailedAction: import("typesafe-actions").PayloadActionCreator<"websocket/CONNECT_FAILED", Type.IWebSocketError>;
+export declare const webSocketReconnectAction: import("typesafe-actions").PayloadActionCreator<"websocket/PREPARE_RECONNECT", string>;
 export declare const webSocketDisconnectRequestAction: import("typesafe-actions").PayloadActionCreator<"websocket/DISCONNECT_REQUEST", string>;
 export declare const webSocketDisconnectSuccessAction: import("typesafe-actions").PayloadActionCreator<"websocket/DISCONNECT_SUCCESS", string>;
 export declare const webSocketJoinRoomRequestAction: import("typesafe-actions").PayloadActionCreator<"websocket/JOIN_ROOM_REQUEST", Type.IWebSocketRoom<string>>;

@@ -18,6 +18,7 @@ export interface IWebSocketRoomConnection {
     namespace: string;
     isJoining: boolean;
     hasJoined: boolean;
+    shouldJoin: boolean;
     name: string;
     error: string;
 }

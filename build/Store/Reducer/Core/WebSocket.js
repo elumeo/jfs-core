@@ -61,6 +61,15 @@ var WebSocket = (0, typesafe_actions_1.createReducer)(exports.initialState)
     var _a;
     return (__assign(__assign({}, state), (_a = {}, _a[action.payload.namespace] = __assign(__assign({}, state[action.payload.namespace]), { isConnecting: false, isConnected: false, connectionError: action.payload.message }), _a)));
 })
+    .handleAction(Action.webSocketReconnectAction, function (state, action) {
+    var _a;
+    return (__assign(__assign({}, state), (_a = {}, _a[action.payload] = __assign(__assign({}, state[action.payload]), { rooms: state[action.payload].rooms.map(function (room) {
+            room.shouldJoin = room.isJoining || room.hasJoined;
+            room.isJoining = false;
+            room.hasJoined = false;
+            return room;
+        }) }), _a)));
+})
     .handleAction(Action.webSocketDisconnectSuccessAction, function (state, action) {
     var _a;
     return (__assign(__assign({}, state), (_a = {}, _a[action.payload] = __assign(__assign({}, state[action.payload]), { isConnecting: false, isConnected: false, connectionError: null, rooms: [] }), _a)));

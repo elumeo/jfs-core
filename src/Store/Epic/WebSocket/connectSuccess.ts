@@ -22,11 +22,7 @@ const connectSuccess: Epic = (action$, state$) =>
             ? []
             : config.JscWebSocketClient.AutoRoomSubscriptions;
       }
-
-      if (
-        config.JfsWebSocketClient !== undefined &&
-        action.payload === config.JfsWebSocketClient.PrivateNamespace
-      ) {
+      if (config.JfsWebSocketClient !== undefined && action.payload === config.JfsWebSocketClient.PrivateNamespace) {
         configRooms =
           config.JfsWebSocketClient.AutoRoomSubscriptions === undefined
             ? []
@@ -34,21 +30,18 @@ const connectSuccess: Epic = (action$, state$) =>
       }
       const stateJoinedRooms: string[] = [];
       const stateLeftRooms: string[] = [];
-      for (const stateRoom of state$.value.Core.WebSocket[action.payload]
-        .rooms) {
-        if (stateRoom.hasJoined) {
+      for (const stateRoom of state$.value.Core.WebSocket[action.payload].rooms) {
+        if (stateRoom.shouldJoin) {
           stateJoinedRooms.push(stateRoom.name);
-        }
-        else {
+        } else {
           stateLeftRooms.push(stateRoom.name);
         }
       }
-
       const cleanedConfigRooms: string[] = [];
       for (const configRoom of configRooms) {
         const preparedConfigRoom = WSClient.prepareRoomName(
           configRoom,
-          state$.value,
+          state$.value
         );
         let foundInLeftRoom = false;
         for (const leftRoom of stateLeftRooms) {
@@ -64,21 +57,19 @@ const connectSuccess: Epic = (action$, state$) =>
       }
       const mergedRooms: string[] = _.uniq([
         ...cleanedConfigRooms,
-        ...stateJoinedRooms,
+        ...stateJoinedRooms
       ]);
-      const roomActions: TA.PayloadAction<
-        string,
-        WebSocket.IWebSocketRoom
-      >[] = [];
+      const roomActions: TA.PayloadAction<string,
+        WebSocket.IWebSocketRoom>[] = [];
       for (const room of mergedRooms) {
         const roomData = {
           namespace: action.payload,
-          room,
+          room
         } as WebSocket.IWebSocketRoom;
         roomActions.push(Action.webSocketJoinRoomRequestAction(roomData));
       }
       return roomActions;
-    }),
+    })
   );
 
 export default connectSuccess;

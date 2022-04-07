@@ -19,14 +19,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkForReconnect = void 0;
+exports.reconnect = void 0;
 var operators_1 = require("rxjs/operators");
 var rxjs_1 = require("rxjs");
 var TA = __importStar(require("typesafe-actions"));
 var Action = __importStar(require("../../Action"));
-var WSClient_1 = require("../../../API/WS/WSClient");
-var checkForReconnect = function (action$) {
-    return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.webSocketConnectRequestAction)), (0, operators_1.concatMap)(function () { return WSClient_1.WSClient.reconnectObservable$; }), (0, operators_1.switchMap)(function (namespace) { return (0, rxjs_1.of)(Action.webSocketReconnectAction(namespace)); }));
+var reconnect = function (action$) {
+    return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.webSocketReconnectAction)), (0, operators_1.switchMap)(function (action) { return (0, rxjs_1.of)(Action.webSocketConnectSuccessAction(action.payload)); }));
 };
-exports.checkForReconnect = checkForReconnect;
-exports.default = exports.checkForReconnect;
+exports.reconnect = reconnect;
+exports.default = exports.reconnect;

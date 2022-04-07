@@ -33,6 +33,7 @@ var joinRoomLoading = function (action$, state$) {
             var room = ((_a = namespace === null || namespace === void 0 ? void 0 : namespace.rooms) === null || _a === void 0 ? void 0 : _a.find(function (room) { return room.name === name; })) || null;
             room.isJoining = false;
             room.hasJoined = true;
+            room.shouldJoin = false;
             return room;
         }), (0, operators_1.switchMap)(function (roomState) {
             return (0, rxjs_1.of)(Action.webSocketJoinRoomSuccessAction(roomState));
@@ -42,6 +43,7 @@ var joinRoomLoading = function (action$, state$) {
                 error: err.error.message,
                 hasJoined: false,
                 isJoining: false,
+                shouldJoin: true,
                 namespace: action.payload.namespace,
             };
             var error = {

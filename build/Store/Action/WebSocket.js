@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.webSocketUpdateRoomAction = exports.webSocketLeaveRoomSuccessAction = exports.webSocketLeaveRoomRequestAction = exports.webSocketJoinRoomFailureAction = exports.webSocketJoinRoomSuccessAction = exports.webSocketJoinRoomLoadingAction = exports.webSocketJoinRoomRequestAction = exports.webSocketDisconnectSuccessAction = exports.webSocketDisconnectRequestAction = exports.webSocketConnectFailedAction = exports.webSocketConnectSuccessAction = exports.webSocketConnectRequestAction = exports.webSocketAddNamespaceAction = void 0;
+exports.webSocketUpdateRoomAction = exports.webSocketLeaveRoomSuccessAction = exports.webSocketLeaveRoomRequestAction = exports.webSocketJoinRoomFailureAction = exports.webSocketJoinRoomSuccessAction = exports.webSocketJoinRoomLoadingAction = exports.webSocketJoinRoomRequestAction = exports.webSocketDisconnectSuccessAction = exports.webSocketDisconnectRequestAction = exports.webSocketReconnectAction = exports.webSocketConnectFailedAction = exports.webSocketConnectSuccessAction = exports.webSocketConnectRequestAction = exports.webSocketAddNamespaceAction = void 0;
 var typesafe_actions_1 = require("typesafe-actions");
 var WebSocket_1 = require("../../Constant/WebSocket");
 exports.webSocketAddNamespaceAction = (0, typesafe_actions_1.createAction)('websocket/ADD_NAMESPACE')();
 exports.webSocketConnectRequestAction = (0, typesafe_actions_1.createAction)('websocket/CONNECT_REQUEST')();
 exports.webSocketConnectSuccessAction = (0, typesafe_actions_1.createAction)('websocket/CONNECT_SUCCESS')();
 exports.webSocketConnectFailedAction = (0, typesafe_actions_1.createAction)('websocket/CONNECT_FAILED')();
+exports.webSocketReconnectAction = (0, typesafe_actions_1.createAction)('websocket/PREPARE_RECONNECT')();
 exports.webSocketDisconnectRequestAction = (0, typesafe_actions_1.createAction)('websocket/DISCONNECT_REQUEST')();
 exports.webSocketDisconnectSuccessAction = (0, typesafe_actions_1.createAction)('websocket/DISCONNECT_SUCCESS')();
 exports.webSocketJoinRoomRequestAction = (0, typesafe_actions_1.createAction)('websocket/JOIN_ROOM_REQUEST')();
