@@ -75,7 +75,6 @@ export class WSClient {
           path: path,
         });
         this.sockets[namespace].on(this.EVENT_AUTHENTICATED, () => {
-          this.sockets[namespace].off(this.EVENT_AUTHENTICATED);
           this.sockets[namespace].on(
             this.EVENT_UPDATE_ROOM,
             (roomData: unknown) => this.listenRoomsSubject.next(roomData),
@@ -100,9 +99,7 @@ export class WSClient {
           });
         });
 
-        this.sockets[namespace].on(
-          this.EVENT_CONNECT_TIMEOUT,
-          (err: unknown) => {
+        this.sockets[namespace].on(this.EVENT_CONNECT_TIMEOUT, (err: unknown) => {
             this.sockets[namespace].off(this.EVENT_UPDATE_ROOM);
             this.connectionErrorSubject.next({
               namespace,

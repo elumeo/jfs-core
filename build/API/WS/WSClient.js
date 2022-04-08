@@ -31,7 +31,6 @@ var WSClient = /** @class */ (function () {
                     path: path,
                 });
                 _this.sockets[namespace].on(_this.EVENT_AUTHENTICATED, function () {
-                    _this.sockets[namespace].off(_this.EVENT_AUTHENTICATED);
                     _this.sockets[namespace].on(_this.EVENT_UPDATE_ROOM, function (roomData) { return _this.listenRoomsSubject.next(roomData); });
                     observer.next(namespace);
                     observer.complete();
