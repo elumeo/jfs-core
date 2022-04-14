@@ -1,7 +1,4 @@
-import { AxiosResponse } from "axios";
-import { Observable } from "rxjs";
-import JscClient from "@elumeo/jfs-core/build/API/JSC/Client";
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { PayloadAction } from "typesafe-actions";
 import { ROOM_UPDATE_ACTION_ID } from "@elumeo/jfs-core/build/Constant/WebSocket";
 import { IWebSocketRoom } from "@elumeo/jfs-core/build/Types/WebSocket";
@@ -9,6 +6,7 @@ namespace JSCApi {
   export interface IUrlParams {
     filter?: string;
     options?: string;
+    searchString?: string;
   }
   export interface IJscClientConfig {
     params?: IUrlParams;
@@ -72,6 +70,9 @@ namespace JSCApi {
         withRemoteStock?: boolean;
         showSpecial?: string;
         isRobotGame?: boolean;
+        version?: number;
+        runningFrom?: string;
+        runningUntil?: string;
         createdAt?: string;
         createdBy?: string;
         modifiedAt?: string;
@@ -80,6 +81,7 @@ namespace JSCApi {
     }
     export namespace WebSocket {
       export interface IWebSocketRoomUpdateDTO<T1> {
+        crc?: string;
         room?: string;
         namespace?: string;
         data?: T1;
@@ -95,16 +97,15 @@ namespace JSCApi {
       namespace: "Jsc2Jfs",
       room: "currentGame",
     };
-    const onRoomUpdateCurrentGameSubject = new Subject<
-      JSCApi.DTO.Game.IGameDTO[]
-    >();
-    const onRoomUpdateCurrentGame$ = onRoomUpdateCurrentGameSubject.asObservable();
+    const onRoomUpdateCurrentGameSubject = new Subject<DTO.Game.IGameDTO[]>();
+    const onRoomUpdateCurrentGame$ =
+      onRoomUpdateCurrentGameSubject.asObservable();
     export const onRoomUpdateCurrentGame = function (
       action: PayloadAction<
         string,
-        JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<JSCApi.DTO.Game.IGameDTO[]>
+        DTO.WebSocket.IWebSocketRoomUpdateDTO<DTO.Game.IGameDTO[]>
       >
-    ): Observable<JSCApi.DTO.Game.IGameDTO[]> {
+    ): Observable<DTO.Game.IGameDTO[]> {
       if (
         action.type === ROOM_UPDATE_ACTION_ID &&
         action.payload.room === ROOM_CURRENT_GAME.room
@@ -123,7 +124,7 @@ namespace JSCApi {
     export const onRoomUpdatePing = function (
       action: PayloadAction<
         string,
-        JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<string>
+        DTO.WebSocket.IWebSocketRoomUpdateDTO<string>
       >
     ): Observable<string> {
       if (
