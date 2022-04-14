@@ -9,18 +9,22 @@ import {
   FormControlLabel,
   Grid,
   Input,
-  InputLabel
+  InputLabel,
+  Typography
 } from '@material-ui/core';
 import AppNavigation from 'Component/AppNavigation';
 import AddToastButton from 'Component/AddToastButton';
 import AddNotificationButton from 'Component/AddNotificationButton';
-import RemoveNotificationGroupSelect from './RemoveNotificationGroupSelect';
+import RemoveNotificationButton from './RemoveNotificationButton';
 import ChangeNotificationPosition from 'Component/ChangeNotificationPosition';
 import ChangeNotificationMax from 'Component/ChangeNotificationMax';
+import useSelector from 'Store/useSelector';
+import { VariantType } from 'notistack';
 
 const Notifications = () => {
   const [persist, setPersist] = useState(false)
   const [groupName, setGroupName] = useState('default')
+  const groups = useSelector(state => Array.from(new Set(state.Core.Notification.history.map(n => n.group))))
   const onPersistChange = useCallback((event, value) => {
     setPersist(value)
   }, [setPersist])
@@ -35,6 +39,8 @@ const Notifications = () => {
             <CardHeader title='Notifications'/>
             <CardContent>
               <Grid container spacing={1} alignItems='flex-end'>
+
+                <Grid item xs={12}><Typography variant='h6'><br/>Configure</Typography></Grid>
                 <Grid item xs={2}>
                   <ChangeNotificationPosition/>
                 </Grid>
@@ -51,24 +57,23 @@ const Notifications = () => {
                   <FormControlLabel control={<Checkbox onChange={onPersistChange}/>} label={'persist'}/>
                 </Grid>
                 <Grid item xs={4}/>
-                <Grid item>
-                  <AddNotificationButton variant='error' persist={persist} group={groupName}/>
-                </Grid>
-                <Grid item>
-                  <AddNotificationButton variant='warning' persist={persist} group={groupName}/>
-                </Grid>
-                <Grid item>
-                  <AddNotificationButton variant='success' persist={persist} group={groupName}/>
-                </Grid>
-                <Grid item>
-                  <AddNotificationButton variant='info' persist={persist} group={groupName}/>
-                </Grid>
-                <Grid item>
-                  <AddNotificationButton variant='default' persist={persist} group={groupName}/>
-                </Grid>
-                <Grid item xs={2}>
-                  <RemoveNotificationGroupSelect/>
-                </Grid>
+
+                <Grid item xs={12}><Typography variant='h6'><br/>Add</Typography></Grid>
+                {['error', 'warning', 'success', 'info', 'default'].map((variant: VariantType) =>
+                  <Grid item>
+                    <AddNotificationButton variant={variant} persist={persist} group={groupName}/>
+                  </Grid>
+                )}
+
+                {groups.length &&
+                  <Grid item xs={12}><Typography variant='h6'><br/>Remove by group</Typography></Grid> || null}
+                {groups.map(group =>
+                  <Grid item>
+                    <RemoveNotificationButton group={group}/>
+                  </Grid>
+                )}
+
+                <Grid item xs={12}><br/></Grid>
                 <Grid item xs={12}>
                   <AddToastButton/>
                 </Grid>

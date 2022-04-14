@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useCallback } from 'react';
-import { useIntl } from 'react-intl';
 import useActions from 'Core/Store/useActions';
 import { Button, IconButton, Theme, Tooltip } from '@material-ui/core';
 import { VariantType } from 'notistack';
@@ -29,8 +28,8 @@ const AddNotificationButton: React.FC<Props> =
      persist = false
    }) => {
     const classes = useStyles({ variant: variant as Severity })
-    const { formatMessage } = useIntl();
     const { addNotification, addToastAction } = useActions();
+    const addNotificationCallback = useCallback(() => addNotification(generateNotification()), [addNotification])
 
     const generateNotification = useCallback((): Notification => {
       const defaultProps: Notification = { group, variant, notistackOptions: { persist } }
@@ -74,12 +73,8 @@ const AddNotificationButton: React.FC<Props> =
     }, [variant, persist, addToastAction])
 
     return (
-      <Button
-        className={classes.root}
-        variant={'outlined'}
-        onClick={() => addNotification(generateNotification())}
-      >
-        {formatMessage({ id: 'Add Notification' })}
+      <Button className={classes.root} variant={'outlined'} onClick={addNotificationCallback}>
+        {variant} Notification
       </Button>
     );
   }
