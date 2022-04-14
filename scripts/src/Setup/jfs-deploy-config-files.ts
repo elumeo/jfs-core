@@ -26,7 +26,7 @@ const eslintrc = (which: Type.Environment.Info['which']) => {
 export const run = async (env: Type.Environment.Info) => {
   const typescript = path.resolve(env.core, 'build-tools', 'typescript');
   const eslint = path.resolve(env.core, 'build-tools', 'eslint');
-  const cypress = path.resolve(env.core, 'build-tools', 'cypress');
+  // const cypress = path.resolve(env.core, 'build-tools', 'cypress');
 
   const copy = [
     {
@@ -36,10 +36,6 @@ export const run = async (env: Type.Environment.Info) => {
     {
       from: path.resolve(eslint, eslintrc(env.which)),
       to: path.resolve(process.cwd(), '.eslintrc')
-    },
-    {
-      from: path.resolve(cypress, 'cypress.json'),
-      to: path.resolve(process.cwd(), 'cypress.json')
     },
     // TODO: re-enable when testing becomes relevant
     // ...['cypress.json', 'Dockerfile', 'docker-compose-test.yml'].map(fileName => ({
