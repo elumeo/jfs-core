@@ -1,9 +1,4 @@
-import {
-  SnackbarAction,
-  useSnackbar,
-  VariantType,
-  OptionsObject,
-} from 'notistack';
+import { OptionsObject, SnackbarAction, useSnackbar, VariantType, } from 'notistack';
 import React from 'react';
 
 export type Notification = {
@@ -25,3 +20,4 @@ export type Notification = {
 };
 
 export type NotificationPosition = 'topRight' | 'bottomRight';
+export type Severity = 'error' | 'success' | 'warning' | 'info';

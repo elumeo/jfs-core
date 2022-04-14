@@ -1,4 +1,4 @@
-import { SnackbarAction, useSnackbar, VariantType, OptionsObject } from 'notistack';
+import { OptionsObject, SnackbarAction, useSnackbar, VariantType } from 'notistack';
 import React from 'react';
 export declare type Notification = {
     id?: string;
@@ -14,3 +14,4 @@ export declare type Notification = {
     timeStamp?: Date;
 };
 export declare type NotificationPosition = 'topRight' | 'bottomRight';
+export declare type Severity = 'error' | 'success' | 'warning' | 'info';

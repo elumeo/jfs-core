@@ -1,14 +1,12 @@
 import React from 'react';
 import MUICard from '@material-ui/core/Card';
 import { Theme, makeStyles } from '@material-ui/core/styles';
-import { Notification } from 'Types/Notification';
+import { Notification, Severity } from 'Types/Notification';
 import { useIntl } from 'react-intl';
 import Content from './Content';
 import Header from './Header';
 import Actions from './Actions';
 import Footer from './Footer';
-
-type Severity = 'error' | 'success' | 'warning' | 'info';
 
 const useStyles = makeStyles<Theme, { variant: Severity }>(theme => ({
   root: {

@@ -1,4 +1,3 @@
-/// <reference types="connected-react-router" />
 export declare const Configuration: ((state: {
     Core: import("../../Reducer/Core").State;
     router: import("connected-react-router").RouterState<unknown>;
