@@ -1,8 +1,8 @@
 import * as React from 'react';
-import useSelector from 'Store/useSelector';
+import useSelector from 'Core/Store/useSelector';
 import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 import { useCallback } from 'react';
-import useActions from 'Store/useActions';
+import useActions from 'Core/Store/useActions';
 import { NotificationPosition } from 'Core/Types/Notification';
 
 const ChangeNotificationPosition: React.FC =
