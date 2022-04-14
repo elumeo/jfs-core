@@ -5,57 +5,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var Card_1 = __importDefault(require("@material-ui/core/Card"));
-var CardHeader_1 = __importDefault(require("@material-ui/core/CardHeader"));
-var CardContent_1 = __importDefault(require("@material-ui/core/CardContent"));
-var CardActions_1 = __importDefault(require("@material-ui/core/CardActions"));
-var Typography_1 = __importDefault(require("@material-ui/core/Typography"));
-var Box_1 = __importDefault(require("@material-ui/core/Box"));
-var IconButton_1 = __importDefault(require("@material-ui/core/IconButton"));
-var Default_1 = __importDefault(require("./Default"));
 var styles_1 = require("@material-ui/core/styles");
-var Icon_1 = __importDefault(require("./Icon"));
-var useActions_1 = __importDefault(require("../../../Store/useActions"));
-var Delete_1 = __importDefault(require("@material-ui/icons/Delete"));
-var notistack_1 = require("notistack");
 var react_intl_1 = require("react-intl");
+var Content_1 = __importDefault(require("./Content"));
+var Header_1 = __importDefault(require("./Header"));
+var Actions_1 = __importDefault(require("./Actions"));
+var Footer_1 = __importDefault(require("./Footer"));
+var useStyles = (0, styles_1.makeStyles)(function (theme) { return ({
+    root: {
+        display: 'grid',
+        width: '100%',
+        gridTemplateColumns: '1fr auto',
+        gridTemplateRows: 'auto auto',
+        maxWidth: theme.spacing(60),
+        minHeight: 'fit-content',
+        backgroundColor: function (props) { var _a, _b; return ((_b = (_a = theme.palette) === null || _a === void 0 ? void 0 : _a[props.variant]) === null || _b === void 0 ? void 0 : _b['main']) || theme.palette['grey']['A400']; },
+        color: function (props) { var _a, _b; return ((_b = (_a = theme.palette) === null || _a === void 0 ? void 0 : _a[props.variant]) === null || _b === void 0 ? void 0 : _b['contrastText']) || theme.palette['grey']['50']; }
+    }
+}); });
 var Card = function (_a) {
-    var _b, _c, _d;
     var notification = _a.notification, temporary = _a.temporary;
-    var palette = (0, styles_1.useTheme)().palette;
-    var removeNotification = (0, useActions_1.default)().removeNotification;
-    var snackbar = (0, notistack_1.useSnackbar)();
-    var _e = (0, react_intl_1.useIntl)(), formatMessage = _e.formatMessage, formatDate = _e.formatDate, formatTime = _e.formatTime;
-    return (react_1.default.createElement(Card_1.default, { style: {
-            width: '100%',
-            minHeight: 'fit-content',
-            backgroundColor: (_b = palette[notification.variant]) === null || _b === void 0 ? void 0 : _b['main'],
-            color: (_c = palette[notification.variant]) === null || _c === void 0 ? void 0 : _c['contrastText']
-        } },
-        react_1.default.createElement(CardHeader_1.default, { avatar: react_1.default.createElement(Icon_1.default, { variant: notification.variant }), title: react_1.default.createElement(Typography_1.default, { variant: 'h6', component: 'div' }, (notification === null || notification === void 0 ? void 0 : notification.isTranslationId)
-                ? formatMessage({ id: notification.title })
-                : notification.title), subheader: react_1.default.createElement(Typography_1.default, { variant: 'subtitle1', component: 'div' }, (notification === null || notification === void 0 ? void 0 : notification.isTranslationId)
-                ? formatMessage({ id: notification.subtitle })
-                : notification.subtitle), subheaderTypographyProps: { color: 'inherit' }, action: react_1.default.createElement(CardActions_1.default, null,
-                notification.action
-                    ? notification.action(snackbar, notification.id, temporary)
-                    : null,
-                react_1.default.createElement(IconButton_1.default, { onClick: function () { return removeNotification(notification.id); } },
-                    react_1.default.createElement(Delete_1.default, { style: {
-                            color: (_d = palette[notification.variant]) === null || _d === void 0 ? void 0 : _d.contrastText
-                        } }))) }),
-        react_1.default.createElement(Box_1.default, { component: CardContent_1.default, pt: 0 },
-            react_1.default.createElement(Typography_1.default, { variant: 'body2', component: 'div' }, (notification === null || notification === void 0 ? void 0 : notification.isTranslationId)
-                ? formatMessage({ id: notification.content })
-                : notification.content),
-            ((notification === null || notification === void 0 ? void 0 : notification.httpDetails) || (notification === null || notification === void 0 ? void 0 : notification.timeStamp)) &&
-                react_1.default.createElement("div", { style: { padding: '4px' } },
-                    (notification === null || notification === void 0 ? void 0 : notification.httpDetails) && react_1.default.createElement(Typography_1.default, { variant: 'caption', component: 'div' }, notification.httpDetails),
-                    (notification === null || notification === void 0 ? void 0 : notification.timeStamp) &&
-                        react_1.default.createElement(Typography_1.default, { variant: 'caption', component: 'div' },
-                            formatDate(notification.timeStamp, { dateStyle: 'medium' }),
-                            "\u00A0",
-                            formatTime(notification.timeStamp, { timeStyle: 'medium' }))))));
+    var variant = notification.variant, isTranslationId = notification.isTranslationId;
+    var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
+    var classes = useStyles({ variant: variant });
+    var title = isTranslationId && notification.title
+        ? formatMessage({ id: notification.title })
+        : notification.title;
+    var subtitle = isTranslationId && notification.subtitle
+        ? formatMessage({ id: notification.subtitle })
+        : notification.subtitle;
+    var content = isTranslationId && notification.content
+        ? formatMessage({ id: notification.content })
+        : notification.content;
+    return (react_1.default.createElement(Card_1.default, { className: classes.root },
+        react_1.default.createElement(Header_1.default, { title: title, subtitle: subtitle || content, variant: notification.variant }),
+        react_1.default.createElement(Content_1.default, null, subtitle ? content : null),
+        react_1.default.createElement(Actions_1.default, { id: notification === null || notification === void 0 ? void 0 : notification.id, action: notification.action, temporary: temporary }),
+        react_1.default.createElement(Footer_1.default, { timeStamp: !temporary && notification.timeStamp || undefined, httpDetails: notification.httpDetails })));
 };
-Card.Default = Default_1.default;
-Card.Icon = Icon_1.default;
-exports.default = Card;
+exports.default = react_1.default.memo(Card);

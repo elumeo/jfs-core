@@ -18,6 +18,7 @@ const Overlay: React.FC = () => (
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        padding: 0
       }}>
       <History.All />
     </CardContent>

@@ -14,7 +14,7 @@ const useAutoHideDuration = (words: string[]): number => {
     setAutoHideDuration(
       next >= MINIMUM_AUTO_HIDE_DURATION ? next : MINIMUM_AUTO_HIDE_DURATION,
     );
-  }, [JSON.stringify(words)]);
+  }, [words]);
 
   return autoHideDuration;
 };

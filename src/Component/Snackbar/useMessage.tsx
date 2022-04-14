@@ -9,12 +9,11 @@ const useMessage = (toast: Toast, words: string[]): React.ReactNode => {
   React.useEffect(() => {
     if (toast?.contentMessage || toast?.contentTranslationId) {
       setMessage(words.join(' '));
-    }
-    else if (toast?.contentError && toast?.contentError instanceof Error) {
+    } else if (toast?.contentError && toast?.contentError instanceof Error) {
       const { title, details } = Format.Error.apply(toast.contentError);
-      setMessage(<Failure title={title} details={details} />);
+      setMessage(<Failure title={title} details={details}/>);
     }
-  }, [JSON.stringify(toast), JSON.stringify(words)]);
+  }, [toast?.contentMessage, toast?.contentTranslationId, toast?.contentError, words]);
 
   return message;
 };

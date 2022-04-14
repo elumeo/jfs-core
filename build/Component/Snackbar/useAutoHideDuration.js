@@ -12,7 +12,7 @@ var useAutoHideDuration = function (words) {
     react_1.default.useEffect(function () {
         var next = words.length * READ_TIME_MILLISECONDS_PER_WORD;
         setAutoHideDuration(next >= MINIMUM_AUTO_HIDE_DURATION ? next : MINIMUM_AUTO_HIDE_DURATION);
-    }, [JSON.stringify(words)]);
+    }, [words]);
     return autoHideDuration;
 };
 exports.default = useAutoHideDuration;

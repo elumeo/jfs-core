@@ -2,6 +2,7 @@ import { SnackbarAction, useSnackbar, VariantType, OptionsObject } from 'notista
 import React from 'react';
 export declare type Notification = {
     id?: string;
+    group?: string;
     title?: React.ReactNode;
     subtitle?: React.ReactNode;
     content?: React.ReactNode;
@@ -12,3 +13,4 @@ export declare type Notification = {
     httpDetails?: React.ReactNode;
     timeStamp?: Date;
 };
+export declare type NotificationPosition = 'topRight' | 'bottomRight';

@@ -39,7 +39,7 @@ var useMessage = function (toast, words) {
             var _a = Format.Error.apply(toast.contentError), title = _a.title, details = _a.details;
             setMessage(react_1.default.createElement(Failure_1.default, { title: title, details: details }));
         }
-    }, [JSON.stringify(toast), JSON.stringify(words)]);
+    }, [toast === null || toast === void 0 ? void 0 : toast.contentMessage, toast === null || toast === void 0 ? void 0 : toast.contentTranslationId, toast === null || toast === void 0 ? void 0 : toast.contentError, words]);
     return message;
 };
 exports.default = useMessage;

@@ -57,7 +57,7 @@ var useWords = function (toast) {
             var next = __spreadArray(__spreadArray([], title.split(' '), true), details.split(' '), true);
             setWords(next);
         }
-    }, [JSON.stringify(toast)]);
+    }, [toast === null || toast === void 0 ? void 0 : toast.contentMessage, toast === null || toast === void 0 ? void 0 : toast.contentTranslationId, toast === null || toast === void 0 ? void 0 : toast.contentTranslationValues, toast === null || toast === void 0 ? void 0 : toast.contentError]);
     return words;
 };
 exports.default = useWords;

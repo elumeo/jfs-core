@@ -8,6 +8,7 @@ import React from 'react';
 
 export type Notification = {
   id?: string;
+  group?: string;
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
   content?: React.ReactNode;
@@ -22,3 +23,5 @@ export type Notification = {
   httpDetails?: React.ReactNode;
   timeStamp?: Date;
 };
+
+export type NotificationPosition = 'topRight' | 'bottomRight';

@@ -26,12 +26,33 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var Notification = __importStar(require("../../Notification"));
 var notistack_1 = require("notistack");
+var Redux_1 = require("../../../Types/Redux");
+var styles_1 = require("@material-ui/core/styles");
+var anchorOriginTopRight = { vertical: 'top', horizontal: 'right' };
+var anchorOriginBottomRight = { vertical: 'bottom', horizontal: 'right' };
+var selectNotificationPosition = function (state) { return state.Core.Configuration.config.NotificationPosition; };
+var selectNotificationMax = function (state) { return state.Core.Configuration.config.NotificationMax; };
+var useStyles = (0, styles_1.makeStyles)(function (theme) { return ({
+    root: {
+        background: 'none',
+        padding: 0,
+        '& #notistack-snackbar': {
+            width: '100%',
+            height: '100%',
+            padding: 0
+        }
+    },
+    containerAnchorOriginTopRight: {
+        marginTop: theme.mixins.toolbar.minHeight
+    }
+}); });
 var Snackbar = function (_a) {
     var children = _a.children;
-    return (react_1.default.createElement(notistack_1.SnackbarProvider, { anchorOrigin: {
-            vertical: 'bottom',
-            horizontal: 'right',
-        }, maxSnack: 5, domRoot: document.getElementById('overlay') },
+    var notificationPosition = (0, Redux_1.useSelector)(selectNotificationPosition);
+    var notificationMax = (0, Redux_1.useSelector)(selectNotificationMax);
+    var anchorOrigin = notificationPosition == 'topRight' && anchorOriginTopRight || anchorOriginBottomRight;
+    var classes = useStyles();
+    return (react_1.default.createElement(notistack_1.SnackbarProvider, { className: classes.root, anchorOrigin: anchorOrigin, maxSnack: notificationMax, classes: { containerAnchorOriginTopRight: classes.containerAnchorOriginTopRight }, domRoot: document.getElementById('overlay') },
         react_1.default.createElement(Notification.Notistack, null),
         children));
 };

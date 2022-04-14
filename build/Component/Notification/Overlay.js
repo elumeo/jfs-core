@@ -42,6 +42,7 @@ var Overlay = function () { return (react_1.default.createElement(Card_1.default
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            padding: 0
         } },
         react_1.default.createElement(History.All, null)))); };
 exports.default = Overlay;

@@ -23,10 +23,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setIsNotificationHistoryOpen = exports.addErrorNotification = exports.removeAllNotifications = exports.removeNotification = exports.addNotification = void 0;
+exports.setIsNotificationHistoryOpen = exports.addErrorNotification = exports.removeAllNotifications = exports.removeNotificationGroup = exports.removeNotification = exports.addNotification = void 0;
 var TA = __importStar(require("typesafe-actions"));
 exports.addNotification = TA.createAction('notification/ADD')();
-exports.removeNotification = TA.createAction('notification/remove')();
-exports.removeAllNotifications = TA.createAction('notification/remove_all')();
+exports.removeNotification = TA.createAction('notification/REMOVE')();
+exports.removeNotificationGroup = TA.createAction('notification/REMOVE_GROUP')();
+exports.removeAllNotifications = TA.createAction('notification/REMOVE_ALL')();
 exports.addErrorNotification = TA.createAction('notification/ERROR_ADD')();
 exports.setIsNotificationHistoryOpen = TA.createAction('notification/SET_IS_HISTORY_OPEN')();

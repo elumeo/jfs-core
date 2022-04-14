@@ -7,16 +7,16 @@ var react_1 = __importDefault(require("react"));
 var useSeverity = function (toast) {
     var _a = react_1.default.useState('info'), severity = _a[0], setSeverity = _a[1];
     react_1.default.useEffect(function () {
-        if (toast === null || toast === void 0 ? void 0 : toast.isSuccess) {
+        if (toast && toast.isSuccess) {
             setSeverity('success');
         }
-        else if (toast === null || toast === void 0 ? void 0 : toast.isError) {
+        else if (toast && toast.isError) {
             setSeverity('error');
         }
-        else {
+        else if (toast) {
             setSeverity('info');
         }
-    }, [JSON.stringify(toast)]);
+    }, [!!toast, toast === null || toast === void 0 ? void 0 : toast.isSuccess, toast === null || toast === void 0 ? void 0 : toast.isError]);
     return severity;
 };
 exports.default = useSeverity;

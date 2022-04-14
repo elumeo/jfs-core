@@ -61,6 +61,10 @@ var Notification = TA.createReducer(initialState)
     var id = _a.payload;
     return (__assign(__assign({}, state), { history: state.history.filter(function (notification) { return notification.id !== id; }) }));
 })
+    .handleAction(Action.removeNotificationGroup, function (state, _a) {
+    var group = _a.payload;
+    return (__assign(__assign({}, state), { history: state.history.filter(function (notification) { return notification.group != group; }) }));
+})
     .handleAction(Action.removeAllNotifications, function (state) { return (__assign(__assign({}, state), { history: [] })); })
     .handleAction(Action.setIsNotificationHistoryOpen, function (state, _a) {
     var payload = _a.payload;

@@ -17,5 +17,7 @@
   "Currency": "EUR",
   "Container": "juwelotv",
   "ContainerLanguage": "de",
-  "AppName": "jfs_Boilerplate"
+  "AppName": "jfs_Boilerplate",
+  "NotificationPosition": "bottomRight",
+  "NotificationMax": 5
 }

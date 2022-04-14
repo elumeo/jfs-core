@@ -1,4 +1,5 @@
 import { Language } from './Language';
+import { NotificationPosition } from 'Types/Notification';
 
 export type WebSocketClient = {
   Host: string;
@@ -13,6 +14,8 @@ export type Configuration = {
   Language: Language;
   Currency: string;
   ForceHTTPS: boolean;
+  NotificationPosition: NotificationPosition;
+  NotificationMax: number;
   AppName: string;
   JscClient: {
     Host: string;

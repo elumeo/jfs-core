@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -38,29 +49,40 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var lodash_1 = __importDefault(require("lodash"));
 var notistack = __importStar(require("notistack"));
+var Button = __importStar(require("./Button"));
 var Redux_1 = require("../../Types/Redux");
 var Card_1 = __importDefault(require("./Card"));
-var Button = __importStar(require("./Button"));
 var Notistack = function () {
     var all = (0, Redux_1.useSelector)(function (state) { return state.Core.Notification.history; });
     var isHistoryOpen = (0, Redux_1.useSelector)(function (state) { return state.Core.Notification.isHistoryOpen; });
+    var NotificationMax = (0, Redux_1.useSelector)(function (state) { return state.Core.Configuration.config.NotificationMax; });
     var _a = react_1.default.useState([]), shown = _a[0], setShown = _a[1];
     var snackbar = notistack.useSnackbar();
     react_1.default.useEffect(function () {
         var missing = lodash_1.default.differenceBy(all, shown, 'id');
+        var deleted = lodash_1.default.differenceBy(shown, all, 'id');
+        var persistentShown = shown.filter(function (n) { var _a; return (_a = n.notistackOptions) === null || _a === void 0 ? void 0 : _a.persist; });
+        var requiredDismissCount = Math.max(0, persistentShown.length + missing.length - NotificationMax);
+        for (var i = 0; i < requiredDismissCount; i++) {
+            var notification = persistentShown.shift();
+            notification.notistackOptions.persist = false;
+            snackbar.closeSnackbar(notification.id);
+        }
+        deleted.forEach(function (notification) {
+            snackbar.closeSnackbar(notification.id);
+        });
         if (!isHistoryOpen) {
             missing.forEach(function (notification) {
-                snackbar.enqueueSnackbar(react_1.default.createElement(Card_1.default.Default, { notification: notification, temporary: true }), {
-                    key: notification.id,
-                    variant: notification.variant,
-                    action: (react_1.default.createElement(react_1.default.Fragment, null,
-                        notification.action &&
-                            notification.action(snackbar, notification.id, true),
-                        react_1.default.createElement(Button.Dismiss, { onClick: function () { return snackbar.closeSnackbar(notification.id); } }))),
-                });
+                var customAction = notification.action;
+                notification.action = function (snackbar, id, temporary) { return (react_1.default.createElement(react_1.default.Fragment, null,
+                    temporary && react_1.default.createElement(Button.Dismiss, { onClick: function () { return snackbar.closeSnackbar(notification.id); } }),
+                    customAction && customAction(snackbar, notification.id, true))); };
+                snackbar.enqueueSnackbar(react_1.default.createElement(Card_1.default, { notification: notification, temporary: true }), __assign(__assign({}, notification.notistackOptions), { key: notification.id }));
             });
         }
-        setShown(__spreadArray(__spreadArray([], shown, true), missing, true));
+        if (missing.length) {
+            setShown(__spreadArray(__spreadArray([], shown, true), missing, true));
+        }
     }, [all]);
     return null;
 };

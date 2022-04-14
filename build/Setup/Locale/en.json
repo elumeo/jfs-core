@@ -30,6 +30,7 @@
     "logout.failed": "Logout failed",
     "notification.action_1": "Action 1",
     "notification.dismiss": "Dismiss",
+    "notification.removeAll": "Remove all",
     "notification.hide": "Hide",
     "please.login": "Please login",
     "session.expired": "Session expired",

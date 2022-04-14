@@ -6,16 +6,14 @@ const useSeverity = (toast: Toast): Color => {
   const [severity, setSeverity] = React.useState<Color>('info');
 
   React.useEffect(() => {
-    if (toast?.isSuccess) {
+    if (toast && toast.isSuccess) {
       setSeverity('success');
-    }
-    else if (toast?.isError) {
+    } else if (toast && toast.isError) {
       setSeverity('error');
-    }
-    else {
+    } else if (toast) {
       setSeverity('info');
     }
-  }, [JSON.stringify(toast)]);
+  }, [!!toast, toast?.isSuccess, toast?.isError]);
 
   return severity;
 };

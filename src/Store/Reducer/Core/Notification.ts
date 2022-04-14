@@ -26,6 +26,10 @@ const Notification = TA.createReducer<State, ActionType>(initialState)
     ...state,
     history: state.history.filter(notification => notification.id !== id),
   }))
+  .handleAction(Action.removeNotificationGroup, (state, { payload: group }): State => ({
+    ...state,
+    history: state.history.filter(notification => notification.group != group)
+  }))
 
   .handleAction(Action.removeAllNotifications, state => ({
     ...state,

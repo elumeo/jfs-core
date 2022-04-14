@@ -15,39 +15,37 @@ export type Props = StatefulProps & {
   title?: string;
 };
 
-const App: React.FC<Props> = ({
-  children,
-  allowRobotLogin,
-  translations,
-  packageJSON,
-  title,
-  store,
-}) => (
-  <Stateful store={store}>
-    <Title
-      value={title || (packageJSON.name as string)}/>
-    <Stateful.Initialized>
-      <Stateful.International translations={translations}>
-        {({ locale }) => (
-          <Stateless
-            locale={locale}
-            messages={translations[locale]}>
-            <Stateful.Snackbar>
-              {children}
-            </Stateful.Snackbar>
-          </Stateless>
-        )}
-      </Stateful.International>
-    </Stateful.Initialized>
-    <Stateful.Uninitialized>
-      <Stateless.Style>
-        <Stateful.Initializer
-          allowRobotLogin={allowRobotLogin}
-          packageJSON={packageJSON}
-          translations={translations}/>
-      </Stateless.Style>
-    </Stateful.Uninitialized>
-  </Stateful>
-);
+const App: React.FC<Props> =
+  ({
+     children,
+     allowRobotLogin,
+     translations,
+     packageJSON,
+     title,
+     store,
+   }) => (
+    <Stateful store={store}>
+      <Title value={title || (packageJSON.name as string)}/>
+      <Stateful.Initialized>
+        <Stateful.International translations={translations}>
+          {({ locale }) => (
+            <Stateless locale={locale} messages={translations[locale]}>
+              <Stateful.Snackbar>
+                {children}
+              </Stateful.Snackbar>
+            </Stateless>
+          )}
+        </Stateful.International>
+      </Stateful.Initialized>
+      <Stateful.Uninitialized>
+        <Stateless.Style>
+          <Stateful.Initializer
+            allowRobotLogin={allowRobotLogin}
+            packageJSON={packageJSON}
+            translations={translations}/>
+        </Stateless.Style>
+      </Stateful.Uninitialized>
+    </Stateful>
+  );
 
 export default App;

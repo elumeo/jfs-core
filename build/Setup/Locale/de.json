@@ -30,6 +30,7 @@
     "logout.failed": "Abmelden fehlgeschlagen",
     "notification.action_1": "Aktion 1",
     "notification.dismiss": "Verwerfen",
+    "notification.removeAll": "Alle entfernen",
     "notification.hide": "Ausblenden",
     "please.login": "Bitte anmelden",
     "session.expired": "Sitzung abgelaufen",

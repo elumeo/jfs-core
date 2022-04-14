@@ -16,7 +16,7 @@ const Empty: React.FC = () => {
         flexDirection: 'column',
         color: 'grey',
       }}>
-      <NotificationsIcon fontSize='large' ref={iconRef} />
+      <NotificationsIcon fontSize='large' ref={iconRef}/>
       <Typography>{formatMessage({ id: 'app.noNotifications' })}</Typography>
     </div>
   );

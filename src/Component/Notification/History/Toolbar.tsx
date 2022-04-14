@@ -1,10 +1,10 @@
 import React from 'react';
 import CardActions from '@material-ui/core/CardActions';
-import * as Button from './Button';
+import DeleteAllButton from './DeleteAllButton';
 
 const Toolbar: React.FC = () => (
   <CardActions>
-    <Button.DismissAllNotifications />
+    <DeleteAllButton/>
   </CardActions>
 );
 
