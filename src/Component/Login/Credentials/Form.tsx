@@ -11,7 +11,11 @@ const style: React.CSSProperties = {
   marginBottom: 32,
 };
 
-const Form: React.FC = ({ children }) => (
+type Props = {
+  children: React.ReactNode;
+}
+
+const Form = ({ children }: Props) => (
   <form autoCorrect='false' autoComplete='off' style={style}>
     {children}
   </form>

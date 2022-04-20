@@ -90,14 +90,19 @@ var useRowStyles = (0, styles_1.makeStyles)(function (theme) { return (0, styles
 var VirtualizedTable = react_1.default.forwardRef(function (props, ref) {
     var _a = props.columns, columns = _a === void 0 ? [] : _a, _b = props.onRowClick, onRowClick = _b === void 0 ? null : _b, rowCount = props.rowCount, rowGetter = props.rowGetter, _c = props.headerHeight, headerHeight = _c === void 0 ? 48 : _c, _d = props.rowHeight, rowHeight = _d === void 0 ? 48 : _d, onResize = props.onResize, tableProps = __rest(props, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight", "onResize"]);
     var rowClasses = useRowStyles(props);
-    var headerRenderer = (0, react_1.useCallback)(function (headerProps) { return react_1.default.createElement(TableHeadDefault_1.default, { height: headerHeight, disableSort: headerProps.disableSort, sortBy: headerProps.sortBy, sortDirection: headerProps.sortDirection, label: headerProps.label, dataKey: headerProps.dataKey }); }, [headerHeight]);
+    var headerRenderer = (0, react_1.useCallback)(function (headerProps) { return react_1.default.createElement(TableHeadDefault_1.default, { height: headerHeight, disableSort: headerProps.disableSort, sortBy: headerProps.sortBy, sortDirection: headerProps.sortDirection, 
+        // @ts-ignore I do not get what the problem here is React.ReactNode != ReactNode ???
+        label: headerProps.label, dataKey: headerProps.dataKey }); }, [headerHeight]);
     var getFinalColumnWidth = (0, react_1.useCallback)(function (columnWidth, tableWidth) { return typeof columnWidth !== 'number'
         ? columnWidth(tableWidth)
         : columnWidth; }, []);
     var getCellRenderer = (0, react_1.useCallback)(function (props) { return react_1.default.createElement(TableCell_1.TableCellDefault, { height: typeof rowHeight === 'number' ? rowHeight : rowHeight({ index: props.rowIndex }), cellData: props.cellData, isNumeric: (props.columnIndex != null && columns[props.columnIndex].numeric) || false }); }, []);
+    // @ts-ignore See https://github.com/bvaughn/react-virtualized/issues/1739
     return react_1.default.createElement(react_virtualized_1.AutoSizer, { onResize: onResize }, function (_a) {
         var height = _a.height, width = _a.width;
-        return (react_1.default.createElement(react_virtualized_1.Table, __assign({ ref: ref, height: height, width: width, rowClassName: rowClasses.root, headerHeight: headerHeight, rowHeight: rowHeight, rowCount: rowCount, rowGetter: rowGetter, onRowClick: onRowClick, gridStyle: exports.noOutlineStyles, style: tableStyle }, tableProps), columns.map(function (_a) {
+        return (
+        // @ts-ignore See https://github.com/bvaughn/react-virtualized/issues/1739
+        react_1.default.createElement(react_virtualized_1.Table, __assign({ ref: ref, height: height, width: width, rowClassName: rowClasses.root, headerHeight: headerHeight, rowHeight: rowHeight, rowCount: rowCount, rowGetter: rowGetter, onRowClick: onRowClick, gridStyle: exports.noOutlineStyles, style: tableStyle }, tableProps), columns.map(function (_a) {
             var dataKey = _a.dataKey, columnWidth = _a.width, other = __rest(_a, ["dataKey", "width"]);
             return react_1.default.createElement(react_virtualized_1.Column, __assign({ key: dataKey, headerStyle: exports.columnHeaderStyles, headerRenderer: headerRenderer, style: columnStyle, cellRenderer: getCellRenderer, dataKey: dataKey, width: getFinalColumnWidth(columnWidth, width) }, other));
         })));

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StandardTextFieldProps } from '@material-ui/core';
 declare type Props = {
-    currency?: string;
+    currency: string;
     value: React.ReactText;
     showDecimals?: boolean;
     min?: number;

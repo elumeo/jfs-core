@@ -1,3 +1,6 @@
 import React from 'react';
-declare const Initialized: React.FC;
+declare type Props = {
+    children: React.ReactNode;
+};
+declare const Initialized: ({ children }: Props) => JSX.Element;
 export default Initialized;

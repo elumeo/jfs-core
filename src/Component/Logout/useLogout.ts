@@ -11,7 +11,7 @@ const useLogout = (): {
   const { logout, closeLogout } = useActions();
   const open = useSelector(state => state.Core.Logout.logoutOpen);
   const pending = useSelector(state => state.Core.Logout.logoutPending);
-  const _logout = React.useCallback(session => logout(session), [logout]);
+  const _logout = React.useCallback<ReturnType<typeof useActions>['logout']>(session => logout(session), [logout]);
   const _closeLogout = React.useCallback(() => closeLogout(), [closeLogout]);
 
   return {

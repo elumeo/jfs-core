@@ -14,7 +14,7 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText, NativeSelect,
+  ListItemText, MenuItem, NativeSelect,
   Paper,
   Table,
   TableBody,
@@ -52,6 +52,9 @@ import TableHeadSelect from 'Component/Table/TableHead/TableHeadSelect';
 import { OptionsObject, VariantType } from 'notistack';
 import { Notification } from 'Types/Notification';
 import Box from '@material-ui/core/Box';
+import { NativeSelectProps } from '@material-ui/core/NativeSelect/NativeSelect';
+import DatePicker from 'Component/DatePicker';
+import SelectClearButton, { SelectClearButtonProps } from 'Component/SelectClearButton';
 
 const tableRowHeight = 48;
 
@@ -194,26 +197,29 @@ const columns: ColumnData[] = [
 ];
 const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment> };
 
-// const selectMenuItems = [
-//   <MenuItem value={'test 1'} key={'menu-item-1'}>Test 1</MenuItem>,
-//   <MenuItem value={'test 2'} key={'menu-item-2'}>Test 2</MenuItem>,
-//   <MenuItem value={'test 3'} key={'menu-item-3'}>Test 3</MenuItem>,
-//   <MenuItem value={'test 4'} key={'menu-item-4'}>Test 4</MenuItem>
-// ];
+const selectMenuItems = [
+  <MenuItem value={'test 1'} key={'menu-item-1'}>Test 1</MenuItem>,
+  <MenuItem value={'test 2'} key={'menu-item-2'}>Test 2</MenuItem>,
+  <MenuItem value={'test 3'} key={'menu-item-3'}>Test 3</MenuItem>,
+  <MenuItem value={'test 4'} key={'menu-item-4'}>Test 4</MenuItem>
+];
 
 const Develop: React.FC = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [testTextFieldValue, setTestTextFieldValue] = useState('');
+  const [testSelectValue, setTestSelectValue] = useState('');
+  const [testDatePickerValue, setTestDatePickerValue] = useState<Date>(null);
   const noRowsRenderer = useCallback(() => <TableRowLoading/>, []);
   const rowGetter = useCallback((row: Index) => rows[row.index], []);
+  const handleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => setTestSelectValue(event === null ? '' : event.target.value as string), []);
   const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
   const persistNotificationsRef = useRef(null)
   const handleOnClickNotification: ButtonProps['onClick'] = useCallback(() => {
     const persist = persistNotificationsRef?.current?.checked
     dispatch(Action.addNotification(generateNotification(persist)))
   }, []);
-  const handleRemoveNotificationsByGroup = useCallback(event => {
+  const handleRemoveNotificationsByGroup = useCallback<NativeSelectProps['onChange']>(event => {
     dispatch(Action.removeNotificationGroup(event.target.value))
   }, [])
   const handleOnClickToast: ButtonProps['onClick'] = useCallback(() => dispatch(Action.addToastAction({
@@ -224,67 +230,67 @@ const Develop: React.FC = () => {
 
   return (
     <div style={{ margin: theme.spacing(1) }}>
-      {/*<Card>*/}
-      {/*  <AppCardHeader title={'Test'} titleIcon={<WarningIcon/>} onRefresh={console.log}/>*/}
-      {/*  <AppCardContent>*/}
-      {/*    Das ist der Inhalt*/}
-      {/*    <IconButton size={'small'} color={'secondary'}><FilterReset/></IconButton>*/}
-      {/*  </AppCardContent>*/}
-      {/*</Card>*/}
-      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
-      {/*  <Card>*/}
-      {/*    <CardContent style={{ height: 600 }}>*/}
-      {/*      <VirtualizedTable*/}
-      {/*        showRowHoverHighlight*/}
-      {/*        rowHeight={tableRowHeight}*/}
-      {/*        rowCount={rows.length}*/}
-      {/*        rowGetter={rowGetter}*/}
-      {/*        noRowsRenderer={noRowsRenderer}*/}
-      {/*        sortBy={'calories'}*/}
-      {/*        sortDirection={'ASC'}*/}
-      {/*        columns={columns}*/}
-      {/*      />*/}
-      {/*    </CardContent>*/}
-      {/*  </Card>*/}
-      {/*</div>*/}
+      <Card>
+        <AppCardHeader title={'Test'} titleIcon={<WarningIcon/>} onRefresh={console.log}/>
+        <AppCardContent>
+          Das ist der Inhalt
+          <IconButton size={'small'} color={'secondary'}><FilterReset/></IconButton>
+        </AppCardContent>
+      </Card>
+      <div style={{ marginTop: theme.spacing(1) }}>
+        <Card>
+          <CardContent style={{ height: 600 }}>
+            <VirtualizedTable
+              showRowHoverHighlight
+              rowHeight={tableRowHeight}
+              rowCount={rows.length}
+              rowGetter={rowGetter}
+              noRowsRenderer={noRowsRenderer}
+              sortBy={'calories'}
+              sortDirection={'ASC'}
+              columns={columns}
+            />
+          </CardContent>
+        </Card>
+      </div>
       <Grid container spacing={1} alignItems={'center'}>
         <Grid item>
-          {/*<DatePicker*/}
-          {/*  label={'DatePicker'}*/}
-          {/*  onChange={console.log}*/}
-          {/*  value={testDatePickerValue}*/}
-          {/*  isClearable={false}*/}
-          {/*/>*/}
+          <DatePicker
+            label={'DatePicker'}
+            onChange={console.log}
+            value={testDatePickerValue}
+            isClearable={false}
+          />
         </Grid>
         <Grid item>
-          {/*<TextFieldClearButton*/}
-          {/*  label={'Textfield'}*/}
-          {/*  onChange={handleTextFieldUpdate}*/}
-          {/*  value={testTextFieldValue}*/}
-          {/*  clearButtonSize={'small'}*/}
-          {/*  InputProps={textFieldInputProps}*/}
-          {/*/>*/}
+          <TextFieldClearButton
+            label={'Textfield'}
+            onChange={handleTextFieldUpdate}
+            value={testTextFieldValue}
+            clearButtonSize={'small'}
+            InputProps={textFieldInputProps}
+          />
         </Grid>
         <Grid item>
-          {/*<TextFieldClearButton*/}
-          {/*  disabled*/}
-          {/*  label={'Textfield'}*/}
-          {/*  onChange={handleTextFieldUpdate}*/}
-          {/*  value={testTextFieldValue}*/}
-          {/*  clearButtonSize={'small'}*/}
-          {/*/>*/}
+          <TextFieldClearButton
+            disabled
+            label={'Textfield'}
+            onChange={handleTextFieldUpdate}
+            value={testTextFieldValue}
+            clearButtonSize={'small'}
+          />
         </Grid>
         <Grid item>
-          {/*<SelectClearButton*/}
-          {/*  label={'Select with Clear Button'}*/}
-          {/*  onChange={handleSelectUpdate}*/}
-          {/*  value={testSelectValue}*/}
-          {/*  clearButtonSize={'small'}*/}
-          {/*>{selectMenuItems}</SelectClearButton>*/}
+          <SelectClearButton
+            label={'Select with Clear Button'}
+            onChange={handleSelectUpdate}
+            value={testSelectValue}
+            clearButtonSize={'small'}
+          >{selectMenuItems}</SelectClearButton>
         </Grid>
-        {/*<Grid item>*/}
-        {/*  <CustomerCard/>*/}
-        {/*</Grid>*/}
+        <Grid item>
+          <CustomerCard/>
+        </Grid>
         <Grid item>
           <FormControlLabel control={
             <Checkbox inputRef={persistNotificationsRef}/>
@@ -303,178 +309,178 @@ const Develop: React.FC = () => {
           <ButtonProgress inProgress onClick={handleOnClickToast}>Toast</ButtonProgress>
         </Grid>
       </Grid>
-      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
-      {/*  <List>*/}
-      {/*    <ListItem>*/}
-      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, true)'}>*/}
-      {/*        {getCurrency('EUR', 100, true, true, true)}*/}
-      {/*      </ListItemText>*/}
-      {/*    </ListItem>*/}
-      {/*    <ListItem>*/}
-      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, false)'}>*/}
-      {/*        {getCurrency('EUR', 100, true, true, false)}*/}
-      {/*      </ListItemText>*/}
-      {/*    </ListItem>*/}
-      {/*    <ListItem>*/}
-      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, true)'}>*/}
-      {/*        {getCurrency('EUR', 100.00, true, true, true)}*/}
-      {/*      </ListItemText>*/}
-      {/*    </ListItem>*/}
-      {/*    <ListItem>*/}
-      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, false)'}>*/}
-      {/*        {getCurrency('EUR', 100.00, true, true, false)}*/}
-      {/*      </ListItemText>*/}
-      {/*    </ListItem>*/}
-      {/*    <ListItem>*/}
-      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, true)'}>*/}
-      {/*        {getCurrency('EUR', 100.5, true, true, true)}*/}
-      {/*      </ListItemText>*/}
-      {/*    </ListItem>*/}
-      {/*    <ListItem>*/}
-      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, false)'}>*/}
-      {/*        {getCurrency('EUR', 100.5, true, true, false)}*/}
-      {/*      </ListItemText>*/}
-      {/*    </ListItem>*/}
-      {/*    <ListItem>*/}
-      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, true)'}>*/}
-      {/*        {getCurrency('EUR', 100.50, true, true, true)}*/}
-      {/*      </ListItemText>*/}
-      {/*    </ListItem>*/}
-      {/*    <ListItem>*/}
-      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, false)'}>*/}
-      {/*        {getCurrency('EUR', 100.50, true, true, false)}*/}
-      {/*      </ListItemText>*/}
-      {/*    </ListItem>*/}
-      {/*    <ListItem>*/}
-      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, true)'}>*/}
-      {/*        {getCurrency('EUR', 100.75, true, true, true)}*/}
-      {/*      </ListItemText>*/}
-      {/*    </ListItem>*/}
-      {/*    <ListItem>*/}
-      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, false)'}>*/}
-      {/*        {getCurrency('EUR', 100.75, true, true, false)}*/}
-      {/*      </ListItemText>*/}
-      {/*    </ListItem>*/}
-      {/*  </List>*/}
-      {/*</div>*/}
-      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
-      {/*  <Grid container>*/}
-      {/*    <Grid item>*/}
-      {/*      <Typography*/}
-      {/*        style={{*/}
-      {/*          margin: theme.spacing(1),*/}
-      {/*          padding: theme.spacing(1),*/}
-      {/*          backgroundColor: theme.palette.info.main,*/}
-      {/*          color: theme.palette.getContrastText(theme.palette.info.main)*/}
-      {/*        }}>Info</Typography>*/}
-      {/*    </Grid>*/}
-      {/*    <Grid item>*/}
-      {/*      <Typography style={{*/}
-      {/*        margin: theme.spacing(1),*/}
-      {/*        padding: theme.spacing(1),*/}
-      {/*        backgroundColor: theme.palette.error.main,*/}
-      {/*        color: theme.palette.getContrastText(theme.palette.error.main)*/}
-      {/*      }}>Error</Typography>*/}
-      {/*    </Grid>*/}
-      {/*    <Grid item>*/}
-      {/*      <Typography style={{*/}
-      {/*        margin: theme.spacing(1),*/}
-      {/*        padding: theme.spacing(1),*/}
-      {/*        backgroundColor: theme.palette.warning.main,*/}
-      {/*        color: theme.palette.getContrastText(theme.palette.warning.main)*/}
-      {/*      }}>Warning</Typography>*/}
-      {/*    </Grid>*/}
-      {/*    <Grid item>*/}
-      {/*      <Typography style={{*/}
-      {/*        margin: theme.spacing(1),*/}
-      {/*        padding: theme.spacing(1),*/}
-      {/*        backgroundColor: theme.palette.success.main,*/}
-      {/*        color: theme.palette.getContrastText(theme.palette.success.main)*/}
-      {/*      }}>Success</Typography>*/}
-      {/*    </Grid>*/}
-      {/*  </Grid>*/}
-      {/*</div>*/}
-      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
-      {/*  <Grid container spacing={1}>*/}
-      {/*    <Grid item xs={3}>*/}
-      {/*      <Paper>*/}
-      {/*        <List dense>*/}
-      {/*          <ListItem button selected={true}>*/}
-      {/*            <ListItemIcon>*/}
-      {/*              <AccountCircleIcon/>*/}
-      {/*            </ListItemIcon>*/}
-      {/*            <ListItemText primary={'primary111'} secondary={'secondary222'}/>*/}
-      {/*          </ListItem>*/}
+      <div style={{ marginTop: theme.spacing(1) }}>
+        <List>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, true)'}>
+              {getCurrency('EUR', 100, true, true, true)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, false)'}>
+              {getCurrency('EUR', 100, true, true, false)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, true)'}>
+              {getCurrency('EUR', 100.00, true, true, true)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, false)'}>
+              {getCurrency('EUR', 100.00, true, true, false)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, true)'}>
+              {getCurrency('EUR', 100.5, true, true, true)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, false)'}>
+              {getCurrency('EUR', 100.5, true, true, false)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, true)'}>
+              {getCurrency('EUR', 100.50, true, true, true)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, false)'}>
+              {getCurrency('EUR', 100.50, true, true, false)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, true)'}>
+              {getCurrency('EUR', 100.75, true, true, true)}
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, false)'}>
+              {getCurrency('EUR', 100.75, true, true, false)}
+            </ListItemText>
+          </ListItem>
+        </List>
+      </div>
+      <div style={{ marginTop: theme.spacing(1) }}>
+        <Grid container>
+          <Grid item>
+            <Typography
+              style={{
+                margin: theme.spacing(1),
+                padding: theme.spacing(1),
+                backgroundColor: theme.palette.info.main,
+                color: theme.palette.getContrastText(theme.palette.info.main)
+              }}>Info</Typography>
+          </Grid>
+          <Grid item>
+            <Typography style={{
+              margin: theme.spacing(1),
+              padding: theme.spacing(1),
+              backgroundColor: theme.palette.error.main,
+              color: theme.palette.getContrastText(theme.palette.error.main)
+            }}>Error</Typography>
+          </Grid>
+          <Grid item>
+            <Typography style={{
+              margin: theme.spacing(1),
+              padding: theme.spacing(1),
+              backgroundColor: theme.palette.warning.main,
+              color: theme.palette.getContrastText(theme.palette.warning.main)
+            }}>Warning</Typography>
+          </Grid>
+          <Grid item>
+            <Typography style={{
+              margin: theme.spacing(1),
+              padding: theme.spacing(1),
+              backgroundColor: theme.palette.success.main,
+              color: theme.palette.getContrastText(theme.palette.success.main)
+            }}>Success</Typography>
+          </Grid>
+        </Grid>
+      </div>
+      <div style={{ marginTop: theme.spacing(1) }}>
+        <Grid container spacing={1}>
+          <Grid item xs={3}>
+            <Paper>
+              <List dense>
+                <ListItem button selected={true}>
+                  <ListItemIcon>
+                    <AccountCircleIcon/>
+                  </ListItemIcon>
+                  <ListItemText primary={'primary111'} secondary={'secondary222'}/>
+                </ListItem>
 
-      {/*          <ListItem button selected={false}>*/}
-      {/*            <ListItemIcon>*/}
-      {/*              <ContactPhoneIcon/>*/}
-      {/*            </ListItemIcon>*/}
-      {/*            <ListItemText primary={'primary222'} secondary={'secondary222'}/>*/}
-      {/*          </ListItem>*/}
-      {/*        </List>*/}
-      {/*      </Paper>*/}
-      {/*    </Grid>*/}
+                <ListItem button selected={false}>
+                  <ListItemIcon>
+                    <ContactPhoneIcon/>
+                  </ListItemIcon>
+                  <ListItemText primary={'primary222'} secondary={'secondary222'}/>
+                </ListItem>
+              </List>
+            </Paper>
+          </Grid>
 
-      {/*    <Grid item xs={3}>*/}
-      {/*      <Paper>*/}
-      {/*        <List>*/}
-      {/*          <ListItem button selected={true}>*/}
-      {/*            <ListItemIcon>*/}
-      {/*              <AccountCircleIcon/>*/}
-      {/*            </ListItemIcon>*/}
-      {/*            <ListItemText primary={'primary111'} secondary={'secondary222'}/>*/}
-      {/*          </ListItem>*/}
+          <Grid item xs={3}>
+            <Paper>
+              <List>
+                <ListItem button selected={true}>
+                  <ListItemIcon>
+                    <AccountCircleIcon/>
+                  </ListItemIcon>
+                  <ListItemText primary={'primary111'} secondary={'secondary222'}/>
+                </ListItem>
 
-      {/*          <ListItem button selected={false}>*/}
-      {/*            <ListItemIcon>*/}
-      {/*              <ContactPhoneIcon/>*/}
-      {/*            </ListItemIcon>*/}
-      {/*            <ListItemText primary={'primary222'} secondary={'secondary222'}/>*/}
-      {/*          </ListItem>*/}
-      {/*        </List>*/}
-      {/*      </Paper>*/}
-      {/*    </Grid>*/}
+                <ListItem button selected={false}>
+                  <ListItemIcon>
+                    <ContactPhoneIcon/>
+                  </ListItemIcon>
+                  <ListItemText primary={'primary222'} secondary={'secondary222'}/>
+                </ListItem>
+              </List>
+            </Paper>
+          </Grid>
 
-      {/*    <Grid item xs={3}>*/}
-      {/*      <Card>*/}
-      {/*        <CardContent>*/}
-      {/*          <Grid container spacing={1}>*/}
-      {/*            <Grid item><Chip label={'label label1'} icon={<ContactPhoneIcon/>}/></Grid>*/}
-      {/*            <Grid item><Chip label={'label label2'} clickable icon={<AccountCircleIcon/>}/></Grid>*/}
-      {/*            <Grid item><Chip size={'small'} label={'label label3'} clickable icon={<AccountCircleIcon/>}/></Grid>*/}
-      {/*          </Grid>*/}
-      {/*        </CardContent>*/}
-      {/*      </Card>*/}
-      {/*    </Grid>*/}
-      {/*  </Grid>*/}
-      {/*</div>*/}
+          <Grid item xs={3}>
+            <Card>
+              <CardContent>
+                <Grid container spacing={1}>
+                  <Grid item><Chip label={'label label1'} icon={<ContactPhoneIcon/>}/></Grid>
+                  <Grid item><Chip label={'label label2'} clickable icon={<AccountCircleIcon/>}/></Grid>
+                  <Grid item><Chip size={'small'} label={'label label3'} clickable icon={<AccountCircleIcon/>}/></Grid>
+                </Grid>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </div>
 
-      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
-      {/*  <Card>*/}
-      {/*    <CardContent style={{ height: 300 }}>*/}
-      {/*      <TableContainer style={{ maxHeight: 300 }}>*/}
-      {/*        <Table stickyHeader>*/}
-      {/*          <TableHead>*/}
-      {/*            <TableRow>*/}
-      {/*              {['calories', 'carbs', 'dessert', 'fat', 'id', 'protein'].map((column, index) => <TableCell*/}
-      {/*                key={'column-head-index-' + index}>{column}</TableCell>)}*/}
-      {/*            </TableRow>*/}
-      {/*          </TableHead>*/}
-      {/*          <TableBody>*/}
-      {/*            {rows.map((row, index) => <TableRow key={'row-body-index' + index}>*/}
-      {/*              <TableCell>{row.calories}</TableCell>*/}
-      {/*              <TableCell>{row.carbs}</TableCell>*/}
-      {/*              <TableCell>{row.dessert}</TableCell>*/}
-      {/*              <TableCell>{row.fat}</TableCell>*/}
-      {/*              <TableCell>{row.id}</TableCell>*/}
-      {/*            </TableRow>)}*/}
-      {/*          </TableBody>*/}
-      {/*        </Table>*/}
-      {/*      </TableContainer>*/}
-      {/*    </CardContent>*/}
-      {/*  </Card>*/}
-      {/*</div>*/}
+      <div style={{ marginTop: theme.spacing(1) }}>
+        <Card>
+          <CardContent style={{ height: 300 }}>
+            <TableContainer style={{ maxHeight: 300 }}>
+              <Table stickyHeader>
+                <TableHead>
+                  <TableRow>
+                    {['calories', 'carbs', 'dessert', 'fat', 'id', 'protein'].map((column, index) => <TableCell
+                      key={'column-head-index-' + index}>{column}</TableCell>)}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row, index) => <TableRow key={'row-body-index' + index}>
+                    <TableCell>{row.calories}</TableCell>
+                    <TableCell>{row.carbs}</TableCell>
+                    <TableCell>{row.dessert}</TableCell>
+                    <TableCell>{row.fat}</TableCell>
+                    <TableCell>{row.id}</TableCell>
+                  </TableRow>)}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };

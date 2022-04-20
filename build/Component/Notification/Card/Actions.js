@@ -47,8 +47,9 @@ var Actions = function (_a) {
     var temporary = _a.temporary, action = _a.action, id = _a.id;
     var classes = useStyles();
     var snackbar = (0, notistack_1.useSnackbar)();
-    return (React.createElement(CardActions_1.default, { className: classes.root },
-        !temporary ? React.createElement(Button.Delete, { id: id }) : null,
-        action ? action(snackbar, id, temporary) : null));
+    return React.createElement(CardActions_1.default, { className: classes.root },
+        React.createElement(React.Fragment, null,
+            !temporary ? React.createElement(Button.Delete, { id: id }) : null,
+            action ? action(snackbar, id, temporary) : null));
 };
 exports.default = React.memo(Actions);

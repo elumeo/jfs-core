@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
-const Content: React.FC = ({ children }) => (
-  <div style={{width: '100%'}}>{children}</div>
-);
+type ContentProps = {
+  children: React.ReactNode
+}
+
+const Content = ({ children }: ContentProps) => {
+  const styles = useMemo(() => ({ width: '100%' }), []);
+  return <div style={styles}>{children}</div>
+};
 
 export default Content;

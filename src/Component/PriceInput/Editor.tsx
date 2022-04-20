@@ -1,56 +1,34 @@
 import React, { memo } from 'react';
-import {
-  TextField,
-  StandardTextFieldProps,
-  InputAdornment,
-} from '@material-ui/core';
-import useCurrency from 'Effect/useCurrency';
+import { TextField, StandardTextFieldProps, InputAdornment, TextFieldProps } from '@material-ui/core';
 import { Currency } from 'Utilities/Format';
+import usePriceFieldAdornment from 'Effect/usePriceFieldAdornment';
 
-type Props = {
-  currency?: string;
+export type Props = {
+  currency: string;
   selectOnFocus?: boolean;
   value: React.ReactText;
   min?: number;
   max?: number;
 } & Partial<StandardTextFieldProps>;
 
-const Editor: React.FC<Props> = ({
-  currency = useCurrency(),
-  value = 0.0,
-  selectOnFocus = true,
-  min = null,
-  max = null,
-  ...props
-}) => {
-  const onFocus = React.useCallback(
-    e => {
-      if (selectOnFocus) {
-        e.target.select();
-      }
-    },
-    [selectOnFocus],
-  );
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Editor = ({ currency, value = 0.0, selectOnFocus = true, min = null, max = null, ...props }: Props) => {
+  const onFocus = React.useCallback<TextFieldProps['onFocus']>(event => {
+    if (selectOnFocus) {
+      event.target.select();
+    }
+  }, [selectOnFocus]);
+  const [adornmentType, adornmentPosition, styles] = usePriceFieldAdornment(currency);
 
-  return (
-    <TextField
-      value={value}
-      autoFocus
-      onFocus={onFocus}
-      type={'number'}
-      InputProps={{
-        [currency.toLowerCase() === 'eur'
-          ? 'endAdornment'
-          : 'startAdornment']: (
-            <InputAdornment
-              position={currency.toLowerCase() === 'eur' ? 'end' : 'start'}
-              style={{ userSelect: 'none' }}>
-              {Currency.getCurrencySign(currency)}
-            </InputAdornment>
-          ),
-      }}
-      {...props}
-    />
-  );
+  return <TextField
+    value={value}
+    autoFocus
+    onFocus={onFocus}
+    type={'number'}
+    InputProps={{
+      [adornmentType]: <InputAdornment position={adornmentPosition} style={styles}>{Currency.getCurrencySign(currency)}</InputAdornment>
+    }}
+    {...props}
+  />;
 };
 export default memo(Editor);

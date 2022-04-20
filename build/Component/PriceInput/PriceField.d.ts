@@ -8,5 +8,5 @@ declare type Props = {
     max?: number;
     showDecimals?: boolean;
 } & Partial<StandardTextFieldProps>;
-declare const _default: React.NamedExoticComponent<Props>;
+declare const _default: React.MemoExoticComponent<({ currency, value, selectOnFocus, showDecimals, ...props }: Props) => JSX.Element>;
 export default _default;

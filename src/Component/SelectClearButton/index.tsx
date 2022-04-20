@@ -1,7 +1,6 @@
 import React, { memo, ReactElement, useCallback, useEffect, useState } from 'react';
 import { IconButton, IconProps, InputAdornment, Select, SelectProps } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
-import { InputProps as StandardInputProps } from '@material-ui/core/Input/Input';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 
 export type SelectClearButtonProps = Partial<SelectProps> & {
@@ -63,7 +62,7 @@ const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clea
       <CloseIcon fontSize={getIconSize()} />
     </IconButton>
   );
-  const preparedEndAdornment: Partial<StandardInputProps> = <InputAdornment position={'end'}>
+  const preparedEndAdornment = <InputAdornment position={'end'}>
     {endAdornment && (endAdornment as ReactElement).props.children}
     {endAdornmentClearButton}
   </InputAdornment>;

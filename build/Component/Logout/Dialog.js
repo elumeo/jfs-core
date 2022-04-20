@@ -26,7 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
+var react_1 = __importStar(require("react"));
 var react_intl_1 = require("react-intl");
 var Dialog_1 = __importDefault(require("@material-ui/core/Dialog"));
 var DialogContent_1 = __importDefault(require("@material-ui/core/DialogContent"));
@@ -39,14 +39,14 @@ var Dialog = function (_a) {
     var children = _a.children, onLogout = _a.onLogout, _b = _a.pending, pending = _b === void 0 ? false : _b;
     var logout = (0, useLogout_1.default)();
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
+    var styles = (0, react_1.useMemo)(function () { return ({ minHeight: 80 }); }, []);
+    var onClick = (0, react_1.useCallback)(function () { return onLogout ? onLogout() : logout.commit({}); }, [onLogout]);
     return (react_1.default.createElement(Dialog_1.default, { open: logout.open, onClose: logout.close, "aria-labelledby": 'logout-description', disableEscapeKeyDown: logout.pending === true },
         react_1.default.createElement(DialogTitle_1.default, null, formatMessage({ id: 'app.logout.title' })),
-        react_1.default.createElement(DialogContent_1.default, { style: {
-                minHeight: 80,
-            } },
+        react_1.default.createElement(DialogContent_1.default, { style: styles },
             react_1.default.createElement(Text_1.default, { override: children })),
         react_1.default.createElement(DialogActions_1.default, null,
             react_1.default.createElement(Button.Cancel, { onClick: logout.close }),
-            react_1.default.createElement(Button.Submit, { pending: pending || logout.pending, onClick: function () { return (onLogout ? onLogout() : logout.commit({})); } }))));
+            react_1.default.createElement(Button.Submit, { pending: pending || logout.pending, onClick: onClick }))));
 };
 exports.default = Dialog;

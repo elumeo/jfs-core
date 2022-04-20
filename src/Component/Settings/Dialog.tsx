@@ -7,8 +7,13 @@ import Button from '@material-ui/core/Button';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'Types/Redux';
 import useActions from 'Store/useActions';
+import { DialogContentProps } from '@material-ui/core/DialogContent/DialogContent';
 
-const Dialog: React.FC = ({ children }) => {
+type Props = {
+  children: DialogContentProps['children'];
+}
+
+const Dialog = ({ children }: Props) => {
   const { closeSettings } = useActions();
   const { formatMessage } = useIntl();
   const open = useSelector(state => state.Core.Settings.settingsOpen);

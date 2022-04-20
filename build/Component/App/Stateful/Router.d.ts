@@ -1,3 +1,6 @@
 import React from 'react';
-declare const Router: React.FC;
+export declare type Props = {
+    children: React.ReactNode;
+};
+declare const Router: ({ children }: Props) => JSX.Element;
 export default Router;

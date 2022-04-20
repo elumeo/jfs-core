@@ -37,11 +37,10 @@ var Drawer = function (_a) {
     var closeNavigation = (0, useActions_1.default)().closeNavigation;
     var navigationOpen = (0, Redux_1.useSelector)(function (state) { return state.Core.Navigation.navigationOpen; });
     var close = (0, react_1.useCallback)(function () { return closeNavigation(); }, []);
-    return (react_1.default.createElement(Drawer_1.default, { open: navigationOpen, anchor: 'left', onClose: close },
-        react_1.default.createElement("div", { style: {
-                width: 270,
-            } },
+    var styles = (0, react_1.useMemo)(function () { return ({ width: 270 }); }, []);
+    return react_1.default.createElement(Drawer_1.default, { open: navigationOpen, anchor: 'left', onClose: close },
+        react_1.default.createElement("div", { style: styles },
             react_1.default.createElement(Header_1.default, null),
-            react_1.default.createElement(List_1.default, null, children))));
+            react_1.default.createElement(List_1.default, null, children)));
 };
 exports.default = Drawer;

@@ -1,4 +1,4 @@
-import React, { memo, ReactNode, useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { TableCell, TableSortLabel } from '@material-ui/core';
 import { SortDirectionType } from 'react-virtualized';
 import { flexContainerStyles, rowNoClickStyles, visuallyHiddenStyle } from 'Component/Table/VirtualizedTable';
@@ -16,7 +16,7 @@ export type TableHeadDefaultProps = {
   disableSort?: boolean;
   sortBy?: string;
   sortDirection?: SortDirectionType;
-  label?: ReactNode;
+  label?: React.ReactNode;
   dataKey: string;
 };
 

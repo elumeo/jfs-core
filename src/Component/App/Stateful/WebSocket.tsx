@@ -6,13 +6,14 @@ import useActions from 'Store/useActions';
 import * as Action from 'Store/Action';
 
 export type Props = {
+  children: React.ReactNode;
   config?: Type.Configuration;
   webSocketConnectionReducer?: typeof initialState;
   webSocketUpdateRoomAction?: typeof Action.webSocketUpdateRoomAction;
   webSocketConnectFailedAction?: typeof Action.webSocketConnectFailedAction;
 };
 
-const WebSocket: React.FC = ({ children }) => {
+const WebSocket = ({ children }: Props) => {
   const { webSocketUpdateRoomAction, webSocketConnectFailedAction } = useActions();
 
   useEffect(

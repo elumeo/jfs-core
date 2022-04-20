@@ -17,20 +17,20 @@ const useStyles = makeStyles(({
     direction: 'rtl',
     justifyItems: 'start'
   }
-}))
+}));
 
 type Props = Pick<CardProps, 'temporary'> & Pick<Notification, 'action' | 'id'>
 
 const Actions: React.FC<Props> = ({ temporary, action, id }) => {
-  const classes = useStyles()
+  const classes = useStyles();
   const snackbar = useSnackbar();
 
-  return (
-    <CardActions className={classes.root}>
-      {!temporary ? <Button.Delete id={id}/> : null}
+  return <CardActions className={classes.root}>
+    <>
+      {!temporary ? <Button.Delete id={id} /> : null}
       {action ? action(snackbar, id, temporary) : null}
-    </CardActions>
-  )
-}
+    </>
+  </CardActions>;
+};
 
-export default React.memo(Actions)
+export default React.memo(Actions);

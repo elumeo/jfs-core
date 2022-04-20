@@ -50,20 +50,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
-var useCurrency_1 = __importDefault(require("../../Effect/useCurrency"));
 var Format_1 = require("../../Utilities/Format");
+var usePriceFieldAdornment_1 = __importDefault(require("../../Effect/usePriceFieldAdornment"));
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 var Editor = function (_a) {
     var _b;
-    var _c = _a.currency, currency = _c === void 0 ? (0, useCurrency_1.default)() : _c, _d = _a.value, value = _d === void 0 ? 0.0 : _d, _e = _a.selectOnFocus, selectOnFocus = _e === void 0 ? true : _e, _f = _a.min, min = _f === void 0 ? null : _f, _g = _a.max, max = _g === void 0 ? null : _g, props = __rest(_a, ["currency", "value", "selectOnFocus", "min", "max"]);
-    var onFocus = react_1.default.useCallback(function (e) {
+    var currency = _a.currency, _c = _a.value, value = _c === void 0 ? 0.0 : _c, _d = _a.selectOnFocus, selectOnFocus = _d === void 0 ? true : _d, _e = _a.min, min = _e === void 0 ? null : _e, _f = _a.max, max = _f === void 0 ? null : _f, props = __rest(_a, ["currency", "value", "selectOnFocus", "min", "max"]);
+    var onFocus = react_1.default.useCallback(function (event) {
         if (selectOnFocus) {
-            e.target.select();
+            event.target.select();
         }
     }, [selectOnFocus]);
-    return (react_1.default.createElement(core_1.TextField, __assign({ value: value, autoFocus: true, onFocus: onFocus, type: 'number', InputProps: (_b = {},
-            _b[currency.toLowerCase() === 'eur'
-                ? 'endAdornment'
-                : 'startAdornment'] = (react_1.default.createElement(core_1.InputAdornment, { position: currency.toLowerCase() === 'eur' ? 'end' : 'start', style: { userSelect: 'none' } }, Format_1.Currency.getCurrencySign(currency))),
-            _b) }, props)));
+    var _g = (0, usePriceFieldAdornment_1.default)(currency), adornmentType = _g[0], adornmentPosition = _g[1], styles = _g[2];
+    return react_1.default.createElement(core_1.TextField, __assign({ value: value, autoFocus: true, onFocus: onFocus, type: 'number', InputProps: (_b = {},
+            _b[adornmentType] = react_1.default.createElement(core_1.InputAdornment, { position: adornmentPosition, style: styles }, Format_1.Currency.getCurrencySign(currency)),
+            _b) }, props));
 };
 exports.default = (0, react_1.memo)(Editor);
