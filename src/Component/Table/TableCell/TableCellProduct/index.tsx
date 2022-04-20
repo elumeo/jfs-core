@@ -8,17 +8,19 @@ import { MediaUri } from 'Types/MediaUri';
 
 export type TableCellProductProps = Partial<TableCellRootProps> & {
   id?: string;
+  rowIndex?: number;
   mediaUris?: MediaUri[];
   name?: string;
   productType?: string;
   inStockPool?: boolean;
   hasNoTvLock?: boolean;
   isProductBundle?: boolean;
-  onClick?: (productId: string) => void;
+  onClick?: (productId: string, rowIndex?: number) => void;
 }
 
 const TableCellProduct = ({
                             id = null,
+                            rowIndex = null,
                             mediaUris = null,
                             name = null,
                             productType = null,
@@ -28,7 +30,7 @@ const TableCellProduct = ({
                             onClick = null,
                             ...rest
                           }: TableCellProductProps) => {
-  const handleOnClick = useCallback(() => onClick(id), [onClick, id]);
+  const handleOnClick = useCallback(() => onClick(id, rowIndex), [onClick, id, rowIndex]);
   return <TableCellRoot {...rest} isNumeric={false}>
     {id && <Grid container>
       <Image onClick={handleOnClick} isProductBundle={isProductBundle} id={id} mediaUris={mediaUris} />
