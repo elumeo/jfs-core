@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { MuiPickersUtilsProviderProps } from '@material-ui/pickers/MuiPickersUtilsProvider';
 export declare type Props = {
     children: MuiPickersUtilsProviderProps['children'];

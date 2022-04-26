@@ -1,6 +1,6 @@
 // import './wdyr';
 // import React from 'react';
-// import { createRoot } from 'react-dom/client';
+// import { render } from 'react-dom';
 // import App from './Component/App';
 // import * as Login from './Component/Login';
 // import * as Logout from './Component/Logout';
@@ -19,10 +19,7 @@
 // import { history } from './Store/Middleware';
 // import Indicator from './Component/WebSocket/Room/Status/Indicator';
 //
-// const container = document.getElementById('root');
-// const root = createRoot(container);
-//
-// root.render(<App
+// render(<App
 //   store={create(epic, reducer(history))}
 //   title='core'
 //   translations={Translations}
@@ -52,4 +49,4 @@
 //     </Settings.Dialog>
 //     <Snackbar />
 //   </Overlay>
-// </App>);
+// </App>, document.getElementById('root'));

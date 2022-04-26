@@ -150,17 +150,17 @@ var columns = [
     {
         width: 120,
         label: 'Calories\u00A0(g)',
-        dataKey: 'calories',
+        dataKey: 'calories'
     },
     {
         width: 120,
         label: 'Fat\u00A0(g)',
-        dataKey: 'fat',
+        dataKey: 'fat'
     },
     {
         width: 120,
         label: 'Carbs\u00A0(g)',
-        dataKey: 'carbs',
+        dataKey: 'carbs'
     },
     {
         width: 220,
