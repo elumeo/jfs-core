@@ -59,21 +59,21 @@ import SelectClearButton, { SelectClearButtonProps } from 'Component/SelectClear
 const tableRowHeight = 48;
 
 const generateNotification = (persist = false): Notification => {
-  const rand = Math.round(Math.random() * 100000)
+  const rand = Math.round(Math.random() * 100000);
   const variant: VariantType =
     rand % 7 == 0 && 'error'
     || rand % 5 == 0 && 'warning'
     || rand % 3 == 0 && 'success'
     || rand % 2 == 0 && 'info'
-    || 'default'
-  const id = String(rand)
-  const group = variant.match(/(error|warning)/) ? 'important' : 'unimportant'
+    || 'default';
+  const id = String(rand);
+  const group = variant.match(/(error|warning)/) ? 'important' : 'unimportant';
   const defaultProps: Notification = {
     id,
     group,
     variant,
     notistackOptions: { persist: persist }
-  }
+  };
   switch (variant) {
     case 'error':
       return {
@@ -83,29 +83,29 @@ const generateNotification = (persist = false): Notification => {
         content: <Box display='flex' flexDirection='column'>
           <span>Habitant habitasse, sem etiamnostra etiam. Tristique viverra volutpat mi, ornare non tellus, praesent odio justo platea erat quis. Aliquam est varius, fringilla class, in ad dictumst turpis vivamus eros augue. Nunc fames donec, vehicula phasellus, volutpat sem luctus leo ut. Consequat nulla enim, curae hac, lorem purus cursus feugiat habitant fusce. Ante metus curabitur, litora nec, donec diam bibendum euismod elit placerat neque. Pretium sit, morbi odio iaculis.</span>
           <Box display='flex' flexDirection='row'>
-            <Button color='inherit' startIcon={<Refresh/>}>Try again</Button>
-            <Button color='inherit' startIcon={<Block/>}>Ignore</Button>
+            <Button color='inherit' startIcon={<Refresh />}>Try again</Button>
+            <Button color='inherit' startIcon={<Block />}>Ignore</Button>
           </Box>
         </Box>,
-        action: () => <IconButton color='inherit'><Visibility/></IconButton>
-      }
+        action: () => <IconButton color='inherit'><Visibility /></IconButton>
+      };
     case 'warning':
       return {
         ...defaultProps,
         title: 'Warning',
         subtitle: 'Some changes aren\'t saved yet',
         content: 'The quick brown fox jumps over the lazy dog',
-        action: () => <IconButton><Visibility/></IconButton>
-      }
+        action: () => <IconButton><Visibility /></IconButton>
+      };
     case 'success':
-      return { ...defaultProps, title: 'Changes saved' }
+      return { ...defaultProps, title: 'Changes saved' };
     case 'info':
-      return { ...defaultProps, content: 'Time for a cup of coffee!', action: () => <Button color='inherit'>Get</Button> }
+      return { ...defaultProps, content: 'Time for a cup of coffee!', action: () => <Button color='inherit'>Get</Button> };
     case 'default':
     default:
-      return { ...defaultProps, variant: 'default', content: 'content loaded' }
+      return { ...defaultProps, variant: 'default', content: 'content loaded' };
   }
-}
+};
 
 type DataVirtualizedTable = {
   calories: number;
@@ -154,9 +154,9 @@ const columns: ColumnData[] = [
     dataKey: 'select',
     disableSort: true,
     headerRenderer: () => <TableHeadSelect checked={false} onChange={console.log}
-                                           height={tableRowHeight}/>,
+                                           height={tableRowHeight} />,
     cellRenderer: (cellProps: TableCellProps) => <TableCellSelect checked={false} value={cellProps.cellData}
-                                                                  onChange={console.log} height={tableRowHeight}/>
+                                                                  onChange={console.log} height={tableRowHeight} />
   },
   {
     width: (width: number) => width - (120 * 4),
@@ -165,37 +165,37 @@ const columns: ColumnData[] = [
     disableSort: true,
     cellRenderer: (cellProps: TableCellProps) => <TableCellDefault height={tableRowHeight} cellData={cellProps.cellData}
                                                                    contentEllipseMode={ContentEllipseMode.Lines}
-                                                                   contentEllipseLines={2}/>
+                                                                   contentEllipseLines={2} />
   },
   {
     width: 120,
     label: 'Calories\u00A0(g)',
-    dataKey: 'calories',
+    dataKey: 'calories'
   },
   {
     width: 120,
     label: 'Fat\u00A0(g)',
-    dataKey: 'fat',
+    dataKey: 'fat'
   },
   {
     width: 120,
     label: 'Carbs\u00A0(g)',
-    dataKey: 'carbs',
+    dataKey: 'carbs'
   },
   {
     width: 220,
     label: 'Datum (Range)',
     dataKey: 'datetimeRange',
-    cellRenderer: cellProps => <TableCellDateTimeRange cellData={cellProps.cellData} height={tableRowHeight}/>
+    cellRenderer: cellProps => <TableCellDateTimeRange cellData={cellProps.cellData} height={tableRowHeight} />
   },
   {
     width: 180,
     label: 'Datum',
     dataKey: 'datetime',
-    cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} height={tableRowHeight}/>
+    cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} height={tableRowHeight} />
   }
 ];
-const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment> };
+const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon /></InputAdornment> };
 
 const selectMenuItems = [
   <MenuItem value={'test 1'} key={'menu-item-1'}>Test 1</MenuItem>,
@@ -210,18 +210,18 @@ const Develop: React.FC = () => {
   const [testTextFieldValue, setTestTextFieldValue] = useState('');
   const [testSelectValue, setTestSelectValue] = useState('');
   const [testDatePickerValue, setTestDatePickerValue] = useState<Date>(null);
-  const noRowsRenderer = useCallback(() => <TableRowLoading/>, []);
+  const noRowsRenderer = useCallback(() => <TableRowLoading />, []);
   const rowGetter = useCallback((row: Index) => rows[row.index], []);
   const handleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => setTestSelectValue(event === null ? '' : event.target.value as string), []);
   const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
-  const persistNotificationsRef = useRef(null)
+  const persistNotificationsRef = useRef(null);
   const handleOnClickNotification: ButtonProps['onClick'] = useCallback(() => {
-    const persist = persistNotificationsRef?.current?.checked
-    dispatch(Action.addNotification(generateNotification(persist)))
+    const persist = persistNotificationsRef?.current?.checked;
+    dispatch(Action.addNotification(generateNotification(persist)));
   }, []);
   const handleRemoveNotificationsByGroup = useCallback<NativeSelectProps['onChange']>(event => {
-    dispatch(Action.removeNotificationGroup(event.target.value))
-  }, [])
+    dispatch(Action.removeNotificationGroup(event.target.value));
+  }, []);
   const handleOnClickToast: ButtonProps['onClick'] = useCallback(() => dispatch(Action.addToastAction({
     contentMessage: 'Toast Test',
     dismissLabel: 'Dismiss',
@@ -231,10 +231,10 @@ const Develop: React.FC = () => {
   return (
     <div style={{ margin: theme.spacing(1) }}>
       <Card>
-        <AppCardHeader title={'Test'} titleIcon={<WarningIcon/>} onRefresh={console.log}/>
+        <AppCardHeader title={'Test'} titleIcon={<WarningIcon />} onRefresh={console.log} />
         <AppCardContent>
           Das ist der Inhalt
-          <IconButton size={'small'} color={'secondary'}><FilterReset/></IconButton>
+          <IconButton size={'small'} color={'secondary'}><FilterReset /></IconButton>
         </AppCardContent>
       </Card>
       <div style={{ marginTop: theme.spacing(1) }}>
@@ -289,12 +289,12 @@ const Develop: React.FC = () => {
           >{selectMenuItems}</SelectClearButton>
         </Grid>
         <Grid item>
-          <CustomerCard/>
+          <CustomerCard />
         </Grid>
         <Grid item>
           <FormControlLabel control={
-            <Checkbox inputRef={persistNotificationsRef}/>
-          } label={'persist'}/>
+            <Checkbox inputRef={persistNotificationsRef} />
+          } label={'persist'} />
           <Button onClick={handleOnClickNotification}>Add Notification</Button>
           <NativeSelect value={0} onChange={handleRemoveNotificationsByGroup}>
             <option value={0} disabled>Remove Notifications by group</option>
@@ -407,16 +407,16 @@ const Develop: React.FC = () => {
               <List dense>
                 <ListItem button selected={true}>
                   <ListItemIcon>
-                    <AccountCircleIcon/>
+                    <AccountCircleIcon />
                   </ListItemIcon>
-                  <ListItemText primary={'primary111'} secondary={'secondary222'}/>
+                  <ListItemText primary={'primary111'} secondary={'secondary222'} />
                 </ListItem>
 
                 <ListItem button selected={false}>
                   <ListItemIcon>
-                    <ContactPhoneIcon/>
+                    <ContactPhoneIcon />
                   </ListItemIcon>
-                  <ListItemText primary={'primary222'} secondary={'secondary222'}/>
+                  <ListItemText primary={'primary222'} secondary={'secondary222'} />
                 </ListItem>
               </List>
             </Paper>
@@ -427,16 +427,16 @@ const Develop: React.FC = () => {
               <List>
                 <ListItem button selected={true}>
                   <ListItemIcon>
-                    <AccountCircleIcon/>
+                    <AccountCircleIcon />
                   </ListItemIcon>
-                  <ListItemText primary={'primary111'} secondary={'secondary222'}/>
+                  <ListItemText primary={'primary111'} secondary={'secondary222'} />
                 </ListItem>
 
                 <ListItem button selected={false}>
                   <ListItemIcon>
-                    <ContactPhoneIcon/>
+                    <ContactPhoneIcon />
                   </ListItemIcon>
-                  <ListItemText primary={'primary222'} secondary={'secondary222'}/>
+                  <ListItemText primary={'primary222'} secondary={'secondary222'} />
                 </ListItem>
               </List>
             </Paper>
@@ -446,9 +446,9 @@ const Develop: React.FC = () => {
             <Card>
               <CardContent>
                 <Grid container spacing={1}>
-                  <Grid item><Chip label={'label label1'} icon={<ContactPhoneIcon/>}/></Grid>
-                  <Grid item><Chip label={'label label2'} clickable icon={<AccountCircleIcon/>}/></Grid>
-                  <Grid item><Chip size={'small'} label={'label label3'} clickable icon={<AccountCircleIcon/>}/></Grid>
+                  <Grid item><Chip label={'label label1'} icon={<ContactPhoneIcon />} /></Grid>
+                  <Grid item><Chip label={'label label2'} clickable icon={<AccountCircleIcon />} /></Grid>
+                  <Grid item><Chip size={'small'} label={'label label3'} clickable icon={<AccountCircleIcon />} /></Grid>
                 </Grid>
               </CardContent>
             </Card>
