@@ -32,6 +32,7 @@ exports.detect = exports.components = exports.core = exports.which = void 0;
 const Package = __importStar(require("../NPM/Package"));
 const Text = __importStar(require("../Text"));
 const path_1 = require("path");
+const componentPattern = '@scharfohnezwiebeln/jfc';
 const which = (path) => __awaiter(void 0, void 0, void 0, function* () {
     const { name } = (yield Package.json(path_1.resolve(path, 'package.json')));
     if (name === '@elumeo/jfs-core') {
@@ -40,7 +41,7 @@ const which = (path) => __awaiter(void 0, void 0, void 0, function* () {
     else if (name === '@elumeo/jfs-scripts') {
         return 'scripts';
     }
-    else if (Text.Prefix.match(name, 'jfc')) {
+    else if (Text.Prefix.match(name, componentPattern)) {
         return 'component';
     }
     else if (Text.Prefix.match(name, 'jfs')) {
@@ -65,7 +66,7 @@ const components = (path) => __awaiter(void 0, void 0, void 0, function* () {
     if ((yield exports.which(path)) === 'app') {
         return (Object
             .keys((yield Package.json(path_1.resolve(path, 'package.json'))).dependencies)
-            .filter(name => Text.Prefix.match(name, 'jfc-'))
+            .filter(name => Text.Prefix.match(name, componentPattern))
             .map(jfc => Package.node_module(path, jfc)));
     }
     else {

@@ -3,6 +3,8 @@ import * as Text from 'Library/Text';
 import { resolve, dirname } from 'path';
 import * as Type from 'Type';
 
+const componentPattern = '@scharfohnezwiebeln/jfc';
+
 export const which = async (path: string): Promise<Type.Environment.Info['which']> => {
   const { name } = (await Package.json(resolve(path, 'package.json')));
 
@@ -12,7 +14,7 @@ export const which = async (path: string): Promise<Type.Environment.Info['which'
   else if (name === '@elumeo/jfs-scripts') {
     return 'scripts';
   }
-  else if (Text.Prefix.match(name, 'jfc')) {
+  else if (Text.Prefix.match(name, componentPattern)) {
     return 'component';
   }
   else if (Text.Prefix.match(name, 'jfs')) {
@@ -38,7 +40,7 @@ export const components = async (path: string) => {
     return (
       Object
         .keys((await Package.json(resolve(path, 'package.json'))).dependencies)
-        .filter(name => Text.Prefix.match(name, 'jfc-'))
+        .filter(name => Text.Prefix.match(name, componentPattern))
         .map(jfc => Package.node_module(path, jfc))
     );
   }
