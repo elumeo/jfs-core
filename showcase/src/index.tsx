@@ -15,7 +15,7 @@ import Navigation from 'Setup/Navigation';
 import packageJson from '../package.json';
 import store from 'Store';
 import Routes from 'Setup/Routes';
-import HelloWorldTranslations from 'jfc-hello-world/build/Setup/Translations.json';
+import HelloWorldTranslations from '@scharfohnezwiebeln/jfc-hello-world/build/Setup/Translations.json';
 
 import * as MUI from '@material-ui/core';
 import * as LAB from '@material-ui/lab';

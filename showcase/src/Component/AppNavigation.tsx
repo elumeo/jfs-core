@@ -14,6 +14,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import TabIcon from '@material-ui/icons/Tab';
 import BallotOutlinedIcon from '@material-ui/icons/BallotOutlined';
+import ShareIcon from '@material-ui/icons/Share';
 
 const AppNavigation = ({history}: RouteComponentProps) => {
   return <Card>
@@ -69,6 +70,10 @@ const AppNavigation = ({history}: RouteComponentProps) => {
       <ListItem button onClick={() => history.push('/Typographies')}>
         <ListItemIcon><FontDownloadIcon/></ListItemIcon>
         <ListItemText primary='Typographies'/>
+      </ListItem>
+      <ListItem button onClick={() => history.push('/SharedComponent')}>
+        <ListItemIcon><ShareIcon/></ListItemIcon>
+        <ListItemText primary='SharedComponent'/>
       </ListItem>
     </List>
   </Card>;
