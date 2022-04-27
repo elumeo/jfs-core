@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@date-io/moment": "^1.3.13",
-    "@elumeo/jfs-core": "^10.0.0",
+    "@elumeo/jfs-core": "^10.0.1",
     "@scharfohnezwiebeln/jfc-hello-world": "^2.0.0"
   },
   "keywords": [],
