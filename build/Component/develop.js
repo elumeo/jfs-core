@@ -55,7 +55,6 @@ var styles_1 = require("@material-ui/core/styles");
 var Currency_1 = require("../Utilities/Format/Currency");
 var react_redux_1 = require("react-redux");
 var Action = __importStar(require("../Store/Action"));
-var Table_1 = require("./Table");
 var TextFieldClearButton_1 = __importDefault(require("./TextFieldClearButton"));
 var TableCellDefault_1 = require("./Table/TableCell/TableCellDefault");
 var TableCell_1 = require("./Table/TableCell");
@@ -199,6 +198,41 @@ var Develop = function () {
         var persist = (_a = persistNotificationsRef === null || persistNotificationsRef === void 0 ? void 0 : persistNotificationsRef.current) === null || _a === void 0 ? void 0 : _a.checked;
         dispatch(Action.addNotification(generateNotification(persist)));
     }, []);
+    var handleOnClickErrorNotification = (0, react_1.useCallback)(function () {
+        dispatch(Action.addErrorNotification({
+            config: {},
+            toJSON: function () { return ({}); },
+            isAxiosError: true,
+            name: 'An AxiosError',
+            message: 'Error Message',
+            request: {},
+            response: {
+                config: {},
+                headers: {},
+                status: 23,
+                statusText: '23',
+                data: {
+                    "error": "DI\\DependencyException",
+                    "id": 0,
+                    "message": "Error while injecting in AuthorizationService\\Services\\UserPasswordService::userPasswordDAO. SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known",
+                    "trace": [
+                        "#0 /Users/user/Projects/Juwelo/git/jsc/core/Libraries/Jsc/Service/Client/AbstractClient.php(169): Jsc\\Service\\Client\\AbstractClient->processHttpResponse(Object(Jsc\\Http\\Response))",
+                        "#1 /Users/user/Projects/Juwelo/git/jsc/core/Shared/Clients/AuthorizationService/UserPasswordClient.php(57): Jsc\\Service\\Client\\AbstractClient->sendRequest(Object(Jsc\\Service\\Request\\Post), NULL)",
+                        "#2 /Users/user/Projects/Juwelo/git/jsc/api/ServiceProxy/Services/Authorization/LoginService.php(172): Clients\\AuthorizationService\\UserPasswordClient->checkPassword('robert.neuner', Object(DTO\\Login\\CredentialsDTO))",
+                        "#3 /Users/user/Projects/Juwelo/git/jsc/api/ServiceProxy/Services/Authorization/LoginService.php(87): ServiceProxy\\Services\\Authorization\\LoginService->checkPassword('robert.neuner', 'JuwJawJowJooo')",
+                        "#4 /Users/user/Projects/Juwelo/git/jsc/api/ServiceProxy/Controllers/LoginController.php(98): ServiceProxy\\Services\\Authorization\\LoginService->loginFrontend('robert.neuner', 'Robert Neuner', 'JuwJawJowJooo', 'jfs_CustomerImp...')",
+                        "#5 [internal function]: ServiceProxy\\Controllers\\LoginController->loginFrontend('jfs_CustomerImp...', Object(DTO\\Login\\CredentialsDTO))",
+                        "#6 /Users/user/Projects/Juwelo/git/jsc/core/Libraries/Jsc/Service/Controller/AbstractController.php(78): call_user_func_array(Array, Array)",
+                        "#7 /Users/user/Projects/Juwelo/git/jsc/core/Libraries/Jsc/Service/Dispatcher.php(87): Jsc\\Service\\Controller\\AbstractController->execute('loginFrontend', Array)",
+                        "#8 /Users/user/Projects/Juwelo/git/jsc/core/Libraries/Jsc/Service/Bootstrap.php(252): Jsc\\Service\\Dispatcher->run()",
+                        "#9 /Users/user/Projects/Juwelo/git/jsc/core/Libraries/Jsc/Service/Bootstrap.php(118): Jsc\\Service\\Bootstrap::runApplication('api', Object(Jsc\\Http\\Request), Object(Jsc\\Http\\Response), Object(Jsc\\Routing\\Router), 1651061331.2091)",
+                        "#10 /Users/user/Projects/Juwelo/git/jsc/www-root/api.php(59): Jsc\\Service\\Bootstrap::boot('/Users/user/Pro...', 'api', 1651061331.2091)",
+                        "#11 {main}"
+                    ]
+                }
+            }
+        }));
+    }, []);
     var handleRemoveNotificationsByGroup = (0, react_1.useCallback)(function (event) {
         dispatch(Action.removeNotificationGroup(event.target.value));
     }, []);
@@ -214,10 +248,6 @@ var Develop = function () {
                 "Das ist der Inhalt",
                 react_1.default.createElement(core_1.IconButton, { size: 'small', color: 'secondary' },
                     react_1.default.createElement(Icon_1.FilterReset, null)))),
-        react_1.default.createElement("div", { style: { marginTop: theme.spacing(1) } },
-            react_1.default.createElement(core_1.Card, null,
-                react_1.default.createElement(core_1.CardContent, { style: { height: 600 } },
-                    react_1.default.createElement(Table_1.VirtualizedTable, { showRowHoverHighlight: true, rowHeight: tableRowHeight, rowCount: rows.length, rowGetter: rowGetter, noRowsRenderer: noRowsRenderer, sortBy: 'calories', sortDirection: 'ASC', columns: columns })))),
         react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center' },
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(DatePicker_1.default, { label: 'DatePicker', onChange: console.log, value: testDatePickerValue, isClearable: false })),
@@ -232,6 +262,7 @@ var Develop = function () {
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(core_1.FormControlLabel, { control: react_1.default.createElement(core_1.Checkbox, { inputRef: persistNotificationsRef }), label: 'persist' }),
                 react_1.default.createElement(core_1.Button, { onClick: handleOnClickNotification }, "Add Notification"),
+                react_1.default.createElement(core_1.Button, { onClick: handleOnClickErrorNotification }, "Add Error Notification"),
                 react_1.default.createElement(core_1.NativeSelect, { value: 0, onChange: handleRemoveNotificationsByGroup },
                     react_1.default.createElement("option", { value: 0, disabled: true }, "Remove Notifications by group"),
                     react_1.default.createElement("option", { value: 'important' }, "All Important"),

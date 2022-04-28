@@ -1,3 +1,6 @@
+## [10.0.2] 2022-04-28
+- Fixed addErrorNotification not working properly
+
 ## [10.0.0]  **** BREAKING ****
  - [Material UI](https://material-ui.com) instead of react-md
  - CSS-in-JS instead of SCSS

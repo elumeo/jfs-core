@@ -3,6 +3,14 @@ import Typography from '@material-ui/core/Typography';
 import CardHeader from '@material-ui/core/CardHeader';
 import useIcon from './useicon';
 import { Notification } from 'Types/Notification'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(({
+  root: {
+    width: '100%',
+    overflow: 'hidden'
+  }
+}))
 
 type Props = Pick<Notification, 'title' | 'subtitle' | 'variant'>
 
@@ -12,6 +20,7 @@ const Header: React.FC<Props> =
      subtitle,
      variant
    }) => {
+    const classes = useStyles()
     const icon = useIcon(variant)
     return (
       !icon && !title && !subtitle
@@ -21,6 +30,7 @@ const Header: React.FC<Props> =
           title={<Typography variant='h6' component='div'>{title}</Typography>}
           subheader={<Typography variant='subtitle1' component='div'>{subtitle}</Typography>}
           subheaderTypographyProps={{ color: 'inherit' }}
+          className={classes.root}
         />
     )
   }
