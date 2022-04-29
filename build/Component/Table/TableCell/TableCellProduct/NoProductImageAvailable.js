@@ -24,9 +24,20 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var styles = { cursor: 'pointer' };
+var styles_1 = require("@material-ui/core/styles");
 var NoProductImageAvailable = function (_a) {
     var _b = _a.onClick, onClick = _b === void 0 ? null : _b;
+    var theme = (0, styles_1.useTheme)();
+    var styles = (0, react_1.useMemo)(function () { return ({
+        width: theme.spacing(10),
+        height: theme.spacing(10),
+        textAlign: 'center',
+        display: 'flex',
+        alignItems: 'center',
+        backgroundColor: theme.palette.grey['100'],
+        userSelect: 'none',
+        cursor: 'pointer',
+    }); }, []);
     return react_1.default.createElement("div", { style: styles, onClick: onClick }, "No Image available");
 };
 exports.default = (0, react_1.memo)(NoProductImageAvailable);
