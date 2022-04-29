@@ -1,3 +1,6 @@
+## [10.0.3] 2022-04-29
+- Added `mapErrorToNotificaiton` function and exported it, in order to have all notification features available also for errors
+
 ## [10.0.2] 2022-04-28
 - Fixed addErrorNotification not working properly
 

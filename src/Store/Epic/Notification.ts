@@ -3,24 +3,28 @@ import { Epic } from 'Types/Redux';
 import { isActionOf } from 'typesafe-actions';
 import * as Action from 'Store/Action';
 import { v4 as uuid } from 'uuid';
+import * as Types from 'Types/Notification';
+import { AxiosError } from 'axios';
+
+export const mapErrorToNotification = (error: AxiosError): Types.Notification => {
+  const id = uuid();
+  const responseData = error?.response?.data;
+
+  const httpDetails = `${error?.config?.method?.toUpperCase() || ''} ${error?.config?.url || ''} ${error?.response?.status || ''}`.trim()
+
+  const title = error?.response?.statusText || error?.name;
+  const subtitle = responseData?.error || error?.message;
+  const content = responseData?.message || null;
+
+  return { id, title, subtitle, content, httpDetails, variant: 'error' }
+}
 
 const showError: Epic = action$ =>
   action$.pipe(
     filter(isActionOf(Action.addErrorNotification)),
-    switchMap(({ payload }) => {
-      const id = uuid();
-      const responseData = payload?.response?.data;
-
-      const httpDetails = `${payload?.config?.method?.toUpperCase() || ''} ${payload?.config?.url || ''} ${payload?.response?.status || ''}`.trim()
-
-      const title = payload?.response?.statusText || payload?.name;
-      const subtitle = responseData?.error || payload?.message;
-      const content = responseData?.message || null;
-
-      return [Action.addNotification({
-        id, title, subtitle, content, httpDetails, variant: 'error'
-      })];
-    }),
+    switchMap(({ payload }) => [
+      Action.addNotification(mapErrorToNotification(payload))
+    ]),
     catchError(error => {
       console.error(error)
       return []
