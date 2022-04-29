@@ -29,21 +29,25 @@ var Action = __importStar(require("../Action"));
 var uuid_1 = require("uuid");
 var showError = function (action$) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.addErrorNotification)), (0, operators_1.switchMap)(function (_a) {
-        var _b, _c, _d, _e, _f, _g, _h;
+        var _b, _c, _d, _e, _f, _g;
         var payload = _a.payload;
         var id = (0, uuid_1.v4)();
-        var responseData = (_c = (_b = payload === null || payload === void 0 ? void 0 : payload.response) === null || _b === void 0 ? void 0 : _b.data) !== null && _c !== void 0 ? _c : {};
-        var title = (_d = responseData === null || responseData === void 0 ? void 0 : responseData.id) !== null && _d !== void 0 ? _d : payload === null || payload === void 0 ? void 0 : payload.name;
-        var subtitle = (_e = responseData === null || responseData === void 0 ? void 0 : responseData.message) !== null && _e !== void 0 ? _e : payload === null || payload === void 0 ? void 0 : payload.message;
-        var content = (_f = responseData === null || responseData === void 0 ? void 0 : responseData.error) !== null && _f !== void 0 ? _f : null;
+        var responseData = (_b = payload === null || payload === void 0 ? void 0 : payload.response) === null || _b === void 0 ? void 0 : _b.data;
+        var httpDetails = "".concat(((_d = (_c = payload === null || payload === void 0 ? void 0 : payload.config) === null || _c === void 0 ? void 0 : _c.method) === null || _d === void 0 ? void 0 : _d.toUpperCase()) || '', " ").concat(((_e = payload === null || payload === void 0 ? void 0 : payload.config) === null || _e === void 0 ? void 0 : _e.url) || '', " ").concat(((_f = payload === null || payload === void 0 ? void 0 : payload.response) === null || _f === void 0 ? void 0 : _f.status) || '').trim();
+        var title = ((_g = payload === null || payload === void 0 ? void 0 : payload.response) === null || _g === void 0 ? void 0 : _g.statusText) || (payload === null || payload === void 0 ? void 0 : payload.name);
+        var subtitle = (responseData === null || responseData === void 0 ? void 0 : responseData.error) || (payload === null || payload === void 0 ? void 0 : payload.message);
+        var content = (responseData === null || responseData === void 0 ? void 0 : responseData.message) || null;
         return [Action.addNotification({
                 id: id,
                 title: title,
                 subtitle: subtitle,
                 content: content,
-                httpDetails: payload.config.method.toUpperCase() + " " + payload.config.url + " " + ((_h = (_g = payload === null || payload === void 0 ? void 0 : payload.response) === null || _g === void 0 ? void 0 : _g.status) !== null && _h !== void 0 ? _h : ""),
-                variant: 'error',
+                httpDetails: httpDetails,
+                variant: 'error'
             })];
+    }), (0, operators_1.catchError)(function (error) {
+        console.error(error);
+        return [];
     }));
 };
 exports.default = showError;

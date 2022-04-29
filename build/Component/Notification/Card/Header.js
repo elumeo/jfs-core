@@ -30,11 +30,19 @@ var React = __importStar(require("react"));
 var Typography_1 = __importDefault(require("@material-ui/core/Typography"));
 var CardHeader_1 = __importDefault(require("@material-ui/core/CardHeader"));
 var useicon_1 = __importDefault(require("./useicon"));
+var styles_1 = require("@material-ui/core/styles");
+var useStyles = (0, styles_1.makeStyles)(({
+    root: {
+        width: '100%',
+        overflow: 'hidden'
+    }
+}));
 var Header = function (_a) {
     var title = _a.title, subtitle = _a.subtitle, variant = _a.variant;
+    var classes = useStyles();
     var icon = (0, useicon_1.default)(variant);
     return (!icon && !title && !subtitle
         ? null :
-        React.createElement(CardHeader_1.default, { avatar: icon, title: React.createElement(Typography_1.default, { variant: 'h6', component: 'div' }, title), subheader: React.createElement(Typography_1.default, { variant: 'subtitle1', component: 'div' }, subtitle), subheaderTypographyProps: { color: 'inherit' } }));
+        React.createElement(CardHeader_1.default, { avatar: icon, title: React.createElement(Typography_1.default, { variant: 'h6', component: 'div' }, title), subheader: React.createElement(Typography_1.default, { variant: 'subtitle1', component: 'div' }, subtitle), subheaderTypographyProps: { color: 'inherit' }, className: classes.root }));
 };
 exports.default = React.memo(Header);

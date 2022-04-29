@@ -6,15 +6,19 @@ import {
   Button,
   ButtonProps,
   Card,
-  CardContent, Checkbox,
-  Chip, FormControlLabel,
+  CardContent,
+  Checkbox,
+  Chip,
+  FormControlLabel,
   Grid,
   IconButton,
   InputAdornment,
   List,
   ListItem,
   ListItemIcon,
-  ListItemText, MenuItem, NativeSelect,
+  ListItemText,
+  MenuItem,
+  NativeSelect,
   Paper,
   Table,
   TableBody,
@@ -25,10 +29,14 @@ import {
   Typography
 } from '@material-ui/core';
 import {
-  AccountCircle as AccountCircleIcon, CheckBox,
+  AccountCircle as AccountCircleIcon,
+  Block,
+  CheckBox,
   ContactPhone as ContactPhoneIcon,
   Error,
-  Visibility, VisibilityOff, Block, Refresh
+  Refresh,
+  Visibility,
+  VisibilityOff
 } from '@material-ui/icons';
 import { useTheme } from '@material-ui/core/styles';
 import { getCurrency } from 'Utilities/Format/Currency';
@@ -83,11 +91,11 @@ const generateNotification = (persist = false): Notification => {
         content: <Box display='flex' flexDirection='column'>
           <span>Habitant habitasse, sem etiamnostra etiam. Tristique viverra volutpat mi, ornare non tellus, praesent odio justo platea erat quis. Aliquam est varius, fringilla class, in ad dictumst turpis vivamus eros augue. Nunc fames donec, vehicula phasellus, volutpat sem luctus leo ut. Consequat nulla enim, curae hac, lorem purus cursus feugiat habitant fusce. Ante metus curabitur, litora nec, donec diam bibendum euismod elit placerat neque. Pretium sit, morbi odio iaculis.</span>
           <Box display='flex' flexDirection='row'>
-            <Button color='inherit' startIcon={<Refresh />}>Try again</Button>
-            <Button color='inherit' startIcon={<Block />}>Ignore</Button>
+            <Button color='inherit' startIcon={<Refresh/>}>Try again</Button>
+            <Button color='inherit' startIcon={<Block/>}>Ignore</Button>
           </Box>
         </Box>,
-        action: () => <IconButton color='inherit'><Visibility /></IconButton>
+        action: () => <IconButton color='inherit'><Visibility/></IconButton>
       };
     case 'warning':
       return {
@@ -95,12 +103,16 @@ const generateNotification = (persist = false): Notification => {
         title: 'Warning',
         subtitle: 'Some changes aren\'t saved yet',
         content: 'The quick brown fox jumps over the lazy dog',
-        action: () => <IconButton><Visibility /></IconButton>
+        action: () => <IconButton><Visibility/></IconButton>
       };
     case 'success':
       return { ...defaultProps, title: 'Changes saved' };
     case 'info':
-      return { ...defaultProps, content: 'Time for a cup of coffee!', action: () => <Button color='inherit'>Get</Button> };
+      return {
+        ...defaultProps,
+        content: 'Time for a cup of coffee!',
+        action: () => <Button color='inherit'>Get</Button>
+      };
     case 'default':
     default:
       return { ...defaultProps, variant: 'default', content: 'content loaded' };
@@ -154,9 +166,9 @@ const columns: ColumnData[] = [
     dataKey: 'select',
     disableSort: true,
     headerRenderer: () => <TableHeadSelect checked={false} onChange={console.log}
-                                           height={tableRowHeight} />,
+                                           height={tableRowHeight}/>,
     cellRenderer: (cellProps: TableCellProps) => <TableCellSelect checked={false} value={cellProps.cellData}
-                                                                  onChange={console.log} height={tableRowHeight} />
+                                                                  onChange={console.log} height={tableRowHeight}/>
   },
   {
     width: (width: number) => width - (120 * 4),
@@ -165,7 +177,7 @@ const columns: ColumnData[] = [
     disableSort: true,
     cellRenderer: (cellProps: TableCellProps) => <TableCellDefault height={tableRowHeight} cellData={cellProps.cellData}
                                                                    contentEllipseMode={ContentEllipseMode.Lines}
-                                                                   contentEllipseLines={2} />
+                                                                   contentEllipseLines={2}/>
   },
   {
     width: 120,
@@ -186,16 +198,16 @@ const columns: ColumnData[] = [
     width: 220,
     label: 'Datum (Range)',
     dataKey: 'datetimeRange',
-    cellRenderer: cellProps => <TableCellDateTimeRange cellData={cellProps.cellData} height={tableRowHeight} />
+    cellRenderer: cellProps => <TableCellDateTimeRange cellData={cellProps.cellData} height={tableRowHeight}/>
   },
   {
     width: 180,
     label: 'Datum',
     dataKey: 'datetime',
-    cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} height={tableRowHeight} />
+    cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} height={tableRowHeight}/>
   }
 ];
-const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon /></InputAdornment> };
+const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment> };
 
 const selectMenuItems = [
   <MenuItem value={'test 1'} key={'menu-item-1'}>Test 1</MenuItem>,
@@ -210,7 +222,7 @@ const Develop: React.FC = () => {
   const [testTextFieldValue, setTestTextFieldValue] = useState('');
   const [testSelectValue, setTestSelectValue] = useState('');
   const [testDatePickerValue, setTestDatePickerValue] = useState<Date>(null);
-  const noRowsRenderer = useCallback(() => <TableRowLoading />, []);
+  const noRowsRenderer = useCallback(() => <TableRowLoading/>, []);
   const rowGetter = useCallback((row: Index) => rows[row.index], []);
   const handleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => setTestSelectValue(event === null ? '' : event.target.value as string), []);
   const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
@@ -218,6 +230,43 @@ const Develop: React.FC = () => {
   const handleOnClickNotification: ButtonProps['onClick'] = useCallback(() => {
     const persist = persistNotificationsRef?.current?.checked;
     dispatch(Action.addNotification(generateNotification(persist)));
+  }, []);
+  const handleOnClickErrorNotification: ButtonProps['onClick'] = useCallback(() => {
+    dispatch(Action.addErrorNotification(
+      {
+        config: {},
+        toJSON: () => ({}),
+        isAxiosError: true,
+        name: 'An AxiosError',
+        message: 'Error Message',
+        request: {},
+        response: {
+          config: {},
+          headers: {},
+          status: 23,
+          statusText: '23',
+          data: {
+            "error": "DI\\DependencyException",
+            "id": 0,
+            "message": "Error while injecting in AuthorizationService\\Services\\UserPasswordService::userPasswordDAO. SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known",
+            "trace": [
+              "#0 /Users/user/Projects/Juwelo/git/jsc/core/Libraries/Jsc/Service/Client/AbstractClient.php(169): Jsc\\Service\\Client\\AbstractClient->processHttpResponse(Object(Jsc\\Http\\Response))",
+              "#1 /Users/user/Projects/Juwelo/git/jsc/core/Shared/Clients/AuthorizationService/UserPasswordClient.php(57): Jsc\\Service\\Client\\AbstractClient->sendRequest(Object(Jsc\\Service\\Request\\Post), NULL)",
+              "#2 /Users/user/Projects/Juwelo/git/jsc/api/ServiceProxy/Services/Authorization/LoginService.php(172): Clients\\AuthorizationService\\UserPasswordClient->checkPassword('robert.neuner', Object(DTO\\Login\\CredentialsDTO))",
+              "#3 /Users/user/Projects/Juwelo/git/jsc/api/ServiceProxy/Services/Authorization/LoginService.php(87): ServiceProxy\\Services\\Authorization\\LoginService->checkPassword('robert.neuner', 'JuwJawJowJooo')",
+              "#4 /Users/user/Projects/Juwelo/git/jsc/api/ServiceProxy/Controllers/LoginController.php(98): ServiceProxy\\Services\\Authorization\\LoginService->loginFrontend('robert.neuner', 'Robert Neuner', 'JuwJawJowJooo', 'jfs_CustomerImp...')",
+              "#5 [internal function]: ServiceProxy\\Controllers\\LoginController->loginFrontend('jfs_CustomerImp...', Object(DTO\\Login\\CredentialsDTO))",
+              "#6 /Users/user/Projects/Juwelo/git/jsc/core/Libraries/Jsc/Service/Controller/AbstractController.php(78): call_user_func_array(Array, Array)",
+              "#7 /Users/user/Projects/Juwelo/git/jsc/core/Libraries/Jsc/Service/Dispatcher.php(87): Jsc\\Service\\Controller\\AbstractController->execute('loginFrontend', Array)",
+              "#8 /Users/user/Projects/Juwelo/git/jsc/core/Libraries/Jsc/Service/Bootstrap.php(252): Jsc\\Service\\Dispatcher->run()",
+              "#9 /Users/user/Projects/Juwelo/git/jsc/core/Libraries/Jsc/Service/Bootstrap.php(118): Jsc\\Service\\Bootstrap::runApplication('api', Object(Jsc\\Http\\Request), Object(Jsc\\Http\\Response), Object(Jsc\\Routing\\Router), 1651061331.2091)",
+              "#10 /Users/user/Projects/Juwelo/git/jsc/www-root/api.php(59): Jsc\\Service\\Bootstrap::boot('/Users/user/Pro...', 'api', 1651061331.2091)",
+              "#11 {main}"
+            ]
+          }
+        }
+      }
+    ));
   }, []);
   const handleRemoveNotificationsByGroup = useCallback<NativeSelectProps['onChange']>(event => {
     dispatch(Action.removeNotificationGroup(event.target.value));
@@ -231,28 +280,28 @@ const Develop: React.FC = () => {
   return (
     <div style={{ margin: theme.spacing(1) }}>
       <Card>
-        <AppCardHeader title={'Test'} titleIcon={<WarningIcon />} onRefresh={console.log} />
+        <AppCardHeader title={'Test'} titleIcon={<WarningIcon/>} onRefresh={console.log}/>
         <AppCardContent>
           Das ist der Inhalt
-          <IconButton size={'small'} color={'secondary'}><FilterReset /></IconButton>
+          <IconButton size={'small'} color={'secondary'}><FilterReset/></IconButton>
         </AppCardContent>
       </Card>
-      <div style={{ marginTop: theme.spacing(1) }}>
-        <Card>
-          <CardContent style={{ height: 600 }}>
-            <VirtualizedTable
-              showRowHoverHighlight
-              rowHeight={tableRowHeight}
-              rowCount={rows.length}
-              rowGetter={rowGetter}
-              noRowsRenderer={noRowsRenderer}
-              sortBy={'calories'}
-              sortDirection={'ASC'}
-              columns={columns}
-            />
-          </CardContent>
-        </Card>
-      </div>
+      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
+      {/*<Card>*/}
+      {/*<CardContent style={{ height: 600 }}>*/}
+      {/*<VirtualizedTable*/}
+      {/*  showRowHoverHighlight*/}
+      {/*  rowHeight={tableRowHeight}*/}
+      {/*  rowCount={rows.length}*/}
+      {/*  rowGetter={rowGetter}*/}
+      {/*  noRowsRenderer={noRowsRenderer}*/}
+      {/*  sortBy={'calories'}*/}
+      {/*  sortDirection={'ASC'}*/}
+      {/*  columns={columns}*/}
+      {/*/>*/}
+      {/*</CardContent>*/}
+      {/*</Card>*/}
+      {/*</div>*/}
       <Grid container spacing={1} alignItems={'center'}>
         <Grid item>
           <DatePicker
@@ -289,13 +338,14 @@ const Develop: React.FC = () => {
           >{selectMenuItems}</SelectClearButton>
         </Grid>
         <Grid item>
-          <CustomerCard />
+          <CustomerCard/>
         </Grid>
         <Grid item>
           <FormControlLabel control={
-            <Checkbox inputRef={persistNotificationsRef} />
-          } label={'persist'} />
+            <Checkbox inputRef={persistNotificationsRef}/>
+          } label={'persist'}/>
           <Button onClick={handleOnClickNotification}>Add Notification</Button>
+          <Button onClick={handleOnClickErrorNotification}>Add Error Notification</Button>
           <NativeSelect value={0} onChange={handleRemoveNotificationsByGroup}>
             <option value={0} disabled>Remove Notifications by group</option>
             <option value='important'>All Important</option>
@@ -407,16 +457,16 @@ const Develop: React.FC = () => {
               <List dense>
                 <ListItem button selected={true}>
                   <ListItemIcon>
-                    <AccountCircleIcon />
+                    <AccountCircleIcon/>
                   </ListItemIcon>
-                  <ListItemText primary={'primary111'} secondary={'secondary222'} />
+                  <ListItemText primary={'primary111'} secondary={'secondary222'}/>
                 </ListItem>
 
                 <ListItem button selected={false}>
                   <ListItemIcon>
-                    <ContactPhoneIcon />
+                    <ContactPhoneIcon/>
                   </ListItemIcon>
-                  <ListItemText primary={'primary222'} secondary={'secondary222'} />
+                  <ListItemText primary={'primary222'} secondary={'secondary222'}/>
                 </ListItem>
               </List>
             </Paper>
@@ -427,16 +477,16 @@ const Develop: React.FC = () => {
               <List>
                 <ListItem button selected={true}>
                   <ListItemIcon>
-                    <AccountCircleIcon />
+                    <AccountCircleIcon/>
                   </ListItemIcon>
-                  <ListItemText primary={'primary111'} secondary={'secondary222'} />
+                  <ListItemText primary={'primary111'} secondary={'secondary222'}/>
                 </ListItem>
 
                 <ListItem button selected={false}>
                   <ListItemIcon>
-                    <ContactPhoneIcon />
+                    <ContactPhoneIcon/>
                   </ListItemIcon>
-                  <ListItemText primary={'primary222'} secondary={'secondary222'} />
+                  <ListItemText primary={'primary222'} secondary={'secondary222'}/>
                 </ListItem>
               </List>
             </Paper>
@@ -446,9 +496,9 @@ const Develop: React.FC = () => {
             <Card>
               <CardContent>
                 <Grid container spacing={1}>
-                  <Grid item><Chip label={'label label1'} icon={<ContactPhoneIcon />} /></Grid>
-                  <Grid item><Chip label={'label label2'} clickable icon={<AccountCircleIcon />} /></Grid>
-                  <Grid item><Chip size={'small'} label={'label label3'} clickable icon={<AccountCircleIcon />} /></Grid>
+                  <Grid item><Chip label={'label label1'} icon={<ContactPhoneIcon/>}/></Grid>
+                  <Grid item><Chip label={'label label2'} clickable icon={<AccountCircleIcon/>}/></Grid>
+                  <Grid item><Chip size={'small'} label={'label label3'} clickable icon={<AccountCircleIcon/>}/></Grid>
                 </Grid>
               </CardContent>
             </Card>
