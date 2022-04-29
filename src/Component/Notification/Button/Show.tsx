@@ -1,10 +1,10 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import Popper from '@material-ui/core/Popper';
-import Popover from '@material-ui/core/Popover';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import IconButton from '@mui/material/IconButton';
+import Badge from '@mui/material/Badge';
+import Popper from '@mui/material/Popper';
+import Popover from '@mui/material/Popover';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationOverlay from 'Component/Notification/Overlay';
 import { useSnackbar } from 'notistack';
 import { useSelector } from 'Types/Redux';
@@ -46,19 +46,24 @@ const ShowButton: React.FC<Props> = ({ keepOpenOnOutsideClick }) => {
             placement='bottom-end'
             id={id}
             anchorEl={anchorRef}
-            modifiers={{
-              flip: {
-                enabled: true,
+            modifiers={
+              [{
+                name: 'flip',
+                enabled: true
               },
-              preventOverflow: {
+              {
+                name: 'preventOverflow',
                 enabled: true,
-                boundariesElement: 'scrollParent',
+                options: { boundariesElement: 'scrollParent' },
               },
-              arrow: {
+              {
+                name: 'arrow',
                 enabled: true,
-                element: anchorRef,
-              },
-            }}>
+                options: { element: anchorRef },
+              }
+              ]
+
+            }>
             <NotificationOverlay />
           </Popper>
         ) : (

@@ -27,9 +27,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var Card_1 = __importDefault(require("@material-ui/core/Card"));
-var CardHeader_1 = __importDefault(require("@material-ui/core/CardHeader"));
-var CardContent_1 = __importDefault(require("@material-ui/core/CardContent"));
+var Card_1 = __importDefault(require("@mui/material/Card"));
+var CardHeader_1 = __importDefault(require("@mui/material/CardHeader"));
+var CardContent_1 = __importDefault(require("@mui/material/CardContent"));
 var History = __importStar(require("./History"));
 var Overlay = function () { return (react_1.default.createElement(Card_1.default, { style: {
         width: 400,

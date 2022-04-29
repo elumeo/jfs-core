@@ -1,6 +1,6 @@
 import React, { forwardRef, memo, useMemo } from 'react';
-import { Button, ButtonProps, CircularProgress, PropTypes } from '@material-ui/core';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { Button, ButtonProps, CircularProgress, PropTypes } from '@mui/material';
+import { CSSProperties } from '@mui/styles/withStyles';
 
 export const wrapperStyles: CSSProperties = { position: 'relative', display: 'inline-block' };
 

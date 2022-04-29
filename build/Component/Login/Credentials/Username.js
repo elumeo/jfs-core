@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var react_intl_1 = require("react-intl");
-var TextField_1 = __importDefault(require("@material-ui/core/TextField"));
+var TextField_1 = __importDefault(require("@mui/material/TextField"));
 var useError_1 = __importDefault(require("./useError"));
 var Username = react_1.default.forwardRef(function (_a, ref) {
     var value = _a.value, onChange = _a.onChange, onEnter = _a.onEnter;

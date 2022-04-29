@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import AppNavigation from 'Component/AppNavigation';
-import { Box, Card, CardContent, CardHeader, Container, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Tab, Tabs, Typography } from '@material-ui/core';
+import { Box, Card, CardContent, CardHeader, Container, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Tab, Tabs, Typography } from '@mui/material';
 import CodeBox from 'Component/CodeBox';
-import Switch from '@material-ui/core/Switch';
+import Switch from '@mui/material/Switch';
 
 const TabsDemo = () => {
   const [currentTab, setCurrentTab] = React.useState(0);

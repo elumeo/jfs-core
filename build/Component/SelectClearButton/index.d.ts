@@ -1,6 +1,6 @@
 import React from 'react';
-import { IconProps, SelectProps } from '@material-ui/core';
-import { IconButtonProps } from '@material-ui/core/IconButton';
+import { IconProps, SelectProps } from '@mui/material';
+import { IconButtonProps } from '@mui/material/IconButton';
 export declare type SelectClearButtonProps = Partial<SelectProps> & {
     onChange: SelectProps['onChange'];
     clearButtonSize?: IconButtonProps['size'];

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckboxProps } from '@material-ui/core';
+import { CheckboxProps } from '@mui/material';
 import { TableCellRootProps } from './TableCellRoot';
 export declare type TableCellSelectProps = Partial<TableCellRootProps> & {
     value: string;

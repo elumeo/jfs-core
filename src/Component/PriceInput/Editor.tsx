@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { TextField, StandardTextFieldProps, InputAdornment, TextFieldProps } from '@material-ui/core';
+import { TextField, StandardTextFieldProps, InputAdornment, TextFieldProps } from '@mui/material';
 import { Currency } from 'Utilities/Format';
 import usePriceFieldAdornment from 'Effect/usePriceFieldAdornment';
 

@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
 const { resolve } = require('path');
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 
 const development = {
   ...common,
@@ -42,6 +43,9 @@ const development = {
         BUNDLE_FILE_NAME : PATH.BUNDLE_NAME
       }
     }),
+    new ESLintWebpackPlugin({
+      context: PATH.ROOT
+    })
 ]
 };
 

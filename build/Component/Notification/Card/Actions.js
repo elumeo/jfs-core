@@ -27,8 +27,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
-var CardActions_1 = __importDefault(require("@material-ui/core/CardActions"));
-var styles_1 = require("@material-ui/core/styles");
+var CardActions_1 = __importDefault(require("@mui/material/CardActions"));
+var styles_1 = require("@mui/styles");
 var notistack_1 = require("notistack");
 var Button = __importStar(require("../Button"));
 var useStyles = (0, styles_1.makeStyles)(({

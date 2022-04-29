@@ -1,17 +1,18 @@
 import React, { memo } from 'react';
 import { useIntl } from 'react-intl';
-import MenuIcon from '@material-ui/icons/Menu';
-
-import useActions from 'Store/useActions';
+import MenuIcon from '@mui/icons-material/Menu';
 import {
   AppBar,
   Grid,
   IconButton,
   Toolbar,
   Typography,
-} from '@material-ui/core';
-import { useTheme } from '@material-ui/styles';
-import { Theme } from '@material-ui/core/styles';
+} from '@mui/material';
+import definition from 'Component/App/Stateless/Style/Theme/Definition';
+import { useDispatch } from 'react-redux';
+import { openNavigation } from 'Store/Action';
+// import { useTheme } from '@material-ui/styles';
+// import { Theme } from '@mui/styles';
 
 export type Props = {
   left?: JSX.Element;
@@ -28,16 +29,16 @@ const AppToolbar: React.FC<Props> = ({
   color = 'primary',
   ...tools
 }) => {
-  const theme = useTheme<Theme>();
+  // const theme = useTheme<Theme>();
   const { formatMessage } = useIntl();
-  const { openNavigation } = useActions();
-  const openDrawer = React.useCallback(() => openNavigation(), []);
+  const dispatch = useDispatch()
+  const openDrawer = React.useCallback(() => dispatch(openNavigation()), [dispatch]);
   return (
     <AppBar position={position} color={color}>
       <Toolbar
         disableGutters
         variant={variant}
-        style={{ height: theme.mixins.toolbar.minHeight }}>
+        style={{ height: definition.mixins.toolbar.minHeight }}>
         <Grid
           container
           justifyContent={'space-between'}

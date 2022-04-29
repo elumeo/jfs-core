@@ -1,14 +1,15 @@
 import * as React from 'react';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { Notification } from 'Types/Notification';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import { useIntl } from 'react-intl';
 import { useMemo } from 'react';
+import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
-    padding: theme.spacing(1, 2),
+    padding: definition.spacing(1, 2),
     gridColumnStart: 1,
     gridColumnEnd: 'none',
     textAlign: 'right'

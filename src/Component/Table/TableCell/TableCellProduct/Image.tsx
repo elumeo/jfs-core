@@ -1,5 +1,5 @@
 import React, { CSSProperties, memo } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import BundleImage from './BundleImage';
 import ProductImage from './ProductImage';
 import { MediaUri } from 'Types/MediaUri';

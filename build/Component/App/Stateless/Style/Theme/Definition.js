@@ -23,10 +23,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var styles_1 = require("@material-ui/core/styles");
+var styles_1 = require("@mui/material/styles");
 var Color = __importStar(require("../../../../../Constant/Color"));
-var colors_1 = require("@material-ui/core/colors");
-var definition = (0, styles_1.responsiveFontSizes)((0, styles_1.createTheme)({
+var colors_1 = require("@mui/material/colors");
+var definition = (0, styles_1.responsiveFontSizes)((0, styles_1.createTheme)(({
     props: {
         MuiCircularProgress: {
             color: 'secondary',
@@ -36,14 +36,13 @@ var definition = (0, styles_1.responsiveFontSizes)((0, styles_1.createTheme)({
         }
     },
     palette: {
-        type: 'light',
+        // type: 'light',
         primary: Color.primary,
         secondary: Color.apatith,
         text: {
             primary: colors_1.grey[900],
             secondary: colors_1.grey[700],
             disabled: colors_1.grey[500],
-            hint: colors_1.grey[300],
         },
         action: {
             hover: 'rgba(0, 0, 0, 0.12)',
@@ -68,7 +67,7 @@ var definition = (0, styles_1.responsiveFontSizes)((0, styles_1.createTheme)({
             default: '#e5e2dd',
         },
     },
-}));
+})));
 definition.overrides = {
     MuiCssBaseline: {
         '@global': {

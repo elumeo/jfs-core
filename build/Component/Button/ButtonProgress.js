@@ -47,7 +47,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.mapToCircularProgressColor = exports.mapToCircularProgressSize = exports.wrapperStyles = void 0;
 var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
+var material_1 = require("@mui/material");
 exports.wrapperStyles = { position: 'relative', display: 'inline-block' };
 var mapToCircularProgressSize = function (size) {
     switch (size) {
@@ -72,7 +72,7 @@ var ButtonProgress = (0, react_1.forwardRef)(function (props, ref) {
         marginLeft: (0, exports.mapToCircularProgressSize)(size) / 2 * -1
     }); }, [size]);
     return react_1.default.createElement("div", { style: exports.wrapperStyles },
-        react_1.default.createElement(core_1.Button, __assign({ ref: ref, size: size, color: color, disabled: disabled || inProgress, onClick: onClick }, rest), children),
-        inProgress && react_1.default.createElement(core_1.CircularProgress, { size: (0, exports.mapToCircularProgressSize)(size), color: (0, exports.mapToCircularProgressColor)(color), style: progressStyles }));
+        react_1.default.createElement(material_1.Button, __assign({ ref: ref, size: size, color: color, disabled: disabled || inProgress, onClick: onClick }, rest), children),
+        inProgress && react_1.default.createElement(material_1.CircularProgress, { size: (0, exports.mapToCircularProgressSize)(size), color: (0, exports.mapToCircularProgressColor)(color), style: progressStyles }));
 });
 exports.default = (0, react_1.memo)(ButtonProgress);

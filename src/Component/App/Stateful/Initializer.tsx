@@ -1,6 +1,7 @@
 import React from 'react';
-import { CircularProgress } from '@material-ui/core';
-import useActions from 'Store/useActions';
+import { CircularProgress } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { initializeApp } from 'Store/Action';
 
 const style: React.CSSProperties = {
   width: '100vw',
@@ -19,15 +20,15 @@ export type Props = {
 const Initializer: React.FC<Props> = ({
   allowRobotLogin, packageJSON, translations
 }) => {
-  const { initializeApp } = useActions();
-
+  const dispatch = useDispatch()
   React.useEffect(
     () => {
-      initializeApp({
-        allowRobotLogin,
-        packageJson: packageJSON,
-        translations
-      });
+      dispatch(
+        initializeApp({
+          allowRobotLogin,
+          packageJson: packageJSON,
+          translations
+        }));
     },
     []
   );

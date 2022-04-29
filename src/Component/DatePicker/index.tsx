@@ -5,8 +5,8 @@ import { LANGUAGE } from 'Types/Language';
 import { useSelector } from 'Types/Redux';
 import mapLanguageToDateFormat from './mapLanguageToDateFormat';
 import 'react-datepicker/dist/react-datepicker.css';
-import { ClickAwayListener, IconButton, InputAdornment, TextFieldProps } from '@material-ui/core';
-import TodayIcon from '@material-ui/icons/Today';
+import { ClickAwayListener, IconButton, InputAdornment, TextFieldProps } from '@mui/material';
+import TodayIcon from '@mui/icons-material/Today';
 import moment from 'moment';
 import TextFieldClearButton from 'Component/TextFieldClearButton';
 

@@ -2,9 +2,9 @@ import React, { memo } from 'react';
 import { colors as textColors } from './Typographies'
 import { colors as allColors } from './Colors'
 import AppNavigation from 'Component/AppNavigation';
-import { Box, Button, Card, CardContent, CardHeader, Container, Grid, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardContent, CardHeader, Container, Grid, Typography } from '@mui/material';
 import CodeBox from 'Component/CodeBox';
-import { useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@mui/styles';
 
 const Boxes = () => {
   const theme = useTheme();

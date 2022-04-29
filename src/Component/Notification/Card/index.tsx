@@ -1,6 +1,7 @@
 import React from 'react';
-import MUICard from '@material-ui/core/Card';
-import { Theme, makeStyles } from '@material-ui/core/styles';
+import MUICard from '@mui/material/Card';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material';
 import { Notification, Severity } from 'Types/Notification';
 import { useIntl } from 'react-intl';
 import Content from './Content';
@@ -43,10 +44,10 @@ const Card: React.FC<Props> = ({ notification, temporary }) => {
 
   return (
     <MUICard className={classes.root}>
-      <Header title={title} subtitle={subtitle || content} variant={notification.variant}/>
+      <Header title={title} subtitle={subtitle || content} variant={notification.variant} />
       <Content>{subtitle ? content : null}</Content>
-      <Actions id={notification?.id} action={notification.action} temporary={temporary}/>
-      <Footer timeStamp={!temporary && notification.timeStamp || undefined} httpDetails={notification.httpDetails}/>
+      <Actions id={notification?.id} action={notification.action} temporary={temporary} />
+      <Footer timeStamp={!temporary && notification.timeStamp || undefined} httpDetails={notification.httpDetails} />
     </MUICard>
   );
 };

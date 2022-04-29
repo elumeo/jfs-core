@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { StandardTextFieldProps } from '@material-ui/core';
+import { StandardTextFieldProps } from '@mui/material';
 import useCurrency from 'Effect/useCurrency';
 import Editor, { Props as EditorProps } from './Editor';
 import Display from './Display';

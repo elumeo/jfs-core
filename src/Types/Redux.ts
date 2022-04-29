@@ -7,12 +7,13 @@ import * as TAction from 'Store/Action';
 import * as TA from 'typesafe-actions';
 import * as Global from 'Store/Reducer/Global';
 import * as Redux from 'react-redux';
-import { CallHistoryMethodAction } from 'connected-react-router';
+// import { LocationAc } from 'connected-react-router';
 
 export type State<T extends {} = {}> = Global.State & T;
 export type ActionType<T extends {} = {}> =
   | TA.ActionType<typeof TAction & T>
-  | CallHistoryMethodAction;
+  // |
+  //  CallHistoryMethodAction;
 export type Dependencies<T extends {} = {}> = T & {};
 export type Epic<
   T1 extends {} = {},

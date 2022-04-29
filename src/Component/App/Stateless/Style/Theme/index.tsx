@@ -1,8 +1,9 @@
 import React from 'react';
-import { StylesProvider, ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import { StylesProvider } from '@mui/styles';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import { ThemeProvider } from 'styled-components';
 import definition from './Definition';
-import { StylesProviderProps } from '@material-ui/styles/StylesProvider/StylesProvider';
+import { StylesProviderProps } from '@mui/styles/StylesProvider/StylesProvider';
 
 export type Props = {
   children: StylesProviderProps['children'];

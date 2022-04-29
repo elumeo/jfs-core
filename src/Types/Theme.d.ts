@@ -1,9 +1,9 @@
 import {
   PaletteColor,
   PaletteColorOptions,
-} from '@material-ui/core/styles/createPalette';
+} from '@mui/styles/createPalette';
 
-declare module '@material-ui/core/styles/createPalette' {
+declare module '@mui/styles/createPalette' {
   // tslint:disable-next-line:interface-name
   interface Palette {
     rubin: PaletteColor;

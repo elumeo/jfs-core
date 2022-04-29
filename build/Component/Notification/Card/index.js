@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var Card_1 = __importDefault(require("@material-ui/core/Card"));
-var styles_1 = require("@material-ui/core/styles");
+var Card_1 = __importDefault(require("@mui/material/Card"));
+var styles_1 = require("@mui/styles");
 var react_intl_1 = require("react-intl");
 var Content_1 = __importDefault(require("./Content"));
 var Header_1 = __importDefault(require("./Header"));

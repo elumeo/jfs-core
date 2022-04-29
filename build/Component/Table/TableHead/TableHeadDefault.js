@@ -33,23 +33,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
+var material_1 = require("@mui/material");
 var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
-var styles_1 = require("@material-ui/core/styles");
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
 var sortingStyles = {
     backgroundColor: '#eee',
     borderRadius: '4px 4px 0 0'
 };
 var TableHeadDefault = function (_a) {
     var _b = _a.height, height = _b === void 0 ? 48 : _b, _c = _a.isNumeric, isNumeric = _c === void 0 ? false : _c, _d = _a.disableSort, disableSort = _d === void 0 ? false : _d, sortBy = _a.sortBy, sortDirection = _a.sortDirection, label = _a.label, dataKey = _a.dataKey;
-    var theme = (0, styles_1.useTheme)();
     var isActiveSort = (0, react_1.useMemo)(function () { return sortBy === dataKey; }, [sortBy]);
-    var styles = (0, react_1.useMemo)(function () { return (__assign(__assign(__assign(__assign({}, VirtualizedTable_1.flexContainerStyles), VirtualizedTable_1.rowNoClickStyles), (isActiveSort ? sortingStyles : null)), { height: height + 'px', flex: 1, padding: theme.spacing(1), maxWidth: '100%' })); }, [sortBy]);
+    var styles = (0, react_1.useMemo)(function () { return (__assign(__assign(__assign(__assign({}, VirtualizedTable_1.flexContainerStyles), VirtualizedTable_1.rowNoClickStyles), (isActiveSort ? sortingStyles : null)), { height: height + 'px', flex: 1, padding: Definition_1.default.spacing(1), maxWidth: '100%' })); }, [sortBy]);
     var mapSortDirection = function (sortDirection) { return sortDirection === 'ASC' ? 'asc' : 'desc'; };
-    return react_1.default.createElement(core_1.TableCell, { component: 'div', variant: 'head', style: styles, align: isNumeric || false ? 'right' : 'left' },
-        disableSort !== true && react_1.default.createElement(core_1.TableSortLabel, { active: isActiveSort, direction: isActiveSort ? mapSortDirection(sortDirection) : 'asc' },
+    return react_1.default.createElement(material_1.TableCell, { component: 'div', variant: 'head', style: styles, align: isNumeric || false ? 'right' : 'left' },
+        disableSort !== true && react_1.default.createElement(material_1.TableSortLabel, { active: isActiveSort, direction: isActiveSort ? mapSortDirection(sortDirection) : 'asc' },
             react_1.default.createElement("div", null, label),
             isActiveSort ? react_1.default.createElement("span", { style: VirtualizedTable_1.visuallyHiddenStyle }, sortDirection.toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending') : null),
         disableSort && react_1.default.createElement("span", null, label));

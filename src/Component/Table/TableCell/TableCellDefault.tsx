@@ -1,6 +1,6 @@
 import React, { memo, ReactNode, useCallback, useMemo } from 'react';
 import { TableCellRoot, TableCellLoadingContent } from 'Component/Table/TableCell';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { CSSProperties } from '@mui/styles/withStyles';
 import { ellipsesStyle } from 'Component/Table/VirtualizedTable';
 import { TableCellRootProps } from 'Component/Table/TableCell/TableCellRoot';
 

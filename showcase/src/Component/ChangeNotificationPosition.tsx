@@ -1,6 +1,6 @@
 import * as React from 'react';
 import useSelector from 'Core/Store/useSelector';
-import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { useCallback } from 'react';
 import useActions from 'Core/Store/useActions';
 import { NotificationPosition } from 'Core/Types/Notification';

@@ -1,8 +1,8 @@
 import React, { memo, useMemo } from 'react';
-import { CardContent } from '@material-ui/core';
-import { CardContentProps } from '@material-ui/core/CardContent/CardContent';
-import { Theme, useTheme } from '@material-ui/core/styles';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { CardContent } from '@mui/material';
+import { CardContentProps } from '@mui/material/CardContent/CardContent';
+import theme from 'Component/App/Stateless/Style/Theme/Definition';
+import { CSSProperties } from '@mui/styles/withStyles';
 
 export type AppCardContentBaseProps = CardContentProps & {
   fullHeight?: boolean;
@@ -12,7 +12,7 @@ export type AppCardContentBaseProps = CardContentProps & {
 };
 
 const AppCardContent = ({ children, fullHeight = false, withSubtitle = false, overrideCardTitleHeight = null, ...rest }: AppCardContentBaseProps) => {
-  const theme = useTheme<Theme>();
+
   const styles: CSSProperties = useMemo(() => ({
     flexDirection: 'column',
     height: overrideCardTitleHeight !== null ? overrideCardTitleHeight : fullHeight

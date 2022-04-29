@@ -1,7 +1,7 @@
 /// <reference types="connected-react-router" />
 export declare const isJsc2JfsWebSocketConnected: ((state: {
     Core: import("../../Reducer/Core").State;
-    router: import("connected-react-router").RouterState<unknown>;
+    router: import("connected-react-router").RouterState<LocationState>;
 }) => boolean) & import("reselect").OutputSelectorFields<(args_0: import("../../../Types/WebSocket").IWebSocketNamespace) => boolean & {
     clearCache: () => void;
 }> & {
@@ -9,7 +9,7 @@ export declare const isJsc2JfsWebSocketConnected: ((state: {
 };
 export declare const isJfs2JfsWebSocketConnected: ((state: {
     Core: import("../../Reducer/Core").State;
-    router: import("connected-react-router").RouterState<unknown>;
+    router: import("connected-react-router").RouterState<LocationState>;
 }) => boolean) & import("reselect").OutputSelectorFields<(args_0: import("../../../Types/WebSocket").IWebSocketNamespace) => boolean & {
     clearCache: () => void;
 }> & {

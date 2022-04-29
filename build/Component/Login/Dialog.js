@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var Dialog_1 = __importDefault(require("@material-ui/core/Dialog"));
-var DialogTitle_1 = __importDefault(require("@material-ui/core/DialogTitle"));
-var DialogContent_1 = __importDefault(require("@material-ui/core/DialogContent"));
-var DialogActions_1 = __importDefault(require("@material-ui/core/DialogActions"));
+var Dialog_1 = __importDefault(require("@mui/material/Dialog"));
+var DialogTitle_1 = __importDefault(require("@mui/material/DialogTitle"));
+var DialogContent_1 = __importDefault(require("@mui/material/DialogContent"));
+var DialogActions_1 = __importDefault(require("@mui/material/DialogActions"));
 var Credentials_1 = __importDefault(require("./Credentials"));
 var Submit_1 = __importDefault(require("./Submit"));
 var useLogin_1 = __importDefault(require("./useLogin"));

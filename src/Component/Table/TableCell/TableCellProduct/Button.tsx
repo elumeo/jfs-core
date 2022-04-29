@@ -1,6 +1,6 @@
 import React, { CSSProperties, memo } from 'react';
 import { useIntl } from 'react-intl';
-import { Button as MuiButton } from '@material-ui/core';
+import { Button as MuiButton } from '@mui/material';
 
 const buttonWrapperStyles: CSSProperties = { marginTop: '2px' };
 

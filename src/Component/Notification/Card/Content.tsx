@@ -1,8 +1,8 @@
 import * as React from 'react';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 import { PropsWithChildren } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(({
   root: {

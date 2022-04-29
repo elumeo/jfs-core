@@ -1,17 +1,19 @@
 import React from 'react';
-import MUISnackbar, {SnackbarProps} from '@material-ui/core/Snackbar';
-import useActions from 'Store/useActions';
+import MUISnackbar, {SnackbarProps} from '@mui/material/Snackbar';
+// import useActions from 'Store/useActions';
 import useVisibleToast from './useVisibleToast';
-import { Alert } from '@material-ui/lab';
+import { Alert } from '@mui/lab';
+import { useDispatch } from 'react-redux';
+import { dismissToastAction } from 'Store/Action';
 
 const Snackbar: React.FC = () => {
-  const { dismissToastAction } = useActions();
+  const dispatch = useDispatch();
   const { open, severity, message, autoHideDuration } = useVisibleToast();
   const onCloseCallback: SnackbarProps['onClose'] = React.useCallback((event, reason) => {
     if (reason === 'timeout') {
-      dismissToastAction();
+      dispatch(dismissToastAction());
     }
-  }, [dismissToastAction])
+  }, [dispatch])
   // const alertEl = useMemo(() => {}, [])
 
   return (

@@ -1,8 +1,8 @@
 /* eslint-disable max-lines */
 import React, { memo } from 'react';
-import { Box, Card, CardContent, CardHeader, Container, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@material-ui/core';
-import { useTheme, makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { alpha } from '@material-ui/core/styles/colorManipulator';
+import { Box, Card, CardContent, CardHeader, Container, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
+import { useTheme, makeStyles, createStyles, Theme } from '@mui/styles';
+import { alpha } from '@mui/styles/colorManipulator';
 import {
   BadgePercent as BadgePercentIcon,
   BidBlock as BidBlockIcon,
@@ -26,9 +26,9 @@ import {
 } from '@elumeo/jfs-core/build/Component/Icon';
 import AppNavigation from 'Component/AppNavigation';
 import CodeBox from 'Component/CodeBox';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import DoneIcon from '@material-ui/icons/Done';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import DoneIcon from '@mui/icons-material/Done';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   icon: {

@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
-import { Checkbox, CheckboxProps } from '@material-ui/core';
+import { Checkbox, CheckboxProps } from '@mui/material';
 import TableCellRoot, { TableCellRootProps } from './TableCellRoot';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { CSSProperties } from '@mui/styles/withStyles';
 
 const checkboxStyles: CSSProperties = { padding: '8px' };
 const tableCellStyles: CSSProperties = { padding: '4px', justifyContent: 'center' };

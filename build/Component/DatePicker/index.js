@@ -54,8 +54,8 @@ require("./Setup");
 var Redux_1 = require("../../Types/Redux");
 var mapLanguageToDateFormat_1 = __importDefault(require("./mapLanguageToDateFormat"));
 require("react-datepicker/dist/react-datepicker.css");
-var core_1 = require("@material-ui/core");
-var Today_1 = __importDefault(require("@material-ui/icons/Today"));
+var material_1 = require("@mui/material");
+var Today_1 = __importDefault(require("@mui/icons-material/Today"));
 var moment_1 = __importDefault(require("moment"));
 var TextFieldClearButton_1 = __importDefault(require("../TextFieldClearButton"));
 var DatePicker = function (_a) {
@@ -109,11 +109,11 @@ var DatePicker = function (_a) {
     var preparedInputProps = (0, react_1.useMemo)(function () { return ({
         onFocus: function () { return shouldOpenOnFocus ? setOpen(true) : null; },
         onBlur: function () { return setDirty(true); },
-        endAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
-            react_1.default.createElement(core_1.IconButton, { disabled: disabled, size: 'small', onClick: handleTodayClick },
+        endAdornment: react_1.default.createElement(material_1.InputAdornment, { position: 'end' },
+            react_1.default.createElement(material_1.IconButton, { disabled: disabled, size: 'small', onClick: handleTodayClick },
                 react_1.default.createElement(Today_1.default, null)))
     }); }, [shouldOpenOnFocus, disabled]);
-    return (react_1.default.createElement(core_1.ClickAwayListener, { onClickAway: function () { return setOpen(false); } },
+    return (react_1.default.createElement(material_1.ClickAwayListener, { onClickAway: function () { return setOpen(false); } },
         react_1.default.createElement("span", null,
             react_1.default.createElement(react_datepicker_1.default, __assign({ disabled: disabled }, rest, { ref: datePickerRef, selected: date, onChange: handleOnChange, dateFormat: dateFormat || (0, mapLanguageToDateFormat_1.default)(language), locale: language, open: open, id: id, customInput: react_1.default.createElement(TextFieldClearButton_1.default, __assign({}, textFieldProps, { isClearable: isClearable, label: label, error: hasError(), helperText: hasError() && hasErrorText() ? errorText : helperText, autoComplete: 'off', onClearClick: handleClearClick, InputProps: preparedInputProps })) })))));
 };

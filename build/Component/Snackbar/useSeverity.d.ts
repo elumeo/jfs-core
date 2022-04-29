@@ -1,4 +1,4 @@
-import { Color } from '@material-ui/lab';
+import { AlertColor } from '@mui/material';
 import { Toast } from '../../Types/Toast';
-declare const useSeverity: (toast: Toast) => Color;
+declare const useSeverity: (toast: Toast) => AlertColor;
 export default useSeverity;

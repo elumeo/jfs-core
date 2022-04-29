@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckboxProps } from '@material-ui/core';
+import { CheckboxProps } from '@mui/material';
 export declare type TableHeadSelectProps = {
     height?: number;
     disabled?: boolean;

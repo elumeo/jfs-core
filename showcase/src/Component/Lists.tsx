@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import FolderIcon from '@material-ui/icons/Folder';
+import FolderIcon from '@mui/icons-material/Folder';
 import AppNavigation from 'Component/AppNavigation';
 import {
   Card,
@@ -15,7 +15,7 @@ import {
   ListSubheader,
   Switch,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import CodeBox from 'Component/CodeBox';
 
 const generate = (element: React.ReactElement) => {

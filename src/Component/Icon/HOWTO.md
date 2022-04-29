@@ -15,7 +15,7 @@ Example svg icon component in react:
 
 ```
 import React from 'react';
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
+import { SvgIconProps } from '@mui/material/SvgIcon';
 import Wrapper from '../Wrapper';
 
 const BadgePercent: React.FC<SvgIconProps> = props => (

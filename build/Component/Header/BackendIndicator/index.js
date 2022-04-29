@@ -27,7 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var Tooltip_1 = __importDefault(require("@material-ui/core/Tooltip"));
+var Tooltip_1 = __importDefault(require("@mui/material/Tooltip"));
 var Redux_1 = require("../../../Types/Redux");
 var react_intl_1 = require("react-intl");
 var Flag_1 = __importDefault(require("./Flag"));

@@ -1,23 +1,24 @@
 import React from 'react';
-import MUIDialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
-import Button from '@material-ui/core/Button';
+import MUIDialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Button from '@mui/material/Button';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'Types/Redux';
-import useActions from 'Store/useActions';
-import { DialogContentProps } from '@material-ui/core/DialogContent/DialogContent';
+import { DialogContentProps } from '@mui/material/DialogContent/DialogContent';
+import { useDispatch } from 'react-redux';
+import { closeSettings } from 'Store/Action';
 
 type Props = {
   children: DialogContentProps['children'];
 }
 
 const Dialog = ({ children }: Props) => {
-  const { closeSettings } = useActions();
+  const dispatch = useDispatch()
   const { formatMessage } = useIntl();
   const open = useSelector(state => state.Core.Settings.settingsOpen);
-  const onClose = React.useCallback(() => closeSettings(), [closeSettings]);
+  const onClose = React.useCallback(() => dispatch(closeSettings()), [dispatch]);
   return (
     <MUIDialog open={open} onClose={onClose}>
       <DialogTitle>{formatMessage({ id: 'app.settings' })}</DialogTitle>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Color } from '@material-ui/lab';
+import { AlertColor } from '@mui/material';
 import { Toast } from 'Types/Toast';
 
-const useSeverity = (toast: Toast): Color => {
-  const [severity, setSeverity] = React.useState<Color>('info');
+const useSeverity = (toast: Toast): AlertColor => {
+  const [severity, setSeverity] = React.useState<AlertColor>('info');
 
   React.useEffect(() => {
     if (toast && toast.isSuccess) {

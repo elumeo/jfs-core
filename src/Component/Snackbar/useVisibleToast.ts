@@ -5,7 +5,7 @@ import useWords from './useWords';
 import useSeverity from './useSeverity';
 import useAutoHideDuration from './useAutoHideDuration';
 import useMessage from './useMessage';
-import { Color } from '@material-ui/lab';
+import { AlertColor, Palette } from '@mui/material';
 
 const useVisibleToast = (): {
   toast: Toast;
@@ -13,7 +13,7 @@ const useVisibleToast = (): {
   words: string[];
   message: React.ReactNode;
   autoHideDuration: number;
-  severity: Color;
+  severity: AlertColor;
 } => {
   const toasts = useSelector(state => state.Core.Toast.toasts);
   const toast = React.useMemo(() => toasts?.[0], [toasts]);

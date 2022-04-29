@@ -1,6 +1,6 @@
 import React, { CSSProperties, memo, useMemo } from 'react';
-import { Grid } from '@material-ui/core';
-import { Theme, useTheme } from '@material-ui/core/styles';
+import { Grid } from '@mui/material';
+import theme from 'Component/App/Stateless/Style/Theme/Definition';
 import Attributes from './Attributes';
 import Name from './Name';
 import Button from './Button';
@@ -15,7 +15,7 @@ export type DetailsProps = {
 }
 
 const Details = ({ id = null, name = null, productType = null, inStockPool = false, hasNoTvLock = false, onClick = null }: DetailsProps) => {
-  const theme = useTheme<Theme>();
+
   const outerWrapperStyles: CSSProperties = useMemo(() => ({ marginLeft: theme.spacing(1), display: 'flex', flexDirection: 'column', height: '100%' }), []);
 
   return <Grid item xs>

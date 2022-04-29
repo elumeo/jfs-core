@@ -22,28 +22,34 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var operators_1 = require("rxjs/operators");
 var typesafe_actions_1 = require("typesafe-actions");
-var rxjs_1 = require("rxjs");
 var Action = __importStar(require("../../Action"));
-var JSC_1 = __importDefault(require("../../../API/JSC"));
 var logout = function (action$, store) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.logout)), (0, operators_1.concatMap)(function (action) {
-        var session = action.payload && action.payload.sessionDTO
-            ? action.payload.sessionDTO
-            : store.value.Core.Session.sessionDTO;
-        if (session) {
-            return (0, rxjs_1.from)(JSC_1.default.SessionClient.logout(session)).pipe((0, operators_1.switchMap)(function () {
-                return (0, rxjs_1.concat)((0, rxjs_1.of)(Action.logoutFinished()), (0, rxjs_1.of)(Action.closeLogout()), (0, rxjs_1.of)(Action.unauthorizeSession()));
-            }));
-        }
-        else {
-            return (0, rxjs_1.of)(Action.logoutFinished());
-        }
+        // const session =
+        //   action.payload && action.payload.sessionDTO
+        //     ? action.payload.sessionDTO
+        //     : store.value.Core.Session.sessionDTO;
+        // if (session) {
+        //   return from(JSC.SessionClient.logout(session)).pipe(
+        //     switchMap(() =>
+        //       concat(
+        //         of(Action.logoutFinished()),
+        //         of(Action.closeLogout()),
+        //         of(Action.unauthorizeSession()),
+        //       ),
+        //     ),
+        //   );
+        // }
+        // else {
+        return [
+            Action.closeLogout(),
+            Action.logoutFinished(),
+            Action.unauthorizeSession(),
+        ];
+        // }
     }));
 };
 exports.default = logout;

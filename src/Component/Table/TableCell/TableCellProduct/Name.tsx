@@ -1,6 +1,6 @@
 import React, { CSSProperties, memo, useMemo } from 'react';
-import { Typography } from '@material-ui/core';
-import { Theme, useTheme } from '@material-ui/core/styles';
+import { Typography } from '@mui/material';
+import theme from 'Component/App/Stateless/Style/Theme/Definition';
 
 const nameWrapperStyles: CSSProperties = {flex: 1};
 
@@ -12,7 +12,7 @@ export type NameProps = {
 }
 
 const Name = ({name, productType = null, inStockPool = false, hasNoTvLock = false}: NameProps) => {
-  const theme = useTheme<Theme>();
+
   const nameStyles: CSSProperties = useMemo(() => ({
     fontWeight: theme.typography.fontWeightBold,
     whiteSpace: 'normal',

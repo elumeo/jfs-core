@@ -5,8 +5,7 @@ import { routerMiddleware } from 'connected-react-router';
 import { createHashHistory } from 'history';
 import { Epic, EpicMiddleware } from 'Types/Redux';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare const window: any;
+declare const window: Window & { __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: unknown };
 export const history = createHashHistory();
 const epicMiddleware: EpicMiddleware = createEpicMiddleware({
   dependencies: { history },

@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { enterUnauthorizedRoute } from 'Store/Action';
 import BaseRoute, { IBaseRouteProps } from './BaseRoute';
-import useActions from 'Store/useActions';
 
 const NoAuthRoute: React.FC<IBaseRouteProps> = props => {
-  const { enterUnauthorizedRoute } = useActions();
+  const dispatch = useDispatch()
   useEffect(() => {
-    enterUnauthorizedRoute();
-  }, [props.path]);
+    dispatch(enterUnauthorizedRoute());
+  }, [props.path, dispatch]);
 
   return <BaseRoute {...props} />;
 };

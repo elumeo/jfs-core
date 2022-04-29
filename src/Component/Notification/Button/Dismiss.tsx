@@ -1,6 +1,6 @@
 import React from 'react';
-import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 export type Props = {
   onClick: IconButtonProps['onClick'];

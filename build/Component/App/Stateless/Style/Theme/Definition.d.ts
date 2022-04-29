@@ -1,2 +1,2 @@
-declare const definition: import("@material-ui/core/styles").Theme;
+declare const definition: any;
 export default definition;

@@ -27,9 +27,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
-var CardContent_1 = __importDefault(require("@material-ui/core/CardContent"));
-var Typography_1 = __importDefault(require("@material-ui/core/Typography"));
-var styles_1 = require("@material-ui/core/styles");
+var CardContent_1 = __importDefault(require("@mui/material/CardContent"));
+var Typography_1 = __importDefault(require("@mui/material/Typography"));
+var styles_1 = require("@mui/styles");
 var useStyles = (0, styles_1.makeStyles)(({
     root: {
         gridRowStart: 2,

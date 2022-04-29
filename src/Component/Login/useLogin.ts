@@ -1,8 +1,9 @@
+import { useDispatch } from 'react-redux';
 import React, { useCallback } from 'react';
 import { useSelector } from 'Types/Redux';
-import useActions from 'Store/useActions';
 import * as Type from 'Types/Login';
 import * as Selector from 'Store/Selector';
+import { checkLogin } from 'Store/Action';
 
 type useLoginProps = {
   open: boolean;
@@ -12,13 +13,13 @@ type useLoginProps = {
 }
 
 const useLogin = (): useLoginProps => {
-  const { checkLogin } = useActions();
+  const dispatch = useDispatch()
   const open = useSelector(Selector.isLoginOpen);
   const [credentials, setCredentials] = React.useState<Type.Credentials>({
     username: '',
     password: '',
   });
-  const handleCheck: useLoginProps['check'] = useCallback(() => checkLogin(credentials), [credentials]);
+  const handleCheck: useLoginProps['check'] = useCallback(() => dispatch(checkLogin(credentials)), [credentials,dispatch]);
   const handleOnChange: useLoginProps['onChange'] = useCallback(next => setCredentials(next), []);
 
   return {

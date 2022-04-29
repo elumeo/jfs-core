@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as MUI from '@material-ui/core';
+import * as MUI from '@mui/material';
 import { useIntl } from 'react-intl';
 import * as Selector from 'Store/Selector';
 

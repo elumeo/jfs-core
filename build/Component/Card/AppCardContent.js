@@ -44,19 +44,21 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
-var styles_1 = require("@material-ui/core/styles");
+var material_1 = require("@mui/material");
+var Definition_1 = __importDefault(require("../App/Stateless/Style/Theme/Definition"));
 var AppCardContent = function (_a) {
     var children = _a.children, _b = _a.fullHeight, fullHeight = _b === void 0 ? false : _b, _c = _a.withSubtitle, withSubtitle = _c === void 0 ? false : _c, _d = _a.overrideCardTitleHeight, overrideCardTitleHeight = _d === void 0 ? null : _d, rest = __rest(_a, ["children", "fullHeight", "withSubtitle", "overrideCardTitleHeight"]);
-    var theme = (0, styles_1.useTheme)();
     var styles = (0, react_1.useMemo)(function () { return ({
         flexDirection: 'column',
         height: overrideCardTitleHeight !== null ? overrideCardTitleHeight : fullHeight
-            ? 'calc(100% - ' + (withSubtitle ? theme.spacing(10) : theme.spacing(7)) + 'px)'
+            ? 'calc(100% - ' + (withSubtitle ? Definition_1.default.spacing(10) : Definition_1.default.spacing(7)) + 'px)'
             : 'initial'
     }); }, [fullHeight, withSubtitle, overrideCardTitleHeight]);
-    return react_1.default.createElement(core_1.CardContent, __assign({ style: styles }, rest), children);
+    return react_1.default.createElement(material_1.CardContent, __assign({ style: styles }, rest), children);
 };
 exports.default = (0, react_1.memo)(AppCardContent);

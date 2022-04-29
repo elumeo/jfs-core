@@ -27,14 +27,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
-var Box_1 = __importDefault(require("@material-ui/core/Box"));
-var Typography_1 = __importDefault(require("@material-ui/core/Typography"));
-var styles_1 = require("@material-ui/core/styles");
+var Box_1 = __importDefault(require("@mui/material/Box"));
+var Typography_1 = __importDefault(require("@mui/material/Typography"));
+var styles_1 = require("@mui/styles");
 var react_intl_1 = require("react-intl");
 var react_1 = require("react");
-var useStyles = (0, styles_1.makeStyles)(function (theme) { return ({
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
+var useStyles = (0, styles_1.makeStyles)(function () { return ({
     root: {
-        padding: theme.spacing(1, 2),
+        padding: Definition_1.default.spacing(1, 2),
         gridColumnStart: 1,
         gridColumnEnd: 'none',
         textAlign: 'right'

@@ -1,4 +1,6 @@
 import React from 'react';
-import { IBaseRouteProps } from './BaseRoute';
-declare const AuthRoute: React.FC<IBaseRouteProps>;
+declare type Props = {
+    children?: React.ReactNode;
+};
+declare const AuthRoute: React.FC<Props>;
 export default AuthRoute;

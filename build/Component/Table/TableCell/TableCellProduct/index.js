@@ -49,7 +49,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
+var material_1 = require("@mui/material");
 var Image_1 = __importDefault(require("./Image"));
 var Details_1 = __importDefault(require("./Details"));
 var TableCell_1 = require("../../../Table/TableCell");
@@ -57,7 +57,7 @@ var TableCellProduct = function (_a) {
     var _b = _a.id, id = _b === void 0 ? null : _b, _c = _a.rowIndex, rowIndex = _c === void 0 ? null : _c, _d = _a.mediaUris, mediaUris = _d === void 0 ? null : _d, _e = _a.name, name = _e === void 0 ? null : _e, _f = _a.productType, productType = _f === void 0 ? null : _f, _g = _a.inStockPool, inStockPool = _g === void 0 ? false : _g, _h = _a.hasNoTvLock, hasNoTvLock = _h === void 0 ? false : _h, _j = _a.isProductBundle, isProductBundle = _j === void 0 ? false : _j, _k = _a.onClick, onClick = _k === void 0 ? null : _k, rest = __rest(_a, ["id", "rowIndex", "mediaUris", "name", "productType", "inStockPool", "hasNoTvLock", "isProductBundle", "onClick"]);
     var handleOnClick = (0, react_1.useCallback)(function () { return onClick(id, rowIndex); }, [onClick, id, rowIndex]);
     return react_1.default.createElement(TableCell_1.TableCellRoot, __assign({}, rest, { isNumeric: false }),
-        id && react_1.default.createElement(core_1.Grid, { container: true },
+        id && react_1.default.createElement(material_1.Grid, { container: true },
             react_1.default.createElement(Image_1.default, { onClick: handleOnClick, isProductBundle: isProductBundle, id: id, mediaUris: mediaUris }),
             react_1.default.createElement(Details_1.default, { onClick: handleOnClick, id: id, productType: productType, name: name, inStockPool: inStockPool, hasNoTvLock: hasNoTvLock })),
         id === null && react_1.default.createElement(TableCell_1.TableCellLoadingContent, null));

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useCallback } from 'react';
 import useSelector from 'Core/Store/useSelector';
-import { FormControl, Input, InputLabel } from '@material-ui/core';
+import { FormControl, Input, InputLabel } from '@mui/material';
 import useActions from 'Core/Store/useActions';
 
 const ChangeNotificationMax: React.FC =

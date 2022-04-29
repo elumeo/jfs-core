@@ -22,16 +22,18 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
-var styles_1 = require("@material-ui/core/styles");
+var material_1 = require("@mui/material");
+var Definition_1 = __importDefault(require("../../../App/Stateless/Style/Theme/Definition"));
 var nameWrapperStyles = { flex: 1 };
 var Name = function (_a) {
     var name = _a.name, _b = _a.productType, productType = _b === void 0 ? null : _b, _c = _a.inStockPool, inStockPool = _c === void 0 ? false : _c, _d = _a.hasNoTvLock, hasNoTvLock = _d === void 0 ? false : _d;
-    var theme = (0, styles_1.useTheme)();
     var nameStyles = (0, react_1.useMemo)(function () { return ({
-        fontWeight: theme.typography.fontWeightBold,
+        fontWeight: Definition_1.default.typography.fontWeightBold,
         whiteSpace: 'normal',
         display: '-webkit-box',
         overflow: 'hidden',
@@ -39,6 +41,6 @@ var Name = function (_a) {
         lineClamp: productType !== null || inStockPool || hasNoTvLock ? 2 : 3,
     }); }, [productType, inStockPool, hasNoTvLock]);
     return react_1.default.createElement("div", { style: nameWrapperStyles },
-        react_1.default.createElement(core_1.Typography, { variant: 'body1', style: nameStyles }, name));
+        react_1.default.createElement(material_1.Typography, { variant: 'body1', style: nameStyles }, name));
 };
 exports.default = (0, react_1.memo)(Name);

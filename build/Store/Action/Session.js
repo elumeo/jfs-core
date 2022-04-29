@@ -4,6 +4,9 @@ exports.unauthorizeSession = exports.authorizeSession = exports.logout = exports
 var typesafe_actions_1 = require("typesafe-actions");
 exports.loadSession = (0, typesafe_actions_1.createAction)("session/LOAD")();
 exports.checkSession = (0, typesafe_actions_1.createAction)('route/CHECK')();
+// export type LogoutParam = {
+//   sessionDTO?: ISessionDTO;
+// }
 exports.logout = (0, typesafe_actions_1.createAction)('route/LOGOUT')();
 exports.authorizeSession = (0, typesafe_actions_1.createAction)('route/AUTHORIZE')();
 exports.unauthorizeSession = (0, typesafe_actions_1.createAction)('route/UNAUTHORIZE')();

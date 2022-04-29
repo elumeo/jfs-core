@@ -1,4 +1,4 @@
-import { PaletteColor } from '@material-ui/core/styles/createPalette';
+import { PaletteColor } from '@mui/material';
 
 export const rubin: PaletteColor = {
   light: '#ab4b6b',

@@ -1,11 +1,10 @@
 import React, { memo, useMemo } from 'react';
-import { CircularProgress } from '@material-ui/core';
-import { useTheme, Theme } from '@material-ui/core/styles';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { CircularProgress } from '@mui/material';
+import { CSSProperties } from '@mui/styles/withStyles';
+import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
 const TableRowLoading = () => {
-  const theme = useTheme<Theme>();
-  const styles = useMemo<CSSProperties>(() => ({ textAlign: 'center', marginTop: theme.spacing(2) + 'px' }), []);
+  const styles = useMemo<CSSProperties>(() => ({ textAlign: 'center', marginTop: definition.spacing(2) + 'px' }), []);
   return <div style={styles}><CircularProgress /></div>;
 };
 

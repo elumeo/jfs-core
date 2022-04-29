@@ -49,8 +49,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
-var Close_1 = __importDefault(require("@material-ui/icons/Close"));
+var material_1 = require("@mui/material");
+var Close_1 = __importDefault(require("@mui/icons-material/Close"));
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var SelectClearButton = function (_a) {
     var children = _a.children, onChange = _a.onChange, _b = _a.clearButtonSize, clearButtonSize = _b === void 0 ? 'small' : _b, _c = _a.clearIconSize, clearIconSize = _c === void 0 ? 'small' : _c, _d = _a.variant, variant = _d === void 0 ? 'standard' : _d, endAdornment = _a.endAdornment, rest = __rest(_a, ["children", "onChange", "clearButtonSize", "clearIconSize", "variant", "endAdornment"]);
@@ -91,11 +91,11 @@ var SelectClearButton = function (_a) {
         }
     }, [onChange]);
     var handleClearClick = (0, react_1.useCallback)(function () { return handleOnChange(null, null); }, [onChange]);
-    var endAdornmentClearButton = showClearButton && (react_1.default.createElement(core_1.IconButton, { disabled: rest.disabled, size: clearButtonSize, color: 'secondary', onClick: handleClearClick, style: { marginRight: '21px' } },
+    var endAdornmentClearButton = showClearButton && (react_1.default.createElement(material_1.IconButton, { disabled: rest.disabled, size: clearButtonSize, color: 'secondary', onClick: handleClearClick, style: { marginRight: '21px' } },
         react_1.default.createElement(Close_1.default, { fontSize: getIconSize() })));
-    var preparedEndAdornment = react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
+    var preparedEndAdornment = react_1.default.createElement(material_1.InputAdornment, { position: 'end' },
         endAdornment && endAdornment.props.children,
         endAdornmentClearButton);
-    return (react_1.default.createElement(core_1.Select, __assign({}, rest, { onChange: handleOnChange, endAdornment: preparedEndAdornment, autoComplete: 'new-password', value: inputValue }), children));
+    return (react_1.default.createElement(material_1.Select, __assign({}, rest, { onChange: handleOnChange, endAdornment: preparedEndAdornment, autoComplete: 'new-password', value: inputValue }), children));
 };
 exports.default = (0, react_1.memo)(SelectClearButton);

@@ -1,20 +1,21 @@
 import * as React from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { Notification } from 'Types/Notification'
-import useActions from 'Store/useActions';
 import { useCallback } from 'react';
+import { removeNotification } from 'Store/Action';
+import { useDispatch } from 'react-redux';
 
 type Props = Pick<Notification, 'id'>
 
 const Delete: React.FC<Props> = ({ id }) => {
-  const { removeNotification } = useActions()
+  const dispatch = useDispatch()
   const onDeleteCallback = useCallback(() => {
-    removeNotification(id)
-  }, [id, removeNotification])
+    dispatch(removeNotification(id))
+  }, [id, dispatch])
   return (
     <IconButton color='inherit' onClick={onDeleteCallback}>
-      <DeleteIcon/>
+      <DeleteIcon />
     </IconButton>
   )
 }

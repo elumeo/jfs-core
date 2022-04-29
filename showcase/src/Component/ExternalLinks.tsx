@@ -1,17 +1,18 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, Typography, List, ListItem, Link, Grid, Container } from '@material-ui/core';
-import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
+import { Card, CardContent, CardHeader, Typography, List, ListItem, Link, Grid, Container } from '@mui/material';
+import { withStyles, WithStyles } from '@mui/styles';
 import AppNavigation from 'Component/AppNavigation';
+import definition from '@elumeo/jfs-core/build/Component/App/Stateless/Style/Theme/Definition';
 
-type Props = WithStyles;
 
-const style = (theme: Theme) => ({
+const style = () => ({
   nested: {
-    paddingLeft: theme.spacing(4)
+    paddingLeft: definition.spacing(4)
   }
 });
+// type Props = WithStyles;
 
-const ExternalLinks: React.FC<Props> = ({ classes }) => {
+const ExternalLinks: React.FC<WithStyles<typeof style>> = ({ classes }) => {
   return <Grid container>
     <Grid item xs={2}><AppNavigation /></Grid>
     <Grid item xs>
@@ -22,12 +23,12 @@ const ExternalLinks: React.FC<Props> = ({ classes }) => {
             <Typography variant='h6'>Styling</Typography>
             <List disablePadding>
               <ListItem button className={classes.nested}><Link target='__blank'
-                                                                href='https://material-ui.com/styles/basics/#material-ui-styles'>@material-ui/styles</Link></ListItem>
+                href='https://material-ui.com/styles/basics/#material-ui-styles'>@material-ui/styles</Link></ListItem>
               <ListItem button className={classes.nested}><Link target='__blank'
-                                                                href='https://material-ui.com/styles/advanced/#advanced'>@material-ui/core/styles</Link></ListItem>
+                href='https://material-ui.com/styles/advanced/#advanced'>@material-ui/core/styles</Link></ListItem>
               <ListItem button className={classes.nested}><Link href='https://material.io/design/typography/the-type-system.html#type-scale'>The Typography Type System</Link></ListItem>
               <ListItem button className={classes.nested}><Link target='__blank'
-                                                                href='https://material-ui.com/customization/default-theme/'>Material UI Default Theme</Link></ListItem>
+                href='https://material-ui.com/customization/default-theme/'>Material UI Default Theme</Link></ListItem>
             </List>
             <Typography variant='h6'>Material UI Lab</Typography>
             <List disablePadding>
@@ -44,7 +45,7 @@ const ExternalLinks: React.FC<Props> = ({ classes }) => {
               <ListItem button className={classes.nested}><Link target='__blank' href='https://github.com/nfl/react-helmet'>react-helmet</Link></ListItem>
               <ListItem button className={classes.nested}><Link target='__blank' href='https://github.com/bvaughn/react-window'>react-window</Link></ListItem>
               <ListItem button className={classes.nested}><Link target='__blank'
-                                                                href='https://github.com/bvaughn/react-virtualized-auto-sizer'>react-virtualized-auto-sizer</Link></ListItem>
+                href='https://github.com/bvaughn/react-virtualized-auto-sizer'>react-virtualized-auto-sizer</Link></ListItem>
             </List>
           </CardContent>
         </Card>

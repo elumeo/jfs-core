@@ -1,9 +1,9 @@
 import React, { memo, useMemo } from 'react';
-import { TableCell, TableSortLabel } from '@material-ui/core';
+import { TableCell, TableSortLabel } from '@mui/material';
 import { SortDirectionType } from 'react-virtualized';
 import { flexContainerStyles, rowNoClickStyles, visuallyHiddenStyle } from 'Component/Table/VirtualizedTable';
-import { Theme, useTheme } from '@material-ui/core/styles';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import theme from 'Component/App/Stateless/Style/Theme/Definition';
+import { CSSProperties } from '@mui/styles/withStyles';
 
 const sortingStyles: CSSProperties = {
   backgroundColor: '#eee',
@@ -21,7 +21,7 @@ export type TableHeadDefaultProps = {
 };
 
 const TableHeadDefault = ({ height = 48, isNumeric = false, disableSort = false, sortBy, sortDirection, label, dataKey }: TableHeadDefaultProps) => {
-  const theme = useTheme<Theme>();
+
   const isActiveSort = useMemo(() => sortBy === dataKey, [sortBy]);
   const styles = useMemo<CSSProperties>(() => ({
     ...flexContainerStyles,

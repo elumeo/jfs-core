@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var react_intl_1 = require("react-intl");
-var InputLabel_1 = __importDefault(require("@material-ui/core/InputLabel"));
+var InputLabel_1 = __importDefault(require("@mui/material/InputLabel"));
 var Select_1 = __importDefault(require("./Select"));
 var useLanguage_1 = __importDefault(require("./useLanguage"));
 var Settings = function () {

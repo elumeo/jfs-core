@@ -1,5 +1,5 @@
 import React from 'react';
-import { StandardTextFieldProps } from '@material-ui/core';
+import { StandardTextFieldProps } from '@mui/material';
 declare type Props = {
     currency: string;
     value: React.ReactText;

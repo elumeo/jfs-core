@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { initialState } from 'Store/Reducer/Core/WebSocket';
 import * as Type from 'Types/Configuration';
 import { WSClient } from 'API/WS/WSClient';
-import useActions from 'Store/useActions';
 import * as Action from 'Store/Action';
+import { useDispatch } from 'react-redux';
+import { webSocketUpdateRoomAction, webSocketConnectFailedAction } from 'Store/Action';
 
 export type Props = {
   children: React.ReactNode;
@@ -14,18 +15,17 @@ export type Props = {
 };
 
 const WebSocket = ({ children }: Props) => {
-  const { webSocketUpdateRoomAction, webSocketConnectFailedAction } = useActions();
-
+const dispatch = useDispatch()
   useEffect(
     () => {
       WSClient.listenRoomsObservable$.subscribe(roomData =>
-        webSocketUpdateRoomAction(roomData)
+        dispatch(webSocketUpdateRoomAction(roomData))
       );
       WSClient.connectionErrorObservable$.subscribe(error => {
-        webSocketConnectFailedAction(error);
+        dispatch(webSocketConnectFailedAction(error));
       });
     },
-    []
+    [WSClient.listenRoomsObservable$]
   );
 
   return <>{children}</>;

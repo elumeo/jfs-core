@@ -27,7 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var Icon_1 = __importDefault(require("@material-ui/core/Icon"));
+var Icon_1 = __importDefault(require("@mui/material/Icon"));
 var useIcon = function (variant) {
     return (0, react_1.useMemo)(function () {
         switch (variant) {

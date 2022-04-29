@@ -1,5 +1,5 @@
 import React from 'react';
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline } from '@mui/material';
 import Theme, {Props as ThemeProps} from './Theme';
 import 'material-icons/iconfont/material-icons.css'
 import '@fontsource/roboto/300.css'

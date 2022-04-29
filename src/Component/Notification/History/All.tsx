@@ -2,12 +2,13 @@ import React from 'react';
 import { useSelector } from 'Types/Redux';
 import Card from 'Component/Notification/Card';
 import Empty from './Empty';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 import { Notification } from 'Types/Notification';
-import { makeStyles } from '@material-ui/core/styles';
-import { Collapse } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { Collapse } from '@mui/material';
 import { TransitionGroup } from 'react-transition-group'
+import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,8 +17,8 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     height: '100%',
     overflowY: 'scroll',
-    gap: theme.spacing(1),
-    padding: theme.spacing(2, 0)
+    gap: definition.spacing(1),
+    padding: definition.spacing(2, 0)
   },
   item: {
     width: '100%'

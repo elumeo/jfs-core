@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Typography from '@material-ui/core/Typography';
-import CardHeader from '@material-ui/core/CardHeader';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
 import useIcon from './useicon';
 import { Notification } from 'Types/Notification'
 

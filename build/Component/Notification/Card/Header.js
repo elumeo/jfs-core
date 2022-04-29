@@ -27,8 +27,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
-var Typography_1 = __importDefault(require("@material-ui/core/Typography"));
-var CardHeader_1 = __importDefault(require("@material-ui/core/CardHeader"));
+var Typography_1 = __importDefault(require("@mui/material/Typography"));
+var CardHeader_1 = __importDefault(require("@mui/material/CardHeader"));
 var useicon_1 = __importDefault(require("./useicon"));
 var Header = function (_a) {
     var title = _a.title, subtitle = _a.subtitle, variant = _a.variant;

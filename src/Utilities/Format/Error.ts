@@ -6,7 +6,7 @@ const isAxiosError = (error: Error) =>
 const isJscError = (error: Error) =>
   isAxiosError(error) &&
   typeof (error as AxiosError).response.data === 'object' &&
-  ['id', 'message'].every(key => key in (error as AxiosError).response.data);
+  ['id', 'message'].every(key => key in ((error as AxiosError).response.data as Object));
 
 const head = (error: AxiosError) => {
   const { status, statusText } = error.response;
@@ -15,7 +15,7 @@ const head = (error: AxiosError) => {
   return `(http: ${status} ${statusText} // ${method} ${url})`;
 };
 
-const body = (error: AxiosError) => {
+const body = (error: AxiosError<{id: string, message: string}>) => {
   const { data } = error.response;
   if (isJscError(error)) {
     const { id, message } = data;
@@ -26,9 +26,9 @@ const body = (error: AxiosError) => {
   }
 };
 
-const http = (error: AxiosError) => ({
+const http = (error: AxiosError<{id: string, message: string}>) => ({
   title: head(error as AxiosError),
-  details: body(error as AxiosError),
+  details: body(error),
 });
 
 const generic = (error: Error) => ({
@@ -41,4 +41,4 @@ export const apply = (
 ): {
   title: string;
   details: string;
-} => (isAxiosError(error) ? http(error as AxiosError) : generic(error));
+} => (isAxiosError(error) ? http(error as AxiosError<{id: string, message: string}>) : generic(error));

@@ -1,8 +1,7 @@
-import useActions from '../../Store/useActions';
 declare const useLogout: () => {
     open: boolean;
     pending: boolean;
-    commit: ReturnType<typeof useActions>['logout'];
+    commit: VoidFunction;
     close: () => void;
 };
 export default useLogout;

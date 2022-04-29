@@ -22,19 +22,21 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var styles_1 = require("@material-ui/core/styles");
+var Definition_1 = __importDefault(require("../../../App/Stateless/Style/Theme/Definition"));
 var BundleImage = function (_a) {
     var _b = _a.onClick, onClick = _b === void 0 ? null : _b;
-    var theme = (0, styles_1.useTheme)();
     var bundleBoxStyles = (0, react_1.useMemo)(function () { return ({
-        width: theme.spacing(10),
-        height: theme.spacing(10),
+        width: Definition_1.default.spacing(10),
+        height: Definition_1.default.spacing(10),
         textAlign: 'center',
         display: 'flex',
         alignItems: 'center',
-        backgroundColor: theme.palette.grey['100'],
+        backgroundColor: Definition_1.default.palette.grey['100'],
         userSelect: 'none',
         cursor: 'pointer',
     }); }, []);

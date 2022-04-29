@@ -1,7 +1,7 @@
 import * as React from 'react';
-import CardActions from '@material-ui/core/CardActions';
+import CardActions from '@mui/material/CardActions';
 import { Props as CardProps } from './';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import { Notification } from 'Types/Notification';
 import { useSnackbar } from 'notistack';
 import * as Button from '../Button';

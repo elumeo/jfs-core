@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { ReactDatePickerProps } from 'react-datepicker';
 import './Setup';
 import 'react-datepicker/dist/react-datepicker.css';
-import { TextFieldProps } from '@material-ui/core';
+import { TextFieldProps } from '@mui/material';
 export declare type DatePickerProps = Omit<ReactDatePickerProps<string>, 'value'> & {
     label?: ReactNode;
     error?: boolean;

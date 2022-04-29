@@ -1,6 +1,6 @@
 import { VariantType } from 'notistack';
 import React, { useMemo } from 'react';
-import FontIcon from '@material-ui/core/Icon';
+import FontIcon from '@mui/material/Icon';
 
 const useIcon = (variant: VariantType): React.ReactElement | undefined =>
   useMemo(() => {

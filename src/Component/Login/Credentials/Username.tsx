@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import TextField from '@material-ui/core/TextField';
+import TextField from '@mui/material/TextField';
 import useError from './useError';
 
 export type Props = {

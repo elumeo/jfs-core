@@ -1,5 +1,5 @@
 import React, { memo, useCallback } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import Image from './Image';
 import Details from './Details';
 import { TableCellRootProps } from 'Component/Table/TableCell/TableCellRoot';

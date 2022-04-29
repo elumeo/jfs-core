@@ -27,13 +27,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
+var material_1 = require("@mui/material");
 var BundleImage_1 = __importDefault(require("./BundleImage"));
 var ProductImage_1 = __importDefault(require("./ProductImage"));
 var imageWrapperStyles = { marginTop: 'auto', marginBottom: 'auto' };
 var Image = function (_a) {
     var _b = _a.id, id = _b === void 0 ? null : _b, _c = _a.mediaUris, mediaUris = _c === void 0 ? null : _c, _d = _a.isProductBundle, isProductBundle = _d === void 0 ? false : _d, _e = _a.onClick, onClick = _e === void 0 ? null : _e;
     var productImage = isProductBundle ? react_1.default.createElement(BundleImage_1.default, { onClick: onClick }) : react_1.default.createElement(ProductImage_1.default, { onClick: onClick, id: id, mediaUris: mediaUris });
-    return react_1.default.createElement(core_1.Grid, { item: true, style: imageWrapperStyles }, productImage);
+    return react_1.default.createElement(material_1.Grid, { item: true, style: imageWrapperStyles }, productImage);
 };
 exports.default = (0, react_1.memo)(Image);

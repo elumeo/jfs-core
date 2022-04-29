@@ -11,7 +11,7 @@ import {
   Input,
   InputLabel,
   Typography
-} from '@material-ui/core';
+} from '@mui/material';
 import AppNavigation from 'Component/AppNavigation';
 import AddToastButton from 'Component/AddToastButton';
 import AddNotificationButton from 'Component/AddNotificationButton';

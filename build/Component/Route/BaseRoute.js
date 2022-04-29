@@ -46,10 +46,14 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var react_router_dom_1 = require("react-router-dom");
+var react_router_1 = require("react-router");
 var react_intl_1 = require("react-intl");
 var BaseRoute = function (_a) {
-    var Component = _a.Component, translationId = _a.translationId, _b = _a.component, component = _b === void 0 ? Component : _b, rest = __rest(_a, ["Component", "translationId", "component"]);
+    var 
+    // Component,
+    translationId = _a.translationId, 
+    // component = Component,
+    rest = __rest(_a, ["translationId"]);
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
     (0, react_1.useEffect)(function () {
         if (translationId) {
@@ -59,6 +63,6 @@ var BaseRoute = function (_a) {
             document.title = formatMessage({ id: 'app.title' });
         }
     }, [translationId]);
-    return react_1.default.createElement(react_router_dom_1.Route, __assign({ component: component }, rest));
+    return react_1.default.createElement(react_router_1.Route, __assign({}, rest));
 };
 exports.default = BaseRoute;

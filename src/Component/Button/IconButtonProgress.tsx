@@ -1,7 +1,7 @@
 import React, { forwardRef, memo, useMemo } from 'react';
-import { ButtonProps, CircularProgress, IconButton, IconButtonProps, PropTypes } from '@material-ui/core';
+import { ButtonProps, CircularProgress, IconButton, IconButtonProps, PropTypes } from '@mui/material';
 import { mapToCircularProgressColor, mapToCircularProgressSize, wrapperStyles } from 'Component/Button/ButtonProgress';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { CSSProperties } from '@mui/styles/withStyles';
 
 export type IconButtonProgressProps = IconButtonProps & {
   onClick?: ButtonProps['onClick'];

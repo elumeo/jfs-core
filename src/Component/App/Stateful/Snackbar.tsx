@@ -3,7 +3,8 @@ import * as Notification from 'Component/Notification';
 import { SnackbarOrigin, SnackbarProvider } from 'notistack';
 import { useSelector } from 'Types/Redux';
 import { State } from 'Store/Reducer/Global';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
+import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
 const anchorOriginTopRight: SnackbarOrigin = { vertical: 'top', horizontal: 'right' }
 const anchorOriginBottomRight: SnackbarOrigin = { vertical: 'bottom', horizontal: 'right' }
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   containerAnchorOriginTopRight: {
-    marginTop: theme.mixins.toolbar.minHeight
+    marginTop: definition.mixins.toolbar.minHeight
   }
 }))
 
@@ -39,7 +40,7 @@ const Snackbar = ({ children }: { children: React.ReactNode }) => {
       classes={{ containerAnchorOriginTopRight: classes.containerAnchorOriginTopRight }}
       domRoot={document.getElementById('overlay')}
     >
-      <Notification.Notistack/>
+      <Notification.Notistack />
       {children}
     </SnackbarProvider>
   )

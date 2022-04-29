@@ -1,13 +1,13 @@
 import React, { memo } from 'react';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Card, CardActions, CardContent, CardHeader, Container, Grid, IconButton, Typography } from '@material-ui/core';
+import { createStyles, makeStyles } from '@mui/styles';
+import { Box, Button, Card, CardActions, CardContent, CardHeader, Container, Grid, IconButton, Typography } from '@mui/material';
 import AppNavigation from 'Component/AppNavigation';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import CodeBox from 'Component/CodeBox';
-import RefreshIcon from '@material-ui/icons/Refresh';
+import RefreshIcon from '@mui/icons-material/Refresh';
 import AppCardHeader from '@elumeo/jfs-core/build/Component/Card/AppCardHeader';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 const useStyles = makeStyles((theme) => createStyles({
   topRightAction: { margin: -theme.spacing(0.5) }
@@ -41,7 +41,11 @@ const Cards = () => {
               <CardContent>
                 <Typography>The default behaviour of Card actions is that they are aligned on the left side. But with some custom styling we can make the button aligned on the
                   right.</Typography>
-                <FormControlLabel control={<Switch onChange={toggleBottomActionButtonPosition} checked={bottomActionButtonPosition === 'custom'} />} label='Custom position' />
+                <FormControlLabel
+                  control={<Switch onChange={toggleBottomActionButtonPosition}
+                    checked={bottomActionButtonPosition === 'custom'} />}
+                  label='Custom position'
+                />
                 <CodeBox>
                   <Typography>{`<Box component={CardActions} justifyContent={'flex-end'}>`}</Typography>
                 </CodeBox>
@@ -82,7 +86,7 @@ const Cards = () => {
                   <Typography>{`</>`}</Typography>
                 </CodeBox>
                 <FormControlLabel control={<Switch onChange={toggleTopRightActionButtonNumber} checked={topRightActionButtonNumber === 3} />}
-                                  label='Custom number of action buttons' />
+                  label='Custom number of action buttons' />
 
                 <Typography>Also the vertical alignment of the title and the buttons is not on one line. We can adjust this with little styling but it is not suggested because we
                   do have 2 different font sizes which will not match completely.</Typography>
@@ -92,7 +96,7 @@ const Cards = () => {
                   <Typography>{`}));`}</Typography>
                 </CodeBox>
                 <FormControlLabel control={<Switch onChange={toggleTopRightActionButtonAlignment} checked={topRightActionButtonAlignment === 'custom'} />}
-                                  label='Custom alignment of action buttons' />
+                  label='Custom alignment of action buttons' />
 
                 <Typography>Another position of buttons (IconButtons) we often use is beside the card title text. To achieve this we can use a grid as well.</Typography>
                 <CodeBox>
@@ -106,7 +110,7 @@ const Cards = () => {
                   <Typography>{`/>`}</Typography>
                 </CodeBox>
                 <FormControlLabel control={<Switch onChange={toggleTopLeftActionButtonsEnabled} checked={topLeftActionButtonsEnabled} />}
-                                  label='Enable custom action buttons beside card title' />
+                  label='Enable custom action buttons beside card title' />
               </CardContent>
             </Card>
           </Grid>

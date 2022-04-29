@@ -1,5 +1,4 @@
-/// <reference types="react" />
-import { StylesProviderProps } from '@material-ui/styles/StylesProvider/StylesProvider';
+import { StylesProviderProps } from '@mui/styles/StylesProvider/StylesProvider';
 export declare type Props = {
     children: StylesProviderProps['children'];
 };

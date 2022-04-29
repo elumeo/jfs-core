@@ -27,16 +27,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var Drawer_1 = __importDefault(require("@material-ui/core/Drawer"));
-var List_1 = __importDefault(require("@material-ui/core/List"));
-var useActions_1 = __importDefault(require("../../Store/useActions"));
+var Drawer_1 = __importDefault(require("@mui/material/Drawer"));
+var List_1 = __importDefault(require("@mui/material/List"));
 var Redux_1 = require("../../Types/Redux");
 var Header_1 = __importDefault(require("./Header"));
+var Action_1 = require("../../Store/Action");
+var react_redux_1 = require("react-redux");
 var Drawer = function (_a) {
     var children = _a.children;
-    var closeNavigation = (0, useActions_1.default)().closeNavigation;
     var navigationOpen = (0, Redux_1.useSelector)(function (state) { return state.Core.Navigation.navigationOpen; });
-    var close = (0, react_1.useCallback)(function () { return closeNavigation(); }, []);
+    var dispatch = (0, react_redux_1.useDispatch)();
+    var close = (0, react_1.useCallback)(function () { return dispatch((0, Action_1.closeNavigation)()); }, [dispatch]);
     var styles = (0, react_1.useMemo)(function () { return ({ width: 270 }); }, []);
     return react_1.default.createElement(Drawer_1.default, { open: navigationOpen, anchor: 'left', onClose: close },
         react_1.default.createElement("div", { style: styles },

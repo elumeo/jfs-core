@@ -1,9 +1,9 @@
-import {createTheme, responsiveFontSizes} from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import * as Color from 'Constant/Color';
-import { grey } from '@material-ui/core/colors';
+import { grey } from '@mui/material/colors';
 
 const definition = responsiveFontSizes(
-  createTheme({
+  createTheme(({
     props: {
       MuiCircularProgress: {
         color: 'secondary',
@@ -13,14 +13,13 @@ const definition = responsiveFontSizes(
       }
     },
     palette: {
-      type: 'light',
+      // type: 'light',
       primary: Color.primary,
       secondary: Color.apatith,
       text: {
         primary: grey[900],
         secondary: grey[700],
         disabled: grey[500],
-        hint: grey[300],
       },
       action: {
         hover: 'rgba(0, 0, 0, 0.12)',
@@ -45,7 +44,7 @@ const definition = responsiveFontSizes(
         default: '#e5e2dd',
       },
     },
-  })
+  }))
 );
 
 definition.overrides = {

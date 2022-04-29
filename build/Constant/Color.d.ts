@@ -1,4 +1,4 @@
-import { PaletteColor } from '@material-ui/core/styles/createPalette';
+import { PaletteColor } from '@mui/material';
 export declare const rubin: PaletteColor;
 export declare const rodolith: PaletteColor;
 export declare const topas: PaletteColor;

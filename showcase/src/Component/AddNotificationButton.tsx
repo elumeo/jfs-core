@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useCallback } from 'react';
 import useActions from 'Core/Store/useActions';
-import { Button, IconButton, Theme, Tooltip } from '@material-ui/core';
+import { Button, IconButton, Theme, Tooltip } from '@mui/material';
 import { VariantType } from 'notistack';
 import { Notification, Severity } from 'Core/Types/Notification';
-import Box from '@material-ui/core/Box';
-import { Refresh, SignalCellularConnectedNoInternet0Bar, Visibility } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/core/styles';
+import Box from '@mui/material/Box';
+import { Refresh, SignalCellularConnectedNoInternet0Bar, Visibility } from '@mui/icons-material';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles<Theme, { variant: Severity }>(theme => ({
   root: {

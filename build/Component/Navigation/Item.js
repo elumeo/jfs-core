@@ -4,29 +4,35 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var ListItem_1 = __importDefault(require("@material-ui/core/ListItem"));
-var ListItemIcon_1 = __importDefault(require("@material-ui/core/ListItemIcon"));
-var Icon_1 = __importDefault(require("@material-ui/core/Icon"));
-var ListItemText_1 = __importDefault(require("@material-ui/core/ListItemText"));
-var react_router_dom_1 = require("react-router-dom");
+var ListItem_1 = __importDefault(require("@mui/material/ListItem"));
+var ListItemIcon_1 = __importDefault(require("@mui/material/ListItemIcon"));
+var Icon_1 = __importDefault(require("@mui/material/Icon"));
+var ListItemText_1 = __importDefault(require("@mui/material/ListItemText"));
+// import { pus } from 'react-router-dom';
 var Redux_1 = require("../../Types/Redux");
-var useActions_1 = __importDefault(require("../../Store/useActions"));
 var react_intl_1 = require("react-intl");
+var react_redux_1 = require("react-redux");
+var Action_1 = require("../../Store/Action");
+var react_router_dom_1 = require("react-router-dom");
 var NavigationItem = react_1.default.forwardRef(function (_a, ref) {
     var iconName = _a.iconName, messageId = _a.messageId, onClick = _a.onClick, active = _a.active, messageString = _a.messageString, authorizedOnly = _a.authorizedOnly, unauthorizedOnly = _a.unauthorizedOnly, onClickRoute = _a.onClickRoute;
-    var history = (0, react_router_dom_1.useHistory)();
-    var closeNavigation = (0, useActions_1.default)().closeNavigation;
+    var push = (0, react_router_dom_1.useNavigate)();
+    var pathname = (0, react_router_dom_1.useLocation)().pathname;
+    var dispatch = (0, react_redux_1.useDispatch)();
+    // const { closeNavigation } = useActions();
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
     var isAuthorized = (0, Redux_1.useSelector)(function (state) { return state.Core.Session.isAuthorized; });
     var visible = (!authorizedOnly && !unauthorizedOnly) || // always display these
         (isAuthorized && authorizedOnly) || // only when authorized
         (!isAuthorized && unauthorizedOnly); // only when unauthorized
     return visible ? (react_1.default.createElement(ListItem_1.default, { ref: ref, button: true, onClick: function (event) {
-            var pathname = history.location.pathname;
+            // const {
+            //   location: { pathname },
+            // } = history;
             if (onClickRoute != undefined && pathname !== onClickRoute) {
-                history.push(onClickRoute);
+                push(onClickRoute);
             }
-            closeNavigation();
+            dispatch((0, Action_1.closeNavigation)());
             if (onClick) {
                 onClick(event);
             }

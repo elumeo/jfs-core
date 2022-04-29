@@ -1,5 +1,4 @@
-/// <reference types="react" />
-import { ListProps } from '@material-ui/core/List';
+import { ListProps } from '@mui/material/List';
 declare type DrawerProps = {
     children: ListProps['children'];
 };

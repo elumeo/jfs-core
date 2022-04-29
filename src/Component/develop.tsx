@@ -23,14 +23,14 @@ import {
   TableHead,
   TableRow,
   Typography
-} from '@material-ui/core';
+} from '@mui/material';
 import {
   AccountCircle as AccountCircleIcon, CheckBox,
   ContactPhone as ContactPhoneIcon,
   Error,
   Visibility, VisibilityOff, Block, Refresh
-} from '@material-ui/icons';
-import { useTheme } from '@material-ui/core/styles';
+} from '@mui/icons-material';
+// import { useTheme } from '@mui/style#s';
 import { getCurrency } from 'Utilities/Format/Currency';
 import { useDispatch } from 'react-redux';
 import * as Action from 'Store/Action';
@@ -42,19 +42,20 @@ import { TableCellDateTime, TableCellDateTimeRange, TableCellDefault } from 'Com
 import { ButtonProgress } from 'Component/Button';
 import { AppCardContent, AppCardHeader } from 'Component/Card';
 import { TableRowLoading } from 'Component/Table/TableRow';
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@mui/icons-material/Search';
 import { CustomerCard, FilterReset } from 'Component/Icon';
 import { ColumnData } from 'Component/Table/VirtualizedTable';
 import { DateTimeRangeCellProps } from 'Types/Table/DateTimeRangeCellProps';
-import WarningIcon from '@material-ui/icons/Warning';
+import WarningIcon from '@mui/icons-material/Warning';
 import TableCellSelect from 'Component/Table/TableCell/TableCellSelect';
 import TableHeadSelect from 'Component/Table/TableHead/TableHeadSelect';
 import { OptionsObject, VariantType } from 'notistack';
 import { Notification } from 'Types/Notification';
-import Box from '@material-ui/core/Box';
-import { NativeSelectProps } from '@material-ui/core/NativeSelect/NativeSelect';
+import Box from '@mui/material/Box';
+import { NativeSelectProps } from '@mui/material/NativeSelect/NativeSelect';
 import DatePicker from 'Component/DatePicker';
 import SelectClearButton, { SelectClearButtonProps } from 'Component/SelectClearButton';
+import definition from './App/Stateless/Style/Theme/Definition';
 
 const tableRowHeight = 48;
 
@@ -205,7 +206,7 @@ const selectMenuItems = [
 ];
 
 const Develop: React.FC = () => {
-  const theme = useTheme();
+  // const theme = useTheme();
   const dispatch = useDispatch();
   const [testTextFieldValue, setTestTextFieldValue] = useState('');
   const [testSelectValue, setTestSelectValue] = useState('');
@@ -229,7 +230,7 @@ const Develop: React.FC = () => {
   })), []);
 
   return (
-    <div style={{ margin: theme.spacing(1) }}>
+    <div style={{ margin: definition.spacing(1) }}>
       <Card>
         <AppCardHeader title={'Test'} titleIcon={<WarningIcon />} onRefresh={console.log} />
         <AppCardContent>
@@ -237,7 +238,7 @@ const Develop: React.FC = () => {
           <IconButton size={'small'} color={'secondary'}><FilterReset /></IconButton>
         </AppCardContent>
       </Card>
-      <div style={{ marginTop: theme.spacing(1) }}>
+      <div style={{ marginTop: definition.spacing(1) }}>
         <Card>
           <CardContent style={{ height: 600 }}>
             <VirtualizedTable
@@ -309,7 +310,7 @@ const Develop: React.FC = () => {
           <ButtonProgress inProgress onClick={handleOnClickToast}>Toast</ButtonProgress>
         </Grid>
       </Grid>
-      <div style={{ marginTop: theme.spacing(1) }}>
+      <div style={{ marginTop: definition.spacing(1) }}>
         <List>
           <ListItem>
             <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, true)'}>
@@ -363,44 +364,44 @@ const Develop: React.FC = () => {
           </ListItem>
         </List>
       </div>
-      <div style={{ marginTop: theme.spacing(1) }}>
+      <div style={{ marginTop: definition.spacing(1) }}>
         <Grid container>
           <Grid item>
             <Typography
               style={{
-                margin: theme.spacing(1),
-                padding: theme.spacing(1),
-                backgroundColor: theme.palette.info.main,
-                color: theme.palette.getContrastText(theme.palette.info.main)
+                margin: definition.spacing(1),
+                padding: definition.spacing(1),
+                backgroundColor: definition.palette.info.main,
+                color: definition.palette.getContrastText(definition.palette.info.main)
               }}>Info</Typography>
           </Grid>
           <Grid item>
             <Typography style={{
-              margin: theme.spacing(1),
-              padding: theme.spacing(1),
-              backgroundColor: theme.palette.error.main,
-              color: theme.palette.getContrastText(theme.palette.error.main)
+              margin: definition.spacing(1),
+              padding: definition.spacing(1),
+              backgroundColor: definition.palette.error.main,
+              color: definition.palette.getContrastText(definition.palette.error.main)
             }}>Error</Typography>
           </Grid>
           <Grid item>
             <Typography style={{
-              margin: theme.spacing(1),
-              padding: theme.spacing(1),
-              backgroundColor: theme.palette.warning.main,
-              color: theme.palette.getContrastText(theme.palette.warning.main)
+              margin: definition.spacing(1),
+              padding: definition.spacing(1),
+              backgroundColor: definition.palette.warning.main,
+              color: definition.palette.getContrastText(definition.palette.warning.main)
             }}>Warning</Typography>
           </Grid>
           <Grid item>
             <Typography style={{
-              margin: theme.spacing(1),
-              padding: theme.spacing(1),
-              backgroundColor: theme.palette.success.main,
-              color: theme.palette.getContrastText(theme.palette.success.main)
+              margin: definition.spacing(1),
+              padding: definition.spacing(1),
+              backgroundColor: definition.palette.success.main,
+              color: definition.palette.getContrastText(definition.palette.success.main)
             }}>Success</Typography>
           </Grid>
         </Grid>
       </div>
-      <div style={{ marginTop: theme.spacing(1) }}>
+      <div style={{ marginTop: definition.spacing(1) }}>
         <Grid container spacing={1}>
           <Grid item xs={3}>
             <Paper>
@@ -456,7 +457,7 @@ const Develop: React.FC = () => {
         </Grid>
       </div>
 
-      <div style={{ marginTop: theme.spacing(1) }}>
+      <div style={{ marginTop: definition.spacing(1) }}>
         <Card>
           <CardContent style={{ height: 300 }}>
             <TableContainer style={{ maxHeight: 300 }}>

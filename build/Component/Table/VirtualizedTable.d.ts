@@ -1,6 +1,6 @@
 import { ColumnProps, Table, TableProps, AutoSizerProps } from 'react-virtualized';
 import React from 'react';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { CSSProperties } from '@mui/styles/withStyles';
 export declare const visuallyHiddenStyle: CSSProperties;
 export declare const flexContainerStyles: CSSProperties;
 export declare const ellipsesStyle: CSSProperties;

@@ -1,6 +1,6 @@
 import React from 'react';
-import MUISelect from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import MUISelect from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import All from './All.json';
 import { Language } from 'Types/Language';
 

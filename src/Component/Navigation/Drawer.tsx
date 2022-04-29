@@ -1,18 +1,19 @@
 import React, { useCallback, useMemo } from 'react';
-import MUIDrawer from '@material-ui/core/Drawer';
-import List, { ListProps } from '@material-ui/core/List';
-import useActions from 'Store/useActions';
+import MUIDrawer from '@mui/material/Drawer';
+import List, { ListProps } from '@mui/material/List';
 import { useSelector } from 'Types/Redux';
 import Header from './Header';
+import { closeNavigation } from 'Store/Action';
+import { useDispatch } from 'react-redux';
 
 type DrawerProps = {
   children: ListProps['children'],
 }
 
 const Drawer = ({ children }: DrawerProps) => {
-  const { closeNavigation } = useActions();
   const navigationOpen = useSelector(state => state.Core.Navigation.navigationOpen);
-  const close = useCallback(() => closeNavigation(), []);
+  const dispatch = useDispatch()
+  const close = useCallback(() => dispatch(closeNavigation()), [dispatch]);
   const styles = useMemo(() => ({ width: 270 }), []);
 
   return <MUIDrawer open={navigationOpen} anchor='left' onClose={close}>

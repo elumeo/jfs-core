@@ -49,7 +49,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
+var material_1 = require("@mui/material");
 var Format_1 = require("../../Utilities/Format");
 var usePriceFieldAdornment_1 = __importDefault(require("../../Effect/usePriceFieldAdornment"));
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -62,8 +62,8 @@ var Editor = function (_a) {
         }
     }, [selectOnFocus]);
     var _g = (0, usePriceFieldAdornment_1.default)(currency), adornmentType = _g[0], adornmentPosition = _g[1], styles = _g[2];
-    return react_1.default.createElement(core_1.TextField, __assign({ value: value, autoFocus: true, onFocus: onFocus, type: 'number', InputProps: (_b = {},
-            _b[adornmentType] = react_1.default.createElement(core_1.InputAdornment, { position: adornmentPosition, style: styles }, Format_1.Currency.getCurrencySign(currency)),
+    return react_1.default.createElement(material_1.TextField, __assign({ value: value, autoFocus: true, onFocus: onFocus, type: 'number', InputProps: (_b = {},
+            _b[adornmentType] = react_1.default.createElement(material_1.InputAdornment, { position: adornmentPosition, style: styles }, Format_1.Currency.getCurrencySign(currency)),
             _b) }, props));
 };
 exports.default = (0, react_1.memo)(Editor);

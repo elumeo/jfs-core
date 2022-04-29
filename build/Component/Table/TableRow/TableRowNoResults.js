@@ -22,14 +22,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var react_intl_1 = require("react-intl");
-var styles_1 = require("@material-ui/core/styles");
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
 var TableRowNoResults = function () {
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
-    var theme = (0, styles_1.useTheme)();
-    var styles = (0, react_1.useMemo)(function () { return ({ textAlign: 'center', marginTop: theme.spacing(2) + 'px' }); }, []);
+    var styles = (0, react_1.useMemo)(function () { return ({ textAlign: 'center', marginTop: Definition_1.default.spacing(2) + 'px' }); }, []);
     return react_1.default.createElement("div", { style: styles }, formatMessage({ id: 'table.noResults' }));
 };
 exports.default = (0, react_1.memo)(TableRowNoResults);

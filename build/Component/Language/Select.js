@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var Select_1 = __importDefault(require("@material-ui/core/Select"));
-var MenuItem_1 = __importDefault(require("@material-ui/core/MenuItem"));
+var Select_1 = __importDefault(require("@mui/material/Select"));
+var MenuItem_1 = __importDefault(require("@mui/material/MenuItem"));
 var All_json_1 = __importDefault(require("./All.json"));
 var Select = function (_a) {
     var value = _a.value, onChange = _a.onChange;

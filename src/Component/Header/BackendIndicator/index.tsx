@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '@mui/material/Tooltip';
 import { useSelector } from 'Types/Redux';
 import { useIntl } from 'react-intl';
 import Flag, { Country } from './Flag';

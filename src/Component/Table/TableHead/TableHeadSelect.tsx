@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from 'react';
-import { Checkbox, CheckboxProps, CircularProgress, TableCell } from '@material-ui/core';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
-import { Theme, useTheme } from '@material-ui/core/styles';
+import { Checkbox, CheckboxProps, CircularProgress, TableCell } from '@mui/material';
+import { CSSProperties } from '@mui/styles/withStyles';
+import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
 const loadingStyles: CSSProperties = { marginLeft: '12px', marginRight: '11px' };
 const checkboxStyles: CSSProperties = { padding: '8px' };
@@ -29,14 +29,13 @@ const TableHeadSelect = ({
                            value = '###all###',
                            className = ''
                          }: TableHeadSelectProps) => {
-  const theme = useTheme<Theme>();
   const styles: CSSProperties = useMemo(() => ({
     height: height + 'px',
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: theme.spacing(0.5),
+    padding: definition.spacing(0.5),
     maxWidth: '100%'
   }), []);
   return <TableCell

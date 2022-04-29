@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
-import { Box, Card, CardContent, CardHeader, Container, Grid, Typography } from '@material-ui/core';
+import { Box, Card, CardContent, CardHeader, Container, Grid, Typography } from '@mui/material';
 import AppNavigation from 'Component/AppNavigation';
-import { createStyles, makeStyles, Theme, useTheme } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme, useTheme } from '@mui/styles';
 import CodeBox from 'Component/CodeBox';
 
 export const colors = ['primary', 'secondary', 'error', 'warning', 'info', 'rubin', 'rodolith', 'topas', 'apatith', 'peridot', 'citrin', 'quarz'];
@@ -13,7 +13,7 @@ const useColorStyle = makeStyles(theme => createStyles({
 }));
 
 const Colors = () => {
-  const theme = useTheme<Theme>();
+
   const colorStyle = useColorStyle();
   return (<Grid container>
     <Grid item xs={2}><AppNavigation/></Grid>

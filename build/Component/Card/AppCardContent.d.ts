@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardContentProps } from '@material-ui/core/CardContent/CardContent';
+import { CardContentProps } from '@mui/material/CardContent/CardContent';
 export declare type AppCardContentBaseProps = CardContentProps & {
     fullHeight?: boolean;
     withSubtitle?: boolean;

@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { useIntl } from 'react-intl';
-import { Chip, Grid } from '@material-ui/core';
+import { Chip, Grid } from '@mui/material';
 
 export type AttributesProps = {
   productType?: string;

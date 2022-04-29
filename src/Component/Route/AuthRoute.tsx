@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 import BaseRoute, { IBaseRouteProps } from './BaseRoute';
-import useActions from 'Store/useActions';
 import { useSelector } from 'Types/Redux';
-
-const AuthRoute: React.FC<IBaseRouteProps> = props => {
-  const { enterAuthorizedRoute } = useActions();
+import { enterAuthorizedRoute } from 'Store/Action';
+import { useDispatch } from 'react-redux';
+import { Navigate } from 'react-router';
+type Props = {
+  children?: React.ReactNode
+}
+const AuthRoute: React.FC<Props> = ({ children, ...rest }) => {
+  const dispatch = useDispatch()
   const { isAuthorized, isCheckingSession } = useSelector<{
     isAuthorized: boolean;
     isCheckingSession: boolean;
@@ -14,16 +18,22 @@ const AuthRoute: React.FC<IBaseRouteProps> = props => {
     isCheckingSession: state.Core.Session.isCheckingSession,
   }));
   useEffect(() => {
-    enterAuthorizedRoute();
-  }, [props.path]);
+    dispatch(enterAuthorizedRoute());
+  }, [dispatch]);
+  console.log('authroute', { children, ...rest, isAuthorized, isCheckingSession })
+  return isCheckingSession
+    ? <CircularProgress id='check-session-progress' />
+    : isAuthorized
+      ? <>{children}</>
+      : <Navigate to='/' />
 
-  return isAuthorized ? (
-    <BaseRoute {...props} />
-  ) : isCheckingSession ? (
-    <CircularProgress id='check-session-progress' />
-  ) : (
-    <></>
-  );
+  // isAuthorized ? children(
+  //   <BaseRoute {...props} />
+  // ) : isCheckingSession ? (
+  //   <CircularProgress id='check-session-progress' />
+  // ) : (
+  //   <></>
+  // );
 };
 
 export default AuthRoute;

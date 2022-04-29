@@ -2,9 +2,9 @@ import { ColumnProps, AutoSizer, Column, SizeInfo, Table, TableProps, AutoSizerP
 import React, { memo, useCallback } from 'react';
 import { TableCellDefault } from 'Component/Table/TableCell';
 import TableHeadDefault from 'Component/Table/TableHead/TableHeadDefault';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { Theme } from '@material-ui/core';
+import { CSSProperties } from '@mui/styles/withStyles';
+import { createStyles, makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material';
 
 export const visuallyHiddenStyle: CSSProperties = {
   border: 0,

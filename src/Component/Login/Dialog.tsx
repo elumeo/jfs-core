@@ -1,8 +1,8 @@
 import React from 'react';
-import MUIDialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
+import MUIDialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
 import Credentials from './Credentials';
 import Submit from './Submit';
 import useLogin from './useLogin';
@@ -21,7 +21,7 @@ const Dialog: React.FC = () => {
           onChange={login.onChange}
           onSubmit={login.check}
         />
-      </DialogContent>
+      </DialogContent> 
       <DialogActions>
         <Submit
           onClick={login.check}

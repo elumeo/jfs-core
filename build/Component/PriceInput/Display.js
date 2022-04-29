@@ -49,7 +49,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
+var material_1 = require("@mui/material");
 var Format_1 = require("../../Utilities/Format");
 var usePriceFieldAdornment_1 = __importDefault(require("../../Effect/usePriceFieldAdornment"));
 var Display = function (_a) {
@@ -61,8 +61,8 @@ var Display = function (_a) {
     }, [sanitized]);
     var display = react_1.default.useMemo(function () { return Format_1.Currency.getCurrency(currency, parseFloat(sanitized), true, false, showDecimals); }, [sanitized, currency, showDecimals]);
     var _d = (0, usePriceFieldAdornment_1.default)(currency), adornmentType = _d[0], adornmentPosition = _d[1], styles = _d[2];
-    return react_1.default.createElement(core_1.TextField, __assign({}, props, { value: display, InputProps: (_b = {},
-            _b[adornmentType] = react_1.default.createElement(core_1.InputAdornment, { position: adornmentPosition, style: styles }, Format_1.Currency.getCurrencySign(currency)),
+    return react_1.default.createElement(material_1.TextField, __assign({}, props, { value: display, InputProps: (_b = {},
+            _b[adornmentType] = react_1.default.createElement(material_1.InputAdornment, { position: adornmentPosition, style: styles }, Format_1.Currency.getCurrencySign(currency)),
             _b) }));
 };
 exports.default = (0, react_1.memo)(Display);

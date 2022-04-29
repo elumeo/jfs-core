@@ -1,9 +1,9 @@
 import React, { memo, ReactNode, useMemo } from 'react';
-import { CardHeader, Grid, IconButton, LinearProgress, Typography } from '@material-ui/core';
-import RefreshIcon from '@material-ui/icons/Refresh';
-import { IconButtonProps } from '@material-ui/core/IconButton';
-import { useTheme, Theme } from '@material-ui/core/styles';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { CardHeader, Grid, IconButton, LinearProgress, Typography } from '@mui/material';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import { IconButtonProps } from '@mui/material/IconButton';
+import { CSSProperties } from '@mui/styles/withStyles';
+import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
 export type AppCardHeaderBaseProps = {
   isLoading?: boolean;
@@ -28,14 +28,14 @@ const AppCardHeader = ({
                              additionalTitleComponent = null,
                              action = null
                            }: AppCardHeaderBaseProps) => {
-  const theme = useTheme<Theme>();
+
 
   const cardHeaderStyles: CSSProperties = useMemo(() => ({ position: 'relative', alignItems: 'flex-start' }), []);
   const linearProgressRootStyles: CSSProperties = useMemo(() => ({
     position: 'absolute',
-    width: 'calc(100% + ' + theme.spacing(4) + 'px)',
+    width: 'calc(100% + ' + definition.spacing(4) + 'px)',
     top: 0,
-    left: (theme.spacing(2) * -1) + 'px'
+    left: (definition.spacing(2) * -1) + 'px'
   }), []);
 
   const buildRefreshButton = () => <Grid item>

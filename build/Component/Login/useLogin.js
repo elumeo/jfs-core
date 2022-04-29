@@ -22,22 +22,20 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
+var react_redux_1 = require("react-redux");
 var react_1 = __importStar(require("react"));
 var Redux_1 = require("../../Types/Redux");
-var useActions_1 = __importDefault(require("../../Store/useActions"));
 var Selector = __importStar(require("../../Store/Selector"));
+var Action_1 = require("../../Store/Action");
 var useLogin = function () {
-    var checkLogin = (0, useActions_1.default)().checkLogin;
+    var dispatch = (0, react_redux_1.useDispatch)();
     var open = (0, Redux_1.useSelector)(Selector.isLoginOpen);
     var _a = react_1.default.useState({
         username: '',
         password: '',
     }), credentials = _a[0], setCredentials = _a[1];
-    var handleCheck = (0, react_1.useCallback)(function () { return checkLogin(credentials); }, [credentials]);
+    var handleCheck = (0, react_1.useCallback)(function () { return dispatch((0, Action_1.checkLogin)(credentials)); }, [credentials, dispatch]);
     var handleOnChange = (0, react_1.useCallback)(function (next) { return setCredentials(next); }, []);
     return {
         open: open,

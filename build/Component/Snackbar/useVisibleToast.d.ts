@@ -1,12 +1,12 @@
 import React from 'react';
 import { Toast } from '../../Types/Toast';
-import { Color } from '@material-ui/lab';
+import { AlertColor } from '@mui/material';
 declare const useVisibleToast: () => {
     toast: Toast;
     open: boolean;
     words: string[];
     message: React.ReactNode;
     autoHideDuration: number;
-    severity: Color;
+    severity: AlertColor;
 };
 export default useVisibleToast;

@@ -53,7 +53,7 @@ var react_virtualized_1 = require("react-virtualized");
 var react_1 = __importStar(require("react"));
 var TableCell_1 = require("../Table/TableCell");
 var TableHeadDefault_1 = __importDefault(require("../Table/TableHead/TableHeadDefault"));
-var styles_1 = require("@material-ui/core/styles");
+var styles_1 = require("@mui/styles");
 exports.visuallyHiddenStyle = {
     border: 0,
     clip: 'rect(0 0 0 0)',

@@ -1,8 +1,8 @@
 import React, { memo, useMemo } from 'react';
-import { TableCell } from '@material-ui/core';
-import { Theme, useTheme } from '@material-ui/core/styles';
+import { TableCell } from '@mui/material';
+import theme from 'Component/App/Stateless/Style/Theme/Definition';
 import { flexContainerStyles } from 'Component/Table/VirtualizedTable';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { CSSProperties } from '@mui/styles/withStyles';
 
 export type TableCellRootProps = {
   children: React.ReactNode,
@@ -12,7 +12,7 @@ export type TableCellRootProps = {
 };
 
 const TableCellRoot = ({ children, isNumeric = false, height = '100px', styles = {} }: TableCellRootProps) => {
-  const theme = useTheme<Theme>();
+
   const preparedStyles = useMemo<CSSProperties>(() => ({
     ...flexContainerStyles,
     height: height, flex: 1, padding: theme.spacing(1), maxWidth: '100%',

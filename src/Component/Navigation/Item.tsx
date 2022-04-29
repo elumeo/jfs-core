@@ -1,12 +1,14 @@
 import React from 'react';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Icon from '@material-ui/core/Icon';
-import ListItemText from '@material-ui/core/ListItemText';
-import { useHistory } from 'react-router-dom';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Icon from '@mui/material/Icon';
+import ListItemText from '@mui/material/ListItemText';
+// import { pus } from 'react-router-dom';
 import { useSelector } from 'Types/Redux';
-import useActions from 'Store/useActions';
 import { useIntl } from 'react-intl';
+import { useDispatch } from 'react-redux';
+import { closeNavigation } from 'Store/Action';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export type Props = {
   iconName?: string;
@@ -33,8 +35,10 @@ const NavigationItem: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
     },
     ref,
   ) => {
-    const history = useHistory();
-    const { closeNavigation } = useActions();
+    const push = useNavigate();
+    const { pathname } = useLocation()
+    const dispatch = useDispatch()
+    // const { closeNavigation } = useActions();
     const { formatMessage } = useIntl();
     const isAuthorized = useSelector(state => state.Core.Session.isAuthorized);
     const visible =
@@ -47,13 +51,13 @@ const NavigationItem: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
         ref={ref}
         button
         onClick={(event: React.MouseEvent<HTMLElement>) => {
-          const {
-            location: { pathname },
-          } = history;
+          // const {
+          //   location: { pathname },
+          // } = history;
           if (onClickRoute != undefined && pathname !== onClickRoute) {
-            history.push(onClickRoute);
+            push(onClickRoute);
           }
-          closeNavigation();
+          dispatch(closeNavigation());
           if (onClick) {
             onClick(event);
           }

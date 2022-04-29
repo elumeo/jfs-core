@@ -1,7 +1,7 @@
 import React, { memo, ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
-import { IconButton, IconProps, InputAdornment, TextField, TextFieldProps } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
-import { IconButtonProps } from '@material-ui/core/IconButton';
+import { IconButton, IconProps, InputAdornment, TextField, TextFieldProps } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { IconButtonProps } from '@mui/material/IconButton';
 
 export type TextFieldClearButtonProps = Partial<TextFieldProps> & {
   onChange?: TextFieldProps['onChange'];

@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
-import { Route, RouteProps } from 'react-router-dom';
+import { Route, RouteProps } from 'react-router';
 import { useIntl } from 'react-intl';
 
 export type IBaseRouteProps = RouteProps & {
-  Component?: React.FC;
+  // Component?: React.FC;
   translationId?: string;
 };
 
 const BaseRoute: React.FC<IBaseRouteProps> = ({
-  Component,
+  // Component,
   translationId,
-  component = Component,
+  // component = Component,
   ...rest
 }) => {
   const { formatMessage } = useIntl();
@@ -26,8 +26,8 @@ const BaseRoute: React.FC<IBaseRouteProps> = ({
     [translationId]
   )
 
-  return <Route component={component}
-    {...rest} />;
+  return <Route
+    {...rest as RouteProps} />;
 };
 
 export default BaseRoute;

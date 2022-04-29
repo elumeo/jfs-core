@@ -31,8 +31,8 @@ const common = {
                 [
                   'babel-plugin-import',
                   {
-                    'libraryName': '@material-ui/core',
-                    'libraryDirectory': 'esm',
+                    'libraryName': '@mui/material',
+                    'libraryDirectory': '',
                     'camel2DashComponentName': false
                   },
                   'core'
@@ -40,16 +40,15 @@ const common = {
                 [
                   'babel-plugin-import',
                   {
-                    'libraryName': '@material-ui/icons',
-                    'libraryDirectory': 'esm',
+                    'libraryName': '@mui/icons-material',
+                    'libraryDirectory': '',
                     'camel2DashComponentName': false
                   },
                   'icons'
                 ]
               ]
             }
-          },
-          'eslint-loader'
+          }
         ],
       },
       {
@@ -85,11 +84,11 @@ const common = {
       Core: resolve(PATH.ROOT, 'node_modules', '@elumeo', 'jfs-core', 'build')
     },
     plugins: [
-      new  PathAliasPlugin({
-        configFile : resolve(PATH.ROOT, 'tsconfig.json')
+      new PathAliasPlugin({
+        configFile: resolve(PATH.ROOT, 'tsconfig.json')
       })
     ]
-  },
+  }
 };
 
 module.exports = common;

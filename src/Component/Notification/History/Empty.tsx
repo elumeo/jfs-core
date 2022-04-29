@@ -1,6 +1,6 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import Typography from '@mui/material/Typography';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useIntl } from 'react-intl';
 
 const Empty: React.FC = () => {

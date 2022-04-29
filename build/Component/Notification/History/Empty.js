@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var Typography_1 = __importDefault(require("@material-ui/core/Typography"));
-var Notifications_1 = __importDefault(require("@material-ui/icons/Notifications"));
+var Typography_1 = __importDefault(require("@mui/material/Typography"));
+var Notifications_1 = __importDefault(require("@mui/icons-material/Notifications"));
 var react_intl_1 = require("react-intl");
 var Empty = function () {
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
