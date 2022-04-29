@@ -13,7 +13,7 @@ const Button = ({ id = null, onClick }: ButtonProps) => {
   const { formatMessage } = useIntl();
   const styles = useMemo<CSSProperties>(() => ({ textTransform: 'initial' }), []);
   return <div style={buttonWrapperStyles}>
-    {id && <MuiButton size={'small'} color={'secondary'} onClick={onClick} style={styles}>
+    {id && <MuiButton color={'secondary'} onClick={onClick} style={styles}>
       {formatMessage({ id: 'product.details' })}
     </MuiButton>}
   </div>;
