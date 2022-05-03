@@ -1,3 +1,6 @@
+## [10.0.6] 2022-05-03
+- Removed cypress dependencies and test script entries
+
 ## [10.0.5] 2022-04-29
 - Added `mapErrorToNotificaiton` function and exported it, in order to have all notification features available also for errors
 
