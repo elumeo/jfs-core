@@ -29,11 +29,16 @@ var react_router_1 = require("react-router");
 var ConnectedRouter = function (_a) {
     var location = _a.location, history = _a.history, children = _a.children;
     var dispatch = (0, react_redux_1.useDispatch)();
+    var _b = react_1.default.useState({
+        action: history.action,
+        location: history.location
+    }), state = _b[0], setState = _b[1];
+    react_1.default.useLayoutEffect(function () { return history.listen(setState); }, [history]);
     // const ConnectedReactRouter = connect(({router: {location, action}}) => ({location, action}))(Router)
     (0, react_1.useEffect)(function () {
         // dispatch(push())
         console.log({ location: location });
     }, [dispatch, location]);
-    return react_1.default.createElement(react_router_1.Router, { location: location, navigator: history }, children);
+    return react_1.default.createElement(react_router_1.Router, { location: state.location, navigationType: state.action, navigator: history }, children);
 };
 exports.default = ConnectedRouter;

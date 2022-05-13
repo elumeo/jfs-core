@@ -1,8 +1,9 @@
 import React from 'react';
-import { Navigator, Location } from 'react-router';
+import { Location } from 'react-router';
+import { History } from 'history';
 declare type Props = {
     location: Location;
-    history: Navigator;
+    history: History;
     children?: React.ReactNode;
 };
 declare const ConnectedRouter: React.FC<Props>;
