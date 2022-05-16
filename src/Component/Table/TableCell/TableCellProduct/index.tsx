@@ -5,6 +5,7 @@ import Details from './Details';
 import { TableCellRootProps } from 'Component/Table/TableCell/TableCellRoot';
 import { TableCellLoadingContent, TableCellRoot } from 'Component/Table/TableCell';
 import { MediaUri } from 'Types/MediaUri';
+import Attributes from 'Component/Table/TableCell/TableCellProduct/Attributes';
 
 export type TableCellProductProps = Partial<TableCellRootProps> & {
   id?: string;
@@ -34,7 +35,8 @@ const TableCellProduct = ({
   return <TableCellRoot {...rest} isNumeric={false}>
     {id && <Grid container>
       <Image onClick={handleOnClick} isProductBundle={isProductBundle} id={id} mediaUris={mediaUris} />
-      <Details onClick={handleOnClick} id={id} productType={productType} name={name} inStockPool={inStockPool} hasNoTvLock={hasNoTvLock} />
+      <Details onClick={handleOnClick} id={id} name={name} />
+      <Attributes productType={productType} hasNoTvLock={hasNoTvLock} inStockPool={inStockPool} />
     </Grid>}
     {id === null && <TableCellLoadingContent />}
   </TableCellRoot>;

@@ -46,6 +46,7 @@ var showError = function (action$) {
             Action.addNotification((0, exports.mapErrorToNotification)(payload))
         ];
     }), (0, operators_1.catchError)(function (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
         return [];
     }));

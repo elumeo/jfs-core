@@ -29,17 +29,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
 var styles_1 = require("@material-ui/core/styles");
-var Attributes_1 = __importDefault(require("./Attributes"));
 var Name_1 = __importDefault(require("./Name"));
 var Button_1 = __importDefault(require("./Button"));
 var Details = function (_a) {
-    var _b = _a.id, id = _b === void 0 ? null : _b, _c = _a.name, name = _c === void 0 ? null : _c, _d = _a.productType, productType = _d === void 0 ? null : _d, _e = _a.inStockPool, inStockPool = _e === void 0 ? false : _e, _f = _a.hasNoTvLock, hasNoTvLock = _f === void 0 ? false : _f, _g = _a.onClick, onClick = _g === void 0 ? null : _g;
+    var _b = _a.id, id = _b === void 0 ? null : _b, _c = _a.name, name = _c === void 0 ? null : _c, _d = _a.onClick, onClick = _d === void 0 ? null : _d;
     var theme = (0, styles_1.useTheme)();
-    var outerWrapperStyles = (0, react_1.useMemo)(function () { return ({ marginLeft: theme.spacing(1), display: 'flex', flexDirection: 'column', height: '100%' }); }, []);
+    var outerWrapperStyles = (0, react_1.useMemo)(function () { return ({
+        marginTop: theme.spacing(1),
+        marginLeft: theme.spacing(1),
+        display: 'flex',
+        flexDirection: 'column',
+    }); }, []);
     return react_1.default.createElement(core_1.Grid, { item: true, xs: true },
         react_1.default.createElement("div", { style: outerWrapperStyles },
-            react_1.default.createElement(Name_1.default, { name: name, productType: productType, hasNoTvLock: hasNoTvLock, inStockPool: inStockPool }),
-            react_1.default.createElement(Attributes_1.default, { productType: productType, hasNoTvLock: hasNoTvLock, inStockPool: inStockPool }),
+            react_1.default.createElement(Name_1.default, { name: name }),
             react_1.default.createElement(Button_1.default, { onClick: onClick, id: id })));
 };
 exports.default = (0, react_1.memo)(Details);

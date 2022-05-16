@@ -52,9 +52,9 @@ var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
 var icons_1 = require("@material-ui/icons");
 var styles_1 = require("@material-ui/core/styles");
-var Currency_1 = require("../Utilities/Format/Currency");
 var react_redux_1 = require("react-redux");
 var Action = __importStar(require("../Store/Action"));
+var Table_1 = require("./Table");
 var TextFieldClearButton_1 = __importDefault(require("./TextFieldClearButton"));
 var TableCellDefault_1 = require("./Table/TableCell/TableCellDefault");
 var TableCell_1 = require("./Table/TableCell");
@@ -176,6 +176,24 @@ var columns = [
 ];
 var textFieldInputProps = { startAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'start' },
         react_1.default.createElement(Search_1.default, null)) };
+var createProductDataVirtualizedTable = function (index) { return ({
+    rowIndex: index,
+    isProductBundle: true,
+    hasNoTvLock: true,
+    id: '4716YT',
+    name: 'Das ist ein sehr langer Produktname Das ist ein sehr langer Produktname',
+    inStockPool: true,
+    productType: null,
+    mediaUris: [{
+            productId: '4716YT',
+            uri: 'https://api-test.juwelo.de/media/small/4716YT.jpg'
+        }],
+    height: 100
+}); };
+var productRows = [];
+for (var i = 0; i < 200; i += 1) {
+    productRows.push(createProductDataVirtualizedTable(i));
+}
 var selectMenuItems = [
     react_1.default.createElement(core_1.MenuItem, { value: 'test 1', key: 'menu-item-1' }, "Test 1"),
     react_1.default.createElement(core_1.MenuItem, { value: 'test 2', key: 'menu-item-2' }, "Test 2"),
@@ -190,6 +208,7 @@ var Develop = function () {
     var _c = (0, react_1.useState)(null), testDatePickerValue = _c[0], setTestDatePickerValue = _c[1];
     var noRowsRenderer = (0, react_1.useCallback)(function () { return react_1.default.createElement(TableRow_1.TableRowLoading, null); }, []);
     var rowGetter = (0, react_1.useCallback)(function (row) { return rows[row.index]; }, []);
+    var productRowGetter = (0, react_1.useCallback)(function (row) { return productRows[row.index]; }, []);
     var handleSelectUpdate = (0, react_1.useCallback)(function (event) { return setTestSelectValue(event === null ? '' : event.target.value); }, []);
     var handleTextFieldUpdate = (0, react_1.useCallback)(function (event) { return setTestTextFieldValue(event === null ? '' : event.target.value); }, []);
     var persistNotificationsRef = (0, react_1.useRef)(null);
@@ -272,28 +291,6 @@ var Develop = function () {
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(Button_1.ButtonProgress, { inProgress: true, onClick: handleOnClickToast }, "Toast"))),
         react_1.default.createElement("div", { style: { marginTop: theme.spacing(1) } },
-            react_1.default.createElement(core_1.List, null,
-                react_1.default.createElement(core_1.ListItem, null,
-                    react_1.default.createElement(core_1.ListItemText, { secondary: 'getCurrency(\'EUR\', 100, true, true, true)' }, (0, Currency_1.getCurrency)('EUR', 100, true, true, true))),
-                react_1.default.createElement(core_1.ListItem, null,
-                    react_1.default.createElement(core_1.ListItemText, { secondary: 'getCurrency(\'EUR\', 100, true, true, false)' }, (0, Currency_1.getCurrency)('EUR', 100, true, true, false))),
-                react_1.default.createElement(core_1.ListItem, null,
-                    react_1.default.createElement(core_1.ListItemText, { secondary: 'getCurrency(\'EUR\', 100.00, true, true, true)' }, (0, Currency_1.getCurrency)('EUR', 100.00, true, true, true))),
-                react_1.default.createElement(core_1.ListItem, null,
-                    react_1.default.createElement(core_1.ListItemText, { secondary: 'getCurrency(\'EUR\', 100.00, true, true, false)' }, (0, Currency_1.getCurrency)('EUR', 100.00, true, true, false))),
-                react_1.default.createElement(core_1.ListItem, null,
-                    react_1.default.createElement(core_1.ListItemText, { secondary: 'getCurrency(\'EUR\', 100.5, true, true, true)' }, (0, Currency_1.getCurrency)('EUR', 100.5, true, true, true))),
-                react_1.default.createElement(core_1.ListItem, null,
-                    react_1.default.createElement(core_1.ListItemText, { secondary: 'getCurrency(\'EUR\', 100.5, true, true, false)' }, (0, Currency_1.getCurrency)('EUR', 100.5, true, true, false))),
-                react_1.default.createElement(core_1.ListItem, null,
-                    react_1.default.createElement(core_1.ListItemText, { secondary: 'getCurrency(\'EUR\', 100.50, true, true, true)' }, (0, Currency_1.getCurrency)('EUR', 100.50, true, true, true))),
-                react_1.default.createElement(core_1.ListItem, null,
-                    react_1.default.createElement(core_1.ListItemText, { secondary: 'getCurrency(\'EUR\', 100.50, true, true, false)' }, (0, Currency_1.getCurrency)('EUR', 100.50, true, true, false))),
-                react_1.default.createElement(core_1.ListItem, null,
-                    react_1.default.createElement(core_1.ListItemText, { secondary: 'getCurrency(\'EUR\', 100.75, true, true, true)' }, (0, Currency_1.getCurrency)('EUR', 100.75, true, true, true))),
-                react_1.default.createElement(core_1.ListItem, null,
-                    react_1.default.createElement(core_1.ListItemText, { secondary: 'getCurrency(\'EUR\', 100.75, true, true, false)' }, (0, Currency_1.getCurrency)('EUR', 100.75, true, true, false))))),
-        react_1.default.createElement("div", { style: { marginTop: theme.spacing(1) } },
             react_1.default.createElement(core_1.Grid, { container: true },
                 react_1.default.createElement(core_1.Grid, { item: true },
                     react_1.default.createElement(core_1.Typography, { style: {
@@ -360,7 +357,7 @@ var Develop = function () {
         react_1.default.createElement("div", { style: { marginTop: theme.spacing(1) } },
             react_1.default.createElement(core_1.Card, null,
                 react_1.default.createElement(core_1.CardContent, { style: { height: 300 } },
-                    react_1.default.createElement(core_1.TableContainer, { style: { maxHeight: 300 } },
+                    react_1.default.createElement(core_1.TableContainer, { style: { maxHeight: 260 } },
                         react_1.default.createElement(core_1.Table, { stickyHeader: true },
                             react_1.default.createElement(core_1.TableHead, null,
                                 react_1.default.createElement(core_1.TableRow, null, ['calories', 'carbs', 'dessert', 'fat', 'id', 'protein'].map(function (column, index) { return react_1.default.createElement(core_1.TableCell, { key: 'column-head-index-' + index }, column); }))),
@@ -369,6 +366,16 @@ var Develop = function () {
                                 react_1.default.createElement(core_1.TableCell, null, row.carbs),
                                 react_1.default.createElement(core_1.TableCell, null, row.dessert),
                                 react_1.default.createElement(core_1.TableCell, null, row.fat),
-                                react_1.default.createElement(core_1.TableCell, null, row.id)); })))))))));
+                                react_1.default.createElement(core_1.TableCell, null, row.id)); }))))))),
+        react_1.default.createElement("div", { style: { marginTop: theme.spacing(1) } },
+            react_1.default.createElement(core_1.Card, null,
+                react_1.default.createElement(core_1.CardContent, { style: { height: 300 } },
+                    react_1.default.createElement(Table_1.VirtualizedTable, { headerHeight: 50, rowHeight: 100, rowCount: 200, rowGetter: productRowGetter, showRowHoverHighlight: true, columns: [
+                            {
+                                dataKey: 'product',
+                                width: 400,
+                                cellRenderer: function (cellProps) { return react_1.default.createElement(TableCell_1.TableCellProduct, __assign({}, cellProps.rowData)); }
+                            }
+                        ] }))))));
 };
 exports.default = Develop;

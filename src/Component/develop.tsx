@@ -46,7 +46,7 @@ import { VirtualizedTable } from 'Component/Table';
 import { Index, TableCellProps } from 'react-virtualized';
 import TextFieldClearButton, { TextFieldClearButtonProps } from 'Component/TextFieldClearButton';
 import { ContentEllipseMode } from 'Component/Table/TableCell/TableCellDefault';
-import { TableCellDateTime, TableCellDateTimeRange, TableCellDefault } from 'Component/Table/TableCell';
+import { TableCellDateTime, TableCellDateTimeRange, TableCellDefault, TableCellProduct } from 'Component/Table/TableCell';
 import { ButtonProgress } from 'Component/Button';
 import { AppCardContent, AppCardHeader } from 'Component/Card';
 import { TableRowLoading } from 'Component/Table/TableRow';
@@ -63,6 +63,7 @@ import Box from '@material-ui/core/Box';
 import { NativeSelectProps } from '@material-ui/core/NativeSelect/NativeSelect';
 import DatePicker from 'Component/DatePicker';
 import SelectClearButton, { SelectClearButtonProps } from 'Component/SelectClearButton';
+import { TableCellProductProps } from 'Component/Table/TableCell/TableCellProduct';
 
 const tableRowHeight = 48;
 
@@ -209,6 +210,27 @@ const columns: ColumnData[] = [
 ];
 const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment> };
 
+const createProductDataVirtualizedTable = (index: number): TableCellProductProps => ({
+  rowIndex: index,
+  isProductBundle: true,
+  hasNoTvLock: true,
+  id: '4716YT',
+  name: 'Das ist ein sehr langer Produktname Das ist ein sehr langer Produktname',
+  inStockPool: true,
+  productType: null,
+  mediaUris: [{
+    productId: '4716YT',
+    uri: 'https://api-test.juwelo.de/media/small/4716YT.jpg'
+  }],
+  height: 100
+});
+
+const productRows: TableCellProductProps[] = [];
+
+for (let i = 0; i < 200; i += 1) {
+  productRows.push(createProductDataVirtualizedTable(i));
+}
+
 const selectMenuItems = [
   <MenuItem value={'test 1'} key={'menu-item-1'}>Test 1</MenuItem>,
   <MenuItem value={'test 2'} key={'menu-item-2'}>Test 2</MenuItem>,
@@ -224,6 +246,7 @@ const Develop: React.FC = () => {
   const [testDatePickerValue, setTestDatePickerValue] = useState<Date>(null);
   const noRowsRenderer = useCallback(() => <TableRowLoading/>, []);
   const rowGetter = useCallback((row: Index) => rows[row.index], []);
+  const productRowGetter = useCallback((row: Index) => productRows[row.index], []);
   const handleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => setTestSelectValue(event === null ? '' : event.target.value as string), []);
   const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
   const persistNotificationsRef = useRef(null);
@@ -359,60 +382,60 @@ const Develop: React.FC = () => {
           <ButtonProgress inProgress onClick={handleOnClickToast}>Toast</ButtonProgress>
         </Grid>
       </Grid>
-      <div style={{ marginTop: theme.spacing(1) }}>
-        <List>
-          <ListItem>
-            <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, true)'}>
-              {getCurrency('EUR', 100, true, true, true)}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, false)'}>
-              {getCurrency('EUR', 100, true, true, false)}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, true)'}>
-              {getCurrency('EUR', 100.00, true, true, true)}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, false)'}>
-              {getCurrency('EUR', 100.00, true, true, false)}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, true)'}>
-              {getCurrency('EUR', 100.5, true, true, true)}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, false)'}>
-              {getCurrency('EUR', 100.5, true, true, false)}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, true)'}>
-              {getCurrency('EUR', 100.50, true, true, true)}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, false)'}>
-              {getCurrency('EUR', 100.50, true, true, false)}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, true)'}>
-              {getCurrency('EUR', 100.75, true, true, true)}
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, false)'}>
-              {getCurrency('EUR', 100.75, true, true, false)}
-            </ListItemText>
-          </ListItem>
-        </List>
-      </div>
+      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
+      {/*  <List>*/}
+      {/*    <ListItem>*/}
+      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, true)'}>*/}
+      {/*        {getCurrency('EUR', 100, true, true, true)}*/}
+      {/*      </ListItemText>*/}
+      {/*    </ListItem>*/}
+      {/*    <ListItem>*/}
+      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, false)'}>*/}
+      {/*        {getCurrency('EUR', 100, true, true, false)}*/}
+      {/*      </ListItemText>*/}
+      {/*    </ListItem>*/}
+      {/*    <ListItem>*/}
+      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, true)'}>*/}
+      {/*        {getCurrency('EUR', 100.00, true, true, true)}*/}
+      {/*      </ListItemText>*/}
+      {/*    </ListItem>*/}
+      {/*    <ListItem>*/}
+      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, false)'}>*/}
+      {/*        {getCurrency('EUR', 100.00, true, true, false)}*/}
+      {/*      </ListItemText>*/}
+      {/*    </ListItem>*/}
+      {/*    <ListItem>*/}
+      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, true)'}>*/}
+      {/*        {getCurrency('EUR', 100.5, true, true, true)}*/}
+      {/*      </ListItemText>*/}
+      {/*    </ListItem>*/}
+      {/*    <ListItem>*/}
+      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, false)'}>*/}
+      {/*        {getCurrency('EUR', 100.5, true, true, false)}*/}
+      {/*      </ListItemText>*/}
+      {/*    </ListItem>*/}
+      {/*    <ListItem>*/}
+      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, true)'}>*/}
+      {/*        {getCurrency('EUR', 100.50, true, true, true)}*/}
+      {/*      </ListItemText>*/}
+      {/*    </ListItem>*/}
+      {/*    <ListItem>*/}
+      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, false)'}>*/}
+      {/*        {getCurrency('EUR', 100.50, true, true, false)}*/}
+      {/*      </ListItemText>*/}
+      {/*    </ListItem>*/}
+      {/*    <ListItem>*/}
+      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, true)'}>*/}
+      {/*        {getCurrency('EUR', 100.75, true, true, true)}*/}
+      {/*      </ListItemText>*/}
+      {/*    </ListItem>*/}
+      {/*    <ListItem>*/}
+      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, false)'}>*/}
+      {/*        {getCurrency('EUR', 100.75, true, true, false)}*/}
+      {/*      </ListItemText>*/}
+      {/*    </ListItem>*/}
+      {/*  </List>*/}
+      {/*</div>*/}
       <div style={{ marginTop: theme.spacing(1) }}>
         <Grid container>
           <Grid item>
@@ -509,7 +532,7 @@ const Develop: React.FC = () => {
       <div style={{ marginTop: theme.spacing(1) }}>
         <Card>
           <CardContent style={{ height: 300 }}>
-            <TableContainer style={{ maxHeight: 300 }}>
+            <TableContainer style={{ maxHeight: 260 }}>
               <Table stickyHeader>
                 <TableHead>
                   <TableRow>
@@ -528,6 +551,26 @@ const Develop: React.FC = () => {
                 </TableBody>
               </Table>
             </TableContainer>
+          </CardContent>
+        </Card>
+      </div>
+      <div style={{ marginTop: theme.spacing(1) }}>
+        <Card>
+          <CardContent style={{ height: 300 }}>
+            <VirtualizedTable
+              headerHeight={50}
+              rowHeight={100}
+              rowCount={200}
+              rowGetter={productRowGetter}
+              showRowHoverHighlight
+              columns={[
+                {
+                  dataKey: 'product',
+                  width: 400,
+                  cellRenderer: (cellProps: TableCellProps) => <TableCellProduct {...cellProps.rowData}/>
+                }
+              ]}
+            />
           </CardContent>
         </Card>
       </div>

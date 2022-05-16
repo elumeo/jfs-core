@@ -93,7 +93,7 @@ var VirtualizedTable = react_1.default.forwardRef(function (props, ref) {
     var headerRenderer = (0, react_1.useCallback)(function (headerProps) { return react_1.default.createElement(TableHeadDefault_1.default, { height: headerHeight, disableSort: headerProps.disableSort, sortBy: headerProps.sortBy, sortDirection: headerProps.sortDirection, 
         // @ts-ignore I do not get what the problem here is React.ReactNode != ReactNode ???
         label: headerProps.label, dataKey: headerProps.dataKey }); }, [headerHeight]);
-    var getFinalColumnWidth = (0, react_1.useCallback)(function (columnWidth, tableWidth) { return typeof columnWidth !== 'number'
+    var getFinalColumnWidth = (0, react_1.useCallback)(function (columnWidth, tableWidth) { return typeof columnWidth === 'function'
         ? columnWidth(tableWidth)
         : columnWidth; }, []);
     var getCellRenderer = (0, react_1.useCallback)(function (props) { return react_1.default.createElement(TableCell_1.TableCellDefault, { height: typeof rowHeight === 'number' ? rowHeight : rowHeight({ index: props.rowIndex }), cellData: props.cellData, isNumeric: (props.columnIndex != null && columns[props.columnIndex].numeric) || false }); }, []);

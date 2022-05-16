@@ -78,9 +78,10 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>((props, 
       dataKey={headerProps.dataKey}
     />, [headerHeight]);
 
-    const getFinalColumnWidth = useCallback((columnWidth: number | ((fullWidth: number) => number), tableWidth: number) => typeof columnWidth !== 'number'
-      ? (columnWidth as (fullWidth: number) => number)(tableWidth)
-      : columnWidth as number, []
+    const getFinalColumnWidth = useCallback((columnWidth: number | ((fullWidth: number) => number), tableWidth: number) => typeof columnWidth === 'function'
+          ? (columnWidth as (fullWidth: number) => number)(tableWidth)
+          : columnWidth as number
+      , []
     );
 
     const getCellRenderer: ColumnProps['cellRenderer'] = useCallback(props => <TableCellDefault

@@ -26,19 +26,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
 var styles_1 = require("@material-ui/core/styles");
-var nameWrapperStyles = { flex: 1 };
-var Name = function (_a) {
-    var name = _a.name, _b = _a.productType, productType = _b === void 0 ? null : _b, _c = _a.inStockPool, inStockPool = _c === void 0 ? false : _c, _d = _a.hasNoTvLock, hasNoTvLock = _d === void 0 ? false : _d;
-    var theme = (0, styles_1.useTheme)();
-    var nameStyles = (0, react_1.useMemo)(function () { return ({
+var nameWrapperStyles = { flex: 1, minHeight: '55px' };
+var useStyles = (0, styles_1.makeStyles)(function (theme) { return (0, styles_1.createStyles)({
+    nameStyles: {
+        // @ts-ignore
         fontWeight: theme.typography.fontWeightBold,
         whiteSpace: 'normal',
         display: '-webkit-box',
         overflow: 'hidden',
         boxOrient: 'vertical',
-        lineClamp: productType !== null || inStockPool || hasNoTvLock ? 2 : 3,
-    }); }, [productType, inStockPool, hasNoTvLock]);
+        lineClamp: 3,
+        lineHeight: 1.3,
+    }
+}); });
+var Name = function (_a) {
+    var name = _a.name;
+    var styles = useStyles();
     return react_1.default.createElement("div", { style: nameWrapperStyles },
-        react_1.default.createElement(core_1.Typography, { variant: 'body1', style: nameStyles }, name));
+        react_1.default.createElement(core_1.Typography, { className: styles.nameStyles }, name));
 };
 exports.default = (0, react_1.memo)(Name);
