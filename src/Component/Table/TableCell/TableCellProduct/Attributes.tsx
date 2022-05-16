@@ -1,6 +1,12 @@
-import React, { memo } from 'react';
+import React, { CSSProperties, memo } from 'react';
 import { useIntl } from 'react-intl';
-import { Chip, Divider, Grid } from '@material-ui/core';
+import { Chip, Grid } from '@material-ui/core';
+
+const containerStyle: CSSProperties = {
+  width: '100px',
+  marginTop: '4px',
+  marginLeft: '4px'
+}
 
 export type AttributesProps = {
   productType?: string;
@@ -12,15 +18,10 @@ const Attributes = ({ productType = null, inStockPool = false, hasNoTvLock = fal
   const { formatMessage } = useIntl();
   const hasChip = productType !== null || inStockPool || hasNoTvLock;
   return hasChip && <Grid item>
-    <Grid container spacing={2} style={{marginTop: 0, marginLeft: '4px', height: '100%'}} wrap={'nowrap'}>
-      <Divider orientation="vertical" flexItem style={{marginTop: '8px', marginBottom: '8px'}} />
-      <Grid item>
-        <Grid container spacing={1} style={{width: '100px'}}>
-          {productType !== null && <Grid item xs={12}><Chip size={'small'} label={formatMessage({ id: 'product.type.' + productType })} /></Grid>}
-          {inStockPool && <Grid item xs={12}><Chip size={'small'} label={'StockPool'} /></Grid>}
-          {hasNoTvLock && <Grid item xs={12}><Chip size={'small'} label={'NoTv'} /></Grid>}
-        </Grid>
-      </Grid>
+    <Grid container spacing={1} style={containerStyle}>
+      {productType !== null && <Grid item xs={12}><Chip size={'small'} label={formatMessage({ id: 'product.type.' + productType })} /></Grid>}
+      {inStockPool && <Grid item xs={12}><Chip size={'small'} label={'StockPool'} /></Grid>}
+      {hasNoTvLock && <Grid item xs={12}><Chip size={'small'} label={'NoTv'} /></Grid>}
     </Grid>
   </Grid> || <></>;
 };

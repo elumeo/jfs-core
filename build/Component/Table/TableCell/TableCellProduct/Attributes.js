@@ -26,20 +26,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var react_intl_1 = require("react-intl");
 var core_1 = require("@material-ui/core");
+var containerStyle = {
+    width: '100px',
+    marginTop: '4px',
+    marginLeft: '4px'
+};
 var Attributes = function (_a) {
     var _b = _a.productType, productType = _b === void 0 ? null : _b, _c = _a.inStockPool, inStockPool = _c === void 0 ? false : _c, _d = _a.hasNoTvLock, hasNoTvLock = _d === void 0 ? false : _d;
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
     var hasChip = productType !== null || inStockPool || hasNoTvLock;
     return hasChip && react_1.default.createElement(core_1.Grid, { item: true },
-        react_1.default.createElement(core_1.Grid, { container: true, spacing: 2, style: { marginTop: 0, marginLeft: '4px', height: '100%' }, wrap: 'nowrap' },
-            react_1.default.createElement(core_1.Divider, { orientation: "vertical", flexItem: true, style: { marginTop: '8px', marginBottom: '8px' } }),
-            react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, style: { width: '100px' } },
-                    productType !== null && react_1.default.createElement(core_1.Grid, { item: true, xs: 12 },
-                        react_1.default.createElement(core_1.Chip, { size: 'small', label: formatMessage({ id: 'product.type.' + productType }) })),
-                    inStockPool && react_1.default.createElement(core_1.Grid, { item: true, xs: 12 },
-                        react_1.default.createElement(core_1.Chip, { size: 'small', label: 'StockPool' })),
-                    hasNoTvLock && react_1.default.createElement(core_1.Grid, { item: true, xs: 12 },
-                        react_1.default.createElement(core_1.Chip, { size: 'small', label: 'NoTv' })))))) || react_1.default.createElement(react_1.default.Fragment, null);
+        react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, style: containerStyle },
+            productType !== null && react_1.default.createElement(core_1.Grid, { item: true, xs: 12 },
+                react_1.default.createElement(core_1.Chip, { size: 'small', label: formatMessage({ id: 'product.type.' + productType }) })),
+            inStockPool && react_1.default.createElement(core_1.Grid, { item: true, xs: 12 },
+                react_1.default.createElement(core_1.Chip, { size: 'small', label: 'StockPool' })),
+            hasNoTvLock && react_1.default.createElement(core_1.Grid, { item: true, xs: 12 },
+                react_1.default.createElement(core_1.Chip, { size: 'small', label: 'NoTv' })))) || react_1.default.createElement(react_1.default.Fragment, null);
 };
 exports.default = (0, react_1.memo)(Attributes);
