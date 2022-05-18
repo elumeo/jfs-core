@@ -60,7 +60,7 @@ var SelectClearButton = function (_a) {
     (0, react_1.useEffect)(function () {
         if (onChange !== undefined) {
             if (rest.value !== undefined) {
-                if (rest.value !== '' && showClearButton === false) {
+                if ((rest.multiple === false && rest.value !== '' || rest.value.length > 0) && showClearButton === false) {
                     setShowClearButton(true);
                 }
                 else if (rest.value === '' && showClearButton === true) {

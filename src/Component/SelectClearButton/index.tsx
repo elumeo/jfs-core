@@ -18,7 +18,7 @@ const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clea
   useEffect(() => {
     if (onChange !== undefined) {
       if (rest.value !== undefined) {
-        if (rest.value !== '' && showClearButton === false) {
+        if ((rest.multiple === false && rest.value !== '' || (rest.value as string[]).length > 0) && showClearButton === false) {
           setShowClearButton(true);
         } else if (rest.value === '' && showClearButton === true) {
           setShowClearButton(false);

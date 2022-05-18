@@ -3,7 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PATH = require('./PATH');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
+// const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
 const { resolve } = require('path');
 
 const development = {
@@ -27,7 +27,7 @@ const development = {
       },
       async: true
     }),
-    new ForkTsCheckerNotifierWebpackPlugin,
+    // new ForkTsCheckerNotifierWebpackPlugin,
     new CopyWebpackPlugin({
       patterns: [
         { from: PATH.CONFIGURATION_DEV, to: PATH.CONFIGURATION_DIST }
