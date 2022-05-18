@@ -56,7 +56,7 @@ var SelectClearButton = function (_a) {
     var children = _a.children, onChange = _a.onChange, _b = _a.clearButtonSize, clearButtonSize = _b === void 0 ? 'small' : _b, _c = _a.clearIconSize, clearIconSize = _c === void 0 ? 'small' : _c, _d = _a.variant, variant = _d === void 0 ? 'standard' : _d, endAdornment = _a.endAdornment, rest = __rest(_a, ["children", "onChange", "clearButtonSize", "clearIconSize", "variant", "endAdornment"]);
     var getIconSize = (0, react_1.useCallback)(function () { return clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small'; }, []);
     var _e = (0, react_1.useState)(false), showClearButton = _e[0], setShowClearButton = _e[1];
-    var _f = (0, react_1.useState)(''), inputValue = _f[0], setInputValue = _f[1];
+    var _f = (0, react_1.useState)(null), inputValue = _f[0], setInputValue = _f[1];
     (0, react_1.useEffect)(function () {
         if (onChange !== undefined) {
             if (rest.value !== undefined) {
@@ -74,7 +74,7 @@ var SelectClearButton = function (_a) {
     }, [rest.value]);
     var handleOnChange = (0, react_1.useCallback)(function (event, changeValue) {
         if (onChange === undefined) {
-            if (changeValue !== null && changeValue !== '') {
+            if (rest.multiple === false && rest.value !== '' || rest.value.length > 0) {
                 if (showClearButton === false) {
                     setShowClearButton(true);
                 }
@@ -83,7 +83,7 @@ var SelectClearButton = function (_a) {
                 setShowClearButton(false);
             }
             if (rest.value === undefined) {
-                setInputValue(changeValue === null ? '' : changeValue);
+                setInputValue(changeValue === null ? rest.multiple ? [] : '' : changeValue);
             }
         }
         else {
@@ -96,6 +96,6 @@ var SelectClearButton = function (_a) {
     var preparedEndAdornment = react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
         endAdornment && endAdornment.props.children,
         endAdornmentClearButton);
-    return (react_1.default.createElement(core_1.Select, __assign({}, rest, { onChange: handleOnChange, endAdornment: preparedEndAdornment, autoComplete: 'new-password', value: inputValue }), children));
+    return (react_1.default.createElement(core_1.Select, __assign({}, rest, { onChange: handleOnChange, endAdornment: preparedEndAdornment, autoComplete: 'new-password', value: inputValue === null ? rest.multiple ? [] : '' : inputValue }), children));
 };
 exports.default = (0, react_1.memo)(SelectClearButton);
