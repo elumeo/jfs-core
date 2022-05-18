@@ -13,7 +13,7 @@ export type SelectClearButtonProps = Partial<SelectProps> & {
 const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clearIconSize = 'small', variant = 'standard', endAdornment, ...rest }: SelectClearButtonProps) => {
   const getIconSize = useCallback((): IconProps['fontSize'] => clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small', []);
   const [showClearButton, setShowClearButton] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState<string | string[]>(null);
 
   useEffect(() => {
     if (onChange !== undefined) {
@@ -33,7 +33,7 @@ const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clea
 
   const handleOnChange: SelectProps['onChange'] = useCallback((event, changeValue: string) => {
     if (onChange === undefined) {
-      if (changeValue !== null && changeValue !== '') {
+      if (rest.multiple === false && rest.value !== '' || (rest.value as string[]).length > 0) {
         if(showClearButton === false) {
           setShowClearButton(true);
         }
@@ -42,7 +42,7 @@ const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clea
       }
 
       if (rest.value === undefined) {
-        setInputValue(changeValue === null ? '' : changeValue);
+        setInputValue(changeValue === null ? rest.multiple ? [] as string[] : '' : changeValue);
       }
     } else {
       onChange(event, changeValue);
@@ -73,7 +73,7 @@ const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clea
       onChange={handleOnChange}
       endAdornment={preparedEndAdornment}
       autoComplete={'new-password'}
-      value={inputValue}
+      value={inputValue === null ? rest.multiple ? [] : '' : inputValue}
     >
       {children}
     </Select>
