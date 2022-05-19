@@ -18,9 +18,9 @@ const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clea
   useEffect(() => {
     if (onChange !== undefined) {
       if (rest.value !== undefined) {
-        if ((rest.multiple === false && rest.value !== '' || (rest.value as string[]).length > 0) && showClearButton === false) {
+        if (((rest.multiple === false && rest.value !== '') || (rest.multiple && (rest.value as string[]).length > 0)) && showClearButton === false) {
           setShowClearButton(true);
-        } else if (rest.value === '' && showClearButton === true) {
+        } else if ((rest.multiple === false && rest.value === '') || (rest.multiple && (rest.value as string[]).length <= 0) && showClearButton === true) {
           setShowClearButton(false);
         }
 
@@ -33,7 +33,7 @@ const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clea
 
   const handleOnChange: SelectProps['onChange'] = useCallback((event, changeValue: string) => {
     if (onChange === undefined) {
-      if (rest.multiple === false && rest.value !== '' || (rest.value as string[]).length > 0) {
+      if ((rest.multiple === false && rest.value !== '') || (rest.multiple && (rest.value as string[]).length > 0)) {
         if(showClearButton === false) {
           setShowClearButton(true);
         }

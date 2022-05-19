@@ -60,10 +60,10 @@ var SelectClearButton = function (_a) {
     (0, react_1.useEffect)(function () {
         if (onChange !== undefined) {
             if (rest.value !== undefined) {
-                if ((rest.multiple === false && rest.value !== '' || rest.value.length > 0) && showClearButton === false) {
+                if (((rest.multiple === false && rest.value !== '') || (rest.multiple && rest.value.length > 0)) && showClearButton === false) {
                     setShowClearButton(true);
                 }
-                else if (rest.value === '' && showClearButton === true) {
+                else if ((rest.multiple === false && rest.value === '') || (rest.multiple && rest.value.length <= 0) && showClearButton === true) {
                     setShowClearButton(false);
                 }
                 if (inputValue !== rest.value) {
@@ -74,7 +74,7 @@ var SelectClearButton = function (_a) {
     }, [rest.value]);
     var handleOnChange = (0, react_1.useCallback)(function (event, changeValue) {
         if (onChange === undefined) {
-            if (rest.multiple === false && rest.value !== '' || rest.value.length > 0) {
+            if ((rest.multiple === false && rest.value !== '') || (rest.multiple && rest.value.length > 0)) {
                 if (showClearButton === false) {
                     setShowClearButton(true);
                 }
