@@ -1,3 +1,6 @@
+## [10.1.0] 2022-05-24
+   added DebugButton to handle Mattermost Post
+
 ## [10.0.6] 2022-05-03
 - Removed cypress dependencies and test script entries
 

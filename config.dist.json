@@ -1,7 +1,7 @@
 {
   "JscClient": {
     "Host-Internal": "http://de.TECH-64_push_to_web.api.staging-jsc-app.juwelo.local",
-    "Host": "https://api-test.juwelo.de/staging/de/master",
+    "Host": "https://api-test.juwelo.de/staging/de/MT-6558_added_mattermost_ep_for_debug_information",
     "Host-Local": "http://localhost/jsc-api-de",
     "Timeout": 30000
   },

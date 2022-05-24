@@ -1,6 +1,44 @@
 {
   "dtos": [
     {
+      "name": "DebugNotifier",
+      "constants": [],
+      "dtos": [
+        {
+          "name": "MattermostDTO",
+          "generics": [],
+          "properties": {
+            "payload": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        }
+      ],
+      "namespaces": []
+    },
+    {
       "name": "Login",
       "constants": [],
       "dtos": [
@@ -335,6 +373,11 @@
               "array": false,
               "generics": []
             },
+            "inAppRightsCount": {
+              "type": "number",
+              "array": false,
+              "generics": []
+            },
             "createdAt": {
               "type": "string",
               "array": false,
@@ -417,6 +460,33 @@
     }
   ],
   "clients": [
+    {
+      "name": "DebugNotificationController",
+      "methods": [
+        {
+          "name": "sendToMattermost",
+          "resource": {
+            "path": "/debug/sendToMattermost",
+            "type": {
+              "name": "void",
+              "generics": []
+            }
+          },
+          "protocol": {
+            "name": "HTTP",
+            "method": "post"
+          },
+          "parameters": [
+            {
+              "name": "message",
+              "type": "DTO.DebugNotifier.MattermostDTO",
+              "optional": false,
+              "array": false
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "LoginController",
       "methods": [

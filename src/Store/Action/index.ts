@@ -1,5 +1,6 @@
 export * from './App';
 export * from './Configuration';
+export * as Debug from './Debug';
 export * from './Language';
 export * from './Locale';
 export * from './Login';

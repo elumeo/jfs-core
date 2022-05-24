@@ -16,6 +16,15 @@ namespace JSCApi {
     params?: IUrlParams;
   }
   export namespace DTO {
+    export namespace DebugNotifier {
+      export interface IMattermostDTO {
+        payload?: string;
+        createdAt?: string;
+        createdBy?: string;
+        modifiedAt?: string;
+        modifiedBy?: string;
+      }
+    }
     export namespace Login {
       export interface ICredentialsDTO {
         username?: string;
@@ -91,6 +100,7 @@ namespace JSCApi {
         fullscreen?: boolean;
         frontend?: string;
         displayName?: string;
+        inAppRightsCount?: number;
         createdAt?: string;
         createdBy?: string;
         modifiedAt?: string;
@@ -109,6 +119,13 @@ namespace JSCApi {
         modifiedBy?: string;
       }
     }
+  }
+  export namespace DebugNotificationClient {
+    export const sendToMattermost = (
+      message: DTO.DebugNotifier.IMattermostDTO,
+      config?: IJscClientConfig
+    ): Promise<AxiosResponse<void>> =>
+      JscClient.post<void>("/debug/sendToMattermost", message, config);
   }
   export namespace LoginClient {
     export const loginFrontend = (

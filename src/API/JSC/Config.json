@@ -7,6 +7,7 @@
     "SessionController": ["getCurrentSessionFrontend", "logout"],
     "LoginController": ["loginFrontend"],
     "UserController": ["getUserRights"],
-    "WebSocketController": ["subscribePingRoom"]
+    "WebSocketController": ["subscribePingRoom"],
+    "DebugNotificationController":["sendToMattermost"]
   }
 }

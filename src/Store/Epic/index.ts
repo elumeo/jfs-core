@@ -1,6 +1,7 @@
 import { combineEpics } from 'redux-observable';
 import App from './App';
 import Configuration from './Configuration';
+import Debug from './Debug';
 import Language from './Language';
 import Login from './Login';
 import Locale from './Locale';
@@ -45,6 +46,7 @@ const Core = combineEpics(
   WebSocket,
   Language,
   Notification,
+  Debug
 );
 
 export default Core;
