@@ -24,6 +24,12 @@ var JSCApi;
             App.I_APP_DTO_FRONTEND_JFS = "jfs";
         })(App = DTO.App || (DTO.App = {}));
     })(DTO = JSCApi.DTO || (JSCApi.DTO = {}));
+    var DebugNotificationClient;
+    (function (DebugNotificationClient) {
+        DebugNotificationClient.sendToMattermost = function (message, config) {
+            return Client_1.default.post("/debug/sendToMattermost", message, config);
+        };
+    })(DebugNotificationClient = JSCApi.DebugNotificationClient || (JSCApi.DebugNotificationClient = {}));
     var LoginClient;
     (function (LoginClient) {
         LoginClient.loginFrontend = function (appName, credentials, config) {

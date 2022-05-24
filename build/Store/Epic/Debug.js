@@ -15,9 +15,6 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 }) : function(o, v) {
     o["default"] = v;
 });
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
@@ -25,20 +22,20 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Debug = void 0;
-__exportStar(require("./App"), exports);
-__exportStar(require("./Configuration"), exports);
-exports.Debug = __importStar(require("./Debug"));
-__exportStar(require("./Language"), exports);
-__exportStar(require("./Locale"), exports);
-__exportStar(require("./Login"), exports);
-__exportStar(require("./Logout"), exports);
-__exportStar(require("./Navigation"), exports);
-__exportStar(require("./Notification"), exports);
-__exportStar(require("./Router"), exports);
-__exportStar(require("./Session"), exports);
-__exportStar(require("./Settings"), exports);
-__exportStar(require("./System"), exports);
-__exportStar(require("./Toast"), exports);
-__exportStar(require("./WebSocket"), exports);
+var typesafe_actions_1 = require("typesafe-actions");
+var Action = __importStar(require("../Action"));
+var operators_1 = require("rxjs/operators");
+var JSC_1 = __importDefault(require("../../API/JSC"));
+var rxjs_1 = require("rxjs");
+var post = function (action$) {
+    return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.Debug.post)), (0, operators_1.switchMap)(function (_a) {
+        var payload = _a.payload;
+        return (0, rxjs_1.from)(JSC_1.default.DebugNotificationClient.sendToMattermost({ payload: payload }))
+            .pipe((0, operators_1.switchMap)(function () { return [Action.addToastAction({ contentMessage: 'Debug-Report versendet' })]; }), (0, operators_1.catchError)(function (e) { return [Action.addErrorNotification(e)]; }));
+    }));
+};
+exports.default = post;

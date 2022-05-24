@@ -15,9 +15,6 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 }) : function(o, v) {
     o["default"] = v;
 });
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
@@ -25,20 +22,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Debug = void 0;
-__exportStar(require("./App"), exports);
-__exportStar(require("./Configuration"), exports);
-exports.Debug = __importStar(require("./Debug"));
-__exportStar(require("./Language"), exports);
-__exportStar(require("./Locale"), exports);
-__exportStar(require("./Login"), exports);
-__exportStar(require("./Logout"), exports);
-__exportStar(require("./Navigation"), exports);
-__exportStar(require("./Notification"), exports);
-__exportStar(require("./Router"), exports);
-__exportStar(require("./Session"), exports);
-__exportStar(require("./Settings"), exports);
-__exportStar(require("./System"), exports);
-__exportStar(require("./Toast"), exports);
-__exportStar(require("./WebSocket"), exports);
+var react_1 = __importDefault(require("react"));
+var core_1 = require("@material-ui/core");
+var icons_1 = require("@material-ui/icons");
+var react_redux_1 = require("react-redux");
+var Action = __importStar(require("../../Store/Action"));
+var Definition_1 = __importDefault(require("../App/Stateless/Style/Theme/Definition"));
+var DebugButton = function (_a) {
+    var msg = _a.msg;
+    var dispatch = (0, react_redux_1.useDispatch)();
+    var onClick = function () {
+        dispatch(Action.Debug.post(JSON.stringify({ raw: msg })));
+    };
+    return react_1.default.createElement(core_1.Tooltip, { title: 'Report Senden' },
+        react_1.default.createElement(core_1.IconButton, { onClick: onClick },
+            react_1.default.createElement(core_1.Box, { color: Definition_1.default.palette.common.white },
+                react_1.default.createElement(icons_1.BugReport, { color: 'inherit' }))));
+};
+exports.default = DebugButton;
