@@ -1,45 +1,58 @@
-import React, { memo, ReactElement, useCallback, useEffect, useState } from 'react';
-import { IconButton, IconProps, InputAdornment, Select, SelectProps } from '@material-ui/core';
+import React, {memo, ReactElement, useCallback, useEffect, useState} from 'react';
+import {
+  FormControl,
+  FormControlProps,
+  IconButton,
+  IconProps,
+  InputAdornment, InputLabel,
+  Select,
+  SelectProps
+} from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
-import { IconButtonProps } from '@material-ui/core/IconButton';
+import {IconButtonProps} from '@material-ui/core/IconButton';
 
 export type SelectClearButtonProps = Partial<SelectProps> & {
   onChange: SelectProps['onChange'];
   clearButtonSize?: IconButtonProps['size'];
   clearIconSize?: IconProps['fontSize'];
+  formControlProps?: Partial<FormControlProps>;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clearIconSize = 'small', variant = 'standard', endAdornment, ...rest }: SelectClearButtonProps) => {
+const SelectClearButton = ({
+                             children,
+                             onChange,
+                             clearButtonSize = 'small',
+                             clearIconSize = 'small',
+                             variant = 'standard',
+                             endAdornment,
+                             formControlProps,
+                             ...rest
+                           }: SelectClearButtonProps) => {
   const getIconSize = useCallback((): IconProps['fontSize'] => clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small', []);
   const [showClearButton, setShowClearButton] = useState(false);
   const [inputValue, setInputValue] = useState<string | string[]>(null);
+  const handleShowClearButtonState = () => {
+    if ((((rest.multiple === undefined || rest.multiple === false) && rest.value !== '') || (rest.multiple && (rest.value as string[]).length > 0)) && showClearButton === false) {
+      setShowClearButton(true);
+    } else if (((rest.multiple === undefined || rest.multiple === false) && rest.value === '') || (rest.multiple && (rest.value as string[]).length <= 0) && showClearButton === true) {
+      setShowClearButton(false);
+    }
+  }
 
   useEffect(() => {
-    if (onChange !== undefined) {
-      if (rest.value !== undefined) {
-        if (((rest.multiple === false && rest.value !== '') || (rest.multiple && (rest.value as string[]).length > 0)) && showClearButton === false) {
-          setShowClearButton(true);
-        } else if ((rest.multiple === false && rest.value === '') || (rest.multiple && (rest.value as string[]).length <= 0) && showClearButton === true) {
-          setShowClearButton(false);
-        }
+    if (rest.value !== undefined) {
+      handleShowClearButtonState();
 
-        if (inputValue !== rest.value) {
-          setInputValue(rest.value as string);
-        }
+      if (inputValue !== rest.value) {
+        setInputValue(rest.value as string);
       }
     }
   }, [rest.value]);
 
   const handleOnChange: SelectProps['onChange'] = useCallback((event, changeValue: string) => {
     if (onChange === undefined) {
-      if ((rest.multiple === false && rest.value !== '') || (rest.multiple && (rest.value as string[]).length > 0)) {
-        if(showClearButton === false) {
-          setShowClearButton(true);
-        }
-      } else if(showClearButton === true) {
-        setShowClearButton(false);
-      }
+      handleShowClearButtonState()
 
       if (rest.value === undefined) {
         setInputValue(changeValue === null ? rest.multiple ? [] as string[] : '' : changeValue);
@@ -57,9 +70,9 @@ const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clea
       size={clearButtonSize}
       color={'secondary'}
       onClick={handleClearClick}
-      style={{ marginRight: '21px' }}
+      style={{marginRight: '21px'}}
     >
-      <CloseIcon fontSize={getIconSize()} />
+      <CloseIcon fontSize={getIconSize()}/>
     </IconButton>
   );
   const preparedEndAdornment = <InputAdornment position={'end'}>
@@ -67,7 +80,8 @@ const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clea
     {endAdornmentClearButton}
   </InputAdornment>;
 
-  return (
+  return <FormControl fullWidth {...formControlProps}>
+    {rest.label && <InputLabel>{rest.label}</InputLabel>}
     <Select
       {...rest}
       onChange={handleOnChange}
@@ -77,7 +91,7 @@ const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clea
     >
       {children}
     </Select>
-  );
+  </FormControl>;
 };
 
 export default memo(SelectClearButton);

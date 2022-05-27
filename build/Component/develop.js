@@ -204,12 +204,18 @@ var Develop = function () {
     var theme = (0, styles_1.useTheme)();
     var dispatch = (0, react_redux_1.useDispatch)();
     var _a = (0, react_1.useState)(''), testTextFieldValue = _a[0], setTestTextFieldValue = _a[1];
-    var _b = (0, react_1.useState)(''), testSelectValue = _b[0], setTestSelectValue = _b[1];
-    var _c = (0, react_1.useState)(null), testDatePickerValue = _c[0], setTestDatePickerValue = _c[1];
+    var _b = (0, react_1.useState)(''), singleSelectValue = _b[0], setSingleSelectValue = _b[1];
+    var _c = (0, react_1.useState)([]), multipleSelectValue = _c[0], setMultipleSelectValue = _c[1];
+    var _d = (0, react_1.useState)(null), testDatePickerValue = _d[0], setTestDatePickerValue = _d[1];
     var noRowsRenderer = (0, react_1.useCallback)(function () { return react_1.default.createElement(TableRow_1.TableRowLoading, null); }, []);
     var rowGetter = (0, react_1.useCallback)(function (row) { return rows[row.index]; }, []);
     var productRowGetter = (0, react_1.useCallback)(function (row) { return productRows[row.index]; }, []);
-    var handleSelectUpdate = (0, react_1.useCallback)(function (event) { return setTestSelectValue(event === null ? '' : event.target.value); }, []);
+    var handleSingleSelectUpdate = (0, react_1.useCallback)(function (event) { return setSingleSelectValue(event === null ? '' : event.target.value); }, []);
+    var handleMultipleSelectUpdate = (0, react_1.useCallback)(function (event) {
+        setMultipleSelectValue(event === null
+            ? []
+            : event.target.value);
+    }, []);
     var handleTextFieldUpdate = (0, react_1.useCallback)(function (event) { return setTestTextFieldValue(event === null ? '' : event.target.value); }, []);
     var persistNotificationsRef = (0, react_1.useRef)(null);
     var handleOnClickNotification = (0, react_1.useCallback)(function () {
@@ -274,8 +280,10 @@ var Develop = function () {
                 react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small', InputProps: textFieldInputProps })),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(TextFieldClearButton_1.default, { disabled: true, label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small' })),
-            react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(SelectClearButton_1.default, { label: 'Select with Clear Button', onChange: handleSelectUpdate, value: testSelectValue, clearButtonSize: 'small' }, selectMenuItems)),
+            react_1.default.createElement(core_1.Grid, { item: true, xs: 1 },
+                react_1.default.createElement(SelectClearButton_1.default, { fullWidth: true, label: 'Single select', onChange: handleSingleSelectUpdate, value: singleSelectValue, clearButtonSize: 'small' }, selectMenuItems)),
+            react_1.default.createElement(core_1.Grid, { item: true, xs: 1 },
+                react_1.default.createElement(SelectClearButton_1.default, { fullWidth: true, label: 'Multiple select', onChange: handleMultipleSelectUpdate, value: multipleSelectValue, clearButtonSize: 'small', multiple: true }, selectMenuItems)),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(Icon_1.CustomerCard, null)),
             react_1.default.createElement(core_1.Grid, { item: true },

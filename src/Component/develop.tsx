@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 // noinspection ES6UnusedImports,JSUnusedLocalSymbols
 
-import React, { useCallback, useRef, useState } from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {
   Button,
   ButtonProps,
@@ -38,32 +38,32 @@ import {
   Visibility,
   VisibilityOff
 } from '@material-ui/icons';
-import { useTheme } from '@material-ui/core/styles';
-import { getCurrency } from 'Utilities/Format/Currency';
-import { useDispatch } from 'react-redux';
+import {useTheme} from '@material-ui/core/styles';
+import {getCurrency} from 'Utilities/Format/Currency';
+import {useDispatch} from 'react-redux';
 import * as Action from 'Store/Action';
-import { VirtualizedTable } from 'Component/Table';
-import { Index, TableCellProps } from 'react-virtualized';
-import TextFieldClearButton, { TextFieldClearButtonProps } from 'Component/TextFieldClearButton';
-import { ContentEllipseMode } from 'Component/Table/TableCell/TableCellDefault';
-import { TableCellDateTime, TableCellDateTimeRange, TableCellDefault, TableCellProduct } from 'Component/Table/TableCell';
-import { ButtonProgress } from 'Component/Button';
-import { AppCardContent, AppCardHeader } from 'Component/Card';
-import { TableRowLoading } from 'Component/Table/TableRow';
+import {VirtualizedTable} from 'Component/Table';
+import {Index, TableCellProps} from 'react-virtualized';
+import TextFieldClearButton, {TextFieldClearButtonProps} from 'Component/TextFieldClearButton';
+import {ContentEllipseMode} from 'Component/Table/TableCell/TableCellDefault';
+import {TableCellDateTime, TableCellDateTimeRange, TableCellDefault, TableCellProduct} from 'Component/Table/TableCell';
+import {ButtonProgress} from 'Component/Button';
+import {AppCardContent, AppCardHeader} from 'Component/Card';
+import {TableRowLoading} from 'Component/Table/TableRow';
 import SearchIcon from '@material-ui/icons/Search';
-import { CustomerCard, FilterReset } from 'Component/Icon';
-import { ColumnData } from 'Component/Table/VirtualizedTable';
-import { DateTimeRangeCellProps } from 'Types/Table/DateTimeRangeCellProps';
+import {CustomerCard, FilterReset} from 'Component/Icon';
+import {ColumnData} from 'Component/Table/VirtualizedTable';
+import {DateTimeRangeCellProps} from 'Types/Table/DateTimeRangeCellProps';
 import WarningIcon from '@material-ui/icons/Warning';
 import TableCellSelect from 'Component/Table/TableCell/TableCellSelect';
 import TableHeadSelect from 'Component/Table/TableHead/TableHeadSelect';
-import { OptionsObject, VariantType } from 'notistack';
-import { Notification } from 'Types/Notification';
+import {OptionsObject, VariantType} from 'notistack';
+import {Notification} from 'Types/Notification';
 import Box from '@material-ui/core/Box';
-import { NativeSelectProps } from '@material-ui/core/NativeSelect/NativeSelect';
+import {NativeSelectProps} from '@material-ui/core/NativeSelect/NativeSelect';
 import DatePicker from 'Component/DatePicker';
-import SelectClearButton, { SelectClearButtonProps } from 'Component/SelectClearButton';
-import { TableCellProductProps } from 'Component/Table/TableCell/TableCellProduct';
+import SelectClearButton, {SelectClearButtonProps} from 'Component/SelectClearButton';
+import {TableCellProductProps} from 'Component/Table/TableCell/TableCellProduct';
 
 const tableRowHeight = 48;
 
@@ -81,7 +81,7 @@ const generateNotification = (persist = false): Notification => {
     id,
     group,
     variant,
-    notistackOptions: { persist: persist }
+    notistackOptions: {persist: persist}
   };
   switch (variant) {
     case 'error':
@@ -107,7 +107,7 @@ const generateNotification = (persist = false): Notification => {
         action: () => <IconButton><Visibility/></IconButton>
       };
     case 'success':
-      return { ...defaultProps, title: 'Changes saved' };
+      return {...defaultProps, title: 'Changes saved'};
     case 'info':
       return {
         ...defaultProps,
@@ -116,7 +116,7 @@ const generateNotification = (persist = false): Notification => {
       };
     case 'default':
     default:
-      return { ...defaultProps, variant: 'default', content: 'content loaded' };
+      return {...defaultProps, variant: 'default', content: 'content loaded'};
   }
 };
 
@@ -138,10 +138,10 @@ const sample: SampleVirtualizedTable[] = [
     end: null,
     isLiveShow: false
   }, null],
-  ['Ice cream sandwich', 237, 9.0, 37, { start: new Date(), end: new Date(), isLiveShow: false }, new Date()],
-  ['Eclair', 262, 16.0, 24, { start: new Date(2021, 9, 23, 8, 0, 15), end: new Date(), isLiveShow: false }, new Date()],
-  ['Cupcake', 305, 3.7, 67, { start: new Date(), end: new Date(), isLiveShow: false }, new Date()],
-  ['Gingerbread', 356, 16.0, 49, { start: new Date(), end: new Date(), isLiveShow: false }, new Date()]
+  ['Ice cream sandwich', 237, 9.0, 37, {start: new Date(), end: new Date(), isLiveShow: false}, new Date()],
+  ['Eclair', 262, 16.0, 24, {start: new Date(2021, 9, 23, 8, 0, 15), end: new Date(), isLiveShow: false}, new Date()],
+  ['Cupcake', 305, 3.7, 67, {start: new Date(), end: new Date(), isLiveShow: false}, new Date()],
+  ['Gingerbread', 356, 16.0, 49, {start: new Date(), end: new Date(), isLiveShow: false}, new Date()]
 ];
 
 const createDataVirtualizedTable = (id: number, dessert: string, calories: number, fat: number, carbs: number, datetimeRange: DateTimeRangeCellProps, datetime?: Date): DataVirtualizedTable => ({
@@ -208,7 +208,7 @@ const columns: ColumnData[] = [
     cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} height={tableRowHeight}/>
   }
 ];
-const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment> };
+const textFieldInputProps = {startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment>};
 
 const createProductDataVirtualizedTable = (index: number): TableCellProductProps => ({
   rowIndex: index,
@@ -242,12 +242,22 @@ const Develop: React.FC = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [testTextFieldValue, setTestTextFieldValue] = useState('');
-  const [testSelectValue, setTestSelectValue] = useState('');
+  const [singleSelectValue, setSingleSelectValue] = useState('');
+  const [multipleSelectValue, setMultipleSelectValue] = useState([]);
   const [testDatePickerValue, setTestDatePickerValue] = useState<Date>(null);
   const noRowsRenderer = useCallback(() => <TableRowLoading/>, []);
   const rowGetter = useCallback((row: Index) => rows[row.index], []);
   const productRowGetter = useCallback((row: Index) => productRows[row.index], []);
-  const handleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => setTestSelectValue(event === null ? '' : event.target.value as string), []);
+  const handleSingleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => setSingleSelectValue(event === null ? '' : event.target.value as string), []);
+  const handleMultipleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => {
+      setMultipleSelectValue(
+        event === null
+          ? []
+          : event.target.value as string[]
+      )
+    },
+    []
+  );
   const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
   const persistNotificationsRef = useRef(null);
   const handleOnClickNotification: ButtonProps['onClick'] = useCallback(() => {
@@ -301,7 +311,7 @@ const Develop: React.FC = () => {
   })), []);
 
   return (
-    <div style={{ margin: theme.spacing(1) }}>
+    <div style={{margin: theme.spacing(1)}}>
       <Card>
         <AppCardHeader title={'Test'} titleIcon={<WarningIcon/>} onRefresh={console.log}/>
         <AppCardContent>
@@ -352,12 +362,23 @@ const Develop: React.FC = () => {
             clearButtonSize={'small'}
           />
         </Grid>
-        <Grid item>
+        <Grid item xs={1}>
           <SelectClearButton
-            label={'Select with Clear Button'}
-            onChange={handleSelectUpdate}
-            value={testSelectValue}
+            fullWidth
+            label={'Single select'}
+            onChange={handleSingleSelectUpdate}
+            value={singleSelectValue}
             clearButtonSize={'small'}
+          >{selectMenuItems}</SelectClearButton>
+        </Grid>
+        <Grid item xs={1}>
+          <SelectClearButton
+            fullWidth
+            label={'Multiple select'}
+            onChange={handleMultipleSelectUpdate}
+            value={multipleSelectValue}
+            clearButtonSize={'small'}
+            multiple
           >{selectMenuItems}</SelectClearButton>
         </Grid>
         <Grid item>
@@ -436,7 +457,7 @@ const Develop: React.FC = () => {
       {/*    </ListItem>*/}
       {/*  </List>*/}
       {/*</div>*/}
-      <div style={{ marginTop: theme.spacing(1) }}>
+      <div style={{marginTop: theme.spacing(1)}}>
         <Grid container>
           <Grid item>
             <Typography
@@ -473,7 +494,7 @@ const Develop: React.FC = () => {
           </Grid>
         </Grid>
       </div>
-      <div style={{ marginTop: theme.spacing(1) }}>
+      <div style={{marginTop: theme.spacing(1)}}>
         <Grid container spacing={1}>
           <Grid item xs={3}>
             <Paper>
@@ -529,10 +550,10 @@ const Develop: React.FC = () => {
         </Grid>
       </div>
 
-      <div style={{ marginTop: theme.spacing(1) }}>
+      <div style={{marginTop: theme.spacing(1)}}>
         <Card>
-          <CardContent style={{ height: 300 }}>
-            <TableContainer style={{ maxHeight: 260 }}>
+          <CardContent style={{height: 300}}>
+            <TableContainer style={{maxHeight: 260}}>
               <Table stickyHeader>
                 <TableHead>
                   <TableRow>
@@ -554,9 +575,9 @@ const Develop: React.FC = () => {
           </CardContent>
         </Card>
       </div>
-      <div style={{ marginTop: theme.spacing(1) }}>
+      <div style={{marginTop: theme.spacing(1)}}>
         <Card>
-          <CardContent style={{ height: 300 }}>
+          <CardContent style={{height: 300}}>
             <VirtualizedTable
               headerHeight={50}
               rowHeight={100}
