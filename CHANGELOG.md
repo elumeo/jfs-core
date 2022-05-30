@@ -1,5 +1,17 @@
+## [10.1.1] 2022-05-30
+- BUGFIX: make select clear button ready for multiple selection
+
 ## [10.1.0] 2022-05-24
-   added DebugButton to handle Mattermost Post
+- added DebugButton
+
+## [10.0.9] 2022-05-27
+- BUGFIX: make select clear button ready for multiple selection
+
+## [10.0.8] 2022-05-22
+- make select clear button ready for multiple selection
+
+## [10.0.7] 2022-05-16
+- update product table cell to show chips on right side instead below name
 
 ## [10.0.6] 2022-05-03
 - Removed cypress dependencies and test script entries

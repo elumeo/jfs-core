@@ -1,83 +1,143 @@
-import React, { memo, ReactElement, useCallback, useEffect, useState } from 'react';
-import { IconButton, IconProps, InputAdornment, Select, SelectProps } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
-import { IconButtonProps } from '@material-ui/core/IconButton';
+import React, {CSSProperties, memo, ReactNode, useCallback, useEffect, useMemo, useState} from 'react';
+import {
+  Checkbox,
+  ChipProps, CircularProgress,
+  FormControl,
+  FormControlProps,
+  IconProps,
+  InputLabel, MenuItem,
+  Select,
+  SelectProps
+} from '@material-ui/core';
+import {IconButtonProps} from '@material-ui/core/IconButton';
+import ValueRenderer, {Props as ValueRendererProps} from 'Component/SelectClearButton/ValueRenderer';
+import EndAdornment from 'Component/SelectClearButton/EndAdornment';
+import {createStyles, makeStyles} from '@material-ui/core/styles';
+// import MenuItem from 'Component/SelectClearButton/MenuItem';
 
-export type SelectClearButtonProps = Partial<SelectProps> & {
-  onChange: SelectProps['onChange'];
+const checkboxStyle: CSSProperties = {marginRight: '8px'};
+const loadingStyle: CSSProperties = {textAlign: 'center'};
+
+const useStyles = makeStyles(() => createStyles({
+  root: {
+    paddingBottom: (props: { renderValueAsChip: boolean, inputValue: string | string[] }) => props.renderValueAsChip && props.inputValue.length > 0 ? '4px' : '7px'
+  }
+}));
+
+export type SelectOption = {
+  value: string;
+  label: ReactNode;
+}
+
+export type Props = Partial<Omit<SelectProps, 'onChange'>> & {
+  onChange: (value: string | string[]) => void;
   clearButtonSize?: IconButtonProps['size'];
   clearIconSize?: IconProps['fontSize'];
+  formControlProps?: Partial<FormControlProps>;
+  valueChipProps?: Partial<ChipProps>;
+  renderValueAsChip?: boolean;
+  maxValuesToDisplayInInput?: number;
+  options: SelectOption[];
+  loading?: boolean;
+  loadingSize?: number;
+  displayClearButton?: boolean;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const SelectClearButton = ({ children, onChange, clearButtonSize = 'small', clearIconSize = 'small', variant = 'standard', endAdornment, ...rest }: SelectClearButtonProps) => {
-  const getIconSize = useCallback((): IconProps['fontSize'] => clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small', []);
+const SelectClearButton = ({
+                             onChange,
+                             clearButtonSize = 'small',
+                             clearIconSize = 'small',
+                             variant = 'standard',
+                             endAdornment,
+                             formControlProps = {},
+                             valueChipProps = {},
+                             renderValueAsChip = false,
+                             maxValuesToDisplayInInput = 1,
+                             options,
+                             loading = false,
+                             loadingSize = 20,
+                             displayClearButton = true,
+                             ...rest
+                           }: Props) => {
   const [showClearButton, setShowClearButton] = useState(false);
-  const [inputValue, setInputValue] = useState<string | string[]>(null);
+  const [inputValue, setInputValue] = useState<string | string[]>(rest.multiple ? [] : '');
+  const classes = useStyles({renderValueAsChip, inputValue});
+
+  const handleShowClearButtonState = (value: string | string[]) => {
+    if (showClearButton === false && value.length > 0) {
+      setShowClearButton(true);
+    } else if (showClearButton === true && value.length <= 0) {
+      setShowClearButton(false);
+    }
+  }
 
   useEffect(() => {
-    if (onChange !== undefined) {
-      if (rest.value !== undefined) {
-        if (((rest.multiple === false && rest.value !== '') || (rest.multiple && (rest.value as string[]).length > 0)) && showClearButton === false) {
-          setShowClearButton(true);
-        } else if ((rest.multiple === false && rest.value === '') || (rest.multiple && (rest.value as string[]).length <= 0) && showClearButton === true) {
-          setShowClearButton(false);
-        }
+    if (rest.value !== undefined) {
+      handleShowClearButtonState(rest.value as string | string[]);
 
-        if (inputValue !== rest.value) {
-          setInputValue(rest.value as string);
-        }
+      if (inputValue !== rest.value) {
+        setInputValue(rest.value as string | string[]);
       }
     }
   }, [rest.value]);
 
-  const handleOnChange: SelectProps['onChange'] = useCallback((event, changeValue: string) => {
-    if (onChange === undefined) {
-      if ((rest.multiple === false && rest.value !== '') || (rest.multiple && (rest.value as string[]).length > 0)) {
-        if(showClearButton === false) {
-          setShowClearButton(true);
-        }
-      } else if(showClearButton === true) {
-        setShowClearButton(false);
-      }
-
-      if (rest.value === undefined) {
-        setInputValue(changeValue === null ? rest.multiple ? [] as string[] : '' : changeValue);
-      }
-    } else {
-      onChange(event, changeValue);
+  const handleOnChange: Props['onChange'] = useCallback(value => {
+    handleShowClearButtonState(value);
+    setInputValue(value);
+    if (onChange) {
+      onChange(value);
     }
-  }, [onChange]);
+  }, [onChange, inputValue]);
 
-  const handleClearClick: IconButtonProps['onClick'] = useCallback(() => handleOnChange(null, null), [onChange]);
+  const handleOnChangeEvent: SelectProps['onChange'] = useCallback(event => {
+    const eventValue = event.target.value ? event.target.value as string | string[] : rest.multiple ? [] : '';
+    handleOnChange(eventValue);
+  }, [onChange, inputValue]);
 
-  const endAdornmentClearButton = showClearButton && (
-    <IconButton
-      disabled={rest.disabled}
-      size={clearButtonSize}
-      color={'secondary'}
-      onClick={handleClearClick}
-      style={{ marginRight: '21px' }}
-    >
-      <CloseIcon fontSize={getIconSize()} />
-    </IconButton>
-  );
-  const preparedEndAdornment = <InputAdornment position={'end'}>
-    {endAdornment && (endAdornment as ReactElement).props.children}
-    {endAdornmentClearButton}
-  </InputAdornment>;
+  const handleOnDeleteItem: ValueRendererProps['onDeleteItem'] = useCallback(item => {
+    const eventValue = rest.multiple ? (inputValue as string[]).filter(value => value !== item) : '';
+    handleOnChange(eventValue);
+  }, [onChange, inputValue]);
 
-  return (
+  const isInputValueEmpty = useMemo<boolean>(() => inputValue.length <= 0, [inputValue]);
+  return <FormControl fullWidth {...formControlProps}>
+    {rest.label && <InputLabel shrink={!isInputValueEmpty}>{rest.label}</InputLabel>}
     <Select
+      classes={{root: classes.root}}
       {...rest}
-      onChange={handleOnChange}
-      endAdornment={preparedEndAdornment}
+      onChange={handleOnChangeEvent}
+      endAdornment={<EndAdornment
+        endAdornment={endAdornment}
+        showClearButton={displayClearButton && showClearButton}
+        clearButtonSize={clearButtonSize}
+        clearIconSize={clearIconSize}
+        onClickClearButton={handleOnChange}
+        disabled={rest.disabled}
+        multiple={rest.multiple}
+      />}
       autoComplete={'new-password'}
-      value={inputValue === null ? rest.multiple ? [] : '' : inputValue}
+      value={inputValue}
+      renderValue={selected => <ValueRenderer
+        selectedValue={rest.multiple
+          ? options.filter(option => (selected as string[]).includes(option.value))
+          : options.find(option => option.value === (selected as string))
+        }
+        renderValueAsChip={renderValueAsChip}
+        maxValuesToDisplayInInput={maxValuesToDisplayInInput}
+        onDeleteItem={handleOnDeleteItem}
+        valueChipProps={valueChipProps}
+        setValue={setInputValue}
+        multiple={rest.multiple}
+      />}
     >
-      {children}
+      {loading && <div style={loadingStyle}><CircularProgress size={loadingSize}/></div>}
+      {options.map(option => <MenuItem key={'select-menu-item-' + option.value} value={option.value} selected={(inputValue as string[]).includes(option.value)}>
+        {rest.multiple && <Checkbox style={checkboxStyle} checked={(inputValue as string[]).includes(option.value)} size={'small'}/>}
+        {option.label}
+      </MenuItem>)}
     </Select>
-  );
+  </FormControl>;
 };
 
 export default memo(SelectClearButton);
