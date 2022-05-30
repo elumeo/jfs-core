@@ -26,21 +26,41 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
+var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
 var icons_1 = require("@material-ui/icons");
 var react_redux_1 = require("react-redux");
 var Action = __importStar(require("../../Store/Action"));
 var Definition_1 = __importDefault(require("../App/Stateless/Style/Theme/Definition"));
+var react_intl_1 = require("react-intl");
 var DebugButton = function (_a) {
     var msg = _a.msg;
     var dispatch = (0, react_redux_1.useDispatch)();
-    var onClick = function () {
-        dispatch(Action.Debug.post(JSON.stringify({ raw: msg })));
+    var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
+    var _b = (0, react_1.useState)(false), open = _b[0], setOpen = _b[1];
+    var _c = (0, react_1.useState)(''), description = _c[0], setDescription = _c[1];
+    var openDialog = function () {
+        setOpen(true);
     };
-    return react_1.default.createElement(core_1.Tooltip, { title: 'Report Senden' },
-        react_1.default.createElement(core_1.IconButton, { onClick: onClick },
-            react_1.default.createElement(core_1.Box, { color: Definition_1.default.palette.common.white },
-                react_1.default.createElement(icons_1.BugReport, { color: 'inherit' }))));
+    var closeDialog = function () {
+        setOpen(false);
+    };
+    var submit = function () {
+        dispatch(Action.Debug.post(JSON.stringify({ description: description, raw: msg })));
+    };
+    var onChange = function (e) {
+        setDescription(e.target.value);
+    };
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(core_1.Dialog, { open: open, maxWidth: 'sm', fullWidth: true, onClose: closeDialog },
+            react_1.default.createElement(core_1.DialogTitle, null, formatMessage({ id: 'debug.title' })),
+            react_1.default.createElement(core_1.DialogContent, null,
+                react_1.default.createElement(core_1.TextField, { id: 'debug-input', label: formatMessage({ id: 'debug.label' }), value: description, onChange: onChange, fullWidth: true })),
+            react_1.default.createElement(core_1.DialogActions, null,
+                react_1.default.createElement(core_1.Button, { onClick: submit, variant: 'outlined', color: 'secondary' }, formatMessage({ id: 'debug.submit' })))),
+        react_1.default.createElement(core_1.Tooltip, { title: formatMessage({ id: 'debug.title' }) },
+            react_1.default.createElement(core_1.IconButton, { onClick: openDialog },
+                react_1.default.createElement(core_1.Box, { color: Definition_1.default.palette.common.white },
+                    react_1.default.createElement(icons_1.BugReport, { color: 'inherit' }))))));
 };
 exports.default = DebugButton;

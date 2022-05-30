@@ -42,5 +42,8 @@
   "product.type.onDemand": "Creation",
   "product.type.disabledOnDemand": "Ex-creation",
   "product.details": "Dettagli del prodotto",
-  "webSocket.room": "WebSocket Room"
+  "webSocket.room": "WebSocket Room",
+  "debug.title": "Inviare la segnalazione del problema",
+  "debug.label": "Descrizione o informazioni",
+  "debug.submit": "inviare"
 }
