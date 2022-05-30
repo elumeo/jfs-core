@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { ChipProps, FormControlProps, IconProps, SelectProps } from '@material-ui/core';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 export declare type SelectOption = {
     value: string;
-    label: string;
+    label: ReactNode;
 };
 export declare type Props = Partial<Omit<SelectProps, 'onChange'>> & {
     onChange: (value: string | string[]) => void;

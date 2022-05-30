@@ -1,4 +1,4 @@
-import React, {CSSProperties, memo, useCallback, useEffect, useMemo, useState} from 'react';
+import React, {CSSProperties, memo, ReactNode, useCallback, useEffect, useMemo, useState} from 'react';
 import {
   Checkbox,
   ChipProps, CircularProgress,
@@ -26,7 +26,7 @@ const useStyles = makeStyles(() => createStyles({
 
 export type SelectOption = {
   value: string;
-  label: string;
+  label: ReactNode;
 }
 
 export type Props = Partial<Omit<SelectProps, 'onChange'>> & {
