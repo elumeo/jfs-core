@@ -7,5 +7,5 @@ export declare type Props = {
     position?: 'static' | 'fixed' | 'absolute' | 'sticky' | 'relative';
     color?: 'primary' | 'secondary';
 };
-declare const _default: React.NamedExoticComponent<Props>;
-export default _default;
+declare const AppToolbar: React.FC<Props>;
+export default AppToolbar;

@@ -77,4 +77,4 @@ const AppToolbar: React.FC<Props> = ({
     </AppBar>
   );
 };
-export default memo(AppToolbar);
+export default AppToolbar;
