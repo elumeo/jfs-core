@@ -39,18 +39,20 @@ var DebugButton = function (_a) {
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
     var _b = (0, react_1.useState)(false), open = _b[0], setOpen = _b[1];
     var _c = (0, react_1.useState)(''), description = _c[0], setDescription = _c[1];
-    var openDialog = function () {
+    var openDialog = react_1.default.useCallback(function () {
         setOpen(true);
-    };
-    var closeDialog = function () {
+    }, [setOpen]);
+    var closeDialog = react_1.default.useCallback(function () {
         setOpen(false);
-    };
-    var submit = function () {
+        setDescription('');
+    }, [setOpen, setDescription]);
+    var submit = react_1.default.useCallback(function () {
         dispatch(Action.Debug.post(JSON.stringify({ description: description, raw: msg })));
-    };
-    var onChange = function (e) {
+        closeDialog();
+    }, [dispatch, msg, description, closeDialog]);
+    var onChange = react_1.default.useCallback(function (e) {
         setDescription(e.target.value);
-    };
+    }, [setDescription]);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement(core_1.Dialog, { open: open, maxWidth: 'sm', fullWidth: true, onClose: closeDialog },
             react_1.default.createElement(core_1.DialogTitle, null, formatMessage({ id: 'debug.title' })),
@@ -63,4 +65,4 @@ var DebugButton = function (_a) {
                 react_1.default.createElement(core_1.Box, { color: Definition_1.default.palette.common.white },
                     react_1.default.createElement(icons_1.BugReport, { color: 'inherit' }))))));
 };
-exports.default = DebugButton;
+exports.default = react_1.default.memo(DebugButton);

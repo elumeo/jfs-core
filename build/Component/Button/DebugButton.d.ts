@@ -2,5 +2,5 @@ import React from 'react';
 declare type Props = {
     msg: unknown;
 };
-declare const DebugButton: React.FC<Props>;
-export default DebugButton;
+declare const _default: React.NamedExoticComponent<Props>;
+export default _default;

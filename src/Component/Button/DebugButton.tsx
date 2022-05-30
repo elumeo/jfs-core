@@ -13,23 +13,24 @@ const DebugButton: React.FC<Props> = ({ msg }) => {
     const { formatMessage } = useIntl()
     const [open, setOpen] = useState(false)
     const [description, setDescription] = useState('')
-    const openDialog = () => {
+    const openDialog = React.useCallback(() => {
         setOpen(true)
-    }
-    const closeDialog = () => {
+    }, [setOpen])
+    const closeDialog = React.useCallback(() => {
         setOpen(false)
-    }
-    const submit = () => {
+        setDescription('')
+    }, [setOpen, setDescription])
+    const submit = React.useCallback(() => {
         dispatch(Action.Debug.post(JSON.stringify({ description, raw: msg })))
+        closeDialog()
 
-    }
-    const onChange: TextFieldProps['onChange'] = e => {
+    }, [dispatch, msg, description, closeDialog])
+    const onChange: TextFieldProps['onChange'] = React.useCallback(e => {
         setDescription(e.target.value)
-    }
+    }, [setDescription])
     return (
         <>
             <Dialog open={open} maxWidth='sm' fullWidth onClose={closeDialog}>
-
                 <DialogTitle>{formatMessage({ id: 'debug.title' })}</DialogTitle>
                 <DialogContent>
                     <TextField id='debug-input' label={formatMessage({ id: 'debug.label' })} value={description} onChange={onChange} fullWidth />
@@ -49,4 +50,4 @@ const DebugButton: React.FC<Props> = ({ msg }) => {
         </>
     )
 }
-export default DebugButton
+export default React.memo(DebugButton)
