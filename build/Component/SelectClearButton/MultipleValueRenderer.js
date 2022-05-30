@@ -41,23 +41,23 @@ var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
 var ChipValue_1 = __importDefault(require("../SelectClearButton/ChipValue"));
 var MultipleValueRenderer = function (_a) {
-    var value = _a.value, setValue = _a.setValue, valueChipProps = _a.valueChipProps, selected = _a.selected, onDeleteItem = _a.onDeleteItem, _b = _a.maxValuesToDisplayInInput, maxValuesToDisplayInInput = _b === void 0 ? 1 : _b, _c = _a.renderValueAsChip, renderValueAsChip = _c === void 0 ? false : _c;
-    var handleChipOnDelete = (0, react_1.useCallback)(function (selectedItem) { return function (event) {
+    var setValue = _a.setValue, valueChipProps = _a.valueChipProps, selectedValue = _a.selectedValue, onDeleteItem = _a.onDeleteItem, _b = _a.maxValuesToDisplayInInput, maxValuesToDisplayInInput = _b === void 0 ? 1 : _b, _c = _a.renderValueAsChip, renderValueAsChip = _c === void 0 ? false : _c;
+    var handleChipOnDelete = (0, react_1.useCallback)(function (selectedItem) {
         var _a;
-        event.stopPropagation();
         onDeleteItem !== undefined
-            ? onDeleteItem((_a = value.find(function (value) { return value === selectedItem; })) !== null && _a !== void 0 ? _a : null)
-            : setValue(value.filter(function (value) { return value !== selectedItem; }));
-    }; }, [selected, value]);
-    return react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center' },
-        selected
-            .filter(function (label, index) { return index < maxValuesToDisplayInInput; })
-            .map(function (selectedItem, index) { return renderValueAsChip
-            ? react_1.default.createElement(core_1.Grid, { item: true, key: 'select-clear-button-multiple-value-renderer-chip-value-' + selected + '-' + index },
-                react_1.default.createElement(ChipValue_1.default, __assign({ onDelete: handleChipOnDelete(selectedItem), value: selectedItem }, valueChipProps)))
-            : (index > 0 ? ', ' + selectedItem : selectedItem); }),
-        selected.length > maxValuesToDisplayInInput && react_1.default.createElement(core_1.Grid, { item: true },
+            ? onDeleteItem((_a = selectedValue.find(function (value) { return value.value === selectedItem; }).value) !== null && _a !== void 0 ? _a : null)
+            : setValue(selectedValue.filter(function (value) { return value.value !== selectedItem; }).map(function (value) { return value.value; }));
+    }, [selectedValue]);
+    return react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center', wrap: 'nowrap' },
+        react_1.default.createElement(core_1.Grid, { item: true, style: { maxWidth: '100%' } },
+            react_1.default.createElement(core_1.Grid, { container: true, wrap: 'nowrap', spacing: 1 }, selectedValue
+                .filter(function (label, index) { return index < maxValuesToDisplayInInput; })
+                .map(function (selectedItem, index) { return renderValueAsChip
+                ? react_1.default.createElement(core_1.Grid, { item: true, key: 'select-clear-button-multiple-value-renderer-chip-value-' + selectedItem + '-' + index, style: { maxWidth: (100 / Math.min(selectedValue.length, maxValuesToDisplayInInput)) + '%' } },
+                    react_1.default.createElement(ChipValue_1.default, __assign({ onDelete: handleChipOnDelete, value: selectedItem.value, label: selectedItem.label }, valueChipProps)))
+                : (index > 0 ? ', ' + selectedItem : selectedItem); }))),
+        react_1.default.createElement(core_1.Grid, { item: true }, selectedValue.length > maxValuesToDisplayInInput && react_1.default.createElement(core_1.Grid, { item: true },
             " +",
-            (selected.length - maxValuesToDisplayInInput)));
+            (selectedValue.length - maxValuesToDisplayInInput))));
 };
 exports.default = (0, react_1.memo)(MultipleValueRenderer);

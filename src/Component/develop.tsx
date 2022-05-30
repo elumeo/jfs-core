@@ -228,13 +228,6 @@ for (let i = 0; i < 200; i += 1) {
   productRows.push(createProductDataVirtualizedTable(i));
 }
 
-const selectMenuItems = [
-  <MenuItem value={'test 1'} key={'menu-item-1'}>Test 1</MenuItem>,
-  <MenuItem value={'test 2'} key={'menu-item-2'}>Test 2</MenuItem>,
-  <MenuItem value={'test 3'} key={'menu-item-3'}>Test 3</MenuItem>,
-  <MenuItem value={'test 4'} key={'menu-item-4'}>Test 4</MenuItem>
-];
-
 const Develop: React.FC = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
@@ -306,6 +299,73 @@ const Develop: React.FC = () => {
         <AppCardContent>
           Das ist der Inhalt
           <IconButton size={'small'} color={'secondary'}><FilterReset/></IconButton>
+          <Grid container spacing={2}>
+            <Grid item>
+              <DatePicker
+                label={'DatePicker'}
+                onChange={console.log}
+                value={testDatePickerValue}
+                isClearable={false}
+              />
+            </Grid>
+            <Grid item>
+              <TextFieldClearButton
+                label={'Textfield'}
+                onChange={handleTextFieldUpdate}
+                value={testTextFieldValue}
+                clearButtonSize={'small'}
+                InputProps={textFieldInputProps}
+              />
+            </Grid>
+            <Grid item>
+              <TextFieldClearButton
+                disabled
+                label={'Textfield'}
+                onChange={handleTextFieldUpdate}
+                value={testTextFieldValue}
+                clearButtonSize={'small'}
+              />
+            </Grid>
+            <Grid item xs={1}>
+              <SelectClearButton
+                fullWidth
+                label={'Single select'}
+                onChange={handleSingleSelectUpdate}
+                value={singleSelectValue}
+                clearButtonSize={'small'}
+                renderValueAsChip
+                options={[
+                  {value: 'test 1', label: 'Test 1'},
+                  {value: 'test 2', label: 'Test 2'},
+                  {value: 'test 3', label: 'Test 3'},
+                  {value: 'test 4', label: 'Test 4'},
+                  {value: 'DasIstEinSehrLangerWert', label: 'Das ist ein sehr langer Wert'},
+                  {value: 'DasIstEinSehrLangerWertMal2', label: 'Das ist ein sehr langer Wert Das ist ein sehr langer Wert'},
+                ]}
+              />
+            </Grid>
+            <Grid item xs={1}>
+              <SelectClearButton
+                fullWidth
+                label={'Multiple select'}
+                onChange={handleMultipleSelectUpdate}
+                value={multipleSelectValue}
+                clearButtonSize={'small'}
+                multiple
+                maxValuesToDisplayInInput={2}
+                renderValueAsChip
+                options={[
+                  {value: 'test 1', label: 'Test 1 Das ist ein sehr langer Wert Wert Wert Wert'},
+                  {value: 'test 2', label: 'Test 2'},
+                  {value: 'test 3', label: 'Test 3'},
+                  {value: 'test 4', label: 'Test 4'},
+                  {value: 'DasIstEinSehrLangerWert', label: 'Das ist ein sehr langer Wert'},
+                  {value: 'DasIstEinSehrLangerWertMal2', label: 'Das ist ein sehr langer Wert Das ist ein sehr langer Wert'},
+                ]}
+              />
+            </Grid>
+            <Grid item><Button onClick={() => setMultipleSelectValue(['test 1'])} color={'primary'}>Set Multiple Select Value</Button></Grid>
+          </Grid>
         </AppCardContent>
       </Card>
       {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
@@ -325,54 +385,6 @@ const Develop: React.FC = () => {
       {/*</Card>*/}
       {/*</div>*/}
       <Grid container spacing={1} alignItems={'center'}>
-        <Grid item>
-          <DatePicker
-            label={'DatePicker'}
-            onChange={console.log}
-            value={testDatePickerValue}
-            isClearable={false}
-          />
-        </Grid>
-        <Grid item>
-          <TextFieldClearButton
-            label={'Textfield'}
-            onChange={handleTextFieldUpdate}
-            value={testTextFieldValue}
-            clearButtonSize={'small'}
-            InputProps={textFieldInputProps}
-          />
-        </Grid>
-        <Grid item>
-          <TextFieldClearButton
-            disabled
-            label={'Textfield'}
-            onChange={handleTextFieldUpdate}
-            value={testTextFieldValue}
-            clearButtonSize={'small'}
-          />
-        </Grid>
-        <Grid item xs={1}>
-          <SelectClearButton
-            fullWidth
-            label={'Single select'}
-            onChange={handleSingleSelectUpdate}
-            value={singleSelectValue}
-            clearButtonSize={'small'}
-          >{selectMenuItems}</SelectClearButton>
-        </Grid>
-        <Grid item xs={2}>
-          <SelectClearButton
-            fullWidth
-            label={'Multiple select'}
-            onChange={handleMultipleSelectUpdate}
-            value={multipleSelectValue}
-            clearButtonSize={'small'}
-            multiple
-            maxValuesToDisplayInInput={2}
-            renderValueAsChip
-          >{selectMenuItems}</SelectClearButton>
-        </Grid>
-        <Grid item><Button onClick={() => setMultipleSelectValue(['test 1'])} color={'primary'}>Set Multiple Select Value</Button></Grid>
         <Grid item>
           <CustomerCard/>
         </Grid>

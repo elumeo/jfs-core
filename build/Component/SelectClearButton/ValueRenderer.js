@@ -30,9 +30,9 @@ var react_1 = __importStar(require("react"));
 var MultipleValueRenderer_1 = __importDefault(require("../SelectClearButton/MultipleValueRenderer"));
 var SingleValueRenderer_1 = __importDefault(require("../SelectClearButton/SingleValueRenderer"));
 var ValueRenderer = function (_a) {
-    var multiple = _a.multiple, value = _a.value, setValue = _a.setValue, valueChipProps = _a.valueChipProps, selected = _a.selected, onDeleteItem = _a.onDeleteItem, _b = _a.maxValuesToDisplayInInput, maxValuesToDisplayInInput = _b === void 0 ? 1 : _b, _c = _a.renderValueAsChip, renderValueAsChip = _c === void 0 ? false : _c;
+    var multiple = _a.multiple, setValue = _a.setValue, valueChipProps = _a.valueChipProps, selectedValue = _a.selectedValue, onDeleteItem = _a.onDeleteItem, _b = _a.maxValuesToDisplayInInput, maxValuesToDisplayInInput = _b === void 0 ? 1 : _b, _c = _a.renderValueAsChip, renderValueAsChip = _c === void 0 ? false : _c;
     return react_1.default.createElement(react_1.default.Fragment, null,
-        multiple === true && react_1.default.createElement(MultipleValueRenderer_1.default, { selected: selected, value: value, setValue: setValue, renderValueAsChip: renderValueAsChip, maxValuesToDisplayInInput: maxValuesToDisplayInInput, onDeleteItem: onDeleteItem, valueChipProps: valueChipProps }),
-        multiple !== true && react_1.default.createElement(SingleValueRenderer_1.default, { renderValueAsChip: renderValueAsChip, valueChipProps: valueChipProps, setValue: setValue, onDeleteItem: onDeleteItem, selected: selected }));
+        multiple === true && react_1.default.createElement(MultipleValueRenderer_1.default, { selectedValue: selectedValue, setValue: setValue, renderValueAsChip: renderValueAsChip, maxValuesToDisplayInInput: maxValuesToDisplayInInput, onDeleteItem: onDeleteItem, valueChipProps: valueChipProps }),
+        multiple !== true && react_1.default.createElement(SingleValueRenderer_1.default, { renderValueAsChip: renderValueAsChip, valueChipProps: valueChipProps, setValue: setValue, onDeleteItem: onDeleteItem, selectedValue: selectedValue }));
 };
 exports.default = (0, react_1.memo)(ValueRenderer);

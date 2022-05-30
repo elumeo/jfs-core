@@ -40,13 +40,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var ChipValue_1 = __importDefault(require("../SelectClearButton/ChipValue"));
 var SingleValueRenderer = function (_a) {
-    var setValue = _a.setValue, valueChipProps = _a.valueChipProps, selected = _a.selected, onDeleteItem = _a.onDeleteItem, _b = _a.renderValueAsChip, renderValueAsChip = _b === void 0 ? false : _b;
-    var handleChipOnDelete = (0, react_1.useCallback)(function (selectedItem) { return function (event) {
-        event.stopPropagation();
+    var setValue = _a.setValue, valueChipProps = _a.valueChipProps, selectedValue = _a.selectedValue, onDeleteItem = _a.onDeleteItem, _b = _a.renderValueAsChip, renderValueAsChip = _b === void 0 ? false : _b;
+    var handleChipOnDelete = (0, react_1.useCallback)(function (selectedItem) {
         onDeleteItem !== undefined ? onDeleteItem(selectedItem) : setValue('');
-    }; }, []);
+    }, []);
     return react_1.default.createElement(react_1.default.Fragment, null, renderValueAsChip
-        ? react_1.default.createElement(ChipValue_1.default, __assign({ key: 'select-clear-button-single-value-renderer-chip-value-' + selected, onDelete: handleChipOnDelete(selected), value: selected }, valueChipProps))
-        : selected);
+        ? react_1.default.createElement(ChipValue_1.default, __assign({ key: 'select-clear-button-single-value-renderer-chip-value-' + selectedValue, onDelete: handleChipOnDelete, value: selectedValue.value, label: selectedValue.label }, valueChipProps))
+        : selectedValue.label);
 };
 exports.default = (0, react_1.memo)(SingleValueRenderer);

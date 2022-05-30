@@ -2,31 +2,30 @@ import React, {memo} from "react";
 import {ChipProps} from "@material-ui/core";
 import MultipleValueRenderer from "Component/SelectClearButton/MultipleValueRenderer";
 import SingleValueRenderer from "Component/SelectClearButton/SingleValueRenderer";
+import {SelectOption} from 'Component/SelectClearButton/index';
 
 export type Props = {
   multiple: boolean;
-  onDeleteItem?: (item: string) => void;
-  value: string | string[];
+  onDeleteItem?: (value: string) => void;
   setValue: (value: string | string[]) => void;
-  selected: string | string[];
+  selectedValue: SelectOption | SelectOption[];
   maxValuesToDisplayInInput?: number;
   renderValueAsChip?: boolean;
   valueChipProps?: Partial<ChipProps>;
 }
 
 const ValueRenderer = ({
-                         multiple, value,
+                         multiple,
                          setValue,
                          valueChipProps,
-                         selected,
+                         selectedValue,
                          onDeleteItem,
                          maxValuesToDisplayInInput = 1,
                          renderValueAsChip = false
                        }: Props) => {
   return <>
     {multiple === true && <MultipleValueRenderer
-      selected={selected as string[]}
-      value={value as string[]}
+      selectedValue={selectedValue as SelectOption[]}
       setValue={setValue}
       renderValueAsChip={renderValueAsChip}
       maxValuesToDisplayInInput={maxValuesToDisplayInInput}
@@ -38,7 +37,7 @@ const ValueRenderer = ({
       valueChipProps={valueChipProps}
       setValue={setValue}
       onDeleteItem={onDeleteItem}
-      selected={selected as string}
+      selectedValue={selectedValue as SelectOption}
     />}
   </>
 }

@@ -1,10 +1,11 @@
-import React, {memo, useCallback, useEffect, useMemo, useState} from 'react';
+import React, {CSSProperties, memo, useCallback, useEffect, useMemo, useState} from 'react';
 import {
+  Checkbox,
   ChipProps,
   FormControl,
   FormControlProps,
   IconProps,
-  InputLabel,
+  InputLabel, MenuItem,
   Select,
   SelectProps
 } from '@material-ui/core';
@@ -12,12 +13,20 @@ import {IconButtonProps} from '@material-ui/core/IconButton';
 import ValueRenderer, {Props as ValueRendererProps} from 'Component/SelectClearButton/ValueRenderer';
 import EndAdornment from 'Component/SelectClearButton/EndAdornment';
 import {createStyles, makeStyles} from '@material-ui/core/styles';
+// import MenuItem from 'Component/SelectClearButton/MenuItem';
+
+const checkboxStyle: CSSProperties = {marginRight: '8px'};
 
 const useStyles = makeStyles(() => createStyles({
   root: {
-    paddingBottom: (props: {renderValueAsChip: boolean, inputValue: string | string[]}) => props.renderValueAsChip && props.inputValue.length > 0 ? '4px' : '7px'
+    paddingBottom: (props: { renderValueAsChip: boolean, inputValue: string | string[] }) => props.renderValueAsChip && props.inputValue.length > 0 ? '4px' : '7px'
   }
 }));
+
+export type SelectOption = {
+  value: string;
+  label: string;
+}
 
 export type Props = Partial<Omit<SelectProps, 'onChange'>> & {
   onChange: (value: string | string[]) => void;
@@ -27,11 +36,11 @@ export type Props = Partial<Omit<SelectProps, 'onChange'>> & {
   valueChipProps?: Partial<ChipProps>;
   renderValueAsChip?: boolean;
   maxValuesToDisplayInInput?: number;
+  options: SelectOption[];
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const SelectClearButton = ({
-                             children,
                              onChange,
                              clearButtonSize = 'small',
                              clearIconSize = 'small',
@@ -41,6 +50,7 @@ const SelectClearButton = ({
                              valueChipProps = {},
                              renderValueAsChip = false,
                              maxValuesToDisplayInInput = 1,
+                             options,
                              ...rest
                            }: Props) => {
   const [showClearButton, setShowClearButton] = useState(false);
@@ -48,9 +58,9 @@ const SelectClearButton = ({
   const classes = useStyles({renderValueAsChip, inputValue});
 
   const handleShowClearButtonState = (value: string | string[]) => {
-    if(showClearButton === false && value.length > 0) {
+    if (showClearButton === false && value.length > 0) {
       setShowClearButton(true);
-    } else if(showClearButton === true && value.length <= 0) {
+    } else if (showClearButton === true && value.length <= 0) {
       setShowClearButton(false);
     }
   }
@@ -68,7 +78,7 @@ const SelectClearButton = ({
   const handleOnChange: Props['onChange'] = useCallback(value => {
     handleShowClearButtonState(value);
     setInputValue(value);
-    if(onChange) {
+    if (onChange) {
       onChange(value);
     }
   }, [onChange, inputValue]);
@@ -102,17 +112,22 @@ const SelectClearButton = ({
       autoComplete={'new-password'}
       value={inputValue}
       renderValue={selected => <ValueRenderer
-        selected={selected as string | string[]}
+        selectedValue={rest.multiple
+          ? options.filter(option => (selected as string[]).includes(option.value))
+          : options.find(option => option.value === (selected as string))
+        }
         renderValueAsChip={renderValueAsChip}
         maxValuesToDisplayInInput={maxValuesToDisplayInInput}
         onDeleteItem={handleOnDeleteItem}
         valueChipProps={valueChipProps}
-        value={inputValue}
         setValue={setInputValue}
         multiple={rest.multiple}
       />}
     >
-      {children}
+      {options.map(option => <MenuItem key={'select-menu-item-' + option.value} value={option.value} selected={(inputValue as string[]).includes(option.value)}>
+        {rest.multiple && <Checkbox style={checkboxStyle} checked={(inputValue as string[]).includes(option.value)} size={'small'}/>}
+        {option.label}
+      </MenuItem>)}
     </Select>
   </FormControl>;
 };

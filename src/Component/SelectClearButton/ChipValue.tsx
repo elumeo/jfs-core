@@ -1,22 +1,29 @@
-import React, {CSSProperties, memo, MouseEventHandler} from 'react';
+import React, {CSSProperties, memo, ReactNode} from 'react';
 import CancelIcon from '@material-ui/icons/Cancel';
 import {Chip, ChipProps} from '@material-ui/core';
 
 const styles: CSSProperties = {
   height: '20px',
+  maxWidth: '100%',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
 }
 
 export type Props = Partial<Omit<ChipProps, 'onDelete'>> & {
-  onDelete: MouseEventHandler<HTMLDivElement>;
+  onDelete: (value: string) => void;
   value: string;
+  label: ReactNode;
 }
 
-const ChipValue = ({onDelete, value, ...rest}: Props) => {
+const ChipValue = ({onDelete, value, label, ...rest}: Props) => {
   return <Chip
     onDelete={() => null}
-    deleteIcon={<div onMouseDown={onDelete}><CancelIcon fontSize={'small'}/>
+    deleteIcon={<div onMouseDown={event => {
+      event.stopPropagation();
+      onDelete(value);
+    }}><CancelIcon fontSize={'small'}/>
     </div>}
-    label={value}
+    label={label}
     size={'small'}
     style={styles}
     {...rest}

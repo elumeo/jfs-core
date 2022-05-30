@@ -53,6 +53,8 @@ var core_1 = require("@material-ui/core");
 var ValueRenderer_1 = __importDefault(require("../SelectClearButton/ValueRenderer"));
 var EndAdornment_1 = __importDefault(require("../SelectClearButton/EndAdornment"));
 var styles_1 = require("@material-ui/core/styles");
+// import MenuItem from 'Component/SelectClearButton/MenuItem';
+var checkboxStyle = { marginRight: '8px' };
 var useStyles = (0, styles_1.makeStyles)(function () { return (0, styles_1.createStyles)({
     root: {
         paddingBottom: function (props) { return props.renderValueAsChip && props.inputValue.length > 0 ? '4px' : '7px'; }
@@ -60,7 +62,7 @@ var useStyles = (0, styles_1.makeStyles)(function () { return (0, styles_1.creat
 }); });
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var SelectClearButton = function (_a) {
-    var children = _a.children, onChange = _a.onChange, _b = _a.clearButtonSize, clearButtonSize = _b === void 0 ? 'small' : _b, _c = _a.clearIconSize, clearIconSize = _c === void 0 ? 'small' : _c, _d = _a.variant, variant = _d === void 0 ? 'standard' : _d, endAdornment = _a.endAdornment, _e = _a.formControlProps, formControlProps = _e === void 0 ? {} : _e, _f = _a.valueChipProps, valueChipProps = _f === void 0 ? {} : _f, _g = _a.renderValueAsChip, renderValueAsChip = _g === void 0 ? false : _g, _h = _a.maxValuesToDisplayInInput, maxValuesToDisplayInInput = _h === void 0 ? 1 : _h, rest = __rest(_a, ["children", "onChange", "clearButtonSize", "clearIconSize", "variant", "endAdornment", "formControlProps", "valueChipProps", "renderValueAsChip", "maxValuesToDisplayInInput"]);
+    var onChange = _a.onChange, _b = _a.clearButtonSize, clearButtonSize = _b === void 0 ? 'small' : _b, _c = _a.clearIconSize, clearIconSize = _c === void 0 ? 'small' : _c, _d = _a.variant, variant = _d === void 0 ? 'standard' : _d, endAdornment = _a.endAdornment, _e = _a.formControlProps, formControlProps = _e === void 0 ? {} : _e, _f = _a.valueChipProps, valueChipProps = _f === void 0 ? {} : _f, _g = _a.renderValueAsChip, renderValueAsChip = _g === void 0 ? false : _g, _h = _a.maxValuesToDisplayInInput, maxValuesToDisplayInInput = _h === void 0 ? 1 : _h, options = _a.options, rest = __rest(_a, ["onChange", "clearButtonSize", "clearIconSize", "variant", "endAdornment", "formControlProps", "valueChipProps", "renderValueAsChip", "maxValuesToDisplayInInput", "options"]);
     var _j = (0, react_1.useState)(false), showClearButton = _j[0], setShowClearButton = _j[1];
     var _k = (0, react_1.useState)(rest.multiple ? [] : ''), inputValue = _k[0], setInputValue = _k[1];
     var classes = useStyles({ renderValueAsChip: renderValueAsChip, inputValue: inputValue });
@@ -98,6 +100,10 @@ var SelectClearButton = function (_a) {
     var isInputValueEmpty = (0, react_1.useMemo)(function () { return inputValue.length <= 0; }, [inputValue]);
     return react_1.default.createElement(core_1.FormControl, __assign({ fullWidth: true }, formControlProps),
         rest.label && react_1.default.createElement(core_1.InputLabel, { shrink: !isInputValueEmpty }, rest.label),
-        react_1.default.createElement(core_1.Select, __assign({ classes: { root: classes.root } }, rest, { onChange: handleOnChangeEvent, endAdornment: react_1.default.createElement(EndAdornment_1.default, { endAdornment: endAdornment, showClearButton: showClearButton, clearButtonSize: clearButtonSize, clearIconSize: clearIconSize, onClickClearButton: handleOnChange, disabled: rest.disabled, multiple: rest.multiple }), autoComplete: 'new-password', value: inputValue, renderValue: function (selected) { return react_1.default.createElement(ValueRenderer_1.default, { selected: selected, renderValueAsChip: renderValueAsChip, maxValuesToDisplayInInput: maxValuesToDisplayInInput, onDeleteItem: handleOnDeleteItem, valueChipProps: valueChipProps, value: inputValue, setValue: setInputValue, multiple: rest.multiple }); } }), children));
+        react_1.default.createElement(core_1.Select, __assign({ classes: { root: classes.root } }, rest, { onChange: handleOnChangeEvent, endAdornment: react_1.default.createElement(EndAdornment_1.default, { endAdornment: endAdornment, showClearButton: showClearButton, clearButtonSize: clearButtonSize, clearIconSize: clearIconSize, onClickClearButton: handleOnChange, disabled: rest.disabled, multiple: rest.multiple }), autoComplete: 'new-password', value: inputValue, renderValue: function (selected) { return react_1.default.createElement(ValueRenderer_1.default, { selectedValue: rest.multiple
+                    ? options.filter(function (option) { return selected.includes(option.value); })
+                    : options.find(function (option) { return option.value === selected; }), renderValueAsChip: renderValueAsChip, maxValuesToDisplayInInput: maxValuesToDisplayInInput, onDeleteItem: handleOnDeleteItem, valueChipProps: valueChipProps, setValue: setInputValue, multiple: rest.multiple }); } }), options.map(function (option) { return react_1.default.createElement(core_1.MenuItem, { key: 'select-menu-item-' + option.value, value: option.value, selected: inputValue.includes(option.value) },
+            rest.multiple && react_1.default.createElement(core_1.Checkbox, { style: checkboxStyle, checked: inputValue.includes(option.value), size: 'small' }),
+            option.label); })));
 };
 exports.default = (0, react_1.memo)(SelectClearButton);

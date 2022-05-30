@@ -53,10 +53,16 @@ var Cancel_1 = __importDefault(require("@material-ui/icons/Cancel"));
 var core_1 = require("@material-ui/core");
 var styles = {
     height: '20px',
+    maxWidth: '100%',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
 };
 var ChipValue = function (_a) {
-    var onDelete = _a.onDelete, value = _a.value, rest = __rest(_a, ["onDelete", "value"]);
-    return react_1.default.createElement(core_1.Chip, __assign({ onDelete: function () { return null; }, deleteIcon: react_1.default.createElement("div", { onMouseDown: onDelete },
-            react_1.default.createElement(Cancel_1.default, { fontSize: 'small' })), label: value, size: 'small', style: styles }, rest));
+    var onDelete = _a.onDelete, value = _a.value, label = _a.label, rest = __rest(_a, ["onDelete", "value", "label"]);
+    return react_1.default.createElement(core_1.Chip, __assign({ onDelete: function () { return null; }, deleteIcon: react_1.default.createElement("div", { onMouseDown: function (event) {
+                event.stopPropagation();
+                onDelete(value);
+            } },
+            react_1.default.createElement(Cancel_1.default, { fontSize: 'small' })), label: label, size: 'small', style: styles }, rest));
 };
 exports.default = (0, react_1.memo)(ChipValue);

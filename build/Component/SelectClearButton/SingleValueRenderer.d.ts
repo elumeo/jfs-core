@@ -1,11 +1,12 @@
 import React from "react";
 import { ChipProps } from "@material-ui/core";
+import { SelectOption } from '../SelectClearButton/index';
 export declare type Props = {
-    onDeleteItem?: (item: string) => void;
+    onDeleteItem?: (value: string) => void;
     setValue: (value: string) => void;
-    selected: string;
+    selectedValue: SelectOption;
     renderValueAsChip?: boolean;
     valueChipProps?: Partial<ChipProps>;
 };
-declare const _default: React.MemoExoticComponent<({ setValue, valueChipProps, selected, onDeleteItem, renderValueAsChip }: Props) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ setValue, valueChipProps, selectedValue, onDeleteItem, renderValueAsChip }: Props) => JSX.Element>;
 export default _default;

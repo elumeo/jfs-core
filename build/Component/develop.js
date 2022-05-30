@@ -194,12 +194,6 @@ var productRows = [];
 for (var i = 0; i < 200; i += 1) {
     productRows.push(createProductDataVirtualizedTable(i));
 }
-var selectMenuItems = [
-    react_1.default.createElement(core_1.MenuItem, { value: 'test 1', key: 'menu-item-1' }, "Test 1"),
-    react_1.default.createElement(core_1.MenuItem, { value: 'test 2', key: 'menu-item-2' }, "Test 2"),
-    react_1.default.createElement(core_1.MenuItem, { value: 'test 3', key: 'menu-item-3' }, "Test 3"),
-    react_1.default.createElement(core_1.MenuItem, { value: 'test 4', key: 'menu-item-4' }, "Test 4")
-];
 var Develop = function () {
     var theme = (0, styles_1.useTheme)();
     var dispatch = (0, react_redux_1.useDispatch)();
@@ -268,20 +262,35 @@ var Develop = function () {
             react_1.default.createElement(Card_1.AppCardContent, null,
                 "Das ist der Inhalt",
                 react_1.default.createElement(core_1.IconButton, { size: 'small', color: 'secondary' },
-                    react_1.default.createElement(Icon_1.FilterReset, null)))),
+                    react_1.default.createElement(Icon_1.FilterReset, null)),
+                react_1.default.createElement(core_1.Grid, { container: true, spacing: 2 },
+                    react_1.default.createElement(core_1.Grid, { item: true },
+                        react_1.default.createElement(DatePicker_1.default, { label: 'DatePicker', onChange: console.log, value: testDatePickerValue, isClearable: false })),
+                    react_1.default.createElement(core_1.Grid, { item: true },
+                        react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small', InputProps: textFieldInputProps })),
+                    react_1.default.createElement(core_1.Grid, { item: true },
+                        react_1.default.createElement(TextFieldClearButton_1.default, { disabled: true, label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small' })),
+                    react_1.default.createElement(core_1.Grid, { item: true, xs: 1 },
+                        react_1.default.createElement(SelectClearButton_1.default, { fullWidth: true, label: 'Single select', onChange: handleSingleSelectUpdate, value: singleSelectValue, clearButtonSize: 'small', renderValueAsChip: true, options: [
+                                { value: 'test 1', label: 'Test 1' },
+                                { value: 'test 2', label: 'Test 2' },
+                                { value: 'test 3', label: 'Test 3' },
+                                { value: 'test 4', label: 'Test 4' },
+                                { value: 'DasIstEinSehrLangerWert', label: 'Das ist ein sehr langer Wert' },
+                                { value: 'DasIstEinSehrLangerWertMal2', label: 'Das ist ein sehr langer Wert Das ist ein sehr langer Wert' },
+                            ] })),
+                    react_1.default.createElement(core_1.Grid, { item: true, xs: 1 },
+                        react_1.default.createElement(SelectClearButton_1.default, { fullWidth: true, label: 'Multiple select', onChange: handleMultipleSelectUpdate, value: multipleSelectValue, clearButtonSize: 'small', multiple: true, maxValuesToDisplayInInput: 2, renderValueAsChip: true, options: [
+                                { value: 'test 1', label: 'Test 1 Das ist ein sehr langer Wert Wert Wert Wert' },
+                                { value: 'test 2', label: 'Test 2' },
+                                { value: 'test 3', label: 'Test 3' },
+                                { value: 'test 4', label: 'Test 4' },
+                                { value: 'DasIstEinSehrLangerWert', label: 'Das ist ein sehr langer Wert' },
+                                { value: 'DasIstEinSehrLangerWertMal2', label: 'Das ist ein sehr langer Wert Das ist ein sehr langer Wert' },
+                            ] })),
+                    react_1.default.createElement(core_1.Grid, { item: true },
+                        react_1.default.createElement(core_1.Button, { onClick: function () { return setMultipleSelectValue(['test 1']); }, color: 'primary' }, "Set Multiple Select Value"))))),
         react_1.default.createElement(core_1.Grid, { container: true, spacing: 1, alignItems: 'center' },
-            react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(DatePicker_1.default, { label: 'DatePicker', onChange: console.log, value: testDatePickerValue, isClearable: false })),
-            react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(TextFieldClearButton_1.default, { label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small', InputProps: textFieldInputProps })),
-            react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(TextFieldClearButton_1.default, { disabled: true, label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small' })),
-            react_1.default.createElement(core_1.Grid, { item: true, xs: 1 },
-                react_1.default.createElement(SelectClearButton_1.default, { fullWidth: true, label: 'Single select', onChange: handleSingleSelectUpdate, value: singleSelectValue, clearButtonSize: 'small' }, selectMenuItems)),
-            react_1.default.createElement(core_1.Grid, { item: true, xs: 2 },
-                react_1.default.createElement(SelectClearButton_1.default, { fullWidth: true, label: 'Multiple select', onChange: handleMultipleSelectUpdate, value: multipleSelectValue, clearButtonSize: 'small', multiple: true, maxValuesToDisplayInInput: 2, renderValueAsChip: true }, selectMenuItems)),
-            react_1.default.createElement(core_1.Grid, { item: true },
-                react_1.default.createElement(core_1.Button, { onClick: function () { return setMultipleSelectValue(['test 1']); }, color: 'primary' }, "Set Multiple Select Value")),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(Icon_1.CustomerCard, null)),
             react_1.default.createElement(core_1.Grid, { item: true },
