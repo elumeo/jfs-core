@@ -1,7 +1,7 @@
 import React, {CSSProperties, memo, useCallback, useEffect, useMemo, useState} from 'react';
 import {
   Checkbox,
-  ChipProps,
+  ChipProps, CircularProgress,
   FormControl,
   FormControlProps,
   IconProps,
@@ -16,6 +16,7 @@ import {createStyles, makeStyles} from '@material-ui/core/styles';
 // import MenuItem from 'Component/SelectClearButton/MenuItem';
 
 const checkboxStyle: CSSProperties = {marginRight: '8px'};
+const loadingStyle: CSSProperties = {textAlign: 'center'};
 
 const useStyles = makeStyles(() => createStyles({
   root: {
@@ -37,6 +38,8 @@ export type Props = Partial<Omit<SelectProps, 'onChange'>> & {
   renderValueAsChip?: boolean;
   maxValuesToDisplayInInput?: number;
   options: SelectOption[];
+  loading?: boolean;
+  loadingSize?: number;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -51,6 +54,8 @@ const SelectClearButton = ({
                              renderValueAsChip = false,
                              maxValuesToDisplayInInput = 1,
                              options,
+                             loading = false,
+                             loadingSize = 20,
                              ...rest
                            }: Props) => {
   const [showClearButton, setShowClearButton] = useState(false);
@@ -124,6 +129,7 @@ const SelectClearButton = ({
         multiple={rest.multiple}
       />}
     >
+      {loading && <div style={loadingStyle}><CircularProgress size={loadingSize}/></div>}
       {options.map(option => <MenuItem key={'select-menu-item-' + option.value} value={option.value} selected={(inputValue as string[]).includes(option.value)}>
         {rest.multiple && <Checkbox style={checkboxStyle} checked={(inputValue as string[]).includes(option.value)} size={'small'}/>}
         {option.label}
