@@ -40,6 +40,7 @@ export type Props = Partial<Omit<SelectProps, 'onChange'>> & {
   options: SelectOption[];
   loading?: boolean;
   loadingSize?: number;
+  displayClearButton?: boolean;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -56,6 +57,7 @@ const SelectClearButton = ({
                              options,
                              loading = false,
                              loadingSize = 20,
+                             displayClearButton = true,
                              ...rest
                            }: Props) => {
   const [showClearButton, setShowClearButton] = useState(false);
@@ -107,7 +109,7 @@ const SelectClearButton = ({
       onChange={handleOnChangeEvent}
       endAdornment={<EndAdornment
         endAdornment={endAdornment}
-        showClearButton={showClearButton}
+        showClearButton={displayClearButton && showClearButton}
         clearButtonSize={clearButtonSize}
         clearIconSize={clearIconSize}
         onClickClearButton={handleOnChange}
