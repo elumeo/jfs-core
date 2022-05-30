@@ -199,7 +199,7 @@ var Develop = function () {
     var dispatch = (0, react_redux_1.useDispatch)();
     var _a = (0, react_1.useState)(''), testTextFieldValue = _a[0], setTestTextFieldValue = _a[1];
     var _b = (0, react_1.useState)(''), singleSelectValue = _b[0], setSingleSelectValue = _b[1];
-    var _c = (0, react_1.useState)([]), multipleSelectValue = _c[0], setMultipleSelectValue = _c[1];
+    var _c = (0, react_1.useState)(['test 1']), multipleSelectValue = _c[0], setMultipleSelectValue = _c[1];
     var _d = (0, react_1.useState)(null), testDatePickerValue = _d[0], setTestDatePickerValue = _d[1];
     var noRowsRenderer = (0, react_1.useCallback)(function () { return react_1.default.createElement(TableRow_1.TableRowLoading, null); }, []);
     var rowGetter = (0, react_1.useCallback)(function (row) { return rows[row.index]; }, []);

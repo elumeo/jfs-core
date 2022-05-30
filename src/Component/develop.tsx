@@ -233,7 +233,7 @@ const Develop: React.FC = () => {
   const dispatch = useDispatch();
   const [testTextFieldValue, setTestTextFieldValue] = useState('');
   const [singleSelectValue, setSingleSelectValue] = useState('');
-  const [multipleSelectValue, setMultipleSelectValue] = useState([]);
+  const [multipleSelectValue, setMultipleSelectValue] = useState(['test 1']);
   const [testDatePickerValue, setTestDatePickerValue] = useState<Date>(null);
   const noRowsRenderer = useCallback(() => <TableRowLoading/>, []);
   const rowGetter = useCallback((row: Index) => rows[row.index], []);

@@ -32,7 +32,7 @@ const MultipleValueRenderer = ({
         {selectedValue
           .filter((label, index) => index < maxValuesToDisplayInInput)
           .map((selectedItem, index) => renderValueAsChip
-            ? <Grid item key={'select-clear-button-multiple-value-renderer-chip-value-' + selectedItem + '-' + index} style={{maxWidth: (100 / Math.min(selectedValue.length, maxValuesToDisplayInInput)) + '%'}}>
+            ? <Grid item key={'select-clear-button-multiple-value-renderer-chip-value-' + selectedItem.value + '-' + index} style={{maxWidth: (100 / Math.min(selectedValue.length, maxValuesToDisplayInInput)) + '%'}}>
               <ChipValue
                 onDelete={handleChipOnDelete}
                 value={selectedItem.value}

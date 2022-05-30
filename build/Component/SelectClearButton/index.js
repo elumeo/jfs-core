@@ -106,7 +106,7 @@ var SelectClearButton = function (_a) {
                     : options.find(function (option) { return option.value === selected; }), renderValueAsChip: renderValueAsChip, maxValuesToDisplayInInput: maxValuesToDisplayInInput, onDeleteItem: handleOnDeleteItem, valueChipProps: valueChipProps, setValue: setInputValue, multiple: rest.multiple }); } }),
             loading && react_1.default.createElement("div", { style: loadingStyle },
                 react_1.default.createElement(core_1.CircularProgress, { size: loadingSize })),
-            options.map(function (option) { return react_1.default.createElement(core_1.MenuItem, { key: 'select-menu-item-' + option.value, value: option.value, selected: inputValue.includes(option.value) },
+            loading === false && options.map(function (option) { return react_1.default.createElement(core_1.MenuItem, { key: 'select-menu-item-' + option.value, value: option.value, selected: inputValue.includes(option.value) },
                 rest.multiple && react_1.default.createElement(core_1.Checkbox, { style: checkboxStyle, checked: inputValue.includes(option.value), size: 'small' }),
                 option.label); })));
 };

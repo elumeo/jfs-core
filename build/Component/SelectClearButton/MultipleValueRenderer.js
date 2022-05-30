@@ -53,7 +53,7 @@ var MultipleValueRenderer = function (_a) {
             react_1.default.createElement(core_1.Grid, { container: true, wrap: 'nowrap', spacing: 1 }, selectedValue
                 .filter(function (label, index) { return index < maxValuesToDisplayInInput; })
                 .map(function (selectedItem, index) { return renderValueAsChip
-                ? react_1.default.createElement(core_1.Grid, { item: true, key: 'select-clear-button-multiple-value-renderer-chip-value-' + selectedItem + '-' + index, style: { maxWidth: (100 / Math.min(selectedValue.length, maxValuesToDisplayInInput)) + '%' } },
+                ? react_1.default.createElement(core_1.Grid, { item: true, key: 'select-clear-button-multiple-value-renderer-chip-value-' + selectedItem.value + '-' + index, style: { maxWidth: (100 / Math.min(selectedValue.length, maxValuesToDisplayInInput)) + '%' } },
                     react_1.default.createElement(ChipValue_1.default, __assign({ onDelete: handleChipOnDelete, value: selectedItem.value, label: selectedItem.label }, valueChipProps)))
                 : (index > 0 ? ', ' + selectedItem : selectedItem); }))),
         react_1.default.createElement(core_1.Grid, { item: true }, selectedValue.length > maxValuesToDisplayInInput && react_1.default.createElement(core_1.Grid, { item: true },

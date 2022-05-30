@@ -132,7 +132,7 @@ const SelectClearButton = ({
       />}
     >
       {loading && <div style={loadingStyle}><CircularProgress size={loadingSize}/></div>}
-      {options.map(option => <MenuItem key={'select-menu-item-' + option.value} value={option.value} selected={(inputValue as string[]).includes(option.value)}>
+      {loading === false && options.map(option => <MenuItem key={'select-menu-item-' + option.value} value={option.value} selected={(inputValue as string[]).includes(option.value)}>
         {rest.multiple && <Checkbox style={checkboxStyle} checked={(inputValue as string[]).includes(option.value)} size={'small'}/>}
         {option.label}
       </MenuItem>)}
