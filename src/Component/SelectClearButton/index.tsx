@@ -1,21 +1,32 @@
-import React, {memo, ReactElement, useCallback, useEffect, useState} from 'react';
+import React, {memo, useCallback, useEffect, useMemo, useState} from 'react';
 import {
+  ChipProps,
   FormControl,
   FormControlProps,
-  IconButton,
   IconProps,
-  InputAdornment, InputLabel,
+  InputLabel,
   Select,
   SelectProps
 } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
 import {IconButtonProps} from '@material-ui/core/IconButton';
+import ValueRenderer, {Props as ValueRendererProps} from 'Component/SelectClearButton/ValueRenderer';
+import EndAdornment from 'Component/SelectClearButton/EndAdornment';
+import {createStyles, makeStyles} from '@material-ui/core/styles';
 
-export type SelectClearButtonProps = Partial<SelectProps> & {
-  onChange: SelectProps['onChange'];
+const useStyles = makeStyles(() => createStyles({
+  root: {
+    paddingBottom: (props: {renderValueAsChip: boolean, inputValue: string | string[]}) => props.renderValueAsChip && props.inputValue.length > 0 ? '4px' : '7px'
+  }
+}));
+
+export type Props = Partial<Omit<SelectProps, 'onChange'>> & {
+  onChange: (value: string | string[]) => void;
   clearButtonSize?: IconButtonProps['size'];
   clearIconSize?: IconProps['fontSize'];
   formControlProps?: Partial<FormControlProps>;
+  valueChipProps?: Partial<ChipProps>;
+  renderValueAsChip?: boolean;
+  maxValuesToDisplayInInput?: number;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -26,68 +37,80 @@ const SelectClearButton = ({
                              clearIconSize = 'small',
                              variant = 'standard',
                              endAdornment,
-                             formControlProps,
+                             formControlProps = {},
+                             valueChipProps = {},
+                             renderValueAsChip = false,
+                             maxValuesToDisplayInInput = 1,
                              ...rest
-                           }: SelectClearButtonProps) => {
-  const getIconSize = useCallback((): IconProps['fontSize'] => clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small', []);
+                           }: Props) => {
   const [showClearButton, setShowClearButton] = useState(false);
-  const [inputValue, setInputValue] = useState<string | string[]>(null);
-  const handleShowClearButtonState = () => {
-    if ((((rest.multiple === undefined || rest.multiple === false) && rest.value !== '') || (rest.multiple && (rest.value as string[]).length > 0)) && showClearButton === false) {
+  const [inputValue, setInputValue] = useState<string | string[]>(rest.multiple ? [] : '');
+  const classes = useStyles({renderValueAsChip, inputValue});
+
+  const handleShowClearButtonState = (value: string | string[]) => {
+    if(showClearButton === false && value.length > 0) {
       setShowClearButton(true);
-    } else if (((rest.multiple === undefined || rest.multiple === false) && rest.value === '') || (rest.multiple && (rest.value as string[]).length <= 0) && showClearButton === true) {
+    } else if(showClearButton === true && value.length <= 0) {
       setShowClearButton(false);
     }
   }
 
   useEffect(() => {
     if (rest.value !== undefined) {
-      handleShowClearButtonState();
+      handleShowClearButtonState(rest.value as string | string[]);
 
       if (inputValue !== rest.value) {
-        setInputValue(rest.value as string);
+        setInputValue(rest.value as string | string[]);
       }
     }
   }, [rest.value]);
 
-  const handleOnChange: SelectProps['onChange'] = useCallback((event, changeValue: string) => {
-    if (onChange === undefined) {
-      handleShowClearButtonState()
-
-      if (rest.value === undefined) {
-        setInputValue(changeValue === null ? rest.multiple ? [] as string[] : '' : changeValue);
-      }
-    } else {
-      onChange(event, changeValue);
+  const handleOnChange: Props['onChange'] = useCallback(value => {
+    handleShowClearButtonState(value);
+    setInputValue(value);
+    if(onChange) {
+      onChange(value);
     }
-  }, [onChange]);
+  }, [onChange, inputValue]);
 
-  const handleClearClick: IconButtonProps['onClick'] = useCallback(() => handleOnChange(null, null), [onChange]);
+  const handleOnChangeEvent: SelectProps['onChange'] = useCallback(event => {
+    const eventValue = event.target.value ? event.target.value as string | string[] : rest.multiple ? [] : '';
+    handleOnChange(eventValue);
+  }, [onChange, inputValue]);
 
-  const endAdornmentClearButton = showClearButton && (
-    <IconButton
-      disabled={rest.disabled}
-      size={clearButtonSize}
-      color={'secondary'}
-      onClick={handleClearClick}
-      style={{marginRight: '21px'}}
-    >
-      <CloseIcon fontSize={getIconSize()}/>
-    </IconButton>
-  );
-  const preparedEndAdornment = <InputAdornment position={'end'}>
-    {endAdornment && (endAdornment as ReactElement).props.children}
-    {endAdornmentClearButton}
-  </InputAdornment>;
+  const handleOnDeleteItem: ValueRendererProps['onDeleteItem'] = useCallback(item => {
+    const eventValue = rest.multiple ? (inputValue as string[]).filter(value => value !== item) : '';
+    handleOnChange(eventValue);
+  }, [onChange, inputValue]);
 
+  const isInputValueEmpty = useMemo<boolean>(() => inputValue.length <= 0, [inputValue]);
   return <FormControl fullWidth {...formControlProps}>
-    {rest.label && <InputLabel>{rest.label}</InputLabel>}
+    {rest.label && <InputLabel shrink={!isInputValueEmpty}>{rest.label}</InputLabel>}
     <Select
+      classes={{root: classes.root}}
       {...rest}
-      onChange={handleOnChange}
-      endAdornment={preparedEndAdornment}
+      onChange={handleOnChangeEvent}
+      endAdornment={<EndAdornment
+        endAdornment={endAdornment}
+        showClearButton={showClearButton}
+        clearButtonSize={clearButtonSize}
+        clearIconSize={clearIconSize}
+        onClickClearButton={handleOnChange}
+        disabled={rest.disabled}
+        multiple={rest.multiple}
+      />}
       autoComplete={'new-password'}
-      value={inputValue === null ? rest.multiple ? [] : '' : inputValue}
+      value={inputValue}
+      renderValue={selected => <ValueRenderer
+        selected={selected as string | string[]}
+        renderValueAsChip={renderValueAsChip}
+        maxValuesToDisplayInInput={maxValuesToDisplayInInput}
+        onDeleteItem={handleOnDeleteItem}
+        valueChipProps={valueChipProps}
+        value={inputValue}
+        setValue={setInputValue}
+        multiple={rest.multiple}
+      />}
     >
       {children}
     </Select>

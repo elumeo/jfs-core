@@ -210,12 +210,8 @@ var Develop = function () {
     var noRowsRenderer = (0, react_1.useCallback)(function () { return react_1.default.createElement(TableRow_1.TableRowLoading, null); }, []);
     var rowGetter = (0, react_1.useCallback)(function (row) { return rows[row.index]; }, []);
     var productRowGetter = (0, react_1.useCallback)(function (row) { return productRows[row.index]; }, []);
-    var handleSingleSelectUpdate = (0, react_1.useCallback)(function (event) { return setSingleSelectValue(event === null ? '' : event.target.value); }, []);
-    var handleMultipleSelectUpdate = (0, react_1.useCallback)(function (event) {
-        setMultipleSelectValue(event === null
-            ? []
-            : event.target.value);
-    }, []);
+    var handleSingleSelectUpdate = (0, react_1.useCallback)(function (value) { return setSingleSelectValue(value); }, []);
+    var handleMultipleSelectUpdate = (0, react_1.useCallback)(function (value) { return setMultipleSelectValue(value); }, []);
     var handleTextFieldUpdate = (0, react_1.useCallback)(function (event) { return setTestTextFieldValue(event === null ? '' : event.target.value); }, []);
     var persistNotificationsRef = (0, react_1.useRef)(null);
     var handleOnClickNotification = (0, react_1.useCallback)(function () {
@@ -282,8 +278,10 @@ var Develop = function () {
                 react_1.default.createElement(TextFieldClearButton_1.default, { disabled: true, label: 'Textfield', onChange: handleTextFieldUpdate, value: testTextFieldValue, clearButtonSize: 'small' })),
             react_1.default.createElement(core_1.Grid, { item: true, xs: 1 },
                 react_1.default.createElement(SelectClearButton_1.default, { fullWidth: true, label: 'Single select', onChange: handleSingleSelectUpdate, value: singleSelectValue, clearButtonSize: 'small' }, selectMenuItems)),
-            react_1.default.createElement(core_1.Grid, { item: true, xs: 1 },
-                react_1.default.createElement(SelectClearButton_1.default, { fullWidth: true, label: 'Multiple select', onChange: handleMultipleSelectUpdate, value: multipleSelectValue, clearButtonSize: 'small', multiple: true }, selectMenuItems)),
+            react_1.default.createElement(core_1.Grid, { item: true, xs: 2 },
+                react_1.default.createElement(SelectClearButton_1.default, { fullWidth: true, label: 'Multiple select', onChange: handleMultipleSelectUpdate, value: multipleSelectValue, clearButtonSize: 'small', multiple: true, maxValuesToDisplayInInput: 2, renderValueAsChip: true }, selectMenuItems)),
+            react_1.default.createElement(core_1.Grid, { item: true },
+                react_1.default.createElement(core_1.Button, { onClick: function () { return setMultipleSelectValue(['test 1']); }, color: 'primary' }, "Set Multiple Select Value")),
             react_1.default.createElement(core_1.Grid, { item: true },
                 react_1.default.createElement(Icon_1.CustomerCard, null)),
             react_1.default.createElement(core_1.Grid, { item: true },

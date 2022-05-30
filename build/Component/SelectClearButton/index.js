@@ -50,48 +50,54 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var core_1 = require("@material-ui/core");
-var Close_1 = __importDefault(require("@material-ui/icons/Close"));
+var ValueRenderer_1 = __importDefault(require("../SelectClearButton/ValueRenderer"));
+var EndAdornment_1 = __importDefault(require("../SelectClearButton/EndAdornment"));
+var styles_1 = require("@material-ui/core/styles");
+var useStyles = (0, styles_1.makeStyles)(function () { return (0, styles_1.createStyles)({
+    root: {
+        paddingBottom: function (props) { return props.renderValueAsChip && props.inputValue.length > 0 ? '4px' : '7px'; }
+    }
+}); });
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var SelectClearButton = function (_a) {
-    var children = _a.children, onChange = _a.onChange, _b = _a.clearButtonSize, clearButtonSize = _b === void 0 ? 'small' : _b, _c = _a.clearIconSize, clearIconSize = _c === void 0 ? 'small' : _c, _d = _a.variant, variant = _d === void 0 ? 'standard' : _d, endAdornment = _a.endAdornment, formControlProps = _a.formControlProps, rest = __rest(_a, ["children", "onChange", "clearButtonSize", "clearIconSize", "variant", "endAdornment", "formControlProps"]);
-    var getIconSize = (0, react_1.useCallback)(function () { return clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small'; }, []);
-    var _e = (0, react_1.useState)(false), showClearButton = _e[0], setShowClearButton = _e[1];
-    var _f = (0, react_1.useState)(null), inputValue = _f[0], setInputValue = _f[1];
-    var handleShowClearButtonState = function () {
-        if ((((rest.multiple === undefined || rest.multiple === false) && rest.value !== '') || (rest.multiple && rest.value.length > 0)) && showClearButton === false) {
+    var children = _a.children, onChange = _a.onChange, _b = _a.clearButtonSize, clearButtonSize = _b === void 0 ? 'small' : _b, _c = _a.clearIconSize, clearIconSize = _c === void 0 ? 'small' : _c, _d = _a.variant, variant = _d === void 0 ? 'standard' : _d, endAdornment = _a.endAdornment, _e = _a.formControlProps, formControlProps = _e === void 0 ? {} : _e, _f = _a.valueChipProps, valueChipProps = _f === void 0 ? {} : _f, _g = _a.renderValueAsChip, renderValueAsChip = _g === void 0 ? false : _g, _h = _a.maxValuesToDisplayInInput, maxValuesToDisplayInInput = _h === void 0 ? 1 : _h, rest = __rest(_a, ["children", "onChange", "clearButtonSize", "clearIconSize", "variant", "endAdornment", "formControlProps", "valueChipProps", "renderValueAsChip", "maxValuesToDisplayInInput"]);
+    var _j = (0, react_1.useState)(false), showClearButton = _j[0], setShowClearButton = _j[1];
+    var _k = (0, react_1.useState)(rest.multiple ? [] : ''), inputValue = _k[0], setInputValue = _k[1];
+    var classes = useStyles({ renderValueAsChip: renderValueAsChip, inputValue: inputValue });
+    var handleShowClearButtonState = function (value) {
+        if (showClearButton === false && value.length > 0) {
             setShowClearButton(true);
         }
-        else if (((rest.multiple === undefined || rest.multiple === false) && rest.value === '') || (rest.multiple && rest.value.length <= 0) && showClearButton === true) {
+        else if (showClearButton === true && value.length <= 0) {
             setShowClearButton(false);
         }
     };
     (0, react_1.useEffect)(function () {
         if (rest.value !== undefined) {
-            handleShowClearButtonState();
+            handleShowClearButtonState(rest.value);
             if (inputValue !== rest.value) {
                 setInputValue(rest.value);
             }
         }
     }, [rest.value]);
-    var handleOnChange = (0, react_1.useCallback)(function (event, changeValue) {
-        if (onChange === undefined) {
-            handleShowClearButtonState();
-            if (rest.value === undefined) {
-                setInputValue(changeValue === null ? rest.multiple ? [] : '' : changeValue);
-            }
+    var handleOnChange = (0, react_1.useCallback)(function (value) {
+        handleShowClearButtonState(value);
+        setInputValue(value);
+        if (onChange) {
+            onChange(value);
         }
-        else {
-            onChange(event, changeValue);
-        }
-    }, [onChange]);
-    var handleClearClick = (0, react_1.useCallback)(function () { return handleOnChange(null, null); }, [onChange]);
-    var endAdornmentClearButton = showClearButton && (react_1.default.createElement(core_1.IconButton, { disabled: rest.disabled, size: clearButtonSize, color: 'secondary', onClick: handleClearClick, style: { marginRight: '21px' } },
-        react_1.default.createElement(Close_1.default, { fontSize: getIconSize() })));
-    var preparedEndAdornment = react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
-        endAdornment && endAdornment.props.children,
-        endAdornmentClearButton);
+    }, [onChange, inputValue]);
+    var handleOnChangeEvent = (0, react_1.useCallback)(function (event) {
+        var eventValue = event.target.value ? event.target.value : rest.multiple ? [] : '';
+        handleOnChange(eventValue);
+    }, [onChange, inputValue]);
+    var handleOnDeleteItem = (0, react_1.useCallback)(function (item) {
+        var eventValue = rest.multiple ? inputValue.filter(function (value) { return value !== item; }) : '';
+        handleOnChange(eventValue);
+    }, [onChange, inputValue]);
+    var isInputValueEmpty = (0, react_1.useMemo)(function () { return inputValue.length <= 0; }, [inputValue]);
     return react_1.default.createElement(core_1.FormControl, __assign({ fullWidth: true }, formControlProps),
-        rest.label && react_1.default.createElement(core_1.InputLabel, null, rest.label),
-        react_1.default.createElement(core_1.Select, __assign({}, rest, { onChange: handleOnChange, endAdornment: preparedEndAdornment, autoComplete: 'new-password', value: inputValue === null ? rest.multiple ? [] : '' : inputValue }), children));
+        rest.label && react_1.default.createElement(core_1.InputLabel, { shrink: !isInputValueEmpty }, rest.label),
+        react_1.default.createElement(core_1.Select, __assign({ classes: { root: classes.root } }, rest, { onChange: handleOnChangeEvent, endAdornment: react_1.default.createElement(EndAdornment_1.default, { endAdornment: endAdornment, showClearButton: showClearButton, clearButtonSize: clearButtonSize, clearIconSize: clearIconSize, onClickClearButton: handleOnChange, disabled: rest.disabled, multiple: rest.multiple }), autoComplete: 'new-password', value: inputValue, renderValue: function (selected) { return react_1.default.createElement(ValueRenderer_1.default, { selected: selected, renderValueAsChip: renderValueAsChip, maxValuesToDisplayInInput: maxValuesToDisplayInInput, onDeleteItem: handleOnDeleteItem, valueChipProps: valueChipProps, value: inputValue, setValue: setInputValue, multiple: rest.multiple }); } }), children));
 };
 exports.default = (0, react_1.memo)(SelectClearButton);

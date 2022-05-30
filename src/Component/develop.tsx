@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 // noinspection ES6UnusedImports,JSUnusedLocalSymbols
 
-import React, {useCallback, useRef, useState} from 'react';
+import React, {EventHandler, MouseEvent, MouseEventHandler, useCallback, useRef, useState} from 'react';
 import {
   Button,
   ButtonProps,
@@ -31,12 +31,9 @@ import {
 import {
   AccountCircle as AccountCircleIcon,
   Block,
-  CheckBox,
   ContactPhone as ContactPhoneIcon,
-  Error,
   Refresh,
   Visibility,
-  VisibilityOff
 } from '@material-ui/icons';
 import {useTheme} from '@material-ui/core/styles';
 import {getCurrency} from 'Utilities/Format/Currency';
@@ -62,7 +59,7 @@ import {Notification} from 'Types/Notification';
 import Box from '@material-ui/core/Box';
 import {NativeSelectProps} from '@material-ui/core/NativeSelect/NativeSelect';
 import DatePicker from 'Component/DatePicker';
-import SelectClearButton, {SelectClearButtonProps} from 'Component/SelectClearButton';
+import SelectClearButton, {Props as SelectClearButtonProps} from 'Component/SelectClearButton';
 import {TableCellProductProps} from 'Component/Table/TableCell/TableCellProduct';
 
 const tableRowHeight = 48;
@@ -248,16 +245,8 @@ const Develop: React.FC = () => {
   const noRowsRenderer = useCallback(() => <TableRowLoading/>, []);
   const rowGetter = useCallback((row: Index) => rows[row.index], []);
   const productRowGetter = useCallback((row: Index) => productRows[row.index], []);
-  const handleSingleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => setSingleSelectValue(event === null ? '' : event.target.value as string), []);
-  const handleMultipleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => {
-      setMultipleSelectValue(
-        event === null
-          ? []
-          : event.target.value as string[]
-      )
-    },
-    []
-  );
+  const handleSingleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(value => setSingleSelectValue(value as string), []);
+  const handleMultipleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(value => setMultipleSelectValue(value as string[]), []);
   const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
   const persistNotificationsRef = useRef(null);
   const handleOnClickNotification: ButtonProps['onClick'] = useCallback(() => {
@@ -371,7 +360,7 @@ const Develop: React.FC = () => {
             clearButtonSize={'small'}
           >{selectMenuItems}</SelectClearButton>
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={2}>
           <SelectClearButton
             fullWidth
             label={'Multiple select'}
@@ -379,8 +368,11 @@ const Develop: React.FC = () => {
             value={multipleSelectValue}
             clearButtonSize={'small'}
             multiple
+            maxValuesToDisplayInInput={2}
+            renderValueAsChip
           >{selectMenuItems}</SelectClearButton>
         </Grid>
+        <Grid item><Button onClick={() => setMultipleSelectValue(['test 1'])} color={'primary'}>Set Multiple Select Value</Button></Grid>
         <Grid item>
           <CustomerCard/>
         </Grid>
