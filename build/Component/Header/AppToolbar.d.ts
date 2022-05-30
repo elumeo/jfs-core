@@ -1,8 +1,8 @@
 import React from 'react';
 export declare type Props = {
-    left?: JSX.Element;
-    middle?: JSX.Element;
-    right?: JSX.Element;
+    left?: React.ReactNode;
+    middle?: React.ReactNode;
+    right?: React.ReactNode;
     variant?: 'regular' | 'dense';
     position?: 'static' | 'fixed' | 'absolute' | 'sticky' | 'relative';
     color?: 'primary' | 'secondary';

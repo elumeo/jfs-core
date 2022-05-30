@@ -40,17 +40,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var react_intl_1 = require("react-intl");
 var Menu_1 = __importDefault(require("@material-ui/icons/Menu"));
-var useActions_1 = __importDefault(require("../../Store/useActions"));
 var core_1 = require("@material-ui/core");
-var styles_1 = require("@material-ui/styles");
+var Definition_1 = __importDefault(require("../App/Stateless/Style/Theme/Definition"));
+var Navigation_1 = require("../../Store/Action/Navigation");
+var react_redux_1 = require("react-redux");
+var toolbarStyle = { height: Definition_1.default.mixins.toolbar.minHeight };
 var AppToolbar = function (_a) {
     var _b = _a.variant, variant = _b === void 0 ? 'dense' : _b, _c = _a.position, position = _c === void 0 ? 'sticky' : _c, _d = _a.color, color = _d === void 0 ? 'primary' : _d, tools = __rest(_a, ["variant", "position", "color"]);
-    var theme = (0, styles_1.useTheme)();
+    var dispatch = (0, react_redux_1.useDispatch)();
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
-    var openNavigation = (0, useActions_1.default)().openNavigation;
-    var openDrawer = react_1.default.useCallback(function () { return openNavigation(); }, []);
+    var openDrawer = react_1.default.useCallback(function () { return dispatch((0, Navigation_1.openNavigation)()); }, [dispatch]);
     return (react_1.default.createElement(core_1.AppBar, { position: position, color: color },
-        react_1.default.createElement(core_1.Toolbar, { disableGutters: true, variant: variant, style: { height: theme.mixins.toolbar.minHeight } },
+        react_1.default.createElement(core_1.Toolbar, { disableGutters: true, variant: variant, style: toolbarStyle },
             react_1.default.createElement(core_1.Grid, { container: true, justifyContent: 'space-between', alignItems: 'center' },
                 react_1.default.createElement(core_1.Grid, { container: true, item: true, xs: 4, justifyContent: 'flex-start', alignItems: 'center' },
                     react_1.default.createElement(core_1.IconButton, { color: 'inherit', "aria-label": 'menu', onClick: openDrawer },

@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import { useIntl } from 'react-intl';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import useActions from 'Store/useActions';
 import {
   AppBar,
   Grid,
@@ -10,41 +9,38 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core';
-import { useTheme } from '@material-ui/styles';
-import { Theme } from '@material-ui/core/styles';
+import theme from 'Component/App/Stateless/Style/Theme/Definition';
+import { openNavigation } from 'Store/Action/Navigation';
+import { useDispatch } from 'react-redux';
 
 export type Props = {
-  left?: JSX.Element;
-  middle?: JSX.Element;
-  right?: JSX.Element;
+  left?: React.ReactNode;
+  middle?: React.ReactNode;
+  right?: React.ReactNode;
   variant?: 'regular' | 'dense';
   position?: 'static' | 'fixed' | 'absolute' | 'sticky' | 'relative';
   color?: 'primary' | 'secondary'
 };
-
+const toolbarStyle = { height: theme.mixins.toolbar.minHeight }
 const AppToolbar: React.FC<Props> = ({
   variant = 'dense',
   position = 'sticky',
   color = 'primary',
   ...tools
 }) => {
-  const theme = useTheme<Theme>();
+  const dispatch = useDispatch()
   const { formatMessage } = useIntl();
-  const { openNavigation } = useActions();
-  const openDrawer = React.useCallback(() => openNavigation(), []);
+  const openDrawer = React.useCallback(() => dispatch(openNavigation()), [dispatch]);
   return (
     <AppBar position={position} color={color}>
       <Toolbar
         disableGutters
         variant={variant}
-        style={{ height: theme.mixins.toolbar.minHeight }}>
+        style={toolbarStyle}>
         <Grid
           container
           justifyContent={'space-between'}
           alignItems={'center'}
-        // height='100%'
-        // boxSizing='border-box'
-        // paddingRight={theme.typography.pxToRem(4)}
         >
           <Grid
             container
