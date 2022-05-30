@@ -50,4 +50,4 @@ const DebugButton: React.FC<Props> = ({ msg }) => {
         </>
     )
 }
-export default React.memo(DebugButton)
+export default DebugButton

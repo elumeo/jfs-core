@@ -65,4 +65,4 @@ var DebugButton = function (_a) {
                 react_1.default.createElement(core_1.Box, { color: Definition_1.default.palette.common.white },
                     react_1.default.createElement(icons_1.BugReport, { color: 'inherit' }))))));
 };
-exports.default = react_1.default.memo(DebugButton);
+exports.default = DebugButton;
