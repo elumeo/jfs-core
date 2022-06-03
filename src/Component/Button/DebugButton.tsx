@@ -10,7 +10,7 @@ import { Logger } from 'Types/Debug'
 type Props = Logger
 const DebugButton: React.FC<Props> = ({
     selector = state => state,
-    actions = [Action.addErrorNotification, Action.dismissToastAction],
+    actions = [Action.addErrorNotification],
     mapper = (action) => (action)?.payload ?? action.type,
     filter = () => true
 }) => {
@@ -19,22 +19,32 @@ const DebugButton: React.FC<Props> = ({
     const state = useSelector(selector)
     const [open, setOpen] = useState(false)
     const [description, setDescription] = useState('')
-    const openDialog = React.useCallback(() => {
-        setOpen(true)
-    }, [setOpen])
-    const closeDialog = React.useCallback(() => {
-        setOpen(false)
-        setDescription('')
-    }, [setOpen, setDescription])
+    const openDialog = React.useCallback(
+        () => {
+            setOpen(true)
+        },
+        [setOpen]
+    )
+    const closeDialog = React.useCallback(
+        () => {
+            setOpen(false)
+            setDescription('')
+        },
+        [setOpen, setDescription]
+    )
 
-    const submit = React.useCallback(() => {
-        dispatch(Action.Debug.post({ description, state }))
-        closeDialog()
+    const submit = React.useCallback(
+        () => {
+            dispatch(Action.Debug.post({ description, state }))
+            closeDialog()
 
-    }, [dispatch, state, description, closeDialog])
-    const onChange: TextFieldProps['onChange'] = React.useCallback(e => {
-        setDescription(e.target.value?.slice(0, Math.min(e.target.value.length, 255)))
-    }, [setDescription]
+        },
+        [dispatch, state, description, closeDialog])
+    const onChange: TextFieldProps['onChange'] = React.useCallback(
+        e => {
+            setDescription(e.target.value?.slice(0, Math.min(e.target.value.length, 255)))
+        },
+        [setDescription]
 
     )
     useEffect(
