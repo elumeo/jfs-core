@@ -9,9 +9,12 @@
     "HostV": "http://localhost:8080",
     "PathV": "",
     "Host": "https://api-test.juwelo.de",
-    "Path": "/staging/websocket2.services",
+    "Path": "/staging/websocket.services",
     "PrivateNamespace": "Jsc2Jfs",
-    "AutoRoomSubscriptions": ["currentGame", "plannedGames"]
+    "AutoRoomSubscriptions": [
+      "currentGame",
+      "plannedGames"
+    ]
   },
   "Language": "de",
   "Currency": "EUR",
@@ -19,5 +22,7 @@
   "ContainerLanguage": "de",
   "AppName": "jfs_Boilerplate",
   "NotificationPosition": "bottomRight",
-  "NotificationMax": 5
+  "NotificationMax": 5,
+  "DebugMode": true,
+  "DebugCallstackLimit": 300
 }

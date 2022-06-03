@@ -4,6 +4,7 @@ import App, { State as AppState } from './App';
 import Configuration, { State as ConfigurationState } from './Configuration';
 import Language, { State as LanguageState } from './Language';
 import Logout, { State as LogoutState } from './Logout';
+import Debug, { State as DebugState } from './Debug';
 import Navigation, { State as NavigationState } from './Navigation';
 import Notification, { State as NotificationState } from './Notification';
 import Router, { State as RouterState } from './Router';
@@ -23,6 +24,7 @@ export type State = {
   Logout?: LogoutState;
   Navigation?: NavigationState;
   Notification?: NotificationState;
+  Debug?: DebugState;
   // router?: RouterState;
   Router?: RouterState;
   Session?: SessionState;
@@ -38,6 +40,7 @@ const Core = combineReducers<State>({
   App,
   // router : connectRouter(history),
   Configuration,
+  Debug,
   Language,
   Login,
   Logout,

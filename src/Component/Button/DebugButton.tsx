@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, TextField, TextFieldProps, Tooltip } from '@material-ui/core'
 import { BugReport } from '@material-ui/icons'
 import { useDispatch } from 'react-redux'
 import * as Action from 'Store/Action'
 import definition from 'Component/App/Stateless/Style/Theme/Definition'
 import { useIntl } from 'react-intl'
-type Props = {
-    msg: unknown
-}
-const DebugButton: React.FC<Props> = ({ msg }) => {
+import { useSelector } from 'Types/Redux'
+import { Logger } from 'Types/Debug'
+type Props = Logger
+const DebugButton: React.FC<Props> = ({
+    selector = state => state,
+    actions = [Action.addErrorNotification, Action.dismissToastAction],
+    mapper = (action) => (action)?.payload ?? action.type,
+    filter = () => true
+}) => {
     const dispatch = useDispatch()
     const { formatMessage } = useIntl()
+    const state = useSelector(selector)
     const [open, setOpen] = useState(false)
     const [description, setDescription] = useState('')
     const openDialog = React.useCallback(() => {
@@ -20,14 +26,23 @@ const DebugButton: React.FC<Props> = ({ msg }) => {
         setOpen(false)
         setDescription('')
     }, [setOpen, setDescription])
+
     const submit = React.useCallback(() => {
-        dispatch(Action.Debug.post(JSON.stringify({ description, raw: msg })))
+        dispatch(Action.Debug.post({ description, state }))
         closeDialog()
 
-    }, [dispatch, msg, description, closeDialog])
+    }, [dispatch, state, description, closeDialog])
     const onChange: TextFieldProps['onChange'] = React.useCallback(e => {
-        setDescription(e.target.value)
-    }, [setDescription])
+        setDescription(e.target.value?.slice(0, Math.min(e.target.value.length, 255)))
+    }, [setDescription]
+
+    )
+    useEffect(
+        () => {
+            dispatch(Action.Debug.register({ actions, mapper, filter }))
+        },
+        []
+    )
     return (
         <>
             <Dialog open={open} maxWidth='sm' fullWidth onClose={closeDialog}>

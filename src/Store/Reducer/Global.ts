@@ -6,7 +6,8 @@ import { connectRouter, RouterState } from 'connected-react-router';
 export type State = {
   Core: CoreState;
   router: RouterState;
-};
+} & Record<string, unknown>
+
 
 const Global = (history: History): Reducer<State> =>
   combineReducers<State>({

@@ -23,4 +23,6 @@ export type Configuration = {
   };
   JscWebSocketClient: WebSocketClient;
   JfsWebSocketClient: WebSocketClient;
+  DebugMode?: boolean
+  DebugCallstackLimit?: number
 };

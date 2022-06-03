@@ -1,7 +1,16 @@
-import { State } from 'Store/Reducer/Global';
 import { createSelector } from 'reselect';
+import { Core } from './Core'
 
 export const Configuration = createSelector(
-  (state: State) => state.Core.Configuration,
-  state => state.config,
+  Core,
+  core => core.Configuration.config,
 );
+export const DebugMode = createSelector(
+  Configuration,
+  config => config?.DebugMode
+)
+
+export const DebugCallstackLimit = createSelector(
+  Configuration,
+  config => config?.DebugCallstackLimit
+)
