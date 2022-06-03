@@ -61,19 +61,19 @@ export default showError;
 
 
 ## __Use the DebugButton__
-# required:
+### required:
 ```JSON
 //config.json
   "DebugMode": true,
   "DebugCallstackLimit": 300
 ```
-# abstract:
+### summary:
 The DebugButton Component offers a simple API consisting of 4 properties described in `Types/Debug/Logger` (`actions`, `mapper`, `selector`, `filter`),
 which can be passed down from the CallerApp.
 When mounting, the component will register the actions in an epic and pipe them : actions->filter->mapper and finally log the result of the mapper function in the debug callstack.
 When clicking, a Dialog with a text-input to enter additional _description_ will appear. After submitting the result of _useSelector(`selector`)_ and the _description_ will be sent to mattermost. Make sure to include the `Global.Core.Debug.callstack` state to the selector, if you want to use it. 
 
-# example: 
+### example: 
 ```tsx
 import DebugButton from 'Core/Component/Button/DebugButton'
 const App: React.FC = () => {
