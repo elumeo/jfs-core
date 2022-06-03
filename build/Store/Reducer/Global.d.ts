@@ -5,6 +5,6 @@ import { RouterState } from 'connected-react-router';
 export declare type State = {
     Core: CoreState;
     router: RouterState;
-};
+} & Record<string, unknown>;
 declare const Global: (history: History) => Reducer<State>;
 export default Global;

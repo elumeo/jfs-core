@@ -18,3 +18,6 @@ __exportStar(require("./App"), exports);
 __exportStar(require("./Language"), exports);
 __exportStar(require("./Login"), exports);
 __exportStar(require("./WebSocket"), exports);
+__exportStar(require("./Global"), exports);
+__exportStar(require("./Core"), exports);
+__exportStar(require("./Configuration"), exports);

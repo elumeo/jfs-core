@@ -9,6 +9,7 @@ var App_1 = __importDefault(require("./App"));
 var Configuration_1 = __importDefault(require("./Configuration"));
 var Language_1 = __importDefault(require("./Language"));
 var Logout_1 = __importDefault(require("./Logout"));
+var Debug_1 = __importDefault(require("./Debug"));
 var Navigation_1 = __importDefault(require("./Navigation"));
 var Notification_1 = __importDefault(require("./Notification"));
 var Router_1 = __importDefault(require("./Router"));
@@ -23,6 +24,7 @@ var Core = (0, redux_1.combineReducers)({
     App: App_1.default,
     // router : connectRouter(history),
     Configuration: Configuration_1.default,
+    Debug: Debug_1.default,
     Language: Language_1.default,
     Login: Login_1.default,
     Logout: Logout_1.default,

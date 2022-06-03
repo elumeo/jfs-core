@@ -45,6 +45,5 @@
     "webSocket.room": "WebSocket Raum",
     "debug.title": "Fehler-Report Senden",
     "debug.label": "Beschreibung oder zusätzliche Info",
-    "debug.submit": "senden",
-    "debug.submitted" : "Fehler-Report gesendet"
+    "debug.submit": "senden"
 }

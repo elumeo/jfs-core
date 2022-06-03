@@ -2,6 +2,7 @@ import { State as AppState } from './App';
 import { State as ConfigurationState } from './Configuration';
 import { State as LanguageState } from './Language';
 import { State as LogoutState } from './Logout';
+import { State as DebugState } from './Debug';
 import { State as NavigationState } from './Navigation';
 import { State as NotificationState } from './Notification';
 import { State as RouterState } from './Router';
@@ -20,6 +21,7 @@ export declare type State = {
     Logout?: LogoutState;
     Navigation?: NavigationState;
     Notification?: NotificationState;
+    Debug?: DebugState;
     Router?: RouterState;
     Session?: SessionState;
     Settings?: SettingsState;

@@ -1,3 +1,6 @@
+## [10.1.2] 2022-06-03
+- added DebugButton handlers and store
+
 ## [10.1.1] 2022-05-30
 - BUGFIX: make select clear button ready for multiple selection
 

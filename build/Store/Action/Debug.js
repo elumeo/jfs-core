@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.post = void 0;
+exports.post = exports.log = exports.register = void 0;
 var typesafe_actions_1 = require("typesafe-actions");
-exports.post = (0, typesafe_actions_1.createAction)('CORE/Debug/mattermost/post')();
+exports.register = (0, typesafe_actions_1.createAction)('CORE/DEBUGGER/register')();
+exports.log = (0, typesafe_actions_1.createAction)('CORE/DEBUGGER/log')();
+exports.post = (0, typesafe_actions_1.createAction)('CORE/DEBUGGer/mattermost/post')();

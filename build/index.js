@@ -24,7 +24,7 @@
 //     translations={Translations}
 //     packageJSON={packageJson}>
 //     <Header.AppToolbar
-//         left={<><Header.BackendIndicator /><DebugButton msg={'test23'} /></>}
+//         left={<Header.BackendIndicator />}
 //         right={
 //             <>
 //                 <Indicator client={{
@@ -35,6 +35,7 @@
 //                 }} roomName={'currentGame'} />
 //                 <Settings.Button />
 //                 <Notification.Button.Show />
+//                 <DebugButton />
 //             </>
 //         }
 //     />

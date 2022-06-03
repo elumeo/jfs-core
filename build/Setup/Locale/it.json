@@ -45,6 +45,5 @@
     "webSocket.room": "WebSocket Room",
     "debug.title": "Inviare la segnalazione del problema",
     "debug.label": "Descrizione o informazioni",
-    "debug.submit": "inviare",
-    "debug.submitted" : "Segnalazione del problema inviata"
+    "debug.submit": "inviare"
 }
