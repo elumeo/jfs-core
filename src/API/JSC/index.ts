@@ -16,7 +16,7 @@ namespace JSCApi {
     params?: IUrlParams;
   }
   export namespace DTO {
-    export namespace DebugNotifier {
+    export namespace DebugNotification {
       export interface IMattermostDTO {
         payload?: string;
         createdAt?: string;
@@ -122,7 +122,7 @@ namespace JSCApi {
   }
   export namespace DebugNotificationClient {
     export const sendToMattermost = (
-      message: DTO.DebugNotifier.IMattermostDTO,
+      message: DTO.DebugNotification.IMattermostDTO,
       config?: IJscClientConfig
     ): Promise<AxiosResponse<void>> =>
       JscClient.post<void>("/debug/sendToMattermost", message, config);
@@ -135,12 +135,12 @@ namespace JSCApi {
     ): Promise<AxiosResponse<DTO.Session.IFrontendSessionDTO>> =>
       JscClient.post<DTO.Session.IFrontendSessionDTO>(
         "/session/" +
-          encodeURIComponent(
-            typeof appName === "number"
-              ? (appName as number).toString()
-              : appName
-          ) +
-          "",
+        encodeURIComponent(
+          typeof appName === "number"
+            ? (appName as number).toString()
+            : appName
+        ) +
+        "",
         credentials,
         config
       );
@@ -152,12 +152,12 @@ namespace JSCApi {
     ): Promise<AxiosResponse<DTO.Session.IFrontendSessionDTO>> =>
       JscClient.get<DTO.Session.IFrontendSessionDTO>(
         "/session/" +
-          encodeURIComponent(
-            typeof appName === "number"
-              ? (appName as number).toString()
-              : appName
-          ) +
-          "",
+        encodeURIComponent(
+          typeof appName === "number"
+            ? (appName as number).toString()
+            : appName
+        ) +
+        "",
         config
       );
     export const logout = (
@@ -179,10 +179,10 @@ namespace JSCApi {
     ): Promise<AxiosResponse<DTO.Authorization.IUserRightsDTO>> =>
       JscClient.get<DTO.Authorization.IUserRightsDTO>(
         "/user/" +
-          encodeURIComponent(
-            typeof login === "number" ? (login as number).toString() : login
-          ) +
-          "/rights",
+        encodeURIComponent(
+          typeof login === "number" ? (login as number).toString() : login
+        ) +
+        "/rights",
         config
       );
   }

@@ -1,7 +1,7 @@
 {
   "dtos": [
     {
-      "name": "DebugNotifier",
+      "name": "DebugNotification",
       "constants": [],
       "dtos": [
         {
@@ -479,7 +479,7 @@
           "parameters": [
             {
               "name": "message",
-              "type": "DTO.DebugNotifier.MattermostDTO",
+              "type": "DTO.DebugNotification.MattermostDTO",
               "optional": false,
               "array": false
             }

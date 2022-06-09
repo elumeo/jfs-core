@@ -12,7 +12,7 @@ declare namespace JSCApi {
         params?: IUrlParams;
     }
     namespace DTO {
-        namespace DebugNotifier {
+        namespace DebugNotification {
             interface IMattermostDTO {
                 payload?: string;
                 createdAt?: string;
@@ -117,7 +117,7 @@ declare namespace JSCApi {
         }
     }
     namespace DebugNotificationClient {
-        const sendToMattermost: (message: DTO.DebugNotifier.IMattermostDTO, config?: IJscClientConfig) => Promise<AxiosResponse<void>>;
+        const sendToMattermost: (message: DTO.DebugNotification.IMattermostDTO, config?: IJscClientConfig) => Promise<AxiosResponse<void>>;
     }
     namespace LoginClient {
         const loginFrontend: (appName: string, credentials: DTO.Login.ICredentialsDTO, config?: IJscClientConfig) => Promise<AxiosResponse<DTO.Session.IFrontendSessionDTO>>;
