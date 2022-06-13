@@ -46,9 +46,9 @@ var post = function (action$, _, _a) {
     var intl = _a.intl;
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.Debug.post)), (0, operators_1.map)(function (_a) {
         var payload = _a.payload;
-        return JSON.stringify(payload);
-    }), (0, operators_1.switchMap)(function (payload) {
-        return (0, rxjs_1.from)(JSC_1.default.DebugNotificationClient.sendToMattermost({ payload: payload }))
+        return ({ message: payload.description, payload: JSON.stringify(payload) });
+    }), (0, operators_1.switchMap)(function (dto) {
+        return (0, rxjs_1.from)(JSC_1.default.DebugNotificationClient.sendToMattermost(dto))
             .pipe((0, operators_1.switchMap)(function () { return [Action.addToastAction({ contentMessage: intl().formatMessage({ id: 'debug.submitted' }) })]; }), (0, operators_1.catchError)(function (e) { return [Action.addErrorNotification(e)]; }));
     }));
 };

@@ -26,9 +26,9 @@ const register: Epic = (action$, state$) =>
 const post: Epic = (action$, _, { intl }) =>
     action$.pipe(
         rxFilter(isActionOf(Action.Debug.post)),
-        map(({ payload }) => JSON.stringify(payload)),
-        switchMap((payload) =>
-            from(JSCApi.DebugNotificationClient.sendToMattermost({ payload }))
+        map(({ payload }) => ({ message: payload.description, payload: JSON.stringify(payload) })),
+        switchMap((dto) =>
+            from(JSCApi.DebugNotificationClient.sendToMattermost(dto))
                 .pipe(
                     switchMap(() => [Action.addToastAction({ contentMessage: intl().formatMessage({ id: 'debug.submitted' }) })]),
                     catchError((e) => [Action.addErrorNotification(e)])

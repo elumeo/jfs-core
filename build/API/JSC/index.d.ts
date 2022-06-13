@@ -14,6 +14,7 @@ declare namespace JSCApi {
     namespace DTO {
         namespace DebugNotification {
             interface IMattermostDTO {
+                message?: string;
                 payload?: string;
                 createdAt?: string;
                 createdBy?: string;

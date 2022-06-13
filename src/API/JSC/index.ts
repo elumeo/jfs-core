@@ -18,6 +18,7 @@ namespace JSCApi {
   export namespace DTO {
     export namespace DebugNotification {
       export interface IMattermostDTO {
+        message?: string;
         payload?: string;
         createdAt?: string;
         createdBy?: string;
@@ -135,12 +136,12 @@ namespace JSCApi {
     ): Promise<AxiosResponse<DTO.Session.IFrontendSessionDTO>> =>
       JscClient.post<DTO.Session.IFrontendSessionDTO>(
         "/session/" +
-        encodeURIComponent(
-          typeof appName === "number"
-            ? (appName as number).toString()
-            : appName
-        ) +
-        "",
+          encodeURIComponent(
+            typeof appName === "number"
+              ? (appName as number).toString()
+              : appName
+          ) +
+          "",
         credentials,
         config
       );
@@ -152,12 +153,12 @@ namespace JSCApi {
     ): Promise<AxiosResponse<DTO.Session.IFrontendSessionDTO>> =>
       JscClient.get<DTO.Session.IFrontendSessionDTO>(
         "/session/" +
-        encodeURIComponent(
-          typeof appName === "number"
-            ? (appName as number).toString()
-            : appName
-        ) +
-        "",
+          encodeURIComponent(
+            typeof appName === "number"
+              ? (appName as number).toString()
+              : appName
+          ) +
+          "",
         config
       );
     export const logout = (
@@ -179,10 +180,10 @@ namespace JSCApi {
     ): Promise<AxiosResponse<DTO.Authorization.IUserRightsDTO>> =>
       JscClient.get<DTO.Authorization.IUserRightsDTO>(
         "/user/" +
-        encodeURIComponent(
-          typeof login === "number" ? (login as number).toString() : login
-        ) +
-        "/rights",
+          encodeURIComponent(
+            typeof login === "number" ? (login as number).toString() : login
+          ) +
+          "/rights",
         config
       );
   }

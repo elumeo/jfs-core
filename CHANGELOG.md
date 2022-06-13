@@ -1,3 +1,6 @@
+## [10.1.3] 2022-06-13 (MT-6578)
+- enhanced debug feature
+
 ## [10.1.2] 2022-06-03
 - added DebugButton handlers and store
 

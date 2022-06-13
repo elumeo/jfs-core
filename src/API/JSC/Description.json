@@ -8,6 +8,11 @@
           "name": "MattermostDTO",
           "generics": [],
           "properties": {
+            "message": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
             "payload": {
               "type": "string",
               "array": false,
