@@ -1,5 +1,11 @@
-## [10.1.3] 2022-06-13 (MT-6578)
+## [10.1.5] 2022-06-13 (MT-6578)
 - enhanced debug feature
+
+## [10.1.4] 2022-05-22 (STORY-5015)
+- hide select field options while loading
+
+## [10.1.3] 2022-05-22 (STORY-5015)
+- added option to hide clear button for select field
 
 ## [10.1.2] 2022-06-03
 - added DebugButton handlers and store
