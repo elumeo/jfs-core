@@ -1,3 +1,7 @@
+## [10.1.7] 2022-07-08
+- added doctype to `index.html` template file
+- merge and bump version
+
 ## [10.1.6] 2022-07-08
 - updated node modules
 - created RefreshButton
