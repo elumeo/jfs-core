@@ -1,3 +1,8 @@
+## [10.1.6] 2022-07-08
+- updated node modules
+- created RefreshButton
+- used RefreshButton in AppCardHeader component
+
 ## [10.1.5] 2022-06-13 (MT-6578)
 - enhanced debug feature
 
