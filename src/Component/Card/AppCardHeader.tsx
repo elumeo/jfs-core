@@ -1,9 +1,9 @@
 import React, { memo, ReactNode, useMemo } from 'react';
-import { CardHeader, Grid, IconButton, LinearProgress, Typography } from '@material-ui/core';
-import RefreshIcon from '@material-ui/icons/Refresh';
+import { CardHeader, Grid, LinearProgress, Typography } from '@material-ui/core';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 import { useTheme, Theme } from '@material-ui/core/styles';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import RefreshButton from 'Component/Button/RefreshButton';
 
 export type AppCardHeaderBaseProps = {
   isLoading?: boolean;
@@ -39,9 +39,7 @@ const AppCardHeader = ({
   }), []);
 
   const buildRefreshButton = () => <Grid item>
-    <IconButton color={refreshButtonColor} size={refreshButtonSize} disabled={isLoading} onClick={onRefresh}>
-      <RefreshIcon />
-    </IconButton>
+    <RefreshButton color={refreshButtonColor} size={refreshButtonSize} disabled={isLoading} onClick={onRefresh} />
   </Grid>;
   const headerTitle = <>
     {isLoading && <LinearProgress color='secondary' style={linearProgressRootStyles} />}
