@@ -1,4 +1,4 @@
-## [10.1.7] 2022-07-08
+## [10.2.0] 2022-07-18
 - added doctype to `index.html` template file
 - merge and bump version
 
