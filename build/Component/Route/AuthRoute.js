@@ -53,7 +53,6 @@ var CircularProgress_1 = __importDefault(require("@mui/material/CircularProgress
 var Redux_1 = require("../../Types/Redux");
 var Action_1 = require("../../Store/Action");
 var react_redux_1 = require("react-redux");
-var react_router_1 = require("react-router");
 var AuthRoute = function (_a) {
     var children = _a.children, rest = __rest(_a, ["children"]);
     var dispatch = (0, react_redux_1.useDispatch)();
@@ -63,19 +62,12 @@ var AuthRoute = function (_a) {
     }); }), isAuthorized = _b.isAuthorized, isCheckingSession = _b.isCheckingSession;
     (0, react_1.useEffect)(function () {
         dispatch((0, Action_1.enterAuthorizedRoute)());
-    }, [dispatch]);
+    }, [rest.path, dispatch]);
     console.log('authroute', __assign(__assign({ children: children }, rest), { isAuthorized: isAuthorized, isCheckingSession: isCheckingSession }));
     return isCheckingSession
         ? react_1.default.createElement(CircularProgress_1.default, { id: 'check-session-progress' })
         : isAuthorized
             ? react_1.default.createElement(react_1.default.Fragment, null, children)
-            : react_1.default.createElement(react_router_1.Navigate, { to: '/' });
-    // isAuthorized ? children(
-    //   <BaseRoute {...props} />
-    // ) : isCheckingSession ? (
-    //   <CircularProgress id='check-session-progress' />
-    // ) : (
-    //   <></>
-    // );
+            : react_1.default.createElement(react_1.default.Fragment, null);
 };
 exports.default = AuthRoute;

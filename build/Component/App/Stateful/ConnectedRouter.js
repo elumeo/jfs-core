@@ -24,21 +24,40 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var react_redux_1 = require("react-redux");
 var react_router_1 = require("react-router");
 var ConnectedRouter = function (_a) {
     var location = _a.location, history = _a.history, children = _a.children;
-    var dispatch = (0, react_redux_1.useDispatch)();
+    var skipHistoryChange = react_1.default.useRef();
     var _b = react_1.default.useState({
         action: history.action,
         location: history.location
     }), state = _b[0], setState = _b[1];
-    react_1.default.useLayoutEffect(function () { return history.listen(setState); }, [history]);
-    // const ConnectedReactRouter = connect(({router: {location, action}}) => ({location, action}))(Router)
+    var onLocationChanged = function (location, action) {
+        setState({ action: action, location: location });
+    };
     (0, react_1.useEffect)(function () {
-        // dispatch(push())
-        console.log({ location: location });
-    }, [dispatch, location]);
+        var _a, _b;
+        var listener = history.listen(function (nextState) {
+            if (skipHistoryChange.current === true) {
+                skipHistoryChange.current = false;
+                return;
+            }
+            onLocationChanged(nextState.location, nextState.action);
+        });
+        if (((_a = history.location) === null || _a === void 0 ? void 0 : _a.pathname) !== ((_b = state.location) === null || _b === void 0 ? void 0 : _b.pathname)) {
+            onLocationChanged(history.location, history.action);
+        }
+        return listener;
+    }, [history, state]);
+    (0, react_1.useEffect)(function () {
+        if (skipHistoryChange.current === undefined) {
+            skipHistoryChange.current = false;
+        }
+        else if (history.location !== state.location) {
+            skipHistoryChange.current = true;
+            history.replace(state.location);
+        }
+    }, [state]);
     return react_1.default.createElement(react_router_1.Router, { location: state.location, navigationType: state.action, navigator: history }, children);
 };
 exports.default = ConnectedRouter;

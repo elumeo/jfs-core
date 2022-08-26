@@ -13,6 +13,12 @@ const Routes: React.FC = () => (
         path='/start'
         element={<AuthRoute><Develop /></AuthRoute>}
       />
+
+      <Route
+        key='start'
+        path='/start2'
+        element={<AuthRoute>hi</AuthRoute>}
+      />
       <Route
         key='default'
         path='/'

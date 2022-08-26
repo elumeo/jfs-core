@@ -1,5 +1,6 @@
 import { createAction } from 'typesafe-actions';
 import { Location } from 'history';
+import { LOCATION_CHANGE, LocationChangePayload } from 'connected-react-router';
 
 export type RouteDetails = {
   location: Location;
@@ -10,3 +11,4 @@ export const enterAuthorizedRoute = createAction('route/ENTER_AUTHORIZED')();
 export const enterUnauthorizedRoute = createAction(
   'route/ENTER_UNAUTHORIZED',
 )();
+export const locationChange = createAction(LOCATION_CHANGE)<LocationChangePayload>()

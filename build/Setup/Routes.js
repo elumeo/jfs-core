@@ -12,5 +12,6 @@ var Routes = function () { return (react_1.default.createElement(Content_1.defau
     react_1.default.createElement(react_router_dom_1.Routes, null,
         react_1.default.createElement(react_router_dom_1.Route, { key: 'start', path: '/start', element: react_1.default.createElement(AuthRoute_1.default, null,
                 react_1.default.createElement(develop_1.default, null)) }),
+        react_1.default.createElement(react_router_dom_1.Route, { key: 'start', path: '/start2', element: react_1.default.createElement(AuthRoute_1.default, null, "hi") }),
         react_1.default.createElement(react_router_dom_1.Route, { key: 'default', path: '/', element: react_1.default.createElement(react_router_dom_1.Navigate, { to: '/start' }) })))); };
 exports.default = Routes;

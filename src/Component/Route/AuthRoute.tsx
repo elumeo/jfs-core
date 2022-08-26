@@ -5,35 +5,25 @@ import { useSelector } from 'Types/Redux';
 import { enterAuthorizedRoute } from 'Store/Action';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router';
-type Props = {
+type Props = IBaseRouteProps & {
   children?: React.ReactNode
 }
 const AuthRoute: React.FC<Props> = ({ children, ...rest }) => {
   const dispatch = useDispatch()
-  const { isAuthorized, isCheckingSession } = useSelector<{
-    isAuthorized: boolean;
-    isCheckingSession: boolean;
-  }>(state => ({
+  const { isAuthorized, isCheckingSession } = useSelector(state => ({
     isAuthorized: state.Core.Session.isAuthorized,
     isCheckingSession: state.Core.Session.isCheckingSession,
   }));
   useEffect(() => {
     dispatch(enterAuthorizedRoute());
-  }, [dispatch]);
+  }, [rest.path, dispatch]);
   console.log('authroute', { children, ...rest, isAuthorized, isCheckingSession })
   return isCheckingSession
     ? <CircularProgress id='check-session-progress' />
     : isAuthorized
       ? <>{children}</>
-      : <Navigate to='/' />
+      : <></>
 
-  // isAuthorized ? children(
-  //   <BaseRoute {...props} />
-  // ) : isCheckingSession ? (
-  //   <CircularProgress id='check-session-progress' />
-  // ) : (
-  //   <></>
-  // );
 };
 
 export default AuthRoute;
