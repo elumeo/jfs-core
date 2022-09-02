@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, RouteProps } from 'react-router';
+import { Route, RouteProps } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 
 export type IBaseRouteProps = RouteProps & {

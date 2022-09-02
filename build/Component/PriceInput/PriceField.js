@@ -67,6 +67,8 @@ var PriceField = function (_a) {
         setFocused(true);
         (_a = props === null || props === void 0 ? void 0 : props.onFocus) === null || _a === void 0 ? void 0 : _a.call(props, event);
     }, [setFocused, selectOnFocus, props === null || props === void 0 ? void 0 : props.onFocus]);
-    return _focused ? react_1.default.createElement(Editor_1.default, __assign({ value: value, onChange: props.onChange, onBlur: _onBlur, selectOnFocus: selectOnFocus, currency: finalCurrency }, props)) : react_1.default.createElement(Display_1.default, __assign({ value: value, onChange: props.onChange, showDecimals: showDecimals, onFocus: _onFocus, currency: finalCurrency }, props));
+    return _focused
+        ? react_1.default.createElement(Editor_1.default, __assign({ value: value, onChange: props.onChange, onBlur: _onBlur, selectOnFocus: selectOnFocus, currency: finalCurrency }, props))
+        : react_1.default.createElement(Display_1.default, __assign({ value: value, onChange: props.onChange, showDecimals: showDecimals, onFocus: _onFocus, currency: finalCurrency }, props));
 };
 exports.default = (0, react_1.memo)(PriceField);

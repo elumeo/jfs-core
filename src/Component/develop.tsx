@@ -49,13 +49,15 @@ import { DateTimeRangeCellProps } from 'Types/Table/DateTimeRangeCellProps';
 import WarningIcon from '@mui/icons-material/Warning';
 import TableCellSelect from 'Component/Table/TableCell/TableCellSelect';
 import TableHeadSelect from 'Component/Table/TableHead/TableHeadSelect';
-import { OptionsObject, VariantType } from 'notistack';
+import { VariantType } from 'notistack';
 import { Notification } from 'Types/Notification';
 import Box from '@mui/material/Box';
 import { NativeSelectProps } from '@mui/material/NativeSelect/NativeSelect';
 import DatePicker from 'Component/DatePicker';
 import SelectClearButton, { SelectClearButtonProps } from 'Component/SelectClearButton';
 import definition from './App/Stateless/Style/Theme/Definition';
+import { useLocation, useParams, useMatch, useNavigate, useLinkClickHandler } from 'react-router-dom';
+import { history } from 'Store/Middleware';
 
 const tableRowHeight = 48;
 
@@ -155,9 +157,9 @@ const columns: ColumnData[] = [
     dataKey: 'select',
     disableSort: true,
     headerRenderer: () => <TableHeadSelect checked={false} onChange={console.log}
-                                           height={tableRowHeight} />,
+      height={tableRowHeight} />,
     cellRenderer: (cellProps: TableCellProps) => <TableCellSelect checked={false} value={cellProps.cellData}
-                                                                  onChange={console.log} height={tableRowHeight} />
+      onChange={console.log} height={tableRowHeight} />
   },
   {
     width: (width: number) => width - (120 * 4),
@@ -165,8 +167,8 @@ const columns: ColumnData[] = [
     dataKey: 'dessert',
     disableSort: true,
     cellRenderer: (cellProps: TableCellProps) => <TableCellDefault height={tableRowHeight} cellData={cellProps.cellData}
-                                                                   contentEllipseMode={ContentEllipseMode.Lines}
-                                                                   contentEllipseLines={2} />
+      contentEllipseMode={ContentEllipseMode.Lines}
+      contentEllipseLines={2} />
   },
   {
     width: 120,
@@ -207,6 +209,18 @@ const selectMenuItems = [
 
 const Develop: React.FC = () => {
   // const theme = useTheme();
+  const Location = useLocation()
+  const Params = useParams()
+  const Match = useMatch('')
+  const Navigate = useNavigate()
+  const LinkClickHandler = useLinkClickHandler('/start2')
+  console.log({
+    Location,
+    Params,
+    Match,
+    Navigate,
+    LinkClickHandler,
+  })
   const dispatch = useDispatch();
   const [testTextFieldValue, setTestTextFieldValue] = useState('');
   const [testSelectValue, setTestSelectValue] = useState('');
@@ -216,6 +230,8 @@ const Develop: React.FC = () => {
   const handleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => setTestSelectValue(event === null ? '' : event.target.value as string), []);
   const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
   const persistNotificationsRef = useRef(null);
+  const test = (id: string) => dispatch(Action.customRoutingTest('/start/' + id, history));
+  const route = () => dispatch(Action.push('/start/pushed'));
   const handleOnClickNotification: ButtonProps['onClick'] = useCallback(() => {
     const persist = persistNotificationsRef?.current?.checked;
     dispatch(Action.addNotification(generateNotification(persist)));
@@ -232,10 +248,12 @@ const Develop: React.FC = () => {
   return (
     <div style={{ margin: definition.spacing(1) }}>
       <Card>
-        <AppCardHeader title={'Test'} titleIcon={<WarningIcon />} onRefresh={console.log} />
+        <AppCardHeader title={`Test ${Params.id ?? ''}`} titleIcon={<WarningIcon />} onRefresh={console.log} />
         <AppCardContent>
           Das ist der Inhalt
           <IconButton size={'small'} color={'secondary'}><FilterReset /></IconButton>
+          <Button onClick={() => test('test1')}>test Router!</Button>
+          <Button onClick={() => route()}>test Router!</Button>
         </AppCardContent>
       </Card>
       <div style={{ marginTop: definition.spacing(1) }}>

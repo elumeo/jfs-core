@@ -11,23 +11,27 @@ var Content_1 = __importDefault(require("./Content"));
 var Header_1 = __importDefault(require("./Header"));
 var Actions_1 = __importDefault(require("./Actions"));
 var Footer_1 = __importDefault(require("./Footer"));
-var useStyles = (0, styles_1.makeStyles)(function (theme) { return ({
-    root: {
-        display: 'grid',
-        width: '100%',
-        gridTemplateColumns: '1fr auto',
-        gridTemplateRows: 'auto auto',
-        maxWidth: theme.spacing(60),
-        minHeight: 'fit-content',
-        backgroundColor: function (props) { var _a, _b; return ((_b = (_a = theme.palette) === null || _a === void 0 ? void 0 : _a[props.variant]) === null || _b === void 0 ? void 0 : _b['main']) || theme.palette['grey']['A400']; },
-        color: function (props) { var _a, _b; return ((_b = (_a = theme.palette) === null || _a === void 0 ? void 0 : _a[props.variant]) === null || _b === void 0 ? void 0 : _b['contrastText']) || theme.palette['grey']['50']; }
-    }
-}); });
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
+var useStyles = (0, styles_1.makeStyles)(function (props) {
+    var _a, _b, _c, _d;
+    return ({
+        root: {
+            display: 'grid',
+            width: '100%',
+            gridTemplateColumns: '1fr auto',
+            gridTemplateRows: 'auto auto',
+            maxWidth: Definition_1.default.spacing(60),
+            minHeight: 'fit-content',
+            backgroundColor: ((_b = (_a = Definition_1.default.palette) === null || _a === void 0 ? void 0 : _a[props.variant]) === null || _b === void 0 ? void 0 : _b['main']) || Definition_1.default.palette['grey']['A400'],
+            color: ((_d = (_c = Definition_1.default.palette) === null || _c === void 0 ? void 0 : _c[props.variant]) === null || _d === void 0 ? void 0 : _d['contrastText']) || Definition_1.default.palette['grey']['50']
+        }
+    });
+});
 var Card = function (_a) {
     var notification = _a.notification, temporary = _a.temporary;
-    var variant = notification.variant, isTranslationId = notification.isTranslationId;
+    var isTranslationId = notification.isTranslationId;
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
-    var classes = useStyles({ variant: variant });
+    var classes = useStyles(notification);
     var title = isTranslationId && notification.title
         ? formatMessage({ id: notification.title })
         : notification.title;

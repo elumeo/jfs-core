@@ -10,9 +10,9 @@ var isLoginRobotAvailable = function (state) {
 };
 exports.isLoginRobotAvailable = isLoginRobotAvailable;
 var isLoginOpen = function (state) {
-    return state.Core.Router.routeType === 'authorized' &&
+    return state.Core.Router.routeType !== 'authorized' ||
         !state.Core.Session.isAuthorized &&
-        !(0, exports.isLoginRobotAvailable)(state) &&
-        !state.Core.Session.isCheckingSession;
+            !(0, exports.isLoginRobotAvailable)(state) &&
+            !state.Core.Session.isCheckingSession;
 };
 exports.isLoginOpen = isLoginOpen;

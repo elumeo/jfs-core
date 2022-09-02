@@ -19,8 +19,8 @@ const useLogin = (): useLoginProps => {
     username: '',
     password: '',
   });
-  const handleCheck: useLoginProps['check'] = useCallback(() => dispatch(checkLogin(credentials)), [credentials,dispatch]);
-  const handleOnChange: useLoginProps['onChange'] = useCallback(next => setCredentials(next), []);
+  const handleCheck: useLoginProps['check'] = useCallback(() => dispatch(checkLogin(credentials)), [credentials, dispatch]);
+  const handleOnChange: useLoginProps['onChange'] = useCallback(next => setCredentials(old => ({ ...old, ...next })), [setCredentials]);
 
   return {
     open,

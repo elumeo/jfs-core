@@ -21,7 +21,7 @@ const Dialog: React.FC = () => {
           onChange={login.onChange}
           onSubmit={login.check}
         />
-      </DialogContent> 
+      </DialogContent>
       <DialogActions>
         <Submit
           onClick={login.check}

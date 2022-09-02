@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.enterUnauthorizedRoute = exports.enterAuthorizedRoute = void 0;
+exports.customRoutingTest = exports.enterUnauthorizedRoute = exports.enterAuthorizedRoute = exports.forward = exports.replace = exports.back = exports.push = void 0;
 var typesafe_actions_1 = require("typesafe-actions");
+var redux_react_router_1 = require("@lagunovsky/redux-react-router");
+Object.defineProperty(exports, "push", { enumerable: true, get: function () { return redux_react_router_1.push; } });
+Object.defineProperty(exports, "back", { enumerable: true, get: function () { return redux_react_router_1.back; } });
+Object.defineProperty(exports, "replace", { enumerable: true, get: function () { return redux_react_router_1.replace; } });
+Object.defineProperty(exports, "forward", { enumerable: true, get: function () { return redux_react_router_1.forward; } });
 exports.enterAuthorizedRoute = (0, typesafe_actions_1.createAction)('route/ENTER_AUTHORIZED')();
 exports.enterUnauthorizedRoute = (0, typesafe_actions_1.createAction)('route/ENTER_UNAUTHORIZED')();
+exports.customRoutingTest = (0, typesafe_actions_1.createAction)('route/customRoutingTest')();

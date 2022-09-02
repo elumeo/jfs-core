@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-// import { connectRouter, RouterState } from 'connected-react-router'
 import App, { State as AppState } from './App';
 import Configuration, { State as ConfigurationState } from './Configuration';
 import Language, { State as LanguageState } from './Language';
@@ -23,7 +22,6 @@ export type State = {
   Logout?: LogoutState;
   Navigation?: NavigationState;
   Notification?: NotificationState;
-  // router?: RouterState;
   Router?: RouterState;
   Session?: SessionState;
   Settings?: SettingsState;
@@ -36,7 +34,6 @@ export type State = {
 
 const Core = combineReducers<State>({
   App,
-  // router : connectRouter(history),
   Configuration,
   Language,
   Login,

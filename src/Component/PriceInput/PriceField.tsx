@@ -14,12 +14,12 @@ type Props = {
 } & Partial<StandardTextFieldProps>;
 
 const PriceField = ({
-                      currency = null,
-                      value = 0.0,
-                      selectOnFocus = true,
-                      showDecimals = false,
-                      ...props
-                    }: Props) => {
+  currency = null,
+  value = 0.0,
+  selectOnFocus = true,
+  showDecimals = false,
+  ...props
+}: Props) => {
   const configCurrency = useCurrency();
   const finalCurrency = currency === null ? configCurrency : currency;
   const [_focused, setFocused] = React.useState(props.focused);
@@ -33,20 +33,22 @@ const PriceField = ({
     props?.onFocus?.(event);
   }, [setFocused, selectOnFocus, props?.onFocus]);
 
-  return _focused ? <Editor
-    value={value}
-    onChange={props.onChange}
-    onBlur={_onBlur}
-    selectOnFocus={selectOnFocus}
-    currency={finalCurrency}
-    {...props}
-  /> : <Display
-    value={value}
-    onChange={props.onChange}
-    showDecimals={showDecimals}
-    onFocus={_onFocus}
-    currency={finalCurrency}
-    {...props}
-  />;
+  return _focused
+    ? <Editor
+      value={value}
+      onChange={props.onChange}
+      onBlur={_onBlur}
+      selectOnFocus={selectOnFocus}
+      currency={finalCurrency}
+      {...props}
+    />
+    : <Display
+      value={value}
+      onChange={props.onChange}
+      showDecimals={showDecimals}
+      onFocus={_onFocus}
+      currency={finalCurrency}
+      {...props}
+    />;
 };
 export default memo(PriceField);

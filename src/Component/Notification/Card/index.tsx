@@ -8,17 +8,18 @@ import Content from './Content';
 import Header from './Header';
 import Actions from './Actions';
 import Footer from './Footer';
+import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
-const useStyles = makeStyles<Theme, { variant: Severity }>(theme => ({
+const useStyles = makeStyles<{ variant: Severity }>(props => ({
   root: {
     display: 'grid',
     width: '100%',
     gridTemplateColumns: '1fr auto',
     gridTemplateRows: 'auto auto',
-    maxWidth: theme.spacing(60),
+    maxWidth: definition.spacing(60),
     minHeight: 'fit-content',
-    backgroundColor: props => theme.palette?.[props.variant]?.['main'] || theme.palette['grey']['A400'],
-    color: props => theme.palette?.[props.variant]?.['contrastText'] || theme.palette['grey']['50']
+    backgroundColor: definition.palette?.[props.variant as keyof typeof definition.palette]?.['main'] || definition.palette['grey']['A400'],
+    color: definition.palette?.[props.variant as keyof typeof definition.palette]?.['contrastText'] || definition.palette['grey']['50']
   }
 }))
 
@@ -28,9 +29,9 @@ export type Props = {
 };
 
 const Card: React.FC<Props> = ({ notification, temporary }) => {
-  const { variant, isTranslationId } = notification
+  const { isTranslationId } = notification
   const { formatMessage } = useIntl()
-  const classes = useStyles({ variant: variant as Severity });
+  const classes = useStyles(notification);
 
   const title = isTranslationId && notification.title
     ? formatMessage({ id: notification.title as string })

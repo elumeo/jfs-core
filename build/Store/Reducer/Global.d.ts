@@ -1,10 +1,9 @@
-import { History } from 'history';
 import { Reducer } from 'redux';
 import { State as CoreState } from './Core';
-import { RouterState } from 'connected-react-router';
+import { ReduxRouterState } from '@lagunovsky/redux-react-router';
 export declare type State = {
     Core: CoreState;
-    router: RouterState;
+    router: ReduxRouterState;
 };
-declare const Global: (history: History) => Reducer<State>;
+declare const Global: Reducer<State>;
 export default Global;

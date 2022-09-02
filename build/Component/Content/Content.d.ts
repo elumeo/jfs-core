@@ -1,6 +1,9 @@
 import React from 'react';
 declare type ContentProps = {
-    children: React.ReactNode;
+    type: ContentType;
+    children: ContentProps['type'] extends 'component' ? React.ReactNode : string;
+    translate?: ContentProps['type'] extends 'component' ? never : boolean;
 };
-declare const Content: ({ children }: ContentProps) => JSX.Element;
+export declare type ContentType = 'text' | 'component';
+declare const Content: React.FC<ContentProps>;
 export default Content;

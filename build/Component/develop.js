@@ -71,6 +71,8 @@ var Box_1 = __importDefault(require("@mui/material/Box"));
 var DatePicker_1 = __importDefault(require("./DatePicker"));
 var SelectClearButton_1 = __importDefault(require("./SelectClearButton"));
 var Definition_1 = __importDefault(require("./App/Stateless/Style/Theme/Definition"));
+var react_router_dom_1 = require("react-router-dom");
+var Middleware_1 = require("../Store/Middleware");
 var tableRowHeight = 48;
 var generateNotification = function (persist) {
     if (persist === void 0) { persist = false; }
@@ -185,16 +187,31 @@ var selectMenuItems = [
     react_1.default.createElement(material_1.MenuItem, { value: 'test 4', key: 'menu-item-4' }, "Test 4")
 ];
 var Develop = function () {
+    var _a;
     // const theme = useTheme();
+    var Location = (0, react_router_dom_1.useLocation)();
+    var Params = (0, react_router_dom_1.useParams)();
+    var Match = (0, react_router_dom_1.useMatch)('');
+    var Navigate = (0, react_router_dom_1.useNavigate)();
+    var LinkClickHandler = (0, react_router_dom_1.useLinkClickHandler)('/start2');
+    console.log({
+        Location: Location,
+        Params: Params,
+        Match: Match,
+        Navigate: Navigate,
+        LinkClickHandler: LinkClickHandler,
+    });
     var dispatch = (0, react_redux_1.useDispatch)();
-    var _a = (0, react_1.useState)(''), testTextFieldValue = _a[0], setTestTextFieldValue = _a[1];
-    var _b = (0, react_1.useState)(''), testSelectValue = _b[0], setTestSelectValue = _b[1];
-    var _c = (0, react_1.useState)(null), testDatePickerValue = _c[0], setTestDatePickerValue = _c[1];
+    var _b = (0, react_1.useState)(''), testTextFieldValue = _b[0], setTestTextFieldValue = _b[1];
+    var _c = (0, react_1.useState)(''), testSelectValue = _c[0], setTestSelectValue = _c[1];
+    var _d = (0, react_1.useState)(null), testDatePickerValue = _d[0], setTestDatePickerValue = _d[1];
     var noRowsRenderer = (0, react_1.useCallback)(function () { return react_1.default.createElement(TableRow_1.TableRowLoading, null); }, []);
     var rowGetter = (0, react_1.useCallback)(function (row) { return rows[row.index]; }, []);
     var handleSelectUpdate = (0, react_1.useCallback)(function (event) { return setTestSelectValue(event === null ? '' : event.target.value); }, []);
     var handleTextFieldUpdate = (0, react_1.useCallback)(function (event) { return setTestTextFieldValue(event === null ? '' : event.target.value); }, []);
     var persistNotificationsRef = (0, react_1.useRef)(null);
+    var test = function (id) { return dispatch(Action.customRoutingTest('/start/' + id, Middleware_1.history)); };
+    var route = function () { return dispatch(Action.push('/start/pushed')); };
     var handleOnClickNotification = (0, react_1.useCallback)(function () {
         var _a;
         var persist = (_a = persistNotificationsRef === null || persistNotificationsRef === void 0 ? void 0 : persistNotificationsRef.current) === null || _a === void 0 ? void 0 : _a.checked;
@@ -210,11 +227,13 @@ var Develop = function () {
     })); }, []);
     return (react_1.default.createElement("div", { style: { margin: Definition_1.default.spacing(1) } },
         react_1.default.createElement(material_1.Card, null,
-            react_1.default.createElement(Card_1.AppCardHeader, { title: 'Test', titleIcon: react_1.default.createElement(Warning_1.default, null), onRefresh: console.log }),
+            react_1.default.createElement(Card_1.AppCardHeader, { title: "Test ".concat((_a = Params.id) !== null && _a !== void 0 ? _a : ''), titleIcon: react_1.default.createElement(Warning_1.default, null), onRefresh: console.log }),
             react_1.default.createElement(Card_1.AppCardContent, null,
                 "Das ist der Inhalt",
                 react_1.default.createElement(material_1.IconButton, { size: 'small', color: 'secondary' },
-                    react_1.default.createElement(Icon_1.FilterReset, null)))),
+                    react_1.default.createElement(Icon_1.FilterReset, null)),
+                react_1.default.createElement(material_1.Button, { onClick: function () { return test('test1'); } }, "test Router!"),
+                react_1.default.createElement(material_1.Button, { onClick: function () { return route(); } }, "test Router!"))),
         react_1.default.createElement("div", { style: { marginTop: Definition_1.default.spacing(1) } },
             react_1.default.createElement(material_1.Card, null,
                 react_1.default.createElement(material_1.CardContent, { style: { height: 600 } },

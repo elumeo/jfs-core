@@ -44,6 +44,9 @@ var useStyles = (0, styles_1.makeStyles)(function (theme) { return ({
             width: '100%',
             height: '100%',
             padding: 0
+        },
+        "& > .SnackbarItem-contentRoot": {
+            padding: '0 0 0 0 !important',
         }
     },
     containerAnchorOriginTopRight: {
@@ -56,7 +59,7 @@ var Snackbar = function (_a) {
     var notificationMax = (0, Redux_1.useSelector)(selectNotificationMax);
     var anchorOrigin = notificationPosition == 'topRight' && anchorOriginTopRight || anchorOriginBottomRight;
     var classes = useStyles();
-    return (react_1.default.createElement(notistack_1.SnackbarProvider, { className: classes.root, anchorOrigin: anchorOrigin, maxSnack: notificationMax, classes: { containerAnchorOriginTopRight: classes.containerAnchorOriginTopRight }, domRoot: document.getElementById('overlay') },
+    return (react_1.default.createElement(notistack_1.SnackbarProvider, { anchorOrigin: anchorOrigin, maxSnack: notificationMax, classes: classes, domRoot: document.getElementById('overlay') },
         react_1.default.createElement(Notification.Notistack, null),
         children));
 };

@@ -1,7 +1,6 @@
-/// <reference types="connected-react-router" />
 export declare const appInitialized: ((state: {
     Core: import("../../Reducer/Core").State;
-    router: import("connected-react-router").RouterState<LocationState>;
+    router: import("@lagunovsky/redux-react-router").ReduxRouterState;
 }) => boolean) & import("reselect").OutputSelectorFields<(args_0: import("../../Reducer/Core/App").State) => boolean & {
     clearCache: () => void;
 }> & {
@@ -9,7 +8,7 @@ export declare const appInitialized: ((state: {
 };
 export declare const allowRobotLogin: ((state: {
     Core: import("../../Reducer/Core").State;
-    router: import("connected-react-router").RouterState<LocationState>;
+    router: import("@lagunovsky/redux-react-router").ReduxRouterState;
 }) => boolean) & import("reselect").OutputSelectorFields<(args_0: import("../../Reducer/Core/App").State) => boolean & {
     clearCache: () => void;
 }> & {
@@ -17,7 +16,7 @@ export declare const allowRobotLogin: ((state: {
 };
 export declare const packageJson: ((state: {
     Core: import("../../Reducer/Core").State;
-    router: import("connected-react-router").RouterState<LocationState>;
+    router: import("@lagunovsky/redux-react-router").ReduxRouterState;
 }) => {
     version?: string;
 }) & import("reselect").OutputSelectorFields<(args_0: import("../../Reducer/Core/App").State) => {

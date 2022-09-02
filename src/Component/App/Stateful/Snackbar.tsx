@@ -20,6 +20,9 @@ const useStyles = makeStyles(theme => ({
       width: '100%',
       height: '100%',
       padding: 0
+    },
+    "& > .SnackbarItem-contentRoot": {
+      padding: '0 0 0 0 !important',
     }
   },
   containerAnchorOriginTopRight: {
@@ -34,10 +37,9 @@ const Snackbar = ({ children }: { children: React.ReactNode }) => {
   const classes = useStyles()
   return (
     <SnackbarProvider
-      className={classes.root}
       anchorOrigin={anchorOrigin}
       maxSnack={notificationMax}
-      classes={{ containerAnchorOriginTopRight: classes.containerAnchorOriginTopRight }}
+      classes={classes}
       domRoot={document.getElementById('overlay')}
     >
       <Notification.Notistack />

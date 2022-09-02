@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -36,7 +47,7 @@ var useLogin = function () {
         password: '',
     }), credentials = _a[0], setCredentials = _a[1];
     var handleCheck = (0, react_1.useCallback)(function () { return dispatch((0, Action_1.checkLogin)(credentials)); }, [credentials, dispatch]);
-    var handleOnChange = (0, react_1.useCallback)(function (next) { return setCredentials(next); }, []);
+    var handleOnChange = (0, react_1.useCallback)(function (next) { return setCredentials(function (old) { return (__assign(__assign({}, old), next)); }); }, [setCredentials]);
     return {
         open: open,
         credentials: credentials,

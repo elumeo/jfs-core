@@ -1,7 +1,6 @@
-/// <reference types="connected-react-router" />
 export declare const Configuration: ((state: {
     Core: import("../../Reducer/Core").State;
-    router: import("connected-react-router").RouterState<LocationState>;
+    router: import("@lagunovsky/redux-react-router").ReduxRouterState;
 }) => import("../../../Types/Configuration").Configuration) & import("reselect").OutputSelectorFields<(args_0: import("../../Reducer/Core/Configuration").State<import("../../../Types/Configuration").Configuration>) => import("../../../Types/Configuration").Configuration & {
     clearCache: () => void;
 }> & {

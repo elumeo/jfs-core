@@ -3,12 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
 var react_1 = __importDefault(require("react"));
 var style = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     boxSizing: 'border-box',
+    gap: Definition_1.default.spacing(1),
     height: 110,
     width: 240,
     marginTop: 6,

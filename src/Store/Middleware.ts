@@ -1,9 +1,9 @@
 import { applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createEpicMiddleware } from 'redux-observable';
-import { routerMiddleware } from 'connected-react-router';
 import { createHashHistory } from 'history';
 import { Epic, EpicMiddleware } from 'Types/Redux';
+import { createRouterMiddleware } from '@lagunovsky/redux-react-router'
 
 declare const window: Window & { __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: unknown };
 export const history = createHashHistory();
@@ -13,7 +13,7 @@ const epicMiddleware: EpicMiddleware = createEpicMiddleware({
 const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
 const storeEnhancer = applyMiddleware(
   epicMiddleware,
-  routerMiddleware(history),
+  createRouterMiddleware(history)
 );
 const middleware = (
   process.env.NODE_ENV == 'development'

@@ -1,3 +1,4 @@
+import definition from 'Component/App/Stateless/Style/Theme/Definition';
 import React from 'react';
 
 const style: React.CSSProperties = {
@@ -5,6 +6,7 @@ const style: React.CSSProperties = {
   flexDirection: 'column',
   justifyContent: 'space-between',
   boxSizing: 'border-box',
+  gap: definition.spacing(1),
   height: 110,
   width: 240,
   marginTop: 6,

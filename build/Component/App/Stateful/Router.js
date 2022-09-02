@@ -15,14 +15,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var ConnectedRouter_1 = __importDefault(require("./ConnectedRouter"));
-// import { useSelector } from '../../../Types/Redux';
+var redux_react_router_1 = require("@lagunovsky/redux-react-router");
 var Middleware_1 = require("../../../Store/Middleware");
-var Redux_1 = require("../../../Types/Redux");
-// @ts-ignore With react 18 it is required to specify children directly. Issue already created: https://github.com/supasate/connected-react-router/issues/565
 var Router = function (props) {
-    var _history = (0, Redux_1.useSelector)(function (state) { return state.router; });
-    console.log('state', { _history: _history, history: Middleware_1.history });
-    return react_1.default.createElement(ConnectedRouter_1.default, __assign({ history: Middleware_1.history, location: Middleware_1.history.location }, props));
+    return react_1.default.createElement(redux_react_router_1.ReduxRouter, __assign({}, props, { history: Middleware_1.history }));
 };
 exports.default = Router;

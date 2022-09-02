@@ -46,7 +46,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var react_router_1 = require("react-router");
+var react_router_dom_1 = require("react-router-dom");
 var react_intl_1 = require("react-intl");
 var BaseRoute = function (_a) {
     var 
@@ -63,6 +63,6 @@ var BaseRoute = function (_a) {
             document.title = formatMessage({ id: 'app.title' });
         }
     }, [translationId]);
-    return react_1.default.createElement(react_router_1.Route, __assign({}, rest));
+    return react_1.default.createElement(react_router_dom_1.Route, __assign({}, rest));
 };
 exports.default = BaseRoute;

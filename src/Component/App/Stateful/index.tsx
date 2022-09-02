@@ -2,7 +2,7 @@ import React from 'react';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import WebSocket from './WebSocket';
-import Router, {Props as RouterProps} from './Router';
+import Router, { Props as RouterProps } from './Router';
 import Initializer from './Initializer';
 import International from './International';
 import Snackbar from './Snackbar';

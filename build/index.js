@@ -17,41 +17,44 @@
 // import { create } from './Store';
 // import { history } from './Store/Middleware';
 // import Indicator from './Component/WebSocket/Room/Status/Indicator';
+// import { Link } from 'react-router-dom';
 // const container = document.getElementById('root');
 // const root = createRoot(container)
 // root.render(
-//   <App
-//     store={create(epic, reducer(history))}
-//     title='core'
-//     translations={Translations}
-//     packageJSON={packageJson}>
-//     <Header.AppToolbar
-//       left={<Header.BackendIndicator />}
-//       right={
-//         <>
-//           <Indicator
-//             client={{
-//               Host: 'https://api-test.juwelo.de',
-//               Path: '/staging/websocket2.services',
-//               PrivateNamespace: 'Jsc2Jfs',
-//               AutoRoomSubscriptions: ['currentGame', 'plannedGames']
-//             }}
-//             roomName={'currentGame'}
-//           />
-//           <Settings.Button />
-//           <Notification.Button.Show />
-//         </>
-//       }
-//     />
-//     <Routes />
-//     <Overlay>
-//       <Navigation />
-//       <Login.Dialog />
-//       <Logout.Dialog />
-//       <Settings.Dialog>
-//         <Language.Settings />
-//       </Settings.Dialog>
-//       <Snackbar />
-//     </Overlay>
-//   </App>
+//     <App
+//         store={create(epic, reducer)}
+//         title='core'
+//         translations={Translations}
+//         packageJSON={packageJson}>
+//         <Header.AppToolbar
+//             left={<Header.BackendIndicator />}
+//             right={
+//                 <>
+//                     <Indicator
+//                         client={{
+//                             Host: 'https://api-test.juwelo.de',
+//                             Path: '/staging/websocket2.services',
+//                             PrivateNamespace: 'Jsc2Jfs',
+//                             AutoRoomSubscriptions: ['currentGame', 'plannedGames']
+//                         }}
+//                         roomName={'currentGame'}
+//                     />
+//                     <Settings.Button />
+//                     <Notification.Button.Show />
+//                     <Link to='/start'>start</Link>
+//                     <Link to='/start2'>start2</Link>
+//                 </>
+//             }
+//         />
+//         <Routes />
+//         <Overlay>
+//             <Navigation />
+//             <Login.Dialog />
+//             <Logout.Dialog />
+//             <Settings.Dialog>
+//                 <Language.Settings />
+//             </Settings.Dialog>
+//             <Snackbar />
+//         </Overlay>
+//     </App>
 // );

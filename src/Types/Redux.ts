@@ -7,19 +7,21 @@ import * as TAction from 'Store/Action';
 import * as TA from 'typesafe-actions';
 import * as Global from 'Store/Reducer/Global';
 import * as Redux from 'react-redux';
-// import { LocationAc } from 'connected-react-router';
+import { HashHistory } from 'history';
+import { IntlShape } from 'react-intl';
+import { LocationChangeAction } from '@lagunovsky/redux-react-router'
+
 
 export type State<T extends {} = {}> = Global.State & T;
 export type ActionType<T extends {} = {}> =
   | TA.ActionType<typeof TAction & T>
-  // |
-  //  CallHistoryMethodAction;
-export type Dependencies<T extends {} = {}> = T & {};
+  | LocationChangeAction
+export type Dependencies<T extends {} = {}> = T & { intl?: () => IntlShape, history: HashHistory };
 export type Epic<
   T1 extends {} = {},
   T2 extends {} = {},
   T3 extends {} = {}
-> = TEpic<ActionType<T1>, ActionType<T1>, State<T2>, Dependencies<T3>>;
+  > = TEpic<ActionType<T1>, ActionType<T1>, State<T2>, Dependencies<T3>>;
 
 export type EpicMiddleware = TEpicMiddleware<
   ActionType,

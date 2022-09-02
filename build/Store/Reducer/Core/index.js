@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var redux_1 = require("redux");
-// import { connectRouter, RouterState } from 'connected-react-router'
 var App_1 = __importDefault(require("./App"));
 var Configuration_1 = __importDefault(require("./Configuration"));
 var Language_1 = __importDefault(require("./Language"));
@@ -21,7 +20,6 @@ var Locale_1 = __importDefault(require("./Locale"));
 var WebSocket_1 = __importDefault(require("./WebSocket"));
 var Core = (0, redux_1.combineReducers)({
     App: App_1.default,
-    // router : connectRouter(history),
     Configuration: Configuration_1.default,
     Language: Language_1.default,
     Login: Login_1.default,

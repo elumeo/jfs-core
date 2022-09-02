@@ -19,4 +19,4 @@ const loadConfiguration: Epic = action$ =>
     catchError(() => of(Action.loadConfigFailed())),
   );
 
-export default loadConfiguration;
+export default loadConfiguration
