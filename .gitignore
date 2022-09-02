@@ -16,5 +16,7 @@ tsconfig.tsbuildinfo
 /Dockerfile
 /docker-compose-test.yml
 /cypress.json
+/build/Component/index
+/build/Component/wdyr
 /build/Component/develop
 /build/Component/Develop*
