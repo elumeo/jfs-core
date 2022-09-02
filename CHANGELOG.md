@@ -1,3 +1,8 @@
+## [10.3.0] 2022-09-02
+- removed Content component
+- added Layout component (test on route: `/app_layout`)
+- updated node modules
+
 ## [10.2.0] 2022-07-18
 - added doctype to `index.html` template file
 - merge and bump version
