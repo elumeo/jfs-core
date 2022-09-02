@@ -18,6 +18,13 @@
 // import { history } from './Store/Middleware';
 // import Indicator from './Component/WebSocket/Room/Status/Indicator';
 // import DebugButton from './Component/Button/DebugButton';
+//
+// declare const module: { hot: { accept: () => void } };
+//
+// if (module.hot) {
+//   module.hot.accept();
+// }
+//
 // render(<App
 //     store={create(epic, reducer(history))}
 //     title='core'
@@ -50,3 +57,4 @@
 //         <Snackbar />
 //     </Overlay>
 // </App>, document.getElementById('root'));
+//
