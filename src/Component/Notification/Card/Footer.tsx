@@ -1,33 +1,25 @@
 import * as React from 'react';
-import Box from '@material-ui/core/Box';
+import {CSSProperties, useMemo} from 'react';
+import Box, {BoxProps} from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import { Notification } from 'Types/Notification';
-import { makeStyles } from '@material-ui/core/styles';
-import { useIntl } from 'react-intl';
-import { useMemo } from 'react';
+import {Notification} from 'Types/Notification';
+import {useIntl} from 'react-intl';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: theme.spacing(1, 2),
-    gridColumnStart: 1,
-    gridColumnEnd: 'none',
-    textAlign: 'right'
-  }
-}))
+const httpDetailsStyle: CSSProperties = {wordBreak: 'break-word'}
 
-type Props = Pick<Notification, 'timeStamp' | 'httpDetails'>
+type Props = Pick<BoxProps, 'className'>
+  & Pick<Notification, 'timeStamp' | 'httpDetails'>
 
-const Footer: React.FC<Props> = ({ timeStamp, httpDetails }) => {
-  const classes = useStyles()
-  const { formatDate, formatTime } = useIntl();
+const Footer: React.FC<Props> = ({timeStamp, httpDetails, className}) => {
+  const {formatDate, formatTime} = useIntl();
   const formattedTimeStamp = useMemo(() =>
-      timeStamp && <>{formatDate(timeStamp, { dateStyle: 'medium' })}&nbsp;{formatTime(timeStamp, { timeStyle: 'medium' })}</>
+      timeStamp && <>{formatDate(timeStamp, {dateStyle: 'medium'})}&nbsp;{formatTime(timeStamp, {timeStyle: 'medium'})}</>
     , [timeStamp])
   return (
     !httpDetails && !formattedTimeStamp
       ? null :
-      <Box className={classes.root}>
-        {httpDetails && <Typography variant='caption' component='div'>{httpDetails}</Typography>}
+      <Box className={className}>
+        {httpDetails && <Typography style={httpDetailsStyle} variant='caption' component='div'>{httpDetails}</Typography>}
         {formattedTimeStamp && <Typography variant='caption' component='div'>{formattedTimeStamp}</Typography>}
       </Box>
   )

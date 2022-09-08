@@ -35,6 +35,10 @@ var useStyles = (0, styles_1.makeStyles)(({
     root: {
         width: '100%',
         overflow: 'hidden'
+    },
+    content: {
+        overflow: 'hidden',
+        wordBreak: 'break-word'
     }
 }));
 var Header = function (_a) {
@@ -43,6 +47,6 @@ var Header = function (_a) {
     var icon = (0, useicon_1.default)(variant);
     return (!icon && !title && !subtitle
         ? null :
-        React.createElement(CardHeader_1.default, { avatar: icon, title: React.createElement(Typography_1.default, { variant: 'h6', component: 'div' }, title), subheader: React.createElement(Typography_1.default, { variant: 'subtitle1', component: 'div' }, subtitle), subheaderTypographyProps: { color: 'inherit' }, className: classes.root }));
+        React.createElement(CardHeader_1.default, { avatar: icon, title: React.createElement(Typography_1.default, { variant: 'h6', component: 'div' }, title), subheader: React.createElement(Typography_1.default, { variant: 'subtitle1', component: 'div' }, subtitle), subheaderTypographyProps: { color: 'inherit' }, classes: classes }));
 };
 exports.default = React.memo(Header);

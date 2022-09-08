@@ -27,22 +27,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
+var react_1 = require("react");
 var Box_1 = __importDefault(require("@material-ui/core/Box"));
 var Typography_1 = __importDefault(require("@material-ui/core/Typography"));
-var styles_1 = require("@material-ui/core/styles");
 var react_intl_1 = require("react-intl");
-var react_1 = require("react");
-var useStyles = (0, styles_1.makeStyles)(function (theme) { return ({
-    root: {
-        padding: theme.spacing(1, 2),
-        gridColumnStart: 1,
-        gridColumnEnd: 'none',
-        textAlign: 'right'
-    }
-}); });
+var httpDetailsStyle = { wordBreak: 'break-word' };
 var Footer = function (_a) {
-    var timeStamp = _a.timeStamp, httpDetails = _a.httpDetails;
-    var classes = useStyles();
+    var timeStamp = _a.timeStamp, httpDetails = _a.httpDetails, className = _a.className;
     var _b = (0, react_intl_1.useIntl)(), formatDate = _b.formatDate, formatTime = _b.formatTime;
     var formattedTimeStamp = (0, react_1.useMemo)(function () {
         return timeStamp && React.createElement(React.Fragment, null,
@@ -52,8 +43,8 @@ var Footer = function (_a) {
     }, [timeStamp]);
     return (!httpDetails && !formattedTimeStamp
         ? null :
-        React.createElement(Box_1.default, { className: classes.root },
-            httpDetails && React.createElement(Typography_1.default, { variant: 'caption', component: 'div' }, httpDetails),
+        React.createElement(Box_1.default, { className: className },
+            httpDetails && React.createElement(Typography_1.default, { style: httpDetailsStyle, variant: 'caption', component: 'div' }, httpDetails),
             formattedTimeStamp && React.createElement(Typography_1.default, { variant: 'caption', component: 'div' }, formattedTimeStamp)));
 };
 exports.default = React.memo(Footer);

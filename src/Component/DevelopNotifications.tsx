@@ -1,12 +1,12 @@
-import React, { useCallback, useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { Button, ButtonProps, Checkbox, FormControlLabel, Grid, IconButton, NativeSelect } from '@material-ui/core';
+import React, {useCallback, useRef} from 'react';
+import {useDispatch} from 'react-redux';
+import {Button, ButtonProps, Checkbox, FormControlLabel, Grid, IconButton, NativeSelect} from '@material-ui/core';
 import * as Action from 'Store/Action';
-import { NativeSelectProps } from '@material-ui/core/NativeSelect/NativeSelect';
-import { Notification } from 'Types/Notification';
-import { VariantType } from 'notistack';
+import {NativeSelectProps} from '@material-ui/core/NativeSelect/NativeSelect';
+import {Notification} from 'Types/Notification';
+import {VariantType} from 'notistack';
 import Box from '@material-ui/core/Box';
-import { Block, Refresh, Visibility } from '@material-ui/icons';
+import {Block, Refresh, Visibility} from '@material-ui/icons';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 
@@ -24,7 +24,7 @@ const generateNotification = (persist = false): Notification => {
     id,
     group,
     variant,
-    notistackOptions: { persist: persist }
+    notistackOptions: {persist: persist}
   };
   switch (variant) {
     case 'error':
@@ -52,7 +52,7 @@ const generateNotification = (persist = false): Notification => {
         action: () => <IconButton><Visibility/></IconButton>
       };
     case 'success':
-      return { ...defaultProps, title: 'Changes saved' };
+      return {...defaultProps, title: 'Changes saved'};
     case 'info':
       return {
         ...defaultProps,
@@ -61,7 +61,7 @@ const generateNotification = (persist = false): Notification => {
       };
     case 'default':
     default:
-      return { ...defaultProps, variant: 'default', content: 'content loaded' };
+      return {...defaultProps, variant: 'default', content: 'content loaded'};
   }
 };
 
@@ -75,7 +75,10 @@ const DevelopNotifications: React.FC = () => {
   const handleOnClickErrorNotification: ButtonProps['onClick'] = useCallback(() => {
     dispatch(Action.addErrorNotification(
       {
-        config: {},
+        config: {
+          method: 'GET',
+          url: '"http://de.master.api.staging-jsc-app.juwelo.local/orderitems?filter=customerId:foobar%3Bstatus:booked,cancelled%3BisInOpenBasket:false%3BexcludeStaffProducts:true&options=sortBy:sortByLikeReturnSlip%3BincludeOrderOffsetCreditBalance:true"'
+        },
         toJSON: () => ({}),
         isAxiosError: true,
         name: 'An AxiosError',
@@ -87,7 +90,7 @@ const DevelopNotifications: React.FC = () => {
           status: 23,
           statusText: '23',
           data: {
-            "error": "DI\\DependencyException",
+            "error": "Jfs\\TestCase\\Exception\\VeryLongNamesProvokesLineBreaksOrOverflowsException",
             "id": 0,
             "message": "Error while injecting in AuthorizationService\\Services\\UserPasswordService::userPasswordDAO. SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known",
             "trace": [

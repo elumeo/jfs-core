@@ -35,14 +35,20 @@ var useStyles = (0, styles_1.makeStyles)(({
         gridRowStart: 2,
         gridColumnStart: 1,
         gridColumnEnd: 'none'
+    },
+}));
+var useTypographyStyles = (0, styles_1.makeStyles)(({
+    body2: {
+        wordBreak: 'break-word'
     }
 }));
 var Content = function (_a) {
     var children = _a.children;
     var classes = useStyles();
+    var typographyClasses = useTypographyStyles();
     return (!children
         ? null :
-        React.createElement(CardContent_1.default, { className: classes.root },
-            React.createElement(Typography_1.default, { variant: 'body2', component: 'div' }, children)));
+        React.createElement(CardContent_1.default, { classes: classes },
+            React.createElement(Typography_1.default, { variant: 'body2', component: 'div', classes: typographyClasses }, children)));
 };
 exports.default = React.memo(Content);

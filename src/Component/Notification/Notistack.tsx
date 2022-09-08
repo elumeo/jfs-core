@@ -3,7 +3,7 @@ import _ from 'lodash';
 import * as notistack from 'notistack';
 import * as Type from 'Types/Notification';
 import * as Button from './Button';
-import { useSelector } from 'Types/Redux';
+import {useSelector} from 'Types/Redux';
 import Card from './Card';
 
 const Notistack: React.FC = () => {
@@ -28,16 +28,15 @@ const Notistack: React.FC = () => {
     })
     if (!isHistoryOpen) {
       missing.forEach(notification => {
-        const customAction = notification.action
-        notification.action = (snackbar, id, temporary) => (
+        const action: typeof notification.action = (snackbar, id, temporary) => (
           <>
             {temporary && <Button.Dismiss onClick={() => snackbar.closeSnackbar(notification.id)}/>}
-            {customAction && customAction(snackbar, notification.id, true)}
+            {notification.action && notification.action(snackbar, notification.id, true)}
           </>
         )
         snackbar.enqueueSnackbar(
-          <Card notification={notification} temporary/>,
-          { ...notification.notistackOptions, key: notification.id },
+          <Card key={notification.id} notification={{...notification, action}} temporary/>,
+          {...notification.notistackOptions, key: notification.id},
         );
       });
     }

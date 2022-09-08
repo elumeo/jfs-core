@@ -29,13 +29,14 @@ var typesafe_actions_1 = require("typesafe-actions");
 var Action = __importStar(require("../Action"));
 var uuid_1 = require("uuid");
 var mapErrorToNotification = function (error) {
-    var _a, _b, _c, _d, _e, _f;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
     var id = (0, uuid_1.v4)();
     var responseData = (_a = error === null || error === void 0 ? void 0 : error.response) === null || _a === void 0 ? void 0 : _a.data;
-    var httpDetails = "".concat(((_c = (_b = error === null || error === void 0 ? void 0 : error.config) === null || _b === void 0 ? void 0 : _b.method) === null || _c === void 0 ? void 0 : _c.toUpperCase()) || '', " ").concat(((_d = error === null || error === void 0 ? void 0 : error.config) === null || _d === void 0 ? void 0 : _d.url) || '', " ").concat(((_e = error === null || error === void 0 ? void 0 : error.response) === null || _e === void 0 ? void 0 : _e.status) || '').trim();
-    var title = ((_f = error === null || error === void 0 ? void 0 : error.response) === null || _f === void 0 ? void 0 : _f.statusText) || (error === null || error === void 0 ? void 0 : error.name);
+    var title = ((_b = error === null || error === void 0 ? void 0 : error.response) === null || _b === void 0 ? void 0 : _b.statusText) || (error === null || error === void 0 ? void 0 : error.name);
     var subtitle = (responseData === null || responseData === void 0 ? void 0 : responseData.error) || (error === null || error === void 0 ? void 0 : error.message);
     var content = (responseData === null || responseData === void 0 ? void 0 : responseData.message) || null;
+    var detailsAppendix = (title != ((_d = (_c = error === null || error === void 0 ? void 0 : error.response) === null || _c === void 0 ? void 0 : _c.status) === null || _d === void 0 ? void 0 : _d.toString())) && ((_e = error === null || error === void 0 ? void 0 : error.response) === null || _e === void 0 ? void 0 : _e.status) || '';
+    var httpDetails = "".concat(((_g = (_f = error === null || error === void 0 ? void 0 : error.config) === null || _f === void 0 ? void 0 : _f.method) === null || _g === void 0 ? void 0 : _g.toUpperCase()) || '', " ").concat(((_h = error === null || error === void 0 ? void 0 : error.config) === null || _h === void 0 ? void 0 : _h.url) || '', " ").concat(detailsAppendix).trim();
     return { id: id, title: title, subtitle: subtitle, content: content, httpDetails: httpDetails, variant: 'error' };
 };
 exports.mapErrorToNotification = mapErrorToNotification;

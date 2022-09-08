@@ -10,11 +10,12 @@ export const mapErrorToNotification = (error: AxiosError): Types.Notification =>
   const id = uuid();
   const responseData = error?.response?.data;
 
-  const httpDetails = `${error?.config?.method?.toUpperCase() || ''} ${error?.config?.url || ''} ${error?.response?.status || ''}`.trim()
-
   const title = error?.response?.statusText || error?.name;
   const subtitle = responseData?.error || error?.message;
   const content = responseData?.message || null;
+
+  const detailsAppendix = (title != error?.response?.status?.toString()) && error?.response?.status || ''
+  const httpDetails = `${error?.config?.method?.toUpperCase() || ''} ${error?.config?.url || ''} ${detailsAppendix}`.trim()
 
   return { id, title, subtitle, content, httpDetails, variant: 'error' }
 }

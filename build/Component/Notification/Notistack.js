@@ -73,11 +73,10 @@ var Notistack = function () {
         });
         if (!isHistoryOpen) {
             missing.forEach(function (notification) {
-                var customAction = notification.action;
-                notification.action = function (snackbar, id, temporary) { return (react_1.default.createElement(react_1.default.Fragment, null,
+                var action = function (snackbar, id, temporary) { return (react_1.default.createElement(react_1.default.Fragment, null,
                     temporary && react_1.default.createElement(Button.Dismiss, { onClick: function () { return snackbar.closeSnackbar(notification.id); } }),
-                    customAction && customAction(snackbar, notification.id, true))); };
-                snackbar.enqueueSnackbar(react_1.default.createElement(Card_1.default, { notification: notification, temporary: true }), __assign(__assign({}, notification.notistackOptions), { key: notification.id }));
+                    notification.action && notification.action(snackbar, notification.id, true))); };
+                snackbar.enqueueSnackbar(react_1.default.createElement(Card_1.default, { key: notification.id, notification: __assign(__assign({}, notification), { action: action }), temporary: true }), __assign(__assign({}, notification.notistackOptions), { key: notification.id }));
             });
         }
         if (missing.length) {

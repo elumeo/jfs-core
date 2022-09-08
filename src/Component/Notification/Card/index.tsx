@@ -1,8 +1,8 @@
 import React from 'react';
 import MUICard from '@material-ui/core/Card';
-import { Theme, makeStyles } from '@material-ui/core/styles';
-import { Notification, Severity } from 'Types/Notification';
-import { useIntl } from 'react-intl';
+import {makeStyles, Theme} from '@material-ui/core/styles';
+import {Notification, Severity} from 'Types/Notification';
+import {useIntl} from 'react-intl';
 import Content from './Content';
 import Header from './Header';
 import Actions from './Actions';
@@ -18,6 +18,16 @@ const useStyles = makeStyles<Theme, { variant: Severity }>(theme => ({
     minHeight: 'fit-content',
     backgroundColor: props => theme.palette?.[props.variant]?.['main'] || theme.palette['grey']['A400'],
     color: props => theme.palette?.[props.variant]?.['contrastText'] || theme.palette['grey']['50']
+  },
+  footer: {
+    gridColumnStart: 1,
+    gridColumnEnd: 'none',
+    textAlign: 'right',
+
+    padding: theme.spacing(0, 2),
+    '& > *': {
+      margin: theme.spacing(1, 0)
+    }
   }
 }))
 
@@ -26,27 +36,28 @@ export type Props = {
   temporary: boolean;
 };
 
-const Card: React.FC<Props> = ({ notification, temporary }) => {
-  const { variant, isTranslationId } = notification
-  const { formatMessage } = useIntl()
-  const classes = useStyles({ variant: variant as Severity });
+const Card: React.FC<Props> = ({notification, temporary}) => {
+  const {variant, isTranslationId} = notification
+  const {formatMessage} = useIntl()
+  const {root, footer} = useStyles({variant: variant as Severity});
 
   const title = isTranslationId && notification.title
-    ? formatMessage({ id: notification.title as string })
+    ? formatMessage({id: notification.title as string})
     : notification.title
   const subtitle = isTranslationId && notification.subtitle
-    ? formatMessage({ id: notification.subtitle as string })
+    ? formatMessage({id: notification.subtitle as string})
     : notification.subtitle
   const content = isTranslationId && notification.content
-    ? formatMessage({ id: notification.content as string })
+    ? formatMessage({id: notification.content as string})
     : notification.content
 
   return (
-    <MUICard className={classes.root}>
+    <MUICard className={root}>
       <Header title={title} subtitle={subtitle || content} variant={notification.variant}/>
       <Content>{subtitle ? content : null}</Content>
       <Actions id={notification?.id} action={notification.action} temporary={temporary}/>
-      <Footer timeStamp={!temporary && notification.timeStamp || undefined} httpDetails={notification.httpDetails}/>
+      <Footer className={footer} timeStamp={!temporary && notification.timeStamp || undefined}
+              httpDetails={notification.httpDetails}/>
     </MUICard>
   );
 };
