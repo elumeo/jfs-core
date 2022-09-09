@@ -5,9 +5,10 @@ var isAxiosError = function (error) {
     return ['config', 'code', 'request', 'response'].every(function (key) { return key in error; });
 };
 var isJscError = function (error) {
+    var _a;
     return isAxiosError(error) &&
-        typeof error.response.data === 'object' &&
-        ['id', 'message'].every(function (key) { return key in error.response.data; });
+        typeof ((_a = error === null || error === void 0 ? void 0 : error.response) === null || _a === void 0 ? void 0 : _a.data) === 'object' &&
+        ['id', 'message'].every(function (key) { var _a; return key in ((_a = error === null || error === void 0 ? void 0 : error.response) === null || _a === void 0 ? void 0 : _a.data); });
 };
 var head = function (error) {
     var _a = error.response, status = _a.status, statusText = _a.statusText;

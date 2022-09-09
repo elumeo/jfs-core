@@ -5,8 +5,8 @@ const isAxiosError = (error: Error) =>
 
 const isJscError = (error: Error) =>
   isAxiosError(error) &&
-  typeof (error as AxiosError).response.data === 'object' &&
-  ['id', 'message'].every(key => key in (error as AxiosError).response.data);
+  typeof (error as AxiosError)?.response?.data === 'object' &&
+  ['id', 'message'].every(key => key in (error as AxiosError)?.response?.data);
 
 const head = (error: AxiosError) => {
   const { status, statusText } = error.response;
