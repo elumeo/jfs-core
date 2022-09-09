@@ -77,14 +77,15 @@ exports.HttpClient = void 0;
 var axios_1 = __importDefault(require("axios"));
 var Token = __importStar(require("../LOCAL_STORAGE/Token"));
 var catchUnauthorized = function (url, error) {
+    var _a, _b, _c;
     var isUnauthorized = (error.isAxiosError &&
-        error.response.status === 401);
+        ((_a = error.response) === null || _a === void 0 ? void 0 : _a.status) === 401);
     var isGetCurrentSessionFrontend = (error.isAxiosError &&
-        ['GET', 'get'].includes(error.config.method) &&
+        ['GET', 'get'].includes((_b = error.config) === null || _b === void 0 ? void 0 : _b.method) &&
         url.startsWith('/session') &&
         url.split('/').length === 3);
     var isLoginFrontend = (error.isAxiosError &&
-        ['POST', 'post'].includes(error.config.method) &&
+        ['POST', 'post'].includes((_c = error.config) === null || _c === void 0 ? void 0 : _c.method) &&
         url.startsWith('/session') &&
         url.split('/').length === 3);
     var isBlacklisted = isGetCurrentSessionFrontend || isLoginFrontend;

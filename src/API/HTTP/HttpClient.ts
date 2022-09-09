@@ -4,19 +4,19 @@ import * as Token from '../LOCAL_STORAGE/Token';
 const catchUnauthorized = (url: string, error: AxiosError) => {
   const isUnauthorized = (
     error.isAxiosError &&
-    (error as AxiosError).response.status === 401
+    (error as AxiosError).response?.status === 401
   );
 
   const isGetCurrentSessionFrontend = (
     error.isAxiosError &&
-    ['GET', 'get'].includes((error as AxiosError).config.method) &&
+    ['GET', 'get'].includes((error as AxiosError).config?.method) &&
     url.startsWith('/session') &&
     url.split('/').length === 3
   );
 
   const isLoginFrontend = (
     error.isAxiosError &&
-    ['POST', 'post'].includes((error as AxiosError).config.method) &&
+    ['POST', 'post'].includes((error as AxiosError).config?.method) &&
     url.startsWith('/session') &&
     url.split('/').length === 3
   );
