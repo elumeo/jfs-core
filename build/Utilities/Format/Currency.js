@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.replaceAllNonNumericOrSeperatorRegex = exports.intlDecSeparator = exports.intlThousandsSeperator = exports.getCurrency = exports.formatDisplay = exports.getCurrencySign = void 0;
+exports.matchFirstPoint = exports.matchComma = exports.matchAllNonNumericOrSeperatorRegex = exports.intlDecSeparator = exports.intlThousandsSeperator = exports.getCurrency = exports.formatDisplay = exports.getCurrencySign = void 0;
 var Locale = __importStar(require("./Locale"));
 var getCurrencySign = function (currency) {
     return new Intl.NumberFormat(Locale.locale, { style: 'currency', currency: currency })
@@ -35,7 +35,7 @@ var getCurrencySign = function (currency) {
 };
 exports.getCurrencySign = getCurrencySign;
 var formatDisplay = function (value, min, max) {
-    var val = parseFloat("".concat(value).replace(exports.replaceAllNonNumericOrSeperatorRegex, ''));
+    var val = parseFloat("".concat(value).replace(exports.matchAllNonNumericOrSeperatorRegex, ''));
     if ((!!min || min === 0) && val < min) {
         return min.toString();
     }
@@ -64,4 +64,6 @@ exports.intlThousandsSeperator = new Intl.NumberFormat(Locale.locale)
 exports.intlDecSeparator = new Intl.NumberFormat(Locale.locale)
     .format(1.1)
     .replace(/1/g, '');
-exports.replaceAllNonNumericOrSeperatorRegex = /[^0-9.,-]/;
+exports.matchAllNonNumericOrSeperatorRegex = /[^0-9.,-]/g;
+exports.matchComma = /,/g;
+exports.matchFirstPoint = /(?<=(.*\..*))\./g;

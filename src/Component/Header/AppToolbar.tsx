@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { useIntl } from 'react-intl';
 import MenuIcon from '@material-ui/icons/Menu';
 

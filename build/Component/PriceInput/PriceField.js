@@ -10,29 +10,6 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -48,25 +25,46 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importStar(require("react"));
+var react_1 = __importDefault(require("react"));
+var core_1 = require("@material-ui/core");
 var useCurrency_1 = __importDefault(require("../../Effect/useCurrency"));
-var Editor_1 = __importDefault(require("./Editor"));
-var Display_1 = __importDefault(require("./Display"));
+var usePriceFieldAdornment_1 = __importDefault(require("../../Effect/usePriceFieldAdornment"));
+var Format_1 = require("../../Utilities/Format");
 var PriceField = function (_a) {
-    var _b = _a.currency, currency = _b === void 0 ? null : _b, _c = _a.value, value = _c === void 0 ? 0.0 : _c, _d = _a.selectOnFocus, selectOnFocus = _d === void 0 ? true : _d, _e = _a.showDecimals, showDecimals = _e === void 0 ? false : _e, props = __rest(_a, ["currency", "value", "selectOnFocus", "showDecimals"]);
+    var _b = _a.currency, currency = _b === void 0 ? 'eur' : _b, _c = _a.value, value = _c === void 0 ? 0.0 : _c, _d = _a.selectOnFocus, selectOnFocus = _d === void 0 ? true : _d, _e = _a.showDecimals, showDecimals = _e === void 0 ? false : _e, min = _a.min, max = _a.max, props = __rest(_a, ["currency", "value", "selectOnFocus", "showDecimals", "min", "max"]);
     var configCurrency = (0, useCurrency_1.default)();
-    var finalCurrency = currency === null ? configCurrency : currency;
-    var _f = react_1.default.useState(props.focused), _focused = _f[0], setFocused = _f[1];
-    var _onBlur = react_1.default.useCallback(function (event) {
-        var _a;
-        (_a = props === null || props === void 0 ? void 0 : props.onBlur) === null || _a === void 0 ? void 0 : _a.call(props, event);
-        setFocused(false);
-    }, [setFocused, props === null || props === void 0 ? void 0 : props.onBlur]);
+    var ref = react_1.default.useRef(null);
+    var finalCurrency = currency !== null && currency !== void 0 ? currency : configCurrency;
+    var display = Format_1.Currency.getCurrency(finalCurrency, isNaN(Number(value)) ? 0 : Number(value), true, false, showDecimals);
+    var _f = (0, usePriceFieldAdornment_1.default)(finalCurrency), adornmentType = _f[0], adornmentPosition = _f[1], styles = _f[2];
+    var _g = react_1.default.useState(props.focused), _focused = _g[0], setFocused = _g[1];
+    react_1.default.useEffect(function () {
+        if (selectOnFocus && _focused) {
+            ref.current.select();
+        }
+    }, [_focused, selectOnFocus]);
     var _onFocus = react_1.default.useCallback(function (event) {
         var _a;
         setFocused(true);
         (_a = props === null || props === void 0 ? void 0 : props.onFocus) === null || _a === void 0 ? void 0 : _a.call(props, event);
-    }, [setFocused, selectOnFocus, props === null || props === void 0 ? void 0 : props.onFocus]);
-    return _focused ? react_1.default.createElement(Editor_1.default, __assign({ value: value, onChange: props.onChange, onBlur: _onBlur, selectOnFocus: selectOnFocus, currency: finalCurrency }, props)) : react_1.default.createElement(Display_1.default, __assign({ value: value, onChange: props.onChange, showDecimals: showDecimals, onFocus: _onFocus, currency: finalCurrency }, props));
+    }, [props === null || props === void 0 ? void 0 : props.onFocus, setFocused, selectOnFocus]);
+    var _onBlur = react_1.default.useCallback(function (event) {
+        var _a;
+        (_a = props === null || props === void 0 ? void 0 : props.onBlur) === null || _a === void 0 ? void 0 : _a.call(props, event);
+        setFocused(false);
+        if (isNaN(parseFloat(value))) {
+            props.onChange(__assign(__assign({}, event), { target: __assign(__assign({}, event.target), { value: '0' }) }));
+        }
+    }, [setFocused, props === null || props === void 0 ? void 0 : props.onBlur, value]);
+    var _onChange = react_1.default.useCallback(function (event) {
+        var _a;
+        var _value = event.target.value;
+        (_a = props === null || props === void 0 ? void 0 : props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, __assign(__assign({}, event), { target: __assign(__assign({}, event.target), { value: "".concat(Format_1.Number.parse(_value, min, max)) }) }));
+    }, [props === null || props === void 0 ? void 0 : props.onChange, min, max,]);
+    var _InputProps = react_1.default.useMemo(function () {
+        var _a;
+        return (__assign((_a = {}, _a[adornmentType] = react_1.default.createElement(core_1.InputAdornment, { position: adornmentPosition, style: styles }, Format_1.Currency.getCurrencySign(currency)), _a), props === null || props === void 0 ? void 0 : props.InputProps));
+    }, [adornmentPosition, adornmentType, currency, props === null || props === void 0 ? void 0 : props.InputProps, styles]);
+    return (react_1.default.createElement(core_1.TextField, __assign({ variant: 'standard', inputRef: ref }, props, { value: _focused ? value : display, InputProps: _InputProps, onChange: _onChange, onFocus: _onFocus, onBlur: _onBlur })));
 };
-exports.default = (0, react_1.memo)(PriceField);
+exports.default = PriceField;

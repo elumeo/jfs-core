@@ -7,9 +7,10 @@ import { FilterReset } from 'Component/Icon';
 import DatePicker from 'Component/DatePicker';
 import TextFieldClearButton, { TextFieldClearButtonProps } from 'Component/TextFieldClearButton';
 import SelectClearButton, { Props as SelectClearButtonProps } from 'Component/SelectClearButton';
+import PriceInput from 'Component/PriceInput';
 import SearchIcon from '@material-ui/icons/Search';
 
-const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment> };
+const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon /></InputAdornment> };
 
 const DevelopInputs: React.FC = () => {
   const [multipleSelectValue, setMultipleSelectValue] = useState(['test 1']);
@@ -23,12 +24,13 @@ const DevelopInputs: React.FC = () => {
   const [singleSelectValue, setSingleSelectValue] = useState('');
   const handleSingleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(value => setSingleSelectValue(value as string), []);
 
+  const [testPriceValue, setTestPriceValue] = useState<React.ReactText>(0)
   return (
     <Card>
-      <AppCardHeader title={'Test'} titleIcon={<WarningIcon/>} onRefresh={console.log}/>
+      {/* <AppCardHeader title={'Test'} titleIcon={<WarningIcon />} onRefresh={console.log} />
       <AppCardContent>
         Das ist der Inhalt
-        <IconButton size={'small'} color={'secondary'}><FilterReset/></IconButton>
+        <IconButton size={'small'} color={'secondary'}><FilterReset /></IconButton>
         <Grid container spacing={2}>
           <Grid item>
             <DatePicker
@@ -38,6 +40,15 @@ const DevelopInputs: React.FC = () => {
               isClearable={false}
             />
           </Grid>
+          <Grid item> */}
+      <PriceInput
+        value={testPriceValue}
+        // setPrice={price => setTestPriceValue(price)}
+        // min={0}
+        // max={100}
+        onChange={event => { console.log('onChange price', event.target.value); setTestPriceValue(event.target.value) }}
+      />
+      {/* </Grid>
           <Grid item>
             <TextFieldClearButton
               label={'Textfield'}
@@ -101,9 +112,9 @@ const DevelopInputs: React.FC = () => {
             />
           </Grid>
           <Grid item><Button onClick={() => setMultipleSelectValue(['test 1'])} color={'primary'}>Set Multiple Select
-            Value</Button></Grid>
-        </Grid>
-      </AppCardContent>
+            Value</Button></Grid> */}
+      {/* </Grid> */}
+      {/* </AppCardContent> */}
     </Card>
   )
 }

@@ -8,14 +8,13 @@ export const getCurrencySign = (currency: string): string =>
       (sign, { type, value }) => sign + (type === 'currency' ? value : ''),
       '',
     );
-
 export const formatDisplay = (
   value: ReactText,
   min?: number,
   max?: number,
 ): string => {
   const val = parseFloat(
-    `${value}`.replace(replaceAllNonNumericOrSeperatorRegex, ''),
+    `${value}`.replace(matchAllNonNumericOrSeperatorRegex, ''),
   );
   if ((!!min || min === 0) && val < min) {
     return min.toString();
@@ -50,4 +49,6 @@ export const intlDecSeparator = new Intl.NumberFormat(Locale.locale)
   .format(1.1)
   .replace(/1/g, '');
 
-export const replaceAllNonNumericOrSeperatorRegex = /[^0-9.,-]/;
+export const matchAllNonNumericOrSeperatorRegex = /[^0-9.,-]/g;
+export const matchComma = /,/g
+export const matchFirstPoint = /(?<=(.*\..*))\./g

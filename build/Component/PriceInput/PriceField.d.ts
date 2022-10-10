@@ -7,6 +7,7 @@ declare type Props = {
     min?: number;
     max?: number;
     showDecimals?: boolean;
+    onChange?: StandardTextFieldProps['onChange'];
 } & Partial<StandardTextFieldProps>;
-declare const _default: React.MemoExoticComponent<({ currency, value, selectOnFocus, showDecimals, ...props }: Props) => JSX.Element>;
-export default _default;
+declare const PriceField: ({ currency, value, selectOnFocus, showDecimals, min, max, ...props }: Props) => JSX.Element;
+export default PriceField;
