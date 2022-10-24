@@ -65,8 +65,10 @@ var Notistack = function () {
         var requiredDismissCount = Math.max(0, persistentShown.length + missing.length - NotificationMax);
         for (var i = 0; i < requiredDismissCount; i++) {
             var notification = persistentShown.shift();
-            notification.notistackOptions.persist = false;
-            snackbar.closeSnackbar(notification.id);
+            if (notification) {
+                notification.notistackOptions.persist = false;
+                snackbar.closeSnackbar(notification.id);
+            }
         }
         deleted.forEach(function (notification) {
             snackbar.closeSnackbar(notification.id);

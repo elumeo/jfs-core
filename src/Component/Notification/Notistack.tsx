@@ -3,7 +3,7 @@ import _ from 'lodash';
 import * as notistack from 'notistack';
 import * as Type from 'Types/Notification';
 import * as Button from './Button';
-import {useSelector} from 'Types/Redux';
+import { useSelector } from 'Types/Redux';
 import Card from './Card';
 
 const Notistack: React.FC = () => {
@@ -20,8 +20,10 @@ const Notistack: React.FC = () => {
     const requiredDismissCount = Math.max(0, persistentShown.length + missing.length - NotificationMax)
     for (let i = 0; i < requiredDismissCount; i++) {
       const notification = persistentShown.shift()
-      notification.notistackOptions.persist = false
-      snackbar.closeSnackbar(notification.id)
+      if (notification) {
+        notification.notistackOptions.persist = false;
+        snackbar.closeSnackbar(notification.id)
+      }
     }
     deleted.forEach(notification => {
       snackbar.closeSnackbar(notification.id)
@@ -35,8 +37,8 @@ const Notistack: React.FC = () => {
           </>
         )
         snackbar.enqueueSnackbar(
-          <Card key={notification.id} notification={{...notification, action}} temporary/>,
-          {...notification.notistackOptions, key: notification.id},
+          <Card key={notification.id} notification={{ ...notification, action }} temporary/>,
+          { ...notification.notistackOptions, key: notification.id },
         );
       });
     }
