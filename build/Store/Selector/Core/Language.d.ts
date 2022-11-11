@@ -1,4 +1,3 @@
-/// <reference types="connected-react-router" />
 export declare const translationLanguage: ((state: {
     [x: string]: unknown;
     Core: import("../../Reducer/Core").State;

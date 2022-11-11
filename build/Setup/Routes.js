@@ -8,7 +8,7 @@ var react_router_dom_1 = require("react-router-dom");
 var AuthRoute_1 = __importDefault(require("../Component/Route/AuthRoute"));
 var NoAuthRoute_1 = __importDefault(require("../Component/Route/NoAuthRoute"));
 var develop_1 = __importDefault(require("../Component/develop"));
-var developAppLayout_1 = __importDefault(require("../Component/developAppLayout"));
+var developAppLayout_1 = __importDefault(require("Component/developAppLayout"));
 var Routes = function () { return (react_1.default.createElement(react_router_dom_1.Switch, null,
     react_1.default.createElement(AuthRoute_1.default, { key: 'start', exact: true, path: '/start', component: function () { return react_1.default.createElement(develop_1.default, null); } }),
     react_1.default.createElement(AuthRoute_1.default, { key: 'app_layout', exact: true, path: '/app_layout', component: function () { return react_1.default.createElement(developAppLayout_1.default, null); } }),

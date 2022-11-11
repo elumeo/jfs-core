@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "10.4.1",
+  "version": "10.4.2",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -26,7 +26,7 @@
     "jfs-postinstall": "node ./scripts/bin/jfs-postinstall",
     "jfs-check-config-schema": "node ./scripts/bin/jfs-check-config-schema"
   },
-  "rfepository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/elumeo/jfs-core.git"
   },

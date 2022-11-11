@@ -1,9 +1,5 @@
 node_modules
 .idea
-/.editorconfig
-/.prettierrc
-/.prettierignore
-/tsconfig.json
 /showcase/tsconfig.json
 .autohidefiles
 .DS_Store

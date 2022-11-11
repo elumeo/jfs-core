@@ -1,3 +1,7 @@
+## [10.4.2] 2022-11-11
+- fixed an issue in DatePicker component with missing invalidator information for useCallback
+- added editorconfig to repo
+
 ## [10.3.0] 2022-09-02
 - removed Content component
 - added Layout component (test on route: `/app_layout`)
