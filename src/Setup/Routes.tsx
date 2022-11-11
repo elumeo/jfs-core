@@ -3,7 +3,7 @@ import { Switch, Redirect } from 'react-router-dom';
 import AuthRoute from 'Component/Route/AuthRoute';
 import NoAuthRoute from 'Component/Route/NoAuthRoute';
 import Develop from 'Component/develop';
-import DevelopAppLayout from '../Component/developAppLayout';
+import DevelopAppLayout from 'Component/DevelopAppLayout';
 
 const Routes: React.FC = () => (
   <Switch>
