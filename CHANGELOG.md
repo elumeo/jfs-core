@@ -1,3 +1,6 @@
+## [10.4.5] 2022-11-14
+- added flag for overflow css style in TableDefault component
+
 ## [10.4.2] 2022-11-11
 - fixed an issue in DatePicker component with missing invalidator information for useCallback
 - added editorconfig to repo

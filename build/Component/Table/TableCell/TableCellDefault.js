@@ -56,9 +56,9 @@ var ContentEllipseMode;
     ContentEllipseMode["Lines"] = "lines";
 })(ContentEllipseMode = exports.ContentEllipseMode || (exports.ContentEllipseMode = {}));
 var TableCellDefault = function (_a) {
-    var cellData = _a.cellData, _b = _a.contentEllipseMode, contentEllipseMode = _b === void 0 ? ContentEllipseMode.Lines : _b, _c = _a.contentEllipseLines, contentEllipseLines = _c === void 0 ? 4 : _c, _d = _a.isLoading, isLoading = _d === void 0 ? false : _d, rest = __rest(_a, ["cellData", "contentEllipseMode", "contentEllipseLines", "isLoading"]);
+    var cellData = _a.cellData, _b = _a.overflow, overflow = _b === void 0 ? 'hidden' : _b, _c = _a.contentEllipseMode, contentEllipseMode = _c === void 0 ? ContentEllipseMode.Lines : _c, _d = _a.contentEllipseLines, contentEllipseLines = _d === void 0 ? 4 : _d, _e = _a.isLoading, isLoading = _e === void 0 ? false : _e, rest = __rest(_a, ["cellData", "overflow", "contentEllipseMode", "contentEllipseLines", "isLoading"]);
     var ellipsesLinesStyle = (0, react_1.useMemo)(function () { return ({
-        overflow: 'hidden',
+        overflow: overflow,
         whiteSpace: 'normal',
         WebkitBoxOrient: 'vertical',
         WebkitLineClamp: contentEllipseLines,

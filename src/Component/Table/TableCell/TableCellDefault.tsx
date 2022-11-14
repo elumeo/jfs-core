@@ -15,11 +15,12 @@ export type TableCellDefaultProps = Partial<TableCellRootProps> & {
   isLoading?: boolean;
   contentEllipseMode?: ContentEllipseMode;
   contentEllipseLines?: number;
+  overflow?: 'hidden' | 'visible'
 };
 
-const TableCellDefault = ({ cellData, contentEllipseMode = ContentEllipseMode.Lines, contentEllipseLines = 4, isLoading = false, ...rest }: TableCellDefaultProps) => {
+const TableCellDefault = ({ cellData, overflow = 'hidden', contentEllipseMode = ContentEllipseMode.Lines, contentEllipseLines = 4, isLoading = false, ...rest }: TableCellDefaultProps) => {
   const ellipsesLinesStyle = useMemo<CSSProperties>(() => ({
-    overflow: 'hidden',
+    overflow,
     whiteSpace: 'normal',
     WebkitBoxOrient: 'vertical',
     WebkitLineClamp: contentEllipseLines,
