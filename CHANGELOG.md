@@ -1,3 +1,6 @@
+## [10.5.0] 2022-11-18
+- changed width style property of root element to max-width property
+
 ## [10.4.5] 2022-11-14
 - added flag for overflow css style in TableDefault component
 
