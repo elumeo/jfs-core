@@ -12,12 +12,6 @@ const initializeApp: Epic = action$ =>
       JscClient.setPackageJson(
         action.payload.packageJson as { version: string },
       );
-      const isHTTPS = window.location.protocol.toLowerCase() === 'https:';
-      if (!isHTTPS && action.payload.ForceHTTPS) {
-        window.location.replace(
-          window.location.toString().replace('http:', 'https:'),
-        );
-      }
       return of(Action.loadConfig());
     }),
   );

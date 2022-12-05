@@ -14,6 +14,14 @@ const loadConfiguration: Epic = action$ =>
     concatMap((response: AxiosResponse<Type.Configuration>) => {
       const config: Type.Configuration = response.data;
       JscClient.setConfig(config);
+
+      const isHTTPS = window.location.protocol.toLowerCase() === 'https:';
+      if (!isHTTPS && response.data.ForceHTTPS) {
+        window.location.replace(
+          window.location.toString().replace('http:', 'https:'),
+        );
+      }
+
       return of(Action.configLoadedAction({ config }));
     }),
     catchError(() => of(Action.loadConfigFailed())),

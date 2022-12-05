@@ -36,6 +36,10 @@ var loadConfiguration = function (action$) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.loadConfig)), (0, operators_1.concatMap)(function () { return (0, rxjs_1.from)(axios_1.default.get("./config.json", {})); }), (0, operators_1.concatMap)(function (response) {
         var config = response.data;
         Client_1.default.setConfig(config);
+        var isHTTPS = window.location.protocol.toLowerCase() === 'https:';
+        if (!isHTTPS && response.data.ForceHTTPS) {
+            window.location.replace(window.location.toString().replace('http:', 'https:'));
+        }
         return (0, rxjs_1.of)(Action.configLoadedAction({ config: config }));
     }), (0, operators_1.catchError)(function () { return (0, rxjs_1.of)(Action.loadConfigFailed()); }));
 };

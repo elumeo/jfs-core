@@ -34,10 +34,6 @@ var Client_1 = __importDefault(require("../../API/JSC/Client"));
 var initializeApp = function (action$) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.initializeApp)), (0, operators_1.concatMap)(function (action) {
         Client_1.default.setPackageJson(action.payload.packageJson);
-        var isHTTPS = window.location.protocol.toLowerCase() === 'https:';
-        if (!isHTTPS && action.payload.ForceHTTPS) {
-            window.location.replace(window.location.toString().replace('http:', 'https:'));
-        }
         return (0, rxjs_1.of)(Action.loadConfig());
     }));
 };

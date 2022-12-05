@@ -1,3 +1,4 @@
+/// <reference types="connected-react-router" />
 export declare const Core: ((state: {
     [x: string]: unknown;
     Core: import("../../Reducer/Core").State;
