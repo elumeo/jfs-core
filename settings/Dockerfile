@@ -1,6 +1,6 @@
 FROM cypress/included:9.1.1 AS jfs_testbase
 
-FROM node:12 as JFS_BUILD
+FROM node:14.17.3 as JFS_BUILD
 ARG GIT_TOKEN
 COPY . /opt/jfs/app
 RUN  git config --global url."https://${GIT_TOKEN}@github.com/".insteadOf "https://github.com/"
