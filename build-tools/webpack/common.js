@@ -1,5 +1,6 @@
 const PATH = require('./PATH');
 const PathAliasPlugin = require('tsconfig-paths-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const { resolve } = require('path');
 
 const common = {
@@ -45,11 +46,11 @@ const common = {
                     'camel2DashComponentName': false
                   },
                   'icons'
-                ]
+                ],
+                new ESLintPlugin()
               ]
             }
-          },
-          'eslint-loader'
+          }
         ],
       },
       {
@@ -85,8 +86,8 @@ const common = {
       Core: resolve(PATH.ROOT, 'node_modules', '@elumeo', 'jfs-core', 'build')
     },
     plugins: [
-      new  PathAliasPlugin({
-        configFile : resolve(PATH.ROOT, 'tsconfig.json')
+      new PathAliasPlugin({
+        configFile: resolve(PATH.ROOT, 'tsconfig.json')
       })
     ]
   },
