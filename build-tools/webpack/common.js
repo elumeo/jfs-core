@@ -1,6 +1,6 @@
 const PATH = require('./PATH');
 const PathAliasPlugin = require('tsconfig-paths-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const { resolve } = require('path');
 
 const common = {
@@ -46,8 +46,7 @@ const common = {
                     'camel2DashComponentName': false
                   },
                   'icons'
-                ],
-                new ESLintPlugin()
+                ]
               ]
             }
           }
@@ -91,6 +90,12 @@ const common = {
       })
     ]
   },
+  plugins: [
+    new ESLintWebpackPlugin({
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
+      exclude: 'node_modules'
+    })
+  ]
 };
 
 module.exports = common;
