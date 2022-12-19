@@ -1,5 +1,5 @@
 import { Location } from 'history';
-export declare type RouteDetails = {
+export type RouteDetails = {
     location: Location;
     params: Record<string, string>;
 };

@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -34,7 +38,7 @@ const Text = __importStar(require("../Text"));
 const path_1 = require("path");
 const componentPattern = '@scharfohnezwiebeln/jfc';
 const which = (path) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name } = (yield Package.json(path_1.resolve(path, 'package.json')));
+    const { name } = (yield Package.json((0, path_1.resolve)(path, 'package.json')));
     if (name === '@elumeo/jfs-core') {
         return 'core';
     }
@@ -53,19 +57,19 @@ const which = (path) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.which = which;
 const core = (path) => __awaiter(void 0, void 0, void 0, function* () {
-    switch (yield exports.which(path)) {
+    switch (yield (0, exports.which)(path)) {
         case 'core': return path;
-        case 'scripts': return path_1.dirname(path);
+        case 'scripts': return (0, path_1.dirname)(path);
         case 'app':
-        case 'component': return path_1.resolve(path, 'node_modules', '@elumeo', 'jfs-core');
+        case 'component': return (0, path_1.resolve)(path, 'node_modules', '@elumeo', 'jfs-core');
         default: return null;
     }
 });
 exports.core = core;
 const components = (path) => __awaiter(void 0, void 0, void 0, function* () {
-    if ((yield exports.which(path)) === 'app') {
+    if ((yield (0, exports.which)(path)) === 'app') {
         return (Object
-            .keys((yield Package.json(path_1.resolve(path, 'package.json'))).dependencies)
+            .keys((yield Package.json((0, path_1.resolve)(path, 'package.json'))).dependencies)
             .filter(name => Text.Prefix.match(name, componentPattern))
             .map(jfc => Package.node_module(path, jfc)));
     }
@@ -77,9 +81,9 @@ exports.components = components;
 const detect = (path) => __awaiter(void 0, void 0, void 0, function* () {
     return ({
         root: path,
-        which: yield exports.which(path),
-        core: yield exports.core(path),
-        components: yield exports.components(path),
+        which: yield (0, exports.which)(path),
+        core: yield (0, exports.core)(path),
+        components: yield (0, exports.components)(path),
     });
 });
 exports.detect = detect;

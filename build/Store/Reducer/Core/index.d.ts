@@ -14,7 +14,7 @@ import { State as LoginState } from './Login';
 import { State as LocaleState } from './Locale';
 import { State as WebSocketState } from './WebSocket';
 import * as Type from '../../../Types/Configuration';
-export declare type State = {
+export type State = {
     App?: AppState;
     Language?: LanguageState;
     Login?: LoginState;

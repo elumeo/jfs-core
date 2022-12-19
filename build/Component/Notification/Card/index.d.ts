@@ -1,6 +1,6 @@
 import React from 'react';
 import { Notification } from '../../../Types/Notification';
-export declare type Props = {
+export type Props = {
     notification: Notification;
     temporary: boolean;
 };

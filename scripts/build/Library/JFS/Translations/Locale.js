@@ -23,7 +23,7 @@ const names = (base) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.names = names;
 const all = (base) => __awaiter(void 0, void 0, void 0, function* () {
-    return Promise.all((yield exports.names(base))
+    return Promise.all((yield (0, exports.names)(base))
         .map((name) => __awaiter(void 0, void 0, void 0, function* () {
         return ({
             name,

@@ -1,4 +1,4 @@
-export declare type MediaUri = {
+export type MediaUri = {
     productId: string;
     uri: string;
 };

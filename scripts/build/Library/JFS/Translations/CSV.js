@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -36,12 +40,12 @@ exports.options = {
     keys: ['key', ...columns],
     prependHeader: false
 };
-const create = (rows) => (new Promise((resolve, reject) => (json_2_csv_1.json2csv(rows, (error, csv) => (error
+const create = (rows) => (new Promise((resolve, reject) => ((0, json_2_csv_1.json2csv)(rows, (error, csv) => (error
     ? reject(error)
     : resolve(csv)), exports.options))));
 exports.create = create;
 const rows = (csv) => __awaiter(void 0, void 0, void 0, function* () {
-    return (yield new Promise((resolve, reject) => (json_2_csv_1.csv2json(csv, (error, rows) => (error
+    return (yield new Promise((resolve, reject) => ((0, json_2_csv_1.csv2json)(csv, (error, rows) => (error
         ? reject(error)
         : resolve(Table.normalize(rows)))))));
 });
@@ -50,12 +54,12 @@ const languages = (csv) => Promise.all(columns
     .map((column) => __awaiter(void 0, void 0, void 0, function* () {
     return ({
         name: column,
-        messages: Table.language(yield exports.rows(csv), column)
+        messages: Table.language(yield (0, exports.rows)(csv), column)
     });
 })));
 exports.languages = languages;
 const json = (csv) => __awaiter(void 0, void 0, void 0, function* () {
-    return ((yield exports.languages(csv))
+    return ((yield (0, exports.languages)(csv))
         .reduce((translations, { name, messages }) => (Object.assign(Object.assign({}, translations), { [name]: messages })), {}));
 });
 exports.json = json;

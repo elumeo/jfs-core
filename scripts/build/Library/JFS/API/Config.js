@@ -16,7 +16,7 @@ exports.read = void 0;
 const fs_extra_1 = __importDefault(require("fs-extra"));
 const path_1 = require("path");
 const read = (path) => __awaiter(void 0, void 0, void 0, function* () {
-    return (yield fs_extra_1.default.readJSON(path_1.resolve(path, 'src', 'API', 'JSC', 'Config.json')));
+    return (yield fs_extra_1.default.readJSON((0, path_1.resolve)(path, 'src', 'API', 'JSC', 'Config.json')));
 });
 exports.read = read;
 //# sourceMappingURL=Config.js.map

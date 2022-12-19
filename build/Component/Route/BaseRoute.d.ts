@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouteProps } from 'react-router-dom';
-export declare type IBaseRouteProps = RouteProps & {
+export type IBaseRouteProps = RouteProps & {
     Component?: React.FC;
     translationId?: string;
 };

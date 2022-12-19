@@ -6,6 +6,7 @@
     "build-tools/**",
     "src/Component/Icon/SVG/*.tsx",
     "src/Component/Icon/SVG/**",
-    "scripts/**"
+    "scripts/**",
+    "build/**"
   ]
 }

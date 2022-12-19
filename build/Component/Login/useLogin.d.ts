@@ -1,5 +1,5 @@
 import * as Type from '../../Types/Login';
-declare type useLoginProps = {
+type useLoginProps = {
     open: boolean;
     credentials: Type.Credentials;
     onChange: (next: Type.Credentials) => void;

@@ -9,11 +9,11 @@ export declare const rowStyles: CSSProperties;
 export declare const rowClickStyles: CSSProperties;
 export declare const rowNoClickStyles: CSSProperties;
 export declare const columnHeaderStyles: CSSProperties;
-export declare type ColumnData = Omit<ColumnProps, 'width'> & {
+export type ColumnData = Omit<ColumnProps, 'width'> & {
     numeric?: boolean;
     width?: number | ((fullWidth: number) => number);
 };
-export declare type VirtualizedTableProps = Partial<TableProps> & {
+export type VirtualizedTableProps = Partial<TableProps> & {
     columns: ColumnData[];
     showRowHoverHighlight?: boolean;
     headerOverflow?: 'visible' | 'hidden' | 'inherit' | 'initial';

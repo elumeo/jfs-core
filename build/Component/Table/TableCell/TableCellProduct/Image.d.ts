@@ -1,6 +1,6 @@
 import React from 'react';
 import { MediaUri } from '../../../../Types/MediaUri';
-export declare type ImageProps = {
+export type ImageProps = {
     id?: string;
     mediaUris?: MediaUri[];
     isProductBundle?: boolean;

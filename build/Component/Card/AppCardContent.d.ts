@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardContentProps } from '@material-ui/core/CardContent/CardContent';
-export declare type AppCardContentBaseProps = CardContentProps & {
+export type AppCardContentBaseProps = CardContentProps & {
     fullHeight?: boolean;
     withSubtitle?: boolean;
     overrideCardTitleHeight?: string;

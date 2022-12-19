@@ -1,28 +1,28 @@
 import * as React from 'react';
-import { useCallback, useState } from 'react';
-import { AppCardContent, AppCardHeader } from 'Component/Card';
-import WarningIcon from '@material-ui/icons/Warning';
-import { Button, Card, Grid, IconButton, InputAdornment } from '@material-ui/core';
-import { FilterReset } from 'Component/Icon';
-import DatePicker from 'Component/DatePicker';
-import TextFieldClearButton, { TextFieldClearButtonProps } from 'Component/TextFieldClearButton';
-import SelectClearButton, { Props as SelectClearButtonProps } from 'Component/SelectClearButton';
+import { useState } from 'react';
+// import { AppCardContent, AppCardHeader } from 'Component/Card';
+// import WarningIcon from '@material-ui/icons/Warning';
+import { Card } from '@material-ui/core';
+// import { FilterReset } from 'Component/Icon';
+// import DatePicker from 'Component/DatePicker';
+// import TextFieldClearButton, { TextFieldClearButtonProps } from 'Component/TextFieldClearButton';
+// import SelectClearButton, { Props as SelectClearButtonProps } from 'Component/SelectClearButton';
 import PriceInput from 'Component/PriceInput';
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 
-const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon /></InputAdornment> };
+// const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon /></InputAdornment> };
 
 const DevelopInputs: React.FC = () => {
-  const [multipleSelectValue, setMultipleSelectValue] = useState(['test 1']);
-  const handleMultipleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(value => setMultipleSelectValue(value as string[]), []);
+  // const [multipleSelectValue, setMultipleSelectValue] = useState(['test 1']);
+  // const handleMultipleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(value => setMultipleSelectValue(value as string[]), []);
 
-  const [testDatePickerValue, setTestDatePickerValue] = useState<Date>(null);
+  // const [testDatePickerValue, setTestDatePickerValue] = useState<Date>(null);
 
-  const [testTextFieldValue, setTestTextFieldValue] = useState('');
-  const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
+  // const [testTextFieldValue, setTestTextFieldValue] = useState('');
+  // const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
 
-  const [singleSelectValue, setSingleSelectValue] = useState('');
-  const handleSingleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(value => setSingleSelectValue(value as string), []);
+  // const [singleSelectValue, setSingleSelectValue] = useState('');
+  // const handleSingleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(value => setSingleSelectValue(value as string), []);
 
   const [testPriceValue, setTestPriceValue] = useState<React.ReactText>(0)
   return (
@@ -46,7 +46,7 @@ const DevelopInputs: React.FC = () => {
         // setPrice={price => setTestPriceValue(price)}
         // min={0}
         // max={100}
-        onChange={event => { console.log('onChange price', event.target.value); setTestPriceValue(event.target.value) }}
+        onChange={event => { setTestPriceValue(event.target.value) }}
       />
       {/* </Grid>
           <Grid item>

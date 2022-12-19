@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { TableCellRootProps } from '../../Table/TableCell/TableCellRoot';
-export declare type TableCellDateTimeProps = Partial<TableCellRootProps> & {
+export type TableCellDateTimeProps = Partial<TableCellRootProps> & {
     cellData: Date | string;
     noValueElement?: ReactNode;
     asTwoLines?: boolean;

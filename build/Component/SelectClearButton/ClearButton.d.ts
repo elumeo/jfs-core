@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconProps } from "@material-ui/core";
 import { IconButtonProps } from "@material-ui/core/IconButton";
-export declare type Props = {
+export type Props = {
     onClick: (value: string | string[]) => void;
     disabled?: boolean;
     multiple?: boolean;

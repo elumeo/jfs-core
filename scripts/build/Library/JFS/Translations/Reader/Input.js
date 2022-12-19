@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -35,22 +39,22 @@ exports.locales = exports.csv = exports.path = exports.file = void 0;
 const fs_extra_1 = __importDefault(require("fs-extra"));
 const path_1 = require("path");
 const CSV = __importStar(require("./CSV"));
-const file = (target) => (fs_extra_1.default.readFile(exports.path(target), 'utf8'));
+const file = (target) => (fs_extra_1.default.readFile((0, exports.path)(target), 'utf8'));
 exports.file = file;
 const path = (target) => (target.startsWith('/')
     ? target
-    : path_1.resolve(process.cwd(), target));
+    : (0, path_1.resolve)(process.cwd(), target));
 exports.path = path;
-const csv = (path) => __awaiter(void 0, void 0, void 0, function* () { return CSV.parse(yield exports.file(path)); });
+const csv = (path) => __awaiter(void 0, void 0, void 0, function* () { return CSV.parse(yield (0, exports.file)(path)); });
 exports.csv = csv;
 const locales = (target) => __awaiter(void 0, void 0, void 0, function* () {
-    const root = exports.path(target);
+    const root = (0, exports.path)(target);
     const files = ((yield fs_extra_1.default.readdir(root))
         .filter(name => !name.startsWith('index.')));
     const add = (locales, name) => __awaiter(void 0, void 0, void 0, function* () {
         const next = yield locales;
-        const path = path_1.resolve(root, name);
-        const data = yield exports.file(path);
+        const path = (0, path_1.resolve)(root, name);
+        const data = yield (0, exports.file)(path);
         const key = name.substring(0, name.length - '.json'.length);
         next[key] = JSON.parse(data);
         return next;

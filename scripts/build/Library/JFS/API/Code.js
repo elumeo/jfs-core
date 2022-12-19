@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -40,7 +44,7 @@ const Render = __importStar(require("./Render"));
 const format = (code) => (Prettier.format(code, { parser: 'babel-ts' }));
 exports.format = format;
 const save = (path, code) => __awaiter(void 0, void 0, void 0, function* () {
-    return (fs_extra_1.default.writeFile(path_1.resolve(path, 'src', 'API', 'JSC', 'index.ts'), exports.format(code)));
+    return (fs_extra_1.default.writeFile((0, path_1.resolve)(path, 'src', 'API', 'JSC', 'index.ts'), (0, exports.format)(code)));
 });
 exports.save = save;
 const generate = (description, options) => {

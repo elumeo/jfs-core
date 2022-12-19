@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { DateTimeRangeCellProps } from '../../../Types/Table/DateTimeRangeCellProps';
 import { TableCellRootProps } from '../../Table/TableCell/TableCellRoot';
-export declare type TableCellDateTimeRangeProps = Partial<TableCellRootProps> & {
+export type TableCellDateTimeRangeProps = Partial<TableCellRootProps> & {
     cellData: DateTimeRangeCellProps;
     noValueElement?: ReactNode;
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonProps, IconButtonProps, PropTypes } from '@material-ui/core';
-export declare type IconButtonProgressProps = IconButtonProps & {
+export type IconButtonProgressProps = IconButtonProps & {
     onClick?: ButtonProps['onClick'];
     disabled?: boolean;
     inProgress?: boolean;

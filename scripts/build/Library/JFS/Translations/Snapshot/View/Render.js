@@ -11,13 +11,13 @@ exports.td = td;
 const tr = (row, pivot) => ([
     `<tr class=\\"${pivot ? 'header-row' : 'value-row'}\\">`,
     ...['key', ...columns]
-        .map((key, index) => exports.td(row[key], !index)),
+        .map((key, index) => (0, exports.td)(row[key], !index)),
     '</tr>'
 ].join(''));
 exports.tr = tr;
 const table = (rows) => [
     `<table>`,
-    ...rows.map((row, index) => exports.tr(row, !index)),
+    ...rows.map((row, index) => (0, exports.tr)(row, !index)),
     `</table>`
 ].join('');
 exports.table = table;

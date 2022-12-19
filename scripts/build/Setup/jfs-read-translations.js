@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -35,11 +39,11 @@ const Check = __importStar(require("./jfs-check-translations"));
 exports.name = 'jfs-read-translations';
 exports.scope = ['all'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
-    const path = path_1.resolve(env.root, 'src', 'Setup', 'Locale');
+    const path = (0, path_1.resolve)(env.root, 'src', 'Setup', 'Locale');
     const locales = yield JFS.Translations.Reader.Input.locales(path);
-    const last = yield JFS.Translations.Snapshot.last(path_1.resolve(env.root, 'src', 'Setup'));
+    const last = yield JFS.Translations.Snapshot.last((0, path_1.resolve)(env.root, 'src', 'Setup'));
     const target = (JFS.Translations.Snapshot.File
-        .path(path_1.resolve(env.root, 'src', 'Setup'), last.version, 'csv'));
+        .path((0, path_1.resolve)(env.root, 'src', 'Setup'), last.version, 'csv'));
     const table = yield JFS.Translations.Reader.Input.csv(target);
     const next = yield JFS.Translations.Reader.run(locales, table);
     yield JFS.Translations.Reader.Output.files(path, next);

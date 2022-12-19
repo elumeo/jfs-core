@@ -1,6 +1,6 @@
 import React from 'react';
 import { Props as ClearButtonProps } from '../SelectClearButton/ClearButton';
-export declare type Props = {
+export type Props = {
     endAdornment: React.ReactNode;
     showClearButton: boolean;
     multiple?: boolean;

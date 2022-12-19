@@ -1,4 +1,4 @@
-export declare type DateTimeRangeCellProps = {
+export type DateTimeRangeCellProps = {
     start: Date | string;
     end: Date | string;
     isLiveShow?: boolean;

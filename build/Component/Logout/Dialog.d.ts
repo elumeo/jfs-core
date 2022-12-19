@@ -1,6 +1,6 @@
 import React from 'react';
 import { Props as TextProps } from './Text';
-export declare type Props = {
+export type Props = {
     onLogout?: () => void;
     pending?: boolean;
     children?: TextProps['override'];

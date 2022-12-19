@@ -6,7 +6,7 @@ import International from './International';
 import Snackbar from './Snackbar';
 import Initialized from './Initialized';
 import Uninitialized from './Uninitialized';
-export declare type Props = {
+export type Props = {
     store: Store;
     children: RouterProps['children'];
 };

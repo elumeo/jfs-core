@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -43,7 +47,7 @@ const code = (script) => [
     "main();"
 ].join('\n');
 exports.code = code;
-const script = (path) => Promise.resolve().then(() => __importStar(require(path)));
+const script = (path) => { var _a; return _a = path, Promise.resolve().then(() => __importStar(require(_a))); };
 exports.script = script;
 const names = (base) => __awaiter(void 0, void 0, void 0, function* () {
     const suffix = '.ts';
@@ -54,13 +58,13 @@ exports.names = names;
 const files = (env) => __awaiter(void 0, void 0, void 0, function* () {
     const src = path_1.default.resolve(env.core, 'scripts', 'src', 'Setup');
     const build = path_1.default.resolve(env.core, 'scripts', 'build', 'Setup');
-    return ((yield Promise.all((yield exports.names(src))
+    return ((yield Promise.all((yield (0, exports.names)(src))
         .map(name => path_1.default.resolve(build, name))
         .map(exports.script))));
 });
 exports.files = files;
 const scripts = (env) => __awaiter(void 0, void 0, void 0, function* () {
-    return ((yield exports.files(env))
+    return ((yield (0, exports.files)(env))
         .filter(file => (file.scope.includes('all') ||
         file.scope.includes(env.which)))
         .map(({ name }) => ({
@@ -70,7 +74,7 @@ const scripts = (env) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.scripts = scripts;
 const generate = (env) => __awaiter(void 0, void 0, void 0, function* () {
-    (yield exports.files(env)).map(script => fs_extra_1.default.writeFile(path_1.default.resolve(env.root, 'bin', script.name), exports.code(script)));
+    (yield (0, exports.files)(env)).map(script => fs_extra_1.default.writeFile(path_1.default.resolve(env.root, 'bin', script.name), (0, exports.code)(script)));
 });
 exports.generate = generate;
 //# sourceMappingURL=Bin.js.map

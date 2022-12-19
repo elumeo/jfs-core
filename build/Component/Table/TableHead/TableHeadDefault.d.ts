@@ -1,6 +1,6 @@
 import React from 'react';
 import { SortDirectionType } from 'react-virtualized';
-export declare type TableHeadDefaultProps = {
+export type TableHeadDefaultProps = {
     height?: number;
     isNumeric?: boolean;
     disableSort?: boolean;

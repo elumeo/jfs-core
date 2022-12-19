@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -38,8 +42,8 @@ const Package = __importStar(require("../Library/NPM/Package"));
 exports.name = 'jfs-open-showcase';
 exports.scope = ['all'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
-    const showcase = path_1.resolve(env.core, 'showcase');
-    const node_modules = path_1.resolve(showcase, 'node_modules');
+    const showcase = (0, path_1.resolve)(env.core, 'showcase');
+    const node_modules = (0, path_1.resolve)(showcase, 'node_modules');
     const installed = fs_1.default.existsSync(node_modules);
     if (!installed) {
         yield Package.run('install', { cwd: showcase, stdio: 'inherit' }, (child) => process.on('exit', () => child.kill()));

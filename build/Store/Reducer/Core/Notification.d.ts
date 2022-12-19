@@ -2,7 +2,7 @@
 import * as TA from 'typesafe-actions';
 import * as Type from '../../../Types/Notification';
 import { ActionType } from '../../../Types/Redux';
-export declare type State = {
+export type State = {
     history: Type.Notification[];
     isHistoryOpen: boolean;
 };

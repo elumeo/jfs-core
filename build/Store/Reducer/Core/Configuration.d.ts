@@ -1,7 +1,7 @@
 /// <reference types="connected-react-router" />
 import * as Type from '../../../Types/Configuration';
 import { ActionType } from '../../../Types/Redux';
-export declare type State<T> = {
+export type State<T> = {
     config: T;
     pending: boolean;
     loaded: boolean;

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import * as React from 'react';
 import { useCallback } from 'react';
 import Card from '@material-ui/core/Card';
@@ -34,10 +35,12 @@ const columns: ColumnData[] = [
     dataKey: 'select',
     disableSort: true,
     headerRenderer: () => (
-      <TableHeadSelect checked={false} onChange={console.log} height={tableRowHeight}/>
+      // eslint-disable-next-line no-console
+      <TableHeadSelect checked={false} onChange={console.log} height={tableRowHeight} />
     ),
     cellRenderer: (cellProps: TableCellProps) => (
-      <TableCellSelect checked={false} value={cellProps.cellData} onChange={console.log} height={tableRowHeight}/>
+      // eslint-disable-next-line no-console
+      <TableCellSelect checked={false} value={cellProps.cellData} onChange={console.log} height={tableRowHeight} />
     )
   },
   {
@@ -73,13 +76,13 @@ const columns: ColumnData[] = [
     width: 220,
     label: 'Datum (Range)',
     dataKey: 'datetimeRange',
-    cellRenderer: cellProps => <TableCellDateTimeRange cellData={cellProps.cellData} height={tableRowHeight}/>
+    cellRenderer: cellProps => <TableCellDateTimeRange cellData={cellProps.cellData} height={tableRowHeight} />
   },
   {
     width: 180,
     label: 'Datum',
     dataKey: 'datetime',
-    cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} height={tableRowHeight}/>
+    cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} height={tableRowHeight} />
   }
 ];
 
@@ -122,7 +125,6 @@ for (let i = 0; i < 200; i += 1) {
   const randomSelection = sample[Math.floor(Math.random() * sample.length)];
   rows.push(createDataVirtualizedTable(i, ...randomSelection));
 }
-
 const createProductDataVirtualizedTable = (index: number): TableCellProductProps => ({
   rowIndex: index,
   isProductBundle: true,
@@ -145,7 +147,7 @@ for (let i = 0; i < 200; i += 1) {
 }
 
 const DevelopTables: React.FC = () => {
-  const noRowsRenderer = useCallback(() => <TableRowLoading/>, []);
+  const noRowsRenderer = useCallback(() => <TableRowLoading />, []);
   const rowGetter = useCallback((row: Index) => rows[row.index], []);
   const productRowGetter = useCallback((row: Index) => productRows[row.index], []);
 
@@ -162,7 +164,7 @@ const DevelopTables: React.FC = () => {
             sortBy={'calories'}
             sortDirection={'ASC'}
             columns={columns}
-          />
+            />
         </CardContent>
       </Card>
 
@@ -204,7 +206,7 @@ const DevelopTables: React.FC = () => {
                   {
                     dataKey: 'product',
                     width: 400,
-                    cellRenderer: (cellProps: TableCellProps) => <TableCellProduct {...cellProps.rowData}/>
+                    cellRenderer: (cellProps: TableCellProps) => <TableCellProduct {...cellProps.rowData} />
                   }
                 ]}
               />

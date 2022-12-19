@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -40,10 +44,10 @@ const properties = (properties) => (Object
     .reduce((normalized, key) => {
     const property = properties[key];
     return Object.assign(Object.assign({}, normalized), { [key]: Object.assign(Object.assign({}, property), { type: (Text.Prefix.match(property.type, 'DTO')
-                ? exports.type(property.type)
+                ? (0, exports.type)(property.type)
                 : property.type) }) });
 }, {}));
 exports.properties = properties;
-const namespaces = (root) => (root.map(namespace => (Object.assign(Object.assign({}, namespace), { dtos: namespace.dtos.map(dto => (Object.assign(Object.assign({}, dto), { properties: exports.properties(dto.properties) }))), namespaces: exports.namespaces(namespace.namespaces) }))));
+const namespaces = (root) => (root.map(namespace => (Object.assign(Object.assign({}, namespace), { dtos: namespace.dtos.map(dto => (Object.assign(Object.assign({}, dto), { properties: (0, exports.properties)(dto.properties) }))), namespaces: (0, exports.namespaces)(namespace.namespaces) }))));
 exports.namespaces = namespaces;
 //# sourceMappingURL=DTO.js.map

@@ -17,11 +17,11 @@ const fs_extra_1 = __importDefault(require("fs-extra"));
 const path_1 = require("path");
 const json_diff_1 = __importDefault(require("json-diff"));
 const run = (path, description) => __awaiter(void 0, void 0, void 0, function* () {
-    if (!fs_extra_1.default.existsSync(path_1.resolve(path, 'src', 'API', 'JSC', 'Description.json'))) {
+    if (!fs_extra_1.default.existsSync((0, path_1.resolve)(path, 'src', 'API', 'JSC', 'Description.json'))) {
         return 'No description found.';
     }
     else {
-        const data = yield fs_extra_1.default.readFile(path_1.resolve(path, 'src', 'API', 'JSC', 'Description.json'), 'utf8');
+        const data = yield fs_extra_1.default.readFile((0, path_1.resolve)(path, 'src', 'API', 'JSC', 'Description.json'), 'utf8');
         return json_diff_1.default.diffString(description, JSON.parse(data));
     }
 });

@@ -1,6 +1,6 @@
 /// <reference types="connected-react-router" />
 import { ActionType } from '../../../Types/Redux';
-export declare type State = {
+export type State = {
     navigationOpen: boolean;
 };
 declare const Navigation: import("typesafe-actions").Reducer<State, ActionType<{}>> & {

@@ -1,7 +1,7 @@
 /// <reference types="connected-react-router" />
 import * as TA from 'typesafe-actions';
 import { ActionType } from '../../../Types/Redux';
-export declare type State = {
+export type State = {
     appInitialized: boolean;
     allowRobotLogin: boolean;
     packageJson: {

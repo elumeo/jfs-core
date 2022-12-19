@@ -1,6 +1,6 @@
 import { OptionsObject, SnackbarAction, useSnackbar, VariantType } from 'notistack';
 import React from 'react';
-export declare type Notification = {
+export type Notification = {
     id?: string;
     group?: string;
     title?: React.ReactNode;
@@ -13,5 +13,5 @@ export declare type Notification = {
     httpDetails?: React.ReactNode;
     timeStamp?: Date;
 };
-export declare type NotificationPosition = 'topRight' | 'bottomRight';
-export declare type Severity = 'error' | 'success' | 'warning' | 'info';
+export type NotificationPosition = 'topRight' | 'bottomRight';
+export type Severity = 'error' | 'success' | 'warning' | 'info';

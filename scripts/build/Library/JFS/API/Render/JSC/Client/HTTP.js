@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -36,7 +40,7 @@ const replacePathParameters = (path) => {
         return path;
     }
     else {
-        return (path.match(/:[^\/]*/gm).reduce((path, sequence) => path.replace(sequence, `' + ${exports.encodeURI(sequence.substring(1))} + '`), path));
+        return (path.match(/:[^\/]*/gm).reduce((path, sequence) => path.replace(sequence, `' + ${(0, exports.encodeURI)(sequence.substring(1))} + '`), path));
     }
 };
 const request = ({ name, protocol, resource, parameters }) => (EcmaScript.export(Code.Declaration.constant({
@@ -64,7 +68,7 @@ const request = ({ name, protocol, resource, parameters }) => (EcmaScript.export
             parameters: [
                 ...parameters
                     .filter(({ name }) => (!replacePathParameters(resource.path)
-                    .includes(exports.encodeURI(name))))
+                    .includes((0, exports.encodeURI)(name))))
                     .map(({ name }) => name),
                 'config'
             ]

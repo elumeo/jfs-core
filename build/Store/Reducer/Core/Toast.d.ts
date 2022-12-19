@@ -1,7 +1,7 @@
 /// <reference types="connected-react-router" />
 import { ActionType } from '../../../Types/Redux';
 import * as Type from '../../../Types/Toast';
-export declare type State = {
+export type State = {
     toasts: Type.Toast[];
 };
 declare const Toast: import("typesafe-actions").Reducer<State, ActionType<{}>> & {

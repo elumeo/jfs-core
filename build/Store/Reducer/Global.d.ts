@@ -2,7 +2,7 @@ import { History } from 'history';
 import { Reducer } from 'redux';
 import { State as CoreState } from './Core';
 import { RouterState } from 'connected-react-router';
-export declare type State = {
+export type State = {
     Core: CoreState;
     router: RouterState;
 } & Record<string, unknown>;

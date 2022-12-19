@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -29,11 +33,11 @@ const resource = (resource) => (Object.assign(Object.assign({}, resource), { typ
             ? DTO.type(generic)
             : generic))) }) }));
 exports.resource = resource;
-const methods = (methods) => (methods.map(method => (Object.assign(Object.assign({}, method), { resource: exports.resource(method.resource), parameters: method.parameters.map(parameter => (Object.assign(Object.assign({}, parameter), { type: (Text.Prefix.match(parameter.type, 'DTO')
+const methods = (methods) => (methods.map(method => (Object.assign(Object.assign({}, method), { resource: (0, exports.resource)(method.resource), parameters: method.parameters.map(parameter => (Object.assign(Object.assign({}, parameter), { type: (Text.Prefix.match(parameter.type, 'DTO')
             ? DTO.type(parameter.type)
             : parameter.type) }))) }))));
 exports.methods = methods;
 const namespaces = (clients) => (clients
-    .map(client => (Object.assign(Object.assign({}, client), { methods: exports.methods(client.methods), name: client.name.replace('Controller', 'Client') }))));
+    .map(client => (Object.assign(Object.assign({}, client), { methods: (0, exports.methods)(client.methods), name: client.name.replace('Controller', 'Client') }))));
 exports.namespaces = namespaces;
 //# sourceMappingURL=Client.js.map

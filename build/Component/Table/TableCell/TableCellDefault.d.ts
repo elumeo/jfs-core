@@ -5,7 +5,7 @@ export declare enum ContentEllipseMode {
     Normal = "normal",
     Lines = "lines"
 }
-export declare type TableCellDefaultProps = Partial<TableCellRootProps> & {
+export type TableCellDefaultProps = Partial<TableCellRootProps> & {
     cellData: ReactNode;
     isLoading?: boolean;
     contentEllipseMode?: ContentEllipseMode;

@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -62,25 +66,25 @@ const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
         //   Component: JFS.Head,
         // });
     }
-    const { jfs } = yield Package.json(path_1.resolve(process.cwd(), 'package.json'));
+    const { jfs } = yield Package.json((0, path_1.resolve)(process.cwd(), 'package.json'));
     if (jfs) {
         console.log('Synchronization');
         Object.keys(jfs.sync).map(name => {
             console.log(`- ${name} => ${jfs.sync[name]}`);
-            const from = path_1.resolve(process.cwd(), jfs.sync[name]).replace('/', path_1.sep);
-            const to = path_1.resolve(process.cwd(), 'node_modules', name).replace('/', path_1.sep);
+            const from = (0, path_1.resolve)(process.cwd(), jfs.sync[name]).replace('/', path_1.sep);
+            const to = (0, path_1.resolve)(process.cwd(), 'node_modules', name).replace('/', path_1.sep);
             const ignore = [
                 'node_modules',
                 '.git',
                 '.idea'
             ];
             const format = (event, project, path) => {
-                return `${ansi_colors_1.cyanBright(event)}: ${ansi_colors_1.magenta(project)}${path}`;
+                return `${(0, ansi_colors_1.cyanBright)(event)}: ${(0, ansi_colors_1.magenta)(project)}${path}`;
             };
             const watcher = chokidar_1.default.watch(from);
             const events = ['add', 'change', 'unlink', 'addDir', 'unlinkDir'];
             events.forEach(event => watcher.on(event, (event, source) => __awaiter(void 0, void 0, void 0, function* () {
-                const target = path_1.resolve(to, Text.Prefix.remove(source.substring(from.length), path_1.sep));
+                const target = (0, path_1.resolve)(to, Text.Prefix.remove(source.substring(from.length), path_1.sep));
                 const ignored = ignore.includes(target.substring(to.length + 1).split(path_1.sep)[0]);
                 if (ignored) {
                     return;

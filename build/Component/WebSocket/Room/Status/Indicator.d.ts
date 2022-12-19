@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Type from '../../../../Types/Configuration';
-export declare type Props = {
+export type Props = {
     client: Type.WebSocketClient;
     roomName: string;
 };

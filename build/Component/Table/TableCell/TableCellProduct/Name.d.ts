@@ -1,5 +1,5 @@
 import React from 'react';
-export declare type NameProps = {
+export type NameProps = {
     name: string;
 };
 declare const _default: React.MemoExoticComponent<({ name }: NameProps) => JSX.Element>;

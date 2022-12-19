@@ -1,5 +1,5 @@
 import React from 'react';
-export declare type Props = {
+export type Props = {
     iconName?: string;
     messageId?: string;
     onClick?: (event: React.MouseEvent<HTMLElement>) => void;

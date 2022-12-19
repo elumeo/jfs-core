@@ -1,6 +1,6 @@
 import React from 'react';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
-export declare type TableCellRootProps = {
+export type TableCellRootProps = {
     children: React.ReactNode;
     isNumeric?: boolean;
     height?: number | string;

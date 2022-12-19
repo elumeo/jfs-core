@@ -1,5 +1,5 @@
 import React from 'react';
-export declare type DetailsProps = {
+export type DetailsProps = {
     id?: string;
     name?: string;
     onClick?: HTMLElement['click'];

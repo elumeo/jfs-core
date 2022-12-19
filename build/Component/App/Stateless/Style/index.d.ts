@@ -5,7 +5,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-declare type Props = {
+type Props = {
     children: ThemeProps['children'];
 };
 declare const Style: ({ children }: Props) => JSX.Element;

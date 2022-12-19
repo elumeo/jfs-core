@@ -1,5 +1,5 @@
 import React from 'react';
-export declare type Props = {
+export type Props = {
     children?: JSX.Element | JSX.Element[];
     navigation?: JSX.Element;
     spacing?: {

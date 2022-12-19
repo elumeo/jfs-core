@@ -16,7 +16,7 @@ exports.start = exports.run = exports.save = exports.json = exports.node_module 
 const path_1 = require("path");
 const fs_extra_1 = __importDefault(require("fs-extra"));
 const child_process_1 = __importDefault(require("child_process"));
-const node_module = (path, name) => path_1.resolve(path, 'node_modules', name);
+const node_module = (path, name) => (0, path_1.resolve)(path, 'node_modules', name);
 exports.node_module = node_module;
 const json = (path) => __awaiter(void 0, void 0, void 0, function* () {
     return (yield fs_extra_1.default.readJSON(path));
@@ -37,7 +37,7 @@ const run = (script, options = {}, onSpawn) => {
     return new Promise(resolve => child.on('exit', resolve));
 };
 exports.run = run;
-const start = (path) => exports.run('start', {
+const start = (path) => (0, exports.run)('start', {
     cwd: path,
     stdio: 'inherit'
 });

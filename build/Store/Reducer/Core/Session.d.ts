@@ -1,9 +1,9 @@
 /// <reference types="connected-react-router" />
 import JSCApi from '../../../API/JSC';
 import { ActionType } from '../../../Types/Redux';
-declare type ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
-declare type IPropertyDTO = JSCApi.DTO.Authorization.IPropertyDTO;
-export declare type State = {
+type ISessionDTO = JSCApi.DTO.Session.ISessionDTO;
+type IPropertyDTO = JSCApi.DTO.Authorization.IPropertyDTO;
+export type State = {
     isCheckingSession: boolean;
     isAuthorized: boolean;
     sessionDTO: ISessionDTO;

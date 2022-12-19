@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -24,24 +28,24 @@ const File = __importStar(require("./File"));
 const columns = ['de', 'en', 'it'];
 const title = (translations, filter) => (Object
     .keys(translations)
-    .reduce((title, language) => (Object.assign(Object.assign({}, title), { [language]: language })), { key: `Keys (${exports.rows(translations, filter).length})` }));
+    .reduce((title, language) => (Object.assign(Object.assign({}, title), { [language]: language })), { key: `Keys (${(0, exports.rows)(translations, filter).length})` }));
 exports.title = title;
 const rows = (translations, filter) => (filter === 'all'
-    ? exports.all(translations)
-    : exports.missing(translations));
+    ? (0, exports.all)(translations)
+    : (0, exports.missing)(translations));
 exports.rows = rows;
 const all = (translations) => (File.keys(translations)
     .map(key => (Object.keys(translations)
     .reduce((row, language) => (Object.assign(Object.assign({}, row), { [language]: translations[language][key] })), { key }))));
 exports.all = all;
-const missing = (translations) => (exports.all(translations)
+const missing = (translations) => ((0, exports.all)(translations)
     .filter(row => (!Object
     .keys(row)
     .every(index => row[index]))));
 exports.missing = missing;
 const get = (translations, filter = 'missing') => [
-    exports.title(translations, filter),
-    ...exports.rows(translations, filter)
+    (0, exports.title)(translations, filter),
+    ...(0, exports.rows)(translations, filter)
 ];
 exports.get = get;
 const language = (rows, name) => (rows

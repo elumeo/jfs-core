@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonProgressProps } from '../../Button/ButtonProgress';
-export declare type Props = {
+export type Props = {
     pending: boolean;
     onClick: ButtonProgressProps['onClick'];
 };

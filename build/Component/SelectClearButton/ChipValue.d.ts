@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ChipProps } from '@material-ui/core';
-export declare type Props = Partial<Omit<ChipProps, 'onDelete'>> & {
+export type Props = Partial<Omit<ChipProps, 'onDelete'>> & {
     onDelete: (value: string) => void;
     value: string;
     label: ReactNode;

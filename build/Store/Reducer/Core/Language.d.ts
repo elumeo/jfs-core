@@ -1,7 +1,7 @@
 /// <reference types="connected-react-router" />
 import * as Type from '../../../Types/Language';
 import { ActionType } from '../../../Types/Redux';
-export declare type State = {
+export type State = {
     language: Type.Language;
     messages: Record<string, Record<string, string>>;
 };

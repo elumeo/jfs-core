@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language } from '../../Types/Language';
-export declare type Props = {
+export type Props = {
     value: Language;
     onChange: (next: Language) => void;
 };

@@ -4,7 +4,7 @@ import { CSSProperties } from '@material-ui/core/styles/withStyles';
 export declare const wrapperStyles: CSSProperties;
 export declare const mapToCircularProgressSize: (size: string) => number;
 export declare const mapToCircularProgressColor: (color: PropTypes.Color) => 'inherit' | 'primary' | 'secondary';
-export declare type ButtonProgressProps = ButtonProps & {
+export type ButtonProgressProps = ButtonProps & {
     onClick?: ButtonProps['onClick'];
     disabled?: boolean;
     inProgress?: boolean;

@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -42,7 +46,7 @@ const run = (path) => __awaiter(void 0, void 0, void 0, function* () {
     const locales = yield Locale.all(path);
     const translations = locales.reduce((translations, locale) => (Object.assign(Object.assign({}, translations), { [locale.name]: locale.messages })), {});
     const missing = Table.missing(translations);
-    const last = yield Snapshot.last(path_1.dirname(path));
+    const last = yield Snapshot.last((0, path_1.dirname)(path));
     const version = Snapshot.Version.next(last.version);
     const asset = yield File.asset(Table.get(translations, 'missing'), path, version);
     const first = last.version === null;
@@ -50,16 +54,16 @@ const run = (path) => __awaiter(void 0, void 0, void 0, function* () {
     const outdated = (!first && !missing.length ||
         changed);
     if (outdated) {
-        yield Snapshot.Asset.remove(path_1.dirname(path));
+        yield Snapshot.Asset.remove((0, path_1.dirname)(path));
     }
     if (missing.length && (first || changed)) {
-        yield Snapshot.Asset.save(path_1.dirname(path), version, asset);
-        const html = Snapshot.File.path(path_1.dirname(path), version, 'html');
-        open_1.default(html);
+        yield Snapshot.Asset.save((0, path_1.dirname)(path), version, asset);
+        const html = Snapshot.File.path((0, path_1.dirname)(path), version, 'html');
+        (0, open_1.default)(html);
     }
     else if (missing.length) {
-        const html = Snapshot.File.path(path_1.dirname(path), last.version, 'html');
-        open_1.default(html);
+        const html = Snapshot.File.path((0, path_1.dirname)(path), last.version, 'html');
+        (0, open_1.default)(html);
     }
     return !Boolean(missing.length);
 });

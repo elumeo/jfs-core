@@ -1,7 +1,7 @@
 /// <reference types="connected-react-router" />
 import * as Country from '../../../Types/Country';
 import { ActionType } from '../../../Types/Redux';
-export declare type State = {
+export type State = {
     locale: Country.Locale;
 };
 export declare const initialState: State;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableCellRootProps } from '../../../Table/TableCell/TableCellRoot';
 import { MediaUri } from '../../../../Types/MediaUri';
-export declare type TableCellProductProps = Partial<TableCellRootProps> & {
+export type TableCellProductProps = Partial<TableCellRootProps> & {
     id?: string;
     rowIndex?: number;
     mediaUris?: MediaUri[];

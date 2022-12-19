@@ -1,6 +1,6 @@
 import React from 'react';
 import { TableCellRootProps } from '../../Table/TableCell/TableCellRoot';
-export declare type TableCellMsisdnProps = Partial<TableCellRootProps> & {
+export type TableCellMsisdnProps = Partial<TableCellRootProps> & {
     cellData: string;
     isLoading?: boolean;
 };

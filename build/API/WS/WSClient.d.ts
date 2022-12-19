@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import { PayloadAction } from 'typesafe-actions';
 import JSCApi from '../JSC';
 import { IWebSocketError, IWebSocketRoom, IWebSocketRoomConnection } from '../../Types/WebSocket';
-declare type IWebSocketRoomUpdateDTO<T> = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>;
+type IWebSocketRoomUpdateDTO<T> = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<T>;
 import { State } from '../../Store/Reducer/Global';
 export declare class WSClient {
     static EVENT_NOT_AUTHORIZED: string;
