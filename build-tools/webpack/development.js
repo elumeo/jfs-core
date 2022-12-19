@@ -3,7 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PATH = require('./PATH');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-// const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const { resolve } = require('path');
 
 const development = {
@@ -15,6 +15,7 @@ const development = {
   },
   devtool: 'inline-source-map',
   plugins: [
+    ...common.plugins,
     new ForkTsCheckerWebpackPlugin({
       typescript: {
         configFile: resolve(PATH.ROOT, 'tsconfig.json'),
@@ -27,7 +28,6 @@ const development = {
       },
       async: true
     }),
-    // new ForkTsCheckerNotifierWebpackPlugin,
     new CopyWebpackPlugin({
       patterns: [
         { from: PATH.CONFIGURATION_DEV, to: PATH.CONFIGURATION_DIST }
@@ -39,10 +39,10 @@ const development = {
       inject: false,
       favicon: PATH.FAVICON,
       templateParameters: {
-        BUNDLE_FILE_NAME : PATH.BUNDLE_NAME
+        BUNDLE_FILE_NAME: PATH.BUNDLE_NAME
       }
     }),
-]
+  ]
 };
 
 module.exports = development;
