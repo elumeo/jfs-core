@@ -83,7 +83,7 @@ const common = {
     extensions: ['.ts', '.tsx', '.js', '.json', '.mp3'],
     alias: {
       Core: resolve(PATH.ROOT, 'node_modules', '@elumeo', 'jfs-core', 'build'),
-      'react-virtualized': '@enykeev/react-virtualized',
+      'react-virtualized': resolve(PATH.ROOT, 'node_modules', '@enykeev', 'react-virtualized'),
     },
     plugins: [
       new PathAliasPlugin({
