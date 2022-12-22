@@ -6,8 +6,8 @@ const isAxiosError = (error: Error) =>
 const isJscError = (error: Error) =>
   isAxiosError(error) &&
   typeof (error as AxiosError)?.response?.data === 'object' &&
+  // eslint-disable-next-line no-unsafe-optional-chaining
   ['id', 'message'].every(key => key in (error as AxiosError)?.response?.data);
-
 const head = (error: AxiosError) => {
   const { status, statusText } = error.response;
   const method = error.config.method.toUpperCase();

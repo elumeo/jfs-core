@@ -49,7 +49,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.columnHeaderStyles = exports.rowNoClickStyles = exports.rowClickStyles = exports.rowStyles = exports.noOutlineStyles = exports.ellipsesStyle = exports.flexContainerStyles = exports.visuallyHiddenStyle = void 0;
-var react_virtualized_1 = require("react-virtualized");
+var react_virtualized_1 = require("../..");
 var react_1 = __importStar(require("react"));
 var TableCell_1 = require("../Table/TableCell");
 var TableHeadDefault_1 = __importDefault(require("../Table/TableHead/TableHeadDefault"));

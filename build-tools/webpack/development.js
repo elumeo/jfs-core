@@ -3,7 +3,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PATH = require('./PATH');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const { resolve } = require('path');
 
 const development = {

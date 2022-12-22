@@ -31,7 +31,7 @@ var ShowButton = function (_a) {
     }, [open]);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement(IconButton_1.default, { color: 'inherit', ref: buttonRef, "aria-describedby": id, onClick: function () { return setAnchorRef(open ? null : buttonRef.current); } },
-            react_1.default.createElement(Badge_1.default, { badgeContent: all.length, color: 'secondary' },
+            react_1.default.createElement(Badge_1.default, { badgeContent: all.length, color: 'secondary', overlap: 'rectangular' },
                 react_1.default.createElement(Notifications_1.default, null))),
         (0, react_dom_1.createPortal)(keepOpenOnOutsideClick ? (react_1.default.createElement(Popper_1.default, { open: open, placement: 'bottom-end', id: id, anchorEl: anchorRef, modifiers: {
                 flip: {

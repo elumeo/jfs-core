@@ -12,7 +12,8 @@
       "Store/*": ["./Store/*"],
       "Types/*": ["./Types/*"],
       "Utilities/*": ["./Utilities/*"],
-      "API/*" : ["./API/*"]
+      "API/*" : ["./API/*"],
+      "react-virtualized" : ["@enykeev/react-virtualized"]
     }
   },
   "include": ["src", "augmentation"],

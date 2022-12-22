@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.start = exports.history = void 0;
+/* eslint-disable @typescript-eslint/no-explicit-any */
 var redux_1 = require("redux");
 var redux_devtools_extension_1 = require("redux-devtools-extension");
 var redux_observable_1 = require("redux-observable");

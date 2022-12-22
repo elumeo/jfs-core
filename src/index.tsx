@@ -26,35 +26,35 @@
 // }
 
 // render(<App
-//     store={create(epic, reducer(history))}
-//     title='core'
-//     translations={Translations}
-//     packageJSON={packageJson}>
-//     <Header.AppToolbar
-//         left={<Header.BackendIndicator />}
-//         right={
-//             <>
-//                 <Indicator client={{
-//                     Host: 'https://api-test.juwelo.de',
-//                     Path: '/staging/websocket2.services',
-//                     PrivateNamespace: 'Jsc2Jfs',
-//                     AutoRoomSubscriptions: ['currentGame', 'plannedGames']
-//                 }} roomName={'currentGame'} />
-//                 <Settings.Button />
-//                 <Notification.Button.Show />
-//                 <DebugButton />
-//             </>
-//         }
-//     />
-//     <Routes />
-//     <Overlay>
-//         <Navigation />
-//         <Login.Dialog />
-//         <Logout.Dialog />
-//         <Settings.Dialog>
-//             <Language.Settings />
-//         </Settings.Dialog>
-//         <Snackbar />
-//     </Overlay>
+//   store={create(epic, reducer(history))}
+//   title='core'
+//   translations={Translations}
+//   packageJSON={packageJson}>
+//   <Header.AppToolbar
+//     left={<Header.BackendIndicator />}
+//     right={
+//       <>
+//         <Indicator client={{
+//           Host: 'https://api-test.juwelo.de',
+//           Path: '/staging/websocket2.services',
+//           PrivateNamespace: 'Jsc2Jfs',
+//           AutoRoomSubscriptions: ['currentGame', 'plannedGames']
+//         }} roomName={'currentGame'} />
+//         <Settings.Button />
+//         <Notification.Button.Show />
+//         <DebugButton />
+//       </>
+//     }
+//   />
+//   <Routes />
+//   <Overlay>
+//     <Navigation />
+//     <Login.Dialog />
+//     <Logout.Dialog />
+//     <Settings.Dialog>
+//       <Language.Settings />
+//     </Settings.Dialog>
+//     <Snackbar />
+//   </Overlay>
 // </App>, document.getElementById('root'));
 

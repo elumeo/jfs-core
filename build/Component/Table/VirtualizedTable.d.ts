@@ -1,4 +1,4 @@
-import { ColumnProps, Table, TableProps, AutoSizerProps } from 'react-virtualized';
+import { ColumnProps, Table, TableProps, AutoSizerProps } from '../..';
 import React from 'react';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
 export declare const visuallyHiddenStyle: CSSProperties;

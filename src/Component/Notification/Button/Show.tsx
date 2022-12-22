@@ -35,7 +35,7 @@ const ShowButton: React.FC<Props> = ({ keepOpenOnOutsideClick }) => {
         ref={buttonRef}
         aria-describedby={id}
         onClick={() => setAnchorRef(open ? null : buttonRef.current)}>
-        <Badge badgeContent={all.length} color='secondary'>
+        <Badge badgeContent={all.length} color='secondary' overlap='rectangular'>
           <NotificationsIcon />
         </Badge>
       </IconButton>

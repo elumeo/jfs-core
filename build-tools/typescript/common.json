@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es2018", "esNext", "DOM"],
+    "lib": [
+      "es2018",
+      "esNext",
+      "DOM"
+    ],
     "module": "commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
