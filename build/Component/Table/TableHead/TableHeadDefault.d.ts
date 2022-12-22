@@ -1,5 +1,5 @@
 import React from 'react';
-import { SortDirectionType } from '../../..';
+import { SortDirectionType } from 'react-virtualized';
 export type TableHeadDefaultProps = {
     height?: number;
     isNumeric?: boolean;

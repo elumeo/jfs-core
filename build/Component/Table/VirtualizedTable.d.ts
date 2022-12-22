@@ -1,4 +1,4 @@
-import { ColumnProps, Table, TableProps, AutoSizerProps } from '../..';
+import { ColumnProps, Table, TableProps, AutoSizerProps } from 'react-virtualized';
 import React from 'react';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
 export declare const visuallyHiddenStyle: CSSProperties;
@@ -20,5 +20,5 @@ export type VirtualizedTableProps = Partial<TableProps> & {
     onResize?: AutoSizerProps['onResize'];
     rowHeight?: TableProps['rowHeight'];
 };
-declare const _default: React.MemoExoticComponent<React.ForwardRefExoticComponent<Pick<VirtualizedTableProps, keyof import("react-virtualized/dist/es/Grid").GridCoreProps> & React.RefAttributes<Table>>>;
-export default _default;
+declare const VirtualizedTable: React.ForwardRefExoticComponent<Pick<VirtualizedTableProps, keyof import("react-virtualized/dist/es/Grid").GridCoreProps> & React.RefAttributes<Table>>;
+export default VirtualizedTable;

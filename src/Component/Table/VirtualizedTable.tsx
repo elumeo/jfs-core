@@ -1,5 +1,5 @@
 import { ColumnProps, AutoSizer, Column, SizeInfo, Table, TableProps, AutoSizerProps } from 'react-virtualized';
-import React, { memo, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { TableCellDefault } from 'Component/Table/TableCell';
 import TableHeadDefault from 'Component/Table/TableHead/TableHeadDefault';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
@@ -73,7 +73,6 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>((props, 
     disableSort={headerProps.disableSort}
     sortBy={headerProps.sortBy}
     sortDirection={headerProps.sortDirection}
-    // @ts-ignore I do not get what the problem here is React.ReactNode != ReactNode ???
     label={headerProps.label}
     dataKey={headerProps.dataKey}
   />, [headerHeight]);
@@ -90,10 +89,8 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>((props, 
     isNumeric={(props.columnIndex != null && columns[props.columnIndex].numeric) || false}
   />, []);
 
-  // @ts-ignore See https://github.com/bvaughn/react-virtualized/issues/1739
   return <AutoSizer onResize={onResize}>
     {({ height, width }: SizeInfo) => (
-      // @ts-ignore See https://github.com/bvaughn/react-virtualized/issues/1739
       <Table
         ref={ref}
         height={height}
@@ -108,7 +105,6 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>((props, 
         style={tableStyle}
         {...tableProps}
       >
-        {/* @ts-ignore See https://github.com/bvaughn/react-virtualized/issues/1739 */}
         {columns.map(({ dataKey, width: columnWidth, ...other }) => <Column
           key={dataKey}
           headerStyle={columnHeaderStyles}
@@ -125,4 +121,4 @@ const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>((props, 
   </AutoSizer>;
 }
 );
-export default memo(VirtualizedTable);
+export default VirtualizedTable

@@ -13,7 +13,8 @@
       "Types/*": ["./Types/*"],
       "Utilities/*": ["./Utilities/*"],
       "API/*" : ["./API/*"],
-      "react-virtualized" : ["@enykeev/react-virtualized"]
+       "react-virtualized/*" : ["../node_modules/@enykeev/react-virtualized/dist/es/*"]
+
     }
   },
   "include": ["src", "augmentation"],
