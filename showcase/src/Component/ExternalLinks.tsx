@@ -14,7 +14,7 @@ const classes = ({
 
 const ExternalLinks: React.FC<Props> = () => {
   return <Layout navigation={<AppNavigation />}>
-    <Container>
+    <Container disableGutters maxWidth={false}>
       <Card>
         <CardHeader title='External Links' />
         <CardContent component={List}>

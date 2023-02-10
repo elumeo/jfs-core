@@ -34,7 +34,8 @@ const Lists = () => {
   const toggleDense = () => setDense(!dense);
   const toggleShowSubheader = () => setShowSubheader(!showSubheader);
 
-  return (<Layout navigation={<AppNavigation/>}>
+  return (
+    <Layout navigation={<AppNavigation/>}>
         <Container maxWidth={'xl'}>
           <Card>
             <CardHeader title='Lists'/>

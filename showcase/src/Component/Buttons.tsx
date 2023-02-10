@@ -34,8 +34,9 @@ const Buttons: React.FC<Props> = () => {
   const [size, setSize] = React.useState<'small' | 'medium' | 'large'>('medium');
   const [inProgress, setInProgress] = React.useState(false);
 
-  return (<Layout navigation={<AppNavigation />}>
-    <Container>
+  return (
+    <Layout navigation={<AppNavigation />}>
+    <Container disableGutters maxWidth={false}>
       <Grid container direction={'column'} spacing={1}>
         <Grid item>
           <Card>

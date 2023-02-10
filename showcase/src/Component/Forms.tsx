@@ -49,9 +49,10 @@ const Forms = () => {
   const handleSelectChange: SelectProps<false>['onChange'] = event => setSelectValue(event);
   const handleDateChange = (date: Date | null) => setSelectedDate(date);
 
-  return (<Layout navigation={<AppNavigation />}>
+  return (
+    <Layout navigation={<AppNavigation />}>
     {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
-    <Container>
+    <Container disableGutters maxWidth={false}>
       <Card>
         <CardHeader title='Forms' subheader={<>Errors are controlled by the <CodeBox component={'span'} size={'small'}>{`<FormControl required error>...</FormControl>`}</CodeBox> Element.
           The <CodeBox component={'span'} size={'small'}>required</CodeBox> attribute controls the asterisk (*) char.</>} />

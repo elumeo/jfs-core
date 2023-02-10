@@ -78,8 +78,9 @@ const Tables = () => {
   const toggleStickyBasicTable = () => setStickyBasicTable(!stickyBasicTable);
   const toggleDenseVirtualizedTable = () => setDenseVirtualizedTable(!denseVirtualizedTable);
 
-  return (<Layout navigation={<AppNavigation />}>
-    <Container>
+  return (
+    <Layout navigation={<AppNavigation />}>
+    <Container disableGutters maxWidth={false}>
       <Grid container direction={'column'} spacing={1}>
         <Grid item xs>
           <Card>

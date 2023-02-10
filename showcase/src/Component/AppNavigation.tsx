@@ -18,7 +18,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AppNavigation = () => {
   const navigate = useNavigate();
-  return <Card>
+  return <Card sx={{ minWidth: 300 }}>
     <List dense>
       <ListItem button onClick={() => navigate('/Boxes')}>
         <ListItemIcon><CheckBoxOutlineBlankIcon /></ListItemIcon>

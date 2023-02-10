@@ -22,8 +22,9 @@ const TabsDemo = () => {
     setCurrentVariant(((event.target as HTMLInputElement).value as 'standard' | 'scrollable' | 'fullWidth'));
   }
 
-  return (<Layout navigation={<AppNavigation />}>
-    <Container>
+  return (
+    <Layout navigation={<AppNavigation />}>
+    <Container disableGutters maxWidth={false}>
       <Card>
         <CardHeader title='Tabs' />
         <CardContent>

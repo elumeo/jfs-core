@@ -30,7 +30,8 @@ const Cards = () => {
     setTimeout(() => setIsRefreshing(false), 2000);
   };
 
-  return (<Layout navigation={<AppNavigation />}>
+  return (
+    <Layout navigation={<AppNavigation />}>
     <Container disableGutters maxWidth="xl">
       <Stack spacing={1}>
         <Card>

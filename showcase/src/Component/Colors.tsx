@@ -13,8 +13,9 @@ const sx = {
 }
 
 const Colors = () => {
-  return (<Layout navigation={<AppNavigation />}>
-    <Container>
+  return (
+    <Layout navigation={<AppNavigation />}>
+    <Container disableGutters maxWidth={false}>
       <Grid container direction={'row'} spacing={1}>
         <Grid item>
           <Card>

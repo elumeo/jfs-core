@@ -33,8 +33,9 @@ const Boxes = () => {
     }
   }
 
-  return (<Layout navigation={<AppNavigation />}>
-    <Container>
+  return (
+    <Layout navigation={<AppNavigation />}>
+    <Container disableGutters maxWidth={false}>
       <Card>
         <AppCardHeader title={'Boxes'} />
         <AppCardContent>

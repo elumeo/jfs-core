@@ -25,7 +25,7 @@
     "jfs-read-translations": "jfs-read-translations"
   },
   "dependencies": {
-    "@elumeo/jfs-core": "^11.0.0-alpha.6",
+    "@elumeo/jfs-core": "^11.0.0-alpha.8",
     "@scharfohnezwiebeln/jfc-hello-world": "^3.0.0"
   },
   "keywords": [],

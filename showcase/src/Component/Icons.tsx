@@ -39,8 +39,9 @@ const sxs = {
 const Icons = () => {
   const [iconColor, setIconColor] = React.useState<'materialUi' | 'reactMd'>('materialUi');
 
-  return (<Layout navigation={<AppNavigation />}>
-    <Container>
+  return (
+    <Layout navigation={<AppNavigation />}>
+    <Container disableGutters maxWidth={false}>
       <Card>
         <CardHeader title='Icons' />
         <CardContent>

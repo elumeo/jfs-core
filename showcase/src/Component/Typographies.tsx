@@ -15,8 +15,9 @@ export const colors: Color.Typography[] = [
   'error',
 ]
 const Typographies = () => {
-  return (<Layout navigation={<AppNavigation/>}>
-        <Container>
+  return (
+    <Layout navigation={<AppNavigation/>}>
+        <Container disableGutters maxWidth={false}>
           <Grid container direction={'column'} spacing={1}>
             <Grid item>
               <Card>

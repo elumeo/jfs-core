@@ -5,8 +5,9 @@ import Layout from '@elumeo/jfs-core/build/Component/App/Layout'
 import AppCardHeader from '@elumeo/jfs-core/build/Component/Card/AppCardHeader';
 import AppCardContent from '@elumeo/jfs-core/build/Component/Card/AppCardContent';
 const Dashboard = () => {
-  return (<Layout navigation={<AppNavigation />}>
-    <Container>
+  return (
+    <Layout navigation={<AppNavigation />}>
+    <Container disableGutters maxWidth={false}>
       <Card>
         <AppCardHeader title={'Dashboard'} />
         <AppCardContent>
