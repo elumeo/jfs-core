@@ -1,6 +1,7 @@
+import { BoxProps } from '@mui/material';
 import React from 'react';
 export type BundleImageProps = {
-    onClick?: HTMLElement['click'];
+    onClick?: BoxProps['onClick'];
 };
-declare const _default: React.MemoExoticComponent<({ onClick }: BundleImageProps) => JSX.Element>;
-export default _default;
+declare const BundleImage: React.FC<BundleImageProps>;
+export default BundleImage;

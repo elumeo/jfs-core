@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var react_intl_1 = require("react-intl");
-var Typography_1 = __importDefault(require("@material-ui/core/Typography"));
+var Typography_1 = __importDefault(require("@mui/material/Typography"));
 var Text = function (_a) {
     var override = _a.override;
     var intl = (0, react_intl_1.useIntl)();

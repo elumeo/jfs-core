@@ -4,7 +4,6 @@ import * as TA from 'typesafe-actions';
 import * as Action from 'Store/Action';
 import * as WebSocket from 'Types/WebSocket';
 import { WSClient } from 'API/WS/WSClient';
-import { v4 as uuid } from 'uuid';
 import { Epic } from 'Types/Redux';
 import { AxiosError } from 'axios';
 
@@ -53,7 +52,7 @@ const joinRoomLoading: Epic = (action$, state$) => {
           return of(
             Action.webSocketJoinRoomFailureAction(update),
             Action.addNotification({
-              id: uuid(),
+              id: crypto.randomUUID(),
               title: 'Error',
               subtitle: 'Join Room (' + action.payload.name + ')',
               content: error.message,

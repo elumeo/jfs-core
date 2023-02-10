@@ -1,10 +1,9 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import * as MUI from '@mui/material';
 import { useIntl } from 'react-intl';
 import * as Selector from 'Store/Selector';
 import JSCApi from 'API/JSC';
 const ROOM_CURRENT_GAME = JSCApi.WebSocketClient.ROOM_CURRENT_GAME;
-import useActions from 'Store/useActions';
 import useSelector from 'Store/useSelector';
 
 const CurrentGameButton: React.FC = () => {

@@ -1,124 +1,92 @@
-import { ColumnProps, AutoSizer, Column, SizeInfo, Table, TableProps, AutoSizerProps } from 'react-virtualized';
-import React, { useCallback } from 'react';
-import { TableCellDefault } from 'Component/Table/TableCell';
-import TableHeadDefault from 'Component/Table/TableHead/TableHeadDefault';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { Theme } from '@material-ui/core';
+import React from 'react'
+import { TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, Components } from 'react-virtuoso'
+import Table, { TableProps } from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import { SortDirection } from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow, { TableRowProps } from '@mui/material/TableRow'
+import Paper from '@mui/material/Paper'
+import { SxProps } from '@mui/material'
+import { topas } from 'Constant/Color'
 
-export const visuallyHiddenStyle: CSSProperties = {
+export const visuallyHiddenStyle: SxProps = {
   border: 0,
   clip: 'rect(0 0 0 0)',
-  height: '1px',
-  margin: '-1px',
+  height: 1,
+  margin: -1,
   overflow: 'hidden',
   padding: 0,
   position: 'absolute',
-  top: '20px',
-  width: '1px'
+  top: 20,
+  width: 1
 };
 
-export const flexContainerStyles: CSSProperties = {
+export const flexContainerStyles: SxProps = {
   display: 'flex',
   alignItems: 'center',
   boxSizing: 'border-box'
 };
 
-export const ellipsesStyle: CSSProperties = {
+export const ellipsesStyle: SxProps = {
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',
   overflow: 'hidden'
 };
 
-export const noOutlineStyles: CSSProperties = { outline: 'none' };
-export const rowStyles: CSSProperties = { direction: 'inherit' };
-export const rowClickStyles: CSSProperties = { cursor: 'pointer' };
-export const rowNoClickStyles: CSSProperties = { cursor: 'initial' };
-export const columnHeaderStyles: CSSProperties = { outline: 'none' };
-
-const tableStyle: CSSProperties = { borderCollapse: 'separate' };
-const columnStyle: CSSProperties = { ...flexContainerStyles, height: '100%' };
-
-const useRowStyles = makeStyles<Theme, VirtualizedTableProps>((theme: Theme) => createStyles({
-  root: {
-    ...noOutlineStyles,
-    ...flexContainerStyles,
-    direction: 'inherit',
-    cursor: (props) => props.onRowClick !== null && props.onRowClick !== undefined ? 'pointer' : 'initial',
-    '&:hover:not(.ReactVirtualized__Table__headerRow)': {
-      backgroundColor: (props) => props.showRowHoverHighlight ? theme.palette.grey[200] : 'inherit'
-    }
-  }
-}));
-
-export type ColumnData = Omit<ColumnProps, 'width'> & {
-  numeric?: boolean;
-  width?: number | ((fullWidth: number) => number);
+export const noOutlineStyles: SxProps = { outline: 'none' };
+export const rowClickStyles: SxProps = { cursor: 'pointer' };
+export const rowNoClickStyles: SxProps = { cursor: 'initial' };
+const sort = <ItemData extends {}>(data: ItemData[], sortBy: keyof ItemData, sortDir: SortDirection, compare: (a: ItemData, b: ItemData) => -1 | 0 | 1): ItemData[] => {
+  if (!sortBy || !sortDir) { return data }
+  return data.sort((a, b) => {
+    if (compare) { return compare(a, b) }
+    if (a[sortBy] < b[sortBy]) { return sortDir === 'asc' ? -1 : 1 }
+    if (a[sortBy] > b[sortBy]) { return sortDir === 'asc' ? 1 : -1 }
+    return 0
+  })
 }
-
-export type VirtualizedTableProps = Partial<TableProps> & {
-  columns: ColumnData[];
-  showRowHoverHighlight?: boolean;
-  headerOverflow?: 'visible' | 'hidden' | 'inherit' | 'initial';
-  onResize?: AutoSizerProps['onResize'];
-  rowHeight?: TableProps['rowHeight'];
+export type VirtualizedTableProps<ItemData> = Partial<TableVirtuosoProps<ItemData, unknown>> & {
+  data: ItemData[];
+  sortBy?: keyof ItemData
+  sortDirection?: SortDirection
+  compare?: (a: ItemData, b: ItemData) => -1 | 0 | 1,
+  filter?: (item: ItemData) => boolean,
+  setSort?: ({ sortBy, sortDirection }: { sortBy: keyof ItemData, sortDirection: SortDirection }) => void
 };
+const VirtualizedTable = <ItemData extends {}>({
+  data = [],
+  sortBy,
+  sortDirection,
+  compare = (a, b) => a[sortBy] < b[sortBy] ? -1 : 1,
+  filter = () => true,
+  ...props
+}: VirtualizedTableProps<ItemData>) => {
 
-const VirtualizedTable = React.forwardRef<Table, VirtualizedTableProps>((props, ref) => {
-  const { columns = [], onRowClick = null, rowCount, rowGetter, headerHeight = 48, rowHeight = 48, onResize, ...tableProps } = props;
-  const rowClasses = useRowStyles(props);
+  const ref = React.useRef<VirtuosoHandle>(null)
+  const _sorted = React.useMemo(
+    () => sort(data.filter(filter), sortBy, sortDirection, compare)
+    ,
+    [data, sortBy, sortDirection, compare, filter]
+  )
 
-  const headerRenderer: ColumnProps['headerRenderer'] = useCallback(headerProps => <TableHeadDefault
-    height={headerHeight}
-    disableSort={headerProps.disableSort}
-    sortBy={headerProps.sortBy}
-    sortDirection={headerProps.sortDirection}
-    label={headerProps.label}
-    dataKey={headerProps.dataKey}
-  />, [headerHeight]);
-
-  const getFinalColumnWidth = useCallback((columnWidth: number | ((fullWidth: number) => number), tableWidth: number) => typeof columnWidth === 'function'
-    ? (columnWidth as (fullWidth: number) => number)(tableWidth)
-    : columnWidth as number
-    , []
-  );
-
-  const getCellRenderer: ColumnProps['cellRenderer'] = useCallback(props => <TableCellDefault
-    height={typeof rowHeight === 'number' ? rowHeight as number : rowHeight({ index: props.rowIndex })}
-    cellData={props.cellData}
-    isNumeric={(props.columnIndex != null && columns[props.columnIndex].numeric) || false}
-  />, []);
-
-  return <AutoSizer onResize={onResize}>
-    {({ height, width }: SizeInfo) => (
-      <Table
-        ref={ref}
-        height={height}
-        width={width}
-        rowClassName={rowClasses.root}
-        headerHeight={headerHeight}
-        rowHeight={rowHeight}
-        rowCount={rowCount}
-        rowGetter={rowGetter}
-        onRowClick={onRowClick}
-        gridStyle={noOutlineStyles}
-        style={tableStyle}
-        {...tableProps}
-      >
-        {columns.map(({ dataKey, width: columnWidth, ...other }) => <Column
-          key={dataKey}
-          headerStyle={columnHeaderStyles}
-          headerRenderer={headerRenderer}
-          style={columnStyle}
-          cellRenderer={getCellRenderer}
-          dataKey={dataKey}
-          width={getFinalColumnWidth(columnWidth, width)}
-          {...other}
-        />
-        )}
-      </Table>
-    )}
-  </AutoSizer>;
+  const components: Components = React.useMemo(() => ({
+    Scroller: React.forwardRef<HTMLDivElement>((props, ref) => <TableContainer component={Paper} {...props} ref={ref} />),
+    Table: (props: TableProps) => <Table {...props} sx={{ borderCollapse: 'separate' }} />,
+    TableHead: TableHead,
+    TableRow: (props: TableRowProps & { 'data-index': number }) => <TableRow sx={{ backgroundColor: props['data-index'] % 2 ? `${topas.main}20` : 'inherit' }} {...props} />,
+    TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => <TableBody {...props} ref={ref} />),
+    ...props?.components,
+  }), [props])
+  return (
+    <TableVirtuoso
+      ref={ref}
+      data={_sorted}
+      components={components}
+      overscan={20}
+      {...props}
+    />
+  )
 }
-);
+
 export default VirtualizedTable

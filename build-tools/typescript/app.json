@@ -12,8 +12,7 @@
       "Store/*": ["./Store/*"],
       "Types/*": ["./Types/*"],
       "Utilities/*": ["./Utilities/*"],
-      "API/*" : ["./API/*"],
-       "react-virtualized/*" : ["../node_modules/@enykeev/react-virtualized/dist/es/*"]
+      "API/*" : ["./API/*"]
 
     }
   },
@@ -25,3 +24,4 @@
     "**/.*/"
   ]
 }
+

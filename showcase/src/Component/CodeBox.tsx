@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Box } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
+import { Box } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { memo } from 'react';
 
 type CodeBoxProps = {
@@ -9,15 +9,14 @@ type CodeBoxProps = {
 }
 
 const CodeBox = ({children, component, size = 'medium'}: React.PropsWithChildren<CodeBoxProps>) => {
-  const theme = useTheme();
   return <Box
     component={component}
-    marginTop={size === 'medium' ? 1 : 0}
-    marginBottom={size === 'medium' ? 1 : 0}
-    borderRadius={theme.spacing(1)}
+    mt={size === 'medium' ? 1 : 0}
+    mb={size === 'medium' ? 1 : 0}
+    borderRadius={definition.spacing(1)}
     padding={size === 'medium' ? 1 : 0.5}
-    bgcolor={theme.palette.grey['200']}
-    color={theme.palette.text.primary}
+    bgcolor={definition.palette.grey['200']}
+    color={definition.palette.text.primary}
   >{children}</Box>;
 };
 

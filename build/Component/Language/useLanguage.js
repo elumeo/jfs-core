@@ -3,16 +3,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var react_redux_1 = require("react-redux");
 var Redux_1 = require("../../Types/Redux");
-var react_1 = require("react");
-var useActions_1 = __importDefault(require("../../Store/useActions"));
+var Action_1 = require("../../Store/Action");
+var react_1 = __importDefault(require("react"));
 var useLanguage = function () {
     var language = (0, Redux_1.useSelector)(function (state) {
         return state.Core.Language.language || state.Core.Configuration.config.Language;
     });
-    var changeLanguageAction = (0, useActions_1.default)().changeLanguageAction;
-    var onChange = (0, react_1.useCallback)(function (next) { return changeLanguageAction(next); }, [
-        changeLanguageAction,
+    var dispatch = (0, react_redux_1.useDispatch)();
+    var onChange = react_1.default.useCallback(function (next) { return dispatch((0, Action_1.changeLanguageAction)(next)); }, [
+        dispatch,
     ]);
     return {
         value: language,

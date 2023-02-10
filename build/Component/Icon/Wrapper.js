@@ -15,6 +15,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var SvgIcon_1 = __importDefault(require("@material-ui/core/SvgIcon"));
+var SvgIcon_1 = __importDefault(require("@mui/material/SvgIcon"));
 var Wrapper = function (props) { return (react_1.default.createElement(SvgIcon_1.default, __assign({ viewBox: '0 0 32 32', color: 'inherit' }, props))); };
 exports.default = Wrapper;

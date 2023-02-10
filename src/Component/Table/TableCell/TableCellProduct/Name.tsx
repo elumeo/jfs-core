@@ -1,32 +1,20 @@
-import React, { CSSProperties, memo } from 'react';
-import { Typography } from '@material-ui/core';
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import React from 'react';
+import { Box, Typography } from '@mui/material';
 
-const nameWrapperStyles: CSSProperties = { flex: 1, minHeight: '55px' };
-
-const useStyles = makeStyles((theme: Theme) => createStyles({
-    nameStyles: {
-      // @ts-ignore
-      fontWeight: theme.typography.fontWeightBold,
-      whiteSpace: 'normal',
-      display: '-webkit-box',
-      overflow: 'hidden',
-      boxOrient: 'vertical',
-      lineClamp: 3,
-      lineHeight: 1.3,
-    }
-  })
-);
+const nameStyles = {
+  display: '-webkit-box',
+  overflow: 'hidden',
+  WebkitBoxOrient: 'vertical',
+  WebkitLineClamp: `3`,
+}
 
 export type NameProps = {
   name: string;
 }
 
-const Name = ({ name }: NameProps) => {
-  const styles = useStyles();
-  return <div style={nameWrapperStyles}>
-    <Typography className={styles.nameStyles}>{name}</Typography>
-  </div>;
-};
+const Name: React.FC<NameProps> = ({ name }) =>
+  <Box>
+    <Typography sx={nameStyles} fontWeight={600} >{name}</Typography>
+  </Box>
 
-export default memo(Name);
+export default Name

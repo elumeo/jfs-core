@@ -4,5 +4,5 @@ export type Props = {
     notification: Notification;
     temporary: boolean;
 };
-declare const _default: React.NamedExoticComponent<Props>;
-export default _default;
+declare const Card: React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLDivElement>>;
+export default Card;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import TextField from '@material-ui/core/TextField';
-import useError from './useError';
+import TextField from '@mui/material/TextField';
+import isEmptyString from './isEmptyString';
 
 export type Props = {
   value: string;
@@ -12,7 +12,15 @@ export type Props = {
 const Password = React.forwardRef<HTMLInputElement, Props>(
   ({ value, onChange, onEnter }, ref) => {
     const { formatMessage } = useIntl();
-    const error = useError(value);
+    const error = isEmptyString(value);
+    const helperText = error && !value
+      ? formatMessage({ id: 'login.password.errorText' })
+      : null
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      onChange(event.target.value);
+    }
+    const handleEnter = (event: React.KeyboardEvent) => event.key === 'Enter' && onEnter()
+
     return (
       <TextField
         autoComplete={'current-password'}
@@ -20,16 +28,12 @@ const Password = React.forwardRef<HTMLInputElement, Props>(
         type='password'
         inputRef={ref}
         required
-        placeholder={formatMessage({ id: 'login.password' })}
+        label={formatMessage({ id: 'login.password' })}
         error={error}
-        helperText={
-          error && !value
-            ? formatMessage({ id: 'login.password.errorText' })
-            : null
-        }
-        value={value}
-        onChange={event => onChange(event.target.value)}
-        onKeyPress={e => e.key === 'Enter' && onEnter()}
+        helperText={helperText}
+        value={value ?? ''}
+        onChange={handleChange}
+        onKeyPress={handleEnter}
       />
     );
   },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckboxProps } from '@material-ui/core';
+import { CheckboxProps } from '@mui/material';
 export type TableHeadSelectProps = {
     height?: number;
     disabled?: boolean;
@@ -11,5 +11,5 @@ export type TableHeadSelectProps = {
     name?: CheckboxProps['name'];
     value?: CheckboxProps['value'];
 };
-declare const _default: React.MemoExoticComponent<({ disabled, loading, checked, height, onChange, id, name, value, className }: TableHeadSelectProps) => JSX.Element>;
-export default _default;
+declare const TableHeadSelect: React.FC<TableHeadSelectProps>;
+export default TableHeadSelect;

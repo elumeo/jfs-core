@@ -1,14 +1,15 @@
-import React, {useCallback, useRef} from 'react';
-import {useDispatch} from 'react-redux';
-import {Button, ButtonProps, Checkbox, FormControlLabel, Grid, IconButton, NativeSelect} from '@material-ui/core';
+/* eslint-disable max-lines */
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { Button, ButtonProps, Checkbox, FormControlLabel, Grid, IconButton, NativeSelect } from '@mui/material';
 import * as Action from 'Store/Action';
-import {NativeSelectProps} from '@material-ui/core/NativeSelect/NativeSelect';
-import {Notification} from 'Types/Notification';
-import {VariantType} from 'notistack';
-import Box from '@material-ui/core/Box';
-import {Block, Refresh, Visibility} from '@material-ui/icons';
-import CardContent from '@material-ui/core/CardContent';
-import Card from '@material-ui/core/Card';
+import { NativeSelectProps } from '@mui/material/NativeSelect/NativeSelect';
+import { Notification } from 'Types/Notification';
+import { VariantType } from 'notistack';
+import Box from '@mui/material/Box';
+import { Block, Refresh, Visibility } from '@mui/icons-material';
+import CardContent from '@mui/material/CardContent';
+import Card from '@mui/material/Card';
 
 const generateNotification = (persist = false): Notification => {
   const rand = Math.round(Math.random() * 100000);
@@ -24,7 +25,7 @@ const generateNotification = (persist = false): Notification => {
     id,
     group,
     variant,
-    notistackOptions: {persist: persist}
+    notistackOptions: { persist: persist }
   };
   switch (variant) {
     case 'error':
@@ -36,12 +37,12 @@ const generateNotification = (persist = false): Notification => {
           <Box display='flex' flexDirection='column'>
             <span>Habitant habitasse, sem etiamnostra etiam. Tristique viverra volutpat mi, ornare non tellus, praesent odio justo platea erat quis. Aliquam est varius, fringilla class, in ad dictumst turpis vivamus eros augue. Nunc fames donec, vehicula phasellus, volutpat sem luctus leo ut. Consequat nulla enim, curae hac, lorem purus cursus feugiat habitant fusce. Ante metus curabitur, litora nec, donec diam bibendum euismod elit placerat neque. Pretium sit, morbi odio iaculis.</span>
             <Box display='flex' flexDirection='row'>
-              <Button color='inherit' startIcon={<Refresh/>}>Try again</Button>
-              <Button color='inherit' startIcon={<Block/>}>Ignore</Button>
+              <Button color='inherit' startIcon={<Refresh />}>Try again</Button>
+              <Button color='inherit' startIcon={<Block />}>Ignore</Button>
             </Box>
           </Box>
         ),
-        action: () => <IconButton color='inherit'><Visibility/></IconButton>
+        action: () => <IconButton color='inherit'><Visibility /></IconButton>
       };
     case 'warning':
       return {
@@ -49,10 +50,10 @@ const generateNotification = (persist = false): Notification => {
         title: 'Warning',
         subtitle: 'Some changes aren\'t saved yet',
         content: 'The quick brown fox jumps over the lazy dog',
-        action: () => <IconButton><Visibility/></IconButton>
+        action: () => <IconButton><Visibility /></IconButton>
       };
     case 'success':
-      return {...defaultProps, title: 'Changes saved'};
+      return { ...defaultProps, title: 'Changes saved' };
     case 'info':
       return {
         ...defaultProps,
@@ -61,18 +62,18 @@ const generateNotification = (persist = false): Notification => {
       };
     case 'default':
     default:
-      return {...defaultProps, variant: 'default', content: 'content loaded'};
+      return { ...defaultProps, variant: 'default', content: 'content loaded' };
   }
 };
 
 const DevelopNotifications: React.FC = () => {
   const dispatch = useDispatch()
   const persistNotificationsInputRef = useRef(null);
-  const handleOnClickNotification: ButtonProps['onClick'] = useCallback(() => {
+  const handleOnClickNotification: ButtonProps['onClick'] = React.useCallback(() => {
     const persist = persistNotificationsInputRef?.current?.checked;
     dispatch(Action.addNotification(generateNotification(persist)));
   }, []);
-  const handleOnClickErrorNotification: ButtonProps['onClick'] = useCallback(() => {
+  const handleOnClickErrorNotification: ButtonProps['onClick'] = React.useCallback(() => {
     dispatch(Action.addErrorNotification(
       {
         config: {
@@ -112,22 +113,27 @@ const DevelopNotifications: React.FC = () => {
       }
     ));
   }, []);
-  const handleRemoveNotificationsByGroup = useCallback<NativeSelectProps['onChange']>(event => {
+  const handleRemoveNotificationsByGroup = React.useCallback<NativeSelectProps['onChange']>(event => {
     dispatch(Action.removeNotificationGroup(event.target.value));
   }, []);
-  const handleOnClickToast: ButtonProps['onClick'] = useCallback(() => dispatch(Action.addToastAction({
+  const handleOnClickToastSuccess: ButtonProps['onClick'] = React.useCallback(() => dispatch(Action.addToastAction({
     contentMessage: 'Toast Test',
     dismissLabel: 'Dismiss',
     isSuccess: true
-  })), []);
+  })), [dispatch]);
+  const handleOnClickToastFail: ButtonProps['onClick'] = React.useCallback(() => dispatch(Action.addToastAction({
+    dismissLabel: 'Dismiss',
+    contentError: new Error('some error message'),
+    isError: true
+  })), [dispatch]);
   return (
-    <Card>
+    <Card >
       <CardContent>
         <Grid container spacing={1} alignItems={'center'}>
           <Grid item>
             <FormControlLabel control={
-              <Checkbox inputRef={persistNotificationsInputRef}/>
-            } label={'persist'}/>
+              <Checkbox inputRef={persistNotificationsInputRef} />
+            } label={'persist'} />
             <Button onClick={handleOnClickNotification}>Add Notification</Button>
             <Button onClick={handleOnClickErrorNotification}>Add Error Notification</Button>
             <NativeSelect value={0} onChange={handleRemoveNotificationsByGroup}>
@@ -137,12 +143,12 @@ const DevelopNotifications: React.FC = () => {
             </NativeSelect>
           </Grid>
           <Grid item>
-            <Button onClick={handleOnClickToast}>Toast</Button>
+            <Button onClick={handleOnClickToastSuccess}>Toast success</Button>
+            <Button onClick={handleOnClickToastFail}>Toast fail</Button>
           </Grid>
         </Grid>
       </CardContent>
     </Card>
   )
 }
-
-export default React.memo(DevelopNotifications);
+export default DevelopNotifications

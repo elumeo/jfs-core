@@ -1,11 +1,11 @@
-import React, { memo, ReactNode } from 'react';
+import React from 'react';
 import { useIntl } from 'react-intl';
 import { DateTime } from 'Utilities/Format';
 import TableCellRoot, { TableCellRootProps } from 'Component/Table/TableCell/TableCellRoot';
 
 export type TableCellDateTimeProps = Partial<TableCellRootProps> & {
   cellData: Date | string;
-  noValueElement?: ReactNode;
+  noValueElement?: React.ReactNode;
   asTwoLines?: boolean;
 }
 
@@ -20,4 +20,4 @@ const TableCellDateTime = ({ cellData = null, noValueElement = '-', asTwoLines =
   </TableCellRoot>;
 };
 
-export default memo(TableCellDateTime);
+export default TableCellDateTime

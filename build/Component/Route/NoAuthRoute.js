@@ -38,13 +38,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
+var react_redux_1 = require("react-redux");
+var Action_1 = require("../../Store/Action");
 var BaseRoute_1 = __importDefault(require("./BaseRoute"));
-var useActions_1 = __importDefault(require("../../Store/useActions"));
 var NoAuthRoute = function (props) {
-    var enterUnauthorizedRoute = (0, useActions_1.default)().enterUnauthorizedRoute;
+    var dispatch = (0, react_redux_1.useDispatch)();
     (0, react_1.useEffect)(function () {
-        enterUnauthorizedRoute();
-    }, [props.path]);
+        dispatch((0, Action_1.enterUnauthorizedRoute)());
+    }, []);
     return react_1.default.createElement(BaseRoute_1.default, __assign({}, props));
 };
 exports.default = NoAuthRoute;

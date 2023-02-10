@@ -1,8 +1,8 @@
 /* eslint-disable max-lines */
 import React, { memo } from 'react';
-import { Box, Card, CardContent, CardHeader, Container, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@material-ui/core';
-import { useTheme, makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { alpha } from '@material-ui/core/styles/colorManipulator';
+import { Box, Card, CardContent, CardHeader, Container, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
+import { useTheme, makeStyles, createStyles, Theme } from '@mui/material/styles';
+import { alpha } from '@mui/material/styles/colorManipulator';
 import {
   BadgePercent as BadgePercentIcon,
   BidBlock as BidBlockIcon,
@@ -26,19 +26,18 @@ import {
 } from '@elumeo/jfs-core/build/Component/Icon';
 import AppNavigation from 'Component/AppNavigation';
 import CodeBox from 'Component/CodeBox';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import DoneIcon from '@material-ui/icons/Done';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import DoneIcon from '@mui/icons-material/Done';
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
+const useStyles = makeStyles(createStyles({
   icon: {
-    fontSize: theme.typography.pxToRem(32),
-    color: theme.palette.secondary.main
+    fontSize: definition.typography.pxToRem(32),
+    color: definition.palette.secondary.main
   }
 }));
 
 const Icons = () => {
-  const theme = useTheme();
   const classes = useStyles();
   const [iconColor, setIconColor] = React.useState<'materialUi' | 'reactMd'>('materialUi');
 
@@ -140,10 +139,10 @@ const Icons = () => {
                 <Typography variant={'h6'}>Icon Usage</Typography>
                 <CodeBox>
                   <Box component={Typography}>{`import { BadgePercent } from 'Core/Component/Icon';`}</Box>
-                  <Box component={Typography}>{`const style = (theme: Theme) => ({`}</Box>
+                  <Box component={Typography}>{`const style = ({`}</Box>
                   <Box pl={1} component={Typography}>{`icon: {`}</Box>
-                  <Box pl={2} component={Typography}>{`fontSize: theme.typography.pxToRem(32),`}</Box>
-                  <Box pl={2} component={Typography}>{`color: theme.palette.secondary.main`}</Box>
+                  <Box pl={2} component={Typography}>{`fontSize: definition.typography.pxToRem(32),`}</Box>
+                  <Box pl={2} component={Typography}>{`color: definition.palette.secondary.main`}</Box>
                   <Box pl={1} component={Typography}>{`}`}</Box>
                   <Box>{` });`}</Box>
                   <Box component={Typography}>{`const theme = useTheme();`}</Box>
@@ -155,18 +154,18 @@ const Icons = () => {
                   </ListItem>
                   <ListItem>
                     <ListItemAvatar>
-                      <Box component={BadgePercentIcon} color='secondary.main' fontSize={theme.typography.pxToRem(32)} />
+                      <Box component={BadgePercentIcon} color='secondary.main' fontSize={definition.typography.pxToRem(32)} />
                     </ListItemAvatar>
                     <ListItemText>
-                      <CodeBox component={'span'} size={'small'}>{`<Box component={BadgePercentIcon} color='secondary.main' fontSize={theme.typography.pxToRem(32)} />`}</CodeBox>
+                      <CodeBox component={'span'} size={'small'}>{`<Box component={BadgePercentIcon} color='secondary.main' fontSize={definition.typography.pxToRem(32)} />`}</CodeBox>
                     </ListItemText>
                   </ListItem>
                   <ListItem>
                     <ListItemAvatar>
-                      <BadgePercentIcon style={{ fontSize: theme.typography.pxToRem(32), color: theme.palette.secondary.main }} />
+                      <BadgePercentIcon style={{ fontSize: definition.typography.pxToRem(32), color: definition.palette.secondary.main }} />
                     </ListItemAvatar>
                     <ListItemText><CodeBox component={'span'}
-                                           size={'small'}>{`<BadgePercentIcon style={{ fontSize: theme.typography.pxToRem(32), color :theme.palette.secondary.main }} />`}</CodeBox></ListItemText>
+                                           size={'small'}>{`<BadgePercentIcon style={{ fontSize: definition.typography.pxToRem(32), color :definition.palette.secondary.main }} />`}</CodeBox></ListItemText>
                   </ListItem>
                   <ListItem>
                     <ListItemAvatar>
@@ -199,7 +198,7 @@ const Icons = () => {
                 />
                 <Box mt={1}>
                   <Grid container spacing={1}>
-                    <Grid item><BadgePercentIcon style={iconColor === 'reactMd' ? { color: alpha(theme.palette.common.black, 0.54) } : null} /></Grid>
+                    <Grid item><BadgePercentIcon style={iconColor === 'reactMd' ? { color: alpha(definition.palette.common.black, 0.54) } : null} /></Grid>
                     <Grid item><DoneIcon color={'secondary'} /></Grid>
                     <Grid item><WebShopBidAgentIcon color={'primary'} /></Grid>
                   </Grid>

@@ -1,5 +1,5 @@
 import React from 'react';
-declare const _default: React.MemoExoticComponent<({ children }: {
+declare const Snackbar: ({ children }: {
     children: React.ReactNode;
-}) => JSX.Element>;
-export default _default;
+}) => JSX.Element;
+export default Snackbar;

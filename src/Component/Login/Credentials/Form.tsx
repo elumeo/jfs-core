@@ -1,5 +1,5 @@
 import React from 'react';
-
+import definition from 'Component/App/Stateless/Style/Theme/Definition';
 const style: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
@@ -9,13 +9,11 @@ const style: React.CSSProperties = {
   width: 240,
   marginTop: 6,
   marginBottom: 32,
+  gap: definition.spacing(1),
 };
 
-type Props = {
-  children: React.ReactNode;
-}
 
-const Form = ({ children }: Props) => (
+const Form: React.FC<React.PropsWithChildren> = ({ children }) => (
   <form autoCorrect='false' autoComplete='off' style={style}>
     {children}
   </form>

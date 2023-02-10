@@ -27,16 +27,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var Card_1 = __importDefault(require("@material-ui/core/Card"));
-var CardHeader_1 = __importDefault(require("@material-ui/core/CardHeader"));
-var CardContent_1 = __importDefault(require("@material-ui/core/CardContent"));
+var Card_1 = __importDefault(require("@mui/material/Card"));
+var CardHeader_1 = __importDefault(require("@mui/material/CardHeader"));
+var CardContent_1 = __importDefault(require("@mui/material/CardContent"));
 var History = __importStar(require("./History"));
-var Overlay = function () { return (react_1.default.createElement(Card_1.default, { style: {
+var Overlay = function () { return (react_1.default.createElement(Card_1.default, { sx: {
         width: 400,
         height: 'calc(100vh - 100px)',
     } },
-    react_1.default.createElement(CardHeader_1.default, { style: { height: 70 }, action: react_1.default.createElement(History.Toolbar, null) }),
-    react_1.default.createElement(CardContent_1.default, { style: {
+    react_1.default.createElement(CardHeader_1.default, { sx: { height: 70 }, action: react_1.default.createElement(History.Toolbar, null) }),
+    react_1.default.createElement(CardContent_1.default, { sx: {
             width: '100%',
             height: 'calc(100% - 70px)',
             display: 'flex',

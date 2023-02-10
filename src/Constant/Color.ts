@@ -1,4 +1,4 @@
-import { PaletteColor } from '@material-ui/core/styles/createPalette';
+import { PaletteColor } from '@mui/material/styles';
 
 export const rubin: PaletteColor = {
   light: '#ab4b6b',
@@ -76,6 +76,10 @@ export const success: PaletteColor = {
   dark: '#004600',
   contrastText: '#fff',
 };
+export const common = {
+  white: '#fff',
+  black: '#000',
+}
 
 export const primary: PaletteColor = {
   light: '#ab4783',
@@ -83,3 +87,4 @@ export const primary: PaletteColor = {
   dark: '#691146',
   contrastText: '#fff',
 };
+export const secondary = apatith

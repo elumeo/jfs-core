@@ -1,13 +1,13 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, Typography, List, ListItem, Link, Grid, Container } from '@material-ui/core';
-import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
+import { Card, CardContent, CardHeader, Typography, List, ListItem, Link, Grid, Container } from '@mui/material';
+import { withStyles, Theme, WithStyles } from '@mui/material/styles';
 import AppNavigation from 'Component/AppNavigation';
 
 type Props = WithStyles;
 
-const style = (theme: Theme) => ({
+const style = ({
   nested: {
-    paddingLeft: theme.spacing(4)
+    paddingLeft: definition.spacing(4)
   }
 });
 

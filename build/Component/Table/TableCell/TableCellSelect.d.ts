@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckboxProps } from '@material-ui/core';
+import { CheckboxProps } from '@mui/material';
 import { TableCellRootProps } from './TableCellRoot';
 export type TableCellSelectProps = Partial<TableCellRootProps> & {
     value: string;
@@ -9,5 +9,5 @@ export type TableCellSelectProps = Partial<TableCellRootProps> & {
     id?: CheckboxProps['id'];
     name?: CheckboxProps['name'];
 };
-declare const _default: React.MemoExoticComponent<({ value, checked, disabled, onChange, id, name, height }: TableCellSelectProps) => JSX.Element>;
-export default _default;
+declare const TableCellSelect: React.FC<TableCellSelectProps>;
+export default TableCellSelect;

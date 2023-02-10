@@ -53,7 +53,7 @@ var commitLogin = function (action$, state$) {
             actionsToReturn.push(Action.loginFailed());
             actionsToReturn.push(Action.addToastAction({
                 contentTranslationId: contentTranslationId,
-                isError: true
+                isError: true,
             }));
             if (((_c = error === null || error === void 0 ? void 0 : error.response) === null || _c === void 0 ? void 0 : _c.status) !== 401) {
                 actionsToReturn.push(Action.addErrorNotification(error));

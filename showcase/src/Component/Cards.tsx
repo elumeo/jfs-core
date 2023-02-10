@@ -1,16 +1,15 @@
 import React, { memo } from 'react';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Card, CardActions, CardContent, CardHeader, Container, Grid, IconButton, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardActions, CardContent, CardHeader, Container, Grid, IconButton, Typography } from '@mui/material';
 import AppNavigation from 'Component/AppNavigation';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import CodeBox from 'Component/CodeBox';
-import RefreshIcon from '@material-ui/icons/Refresh';
+import RefreshIcon from '@mui/icons-material/Refresh';
 import AppCardHeader from '@elumeo/jfs-core/build/Component/Card/AppCardHeader';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 const useStyles = makeStyles((theme) => createStyles({
-  topRightAction: { margin: -theme.spacing(0.5) }
+  topRightAction: { margin: -definition.spacing(0.5) }
 }));
 
 const Cards = () => {
@@ -88,7 +87,7 @@ const Cards = () => {
                   do have 2 different font sizes which will not match completely.</Typography>
                 <CodeBox>
                   <Typography>{`const useStyles = makeStyles((theme) => createStyles({`}</Typography>
-                  <Box component={Typography} pl={1}>{`topRightAction: {margin: -theme.spacing(0.5)}`}</Box>
+                  <Box component={Typography} pl={1}>{`topRightAction: {margin: -definition.spacing(0.5)}`}</Box>
                   <Typography>{`}));`}</Typography>
                 </CodeBox>
                 <FormControlLabel control={<Switch onChange={toggleTopRightActionButtonAlignment} checked={topRightActionButtonAlignment === 'custom'} />}

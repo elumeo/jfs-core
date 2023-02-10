@@ -3,7 +3,6 @@ import { of, EMPTY } from 'rxjs';
 import * as TA from 'typesafe-actions';
 import * as Action from 'Store/Action';
 import { WSClient } from 'API/WS/WSClient';
-import { v4 as uuid } from 'uuid';
 import { Epic } from 'Types/Redux';
 
 const checkForConnectionError: Epic = (action$, state) => {
@@ -14,7 +13,7 @@ const checkForConnectionError: Epic = (action$, state) => {
       if (state.value.Core.WebSocket[err.namespace].isConnecting) {
         return of(
           Action.addNotification({
-            id: uuid(),
+            id: crypto.randomUUID(),
             variant: 'error',
             title: 'Websocket',
             subtitle: 'Connection Request',

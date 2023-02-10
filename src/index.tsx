@@ -1,6 +1,6 @@
 // import './wdyr';
 // import React from 'react';
-// import { render } from 'react-dom';
+// import { createRoot } from 'react-dom/client';
 // import App from 'Component/App';
 // import * as Login from 'Component/Login';
 // import * as Logout from 'Component/Logout';
@@ -15,7 +15,6 @@
 // import { Navigation, Routes, Translations } from 'Setup';
 // import packageJson from '../package.json';
 // import { create } from 'Store';
-// import { history } from 'Store/Middleware';
 // import Indicator from 'Component/WebSocket/Room/Status/Indicator';
 // import DebugButton from 'Component/Button/DebugButton';
 
@@ -25,8 +24,12 @@
 //   module.hot.accept();
 // }
 
-// render(<App
-//   store={create(epic, reducer(history))}
+
+// const container = document.getElementById('root');
+// const root = createRoot(container)
+
+// root.render(<App
+//   store={create(epic, reducer)}
 //   title='core'
 //   translations={Translations}
 //   packageJSON={packageJson}>
@@ -41,8 +44,8 @@
 //           AutoRoomSubscriptions: ['currentGame', 'plannedGames']
 //         }} roomName={'currentGame'} />
 //         <Settings.Button />
-//         <Notification.Button.Show />
 //         <DebugButton />
+//         <Notification.Button.Show />
 //       </>
 //     }
 //   />
@@ -56,5 +59,5 @@
 //     </Settings.Dialog>
 //     <Snackbar />
 //   </Overlay>
-// </App>, document.getElementById('root'));
+// </App>);
 

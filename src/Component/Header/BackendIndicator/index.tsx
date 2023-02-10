@@ -1,20 +1,21 @@
-import React, { memo } from 'react';
-import Tooltip from '@material-ui/core/Tooltip';
+import React from 'react';
+import Tooltip from '@mui/material/Tooltip';
 import { useSelector } from 'Types/Redux';
 import { useIntl } from 'react-intl';
 import Flag, { Country } from './Flag';
+import { Box } from '@mui/material';
 
 const BackendIndicator = () => {
   const { formatMessage } = useIntl();
   const backendRegion = useSelector(state => state.Core.System.backendRegion);
-  return (
+  return (<Box flexGrow={0}>
     <Tooltip
       title={`${formatMessage({ id: 'app.backend' })}: ${backendRegion}`}>
-      <span>
+      <Box flexGrow={0}>
         <Flag country={(backendRegion || '').toLowerCase() as Country} />
-      </span>
-    </Tooltip>
+      </Box>
+    </Tooltip></Box>
   );
 };
 
-export default memo(BackendIndicator);
+export default BackendIndicator

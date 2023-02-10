@@ -54,67 +54,46 @@ require("./Setup");
 var Redux_1 = require("../../Types/Redux");
 var mapLanguageToDateFormat_1 = __importDefault(require("./mapLanguageToDateFormat"));
 require("react-datepicker/dist/react-datepicker.css");
-var core_1 = require("@material-ui/core");
-var Today_1 = __importDefault(require("@material-ui/icons/Today"));
-var moment_1 = __importDefault(require("moment"));
+var material_1 = require("@mui/material");
+var Today_1 = __importDefault(require("@mui/icons-material/Today"));
 var TextFieldClearButton_1 = __importDefault(require("../TextFieldClearButton"));
 var DatePicker = function (_a) {
-    var label = _a.label, _b = _a.error, error = _b === void 0 ? false : _b, _c = _a.customClearButtonId, customClearButtonId = _c === void 0 ? null : _c, dateFormat = _a.dateFormat, value = _a.value, onChange = _a.onChange, errorText = _a.errorText, _d = _a.helperText, helperText = _d === void 0 ? '' : _d, textFieldProps = _a.textFieldProps, _e = _a.shouldOpenOnFocus, shouldOpenOnFocus = _e === void 0 ? true : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, _g = _a.isClearable, isClearable = _g === void 0 ? true : _g, rest = __rest(_a, ["label", "error", "customClearButtonId", "dateFormat", "value", "onChange", "errorText", "helperText", "textFieldProps", "shouldOpenOnFocus", "disabled", "isClearable"]);
-    var language = (0, Redux_1.useSelector)(function (state) { return state.Core.Language.language; });
-    var _h = (0, react_1.useState)(value), date = _h[0], setDate = _h[1];
-    var _j = (0, react_1.useState)(false), open = _j[0], setOpen = _j[1];
-    var _k = (0, react_1.useState)(false), dirty = _k[0], setDirty = _k[1];
-    var id = (0, react_1.useState)('reactDatePicker_' + Math.floor(Math.random() * 100))[0];
+    var _b;
+    var dateFormat = _a.dateFormat, _c = _a.color, color = _c === void 0 ? 'primary' : _c, languageFromProp = _a.language, onChange = _a.onChange, textFieldProps = _a.textFieldProps, _d = _a.shouldOpenOnFocus, shouldOpenOnFocus = _d === void 0 ? true : _d, _e = _a.shouldCloseOnSelect, shouldCloseOnSelect = _e === void 0 ? true : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, _g = _a.isClearable, isClearable = _g === void 0 ? true : _g, rest = __rest(_a, ["dateFormat", "color", "language", "onChange", "textFieldProps", "shouldOpenOnFocus", "shouldCloseOnSelect", "disabled", "isClearable"]);
+    var id = react_1.default.useId();
+    var clearButtonId = "".concat((_b = rest.id) !== null && _b !== void 0 ? _b : id, "-clear-button");
+    var languageFromStore = (0, Redux_1.useSelector)(function (state) { return state.Core.Language.language; });
+    var language = languageFromProp || languageFromStore;
+    var _h = (0, react_1.useState)(rest.selectsRange && !!rest.startDate && !rest.endDate), open = _h[0], setOpen = _h[1];
+    var isPristine = rest.selectsRange
+        ? !rest.startDate && !rest.endDate
+        : !rest.selected;
     var datePickerRef = (0, react_1.useRef)();
-    var getInput = function () { return document.getElementById(id); };
-    (0, react_1.useEffect)(function () { return setDate(value); }, [value]);
-    (0, react_1.useEffect)(function () {
+    var handleChangeValue = react_1.default.useCallback(function (newValue, event) {
         var _a;
-        if (customClearButtonId !== null) {
-            (_a = document.getElementById(customClearButtonId)) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function () { return handleChangeValue(null); });
+        if (disabled) {
+            return;
         }
-        var input = getInput();
-        if (input) {
-            input.addEventListener('keydown', function (e) {
-                if (document.activeElement.id === input.id && e.keyCode === 9 && e.shiftKey) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-            });
-        }
-    }, []);
-    var hasErrorText = function () { return errorText !== undefined && errorText !== null && errorText !== ''; };
-    var hasError = function () { return error || (dirty && rest.required && date === null); };
-    var handleChangeValue = function (newValue, event) {
-        if (event === void 0) { event = null; }
-        setDate(newValue);
-        onChange(newValue, date, event);
-        if (datePickerRef.current.props.shouldCloseOnSelect) {
-            setOpen(false);
-        }
-    };
-    var handleOnChange = (0, react_1.useCallback)(function (newDate, event) {
-        // @ts-ignore
-        var isChangeEvent = event._reactName && event._reactName === 'onChange';
-        if (isChangeEvent) {
-            var inputDate = (0, moment_1.default)(event.target.value, (dateFormat || (0, mapLanguageToDateFormat_1.default)(language)).toString().toUpperCase(), true);
-            if (inputDate.isValid() === false) {
+        if (Array.isArray(newValue)) {
+            if (((_a = event === null || event === void 0 ? void 0 : event.target) === null || _a === void 0 ? void 0 : _a.value) === '') {
+                //@INFO the only case when this happens is, when the user clears the input by using one of the clear buttons
+                onChange((rest.selectsRange
+                    ? [null, null]
+                    : null), event);
+                setOpen(true);
                 return;
             }
+            else {
+                if (shouldCloseOnSelect && !!newValue[0] && !!newValue[1]) {
+                    setOpen(false);
+                }
+            }
         }
-        handleChangeValue(newDate, event);
-    }, [language, onChange]);
-    var handleClearClick = (0, react_1.useCallback)(function () { return isClearable ? handleChangeValue(null) : null; }, [isClearable]);
-    var handleTodayClick = (0, react_1.useCallback)(function () { return disabled === false ? setOpen(true) : null; }, [disabled]);
-    var preparedInputProps = (0, react_1.useMemo)(function () { return ({
-        onFocus: function () { return shouldOpenOnFocus ? setOpen(true) : null; },
-        onBlur: function () { return setDirty(true); },
-        endAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
-            react_1.default.createElement(core_1.IconButton, { disabled: disabled, size: 'small', onClick: handleTodayClick },
-                react_1.default.createElement(Today_1.default, null)))
-    }); }, [shouldOpenOnFocus, disabled]);
-    return (react_1.default.createElement(core_1.ClickAwayListener, { onClickAway: function () { return setOpen(false); } },
-        react_1.default.createElement("span", null,
-            react_1.default.createElement(react_datepicker_1.default, __assign({ disabled: disabled }, rest, { ref: datePickerRef, selected: date, onChange: handleOnChange, dateFormat: dateFormat || (0, mapLanguageToDateFormat_1.default)(language), locale: language, open: open, id: id, customInput: react_1.default.createElement(TextFieldClearButton_1.default, __assign({}, textFieldProps, { isClearable: isClearable, label: label, error: hasError(), helperText: hasError() && hasErrorText() ? errorText : helperText, autoComplete: 'off', onClearClick: handleClearClick, InputProps: preparedInputProps })) })))));
+        onChange(newValue, event);
+    }, [onChange, setOpen, disabled, shouldCloseOnSelect]);
+    var toggleOpen = react_1.default.useCallback(function () { return !disabled && setOpen(function (old) { return !old; }); }, [disabled, setOpen]);
+    var preparedInputProps = (0, react_1.useMemo)(function () { return (__assign(__assign({}, textFieldProps === null || textFieldProps === void 0 ? void 0 : textFieldProps.InputProps), { autoComplete: 'off', onFocus: function () { return shouldOpenOnFocus ? setOpen(true) : null; }, endAdornment: (react_1.default.createElement(material_1.IconButton, { disabled: disabled, size: 'small', onClick: toggleOpen },
+            react_1.default.createElement(Today_1.default, null))) })); }, [textFieldProps === null || textFieldProps === void 0 ? void 0 : textFieldProps.InputProps, shouldOpenOnFocus, disabled, setOpen, toggleOpen]);
+    return (react_1.default.createElement(react_datepicker_1.default, __assign({ id: id, disabled: disabled, ref: datePickerRef, className: 'jfs-datepicker', dayClassName: function () { return 'jfs-datepicker__day'; }, onClickOutside: toggleOpen, onChange: handleChangeValue, dateFormat: dateFormat || (0, mapLanguageToDateFormat_1.default)(language), locale: language, portalId: 'overlay', open: open, customInput: react_1.default.createElement(TextFieldClearButton_1.default, __assign({ color: color, hideClearButton: !isClearable || isPristine, required: rest.required }, textFieldProps, { InputProps: preparedInputProps, clearButtonProps: { id: clearButtonId } })) }, rest)));
 };
-exports.default = (0, react_1.memo)(DatePicker);
+exports.default = DatePicker;

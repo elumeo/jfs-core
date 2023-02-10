@@ -41,7 +41,15 @@ const development = {
         BUNDLE_FILE_NAME: PATH.BUNDLE_NAME
       }
     }),
-  ]
+  ],
+  resolve: {
+    ...common.resolve,
+    alias: {
+      ...common.resolve.alias,
+      'react-redux': 'react-redux/lib'
+
+    }
+  }
 };
 
 module.exports = development;

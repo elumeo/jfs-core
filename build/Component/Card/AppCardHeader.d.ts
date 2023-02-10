@@ -1,15 +1,15 @@
-import React, { ReactNode } from 'react';
-import { IconButtonProps } from '@material-ui/core/IconButton';
+import React from 'react';
+import { IconButtonProps } from '@mui/material/IconButton';
 export type AppCardHeaderBaseProps = {
     isLoading?: boolean;
-    title: ReactNode;
-    subtitle?: ReactNode;
-    titleIcon?: ReactNode;
-    action?: ReactNode;
+    title: React.ReactNode;
+    subtitle?: React.ReactNode;
+    titleIcon?: React.ReactNode;
+    action?: React.ReactNode;
     onRefresh?: () => void;
     refreshButtonColor?: IconButtonProps['color'];
     refreshButtonSize?: IconButtonProps['size'];
-    additionalTitleComponent?: ReactNode;
+    headerActions?: React.ReactNode;
 };
-declare const _default: React.MemoExoticComponent<({ isLoading, title, subtitle, titleIcon, onRefresh, refreshButtonColor, refreshButtonSize, additionalTitleComponent, action }: AppCardHeaderBaseProps) => JSX.Element>;
-export default _default;
+declare const AppCardHeader: React.FC<AppCardHeaderBaseProps>;
+export default AppCardHeader;

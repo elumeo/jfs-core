@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import useActions from 'Core/Store/useActions';
 
 const RemoveNotificationButton: React.FC<{ group: string }> = ({ group }) => {

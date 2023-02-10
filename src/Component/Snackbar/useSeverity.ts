@@ -1,21 +1,27 @@
+import { AlertColor } from '@mui/material';
 import React from 'react';
-import { Color } from '@material-ui/lab';
 import { Toast } from 'Types/Toast';
+export const Severity = {
+  success: 'success',
+  error: 'error',
+  info: 'info',
+} as const;
+export type Severity = AlertColor
 
-const useSeverity = (toast: Toast): Color => {
-  const [severity, setSeverity] = React.useState<Color>('info');
 
-  React.useEffect(() => {
+const useSeverity = (toast: Toast) => {
+  const color = React.useMemo(() => {
     if (toast && toast.isSuccess) {
-      setSeverity('success');
+      return Severity.success;
     } else if (toast && toast.isError) {
-      setSeverity('error');
+      return Severity.error;
     } else if (toast) {
-      setSeverity('info');
+      return Severity.info;
     }
-  }, [!!toast, toast?.isSuccess, toast?.isError]);
+    return null
+  }, [toast]);
 
-  return severity;
+  return color;
 };
 
 export default useSeverity;

@@ -1,14 +1,13 @@
-import React from "react";
-import { ChipProps } from "@material-ui/core";
-import { SelectOption } from '../SelectClearButton/index';
-export type Props = {
-    multiple: boolean;
-    onDeleteItem?: (value: string) => void;
-    setValue: (value: string | string[]) => void;
-    selectedValue: SelectOption | SelectOption[];
-    maxValuesToDisplayInInput?: number;
-    renderValueAsChip?: boolean;
-    valueChipProps?: Partial<ChipProps>;
+import { ChipProps } from '@mui/material';
+import React from 'react';
+export type ValueType<IsMulti = boolean> = IsMulti extends true ? string[] : string;
+export type Props = ChipProps & {
+    renderAsChip: boolean;
+    maxValuesToDisplayInInput: number;
+    values: ValueType<true>;
+    labelsByValue: Record<string, string>;
+    canUnselect: boolean;
+    unselect: (value: ValueType<true>[number]) => void;
 };
-declare const _default: React.MemoExoticComponent<({ multiple, setValue, valueChipProps, selectedValue, onDeleteItem, maxValuesToDisplayInInput, renderValueAsChip }: Props) => JSX.Element>;
-export default _default;
+declare const ValueRenderer: React.FC<Props>;
+export default ValueRenderer;

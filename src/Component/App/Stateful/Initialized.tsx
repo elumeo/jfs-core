@@ -7,7 +7,9 @@ type Props = {
 
 const Initialized = ({ children }: Props) => {
   const initialized = useSelector(state => state.Core.App.appInitialized);
-  return initialized && <>{children}</>;
+  return initialized
+  ? <>{children}</>
+  : null;
 }
 
 export default Initialized;

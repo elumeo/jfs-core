@@ -1,22 +1,26 @@
-import React, { CSSProperties, memo, useMemo } from 'react';
+import React from 'react';
 import { useIntl } from 'react-intl';
-import { Button as MuiButton } from '@material-ui/core';
+import { ButtonProps as MuiButtonProps, Button as MuiButton, SxProps } from '@mui/material';
 
-const buttonWrapperStyles: CSSProperties = { marginTop: '2px' };
+const styles: SxProps = {
+  textTransform: 'initial',
+  width: 'fit-content',
+  p: .5,
+  lineHeight: 1
+}
 
 export type ButtonProps = {
   id?: string;
-  onClick?: HTMLElement['click'];
+  onClick?: MuiButtonProps['onClick'];
 }
 
-const Button = ({ id = null, onClick }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({ id = null, onClick }) => {
   const { formatMessage } = useIntl();
-  const styles = useMemo<CSSProperties>(() => ({ textTransform: 'initial' }), []);
-  return <div style={buttonWrapperStyles}>
-    {id && <MuiButton color={'secondary'} onClick={onClick} style={styles}>
+  return (
+    id && <MuiButton color={'secondary'} onClick={onClick} sx={styles}>
       {formatMessage({ id: 'product.details' })}
-    </MuiButton>}
-  </div>;
+    </MuiButton>
+  );
 };
 
-export default memo(Button);
+export default Button

@@ -1,17 +1,17 @@
 import React, { memo } from 'react';
-import { Box, Card, Grid } from '@material-ui/core';
+import { Box, Card, Grid } from '@mui/material';
 import AppNavigation from 'Component/AppNavigation';
 import AppCardHeader from '@elumeo/jfs-core/build/Component/Card/AppCardHeader';
 import AppCardContent from '@elumeo/jfs-core/build/Component/Card/AppCardContent';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@mui/material/styles';
 
-export const getAppBarHeight = (theme: Theme) => (parseInt(theme.mixins.toolbar.minHeight.toString()) + theme.spacing(2.5));
+export const getAppBarHeight = (parseInt(theme.mixins.toolbar.minHeight.toString()) + definition.spacing(2.5));
 
 const useStyles = makeStyles(theme => ({
   root: {
     minHeight: 'calc(100% - ' + getAppBarHeight(theme) + 'px)',
-    width: 'calc(100% - ' + theme.spacing(2) + 'px)',
-    margin: theme.spacing(1)
+    width: 'calc(100% - ' + definition.spacing(2) + 'px)',
+    margin: definition.spacing(1)
   }
 }));
 

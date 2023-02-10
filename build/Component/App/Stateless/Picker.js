@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var pickers_1 = require("@material-ui/pickers");
-var moment_1 = __importDefault(require("@date-io/moment"));
+var AdapterMoment_1 = require("@mui/x-date-pickers/AdapterMoment");
+var LocalizationProvider_1 = require("@mui/x-date-pickers/LocalizationProvider");
 var Picker = function (_a) {
     var children = _a.children;
-    return (react_1.default.createElement(pickers_1.MuiPickersUtilsProvider, { utils: moment_1.default }, children));
+    return (react_1.default.createElement(LocalizationProvider_1.LocalizationProvider, { dateAdapter: AdapterMoment_1.AdapterMoment }, children));
 };
 exports.default = Picker;

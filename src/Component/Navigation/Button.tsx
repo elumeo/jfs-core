@@ -1,16 +1,17 @@
 import React from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import useActions from 'Store/useActions';
+import IconButton from '@mui/material/IconButton';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useSelector } from 'Types/Redux';
+import { useDispatch } from 'react-redux';
+import { closeNavigation, openNavigation } from 'Store/Action';
 
 const Button: React.FC = () => {
   const navigationOpen = useSelector<boolean>(
     state => state.Core.Navigation.navigationOpen,
   );
-  const { openNavigation, closeNavigation } = useActions();
+  const dispatch = useDispatch();
   const toggle = React.useCallback(
-    () => (navigationOpen ? closeNavigation() : openNavigation()),
+    () => dispatch(navigationOpen ? closeNavigation() : openNavigation()),
     [navigationOpen],
   );
   return (

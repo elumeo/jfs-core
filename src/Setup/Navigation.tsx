@@ -1,5 +1,5 @@
 import React from 'react';
-import Divider from '@material-ui/core/Divider';
+import Divider from '@mui/material/Divider';
 import * as Navigation from 'Component/Navigation';
 import * as Logout from 'Component/Logout';
 import * as Settings from 'Component/Settings';

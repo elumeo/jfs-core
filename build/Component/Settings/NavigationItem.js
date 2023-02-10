@@ -27,11 +27,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var useActions_1 = __importDefault(require("../../Store/useActions"));
 var Navigation = __importStar(require("../Navigation"));
+var react_redux_1 = require("react-redux");
+var Action_1 = require("../../Store/Action");
 var NavigationItem = function () {
-    var openSettings = (0, useActions_1.default)().openSettings;
-    var onClick = react_1.default.useCallback(function () { return openSettings(); }, [openSettings]);
+    var dispatch = (0, react_redux_1.useDispatch)();
+    var onClick = function () { return dispatch((0, Action_1.openSettings)()); };
     return (react_1.default.createElement(Navigation.Item, { iconName: 'settings', messageId: 'app.settings', onClick: onClick }));
 };
 exports.default = NavigationItem;

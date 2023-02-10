@@ -1,7 +1,8 @@
 import React from 'react';
+import { ButtonProps as MuiButtonProps } from '@mui/material';
 export type ButtonProps = {
     id?: string;
-    onClick?: HTMLElement['click'];
+    onClick?: MuiButtonProps['onClick'];
 };
-declare const _default: React.MemoExoticComponent<({ id, onClick }: ButtonProps) => JSX.Element>;
-export default _default;
+declare const Button: React.FC<ButtonProps>;
+export default Button;

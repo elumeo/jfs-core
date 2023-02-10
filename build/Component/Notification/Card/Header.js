@@ -27,26 +27,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
-var Typography_1 = __importDefault(require("@material-ui/core/Typography"));
-var CardHeader_1 = __importDefault(require("@material-ui/core/CardHeader"));
-var useicon_1 = __importDefault(require("./useicon"));
-var styles_1 = require("@material-ui/core/styles");
-var useStyles = (0, styles_1.makeStyles)(({
-    root: {
-        width: '100%',
-        overflow: 'hidden'
-    },
-    content: {
-        overflow: 'hidden',
-        wordBreak: 'break-word'
-    }
-}));
+var Typography_1 = __importDefault(require("@mui/material/Typography"));
+var CardHeader_1 = __importDefault(require("@mui/material/CardHeader"));
+var NotificationIcon_1 = __importDefault(require("./NotificationIcon"));
+var sx = {
+    width: '100%',
+    overflow: 'hidden',
+    wordBreak: 'break-word'
+};
 var Header = function (_a) {
     var title = _a.title, subtitle = _a.subtitle, variant = _a.variant;
-    var classes = useStyles();
-    var icon = (0, useicon_1.default)(variant);
-    return (!icon && !title && !subtitle
+    return (!variant && !title && !subtitle
         ? null :
-        React.createElement(CardHeader_1.default, { avatar: icon, title: React.createElement(Typography_1.default, { variant: 'h6', component: 'div' }, title), subheader: React.createElement(Typography_1.default, { variant: 'subtitle1', component: 'div' }, subtitle), subheaderTypographyProps: { color: 'inherit' }, classes: classes }));
+        React.createElement(CardHeader_1.default, { avatar: React.createElement(NotificationIcon_1.default, { variant: variant }), title: React.createElement(Typography_1.default, { variant: 'h6', component: 'div' }, title), subheader: React.createElement(Typography_1.default, { variant: 'subtitle1', component: 'div' }, subtitle), subheaderTypographyProps: { color: 'inherit' }, sx: sx }));
 };
-exports.default = React.memo(Header);
+exports.default = Header;

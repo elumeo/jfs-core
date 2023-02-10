@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import React from 'react';
 import * as Type from 'Types/Configuration';
 import { useSelector } from 'Types/Redux';
@@ -14,10 +15,10 @@ const Indicator: React.FC<Props> = ({ client }) => {
     ),
   );
   return (
-    <div style={{ width: 300 }}>
+    <Box sx={{ width: 300 }}>
       WS {client.PrivateNamespace} Status:{' '}
-      <span
-        style={{
+      <Box
+        sx={{
           background: isNamespaceConnected ? 'green' : 'red',
           borderRadius: '50%',
           width: 10,
@@ -25,7 +26,7 @@ const Indicator: React.FC<Props> = ({ client }) => {
           display: 'inline-block',
         }}
       />
-    </div>
+    </Box>
   );
 };
 

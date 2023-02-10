@@ -1,7 +1,7 @@
 import * as React from 'react';
 import useActions from '@elumeo/jfs-core/build/Store/useActions';
 import { useIntl } from 'react-intl';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 
 const AddToastButton: React.FC = () => {
   const { formatMessage } = useIntl();

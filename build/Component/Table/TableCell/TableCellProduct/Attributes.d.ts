@@ -4,5 +4,5 @@ export type AttributesProps = {
     inStockPool?: boolean;
     hasNoTvLock?: boolean;
 };
-declare const _default: React.MemoExoticComponent<({ productType, inStockPool, hasNoTvLock }: AttributesProps) => JSX.Element>;
-export default _default;
+declare const Attributes: React.FC<AttributesProps>;
+export default Attributes;

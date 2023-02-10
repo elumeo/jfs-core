@@ -1,8 +1,8 @@
-import React, { forwardRef, memo, useMemo } from 'react';
-import { Button, ButtonProps, CircularProgress, PropTypes } from '@material-ui/core';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import React, { forwardRef } from 'react';
+import { Box, Button, ButtonProps, CircularProgress, PropTypes, SxProps } from '@mui/material';
 
-export const wrapperStyles: CSSProperties = { position: 'relative', display: 'inline-block' };
+
+export const wrapperStyles: SxProps = { position: 'relative', display: 'inline-block' };
 
 export const mapToCircularProgressSize = (size: string): number => {
   switch (size) {
@@ -16,7 +16,13 @@ export const mapToCircularProgressSize = (size: string): number => {
 };
 
 export const mapToCircularProgressColor = (color: PropTypes.Color): 'inherit' | 'primary' | 'secondary' => color === 'default' ? 'inherit' : color;
-
+const getSpinnerSx = (size = 'medium'): SxProps => ({
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  marginTop: mapToCircularProgressSize(size) / 2 * -1,
+  marginLeft: mapToCircularProgressSize(size) / 2 * -1
+})
 export type ButtonProgressProps = ButtonProps & {
   onClick?: ButtonProps['onClick'];
   disabled?: boolean;
@@ -24,21 +30,12 @@ export type ButtonProgressProps = ButtonProps & {
   color?: PropTypes.Color;
 };
 
-const ButtonProgress = forwardRef<HTMLButtonElement, ButtonProgressProps>((props, ref) => {
-    const { children, onClick, size = 'medium', color = 'inherit', disabled = false, inProgress = false, ...rest } = props;
-    const progressStyles = useMemo<CSSProperties>(() => ({
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      marginTop: mapToCircularProgressSize(size) / 2 * -1,
-      marginLeft: mapToCircularProgressSize(size) / 2 * -1
-    }), [size]);
-
-    return <div style={wrapperStyles}>
-      <Button ref={ref} size={size} color={color} disabled={disabled || inProgress} onClick={onClick}{...rest}>{children}</Button>
-      {inProgress && <CircularProgress size={mapToCircularProgressSize(size)} color={mapToCircularProgressColor(color)} style={progressStyles} />}
-    </div>;
-  }
+const ButtonProgress = forwardRef<HTMLButtonElement, ButtonProgressProps>(({ children, onClick, size = 'medium', color = 'inherit', disabled = false, inProgress = false, ...rest }, ref) => {
+  return <Box sx={wrapperStyles}>
+    <Button ref={ref} size={size} color={color} disabled={disabled || inProgress} onClick={onClick}{...rest}>{children}</Button>
+    {inProgress && <CircularProgress size={mapToCircularProgressSize(size)} color={mapToCircularProgressColor(color)} sx={getSpinnerSx(size)} />}
+  </Box>;
+}
 );
 
-export default memo(ButtonProgress);
+export default ButtonProgress

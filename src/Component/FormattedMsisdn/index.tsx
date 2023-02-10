@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { useSelector } from 'Types/Redux';
 
 import * as PhoneNumberFormat from 'Utilities/Format/PhoneNumber';
@@ -12,4 +12,4 @@ const FormattedMsisdn = ({ msisdn }: IFormattedMsisdnProps) => {
   return <>{PhoneNumberFormat.formatPhone(msisdn, backendRegion)}</>;
 };
 
-export default memo(FormattedMsisdn);
+export default FormattedMsisdn

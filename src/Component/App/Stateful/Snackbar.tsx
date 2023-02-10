@@ -1,9 +1,9 @@
-import React, { memo } from 'react';
+import React from 'react';
 import * as Notification from 'Component/Notification';
 import { SnackbarOrigin, SnackbarProvider } from 'notistack';
 import { useSelector } from 'Types/Redux';
 import { State } from 'Store/Reducer/Global';
-import { makeStyles } from '@material-ui/core/styles';
+import definition from '../Stateless/Style/Theme/Definition';
 
 const anchorOriginTopRight: SnackbarOrigin = { vertical: 'top', horizontal: 'right' }
 const anchorOriginBottomRight: SnackbarOrigin = { vertical: 'bottom', horizontal: 'right' }
@@ -11,38 +11,30 @@ const anchorOriginBottomRight: SnackbarOrigin = { vertical: 'bottom', horizontal
 const selectNotificationPosition = (state: State) => state.Core.Configuration.config.NotificationPosition
 const selectNotificationMax = (state: State) => state.Core.Configuration.config.NotificationMax
 
-const useStyles = makeStyles(theme => ({
+const classes = ({
   root: {
     background: 'none',
-    padding: 0,
-    '& #notistack-snackbar': {
-      width: '100%',
-      height: '100%',
-      padding: 0
-    }
+    padding: '0 0',
   },
-  containerAnchorOriginTopRight: {
-    marginTop: theme.mixins.toolbar.minHeight
-  }
-}))
+
+})
 
 const Snackbar = ({ children }: { children: React.ReactNode }) => {
   const notificationPosition = useSelector(selectNotificationPosition)
   const notificationMax = useSelector(selectNotificationMax)
   const anchorOrigin = notificationPosition == 'topRight' && anchorOriginTopRight || anchorOriginBottomRight
-  const classes = useStyles()
   return (
     <SnackbarProvider
-      className={classes.root}
+      style={classes.root}
       anchorOrigin={anchorOrigin}
       maxSnack={notificationMax}
-      classes={{ containerAnchorOriginTopRight: classes.containerAnchorOriginTopRight }}
+      classes={{ containerAnchorOriginTopRight: definition.mixins?.toolbar?.minHeight as string }}
       domRoot={document.getElementById('overlay')}
     >
-      <Notification.Notistack/>
+      <Notification.Notistack />
       {children}
     </SnackbarProvider>
   )
 };
 
-export default memo(Snackbar);
+export default Snackbar;

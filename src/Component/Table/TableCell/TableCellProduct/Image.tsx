@@ -1,10 +1,8 @@
-import React, { CSSProperties, memo } from 'react';
-import { Grid } from '@material-ui/core';
+import React from 'react';
+import { ButtonBase } from '@mui/material';
 import BundleImage from './BundleImage';
 import ProductImage from './ProductImage';
 import { MediaUri } from 'Types/MediaUri';
-
-const imageWrapperStyles: CSSProperties = { marginTop: 'auto', marginBottom: 'auto' };
 
 export type ImageProps = {
   id?: string;
@@ -13,9 +11,19 @@ export type ImageProps = {
   onClick?: HTMLElement['click'];
 }
 
-const Image = ({ id = null, mediaUris = null, isProductBundle = false, onClick = null }: ImageProps) => {
-  const productImage = isProductBundle ? <BundleImage onClick={onClick} /> : <ProductImage onClick={onClick} id={id} mediaUris={mediaUris} />;
-  return <Grid item style={imageWrapperStyles}>{productImage}</Grid>;
-};
+const Image: React.FC<ImageProps> = ({
+  id = null,
+  mediaUris = null,
+  isProductBundle = false,
+  onClick = null
+}) => (
+  <ButtonBase onClick={onClick}>
+    {
+      isProductBundle
+        ? <BundleImage />
+        : <ProductImage id={id} mediaUris={mediaUris} />
+    }
+  </ButtonBase>
+)
 
-export default memo(Image);
+export default Image

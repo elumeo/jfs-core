@@ -1,5 +1,5 @@
-import React, { memo, useCallback } from 'react';
-import { Grid } from '@material-ui/core';
+import React from 'react';
+import { Stack } from '@mui/material';
 import Image from './Image';
 import Details from './Details';
 import { TableCellRootProps } from 'Component/Table/TableCell/TableCellRoot';
@@ -19,27 +19,27 @@ export type TableCellProductProps = Partial<TableCellRootProps> & {
   onClick?: (productId: string, rowIndex?: number) => void;
 }
 
-const TableCellProduct = ({
-                            id = null,
-                            rowIndex = null,
-                            mediaUris = null,
-                            name = null,
-                            productType = null,
-                            inStockPool = false,
-                            hasNoTvLock = false,
-                            isProductBundle = false,
-                            onClick = null,
-                            ...rest
-                          }: TableCellProductProps) => {
-  const handleOnClick = useCallback(() => onClick(id, rowIndex), [onClick, id, rowIndex]);
+const TableCellProduct: React.FC<TableCellProductProps> = ({
+  id = null,
+  rowIndex = null,
+  mediaUris = null,
+  name = null,
+  productType = null,
+  inStockPool = false,
+  hasNoTvLock = false,
+  isProductBundle = false,
+  onClick = null,
+  ...rest
+}) => {
+  const handleOnClick = React.useCallback(() => onClick(id, rowIndex), [onClick, id, rowIndex]);
   return <TableCellRoot {...rest} isNumeric={false}>
-    {id && <Grid container>
+    {id && <Stack direction='row' maxHeight='100%' spacing={1} maxWidth='inherit' width={'100%'}>
       <Image onClick={handleOnClick} isProductBundle={isProductBundle} id={id} mediaUris={mediaUris} />
       <Details onClick={handleOnClick} id={id} name={name} />
       <Attributes productType={productType} hasNoTvLock={hasNoTvLock} inStockPool={inStockPool} />
-    </Grid>}
+    </Stack>}
     {id === null && <TableCellLoadingContent />}
   </TableCellRoot>;
 };
 
-export default memo(TableCellProduct);
+export default TableCellProduct

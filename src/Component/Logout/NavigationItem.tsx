@@ -1,10 +1,11 @@
 import React from 'react';
 import * as Navigation from 'Component/Navigation';
 import { useSelector } from 'Types/Redux';
-import useActions from 'Store/useActions';
+import { openLogout } from 'Store/Action';
+import { useDispatch } from 'react-redux';
 
 const NavigationItem: React.FC = () => {
-  const { openLogout } = useActions();
+  const dispatch = useDispatch();
   const robotLoginAvailable = useSelector(
     state =>
       state.Core.Configuration.config &&
@@ -18,7 +19,7 @@ const NavigationItem: React.FC = () => {
       iconName='exit_to_app'
       messageId='app.logout'
       authorizedOnly
-      onClick={() => openLogout()}
+      onClick={() => dispatch(openLogout())}
     />
   ) : (
     <></>

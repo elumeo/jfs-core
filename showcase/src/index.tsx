@@ -17,8 +17,8 @@ import store from 'Store';
 import Routes from 'Setup/Routes';
 import HelloWorldTranslations from '@scharfohnezwiebeln/jfc-hello-world/build/Setup/Translations.json';
 
-import * as MUI from '@material-ui/core';
-import * as LAB from '@material-ui/lab';
+import * as MUI from '@mui/material';
+import * as LAB from '@mui/lab';
 
 ReactDOM.render(
   <App

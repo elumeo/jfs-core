@@ -10,29 +10,6 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -48,22 +25,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.columnHeaderStyles = exports.rowNoClickStyles = exports.rowClickStyles = exports.rowStyles = exports.noOutlineStyles = exports.ellipsesStyle = exports.flexContainerStyles = exports.visuallyHiddenStyle = void 0;
-var react_virtualized_1 = require("react-virtualized");
-var react_1 = __importStar(require("react"));
-var TableCell_1 = require("../Table/TableCell");
-var TableHeadDefault_1 = __importDefault(require("../Table/TableHead/TableHeadDefault"));
-var styles_1 = require("@material-ui/core/styles");
+exports.rowNoClickStyles = exports.rowClickStyles = exports.noOutlineStyles = exports.ellipsesStyle = exports.flexContainerStyles = exports.visuallyHiddenStyle = void 0;
+var react_1 = __importDefault(require("react"));
+var react_virtuoso_1 = require("react-virtuoso");
+var Table_1 = __importDefault(require("@mui/material/Table"));
+var TableBody_1 = __importDefault(require("@mui/material/TableBody"));
+var TableContainer_1 = __importDefault(require("@mui/material/TableContainer"));
+var TableHead_1 = __importDefault(require("@mui/material/TableHead"));
+var TableRow_1 = __importDefault(require("@mui/material/TableRow"));
+var Paper_1 = __importDefault(require("@mui/material/Paper"));
+var Color_1 = require("../../Constant/Color");
 exports.visuallyHiddenStyle = {
     border: 0,
     clip: 'rect(0 0 0 0)',
-    height: '1px',
-    margin: '-1px',
+    height: 1,
+    margin: -1,
     overflow: 'hidden',
     padding: 0,
     position: 'absolute',
-    top: '20px',
-    width: '1px'
+    top: 20,
+    width: 1
 };
 exports.flexContainerStyles = {
     display: 'flex',
@@ -76,31 +57,30 @@ exports.ellipsesStyle = {
     overflow: 'hidden'
 };
 exports.noOutlineStyles = { outline: 'none' };
-exports.rowStyles = { direction: 'inherit' };
 exports.rowClickStyles = { cursor: 'pointer' };
 exports.rowNoClickStyles = { cursor: 'initial' };
-exports.columnHeaderStyles = { outline: 'none' };
-var tableStyle = { borderCollapse: 'separate' };
-var columnStyle = __assign(__assign({}, exports.flexContainerStyles), { height: '100%' });
-var useRowStyles = (0, styles_1.makeStyles)(function (theme) { return (0, styles_1.createStyles)({
-    root: __assign(__assign(__assign({}, exports.noOutlineStyles), exports.flexContainerStyles), { direction: 'inherit', cursor: function (props) { return props.onRowClick !== null && props.onRowClick !== undefined ? 'pointer' : 'initial'; }, '&:hover:not(.ReactVirtualized__Table__headerRow)': {
-            backgroundColor: function (props) { return props.showRowHoverHighlight ? theme.palette.grey[200] : 'inherit'; }
-        } })
-}); });
-var VirtualizedTable = react_1.default.forwardRef(function (props, ref) {
-    var _a = props.columns, columns = _a === void 0 ? [] : _a, _b = props.onRowClick, onRowClick = _b === void 0 ? null : _b, rowCount = props.rowCount, rowGetter = props.rowGetter, _c = props.headerHeight, headerHeight = _c === void 0 ? 48 : _c, _d = props.rowHeight, rowHeight = _d === void 0 ? 48 : _d, onResize = props.onResize, tableProps = __rest(props, ["columns", "onRowClick", "rowCount", "rowGetter", "headerHeight", "rowHeight", "onResize"]);
-    var rowClasses = useRowStyles(props);
-    var headerRenderer = (0, react_1.useCallback)(function (headerProps) { return react_1.default.createElement(TableHeadDefault_1.default, { height: headerHeight, disableSort: headerProps.disableSort, sortBy: headerProps.sortBy, sortDirection: headerProps.sortDirection, label: headerProps.label, dataKey: headerProps.dataKey }); }, [headerHeight]);
-    var getFinalColumnWidth = (0, react_1.useCallback)(function (columnWidth, tableWidth) { return typeof columnWidth === 'function'
-        ? columnWidth(tableWidth)
-        : columnWidth; }, []);
-    var getCellRenderer = (0, react_1.useCallback)(function (props) { return react_1.default.createElement(TableCell_1.TableCellDefault, { height: typeof rowHeight === 'number' ? rowHeight : rowHeight({ index: props.rowIndex }), cellData: props.cellData, isNumeric: (props.columnIndex != null && columns[props.columnIndex].numeric) || false }); }, []);
-    return react_1.default.createElement(react_virtualized_1.AutoSizer, { onResize: onResize }, function (_a) {
-        var height = _a.height, width = _a.width;
-        return (react_1.default.createElement(react_virtualized_1.Table, __assign({ ref: ref, height: height, width: width, rowClassName: rowClasses.root, headerHeight: headerHeight, rowHeight: rowHeight, rowCount: rowCount, rowGetter: rowGetter, onRowClick: onRowClick, gridStyle: exports.noOutlineStyles, style: tableStyle }, tableProps), columns.map(function (_a) {
-            var dataKey = _a.dataKey, columnWidth = _a.width, other = __rest(_a, ["dataKey", "width"]);
-            return react_1.default.createElement(react_virtualized_1.Column, __assign({ key: dataKey, headerStyle: exports.columnHeaderStyles, headerRenderer: headerRenderer, style: columnStyle, cellRenderer: getCellRenderer, dataKey: dataKey, width: getFinalColumnWidth(columnWidth, width) }, other));
-        })));
+var sort = function (data, sortBy, sortDir, compare) {
+    if (!sortBy || !sortDir) {
+        return data;
+    }
+    return data.sort(function (a, b) {
+        if (compare) {
+            return compare(a, b);
+        }
+        if (a[sortBy] < b[sortBy]) {
+            return sortDir === 'asc' ? -1 : 1;
+        }
+        if (a[sortBy] > b[sortBy]) {
+            return sortDir === 'asc' ? 1 : -1;
+        }
+        return 0;
     });
-});
+};
+var VirtualizedTable = function (_a) {
+    var _b = _a.data, data = _b === void 0 ? [] : _b, sortBy = _a.sortBy, sortDirection = _a.sortDirection, _c = _a.compare, compare = _c === void 0 ? function (a, b) { return a[sortBy] < b[sortBy] ? -1 : 1; } : _c, _d = _a.filter, filter = _d === void 0 ? function () { return true; } : _d, props = __rest(_a, ["data", "sortBy", "sortDirection", "compare", "filter"]);
+    var ref = react_1.default.useRef(null);
+    var _sorted = react_1.default.useMemo(function () { return sort(data.filter(filter), sortBy, sortDirection, compare); }, [data, sortBy, sortDirection, compare, filter]);
+    var components = react_1.default.useMemo(function () { return (__assign({ Scroller: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(TableContainer_1.default, __assign({ component: Paper_1.default }, props, { ref: ref })); }), Table: function (props) { return react_1.default.createElement(Table_1.default, __assign({}, props, { sx: { borderCollapse: 'separate' } })); }, TableHead: TableHead_1.default, TableRow: function (props) { return react_1.default.createElement(TableRow_1.default, __assign({ sx: { backgroundColor: props['data-index'] % 2 ? "".concat(Color_1.topas.main, "20") : 'inherit' } }, props)); }, TableBody: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(TableBody_1.default, __assign({}, props, { ref: ref })); }) }, props === null || props === void 0 ? void 0 : props.components)); }, [props]);
+    return (react_1.default.createElement(react_virtuoso_1.TableVirtuoso, __assign({ ref: ref, data: _sorted, components: components, overscan: 20 }, props)));
+};
 exports.default = VirtualizedTable;

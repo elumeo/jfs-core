@@ -1,14 +1,15 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import Typography from '@mui/material/Typography';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useIntl } from 'react-intl';
+import { Box } from '@mui/material';
 
 const Empty: React.FC = () => {
   const { formatMessage } = useIntl();
   const iconRef = React.useRef();
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         width: 'max-content',
         display: 'flex',
         justifyContent: 'center',
@@ -16,9 +17,9 @@ const Empty: React.FC = () => {
         flexDirection: 'column',
         color: 'grey',
       }}>
-      <NotificationsIcon fontSize='large' ref={iconRef}/>
+      <NotificationsIcon fontSize='large' ref={iconRef} />
       <Typography>{formatMessage({ id: 'app.noNotifications' })}</Typography>
-    </div>
+    </Box>
   );
 };
 

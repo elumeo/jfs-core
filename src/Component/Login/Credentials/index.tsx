@@ -2,7 +2,6 @@ import React from 'react';
 import Username from './Username';
 import Password from './Password';
 import * as Type from 'Types/Login';
-import useAutoFocus from './useAutoFocus';
 import Form from './Form';
 
 export type Props = {
@@ -12,10 +11,8 @@ export type Props = {
 };
 
 const Credentials: React.FC<Props> = ({ value, onChange, onSubmit }) => {
-  const username = React.useRef<HTMLInputElement>();
-  const password = React.useRef<HTMLInputElement>();
-  useAutoFocus(username);
-
+  const username = React.useRef<HTMLInputElement>(null);
+  const password = React.useRef<HTMLInputElement>(null);
   return <Form>
     <Username
       ref={username}

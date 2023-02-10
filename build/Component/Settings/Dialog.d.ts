@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { DialogContentProps } from '@material-ui/core/DialogContent/DialogContent';
+import { DialogContentProps } from '@mui/material/DialogContent/DialogContent';
 type Props = {
     children: DialogContentProps['children'];
 };

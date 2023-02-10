@@ -1,17 +1,16 @@
 import * as React from 'react';
-import { useCallback } from 'react';
+
 import useActions from 'Core/Store/useActions';
-import { Button, IconButton, Theme, Tooltip } from '@material-ui/core';
+import { Button, IconButton, Theme, Tooltip } from '@mui/material';
 import { VariantType } from 'notistack';
 import { Notification, Severity } from 'Core/Types/Notification';
-import Box from '@material-ui/core/Box';
-import { Refresh, SignalCellularConnectedNoInternet0Bar, Visibility } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/core/styles';
+import Box from '@mui/material/Box';
+import { Refresh, SignalCellularConnectedNoInternet0Bar, Visibility } from '@mui/icons-material';
 
 const useStyles = makeStyles<Theme, { variant: Severity }>(theme => ({
   root: {
-    backgroundColor: props => theme.palette?.[props.variant]?.['main'] || theme.palette.grey['A400'],
-    color: props => theme.palette?.[props.variant]?.['contrastText'] || theme.palette.grey['50']
+    backgroundColor: props => definition.palette?.[props.variant]?.['main'] || definition.palette.grey['A400'],
+    color: props => definition.palette?.[props.variant]?.['contrastText'] || definition.palette.grey['50']
   }
 }))
 
@@ -29,9 +28,9 @@ const AddNotificationButton: React.FC<Props> =
    }) => {
     const classes = useStyles({ variant: variant as Severity })
     const { addNotification, addToastAction } = useActions();
-    const addNotificationCallback = useCallback(() => addNotification(generateNotification()), [addNotification])
+    const addNotificationCallback = React.useCallback(() => addNotification(generateNotification()), [addNotification])
 
-    const generateNotification = useCallback((): Notification => {
+    const generateNotification = React.useCallback((): Notification => {
       const defaultProps: Notification = { group, variant, notistackOptions: { persist } }
       switch (variant) {
         case 'error':

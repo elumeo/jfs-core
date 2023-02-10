@@ -1,47 +1,47 @@
 import * as React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import { useTheme } from '@material-ui/core/styles';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import definition from './App/Stateless/Style/Theme/Definition';
+import { error, info, success, warning } from 'Constant/Color';
 
 const DevelopColors: React.FC = () => {
-  const theme = useTheme();
   return (
     <Card>
       <CardContent>
         <Grid container>
           <Grid item>
             <Typography
-              style={{
-                margin: theme.spacing(1),
-                padding: theme.spacing(1),
-                backgroundColor: theme.palette.info.main,
-                color: theme.palette.getContrastText(theme.palette.info.main)
+              sx={{
+                margin: definition.spacing(1),
+                padding: definition.spacing(1),
+                backgroundColor: info.main,
+                color: definition.colorSchemes.light.palette.getContrastText(info.main)
               }}>Info</Typography>
           </Grid>
           <Grid item>
-            <Typography style={{
-              margin: theme.spacing(1),
-              padding: theme.spacing(1),
-              backgroundColor: theme.palette.error.main,
-              color: theme.palette.getContrastText(theme.palette.error.main)
+            <Typography sx={{
+              margin: definition.spacing(1),
+              padding: definition.spacing(1),
+              backgroundColor: error.main,
+              color: definition.colorSchemes.light.palette.getContrastText(error.main)
             }}>Error</Typography>
           </Grid>
           <Grid item>
-            <Typography style={{
-              margin: theme.spacing(1),
-              padding: theme.spacing(1),
-              backgroundColor: theme.palette.warning.main,
-              color: theme.palette.getContrastText(theme.palette.warning.main)
+            <Typography sx={{
+              margin: definition.spacing(1),
+              padding: definition.spacing(1),
+              backgroundColor: warning.main,
+              color: definition.colorSchemes.light.palette.getContrastText(warning.main)
             }}>Warning</Typography>
           </Grid>
           <Grid item>
-            <Typography style={{
-              margin: theme.spacing(1),
-              padding: theme.spacing(1),
-              backgroundColor: theme.palette.success.main,
-              color: theme.palette.getContrastText(theme.palette.success.main)
+            <Typography sx={{
+              margin: definition.spacing(1),
+              padding: definition.spacing(1),
+              backgroundColor: success.main,
+              color: definition.colorSchemes.light.palette.getContrastText(success.main)
             }}>Success</Typography>
           </Grid>
         </Grid>
@@ -50,4 +50,4 @@ const DevelopColors: React.FC = () => {
   )
 }
 
-export default React.memo(DevelopColors)
+export default DevelopColors

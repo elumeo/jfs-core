@@ -1,5 +1,6 @@
 import React from 'react';
-import { InputAdornment, StandardTextFieldProps, TextField, } from '@material-ui/core';
+import { InputAdornment } from '@mui/material';
+import TextFieldClearButton, { type TextFieldClearButtonProps } from 'Component/TextFieldClearButton'
 import useCurrency from 'Effect/useCurrency';
 import usePriceFieldAdornment from 'Effect/usePriceFieldAdornment';
 import { Currency, Number as FormatNumber } from 'Utilities/Format';
@@ -11,22 +12,31 @@ type Props = {
   min?: number;
   max?: number;
   showDecimals?: boolean
-  onChange?: StandardTextFieldProps['onChange'];
-} & Partial<StandardTextFieldProps>;
+} & TextFieldClearButtonProps
 
-const PriceField = ({
+const PriceField: React.FC<Props> = ({
   currency = 'eur',
   value = 0.0,
   selectOnFocus = true,
-  showDecimals = false,
+  showDecimals = true,
   min,
   max,
   ...props
-}: Props) => {
+}) => {
   const configCurrency = useCurrency();
   const ref = React.useRef(null)
   const finalCurrency = currency ?? configCurrency;
-  const display = Currency.getCurrency(finalCurrency, isNaN(Number(value)) ? 0 : Number(value), true, false, showDecimals)
+  const display = value === ''
+    ? ''
+    : Currency.getCurrency(
+      finalCurrency,
+      isNaN(Number(value))
+        ? 0
+        : Number(value),
+      true,
+      false,
+      showDecimals
+    )
   const [adornmentType, adornmentPosition, styles] = usePriceFieldAdornment(finalCurrency);
   const [_focused, setFocused] = React.useState(props.focused);
   React.useEffect(() => {
@@ -34,20 +44,20 @@ const PriceField = ({
       ref.current.select();
     }
   }, [_focused, selectOnFocus]);
-  const _onFocus: StandardTextFieldProps['onFocus'] = React.useCallback(event => {
+  const _onFocus: TextFieldClearButtonProps['onFocus'] = React.useCallback(event => {
     setFocused(true);
     props?.onFocus?.(event);
   }, [props?.onFocus, setFocused, selectOnFocus]);
 
-  const _onBlur: StandardTextFieldProps['onBlur'] = React.useCallback(event => {
+  const _onBlur: TextFieldClearButtonProps['onBlur'] = React.useCallback(event => {
     props?.onBlur?.(event);
     setFocused(false);
     if (isNaN(parseFloat(value as string))) {
-      props.onChange({ ...event, target: { ...event.target, value: '0' } } as React.ChangeEvent<HTMLInputElement>)
+      props.onChange({ ...event, target: { ...event.target, value: null } } as React.ChangeEvent<HTMLInputElement>)
     }
   }, [setFocused, props?.onBlur, value]);
 
-  const _onChange: StandardTextFieldProps['onChange'] = React.useCallback((event) => {
+  const _onChange: TextFieldClearButtonProps['onChange'] = React.useCallback((event) => {
     const _value = event.target.value;
     props?.onChange?.(
       {
@@ -59,21 +69,20 @@ const PriceField = ({
   }, [props?.onChange, min, max,]);
   const _InputProps = React.useMemo(() => (
     {
-      [adornmentType]: <InputAdornment position={adornmentPosition} style={styles}>{Currency.getCurrencySign(currency)}</InputAdornment>,
+      [adornmentType]: <InputAdornment position={adornmentPosition} sx={styles}>{Currency.getCurrencySign(currency)}</InputAdornment>,
       ...props?.InputProps
     }),
     [adornmentPosition, adornmentType, currency, props?.InputProps, styles]
   );
   return (
-    <TextField
-      variant='standard'
+    <TextFieldClearButton
       inputRef={ref}
-      {...props}
       value={_focused ? value : display}
       InputProps={_InputProps}
       onChange={_onChange}
       onFocus={_onFocus}
       onBlur={_onBlur}
+      {...props}
     />)
 };
 export default PriceField;

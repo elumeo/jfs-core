@@ -1,8 +1,8 @@
 import React from 'react';
-import { CircularProgress } from '@material-ui/core';
-import useActions from 'Store/useActions';
-
-const style: React.CSSProperties = {
+import { Box, CircularProgress, SxProps } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { initializeApp } from 'Store/Action';
+const sx: SxProps = {
   width: '100vw',
   height: '100vh',
   display: 'flex',
@@ -19,23 +19,22 @@ export type Props = {
 const Initializer: React.FC<Props> = ({
   allowRobotLogin, packageJSON, translations
 }) => {
-  const { initializeApp } = useActions();
-
+  const dispatch = useDispatch();
   React.useEffect(
     () => {
-      initializeApp({
+      dispatch(initializeApp({
         allowRobotLogin,
         packageJson: packageJSON,
         translations
-      });
+      }));
     },
     []
   );
 
   return (
-    <div style={style}>
+    <Box sx={sx}>
       <CircularProgress />
-    </div>
+    </Box>
   );
 }
 

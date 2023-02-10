@@ -1,16 +1,13 @@
 import React from 'react';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
-import { MuiPickersUtilsProviderProps } from '@material-ui/pickers/MuiPickersUtilsProvider';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
-export type Props = {
-  children: MuiPickersUtilsProviderProps['children'];
-}
 
-const Picker = ({ children }: Props) => (
-  <MuiPickersUtilsProvider utils={MomentUtils}>
+const Picker: React.FC<React.PropsWithChildren> = ({ children }) => (
+  <LocalizationProvider
+    dateAdapter={AdapterMoment}>
     {children}
-  </MuiPickersUtilsProvider>
+  </LocalizationProvider>
 );
 
 export default Picker;

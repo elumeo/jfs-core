@@ -21,7 +21,7 @@ import { ActionType, Epic } from 'Types/Redux';
 import { isActionOf } from 'typesafe-actions';
 import * as Actions from 'Store/Action';
 import * as Notification from 'Component/Notification';
-import { v4 as uuid } from 'uuid';
+
 import { of } from 'rxjs';
 import { AxiosError } from 'axios';
 
@@ -29,7 +29,7 @@ const showError: Epic = action$ => (
   action$.pipe(
     filter(isActionOf(Actions.catchErrorNotification)),
     switchMap(({ payload: { response: { data }}}: ActionType<AxiosError>) => {
-      const id = uuid();
+      const id = crypto.randomUUID();
       const { error, id: errorId, message } = data
       return of(
         Actions.addNotification({                                 <---

@@ -33,15 +33,28 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
-var styles_1 = require("@material-ui/core/styles");
+var material_1 = require("@mui/material");
 var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
 var TableCellRoot = function (_a) {
-    var children = _a.children, _b = _a.isNumeric, isNumeric = _b === void 0 ? false : _b, _c = _a.height, height = _c === void 0 ? '100px' : _c, _d = _a.styles, styles = _d === void 0 ? {} : _d;
-    var theme = (0, styles_1.useTheme)();
-    var preparedStyles = (0, react_1.useMemo)(function () { return (__assign(__assign(__assign({}, VirtualizedTable_1.flexContainerStyles), { height: height, flex: 1, padding: theme.spacing(1), maxWidth: '100%' }), styles)); }, [height, styles]);
-    return react_1.default.createElement(core_1.TableCell, { component: 'div', style: preparedStyles, variant: 'body', align: isNumeric ? 'right' : 'left' }, children);
+    var children = _a.children, _b = _a.isNumeric, isNumeric = _b === void 0 ? false : _b, _c = _a.height, height = _c === void 0 ? '100px' : _c, _d = _a.sx, sx = _d === void 0 ? {} : _d, rest = __rest(_a, ["children", "isNumeric", "height", "sx"]);
+    var preparedStyles = (0, react_1.useMemo)(function () { return (__assign(__assign(__assign({}, VirtualizedTable_1.flexContainerStyles), { height: height, flex: 1, padding: Definition_1.default.spacing(1), maxWidth: '100%' }), sx)); }, [height, sx]);
+    return (react_1.default.createElement(material_1.TableCell, __assign({ sx: preparedStyles, variant: 'body', align: isNumeric ? 'right' : 'left' }, rest), children));
 };
-exports.default = (0, react_1.memo)(TableCellRoot);
+exports.default = TableCellRoot;

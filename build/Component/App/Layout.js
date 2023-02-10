@@ -1,59 +1,46 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
-var styles_1 = require("@material-ui/core/styles");
-var getNavigationWidth = function (theme) { return theme.spacing(39); };
-var useGridContainerStyles = function (theme, spacing) { return ({
-    minHeight: "calc(100% - ".concat(theme.mixins.toolbar.minHeight, "px - ").concat(theme.spacing(spacing.height), "px)"),
-    width: "calc(100% - ".concat(theme.spacing(spacing.width), "px)"),
-    marginLeft: spacing.width > 0 ? "".concat(theme.spacing(1), "px") : 0,
-    marginRight: spacing.width > 0 ? "".concat(theme.spacing(1), "px") : 0,
-    marginTop: spacing.height > 0 ? "".concat(theme.spacing(1), "px") : 0,
-    marginBottom: spacing.height > 0 ? "".concat(theme.spacing(1), "px") : 0,
-}); };
-var useGridItemNavigationStyles = function (theme) { return ({
-    width: "".concat(getNavigationWidth(theme), "px")
-}); };
-var useGridItemContentStyles = function (theme, hasNavigation) { return ({
-    marginLeft: hasNavigation ? "".concat(theme.spacing(1), "px") : 0,
-    width: hasNavigation ? "calc(100% - ".concat(getNavigationWidth(theme), "px - ").concat(theme.spacing(1), "px)") : '100%'
-}); };
+var react_1 = __importDefault(require("react"));
+var material_1 = require("@mui/material");
+var Definition_1 = __importDefault(require("./Stateless/Style/Theme/Definition"));
+var system_1 = require("@mui/system");
+var gridContainerSx = ({
+    height: '100%',
+    maxHeight: "calc(100vh - ".concat(Definition_1.default.mixins.toolbar.minHeight, "px)"),
+    width: '100%',
+    overflowX: 'hidden',
+    overflowY: 'auto',
+});
 var AppLayout = function (_a) {
-    var children = _a.children, className = _a.className, _b = _a.navigation, navigation = _b === void 0 ? null : _b, _c = _a.spacing, spacing = _c === void 0 ? { width: 2, height: 2.5 } : _c;
-    var theme = (0, styles_1.useTheme)();
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    var gridContainerStyles = (0, react_1.useMemo)(function () { return useGridContainerStyles(theme, spacing); }, [spacing]);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    var gridItemNavigationStyles = (0, react_1.useMemo)(function () { return useGridItemNavigationStyles(theme); }, []);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    var gridItemContentStyles = (0, react_1.useMemo)(function () { return useGridItemContentStyles(theme, navigation !== null); }, [navigation]);
-    return react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(core_1.Grid, { container: true, style: gridContainerStyles, className: className, wrap: 'nowrap' },
-            navigation !== null && react_1.default.createElement(core_1.Grid, { item: true, style: gridItemNavigationStyles }, navigation),
-            react_1.default.createElement(core_1.Grid, { item: true, style: gridItemContentStyles }, children)));
+    var _b;
+    var children = _a.children, _c = _a.navigation, navigation = _c === void 0 ? null : _c, _d = _a.spacing, spacing = _d === void 0 ? 1 : _d, _e = _a.contentProps, contentProps = _e === void 0 ? {} : _e, containerProps = __rest(_a, ["children", "navigation", "spacing", "contentProps"]);
+    return (react_1.default.createElement(material_1.Stack, __assign({ p: spacing, sx: __assign(__assign({}, gridContainerSx), (_b = containerProps === null || containerProps === void 0 ? void 0 : containerProps.sx) !== null && _b !== void 0 ? _b : {}), spacing: spacing, direction: 'row', gap: (navigation && spacing > 0) ? spacing : 0 }, containerProps),
+        navigation,
+        react_1.default.createElement(system_1.Box, __assign({}, contentProps), children)));
 };
-exports.default = (0, react_1.memo)(AppLayout);
+exports.default = AppLayout;

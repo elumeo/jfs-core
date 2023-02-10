@@ -1,80 +1,102 @@
 import * as React from 'react';
-import { useState } from 'react';
-// import { AppCardContent, AppCardHeader } from 'Component/Card';
-// import WarningIcon from '@material-ui/icons/Warning';
-import { Card } from '@material-ui/core';
-// import { FilterReset } from 'Component/Icon';
-// import DatePicker from 'Component/DatePicker';
-// import TextFieldClearButton, { TextFieldClearButtonProps } from 'Component/TextFieldClearButton';
-// import SelectClearButton, { Props as SelectClearButtonProps } from 'Component/SelectClearButton';
+import { Button, Card, Grid, InputAdornment } from '@mui/material';
 import PriceInput from 'Component/PriceInput';
-// import SearchIcon from '@material-ui/icons/Search';
+import { useNavigate, useParams } from 'react-router-dom';
+import { parse } from 'Utilities/Format/Number';
+import DatePicker, { type DatePickerProps } from './DatePicker';
+import TextFieldClearButton from './TextFieldClearButton';
+import { AppCardContent, AppCardHeader } from './Card';
+import { Search, Warning } from '@mui/icons-material';
+import useQueryParams from 'Effect/useQueryParams';
+import ClearButton, { type SelectProps as SelectClearButtonProps } from 'Component/SelectClearButton/SelectClearButton';
 
-// const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon /></InputAdornment> };
+const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><Search /></InputAdornment> };
 
 const DevelopInputs: React.FC = () => {
-  // const [multipleSelectValue, setMultipleSelectValue] = useState(['test 1']);
-  // const handleMultipleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(value => setMultipleSelectValue(value as string[]), []);
+  const navigate = useNavigate()
+  const [loading, setLoading] = React.useState(false)
+  const { id } = useParams()
+  const [{ value, dateStart, dateEnd }, update, urlSearchParams] = useQueryParams<{ value?: string, dateStart?: string, dateEnd?: string }>({})
+  const [multipleSelectValue, setMultipleSelectValue] = React.useState<string[]>(['test 1']);
+  const handleMultipleSelectUpdate: SelectClearButtonProps<true>['onChange'] = React.useCallback(_value => setMultipleSelectValue(_value as string[]), [setMultipleSelectValue]);
 
-  // const [testDatePickerValue, setTestDatePickerValue] = useState<Date>(null);
+  const testDatePickerdateStart = React.useMemo(() => dateStart ? new Date(dateStart) : null, [dateStart])
+  const testDatePickerdateEnd = React.useMemo(() => dateEnd ? new Date(dateEnd) : null, [dateEnd])
+  const setTestDatePickerValue: DatePickerProps<true /*  = isRangePicker */>['onChange'] = React.useCallback((dates) => {
+    const [start, end] = dates;
+    update({
+      dateStart: start?.toJSON?.(),
+      dateEnd: end?.toJSON?.(),
+    })
 
-  // const [testTextFieldValue, setTestTextFieldValue] = useState('');
-  // const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
+  }, [update])
 
-  // const [singleSelectValue, setSingleSelectValue] = useState('');
-  // const handleSingleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(value => setSingleSelectValue(value as string), []);
+  const handleTextFieldUpdate = (newVal: string) => {
+    update({ value: newVal })
 
-  const [testPriceValue, setTestPriceValue] = useState<React.ReactText>(0)
+  }
   return (
-    <Card>
-      {/* <AppCardHeader title={'Test'} titleIcon={<WarningIcon />} onRefresh={console.log} />
+    <Card >
+      <AppCardHeader title={'Test'} titleIcon={<Warning color={'secondary'} />} isLoading={loading}
+        // eslint-disable-next-line no-console
+        onRefresh={console.log}
+        headerActions={<Button variant='contained' onClick={() => setLoading(prev => !prev)} color='secondary'>test</Button>} />
       <AppCardContent>
-        Das ist der Inhalt
-        <IconButton size={'small'} color={'secondary'}><FilterReset /></IconButton>
         <Grid container spacing={2}>
           <Grid item>
             <DatePicker
-              label={'DatePicker'}
-              onChange={date => setTestDatePickerValue(date)}
-              value={testDatePickerValue}
-              isClearable={false}
-            />
-          </Grid>
-          <Grid item> */}
-      <PriceInput
-        value={testPriceValue}
-        // setPrice={price => setTestPriceValue(price)}
-        // min={0}
-        // max={100}
-        onChange={event => { setTestPriceValue(event.target.value) }}
-      />
-      {/* </Grid>
-          <Grid item>
-            <TextFieldClearButton
-              label={'Textfield'}
-              onChange={handleTextFieldUpdate}
-              value={testTextFieldValue}
-              clearButtonSize={'small'}
-              InputProps={textFieldInputProps}
+              onChange={setTestDatePickerValue}
+              textFieldProps={
+                {
+                  label: 'Datepicker',
+                  name: 'datepicker__textfield',
+                  id: 'datepicker__textfield',
+                  InputProps: textFieldInputProps
+                }
+              }
+              startDate={testDatePickerdateStart}
+              endDate={testDatePickerdateEnd}
+              selectsRange
+              name={'datepicker'}
             />
           </Grid>
           <Grid item>
-            <TextFieldClearButton
-              disabled
-              label={'Textfield'}
-              onChange={handleTextFieldUpdate}
-              value={testTextFieldValue}
-              clearButtonSize={'small'}
+            <PriceInput
+              value={parse(id)}
+              label={'clearable price input'}
+              onChange={event => {
+                navigate({ pathname: `/start/${event.target.value ?? ''}`, search: urlSearchParams.toString() })
+
+              }}
             />
           </Grid>
-          <Grid item xs={1}>
-            <SelectClearButton
-              fullWidth
+
+          <Grid item display='flex' gap={1}>
+            <TextFieldClearButton
+              label={'Textfield outlined'}
+              onChange={e => handleTextFieldUpdate(e.target.value)}
+              value={value}
+              variant={'outlined'}
+            />
+            <TextFieldClearButton
+              label={'Textfield filled'}
+              onChange={e => handleTextFieldUpdate(e.target.value)}
+              value={value}
+              variant={'filled'}
+            />
+            <TextFieldClearButton
+              label={'Textfield default standard'}
+              onChange={e => handleTextFieldUpdate(e.target.value)}
+              value={value}
+              variant='standard'
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <ClearButton
+              variant='outlined'
               label={'Single select'}
-              onChange={handleSingleSelectUpdate}
-              value={singleSelectValue}
-              clearButtonSize={'small'}
-              renderValueAsChip
+              value={value}
+              onChange={handleTextFieldUpdate}
               options={[
                 { value: 'test 1', label: 'Test 1' },
                 { value: 'test 2', label: 'Test 2' },
@@ -88,16 +110,17 @@ const DevelopInputs: React.FC = () => {
               ]}
             />
           </Grid>
-          <Grid item xs={1}>
-            <SelectClearButton
-              fullWidth
+          <Grid item xs={4}>
+            <ClearButton
+              // fullWidth
               label={'Multiple select'}
               onChange={handleMultipleSelectUpdate}
               value={multipleSelectValue}
-              clearButtonSize={'small'}
+              // loading
+              // clearButtonSize={'small'}
               multiple
-              maxValuesToDisplayInInput={2}
-              renderValueAsChip
+              // maxValuesToDisplayInInput={2}
+
               options={[
                 { value: 'test 1', label: 'Test 1 Das ist ein sehr langer Wert Wert Wert Wert' },
                 { value: 'test 2', label: 'Test 2' },
@@ -111,12 +134,13 @@ const DevelopInputs: React.FC = () => {
               ]}
             />
           </Grid>
-          <Grid item><Button onClick={() => setMultipleSelectValue(['test 1'])} color={'primary'}>Set Multiple Select
-            Value</Button></Grid> */}
-      {/* </Grid> */}
-      {/* </AppCardContent> */}
+          {/* <Grid item><Button onClick={() => setMultipleSelectValue(['test 1'])} color={'primary'}>Set Multiple Select
+            Value</Button>
+          </Grid> */}
+        </Grid>
+      </AppCardContent>
     </Card>
   )
 }
 
-export default React.memo(DevelopInputs);
+export default DevelopInputs

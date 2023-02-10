@@ -37,12 +37,12 @@ export const create = <T>(
   reducer: Redux.Reducer<T>,
 ): Redux.Store => {
   const store = Redux.createStore(reducer, middleware);
-  const wrapped = wrap(epic, action$ =>
+  const wrapped = wrap(epic, (action$) =>
     action$.pipe(
       Rx.catchError(
         (error, source) => (error.isAxiosError && handle(error)) || source,
-      ),
-    ),
+      )
+    )
   );
   start(wrapped);
   return store;

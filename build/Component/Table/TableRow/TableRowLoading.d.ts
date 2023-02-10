@@ -1,3 +1,3 @@
-import React from 'react';
-declare const _default: React.MemoExoticComponent<() => JSX.Element>;
-export default _default;
+/// <reference types="react" />
+declare const TableRowLoading: () => JSX.Element;
+export default TableRowLoading;

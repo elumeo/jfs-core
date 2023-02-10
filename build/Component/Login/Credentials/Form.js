@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
 var style = {
     display: 'flex',
     flexDirection: 'column',
@@ -13,6 +14,7 @@ var style = {
     width: 240,
     marginTop: 6,
     marginBottom: 32,
+    gap: Definition_1.default.spacing(1),
 };
 var Form = function (_a) {
     var children = _a.children;

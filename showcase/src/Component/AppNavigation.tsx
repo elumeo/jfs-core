@@ -1,20 +1,20 @@
 import React, { memo } from 'react';
-import { Card, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Card, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { RouteComponentProps, withRouter } from 'react-router';
-import LinkIcon from '@material-ui/icons/Link';
-import AppsIcon from '@material-ui/icons/Apps';
-import ColorLensIcon from '@material-ui/icons/ColorLens';
-import FontDownloadIcon from '@material-ui/icons/FontDownload';
-import ListIcon from '@material-ui/icons/List';
-import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
-import TableChartIcon from '@material-ui/icons/TableChart';
-import FilterNoneIcon from '@material-ui/icons/FilterNone';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import TabIcon from '@material-ui/icons/Tab';
-import BallotOutlinedIcon from '@material-ui/icons/BallotOutlined';
-import ShareIcon from '@material-ui/icons/Share';
+import LinkIcon from '@mui/icons-material/Link';
+import AppsIcon from '@mui/icons-material/Apps';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
+import FontDownloadIcon from '@mui/icons-material/FontDownload';
+import ListIcon from '@mui/icons-material/List';
+import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
+import TableChartIcon from '@mui/icons-material/TableChart';
+import FilterNoneIcon from '@mui/icons-material/FilterNone';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import TabIcon from '@mui/icons-material/Tab';
+import BallotOutlinedIcon from '@mui/icons-material/BallotOutlined';
+import ShareIcon from '@mui/icons-material/Share';
 
 const AppNavigation = ({history}: RouteComponentProps) => {
   return <Card>

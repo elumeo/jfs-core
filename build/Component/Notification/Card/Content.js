@@ -27,28 +27,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
-var CardContent_1 = __importDefault(require("@material-ui/core/CardContent"));
-var Typography_1 = __importDefault(require("@material-ui/core/Typography"));
-var styles_1 = require("@material-ui/core/styles");
-var useStyles = (0, styles_1.makeStyles)(({
+var CardContent_1 = __importDefault(require("@mui/material/CardContent"));
+var Typography_1 = __importDefault(require("@mui/material/Typography"));
+var classes = {
     root: {
         gridRowStart: 2,
         gridColumnStart: 1,
         gridColumnEnd: 'none'
     },
-}));
-var useTypographyStyles = (0, styles_1.makeStyles)(({
-    body2: {
+    typoSx: {
         wordBreak: 'break-word'
     }
-}));
+};
 var Content = function (_a) {
     var children = _a.children;
-    var classes = useStyles();
-    var typographyClasses = useTypographyStyles();
     return (!children
         ? null :
-        React.createElement(CardContent_1.default, { classes: classes },
-            React.createElement(Typography_1.default, { variant: 'body2', component: 'div', classes: typographyClasses }, children)));
+        React.createElement(CardContent_1.default, { sx: classes.root },
+            React.createElement(Typography_1.default, { variant: 'body2', component: 'div', sx: classes.typoSx }, children)));
 };
-exports.default = React.memo(Content);
+exports.default = Content;

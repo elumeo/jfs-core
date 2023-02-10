@@ -28,7 +28,6 @@ var rxjs_1 = require("rxjs");
 var TA = __importStar(require("typesafe-actions"));
 var Action = __importStar(require("../../Action"));
 var WSClient_1 = require("../../../API/WS/WSClient");
-var uuid_1 = require("uuid");
 var joinRoomLoading = function (action$, state$) {
     return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.webSocketJoinRoomLoadingAction)), (0, operators_1.concatMap)(function (action) {
         return WSClient_1.WSClient.join(action.payload.namespace, action.payload.name).pipe((0, operators_1.map)(function (name) {
@@ -68,7 +67,7 @@ var joinRoomLoading = function (action$, state$) {
                 toJSON: function () { return err.error.message; },
             };
             return (0, rxjs_1.of)(Action.webSocketJoinRoomFailureAction(update), Action.addNotification({
-                id: (0, uuid_1.v4)(),
+                id: crypto.randomUUID(),
                 title: 'Error',
                 subtitle: 'Join Room (' + action.payload.name + ')',
                 content: error.message,

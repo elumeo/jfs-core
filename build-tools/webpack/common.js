@@ -21,7 +21,12 @@ const common = {
                 ['@babel/preset-env', {
                   "modules": false
                 }],
-                '@babel/preset-react',
+                ['@babel/preset-react', {
+                  runtime: 'automatic',
+                  development: process.env.NODE_ENV === 'development',
+                  importSource: '@welldone-software/why-did-you-render',
+
+                }],
                 '@babel/preset-typescript'
               ],
               plugins: [
@@ -32,8 +37,8 @@ const common = {
                 [
                   'babel-plugin-import',
                   {
-                    'libraryName': '@material-ui/core',
-                    'libraryDirectory': 'esm',
+                    'libraryName': '@mui/material',
+                    'libraryDirectory': '',
                     'camel2DashComponentName': false
                   },
                   'core'
@@ -41,8 +46,8 @@ const common = {
                 [
                   'babel-plugin-import',
                   {
-                    'libraryName': '@material-ui/icons',
-                    'libraryDirectory': 'esm',
+                    'libraryName': '@mui/icons-material',
+                    'libraryDirectory': '',
                     'camel2DashComponentName': false
                   },
                   'icons'
@@ -83,7 +88,7 @@ const common = {
     extensions: ['.ts', '.tsx', '.js', '.json', '.mp3'],
     alias: {
       Core: resolve(PATH.ROOT, 'node_modules', '@elumeo', 'jfs-core', 'build'),
-      'react-virtualized': resolve(PATH.ROOT, 'node_modules', '@enykeev', 'react-virtualized'),
+
     },
     plugins: [
       new PathAliasPlugin({

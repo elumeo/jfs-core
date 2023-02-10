@@ -1,18 +1,18 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 import * as History from './History';
 
 const Overlay: React.FC = () => (
   <Card
-    style={{
+    sx={{
       width: 400,
       height: 'calc(100vh - 100px)',
     }}>
-    <CardHeader style={{ height: 70 }} action={<History.Toolbar />} />
+    <CardHeader sx={{ height: 70 }} action={<History.Toolbar />} />
     <CardContent
-      style={{
+      sx={{
         width: '100%',
         height: 'calc(100% - 70px)',
         display: 'flex',

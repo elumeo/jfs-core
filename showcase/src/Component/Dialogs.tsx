@@ -16,11 +16,10 @@ import {
   Popover,
   Tooltip,
   Typography
-} from '@material-ui/core';
-import WarningIcon from '@material-ui/icons/Warning';
-import InfoIcon from '@material-ui/icons/Info';
+} from '@mui/material';
+import WarningIcon from '@mui/icons-material/Warning';
+import InfoIcon from '@mui/icons-material/Info';
 import AppNavigation from 'Component/AppNavigation';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
 import LoremIpsumText from 'Component/LoremIpsumText';
 import CodeBox from 'Component/CodeBox';
 import { ButtonProgress } from '@elumeo/jfs-core/build/Component/Button';
@@ -33,25 +32,25 @@ const useStyles = makeStyles((theme) =>
       alignItems: 'center'
     },
     wrapper: {
-      margin: theme.spacing(1),
+      margin: definition.spacing(1),
       position: 'relative'
     },
     fabProgress: {
-      color: theme.palette.success.main,
+      color: definition.palette.success.main,
       position: 'absolute',
       top: -6,
       left: -6,
       zIndex: 1
     },
     buttonProgress: {
-      color: theme.palette.primary.main,
+      color: definition.palette.primary.main,
       position: 'absolute',
       top: '50%',
       left: '50%',
       marginTop: -12,
       marginLeft: -12
     },
-    popoverTypography: { padding: theme.spacing(2) }
+    popoverTypography: { padding: definition.spacing(2) }
   })
 );
 

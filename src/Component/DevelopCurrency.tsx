@@ -1,10 +1,10 @@
 import * as React from 'react';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import { getCurrency } from 'Utilities/Format/Currency';
-import List from '@material-ui/core/List';
-import CardContent from '@material-ui/core/CardContent';
-import Card from '@material-ui/core/Card';
+import List from '@mui/material/List';
+import CardContent from '@mui/material/CardContent';
+import Card from '@mui/material/Card';
 
 type Props = {}
 
@@ -60,7 +60,6 @@ const DevelopCurrency: React.FC<Props> =
                 {getCurrency('EUR', 100.75, true, true, true)}
               </ListItemText>
             </ListItem>
-            yay
             <ListItem>
               <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, false)'}>
                 {getCurrency('EUR', 100.75, true, true, false)}
@@ -72,4 +71,4 @@ const DevelopCurrency: React.FC<Props> =
     )
   }
 
-export default React.memo(DevelopCurrency)
+export default DevelopCurrency

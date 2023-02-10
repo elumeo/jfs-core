@@ -1,19 +1,16 @@
 import React from 'react';
-import { CssBaseline } from '@material-ui/core';
-import Theme, {Props as ThemeProps} from './Theme';
+import { CssBaseline } from '@mui/material';
+import Theme from './Theme';
 import 'material-icons/iconfont/material-icons.css'
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 
-type Props = {
-  children: ThemeProps['children'];
-}
 
-const Style = ({ children }: Props) => (
+const Style: React.FC<React.PropsWithChildren> = ({ children }) => (
   <Theme>
-    <CssBaseline/>
+    <CssBaseline />
     {children}
   </Theme>
 );

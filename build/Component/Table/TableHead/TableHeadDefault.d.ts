@@ -1,13 +1,13 @@
 import React from 'react';
-import { SortDirectionType } from 'react-virtualized';
-export type TableHeadDefaultProps = {
+import { SortDirection, TableCellProps } from '@mui/material';
+export type TableHeadDefaultProps = TableCellProps & {
     height?: number;
     isNumeric?: boolean;
     disableSort?: boolean;
     sortBy?: string;
-    sortDirection?: SortDirectionType;
+    sortDirection?: SortDirection;
     label?: React.ReactNode;
     dataKey: string;
 };
-declare const _default: React.MemoExoticComponent<({ height, isNumeric, disableSort, sortBy, sortDirection, label, dataKey }: TableHeadDefaultProps) => JSX.Element>;
-export default _default;
+declare const TableHeadDefault: React.FC<TableHeadDefaultProps>;
+export default TableHeadDefault;

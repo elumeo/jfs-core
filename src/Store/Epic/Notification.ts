@@ -2,12 +2,12 @@ import { catchError, filter, switchMap } from 'rxjs/operators';
 import { Epic } from 'Types/Redux';
 import { isActionOf } from 'typesafe-actions';
 import * as Action from 'Store/Action';
-import { v4 as uuid } from 'uuid';
+
 import * as Types from 'Types/Notification';
 import { AxiosError } from 'axios';
 
 export const mapErrorToNotification = (error: AxiosError): Types.Notification => {
-  const id = uuid();
+  const id = crypto.randomUUID();
   const responseData = error?.response?.data;
 
   const title = error?.response?.statusText || error?.name;

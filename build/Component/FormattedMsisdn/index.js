@@ -22,8 +22,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importStar(require("react"));
+var react_1 = __importDefault(require("react"));
 var Redux_1 = require("../../Types/Redux");
 var PhoneNumberFormat = __importStar(require("../../Utilities/Format/PhoneNumber"));
 var FormattedMsisdn = function (_a) {
@@ -31,4 +34,4 @@ var FormattedMsisdn = function (_a) {
     var backendRegion = (0, Redux_1.useSelector)(function (state) { return state.Core.System.backendRegion; });
     return react_1.default.createElement(react_1.default.Fragment, null, PhoneNumberFormat.formatPhone(msisdn, backendRegion));
 };
-exports.default = (0, react_1.memo)(FormattedMsisdn);
+exports.default = FormattedMsisdn;

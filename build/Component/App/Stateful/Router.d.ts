@@ -1,6 +1,4 @@
 import React from 'react';
-export type Props = {
-    children: React.ReactNode;
-};
-declare const Router: ({ children }: Props) => JSX.Element;
+import { HashRouterProps } from 'react-router-dom';
+declare const Router: React.FC<React.PropsWithChildren<HashRouterProps>>;
 export default Router;

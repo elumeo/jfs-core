@@ -1,2 +1,2 @@
-declare const definition: import("@material-ui/core/styles").Theme;
+declare const definition: Omit<import("@mui/material/styles").Theme, "palette"> & import("@mui/material/styles").CssVarsTheme;
 export default definition;

@@ -12,5 +12,5 @@ export type TableCellProductProps = Partial<TableCellRootProps> & {
     isProductBundle?: boolean;
     onClick?: (productId: string, rowIndex?: number) => void;
 };
-declare const _default: React.MemoExoticComponent<({ id, rowIndex, mediaUris, name, productType, inStockPool, hasNoTvLock, isProductBundle, onClick, ...rest }: TableCellProductProps) => JSX.Element>;
-export default _default;
+declare const TableCellProduct: React.FC<TableCellProductProps>;
+export default TableCellProduct;

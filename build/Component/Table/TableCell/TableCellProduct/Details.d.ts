@@ -4,5 +4,5 @@ export type DetailsProps = {
     name?: string;
     onClick?: HTMLElement['click'];
 };
-declare const _default: React.MemoExoticComponent<({ id, name, onClick }: DetailsProps) => JSX.Element>;
-export default _default;
+declare const Details: React.FC<DetailsProps>;
+export default Details;

@@ -5,5 +5,5 @@ export type TableCellDateTimeRangeProps = Partial<TableCellRootProps> & {
     cellData: DateTimeRangeCellProps;
     noValueElement?: ReactNode;
 };
-declare const _default: React.MemoExoticComponent<({ cellData, noValueElement, ...rest }: TableCellDateTimeRangeProps) => JSX.Element>;
-export default _default;
+declare const TableCellDateTimeRange: React.FC<TableCellDateTimeRangeProps>;
+export default TableCellDateTimeRange;

@@ -27,11 +27,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
-var styles_1 = require("@material-ui/core/styles");
 var notistack_1 = require("notistack");
 var Button = __importStar(require("../Button"));
-var Box_1 = __importDefault(require("@material-ui/core/Box"));
-var useStyles = (0, styles_1.makeStyles)(function (theme) { return ({
+var Box_1 = __importDefault(require("@mui/material/Box"));
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
+var useStyles = {
     root: {
         gridColumnStart: 2,
         gridRowStart: 1,
@@ -42,16 +42,16 @@ var useStyles = (0, styles_1.makeStyles)(function (theme) { return ({
         direction: 'rtl',
         justifyItems: 'start',
         alignSelf: 'start',
-        padding: theme.spacing(1)
+        padding: Definition_1.default.spacing(1)
     }
-}); });
+};
 var Actions = function (_a) {
     var temporary = _a.temporary, action = _a.action, id = _a.id;
-    var classes = useStyles();
+    var classes = useStyles;
     var snackbar = (0, notistack_1.useSnackbar)();
-    return (React.createElement(Box_1.default, { className: classes.root },
+    return (React.createElement(Box_1.default, { sx: classes.root },
         React.createElement(React.Fragment, null,
             !temporary ? React.createElement(Button.Delete, { id: id }) : null,
             action ? action(snackbar, id, temporary) : null)));
 };
-exports.default = React.memo(Actions);
+exports.default = Actions;

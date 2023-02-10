@@ -1,45 +1,53 @@
-import React, {memo} from "react";
-import {ChipProps} from "@material-ui/core";
-import MultipleValueRenderer from "Component/SelectClearButton/MultipleValueRenderer";
-import SingleValueRenderer from "Component/SelectClearButton/SingleValueRenderer";
-import {SelectOption} from 'Component/SelectClearButton/index';
+import { Chip, ChipProps, Stack, Typography } from '@mui/material'
+import React from 'react'
 
-export type Props = {
-  multiple: boolean;
-  onDeleteItem?: (value: string) => void;
-  setValue: (value: string | string[]) => void;
-  selectedValue: SelectOption | SelectOption[];
-  maxValuesToDisplayInInput?: number;
-  renderValueAsChip?: boolean;
-  valueChipProps?: Partial<ChipProps>;
+export type ValueType<IsMulti = boolean> = IsMulti extends true ? string[] : string
+export type Props = ChipProps & {
+  renderAsChip: boolean
+  maxValuesToDisplayInInput: number,
+  values: ValueType<true>
+  labelsByValue: Record<string, string>
+  canUnselect: boolean
+  unselect: (value: ValueType<true>[number]) => void
 }
-
-const ValueRenderer = ({
-                         multiple,
-                         setValue,
-                         valueChipProps,
-                         selectedValue,
-                         onDeleteItem,
-                         maxValuesToDisplayInInput = 1,
-                         renderValueAsChip = false
-                       }: Props) => {
-  return <>
-    {multiple === true && <MultipleValueRenderer
-      selectedValue={selectedValue as SelectOption[]}
-      setValue={setValue}
-      renderValueAsChip={renderValueAsChip}
-      maxValuesToDisplayInInput={maxValuesToDisplayInInput}
-      onDeleteItem={onDeleteItem}
-      valueChipProps={valueChipProps}
-    />}
-    {multiple !== true && <SingleValueRenderer
-      renderValueAsChip={renderValueAsChip}
-      valueChipProps={valueChipProps}
-      setValue={setValue}
-      onDeleteItem={onDeleteItem}
-      selectedValue={selectedValue as SelectOption}
-    />}
-  </>
+const ValueRenderer: React.FC<Props> = ({
+  renderAsChip,
+  maxValuesToDisplayInInput,
+  values,
+  labelsByValue,
+  canUnselect,
+  unselect,
+  ...props
+}) => {
+  return renderAsChip
+    ? <>
+      <Stack direction='row' spacing={1}>{
+        values.map((v, i) =>
+          !maxValuesToDisplayInInput || i < maxValuesToDisplayInInput
+            ?
+            (
+              <Chip
+                key={`select-chip-${i}`}
+                label={labelsByValue[v]}
+                size={'small'}
+                onMouseDown={(event) => event.stopPropagation()}
+                {...props}
+                onDelete={
+                  canUnselect
+                    ? () => unselect(v)
+                    : undefined
+                }
+              />
+            )
+            : null
+        )}
+        {values.length > maxValuesToDisplayInInput
+          ? <Typography>+{
+            (values.length - maxValuesToDisplayInInput)
+          }
+          </Typography> : null}
+      </Stack>
+    </>
+    : <>{values.map(v => labelsByValue[v]).join(', ')}</>
 }
-
-export default memo(ValueRenderer);
+export default ValueRenderer

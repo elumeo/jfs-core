@@ -1,5 +1,5 @@
 import React from 'react';
-import { StandardTextFieldProps } from '@material-ui/core';
+import { type TextFieldClearButtonProps } from '../TextFieldClearButton';
 type Props = {
     currency?: string;
     selectOnFocus?: boolean;
@@ -7,7 +7,6 @@ type Props = {
     min?: number;
     max?: number;
     showDecimals?: boolean;
-    onChange?: StandardTextFieldProps['onChange'];
-} & Partial<StandardTextFieldProps>;
-declare const PriceField: ({ currency, value, selectOnFocus, showDecimals, min, max, ...props }: Props) => JSX.Element;
+} & TextFieldClearButtonProps;
+declare const PriceField: React.FC<Props>;
 export default PriceField;

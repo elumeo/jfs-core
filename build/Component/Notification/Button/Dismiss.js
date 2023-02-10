@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var IconButton_1 = __importDefault(require("@material-ui/core/IconButton"));
-var Close_1 = __importDefault(require("@material-ui/icons/Close"));
+var IconButton_1 = __importDefault(require("@mui/material/IconButton"));
+var Close_1 = __importDefault(require("@mui/icons-material/Close"));
 var DismissButton = function (_a) {
     var onClick = _a.onClick;
     return (react_1.default.createElement(IconButton_1.default, { color: 'inherit', onClick: onClick },

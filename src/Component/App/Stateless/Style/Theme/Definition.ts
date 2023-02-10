@@ -1,122 +1,159 @@
-import {createTheme, responsiveFontSizes} from '@material-ui/core/styles';
+/* eslint-disable max-lines */
+import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
 import * as Color from 'Constant/Color';
-import { grey } from '@material-ui/core/colors';
-
-const definition = responsiveFontSizes(
-  createTheme({
-    props: {
-      MuiCircularProgress: {
-        color: 'secondary',
+import { grey } from '@mui/material/colors';
+const definition = extendTheme({
+  colorSchemes: {
+    light: {
+      palette: {
+        primary: Color.primary,
+        secondary: Color.apatith,
+        warning: Color.warning,
+        error: Color.error,
+        success: Color.success,
+        info: Color.info,
+        grey: grey,
+        common: Color.common,
+        text: {
+          primary: grey[900],
+          secondary: grey[700],
+          disabled: grey[500],
+        },
+        action: {
+          hover: 'rgba(0, 0, 0, 0.12)',
+          hoverOpacity: 0.12,
+          selected: 'rgba(0, 0, 0, 0.16)',
+          selectedOpacity: 0.16,
+          focus: 'rgba(0, 0, 0, 0.2)',
+          focusOpacity: 0.2,
+        },
+        background: {
+          default: '#e5e2dd',
+        },
       },
-      MuiLinearProgress: {
-        color: 'secondary',
+    }
+  },
+  mixins: {
+    toolbar: {
+      minHeight: 48,
+    },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        html: {
+          fontSize: 14,
+        },
+        body: {
+          margin: 0,
+          padding: 0,
+          fontFamily: 'Roboto',
+          '&.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after': {
+            borderBottomColor: `${Color.secondary.main} !important`,
+          },
+          '&.jfs-datepicker__day,.react-datepicker .react-datepicker__header': {
+            backgroundColor: `${Color.secondary.main}`,
+            '&>*,.react-datepicker__day-name': {
+              color: `${Color.secondary.contrastText}`,
+            }
+          },
+          '&.jfs-datepicker__day,.react-datepicker .react-datepicker__day--in-selecting-range': ({
+            backgroundColor: Color.common.white,
+            boxShadow: `inset  0 0 0 1px ${Color.secondary.main}`,
+            color: Color.secondary.main,
+          }),
+          '&.jfs-datepicker__day .react-datepicker__day--selected,.react-datepicker__day--in-range': ({
+            backgroundColor: `${Color.secondary.light}cc`,
+            color: Color.secondary.contrastText,
+            '&:hover': {
+              backgroundColor: Color.secondary.main,
+              color: Color.secondary.contrastText
+            }
+          })
+        },
       }
     },
-    palette: {
-      type: 'light',
-      primary: Color.primary,
-      secondary: Color.apatith,
-      text: {
-        primary: grey[900],
-        secondary: grey[700],
-        disabled: grey[500],
-        hint: grey[300],
-      },
-      action: {
-        hover: 'rgba(0, 0, 0, 0.12)',
-        hoverOpacity: 0.12,
-        selected: 'rgba(0, 0, 0, 0.16)',
-        selectedOpacity: 0.16,
-        focus: 'rgba(0, 0, 0, 0.2)',
-        focusOpacity: 0.2,
-      },
-      info: Color.info,
-      success: Color.success,
-      warning: Color.warning,
-      error: Color.error,
-      rubin: Color.rubin,
-      rodolith: Color.rodolith,
-      topas: Color.topas,
-      apatith: Color.apatith,
-      peridot: Color.peridot,
-      citrin: Color.citrin,
-      quarz: Color.quarz,
-      background: {
-        default: '#e5e2dd',
-      },
-    },
-  })
-);
-
-definition.overrides = {
-  MuiCssBaseline: {
-    '@global': {
-      html: {
-        fontSize: 14,
-      },
-      body: {
-        margin: 0,
-        padding: 0,
-        fontFamily: 'Roboto',
-      },
-    },
-  },
-  MuiChip: {
-    clickable: { '&:hover': { backgroundColor: definition.palette.grey[400] } },
-    clickableColorPrimary: { '&:hover': { backgroundColor: definition.palette.primary.dark } },
-    clickableColorSecondary: { '&:hover': { backgroundColor: definition.palette.secondary.dark } },
-
-    label: {
-      fontSize: '0.925rem',
-    }
-  },
-  MuiListItem: {
-    root: {
-      paddingTop: definition.spacing(0.5),
-      paddingBottom: definition.spacing(0.5)
-    }
-  },
-  MuiMenuItem: {
-    root: {
-      paddingTop: definition.spacing(0.5),
-      paddingBottom: definition.spacing(0.5)
-    }
-  },
-  MuiListItemIcon: {
-    root: {
-      minWidth: 32,
-    },
-  },
-  MuiTooltip: {
-    tooltip: {
-      fontSize: '0.875rem',
-      fontWeight: 400,
-      lineHeight: 1.43,
-      letterSpacing: '0.01071em',
-    },
-  },
-  MuiTableCell: {
-    root: {
-      fontSize: definition.typography.body1.fontSize
-    },
-    stickyHeader: {
-      backgroundColor: definition.palette.background.paper
-    }
-  },
-  MuiTableSortLabel: {
-    root: {
-      color: definition.palette.secondary.main,
-      '&.MuiTableSortLabel-active': {
-        color: definition.palette.secondary.main
-      },
-      '&.MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon': {
-        color: definition.palette.secondary.main
+    MuiChip: {
+      styleOverrides: {
+        clickable: { '&:hover': { backgroundColor: grey[400] } },
+        clickableColorPrimary: { '&:hover': { backgroundColor: Color.primary.dark } },
+        clickableColorSecondary: { '&:hover': { backgroundColor: Color.secondary.dark } },
+        label: {
+          fontSize: '0.925rem',
+        }
       }
     },
-    icon: {
-      alignSelf: 'end'
-    }
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          pt: 0.5,
+          pb: 0.5,
+        },
+      }
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          pt: 0.5,
+          pb: 0.5,
+          '&.Mui-selected': {
+            backgroundColor: `rgba(var(--mui-palette-secondary-mainChannel) / var(--mui-palette-action-selectedOpacity))`,
+            '&:hover': {
+              backgroundColor: `rgba(var(--mui-palette-secondary-mainChannel) / calc(var(--mui-palette-action-selectedOpacity) + var(--mui-palette-action-hoverOpacity)))`
+            }
+          },
+          '&:hover': {
+            backgroundColor: `rgba(var(--mui-palette-secondary-mainChannel) / var(--mui-palette-action-hoverOpacity))`
+          },
+          '&.Mui-focusVisible': {
+            backgroundColor: `rgba(var(--mui-palette-secondary-mainChannel) / var(--mui-palette-action-selectedOpacity)) !important`,
+            '&:hover': {
+              backgroundColor: `rgba(var(--mui-palette-secondary-mainChannel) / calc(var(--mui-palette-action-selectedOpacity) + var(--mui-palette-action-hoverOpacity)))`
+            }
+          }
+        }
+      },
+    },
+    MuiTableSortLabel: {
+      styleOverrides: {
+        root: {
+          color: Color.secondary.main,
+          '&.MuiTableSortLabel-active': {
+            color: Color.secondary.main
+          },
+          '&.MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon': {
+            color: Color.secondary.main
+          }
+        },
+        icon: {
+          color: Color.secondary.main
+
+        }
+      }
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: props => ({
+          fontSize: definition.typography.body1.fontSize,
+          cursor: (props?.variant !== 'head' || props?.disableSort) ? 'default' : 'pointer'
+        }),
+
+        stickyHeader: {
+          backgroundColor: Color.common.white
+        }
+      }
+    },
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          fontSize: '0.875rem',
+          fontWeight: 400,
+          lineHeight: 1.43,
+          letterSpacing: '0.01071em',
+        },
+      }
+    },
   }
-};
-
+}
+)
 export default definition;

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.primary = exports.success = exports.warning = exports.error = exports.info = exports.quarz = exports.citrin = exports.peridot = exports.apatith = exports.topas = exports.rodolith = exports.rubin = void 0;
+exports.secondary = exports.primary = exports.common = exports.success = exports.warning = exports.error = exports.info = exports.quarz = exports.citrin = exports.peridot = exports.apatith = exports.topas = exports.rodolith = exports.rubin = void 0;
 exports.rubin = {
     light: '#ab4b6b',
     main: '#961e46',
@@ -67,9 +67,14 @@ exports.success = {
     dark: '#004600',
     contrastText: '#fff',
 };
+exports.common = {
+    white: '#fff',
+    black: '#000',
+};
 exports.primary = {
     light: '#ab4783',
     main: '#961964',
     dark: '#691146',
     contrastText: '#fff',
 };
+exports.secondary = exports.apatith;

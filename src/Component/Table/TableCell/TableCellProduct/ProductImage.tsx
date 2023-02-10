@@ -1,22 +1,22 @@
-import React, { CSSProperties, memo } from 'react';
+import React from 'react';
 import NoProductImageAvailable from './NoProductImageAvailable';
 import { MediaUri } from 'Types/MediaUri';
 
-const styles: CSSProperties = { cursor: 'pointer' };
+const styles: React.CSSProperties = { cursor: 'pointer' };
 
 export type ProductImageProps = {
   id: string;
   mediaUris?: MediaUri[];
-  onClick?: HTMLElement['click'];
 }
 
-const ProductImage = ({ id, mediaUris = [], onClick = null }: ProductImageProps) => {
-  const mediaUri = mediaUris.length > 0 ? mediaUris.find(mediaUri => mediaUri.productId === id) : undefined;
-
-  return mediaUri !== undefined
-    ? <img src={mediaUri.uri} alt={id} style={styles} onClick={onClick} />
-    : <NoProductImageAvailable onClick={onClick} />;
-};
-
-export default memo(ProductImage);
+const ProductImage: React.FC<ProductImageProps> = ({ id, mediaUris = [], }) => {
+  const mediaUri = React.useMemo(
+    () => mediaUris.find(_mediaUri => _mediaUri?.productId === id && !!_mediaUri?.uri)?.uri,
+    [id, mediaUris]
+  )
+  return mediaUri
+    ? <img src={mediaUri} alt={id} style={styles} />
+    : <NoProductImageAvailable />;
+}
+export default ProductImage
 

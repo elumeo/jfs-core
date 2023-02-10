@@ -1,33 +1,38 @@
-import React, { useEffect } from 'react';
-import { Route, RouteProps } from 'react-router-dom';
+import React from 'react';
+import { Outlet, RouteProps } from 'react-router-dom';
 import { useIntl } from 'react-intl';
+import { Helmet } from 'react-helmet';
 
-export type IBaseRouteProps = RouteProps & {
-  Component?: React.FC;
-  translationId?: string;
+export type BaseRouteProps = RouteProps & {
+  title?: string;
+  subtitle?: string;
+  translateTitle?: boolean;
+  translateSubtitle?: boolean;
 };
 
-const BaseRoute: React.FC<IBaseRouteProps> = ({
-  Component,
-  translationId,
-  component = Component,
-  ...rest
+const BaseRoute: React.FC<BaseRouteProps> = ({
+  title,
+  subtitle,
+  translateTitle,
+  translateSubtitle,
 }) => {
   const { formatMessage } = useIntl();
-  useEffect(
-    () => {
-      if (translationId) {
-        document.title += ' | ' + formatMessage({ id: translationId });
-      }
-      else {
-        document.title = formatMessage({ id: 'app.title' });
-      }
-    },
-    [translationId]
-  )
+  const forcedTitle = !title
+    ? formatMessage({ id: 'app.title' })
+    : translateTitle
+      ? formatMessage({ id: title })
+      : title
+  const optionalSubtitle =
+    !subtitle
+      ? null
+      : translateSubtitle
+        ? formatMessage({ id: subtitle })
+        : subtitle
 
-  return <Route component={component}
-    {...rest} />;
+  return <>
+    <Helmet><title>{`${forcedTitle}${optionalSubtitle ? ` | ${optionalSubtitle}` : ''}`}</title></Helmet>
+    <Outlet />
+  </>
 };
 
-export default BaseRoute;
+export default BaseRoute

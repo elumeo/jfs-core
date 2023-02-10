@@ -1,10 +1,11 @@
 import React from 'react';
-import useActions from 'Store/useActions';
 import * as Navigation from 'Component/Navigation';
+import { useDispatch } from 'react-redux';
+import { openSettings } from 'Store/Action';
 
 const NavigationItem: React.FC = () => {
-  const { openSettings } = useActions();
-  const onClick = React.useCallback(() => openSettings(), [openSettings]);
+  const dispatch = useDispatch();
+  const onClick = () => dispatch(openSettings())
   return (
     <Navigation.Item
       iconName='settings'

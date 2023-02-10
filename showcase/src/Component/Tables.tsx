@@ -1,10 +1,9 @@
 /* eslint-disable max-lines */
 import React, { memo } from 'react';
-import { Box, Card, CardContent, CardHeader, Container, Grid, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
+import { Box, Card, CardContent, CardHeader, Container, Grid, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import AppNavigation from 'Component/AppNavigation';
-import { makeStyles } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import VirtualizedTable from '@elumeo/jfs-core/build/Component/Table/VirtualizedTable';
 import { Index } from 'react-virtualized';
 

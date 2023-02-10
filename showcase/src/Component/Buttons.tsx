@@ -1,27 +1,27 @@
 import React from 'react';
-import { Box, Button, Grid, CardContent, CardHeader, Container, Card, Radio, Typography, Link } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
-import DoneIcon from '@material-ui/icons/Done';
-import HomeIcon from '@material-ui/icons/Home';
-import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Box, Button, Grid, CardContent, CardHeader, Container, Card, Radio, Typography, Link } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import DoneIcon from '@mui/icons-material/Done';
+import HomeIcon from '@mui/icons-material/Home';
+import { withStyles, Theme, WithStyles } from '@mui/material/styles';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import * as Color from '@elumeo/jfs-core/build/Types/Color';
 import IconButtonProgress from '@elumeo/jfs-core/build/Component/Button/IconButtonProgress';
 import AppNavigation from 'Component/AppNavigation';
-import Switch from '@material-ui/core/Switch';
+import Switch from '@mui/material/Switch';
 import CodeBox from 'Component/CodeBox';
 import { ButtonProgress } from '@elumeo/jfs-core/build/Component/Button';
 
 type Props = WithStyles;
-const style = (theme: Theme) => ({
+const style = ({
   root: {
     flexGrow: 1
   },
   paper: {
-    padding: theme.spacing(1),
+    padding: definition.spacing(1),
     // eslint-disable-next-line @typescript-eslint/prefer-as-const
     textAlign: 'center' as 'center',
-    color: theme.palette.text.secondary
+    color: definition.palette.text.secondary
   }
 });
 

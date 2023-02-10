@@ -78,7 +78,7 @@ var Notistack = function () {
                 var action = function (snackbar, id, temporary) { return (react_1.default.createElement(react_1.default.Fragment, null,
                     temporary && react_1.default.createElement(Button.Dismiss, { onClick: function () { return snackbar.closeSnackbar(notification.id); } }),
                     notification.action && notification.action(snackbar, notification.id, true))); };
-                snackbar.enqueueSnackbar(react_1.default.createElement(Card_1.default, { key: notification.id, notification: __assign(__assign({}, notification), { action: action }), temporary: true }), __assign(__assign({}, notification.notistackOptions), { key: notification.id }));
+                snackbar.enqueueSnackbar(notification.id, __assign(__assign({}, notification.notistackOptions), { key: notification.id, content: function () { return react_1.default.createElement(Card_1.default, { key: notification.id, notification: __assign(__assign({}, notification), { action: action }), temporary: true }); } }));
             });
         }
         if (missing.length) {

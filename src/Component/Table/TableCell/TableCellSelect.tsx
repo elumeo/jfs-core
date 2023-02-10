@@ -1,10 +1,10 @@
-import React, { memo } from 'react';
-import { Checkbox, CheckboxProps } from '@material-ui/core';
+import React from 'react';
+import { Checkbox, CheckboxProps, SxProps } from '@mui/material';
 import TableCellRoot, { TableCellRootProps } from './TableCellRoot';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
-const checkboxStyles: CSSProperties = { padding: '8px' };
-const tableCellStyles: CSSProperties = { padding: '4px', justifyContent: 'center' };
+
+const checkboxStyles: SxProps = { padding: '8px' };
+const tableCellStyles: SxProps = { padding: '4px', justifyContent: 'center' };
 
 export type TableCellSelectProps = Partial<TableCellRootProps> & {
   value: string;
@@ -15,16 +15,31 @@ export type TableCellSelectProps = Partial<TableCellRootProps> & {
   name?: CheckboxProps['name'],
 }
 
-const TableCellSelect = ({
-                           value,
-                           checked,
-                           disabled = false,
-                           onChange,
-                           id = 'table-cell-select-',
-                           name = 'table-cell-select[]',
-                           height
-                         }: TableCellSelectProps) => <TableCellRoot styles={tableCellStyles} height={height}>
-  <Checkbox style={checkboxStyles} size={'small'} id={id + value} name={name} value={value ?? ''} checked={checked} disabled={disabled} onChange={onChange} />
-</TableCellRoot>;
+const TableCellSelect: React.FC<TableCellSelectProps> = (
+  {
+    value,
+    checked,
+    disabled = false,
+    onChange,
+    id = 'table-cell-select-',
+    name = 'table-cell-select[]',
+    height
+  }
+) => (
+  <TableCellRoot
+    sx={tableCellStyles}
+    height={height}>
+    <Checkbox
+      sx={checkboxStyles}
+      size={'small'}
+      id={id + value}
+      name={name}
+      value={value ?? ''}
+      checked={checked}
+      disabled={disabled}
+      onChange={onChange}
+    />
+  </TableCellRoot>
+)
 
-export default memo(TableCellSelect);
+export default TableCellSelect

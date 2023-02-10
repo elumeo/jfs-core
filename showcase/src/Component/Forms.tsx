@@ -17,10 +17,10 @@ import {
   RadioGroup,
   Typography,
   Switch, Divider, TextField, InputAdornment, SelectProps
-} from '@material-ui/core';
+} from '@mui/material';
 import CodeBox from 'Component/CodeBox';
-import WarningIcon from '@material-ui/icons/Warning';
-import { useTheme } from '@material-ui/core/styles';
+import WarningIcon from '@mui/icons-material/Warning';
+import { useTheme } from '@mui/material/styles';
 import PriceField from '@elumeo/jfs-core/build/Component/PriceInput';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, DatePicker, DateTimePicker } from '@material-ui/pickers';
 import 'date-fns';
@@ -30,7 +30,6 @@ import SelectClearButton from '@elumeo/jfs-core/build/Component/SelectClearButto
 import TextFieldClearButton from '@elumeo/jfs-core/build/Component/TextFieldClearButton';
 
 const Forms = () => {
-  const theme = useTheme();
   const [checkboxState, setCheckboxState] = React.useState({ checkboxA: true, checkboxB: false, checkboxC: false, checkboxD: false });
   const [switchState, setSwitchState] = React.useState({ switchA: true, switchB: false, switchC: false, switchD: false });
   const [radioValue, setRadioValue] = React.useState('radio1');
@@ -139,7 +138,7 @@ const Forms = () => {
                         <Typography variant={'h6'}>Select/Dropdown Elements</Typography>
                         <Typography color={'textSecondary'}>Icons in <CodeBox component={'span'} size={'small'}>Select</CodeBox>'s need a little custom styling: <CodeBox
                           component={'span'}
-                          size={'small'}>{`<WarningIcon style={{fontSize: theme.typography.pxToRem(isDense ? 16 : 20)}}/>`}</CodeBox></Typography>
+                          size={'small'}>{`<WarningIcon style={{fontSize: definition.typography.pxToRem(isDense ? 16 : 20)}}/>`}</CodeBox></Typography>
                       </Box>
                       <Box mt={2}>
                         <Grid container spacing={1}>
@@ -151,19 +150,19 @@ const Forms = () => {
                                 onChange={handleSelectChange}
                               >
                                 <MenuItem value={'1'}><Box alignItems={'center'} display={'flex'}>
-                                  <WarningIcon style={{ fontSize: theme.typography.pxToRem(20) }} />
+                                  <WarningIcon style={{ fontSize: definition.typography.pxToRem(20) }} />
                                   <Box component={'span'} ml={1}>Value 1</Box>
                                 </Box></MenuItem>
                                 <MenuItem value={'2'}><Box alignItems={'center'} display={'flex'}>
-                                  <WarningIcon style={{ fontSize: theme.typography.pxToRem(20) }} color={'primary'} />
-                                  <Box component={'span'} ml={1} color={theme.palette.primary.main}>Value 2</Box>
+                                  <WarningIcon style={{ fontSize: definition.typography.pxToRem(20) }} color={'primary'} />
+                                  <Box component={'span'} ml={1} color={definition.palette.primary.main}>Value 2</Box>
                                 </Box></MenuItem>
                                 <MenuItem value={'3'} disabled>Value 3</MenuItem>
                                 <MenuItem value={'4'}>Value 4 with a longer label</MenuItem>
                                 <MenuItem value={'5'}>Value 5 with even a more longer, longer and longer label</MenuItem>
                                 <MenuItem value={'6'} disabled><Box alignItems={'center'} display={'flex'}>
-                                  <WarningIcon style={{ fontSize: theme.typography.pxToRem(20) }} color={'primary'} />
-                                  <Box component={'span'} ml={1} color={theme.palette.primary.main}>Value 6</Box>
+                                  <WarningIcon style={{ fontSize: definition.typography.pxToRem(20) }} color={'primary'} />
+                                  <Box component={'span'} ml={1} color={definition.palette.primary.main}>Value 6</Box>
                                 </Box></MenuItem>
                                 <MenuItem value={'7'}>Value 7</MenuItem>
                                 <MenuItem value={'8'}>Value 8</MenuItem>

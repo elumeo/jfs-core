@@ -1,6 +1,3 @@
 import React from 'react';
-type Props = {
-    children: React.ReactNode;
-};
-declare const Form: ({ children }: Props) => JSX.Element;
+declare const Form: React.FC<React.PropsWithChildren>;
 export default Form;

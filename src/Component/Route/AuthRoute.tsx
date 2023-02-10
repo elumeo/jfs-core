@@ -1,29 +1,22 @@
-import React, { useEffect } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import BaseRoute, { IBaseRouteProps } from './BaseRoute';
-import useActions from 'Store/useActions';
-import { useSelector } from 'Types/Redux';
+import React from 'react';
+import { enterAuthorizedRoute } from 'Store/Action';
+import { useDispatch, useSelector } from 'react-redux';
+import * as Session from 'Store/Selector/Core/Session';
+import BaseRoute, { type BaseRouteProps } from './BaseRoute';
+type Props = React.PropsWithChildren<BaseRouteProps>
+const AuthRoute: React.FC<Props> = (props) => {
+  const dispatch = useDispatch()
+  const { isAuthorized } = useSelector(Session.pickState);
 
-const AuthRoute: React.FC<IBaseRouteProps> = props => {
-  const { enterAuthorizedRoute } = useActions();
-  const { isAuthorized, isCheckingSession } = useSelector<{
-    isAuthorized: boolean;
-    isCheckingSession: boolean;
-  }>(state => ({
-    isAuthorized: state.Core.Session.isAuthorized,
-    isCheckingSession: state.Core.Session.isCheckingSession,
-  }));
-  useEffect(() => {
-    enterAuthorizedRoute();
-  }, [props.path]);
-
-  return isAuthorized ? (
-    <BaseRoute {...props} />
-  ) : isCheckingSession ? (
-    <CircularProgress id='check-session-progress' />
-  ) : (
-    <></>
-  );
+  React.useEffect(
+    () => {
+      dispatch(enterAuthorizedRoute());
+    }, []);
+  return (
+    isAuthorized
+      ? <BaseRoute {...props} />
+      : <></>
+  )
 };
 
-export default AuthRoute;
+export default AuthRoute

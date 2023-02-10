@@ -1,9 +1,8 @@
-import React, { memo, ReactNode, useCallback, useMemo } from 'react';
+import React from 'react';
 import { TableCellRoot, TableCellLoadingContent } from 'Component/Table/TableCell';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
 import { ellipsesStyle } from 'Component/Table/VirtualizedTable';
 import { TableCellRootProps } from 'Component/Table/TableCell/TableCellRoot';
-
+import { SxProps, Box } from '@mui/material';
 export enum ContentEllipseMode {
   None = 'none',
   Normal = 'normal',
@@ -11,23 +10,31 @@ export enum ContentEllipseMode {
 }
 
 export type TableCellDefaultProps = Partial<TableCellRootProps> & {
-  cellData: ReactNode;
+  cellData: React.ReactNode;
   isLoading?: boolean;
   contentEllipseMode?: ContentEllipseMode;
   contentEllipseLines?: number;
   overflow?: 'hidden' | 'visible'
 };
 
-const TableCellDefault = ({ cellData, overflow = 'hidden', contentEllipseMode = ContentEllipseMode.Lines, contentEllipseLines = 4, isLoading = false, ...rest }: TableCellDefaultProps) => {
-  const ellipsesLinesStyle = useMemo<CSSProperties>(() => ({
-    overflow,
-    whiteSpace: 'normal',
-    WebkitBoxOrient: 'vertical',
-    WebkitLineClamp: contentEllipseLines,
-    display: '-webkit-box',
-  }), [contentEllipseLines]);
+const TableCellDefault: React.FC<TableCellDefaultProps> = ({ cellData,
+  overflow = 'hidden',
+  contentEllipseMode = ContentEllipseMode.Lines,
+  contentEllipseLines = 4,
+  isLoading = false,
+  ...rest }) => {
+  const ellipsesLinesStyle = React.useMemo<SxProps>(
+    () => ({
+      overflow,
+      whiteSpace: 'normal',
+      WebkitBoxOrient: 'vertical',
+      WebkitLineClamp: contentEllipseLines,
+      display: '-webkit-box',
+    }),
+    [contentEllipseLines]
+  );
 
-  const getStyles = useCallback<() => CSSProperties>(() => {
+  const styles = React.useMemo<SxProps>(() => {
     switch (contentEllipseMode) {
       case ContentEllipseMode.Lines:
         return ellipsesLinesStyle;
@@ -37,10 +44,10 @@ const TableCellDefault = ({ cellData, overflow = 'hidden', contentEllipseMode = 
       default:
         return null;
     }
-  }, []);
+  }, [ellipsesLinesStyle]);
   return <TableCellRoot {...rest}>
-    {isLoading === false && <span style={getStyles()}>{cellData}</span>}
+    {isLoading === false && <Box sx={styles}>{cellData}</Box>}
     {isLoading && <TableCellLoadingContent />}
   </TableCellRoot>;
 };
-export default memo(TableCellDefault);
+export default TableCellDefault

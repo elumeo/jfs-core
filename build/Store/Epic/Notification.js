@@ -27,10 +27,9 @@ exports.mapErrorToNotification = void 0;
 var operators_1 = require("rxjs/operators");
 var typesafe_actions_1 = require("typesafe-actions");
 var Action = __importStar(require("../Action"));
-var uuid_1 = require("uuid");
 var mapErrorToNotification = function (error) {
     var _a, _b, _c, _d, _e, _f, _g, _h;
-    var id = (0, uuid_1.v4)();
+    var id = crypto.randomUUID();
     var responseData = (_a = error === null || error === void 0 ? void 0 : error.response) === null || _a === void 0 ? void 0 : _a.data;
     var title = ((_b = error === null || error === void 0 ? void 0 : error.response) === null || _b === void 0 ? void 0 : _b.statusText) || (error === null || error === void 0 ? void 0 : error.name);
     var subtitle = (responseData === null || responseData === void 0 ? void 0 : responseData.error) || (error === null || error === void 0 ? void 0 : error.message);

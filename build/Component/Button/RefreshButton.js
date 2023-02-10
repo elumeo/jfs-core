@@ -37,9 +37,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Refresh_1 = __importDefault(require("@material-ui/icons/Refresh"));
-var core_1 = require("@material-ui/core");
+var Refresh_1 = __importDefault(require("@mui/icons-material/Refresh"));
+var material_1 = require("@mui/material");
 var react_1 = __importStar(require("react"));
-var RefreshButton = function (props) { return react_1.default.createElement(core_1.IconButton, __assign({}, props),
+var RefreshButton = function (props) { return react_1.default.createElement(material_1.IconButton, __assign({}, props),
     react_1.default.createElement(Refresh_1.default, null)); };
 exports.default = (0, react_1.memo)(RefreshButton);

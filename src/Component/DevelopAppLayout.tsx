@@ -1,48 +1,41 @@
-import React, {useState} from 'react';
-import Layout, {Props as LayoutProps} from 'Component/App/Layout';
-import {Button, Card, CardContent} from '@material-ui/core';
-import {AppCardContent, AppCardHeader} from 'Component/Card';
+import React, { useState } from 'react';
+import Layout, { Props as LayoutProps } from 'Component/App/Layout';
+import { Button, Card, CardContent } from '@mui/material';
+import { AppCardContent, AppCardHeader } from 'Component/Card';
 
 const DevelopAppLayout: React.FC = () => {
   const [view, setView] = useState('singleColumnWithSpacing');
-  const getLayoutArguments = (): {spacing: LayoutProps['spacing'], navigation?: JSX.Element} => {
+  const layoutProps = React.useMemo<LayoutProps>(() => {
     switch (view) {
       case 'singleColumnWithoutSpacing':
         return {
-          spacing: {
-            width: 0,
-            height: 0
-          }
+          spacing: 0
         };
       case 'twoColumnsWithSpacing':
         return {
           navigation: <Card><CardContent>Navigation</CardContent></Card>,
-          spacing: {
-            width: 2,
-            height: 2.5
+          spacing: 2,
+          navigationProps: {
+            sx: {
+              minWidth: 200
+            }
           }
         };
       case 'twoColumnsWithoutSpacing':
         return {
           navigation: <Card><CardContent>Navigation</CardContent></Card>,
-          spacing: {
-            width: 0,
-            height: 0
-          }
+          spacing: 0
         };
       default:
         return {
-          spacing: {
-            width: 2,
-            height: 2.5
-          }
+          spacing: 2
         };
     }
-  };
-  return <Layout {...getLayoutArguments()}>
-    <Card style={{height: '100%'}}>
+  }, [view])
+  return <Layout {...layoutProps}>
+    <Card sx={{ height: '100%' }}    >
       <AppCardHeader title={'App Layouts'} />
-      <AppCardContent>
+      <AppCardContent >
         <Button onClick={() => setView('singleColumnWithSpacing')}>Single Column With Spacing</Button>
         <Button onClick={() => setView('singleColumnWithoutSpacing')}>Single Column Without Spacing</Button>
         <Button onClick={() => setView('twoColumnsWithSpacing')}>Two Columns With Spacing</Button>

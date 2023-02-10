@@ -37,20 +37,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importStar(require("react"));
-var CircularProgress_1 = __importDefault(require("@material-ui/core/CircularProgress"));
+var react_1 = __importDefault(require("react"));
+var Action_1 = require("../../Store/Action");
+var react_redux_1 = require("react-redux");
+var Session = __importStar(require("../../Store/Selector/Core/Session"));
 var BaseRoute_1 = __importDefault(require("./BaseRoute"));
-var useActions_1 = __importDefault(require("../../Store/useActions"));
-var Redux_1 = require("../../Types/Redux");
 var AuthRoute = function (props) {
-    var enterAuthorizedRoute = (0, useActions_1.default)().enterAuthorizedRoute;
-    var _a = (0, Redux_1.useSelector)(function (state) { return ({
-        isAuthorized: state.Core.Session.isAuthorized,
-        isCheckingSession: state.Core.Session.isCheckingSession,
-    }); }), isAuthorized = _a.isAuthorized, isCheckingSession = _a.isCheckingSession;
-    (0, react_1.useEffect)(function () {
-        enterAuthorizedRoute();
-    }, [props.path]);
-    return isAuthorized ? (react_1.default.createElement(BaseRoute_1.default, __assign({}, props))) : isCheckingSession ? (react_1.default.createElement(CircularProgress_1.default, { id: 'check-session-progress' })) : (react_1.default.createElement(react_1.default.Fragment, null));
+    var dispatch = (0, react_redux_1.useDispatch)();
+    var isAuthorized = (0, react_redux_1.useSelector)(Session.pickState).isAuthorized;
+    react_1.default.useEffect(function () {
+        dispatch((0, Action_1.enterAuthorizedRoute)());
+    }, []);
+    return (isAuthorized
+        ? react_1.default.createElement(BaseRoute_1.default, __assign({}, props))
+        : react_1.default.createElement(react_1.default.Fragment, null));
 };
 exports.default = AuthRoute;

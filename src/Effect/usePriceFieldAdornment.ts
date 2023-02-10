@@ -1,9 +1,15 @@
-import React, { useMemo } from 'react';
+import { SxProps } from '@mui/material';
 
-const usePriceFieldAdornment = (currency: string): ['endAdornment' | 'startAdornment', 'start' | 'end', React.CSSProperties] => {
-  const adornmentType = useMemo(() => currency.toLowerCase() === 'eur' ? 'endAdornment' : 'startAdornment', [currency]);
-  const adornmentPosition = useMemo(() => currency.toLowerCase() === 'eur' ? 'end' : 'start', [currency]);
-  const styles = useMemo<React.CSSProperties>(() => ({userSelect: 'none'}), []);
+const styles = { userSelect: 'none' }
+const usePriceFieldAdornment = (currency: string): ['endAdornment' | 'startAdornment', 'start' | 'end', SxProps] => {
+  const adornmentType =
+    currency.toLowerCase() === 'eur'
+      ? 'endAdornment'
+      : 'startAdornment'
+  const adornmentPosition =
+    currency.toLowerCase() === 'eur'
+      ? 'end'
+      : 'start'
   return [adornmentType, adornmentPosition, styles];
 };
 

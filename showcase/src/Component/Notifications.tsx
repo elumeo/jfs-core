@@ -11,7 +11,7 @@ import {
   Input,
   InputLabel,
   Typography
-} from '@material-ui/core';
+} from '@mui/material';
 import AppNavigation from 'Component/AppNavigation';
 import AddToastButton from 'Component/AddToastButton';
 import AddNotificationButton from 'Component/AddNotificationButton';
@@ -25,10 +25,10 @@ const Notifications = () => {
   const [persist, setPersist] = useState(false)
   const [groupName, setGroupName] = useState('default')
   const groups = useSelector(state => Array.from(new Set(state.Core.Notification.history.map(n => n.group))))
-  const onPersistChange = useCallback((event, value) => {
+  const onPersistChange = React.useCallback((event, value) => {
     setPersist(value)
   }, [setPersist])
-  const onGroupNameChange = useCallback(event => {
+  const onGroupNameChange = React.useCallback(event => {
     setGroupName(event.target.value)
   }, [setGroupName])
   return (<Grid container>

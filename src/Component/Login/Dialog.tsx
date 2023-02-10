@@ -1,33 +1,36 @@
 import React from 'react';
-import MUIDialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
+import MUIDialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
 import Credentials from './Credentials';
 import Submit from './Submit';
 import useLogin from './useLogin';
 import { useIntl } from 'react-intl';
+import { SxProps } from '@mui/material';
 
+const sx: SxProps = {
+  marginBottom: '32vh'
+}
 const Dialog: React.FC = () => {
-  const login = useLogin();
+  const { open, credentials, onChange, check } = useLogin();
   const { formatMessage } = useIntl();
-
   return (
-    <MUIDialog open={login.open} style={{ marginBottom: '32vh' }}>
+    <MUIDialog open={open} sx={sx}>
       <DialogTitle>{formatMessage({ id: 'app.login' })}</DialogTitle>
       <DialogContent>
         <Credentials
-          value={login.credentials}
-          onChange={login.onChange}
-          onSubmit={login.check}
+          value={credentials}
+          onChange={onChange}
+          onSubmit={check}
         />
       </DialogContent>
       <DialogActions>
         <Submit
-          onClick={login.check}
+          onClick={check}
           disabled={
-            login.credentials.username === '' ||
-            login.credentials.password === ''
+            !credentials.username ||
+            !credentials.password
           }
         />
       </DialogActions>

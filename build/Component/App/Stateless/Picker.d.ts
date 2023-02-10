@@ -1,7 +1,3 @@
-/// <reference types="react" />
-import { MuiPickersUtilsProviderProps } from '@material-ui/pickers/MuiPickersUtilsProvider';
-export type Props = {
-    children: MuiPickersUtilsProviderProps['children'];
-};
-declare const Picker: ({ children }: Props) => JSX.Element;
+import React from 'react';
+declare const Picker: React.FC<React.PropsWithChildren>;
 export default Picker;

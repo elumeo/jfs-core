@@ -1,22 +1,30 @@
 import React from 'react';
-import MUISnackbar, {SnackbarProps} from '@material-ui/core/Snackbar';
-import useActions from 'Store/useActions';
+import MUISnackbar, { SnackbarOrigin, SnackbarProps } from '@mui/material/Snackbar/Snackbar';
 import useVisibleToast from './useVisibleToast';
-import { Alert } from '@material-ui/lab';
+import { Alert } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { dismissToastAction } from 'Store/Action';
 
+const anchor : SnackbarOrigin= {
+  vertical: 'bottom',
+  horizontal: 'center',
+}
 const Snackbar: React.FC = () => {
-  const { dismissToastAction } = useActions();
+  const dispatch = useDispatch();
+  const id = React.useId()
   const { open, severity, message, autoHideDuration } = useVisibleToast();
-  const onCloseCallback: SnackbarProps['onClose'] = React.useCallback((event, reason) => {
-    if (reason === 'timeout') {
-      dismissToastAction();
+  const onCloseCallback: SnackbarProps['onClose'] = React.useCallback(
+    (event, reason) => {
+      if (reason === 'timeout') {
+        dispatch(dismissToastAction());
+      }
     }
-  }, [dismissToastAction])
-  // const alertEl = useMemo(() => {}, [])
+    , [dispatch]
+  );
 
   return (
-    <MUISnackbar open={open} id='alert-snackbar' onClose={onCloseCallback} autoHideDuration={autoHideDuration}>
-      <Alert severity={severity} variant='filled'>{message}</Alert>
+    <MUISnackbar open={open} id={`alert-snackbar-${id}`} onClose={onCloseCallback} anchorOrigin={anchor} autoHideDuration={autoHideDuration}>
+      {open ? <Alert severity={severity} variant='filled'>{message}</Alert> : null}
     </MUISnackbar>
   );
 };

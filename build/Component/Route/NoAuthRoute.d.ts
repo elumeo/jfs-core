@@ -1,4 +1,4 @@
 import React from 'react';
-import { IBaseRouteProps } from './BaseRoute';
-declare const NoAuthRoute: React.FC<IBaseRouteProps>;
+import { type BaseRouteProps } from './BaseRoute';
+declare const NoAuthRoute: React.FC<BaseRouteProps>;
 export default NoAuthRoute;

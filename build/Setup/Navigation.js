@@ -27,7 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var Divider_1 = __importDefault(require("@material-ui/core/Divider"));
+var Divider_1 = __importDefault(require("@mui/material/Divider"));
 var Navigation = __importStar(require("../Component/Navigation"));
 var Logout = __importStar(require("../Component/Logout"));
 var Settings = __importStar(require("../Component/Settings"));

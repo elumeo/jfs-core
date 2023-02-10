@@ -1,6 +1,6 @@
-import React from 'react';
+/// <reference types="react" />
 interface IFormattedMsisdnProps {
     msisdn: string;
 }
-declare const _default: React.MemoExoticComponent<({ msisdn }: IFormattedMsisdnProps) => JSX.Element>;
-export default _default;
+declare const FormattedMsisdn: ({ msisdn }: IFormattedMsisdnProps) => JSX.Element;
+export default FormattedMsisdn;

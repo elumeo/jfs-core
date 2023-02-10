@@ -1,6 +1,5 @@
-import React, { CSSProperties, memo, useMemo } from 'react';
-import { Grid } from '@material-ui/core';
-import { Theme, useTheme } from '@material-ui/core/styles';
+import React from 'react';
+import { Stack, SxProps } from '@mui/material';
 import Name from './Name';
 import Button from './Button';
 
@@ -9,22 +8,21 @@ export type DetailsProps = {
   name?: string;
   onClick?: HTMLElement['click'];
 }
+const sx: SxProps = {
+  justifyContent: 'space-between',
+  flexGrow: 1
+}
+const Details: React.FC<DetailsProps> = (
+  {
+    id = null,
+    name = null,
+    onClick = null
+  }
+) =>
+  <Stack direction='column' sx={sx}>
+    <Name name={name} />
+    <Button onClick={onClick} id={id} />
+  </Stack>
 
-const Details = ({ id = null, name = null, onClick = null }: DetailsProps) => {
-  const theme = useTheme<Theme>();
-  const outerWrapperStyles: CSSProperties = useMemo(() => ({
-    marginTop: theme.spacing(1),
-    marginLeft: theme.spacing(1),
-    display: 'flex',
-    flexDirection: 'column',
-  }), []);
 
-  return <Grid item xs>
-    <div style={outerWrapperStyles}>
-      <Name name={name} />
-      <Button onClick={onClick} id={id} />
-    </div>
-  </Grid>;
-};
-
-export default memo(Details);
+export default Details

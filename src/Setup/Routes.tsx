@@ -1,16 +1,29 @@
 import React from 'react';
-import { Switch, Redirect } from 'react-router-dom';
+import { Routes as RRoutes, Navigate, Route } from 'react-router-dom';
 import AuthRoute from 'Component/Route/AuthRoute';
 import NoAuthRoute from 'Component/Route/NoAuthRoute';
 import Develop from 'Component/develop';
 import DevelopAppLayout from 'Component/DevelopAppLayout';
 
+
 const Routes: React.FC = () => (
-  <Switch>
-    <AuthRoute key='start' exact path='/start' component={() => <Develop />}/>
-    <AuthRoute key='app_layout' exact path='/app_layout' component={() => <DevelopAppLayout />}/>
-    <NoAuthRoute key='default' exact path='/' component={() => <Redirect to={{ pathname: '/start' }} />}/>
-  </Switch>
+  <RRoutes >
+    <Route path='/start' element={<AuthRoute title='app.title' translateTitle subtitle='test' />}>
+      <Route index element={<Develop />} />
+      <Route path=':id' element={<Develop />} />
+    </Route>
+
+    <Route path='/app_layout' element={<NoAuthRoute />} >
+      <Route index element={<DevelopAppLayout />} />
+    </Route>
+
+    <Route path='*' element={<AuthRoute />}>
+      <Route
+        path='*'
+        element={<Navigate to={'/start'} replace />}
+      />
+    </Route>
+  </RRoutes>
 );
 
-export default Routes;
+export default Routes

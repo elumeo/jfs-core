@@ -17,13 +17,13 @@ var useVisibleToast = function () {
     var message = (0, useMessage_1.default)(toast, words);
     var autoHideDuration = (0, useAutoHideDuration_1.default)(words);
     var severity = (0, useSeverity_1.default)(toast);
-    return react_1.default.useMemo(function () { return ({
+    return ({
         toast: toast,
         open: open,
         words: words,
         message: message,
         autoHideDuration: autoHideDuration,
         severity: severity,
-    }); }, [toast, open, words, message, autoHideDuration, severity]);
+    });
 };
 exports.default = useVisibleToast;

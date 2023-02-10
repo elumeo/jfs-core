@@ -1,33 +1,28 @@
 import * as React from 'react';
-import {PropsWithChildren} from 'react';
-import CardContent from '@material-ui/core/CardContent';
-import Typography, {TypographyProps} from '@material-ui/core/Typography';
-import {makeStyles} from '@material-ui/core/styles';
+import { PropsWithChildren } from 'react';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
-const useStyles = makeStyles(({
+const classes = {
   root: {
     gridRowStart: 2,
     gridColumnStart: 1,
     gridColumnEnd: 'none'
   },
-}))
-const useTypographyStyles = makeStyles(({
-  body2: {
+  typoSx: {
     wordBreak: 'break-word'
   }
-}))
+}
 
-const Content: React.FC<PropsWithChildren<{}>> = ({children}) => {
-  const classes = useStyles()
-  const typographyClasses: TypographyProps['classes'] = useTypographyStyles()
+const Content: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     !children
       ? null :
-      <CardContent classes={classes}>
-        <Typography variant='body2' component='div' classes={typographyClasses}>
+      <CardContent sx={classes.root}>
+        <Typography variant='body2' component='div' sx={classes.typoSx}>
           {children}
         </Typography>
       </CardContent>
   )
 }
-export default React.memo(Content)
+export default Content

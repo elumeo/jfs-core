@@ -1,14 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import MenuIcon from '@material-ui/icons/Menu';
-
-import {
-  AppBar,
-  Grid,
-  IconButton,
-  Toolbar,
-  Typography,
-} from '@material-ui/core';
+import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, AppBarProps, IconButton, Toolbar, Typography, ToolbarProps, Stack } from '@mui/material';
 import theme from 'Component/App/Stateless/Style/Theme/Definition';
 import { openNavigation } from 'Store/Action/Navigation';
 import { useDispatch } from 'react-redux';
@@ -17,36 +10,49 @@ export type Props = {
   left?: React.ReactNode;
   middle?: React.ReactNode;
   right?: React.ReactNode;
-  variant?: 'regular' | 'dense';
-  position?: 'static' | 'fixed' | 'absolute' | 'sticky' | 'relative';
-  color?: 'primary' | 'secondary'
+  variant?: ToolbarProps['variant']
+  position?: AppBarProps['position']
+  color?: AppBarProps['color'],
+  appBarProps?: AppBarProps
+  toolbarProps?: ToolbarProps
 };
-const toolbarStyle = { height: theme.mixins.toolbar.minHeight }
+const toolbarStyle = {
+  height: theme.mixins.toolbar.minHeight,
+  overflow: 'hidden',
+  pr: .25
+}
 const AppToolbar: React.FC<Props> = ({
   variant = 'dense',
   position = 'sticky',
   color = 'primary',
-  ...tools
+  appBarProps = {},
+  toolbarProps = {},
+  ...props
 }) => {
   const dispatch = useDispatch()
   const { formatMessage } = useIntl();
   const openDrawer = React.useCallback(() => dispatch(openNavigation()), [dispatch]);
   return (
-    <AppBar position={position} color={color}>
+    <AppBar
+      position={position}
+      sx={toolbarStyle}
+      color={color}
+      {...appBarProps}>
       <Toolbar
         disableGutters
         variant={variant}
-        style={toolbarStyle}>
-        <Grid
-          container
+        {...toolbarProps}>
+        <Stack
+          direction={'row'}
           justifyContent={'space-between'}
+          sx={toolbarStyle}
           alignItems={'center'}
-        >
-          <Grid
-            container
-            item
-            xs={4}
+          width={'100%'}>
+          <Stack
+            direction={'row'}
             justifyContent={'flex-start'}
+            sx={toolbarStyle}
+            spacing={1}
             alignItems={'center'}>
             <IconButton color='inherit' aria-label='menu' onClick={openDrawer}>
               <MenuIcon />
@@ -54,25 +60,23 @@ const AppToolbar: React.FC<Props> = ({
             <Typography variant='h6' noWrap>
               {formatMessage({ id: 'app.title' })}
             </Typography>
-            {tools.left || <></>}
-          </Grid>
-          <Grid
-            container
-            item
-            xs={4}
+            {props.left || <></>}
+          </Stack>
+          <Stack
+            direction={'row'}
             justifyContent={'center'}
+            sx={toolbarStyle}
             alignItems={'center'}>
-            {tools.middle || <></>}
-          </Grid>
-          <Grid
-            container
-            item
-            xs={4}
+            {props.middle || <></>}
+          </Stack>
+          <Stack
+            direction={'row'}
+            sx={toolbarStyle}
             justifyContent={'flex-end'}
             alignItems={'center'}>
-            {tools.right || <></>}
-          </Grid>
-        </Grid>
+            {props.right || <></>}
+          </Stack>
+        </Stack>
       </Toolbar>
     </AppBar>
   );

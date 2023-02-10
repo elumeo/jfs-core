@@ -1,24 +1,15 @@
-import React, { ReactNode } from 'react';
+/// <reference types="react" />
 import { ReactDatePickerProps } from 'react-datepicker';
 import './Setup';
+import { LANGUAGE } from '../../Types/Language';
 import 'react-datepicker/dist/react-datepicker.css';
-import { TextFieldProps } from '@material-ui/core';
-export type DatePickerProps = Omit<ReactDatePickerProps<string>, 'value'> & {
-    label?: ReactNode;
-    error?: boolean;
-    customClearButtonId?: string;
-    value: Date;
-    state?: {
-        language: string;
-    };
-    errorText?: ReactNode;
-    helperText?: ReactNode;
-    textFieldProps?: Partial<TextFieldProps>;
-    floating?: boolean;
-    onChange: (newDate: Date, oldDate: Date, event: React.SyntheticEvent<unknown> | undefined) => void;
+import { TextFieldClearButtonProps } from '../TextFieldClearButton';
+export type DatePickerProps<IsRangePicker extends boolean = undefined> = ReactDatePickerProps<null, IsRangePicker> & {
+    textFieldProps?: Partial<TextFieldClearButtonProps>;
+    language?: LANGUAGE;
     shouldOpenOnFocus?: boolean;
-    disabled?: boolean;
     isClearable?: boolean;
+    color?: 'primary' | 'secondary';
 };
-declare const _default: React.MemoExoticComponent<({ label, error, customClearButtonId, dateFormat, value, onChange, errorText, helperText, textFieldProps, shouldOpenOnFocus, disabled, isClearable, ...rest }: DatePickerProps) => JSX.Element>;
-export default _default;
+declare const DatePicker: <IsRangePicker extends boolean = undefined>({ dateFormat, color, language: languageFromProp, onChange, textFieldProps, shouldOpenOnFocus, shouldCloseOnSelect, disabled, isClearable, ...rest }: DatePickerProps<IsRangePicker>) => JSX.Element;
+export default DatePicker;

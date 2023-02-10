@@ -1,4 +1,4 @@
-import * as MUI from '@material-ui/core';
+import * as MUI from '@mui/material';
 import * as React from 'react'
 import LoremIpsum from 'Mock/LoremIpsum.json';
 

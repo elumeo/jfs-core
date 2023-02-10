@@ -3,20 +3,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Severity = void 0;
 var react_1 = __importDefault(require("react"));
+exports.Severity = {
+    success: 'success',
+    error: 'error',
+    info: 'info',
+};
 var useSeverity = function (toast) {
-    var _a = react_1.default.useState('info'), severity = _a[0], setSeverity = _a[1];
-    react_1.default.useEffect(function () {
+    var color = react_1.default.useMemo(function () {
         if (toast && toast.isSuccess) {
-            setSeverity('success');
+            return exports.Severity.success;
         }
         else if (toast && toast.isError) {
-            setSeverity('error');
+            return exports.Severity.error;
         }
         else if (toast) {
-            setSeverity('info');
+            return exports.Severity.info;
         }
-    }, [!!toast, toast === null || toast === void 0 ? void 0 : toast.isSuccess, toast === null || toast === void 0 ? void 0 : toast.isError]);
-    return severity;
+        return null;
+    }, [toast]);
+    return color;
 };
 exports.default = useSeverity;

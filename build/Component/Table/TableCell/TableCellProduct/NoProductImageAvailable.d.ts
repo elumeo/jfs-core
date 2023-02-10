@@ -1,6 +1,7 @@
+import { BoxProps } from '@mui/material';
 import React from 'react';
 export type NoProductImageAvailableProps = {
-    onClick?: HTMLElement['click'];
+    onClick?: BoxProps['onClick'];
 };
-declare const _default: React.MemoExoticComponent<({ onClick }: NoProductImageAvailableProps) => JSX.Element>;
-export default _default;
+declare const NoProductImageAvailable: React.FC<NoProductImageAvailableProps>;
+export default NoProductImageAvailable;

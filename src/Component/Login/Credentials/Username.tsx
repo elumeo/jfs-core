@@ -1,7 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import TextField from '@material-ui/core/TextField';
-import useError from './useError';
+import TextField from '@mui/material/TextField';
+import isEmptyString from './isEmptyString';
 
 export type Props = {
   value: string;
@@ -12,7 +12,7 @@ export type Props = {
 const Username = React.forwardRef<HTMLInputElement, Props>(
   ({ value, onChange, onEnter }, ref) => {
     const { formatMessage } = useIntl();
-    const error = useError(value);
+    const error = isEmptyString(value);
     return (
       <TextField
         autoComplete={'username'}
@@ -21,13 +21,13 @@ const Username = React.forwardRef<HTMLInputElement, Props>(
         inputRef={ref}
         required
         error={error}
-        placeholder={formatMessage({ id: 'login.username' })}
+        label={formatMessage({ id: 'login.username' })}
         helperText={
-          error && !value
-            ? formatMessage({ id: 'login.username.errorText' })
-            : null
+          error
+          && formatMessage({ id: 'login.username.errorText' })
+
         }
-        value={value}
+        value={value ?? ''}
         onChange={event => onChange(event.target.value)}
         onKeyPress={event => event.key === 'Enter' && onEnter()}
       />

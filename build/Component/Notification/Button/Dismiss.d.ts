@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButtonProps } from '@material-ui/core/IconButton';
+import { IconButtonProps } from '@mui/material/IconButton';
 export type Props = {
     onClick: IconButtonProps['onClick'];
 };

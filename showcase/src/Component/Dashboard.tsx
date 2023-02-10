@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { CardContent, Grid, Container, CardHeader, Card, Typography } from '@material-ui/core';
+import { CardContent, Grid, Container, CardHeader, Card, Typography } from '@mui/material';
 import AppNavigation from 'Component/AppNavigation';
 
 const Dashboard = () => {

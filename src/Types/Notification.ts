@@ -1,4 +1,4 @@
-import { OptionsObject, SnackbarAction, useSnackbar, VariantType, } from 'notistack';
+import { OptionsObject, SnackbarAction, useSnackbar, VariantType } from 'notistack';
 import React from 'react';
 
 export type Notification = {
@@ -7,7 +7,7 @@ export type Notification = {
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
   content?: React.ReactNode;
-  variant: VariantType;
+  variant: VariantType | Severity;
   action?: (
     snackbar: ReturnType<typeof useSnackbar>,
     id: string,

@@ -28,14 +28,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var Icon = __importStar(require("../../Icon"));
+var material_1 = require("@mui/material");
 var Flag = react_1.default.forwardRef(function (_a, ref) {
     var country = _a.country;
     var CountryIcon = Icon.Flag[country.toUpperCase()];
-    return (react_1.default.createElement("div", { ref: ref, style: {
+    return (react_1.default.createElement(material_1.Box, { ref: ref, sx: {
             width: 28,
             height: 28,
             position: 'relative',
-            margin: 10,
         } }, CountryIcon && react_1.default.createElement(CountryIcon, null)));
 });
 exports.default = Flag;

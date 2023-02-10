@@ -27,17 +27,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
-var IconButton_1 = __importDefault(require("@material-ui/core/IconButton"));
-var Delete_1 = __importDefault(require("@material-ui/icons/Delete"));
-var useActions_1 = __importDefault(require("../../../Store/useActions"));
-var react_1 = require("react");
+var IconButton_1 = __importDefault(require("@mui/material/IconButton"));
+var Delete_1 = __importDefault(require("@mui/icons-material/Delete"));
+var react_redux_1 = require("react-redux");
+var Action_1 = require("../../../Store/Action");
 var Delete = function (_a) {
     var id = _a.id;
-    var removeNotification = (0, useActions_1.default)().removeNotification;
-    var onDeleteCallback = (0, react_1.useCallback)(function () {
-        removeNotification(id);
-    }, [id, removeNotification]);
+    var dispatch = (0, react_redux_1.useDispatch)();
+    var onDeleteCallback = React.useCallback(function () {
+        dispatch((0, Action_1.removeNotification)(id));
+    }, [id]);
     return (React.createElement(IconButton_1.default, { color: 'inherit', onClick: onDeleteCallback },
         React.createElement(Delete_1.default, null)));
 };
-exports.default = React.memo(Delete);
+exports.default = Delete;

@@ -26,16 +26,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var core_1 = require("@material-ui/core");
+var material_1 = require("@mui/material");
+var TextFieldClearButton_1 = __importDefault(require("../TextFieldClearButton"));
 var useCurrency_1 = __importDefault(require("../../Effect/useCurrency"));
 var usePriceFieldAdornment_1 = __importDefault(require("../../Effect/usePriceFieldAdornment"));
 var Format_1 = require("../../Utilities/Format");
 var PriceField = function (_a) {
-    var _b = _a.currency, currency = _b === void 0 ? 'eur' : _b, _c = _a.value, value = _c === void 0 ? 0.0 : _c, _d = _a.selectOnFocus, selectOnFocus = _d === void 0 ? true : _d, _e = _a.showDecimals, showDecimals = _e === void 0 ? false : _e, min = _a.min, max = _a.max, props = __rest(_a, ["currency", "value", "selectOnFocus", "showDecimals", "min", "max"]);
+    var _b = _a.currency, currency = _b === void 0 ? 'eur' : _b, _c = _a.value, value = _c === void 0 ? 0.0 : _c, _d = _a.selectOnFocus, selectOnFocus = _d === void 0 ? true : _d, _e = _a.showDecimals, showDecimals = _e === void 0 ? true : _e, min = _a.min, max = _a.max, props = __rest(_a, ["currency", "value", "selectOnFocus", "showDecimals", "min", "max"]);
     var configCurrency = (0, useCurrency_1.default)();
     var ref = react_1.default.useRef(null);
     var finalCurrency = currency !== null && currency !== void 0 ? currency : configCurrency;
-    var display = Format_1.Currency.getCurrency(finalCurrency, isNaN(Number(value)) ? 0 : Number(value), true, false, showDecimals);
+    var display = value === ''
+        ? ''
+        : Format_1.Currency.getCurrency(finalCurrency, isNaN(Number(value))
+            ? 0
+            : Number(value), true, false, showDecimals);
     var _f = (0, usePriceFieldAdornment_1.default)(finalCurrency), adornmentType = _f[0], adornmentPosition = _f[1], styles = _f[2];
     var _g = react_1.default.useState(props.focused), _focused = _g[0], setFocused = _g[1];
     react_1.default.useEffect(function () {
@@ -53,7 +58,7 @@ var PriceField = function (_a) {
         (_a = props === null || props === void 0 ? void 0 : props.onBlur) === null || _a === void 0 ? void 0 : _a.call(props, event);
         setFocused(false);
         if (isNaN(parseFloat(value))) {
-            props.onChange(__assign(__assign({}, event), { target: __assign(__assign({}, event.target), { value: '0' }) }));
+            props.onChange(__assign(__assign({}, event), { target: __assign(__assign({}, event.target), { value: null }) }));
         }
     }, [setFocused, props === null || props === void 0 ? void 0 : props.onBlur, value]);
     var _onChange = react_1.default.useCallback(function (event) {
@@ -63,8 +68,8 @@ var PriceField = function (_a) {
     }, [props === null || props === void 0 ? void 0 : props.onChange, min, max,]);
     var _InputProps = react_1.default.useMemo(function () {
         var _a;
-        return (__assign((_a = {}, _a[adornmentType] = react_1.default.createElement(core_1.InputAdornment, { position: adornmentPosition, style: styles }, Format_1.Currency.getCurrencySign(currency)), _a), props === null || props === void 0 ? void 0 : props.InputProps));
+        return (__assign((_a = {}, _a[adornmentType] = react_1.default.createElement(material_1.InputAdornment, { position: adornmentPosition, sx: styles }, Format_1.Currency.getCurrencySign(currency)), _a), props === null || props === void 0 ? void 0 : props.InputProps));
     }, [adornmentPosition, adornmentType, currency, props === null || props === void 0 ? void 0 : props.InputProps, styles]);
-    return (react_1.default.createElement(core_1.TextField, __assign({ variant: 'standard', inputRef: ref }, props, { value: _focused ? value : display, InputProps: _InputProps, onChange: _onChange, onFocus: _onFocus, onBlur: _onBlur })));
+    return (react_1.default.createElement(TextFieldClearButton_1.default, __assign({ inputRef: ref, value: _focused ? value : display, InputProps: _InputProps, onChange: _onChange, onFocus: _onFocus, onBlur: _onBlur }, props)));
 };
 exports.default = PriceField;

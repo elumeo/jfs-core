@@ -5,19 +5,39 @@
     "outDir": "./build",
     "baseUrl": "./src",
     "paths": {
-      "Effect/*": ["./Effect/*"],
-      "Component/*": ["./Component/*"],
-      "Constant/*": ["./Constant/*"],
-      "Mock/*": ["./Mock/*"],
-      "Setup/*": ["./Setup/*"],
-      "Store/*": ["./Store/*"],
-      "Types/*": ["./Types/*"],
-      "Utilities/*": ["./Utilities/*"],
-      "API/*" : ["./API/*"],
-      "react-virtualized/*" : ["./node_modules/@enykeev/react-virtualized/dist/es/*"]
+      "Effect/*": [
+        "./Effect/*"
+      ],
+      "Component/*": [
+        "./Component/*"
+      ],
+      "Constant/*": [
+        "./Constant/*"
+      ],
+      "Mock/*": [
+        "./Mock/*"
+      ],
+      "Setup/*": [
+        "./Setup/*"
+      ],
+      "Store/*": [
+        "./Store/*"
+      ],
+      "Types/*": [
+        "./Types/*"
+      ],
+      "Utilities/*": [
+        "./Utilities/*"
+      ],
+      "API/*": [
+        "./API/*"
+      ]
     }
   },
-  "include": ["./src", "./augmentation"],
+  "include": [
+    "./src",
+    "./augmentation"
+  ],
   "exclude": [
     "scripts",
     "build",

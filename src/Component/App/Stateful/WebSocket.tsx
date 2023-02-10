@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { initialState } from 'Store/Reducer/Core/WebSocket';
 import * as Type from 'Types/Configuration';
 import { WSClient } from 'API/WS/WSClient';
-import useActions from 'Store/useActions';
 import * as Action from 'Store/Action';
+import { useDispatch } from 'react-redux';
+import { webSocketUpdateRoomAction, webSocketConnectFailedAction } from 'Store/Action';
 
 export type Props = {
   children: React.ReactNode;
@@ -12,23 +13,27 @@ export type Props = {
   webSocketUpdateRoomAction?: typeof Action.webSocketUpdateRoomAction;
   webSocketConnectFailedAction?: typeof Action.webSocketConnectFailedAction;
 };
-
 const WebSocket = ({ children }: Props) => {
-  const { webSocketUpdateRoomAction, webSocketConnectFailedAction } = useActions();
-
-  useEffect(
+  const dispatch = useDispatch();
+  const [hasSubscribed, setHasSubscribed] = React.useState(false);
+  React.useEffect(
     () => {
-      WSClient.listenRoomsObservable$.subscribe(roomData =>
-        webSocketUpdateRoomAction(roomData)
-      );
-      WSClient.connectionErrorObservable$.subscribe(error => {
-        webSocketConnectFailedAction(error);
-      });
-    },
-    []
-  );
+      if (!hasSubscribed) {
+        const listenRoomsSubscription = WSClient.listenRoomsObservable$.subscribe(roomData =>
+          dispatch(webSocketUpdateRoomAction(roomData))
+        );
+        const connectionErrorSubscription = WSClient.connectionErrorObservable$.subscribe(error => {
+          dispatch(webSocketConnectFailedAction(error));
+        });
+        setHasSubscribed(true);
+        return () => {
+          listenRoomsSubscription.unsubscribe();
+          connectionErrorSubscription.unsubscribe();
+        };
+      }
+      return () => {return undefined};
+    }, [hasSubscribed, dispatch]);
 
   return <>{children}</>;
 };
-
 export default WebSocket;

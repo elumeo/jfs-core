@@ -29,15 +29,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var Navigation = __importStar(require("../Navigation"));
 var Redux_1 = require("../../Types/Redux");
-var useActions_1 = __importDefault(require("../../Store/useActions"));
+var Action_1 = require("../../Store/Action");
+var react_redux_1 = require("react-redux");
 var NavigationItem = function () {
-    var openLogout = (0, useActions_1.default)().openLogout;
+    var dispatch = (0, react_redux_1.useDispatch)();
     var robotLoginAvailable = (0, Redux_1.useSelector)(function (state) {
         return state.Core.Configuration.config &&
             state.Core.Configuration.config.RobotUsername &&
             state.Core.Configuration.config.RobotPassword &&
             state.Core.App.allowRobotLogin;
     });
-    return !robotLoginAvailable ? (react_1.default.createElement(Navigation.Item, { iconName: 'exit_to_app', messageId: 'app.logout', authorizedOnly: true, onClick: function () { return openLogout(); } })) : (react_1.default.createElement(react_1.default.Fragment, null));
+    return !robotLoginAvailable ? (react_1.default.createElement(Navigation.Item, { iconName: 'exit_to_app', messageId: 'app.logout', authorizedOnly: true, onClick: function () { return dispatch((0, Action_1.openLogout)()); } })) : (react_1.default.createElement(react_1.default.Fragment, null));
 };
 exports.default = NavigationItem;

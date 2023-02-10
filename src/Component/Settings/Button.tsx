@@ -1,15 +1,16 @@
 import React from 'react';
 import { useSelector } from 'Types/Redux';
-import IconButton from '@material-ui/core/IconButton';
-import SettingsIcon from '@material-ui/icons/Settings';
-import useActions from 'Store/useActions';
+import IconButton from '@mui/material/IconButton';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { useDispatch } from 'react-redux';
+import { closeSettings, openSettings } from 'Store/Action';
 
 const Button: React.FC = () => {
-  const { openSettings, closeSettings } = useActions();
+  const dispatch = useDispatch()
   const settingsOpen = useSelector(state => state.Core.Settings.settingsOpen);
   const onClick = React.useCallback(() => {
-    settingsOpen ? closeSettings() : openSettings();
-  }, [settingsOpen, closeSettings, openSettings]);
+    dispatch(settingsOpen ? closeSettings() : openSettings());
+  }, [settingsOpen, dispatch]);
   return (
     <IconButton color='inherit' onClick={onClick}>
       <SettingsIcon />

@@ -5,11 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var react_dom_1 = require("react-dom");
-var IconButton_1 = __importDefault(require("@material-ui/core/IconButton"));
-var Badge_1 = __importDefault(require("@material-ui/core/Badge"));
-var Popper_1 = __importDefault(require("@material-ui/core/Popper"));
-var Popover_1 = __importDefault(require("@material-ui/core/Popover"));
-var Notifications_1 = __importDefault(require("@material-ui/icons/Notifications"));
+var IconButton_1 = __importDefault(require("@mui/material/IconButton"));
+var Badge_1 = __importDefault(require("@mui/material/Badge"));
+var Popper_1 = __importDefault(require("@mui/material/Popper"));
+var Popover_1 = __importDefault(require("@mui/material/Popover"));
+var Notifications_1 = __importDefault(require("@mui/icons-material/Notifications"));
 var Overlay_1 = __importDefault(require("../../Notification/Overlay"));
 var notistack_1 = require("notistack");
 var Redux_1 = require("../../../Types/Redux");
@@ -31,21 +31,24 @@ var ShowButton = function (_a) {
     }, [open]);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement(IconButton_1.default, { color: 'inherit', ref: buttonRef, "aria-describedby": id, onClick: function () { return setAnchorRef(open ? null : buttonRef.current); } },
-            react_1.default.createElement(Badge_1.default, { badgeContent: all.length, color: 'secondary', overlap: 'rectangular' },
+            react_1.default.createElement(Badge_1.default, { badgeContent: all.length, color: 'secondary' },
                 react_1.default.createElement(Notifications_1.default, null))),
-        (0, react_dom_1.createPortal)(keepOpenOnOutsideClick ? (react_1.default.createElement(Popper_1.default, { open: open, placement: 'bottom-end', id: id, anchorEl: anchorRef, modifiers: {
-                flip: {
-                    enabled: true,
+        (0, react_dom_1.createPortal)(keepOpenOnOutsideClick ? (react_1.default.createElement(Popper_1.default, { open: open, placement: 'bottom-end', id: id, anchorEl: anchorRef, modifiers: [
+                {
+                    name: 'flip',
+                    enabled: true
                 },
-                preventOverflow: {
+                {
+                    name: 'preventOverflow',
                     enabled: true,
-                    boundariesElement: 'scrollParent',
+                    options: { boundariesElement: 'scrollParent' },
                 },
-                arrow: {
+                {
+                    name: 'arrow',
                     enabled: true,
-                    element: anchorRef,
-                },
-            } },
+                    options: { element: anchorRef },
+                }
+            ], onResize: undefined, onResizeCapture: undefined },
             react_1.default.createElement(Overlay_1.default, null))) : (react_1.default.createElement(Popover_1.default, { open: open, anchorEl: anchorRef, anchorOrigin: {
                 vertical: 'bottom',
                 horizontal: 'right',

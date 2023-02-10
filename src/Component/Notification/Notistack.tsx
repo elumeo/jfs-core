@@ -32,13 +32,16 @@ const Notistack: React.FC = () => {
       missing.forEach(notification => {
         const action: typeof notification.action = (snackbar, id, temporary) => (
           <>
-            {temporary && <Button.Dismiss onClick={() => snackbar.closeSnackbar(notification.id)}/>}
+            {temporary && <Button.Dismiss onClick={() => snackbar.closeSnackbar(notification.id)} />}
             {notification.action && notification.action(snackbar, notification.id, true)}
           </>
         )
         snackbar.enqueueSnackbar(
-          <Card key={notification.id} notification={{ ...notification, action }} temporary/>,
-          { ...notification.notistackOptions, key: notification.id },
+          notification.id,
+          {
+            ...notification.notistackOptions, key: notification.id,
+            content: () => <Card key={notification.id} notification={{ ...notification, action }} temporary />
+          },
         );
       });
     }

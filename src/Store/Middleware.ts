@@ -1,13 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from '@redux-devtools/extension'
 import { createEpicMiddleware } from 'redux-observable';
-import { routerMiddleware } from 'connected-react-router';
 import { createHashHistory } from 'history';
 import { Epic, EpicMiddleware } from 'Types/Redux';
 
-declare const window: any;
-declare const process: any;
+declare const window: Window;
+declare const process: NodeJS.Process;
 export const history = createHashHistory();
 const epicMiddleware: EpicMiddleware = createEpicMiddleware({
   dependencies: { history },
@@ -15,7 +13,6 @@ const epicMiddleware: EpicMiddleware = createEpicMiddleware({
 const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
 const storeEnhancer = applyMiddleware(
   epicMiddleware,
-  routerMiddleware(history),
 );
 const middleware = (
   process.env.NODE_ENV == 'development'

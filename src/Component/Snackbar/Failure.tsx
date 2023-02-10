@@ -1,3 +1,5 @@
+import { Typography } from '@mui/material';
+import { Stack } from '@mui/system';
 import React from 'react';
 import { useIntl } from 'react-intl';
 
@@ -9,12 +11,11 @@ export type Props = {
 const Failure: React.FC<Props> = ({ title, details }) => {
   const intl = useIntl();
   return (
-    <span>
-      <u>{intl.formatMessage({ id: 'app.error' })}:&nbsp;</u>
+    <Stack>
+      <Typography component={'u'}>{intl.formatMessage({ id: 'app.error' })}:</Typography>
       {details}
-      <br />
-      {title && <span style={{ fontSize: 'x-small' }}>{title}</span>}
-    </span>
+      {title && <Typography sx={{ fontSize: 'x-small' }}>{title}</Typography>}
+    </Stack>
   );
 };
 

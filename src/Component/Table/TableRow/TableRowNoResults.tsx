@@ -1,13 +1,14 @@
-import React, { memo, useMemo } from 'react';
+import { Box } from '@mui/material';
+import React from 'react';
 import { useIntl } from 'react-intl';
-import { Theme, useTheme } from '@material-ui/core/styles';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
-const TableRowNoResults = () => {
+const styles = {
+  textAlign: 'center',
+  mt: 2
+}
+const TableRowNoResults: React.FC = () => {
   const { formatMessage } = useIntl();
-  const theme = useTheme<Theme>();
-  const styles = useMemo<CSSProperties>(() => ({ textAlign: 'center', marginTop: theme.spacing(2) + 'px' }), []);
-  return <div style={styles}>{formatMessage({ id: 'table.noResults' })}</div>;
+  return <Box sx={styles}>{formatMessage({ id: 'table.noResults' })}</Box>;
 };
 
-export default memo(TableRowNoResults);
+export default TableRowNoResults

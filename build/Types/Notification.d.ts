@@ -6,7 +6,7 @@ export type Notification = {
     title?: React.ReactNode;
     subtitle?: React.ReactNode;
     content?: React.ReactNode;
-    variant: VariantType;
+    variant: VariantType | Severity;
     action?: (snackbar: ReturnType<typeof useSnackbar>, id: string, temporary: boolean) => SnackbarAction;
     notistackOptions?: OptionsObject;
     isTranslationId?: boolean;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import useSelector from 'Core/Store/useSelector';
-import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
-import { useCallback } from 'react';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+
 import useActions from 'Core/Store/useActions';
 import { NotificationPosition } from 'Core/Types/Notification';
 
@@ -10,7 +10,7 @@ const ChangeNotificationPosition: React.FC =
     const config = useSelector(state => state.Core.Configuration.config)
     const position: NotificationPosition = config?.NotificationPosition || 'bottomRight';
     const { configLoadedAction } = useActions();
-    const onChange = useCallback(event => {
+    const onChange = React.useCallback(event => {
       configLoadedAction({ config: { ...config, NotificationPosition: event.target.value as NotificationPosition } })
     }, [config])
     return (

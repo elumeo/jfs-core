@@ -1,5 +1,5 @@
 import React from 'react';
-import * as MUI from '@material-ui/core';
+import * as MUI from '@mui/material';
 import * as Navigation from '@elumeo/jfs-core/build/Component/Navigation';
 import * as Logout from '@elumeo/jfs-core/build/Component/Logout';
 import * as Settings from '@elumeo/jfs-core/build/Component/Settings';

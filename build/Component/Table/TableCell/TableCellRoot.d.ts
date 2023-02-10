@@ -1,10 +1,10 @@
 import React from 'react';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { SxProps } from '@mui/material';
 export type TableCellRootProps = {
     children: React.ReactNode;
     isNumeric?: boolean;
     height?: number | string;
-    styles?: CSSProperties;
+    sx?: SxProps;
 };
-declare const _default: React.MemoExoticComponent<({ children, isNumeric, height, styles }: TableCellRootProps) => JSX.Element>;
-export default _default;
+declare const TableCellRoot: React.FC<TableCellRootProps>;
+export default TableCellRoot;

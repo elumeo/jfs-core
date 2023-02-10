@@ -1,4 +1,10 @@
-import { Color } from '@material-ui/lab';
+import { AlertColor } from '@mui/material';
 import { Toast } from '../../Types/Toast';
-declare const useSeverity: (toast: Toast) => Color;
+export declare const Severity: {
+    readonly success: "success";
+    readonly error: "error";
+    readonly info: "info";
+};
+export type Severity = AlertColor;
+declare const useSeverity: (toast: Toast) => "error" | "success" | "info";
 export default useSeverity;

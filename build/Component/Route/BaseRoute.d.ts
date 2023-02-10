@@ -1,8 +1,10 @@
 import React from 'react';
 import { RouteProps } from 'react-router-dom';
-export type IBaseRouteProps = RouteProps & {
-    Component?: React.FC;
-    translationId?: string;
+export type BaseRouteProps = RouteProps & {
+    title?: string;
+    subtitle?: string;
+    translateTitle?: boolean;
+    translateSubtitle?: boolean;
 };
-declare const BaseRoute: React.FC<IBaseRouteProps>;
+declare const BaseRoute: React.FC<BaseRouteProps>;
 export default BaseRoute;

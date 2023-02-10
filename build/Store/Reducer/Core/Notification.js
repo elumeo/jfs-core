@@ -45,7 +45,6 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Action = __importStar(require("../../Action"));
 var TA = __importStar(require("typesafe-actions"));
-var uuid_1 = require("uuid");
 var initialState = {
     history: [],
     isHistoryOpen: false,
@@ -54,7 +53,7 @@ var Notification = TA.createReducer(initialState)
     .handleAction(Action.addNotification, function (state, action) {
     var _a, _b, _c, _d;
     return (__assign(__assign({}, state), { history: __spreadArray([
-            __assign({ id: (_b = (_a = action.payload) === null || _a === void 0 ? void 0 : _a.id) !== null && _b !== void 0 ? _b : (0, uuid_1.v4)(), timeStamp: (_d = (_c = action.payload) === null || _c === void 0 ? void 0 : _c.timeStamp) !== null && _d !== void 0 ? _d : new Date() }, action.payload)
+            __assign({ id: (_b = (_a = action.payload) === null || _a === void 0 ? void 0 : _a.id) !== null && _b !== void 0 ? _b : crypto.randomUUID(), timeStamp: (_d = (_c = action.payload) === null || _c === void 0 ? void 0 : _c.timeStamp) !== null && _d !== void 0 ? _d : new Date() }, action.payload)
         ], state.history, true) }));
 })
     .handleAction(Action.removeNotification, function (state, _a) {

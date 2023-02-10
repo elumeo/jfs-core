@@ -2,12 +2,11 @@ import React, { memo } from 'react';
 import { colors as textColors } from './Typographies'
 import { colors as allColors } from './Colors'
 import AppNavigation from 'Component/AppNavigation';
-import { Box, Button, Card, CardContent, CardHeader, Container, Grid, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardContent, CardHeader, Container, Grid, Typography } from '@mui/material';
 import CodeBox from 'Component/CodeBox';
-import { useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@mui/material/styles';
 
 const Boxes = () => {
-  const theme = useTheme();
   const [bgColor, setBgColor] = React.useState(allColors[0])
   const [textColor, setTextColor] = React.useState(textColors[0])
   const toggleBg = () => setBgColor(allColors[Math.floor(Math.random() * (allColors.length - 1)) + 1]);
@@ -16,15 +15,15 @@ const Boxes = () => {
   const getColorCode = (color: string) => {
     switch (color) {
       case 'primary':
-        return theme.palette.primary.main;
+        return definition.palette.primary.main;
       case 'secondary':
-        return theme.palette.secondary.main;
+        return definition.palette.secondary.main;
       case 'textPrimary':
-        return theme.palette.text.primary;
+        return definition.palette.text.primary;
       case 'textSecondary':
-        return theme.palette.text.secondary;
+        return definition.palette.text.secondary;
       case 'error':
-        return theme.palette.error.main;
+        return definition.palette.error.main;
       case 'inherit':
       default:
         return 'inherit';
@@ -47,7 +46,7 @@ const Boxes = () => {
               <Box border={'1px solid'} borderColor={bgColor + '.main'} p={2} color={getColorCode(textColor)}>
                 <Typography color={'inherit'}>This is a <CodeBox component={'span'} size={'small'}>{`<Box />`}</CodeBox> element. Boxes are useful to apply styles:</Typography>
                 <CodeBox>
-                  <Box component={Typography}>{`<Box component={Card} width={'100%'} marginBottom={1} borderColor={theme.palette.primary.main} color={theme.palette.secondary.main>...</Box>`}</Box>
+                  <Box component={Typography}>{`<Box component={Card} width={'100%'} marginBottom={1} borderColor={definition.palette.primary.main} color={definition.palette.secondary.main>...</Box>`}</Box>
                 </CodeBox>
                 <Typography variant={'body2'}>Current text color: {textColor}</Typography>
                 <Typography variant={'body2'}>Current border color: {bgColor}.main</Typography>

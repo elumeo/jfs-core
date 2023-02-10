@@ -1,3 +1,3 @@
 import React from 'react';
-declare const _default: React.MemoExoticComponent<() => JSX.Element>;
-export default _default;
+declare const TableCellLoadingContent: React.FC;
+export default TableCellLoadingContent;

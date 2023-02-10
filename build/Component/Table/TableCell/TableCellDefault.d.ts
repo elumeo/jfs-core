@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { TableCellRootProps } from '../../Table/TableCell/TableCellRoot';
 export declare enum ContentEllipseMode {
     None = "none",
@@ -6,11 +6,11 @@ export declare enum ContentEllipseMode {
     Lines = "lines"
 }
 export type TableCellDefaultProps = Partial<TableCellRootProps> & {
-    cellData: ReactNode;
+    cellData: React.ReactNode;
     isLoading?: boolean;
     contentEllipseMode?: ContentEllipseMode;
     contentEllipseLines?: number;
     overflow?: 'hidden' | 'visible';
 };
-declare const _default: React.MemoExoticComponent<({ cellData, overflow, contentEllipseMode, contentEllipseLines, isLoading, ...rest }: TableCellDefaultProps) => JSX.Element>;
-export default _default;
+declare const TableCellDefault: React.FC<TableCellDefaultProps>;
+export default TableCellDefault;

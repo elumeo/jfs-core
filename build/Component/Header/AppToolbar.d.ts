@@ -1,11 +1,14 @@
 import React from 'react';
+import { AppBarProps, ToolbarProps } from '@mui/material';
 export type Props = {
     left?: React.ReactNode;
     middle?: React.ReactNode;
     right?: React.ReactNode;
-    variant?: 'regular' | 'dense';
-    position?: 'static' | 'fixed' | 'absolute' | 'sticky' | 'relative';
-    color?: 'primary' | 'secondary';
+    variant?: ToolbarProps['variant'];
+    position?: AppBarProps['position'];
+    color?: AppBarProps['color'];
+    appBarProps?: AppBarProps;
+    toolbarProps?: ToolbarProps;
 };
 declare const AppToolbar: React.FC<Props>;
 export default AppToolbar;

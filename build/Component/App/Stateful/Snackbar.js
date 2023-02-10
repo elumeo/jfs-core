@@ -22,38 +22,33 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importStar(require("react"));
+var react_1 = __importDefault(require("react"));
 var Notification = __importStar(require("../../Notification"));
 var notistack_1 = require("notistack");
 var Redux_1 = require("../../../Types/Redux");
-var styles_1 = require("@material-ui/core/styles");
+var Definition_1 = __importDefault(require("../Stateless/Style/Theme/Definition"));
 var anchorOriginTopRight = { vertical: 'top', horizontal: 'right' };
 var anchorOriginBottomRight = { vertical: 'bottom', horizontal: 'right' };
 var selectNotificationPosition = function (state) { return state.Core.Configuration.config.NotificationPosition; };
 var selectNotificationMax = function (state) { return state.Core.Configuration.config.NotificationMax; };
-var useStyles = (0, styles_1.makeStyles)(function (theme) { return ({
+var classes = ({
     root: {
         background: 'none',
-        padding: 0,
-        '& #notistack-snackbar': {
-            width: '100%',
-            height: '100%',
-            padding: 0
-        }
+        padding: '0 0',
     },
-    containerAnchorOriginTopRight: {
-        marginTop: theme.mixins.toolbar.minHeight
-    }
-}); });
+});
 var Snackbar = function (_a) {
+    var _b, _c;
     var children = _a.children;
     var notificationPosition = (0, Redux_1.useSelector)(selectNotificationPosition);
     var notificationMax = (0, Redux_1.useSelector)(selectNotificationMax);
     var anchorOrigin = notificationPosition == 'topRight' && anchorOriginTopRight || anchorOriginBottomRight;
-    var classes = useStyles();
-    return (react_1.default.createElement(notistack_1.SnackbarProvider, { className: classes.root, anchorOrigin: anchorOrigin, maxSnack: notificationMax, classes: { containerAnchorOriginTopRight: classes.containerAnchorOriginTopRight }, domRoot: document.getElementById('overlay') },
+    return (react_1.default.createElement(notistack_1.SnackbarProvider, { style: classes.root, anchorOrigin: anchorOrigin, maxSnack: notificationMax, classes: { containerAnchorOriginTopRight: (_c = (_b = Definition_1.default.mixins) === null || _b === void 0 ? void 0 : _b.toolbar) === null || _c === void 0 ? void 0 : _c.minHeight }, domRoot: document.getElementById('overlay') },
         react_1.default.createElement(Notification.Notistack, null),
         children));
 };
-exports.default = (0, react_1.memo)(Snackbar);
+exports.default = Snackbar;

@@ -49,54 +49,27 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var core_1 = require("@material-ui/core");
-var Close_1 = __importDefault(require("@material-ui/icons/Close"));
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+var material_1 = require("@mui/material");
+var Clear_1 = __importDefault(require("@mui/icons-material/Clear"));
 var TextFieldClearButton = react_1.default.forwardRef(function (_a, ref) {
-    var onChange = _a.onChange, _b = _a.clearButtonSize, clearButtonSize = _b === void 0 ? 'small' : _b, _c = _a.clearIconSize, clearIconSize = _c === void 0 ? 'small' : _c, onClearClick = _a.onClearClick, _d = _a.variant, variant = _d === void 0 ? 'standard' : _d, _e = _a.isClearable, isClearable = _e === void 0 ? true : _e, InputProps = _a.InputProps, rest = __rest(_a, ["onChange", "clearButtonSize", "clearIconSize", "onClearClick", "variant", "isClearable", "InputProps"]);
-    var getIconSize = (0, react_1.useCallback)(function () { return clearIconSize ? clearIconSize : clearButtonSize === 'medium' ? 'medium' : 'small'; }, []);
-    var _f = (0, react_1.useState)(false), showClearButton = _f[0], setShowClearButton = _f[1];
-    var _g = (0, react_1.useState)(''), inputValue = _g[0], setInputValue = _g[1];
-    (0, react_1.useEffect)(function () {
-        if (onChange !== undefined) {
-            if (rest.value !== '' && showClearButton === false) {
-                setShowClearButton(true);
-            }
-            else if (rest.value === '' && showClearButton) {
-                setShowClearButton(false);
-            }
-            if (inputValue !== rest.value) {
-                setInputValue(rest.value);
-            }
-        }
-    }, [rest.value]);
-    var handleClearClick = (0, react_1.useCallback)(function () {
-        if (onClearClick !== undefined) {
-            onClearClick();
-        }
-        else {
-            handleOnChange(null);
-        }
-    }, [onChange, onClearClick]);
-    var handleOnChange = (0, react_1.useCallback)(function (event) {
-        if (onChange === undefined) {
-            if (event !== null && event.target.value !== '' && showClearButton === false) {
-                setShowClearButton(true);
-            }
-            else if (showClearButton) {
-                setShowClearButton(false);
-            }
-            setInputValue(event === null ? '' : event.target.value);
-        }
-        else {
-            onChange(event);
-        }
-    }, [onChange]);
-    var endAdornmentClearButton = showClearButton && isClearable && (react_1.default.createElement(core_1.IconButton, { disabled: rest.disabled, size: clearButtonSize, color: 'secondary', onClick: handleClearClick },
-        react_1.default.createElement(Close_1.default, { fontSize: getIconSize() })));
-    var preparedInputProps = (0, react_1.useMemo)(function () { return (__assign(__assign({}, InputProps), { endAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'end' },
-            InputProps && InputProps.endAdornment && InputProps.endAdornment.props.children,
-            endAdornmentClearButton) })); }, [showClearButton, isClearable, InputProps]);
-    return react_1.default.createElement(core_1.TextField, __assign({ ref: ref }, rest, { onChange: handleOnChange, InputProps: preparedInputProps, autoComplete: 'new-password', value: rest.value !== undefined ? rest.value : inputValue }));
+    var _b;
+    var _c = _a.clearButtonSize, clearButtonSize = _c === void 0 ? 'small' : _c, _d = _a.clearIconSize, clearIconSize = _d === void 0 ? 'small' : _d, _e = _a.value, value = _e === void 0 ? null : _e, hideClearButton = _a.hideClearButton, forceEnableClearButton = _a.forceEnableClearButton, clearButtonProps = _a.clearButtonProps, name = _a.name, props = __rest(_a, ["clearButtonSize", "clearIconSize", "value", "hideClearButton", "forceEnableClearButton", "clearButtonProps", "name"]);
+    var isDirty = value !== null && value !== undefined;
+    var clear = react_1.default.useCallback(function () {
+        var _a;
+        (_a = props === null || props === void 0 ? void 0 : props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, { target: { value: null } });
+    }, [props.onChange]);
+    var endAdornmentClearButton = react_1.default.useMemo(function () { return (forceEnableClearButton || isDirty) && !hideClearButton ? (react_1.default.createElement(material_1.IconButton, __assign({ disabled: props.disabled && !forceEnableClearButton, size: clearButtonSize, color: 'secondary', onClick: clear }, clearButtonProps),
+        react_1.default.createElement(Clear_1.default, { fontSize: clearIconSize })))
+        : react_1.default.createElement(react_1.default.Fragment, null); }, [isDirty, props.disabled, clearButtonProps, clearButtonSize, forceEnableClearButton, clearIconSize, clear, hideClearButton]);
+    var preparedInputProps = (0, react_1.useMemo)(function () {
+        var _a, _b;
+        return (__assign(__assign({}, props === null || props === void 0 ? void 0 : props.InputProps), { endAdornment: react_1.default.createElement(material_1.InputAdornment, { position: 'end' }, (_b = (_a = props === null || props === void 0 ? void 0 : props.InputProps) === null || _a === void 0 ? void 0 : _a.endAdornment) !== null && _b !== void 0 ? _b : react_1.default.createElement(react_1.default.Fragment, null),
+                endAdornmentClearButton) }));
+    }, [endAdornmentClearButton, (_b = props === null || props === void 0 ? void 0 : props.InputProps) === null || _b === void 0 ? void 0 : _b.endAdornment, hideClearButton]);
+    var onChange = react_1.default.useCallback(function (e) {
+        props.onChange(e);
+    }, [props.onChange]);
+    return react_1.default.createElement(material_1.TextField, __assign({ ref: ref, name: name, value: value || '', autoComplete: 'new-password' }, props, { InputProps: preparedInputProps, onChange: onChange }));
 });
-exports.default = (0, react_1.memo)(TextFieldClearButton);
+exports.default = TextFieldClearButton;

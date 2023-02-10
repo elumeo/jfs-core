@@ -1,12 +1,8 @@
-/// <reference types="react" />
-import { Props as ThemeProps } from './Theme';
+import React from 'react';
 import 'material-icons/iconfont/material-icons.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-type Props = {
-    children: ThemeProps['children'];
-};
-declare const Style: ({ children }: Props) => JSX.Element;
+declare const Style: React.FC<React.PropsWithChildren>;
 export default Style;
