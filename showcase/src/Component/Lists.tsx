@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import FolderIcon from '@mui/icons-material/Folder';
 import AppNavigation from 'Component/AppNavigation';
 import {
@@ -17,6 +17,7 @@ import {
   Typography,
 } from '@mui/material';
 import CodeBox from 'Component/CodeBox';
+import Layout from '@elumeo/jfs-core/build/Component/App/Layout'
 
 const generate = (element: React.ReactElement) => {
   return [0, 1, 2].map((value) =>
@@ -33,10 +34,8 @@ const Lists = () => {
   const toggleDense = () => setDense(!dense);
   const toggleShowSubheader = () => setShowSubheader(!showSubheader);
 
-  return (<Grid container>
-      <Grid item xs={2}><AppNavigation/></Grid>
-      <Grid item xs>
-        <Container>
+  return (<Layout navigation={<AppNavigation/>}>
+        <Container maxWidth={'xl'}>
           <Card>
             <CardHeader title='Lists'/>
             <CardContent>
@@ -77,8 +76,7 @@ const Lists = () => {
             </CardContent>
           </Card>
         </Container>
-      </Grid>
-    </Grid>
+  </Layout>
   );
 };
-export default memo(Lists);
+export default Lists

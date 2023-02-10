@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, IconButton, Theme, Tooltip } from '@mui/material';
+import { Button, IconButton, Tooltip } from '@mui/material';
 import { VariantType } from 'notistack';
 import { Notification, Severity } from 'Core/Types/Notification';
 import Box from '@mui/material/Box';
@@ -10,8 +10,8 @@ import { useDispatch } from 'react-redux';
 import { addNotification, addToastAction } from '@elumeo/jfs-core/build/Store/Action';
 
 const sxs = (variant: Severity) => ({
-  backgroundColor: definition.palette?.[variant]?.['main'] || definition.palette.grey['A400'],
-  color: definition.palette?.[variant]?.['contrastText'] || definition.palette.grey['50']
+  backgroundColor: definition.colorSchemes.light.palette?.[variant]?.['main'] || definition.colorSchemes.light.palette.grey['A400'],
+  color: definition.colorSchemes.light.palette?.[variant]?.['contrastText'] || definition.colorSchemes.light.palette.grey['50']
 })
 
 type Props = {

@@ -6,6 +6,7 @@ import DevelopCurrency from './DevelopCurrency';
 import DevelopColors from 'Component/DevelopColors';
 import DevelopLists from 'Component/DevelopLists';
 import Layout from './App/Layout';
+import { Container, Stack } from '@mui/material';
 
 const sx = {
   display: 'flex',
@@ -15,13 +16,17 @@ const sx = {
 }
 
 const Develop: React.FC = () => {
-  return <Layout contentProps={{ sx }}>
-    <DevelopInputs />
-    <DevelopColors />
-    <DevelopNotifications />
-    <DevelopCurrency />
-    <DevelopLists />
-    <DevelopTables />
+  return <Layout contentProps={{ sx }} fullWidth>
+    <Container disableGutters maxWidth={false}>
+      <Stack spacing={1} direction={'column'}>
+        <DevelopInputs />
+        <DevelopColors />
+        <DevelopNotifications />
+        <DevelopCurrency />
+        <DevelopLists />
+        <DevelopTables />
+      </Stack>
+    </Container>
   </Layout>
 }
 export default Develop

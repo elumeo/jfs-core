@@ -86,8 +86,8 @@ const SelectClearButton = <IsMulti extends boolean = MUISelectProps['multiple']>
       onOpen={open}
       onClose={close}
       IconComponent={() => isOpen
-        ? <IconButton disableRipple onClick={open}><ArrowDropUp color='inherit' /></IconButton>
-        : <IconButton disableRipple onClick={open}><ArrowDropDown color='inherit' /></IconButton>}
+        ? <IconButton disabled={rest.disabled} disableRipple onClick={open}><ArrowDropUp color='inherit' /></IconButton>
+        : <IconButton disabled={rest.disabled} disableRipple onClick={open}><ArrowDropDown color='inherit' /></IconButton>}
       onChange={(e) => onChange(e.target.value as ValueType<IsMulti>)}
       input={
         <CustomInput

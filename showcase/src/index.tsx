@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import _ from 'lodash';
 import App from '@elumeo/jfs-core/build/Component/App';
 import * as Login from '@elumeo/jfs-core/build/Component/Login';
@@ -19,8 +19,11 @@ import HelloWorldTranslations from '@scharfohnezwiebeln/jfc-hello-world/build/Se
 
 import * as MUI from '@mui/material';
 import * as LAB from '@mui/lab';
+const root = createRoot(
+  document.getElementById('root')
 
-ReactDOM.render(
+)
+root.render(
   <App
     store={store}
     title={'Showcase'}
@@ -31,9 +34,9 @@ ReactDOM.render(
     )}
     packageJSON={packageJson}>
     <Header.AppToolbar
-      left={<Header.BackendIndicator/>}
+      left={<Header.BackendIndicator />}
       middle={
-        <div style={{width: 300}}>
+        <div style={{ width: 300 }}>
           <LAB.Autocomplete
             fullWidth
             options={['one', 'two', 'three']}
@@ -49,24 +52,23 @@ ReactDOM.render(
                       .style,
                     color: 'white'
                   }
-                }}/>
-            )}/>
+                }} />
+            )} />
         </div>
       }
       right={
         <>
-          <Settings.Button/>
-          <Notification.Button.Show/>
+          <Settings.Button />
+          <Notification.Button.Show />
         </>
-      }/>
-    <Navigation/>
-    <Login.Dialog/>
-    <Logout.Dialog/>
+      } />
+    <Navigation />
+    <Login.Dialog />
+    <Logout.Dialog />
     <Settings.Dialog>
-      <Language.Settings/>
+      <Language.Settings />
     </Settings.Dialog>
-    <Routes/>
-    <Snackbar/>
-  </App>,
-  document.getElementById('root')
+    <Routes />
+    <Snackbar />
+  </App>
 );

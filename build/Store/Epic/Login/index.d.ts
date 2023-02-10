@@ -1,7 +1,7 @@
 declare const _default: import("redux-observable").Epic<import("typesafe-actions").PayloadAction<"CORE/DEBUGGer/mattermost/post", {
     description: string;
     state: unknown;
-}> | import("typesafe-actions").PayloadAction<"CORE/DEBUGGER/log", unknown> | import("typesafe-actions").PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | import("typesafe-actions").PayloadAction<"app/INITIALZE", {
+}> | import("typesafe-actions").PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | import("typesafe-actions").PayloadAction<"CORE/DEBUGGER/log", unknown> | import("typesafe-actions").PayloadAction<"app/INITIALZE", {
     allowRobotLogin?: boolean;
     packageJson: Record<string, unknown>;
     ForceHTTPS?: boolean;
@@ -19,7 +19,7 @@ declare const _default: import("redux-observable").Epic<import("typesafe-actions
 }> | import("typesafe-actions").EmptyAction<"region/GET_FAILED"> | import("typesafe-actions").PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast> | import("typesafe-actions").EmptyAction<"toast/DELETE"> | import("typesafe-actions").PayloadAction<"websocket/ADD_NAMESPACE", string> | import("typesafe-actions").PayloadAction<"websocket/CONNECT_REQUEST", string> | import("typesafe-actions").PayloadAction<"websocket/CONNECT_SUCCESS", string> | import("typesafe-actions").PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError> | import("typesafe-actions").PayloadAction<"websocket/PREPARE_RECONNECT", string> | import("typesafe-actions").PayloadAction<"websocket/DISCONNECT_REQUEST", string> | import("typesafe-actions").PayloadAction<"websocket/DISCONNECT_SUCCESS", string> | import("typesafe-actions").PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>> | import("typesafe-actions").PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection> | import("typesafe-actions").PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection> | import("typesafe-actions").PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection> | import("typesafe-actions").PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>> | import("typesafe-actions").PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>> | import("typesafe-actions").PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, import("typesafe-actions").PayloadAction<"CORE/DEBUGGer/mattermost/post", {
     description: string;
     state: unknown;
-}> | import("typesafe-actions").PayloadAction<"CORE/DEBUGGER/log", unknown> | import("typesafe-actions").PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | import("typesafe-actions").PayloadAction<"app/INITIALZE", {
+}> | import("typesafe-actions").PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | import("typesafe-actions").PayloadAction<"CORE/DEBUGGER/log", unknown> | import("typesafe-actions").PayloadAction<"app/INITIALZE", {
     allowRobotLogin?: boolean;
     packageJson: Record<string, unknown>;
     ForceHTTPS?: boolean;

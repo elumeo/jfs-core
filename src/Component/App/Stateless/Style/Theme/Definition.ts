@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
-import * as Color from 'Constant/Color';
+import * as Color from '../../../../../Constant/Color';
 import { grey } from '@mui/material/colors';
 const definition = extendTheme({
   colorSchemes: {

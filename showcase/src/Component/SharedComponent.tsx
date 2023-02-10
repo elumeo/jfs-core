@@ -4,6 +4,7 @@ import * as Color from '@elumeo/jfs-core/build/Types/Color'
 import AppNavigation from 'Component/AppNavigation';
 import CodeBox from './CodeBox';
 import HelloWorld from '@scharfohnezwiebeln/jfc-hello-world/build/Component/HelloWorld';
+import Layout from '@elumeo/jfs-core/build/Component/App/Layout'
 
 export const colors: Color.Typography[] = [
   'initial' as Color.Typography,
@@ -15,9 +16,7 @@ export const colors: Color.Typography[] = [
   'error',
 ]
 const Typographies = () => {
-  return (<Grid container>
-      <Grid item xs={2}><AppNavigation/></Grid>
-      <Grid item xs>
+  return (<Layout navigation={<AppNavigation/>}>
         <Container>
           <Grid container direction={'column'} spacing={1}>
             <Grid item>
@@ -39,8 +38,7 @@ const Typographies = () => {
             </Grid>
           </Grid>
         </Container>
-      </Grid>
-    </Grid>
+  </Layout>
   );
 };
 export default memo(Typographies);

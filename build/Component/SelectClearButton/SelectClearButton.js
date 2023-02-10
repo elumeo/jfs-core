@@ -60,9 +60,9 @@ var SelectClearButton = function (_a) {
         react_1.default.createElement(material_1.Select, __assign({ labelId: labelId, value: value !== null && value !== void 0 ? value : (multiple ? [] : ''), multiple: multiple, MenuProps: {
                 container: document.getElementById('overlay'),
             }, color: color, open: isOpen, onOpen: open, onClose: close, IconComponent: function () { return isOpen
-                ? react_1.default.createElement(material_1.IconButton, { disableRipple: true, onClick: open },
+                ? react_1.default.createElement(material_1.IconButton, { disabled: rest.disabled, disableRipple: true, onClick: open },
                     react_1.default.createElement(icons_material_1.ArrowDropUp, { color: 'inherit' }))
-                : react_1.default.createElement(material_1.IconButton, { disableRipple: true, onClick: open },
+                : react_1.default.createElement(material_1.IconButton, { disabled: rest.disabled, disableRipple: true, onClick: open },
                     react_1.default.createElement(icons_material_1.ArrowDropDown, { color: 'inherit' })); }, onChange: function (e) { return onChange(e.target.value); }, input: react_1.default.createElement(CustomInput_1.default, __assign({ label: label, variant: variant, color: color, canClear: canClear && values.length > 0, onClear: function () { return onChange((multiple ? [] : null)); } }, inputProps)) }, rest, { renderValue: function () {
                 return react_1.default.createElement(ValueRenderer_1.default, __assign({ values: values, labelsByValue: labelsByValue, renderAsChip: renderAsChip, maxValuesToDisplayInInput: maxValuesToDisplayInInput, onClick: open, canUnselect: canUnselect, unselect: unselect }, chipProps, { size: 'small' }));
             } }), loading

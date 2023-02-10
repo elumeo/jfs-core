@@ -1,12 +1,12 @@
 import React from 'react';
-import { SxProps, Stack, StackProps } from '@mui/material';
+import { SxProps, Stack, StackProps, Box, BoxProps } from '@mui/material';
 import definition from './Stateless/Style/Theme/Definition';
-import { Box, BoxProps } from '@mui/system';
 
 export type Props = StackProps & {
   navigation?: React.ReactNode;
   spacing?: number
   contentProps?: BoxProps
+  fullWidth?: boolean
 }
 
 const gridContainerSx: SxProps = ({
@@ -24,9 +24,9 @@ const AppLayout: React.FC<Props> = (
     navigation = null,
     spacing = 1,
     contentProps = {},
+    fullWidth = false,
     ...containerProps
   }) => {
-
   return (
     <Stack
       p={spacing}
@@ -36,7 +36,7 @@ const AppLayout: React.FC<Props> = (
       gap={(navigation && spacing > 0) ? spacing : 0}
       {...containerProps}>
       {navigation}
-      <Box {...contentProps}>{children}</Box>
+      <Box  {...contentProps} sx={{ marginLeft: '0 !important', width: fullWidth ? '100%' : 'auto' }}>{children}</Box>
     </Stack>
   )
 };
