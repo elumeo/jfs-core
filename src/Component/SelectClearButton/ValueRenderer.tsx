@@ -28,7 +28,7 @@ const ValueRenderer: React.FC<Props> = ({
             (
               <Chip
                 key={`select-chip-${i}`}
-                label={labelsByValue[v]}
+                label={labelsByValue[v] ?? v}
                 size={'small'}
                 onMouseDown={(event) => event.stopPropagation()}
                 {...props}

@@ -5,22 +5,20 @@ import * as Selector from 'Store/Selector';
 
 import JSCApi from 'API/JSC';
 import useSelector from 'Store/useSelector';
+import { useDispatch } from 'react-redux';
+import { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction } from '@elumeo/jfs-core/build/Store/Action';
 
 const ROOM_PING = JSCApi.WebSocketClient.ROOM_PING;
 
 const JscPingButton: React.FC = () => {
   const { formatMessage } = useIntl();
-  const {
-    webSocketJoinRoomRequestAction,
-    webSocketLeaveRoomRequestAction
-  } = useActions();
-
+  const dispatch = useDispatch()
   const config = useSelector(state => state.Core.Configuration.config);
+  const jsc2jfsConnected = useSelector(Selector.isJsc2JfsWebSocketConnected);
+  const jsc2jfsNamespace = useSelector(state => state.Core.WebSocket['Jsc2Jfs']);
   if (!config) {
     return null;
   }
-  const jsc2jfsConnected = useSelector(Selector.isJsc2JfsWebSocketConnected);
-  const jsc2jfsNamespace = useSelector(state => state.Core.WebSocket['Jsc2Jfs']);
 
   if (jsc2jfsConnected) {
     const room = jsc2jfsNamespace.rooms.find(({ name }) => name === ROOM_PING.room);
@@ -28,15 +26,15 @@ const JscPingButton: React.FC = () => {
       return (
         <MUI.Button
           disabled={room !== null && room.isJoining}
-          onClick={() => webSocketJoinRoomRequestAction(ROOM_PING)}>
-          {formatMessage({id: 'jscWebSocket.pingJoinRoom'})}
+          onClick={() => dispatch(webSocketJoinRoomRequestAction(ROOM_PING))}>
+          {formatMessage({ id: 'jscWebSocket.pingJoinRoom' })}
         </MUI.Button>
       );
     } else {
       return (
         <MUI.Button
-          onClick={() => webSocketLeaveRoomRequestAction(ROOM_PING)}>
-          {formatMessage({id: 'jscWebSocket.pingLeaveRoom'})}
+          onClick={() => dispatch(webSocketLeaveRoomRequestAction(ROOM_PING))}>
+          {formatMessage({ id: 'jscWebSocket.pingLeaveRoom' })}
         </MUI.Button>
       );
     }

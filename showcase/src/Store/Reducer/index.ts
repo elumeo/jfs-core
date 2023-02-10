@@ -9,14 +9,12 @@ export type State = {
   Core: CoreState;
   Jfc: JfcState,
   App: AppState;
-  // router: RouterState;
 }
 
 const Global = combineReducers<State>({
   Core,
   Jfc,
   App,
-  // router: connectRouter(history)
 });
 
 export default Global;

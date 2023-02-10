@@ -1,10 +1,11 @@
 import React from 'react';
 import * as MUI from '@mui/material';
 import { useIntl } from 'react-intl';
-import { IWebSocketRoom }from '@elumeo/jfs-core/build/Types/WebSocket';
+import { IWebSocketRoom } from '@elumeo/jfs-core/build/Types/WebSocket';
 import * as Selector from 'Store/Selector';
 import useSelector from 'Store/useSelector';
-import useActions from  'Store/useActions';
+import { useDispatch } from 'react-redux';
+import { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction } from '@elumeo/jfs-core/build/Store/Action';
 
 const pingRoom: IWebSocketRoom = {
   room: 'ping',
@@ -12,16 +13,16 @@ const pingRoom: IWebSocketRoom = {
 };
 
 const JfsPingButton: React.FC = () => {
-  const { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction } = useActions();
+  const dispatch = useDispatch()
   const { formatMessage } = useIntl();
   const config = useSelector(state => state.Core.Configuration.config);
+  const jfs2jfsConnected = useSelector(Selector.isJfs2JfsWebSocketConnected);
+  const jfs2jfsNamespace = useSelector(state => state.Core.WebSocket['Jfs2Jfs']);
 
   if (!config) {
     return null;
   }
 
-  const jfs2jfsConnected = useSelector(Selector.isJfs2JfsWebSocketConnected);
-  const jfs2jfsNamespace = useSelector(state => state.Core.WebSocket['Jfs2Jfs']);
 
   if (jfs2jfsConnected) {
     const room = jfs2jfsNamespace.rooms.find(({ name }) => name === pingRoom.room);
@@ -29,14 +30,14 @@ const JfsPingButton: React.FC = () => {
       return (
         <MUI.Button
           disabled={room !== null && room.isJoining}
-          onClick={() => webSocketJoinRoomRequestAction(pingRoom)}>
-          {formatMessage({id: 'jfsWebSocket.pingJoinRoom'})}
+          onClick={() => dispatch(webSocketJoinRoomRequestAction(pingRoom))}>
+          {formatMessage({ id: 'jfsWebSocket.pingJoinRoom' })}
         </MUI.Button>
       );
     } else {
       return (
-        <MUI.Button onClick={() => webSocketLeaveRoomRequestAction(pingRoom)}>
-          {formatMessage({id: 'jfsWebSocket.pingLeaveRoom'})}
+        <MUI.Button onClick={() => dispatch(webSocketLeaveRoomRequestAction(pingRoom))}>
+          {formatMessage({ id: 'jfsWebSocket.pingLeaveRoom' })}
         </MUI.Button>
       );
     }

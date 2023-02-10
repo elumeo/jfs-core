@@ -1,8 +1,6 @@
 /* eslint-disable max-lines */
 import React, { memo } from 'react';
 import { Box, Card, CardContent, CardHeader, Container, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
-import { useTheme, makeStyles, createStyles, Theme } from '@mui/material/styles';
-import { alpha } from '@mui/material/styles/colorManipulator';
 import {
   BadgePercent as BadgePercentIcon,
   BidBlock as BidBlockIcon,
@@ -29,16 +27,15 @@ import CodeBox from 'Component/CodeBox';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import DoneIcon from '@mui/icons-material/Done';
-
-const useStyles = makeStyles(createStyles({
+import definition from '@elumeo/jfs-core/build/Component/App/Stateless/Style/Theme/Definition';
+const sxs = {
   icon: {
     fontSize: definition.typography.pxToRem(32),
     color: definition.palette.secondary.main
   }
-}));
+}
 
 const Icons = () => {
-  const classes = useStyles();
   const [iconColor, setIconColor] = React.useState<'materialUi' | 'reactMd'>('materialUi');
 
   return (<Grid container>
@@ -169,7 +166,7 @@ const Icons = () => {
                   </ListItem>
                   <ListItem>
                     <ListItemAvatar>
-                      <BadgePercentIcon className={classes.icon} />
+                      <BadgePercentIcon sx={sxs.icon} />
                     </ListItemAvatar>
                     <ListItemText>
                       <CodeBox component={'span'} size={'small'}>{`<BadgePercentIcon className={classes.icon} />`}</CodeBox>
@@ -198,7 +195,7 @@ const Icons = () => {
                 />
                 <Box mt={1}>
                   <Grid container spacing={1}>
-                    <Grid item><BadgePercentIcon style={iconColor === 'reactMd' ? { color: alpha(definition.palette.common.black, 0.54) } : null} /></Grid>
+                    <Grid item><BadgePercentIcon style={iconColor === 'reactMd' ? { color: `${definition.palette.common.black}80` } : null} /></Grid>
                     <Grid item><DoneIcon color={'secondary'} /></Grid>
                     <Grid item><WebShopBidAgentIcon color={'primary'} /></Grid>
                   </Grid>

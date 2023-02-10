@@ -2,15 +2,13 @@ import React from 'react'
 import { InputBaseProps, Checkbox, ChipProps, CircularProgress, FormControl, FormControlProps, InputLabel, MenuItem, Select, SelectProps as MUISelectProps, IconButton, } from '@mui/material';
 import ValueRenderer, { ValueType } from './ValueRenderer';
 import CustomInput from './CustomInput';
-import Flex from 'Component/Layout/Flex';
+import Flex from '../Layout/Flex';
 import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
-
 export type SelectOption = {
   value: string;
   label: React.ReactNode;
 }
-
-export type SelectProps<IsMulti = boolean> = Partial<Omit<MUISelectProps<ValueType<IsMulti>>, 'onChange' | 'value'>> & {
+export type SelectProps<IsMulti extends boolean = undefined> = Partial<Omit<MUISelectProps<ValueType<IsMulti>>, 'onChange' | 'value'>> & {
   canClear?: boolean;
   canUnselect?: boolean;
   renderAsChip?: boolean;
@@ -18,13 +16,16 @@ export type SelectProps<IsMulti = boolean> = Partial<Omit<MUISelectProps<ValueTy
   formControlProps?: Partial<FormControlProps>;
   chipProps?: Partial<ChipProps>;
   inputProps?: InputBaseProps
-  options: SelectOption[];
+  options?: SelectOption[];
   value?: IsMulti extends true ? string[] : string;
   label?: React.ReactNode
   onChange: (value: IsMulti extends true ? string[] : string) => void;
   loading?: boolean;
   loadingSize?: number;
-}
+} & (
+    | { options: SelectOption[]; children?: never; }
+    | { children: React.ReactNode; options?: never; }
+  )
 const SelectClearButton = <IsMulti extends boolean = MUISelectProps['multiple']>({
   onChange,
   renderAsChip = true,
@@ -37,6 +38,7 @@ const SelectClearButton = <IsMulti extends boolean = MUISelectProps['multiple']>
   chipProps = {},
   formControlProps = {},
   inputProps = {},
+  children,
   options,
   maxValuesToDisplayInInput = 2,
   loading = false,
@@ -47,7 +49,7 @@ const SelectClearButton = <IsMulti extends boolean = MUISelectProps['multiple']>
   const [isOpen, setIsOpen] = React.useState(false)
   const multiple = rest?.multiple
   const labelsByValue = React.useMemo<Record<string, string>>(() =>
-    options.reduce((acc, o) => ({ ...acc, [o.value]: o.label }), {}),
+    (options ?? []).reduce((acc, o) => ({ ...acc, [o.value]: o.label }), {}),
     [options]
   )
   const values = React.useMemo<string[]>(() =>
@@ -117,7 +119,7 @@ const SelectClearButton = <IsMulti extends boolean = MUISelectProps['multiple']>
               <CircularProgress size={loadingSize} color={color} />
             </Flex>
           )
-          : options.map(
+          : children || options.map(
             (option: SelectOption) =>
               <MenuItem
                 key={'select-menu-item-' + option.value}

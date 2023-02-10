@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Card, Grid, InputAdornment } from '@mui/material';
+import { Button, Card, Grid, InputAdornment, MenuItem } from '@mui/material';
 import PriceInput from 'Component/PriceInput';
 import { useNavigate, useParams } from 'react-router-dom';
 import { parse } from 'Utilities/Format/Number';
@@ -11,15 +11,14 @@ import useQueryParams from 'Effect/useQueryParams';
 import ClearButton, { type SelectProps as SelectClearButtonProps } from 'Component/SelectClearButton/SelectClearButton';
 
 const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><Search /></InputAdornment> };
-
 const DevelopInputs: React.FC = () => {
   const navigate = useNavigate()
   const [loading, setLoading] = React.useState(false)
   const { id } = useParams()
   const [{ value, dateStart, dateEnd }, update, urlSearchParams] = useQueryParams<{ value?: string, dateStart?: string, dateEnd?: string }>({})
   const [multipleSelectValue, setMultipleSelectValue] = React.useState<string[]>(['test 1']);
+  const [selectValue, setSelectValue] = React.useState<string>('test 1');
   const handleMultipleSelectUpdate: SelectClearButtonProps<true>['onChange'] = React.useCallback(_value => setMultipleSelectValue(_value as string[]), [setMultipleSelectValue]);
-
   const testDatePickerdateStart = React.useMemo(() => dateStart ? new Date(dateStart) : null, [dateStart])
   const testDatePickerdateEnd = React.useMemo(() => dateEnd ? new Date(dateEnd) : null, [dateEnd])
   const setTestDatePickerValue: DatePickerProps<true /*  = isRangePicker */>['onChange'] = React.useCallback((dates) => {
@@ -134,13 +133,18 @@ const DevelopInputs: React.FC = () => {
               ]}
             />
           </Grid>
-          {/* <Grid item><Button onClick={() => setMultipleSelectValue(['test 1'])} color={'primary'}>Set Multiple Select
-            Value</Button>
-          </Grid> */}
+          <Grid item xs={4}>
+            <ClearButton
+              value={selectValue}
+              onChange={(val: string) => setSelectValue(val)}
+            >
+              <MenuItem value={'custom1'} >custom menuitems</MenuItem>
+              <MenuItem value={'custom2'}>als  children</MenuItem>
+            </ClearButton>
+          </Grid>
         </Grid>
       </AppCardContent>
     </Card>
   )
 }
-
 export default DevelopInputs

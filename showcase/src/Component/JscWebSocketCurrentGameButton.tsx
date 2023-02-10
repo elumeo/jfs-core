@@ -5,33 +5,35 @@ import * as Selector from 'Store/Selector';
 import JSCApi from 'API/JSC';
 const ROOM_CURRENT_GAME = JSCApi.WebSocketClient.ROOM_CURRENT_GAME;
 import useSelector from 'Store/useSelector';
+import { useDispatch } from 'react-redux';
+import { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction } from '@elumeo/jfs-core/build/Store/Action';
 
 const CurrentGameButton: React.FC = () => {
   const { formatMessage } = useIntl();
-  const { webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction } = useActions();
+  const dispatch = useDispatch()
   const config = useSelector(state => state.Core.Configuration.config);
+
+  const jsc2jfsConnected = useSelector(Selector.isJsc2JfsWebSocketConnected);
+  const webSocket = useSelector(state => state.Core.WebSocket);
+  const jsc2jfsNamespace = useSelector(state => state.Core.WebSocket['Jsc2Jfs']);
   if (!config) {
     return null;
   }
 
-  const jsc2jfsConnected = useSelector(Selector.isJsc2JfsWebSocketConnected);
-  const jsc2jfsNamespace = useSelector(state => state.Core.WebSocket['Jsc2Jfs']);
-
-  const webSocket = useSelector(state => state.Core.WebSocket);
   if (jsc2jfsConnected) {
     const room = jsc2jfsNamespace.rooms.find(({ name }) => name === ROOM_CURRENT_GAME.room);
     if (room === null || room.hasJoined === undefined || room.hasJoined === false) {
       return (
         <MUI.Button
           disabled={room !== null && room.isJoining}
-          onClick={() => webSocketJoinRoomRequestAction(ROOM_CURRENT_GAME)}>
+          onClick={() => dispatch(webSocketJoinRoomRequestAction(ROOM_CURRENT_GAME))}>
           {formatMessage({ id: 'jscWebSocket.currentGameJoinRoom' })}
         </MUI.Button>
       );
     } else {
       return (
         <MUI.Button
-          onClick={() => webSocketLeaveRoomRequestAction(ROOM_CURRENT_GAME)}>
+          onClick={() => dispatch(webSocketLeaveRoomRequestAction(ROOM_CURRENT_GAME))}>
           {formatMessage({ id: 'jscWebSocket.currentGameLeaveRoom' })}
         </MUI.Button>
       );

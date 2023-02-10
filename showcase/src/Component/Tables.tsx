@@ -1,23 +1,22 @@
 /* eslint-disable max-lines */
 import React, { memo } from 'react';
-import { Box, Card, CardContent, CardHeader, Container, Grid, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Card, CardContent, CardHeader, Container, Grid, Link, SxProps, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import AppNavigation from 'Component/AppNavigation';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import VirtualizedTable from '@elumeo/jfs-core/build/Component/Table/VirtualizedTable';
-import { Index } from 'react-virtualized';
 
-const useStyles = makeStyles({
+const sxs: Record<string, SxProps> = {
   TableBasic: {
     minWidth: 650,
   },
   TableBasicContainer: {
     maxHeight: 440,
   },
-});
+};
 
 function createDataBasicTable(name: string, calories: number, fat: number, carbs: number, protein: number) {
-  return {name, calories, fat, carbs, protein};
+  return { name, calories, fat, carbs, protein };
 }
 
 const rowsBasicTable = [
@@ -60,7 +59,7 @@ function createDataVirtualizedTable(
   carbs: number,
   protein: number,
 ): DataVirtualizedTable {
-  return {id, dessert, calories, fat, carbs, protein};
+  return { id, dessert, calories, fat, carbs, protein };
 }
 
 const rows: DataVirtualizedTable[] = [];
@@ -71,7 +70,6 @@ for (let i = 0; i < 200; i += 1) {
 }
 
 const Tables = () => {
-  const css = useStyles();
   const [denseBasicTable, setDenseBasicTable] = React.useState(false)
   const [stickyBasicTable, setStickyBasicTable] = React.useState(true)
   const [denseVirtualizedTable, setDenseVirtualizedTable] = React.useState(false)
@@ -80,19 +78,19 @@ const Tables = () => {
   const toggleDenseVirtualizedTable = () => setDenseVirtualizedTable(!denseVirtualizedTable);
 
   return (<Grid container>
-    <Grid item xs={2}><AppNavigation/></Grid>
+    <Grid item xs={2}><AppNavigation /></Grid>
     <Grid item xs>
       <Container>
         <Grid container direction={'column'} spacing={1}>
           <Grid item xs>
             <Card>
-              <CardHeader title='Basic Table'/>
+              <CardHeader title='Basic Table' />
               <CardContent>
                 <Typography>When making the table header sticky it becomes more highlighted (default app background color). The sticky header should be the default behaviour.</Typography>
-                <FormControlLabel control={<Switch onChange={toggleStickyBasicTable} checked={stickyBasicTable}/>} label='Sticky'/>
-                <FormControlLabel control={<Switch onChange={toggleDenseBasicTable} checked={denseBasicTable}/>} label='Dense'/>
-                <TableContainer className={css.TableBasicContainer}>
-                  <Table className={css.TableBasic} aria-label='simple table' size={denseBasicTable ? 'small' : 'medium'} stickyHeader={stickyBasicTable}>
+                <FormControlLabel control={<Switch onChange={toggleStickyBasicTable} checked={stickyBasicTable} />} label='Sticky' />
+                <FormControlLabel control={<Switch onChange={toggleDenseBasicTable} checked={denseBasicTable} />} label='Dense' />
+                <TableContainer sx={sxs.TableBasicContainer}>
+                  <Table sx={sxs.TableBasic} aria-label='simple table' size={denseBasicTable ? 'small' : 'medium'} stickyHeader={stickyBasicTable}>
                     <TableHead>
                       <TableRow>
                         <TableCell>Dessert (100g serving)</TableCell>
@@ -122,58 +120,59 @@ const Tables = () => {
           </Grid>
           <Grid item xs>
             <Card>
-              <CardHeader title='Virtualized Table'/>
+              <CardHeader title='Virtualized Table' />
               <Box component={CardContent} height={'600px'}>
-                <Grid container direction={'column'} style={{height: '100%'}}>
+                <Grid container direction={'column'} style={{ height: '100%' }}>
                   <Grid item>
                     <Typography>Virtualized Tables are based on <Link target={'_blank'} href={'https://github.com/bvaughn/react-virtualized'}>react-virtualized</Link> library. This
                       lib does not support a <i>dense</i> parameter on the table but we can adjust the <i>headerHeight</i> and <i>rowHeight</i> by ourself. The sticky behaviour is
                       different as well and cannot be disabled. Check the different scrollbar behaviour on the right side.</Typography>
-                    <FormControlLabel control={<Switch onChange={toggleDenseVirtualizedTable} checked={denseVirtualizedTable}/>} label='Dense (Changes headerHeight and rowHeight)'/>
+                    <FormControlLabel control={<Switch onChange={toggleDenseVirtualizedTable} checked={denseVirtualizedTable} />} label='Dense (Changes headerHeight and rowHeight)' />
                   </Grid>
                   <Grid item xs>
                     <VirtualizedTable
-                      showRowHoverHighlight
-                      headerHeight={denseVirtualizedTable === true ? 31 : 48}
-                      rowHeight={denseVirtualizedTable === true ? 31 : 48}
-                      rowCount={rows.length}
-                      rowGetter={(row: Index) => rows[row.index]}
+                      // showRowHoverHighlight
+                      data={rows}
+                      // headerHeight={denseVirtualizedTable === true ? 31 : 48}
+                      // rowHeight={denseVirtualizedTable === true ? 31 : 48}
+                      // rowCount={rows.length}
+                      // rowGetter={(row: Index) => rows[row.index]}
                       sortBy={'dessert'}
-                      sortDirection={'ASC'}
-                      // sort={() => console.log('sorting')}
-                      columns={[
-                        {
-                          width: 200,
-                          flexGrow: 1,
-                          label: 'Dessert (100g serving)',
-                          dataKey: 'dessert',
-                          disableSort: false
-                        },
-                        {
-                          width: 120,
-                          label: 'Calories\u00A0(g)',
-                          dataKey: 'calories',
-                          numeric: true,
-                        },
-                        {
-                          width: 120,
-                          label: 'Fat\u00A0(g)',
-                          dataKey: 'fat',
-                          numeric: true,
-                        },
-                        {
-                          width: 120,
-                          label: 'Carbs\u00A0(g)',
-                          dataKey: 'carbs',
-                          numeric: true,
-                        },
-                        {
-                          width: 120,
-                          label: 'Protein\u00A0(g)',
-                          dataKey: 'protein',
-                          numeric: true,
-                        },
-                      ]}
+                      sortDirection={'asc'}
+                    // sort={() => console.log('sorting')}
+                    // columns={[
+                    //   {
+                    //     width: 200,
+                    //     flexGrow: 1,
+                    //     label: 'Dessert (100g serving)',
+                    //     dataKey: 'dessert',
+                    //     disableSort: false
+                    //   },
+                    //   {
+                    //     width: 120,
+                    //     label: 'Calories\u00A0(g)',
+                    //     dataKey: 'calories',
+                    //     numeric: true,
+                    //   },
+                    //   {
+                    //     width: 120,
+                    //     label: 'Fat\u00A0(g)',
+                    //     dataKey: 'fat',
+                    //     numeric: true,
+                    //   },
+                    //   {
+                    //     width: 120,
+                    //     label: 'Carbs\u00A0(g)',
+                    //     dataKey: 'carbs',
+                    //     numeric: true,
+                    //   },
+                    //   {
+                    //     width: 120,
+                    //     label: 'Protein\u00A0(g)',
+                    //     dataKey: 'protein',
+                    //     numeric: true,
+                    //   },
+                    // ]}
                     />
                   </Grid>
                 </Grid>

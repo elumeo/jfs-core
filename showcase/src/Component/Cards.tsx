@@ -7,13 +7,13 @@ import CodeBox from 'Component/CodeBox';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import AppCardHeader from '@elumeo/jfs-core/build/Component/Card/AppCardHeader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import definition from '@elumeo/jfs-core/build/Component/App/Stateless/Style/Theme/Definition';
 
-const useStyles = makeStyles((theme) => createStyles({
+const sxs = {
   topRightAction: { margin: -definition.spacing(0.5) }
-}));
+}
 
 const Cards = () => {
-  const styles = useStyles();
   const [bottomActionButtonPosition, setBottomActionButtonPosition] = React.useState<'default' | 'custom'>('default');
   const [topRightActionButtonNumber, setTopRightActionButtonNumber] = React.useState<1 | 3>(1);
   const [topRightActionButtonAlignment, setTopRightActionButtonAlignment] = React.useState<'default' | 'custom'>('default');
@@ -55,7 +55,7 @@ const Cards = () => {
           <Grid item>
             <Card>
               <CardHeader
-                classes={{ action: topRightActionButtonAlignment === 'custom' ? styles.topRightAction : null }}
+                sx={topRightActionButtonAlignment === 'custom' ? sxs.topRightAction : null}
                 disableTypography={topLeftActionButtonsEnabled}
                 title={topLeftActionButtonsEnabled === false ? 'This is an advanced card with more options' : <Grid container spacing={1}>
                   <Grid item><Typography variant='h5'>This is an advanced card with more options</Typography></Grid>
@@ -81,7 +81,7 @@ const Cards = () => {
                   <Typography>{`</>`}</Typography>
                 </CodeBox>
                 <FormControlLabel control={<Switch onChange={toggleTopRightActionButtonNumber} checked={topRightActionButtonNumber === 3} />}
-                                  label='Custom number of action buttons' />
+                  label='Custom number of action buttons' />
 
                 <Typography>Also the vertical alignment of the title and the buttons is not on one line. We can adjust this with little styling but it is not suggested because we
                   do have 2 different font sizes which will not match completely.</Typography>
@@ -91,7 +91,7 @@ const Cards = () => {
                   <Typography>{`}));`}</Typography>
                 </CodeBox>
                 <FormControlLabel control={<Switch onChange={toggleTopRightActionButtonAlignment} checked={topRightActionButtonAlignment === 'custom'} />}
-                                  label='Custom alignment of action buttons' />
+                  label='Custom alignment of action buttons' />
 
                 <Typography>Another position of buttons (IconButtons) we often use is beside the card title text. To achieve this we can use a grid as well.</Typography>
                 <CodeBox>
@@ -105,7 +105,7 @@ const Cards = () => {
                   <Typography>{`/>`}</Typography>
                 </CodeBox>
                 <FormControlLabel control={<Switch onChange={toggleTopLeftActionButtonsEnabled} checked={topLeftActionButtonsEnabled} />}
-                                  label='Enable custom action buttons beside card title' />
+                  label='Enable custom action buttons beside card title' />
               </CardContent>
             </Card>
           </Grid>

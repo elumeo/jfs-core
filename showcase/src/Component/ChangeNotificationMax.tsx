@@ -1,16 +1,17 @@
 import * as React from 'react';
 
-import { FormControl, Input, InputLabel } from '@mui/material';
-import { useSelector, useDispatch } from 'react-redux';
+import { FormControl, Input, InputLabel, InputProps } from '@mui/material';
+import { useDispatch } from 'react-redux';
 import { configLoadedAction } from 'Store/Action';
+import useSelector from 'Store/useSelector';
 
 const ChangeNotificationMax: React.FC =
   () => {
     const config = useSelector(state => state?.Core?.Configuration?.config)
     const dispatch = useDispatch();
     const max = config?.NotificationMax || '';
-    const onChange = React.useCallback(event => {
-      dispatch(configLoadedAction({ config: { ...config, NotificationMax: event.target.value as number } }))
+    const onChange: InputProps['onChange'] = React.useCallback(event => {
+      dispatch(configLoadedAction({ config: { ...config, NotificationMax: Number(event.target.value) } }))
     }, [config])
     return (
       <FormControl>
@@ -20,4 +21,4 @@ const ChangeNotificationMax: React.FC =
     )
   }
 
-export default React.memo(ChangeNotificationMax)
+export default ChangeNotificationMax

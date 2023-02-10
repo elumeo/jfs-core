@@ -1,27 +1,26 @@
 import React, { memo } from 'react';
 import { Box, Card, CardContent, CardHeader, Container, Grid, Typography } from '@mui/material';
 import AppNavigation from 'Component/AppNavigation';
-import { createStyles, makeStyles, Theme, useTheme } from '@mui/material/styles';
 import CodeBox from 'Component/CodeBox';
-
+import definition from '@elumeo/jfs-core/build/Component/App/Stateless/Style/Theme/Definition';
+import { quarz, rubin, citrin } from '@elumeo/jfs-core/build/Constant/Color';
 export const colors = ['primary', 'secondary', 'error', 'warning', 'info', 'rubin', 'rodolith', 'topas', 'apatith', 'peridot', 'citrin', 'quarz'];
 
-const useColorStyle = makeStyles(theme => createStyles({
+const sx = {
   TestClass: {
-    color: definition.palette.quarz.dark
+    color: quarz.dark
   }
-}));
+}
 
 const Colors = () => {
-  const colorStyle = useColorStyle();
   return (<Grid container>
-    <Grid item xs={2}><AppNavigation/></Grid>
+    <Grid item xs={2}><AppNavigation /></Grid>
     <Grid item xs>
       <Container>
         <Grid container direction={'row'} spacing={1}>
           <Grid item>
             <Card>
-              <CardHeader title='Juwelo Colors'/>
+              <CardHeader title='Juwelo Colors' />
               <CardContent>
                 <Grid container>
                   {colors.map((color, index) => <React.Fragment key={'color_' + index}>
@@ -40,11 +39,11 @@ const Colors = () => {
           </Grid>
           <Grid item xs>
             <Card>
-              <CardHeader title='Color Usage'/>
+              <CardHeader title='Color Usage' />
               <CardContent>
                 <CodeBox>
-                  <Typography style={{color: definition.palette.rubin.main}}>{`<Typography style={{color: definition.palette.rubin.main}}>rubin.main</Typography>`}</Typography>
-                  <Typography style={{color: definition.palette.citrin.main}}>{`<Typography style={{color: definition.palette.citrin.main}}>citrin.main</Typography>`}</Typography>
+                  <Typography style={{ color: rubin.main }}>{`<Typography style={{color: rubin.main}}>rubin.main</Typography>`}</Typography>
+                  <Typography style={{ color: citrin.main }}>{`<Typography style={{color: citrin.main}}>citrin.main</Typography>`}</Typography>
                 </CodeBox>
                 <CodeBox>
                   <Box marginTop={1}>
@@ -53,7 +52,7 @@ const Colors = () => {
                     <Box pl={2} component={Typography}>{`color: definition.palette.quarz.dark`}</Box>
                     <Box>{` }));`}</Box>
                     <Box component={Typography}>{`const colorStyle = useColorStyle()`}</Box>
-                    <Typography className={colorStyle.TestClass}>{`<Typography className={colorStyle.TestClass}>quarz.dark</Typography>`}</Typography>
+                    <Typography sx={sx.TestClass}>{`<Typography className={colorStyle.TestClass}>quarz.dark</Typography>`}</Typography>
                   </Box>
                 </CodeBox>
               </CardContent>

@@ -24,38 +24,37 @@ import LoremIpsumText from 'Component/LoremIpsumText';
 import CodeBox from 'Component/CodeBox';
 import { ButtonProgress } from '@elumeo/jfs-core/build/Component/Button';
 import TextFieldClearButton from '@elumeo/jfs-core/build/Component/TextFieldClearButton';
+import definition from '@elumeo/jfs-core/build/Component/App/Stateless/Style/Theme/Definition';
 
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      alignItems: 'center'
-    },
-    wrapper: {
-      margin: definition.spacing(1),
-      position: 'relative'
-    },
-    fabProgress: {
-      color: definition.palette.success.main,
-      position: 'absolute',
-      top: -6,
-      left: -6,
-      zIndex: 1
-    },
-    buttonProgress: {
-      color: definition.palette.primary.main,
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      marginTop: -12,
-      marginLeft: -12
-    },
-    popoverTypography: { padding: definition.spacing(2) }
-  })
-);
+const sxs = {
+  root: {
+    display: 'flex',
+    alignItems: 'center'
+  },
+  wrapper: {
+    margin: definition.spacing(1),
+    position: 'relative'
+  },
+  fabProgress: {
+    color: definition.palette.success.main,
+    position: 'absolute',
+    top: -6,
+    left: -6,
+    zIndex: 1
+  },
+  buttonProgress: {
+    color: definition.palette.primary.main,
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12
+  },
+  popoverTypography: { padding: definition.spacing(2) }
+}
 
 const Dialogs = () => {
-  const styles = useStyles();
+  // const styles = useStyles();
   const [basicOpen, setBasicOpen] = React.useState(false);
   const [formOpen, setFormOpen] = React.useState(false);
   const [formValue, setFormValue] = React.useState('');
@@ -190,8 +189,8 @@ const Dialogs = () => {
                     horizontal: 'center'
                   }}
                 >
-                  <Typography className={styles.popoverTypography}>The content of the <Link target='__blank'
-                                                                                            href='https://material-ui.com/components/popover/#popover'>Popover</Link>.</Typography>
+                  <Typography sx={sxs.popoverTypography}>The content of the <Link target='__blank'
+                    href='https://material-ui.com/components/popover/#popover'>Popover</Link>.</Typography>
                 </Popover>
               </CardContent>
             </Card>
@@ -199,7 +198,7 @@ const Dialogs = () => {
           <Grid item xs>
             <Card>
               <CardHeader title={'Tooltips'}
-                          subheader={'We decided to change the default font size for tooltips to the font size of typography variant "body2". This is implemented directly in the core theme.'} />
+                subheader={'We decided to change the default font size for tooltips to the font size of typography variant "body2". This is implemented directly in the core theme.'} />
               <CardContent>
                 <Grid container spacing={1} alignItems={'center'}>
                   <Grid item>

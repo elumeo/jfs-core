@@ -1,5 +1,6 @@
 // import React, { memo, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 export { default } from './SelectClearButton';
+export type { SelectProps } from './SelectClearButton';
 // import {
 //   Box, Checkbox, ChipProps, CircularProgress, FormControl, FormControlProps, IconProps, InputLabel, MenuItem, Select, SxProps, TextFieldProps
 // } from '@mui/material';

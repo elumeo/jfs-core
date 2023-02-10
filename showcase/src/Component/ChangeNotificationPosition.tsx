@@ -1,17 +1,18 @@
 import * as React from 'react';
 import useSelector from 'Core/Store/useSelector';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, SelectProps } from '@mui/material';
 
-import useActions from 'Core/Store/useActions';
 import { NotificationPosition } from 'Core/Types/Notification';
+import { useDispatch } from 'react-redux';
+import { configLoadedAction } from '@elumeo/jfs-core/build/Store/Action';
 
 const ChangeNotificationPosition: React.FC =
   () => {
     const config = useSelector(state => state.Core.Configuration.config)
+    const dispatch = useDispatch()
     const position: NotificationPosition = config?.NotificationPosition || 'bottomRight';
-    const { configLoadedAction } = useActions();
-    const onChange = React.useCallback(event => {
-      configLoadedAction({ config: { ...config, NotificationPosition: event.target.value as NotificationPosition } })
+    const onChange: SelectProps['onChange']= React.useCallback(event => {
+      dispatch(configLoadedAction({ config: { ...config, NotificationPosition: event.target.value as NotificationPosition } }))
     }, [config])
     return (
       <FormControl>

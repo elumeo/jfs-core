@@ -7,7 +7,7 @@ export type State = {
 declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
     description: string;
     state: unknown;
-}> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+}> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
     allowRobotLogin?: boolean;
     packageJson: Record<string, unknown>;
     ForceHTTPS?: boolean;
@@ -26,7 +26,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
     handlers: Record<"notification/ADD" | "notification/REMOVE" | "notification/REMOVE_GROUP" | "notification/REMOVE_ALL" | "notification/SET_IS_HISTORY_OPEN", (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
         description: string;
         state: unknown;
-    }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+    }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
         allowRobotLogin?: boolean;
         packageJson: Record<string, unknown>;
         ForceHTTPS?: boolean;
@@ -45,7 +45,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
     handleAction: <TActionCreator extends (...args: any[]) => TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
         description: string;
         state: unknown;
-    }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+    }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
         allowRobotLogin?: boolean;
         packageJson: Record<string, unknown>;
         ForceHTTPS?: boolean;
@@ -63,7 +63,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
     }> | TA.EmptyAction<"region/GET_FAILED"> | TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast> | TA.EmptyAction<"toast/DELETE"> | TA.PayloadAction<"websocket/ADD_NAMESPACE", string> | TA.PayloadAction<"websocket/CONNECT_REQUEST", string> | TA.PayloadAction<"websocket/CONNECT_SUCCESS", string> | TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError> | TA.PayloadAction<"websocket/PREPARE_RECONNECT", string> | TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string> | TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string> | TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>> | TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection> | TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection> | TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection> | TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>> | TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>> | TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, THandledAction extends ReturnType<TActionCreator>, TOutputAction extends Exclude<TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
         description: string;
         state: unknown;
-    }>, THandledAction> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, THandledAction> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, THandledAction> | Exclude<TA.PayloadAction<"app/INITIALZE", {
+    }>, THandledAction> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, THandledAction> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, THandledAction> | Exclude<TA.PayloadAction<"app/INITIALZE", {
         allowRobotLogin?: boolean;
         packageJson: Record<string, unknown>;
         ForceHTTPS?: boolean;
@@ -81,7 +81,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
     }>, THandledAction> | Exclude<TA.EmptyAction<"region/GET_FAILED">, THandledAction> | Exclude<TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast>, THandledAction> | Exclude<TA.EmptyAction<"toast/DELETE">, THandledAction> | Exclude<TA.PayloadAction<"websocket/ADD_NAMESPACE", string>, THandledAction> | Exclude<TA.PayloadAction<"websocket/CONNECT_REQUEST", string>, THandledAction> | Exclude<TA.PayloadAction<"websocket/CONNECT_SUCCESS", string>, THandledAction> | Exclude<TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError>, THandledAction> | Exclude<TA.PayloadAction<"websocket/PREPARE_RECONNECT", string>, THandledAction> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string>, THandledAction> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string>, THandledAction> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, THandledAction> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection>, THandledAction> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection>, THandledAction> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection>, THandledAction> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, THandledAction> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>>, THandledAction> | Exclude<TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, THandledAction>>(singleOrMultipleCreatorsAndTypes: TActionCreator | TActionCreator[], reducer: (state: State, action: THandledAction) => State) => [TOutputAction] extends [TA.Action<string>] ? TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
         description: string;
         state: unknown;
-    }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+    }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
         allowRobotLogin?: boolean;
         packageJson: Record<string, unknown>;
         ForceHTTPS?: boolean;
@@ -100,7 +100,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
         handlers: Record<(Exclude<TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
             description: string;
             state: unknown;
-        }>, TOutputAction> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction> | Exclude<TA.PayloadAction<"app/INITIALZE", {
+        }>, TOutputAction> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction> | Exclude<TA.PayloadAction<"app/INITIALZE", {
             allowRobotLogin?: boolean;
             packageJson: Record<string, unknown>;
             ForceHTTPS?: boolean;
@@ -118,7 +118,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
         }>, TOutputAction> | Exclude<TA.EmptyAction<"region/GET_FAILED">, TOutputAction> | Exclude<TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast>, TOutputAction> | Exclude<TA.EmptyAction<"toast/DELETE">, TOutputAction> | Exclude<TA.PayloadAction<"websocket/ADD_NAMESPACE", string>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/CONNECT_REQUEST", string>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/CONNECT_SUCCESS", string>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/PREPARE_RECONNECT", string>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction> | Exclude<TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, TOutputAction>)["type"], (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
             description: string;
             state: unknown;
-        }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+        }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
             allowRobotLogin?: boolean;
             packageJson: Record<string, unknown>;
             ForceHTTPS?: boolean;
@@ -137,7 +137,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
         handleAction: <TActionCreator_1 extends (...args: any[]) => TOutputAction, THandledAction_1 extends ReturnType<TActionCreator_1>, TOutputAction_1 extends Exclude<TOutputAction, THandledAction_1>>(singleOrMultipleCreatorsAndTypes: TActionCreator_1 | TActionCreator_1[], reducer: (state: State, action: THandledAction_1) => State) => [TOutputAction_1] extends [TA.Action<string>] ? TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
             description: string;
             state: unknown;
-        }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+        }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
             allowRobotLogin?: boolean;
             packageJson: Record<string, unknown>;
             ForceHTTPS?: boolean;
@@ -156,7 +156,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
             handlers: Record<(Exclude<TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                 description: string;
                 state: unknown;
-            }>, TOutputAction_1> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_1> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_1> | Exclude<TA.PayloadAction<"app/INITIALZE", {
+            }>, TOutputAction_1> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_1> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_1> | Exclude<TA.PayloadAction<"app/INITIALZE", {
                 allowRobotLogin?: boolean;
                 packageJson: Record<string, unknown>;
                 ForceHTTPS?: boolean;
@@ -174,7 +174,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
             }>, TOutputAction_1> | Exclude<TA.EmptyAction<"region/GET_FAILED">, TOutputAction_1> | Exclude<TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast>, TOutputAction_1> | Exclude<TA.EmptyAction<"toast/DELETE">, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/ADD_NAMESPACE", string>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/CONNECT_REQUEST", string>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/CONNECT_SUCCESS", string>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/PREPARE_RECONNECT", string>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_1> | Exclude<TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, TOutputAction_1>)["type"], (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                 description: string;
                 state: unknown;
-            }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+            }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                 allowRobotLogin?: boolean;
                 packageJson: Record<string, unknown>;
                 ForceHTTPS?: boolean;
@@ -193,7 +193,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
             handleAction: <TActionCreator_2 extends (...args: any[]) => TOutputAction_1, THandledAction_2 extends ReturnType<TActionCreator_2>, TOutputAction_2 extends Exclude<TOutputAction_1, THandledAction_2>>(singleOrMultipleCreatorsAndTypes: TActionCreator_2 | TActionCreator_2[], reducer: (state: State, action: THandledAction_2) => State) => [TOutputAction_2] extends [TA.Action<string>] ? TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                 description: string;
                 state: unknown;
-            }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+            }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                 allowRobotLogin?: boolean;
                 packageJson: Record<string, unknown>;
                 ForceHTTPS?: boolean;
@@ -212,7 +212,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                 handlers: Record<(Exclude<TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                     description: string;
                     state: unknown;
-                }>, TOutputAction_2> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_2> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_2> | Exclude<TA.PayloadAction<"app/INITIALZE", {
+                }>, TOutputAction_2> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_2> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_2> | Exclude<TA.PayloadAction<"app/INITIALZE", {
                     allowRobotLogin?: boolean;
                     packageJson: Record<string, unknown>;
                     ForceHTTPS?: boolean;
@@ -230,7 +230,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                 }>, TOutputAction_2> | Exclude<TA.EmptyAction<"region/GET_FAILED">, TOutputAction_2> | Exclude<TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast>, TOutputAction_2> | Exclude<TA.EmptyAction<"toast/DELETE">, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/ADD_NAMESPACE", string>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/CONNECT_REQUEST", string>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/CONNECT_SUCCESS", string>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/PREPARE_RECONNECT", string>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_2> | Exclude<TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, TOutputAction_2>)["type"], (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                     description: string;
                     state: unknown;
-                }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                     allowRobotLogin?: boolean;
                     packageJson: Record<string, unknown>;
                     ForceHTTPS?: boolean;
@@ -249,7 +249,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                 handleAction: <TActionCreator_3 extends (...args: any[]) => TOutputAction_2, THandledAction_3 extends ReturnType<TActionCreator_3>, TOutputAction_3 extends Exclude<TOutputAction_2, THandledAction_3>>(singleOrMultipleCreatorsAndTypes: TActionCreator_3 | TActionCreator_3[], reducer: (state: State, action: THandledAction_3) => State) => [TOutputAction_3] extends [TA.Action<string>] ? TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                     description: string;
                     state: unknown;
-                }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                     allowRobotLogin?: boolean;
                     packageJson: Record<string, unknown>;
                     ForceHTTPS?: boolean;
@@ -268,7 +268,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                     handlers: Record<(Exclude<TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                         description: string;
                         state: unknown;
-                    }>, TOutputAction_3> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_3> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_3> | Exclude<TA.PayloadAction<"app/INITIALZE", {
+                    }>, TOutputAction_3> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_3> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_3> | Exclude<TA.PayloadAction<"app/INITIALZE", {
                         allowRobotLogin?: boolean;
                         packageJson: Record<string, unknown>;
                         ForceHTTPS?: boolean;
@@ -286,7 +286,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                     }>, TOutputAction_3> | Exclude<TA.EmptyAction<"region/GET_FAILED">, TOutputAction_3> | Exclude<TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast>, TOutputAction_3> | Exclude<TA.EmptyAction<"toast/DELETE">, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/ADD_NAMESPACE", string>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/CONNECT_REQUEST", string>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/CONNECT_SUCCESS", string>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/PREPARE_RECONNECT", string>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_3> | Exclude<TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, TOutputAction_3>)["type"], (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                         description: string;
                         state: unknown;
-                    }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                    }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                         allowRobotLogin?: boolean;
                         packageJson: Record<string, unknown>;
                         ForceHTTPS?: boolean;
@@ -305,7 +305,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                     handleAction: <TActionCreator_4 extends (...args: any[]) => TOutputAction_3, THandledAction_4 extends ReturnType<TActionCreator_4>, TOutputAction_4 extends Exclude<TOutputAction_3, THandledAction_4>>(singleOrMultipleCreatorsAndTypes: TActionCreator_4 | TActionCreator_4[], reducer: (state: State, action: THandledAction_4) => State) => [TOutputAction_4] extends [TA.Action<string>] ? TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                         description: string;
                         state: unknown;
-                    }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                    }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                         allowRobotLogin?: boolean;
                         packageJson: Record<string, unknown>;
                         ForceHTTPS?: boolean;
@@ -324,7 +324,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                         handlers: Record<(Exclude<TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                             description: string;
                             state: unknown;
-                        }>, TOutputAction_4> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_4> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_4> | Exclude<TA.PayloadAction<"app/INITIALZE", {
+                        }>, TOutputAction_4> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_4> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_4> | Exclude<TA.PayloadAction<"app/INITIALZE", {
                             allowRobotLogin?: boolean;
                             packageJson: Record<string, unknown>;
                             ForceHTTPS?: boolean;
@@ -342,7 +342,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                         }>, TOutputAction_4> | Exclude<TA.EmptyAction<"region/GET_FAILED">, TOutputAction_4> | Exclude<TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast>, TOutputAction_4> | Exclude<TA.EmptyAction<"toast/DELETE">, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/ADD_NAMESPACE", string>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/CONNECT_REQUEST", string>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/CONNECT_SUCCESS", string>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/PREPARE_RECONNECT", string>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_4> | Exclude<TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, TOutputAction_4>)["type"], (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                             description: string;
                             state: unknown;
-                        }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                        }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                             allowRobotLogin?: boolean;
                             packageJson: Record<string, unknown>;
                             ForceHTTPS?: boolean;
@@ -361,7 +361,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                         handleAction: <TActionCreator_5 extends (...args: any[]) => TOutputAction_4, THandledAction_5 extends ReturnType<TActionCreator_5>, TOutputAction_5 extends Exclude<TOutputAction_4, THandledAction_5>>(singleOrMultipleCreatorsAndTypes: TActionCreator_5 | TActionCreator_5[], reducer: (state: State, action: THandledAction_5) => State) => [TOutputAction_5] extends [TA.Action<string>] ? TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                             description: string;
                             state: unknown;
-                        }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                        }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                             allowRobotLogin?: boolean;
                             packageJson: Record<string, unknown>;
                             ForceHTTPS?: boolean;
@@ -380,7 +380,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                             handlers: Record<(Exclude<TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                 description: string;
                                 state: unknown;
-                            }>, TOutputAction_5> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_5> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_5> | Exclude<TA.PayloadAction<"app/INITIALZE", {
+                            }>, TOutputAction_5> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_5> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_5> | Exclude<TA.PayloadAction<"app/INITIALZE", {
                                 allowRobotLogin?: boolean;
                                 packageJson: Record<string, unknown>;
                                 ForceHTTPS?: boolean;
@@ -398,7 +398,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                             }>, TOutputAction_5> | Exclude<TA.EmptyAction<"region/GET_FAILED">, TOutputAction_5> | Exclude<TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast>, TOutputAction_5> | Exclude<TA.EmptyAction<"toast/DELETE">, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/ADD_NAMESPACE", string>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/CONNECT_REQUEST", string>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/CONNECT_SUCCESS", string>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/PREPARE_RECONNECT", string>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_5> | Exclude<TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, TOutputAction_5>)["type"], (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                 description: string;
                                 state: unknown;
-                            }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                            }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                 allowRobotLogin?: boolean;
                                 packageJson: Record<string, unknown>;
                                 ForceHTTPS?: boolean;
@@ -417,7 +417,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                             handleAction: <TActionCreator_6 extends (...args: any[]) => TOutputAction_5, THandledAction_6 extends ReturnType<TActionCreator_6>, TOutputAction_6 extends Exclude<TOutputAction_5, THandledAction_6>>(singleOrMultipleCreatorsAndTypes: TActionCreator_6 | TActionCreator_6[], reducer: (state: State, action: THandledAction_6) => State) => [TOutputAction_6] extends [TA.Action<string>] ? TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                 description: string;
                                 state: unknown;
-                            }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                            }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                 allowRobotLogin?: boolean;
                                 packageJson: Record<string, unknown>;
                                 ForceHTTPS?: boolean;
@@ -436,7 +436,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                 handlers: Record<(Exclude<TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                     description: string;
                                     state: unknown;
-                                }>, TOutputAction_6> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_6> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_6> | Exclude<TA.PayloadAction<"app/INITIALZE", {
+                                }>, TOutputAction_6> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_6> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_6> | Exclude<TA.PayloadAction<"app/INITIALZE", {
                                     allowRobotLogin?: boolean;
                                     packageJson: Record<string, unknown>;
                                     ForceHTTPS?: boolean;
@@ -454,7 +454,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                 }>, TOutputAction_6> | Exclude<TA.EmptyAction<"region/GET_FAILED">, TOutputAction_6> | Exclude<TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast>, TOutputAction_6> | Exclude<TA.EmptyAction<"toast/DELETE">, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/ADD_NAMESPACE", string>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/CONNECT_REQUEST", string>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/CONNECT_SUCCESS", string>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/PREPARE_RECONNECT", string>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_6> | Exclude<TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, TOutputAction_6>)["type"], (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                     description: string;
                                     state: unknown;
-                                }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                     allowRobotLogin?: boolean;
                                     packageJson: Record<string, unknown>;
                                     ForceHTTPS?: boolean;
@@ -473,7 +473,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                 handleAction: <TActionCreator_7 extends (...args: any[]) => TOutputAction_6, THandledAction_7 extends ReturnType<TActionCreator_7>, TOutputAction_7 extends Exclude<TOutputAction_6, THandledAction_7>>(singleOrMultipleCreatorsAndTypes: TActionCreator_7 | TActionCreator_7[], reducer: (state: State, action: THandledAction_7) => State) => [TOutputAction_7] extends [TA.Action<string>] ? TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                     description: string;
                                     state: unknown;
-                                }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                     allowRobotLogin?: boolean;
                                     packageJson: Record<string, unknown>;
                                     ForceHTTPS?: boolean;
@@ -492,7 +492,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                     handlers: Record<(Exclude<TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                         description: string;
                                         state: unknown;
-                                    }>, TOutputAction_7> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_7> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_7> | Exclude<TA.PayloadAction<"app/INITIALZE", {
+                                    }>, TOutputAction_7> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_7> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_7> | Exclude<TA.PayloadAction<"app/INITIALZE", {
                                         allowRobotLogin?: boolean;
                                         packageJson: Record<string, unknown>;
                                         ForceHTTPS?: boolean;
@@ -510,7 +510,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                     }>, TOutputAction_7> | Exclude<TA.EmptyAction<"region/GET_FAILED">, TOutputAction_7> | Exclude<TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast>, TOutputAction_7> | Exclude<TA.EmptyAction<"toast/DELETE">, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/ADD_NAMESPACE", string>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/CONNECT_REQUEST", string>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/CONNECT_SUCCESS", string>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/PREPARE_RECONNECT", string>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_7> | Exclude<TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, TOutputAction_7>)["type"], (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                         description: string;
                                         state: unknown;
-                                    }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                    }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                         allowRobotLogin?: boolean;
                                         packageJson: Record<string, unknown>;
                                         ForceHTTPS?: boolean;
@@ -529,7 +529,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                     handleAction: <TActionCreator_8 extends (...args: any[]) => TOutputAction_7, THandledAction_8 extends ReturnType<TActionCreator_8>, TOutputAction_8 extends Exclude<TOutputAction_7, THandledAction_8>>(singleOrMultipleCreatorsAndTypes: TActionCreator_8 | TActionCreator_8[], reducer: (state: State, action: THandledAction_8) => State) => [TOutputAction_8] extends [TA.Action<string>] ? TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                         description: string;
                                         state: unknown;
-                                    }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                    }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                         allowRobotLogin?: boolean;
                                         packageJson: Record<string, unknown>;
                                         ForceHTTPS?: boolean;
@@ -548,7 +548,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                         handlers: Record<(Exclude<TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                             description: string;
                                             state: unknown;
-                                        }>, TOutputAction_8> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_8> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_8> | Exclude<TA.PayloadAction<"app/INITIALZE", {
+                                        }>, TOutputAction_8> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_8> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_8> | Exclude<TA.PayloadAction<"app/INITIALZE", {
                                             allowRobotLogin?: boolean;
                                             packageJson: Record<string, unknown>;
                                             ForceHTTPS?: boolean;
@@ -566,7 +566,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                         }>, TOutputAction_8> | Exclude<TA.EmptyAction<"region/GET_FAILED">, TOutputAction_8> | Exclude<TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast>, TOutputAction_8> | Exclude<TA.EmptyAction<"toast/DELETE">, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/ADD_NAMESPACE", string>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/CONNECT_REQUEST", string>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/CONNECT_SUCCESS", string>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/PREPARE_RECONNECT", string>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_8> | Exclude<TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, TOutputAction_8>)["type"], (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                             description: string;
                                             state: unknown;
-                                        }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                        }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                             allowRobotLogin?: boolean;
                                             packageJson: Record<string, unknown>;
                                             ForceHTTPS?: boolean;
@@ -585,7 +585,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                         handleAction: <TActionCreator_9 extends (...args: any[]) => TOutputAction_8, THandledAction_9 extends ReturnType<TActionCreator_9>, TOutputAction_9 extends Exclude<TOutputAction_8, THandledAction_9>>(singleOrMultipleCreatorsAndTypes: TActionCreator_9 | TActionCreator_9[], reducer: (state: State, action: THandledAction_9) => State) => [TOutputAction_9] extends [TA.Action<string>] ? TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                             description: string;
                                             state: unknown;
-                                        }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                        }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                             allowRobotLogin?: boolean;
                                             packageJson: Record<string, unknown>;
                                             ForceHTTPS?: boolean;
@@ -604,7 +604,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                             handlers: Record<(Exclude<TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                                 description: string;
                                                 state: unknown;
-                                            }>, TOutputAction_9> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_9> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_9> | Exclude<TA.PayloadAction<"app/INITIALZE", {
+                                            }>, TOutputAction_9> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_9> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_9> | Exclude<TA.PayloadAction<"app/INITIALZE", {
                                                 allowRobotLogin?: boolean;
                                                 packageJson: Record<string, unknown>;
                                                 ForceHTTPS?: boolean;
@@ -622,7 +622,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                             }>, TOutputAction_9> | Exclude<TA.EmptyAction<"region/GET_FAILED">, TOutputAction_9> | Exclude<TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast>, TOutputAction_9> | Exclude<TA.EmptyAction<"toast/DELETE">, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/ADD_NAMESPACE", string>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/CONNECT_REQUEST", string>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/CONNECT_SUCCESS", string>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/PREPARE_RECONNECT", string>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>>, TOutputAction_9> | Exclude<TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>, TOutputAction_9>)["type"], (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                                 description: string;
                                                 state: unknown;
-                                            }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                            }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                                 allowRobotLogin?: boolean;
                                                 packageJson: Record<string, unknown>;
                                                 ForceHTTPS?: boolean;
@@ -641,7 +641,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                             handleAction: <TActionCreator_10 extends (...args: any[]) => TOutputAction_9, THandledAction_10 extends ReturnType<TActionCreator_10>, TOutputAction_10 extends Exclude<TOutputAction_9, THandledAction_10>>(singleOrMultipleCreatorsAndTypes: TActionCreator_10 | TActionCreator_10[], reducer: (state: State, action: THandledAction_10) => State) => [TOutputAction_10] extends [TA.Action<string>] ? TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                                 description: string;
                                                 state: unknown;
-                                            }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                            }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                                 allowRobotLogin?: boolean;
                                                 packageJson: Record<string, unknown>;
                                                 ForceHTTPS?: boolean;
@@ -659,7 +659,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                             }> | TA.EmptyAction<"region/GET_FAILED"> | TA.PayloadAction<"toast/ADD", import("../../../Types/Toast").Toast> | TA.EmptyAction<"toast/DELETE"> | TA.PayloadAction<"websocket/ADD_NAMESPACE", string> | TA.PayloadAction<"websocket/CONNECT_REQUEST", string> | TA.PayloadAction<"websocket/CONNECT_SUCCESS", string> | TA.PayloadAction<"websocket/CONNECT_FAILED", import("../../../Types/WebSocket").IWebSocketError> | TA.PayloadAction<"websocket/PREPARE_RECONNECT", string> | TA.PayloadAction<"websocket/DISCONNECT_REQUEST", string> | TA.PayloadAction<"websocket/DISCONNECT_SUCCESS", string> | TA.PayloadAction<"websocket/JOIN_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>> | TA.PayloadAction<"websocket/JOIN_ROOM_LOADING", import("../../../Types/WebSocket").IWebSocketRoomConnection> | TA.PayloadAction<"websocket/JOIN_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoomConnection> | TA.PayloadAction<"websocket/JOIN_ROOM_FAILURE", import("../../../Types/WebSocket").IWebSocketRoomConnection> | TA.PayloadAction<"websocket/LEAVE_ROOM_REQUEST", import("../../../Types/WebSocket").IWebSocketRoom<string>> | TA.PayloadAction<"websocket/LEAVE_ROOM_SUCCESS", import("../../../Types/WebSocket").IWebSocketRoom<string>> | TA.PayloadAction<"websocket/UPDATE_ROOM", import("../../../API/JSC").default.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>> & any : TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                                 description: string;
                                                 state: unknown;
-                                            }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                            }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                                 allowRobotLogin?: boolean;
                                                 packageJson: Record<string, unknown>;
                                                 ForceHTTPS?: boolean;
@@ -678,7 +678,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                                 handlers: Record<"websocket/UPDATE_ROOM" | "app/INITIALZE" | "app/INITIALZED" | "config/LOAD" | "config/LOADED" | "config/LOAD_FAILED" | "CORE/DEBUGGER/register" | "CORE/DEBUGGER/log" | "CORE/DEBUGGer/mattermost/post" | "language/CHANGE" | "language/INITIALIZE" | "locale/SET_LOCALE" | "login/OPEN" | "login/CLOSE" | "login/CHECK" | "login/LOGGED_IN" | "login/LOGIN_FAILED" | "logout/OPEN" | "logout/CLOSE" | "logout/FINISHED" | "navigation/OPEN" | "navigation/CLOSE" | "notification/ADD" | "notification/REMOVE" | "notification/REMOVE_GROUP" | "notification/REMOVE_ALL" | "notification/ERROR_ADD" | "notification/SET_IS_HISTORY_OPEN" | "route/ENTER_AUTHORIZED" | "route/ENTER_UNAUTHORIZED" | "session/LOAD" | "route/CHECK" | "route/LOGOUT" | "route/AUTHORIZE" | "route/UNAUTHORIZE" | "settings/OPEN" | "settings/CLOSE" | "region/LOADED" | "region/GET_FAILED" | "toast/ADD" | "toast/DELETE" | "websocket/ADD_NAMESPACE" | "websocket/CONNECT_REQUEST" | "websocket/CONNECT_SUCCESS" | "websocket/CONNECT_FAILED" | "websocket/PREPARE_RECONNECT" | "websocket/DISCONNECT_REQUEST" | "websocket/DISCONNECT_SUCCESS" | "websocket/JOIN_ROOM_REQUEST" | "websocket/JOIN_ROOM_LOADING" | "websocket/JOIN_ROOM_SUCCESS" | "websocket/JOIN_ROOM_FAILURE" | "websocket/LEAVE_ROOM_REQUEST" | "websocket/LEAVE_ROOM_SUCCESS", (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                                     description: string;
                                                     state: unknown;
-                                                }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                                }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                                     allowRobotLogin?: boolean;
                                                     packageJson: Record<string, unknown>;
                                                     ForceHTTPS?: boolean;
@@ -698,7 +698,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                         } : TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                             description: string;
                                             state: unknown;
-                                        }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                        }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                             allowRobotLogin?: boolean;
                                             packageJson: Record<string, unknown>;
                                             ForceHTTPS?: boolean;
@@ -717,7 +717,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                             handlers: Record<"websocket/UPDATE_ROOM" | "app/INITIALZE" | "app/INITIALZED" | "config/LOAD" | "config/LOADED" | "config/LOAD_FAILED" | "CORE/DEBUGGER/register" | "CORE/DEBUGGER/log" | "CORE/DEBUGGer/mattermost/post" | "language/CHANGE" | "language/INITIALIZE" | "locale/SET_LOCALE" | "login/OPEN" | "login/CLOSE" | "login/CHECK" | "login/LOGGED_IN" | "login/LOGIN_FAILED" | "logout/OPEN" | "logout/CLOSE" | "logout/FINISHED" | "navigation/OPEN" | "navigation/CLOSE" | "notification/ADD" | "notification/REMOVE" | "notification/REMOVE_GROUP" | "notification/REMOVE_ALL" | "notification/ERROR_ADD" | "notification/SET_IS_HISTORY_OPEN" | "route/ENTER_AUTHORIZED" | "route/ENTER_UNAUTHORIZED" | "session/LOAD" | "route/CHECK" | "route/LOGOUT" | "route/AUTHORIZE" | "route/UNAUTHORIZE" | "settings/OPEN" | "settings/CLOSE" | "region/LOADED" | "region/GET_FAILED" | "toast/ADD" | "toast/DELETE" | "websocket/ADD_NAMESPACE" | "websocket/CONNECT_REQUEST" | "websocket/CONNECT_SUCCESS" | "websocket/CONNECT_FAILED" | "websocket/PREPARE_RECONNECT" | "websocket/DISCONNECT_REQUEST" | "websocket/DISCONNECT_SUCCESS" | "websocket/JOIN_ROOM_REQUEST" | "websocket/JOIN_ROOM_LOADING" | "websocket/JOIN_ROOM_SUCCESS" | "websocket/JOIN_ROOM_FAILURE" | "websocket/LEAVE_ROOM_REQUEST" | "websocket/LEAVE_ROOM_SUCCESS", (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                                 description: string;
                                                 state: unknown;
-                                            }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                            }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                                 allowRobotLogin?: boolean;
                                                 packageJson: Record<string, unknown>;
                                                 ForceHTTPS?: boolean;
@@ -737,7 +737,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                     } : TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                         description: string;
                                         state: unknown;
-                                    }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                    }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                         allowRobotLogin?: boolean;
                                         packageJson: Record<string, unknown>;
                                         ForceHTTPS?: boolean;
@@ -756,7 +756,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                         handlers: Record<"websocket/UPDATE_ROOM" | "app/INITIALZE" | "app/INITIALZED" | "config/LOAD" | "config/LOADED" | "config/LOAD_FAILED" | "CORE/DEBUGGER/register" | "CORE/DEBUGGER/log" | "CORE/DEBUGGer/mattermost/post" | "language/CHANGE" | "language/INITIALIZE" | "locale/SET_LOCALE" | "login/OPEN" | "login/CLOSE" | "login/CHECK" | "login/LOGGED_IN" | "login/LOGIN_FAILED" | "logout/OPEN" | "logout/CLOSE" | "logout/FINISHED" | "navigation/OPEN" | "navigation/CLOSE" | "notification/ADD" | "notification/REMOVE" | "notification/REMOVE_GROUP" | "notification/REMOVE_ALL" | "notification/ERROR_ADD" | "notification/SET_IS_HISTORY_OPEN" | "route/ENTER_AUTHORIZED" | "route/ENTER_UNAUTHORIZED" | "session/LOAD" | "route/CHECK" | "route/LOGOUT" | "route/AUTHORIZE" | "route/UNAUTHORIZE" | "settings/OPEN" | "settings/CLOSE" | "region/LOADED" | "region/GET_FAILED" | "toast/ADD" | "toast/DELETE" | "websocket/ADD_NAMESPACE" | "websocket/CONNECT_REQUEST" | "websocket/CONNECT_SUCCESS" | "websocket/CONNECT_FAILED" | "websocket/PREPARE_RECONNECT" | "websocket/DISCONNECT_REQUEST" | "websocket/DISCONNECT_SUCCESS" | "websocket/JOIN_ROOM_REQUEST" | "websocket/JOIN_ROOM_LOADING" | "websocket/JOIN_ROOM_SUCCESS" | "websocket/JOIN_ROOM_FAILURE" | "websocket/LEAVE_ROOM_REQUEST" | "websocket/LEAVE_ROOM_SUCCESS", (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                             description: string;
                                             state: unknown;
-                                        }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                        }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                             allowRobotLogin?: boolean;
                                             packageJson: Record<string, unknown>;
                                             ForceHTTPS?: boolean;
@@ -776,7 +776,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                 } : TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                     description: string;
                                     state: unknown;
-                                }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                     allowRobotLogin?: boolean;
                                     packageJson: Record<string, unknown>;
                                     ForceHTTPS?: boolean;
@@ -795,7 +795,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                     handlers: Record<"websocket/UPDATE_ROOM" | "app/INITIALZE" | "app/INITIALZED" | "config/LOAD" | "config/LOADED" | "config/LOAD_FAILED" | "CORE/DEBUGGER/register" | "CORE/DEBUGGER/log" | "CORE/DEBUGGer/mattermost/post" | "language/CHANGE" | "language/INITIALIZE" | "locale/SET_LOCALE" | "login/OPEN" | "login/CLOSE" | "login/CHECK" | "login/LOGGED_IN" | "login/LOGIN_FAILED" | "logout/OPEN" | "logout/CLOSE" | "logout/FINISHED" | "navigation/OPEN" | "navigation/CLOSE" | "notification/ADD" | "notification/REMOVE" | "notification/REMOVE_GROUP" | "notification/REMOVE_ALL" | "notification/ERROR_ADD" | "notification/SET_IS_HISTORY_OPEN" | "route/ENTER_AUTHORIZED" | "route/ENTER_UNAUTHORIZED" | "session/LOAD" | "route/CHECK" | "route/LOGOUT" | "route/AUTHORIZE" | "route/UNAUTHORIZE" | "settings/OPEN" | "settings/CLOSE" | "region/LOADED" | "region/GET_FAILED" | "toast/ADD" | "toast/DELETE" | "websocket/ADD_NAMESPACE" | "websocket/CONNECT_REQUEST" | "websocket/CONNECT_SUCCESS" | "websocket/CONNECT_FAILED" | "websocket/PREPARE_RECONNECT" | "websocket/DISCONNECT_REQUEST" | "websocket/DISCONNECT_SUCCESS" | "websocket/JOIN_ROOM_REQUEST" | "websocket/JOIN_ROOM_LOADING" | "websocket/JOIN_ROOM_SUCCESS" | "websocket/JOIN_ROOM_FAILURE" | "websocket/LEAVE_ROOM_REQUEST" | "websocket/LEAVE_ROOM_SUCCESS", (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                         description: string;
                                         state: unknown;
-                                    }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                    }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                         allowRobotLogin?: boolean;
                                         packageJson: Record<string, unknown>;
                                         ForceHTTPS?: boolean;
@@ -815,7 +815,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                             } : TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                 description: string;
                                 state: unknown;
-                            }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                            }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                 allowRobotLogin?: boolean;
                                 packageJson: Record<string, unknown>;
                                 ForceHTTPS?: boolean;
@@ -834,7 +834,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                                 handlers: Record<"websocket/UPDATE_ROOM" | "app/INITIALZE" | "app/INITIALZED" | "config/LOAD" | "config/LOADED" | "config/LOAD_FAILED" | "CORE/DEBUGGER/register" | "CORE/DEBUGGER/log" | "CORE/DEBUGGer/mattermost/post" | "language/CHANGE" | "language/INITIALIZE" | "locale/SET_LOCALE" | "login/OPEN" | "login/CLOSE" | "login/CHECK" | "login/LOGGED_IN" | "login/LOGIN_FAILED" | "logout/OPEN" | "logout/CLOSE" | "logout/FINISHED" | "navigation/OPEN" | "navigation/CLOSE" | "notification/ADD" | "notification/REMOVE" | "notification/REMOVE_GROUP" | "notification/REMOVE_ALL" | "notification/ERROR_ADD" | "notification/SET_IS_HISTORY_OPEN" | "route/ENTER_AUTHORIZED" | "route/ENTER_UNAUTHORIZED" | "session/LOAD" | "route/CHECK" | "route/LOGOUT" | "route/AUTHORIZE" | "route/UNAUTHORIZE" | "settings/OPEN" | "settings/CLOSE" | "region/LOADED" | "region/GET_FAILED" | "toast/ADD" | "toast/DELETE" | "websocket/ADD_NAMESPACE" | "websocket/CONNECT_REQUEST" | "websocket/CONNECT_SUCCESS" | "websocket/CONNECT_FAILED" | "websocket/PREPARE_RECONNECT" | "websocket/DISCONNECT_REQUEST" | "websocket/DISCONNECT_SUCCESS" | "websocket/JOIN_ROOM_REQUEST" | "websocket/JOIN_ROOM_LOADING" | "websocket/JOIN_ROOM_SUCCESS" | "websocket/JOIN_ROOM_FAILURE" | "websocket/LEAVE_ROOM_REQUEST" | "websocket/LEAVE_ROOM_SUCCESS", (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                     description: string;
                                     state: unknown;
-                                }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                                }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                     allowRobotLogin?: boolean;
                                     packageJson: Record<string, unknown>;
                                     ForceHTTPS?: boolean;
@@ -854,7 +854,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                         } : TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                             description: string;
                             state: unknown;
-                        }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                        }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                             allowRobotLogin?: boolean;
                             packageJson: Record<string, unknown>;
                             ForceHTTPS?: boolean;
@@ -873,7 +873,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                             handlers: Record<"websocket/UPDATE_ROOM" | "app/INITIALZE" | "app/INITIALZED" | "config/LOAD" | "config/LOADED" | "config/LOAD_FAILED" | "CORE/DEBUGGER/register" | "CORE/DEBUGGER/log" | "CORE/DEBUGGer/mattermost/post" | "language/CHANGE" | "language/INITIALIZE" | "locale/SET_LOCALE" | "login/OPEN" | "login/CLOSE" | "login/CHECK" | "login/LOGGED_IN" | "login/LOGIN_FAILED" | "logout/OPEN" | "logout/CLOSE" | "logout/FINISHED" | "navigation/OPEN" | "navigation/CLOSE" | "notification/ADD" | "notification/REMOVE" | "notification/REMOVE_GROUP" | "notification/REMOVE_ALL" | "notification/ERROR_ADD" | "notification/SET_IS_HISTORY_OPEN" | "route/ENTER_AUTHORIZED" | "route/ENTER_UNAUTHORIZED" | "session/LOAD" | "route/CHECK" | "route/LOGOUT" | "route/AUTHORIZE" | "route/UNAUTHORIZE" | "settings/OPEN" | "settings/CLOSE" | "region/LOADED" | "region/GET_FAILED" | "toast/ADD" | "toast/DELETE" | "websocket/ADD_NAMESPACE" | "websocket/CONNECT_REQUEST" | "websocket/CONNECT_SUCCESS" | "websocket/CONNECT_FAILED" | "websocket/PREPARE_RECONNECT" | "websocket/DISCONNECT_REQUEST" | "websocket/DISCONNECT_SUCCESS" | "websocket/JOIN_ROOM_REQUEST" | "websocket/JOIN_ROOM_LOADING" | "websocket/JOIN_ROOM_SUCCESS" | "websocket/JOIN_ROOM_FAILURE" | "websocket/LEAVE_ROOM_REQUEST" | "websocket/LEAVE_ROOM_SUCCESS", (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                                 description: string;
                                 state: unknown;
-                            }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                            }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                                 allowRobotLogin?: boolean;
                                 packageJson: Record<string, unknown>;
                                 ForceHTTPS?: boolean;
@@ -893,7 +893,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                     } : TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                         description: string;
                         state: unknown;
-                    }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                    }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                         allowRobotLogin?: boolean;
                         packageJson: Record<string, unknown>;
                         ForceHTTPS?: boolean;
@@ -912,7 +912,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                         handlers: Record<"websocket/UPDATE_ROOM" | "app/INITIALZE" | "app/INITIALZED" | "config/LOAD" | "config/LOADED" | "config/LOAD_FAILED" | "CORE/DEBUGGER/register" | "CORE/DEBUGGER/log" | "CORE/DEBUGGer/mattermost/post" | "language/CHANGE" | "language/INITIALIZE" | "locale/SET_LOCALE" | "login/OPEN" | "login/CLOSE" | "login/CHECK" | "login/LOGGED_IN" | "login/LOGIN_FAILED" | "logout/OPEN" | "logout/CLOSE" | "logout/FINISHED" | "navigation/OPEN" | "navigation/CLOSE" | "notification/ADD" | "notification/REMOVE" | "notification/REMOVE_GROUP" | "notification/REMOVE_ALL" | "notification/ERROR_ADD" | "notification/SET_IS_HISTORY_OPEN" | "route/ENTER_AUTHORIZED" | "route/ENTER_UNAUTHORIZED" | "session/LOAD" | "route/CHECK" | "route/LOGOUT" | "route/AUTHORIZE" | "route/UNAUTHORIZE" | "settings/OPEN" | "settings/CLOSE" | "region/LOADED" | "region/GET_FAILED" | "toast/ADD" | "toast/DELETE" | "websocket/ADD_NAMESPACE" | "websocket/CONNECT_REQUEST" | "websocket/CONNECT_SUCCESS" | "websocket/CONNECT_FAILED" | "websocket/PREPARE_RECONNECT" | "websocket/DISCONNECT_REQUEST" | "websocket/DISCONNECT_SUCCESS" | "websocket/JOIN_ROOM_REQUEST" | "websocket/JOIN_ROOM_LOADING" | "websocket/JOIN_ROOM_SUCCESS" | "websocket/JOIN_ROOM_FAILURE" | "websocket/LEAVE_ROOM_REQUEST" | "websocket/LEAVE_ROOM_SUCCESS", (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                             description: string;
                             state: unknown;
-                        }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                        }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                             allowRobotLogin?: boolean;
                             packageJson: Record<string, unknown>;
                             ForceHTTPS?: boolean;
@@ -932,7 +932,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                 } : TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                     description: string;
                     state: unknown;
-                }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                     allowRobotLogin?: boolean;
                     packageJson: Record<string, unknown>;
                     ForceHTTPS?: boolean;
@@ -951,7 +951,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                     handlers: Record<"websocket/UPDATE_ROOM" | "app/INITIALZE" | "app/INITIALZED" | "config/LOAD" | "config/LOADED" | "config/LOAD_FAILED" | "CORE/DEBUGGER/register" | "CORE/DEBUGGER/log" | "CORE/DEBUGGer/mattermost/post" | "language/CHANGE" | "language/INITIALIZE" | "locale/SET_LOCALE" | "login/OPEN" | "login/CLOSE" | "login/CHECK" | "login/LOGGED_IN" | "login/LOGIN_FAILED" | "logout/OPEN" | "logout/CLOSE" | "logout/FINISHED" | "navigation/OPEN" | "navigation/CLOSE" | "notification/ADD" | "notification/REMOVE" | "notification/REMOVE_GROUP" | "notification/REMOVE_ALL" | "notification/ERROR_ADD" | "notification/SET_IS_HISTORY_OPEN" | "route/ENTER_AUTHORIZED" | "route/ENTER_UNAUTHORIZED" | "session/LOAD" | "route/CHECK" | "route/LOGOUT" | "route/AUTHORIZE" | "route/UNAUTHORIZE" | "settings/OPEN" | "settings/CLOSE" | "region/LOADED" | "region/GET_FAILED" | "toast/ADD" | "toast/DELETE" | "websocket/ADD_NAMESPACE" | "websocket/CONNECT_REQUEST" | "websocket/CONNECT_SUCCESS" | "websocket/CONNECT_FAILED" | "websocket/PREPARE_RECONNECT" | "websocket/DISCONNECT_REQUEST" | "websocket/DISCONNECT_SUCCESS" | "websocket/JOIN_ROOM_REQUEST" | "websocket/JOIN_ROOM_LOADING" | "websocket/JOIN_ROOM_SUCCESS" | "websocket/JOIN_ROOM_FAILURE" | "websocket/LEAVE_ROOM_REQUEST" | "websocket/LEAVE_ROOM_SUCCESS", (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                         description: string;
                         state: unknown;
-                    }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                    }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                         allowRobotLogin?: boolean;
                         packageJson: Record<string, unknown>;
                         ForceHTTPS?: boolean;
@@ -971,7 +971,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
             } : TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                 description: string;
                 state: unknown;
-            }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+            }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                 allowRobotLogin?: boolean;
                 packageJson: Record<string, unknown>;
                 ForceHTTPS?: boolean;
@@ -990,7 +990,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
                 handlers: Record<"websocket/UPDATE_ROOM" | "app/INITIALZE" | "app/INITIALZED" | "config/LOAD" | "config/LOADED" | "config/LOAD_FAILED" | "CORE/DEBUGGER/register" | "CORE/DEBUGGER/log" | "CORE/DEBUGGer/mattermost/post" | "language/CHANGE" | "language/INITIALIZE" | "locale/SET_LOCALE" | "login/OPEN" | "login/CLOSE" | "login/CHECK" | "login/LOGGED_IN" | "login/LOGIN_FAILED" | "logout/OPEN" | "logout/CLOSE" | "logout/FINISHED" | "navigation/OPEN" | "navigation/CLOSE" | "notification/ADD" | "notification/REMOVE" | "notification/REMOVE_GROUP" | "notification/REMOVE_ALL" | "notification/ERROR_ADD" | "notification/SET_IS_HISTORY_OPEN" | "route/ENTER_AUTHORIZED" | "route/ENTER_UNAUTHORIZED" | "session/LOAD" | "route/CHECK" | "route/LOGOUT" | "route/AUTHORIZE" | "route/UNAUTHORIZE" | "settings/OPEN" | "settings/CLOSE" | "region/LOADED" | "region/GET_FAILED" | "toast/ADD" | "toast/DELETE" | "websocket/ADD_NAMESPACE" | "websocket/CONNECT_REQUEST" | "websocket/CONNECT_SUCCESS" | "websocket/CONNECT_FAILED" | "websocket/PREPARE_RECONNECT" | "websocket/DISCONNECT_REQUEST" | "websocket/DISCONNECT_SUCCESS" | "websocket/JOIN_ROOM_REQUEST" | "websocket/JOIN_ROOM_LOADING" | "websocket/JOIN_ROOM_SUCCESS" | "websocket/JOIN_ROOM_FAILURE" | "websocket/LEAVE_ROOM_REQUEST" | "websocket/LEAVE_ROOM_SUCCESS", (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                     description: string;
                     state: unknown;
-                }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+                }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                     allowRobotLogin?: boolean;
                     packageJson: Record<string, unknown>;
                     ForceHTTPS?: boolean;
@@ -1010,7 +1010,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
         } : TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
             description: string;
             state: unknown;
-        }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+        }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
             allowRobotLogin?: boolean;
             packageJson: Record<string, unknown>;
             ForceHTTPS?: boolean;
@@ -1029,7 +1029,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
             handlers: Record<"websocket/UPDATE_ROOM" | "app/INITIALZE" | "app/INITIALZED" | "config/LOAD" | "config/LOADED" | "config/LOAD_FAILED" | "CORE/DEBUGGER/register" | "CORE/DEBUGGER/log" | "CORE/DEBUGGer/mattermost/post" | "language/CHANGE" | "language/INITIALIZE" | "locale/SET_LOCALE" | "login/OPEN" | "login/CLOSE" | "login/CHECK" | "login/LOGGED_IN" | "login/LOGIN_FAILED" | "logout/OPEN" | "logout/CLOSE" | "logout/FINISHED" | "navigation/OPEN" | "navigation/CLOSE" | "notification/ADD" | "notification/REMOVE" | "notification/REMOVE_GROUP" | "notification/REMOVE_ALL" | "notification/ERROR_ADD" | "notification/SET_IS_HISTORY_OPEN" | "route/ENTER_AUTHORIZED" | "route/ENTER_UNAUTHORIZED" | "session/LOAD" | "route/CHECK" | "route/LOGOUT" | "route/AUTHORIZE" | "route/UNAUTHORIZE" | "settings/OPEN" | "settings/CLOSE" | "region/LOADED" | "region/GET_FAILED" | "toast/ADD" | "toast/DELETE" | "websocket/ADD_NAMESPACE" | "websocket/CONNECT_REQUEST" | "websocket/CONNECT_SUCCESS" | "websocket/CONNECT_FAILED" | "websocket/PREPARE_RECONNECT" | "websocket/DISCONNECT_REQUEST" | "websocket/DISCONNECT_SUCCESS" | "websocket/JOIN_ROOM_REQUEST" | "websocket/JOIN_ROOM_LOADING" | "websocket/JOIN_ROOM_SUCCESS" | "websocket/JOIN_ROOM_FAILURE" | "websocket/LEAVE_ROOM_REQUEST" | "websocket/LEAVE_ROOM_SUCCESS", (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
                 description: string;
                 state: unknown;
-            }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+            }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
                 allowRobotLogin?: boolean;
                 packageJson: Record<string, unknown>;
                 ForceHTTPS?: boolean;
@@ -1049,7 +1049,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
     } : TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
         description: string;
         state: unknown;
-    }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+    }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
         allowRobotLogin?: boolean;
         packageJson: Record<string, unknown>;
         ForceHTTPS?: boolean;
@@ -1068,7 +1068,7 @@ declare const Notification: TA.Reducer<State, TA.PayloadAction<"CORE/DEBUGGer/ma
         handlers: Record<"websocket/UPDATE_ROOM" | "app/INITIALZE" | "app/INITIALZED" | "config/LOAD" | "config/LOADED" | "config/LOAD_FAILED" | "CORE/DEBUGGER/register" | "CORE/DEBUGGER/log" | "CORE/DEBUGGer/mattermost/post" | "language/CHANGE" | "language/INITIALIZE" | "locale/SET_LOCALE" | "login/OPEN" | "login/CLOSE" | "login/CHECK" | "login/LOGGED_IN" | "login/LOGIN_FAILED" | "logout/OPEN" | "logout/CLOSE" | "logout/FINISHED" | "navigation/OPEN" | "navigation/CLOSE" | "notification/ADD" | "notification/REMOVE" | "notification/REMOVE_GROUP" | "notification/REMOVE_ALL" | "notification/ERROR_ADD" | "notification/SET_IS_HISTORY_OPEN" | "route/ENTER_AUTHORIZED" | "route/ENTER_UNAUTHORIZED" | "session/LOAD" | "route/CHECK" | "route/LOGOUT" | "route/AUTHORIZE" | "route/UNAUTHORIZE" | "settings/OPEN" | "settings/CLOSE" | "region/LOADED" | "region/GET_FAILED" | "toast/ADD" | "toast/DELETE" | "websocket/ADD_NAMESPACE" | "websocket/CONNECT_REQUEST" | "websocket/CONNECT_SUCCESS" | "websocket/CONNECT_FAILED" | "websocket/PREPARE_RECONNECT" | "websocket/DISCONNECT_REQUEST" | "websocket/DISCONNECT_SUCCESS" | "websocket/JOIN_ROOM_REQUEST" | "websocket/JOIN_ROOM_LOADING" | "websocket/JOIN_ROOM_SUCCESS" | "websocket/JOIN_ROOM_FAILURE" | "websocket/LEAVE_ROOM_REQUEST" | "websocket/LEAVE_ROOM_SUCCESS", (state: State, action: TA.PayloadAction<"CORE/DEBUGGer/mattermost/post", {
             description: string;
             state: unknown;
-        }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
+        }> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"app/INITIALZE", {
             allowRobotLogin?: boolean;
             packageJson: Record<string, unknown>;
             ForceHTTPS?: boolean;

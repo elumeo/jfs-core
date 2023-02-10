@@ -4,7 +4,7 @@ import { colors as allColors } from './Colors'
 import AppNavigation from 'Component/AppNavigation';
 import { Box, Button, Card, CardContent, CardHeader, Container, Grid, Typography } from '@mui/material';
 import CodeBox from 'Component/CodeBox';
-import { useTheme } from '@mui/material/styles';
+import definition from '@elumeo/jfs-core/build/Component/App/Stateless/Style/Theme/Definition';
 
 const Boxes = () => {
   const [bgColor, setBgColor] = React.useState(allColors[0])

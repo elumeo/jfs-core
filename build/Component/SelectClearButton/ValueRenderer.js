@@ -33,9 +33,10 @@ var ValueRenderer = function (_a) {
         ? react_1.default.createElement(react_1.default.Fragment, null,
             react_1.default.createElement(material_1.Stack, { direction: 'row', spacing: 1 },
                 values.map(function (v, i) {
+                    var _a;
                     return !maxValuesToDisplayInInput || i < maxValuesToDisplayInInput
                         ?
-                            (react_1.default.createElement(material_1.Chip, __assign({ key: "select-chip-".concat(i), label: labelsByValue[v], size: 'small', onMouseDown: function (event) { return event.stopPropagation(); } }, props, { onDelete: canUnselect
+                            (react_1.default.createElement(material_1.Chip, __assign({ key: "select-chip-".concat(i), label: (_a = labelsByValue[v]) !== null && _a !== void 0 ? _a : v, size: 'small', onMouseDown: function (event) { return event.stopPropagation(); } }, props, { onDelete: canUnselect
                                     ? function () { return unselect(v); }
                                     : undefined })))
                         : null;

@@ -5,7 +5,7 @@ export type SelectOption = {
     value: string;
     label: React.ReactNode;
 };
-export type SelectProps<IsMulti = boolean> = Partial<Omit<MUISelectProps<ValueType<IsMulti>>, 'onChange' | 'value'>> & {
+export type SelectProps<IsMulti extends boolean = undefined> = Partial<Omit<MUISelectProps<ValueType<IsMulti>>, 'onChange' | 'value'>> & {
     canClear?: boolean;
     canUnselect?: boolean;
     renderAsChip?: boolean;
@@ -13,12 +13,18 @@ export type SelectProps<IsMulti = boolean> = Partial<Omit<MUISelectProps<ValueTy
     formControlProps?: Partial<FormControlProps>;
     chipProps?: Partial<ChipProps>;
     inputProps?: InputBaseProps;
-    options: SelectOption[];
+    options?: SelectOption[];
     value?: IsMulti extends true ? string[] : string;
     label?: React.ReactNode;
     onChange: (value: IsMulti extends true ? string[] : string) => void;
     loading?: boolean;
     loadingSize?: number;
-};
-declare const SelectClearButton: <IsMulti extends boolean = boolean>({ onChange, renderAsChip, value, variant, canClear, canUnselect, label, color, chipProps, formControlProps, inputProps, options, maxValuesToDisplayInInput, loading, loadingSize, ...rest }: SelectProps<IsMulti>) => JSX.Element;
+} & ({
+    options: SelectOption[];
+    children?: never;
+} | {
+    children: React.ReactNode;
+    options?: never;
+});
+declare const SelectClearButton: <IsMulti extends boolean = boolean>({ onChange, renderAsChip, value, variant, canClear, canUnselect, label, color, chipProps, formControlProps, inputProps, children, options, maxValuesToDisplayInInput, loading, loadingSize, ...rest }: SelectProps<IsMulti>) => JSX.Element;
 export default SelectClearButton;

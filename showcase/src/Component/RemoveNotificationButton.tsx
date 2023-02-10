@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Button } from '@mui/material';
-import useActions from 'Core/Store/useActions';
+import { useDispatch } from 'react-redux';
+import { removeNotificationGroup } from '@elumeo/jfs-core/build/Store/Action';
 
 const RemoveNotificationButton: React.FC<{ group: string }> = ({ group }) => {
-  const { removeNotificationGroup } = useActions()
+  const dispatch = useDispatch()
   return <Button variant='contained' onClick={() => {
-    removeNotificationGroup(group)
+    dispatch(removeNotificationGroup(group))
   }}>{group}</Button>
 }
 

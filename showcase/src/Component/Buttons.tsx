@@ -3,7 +3,6 @@ import { Box, Button, Grid, CardContent, CardHeader, Container, Card, Radio, Typ
 import SearchIcon from '@mui/icons-material/Search';
 import DoneIcon from '@mui/icons-material/Done';
 import HomeIcon from '@mui/icons-material/Home';
-import { withStyles, Theme, WithStyles } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import * as Color from '@elumeo/jfs-core/build/Types/Color';
 import IconButtonProgress from '@elumeo/jfs-core/build/Component/Button/IconButtonProgress';
@@ -11,17 +10,12 @@ import AppNavigation from 'Component/AppNavigation';
 import Switch from '@mui/material/Switch';
 import CodeBox from 'Component/CodeBox';
 import { ButtonProgress } from '@elumeo/jfs-core/build/Component/Button';
+import definition from '@elumeo/jfs-core/build/Component/App/Stateless/Style/Theme/Definition';
 
-type Props = WithStyles;
+type Props = {};
 const style = ({
   root: {
     flexGrow: 1
-  },
-  paper: {
-    padding: definition.spacing(1),
-    // eslint-disable-next-line @typescript-eslint/prefer-as-const
-    textAlign: 'center' as 'center',
-    color: definition.palette.text.secondary
   }
 });
 
@@ -36,7 +30,7 @@ const generate = (_variants: string[], _colors: Color.Button[], size: 'small' | 
   return <Grid container spacing={1}>{rows.map((row, i) => (<Grid container item xs={12} spacing={3} key={'grid-row+' + i}>{row}</Grid>))}</Grid>;
 };
 
-const Buttons: React.FC<Props> = ({ classes }) => {
+const Buttons: React.FC<Props> = () => {
   const [size, setSize] = React.useState<'small' | 'medium' | 'large'>('medium');
   const [inProgress, setInProgress] = React.useState(false);
 
@@ -78,7 +72,7 @@ const Buttons: React.FC<Props> = ({ classes }) => {
                     label={'Large'}
                     onChange={(event, selected) => (selected ? setSize('large') : null)} />
                 </Box>
-                <Box className={classes.root}>{generate(variants, colors, size)}</Box>
+                <Box sx={style.root}>{generate(variants, colors, size)}</Box>
               </CardContent>
             </Card>
           </Grid>
@@ -132,4 +126,4 @@ const Buttons: React.FC<Props> = ({ classes }) => {
     </Grid>
   </Grid>);
 };
-export default withStyles(style)(Buttons);
+export default Buttons

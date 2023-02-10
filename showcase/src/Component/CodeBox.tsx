@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import { memo } from 'react';
+import definition from '@elumeo/jfs-core/build/Component/App/Stateless/Style/Theme/Definition';
 
 type CodeBoxProps = {
   component?: React.ElementType;

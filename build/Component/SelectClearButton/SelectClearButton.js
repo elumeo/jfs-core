@@ -32,12 +32,12 @@ var CustomInput_1 = __importDefault(require("./CustomInput"));
 var Flex_1 = __importDefault(require("../Layout/Flex"));
 var icons_material_1 = require("@mui/icons-material");
 var SelectClearButton = function (_a) {
-    var onChange = _a.onChange, _b = _a.renderAsChip, renderAsChip = _b === void 0 ? true : _b, value = _a.value, _c = _a.variant, variant = _c === void 0 ? 'standard' : _c, _d = _a.canClear, canClear = _d === void 0 ? true : _d, _e = _a.canUnselect, canUnselect = _e === void 0 ? true : _e, label = _a.label, _f = _a.color, color = _f === void 0 ? 'secondary' : _f, _g = _a.chipProps, chipProps = _g === void 0 ? {} : _g, _h = _a.formControlProps, formControlProps = _h === void 0 ? {} : _h, _j = _a.inputProps, inputProps = _j === void 0 ? {} : _j, options = _a.options, _k = _a.maxValuesToDisplayInInput, maxValuesToDisplayInInput = _k === void 0 ? 2 : _k, _l = _a.loading, loading = _l === void 0 ? false : _l, _m = _a.loadingSize, loadingSize = _m === void 0 ? 20 : _m, rest = __rest(_a, ["onChange", "renderAsChip", "value", "variant", "canClear", "canUnselect", "label", "color", "chipProps", "formControlProps", "inputProps", "options", "maxValuesToDisplayInInput", "loading", "loadingSize"]);
+    var onChange = _a.onChange, _b = _a.renderAsChip, renderAsChip = _b === void 0 ? true : _b, value = _a.value, _c = _a.variant, variant = _c === void 0 ? 'standard' : _c, _d = _a.canClear, canClear = _d === void 0 ? true : _d, _e = _a.canUnselect, canUnselect = _e === void 0 ? true : _e, label = _a.label, _f = _a.color, color = _f === void 0 ? 'secondary' : _f, _g = _a.chipProps, chipProps = _g === void 0 ? {} : _g, _h = _a.formControlProps, formControlProps = _h === void 0 ? {} : _h, _j = _a.inputProps, inputProps = _j === void 0 ? {} : _j, children = _a.children, options = _a.options, _k = _a.maxValuesToDisplayInInput, maxValuesToDisplayInInput = _k === void 0 ? 2 : _k, _l = _a.loading, loading = _l === void 0 ? false : _l, _m = _a.loadingSize, loadingSize = _m === void 0 ? 20 : _m, rest = __rest(_a, ["onChange", "renderAsChip", "value", "variant", "canClear", "canUnselect", "label", "color", "chipProps", "formControlProps", "inputProps", "children", "options", "maxValuesToDisplayInInput", "loading", "loadingSize"]);
     var labelId = react_1.default.useId();
     var _o = react_1.default.useState(false), isOpen = _o[0], setIsOpen = _o[1];
     var multiple = rest === null || rest === void 0 ? void 0 : rest.multiple;
     var labelsByValue = react_1.default.useMemo(function () {
-        return options.reduce(function (acc, o) {
+        return (options !== null && options !== void 0 ? options : []).reduce(function (acc, o) {
             var _a;
             return (__assign(__assign({}, acc), (_a = {}, _a[o.value] = o.label, _a)));
         }, {});
@@ -68,7 +68,7 @@ var SelectClearButton = function (_a) {
             } }), loading
             ? (react_1.default.createElement(Flex_1.default, { alignItems: 'center' },
                 react_1.default.createElement(material_1.CircularProgress, { size: loadingSize, color: color })))
-            : options.map(function (option) {
+            : children || options.map(function (option) {
                 return react_1.default.createElement(material_1.MenuItem, { key: 'select-menu-item-' + option.value, value: option.value, color: color, TouchRippleProps: { color: color }, selected: Array.isArray(value)
                         ? value.includes(option.value)
                         : value === option.value },
