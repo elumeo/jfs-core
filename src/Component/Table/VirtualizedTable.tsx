@@ -37,12 +37,10 @@ export const ellipsesStyle: SxProps = {
 export const noOutlineStyles: SxProps = { outline: 'none' };
 export const rowClickStyles: SxProps = { cursor: 'pointer' };
 export const rowNoClickStyles: SxProps = { cursor: 'initial' };
-const sort = <ItemData extends {}>(data: ItemData[], sortBy: keyof ItemData, sortDir: SortDirection, compare: (a: ItemData, b: ItemData) => -1 | 0 | 1): ItemData[] => {
-  if (!sortBy || !sortDir) { return data }
+const sort = <ItemData extends {}>(data: ItemData[], sortBy: keyof ItemData, compare: (a: ItemData, b: ItemData) => -1 | 0 | 1): ItemData[] => {
+  if (!sortBy) { return data }
   return data.sort((a, b) => {
     if (compare) { return compare(a, b) }
-    if (a[sortBy] < b[sortBy]) { return sortDir === 'asc' ? -1 : 1 }
-    if (a[sortBy] > b[sortBy]) { return sortDir === 'asc' ? 1 : -1 }
     return 0
   })
 }
@@ -65,7 +63,12 @@ const VirtualizedTable = <ItemData extends {}>({
 
   const ref = React.useRef<VirtuosoHandle>(null)
   const _sorted = React.useMemo(
-    () => sort(data.filter(filter), sortBy, sortDirection, compare)
+    () => {
+      const sorted = sort(data.filter(filter), sortBy, compare)
+      return sortDirection === 'desc'
+        ? sorted.reverse()
+        : sorted
+    }
     ,
     [data, sortBy, sortDirection, compare, filter]
   )
