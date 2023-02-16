@@ -48,7 +48,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.mapToCircularProgressColor = exports.mapToCircularProgressSize = exports.wrapperStyles = void 0;
 var react_1 = __importStar(require("react"));
 var material_1 = require("@mui/material");
-exports.wrapperStyles = { position: 'relative', display: 'inline-block' };
+exports.wrapperStyles = {
+    position: 'relative',
+    display: 'inline-block'
+};
 var mapToCircularProgressSize = function (size) {
     switch (size) {
         case 'large':
@@ -68,14 +71,16 @@ var getSpinnerSx = function (size) {
         position: 'absolute',
         top: '50%',
         left: '50%',
-        marginTop: (0, exports.mapToCircularProgressSize)(size) / 2 * -1,
-        marginLeft: (0, exports.mapToCircularProgressSize)(size) / 2 * -1
+        marginTop: (0, exports.mapToCircularProgressSize)(size) / 2 * -1 + 'px',
+        marginLeft: (0, exports.mapToCircularProgressSize)(size) / 2 * -1 + 'px'
     });
 };
 var ButtonProgress = (0, react_1.forwardRef)(function (_a, ref) {
     var children = _a.children, onClick = _a.onClick, _b = _a.size, size = _b === void 0 ? 'medium' : _b, _c = _a.color, color = _c === void 0 ? 'inherit' : _c, _d = _a.disabled, disabled = _d === void 0 ? false : _d, _e = _a.inProgress, inProgress = _e === void 0 ? false : _e, rest = __rest(_a, ["children", "onClick", "size", "color", "disabled", "inProgress"]);
     return react_1.default.createElement(material_1.Box, { sx: exports.wrapperStyles },
         react_1.default.createElement(material_1.Button, __assign({ ref: ref, size: size, color: color, disabled: disabled || inProgress, onClick: onClick }, rest), children),
-        inProgress && react_1.default.createElement(material_1.CircularProgress, { size: (0, exports.mapToCircularProgressSize)(size), color: (0, exports.mapToCircularProgressColor)(color), sx: getSpinnerSx(size) }));
+        inProgress
+            ? react_1.default.createElement(material_1.CircularProgress, { size: (0, exports.mapToCircularProgressSize)(size), color: color, sx: getSpinnerSx(size) })
+            : react_1.default.createElement(react_1.default.Fragment, null));
 });
 exports.default = ButtonProgress;

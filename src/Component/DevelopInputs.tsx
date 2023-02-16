@@ -6,10 +6,11 @@ import { parse } from 'Utilities/Format/Number';
 import DatePicker, { type DatePickerProps } from './DatePicker';
 import TextFieldClearButton from './TextFieldClearButton';
 import { AppCardContent, AppCardHeader } from './Card';
-import { Search, Warning } from '@mui/icons-material';
+import { Refresh, Search, Warning } from '@mui/icons-material';
 import useQueryParams from 'Effect/useQueryParams';
 import ClearButton, { type SelectProps as SelectClearButtonProps } from 'Component/SelectClearButton/SelectClearButton';
-
+import ButtonProgress from 'Component/Button/ButtonProgress'
+import { IconButtonProgress } from './Button';
 const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><Search /></InputAdornment> };
 const DevelopInputs: React.FC = () => {
   const navigate = useNavigate()
@@ -42,6 +43,12 @@ const DevelopInputs: React.FC = () => {
         headerActions={<Button variant='contained' onClick={() => setLoading(prev => !prev)} color='secondary'>test</Button>} />
       <AppCardContent>
         <Grid container spacing={2}>
+          <Grid item>
+            <ButtonProgress inProgress={loading} variant='contained' color='primary' >test</ButtonProgress>
+            <IconButtonProgress inProgress={loading} size='small' color='secondary'><Refresh fontSize='small'/></IconButtonProgress>
+            <IconButtonProgress inProgress={loading} color='secondary'><Refresh fontSize='medium'/></IconButtonProgress>
+            <IconButtonProgress inProgress={loading} size='large' color='secondary'><Refresh fontSize='large'/></IconButtonProgress>
+          </Grid>
           <Grid item>
             <DatePicker
               onChange={setTestDatePickerValue}

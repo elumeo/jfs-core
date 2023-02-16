@@ -2,7 +2,10 @@ import React, { forwardRef } from 'react';
 import { Box, Button, ButtonProps, CircularProgress, PropTypes, SxProps } from '@mui/material';
 
 
-export const wrapperStyles: SxProps = { position: 'relative', display: 'inline-block' };
+export const wrapperStyles: SxProps = {
+  position: 'relative',
+  display: 'inline-block'
+};
 
 export const mapToCircularProgressSize = (size: string): number => {
   switch (size) {
@@ -20,8 +23,8 @@ const getSpinnerSx = (size = 'medium'): SxProps => ({
   position: 'absolute',
   top: '50%',
   left: '50%',
-  marginTop: mapToCircularProgressSize(size) / 2 * -1,
-  marginLeft: mapToCircularProgressSize(size) / 2 * -1
+  marginTop: mapToCircularProgressSize(size) / 2 * -1 + 'px',
+  marginLeft: mapToCircularProgressSize(size) / 2 * -1 + 'px'
 })
 export type ButtonProgressProps = ButtonProps & {
   onClick?: ButtonProps['onClick'];
@@ -30,10 +33,35 @@ export type ButtonProgressProps = ButtonProps & {
   color?: PropTypes.Color;
 };
 
-const ButtonProgress = forwardRef<HTMLButtonElement, ButtonProgressProps>(({ children, onClick, size = 'medium', color = 'inherit', disabled = false, inProgress = false, ...rest }, ref) => {
-  return <Box sx={wrapperStyles}>
-    <Button ref={ref} size={size} color={color} disabled={disabled || inProgress} onClick={onClick}{...rest}>{children}</Button>
-    {inProgress && <CircularProgress size={mapToCircularProgressSize(size)} color={mapToCircularProgressColor(color)} sx={getSpinnerSx(size)} />}
+const ButtonProgress = forwardRef<HTMLButtonElement, ButtonProgressProps>((
+  {
+    children,
+    onClick,
+    size = 'medium',
+    color = 'inherit',
+    disabled = false,
+    inProgress = false,
+    ...rest
+  },
+  ref) => {
+  return <Box
+    sx={wrapperStyles}
+  >
+    <Button
+      ref={ref}
+      size={size}
+      color={color}
+      disabled={disabled || inProgress}
+      onClick={onClick}{...rest}>
+      {
+        children
+      }
+    </Button>
+    {inProgress
+      ? <CircularProgress size={mapToCircularProgressSize(size)} color={color}
+        sx={getSpinnerSx(size)} />
+      : <></>}
+
   </Box>;
 }
 );

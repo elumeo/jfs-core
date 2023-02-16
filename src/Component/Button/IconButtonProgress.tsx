@@ -13,8 +13,8 @@ const getSpinnerSx = (size = 'medium'): SxProps => ({
   position: 'absolute',
   top: '50%',
   left: '50%',
-  marginTop: mapToCircularProgressSize(size) / 2 * -1,
-  marginLeft: mapToCircularProgressSize(size) / 2 * -1
+  marginTop: mapToCircularProgressSize(size) / 2 * -1 + 'px',
+  marginLeft: mapToCircularProgressSize(size) / 2 * -1 + 'px'
 })
 
 const IconButtonProgress = forwardRef<HTMLButtonElement, IconButtonProgressProps>((
@@ -28,9 +28,21 @@ const IconButtonProgress = forwardRef<HTMLButtonElement, IconButtonProgressProps
     ...rest
   }, ref) => {
   return <Box sx={wrapperStyles}>
-    <IconButton ref={ref} size={size} color={color} disabled={disabled || inProgress} onClick={onClick}{...rest}>{children}</IconButton>
-    {inProgress && <CircularProgress size={mapToCircularProgressSize(size)} color={mapToCircularProgressColor(color)} sx={getSpinnerSx(size)} />}
-  </Box>;
+    <IconButton
+      ref={ref}
+      size={size}
+      color={color}
+      disabled={disabled || inProgress}
+      onClick={onClick}
+      {...rest}>{children}
+    </IconButton>
+    {inProgress
+      ? <CircularProgress size={mapToCircularProgressSize(size)} color={mapToCircularProgressColor(color)} sx={getSpinnerSx(size)} />
+      : <></>
+    }
+  </Box>
+
+
 }
 );
 
