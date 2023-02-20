@@ -29,22 +29,23 @@ var material_1 = require("@mui/material");
 var react_1 = __importDefault(require("react"));
 var ValueRenderer = function (_a) {
     var renderAsChip = _a.renderAsChip, maxValuesToDisplayInInput = _a.maxValuesToDisplayInInput, values = _a.values, labelsByValue = _a.labelsByValue, canUnselect = _a.canUnselect, unselect = _a.unselect, props = __rest(_a, ["renderAsChip", "maxValuesToDisplayInInput", "values", "labelsByValue", "canUnselect", "unselect"]);
-    return renderAsChip
-        ? react_1.default.createElement(react_1.default.Fragment, null,
-            react_1.default.createElement(material_1.Stack, { direction: 'row', spacing: 1 },
-                values.map(function (v, i) {
-                    var _a;
-                    return !maxValuesToDisplayInInput || i < maxValuesToDisplayInInput
-                        ?
-                            (react_1.default.createElement(material_1.Chip, __assign({ key: "select-chip-".concat(i), label: (_a = labelsByValue[v]) !== null && _a !== void 0 ? _a : v, size: 'small', onMouseDown: function (event) { return event.stopPropagation(); } }, props, { onDelete: canUnselect
-                                    ? function () { return unselect(v); }
+    return react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(material_1.Stack, { direction: 'row', spacing: 1 },
+            values.map(function (value, i) {
+                var _a, _b;
+                return !maxValuesToDisplayInInput || i < maxValuesToDisplayInInput
+                    ?
+                        renderAsChip
+                            ? (react_1.default.createElement(material_1.Chip, __assign({ key: "select-chip-".concat(i), label: (_a = labelsByValue[value]) !== null && _a !== void 0 ? _a : value, size: 'small', onMouseDown: function (event) { return event.stopPropagation(); } }, props, { onDelete: canUnselect
+                                    ? function () { return unselect(value); }
                                     : undefined })))
-                        : null;
-                }),
-                values.length > maxValuesToDisplayInInput
-                    ? react_1.default.createElement(material_1.Typography, null,
-                        "+",
-                        (values.length - maxValuesToDisplayInInput)) : null))
-        : react_1.default.createElement(react_1.default.Fragment, null, values.map(function (v) { return labelsByValue[v]; }).join(', '));
+                            : react_1.default.createElement(material_1.Typography, { key: "select-text-".concat(i) }, (_b = labelsByValue[value]) !== null && _b !== void 0 ? _b : value,
+                                values.at(i + 1) ? ',' : '')
+                    : null;
+            }),
+            values.length > maxValuesToDisplayInInput
+                ? react_1.default.createElement(material_1.Typography, null,
+                    "... +",
+                    (values.length - maxValuesToDisplayInInput)) : null));
 };
 exports.default = ValueRenderer;

@@ -44,15 +44,19 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var material_1 = require("@mui/material");
 var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
 var colors_1 = require("@mui/material/colors");
 var Color_1 = require("../../../Constant/Color");
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
 var sortingStyles = {
     backgroundColor: colors_1.grey[200],
-    borderRadius: '4px 4px 0 0',
+    borderRadius: "".concat(Definition_1.default.spacing(.5), " ").concat(Definition_1.default.spacing(.5), " 0 0") //'4px 4px 0 0',
 };
 var TableHeadDefault = function (_a) {
     var _b = _a.height, height = _b === void 0 ? 48 : _b, _c = _a.isNumeric, isNumeric = _c === void 0 ? false : _c, _d = _a.disableSort, disableSort = _d === void 0 ? false : _d, sortBy = _a.sortBy, sortDirection = _a.sortDirection, onClick = _a.onClick, label = _a.label, dataKey = _a.dataKey, rest = __rest(_a, ["height", "isNumeric", "disableSort", "sortBy", "sortDirection", "onClick", "label", "dataKey"]);
@@ -60,7 +64,9 @@ var TableHeadDefault = function (_a) {
     var color = isActiveSort || !disableSort
         ? Color_1.apatith.main
         : 'inherit';
-    var styles = (0, react_1.useMemo)(function () { return (__assign(__assign({}, (isActiveSort ? sortingStyles : {})), { height: height, p: 1, maxWidth: '100%' })); }, [sortBy, isActiveSort, height]);
+    var styles = (0, react_1.useMemo)(function () { return (__assign(__assign({}, (isActiveSort ? sortingStyles : {})), { height: height, 
+        // p: 1,
+        maxWidth: '100%' })); }, [sortBy, isActiveSort, height]);
     var mapSortDirection = function (sortDirection) {
         return "".concat(sortDirection).toLowerCase() === 'asc'
             ? 'asc'

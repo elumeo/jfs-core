@@ -14,8 +14,8 @@ export type AppCardHeaderBaseProps = {
   refreshButtonSize?: IconButtonProps['size'];
   headerActions?: React.ReactNode;
 };
-const linearProgressRootStyles: SxProps = {
-  mb: -.5,
+const hiddenStyle: SxProps = {
+  visibility: 'hidden',
 }
 const cardHeaderStyles: SxProps = {
   display: 'flex',
@@ -68,9 +68,11 @@ const AppCardHeader: React.FC<AppCardHeaderBaseProps> = ({
         </>
       }
     />
-    {
-      isLoading && <LinearProgress color='secondary' sx={linearProgressRootStyles} />
-    }
+    <LinearProgress color='secondary' sx={
+      isLoading
+        ? {}
+        : hiddenStyle
+    } />
   </>;
 
 export default AppCardHeader

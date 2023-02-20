@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "11.0.0-alpha.11",
+  "version": "11.0.0-alpha.12",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -50,9 +50,9 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.5",
-    "@mui/icons-material": "^5.11.0",
+    "@mui/icons-material": "^5.11.9",
     "@mui/lab": "^5.0.0-alpha.117",
-    "@mui/material": "^5.11.6",
+    "@mui/material": "^5.11.10",
     "@mui/types": "^7.2.3",
     "@mui/utils": "^5.11.2",
     "@mui/x-data-grid": "^5.17.20",
@@ -107,7 +107,7 @@
     "react-intl": "^5.25.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.0",
-    "react-virtuoso": "^4.0.6",
+    "react-virtuoso": "^4.1.0",
     "redux": "^4.2.0",
     "redux-observable": "^2.0.0",
     "rxjs": "^7.8.0",

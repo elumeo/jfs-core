@@ -44,17 +44,13 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var material_1 = require("@mui/material");
 var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
-var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
 var TableCellRoot = function (_a) {
     var children = _a.children, _b = _a.isNumeric, isNumeric = _b === void 0 ? false : _b, _c = _a.height, height = _c === void 0 ? '100px' : _c, _d = _a.sx, sx = _d === void 0 ? {} : _d, rest = __rest(_a, ["children", "isNumeric", "height", "sx"]);
-    var preparedStyles = (0, react_1.useMemo)(function () { return (__assign(__assign(__assign({}, VirtualizedTable_1.flexContainerStyles), { height: height, flex: 1, padding: Definition_1.default.spacing(1), maxWidth: '100%' }), sx)); }, [height, sx]);
+    var preparedStyles = (0, react_1.useMemo)(function () { return (__assign(__assign(__assign({}, VirtualizedTable_1.flexContainerStyles), { height: height, flex: 1, maxWidth: '100%' }), sx)); }, [height, sx]);
     return (react_1.default.createElement(material_1.TableCell, __assign({ sx: preparedStyles, variant: 'body', align: isNumeric ? 'right' : 'left' }, rest), children));
 };
 exports.default = TableCellRoot;

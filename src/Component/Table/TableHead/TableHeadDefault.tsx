@@ -3,10 +3,11 @@ import { TableCell, TableSortLabel, SortDirection, Box, SxProps, TableCellProps,
 import { visuallyHiddenStyle } from 'Component/Table/VirtualizedTable';
 import { grey } from '@mui/material/colors';
 import { apatith } from 'Constant/Color';
+import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
 const sortingStyles: SxProps = {
   backgroundColor: grey[200],
-  borderRadius: '4px 4px 0 0',
+  borderRadius: `${definition.spacing(.5)} ${definition.spacing(.5)} 0 0`//'4px 4px 0 0',
 }
 
 export type TableHeadDefaultProps = TableCellProps & {
@@ -29,7 +30,7 @@ const TableHeadDefault: React.FC<TableHeadDefaultProps> = ({ height = 48, isNume
       {
         ...(isActiveSort ? sortingStyles : {}),
         height: height,
-        p: 1,
+        // p: 1,
         maxWidth: '100%'
       }
     ),

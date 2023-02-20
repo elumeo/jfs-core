@@ -6,5 +6,5 @@ export declare const Severity: {
     readonly info: "info";
 };
 export type Severity = AlertColor;
-declare const useSeverity: (toast: Toast) => "error" | "info" | "success";
+declare const useSeverity: (toast: Toast) => "error" | "success" | "info";
 export default useSeverity;

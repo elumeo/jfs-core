@@ -6,7 +6,7 @@ import { parse } from 'Utilities/Format/Number';
 import DatePicker, { type DatePickerProps } from './DatePicker';
 import TextFieldClearButton from './TextFieldClearButton';
 import { AppCardContent, AppCardHeader } from './Card';
-import { Refresh, Search, Warning } from '@mui/icons-material';
+import { Fingerprint, Refresh, Search, Warning } from '@mui/icons-material';
 import useQueryParams from 'Effect/useQueryParams';
 import ClearButton, { type SelectProps as SelectClearButtonProps } from 'Component/SelectClearButton/SelectClearButton';
 import ButtonProgress from 'Component/Button/ButtonProgress'
@@ -45,9 +45,10 @@ const DevelopInputs: React.FC = () => {
         <Grid container spacing={2}>
           <Grid item>
             <ButtonProgress inProgress={loading} variant='contained' color='primary' >test</ButtonProgress>
-            <IconButtonProgress inProgress={loading} size='small' color='secondary'><Refresh fontSize='small'/></IconButtonProgress>
-            <IconButtonProgress inProgress={loading} color='secondary'><Refresh fontSize='medium'/></IconButtonProgress>
-            <IconButtonProgress inProgress={loading} size='large' color='secondary'><Refresh fontSize='large'/></IconButtonProgress>
+            <ButtonProgress size='small' inProgress={loading} variant='contained' color='primary' startIcon={<Fingerprint />} >test</ButtonProgress>
+            <IconButtonProgress inProgress={loading} size='small' color='secondary'><Refresh fontSize='small' /></IconButtonProgress>
+            <IconButtonProgress inProgress={loading} color='secondary'><Refresh fontSize='medium' /></IconButtonProgress>
+            <IconButtonProgress inProgress={loading} size='large' color='secondary'><Refresh fontSize='large' /></IconButtonProgress>
           </Grid>
           <Grid item>
             <DatePicker
@@ -120,8 +121,8 @@ const DevelopInputs: React.FC = () => {
             <ClearButton
               // fullWidth
               label={'Multiple select'}
-              onChange={handleMultipleSelectUpdate}
               value={multipleSelectValue}
+              onChange={handleMultipleSelectUpdate}
               // loading
               // clearButtonSize={'small'}
               multiple
@@ -142,8 +143,10 @@ const DevelopInputs: React.FC = () => {
           </Grid>
           <Grid item xs={4}>
             <ClearButton
-              value={selectValue}
-              onChange={(val: string) => setSelectValue(val)}
+              multiple
+              value={multipleSelectValue}
+              onChange={handleMultipleSelectUpdate}
+              renderAsChip={false}
             >
               <MenuItem value={'custom1'} >custom menuitems</MenuItem>
               <MenuItem value={'custom2'}>als  children</MenuItem>

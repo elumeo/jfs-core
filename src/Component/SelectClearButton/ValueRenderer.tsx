@@ -2,14 +2,14 @@ import { Chip, ChipProps, Stack, Typography } from '@mui/material'
 import React from 'react'
 
 export type ValueType<IsMulti = boolean> = IsMulti extends true ? string[] : string
-export type Props = ChipProps & {
+export type Props = {
   renderAsChip: boolean
   maxValuesToDisplayInInput: number,
   values: ValueType<true>
   labelsByValue: Record<string, string>
   canUnselect: boolean
   unselect: (value: ValueType<true>[number]) => void
-}
+} & ChipProps
 const ValueRenderer: React.FC<Props> = ({
   renderAsChip,
   maxValuesToDisplayInInput,
@@ -19,35 +19,35 @@ const ValueRenderer: React.FC<Props> = ({
   unselect,
   ...props
 }) => {
-  return renderAsChip
-    ? <>
-      <Stack direction='row' spacing={1}>{
-        values.map((v, i) =>
-          !maxValuesToDisplayInInput || i < maxValuesToDisplayInInput
-            ?
-            (
+  return <>
+    <Stack direction='row' spacing={1}>{
+      values.map((value, i) =>
+        !maxValuesToDisplayInInput || i < maxValuesToDisplayInInput
+          ?
+          renderAsChip
+            ? (
               <Chip
                 key={`select-chip-${i}`}
-                label={labelsByValue[v] ?? v}
+                label={labelsByValue[value] ?? value}
                 size={'small'}
                 onMouseDown={(event) => event.stopPropagation()}
                 {...props}
                 onDelete={
                   canUnselect
-                    ? () => unselect(v)
+                    ? () => unselect(value)
                     : undefined
                 }
               />
             )
-            : null
-        )}
-        {values.length > maxValuesToDisplayInInput
-          ? <Typography>+{
-            (values.length - maxValuesToDisplayInInput)
-          }
-          </Typography> : null}
-      </Stack>
-    </>
-    : <>{values.map(v => labelsByValue[v]).join(', ')}</>
+            : <Typography key={`select-text-${i}`}>{labelsByValue[value] ?? value}{values.at(i + 1) ? ',' : ''}</Typography>
+          : null
+      )}
+      {values.length > maxValuesToDisplayInInput
+        ? <Typography>... +{
+          (values.length - maxValuesToDisplayInInput)
+        }
+        </Typography> : null}
+    </Stack>
+  </>
 }
 export default ValueRenderer

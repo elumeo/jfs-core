@@ -43,9 +43,9 @@ exports.name = 'jfs-set-peer-dependencies';
 exports.scope = ['app', 'component'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     if (env.which !== 'core') {
-        const { name, dependencies } = yield Package.json((0, path_1.resolve)(env.core, 'package.json'));
+        const { name, dependencies, devDependencies } = yield Package.json((0, path_1.resolve)(env.core, 'package.json'));
         const path = (0, path_1.resolve)(process.cwd(), 'package.json');
-        const next = Object.assign(Object.assign({}, (yield Package.json((0, path_1.resolve)(process.cwd(), 'package.json')))), { peerDependencies: dependencies });
+        const next = Object.assign(Object.assign({}, (yield Package.json((0, path_1.resolve)(process.cwd(), 'package.json')))), { peerDependencies: dependencies, devDependencies });
         yield fs_extra_1.default.writeJSON(path, next, {
             spaces: 2
         });

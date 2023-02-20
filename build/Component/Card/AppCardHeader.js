@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var material_1 = require("@mui/material");
 var RefreshButton_1 = __importDefault(require("../Button/RefreshButton"));
-var linearProgressRootStyles = {
-    mb: -.5,
+var hiddenStyle = {
+    visibility: 'hidden',
 };
 var cardHeaderStyles = {
     display: 'flex',
@@ -26,6 +26,8 @@ var AppCardHeader = function (_a) {
                             &&
                                 react_1.default.createElement(RefreshButton_1.default, { color: refreshButtonColor, size: refreshButtonSize, disabled: isLoading, onClick: onRefresh })),
                     headerActions !== null && react_1.default.createElement(react_1.default.Fragment, null, headerActions))) }),
-        isLoading && react_1.default.createElement(material_1.LinearProgress, { color: 'secondary', sx: linearProgressRootStyles }));
+        react_1.default.createElement(material_1.LinearProgress, { color: 'secondary', sx: isLoading
+                ? {}
+                : hiddenStyle }));
 };
 exports.default = AppCardHeader;
