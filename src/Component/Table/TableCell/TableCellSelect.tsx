@@ -3,8 +3,7 @@ import { Checkbox, CheckboxProps, SxProps } from '@mui/material';
 import TableCellRoot, { TableCellRootProps } from './TableCellRoot';
 
 
-const checkboxStyles: SxProps = { padding: '8px' };
-const tableCellStyles: SxProps = { padding: '4px', justifyContent: 'center' };
+const checkboxStyles: SxProps = { padding: 1 };
 
 export type TableCellSelectProps = Partial<TableCellRootProps> & {
   value: string;
@@ -27,7 +26,9 @@ const TableCellSelect: React.FC<TableCellSelectProps> = (
   }
 ) => (
   <TableCellRoot
-    sx={tableCellStyles}
+    padding='checkbox'
+    align='center'
+    size='small'
     height={height}>
     <Checkbox
       sx={checkboxStyles}

@@ -3,15 +3,14 @@ import { Box, Checkbox, CheckboxProps, CircularProgress, SxProps, TableCell } fr
 
 import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
-const loadingStyles: SxProps = { marginLeft: '12px', marginRight: '11px' };
-const checkboxStyles: SxProps = { padding: '8px' };
+const loadingStyles: SxProps = { ml: 1.5, mr: 1.5 };
+const checkboxStyles: SxProps = { p: 1 };
 
 export type TableHeadSelectProps = {
   height?: number;
   disabled?: boolean;
   loading?: boolean;
   checked: boolean;
-  className?: string;
   onChange?: CheckboxProps['onChange'];
   id?: CheckboxProps['id'];
   name?: CheckboxProps['name'];
@@ -35,11 +34,9 @@ const TableHeadSelect: React.FC<TableHeadSelectProps> = ({
   id = 'product-select-all',
   name = 'product-select[]',
   value = '###all###',
-  className = ''
 }) => (
   <TableCell
     component={'div'}
-    className={`virtualized-table__cell virtualized-table__flex-container virtualized-table--no-click ${className}`}
     variant={'head'}
     sx={getSx(height)}>
     {

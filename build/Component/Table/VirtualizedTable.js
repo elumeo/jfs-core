@@ -25,7 +25,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.rowNoClickStyles = exports.rowClickStyles = exports.noOutlineStyles = exports.ellipsesStyle = exports.flexContainerStyles = exports.visuallyHiddenStyle = void 0;
+exports.ellipsesStyle = exports.flexContainerStyles = exports.visuallyHiddenStyle = void 0;
 var react_1 = __importDefault(require("react"));
 var react_virtuoso_1 = require("react-virtuoso");
 var Table_1 = __importDefault(require("@mui/material/Table"));
@@ -56,9 +56,6 @@ exports.ellipsesStyle = {
     textOverflow: 'ellipsis',
     overflow: 'hidden'
 };
-exports.noOutlineStyles = { outline: 'none' };
-exports.rowClickStyles = { cursor: 'pointer' };
-exports.rowNoClickStyles = { cursor: 'initial' };
 var sort = function (data, sortBy, compare) {
     if (!sortBy) {
         return data;
@@ -79,7 +76,13 @@ var VirtualizedTable = function (_a) {
             ? sorted.reverse()
             : sorted;
     }, [data, sortBy, sortDirection, compare, filter]);
-    var components = react_1.default.useMemo(function () { return (__assign({ Scroller: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(TableContainer_1.default, __assign({ component: Paper_1.default }, props, { ref: ref })); }), Table: function (props) { return react_1.default.createElement(Table_1.default, __assign({}, props, { sx: { borderCollapse: 'separate' } })); }, TableHead: TableHead_1.default, TableRow: function (props) { return react_1.default.createElement(TableRow_1.default, __assign({ sx: { backgroundColor: props['data-index'] % 2 ? "".concat(Color_1.topas.main, "20") : 'inherit' } }, props)); }, TableBody: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(TableBody_1.default, __assign({}, props, { ref: ref })); }) }, props === null || props === void 0 ? void 0 : props.components)); }, [props]);
+    var components = react_1.default.useMemo(function () { return (__assign({ Scroller: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(TableContainer_1.default, __assign({ component: Paper_1.default }, props, { ref: ref })); }), Table: function (props) { return react_1.default.createElement(Table_1.default, __assign({}, props, { sx: { borderCollapse: 'separate' } })); }, TableHead: TableHead_1.default, TableRow: function (props) {
+            return react_1.default.createElement(TableRow_1.default, __assign({ sx: {
+                    backgroundColor: props['data-index'] % 2
+                        ? "".concat(Color_1.topas.main, "20")
+                        : 'inherit',
+                } }, props));
+        }, TableBody: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(TableBody_1.default, __assign({}, props, { ref: ref })); }) }, props === null || props === void 0 ? void 0 : props.components)); }, [props]);
     return (react_1.default.createElement(react_virtuoso_1.TableVirtuoso, __assign({ ref: ref, data: _sorted, components: components, overscan: 20 }, props)));
 };
 exports.default = VirtualizedTable;

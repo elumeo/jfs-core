@@ -29,6 +29,7 @@ import TableHeadDefault from './Table/TableHead/TableHeadDefault';
 import useSortParamsRouter from 'Effect/useSortParamsRouter';
 import { common } from '@mui/material/colors';
 import { AppCardContent } from './Card';
+import { TableCellSelect } from './Table/TableCell';
 
 // const tableRowHeight = 48;
 
@@ -156,7 +157,7 @@ const tableStyle = { height: 400 }
 const DevelopTables: React.FC = () => {
   const [{ sortBy, sortDirection }, setSort] = useSortParamsRouter<TableCellProductProps>({ sortBy: 'name' });
   const header = React.useCallback(() => (
-    <TableRow sx={{ backgroundColor: common.white }}>
+    <TableRow sx={{ backgroundColor: common.white, height: 48 }}>
       {["rowIndex", "isProductBundle", "hasNoTvLock", "id", "height", "inStockPool", "productType", "mediaUris",]
         .map((key, inde) =>
           <TableHeadDefault
@@ -196,7 +197,7 @@ const DevelopTables: React.FC = () => {
             fixedHeaderContent={header}
             itemContent={
               (index, row) => <React.Fragment key={index}>
-                <TableCell>{row.rowIndex}</TableCell>
+                <TableCellSelect value={row.rowIndex.toString()} checked={!!row.rowIndex} onChange={console.log} >{row.rowIndex}</TableCellSelect>
                 <TableCell>{row.isProductBundle ? 'true' : 'false'}</TableCell>
                 <TableCell>{row.hasNoTvLock ? 'true' : 'false'}</TableCell>
                 <TableCell>{row.id}</TableCell>

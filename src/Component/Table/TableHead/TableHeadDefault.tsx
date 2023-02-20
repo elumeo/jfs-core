@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { TableCell, TableSortLabel, SortDirection, Box, SxProps, TableCellProps, Typography } from '@mui/material';
+import { TableCell, TableSortLabel, SortDirection, Box, SxProps, TableCellProps, Typography, TableSortLabelProps } from '@mui/material';
 import { visuallyHiddenStyle } from 'Component/Table/VirtualizedTable';
 import { grey } from '@mui/material/colors';
 import { apatith } from 'Constant/Color';
@@ -7,7 +7,7 @@ import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
 const sortingStyles: SxProps = {
   backgroundColor: grey[200],
-  borderRadius: `${definition.spacing(.5)} ${definition.spacing(.5)} 0 0`//'4px 4px 0 0',
+  borderRadius: `${definition.spacing(.5)} ${definition.spacing(.5)} 0 0`
 }
 
 export type TableHeadDefaultProps = TableCellProps & {
@@ -30,30 +30,24 @@ const TableHeadDefault: React.FC<TableHeadDefaultProps> = ({ height = 48, isNume
       {
         ...(isActiveSort ? sortingStyles : {}),
         height: height,
-        // p: 1,
         maxWidth: '100%'
       }
     ),
     [sortBy, isActiveSort, height]
   );
-  const mapSortDirection = (sortDirection: SortDirection) =>
-    `${sortDirection}`.toLowerCase() === 'asc'
-      ? 'asc'
-      : 'desc';
+
   const sort: TableCellProps['onClick'] = (e) => disableSort || onClick(e)
   return <TableCell
     variant='head'
     sx={styles}
-    align={isNumeric || false ? 'right' : 'left'}
+    align={isNumeric ? 'right' : 'left'}
     onClick={sort}
     {...rest}
   >
     {disableSort !== true &&
       <TableSortLabel
         active={isActiveSort}
-        direction={isActiveSort
-          ? mapSortDirection(sortDirection)
-          : 'asc'}
+        direction={sortDirection as TableSortLabelProps['direction']}
         sx={{ color }}>
         <Typography fontWeight={600} variant='subtitle1' color={color}>{label}</Typography>
         {isActiveSort
@@ -71,7 +65,7 @@ const TableHeadDefault: React.FC<TableHeadDefaultProps> = ({ height = 48, isNume
       </TableSortLabel>
     }
     {disableSort && <Typography fontWeight={600} variant='subtitle1'>{label}</Typography>}
-  </TableCell>;
+  </TableCell >;
 };
 
 export default TableHeadDefault

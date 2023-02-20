@@ -56,7 +56,7 @@ var Color_1 = require("../../../Constant/Color");
 var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
 var sortingStyles = {
     backgroundColor: colors_1.grey[200],
-    borderRadius: "".concat(Definition_1.default.spacing(.5), " ").concat(Definition_1.default.spacing(.5), " 0 0") //'4px 4px 0 0',
+    borderRadius: "".concat(Definition_1.default.spacing(.5), " ").concat(Definition_1.default.spacing(.5), " 0 0")
 };
 var TableHeadDefault = function (_a) {
     var _b = _a.height, height = _b === void 0 ? 48 : _b, _c = _a.isNumeric, isNumeric = _c === void 0 ? false : _c, _d = _a.disableSort, disableSort = _d === void 0 ? false : _d, sortBy = _a.sortBy, sortDirection = _a.sortDirection, onClick = _a.onClick, label = _a.label, dataKey = _a.dataKey, rest = __rest(_a, ["height", "isNumeric", "disableSort", "sortBy", "sortDirection", "onClick", "label", "dataKey"]);
@@ -64,20 +64,11 @@ var TableHeadDefault = function (_a) {
     var color = isActiveSort || !disableSort
         ? Color_1.apatith.main
         : 'inherit';
-    var styles = (0, react_1.useMemo)(function () { return (__assign(__assign({}, (isActiveSort ? sortingStyles : {})), { height: height, 
-        // p: 1,
-        maxWidth: '100%' })); }, [sortBy, isActiveSort, height]);
-    var mapSortDirection = function (sortDirection) {
-        return "".concat(sortDirection).toLowerCase() === 'asc'
-            ? 'asc'
-            : 'desc';
-    };
+    var styles = (0, react_1.useMemo)(function () { return (__assign(__assign({}, (isActiveSort ? sortingStyles : {})), { height: height, maxWidth: '100%' })); }, [sortBy, isActiveSort, height]);
     var sort = function (e) { return disableSort || onClick(e); };
-    return react_1.default.createElement(material_1.TableCell, __assign({ variant: 'head', sx: styles, align: isNumeric || false ? 'right' : 'left', onClick: sort }, rest),
+    return react_1.default.createElement(material_1.TableCell, __assign({ variant: 'head', sx: styles, align: isNumeric ? 'right' : 'left', onClick: sort }, rest),
         disableSort !== true &&
-            react_1.default.createElement(material_1.TableSortLabel, { active: isActiveSort, direction: isActiveSort
-                    ? mapSortDirection(sortDirection)
-                    : 'asc', sx: { color: color } },
+            react_1.default.createElement(material_1.TableSortLabel, { active: isActiveSort, direction: sortDirection, sx: { color: color } },
                 react_1.default.createElement(material_1.Typography, { fontWeight: 600, variant: 'subtitle1', color: color }, label),
                 isActiveSort
                     ? react_1.default.createElement(material_1.Box, { component: 'span', sx: VirtualizedTable_1.visuallyHiddenStyle }, "".concat(sortDirection).toLowerCase() === 'desc'

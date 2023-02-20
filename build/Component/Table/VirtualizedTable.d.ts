@@ -5,9 +5,6 @@ import { SxProps } from '@mui/material';
 export declare const visuallyHiddenStyle: SxProps;
 export declare const flexContainerStyles: SxProps;
 export declare const ellipsesStyle: SxProps;
-export declare const noOutlineStyles: SxProps;
-export declare const rowClickStyles: SxProps;
-export declare const rowNoClickStyles: SxProps;
 export type VirtualizedTableProps<ItemData> = Partial<TableVirtuosoProps<ItemData, unknown>> & {
     data: ItemData[];
     sortBy?: keyof ItemData;

@@ -34,9 +34,6 @@ export const ellipsesStyle: SxProps = {
   overflow: 'hidden'
 };
 
-export const noOutlineStyles: SxProps = { outline: 'none' };
-export const rowClickStyles: SxProps = { cursor: 'pointer' };
-export const rowNoClickStyles: SxProps = { cursor: 'initial' };
 const sort = <ItemData extends {}>(data: ItemData[], sortBy: keyof ItemData, compare: (a: ItemData, b: ItemData) => -1 | 0 | 1): ItemData[] => {
   if (!sortBy) { return data }
   return data.sort((a, b) => {
@@ -72,12 +69,16 @@ const VirtualizedTable = <ItemData extends {}>({
     ,
     [data, sortBy, sortDirection, compare, filter]
   )
-
   const components: Components = React.useMemo(() => ({
     Scroller: React.forwardRef<HTMLDivElement>((props, ref) => <TableContainer component={Paper} {...props} ref={ref} />),
     Table: (props: TableProps) => <Table {...props} sx={{ borderCollapse: 'separate' }} />,
     TableHead: TableHead,
-    TableRow: (props: TableRowProps & { 'data-index': number }) => <TableRow sx={{ backgroundColor: props['data-index'] % 2 ? `${topas.main}20` : 'inherit' }} {...props} />,
+    TableRow: (props: TableRowProps & { 'data-index': number }) =>
+      <TableRow sx={{
+        backgroundColor: props['data-index'] % 2
+          ? `${topas.main}20`
+          : 'inherit',
+      }} {...props} />,
     TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => <TableBody {...props} ref={ref} />),
     ...props?.components,
   }), [props])

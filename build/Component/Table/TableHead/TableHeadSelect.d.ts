@@ -5,7 +5,6 @@ export type TableHeadSelectProps = {
     disabled?: boolean;
     loading?: boolean;
     checked: boolean;
-    className?: string;
     onChange?: CheckboxProps['onChange'];
     id?: CheckboxProps['id'];
     name?: CheckboxProps['name'];
