@@ -14,13 +14,24 @@ export type TableHeadDefaultProps = TableCellProps & {
   height?: number;
   isNumeric?: boolean;
   disableSort?: boolean;
+
   sortBy?: string;
   sortDirection?: SortDirection;
   label?: React.ReactNode;
   dataKey: string;
 };
 
-const TableHeadDefault: React.FC<TableHeadDefaultProps> = ({ height = 48, isNumeric = false, disableSort = false, sortBy, sortDirection, onClick, label, dataKey, ...rest }) => {
+const TableHeadDefault: React.FC<TableHeadDefaultProps> = ({
+  height = 48,
+  isNumeric = false,
+  disableSort = false,
+  sortBy,
+  sortDirection,
+  onClick,
+  label,
+  dataKey,
+  width,
+  ...rest }) => {
   const isActiveSort = sortBy === dataKey
   const color = isActiveSort || !disableSort
     ? apatith.main
@@ -30,10 +41,11 @@ const TableHeadDefault: React.FC<TableHeadDefaultProps> = ({ height = 48, isNume
       {
         ...(isActiveSort ? sortingStyles : {}),
         height: height,
-        maxWidth: '100%'
+        maxWidth: '100%',
+        width: width
       }
     ),
-    [sortBy, isActiveSort, height]
+    [sortBy, isActiveSort, height, width]
   );
 
   const sort: TableCellProps['onClick'] = (e) => disableSort || onClick(e)

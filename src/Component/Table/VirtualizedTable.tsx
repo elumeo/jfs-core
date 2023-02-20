@@ -22,11 +22,6 @@ export const visuallyHiddenStyle: SxProps = {
   width: 1
 };
 
-export const flexContainerStyles: SxProps = {
-  display: 'flex',
-  alignItems: 'center',
-  boxSizing: 'border-box'
-};
 
 export const ellipsesStyle: SxProps = {
   whiteSpace: 'nowrap',

@@ -25,7 +25,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ellipsesStyle = exports.flexContainerStyles = exports.visuallyHiddenStyle = void 0;
+exports.ellipsesStyle = exports.visuallyHiddenStyle = void 0;
 var react_1 = __importDefault(require("react"));
 var react_virtuoso_1 = require("react-virtuoso");
 var Table_1 = __importDefault(require("@mui/material/Table"));
@@ -45,11 +45,6 @@ exports.visuallyHiddenStyle = {
     position: 'absolute',
     top: 20,
     width: 1
-};
-exports.flexContainerStyles = {
-    display: 'flex',
-    alignItems: 'center',
-    boxSizing: 'border-box'
 };
 exports.ellipsesStyle = {
     whiteSpace: 'nowrap',

@@ -59,12 +59,12 @@ var sortingStyles = {
     borderRadius: "".concat(Definition_1.default.spacing(.5), " ").concat(Definition_1.default.spacing(.5), " 0 0")
 };
 var TableHeadDefault = function (_a) {
-    var _b = _a.height, height = _b === void 0 ? 48 : _b, _c = _a.isNumeric, isNumeric = _c === void 0 ? false : _c, _d = _a.disableSort, disableSort = _d === void 0 ? false : _d, sortBy = _a.sortBy, sortDirection = _a.sortDirection, onClick = _a.onClick, label = _a.label, dataKey = _a.dataKey, rest = __rest(_a, ["height", "isNumeric", "disableSort", "sortBy", "sortDirection", "onClick", "label", "dataKey"]);
+    var _b = _a.height, height = _b === void 0 ? 48 : _b, _c = _a.isNumeric, isNumeric = _c === void 0 ? false : _c, _d = _a.disableSort, disableSort = _d === void 0 ? false : _d, sortBy = _a.sortBy, sortDirection = _a.sortDirection, onClick = _a.onClick, label = _a.label, dataKey = _a.dataKey, width = _a.width, rest = __rest(_a, ["height", "isNumeric", "disableSort", "sortBy", "sortDirection", "onClick", "label", "dataKey", "width"]);
     var isActiveSort = sortBy === dataKey;
     var color = isActiveSort || !disableSort
         ? Color_1.apatith.main
         : 'inherit';
-    var styles = (0, react_1.useMemo)(function () { return (__assign(__assign({}, (isActiveSort ? sortingStyles : {})), { height: height, maxWidth: '100%' })); }, [sortBy, isActiveSort, height]);
+    var styles = (0, react_1.useMemo)(function () { return (__assign(__assign({}, (isActiveSort ? sortingStyles : {})), { height: height, maxWidth: '100%', width: width })); }, [sortBy, isActiveSort, height, width]);
     var sort = function (e) { return disableSort || onClick(e); };
     return react_1.default.createElement(material_1.TableCell, __assign({ variant: 'head', sx: styles, align: isNumeric ? 'right' : 'left', onClick: sort }, rest),
         disableSort !== true &&
