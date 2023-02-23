@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { TableCell, TableSortLabel, SortDirection, Box, SxProps, TableCellProps, Typography, TableSortLabelProps } from '@mui/material';
+import { TableCell, TableSortLabel, SortDirection,  SxProps, TableCellProps, Typography, TableSortLabelProps } from '@mui/material';
 import { visuallyHiddenStyle } from 'Component/Table/VirtualizedTable';
 import { grey } from '@mui/material/colors';
 import { apatith } from 'Constant/Color';
@@ -61,9 +61,9 @@ const TableHeadDefault: React.FC<TableHeadDefaultProps> = ({
         active={isActiveSort}
         direction={sortDirection as TableSortLabelProps['direction']}
         sx={{ color }}>
-        <Typography fontWeight={600} variant='subtitle1' color={color}>{label}</Typography>
+        <Typography fontWeight={600} lineHeight={1} variant='subtitle1' color={color}>{label}</Typography>
         {isActiveSort
-          ? <Box
+          ? <Typography
             component='span'
             sx={visuallyHiddenStyle}>
             {
@@ -71,7 +71,7 @@ const TableHeadDefault: React.FC<TableHeadDefaultProps> = ({
                 ? 'sorted descending'
                 : 'sorted ascending'
             }
-          </Box>
+          </Typography>
           : null
         }
       </TableSortLabel>

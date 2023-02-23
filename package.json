@@ -1,14 +1,15 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "11.0.0-alpha.14",
+  "version": "11.0.0-alpha.15",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
     "bin": "./scripts/bin"
   },
   "scripts": {
-    "start": "webpack serve --port 8083 --config build-tools/webpack/dev-server",
+    "start": "webpack serve --port 8083 --config build-tools/webpack/core-dev-server",
     "build": "tsc && tsc-alias",
+    "build:showcase": "webpack --config build-tools/webpack/showcase",
     "build:watch": "tsc-watch --onSuccess tsc-alias",
     "build:webpack": "webpack --config build-tools/webpack/production",
     "release": "npm publish --access public",
@@ -22,7 +23,6 @@
     "jfs-read-translations": "node ./scripts/bin/jfs-read-translations",
     "jfs-deploy-config-files": "node ./scripts/bin/jfs-deploy-config-files",
     "jfs-generate-api": "node ./scripts/bin/jfs-generate-api",
-    "jfs-open-showcase": "node ./scripts/bin/jfs-open-showcase",
     "jfs-postinstall": "node ./scripts/bin/jfs-postinstall",
     "jfs-check-config-schema": "node ./scripts/bin/jfs-check-config-schema"
   },

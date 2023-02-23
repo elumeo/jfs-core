@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { TableVirtuosoProps } from 'react-virtuoso';
 import { SortDirection } from '@mui/material/TableCell';
 import { SxProps } from '@mui/material';

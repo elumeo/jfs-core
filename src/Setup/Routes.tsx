@@ -2,19 +2,17 @@ import React from 'react';
 import { Routes as RRoutes, Navigate, Route } from 'react-router-dom';
 import AuthRoute from 'Component/Route/AuthRoute';
 import NoAuthRoute from 'Component/Route/NoAuthRoute';
-import Develop from 'Component/develop';
-import DevelopAppLayout from 'Component/DevelopAppLayout';
 
 
 const Routes: React.FC = () => (
   <RRoutes >
     <Route path='/start' element={<AuthRoute title='app.title' translateTitle subtitle='test' />}>
-      <Route index element={<Develop />} />
-      <Route path=':id' element={<Develop />} />
+      <Route index element={<></>} />
+      <Route path=':id' element={<></>} />
     </Route>
 
     <Route path='/app_layout' element={<NoAuthRoute />} >
-      <Route index element={<DevelopAppLayout />} />
+      <Route index element={<></>} />
     </Route>
 
     <Route path='*' element={<AuthRoute />}>

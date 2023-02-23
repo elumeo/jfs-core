@@ -1,6 +1,0 @@
-#!/usr/bin/env node
-const script = require('../build/Setup/jfs-open-showcase');
-const { detect } = require('../build/Library/JFS/Environment');
-const cwd = process.cwd();
-const main = async () => script.run(await detect(cwd));
-main();

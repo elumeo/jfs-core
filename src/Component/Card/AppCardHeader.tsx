@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardHeader, LinearProgress, Stack, SxProps, Typography } from '@mui/material';
+import { CardHeader, LinearProgress, PropTypes, Stack, SxProps, Typography } from '@mui/material';
 import { IconButtonProps } from '@mui/material/IconButton';
 import RefreshButton from 'Component/Button/RefreshButton';
 
@@ -10,7 +10,7 @@ export type AppCardHeaderBaseProps = {
   titleIcon?: React.ReactNode;
   action?: React.ReactNode;
   onRefresh?: () => void;
-  refreshButtonColor?: IconButtonProps['color'];
+  refreshButtonColor?: PropTypes.Color;
   refreshButtonSize?: IconButtonProps['size'];
   headerActions?: React.ReactNode;
 };
@@ -57,7 +57,7 @@ const AppCardHeader: React.FC<AppCardHeaderBaseProps> = ({
                 <RefreshButton
                   color={refreshButtonColor}
                   size={refreshButtonSize}
-                  disabled={isLoading}
+                  inProgress={isLoading}
                   onClick={onRefresh} />
               }
             </Stack>

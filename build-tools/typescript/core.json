@@ -41,7 +41,8 @@
   "exclude": [
     "scripts",
     "build",
-    "showcase",
+    "src/Showcase/**/*",
+    "*.showcase.*",
     "**/node_modules",
     "**/.*/"
   ]

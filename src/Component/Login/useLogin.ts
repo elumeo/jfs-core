@@ -14,7 +14,7 @@ type useLoginProps = {
 
 const useLogin = (): useLoginProps => {
   const dispatch = useDispatch();
-  const open = useSelector(Selector.isLoginOpen);
+  const open = useSelector(Selector.Login.isLoginOpen);
   const [credentials, setCredentials] = React.useState<Type.Credentials>({
     username: null,
     password: null,

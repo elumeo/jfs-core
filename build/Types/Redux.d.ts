@@ -5,7 +5,7 @@ import * as Global from '../Store/Reducer/Global';
 import { IntlShape } from 'react-intl';
 import { History } from 'history';
 export type State<T extends {} = {}> = Global.State & T;
-export type ActionType<T extends {} = {}> = TA.ActionType<typeof TAction & T>;
+export type ActionType<T extends {} = {}> = TA.ActionType<typeof TAction & T> | TA.EmptyAction<string>;
 export type Dependencies<T extends {} = {}> = T & {
     intl?: () => IntlShape;
     history?: History;

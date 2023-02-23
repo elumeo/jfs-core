@@ -1,15 +1,17 @@
-const uuid = require('uuid');
 const { resolve } = require('path');
 
 const ROOT = process.cwd();//resolve(__dirname, '..');
 const PACKAGE_JSON = resolve(ROOT, 'package.json');
 const PUBLIC = resolve(ROOT, 'dist');
+const PUBLIC_SHOWCASE = resolve(ROOT, 'showcase-dist');
 const BUNDLE_NAME = 'bundle.js';
 const BUNDLE = resolve(PUBLIC, BUNDLE_NAME);
-const UNIQUE_BUNDLE_NAME = `bundle_${require(PACKAGE_JSON).version}.js`; //`bundle_${uuid()}.js`;
+const UNIQUE_BUNDLE_NAME = `bundle_${require(PACKAGE_JSON).version}.js`;
 const UNIQUE_BUNDLE = resolve(PUBLIC, UNIQUE_BUNDLE_NAME);
 const SOURCE = resolve(ROOT, 'src');
+const SHOWCASE = resolve(SOURCE, 'Showcase');
 const ENTRYPOINT = resolve(SOURCE, 'index.tsx');
+const ENTRYPOINT_SHOWCASE = resolve(SHOWCASE, 'index.tsx');
 const JSC = resolve(SOURCE, 'Jsc')
 const SETUP = resolve(SOURCE, 'Setup')
 const UTILITIES = resolve(SOURCE, 'Utilities')
@@ -27,26 +29,28 @@ const CONFIGURATION_DEV = resolve(ROOT, 'config.json');
 const ACTION = resolve(STORE, 'Action');
 
 module.exports = {
-   ROOT,
-   PUBLIC,
+   ACTION,
    BUNDLE_NAME,
    BUNDLE,
-   UNIQUE_BUNDLE_NAME,
-   UNIQUE_BUNDLE,
-   SOURCE,
-   ENTRYPOINT,
-   JSC,
-   SETUP,
-   UTILITIES,
    COMPONENT,
+   CONFIGURATION_DEV,
+   CONFIGURATION_DIST,
+   CONFIGURATION,
    CONSTANT,
-   STORE,
-   TYPE,
+   ENTRYPOINT,
+   ENTRYPOINT_SHOWCASE,
    FAVICON,
    HTML_TEMPLATE,
-   ACTION,
+   JSC,
+   PUBLIC,
+   PUBLIC_SHOWCASE,
+   ROOT,
+   SETUP,
+   SOURCE,
    STATIC,
-   CONFIGURATION,
-   CONFIGURATION_DIST,
-   CONFIGURATION_DEV,
+   STORE,
+   TYPE,
+   UNIQUE_BUNDLE_NAME,
+   UNIQUE_BUNDLE,
+   UTILITIES,
 }

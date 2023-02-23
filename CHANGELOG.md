@@ -1,9 +1,10 @@
-
-## [11.0.0-alpha.5] - 2023-02-01
+## [11.0.0] - 2023-02-01
 - bump/add/remove core libraries and dependencies
+- reintegrated showcase into project to faciliate development
+  - added required webpack configs 
+  - showcase is available at `/showcase`
+  - showcase is not included in production build
 
-## [11.0.0] 2023-01-24
-- bump major dependencies such as React, as well as webpack and typescript
 ## [10.5.0] 2022-11-18
 - changed width style property of root element to max-width property
 

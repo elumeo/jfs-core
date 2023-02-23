@@ -43,9 +43,11 @@ export type VirtualizedTableProps<ItemData> = Partial<TableVirtuosoProps<ItemDat
   compare?: (a: ItemData, b: ItemData) => -1 | 0 | 1,
   filter?: (item: ItemData) => boolean,
   setSort?: ({ sortBy, sortDirection }: { sortBy: keyof ItemData, sortDirection: SortDirection }) => void
+  tableSize?: TableProps['size']
 };
 const VirtualizedTable = <ItemData extends {}>({
   data = [],
+  tableSize = 'small',
   sortBy,
   sortDirection,
   compare = (a, b) => a[sortBy] < b[sortBy] ? -1 : 1,
@@ -64,19 +66,23 @@ const VirtualizedTable = <ItemData extends {}>({
     ,
     [data, sortBy, sortDirection, compare, filter]
   )
-  const components: Components = React.useMemo(() => ({
-    Scroller: React.forwardRef<HTMLDivElement>((props, ref) => <TableContainer component={Paper} {...props} ref={ref} />),
-    Table: (props: TableProps) => <Table {...props} sx={{ borderCollapse: 'separate' }} />,
-    TableHead: TableHead,
-    TableRow: (props: TableRowProps & { 'data-index': number }) =>
-      <TableRow sx={{
-        backgroundColor: props['data-index'] % 2
-          ? `${topas.main}20`
-          : 'inherit',
-      }} {...props} />,
-    TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => <TableBody {...props} ref={ref} />),
-    ...props?.components,
-  }), [props])
+  const components: Components = React.useMemo(
+    () => (
+      {
+        Scroller: React.forwardRef<HTMLDivElement>((props, ref) => <TableContainer component={Paper} {...props} ref={ref} />),
+        Table: (props: TableProps) => <Table {...props} size={tableSize} sx={{ borderCollapse: 'separate' }} />,
+        TableHead: TableHead,
+        TableRow: (props: TableRowProps & { 'data-index': number }) => <TableRow sx={{
+          backgroundColor: props['data-index'] % 2
+            ? `${topas.main}20`
+            : 'inherit',
+        }} {...props} />,
+        TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => <TableBody {...props} ref={ref} />),
+        ...props?.components,
+      }
+    ),
+    [props?.components, tableSize]
+  )
   return (
     <TableVirtuoso
       ref={ref}

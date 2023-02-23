@@ -8,16 +8,7 @@ export type JSON = {
   version: string;
   description: string;
   author: string;
-  devDependencies: string;
-  scripts: {
-    [name: string]: string;
-  };
-  dependencies: {
-    [name: string]: string;
-  };
-  jfs: {
-    sync: {
-      [project: string]: string;
-    }
-  }
+  devDependencies: Record<string, string>
+  scripts: Record<string, string>;
+  dependencies: Record<string, string>;
 };

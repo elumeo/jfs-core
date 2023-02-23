@@ -3,7 +3,7 @@ node_modules
 /showcase/tsconfig.json
 .autohidefiles
 .DS_Store
-/showcase/dist/
+/showcase-dist/
 /config.json
 .eslintrc
 tsconfig.tsbuildinfo

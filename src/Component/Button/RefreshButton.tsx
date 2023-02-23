@@ -1,10 +1,10 @@
 import RefreshIcon from '@mui/icons-material/Refresh';
-import {IconButton} from '@mui/material';
-import React, {memo} from 'react';
-import {IconButtonProps} from '@mui/material/IconButton';
+import React from 'react';
+// import {IconButtonProps} from '@mui/material/IconButton';
+import IconButtonProgress, { type IconButtonProgressProps } from './IconButtonProgress';
 
-const RefreshButton = (props: IconButtonProps) => <IconButton {...props}>
-  <RefreshIcon/>
-</IconButton>;
+const RefreshButton = (props: IconButtonProgressProps) => <IconButtonProgress {...props}>
+  <RefreshIcon />
+</IconButtonProgress>;
 
-export default memo(RefreshButton);
+export default RefreshButton
