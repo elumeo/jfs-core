@@ -12,15 +12,9 @@ export type AppCardHeaderBaseProps = {
   onRefresh?: () => void;
   refreshButtonColor?: PropTypes.Color;
   refreshButtonSize?: IconButtonProps['size'];
-  headerActions?: React.ReactNode;
 };
 const hiddenStyle: SxProps = {
   visibility: 'hidden',
-}
-const cardHeaderStyles: SxProps = {
-  display: 'flex',
-  position: 'relative',
-  alignItems: 'flex-start'
 }
 const AppCardHeader: React.FC<AppCardHeaderBaseProps> = ({
   isLoading = false,
@@ -30,39 +24,31 @@ const AppCardHeader: React.FC<AppCardHeaderBaseProps> = ({
   onRefresh = null,
   refreshButtonColor = 'secondary',
   refreshButtonSize = 'small',
-  headerActions = null,
   action = null
 }) => <>
     <CardHeader
-      sx={cardHeaderStyles}
       subheader={subtitle}
       action={action}
       title={
         <>
+
           <Stack
-            justifyContent={'space-between'}
-            direction={'row'}>
-            <Stack
-              direction={'row'}
-              spacing={1}
-              alignItems={'center'}
-            >
-              {
-                titleIcon
-              }
-              <Typography variant='h5'>{title}</Typography>
-              {
-                onRefresh !== null
-                &&
-                <RefreshButton
-                  color={refreshButtonColor}
-                  size={refreshButtonSize}
-                  inProgress={isLoading}
-                  onClick={onRefresh} />
-              }
-            </Stack>
+            direction={'row'}
+            spacing={1}
+            alignItems={'center'}
+          >
             {
-              headerActions !== null && <>{headerActions}</>
+              titleIcon
+            }
+            {typeof title === 'string' ? <Typography variant='h5'>{title}</Typography> : title}
+            {
+              onRefresh !== null
+              &&
+              <RefreshButton
+                color={refreshButtonColor}
+                size={refreshButtonSize}
+                inProgress={isLoading}
+                onClick={onRefresh} />
             }
           </Stack>
         </>
