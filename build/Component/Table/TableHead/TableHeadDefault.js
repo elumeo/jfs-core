@@ -69,7 +69,7 @@ var TableHeadDefault = function (_a) {
     return react_1.default.createElement(material_1.TableCell, __assign({ variant: 'head', sx: styles, align: isNumeric ? 'right' : 'left', onClick: sort }, rest),
         disableSort !== true &&
             react_1.default.createElement(material_1.TableSortLabel, { active: isActiveSort, direction: sortDirection, sx: { color: color } },
-                react_1.default.createElement(material_1.Typography, { fontWeight: 600, variant: 'subtitle1', color: color }, label),
+                react_1.default.createElement(material_1.Typography, { fontWeight: 600, lineHeight: 1, variant: 'subtitle1', color: color }, label),
                 isActiveSort
                     ? react_1.default.createElement(material_1.Typography, { component: 'span', sx: VirtualizedTable_1.visuallyHiddenStyle }, "".concat(sortDirection).toLowerCase() === 'desc'
                         ? 'sorted descending'

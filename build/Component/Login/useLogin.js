@@ -33,7 +33,7 @@ var Redux_1 = require("../../Types/Redux");
 var Selector = __importStar(require("../../Store/Selector"));
 var useLogin = function () {
     var dispatch = (0, react_redux_1.useDispatch)();
-    var open = (0, Redux_1.useSelector)(Selector.isLoginOpen);
+    var open = (0, Redux_1.useSelector)(Selector.Login.isLoginOpen);
     var _a = react_1.default.useState({
         username: null,
         password: null,

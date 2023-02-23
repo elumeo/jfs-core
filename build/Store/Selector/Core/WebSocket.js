@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isJfs2JfsWebSocketConnected = exports.isJsc2JfsWebSocketConnected = void 0;
+exports.isJfs2JfsWebSocketConnected = exports.isJsc2JfsWebSocketConnected = exports.pickJfs2Jfs = exports.pickJsc2Jfs = exports.pickState = void 0;
 var reselect_1 = require("reselect");
-exports.isJsc2JfsWebSocketConnected = (0, reselect_1.createSelector)(function (state) { return state.Core.WebSocket['Jsc2Jfs']; }, function (namespace) { return namespace !== undefined && namespace.isConnected; });
-exports.isJfs2JfsWebSocketConnected = (0, reselect_1.createSelector)(function (state) { return state.Core.WebSocket['Jfs2Jfs']; }, function (namespace) { return namespace !== undefined && namespace.isConnected; });
+var pickState = function (state) { return state.Core.WebSocket; };
+exports.pickState = pickState;
+exports.pickJsc2Jfs = (0, reselect_1.createSelector)(exports.pickState, function (state) { return state['Jsc2Jfs']; });
+exports.pickJfs2Jfs = (0, reselect_1.createSelector)(exports.pickState, function (state) { return state['Jfs2Jfs']; });
+exports.isJsc2JfsWebSocketConnected = (0, reselect_1.createSelector)(exports.pickJsc2Jfs, function (namespace) { return namespace !== undefined && namespace.isConnected; });
+exports.isJfs2JfsWebSocketConnected = (0, reselect_1.createSelector)(exports.pickJfs2Jfs, function (namespace) { return namespace !== undefined && namespace.isConnected; });
