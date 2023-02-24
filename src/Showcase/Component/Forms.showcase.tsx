@@ -155,14 +155,14 @@ const Forms = () => {
                           </Box></MenuItem>
                           <MenuItem value={'2'}><Box alignItems={'center'} display={'flex'}>
                             <WarningIcon style={{ fontSize: definition.typography.pxToRem(20) }} color={'primary'} />
-                            <Box component={'span'} ml={1} color={definition.colorSchemes.light.palette.primary.main}>Value 2</Box>
+                            <Box component={'span'} ml={1} color={definition.palette.primary.main}>Value 2</Box>
                           </Box></MenuItem>
                           <MenuItem value={'3'} disabled>Value 3</MenuItem>
                           <MenuItem value={'4'}>Value 4 with a longer label</MenuItem>
                           <MenuItem value={'5'}>Value 5 with even a more longer, longer and longer label</MenuItem>
                           <MenuItem value={'6'} disabled><Box alignItems={'center'} display={'flex'}>
                             <WarningIcon style={{ fontSize: definition.typography.pxToRem(20) }} color={'primary'} />
-                            <Box component={'span'} ml={1} color={definition.colorSchemes.light.palette.primary.main}>Value 6</Box>
+                            <Box component={'span'} ml={1} color={definition.palette.primary.main}>Value 6</Box>
                           </Box></MenuItem>
                           <MenuItem value={'7'}>Value 7</MenuItem>
                           <MenuItem value={'8'}>Value 8</MenuItem>

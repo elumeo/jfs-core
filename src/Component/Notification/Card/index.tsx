@@ -20,8 +20,8 @@ const _getStyles =
       maxWidth: definition.spacing(60),
       minHeight: 'fit-content',
       backgroundColor:
-        definition.colorSchemes.light.palette?.[variant]?.['main'] || grey[400],
-      color: definition.colorSchemes.light.palette?.[variant]?.['contrastText'] || grey[50]
+        definition.palette?.[variant]?.['main'] || grey[400],
+      color: definition.palette?.[variant]?.['contrastText'] || grey[50]
     },
     footer: {
       gridColumnStart: 1,

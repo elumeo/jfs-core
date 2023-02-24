@@ -1,12 +1,12 @@
 import React from 'react';
-import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 
 import definition from './Definition';
 
 const Theme: React.FC<React.PropsWithChildren> = ({ children }) => (
-  <CssVarsProvider theme={definition}>
+  <ThemeProvider theme={definition}>
     {children}
-  </CssVarsProvider>
+  </ThemeProvider>
 );
 
 export default Theme;

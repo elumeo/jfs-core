@@ -37,14 +37,14 @@ const sxs = {
     position: 'relative'
   },
   fabProgress: {
-    color: definition.colorSchemes.light.palette.success.main,
+    color: definition.palette.success.main,
     position: 'absolute',
     top: -6,
     left: -6,
     zIndex: 1
   },
   buttonProgress: {
-    color: definition.colorSchemes.light.palette.primary.main,
+    color: definition.palette.primary.main,
     position: 'absolute',
     top: '50%',
     left: '50%',

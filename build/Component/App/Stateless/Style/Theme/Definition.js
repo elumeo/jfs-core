@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -27,37 +38,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var styles_1 = require("@mui/material/styles");
 var Color = __importStar(require("../../../../../Constant/Color"));
 var colors_1 = require("@mui/material/colors");
-var definition = (0, styles_1.experimental_extendTheme)({
-    colorSchemes: {
-        light: {
-            palette: {
-                primary: Color.primary,
-                secondary: Color.apatith,
-                warning: Color.warning,
-                error: Color.error,
-                success: Color.success,
-                info: Color.info,
-                grey: colors_1.grey,
-                common: Color.common,
-                text: {
-                    primary: colors_1.grey[900],
-                    secondary: colors_1.grey[700],
-                    disabled: colors_1.grey[500],
-                },
-                action: {
-                    hover: 'rgba(0, 0, 0, 0.12)',
-                    hoverOpacity: 0.12,
-                    selected: 'rgba(0, 0, 0, 0.16)',
-                    selectedOpacity: 0.16,
-                    focus: 'rgba(0, 0, 0, 0.2)',
-                    focusOpacity: 0.2,
-                },
-                background: {
-                    default: '#e5e2dd',
-                },
-            },
-        }
-    },
+var definition = (0, styles_1.createTheme)({
+    palette: __assign({ primary: Color.primary, secondary: Color.apatith, warning: Color.warning, error: Color.error, success: Color.success, info: Color.info, grey: colors_1.grey, common: Color.common, text: {
+            primary: colors_1.grey[900],
+            secondary: colors_1.grey[700],
+            disabled: colors_1.grey[500],
+        }, action: {
+            hover: 'rgba(0, 0, 0, 0.12)',
+            hoverOpacity: 0.12,
+            selected: 'rgba(0, 0, 0, 0.16)',
+            selectedOpacity: 0.16,
+            focus: 'rgba(0, 0, 0, 0.2)',
+            focusOpacity: 0.2,
+        }, background: {
+            default: '#e5e2dd',
+        } }, Color),
     mixins: {
         toolbar: {
             minHeight: 48,

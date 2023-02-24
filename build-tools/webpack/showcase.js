@@ -1,4 +1,5 @@
 const PATH = require('./PATH');
+const production = require('./production');
 const rimraf = require('rimraf');
 rimraf.sync(PATH.PUBLIC_SHOWCASE);
 

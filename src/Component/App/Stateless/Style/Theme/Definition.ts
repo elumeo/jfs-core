@@ -1,37 +1,34 @@
 /* eslint-disable max-lines */
-import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import * as Color from '../../../../../Constant/Color';
 import { grey } from '@mui/material/colors';
-const definition = extendTheme({
-  colorSchemes: {
-    light: {
-      palette: {
-        primary: Color.primary,
-        secondary: Color.apatith,
-        warning: Color.warning,
-        error: Color.error,
-        success: Color.success,
-        info: Color.info,
-        grey: grey,
-        common: Color.common,
-        text: {
-          primary: grey[900],
-          secondary: grey[700],
-          disabled: grey[500],
-        },
-        action: {
-          hover: 'rgba(0, 0, 0, 0.12)',
-          hoverOpacity: 0.12,
-          selected: 'rgba(0, 0, 0, 0.16)',
-          selectedOpacity: 0.16,
-          focus: 'rgba(0, 0, 0, 0.2)',
-          focusOpacity: 0.2,
-        },
-        background: {
-          default: '#e5e2dd',
-        },
-      },
-    }
+const definition = createTheme({
+  palette: {
+    primary: Color.primary,
+    secondary: Color.apatith,
+    warning: Color.warning,
+    error: Color.error,
+    success: Color.success,
+    info: Color.info,
+    grey: grey,
+    common: Color.common,
+    text: {
+      primary: grey[900],
+      secondary: grey[700],
+      disabled: grey[500],
+    },
+    action: {
+      hover: 'rgba(0, 0, 0, 0.12)',
+      hoverOpacity: 0.12,
+      selected: 'rgba(0, 0, 0, 0.16)',
+      selectedOpacity: 0.16,
+      focus: 'rgba(0, 0, 0, 0.2)',
+      focusOpacity: 0.2,
+    },
+    background: {
+      default: '#e5e2dd',
+    },
+    ...Color
   },
   mixins: {
     toolbar: {

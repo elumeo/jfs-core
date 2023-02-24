@@ -48,7 +48,7 @@ const Colors = () => {
                 <Box marginTop={1}>
                   <Box component={Typography}>{`const useColorStyle = makeStyles(theme => createStyles({`}</Box>
                   <Box pl={1} component={Typography}>{`TestClass: {`}</Box>
-                  <Box pl={2} component={Typography}>{`color: definition.colorSchemes.light.palette.quarz.dark`}</Box>
+                  <Box pl={2} component={Typography}>{`color: definition.palette.quarz.dark`}</Box>
                   <Box>{` }));`}</Box>
                   <Box component={Typography}>{`const colorStyle = useColorStyle()`}</Box>
                   <Typography sx={sx.TestClass}>{`<Typography className={colorStyle.TestClass}>quarz.dark</Typography>`}</Typography>

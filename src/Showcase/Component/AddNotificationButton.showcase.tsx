@@ -10,11 +10,11 @@ import { useDispatch } from 'react-redux';
 import { addNotification, addToastAction } from '../../Store/Action';
 import * as Color from '../../Constant/Color'
 const sxs = (variant: Severity) => ({
-  backgroundColor: Color?.[variant]?.['main'] || definition.colorSchemes.light.palette.grey['A400'],
-  color: Color?.[variant]?.['contrastText'] || definition.colorSchemes.light.palette.grey['50'],
+  backgroundColor: Color?.[variant]?.['main'] || definition.palette.grey['A400'],
+  color: Color?.[variant]?.['contrastText'] || definition.palette.grey['50'],
   '&:hover': {
-    backgroundColor: Color?.[variant]?.['dark'] || definition.colorSchemes.light.palette.grey['A700'],
-    color: Color?.[variant]?.['contrastText'] || definition.colorSchemes.light.palette.grey['50']
+    backgroundColor: Color?.[variant]?.['dark'] || definition.palette.grey['A700'],
+    color: Color?.[variant]?.['contrastText'] || definition.palette.grey['50']
   }
 })
 

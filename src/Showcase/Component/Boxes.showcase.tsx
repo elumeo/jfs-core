@@ -18,15 +18,15 @@ const Boxes = () => {
   const getColorCode = (color: string) => {
     switch (color) {
       case 'primary':
-        return definition.colorSchemes.light.palette.primary.main;
+        return definition.palette.primary.main;
       case 'secondary':
-        return definition.colorSchemes.light.palette.secondary.main;
+        return definition.palette.secondary.main;
       case 'textPrimary':
-        return definition.colorSchemes.light.palette.text.primary;
+        return definition.palette.text.primary;
       case 'textSecondary':
-        return definition.colorSchemes.light.palette.text.secondary;
+        return definition.palette.text.secondary;
       case 'error':
-        return definition.colorSchemes.light.palette.error.main;
+        return definition.palette.error.main;
       case 'inherit':
       default:
         return 'inherit';
@@ -48,7 +48,7 @@ const Boxes = () => {
           <Box border={'1px solid'} borderColor={bgColor + '.main'} p={2} color={getColorCode(textColor)}>
             <Typography color={'inherit'}>This is a <CodeBox component={'span'} size={'small'}>{`<Box />`}</CodeBox> element. Boxes are useful to apply styles:</Typography>
             <CodeBox>
-              <Box component={Typography}>{`<Box component={Card} width={'100%'} marginBottom={1} borderColor={definition.colorSchemes.light.palette.primary.main} color={definition.colorSchemes.light.palette.secondary.main>...</Box>`}</Box>
+              <Box component={Typography}>{`<Box component={Card} width={'100%'} marginBottom={1} borderColor={definition.palette.primary.main} color={definition.palette.secondary.main>...</Box>`}</Box>
             </CodeBox>
             <Typography variant={'body2'}>Current text color: {textColor}</Typography>
             <Typography variant={'body2'}>Current border color: {bgColor}.main</Typography>

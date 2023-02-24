@@ -15,8 +15,8 @@ const CodeBox = ({children, component, size = 'medium'}: React.PropsWithChildren
     mb={size === 'medium' ? 1 : 0}
     borderRadius={definition.spacing(1)}
     padding={size === 'medium' ? 1 : 0.5}
-    bgcolor={definition.colorSchemes.light.palette.grey['200']}
-    color={definition.colorSchemes.light.palette.text.primary}
+    bgcolor={definition.palette.grey['200']}
+    color={definition.palette.text.primary}
   >{children}</Box>;
 };
 

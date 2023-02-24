@@ -1,2 +1,2 @@
-declare const definition: Omit<import("@mui/material/styles").Theme, "palette"> & import("@mui/material/styles").CssVarsTheme;
+declare const definition: import("@mui/material/styles").Theme;
 export default definition;
