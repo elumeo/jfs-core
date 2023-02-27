@@ -75,6 +75,5 @@ export const rowData = Array.from({ length: 200 },
   (_, k) => createDataVirtualizedTable(k, ...sample[Math.floor(Math.random() * sample.length)])
 )
 
-// const rows: Row[] = rowData
 
 

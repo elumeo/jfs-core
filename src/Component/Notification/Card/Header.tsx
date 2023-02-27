@@ -23,7 +23,7 @@ const Header: React.FC<Props> =
         ? null :
         <CardHeader
           avatar={<NotificationIcon variant={variant} />}
-          title={<Typography variant='h6' component='div'>{title}</Typography>}
+          title={<Typography variant='h5' component='div'>{title}</Typography>}
           subheader={<Typography variant='subtitle1' component='div'>{subtitle}</Typography>}
           subheaderTypographyProps={{ color: 'inherit' }}
           sx={sx}

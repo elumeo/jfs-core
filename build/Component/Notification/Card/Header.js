@@ -39,6 +39,6 @@ var Header = function (_a) {
     var title = _a.title, subtitle = _a.subtitle, variant = _a.variant;
     return (!variant && !title && !subtitle
         ? null :
-        React.createElement(CardHeader_1.default, { avatar: React.createElement(NotificationIcon_1.default, { variant: variant }), title: React.createElement(Typography_1.default, { variant: 'h6', component: 'div' }, title), subheader: React.createElement(Typography_1.default, { variant: 'subtitle1', component: 'div' }, subtitle), subheaderTypographyProps: { color: 'inherit' }, sx: sx }));
+        React.createElement(CardHeader_1.default, { avatar: React.createElement(NotificationIcon_1.default, { variant: variant }), title: React.createElement(Typography_1.default, { variant: 'h5', component: 'div' }, title), subheader: React.createElement(Typography_1.default, { variant: 'subtitle1', component: 'div' }, subtitle), subheaderTypographyProps: { color: 'inherit' }, sx: sx }));
 };
 exports.default = Header;

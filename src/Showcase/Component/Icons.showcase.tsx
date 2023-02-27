@@ -136,13 +136,13 @@ const Icons = () => {
               <Typography variant={'h6'}>Icon Usage</Typography>
               <CodeBox>
                 <Box component={Typography}>{`import { BadgePercent } from 'Core/Component/Icon';`}</Box>
+                <Box component={Typography}>{`import definition from 'Core/Component/App/Stateless/Style/Theme/Definition';`}</Box>
                 <Box component={Typography}>{`const style = ({`}</Box>
                 <Box pl={1} component={Typography}>{`icon: {`}</Box>
                 <Box pl={2} component={Typography}>{`fontSize: definition.typography.pxToRem(32),`}</Box>
                 <Box pl={2} component={Typography}>{`color: definition.palette.secondary.main`}</Box>
                 <Box pl={1} component={Typography}>{`}`}</Box>
                 <Box>{` });`}</Box>
-                <Box component={Typography}>{`const theme = useTheme();`}</Box>
               </CodeBox>
               <List>
                 <ListItem>
@@ -159,17 +159,17 @@ const Icons = () => {
                 </ListItem>
                 <ListItem>
                   <ListItemAvatar>
-                    <BadgePercentIcon style={{ fontSize: definition.typography.pxToRem(32), color: definition.palette.secondary.main }} />
+                    <BadgePercentIcon sx={{ fontSize: definition.typography.pxToRem(32), color: definition.palette.secondary.main }} />
                   </ListItemAvatar>
                   <ListItemText><CodeBox component={'span'}
-                    size={'small'}>{`<BadgePercentIcon style={{ fontSize: definition.typography.pxToRem(32), color :definition.palette.secondary.main }} />`}</CodeBox></ListItemText>
+                    size={'small'}>{`<BadgePercentIcon sx={{ fontSize: definition.typography.pxToRem(32), color :definition.palette.secondary.main }} />`}</CodeBox></ListItemText>
                 </ListItem>
                 <ListItem>
                   <ListItemAvatar>
                     <BadgePercentIcon sx={sxs.icon} />
                   </ListItemAvatar>
                   <ListItemText>
-                    <CodeBox component={'span'} size={'small'}>{`<BadgePercentIcon className={classes.icon} />`}</CodeBox>
+                    <CodeBox component={'span'} size={'small'}>{`<BadgePercentIcon sx={classes.icon} />`}</CodeBox>
                   </ListItemText>
                 </ListItem>
                 <ListItem>

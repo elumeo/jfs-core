@@ -50,7 +50,11 @@ const VirtualizedTable = <ItemData extends {}>({
   tableSize = 'small',
   sortBy,
   sortDirection,
-  compare = (a, b) => a[sortBy] < b[sortBy] ? -1 : 1,
+  compare = (a, b) => (a[sortBy] < b[sortBy])
+    ? -1
+    : a[sortBy] === b[sortBy]
+      ? 0
+      : 1,
   filter = () => true,
   ...props
 }: VirtualizedTableProps<ItemData>) => {

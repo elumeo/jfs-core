@@ -35,28 +35,36 @@ const Boxes = () => {
 
   return (
     <Layout navigation={<AppNavigation />}>
-    <Container disableGutters maxWidth={false}>
-      <Card>
-        <AppCardHeader title={'Boxes'} />
-        <AppCardContent>
-          <Box mb={2}>
-            <Grid container spacing={2}>
-              <Grid item><Button variant={'contained'} onClick={toggleBg}>Box prop:border</Button></Grid>
-              <Grid item><Button variant={'contained'} onClick={toggleText}>Box prop:color</Button></Grid>
-            </Grid>
-          </Box>
-          <Box border={'1px solid'} borderColor={bgColor + '.main'} p={2} color={getColorCode(textColor)}>
-            <Typography color={'inherit'}>This is a <CodeBox component={'span'} size={'small'}>{`<Box />`}</CodeBox> element. Boxes are useful to apply styles:</Typography>
-            <CodeBox>
-              <Box component={Typography}>{`<Box component={Card} width={'100%'} marginBottom={1} borderColor={definition.palette.primary.main} color={definition.palette.secondary.main>...</Box>`}</Box>
-            </CodeBox>
-            <Typography variant={'body2'}>Current text color: {textColor}</Typography>
-            <Typography variant={'body2'}>Current border color: {bgColor}.main</Typography>
-          </Box>
-        </AppCardContent>
-      </Card>
-    </Container>
-  </Layout>
+      <Container disableGutters maxWidth={false}>
+        <Card>
+          <AppCardHeader title={'Boxes'} />
+          <AppCardContent>
+            <Box mb={2}>
+              <Grid container spacing={2}>
+                <Grid item><Button variant={'contained'} onClick={toggleBg}>Box prop:border</Button></Grid>
+                <Grid item><Button variant={'contained'} onClick={toggleText}>Box prop:color</Button></Grid>
+              </Grid>
+            </Box>
+            <Box border={'1px solid'} borderColor={bgColor + '.main'} p={1} color={getColorCode(textColor)}>
+              <Typography color={'inherit'}>This is a <CodeBox component={'span'} size={'small'}>{`<Box />`}</CodeBox> element. Boxes are useful to apply styles:</Typography>
+              <CodeBox>
+                <Box component={Typography} >{
+                  `<Box
+              component={Card}
+              width={'100%'}
+              p={1}
+              borderColor={definition.palette.primary.main}
+              color={definition.palette.secondary.main}>
+              ...
+              </Box>`}</Box>
+              </CodeBox>
+              <Typography variant={'body2'}>Current text color: {textColor}</Typography>
+              <Typography variant={'body2'}>Current border color: {bgColor}.main</Typography>
+            </Box>
+          </AppCardContent>
+        </Card>
+      </Container>
+    </Layout>
   );
 };
 export default memo(Boxes);

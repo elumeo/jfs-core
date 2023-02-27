@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import React, { memo } from 'react';
+import React from 'react';
 import {
   Box,
   Button,
@@ -11,9 +11,12 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
+  FormGroup,
   Grid,
   Link,
   Popover,
+  Stack,
   Tooltip,
   Typography
 } from '@mui/material';
@@ -24,6 +27,7 @@ import LoremIpsumText from './LoremIpsumText.showcase';
 import CodeBox from './CodeBox.showcase';
 import { ButtonProgress } from '../../Component/Button';
 import TextFieldClearButton from '../../Component/TextFieldClearButton';
+import SelectClearButton from '../../Component/SelectClearButton';
 import definition from '../../Component/App/Stateless/Style/Theme/Definition';
 import Layout from '../../Component/App/Layout';
 
@@ -41,7 +45,7 @@ const sxs = {
     position: 'absolute',
     top: -6,
     left: -6,
-    zIndex: 1
+    // zIndex: 1
   },
   buttonProgress: {
     color: definition.palette.primary.main,
@@ -55,10 +59,10 @@ const sxs = {
 }
 
 const Dialogs = () => {
-  // const styles = useStyles();
   const [basicOpen, setBasicOpen] = React.useState(false);
   const [formOpen, setFormOpen] = React.useState(false);
   const [formValue, setFormValue] = React.useState('');
+  const [formValueMulti, setFormValueMulti] = React.useState<string[]>([]);
   const [asyncOpen, setAsyncOpen] = React.useState(false);
   const [asyncLoading, setAsyncLoading] = React.useState(false);
   const asyncTimer = React.useRef<number>();
@@ -116,9 +120,9 @@ const Dialogs = () => {
                     <LoremIpsumText lines={3} />
                   </DialogContent>
                   <DialogActions>
-                    <Button onClick={handleCloseBasic}>Cancel Action</Button>
-                    <Button onClick={handleCloseBasic} color='secondary'>Secondary Action</Button>
-                    <Button onClick={handleCloseBasic} color='primary' autoFocus>Primary Action</Button>
+                    <Button onClick={handleCloseBasic} variant={'outlined'} color='secondary'>Cancel Action</Button>
+                    <Button onClick={handleCloseBasic} variant={'contained'} color='secondary' >Secondary Action</Button>
+                    <Button onClick={handleCloseBasic} variant={'contained'} color='primary' autoFocus>Primary Action</Button>
                   </DialogActions>
                 </Dialog>
                 <Dialog
@@ -127,27 +131,59 @@ const Dialogs = () => {
                   aria-labelledby='form-dialog-title'
                   aria-describedby='form-dialog-description'
                 >
-                  <DialogTitle id='form-dialog-title'>{'Form dialog with different action button states'}</DialogTitle>
+                  <DialogTitle id='form-dialog-title' >{'Form dialog with different action button states'}</DialogTitle>
                   <DialogContent>
-                    <TextFieldClearButton
-                      fullWidth
-                      required
-                      value={formValue}
-                      error={formValue === ''}
-                      id='standard-basic'
-                      label='Test Value'
-                      onChange={event => setFormValue(event === null ? '' : event.target.value)}
-                    />
-                    <Box mt={2}>
-                      <Grid container spacing={1} alignItems={'center'}>
-                        <Grid item><InfoIcon /></Grid>
-                        <Grid item xs><Typography>Action Button should relate on the form state. Is the form invalid the action button should be disabled until the form becomes valid.</Typography></Grid>
-                      </Grid>
-                    </Box>
+                    <Stack spacing={2} pt={1} component={FormGroup}>
+                      <FormControl error={!formValue}>
+                        <TextFieldClearButton
+                          fullWidth
+                          required
+                          value={formValue}
+
+                          id='standard-basic'
+                          label='Test Value'
+                          onChange={event => setFormValue(event === null ? '' : event.target.value)}
+                        />
+                      </FormControl>
+                      <SelectClearButton
+                        value={formValue}
+                        required
+                        error={!formValue}
+                        variant='outlined'
+                        label={'single value select variant outlined'}
+                        helperText={'dont use FormControl, when using the <SelectClearButton> component'}
+                        onChange={val => { setFormValue(val) }}
+                        options={[
+                          { value: '1', label: 'Option 1' },
+                          { value: '2', label: 'Option 2' },
+                          { value: '3', label: 'Option 3' },]
+                        }
+                      />
+
+                      <SelectClearButton
+                        label={'multi value select variant outlined'}
+                        variant='outlined'
+                        multiple
+                        error={formValueMulti.length < 2}
+                        value={formValueMulti}
+                        onChange={val => { setFormValueMulti(val) }}
+                        options={[
+                          { value: '1', label: 'Option 1' },
+                          { value: '2', label: 'Option 2' },
+                          { value: '3', label: 'Option 3' },]
+                        }
+                      />
+                      <Box mt={2}>
+                        <Grid container spacing={1} alignItems={'center'}>
+                          <Grid item><InfoIcon /></Grid>
+                          <Grid item xs><Typography>Action Button should relate on the form state. Is the form invalid the action button should be disabled until the form becomes valid.</Typography></Grid>
+                        </Grid>
+                      </Box>
+                    </Stack>
                   </DialogContent>
                   <DialogActions>
-                    <Button onClick={handleCloseForm}>Cancel</Button>
-                    <Button onClick={handleCloseForm} color='primary' disabled={formValue === ''} autoFocus>Primary Action</Button>
+                    <Button onClick={handleCloseForm} variant={'contained'} color='secondary'>Cancel</Button>
+                    <Button onClick={handleCloseForm} variant={'contained'} color='primary' disabled={!formValue?.length || (formValueMulti.length < 2)} autoFocus>Primary Action</Button>
                   </DialogActions>
                 </Dialog>
                 <Dialog
@@ -161,8 +197,8 @@ const Dialogs = () => {
                     Action buttons should reload of a async state. This means: when saving a form the dialog should wait until the call is finished and shows a loading indicator.
                   </DialogContent>
                   <DialogActions>
-                    <Button onClick={handleCloseAsync}>Cancel</Button>
-                    <ButtonProgress inProgress={asyncLoading} onClick={handleButtonAsyncClick} color={'primary'}>Primary Action</ButtonProgress>
+                    <ButtonProgress onClick={handleCloseAsync} variant={'contained'} color='secondary'>Cancel</ButtonProgress>
+                    <ButtonProgress inProgress={asyncLoading} variant={'contained'} color='primary' onClick={handleButtonAsyncClick}>Primary Action</ButtonProgress>
                   </DialogActions>
                 </Dialog>
               </CardContent>
@@ -188,7 +224,7 @@ const Dialogs = () => {
                   }}
                 >
                   <Typography sx={sxs.popoverTypography}>The content of the <Link target='__blank'
-                    href='https://material-ui.com/components/popover/#popover'>Popover</Link>.</Typography>
+                    href='https://mui.com/material-ui/react-popover/#popover'>Popover</Link>.</Typography>
                 </Popover>
               </CardContent>
             </Card>
@@ -218,4 +254,4 @@ const Dialogs = () => {
     </Layout>
   );
 };
-export default memo(Dialogs);
+export default Dialogs

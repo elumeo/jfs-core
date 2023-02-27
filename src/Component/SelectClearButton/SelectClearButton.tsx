@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react'
 import { InputBaseProps, Checkbox, ChipProps, CircularProgress, FormControl, FormControlProps, InputLabel, MenuItem, Select, SelectProps as MUISelectProps, IconButton, } from '@mui/material';
 import ValueRenderer, { ValueType } from './ValueRenderer';
@@ -7,26 +8,31 @@ import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
 export type SelectOption = {
   value: string;
   label: React.ReactNode;
+  disabled?: boolean;
 }
-export type SelectProps<IsMulti extends boolean = undefined> = Partial<Omit<MUISelectProps<ValueType<IsMulti>>, 'onChange' | 'value'>> & {
-  canClear?: boolean;
-  canUnselect?: boolean;
-  renderAsChip?: boolean;
-  maxValuesToDisplayInInput?: number;
-  formControlProps?: Partial<FormControlProps>;
-  chipProps?: Partial<ChipProps>;
-  inputProps?: InputBaseProps
-  options?: SelectOption[];
-  value?: IsMulti extends true ? string[] : string;
-  label?: React.ReactNode
-  onChange: (value: IsMulti extends true ? string[] : string) => void;
-  loading?: boolean;
-  loadingSize?: number;
-} & (
+export type SelectProps<IsMulti extends boolean = undefined> = FormControlProps
+  & Pick<MUISelectProps<ValueType<IsMulti>>, 'multiple' | 'color' | 'disabled'>
+  & {
+    canClear?: boolean;
+    canUnselect?: boolean;
+    renderAsChip?: boolean;
+    maxValuesToDisplayInInput?: number;
+    chipProps?: Partial<ChipProps>;
+    inputProps?: InputBaseProps
+    options?: SelectOption[];
+    value?: IsMulti extends true ? string[] : string;
+    multiple?: IsMulti
+    label?: React.ReactNode
+    onChange: (value: IsMulti extends true ? string[] : string) => void;
+    loading?: boolean;
+    loadingSize?: number;
+    helperText?: React.ReactNode;
+    selectProps?: MUISelectProps<ValueType<IsMulti>>
+  } & (
     | { options: SelectOption[]; children?: never; }
     | { children: React.ReactNode; options?: never; }
   )
-const SelectClearButton = <IsMulti extends boolean = MUISelectProps['multiple']>({
+const SelectClearButton = <IsMulti extends MUISelectProps['multiple'] = undefined>({
   onChange,
   renderAsChip = true,
   value,
@@ -36,13 +42,14 @@ const SelectClearButton = <IsMulti extends boolean = MUISelectProps['multiple']>
   label,
   color = 'secondary',
   chipProps = {},
-  formControlProps = {},
   inputProps = {},
   children,
   options,
   maxValuesToDisplayInInput = 2,
   loading = false,
   loadingSize = 20,
+  selectProps = {},
+  helperText,
   ...rest
 }: SelectProps<IsMulti>) => {
   const labelId = React.useId()
@@ -72,33 +79,31 @@ const SelectClearButton = <IsMulti extends boolean = MUISelectProps['multiple']>
   )
   const open = React.useCallback(() => setIsOpen(true), [setIsOpen])
   const close = React.useCallback(() => setIsOpen(false), [setIsOpen])
-  return <FormControl fullWidth {...formControlProps}>
-    {label && <InputLabel color={color} id={labelId}>{label}</InputLabel>}
-    <Select<ValueType<IsMulti>>
+  return <FormControl fullWidth   {...rest} >
+    {label && <InputLabel color={selectProps?.color ?? color} id={labelId}>{label}</InputLabel>}
+    <Select<ValueType<typeof multiple>>
       labelId={labelId}
       value={value ?? (multiple ? [] : '') as ValueType<IsMulti>}
       multiple={multiple}
-      MenuProps={{
-        container: document.getElementById('overlay'),
-      }}
-      color={color}
+      color={selectProps?.color ?? color}
       open={isOpen}
       onOpen={open}
       onClose={close}
       IconComponent={() => isOpen
-        ? <IconButton disabled={rest.disabled} disableRipple onClick={open}><ArrowDropUp color='inherit' /></IconButton>
-        : <IconButton disabled={rest.disabled} disableRipple onClick={open}><ArrowDropDown color='inherit' /></IconButton>}
+        ? <IconButton disabled={selectProps.disabled} color='inherit' disableRipple onClick={open}><ArrowDropUp color='inherit' /></IconButton>
+        : <IconButton disabled={selectProps.disabled} color='inherit' disableRipple onClick={open}><ArrowDropDown color='inherit' /></IconButton>}
       onChange={(e) => onChange(e.target.value as ValueType<IsMulti>)}
       input={
         <CustomInput
           label={label}
           variant={variant}
+          helperText={helperText}
           color={color}
           canClear={canClear && values.length > 0}
           onClear={() => onChange((multiple ? [] : null) as ValueType<IsMulti>)}
           {...inputProps} />
       }
-      {...rest}
+      {...selectProps}
       renderValue={() =>
         <ValueRenderer
           values={values}
@@ -125,9 +130,9 @@ const SelectClearButton = <IsMulti extends boolean = MUISelectProps['multiple']>
                 key={'select-menu-item-' + option.value}
                 value={option.value}
                 color={color}
-                TouchRippleProps={{ color: color }}
+                disabled={option.disabled}
                 selected={
-                  Array.isArray(value)
+                  multiple
                     ? (value as string[]).includes(option.value)
                     : value === option.value
                 }

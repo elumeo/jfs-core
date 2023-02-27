@@ -7,12 +7,12 @@ import {
   CardHeader,
   Container,
   FormControlLabel,
-  Grid,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   ListSubheader,
+  Stack,
   Switch,
   Typography,
 } from '@mui/material';
@@ -35,49 +35,45 @@ const Lists = () => {
   const toggleShowSubheader = () => setShowSubheader(!showSubheader);
 
   return (
-    <Layout navigation={<AppNavigation/>}>
-        <Container maxWidth={'xl'}>
-          <Card>
-            <CardHeader title='Lists'/>
-            <CardContent>
-              <CodeBox>
-                <Typography>{`<List dense subheader={<ListSubheader>With a subheader</ListSubheader>>`}</Typography>
-              </CodeBox>
-              <Grid container spacing={1}>
-                <Grid item>
-                  <FormControlLabel control={<Switch onChange={toggleShowSubheader} value={showSubheader}/>} label='Show Subheader'/>
-                </Grid>
-                <Grid item>
-                  <FormControlLabel control={<Switch onChange={toggleDense} value={dense}/>} label='Dense'/>
-                </Grid>
-              </Grid>
-              <Grid container spacing={2}>
-                <Grid item xs={12} md={6}>
-                  <Typography variant='h6'>Text only list</Typography>
-                  <List dense={dense} subheader={showSubheader === true ? <ListSubheader>With a subheader</ListSubheader> : null}>
-                    {generate(
-                      <ListItem button onClick={() => setSecondary(!secondary)}>
-                        <ListItemText primary={'Primary List Item Text'} secondary={secondary ? 'Secondary List Item Text' : null}/>
-                      </ListItem>,
-                    )}
-                  </List>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Typography variant='h6'>Icon and text list</Typography>
-                  <List dense={dense} subheader={showSubheader === true ? <ListSubheader>With a subheader</ListSubheader> : null}>
-                    {generate(
-                      <ListItem button onClick={() => setSecondary(!secondary)}>
-                        <ListItemIcon><FolderIcon/></ListItemIcon>
-                        <ListItemText primary={'Primary List Item Text'} secondary={secondary ? 'Secondary List Item Text' : null}/>
-                      </ListItem>,
-                    )}
-                  </List>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-        </Container>
-  </Layout>
+    <Layout navigation={<AppNavigation />}>
+      <Container maxWidth={'xl'}>
+        <Card>
+          <CardHeader title='Lists' />
+          <CardContent>
+            <CodeBox>
+              <Typography>{`<List dense subheader={<ListSubheader>With a subheader</ListSubheader>>`}</Typography>
+            </CodeBox>
+            <Stack direction='row'>
+              <FormControlLabel control={<Switch onChange={toggleShowSubheader} value={showSubheader} />} label='Show Subheader' />
+              <FormControlLabel control={<Switch onChange={toggleDense} value={dense} />} label='Dense' />
+            </Stack>
+            <Stack direction={'row'} spacing={2}>
+              <Stack spacing={0}>
+                <Typography variant='h6'>Text only list</Typography>
+                <List dense={dense} subheader={showSubheader === true ? <ListSubheader >With a subheader; disableGutters</ListSubheader> : null}>
+                  {generate(
+                    <ListItem button onClick={() => setSecondary(!secondary)}>
+                      <ListItemText primary={'Primary List Item Text'} secondary={secondary ? 'Secondary List Item Text' : null} />
+                    </ListItem>,
+                  )}
+                </List>
+              </Stack>
+              <Stack>
+                <Typography variant='h6'>Icon and text list</Typography>
+                <List dense={dense} subheader={showSubheader === true ? <ListSubheader>With a subheader</ListSubheader> : null}>
+                  {generate(
+                    <ListItem button onClick={() => setSecondary(!secondary)}>
+                      <ListItemIcon><FolderIcon /></ListItemIcon>
+                      <ListItemText primary={'Primary List Item Text'} secondary={secondary ? 'Secondary List Item Text' : null} />
+                    </ListItem>,
+                  )}
+                </List>
+              </Stack>
+            </Stack>
+          </CardContent>
+        </Card>
+      </Container>
+    </Layout>
   );
 };
 export default Lists

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React  from 'react';
 import { Box, Button, Card, CardActions, CardContent, CardHeader, Container, Grid, IconButton, Stack, Typography } from '@mui/material';
 import AppNavigation from './AppNavigation.showcase';
 import Switch from '@mui/material/Switch';
@@ -7,11 +7,10 @@ import CodeBox from './CodeBox.showcase';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import AppCardHeader from '../../Component/Card/AppCardHeader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import definition from '../../Component/App/Stateless/Style/Theme/Definition';
 import Layout from '../../Component/App/Layout';
 
 const sxs = {
-  topRightAction: { margin: -definition.spacing(0.5) }
+  topRightAction: { m: -0.5 }
 }
 
 const Cards = () => {
@@ -41,7 +40,9 @@ const Cards = () => {
                 right.</Typography>
               <FormControlLabel control={<Switch onChange={toggleBottomActionButtonPosition} checked={bottomActionButtonPosition === 'custom'} />} label='Custom position' />
               <CodeBox>
-                <Typography>{`<Box component={CardActions} justifyContent={'flex-end'}>`}</Typography>
+                {/* <Typography>{` */}
+                {`<Box component={CardActions} justifyContent={'flex-end'}>`}
+                {/* `}</Typography> */}
               </CodeBox>
             </CardContent>
             <Box component={CardActions} justifyContent={bottomActionButtonPosition === 'custom' ? 'flex-end' : undefined}>
@@ -54,10 +55,13 @@ const Cards = () => {
             <CardHeader
               sx={topRightActionButtonAlignment === 'custom' ? sxs.topRightAction : null}
               disableTypography={topLeftActionButtonsEnabled}
-              title={topLeftActionButtonsEnabled === false ? 'This is an advanced card with more options' : <Grid container spacing={1}>
-                <Grid item><Typography variant='h5'>This is an advanced card with more options</Typography></Grid>
-                <Grid item><IconButton size={'small'} style={{ padding: '2px' }}><RefreshIcon /></IconButton></Grid>
-              </Grid>}
+              title={
+                topLeftActionButtonsEnabled === false
+                  ? 'This is an advanced card with more options'
+                  : <Grid container spacing={1}>
+                    <Grid item><Typography variant='h5'>This is an advanced card with more options</Typography></Grid>
+                    <Grid item><IconButton size={'small'} sx={{ p: .25}}><RefreshIcon /></IconButton></Grid>
+                  </Grid>}
               subheader={topLeftActionButtonsEnabled === false ? '... in the header' : <Typography variant={'body1'} color={'textSecondary'}>... in the header</Typography>}
               action={topRightActionButtonNumber === 1 ? <Button color='primary' variant='contained'>Primary Action</Button> :
                 <Grid container spacing={1} style={{ height: '100%' }}>
@@ -83,9 +87,9 @@ const Cards = () => {
               <Typography>Also the vertical alignment of the title and the buttons is not on one line. We can adjust this with little styling but it is not suggested because we
                 do have 2 different font sizes which will not match completely.</Typography>
               <CodeBox>
-                <Typography>{`const useStyles = makeStyles((theme) => createStyles({`}</Typography>
-                <Box component={Typography} pl={1}>{`topRightAction: {margin: -definition.spacing(0.5)}`}</Box>
-                <Typography>{`}));`}</Typography>
+                <Typography>{`const sx = {`}</Typography>
+                <Typography pl={1}>{`  m: -.5 `}</Typography>
+                <Typography>{`};`}</Typography>
               </CodeBox>
               <FormControlLabel control={<Switch onChange={toggleTopRightActionButtonAlignment} checked={topRightActionButtonAlignment === 'custom'} />}
                 label='Custom alignment of action buttons' />
@@ -96,7 +100,7 @@ const Cards = () => {
                 <Box component={Typography} pl={1}>{`disableTypography`}</Box>
                 <Box component={Typography} pl={1}>{`title={<Grid container spacing={1}>`}</Box>
                 <Box component={Typography} pl={2}>{`<Grid item><Typography variant='h5'>This is an advanced card with more options</Typography></Grid>`}</Box>
-                <Box component={Typography} pl={2}>{`<Grid item><IconButton size={'small'} style={{padding: '2px'}}><RefreshIcon /></IconButton></Grid>`}</Box>
+                <Box component={Typography} pl={2}>{`<Grid item><IconButton size={'small'} sx={{p: .25}}><RefreshIcon /></IconButton></Grid>`}</Box>
                 <Box component={Typography} pl={1}>{`</Grid>`}</Box>
                 <Box component={Typography} pl={1}>{`subheader={<Typography variant={'body1'} color={'textSecondary'}>... in the header</Typography>}`}</Box>
                 <Typography>{`/>`}</Typography>
@@ -118,7 +122,7 @@ const Cards = () => {
               <Typography>To have a consistent ui we have decided to implement a <CodeBox component={'span'} size={'small'}>AppCardHeader</CodeBox> component which is used in the CAO app in
                 any <CodeBox component={'span'} size={'small'}>Card</CodeBox> usage.</Typography>
               <CodeBox>{`<AppCardHeader
-                title={'Custom Card Components'}
+                title={'Custom Card Component: AppCardHeader'}
                 titleIcon={<DashboardIcon />}
                 isLoading={isRefreshing}
                 onRefresh={handleRefreshClick}
@@ -132,4 +136,4 @@ const Cards = () => {
     </Layout>);
 };
 
-export default memo(Cards);
+export default Cards

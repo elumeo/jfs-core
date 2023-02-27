@@ -34,7 +34,7 @@ const Tables = () => {
         dataKey={key}
         key={key}
         sortBy={sortBy}
-        size='small'
+        size={denseVirtualizedTable ? 'small' : 'medium'}
         width={TableApi.widthByColumn[key]}
         align={key === TableApi.Column.dessert ? 'left' : 'center'}
         onClick={() => {
@@ -91,8 +91,11 @@ const Tables = () => {
               <Box component={CardContent} height={'600px'}>
                 <Grid container direction={'column'} style={{ height: '100%' }}>
                   <Grid item>
-                    <Typography>Virtualized Tables are based on <Link target={'_blank'} href={'https://github.com/bvaughn/react-virtualized'}>react-virtualized</Link> library. This
-                      lib does not support a <i>dense</i> parameter on the table but we can adjust the <i>headerHeight</i> and <i>rowHeight</i> by ourself. The sticky behaviour is
+                    <Typography>Virtualized Tables are based on the <Link target={'_blank'} href={'https://virtuoso.dev/'}>react-virtuoso</Link> library. This
+                      lib is headless, so it requires authors to handle their own components and styles.
+                      The Core exports a simple, generically typed MUI wrapper, with sorting behaviour.
+                      Also the <i>dense</i> parameter is introduced on the table, so we can adjust the <i>headerHeight</i> and <i>rowHeight</i> easily with defined values.
+                      The sticky behaviour is
                       different as well and cannot be disabled. Check the different scrollbar behaviour on the right side.</Typography>
                     <FormControlLabel control={<Switch onChange={toggleDenseVirtualizedTable} checked={denseVirtualizedTable} />} label='Dense (Changes headerHeight and rowHeight)' />
                   </Grid>
@@ -106,10 +109,10 @@ const Tables = () => {
                           <TableCell component='th' scope='row'>
                             {row.dessert}
                           </TableCell>
-                          <TableCell align='right'>{row.calories}</TableCell>
-                          <TableCell align='right'>{row.fat}</TableCell>
-                          <TableCell align='right'>{row.carbs}</TableCell>
-                          <TableCell align='right'>{row.protein}</TableCell>
+                          <TableCell>{row.carbs}</TableCell>
+                          <TableCell>{row.calories}</TableCell>
+                          <TableCell>{row.fat}</TableCell>
+                          <TableCell>{row.protein}</TableCell>
                         </>
                       )}
                       sortBy={sortBy}

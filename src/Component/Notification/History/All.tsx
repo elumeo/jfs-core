@@ -35,7 +35,7 @@ const All: React.FC = () => {
       <TransitionGroup>
         {history.map((notification: Notification) => (
           <Collapse key={notification.id}>
-            <ListItem className='hallotest'>
+            <ListItem >
               <Card notification={notification} temporary={false} />
             </ListItem>
           </Collapse>

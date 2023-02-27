@@ -63,7 +63,11 @@ var sort = function (data, sortBy, compare) {
     });
 };
 var VirtualizedTable = function (_a) {
-    var _b = _a.data, data = _b === void 0 ? [] : _b, _c = _a.tableSize, tableSize = _c === void 0 ? 'small' : _c, sortBy = _a.sortBy, sortDirection = _a.sortDirection, _d = _a.compare, compare = _d === void 0 ? function (a, b) { return a[sortBy] < b[sortBy] ? -1 : 1; } : _d, _e = _a.filter, filter = _e === void 0 ? function () { return true; } : _e, props = __rest(_a, ["data", "tableSize", "sortBy", "sortDirection", "compare", "filter"]);
+    var _b = _a.data, data = _b === void 0 ? [] : _b, _c = _a.tableSize, tableSize = _c === void 0 ? 'small' : _c, sortBy = _a.sortBy, sortDirection = _a.sortDirection, _d = _a.compare, compare = _d === void 0 ? function (a, b) { return (a[sortBy] < b[sortBy])
+        ? -1
+        : a[sortBy] === b[sortBy]
+            ? 0
+            : 1; } : _d, _e = _a.filter, filter = _e === void 0 ? function () { return true; } : _e, props = __rest(_a, ["data", "tableSize", "sortBy", "sortDirection", "compare", "filter"]);
     var ref = react_1.default.useRef(null);
     var _sorted = react_1.default.useMemo(function () {
         var sorted = sort(data.filter(filter), sortBy, compare);

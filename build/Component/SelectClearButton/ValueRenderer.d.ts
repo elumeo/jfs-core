@@ -1,6 +1,6 @@
 import { ChipProps } from '@mui/material';
 import React from 'react';
-export type ValueType<IsMulti = boolean> = IsMulti extends true ? string[] : string;
+export type ValueType<IsMulti extends boolean = undefined> = IsMulti extends true ? string[] : string;
 export type Props = {
     renderAsChip: boolean;
     maxValuesToDisplayInInput: number;

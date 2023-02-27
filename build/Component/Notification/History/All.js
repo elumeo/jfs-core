@@ -31,7 +31,7 @@ var All = function () {
     }
     return (react_1.default.createElement(List_1.default, { sx: classes.root },
         react_1.default.createElement(react_transition_group_1.TransitionGroup, null, history.map(function (notification) { return (react_1.default.createElement(material_1.Collapse, { key: notification.id },
-            react_1.default.createElement(ListItem_1.default, { className: 'hallotest' },
+            react_1.default.createElement(ListItem_1.default, null,
                 react_1.default.createElement(Card_1.default, { notification: notification, temporary: false })))); }))));
 };
 exports.default = All;
