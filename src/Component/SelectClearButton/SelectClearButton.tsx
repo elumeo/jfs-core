@@ -36,7 +36,7 @@ const SelectClearButton = <IsMulti extends MUISelectProps['multiple'] = undefine
   onChange,
   renderAsChip = true,
   value,
-  variant = 'standard',
+  variant = 'outlined',
   canClear = true,
   canUnselect = true,
   label,
