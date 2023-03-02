@@ -20,7 +20,7 @@ const TextFieldClearButton = React.forwardRef<HTMLDivElement, TextFieldClearButt
   name,
   ...props
 }, ref) => {
-  const isDirty = value !== null && value !== undefined
+  const isDirty = value !== null && value !== undefined && value !== '';
   const clear = React.useCallback(
     () => {
       props?.onChange?.({ target: { value: null } } as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)
