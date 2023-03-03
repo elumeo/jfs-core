@@ -1,7 +1,28 @@
 /* eslint-disable max-lines */
-import { createTheme } from '@mui/material/styles';
+import { alpha, createTheme, Theme } from '@mui/material/styles';
 import * as Color from '../../../../../Constant/Color';
 import { grey } from '@mui/material/colors';
+
+const selectedStyles = ({ theme }: { theme: Theme }) => (
+  {
+    '&.Mui-selected': {
+      backgroundColor: `${alpha(Color.secondary.main, theme.palette.action.selectedOpacity)}`,
+      '&:hover': {
+        backgroundColor: `${alpha(Color.secondary.main, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity)}`
+      }
+    },
+    '&:hover': {
+      backgroundColor: `${alpha(Color.secondary.main, theme.palette.action.hoverOpacity)}`
+    },
+    '&.Mui-focusVisible': {
+      backgroundColor: `${alpha(Color.secondary.main, theme.palette.action.selectedOpacity)} !important`,
+      '&:hover': {
+        backgroundColor: `${alpha(Color.secondary.main, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity)}`
+      }
+    }
+  }
+)
+
 const definition = createTheme({
   palette: {
     primary: Color.primary,
@@ -82,33 +103,17 @@ const definition = createTheme({
     },
     MuiListItem: {
       styleOverrides: {
-        root: {
-          pt: 0.5,
-          pb: 0.5,
-        },
+        root: selectedStyles
+      }
+    },
+    MuiListItemButton: {
+      styleOverrides: {
+        root: selectedStyles
       }
     },
     MuiMenuItem: {
       styleOverrides: {
-        root: {
-          pt: 0.5,
-          pb: 0.5,
-          '&.Mui-selected': {
-            backgroundColor: `rgba(var(--mui-palette-secondary-mainChannel) / var(--mui-palette-action-selectedOpacity))`,
-            '&:hover': {
-              backgroundColor: `rgba(var(--mui-palette-secondary-mainChannel) / calc(var(--mui-palette-action-selectedOpacity) + var(--mui-palette-action-hoverOpacity)))`
-            }
-          },
-          '&:hover': {
-            backgroundColor: `rgba(var(--mui-palette-secondary-mainChannel) / var(--mui-palette-action-hoverOpacity))`
-          },
-          '&.Mui-focusVisible': {
-            backgroundColor: `rgba(var(--mui-palette-secondary-mainChannel) / var(--mui-palette-action-selectedOpacity)) !important`,
-            '&:hover': {
-              backgroundColor: `rgba(var(--mui-palette-secondary-mainChannel) / calc(var(--mui-palette-action-selectedOpacity) + var(--mui-palette-action-hoverOpacity)))`
-            }
-          }
-        }
+        root: selectedStyles
       },
     },
     MuiTableSortLabel: {

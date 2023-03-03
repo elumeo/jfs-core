@@ -9,6 +9,7 @@ import {
   FormControlLabel,
   List,
   ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
   ListSubheader,
@@ -23,6 +24,7 @@ const generate = (element: React.ReactElement) => {
   return [0, 1, 2].map((value) =>
     React.cloneElement(element, {
       key: value,
+      selected: value === 1,
     }),
   );
 }
@@ -33,7 +35,6 @@ const Lists = () => {
   const [secondary, setSecondary] = React.useState(false)
   const toggleDense = () => setDense(!dense);
   const toggleShowSubheader = () => setShowSubheader(!showSubheader);
-
   return (
     <Layout navigation={<AppNavigation />}>
       <Container maxWidth={'xl'}>
@@ -52,9 +53,9 @@ const Lists = () => {
                 <Typography variant='h6'>Text only list</Typography>
                 <List dense={dense} subheader={showSubheader === true ? <ListSubheader >With a subheader; disableGutters</ListSubheader> : null}>
                   {generate(
-                    <ListItem button onClick={() => setSecondary(!secondary)}>
+                    <ListItemButton onClick={() => setSecondary(!secondary)}>
                       <ListItemText primary={'Primary List Item Text'} secondary={secondary ? 'Secondary List Item Text' : null} />
-                    </ListItem>,
+                    </ListItemButton>,
                   )}
                 </List>
               </Stack>
