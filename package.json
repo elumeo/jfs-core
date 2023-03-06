@@ -1,10 +1,13 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "11.0.0-beta.2",
+  "version": "11.0.0-beta.3",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
     "bin": "./scripts/bin"
+  },
+  "engines": {
+    "node": "v16"
   },
   "scripts": {
     "start": "webpack serve --port 8083 --config build-tools/webpack/core-dev-server",
@@ -69,7 +72,6 @@
     "@types/react-dom": "^18.0.10",
     "@types/react-helmet": "^6.1.6",
     "@types/react-redux": "^7.1.25",
-    "@types/react-router-dom": "^5.3.3",
     "@types/react-window": "^1.8.5",
     "@types/socket.io-client": "^1.4.36",
     "@types/webpack": "^5.28.0",
