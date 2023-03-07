@@ -27,6 +27,7 @@ const Username = React.forwardRef<HTMLInputElement, Props>(
           && formatMessage({ id: 'login.username.errorText' })
 
         }
+        variant={'standard'}
         value={value ?? ''}
         onChange={event => onChange(event.target.value)}
         onKeyPress={event => event.key === 'Enter' && onEnter()}

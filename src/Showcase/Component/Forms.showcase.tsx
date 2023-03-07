@@ -29,6 +29,7 @@ import SelectClearButton, { type SelectProps } from '../../Component/SelectClear
 import TextFieldClearButton from '../../Component/TextFieldClearButton';
 import definition from '../../Component/App/Stateless/Style/Theme/Definition';
 import Layout from '../../Component/App/Layout';
+import {DatePickerProps} from '@mui/lab';
 
 const Forms = () => {
   const [checkboxState, setCheckboxState] = React.useState({ checkboxA: true, checkboxB: false, checkboxC: false, checkboxD: false });
@@ -46,8 +47,8 @@ const Forms = () => {
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => setRadioValue((event.target as HTMLInputElement).value);
   const toggleDisplayRowStyle = () => setDisplayRowStyle(!displayRowStyle);
   const toggleShowError = () => setShowError(!showError);
-  const handleSelectChange: SelectProps<false>['onChange'] = event => setSelectValue(event);
-  const handleDateChange = (date) => setSelectedDate(date);
+  const handleSelectChange: SelectProps<false>['onChange'] = event => setSelectValue(event as string);
+  const handleDateChange: DatePickerProps<Date>['onChange'] = (date: Date) => setSelectedDate(date);
 
   return (
     <Layout navigation={<AppNavigation />}>
@@ -144,10 +145,11 @@ const Forms = () => {
                     <Grid container spacing={1}>
                       <Grid item xs={6}>
                         <FormControl sx={{ width: 200 }} color='primary' required error={showError}>
-                          <SelectClearButton
+                          <SelectClearButton<false>
                             value={selectValue}
                             label={'Choose Value'}
                             onChange={handleSelectChange}
+                            variant={'standard'}
 
                           >
                             <MenuItem value={'1'}><Box alignItems={'center'} display={'flex'}>
@@ -181,7 +183,7 @@ const Forms = () => {
                         <FormControl sx={{ minWidth: 200 }}>
                           <InputLabel shrink={selectValue !== ''}>Disabled Element</InputLabel>
                           {/*eslint-disable-next-line no-console */}
-                          <SelectClearButton value={''} onChange={console.log} disabled>
+                          <SelectClearButton<false> variant={'standard'} value={''} onChange={console.log} disabled>
                             <MenuItem value='1'>Value 1</MenuItem>
                           </SelectClearButton>
                         </FormControl>
@@ -199,6 +201,7 @@ const Forms = () => {
                           value={textFieldValue}
                           helperText='And some important help text'
                           onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
+                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
@@ -210,6 +213,7 @@ const Forms = () => {
                           type={'number'}
                           InputProps={{ endAdornment: <InputAdornment position='end' sx={{ userSelect: 'none' }}>ct</InputAdornment> }}
                           inputProps={{ min: 0, max: 1, step: '0.01' }}
+                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
@@ -221,6 +225,7 @@ const Forms = () => {
                           type={'number'}
                           InputProps={{ endAdornment: <InputAdornment position='end' sx={{ userSelect: 'none' }}>gr</InputAdornment> }}
                           inputProps={{ min: '0', max: '100', step: '1' }}
+                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
@@ -230,6 +235,7 @@ const Forms = () => {
                           value={textFieldValue}
                           helperText='This is a text field'
                           onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
+                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
@@ -239,11 +245,13 @@ const Forms = () => {
                           value={priceValue}
                           helperText='This is a price field which is provided by the core'
                           onChange={(event) => setPriceValue(event.target.value)}
+                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
                         <DatePicker
                           renderInput={(params) => <TextField {...params}
+                                                              variant={'standard'}
                             helperText={'The MUI date picker component has migrated to @mui/x-date-picker. Please try to avoid using it. Use the next Component from the Core instead'}
                           />}
                           label='Date picker'
@@ -255,7 +263,7 @@ const Forms = () => {
                       <Grid item xs={2}>
                         <KeyboardDatePicker
                           selectsRange
-                          textFieldProps={{ label: 'Keyboard Range date picker', helperText: 'The range picker can be used by passing the `selectsRange` prop' }}
+                          textFieldProps={{ label: 'Keyboard Range date picker', helperText: 'The range picker can be used by passing the `selectsRange` prop', variant: 'standard' }}
                           selected={dateRange[0]}
                           startDate={dateRange[0]}
 
@@ -267,7 +275,7 @@ const Forms = () => {
                       </Grid>
                       <Grid item xs={2}>
                         <KeyboardDatePicker
-                          textFieldProps={{ label: 'Keyboard date picker', helperText: 'This Datepicker supports keyboard inputs' }}
+                          textFieldProps={{ label: 'Keyboard date picker', helperText: 'This Datepicker supports keyboard inputs', variant: 'standard' }}
                           selected={selectedDate}
                           onChange={(date) => handleDateChange(date as Date)}
                           shouldOpenOnFocus
@@ -278,7 +286,8 @@ const Forms = () => {
                         <KeyboardDatePicker
                           textFieldProps={{
                             label: 'Keyboard date picker',
-                            helperText: 'This Datepicker supports keyboard inputs'
+                            helperText: 'This Datepicker supports keyboard inputs',
+                            variant: 'standard'
                           }}
                           selected={selectedDate}
                           onChange={(date) => handleDateChange(date as Date)}
@@ -293,6 +302,7 @@ const Forms = () => {
                           value={textFieldValue}
                           helperText='And some important help text'
                           onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
+                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
@@ -303,6 +313,7 @@ const Forms = () => {
                           error={showError}
                           helperText='The icon can be implemented on start or end or both and should reflect error color'
                           InputProps={{ startAdornment: <InputAdornment position='start'><WarningIcon color={showError ? 'error' : 'inherit'} /></InputAdornment> }}
+                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs>
@@ -313,6 +324,7 @@ const Forms = () => {
                           value={textFieldValue}
                           onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
                           helperText='And some important help text'
+                          variant={'standard'}
                         />
                       </Grid>
                     </Grid>
