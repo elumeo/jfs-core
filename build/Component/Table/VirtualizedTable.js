@@ -33,7 +33,7 @@ var TableBody_1 = __importDefault(require("@mui/material/TableBody"));
 var TableContainer_1 = __importDefault(require("@mui/material/TableContainer"));
 var TableHead_1 = __importDefault(require("@mui/material/TableHead"));
 var TableRow_1 = __importDefault(require("@mui/material/TableRow"));
-var Paper_1 = __importDefault(require("@mui/material/Paper"));
+var material_1 = require("@mui/material");
 var Color_1 = require("../../Constant/Color");
 exports.visuallyHiddenStyle = {
     border: 0,
@@ -75,7 +75,7 @@ var VirtualizedTable = function (_a) {
             ? sorted.reverse()
             : sorted;
     }, [data, sortBy, sortDirection, compare, filter]);
-    var components = react_1.default.useMemo(function () { return (__assign({ Scroller: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(TableContainer_1.default, __assign({ component: Paper_1.default }, props, { ref: ref })); }), Table: function (props) { return react_1.default.createElement(Table_1.default, __assign({}, props, { size: tableSize, sx: { borderCollapse: 'separate' } })); }, TableHead: TableHead_1.default, TableRow: function (props) { return react_1.default.createElement(TableRow_1.default, __assign({ sx: {
+    var components = react_1.default.useMemo(function () { return (__assign({ Scroller: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(TableContainer_1.default, __assign({ component: material_1.Box }, props, { ref: ref })); }), Table: function (props) { return react_1.default.createElement(Table_1.default, __assign({}, props, { size: tableSize, sx: { borderCollapse: 'separate' } })); }, TableHead: TableHead_1.default, TableRow: function (props) { return react_1.default.createElement(TableRow_1.default, __assign({ sx: {
                 backgroundColor: props['data-index'] % 2
                     ? "".concat(Color_1.topas.main, "20")
                     : 'inherit',
