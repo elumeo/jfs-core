@@ -18,6 +18,6 @@ var Password = react_1.default.forwardRef(function (_a, ref) {
         onChange(event.target.value);
     };
     var handleEnter = function (event) { return event.key === 'Enter' && onEnter(); };
-    return (react_1.default.createElement(TextField_1.default, { autoComplete: 'current-password', id: 'password', type: 'password', inputRef: ref, required: true, label: formatMessage({ id: 'login.password' }), error: error, helperText: helperText, value: value !== null && value !== void 0 ? value : '', onChange: handleChange, onKeyPress: handleEnter }));
+    return (react_1.default.createElement(TextField_1.default, { autoComplete: 'current-password', id: 'password', type: 'password', variant: 'standard', inputRef: ref, required: true, label: formatMessage({ id: 'login.password' }), error: error, helperText: helperText, value: value !== null && value !== void 0 ? value : '', onChange: handleChange, onKeyPress: handleEnter }));
 });
 exports.default = Password;
