@@ -6,8 +6,7 @@ import { SortDirection } from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow, { TableRowProps } from '@mui/material/TableRow'
-import Paper from '@mui/material/Paper'
-import { SxProps } from '@mui/material'
+import {Box, SxProps} from '@mui/material'
 import { topas } from 'Constant/Color'
 
 export const visuallyHiddenStyle: SxProps = {
@@ -73,7 +72,7 @@ const VirtualizedTable = <ItemData extends {}>({
   const components: Components = React.useMemo(
     () => (
       {
-        Scroller: React.forwardRef<HTMLDivElement>((props, ref) => <TableContainer component={Paper} {...props} ref={ref} />),
+        Scroller: React.forwardRef<HTMLDivElement>((props, ref) => <TableContainer component={Box} {...props} ref={ref} />),
         Table: (props: TableProps) => <Table {...props} size={tableSize} sx={{ borderCollapse: 'separate' }} />,
         TableHead: TableHead,
         TableRow: (props: TableRowProps & { 'data-index': number }) => <TableRow sx={{
