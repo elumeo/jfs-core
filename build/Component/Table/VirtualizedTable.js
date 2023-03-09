@@ -34,7 +34,6 @@ var TableContainer_1 = __importDefault(require("@mui/material/TableContainer"));
 var TableHead_1 = __importDefault(require("@mui/material/TableHead"));
 var TableRow_1 = __importDefault(require("@mui/material/TableRow"));
 var material_1 = require("@mui/material");
-var Color_1 = require("../../Constant/Color");
 exports.visuallyHiddenStyle = {
     border: 0,
     clip: 'rect(0 0 0 0)',
@@ -67,7 +66,7 @@ var VirtualizedTable = function (_a) {
         ? -1
         : a[sortBy] === b[sortBy]
             ? 0
-            : 1; } : _d, _e = _a.filter, filter = _e === void 0 ? function () { return true; } : _e, props = __rest(_a, ["data", "tableSize", "sortBy", "sortDirection", "compare", "filter"]);
+            : 1; } : _d, _e = _a.filter, filter = _e === void 0 ? function () { return true; } : _e, tableRowProps = _a.tableRowProps, props = __rest(_a, ["data", "tableSize", "sortBy", "sortDirection", "compare", "filter", "tableRowProps"]);
     var ref = react_1.default.useRef(null);
     var _sorted = react_1.default.useMemo(function () {
         var sorted = sort(data.filter(filter), sortBy, compare);
@@ -75,11 +74,7 @@ var VirtualizedTable = function (_a) {
             ? sorted.reverse()
             : sorted;
     }, [data, sortBy, sortDirection, compare, filter]);
-    var components = react_1.default.useMemo(function () { return (__assign({ Scroller: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(TableContainer_1.default, __assign({ component: material_1.Box }, props, { ref: ref })); }), Table: function (props) { return react_1.default.createElement(Table_1.default, __assign({}, props, { size: tableSize, sx: { borderCollapse: 'separate' } })); }, TableHead: TableHead_1.default, TableRow: function (props) { return react_1.default.createElement(TableRow_1.default, __assign({ sx: {
-                backgroundColor: props['data-index'] % 2
-                    ? "".concat(Color_1.topas.main, "20")
-                    : 'inherit',
-            } }, props)); }, TableBody: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(TableBody_1.default, __assign({}, props, { ref: ref })); }) }, props === null || props === void 0 ? void 0 : props.components)); }, [props === null || props === void 0 ? void 0 : props.components, tableSize]);
+    var components = react_1.default.useMemo(function () { return (__assign({ Scroller: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(TableContainer_1.default, __assign({ component: material_1.Box }, props, { ref: ref })); }), Table: function (props) { return react_1.default.createElement(Table_1.default, __assign({}, props, { size: tableSize, sx: { borderCollapse: 'separate' } })); }, TableHead: TableHead_1.default, TableRow: function (props) { return react_1.default.createElement(TableRow_1.default, __assign({}, props, tableRowProps)); }, TableBody: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(TableBody_1.default, __assign({}, props, { ref: ref })); }) }, props === null || props === void 0 ? void 0 : props.components)); }, [props === null || props === void 0 ? void 0 : props.components, tableSize, tableRowProps]);
     return (react_1.default.createElement(react_virtuoso_1.TableVirtuoso, __assign({ ref: ref, data: _sorted, components: components, overscan: 20 }, props)));
 };
 exports.default = VirtualizedTable;

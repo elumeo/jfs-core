@@ -74,5 +74,10 @@
   "app.countryName.NL": "Niederlande",
   "app.countryName.AT": "Österreich",
   "app.countryName.SK": "Slowakische Republik",
-  "app.countryName.CZ": "Tschechische Republik"
+  "app.countryName.CZ": "Tschechische Republik",
+  "showcase.table.header.dessert": "Dessert",
+  "showcase.table.header.carbs": "Carbs",
+  "showcase.table.header.calories": "Calories",
+  "showcase.table.header.fat": "Fat",
+  "showcase.table.header.protein": "Protein"
 }

@@ -1,6 +1,8 @@
+/// <reference types="react" />
 import { TableVirtuosoProps } from 'react-virtuoso';
 import { TableProps } from '@mui/material/Table';
 import { SortDirection } from '@mui/material/TableCell';
+import { TableRowProps } from '@mui/material/TableRow';
 import { SxProps } from '@mui/material';
 export declare const visuallyHiddenStyle: SxProps;
 export declare const ellipsesStyle: SxProps;
@@ -15,6 +17,7 @@ export type VirtualizedTableProps<ItemData> = Partial<TableVirtuosoProps<ItemDat
         sortDirection: SortDirection;
     }) => void;
     tableSize?: TableProps['size'];
+    tableRowProps?: TableRowProps;
 };
-declare const VirtualizedTable: <ItemData extends {}>({ data, tableSize, sortBy, sortDirection, compare, filter, ...props }: VirtualizedTableProps<ItemData>) => JSX.Element;
+declare const VirtualizedTable: <ItemData extends {}>({ data, tableSize, sortBy, sortDirection, compare, filter, tableRowProps, ...props }: VirtualizedTableProps<ItemData>) => JSX.Element;
 export default VirtualizedTable;

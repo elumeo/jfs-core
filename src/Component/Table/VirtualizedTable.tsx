@@ -7,7 +7,6 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow, { TableRowProps } from '@mui/material/TableRow'
 import {Box, SxProps} from '@mui/material'
-import { topas } from 'Constant/Color'
 
 export const visuallyHiddenStyle: SxProps = {
   border: 0,
@@ -42,7 +41,8 @@ export type VirtualizedTableProps<ItemData> = Partial<TableVirtuosoProps<ItemDat
   compare?: (a: ItemData, b: ItemData) => -1 | 0 | 1,
   filter?: (item: ItemData) => boolean,
   setSort?: ({ sortBy, sortDirection }: { sortBy: keyof ItemData, sortDirection: SortDirection }) => void
-  tableSize?: TableProps['size']
+  tableSize?: TableProps['size'],
+  tableRowProps?: TableRowProps,
 };
 const VirtualizedTable = <ItemData extends {}>({
   data = [],
@@ -55,6 +55,7 @@ const VirtualizedTable = <ItemData extends {}>({
       ? 0
       : 1,
   filter = () => true,
+  tableRowProps,
   ...props
 }: VirtualizedTableProps<ItemData>) => {
 
@@ -75,16 +76,12 @@ const VirtualizedTable = <ItemData extends {}>({
         Scroller: React.forwardRef<HTMLDivElement>((props, ref) => <TableContainer component={Box} {...props} ref={ref} />),
         Table: (props: TableProps) => <Table {...props} size={tableSize} sx={{ borderCollapse: 'separate' }} />,
         TableHead: TableHead,
-        TableRow: (props: TableRowProps & { 'data-index': number }) => <TableRow sx={{
-          backgroundColor: props['data-index'] % 2
-            ? `${topas.main}20`
-            : 'inherit',
-        }} {...props} />,
+        TableRow: (props: TableRowProps & { 'data-index': number }) => <TableRow {...props} {...tableRowProps} />,
         TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => <TableBody {...props} ref={ref} />),
         ...props?.components,
       }
     ),
-    [props?.components, tableSize]
+    [props?.components, tableSize, tableRowProps]
   )
   return (
     <TableVirtuoso
