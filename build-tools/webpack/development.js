@@ -45,9 +45,8 @@ const development = {
   resolve: {
     ...common.resolve,
     alias: {
+      'react-redux': 'react-redux/lib',
       ...common.resolve.alias,
-      'react-redux': 'react-redux/lib'
-
     }
   }
 };
