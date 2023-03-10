@@ -1,2 +1,9 @@
-export { default as TableRowNoResults } from './TableRowNoResults';
-export { default as TableRowLoading } from './TableRowLoading';
+import Loading from './Loading';
+import NoResults from './NoResults';
+
+const TableRow = {
+  Loading,
+  NoResults
+}
+
+export default TableRow;

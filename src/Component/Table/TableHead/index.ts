@@ -1,2 +1,9 @@
-export { default as TableHeadSelect } from './TableHeadSelect';
-export { default as TableHeadDefault } from './TableHeadDefault';
+import Default from './Default';
+import Select from './Select';
+
+const TableHead = {
+  Default,
+  Select
+}
+
+export default TableHead;

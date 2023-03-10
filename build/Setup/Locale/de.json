@@ -79,5 +79,7 @@
     "showcase.table.header.carbs": "Carbs",
     "showcase.table.header.calories": "Calories",
     "showcase.table.header.fat": "Fat",
-    "showcase.table.header.protein": "Protein"
+    "showcase.table.header.protein": "Protein",
+    "showcase.table.header.dateTime": "DateTime",
+    "showcase.table.header.select": "Select"
 }

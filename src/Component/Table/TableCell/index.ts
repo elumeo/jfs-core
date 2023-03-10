@@ -1,8 +1,21 @@
-export { default as TableCellDefault } from './TableCellDefault';
-export { default as TableCellLoadingContent } from './TableCellLoadingContent';
-export { default as TableCellMsisdn } from './TableCellMsisdn';
-export { default as TableCellDateTime } from './TableCellDateTime';
-export { default as TableCellDateTimeRange } from './TableCellDateTimeRange';
-export { default as TableCellRoot } from './TableCellRoot';
-export { default as TableCellProduct } from './TableCellProduct';
-export { default as TableCellSelect } from './TableCellSelect';
+import Default from './Default';
+import DateTime from './DateTime';
+import DateTimeRange from './DateTimeRange';
+import Loading from './Loading';
+import Msisdn from './Msisdn';
+import Product from './Product';
+import Root from './Root';
+import Select from './Select';
+
+const TableCell = {
+  DateTime,
+  DateTimeRange,
+  Default,
+  Loading,
+  Msisdn,
+  Product,
+  Root,
+  Select
+}
+
+export default TableCell;
