@@ -56,7 +56,7 @@ var mapLanguageToDateFormat_1 = __importDefault(require("./mapLanguageToDateForm
 require("react-datepicker/dist/react-datepicker.css");
 var material_1 = require("@mui/material");
 var Today_1 = __importDefault(require("@mui/icons-material/Today"));
-var TextFieldClearButton_1 = __importDefault(require("../TextFieldClearButton"));
+var TextField_1 = __importDefault(require("../TextField"));
 var DatePicker = function (_a) {
     var _b;
     var dateFormat = _a.dateFormat, _c = _a.color, color = _c === void 0 ? 'primary' : _c, languageFromProp = _a.language, onChange = _a.onChange, textFieldProps = _a.textFieldProps, _d = _a.shouldOpenOnFocus, shouldOpenOnFocus = _d === void 0 ? true : _d, _e = _a.shouldCloseOnSelect, shouldCloseOnSelect = _e === void 0 ? true : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, _g = _a.isClearable, isClearable = _g === void 0 ? true : _g, rest = __rest(_a, ["dateFormat", "color", "language", "onChange", "textFieldProps", "shouldOpenOnFocus", "shouldCloseOnSelect", "disabled", "isClearable"]);
@@ -94,6 +94,6 @@ var DatePicker = function (_a) {
     var toggleOpen = react_1.default.useCallback(function () { return !disabled && setOpen(function (old) { return !old; }); }, [disabled, setOpen]);
     var preparedInputProps = (0, react_1.useMemo)(function () { return (__assign(__assign({}, textFieldProps === null || textFieldProps === void 0 ? void 0 : textFieldProps.InputProps), { autoComplete: 'off', onFocus: function () { return shouldOpenOnFocus ? setOpen(true) : null; }, endAdornment: (react_1.default.createElement(material_1.IconButton, { disabled: disabled, size: 'small', onClick: toggleOpen },
             react_1.default.createElement(Today_1.default, null))) })); }, [textFieldProps === null || textFieldProps === void 0 ? void 0 : textFieldProps.InputProps, shouldOpenOnFocus, disabled, setOpen, toggleOpen]);
-    return (react_1.default.createElement(react_datepicker_1.default, __assign({ id: id, disabled: disabled, ref: datePickerRef, className: 'jfs-datepicker', dayClassName: function () { return 'jfs-datepicker__day'; }, onClickOutside: toggleOpen, onChange: handleChangeValue, dateFormat: dateFormat || (0, mapLanguageToDateFormat_1.default)(language), locale: language, portalId: 'overlay', open: open, customInput: react_1.default.createElement(TextFieldClearButton_1.default, __assign({ color: color, hideClearButton: !isClearable || isPristine, required: rest.required }, textFieldProps, { InputProps: preparedInputProps, clearButtonProps: { id: clearButtonId } })) }, rest)));
+    return (react_1.default.createElement(react_datepicker_1.default, __assign({ id: id, disabled: disabled, ref: datePickerRef, className: 'jfs-datepicker', dayClassName: function () { return 'jfs-datepicker__day'; }, onClickOutside: toggleOpen, onChange: handleChangeValue, dateFormat: dateFormat || (0, mapLanguageToDateFormat_1.default)(language), locale: language, portalId: 'overlay', open: open, customInput: react_1.default.createElement(TextField_1.default, __assign({ color: color, hideClearButton: !isClearable || isPristine, required: rest.required }, textFieldProps, { InputProps: preparedInputProps, clearButtonProps: { id: clearButtonId } })) }, rest)));
 };
 exports.default = DatePicker;

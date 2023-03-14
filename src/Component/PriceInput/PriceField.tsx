@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputAdornment } from '@mui/material';
-import TextFieldClearButton, { type TextFieldClearButtonProps } from 'Component/TextFieldClearButton'
+import TextFieldClearButton, { type Props as TextFieldProps } from 'Component/TextField'
 import useCurrency from 'Effect/useCurrency';
 import usePriceFieldAdornment from 'Effect/usePriceFieldAdornment';
 import { Currency, Number as FormatNumber } from 'Utilities/Format';
@@ -8,11 +8,11 @@ import { Currency, Number as FormatNumber } from 'Utilities/Format';
 type Props = {
   currency?: string;
   selectOnFocus?: boolean;
-  value: React.ReactText;
+  value: string | number;
   min?: number;
   max?: number;
   showDecimals?: boolean
-} & TextFieldClearButtonProps
+} & TextFieldProps
 
 const PriceField: React.FC<Props> = ({
   currency = 'eur',
@@ -44,12 +44,12 @@ const PriceField: React.FC<Props> = ({
       ref.current.select();
     }
   }, [_focused, selectOnFocus]);
-  const _onFocus: TextFieldClearButtonProps['onFocus'] = React.useCallback(event => {
+  const _onFocus: TextFieldProps['onFocus'] = React.useCallback(event => {
     setFocused(true);
     props?.onFocus?.(event);
   }, [props?.onFocus, setFocused, selectOnFocus]);
 
-  const _onBlur: TextFieldClearButtonProps['onBlur'] = React.useCallback(event => {
+  const _onBlur: TextFieldProps['onBlur'] = React.useCallback(event => {
     props?.onBlur?.(event);
     setFocused(false);
     if (isNaN(parseFloat(value as string))) {
@@ -57,7 +57,7 @@ const PriceField: React.FC<Props> = ({
     }
   }, [setFocused, props?.onBlur, value]);
 
-  const _onChange: TextFieldClearButtonProps['onChange'] = React.useCallback((event) => {
+  const _onChange: TextFieldProps['onChange'] = React.useCallback((event) => {
     const _value = event.target.value;
     props?.onChange?.(
       {

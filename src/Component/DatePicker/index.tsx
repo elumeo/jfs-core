@@ -7,10 +7,10 @@ import mapLanguageToDateFormat from './mapLanguageToDateFormat';
 import 'react-datepicker/dist/react-datepicker.css';
 import { IconButton, } from '@mui/material';
 import TodayIcon from '@mui/icons-material/Today';
-import TextFieldClearButton, { TextFieldClearButtonProps } from 'Component/TextFieldClearButton';
+import TextFieldClearButton, { Props } from 'Component/TextField';
 
 export type DatePickerProps<IsRangePicker extends boolean = undefined> = ReactDatePickerProps<null, IsRangePicker> & {
-  textFieldProps?: Partial<TextFieldClearButtonProps>;
+  textFieldProps?: Partial<Props>;
   language?: LANGUAGE;
   shouldOpenOnFocus?: boolean;
   isClearable?: boolean;
@@ -105,7 +105,7 @@ const DatePicker = <IsRangePicker extends boolean = undefined>({
           color={color}
           hideClearButton={!isClearable || isPristine}
           required={rest.required}
-          {...(textFieldProps as TextFieldClearButtonProps)}
+          {...(textFieldProps as Props)}
           InputProps={preparedInputProps}
           clearButtonProps={{ id: clearButtonId }}
         />

@@ -51,7 +51,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var material_1 = require("@mui/material");
 var Clear_1 = __importDefault(require("@mui/icons-material/Clear"));
-var TextFieldClearButton = react_1.default.forwardRef(function (_a, ref) {
+var TextField = react_1.default.forwardRef(function (_a, ref) {
     var _b;
     var _c = _a.clearButtonSize, clearButtonSize = _c === void 0 ? 'small' : _c, _d = _a.clearIconSize, clearIconSize = _d === void 0 ? 'small' : _d, _e = _a.value, value = _e === void 0 ? null : _e, hideClearButton = _a.hideClearButton, forceEnableClearButton = _a.forceEnableClearButton, clearButtonProps = _a.clearButtonProps, name = _a.name, props = __rest(_a, ["clearButtonSize", "clearIconSize", "value", "hideClearButton", "forceEnableClearButton", "clearButtonProps", "name"]);
     var isDirty = value !== null && value !== undefined && value !== '';
@@ -70,6 +70,6 @@ var TextFieldClearButton = react_1.default.forwardRef(function (_a, ref) {
     var onChange = react_1.default.useCallback(function (e) {
         props.onChange(e);
     }, [props.onChange]);
-    return react_1.default.createElement(material_1.TextField, __assign({ ref: ref, name: name, value: value || '', autoComplete: 'new-password' }, props, { InputProps: preparedInputProps, onChange: onChange }));
+    return react_1.default.createElement(material_1.TextField, __assign({ ref: ref, name: name, value: value || '', variant: 'standard' }, props, { onChange: onChange, InputProps: preparedInputProps }));
 });
-exports.default = TextFieldClearButton;
+exports.default = TextField;

@@ -14,7 +14,7 @@ import {
   FormControl,
   FormGroup,
   Grid,
-  Link,
+  Link, MenuItem,
   Popover,
   Stack,
   Tooltip,
@@ -25,9 +25,9 @@ import InfoIcon from '@mui/icons-material/Info';
 import AppNavigation from './AppNavigation.showcase';
 import LoremIpsumText from './LoremIpsumText.showcase';
 import CodeBox from './CodeBox.showcase';
-import { ButtonProgress } from '../../Component/Button';
-import TextFieldClearButton from '../../Component/TextFieldClearButton';
-import SelectClearButton from '../../Component/SelectClearButton';
+import {ButtonProgress} from '../../Component/Button';
+import TextField from '../../Component/TextField';
+import Select from '../../Component/Select';
 import definition from '../../Component/App/Stateless/Style/Theme/Definition';
 import Layout from '../../Component/App/Layout';
 
@@ -55,7 +55,7 @@ const sxs = {
     marginTop: -12,
     marginLeft: -12
   },
-  popoverTypography: { padding: definition.spacing(2) }
+  popoverTypography: {padding: definition.spacing(2)}
 }
 
 const Dialogs = () => {
@@ -98,13 +98,13 @@ const Dialogs = () => {
   const popoverOpen = Boolean(popoverEl);
 
   return (
-    <Layout navigation={<AppNavigation />} fullWidth>
+    <Layout navigation={<AppNavigation/>} fullWidth>
       <Container maxWidth={false} disableGutters>
         <Grid container direction={'column'} spacing={1}>
           <Grid item xs>
             <Card>
               <CardHeader title='Dialogs' subheader={<>Open the "Async Dialog" to see a recommended flow of a asynchronous call to the backend (including the <Link
-                href={'#/Buttons'}>"ButtonProgress"</Link> component).</>} />
+                href={'#/Buttons'}>"ButtonProgress"</Link> component).</>}/>
               <CardContent>
                 <Button color='secondary' onClick={handleClickOpenBasic}>Basic dialog</Button>
                 <Button color='secondary' onClick={handleClickOpenForm}>Form dialog</Button>
@@ -117,11 +117,11 @@ const Dialogs = () => {
                 >
                   <DialogTitle id='basic-dialog-title'>{'Basic dialog with different action button states'}</DialogTitle>
                   <DialogContent>
-                    <LoremIpsumText lines={3} />
+                    <LoremIpsumText lines={3}/>
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={handleCloseBasic} variant={'outlined'} color='secondary'>Cancel Action</Button>
-                    <Button onClick={handleCloseBasic} variant={'contained'} color='secondary' >Secondary Action</Button>
+                    <Button onClick={handleCloseBasic} variant={'contained'} color='secondary'>Secondary Action</Button>
                     <Button onClick={handleCloseBasic} variant={'contained'} color='primary' autoFocus>Primary Action</Button>
                   </DialogActions>
                 </Dialog>
@@ -131,59 +131,91 @@ const Dialogs = () => {
                   aria-labelledby='form-dialog-title'
                   aria-describedby='form-dialog-description'
                 >
-                  <DialogTitle id='form-dialog-title' >{'Form dialog with different action button states'}</DialogTitle>
+                  <DialogTitle id='form-dialog-title'>{'Form dialog with different action button states'}</DialogTitle>
                   <DialogContent>
                     <Stack spacing={2} pt={1} component={FormGroup}>
                       <FormControl error={!formValue}>
-                        <TextFieldClearButton
+                        <TextField
                           fullWidth
                           required
                           value={formValue}
-
                           id='standard-basic'
                           label='Test Value'
                           onChange={event => setFormValue(event === null ? '' : event.target.value)}
                         />
                       </FormControl>
-                      <SelectClearButton
-                        value={formValue}
-                        required
-                        error={!formValue}
-                        variant='outlined'
-                        label={'single value select variant outlined'}
-                        helperText={'dont use FormControl, when using the <SelectClearButton> component'}
-                        onChange={val => { setFormValue(val) }}
-                        options={[
-                          { value: '1', label: 'Option 1' },
-                          { value: '2', label: 'Option 2' },
-                          { value: '3', label: 'Option 3' },]
-                        }
-                      />
-
-                      <SelectClearButton
-                        label={'multi value select variant outlined'}
-                        variant='outlined'
+                      <FormControl variant="standard" error={!formValue}>
+                        <Select<string>
+                          value={formValue ?? ''}
+                          required
+                          error={!formValue}
+                          onChange={event => {
+                            setFormValue(event.target.value as string)
+                          }}
+                          label={'single value select variant outlined'}
+                          helperText={'you can use the <Select> component inside FormControl or without'}
+                        >
+                          <MenuItem value={'1'}>Option 1</MenuItem>
+                          <MenuItem value={'2'}>Option 2</MenuItem>
+                          <MenuItem value={'3'}>Option 3</MenuItem>
+                        </Select>
+                      </FormControl>
+                      <FormControl variant="standard" error={!formValue} fullWidth>
+                        <Select<string[]>
+                          multiple
+                          error={formValueMulti.length < 2}
+                          value={formValueMulti}
+                          label={'multi value select variant outlined'}
+                          onChange={event => {
+                            setFormValueMulti(event.target.value as string[])
+                          }}
+                          canClear
+                          maxValuesShown={2}
+                        >
+                          <MenuItem value={'1'}>Option 1</MenuItem>
+                          <MenuItem value={'2'}>Option 2</MenuItem>
+                          <MenuItem value={'3'}>Option 3</MenuItem>
+                        </Select>
+                      </FormControl>
+                      <FormControl variant="standard" error={!formValue} fullWidth>
+                        <Select<string[]>
+                          multiple
+                          value={[]}
+                          label={'loading example'}
+                          canClear
+                          loading
+                        ></Select>
+                      </FormControl>
+                      <Select<string[]>
                         multiple
-                        error={formValueMulti.length < 2}
                         value={formValueMulti}
-                        onChange={val => { setFormValueMulti(val) }}
-                        options={[
-                          { value: '1', label: 'Option 1' },
-                          { value: '2', label: 'Option 2' },
-                          { value: '3', label: 'Option 3' },]
-                        }
-                      />
+                        label={'multi value not in a form control'}
+                        onChange={event => {
+                          setFormValueMulti(event.target.value as string[])
+                        }}
+                        formControlProps={{
+                          variant: "standard",
+                          fullWidth: true
+                        }}
+                        canClear
+                      >
+                        <MenuItem value={'1'}>Option 1</MenuItem>
+                        <MenuItem value={'2'}>Option 2</MenuItem>
+                        <MenuItem value={'3'}>Option 3</MenuItem>
+                      </Select>
                       <Box mt={2}>
                         <Grid container spacing={1} alignItems={'center'}>
-                          <Grid item><InfoIcon /></Grid>
-                          <Grid item xs><Typography>Action Button should relate on the form state. Is the form invalid the action button should be disabled until the form becomes valid.</Typography></Grid>
+                          <Grid item><InfoIcon/></Grid>
+                          <Grid item xs><Typography>Action Button should relate on the form state. Is the form invalid the action button should be disabled until the form becomes
+                            valid.</Typography></Grid>
                         </Grid>
                       </Box>
                     </Stack>
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={handleCloseForm} variant={'contained'} color='secondary'>Cancel</Button>
-                    <Button onClick={handleCloseForm} variant={'contained'} color='primary' disabled={!formValue?.length || (formValueMulti.length < 2)} autoFocus>Primary Action</Button>
+                    <Button onClick={handleCloseForm} variant={'contained'} color='primary' disabled={!formValue?.length || (formValueMulti.length < 2)} autoFocus>Primary
+                      Action</Button>
                   </DialogActions>
                 </Dialog>
                 <Dialog
@@ -206,7 +238,7 @@ const Dialogs = () => {
           </Grid>
           <Grid item xs>
             <Card>
-              <CardHeader title={'Popovers'} subheader={'A use case could be the PSB provisional booking feature where the agent can input some comment text before saving.'} />
+              <CardHeader title={'Popovers'} subheader={'A use case could be the PSB provisional booking feature where the agent can input some comment text before saving.'}/>
               <CardContent>
                 <Button aria-describedby={'openPopoverButton'} variant='contained' color='primary' onClick={handlePopoverButtonClick}>Open Popover</Button>
                 <Popover
@@ -224,7 +256,7 @@ const Dialogs = () => {
                   }}
                 >
                   <Typography sx={sxs.popoverTypography}>The content of the <Link target='__blank'
-                    href='https://mui.com/material-ui/react-popover/#popover'>Popover</Link>.</Typography>
+                                                                                  href='https://mui.com/material-ui/react-popover/#popover'>Popover</Link>.</Typography>
                 </Popover>
               </CardContent>
             </Card>
@@ -232,16 +264,17 @@ const Dialogs = () => {
           <Grid item xs>
             <Card>
               <CardHeader title={'Tooltips'}
-                subheader={'We decided to change the default font size for tooltips to the font size of typography variant "body2". This is implemented directly in the core theme.'} />
+                          subheader={'We decided to change the default font size for tooltips to the font size of typography variant "body2". This is implemented directly in the core theme.'}/>
               <CardContent>
                 <Grid container spacing={1} alignItems={'center'}>
                   <Grid item>
                     <Tooltip title={'This is a tooltip text.'}>
-                      <WarningIcon />
+                      <WarningIcon/>
                     </Tooltip>
                   </Grid>
                   <Grid item>
-                    <Tooltip title={<>The tooltip even works with disabled button if you wrap the button inside a <CodeBox component={'span'} size={'small'}>span</CodeBox> element.</>}>
+                    <Tooltip
+                      title={<>The tooltip even works with disabled button if you wrap the button inside a <CodeBox component={'span'} size={'small'}>span</CodeBox> element.</>}>
                       <span><Button disabled>Disabled button</Button></span>
                     </Tooltip>
                   </Grid>

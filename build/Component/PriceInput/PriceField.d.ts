@@ -1,12 +1,12 @@
 import React from 'react';
-import { type TextFieldClearButtonProps } from '../TextFieldClearButton';
+import { type Props as TextFieldProps } from '../TextField';
 type Props = {
     currency?: string;
     selectOnFocus?: boolean;
-    value: React.ReactText;
+    value: string | number;
     min?: number;
     max?: number;
     showDecimals?: boolean;
-} & TextFieldClearButtonProps;
+} & TextFieldProps;
 declare const PriceField: React.FC<Props>;
 export default PriceField;

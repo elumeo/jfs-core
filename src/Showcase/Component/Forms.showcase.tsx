@@ -23,10 +23,9 @@ import WarningIcon from '@mui/icons-material/Warning';
 import PriceField from '../../Component/PriceInput';
 import { DatePicker } from '@mui/x-date-pickers';
 import 'date-fns';
-// import DateFnsUtils from '@date-io/date-fns';
 import KeyboardDatePicker from '../../Component/DatePicker';
-import SelectClearButton, { type SelectProps } from '../../Component/SelectClearButton/SelectClearButton';
-import TextFieldClearButton from '../../Component/TextFieldClearButton';
+import Select, { type Props as SelectProps } from '../../Component/Select';
+import TextFieldClearButton from '../../Component/TextField';
 import definition from '../../Component/App/Stateless/Style/Theme/Definition';
 import Layout from '../../Component/App/Layout';
 import {DatePickerProps} from '@mui/lab';
@@ -47,7 +46,7 @@ const Forms = () => {
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => setRadioValue((event.target as HTMLInputElement).value);
   const toggleDisplayRowStyle = () => setDisplayRowStyle(!displayRowStyle);
   const toggleShowError = () => setShowError(!showError);
-  const handleSelectChange: SelectProps<false>['onChange'] = event => setSelectValue(event as string);
+  const handleSelectChange: SelectProps<string>['onChange'] = event => setSelectValue(event.target.value == null ? ''  : event.target.value);
   const handleDateChange: DatePickerProps<Date>['onChange'] = (date: Date) => setSelectedDate(date);
 
   return (
@@ -144,13 +143,12 @@ const Forms = () => {
                   <Box mt={2}>
                     <Grid container spacing={1}>
                       <Grid item xs={6}>
-                        <FormControl sx={{ width: 200 }} color='primary' required error={showError}>
-                          <SelectClearButton<false>
+                        <FormControl sx={{ width: 200 }} color='primary' required error={showError} variant={'standard'}>
+                          <Select<string>
                             value={selectValue}
                             label={'Choose Value'}
                             onChange={handleSelectChange}
-                            variant={'standard'}
-
+                            canClear
                           >
                             <MenuItem value={'1'}><Box alignItems={'center'} display={'flex'}>
                               <WarningIcon sx={{ fontSize: definition.typography.pxToRem(20) }} />
@@ -175,7 +173,7 @@ const Forms = () => {
                             <MenuItem value={'12'}>Value 12</MenuItem>
                             <MenuItem value={'13'}>Value 13</MenuItem>
                             <MenuItem value={'14'}>Value 14</MenuItem>
-                          </SelectClearButton>
+                          </Select>
                           <FormHelperText>The <CodeBox component={'span'} size={'small'}>SelectClearButton</CodeBox> component will automatically display a clear icon button when something was selected.</FormHelperText>
                         </FormControl>
                       </Grid>
@@ -183,9 +181,9 @@ const Forms = () => {
                         <FormControl sx={{ minWidth: 200 }}>
                           <InputLabel shrink={selectValue !== ''}>Disabled Element</InputLabel>
                           {/*eslint-disable-next-line no-console */}
-                          <SelectClearButton<false> variant={'standard'} value={''} onChange={console.log} disabled>
+                          <Select<false> variant={'standard'} value={''} onChange={console.log} disabled>
                             <MenuItem value='1'>Value 1</MenuItem>
-                          </SelectClearButton>
+                          </Select>
                         </FormControl>
                       </Grid>
                     </Grid>
@@ -244,7 +242,7 @@ const Forms = () => {
                           label='Core Price field'
                           value={priceValue}
                           helperText='This is a price field which is provided by the core'
-                          onChange={(event) => setPriceValue(event.target.value)}
+                          onChange={event => setPriceValue(event.target.value)}
                           variant={'standard'}
                         />
                       </Grid>

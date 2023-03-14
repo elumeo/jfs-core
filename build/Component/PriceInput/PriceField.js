@@ -27,7 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var material_1 = require("@mui/material");
-var TextFieldClearButton_1 = __importDefault(require("../TextFieldClearButton"));
+var TextField_1 = __importDefault(require("../TextField"));
 var useCurrency_1 = __importDefault(require("../../Effect/useCurrency"));
 var usePriceFieldAdornment_1 = __importDefault(require("../../Effect/usePriceFieldAdornment"));
 var Format_1 = require("../../Utilities/Format");
@@ -70,6 +70,6 @@ var PriceField = function (_a) {
         var _a;
         return (__assign((_a = {}, _a[adornmentType] = react_1.default.createElement(material_1.InputAdornment, { position: adornmentPosition, sx: styles }, Format_1.Currency.getCurrencySign(currency)), _a), props === null || props === void 0 ? void 0 : props.InputProps));
     }, [adornmentPosition, adornmentType, currency, props === null || props === void 0 ? void 0 : props.InputProps, styles]);
-    return (react_1.default.createElement(TextFieldClearButton_1.default, __assign({ inputRef: ref, value: _focused ? value : display, InputProps: _InputProps, onChange: _onChange, onFocus: _onFocus, onBlur: _onBlur }, props)));
+    return (react_1.default.createElement(TextField_1.default, __assign({ inputRef: ref, value: _focused ? value : display, InputProps: _InputProps, onChange: _onChange, onFocus: _onFocus, onBlur: _onBlur }, props)));
 };
 exports.default = PriceField;

@@ -3,9 +3,9 @@ import { ReactDatePickerProps } from 'react-datepicker';
 import './Setup';
 import { LANGUAGE } from '../../Types/Language';
 import 'react-datepicker/dist/react-datepicker.css';
-import { TextFieldClearButtonProps } from '../TextFieldClearButton';
+import { Props } from '../TextField';
 export type DatePickerProps<IsRangePicker extends boolean = undefined> = ReactDatePickerProps<null, IsRangePicker> & {
-    textFieldProps?: Partial<TextFieldClearButtonProps>;
+    textFieldProps?: Partial<Props>;
     language?: LANGUAGE;
     shouldOpenOnFocus?: boolean;
     isClearable?: boolean;
