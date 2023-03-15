@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "11.0.0-beta.9",
+  "version": "11.0.0-beta.10",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -10,7 +10,7 @@
     "node": "v16"
   },
   "scripts": {
-    "start": "webpack serve --port 8083 --config build-tools/webpack/core-dev-server",
+    "start": "webpack serve --port 8083 --config build-tools/webpack/core-dev-server --no-client-overlay-warnings",
     "build": "tsc && tsc-alias",
     "build:showcase": "webpack --config build-tools/webpack/showcase",
     "build:watch": "tsc-watch --onSuccess tsc-alias",

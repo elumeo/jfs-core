@@ -1,9 +1,9 @@
 import Default from './Default';
 import Select from './Select';
 
-const TableHead = {
+const Head = {
   Default,
   Select
 }
 
-export default TableHead;
+export default Head;

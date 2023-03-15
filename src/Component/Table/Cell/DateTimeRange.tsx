@@ -3,7 +3,7 @@ import {useIntl} from 'react-intl';
 import {DateTime} from 'Utilities/Format';
 import {DateTimeRangeCellProps} from 'Types/Table/DateTimeRangeCellProps';
 import {TableCellProps} from '@mui/material';
-import Root from 'Component/Table/TableCell/Root';
+import Root from 'Component/Table/Cell/Root';
 
 export type Props = Partial<TableCellProps> & {
   value: DateTimeRangeCellProps;

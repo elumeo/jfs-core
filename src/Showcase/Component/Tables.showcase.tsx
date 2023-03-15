@@ -1,6 +1,21 @@
 /* eslint-disable max-lines */
-import React from 'react';
-import {Box, Card, CardContent, CardHeader, Container, Grid, Link, SxProps, Table, TableBody, TableContainer, TableRow, TableHead as MuiTableHead, Typography} from '@mui/material';
+import React, {useCallback, useEffect} from 'react';
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Grid,
+  Link,
+  SxProps,
+  Table as MuiTable,
+  TableBody,
+  TableContainer,
+  TableRow,
+  TableHead as MuiTableHead,
+  Typography, TableProps, FormControl, MenuItem, SelectProps
+} from '@mui/material';
 import AppNavigation from './AppNavigation.showcase';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -10,10 +25,11 @@ import Layout from '../../Component/App/Layout';
 import * as TableApi from '../Mock/TableApi';
 import {useIntl} from 'react-intl';
 import {common} from '../../Constant/Color';
-import TableCell from '../../Component/Table/TableCell';
-import TableHead from '../../Component/Table/TableHead';
+import Table from '../../Component/Table';
 import {addToastAction} from '../../Store/Action';
 import {useDispatch} from 'react-redux';
+import Select from '@mui/material/Select';
+import Grid2 from '@mui/material/Unstable_Grid2';
 
 const sxs: Record<string, SxProps> = {
   TableBasic: {minWidth: 650},
@@ -23,18 +39,33 @@ const sxs: Record<string, SxProps> = {
 const Tables = () => {
   const dispatch = useDispatch();
   const {formatMessage} = useIntl()
-  const [denseBasicTable, setDenseBasicTable] = React.useState(false)
+  const [sizeBasicTable, setSizeBasicTable] = React.useState<TableProps['size']>('medium')
   const [stickyBasicTable, setStickyBasicTable] = React.useState(true)
-  const [{sortBy, sortDirection}, setSort] = useSortParamsRouter<TableApi.Row>({sortBy: 'dessert', sortDirection: 'asc'})
-  const [denseVirtualizedTable, setDenseVirtualizedTable] = React.useState(false)
-  const toggleDenseBasicTable = () => setDenseBasicTable(old => !old);
+  const [{sortBy, sortDirection}, setSort] = useSortParamsRouter<TableApi.Row>({sortBy: 'dateTime', sortDirection: 'asc'})
+  const [sizeVirtualizedTable, setSizeVirtualizedTable] = React.useState<TableProps['size']>('medium')
+  const [virtualizedTableData, setVirtualizedTableData] = React.useState([])
+  // const toggleDenseBasicTable = () => setDenseBasicTable(old => !old);
   const toggleStickyBasicTable = () => setStickyBasicTable(old => !old);
-  const toggleDenseVirtualizedTable = () => setDenseVirtualizedTable(old => !old);
+  // const toggleDenseVirtualizedTable = () => setDenseVirtualizedTable(old => !old);
+  const onChangeBasicSize: SelectProps<TableProps['size']>['onChange'] = (event) => setSizeBasicTable(event.target.value as TableProps['size']);
+  const onChangeVirtualizedSize: SelectProps<TableProps['size']>['onChange'] = (event) => setSizeVirtualizedTable(event.target.value as TableProps['size']);
+
+  const loadMore = useCallback(() => {
+    return setTimeout(() => {
+      setVirtualizedTableData([...virtualizedTableData, ...TableApi.loadRowData(50)]);
+    }, 200)
+  }, [virtualizedTableData])
+
+  useEffect(() => {
+    const timeout = loadMore();
+    return () => clearTimeout(timeout)
+  }, []);
+
   const header = <TableRow sx={{backgroundColor: common.white, zIndex: 10}}>
     {TableApi.Columns.map((key) => {
         if (key == 'select') {
-          return <TableHead.Select
-            size={denseVirtualizedTable ? 'small' : 'medium'}
+          return <Table.Head.Select
+            size={sizeVirtualizedTable}
             width={TableApi.widthByColumn[key]}
             checked={false}
             id={'test'}
@@ -44,12 +75,12 @@ const Tables = () => {
             onChange={() => dispatch(addToastAction({contentMessage: 'dynamic select is not implemented in showcase'}))}
           />
         }
-        return <TableHead.Default
+        return <Table.Head.Default
           align={'left'}
           dataKey={key}
           key={key}
           sortBy={sortBy}
-          size={denseVirtualizedTable ? 'small' : 'medium'}
+          size={sizeVirtualizedTable}
           width={TableApi.widthByColumn[key]}
           onClick={() => {
             setSort({
@@ -64,7 +95,6 @@ const Tables = () => {
       }
     )}
   </TableRow>
-
   return <Layout navigation={<AppNavigation/>}>
     <Container disableGutters maxWidth={false}>
       <Grid container direction={'column'} spacing={1}>
@@ -74,30 +104,41 @@ const Tables = () => {
             <CardContent>
               <Typography>When making the table header sticky it becomes more highlighted (default app background color). The sticky header should be the default
                 behaviour.</Typography>
-              <FormControlLabel control={<Switch onChange={toggleStickyBasicTable} checked={stickyBasicTable}/>} label='Sticky'/>
-              <FormControlLabel control={<Switch onChange={toggleDenseBasicTable} checked={denseBasicTable}/>} label='Dense'/>
+              <Grid2 container spacing={2} pt={1} pb={1}>
+                <Grid2>
+                  <FormControl variant={'standard'}>
+                    <Select<TableProps['size']> value={sizeBasicTable} onChange={onChangeBasicSize}>
+                      <MenuItem value={'small'}>small</MenuItem>
+                      <MenuItem value={'medium'}>medium</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid2>
+                <Grid2>
+                  <FormControlLabel control={<Switch onChange={toggleStickyBasicTable} checked={stickyBasicTable}/>} label='Sticky'/>
+                </Grid2>
+              </Grid2>
               <TableContainer sx={sxs.TableBasicContainer}>
-                <Table sx={sxs.TableBasic} aria-label='simple table' size={denseBasicTable ? 'small' : 'medium'} stickyHeader={stickyBasicTable}>
+                <MuiTable sx={sxs.TableBasic} aria-label='simple table' size={sizeBasicTable} stickyHeader={stickyBasicTable}>
                   <MuiTableHead>{header}</MuiTableHead>
                   <TableBody>
                     {TableApi.rowsBasicTable.map((row, index) => (
                       <TableRow key={row.name + '_' + index} hover>
-                        <TableCell.Select
+                        <Table.Cell.Select
                           align={'left'}
                           value={row.select}
                           checked={false}
                           onChange={() => dispatch(addToastAction({contentMessage: 'dynamic select is not implemented in showcase'}))}
                         />
-                        <TableCell.Default>{row.name}</TableCell.Default>
-                        <TableCell.Default>{row.calories}</TableCell.Default>
-                        <TableCell.Default>{row.fat}</TableCell.Default>
-                        <TableCell.Default>{row.carbs}</TableCell.Default>
-                        <TableCell.Default>{row.protein}</TableCell.Default>
-                        <TableCell.DateTime value={row.dateTime} asTwoLines={false}/>
+                        <Table.Cell.Default>{row.name}</Table.Cell.Default>
+                        <Table.Cell.Default>{row.calories}</Table.Cell.Default>
+                        <Table.Cell.Default>{row.fat}</Table.Cell.Default>
+                        <Table.Cell.Default>{row.carbs}</Table.Cell.Default>
+                        <Table.Cell.Default>{row.protein}</Table.Cell.Default>
+                        <Table.Cell.DateTime value={row.dateTime} asTwoLines={false}/>
                       </TableRow>
                     ))}
                   </TableBody>
-                </Table>
+                </MuiTable>
               </TableContainer>
             </CardContent>
           </Card>
@@ -114,33 +155,46 @@ const Tables = () => {
                     Also the <i>dense</i> parameter is introduced on the table, so we can adjust the <i>headerHeight</i> and <i>rowHeight</i> easily with defined values.
                     The sticky behaviour is
                     different as well and cannot be disabled. Check the different scrollbar behaviour on the right side.</Typography>
-                  <FormControlLabel control={<Switch onChange={toggleDenseVirtualizedTable} checked={denseVirtualizedTable}/>}
-                                    label='Dense (Changes headerHeight and rowHeight)'/>
+                  <FormControl variant={'standard'}>
+                    <Select<TableProps['size']> value={sizeVirtualizedTable} onChange={onChangeVirtualizedSize}>
+                      <MenuItem value={'small'}>small</MenuItem>
+                      <MenuItem value={'medium'}>medium</MenuItem>
+                    </Select>
+                  </FormControl>
+                  {/*<FormControlLabel control={<Switch onChange={toggleDenseVirtualizedTable} checked={denseVirtualizedTable}/>}*/}
+                  {/*                  label='Dense (Changes headerHeight and rowHeight)'/>*/}
                 </Grid>
                 <Grid item xs>
                   <VirtualizedTable
-                    data={TableApi.rowData}
-                    tableSize={denseVirtualizedTable ? 'small' : 'medium'}
+                    tableProps={{
+                      size: sizeVirtualizedTable,
+                    }}
+                    tableRowProps={{
+                      hover: true,
+                      /* sx: {'&:nth-of-type(odd)': {backgroundColor: 'lightcyan',}} */
+                    }}
+                    data={virtualizedTableData}
                     fixedHeaderContent={() => header}
                     itemContent={(index, row) => (
                       <>
-                        <TableCell.Select
+                        <Table.Cell.Select
                           align={'left'}
                           value={row.select}
                           checked={false}
                           onChange={() => dispatch(addToastAction({contentMessage: 'dynamic select is not implemented in showcase'}))}
                         />
-                        <TableCell.Default>{row.dessert}</TableCell.Default>
-                        <TableCell.Default>{row.carbs}</TableCell.Default>
-                        <TableCell.Default>{row.calories}</TableCell.Default>
-                        <TableCell.Default>{row.fat}</TableCell.Default>
-                        <TableCell.Default>{row.protein}</TableCell.Default>
-                        <TableCell.DateTime value={row.dateTime}/>
+                        <Table.Cell.Default size={sizeVirtualizedTable}>{row.dessert}</Table.Cell.Default>
+                        <Table.Cell.Default size={sizeVirtualizedTable}>{row.carbs}</Table.Cell.Default>
+                        <Table.Cell.Default size={sizeVirtualizedTable}>{row.calories}</Table.Cell.Default>
+                        <Table.Cell.Default size={sizeVirtualizedTable}>{row.fat}</Table.Cell.Default>
+                        <Table.Cell.Default size={sizeVirtualizedTable}>{row.protein}</Table.Cell.Default>
+                        <Table.Cell.DateTime size={sizeVirtualizedTable} value={row.dateTime}/>
                       </>
                     )}
                     sortBy={sortBy}
                     sortDirection={sortDirection}
-                    tableRowProps={{hover: true, /* sx: {'&:nth-of-type(odd)': {backgroundColor: 'lightcyan',}} */}}
+                    endReached={loadMore}
+                    overscan={50}
                   />
                 </Grid>
               </Grid>

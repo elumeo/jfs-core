@@ -1,12 +1,10 @@
 import React from 'react'
-import { TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, Components } from 'react-virtuoso'
-import Table, { TableProps } from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import { SortDirection } from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TableRow, { TableRowProps } from '@mui/material/TableRow'
-import {Box, SxProps} from '@mui/material'
+import {TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, Components} from 'react-virtuoso'
+import {SortDirection} from '@mui/material/TableCell'
+import Table from './Table'
+import TableContainer from './Container'
+import {SxProps, TableBody, TableHead, TableProps, TableRow} from '@mui/material'
+import {TableRowProps} from '@mui/material/TableRow';
 
 export const visuallyHiddenStyle: SxProps = {
   border: 0,
@@ -28,70 +26,68 @@ export const ellipsesStyle: SxProps = {
 };
 
 const sort = <ItemData extends {}>(data: ItemData[], sortBy: keyof ItemData, compare: (a: ItemData, b: ItemData) => -1 | 0 | 1): ItemData[] => {
-  if (!sortBy) { return data }
+  if (!sortBy) {
+    return data
+  }
   return data.sort((a, b) => {
-    if (compare) { return compare(a, b) }
+    if (compare) {
+      return compare(a, b)
+    }
     return 0
   })
 }
-export type VirtualizedTableProps<ItemData> = Partial<TableVirtuosoProps<ItemData, unknown>> & {
+export type Props<ItemData> = Partial<TableVirtuosoProps<ItemData, unknown>> & {
   data: ItemData[];
   sortBy?: keyof ItemData
   sortDirection?: SortDirection
   compare?: (a: ItemData, b: ItemData) => -1 | 0 | 1,
   filter?: (item: ItemData) => boolean,
-  setSort?: ({ sortBy, sortDirection }: { sortBy: keyof ItemData, sortDirection: SortDirection }) => void
-  tableSize?: TableProps['size'],
-  tableRowProps?: TableRowProps,
+  setSort?: ({sortBy, sortDirection}: { sortBy: keyof ItemData, sortDirection: SortDirection }) => void,
+  tableProps?: TableProps;
+  tableRowProps?: TableRowProps;
 };
-const VirtualizedTable = <ItemData extends {}>({
-  data = [],
-  tableSize = 'small',
-  sortBy,
-  sortDirection,
-  compare = (a, b) => (a[sortBy] < b[sortBy])
-    ? -1
-    : a[sortBy] === b[sortBy]
-      ? 0
-      : 1,
-  filter = () => true,
-  tableRowProps,
-  ...props
-}: VirtualizedTableProps<ItemData>) => {
 
-  const ref = React.useRef<VirtuosoHandle>(null)
+const VirtualizedTable = <ItemData extends {}>({
+                                                 data = [],
+                                                 sortBy,
+                                                 sortDirection,
+                                                 compare = (a, b) => (a[sortBy] < b[sortBy]) ? -1 : a[sortBy] === b[sortBy] ? 0 : 1,
+                                                 filter = () => true,
+                                                 tableProps,
+                                                 tableRowProps,
+                                                 ...props
+                                               }: Props<ItemData>) => {
+
+  const ref = React.useRef<VirtuosoHandle>(null);
+
   const _sorted = React.useMemo(
     () => {
       const sorted = sort(data.filter(filter), sortBy, compare)
       return sortDirection === 'desc'
         ? sorted.reverse()
         : sorted
-    }
-    ,
+    },
     [data, sortBy, sortDirection, compare, filter]
-  )
+  );
+
   const components: Components = React.useMemo(
-    () => (
-      {
-        Scroller: React.forwardRef<HTMLDivElement>((props, ref) => <TableContainer component={Box} {...props} ref={ref} />),
-        Table: (props: TableProps) => <Table {...props} size={tableSize} sx={{ borderCollapse: 'separate' }} />,
-        TableHead: TableHead,
-        TableRow: (props: TableRowProps & { 'data-index': number }) => <TableRow {...props} {...tableRowProps} />,
-        TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => <TableBody {...props} ref={ref} />),
-        ...props?.components,
-      }
-    ),
-    [props?.components, tableSize, tableRowProps]
-  )
-  return (
-    <TableVirtuoso
-      ref={ref}
-      data={_sorted}
-      components={components}
-      overscan={20}
-      {...props}
-    />
-  )
+    () => ({
+      Scroller: TableContainer,
+      Table: (props: TableProps) => <Table {...props} {...tableProps} />,
+      TableHead: TableHead,
+      TableRow: React.forwardRef<HTMLTableRowElement, TableRowProps>((props, ref) => <TableRow {...props} {...tableRowProps} ref={ref} />),
+      TableBody: TableBody,
+      ...props?.components,
+    }),
+    [props?.components]
+  );
+  return <TableVirtuoso
+    ref={ref}
+    data={_sorted}
+    components={components}
+    overscan={20}
+    {...props}
+  />;
 }
 
-export default VirtualizedTable
+export default VirtualizedTable;

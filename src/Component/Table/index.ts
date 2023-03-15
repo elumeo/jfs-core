@@ -1,14 +1,18 @@
 export { default as VirtualizedTable } from './VirtualizedTable';
 
-import TableHead from './TableHead';
-import TableRow from './TableRow';
-import TableCell from './TableCell';
+import Cell from './Cell';
+import Head from './Head';
+import Row from './Row';
+import TableBase from './Table';
+import Container from './Container';
 import VirtualizedTable from './VirtualizedTable';
 
 const Table = {
-  TableHead,
-  TableRow,
-  TableCell,
+  Cell,
+  Head,
+  Row,
+  Container,
+  Table: TableBase,
   VirtualizedTable,
 }
 

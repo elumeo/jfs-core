@@ -1,6 +1,6 @@
 /// <reference types="react" />
-declare const TableRow: {
+declare const Row: {
     Loading: import("react").FC<import("@mui/material").TableRowProps<"tr", {}>>;
     NoResults: import("react").FC<import("@mui/material").BoxProps<"div", {}>>;
 };
-export default TableRow;
+export default Row;

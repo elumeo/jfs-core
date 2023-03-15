@@ -1,6 +1,6 @@
 import React from 'react';
 import { ellipsesStyle } from 'Component/Table/VirtualizedTable';
-import Root, { Props as RootProps } from 'Component/Table/TableCell/Root';
+import Root, { Props as RootProps } from 'Component/Table/Cell/Root';
 import { SxProps, Box } from '@mui/material';
 import Loading from './Loading';
 export enum ContentEllipseMode {

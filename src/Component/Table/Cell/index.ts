@@ -7,7 +7,7 @@ import Product from './Product';
 import Root from './Root';
 import Select from './Select';
 
-const TableCell = {
+const Cell = {
   DateTime,
   DateTimeRange,
   Default,
@@ -18,4 +18,4 @@ const TableCell = {
   Select
 }
 
-export default TableCell;
+export default Cell;

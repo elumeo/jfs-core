@@ -11,7 +11,7 @@ var Msisdn_1 = __importDefault(require("./Msisdn"));
 var Product_1 = __importDefault(require("./Product"));
 var Root_1 = __importDefault(require("./Root"));
 var Select_1 = __importDefault(require("./Select"));
-var TableCell = {
+var Cell = {
     DateTime: DateTime_1.default,
     DateTimeRange: DateTimeRange_1.default,
     Default: Default_1.default,
@@ -21,4 +21,4 @@ var TableCell = {
     Root: Root_1.default,
     Select: Select_1.default
 };
-exports.default = TableCell;
+exports.default = Cell;

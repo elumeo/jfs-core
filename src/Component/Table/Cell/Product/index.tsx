@@ -3,9 +3,9 @@ import {Stack, TableCellProps} from '@mui/material';
 import Image from './Image';
 import Details from './Details';
 import { MediaUri } from 'Types/MediaUri';
-import Attributes from 'Component/Table/TableCell/Product/Attributes';
-import Loading from 'Component/Table/TableCell/Loading';
-import Root from 'Component/Table/TableCell/Root';
+import Attributes from 'Component/Table/Cell/Product/Attributes';
+import Loading from 'Component/Table/Cell/Loading';
+import Root from 'Component/Table/Cell/Root';
 
 export type TableCellProductProps = Partial<TableCellProps> & {
   id?: string;

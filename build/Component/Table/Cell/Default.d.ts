@@ -1,5 +1,5 @@
 import React from 'react';
-import { Props as RootProps } from '../../Table/TableCell/Root';
+import { Props as RootProps } from '../../Table/Cell/Root';
 export declare enum ContentEllipseMode {
     None = "none",
     Normal = "normal",

@@ -28,7 +28,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var react_intl_1 = require("react-intl");
 var Format_1 = require("../../../Utilities/Format");
-var Root_1 = __importDefault(require("../../Table/TableCell/Root"));
+var Root_1 = __importDefault(require("../../Table/Cell/Root"));
 var DateTime = function (_a) {
     var _b = _a.value, value = _b === void 0 ? null : _b, _c = _a.noValueElement, noValueElement = _c === void 0 ? '-' : _c, _d = _a.asTwoLines, asTwoLines = _d === void 0 ? true : _d, rest = __rest(_a, ["value", "noValueElement", "asTwoLines"]);
     var _e = (0, react_intl_1.useIntl)(), formatDate = _e.formatDate, formatTime = _e.formatTime;

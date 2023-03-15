@@ -28,7 +28,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContentEllipseMode = void 0;
 var react_1 = __importDefault(require("react"));
 var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
-var Root_1 = __importDefault(require("../../Table/TableCell/Root"));
+var Root_1 = __importDefault(require("../../Table/Cell/Root"));
 var material_1 = require("@mui/material");
 var Loading_1 = __importDefault(require("./Loading"));
 var ContentEllipseMode;

@@ -1,9 +1,9 @@
 import Loading from './Loading';
 import NoResults from './NoResults';
 
-const TableRow = {
+const Row = {
   Loading,
   NoResults
 }
 
-export default TableRow;
+export default Row;

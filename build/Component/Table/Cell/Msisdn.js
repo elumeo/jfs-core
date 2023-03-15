@@ -27,8 +27,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var FormattedMsisdn_1 = __importDefault(require("../../FormattedMsisdn"));
-var Loading_1 = __importDefault(require("../../Table/TableCell/Loading"));
-var Root_1 = __importDefault(require("../../Table/TableCell/Root"));
+var Loading_1 = __importDefault(require("../../Table/Cell/Loading"));
+var Root_1 = __importDefault(require("../../Table/Cell/Root"));
 var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
 var material_1 = require("@mui/material");
 var Msisdn = function (_a) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import FormattedMsisdn from 'Component/FormattedMsisdn';
-import TableCellLoading from 'Component/Table/TableCell/Loading';
-import Root from 'Component/Table/TableCell/Root';
+import TableCellLoading from 'Component/Table/Cell/Loading';
+import Root from 'Component/Table/Cell/Root';
 import { ellipsesStyle } from 'Component/Table/VirtualizedTable';
 import {Box, TableCellProps} from '@mui/material';
 
