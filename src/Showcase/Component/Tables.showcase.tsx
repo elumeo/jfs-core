@@ -179,7 +179,7 @@ const Tables = () => {
                     data={virtualizedTableData}
                     fixedHeaderContent={() => header}
                     fixedFooterContent={() => isLoading
-                      ? <CircularProgress size={20}/>
+                      ? <CircularProgress size={20} color={'secondary'}/>
                       : <Typography variant={'body1'} textAlign={'center'}>{formatMessage({id: 'table.noMoreResults'})}</Typography>
                     }
                     itemContent={(index, row) => (
