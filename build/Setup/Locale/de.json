@@ -39,6 +39,7 @@
     "userRights.checkFailed": "Benutzerrechte konnten nicht geladen werden",
     "date": "Datum",
     "table.noResults": "Keine Ergebnisse",
+    "table.noMoreResults": "Keine weiteren Ergebnisse",
     "product.type.onDemand": "Creation",
     "product.type.disabledOnDemand": "Excreation",
     "product.details": "Artikeldetails",

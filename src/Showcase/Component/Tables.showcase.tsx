@@ -14,7 +14,7 @@ import {
   TableContainer,
   TableRow,
   TableHead as MuiTableHead,
-  Typography, TableProps, FormControl, MenuItem, SelectProps
+  Typography, TableProps, FormControl, MenuItem, SelectProps, CircularProgress
 } from '@mui/material';
 import AppNavigation from './AppNavigation.showcase';
 import Switch from '@mui/material/Switch';
@@ -44,17 +44,22 @@ const Tables = () => {
   const [{sortBy, sortDirection}, setSort] = useSortParamsRouter<TableApi.Row>({sortBy: 'dateTime', sortDirection: 'asc'})
   const [sizeVirtualizedTable, setSizeVirtualizedTable] = React.useState<TableProps['size']>('medium')
   const [virtualizedTableData, setVirtualizedTableData] = React.useState([])
-  // const toggleDenseBasicTable = () => setDenseBasicTable(old => !old);
+  const [isLoading, setIsLoading] = React.useState(false)
   const toggleStickyBasicTable = () => setStickyBasicTable(old => !old);
-  // const toggleDenseVirtualizedTable = () => setDenseVirtualizedTable(old => !old);
   const onChangeBasicSize: SelectProps<TableProps['size']>['onChange'] = (event) => setSizeBasicTable(event.target.value as TableProps['size']);
   const onChangeVirtualizedSize: SelectProps<TableProps['size']>['onChange'] = (event) => setSizeVirtualizedTable(event.target.value as TableProps['size']);
 
   const loadMore = useCallback(() => {
+    if (virtualizedTableData.length >= 200) {
+      setIsLoading(false);
+      return null;
+    }
+    setIsLoading(true);
     return setTimeout(() => {
       setVirtualizedTableData([...virtualizedTableData, ...TableApi.loadRowData(50)]);
-    }, 200)
-  }, [virtualizedTableData])
+      setIsLoading(false);
+    }, 2000)
+  }, [virtualizedTableData, setIsLoading])
 
   useEffect(() => {
     const timeout = loadMore();
@@ -161,8 +166,6 @@ const Tables = () => {
                       <MenuItem value={'medium'}>medium</MenuItem>
                     </Select>
                   </FormControl>
-                  {/*<FormControlLabel control={<Switch onChange={toggleDenseVirtualizedTable} checked={denseVirtualizedTable}/>}*/}
-                  {/*                  label='Dense (Changes headerHeight and rowHeight)'/>*/}
                 </Grid>
                 <Grid item xs>
                   <VirtualizedTable
@@ -175,6 +178,10 @@ const Tables = () => {
                     }}
                     data={virtualizedTableData}
                     fixedHeaderContent={() => header}
+                    fixedFooterContent={() => isLoading
+                      ? <CircularProgress size={20}/>
+                      : <Typography variant={'body1'} textAlign={'center'}>{formatMessage({id: 'table.noMoreResults'})}</Typography>
+                    }
                     itemContent={(index, row) => (
                       <>
                         <Table.Cell.Select

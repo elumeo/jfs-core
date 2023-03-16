@@ -1,14 +1,12 @@
 import React, {FC} from 'react';
-import {Box, BoxProps} from '@mui/material';
+import {Typography} from '@mui/material';
 import { useIntl } from 'react-intl';
 
-const styles = {
-  textAlign: 'center',
-  mt: 2
-}
-const NoResults: FC<BoxProps> = ({...rest}) => {
+const NoResults: FC = () => {
   const { formatMessage } = useIntl();
-  return <Box sx={styles} {...rest}>{formatMessage({ id: 'table.noResults' })}</Box>;
+  return <caption>
+    <Typography variant={'body1'} textAlign={'center'}>{formatMessage({ id: 'table.noResults' })}</Typography>
+  </caption>;
 };
 
 export default NoResults;

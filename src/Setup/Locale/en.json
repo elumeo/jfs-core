@@ -39,6 +39,7 @@
   "userRights.checkFailed": "Unable to load user rights",
   "date": "Date",
   "table.noResults": "No results",
+  "table.noMoreResults": "No more results",
   "product.type.onDemand": "Creation",
   "product.type.disabledOnDemand": "Excreation",
   "product.details": "Product Details",

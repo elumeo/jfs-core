@@ -31,6 +31,7 @@ var react_virtuoso_1 = require("react-virtuoso");
 var Table_1 = __importDefault(require("./Table"));
 var Container_1 = __importDefault(require("./Container"));
 var material_1 = require("@mui/material");
+var Footer_1 = __importDefault(require("./Row/Footer"));
 exports.visuallyHiddenStyle = {
     border: 0,
     clip: 'rect(0 0 0 0)',
@@ -67,7 +68,11 @@ var VirtualizedTable = function (_a) {
             ? sorted.reverse()
             : sorted;
     }, [data, sortBy, sortDirection, compare, filter]);
-    var components = react_1.default.useMemo(function () { return (__assign({ Scroller: Container_1.default, Table: function (props) { return react_1.default.createElement(Table_1.default, __assign({}, props, tableProps)); }, TableHead: material_1.TableHead, TableRow: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(material_1.TableRow, __assign({}, props, tableRowProps, { ref: ref })); }), TableBody: material_1.TableBody }, props === null || props === void 0 ? void 0 : props.components)); }, [props === null || props === void 0 ? void 0 : props.components]);
+    var components = react_1.default.useMemo(function () { return (__assign({ 
+        // EmptyPlaceholder: NoResults,
+        Scroller: Container_1.default, Table: function (props) { return react_1.default.createElement(Table_1.default, __assign({}, props, tableProps)); }, TableHead: material_1.TableHead, TableRow: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(material_1.TableRow, __assign({}, props, tableRowProps, { ref: ref })); }), TableBody: material_1.TableBody, 
+        // TableFoot: TableFooter,
+        TableFoot: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(Footer_1.default, __assign({}, props, { ref: ref })); }) }, props === null || props === void 0 ? void 0 : props.components)); }, [props === null || props === void 0 ? void 0 : props.components]);
     return react_1.default.createElement(react_virtuoso_1.TableVirtuoso, __assign({ ref: ref, data: _sorted, components: components, overscan: 20 }, props));
 };
 exports.default = VirtualizedTable;

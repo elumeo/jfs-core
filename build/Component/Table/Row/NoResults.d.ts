@@ -1,4 +1,3 @@
 import { FC } from 'react';
-import { BoxProps } from '@mui/material';
-declare const NoResults: FC<BoxProps>;
+declare const NoResults: FC;
 export default NoResults;

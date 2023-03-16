@@ -16,8 +16,10 @@ declare const Table: {
         Select: import("react").FC<import("./Head/Select").Props>;
     };
     Row: {
-        Loading: import("react").FC<import("@mui/material").TableRowProps<"tr", {}>>;
-        NoResults: import("react").FC<import("@mui/material").BoxProps<"div", {}>>;
+        NoResults: import("react").FC<{}>;
+        Footer: import("react").ForwardRefExoticComponent<{
+            children?: import("react").ReactNode;
+        } & import("react").RefAttributes<HTMLTableSectionElement>>;
     };
     Container: import("react").ForwardRefExoticComponent<import("react").RefAttributes<HTMLDivElement>>;
     Table: (props: import("@mui/material").TableProps<"table", {}>) => JSX.Element;

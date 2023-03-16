@@ -1,9 +1,9 @@
-import Loading from './Loading';
 import NoResults from './NoResults';
+import Footer from './Footer';
 
 const Row = {
-  Loading,
-  NoResults
+  NoResults,
+  Footer
 }
 
 export default Row;

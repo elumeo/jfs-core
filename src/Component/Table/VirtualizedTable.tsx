@@ -1,10 +1,11 @@
 import React from 'react'
-import {TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, Components} from 'react-virtuoso'
+import {TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, TableComponents, } from 'react-virtuoso'
 import {SortDirection} from '@mui/material/TableCell'
 import Table from './Table'
 import TableContainer from './Container'
-import {SxProps, TableBody, TableHead, TableProps, TableRow} from '@mui/material'
+import {SxProps, TableBody, TableFooterProps, TableHead, TableProps, TableRow} from '@mui/material'
 import {TableRowProps} from '@mui/material/TableRow';
+import Footer from './Row/Footer'
 
 export const visuallyHiddenStyle: SxProps = {
   border: 0,
@@ -70,13 +71,16 @@ const VirtualizedTable = <ItemData extends {}>({
     [data, sortBy, sortDirection, compare, filter]
   );
 
-  const components: Components = React.useMemo(
+  const components: TableComponents = React.useMemo(
     () => ({
+      // EmptyPlaceholder: NoResults,
       Scroller: TableContainer,
       Table: (props: TableProps) => <Table {...props} {...tableProps} />,
-      TableHead: TableHead,
-      TableRow: React.forwardRef<HTMLTableRowElement, TableRowProps>((props, ref) => <TableRow {...props} {...tableRowProps} ref={ref} />),
-      TableBody: TableBody,
+      TableHead,
+      TableRow: React.forwardRef<HTMLTableRowElement, TableRowProps>((props, ref) => <TableRow {...props} {...tableRowProps} ref={ref}/>),
+      TableBody,
+      // TableFoot: TableFooter,
+      TableFoot: React.forwardRef<HTMLTableSectionElement, TableFooterProps>((props, ref) => <Footer {...props} ref={ref}/>),
       ...props?.components,
     }),
     [props?.components]
