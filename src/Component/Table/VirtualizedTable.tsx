@@ -1,8 +1,9 @@
 import React from 'react'
-import {TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, TableComponents, } from 'react-virtuoso'
+import {TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, TableComponents,} from 'react-virtuoso'
 import {SortDirection} from '@mui/material/TableCell'
 import Table from './Table'
 import TableContainer from './Container'
+import NoResults from './Row/NoResults'
 import {SxProps, TableBody, TableFooterProps, TableHead, TableProps, TableRow} from '@mui/material'
 import {TableRowProps} from '@mui/material/TableRow';
 import Footer from './Row/Footer'
@@ -56,6 +57,7 @@ const VirtualizedTable = <ItemData extends {}>({
                                                  filter = () => true,
                                                  tableProps,
                                                  tableRowProps,
+                                                 components: propComponents,
                                                  ...props
                                                }: Props<ItemData>) => {
 
@@ -73,17 +75,16 @@ const VirtualizedTable = <ItemData extends {}>({
 
   const components: TableComponents = React.useMemo(
     () => ({
-      // EmptyPlaceholder: NoResults,
+      EmptyPlaceholder: NoResults,
       Scroller: TableContainer,
       Table: (props: TableProps) => <Table {...props} {...tableProps} />,
       TableHead,
       TableRow: React.forwardRef<HTMLTableRowElement, TableRowProps>((props, ref) => <TableRow {...props} {...tableRowProps} ref={ref}/>),
       TableBody,
-      // TableFoot: TableFooter,
       TableFoot: React.forwardRef<HTMLTableSectionElement, TableFooterProps>((props, ref) => <Footer {...props} ref={ref}/>),
-      ...props?.components,
+      ...propComponents
     }),
-    [props?.components]
+    [propComponents]
   );
   return <TableVirtuoso
     ref={ref}

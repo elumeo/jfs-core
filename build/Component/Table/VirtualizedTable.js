@@ -30,6 +30,7 @@ var react_1 = __importDefault(require("react"));
 var react_virtuoso_1 = require("react-virtuoso");
 var Table_1 = __importDefault(require("./Table"));
 var Container_1 = __importDefault(require("./Container"));
+var NoResults_1 = __importDefault(require("./Row/NoResults"));
 var material_1 = require("@mui/material");
 var Footer_1 = __importDefault(require("./Row/Footer"));
 exports.visuallyHiddenStyle = {
@@ -60,7 +61,7 @@ var sort = function (data, sortBy, compare) {
     });
 };
 var VirtualizedTable = function (_a) {
-    var _b = _a.data, data = _b === void 0 ? [] : _b, sortBy = _a.sortBy, sortDirection = _a.sortDirection, _c = _a.compare, compare = _c === void 0 ? function (a, b) { return (a[sortBy] < b[sortBy]) ? -1 : a[sortBy] === b[sortBy] ? 0 : 1; } : _c, _d = _a.filter, filter = _d === void 0 ? function () { return true; } : _d, tableProps = _a.tableProps, tableRowProps = _a.tableRowProps, props = __rest(_a, ["data", "sortBy", "sortDirection", "compare", "filter", "tableProps", "tableRowProps"]);
+    var _b = _a.data, data = _b === void 0 ? [] : _b, sortBy = _a.sortBy, sortDirection = _a.sortDirection, _c = _a.compare, compare = _c === void 0 ? function (a, b) { return (a[sortBy] < b[sortBy]) ? -1 : a[sortBy] === b[sortBy] ? 0 : 1; } : _c, _d = _a.filter, filter = _d === void 0 ? function () { return true; } : _d, tableProps = _a.tableProps, tableRowProps = _a.tableRowProps, propComponents = _a.components, props = __rest(_a, ["data", "sortBy", "sortDirection", "compare", "filter", "tableProps", "tableRowProps", "components"]);
     var ref = react_1.default.useRef(null);
     var _sorted = react_1.default.useMemo(function () {
         var sorted = sort(data.filter(filter), sortBy, compare);
@@ -68,11 +69,7 @@ var VirtualizedTable = function (_a) {
             ? sorted.reverse()
             : sorted;
     }, [data, sortBy, sortDirection, compare, filter]);
-    var components = react_1.default.useMemo(function () { return (__assign({ 
-        // EmptyPlaceholder: NoResults,
-        Scroller: Container_1.default, Table: function (props) { return react_1.default.createElement(Table_1.default, __assign({}, props, tableProps)); }, TableHead: material_1.TableHead, TableRow: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(material_1.TableRow, __assign({}, props, tableRowProps, { ref: ref })); }), TableBody: material_1.TableBody, 
-        // TableFoot: TableFooter,
-        TableFoot: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(Footer_1.default, __assign({}, props, { ref: ref })); }) }, props === null || props === void 0 ? void 0 : props.components)); }, [props === null || props === void 0 ? void 0 : props.components]);
+    var components = react_1.default.useMemo(function () { return (__assign({ EmptyPlaceholder: NoResults_1.default, Scroller: Container_1.default, Table: function (props) { return react_1.default.createElement(Table_1.default, __assign({}, props, tableProps)); }, TableHead: material_1.TableHead, TableRow: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(material_1.TableRow, __assign({}, props, tableRowProps, { ref: ref })); }), TableBody: material_1.TableBody, TableFoot: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(Footer_1.default, __assign({}, props, { ref: ref })); }) }, propComponents)); }, [propComponents]);
     return react_1.default.createElement(react_virtuoso_1.TableVirtuoso, __assign({ ref: ref, data: _sorted, components: components, overscan: 20 }, props));
 };
 exports.default = VirtualizedTable;

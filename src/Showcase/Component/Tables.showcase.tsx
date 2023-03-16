@@ -202,6 +202,9 @@ const Tables = () => {
                     sortDirection={sortDirection}
                     endReached={loadMore}
                     overscan={50}
+                    components={{
+                      EmptyPlaceholder: undefined
+                    }}
                   />
                 </Grid>
               </Grid>

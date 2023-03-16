@@ -18,5 +18,5 @@ export type Props<ItemData> = Partial<TableVirtuosoProps<ItemData, unknown>> & {
     tableProps?: TableProps;
     tableRowProps?: TableRowProps;
 };
-declare const VirtualizedTable: <ItemData extends {}>({ data, sortBy, sortDirection, compare, filter, tableProps, tableRowProps, ...props }: Props<ItemData>) => JSX.Element;
+declare const VirtualizedTable: <ItemData extends {}>({ data, sortBy, sortDirection, compare, filter, tableProps, tableRowProps, components: propComponents, ...props }: Props<ItemData>) => JSX.Element;
 export default VirtualizedTable;
