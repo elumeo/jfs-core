@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { DialogContentProps } from '@mui/material/DialogContent/DialogContent';
 type Props = {
     children: DialogContentProps['children'];
