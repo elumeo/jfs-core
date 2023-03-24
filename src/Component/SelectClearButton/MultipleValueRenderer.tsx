@@ -40,7 +40,7 @@ const MultipleValueRenderer = ({
                 {...valueChipProps}
               />
             </Grid>
-            : (index > 0 ? ', ' + selectedItem : selectedItem))}
+            : (index > 0 ? ', ' + selectedItem.label : selectedItem.label))}
       </Grid>
     </Grid>
     <Grid item>

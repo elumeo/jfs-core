@@ -55,7 +55,7 @@ var MultipleValueRenderer = function (_a) {
                 .map(function (selectedItem, index) { return renderValueAsChip
                 ? react_1.default.createElement(core_1.Grid, { item: true, key: 'select-clear-button-multiple-value-renderer-chip-value-' + selectedItem.value + '-' + index, style: { maxWidth: (100 / Math.min(selectedValue.length, maxValuesToDisplayInInput)) + '%' } },
                     react_1.default.createElement(ChipValue_1.default, __assign({ onDelete: handleChipOnDelete, value: selectedItem.value, label: selectedItem.label }, valueChipProps)))
-                : (index > 0 ? ', ' + selectedItem : selectedItem); }))),
+                : (index > 0 ? ', ' + selectedItem.label : selectedItem.label); }))),
         react_1.default.createElement(core_1.Grid, { item: true }, selectedValue.length > maxValuesToDisplayInInput && react_1.default.createElement(core_1.Grid, { item: true },
             " +",
             (selectedValue.length - maxValuesToDisplayInInput))));
