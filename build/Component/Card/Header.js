@@ -9,7 +9,7 @@ var RefreshButton_1 = __importDefault(require("../Button/RefreshButton"));
 var hiddenStyle = {
     visibility: 'hidden',
 };
-var AppCardHeader = function (_a) {
+var Header = function (_a) {
     var _b = _a.isLoading, isLoading = _b === void 0 ? false : _b, title = _a.title, _c = _a.subtitle, subtitle = _c === void 0 ? null : _c, _d = _a.titleIcon, titleIcon = _d === void 0 ? null : _d, _e = _a.onRefresh, onRefresh = _e === void 0 ? null : _e, _f = _a.refreshButtonColor, refreshButtonColor = _f === void 0 ? 'secondary' : _f, _g = _a.refreshButtonSize, refreshButtonSize = _g === void 0 ? 'small' : _g, _h = _a.action, action = _h === void 0 ? null : _h;
     return react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement(material_1.CardHeader, { subheader: subtitle, action: action, title: react_1.default.createElement(react_1.default.Fragment, null,
@@ -23,4 +23,4 @@ var AppCardHeader = function (_a) {
                 ? {}
                 : hiddenStyle }));
 };
-exports.default = AppCardHeader;
+exports.default = Header;

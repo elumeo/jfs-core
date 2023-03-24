@@ -5,7 +5,7 @@ import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CodeBox from './CodeBox.showcase';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import AppCardHeader from '../../Component/Card/AppCardHeader';
+import Header from '../../Component/Card/Header';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import Layout from '../../Component/App/Layout';
 
@@ -110,8 +110,8 @@ const Cards = () => {
             </CardContent>
           </Card>
           <Card>
-            <AppCardHeader
-              title={'Custom Card Component: AppCardHeader'}
+            <Header
+              title={'Custom Card Component: Header'}
               titleIcon={<DashboardIcon />}
               isLoading={isRefreshing}
               onRefresh={handleRefreshClick}
@@ -122,7 +122,7 @@ const Cards = () => {
               <Typography>To have a consistent ui we have decided to implement a <CodeBox component={'span'} size={'small'}>AppCardHeader</CodeBox> component which is used in the CAO app in
                 any <CodeBox component={'span'} size={'small'}>Card</CodeBox> usage.</Typography>
               <CodeBox>{`<AppCardHeader
-                title={'Custom Card Component: AppCardHeader'}
+                title={'Custom Card Component: Header'}
                 titleIcon={<DashboardIcon />}
                 isLoading={isRefreshing}
                 onRefresh={handleRefreshClick}

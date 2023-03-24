@@ -1,3 +1,4 @@
+/// <reference types="react" />
 declare const Cell: {
     DateTime: ({ value, noValueElement, asTwoLines, ...rest }: import("./DateTime").Props) => JSX.Element;
     DateTimeRange: import("react").FC<import("./DateTimeRange").Props>;

@@ -11,5 +11,5 @@ export type AppCardHeaderBaseProps = {
     refreshButtonColor?: PropTypes.Color;
     refreshButtonSize?: IconButtonProps['size'];
 };
-declare const AppCardHeader: React.FC<AppCardHeaderBaseProps>;
-export default AppCardHeader;
+declare const Header: React.FC<AppCardHeaderBaseProps>;
+export default Header;

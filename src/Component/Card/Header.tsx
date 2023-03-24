@@ -16,7 +16,7 @@ export type AppCardHeaderBaseProps = {
 const hiddenStyle: SxProps = {
   visibility: 'hidden',
 }
-const AppCardHeader: React.FC<AppCardHeaderBaseProps> = ({
+const Header: React.FC<AppCardHeaderBaseProps> = ({
   isLoading = false,
   title,
   subtitle = null,
@@ -61,4 +61,4 @@ const AppCardHeader: React.FC<AppCardHeaderBaseProps> = ({
     } />
   </>;
 
-export default AppCardHeader
+export default Header

@@ -1,3 +1,4 @@
+/// <reference types="react" />
 declare const Row: {
     NoResults: import("react").FC<{}>;
     Footer: import("react").ForwardRefExoticComponent<{

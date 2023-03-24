@@ -1,2 +1,6 @@
-export { default as AppCardContent } from './AppCardContent';
-export { default as AppCardHeader } from './AppCardHeader';
+/// <reference types="react" />
+declare const Card: {
+    Content: import("react").FC<import("./Content").Props>;
+    Header: import("react").FC<import("./Header").AppCardHeaderBaseProps>;
+};
+export default Card;

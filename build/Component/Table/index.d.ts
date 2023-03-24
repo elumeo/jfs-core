@@ -1,3 +1,4 @@
+/// <reference types="react" />
 export { default as VirtualizedTable } from './VirtualizedTable';
 declare const Table: {
     Cell: {

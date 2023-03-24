@@ -6,8 +6,8 @@ import { Box, Button, Card, Container, Grid, Typography } from '@mui/material';
 import CodeBox from './CodeBox.showcase';
 import Layout from '../../Component/App/Layout'
 import definition from '../../Component/App/Stateless/Style/Theme/Definition';
-import AppCardHeader from '../../Component/Card/AppCardHeader';
-import AppCardContent from '../../Component/Card/AppCardContent';
+import Header from '../../Component/Card/Header';
+import Content from '../../Component/Card/Content';
 
 const Boxes = () => {
   const [bgColor, setBgColor] = React.useState(allColors[0])
@@ -37,8 +37,8 @@ const Boxes = () => {
     <Layout navigation={<AppNavigation />}>
       <Container disableGutters maxWidth={false}>
         <Card>
-          <AppCardHeader title={'Boxes'} />
-          <AppCardContent>
+          <Header title={'Boxes'} />
+          <Content>
             <Box mb={2}>
               <Grid container spacing={2}>
                 <Grid item><Button variant={'contained'} onClick={toggleBg}>Box prop:border</Button></Grid>
@@ -61,7 +61,7 @@ const Boxes = () => {
               <Typography variant={'body2'}>Current text color: {textColor}</Typography>
               <Typography variant={'body2'}>Current border color: {bgColor}.main</Typography>
             </Box>
-          </AppCardContent>
+          </Content>
         </Card>
       </Container>
     </Layout>

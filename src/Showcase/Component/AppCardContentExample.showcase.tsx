@@ -1,18 +1,18 @@
 import React from 'react';
 import { Card } from '@mui/material';
 import AppNavigation from './AppNavigation.showcase';
-import AppCardHeader from '../../Component/Card/AppCardHeader';
-import AppCardContent from '../../Component/Card/AppCardContent';
+import Header from '../../Component/Card/Header';
+import Content from '../../Component/Card/Content';
 import Layout from '../../Component/App/Layout';
 
 
 const AppCardContentExample = () => {
   return <Layout navigation={<AppNavigation />}>
     <Card>
-      <AppCardHeader title={'AppCardHeader'} />
-      <AppCardContent>
+      <Header title={'Header'} />
+      <Content>
         This is some content in a
-      </AppCardContent>
+      </Content>
     </Card>
   </Layout>
 };

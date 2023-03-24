@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { ReactDatePickerProps } from 'react-datepicker';
 import './Setup';
 import { LANGUAGE } from '../../Types/Language';

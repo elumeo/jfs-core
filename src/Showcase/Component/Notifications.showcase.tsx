@@ -20,8 +20,8 @@ import ChangeNotificationMax from './ChangeNotificationMax.showcase';
 import useSelector from '../../Store/useSelector';
 import { VariantType } from 'notistack';
 import Layout from '../../Component/App/Layout';
-import AppCardHeader from '../../Component/Card/AppCardHeader';
-import AppCardContent from '../../Component/Card/AppCardContent';
+import Header from '../../Component/Card/Header';
+import Content from '../../Component/Card/Content';
 
 const Notifications = () => {
   const [persist, setPersist] = useState(false)
@@ -36,8 +36,8 @@ const Notifications = () => {
   return (
     <Layout navigation={<AppNavigation />} >
       <Card>
-        <AppCardHeader title='Notifications' />
-        <AppCardContent>
+        <Header title='Notifications' />
+        <Content>
           <Grid container spacing={1} alignItems='flex-end'>
             <Grid item xs={12}><Typography variant='h6'><br />Configure</Typography></Grid>
             <Grid item xs={2}>
@@ -77,7 +77,7 @@ const Notifications = () => {
               <AddToastButton />
             </Grid>
           </Grid>
-        </AppCardContent>
+        </Content>
       </Card>
     </Layout>
   );

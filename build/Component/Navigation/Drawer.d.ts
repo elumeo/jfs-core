@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { ListProps } from '@mui/material/List';
 type DrawerProps = {
     children: ListProps['children'];

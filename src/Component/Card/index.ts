@@ -1,2 +1,9 @@
-export { default as AppCardContent } from './AppCardContent';
-export { default as AppCardHeader } from './AppCardHeader';
+import Content from './Content';
+import Header from './Header';
+
+const Card = {
+  Content,
+  Header,
+};
+
+export default Card;
