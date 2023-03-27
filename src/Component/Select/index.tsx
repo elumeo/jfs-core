@@ -12,7 +12,7 @@ export type Props<T = unknown> = SelectProps<T> & {
   formControlProps?: FormControlProps;
 }
 
-const Select = <T, >({children, helperText, loading = false, maxValuesShown, canClear = false, formControlProps, ...selectProps}: React.PropsWithChildren<Props<T>>) => {
+const Select = <T,>({children, helperText, loading = false, maxValuesShown, canClear = false, formControlProps, ...selectProps}: React.PropsWithChildren<Props<T>>) => {
   const formControl = useFormControl();
 
   const labelsByValue = React.useMemo(() => {

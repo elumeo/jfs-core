@@ -12,7 +12,7 @@ const Stateless: React.FC<React.PropsWithChildren<Props>> & { Style: typeof Styl
   locale={locale}
   messages={messages}>
   <Style>
-    <Picker>
+    <Picker locale={locale}>
       {children}
     </Picker>
   </Style>

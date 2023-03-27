@@ -11,7 +11,7 @@ var Stateless = function (_a) {
     var locale = _a.locale, messages = _a.messages, children = _a.children;
     return react_1.default.createElement(react_intl_1.IntlProvider, { locale: locale, messages: messages },
         react_1.default.createElement(Style_1.default, null,
-            react_1.default.createElement(Picker_1.default, null, children)));
+            react_1.default.createElement(Picker_1.default, { locale: locale }, children)));
 };
 Stateless.Style = Style_1.default;
 exports.default = Stateless;

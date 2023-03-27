@@ -20,16 +20,17 @@ import DebugButton from '../Component/Button/DebugButton';
 import Routes from './Routes';
 
 declare const module: { hot: { accept: () => void } };
+declare const window: Window & {core_reactRoot: ReturnType<typeof createRoot>}
 
 if (module.hot) {
   module.hot.accept();
 }
 
+if(window['core_reactRoot'] === undefined) {
+  window['core_reactRoot'] = createRoot(document.getElementById('root'));
+}
 
-const container = document.getElementById('root') as HTMLElement;
-const root = createRoot(container)
-
-root.render(<App
+window['core_reactRoot'].render(<App
   store={create(epic, reducer)}
   title='core'
   translations={Translations}

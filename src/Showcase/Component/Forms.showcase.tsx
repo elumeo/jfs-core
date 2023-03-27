@@ -21,18 +21,18 @@ import {
 import CodeBox from './CodeBox.showcase';
 import WarningIcon from '@mui/icons-material/Warning';
 import PriceField from '../../Component/PriceInput';
-import { DatePicker } from '@mui/x-date-pickers';
+import {DatePicker, TimePicker} from '@mui/x-date-pickers';
 import 'date-fns';
 import KeyboardDatePicker from '../../Component/DatePicker';
-import Select, { type Props as SelectProps } from '../../Component/Select';
+import Select, {type Props as SelectProps} from '../../Component/Select';
 import TextFieldClearButton from '../../Component/TextField';
 import definition from '../../Component/App/Stateless/Style/Theme/Definition';
 import Layout from '../../Component/App/Layout';
 import {DatePickerProps} from '@mui/lab';
 
 const Forms = () => {
-  const [checkboxState, setCheckboxState] = React.useState({ checkboxA: true, checkboxB: false, checkboxC: false, checkboxD: false });
-  const [switchState, setSwitchState] = React.useState({ switchA: true, switchB: false, switchC: false, switchD: false });
+  const [checkboxState, setCheckboxState] = React.useState({checkboxA: true, checkboxB: false, checkboxC: false, checkboxD: false});
+  const [switchState, setSwitchState] = React.useState({switchA: true, switchB: false, switchC: false, switchD: false});
   const [radioValue, setRadioValue] = React.useState('radio1');
   const [displayRowStyle, setDisplayRowStyle] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
@@ -41,25 +41,26 @@ const Forms = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date('2021-07-09T10:00:00'));
   const [textFieldValue, setTextFieldValue] = React.useState('This is a default value');
   const [dateRange, setDateRange] = React.useState<[Date, Date]>([new Date('2021-07-09T10:00:00'), new Date('2021-07-09T10:00:00')]);
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => setCheckboxState({ ...checkboxState, [event.target.name]: event.target.checked });
-  const handleSwitchChange = (name: string, value: boolean) => setSwitchState({ ...switchState, [name]: value });
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => setCheckboxState({...checkboxState, [event.target.name]: event.target.checked});
+  const handleSwitchChange = (name: string, value: boolean) => setSwitchState({...switchState, [name]: value});
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => setRadioValue((event.target as HTMLInputElement).value);
   const toggleDisplayRowStyle = () => setDisplayRowStyle(!displayRowStyle);
   const toggleShowError = () => setShowError(!showError);
-  const handleSelectChange: SelectProps<string>['onChange'] = event => setSelectValue(event.target.value == null ? ''  : event.target.value);
+  const handleSelectChange: SelectProps<string>['onChange'] = event => setSelectValue(event.target.value == null ? '' : event.target.value);
   const handleDateChange: DatePickerProps<Date>['onChange'] = (date: Date) => setSelectedDate(date);
 
   return (
-    <Layout navigation={<AppNavigation />}>
+    <Layout navigation={<AppNavigation/>}>
       {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
       <Container disableGutters maxWidth={false}>
         <Card>
-          <CardHeader title='Forms' subheader={<>Errors are controlled by the <CodeBox component={'span'} size={'small'}>{`<FormControl required error>...</FormControl>`}</CodeBox> Element.
-            The <CodeBox component={'span'} size={'small'}>required</CodeBox> attribute controls the asterisk (*) char.</>} />
+          <CardHeader title='Forms'
+                      subheader={<>Errors are controlled by the <CodeBox component={'span'} size={'small'}>{`<FormControl required error>...</FormControl>`}</CodeBox> Element.
+                        The <CodeBox component={'span'} size={'small'}>required</CodeBox> attribute controls the asterisk (*) char.</>}/>
           <CardContent>
             <Grid container spacing={1}>
-              <Grid item><FormControlLabel control={<Switch onChange={toggleDisplayRowStyle} checked={displayRowStyle} />} label='Enable row style' /></Grid>
-              <Grid item><FormControlLabel control={<Switch onChange={toggleShowError} checked={showError} />} label='Show error' /></Grid>
+              <Grid item><FormControlLabel control={<Switch onChange={toggleDisplayRowStyle} checked={displayRowStyle}/>} label='Enable row style'/></Grid>
+              <Grid item><FormControlLabel control={<Switch onChange={toggleShowError} checked={showError}/>} label='Show error'/></Grid>
             </Grid>
             <Box mt={2}>
               <Grid container spacing={displayRowStyle ? 4 : 2}>
@@ -68,20 +69,20 @@ const Forms = () => {
                     <FormLabel>Checkbox Example</FormLabel>
                     <FormGroup row={displayRowStyle}>
                       <FormControlLabel
-                        control={<Checkbox checked={checkboxState.checkboxA} onChange={handleCheckboxChange} name='checkboxA' />}
+                        control={<Checkbox checked={checkboxState.checkboxA} onChange={handleCheckboxChange} name='checkboxA'/>}
                         label='Checkbox A'
                       />
                       <FormControlLabel
-                        control={<Checkbox checked={checkboxState.checkboxB} onChange={handleCheckboxChange} name='checkboxB' />}
+                        control={<Checkbox checked={checkboxState.checkboxB} onChange={handleCheckboxChange} name='checkboxB'/>}
                         label='Checkbox B'
                       />
                       <FormControlLabel
-                        control={<Checkbox checked={checkboxState.checkboxC} onChange={handleCheckboxChange} name='checkboxC' />}
+                        control={<Checkbox checked={checkboxState.checkboxC} onChange={handleCheckboxChange} name='checkboxC'/>}
                         label='Checkbox C'
                       />
                       <FormControlLabel
                         disabled
-                        control={<Checkbox checked={checkboxState.checkboxD} onChange={handleCheckboxChange} name='checkboxD' />}
+                        control={<Checkbox checked={checkboxState.checkboxD} onChange={handleCheckboxChange} name='checkboxD'/>}
                         label='Checkbox D'
                       />
                     </FormGroup>
@@ -92,10 +93,10 @@ const Forms = () => {
                   <FormControl required error={showError}>
                     <FormLabel>Radio Buttons Example</FormLabel>
                     <RadioGroup row={displayRowStyle} name='radio' value={radioValue} onChange={handleRadioChange}>
-                      <FormControlLabel value='radio1' control={<Radio />} label='Radio 1' />
-                      <FormControlLabel value='radio2' control={<Radio />} label='Radio 2' />
-                      <FormControlLabel value='radio3' control={<Radio />} label='Radio 3' />
-                      <FormControlLabel value='radio4' disabled control={<Radio />} label='Radio 4' />
+                      <FormControlLabel value='radio1' control={<Radio/>} label='Radio 1'/>
+                      <FormControlLabel value='radio2' control={<Radio/>} label='Radio 2'/>
+                      <FormControlLabel value='radio3' control={<Radio/>} label='Radio 3'/>
+                      <FormControlLabel value='radio4' disabled control={<Radio/>} label='Radio 4'/>
                     </RadioGroup>
                     <FormHelperText>{showError ? 'Ups, an error was detected!' : 'This is a helper text'}</FormHelperText>
                   </FormControl>
@@ -109,31 +110,31 @@ const Forms = () => {
                           checked={switchState.switchA}
                           onChange={(event, value) => handleSwitchChange('switchA', value)} name='switchA'
                         />}
-                        label='Switch 1' />
+                        label='Switch 1'/>
                       <FormControlLabel
                         control={<Switch
                           checked={switchState.switchB}
                           onChange={(event, value) => handleSwitchChange('switchB', value)} name='switchB'
                         />}
-                        label='Switch 2' />
+                        label='Switch 2'/>
                       <FormControlLabel
                         control={<Switch
                           checked={switchState.switchC}
                           onChange={(event, value) => handleSwitchChange('switchC', value)} name='switchC'
                         />}
-                        label='Switch 3' />
+                        label='Switch 3'/>
                       <FormControlLabel
                         control={<Switch
                           checked={switchState.switchD}
                           onChange={(event, value) => handleSwitchChange('switchD', value)} name='switchD'
                         />}
-                        label='Switch 4' />
+                        label='Switch 4'/>
                     </FormGroup>
                     <FormHelperText>{showError ? 'Ups, an error was detected!' : 'This is a helper text'}</FormHelperText>
                   </FormControl>
                 </Grid>
                 <Grid item xs={12}>
-                  <Divider />
+                  <Divider/>
                   <Box mt={2}>
                     <Typography variant={'h6'}>Select/Dropdown Elements</Typography>
                     <Typography color={'textSecondary'}>Icons in <CodeBox component={'span'} size={'small'}>Select</CodeBox>'s need a little custom styling: <CodeBox
@@ -143,7 +144,7 @@ const Forms = () => {
                   <Box mt={2}>
                     <Grid container spacing={1}>
                       <Grid item xs={6}>
-                        <FormControl sx={{ width: 200 }} color='primary' required error={showError} variant={'standard'}>
+                        <FormControl sx={{width: 200}} color='primary' required error={showError} variant={'standard'}>
                           <Select<string>
                             value={selectValue}
                             label={'Choose Value'}
@@ -151,18 +152,18 @@ const Forms = () => {
                             canClear
                           >
                             <MenuItem value={'1'}><Box alignItems={'center'} display={'flex'}>
-                              <WarningIcon sx={{ fontSize: definition.typography.pxToRem(20) }} />
+                              <WarningIcon sx={{fontSize: definition.typography.pxToRem(20)}}/>
                               <Box component={'span'} ml={1}>Value 1</Box>
                             </Box></MenuItem>
                             <MenuItem value={'2'}><Box alignItems={'center'} display={'flex'}>
-                              <WarningIcon sx={{ fontSize: definition.typography.pxToRem(20) }} color={'primary'} />
+                              <WarningIcon sx={{fontSize: definition.typography.pxToRem(20)}} color={'primary'}/>
                               <Box component={'span'} ml={1} color={definition.palette.primary.main}>Value 2</Box>
                             </Box></MenuItem>
                             <MenuItem value={'3'} disabled>Value 3</MenuItem>
                             <MenuItem value={'4'}>Value 4 with a longer label</MenuItem>
-                            <MenuItem value={'5'}  >Value 5 with even a more longer, longer and longer label</MenuItem>
+                            <MenuItem value={'5'}>Value 5 with even a more longer, longer and longer label</MenuItem>
                             <MenuItem value={'6'} disabled><Box alignItems={'center'} display={'flex'}>
-                              <WarningIcon sx={{ fontSize: definition.typography.pxToRem(20) }} color={'primary'} />
+                              <WarningIcon sx={{fontSize: definition.typography.pxToRem(20)}} color={'primary'}/>
                               <Box component={'span'} ml={1} color={definition.palette.primary.main}>Value 6</Box>
                             </Box></MenuItem>
                             <MenuItem value={'7'}>Value 7</MenuItem>
@@ -174,11 +175,12 @@ const Forms = () => {
                             <MenuItem value={'13'}>Value 13</MenuItem>
                             <MenuItem value={'14'}>Value 14</MenuItem>
                           </Select>
-                          <FormHelperText>The <CodeBox component={'span'} size={'small'}>SelectClearButton</CodeBox> component will automatically display a clear icon button when something was selected.</FormHelperText>
+                          <FormHelperText>The <CodeBox component={'span'} size={'small'}>SelectClearButton</CodeBox> component will automatically display a clear icon button when
+                            something was selected.</FormHelperText>
                         </FormControl>
                       </Grid>
                       <Grid>
-                        <FormControl sx={{ minWidth: 200 }}>
+                        <FormControl sx={{minWidth: 200}}>
                           <InputLabel shrink={selectValue !== ''}>Disabled Element</InputLabel>
                           {/*eslint-disable-next-line no-console */}
                           <Select<false> variant={'standard'} value={''} onChange={console.log} disabled>
@@ -209,8 +211,8 @@ const Forms = () => {
                           defaultValue='0.5'
                           helperText='This is a carat text field which has an endAdornment and the additional attributes: min, max and step'
                           type={'number'}
-                          InputProps={{ endAdornment: <InputAdornment position='end' sx={{ userSelect: 'none' }}>ct</InputAdornment> }}
-                          inputProps={{ min: 0, max: 1, step: '0.01' }}
+                          InputProps={{endAdornment: <InputAdornment position='end' sx={{userSelect: 'none'}}>ct</InputAdornment>}}
+                          inputProps={{min: 0, max: 1, step: '0.01'}}
                           variant={'standard'}
                         />
                       </Grid>
@@ -221,8 +223,8 @@ const Forms = () => {
                           defaultValue='50'
                           helperText='This is a weight text field which has an endAdornment and the additional attributes: min, max and step'
                           type={'number'}
-                          InputProps={{ endAdornment: <InputAdornment position='end' sx={{ userSelect: 'none' }}>gr</InputAdornment> }}
-                          inputProps={{ min: '0', max: '100', step: '1' }}
+                          InputProps={{endAdornment: <InputAdornment position='end' sx={{userSelect: 'none'}}>gr</InputAdornment>}}
+                          inputProps={{min: '0', max: '100', step: '1'}}
                           variant={'standard'}
                         />
                       </Grid>
@@ -248,11 +250,26 @@ const Forms = () => {
                       </Grid>
                       <Grid item xs={2}>
                         <DatePicker
-                          renderInput={(params) => <TextField {...params}
-                                                              variant={'standard'}
-                            helperText={'The MUI date picker component has migrated to @mui/x-date-picker. Please try to avoid using it. Use the next Component from the Core instead'}
-                          />}
+                          slotProps={{
+                            textField: {
+                              variant: 'standard',
+                              helperText: 'The MUI date picker component has migrated to @mui/x-date-picker.',
+                            }
+                          }}
                           label='Date picker'
+                          value={selectedDate}
+                          onChange={(date) => handleDateChange(date)}
+                        />
+                      </Grid>
+                      <Grid item xs={2}>
+                        <TimePicker
+                          slotProps={{
+                            textField: {
+                              variant: 'standard',
+                              helperText: 'The MUI time picker component has migrated to @mui/x-date-picker.',
+                            }
+                          }}
+                          label='Time picker'
                           value={selectedDate}
                           onChange={(date) => handleDateChange(date)}
                         />
@@ -261,7 +278,7 @@ const Forms = () => {
                       <Grid item xs={2}>
                         <KeyboardDatePicker
                           selectsRange
-                          textFieldProps={{ label: 'Keyboard Range date picker', helperText: 'The range picker can be used by passing the `selectsRange` prop', variant: 'standard' }}
+                          textFieldProps={{label: 'Keyboard Range date picker', helperText: 'The range picker can be used by passing the `selectsRange` prop', variant: 'standard'}}
                           selected={dateRange[0]}
                           startDate={dateRange[0]}
 
@@ -273,7 +290,7 @@ const Forms = () => {
                       </Grid>
                       <Grid item xs={2}>
                         <KeyboardDatePicker
-                          textFieldProps={{ label: 'Keyboard date picker', helperText: 'This Datepicker supports keyboard inputs', variant: 'standard' }}
+                          textFieldProps={{label: 'Keyboard date picker', helperText: 'This Datepicker supports keyboard inputs', variant: 'standard'}}
                           selected={selectedDate}
                           onChange={(date) => handleDateChange(date as Date)}
                           shouldOpenOnFocus
@@ -310,11 +327,11 @@ const Forms = () => {
                           onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
                           error={showError}
                           helperText='The icon can be implemented on start or end or both and should reflect error color'
-                          InputProps={{ startAdornment: <InputAdornment position='start'><WarningIcon color={showError ? 'error' : 'inherit'} /></InputAdornment> }}
+                          InputProps={{startAdornment: <InputAdornment position='start'><WarningIcon color={showError ? 'error' : 'inherit'}/></InputAdornment>}}
                           variant={'standard'}
                         />
                       </Grid>
-                      <Grid item xs>
+                      <Grid item xs={2}>
                         <TextFieldClearButton
                           fullWidth
                           error={showError}
