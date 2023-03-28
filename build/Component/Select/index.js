@@ -61,7 +61,7 @@ var Select = function (_a) {
     };
     var selectContent = react_1.default.createElement(react_1.default.Fragment, null,
         selectProps.label && react_1.default.createElement(material_1.InputLabel, { color: (_b = selectProps === null || selectProps === void 0 ? void 0 : selectProps.color) !== null && _b !== void 0 ? _b : selectProps.color, id: selectProps.labelId }, selectProps.label),
-        react_1.default.createElement(material_1.Select, __assign({ variant: 'standard', renderValue: function (selected) { return react_1.default.createElement(ValueRenderer_1.default, { maxValuesShown: maxValuesShown, labelsByValue: labelsByValue, selected: selected, onUnselect: onUnselect, onClear: onClear, isInClearableState: canClear && isInClearableState }); } }, selectProps),
+        react_1.default.createElement(material_1.Select, __assign({ renderValue: function (selected) { return react_1.default.createElement(ValueRenderer_1.default, { maxValuesShown: maxValuesShown, labelsByValue: labelsByValue, selected: selected, onUnselect: onUnselect, onClear: onClear, isInClearableState: canClear && isInClearableState }); } }, selectProps),
             loading && react_1.default.createElement(material_1.MenuItem, { sx: { justifyContent: 'center' } },
                 react_1.default.createElement(material_1.CircularProgress, { size: 20, color: selectProps.color })),
             children),

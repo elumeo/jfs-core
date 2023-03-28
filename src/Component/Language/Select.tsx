@@ -12,7 +12,6 @@ export type Props = {
 const Select: React.FC<Props> = ({ value, onChange }) => (
   <MUISelect
     id='settings__language-select'
-    variant='standard'
     fullWidth
     value={value}
     onChange={event => onChange(event.target.value as Language)}>

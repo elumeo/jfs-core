@@ -26,7 +26,6 @@ const Password = React.forwardRef<HTMLInputElement, Props>(
         autoComplete={'current-password'}
         id='password'
         type='password'
-        variant={'standard'}
         inputRef={ref}
         required
         label={formatMessage({ id: 'login.password' })}

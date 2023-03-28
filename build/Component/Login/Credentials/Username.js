@@ -12,6 +12,6 @@ var Username = react_1.default.forwardRef(function (_a, ref) {
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
     var error = (0, isEmptyString_1.default)(value);
     return (react_1.default.createElement(TextField_1.default, { autoComplete: 'username', id: 'username', type: 'text', inputRef: ref, required: true, error: error, label: formatMessage({ id: 'login.username' }), helperText: error
-            && formatMessage({ id: 'login.username.errorText' }), variant: 'standard', value: value !== null && value !== void 0 ? value : '', onChange: function (event) { return onChange(event.target.value); }, onKeyPress: function (event) { return event.key === 'Enter' && onEnter(); } }));
+            && formatMessage({ id: 'login.username.errorText' }), value: value !== null && value !== void 0 ? value : '', onChange: function (event) { return onChange(event.target.value); }, onKeyPress: function (event) { return event.key === 'Enter' && onEnter(); } }));
 });
 exports.default = Username;

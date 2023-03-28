@@ -50,7 +50,6 @@ const Select = <T,>({children, helperText, loading = false, maxValuesShown, canC
   const selectContent = <>
     {selectProps.label && <InputLabel color={selectProps?.color ?? selectProps.color} id={selectProps.labelId}>{selectProps.label}</InputLabel>}
     <MuiSelect<T>
-      variant={'standard'}
       renderValue={(selected) => <ValueRenderer
         maxValuesShown={maxValuesShown}
         labelsByValue={labelsByValue}

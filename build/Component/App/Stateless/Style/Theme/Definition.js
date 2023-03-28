@@ -175,6 +175,21 @@ var definition = (0, styles_1.createTheme)({
                 },
             }
         },
+        MuiTextField: {
+            defaultProps: {
+                variant: 'standard',
+            }
+        },
+        MuiSelect: {
+            defaultProps: {
+                variant: 'standard',
+            }
+        },
+        MuiFormControl: {
+            defaultProps: {
+                variant: 'standard',
+            }
+        }
     }
 });
 exports.default = definition;

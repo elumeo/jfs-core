@@ -111,7 +111,7 @@ const Tables = () => {
                 behaviour.</Typography>
               <Grid2 container spacing={2} pt={1} pb={1}>
                 <Grid2>
-                  <FormControl variant={'standard'}>
+                  <FormControl>
                     <Select<TableProps['size']> value={sizeBasicTable} onChange={onChangeBasicSize}>
                       <MenuItem value={'small'}>small</MenuItem>
                       <MenuItem value={'medium'}>medium</MenuItem>
@@ -160,7 +160,7 @@ const Tables = () => {
                     Also the <i>dense</i> parameter is introduced on the table, so we can adjust the <i>headerHeight</i> and <i>rowHeight</i> easily with defined values.
                     The sticky behaviour is
                     different as well and cannot be disabled. Check the different scrollbar behaviour on the right side.</Typography>
-                  <FormControl variant={'standard'}>
+                  <FormControl>
                     <Select<TableProps['size']> value={sizeVirtualizedTable} onChange={onChangeVirtualizedSize}>
                       <MenuItem value={'small'}>small</MenuItem>
                       <MenuItem value={'medium'}>medium</MenuItem>

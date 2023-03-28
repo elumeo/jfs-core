@@ -144,7 +144,7 @@ const Forms = () => {
                   <Box mt={2}>
                     <Grid container spacing={1}>
                       <Grid item xs={6}>
-                        <FormControl sx={{width: 200}} color='primary' required error={showError} variant={'standard'}>
+                        <FormControl sx={{width: 200}} color='primary' required error={showError}>
                           <Select<string>
                             value={selectValue}
                             label={'Choose Value'}
@@ -183,7 +183,7 @@ const Forms = () => {
                         <FormControl sx={{minWidth: 200}}>
                           <InputLabel shrink={selectValue !== ''}>Disabled Element</InputLabel>
                           {/*eslint-disable-next-line no-console */}
-                          <Select<false> variant={'standard'} value={''} onChange={console.log} disabled>
+                          <Select<false> value={''} onChange={console.log} disabled>
                             <MenuItem value='1'>Value 1</MenuItem>
                           </Select>
                         </FormControl>
@@ -201,7 +201,6 @@ const Forms = () => {
                           value={textFieldValue}
                           helperText='And some important help text'
                           onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
-                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
@@ -213,7 +212,6 @@ const Forms = () => {
                           type={'number'}
                           InputProps={{endAdornment: <InputAdornment position='end' sx={{userSelect: 'none'}}>ct</InputAdornment>}}
                           inputProps={{min: 0, max: 1, step: '0.01'}}
-                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
@@ -225,7 +223,6 @@ const Forms = () => {
                           type={'number'}
                           InputProps={{endAdornment: <InputAdornment position='end' sx={{userSelect: 'none'}}>gr</InputAdornment>}}
                           inputProps={{min: '0', max: '100', step: '1'}}
-                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
@@ -235,7 +232,6 @@ const Forms = () => {
                           value={textFieldValue}
                           helperText='This is a text field'
                           onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
-                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
@@ -245,14 +241,12 @@ const Forms = () => {
                           value={priceValue}
                           helperText='This is a price field which is provided by the core'
                           onChange={event => setPriceValue(event.target.value)}
-                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
                         <DatePicker
                           slotProps={{
                             textField: {
-                              variant: 'standard',
                               helperText: 'The MUI date picker component has migrated to @mui/x-date-picker.',
                             }
                           }}
@@ -265,7 +259,6 @@ const Forms = () => {
                         <TimePicker
                           slotProps={{
                             textField: {
-                              variant: 'standard',
                               helperText: 'The MUI time picker component has migrated to @mui/x-date-picker.',
                             }
                           }}
@@ -278,7 +271,7 @@ const Forms = () => {
                       <Grid item xs={2}>
                         <KeyboardDatePicker
                           selectsRange
-                          textFieldProps={{label: 'Keyboard Range date picker', helperText: 'The range picker can be used by passing the `selectsRange` prop', variant: 'standard'}}
+                          textFieldProps={{label: 'Keyboard Range date picker', helperText: 'The range picker can be used by passing the `selectsRange` prop'}}
                           selected={dateRange[0]}
                           startDate={dateRange[0]}
 
@@ -290,7 +283,7 @@ const Forms = () => {
                       </Grid>
                       <Grid item xs={2}>
                         <KeyboardDatePicker
-                          textFieldProps={{label: 'Keyboard date picker', helperText: 'This Datepicker supports keyboard inputs', variant: 'standard'}}
+                          textFieldProps={{label: 'Keyboard date picker', helperText: 'This Datepicker supports keyboard inputs'}}
                           selected={selectedDate}
                           onChange={(date) => handleDateChange(date as Date)}
                           shouldOpenOnFocus
@@ -302,7 +295,6 @@ const Forms = () => {
                           textFieldProps={{
                             label: 'Keyboard date picker',
                             helperText: 'This Datepicker supports keyboard inputs',
-                            variant: 'standard'
                           }}
                           selected={selectedDate}
                           onChange={(date) => handleDateChange(date as Date)}
@@ -317,7 +309,6 @@ const Forms = () => {
                           value={textFieldValue}
                           helperText='And some important help text'
                           onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
-                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
@@ -328,7 +319,6 @@ const Forms = () => {
                           error={showError}
                           helperText='The icon can be implemented on start or end or both and should reflect error color'
                           InputProps={{startAdornment: <InputAdornment position='start'><WarningIcon color={showError ? 'error' : 'inherit'}/></InputAdornment>}}
-                          variant={'standard'}
                         />
                       </Grid>
                       <Grid item xs={2}>
@@ -339,7 +329,6 @@ const Forms = () => {
                           value={textFieldValue}
                           onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
                           helperText='And some important help text'
-                          variant={'standard'}
                         />
                       </Grid>
                     </Grid>

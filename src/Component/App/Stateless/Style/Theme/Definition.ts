@@ -155,6 +155,21 @@ const definition = createTheme({
         },
       }
     },
+    MuiTextField: {
+      defaultProps: {
+        variant: 'standard',
+      }
+    },
+    MuiSelect: {
+      defaultProps: {
+        variant: 'standard',
+      }
+    },
+    MuiFormControl: {
+      defaultProps: {
+        variant: 'standard',
+      }
+    }
   }
 }
 )

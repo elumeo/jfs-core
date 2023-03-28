@@ -60,7 +60,6 @@ const TextField = React.forwardRef<HTMLDivElement, Props>(({
     ref={ref}
     name={name}
     value={value || ''}
-    variant={'standard'}
     {...props}
     onChange={onChange}
     InputProps={preparedInputProps}

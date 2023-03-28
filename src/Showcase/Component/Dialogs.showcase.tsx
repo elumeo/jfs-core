@@ -144,7 +144,7 @@ const Dialogs = () => {
                           onChange={event => setFormValue(event === null ? '' : event.target.value)}
                         />
                       </FormControl>
-                      <FormControl variant="standard" error={!formValue}>
+                      <FormControl error={!formValue}>
                         <Select<string>
                           value={formValue ?? ''}
                           required
@@ -160,7 +160,7 @@ const Dialogs = () => {
                           <MenuItem value={'3'}>Option 3</MenuItem>
                         </Select>
                       </FormControl>
-                      <FormControl variant="standard" error={!formValue} fullWidth>
+                      <FormControl error={!formValue} fullWidth>
                         <Select<string[]>
                           multiple
                           error={formValueMulti.length < 2}
@@ -177,7 +177,7 @@ const Dialogs = () => {
                           <MenuItem value={'3'}>Option 3</MenuItem>
                         </Select>
                       </FormControl>
-                      <FormControl variant="standard" error={!formValue} fullWidth>
+                      <FormControl error={!formValue} fullWidth>
                         <Select<string[]>
                           multiple
                           value={[]}

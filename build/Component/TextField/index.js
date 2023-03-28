@@ -70,6 +70,6 @@ var TextField = react_1.default.forwardRef(function (_a, ref) {
     var onChange = react_1.default.useCallback(function (e) {
         props.onChange(e);
     }, [props.onChange]);
-    return react_1.default.createElement(material_1.TextField, __assign({ ref: ref, name: name, value: value || '', variant: 'standard' }, props, { onChange: onChange, InputProps: preparedInputProps }));
+    return react_1.default.createElement(material_1.TextField, __assign({ ref: ref, name: name, value: value || '' }, props, { onChange: onChange, InputProps: preparedInputProps }));
 });
 exports.default = TextField;
