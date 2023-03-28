@@ -2,7 +2,6 @@ import React from 'react';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import WebSocket from './WebSocket';
-import Router from './Router';
 import Initializer from './Initializer';
 import International from './International';
 import Snackbar from './Snackbar';
@@ -22,9 +21,7 @@ const Stateful: React.FC<Props> & {
 } = ({ store, children }) => (
   <Provider store={store}>
     <WebSocket>
-      <Router>
         {children}
-      </Router>
     </WebSocket>
   </Provider>
 );

@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { Routes as RRoutes, Route, Navigate } from 'react-router-dom';
-
+import React, {FC, ReactNode} from 'react';
+import {Route, Navigate} from 'react-router-dom';
 import AuthRoute from '../Component/Route/AuthRoute';
 import Lists from './Component/Lists.showcase';
 import Typographies from './Component/Typographies.showcase';
@@ -17,62 +16,59 @@ import Boxes from './Component/Boxes.showcase';
 import TabsDemo from './Component/Tabs.showcase';
 import Forms from './Component/Forms.showcase';
 import AppCardContentExample from './Component/AppCardContentExample.showcase';
+import RouterProvider from '../Component/App/Stateful/RouterProvider';
+import NoAuthRoute from '../Component/Route/NoAuthRoute';
 
-const Routes: React.FC = () => (
-  <RRoutes>
-    <Route key={'start'} path='/start' element={<AuthRoute title='app.title' translateTitle subtitle='start' />}>
-      <Route index element={<Dashboard />} />
-    </Route>
-    <Route key={'Styling'} path='/lists' element={<AuthRoute title='app.title' translateTitle subtitle='Lists' />}>
-      <Route index element={<Lists />} />
-    </Route>
-    <Route key={'Buttons'} path='/Buttons' element={<AuthRoute title='app.title' translateTitle subtitle='Buttons' />}>
-      <Route index element={<Buttons />} />
-    </Route>
-    <Route key={'Typographies'} path='/Typographies' element={<AuthRoute title='app.title' translateTitle subtitle='Typographies' />}>
-      <Route index element={<Typographies />} />
-    </Route>
-    <Route key={'Icons'} path='/Icons' element={<AuthRoute title='app.title' translateTitle subtitle='Icons' />}>
-      <Route index element={<Icons />} />
-    </Route>
-    <Route key={'Color'} path='/Colors' element={<AuthRoute title='app.title' translateTitle subtitle='Colors' />}>
-      <Route index element={<Colors />} />
-    </Route>
-    <Route key={'ExternalLinks'} path='/ExternalLinks' element={<AuthRoute title='app.title' translateTitle subtitle='ExternalLinks' />}>
-      <Route index element={<ExternalLinks />} />
-    </Route>
-    <Route key={'Cards'} path='/Cards' element={<AuthRoute title='app.title' translateTitle subtitle='Cards' />}>
-      <Route index element={<Cards />} />
-    </Route>
-    <Route key={'Tables'} path='/Tables' element={<AuthRoute title='app.title' translateTitle subtitle='Tables' />}>
-      <Route index element={<Tables />} />
-    </Route>
-    <Route key={'Dialogs'} path='/Dialogs' element={<AuthRoute title='app.title' translateTitle subtitle='Dialogs' />}>
-      <Route index element={<Dialogs />} />
-    </Route>
-    <Route key={'Notifications'} path='/Notifications' element={<AuthRoute title='app.title' translateTitle subtitle='Notifications' />}>
-      <Route index element={<Notifications />} />
-    </Route>
-    <Route key={'Boxes'} path='/Boxes' element={<AuthRoute title='app.title' translateTitle subtitle='Boxes' />}>
-      <Route index element={<Boxes />} />
-    </Route>
-    <Route key={'Tabs'} path='/Tabs' element={<AuthRoute title='app.title' translateTitle subtitle='Tabs' />}>
-      <Route index element={<TabsDemo />} />
-    </Route>
-    <Route key={'Forms'} path='/Forms' element={<AuthRoute title='app.title' translateTitle subtitle='Forms' />}>
-      <Route index element={<Forms />} />
-    </Route>
-    <Route key={'AppCardContentExample'} path='/AppCardContentExample' element={<AuthRoute title='app.title' translateTitle subtitle='AppCardContentExample' />}>
-      <Route index element={<AppCardContentExample />} />
-    </Route>
-    <Route path='*' element={<AuthRoute />}>
-      <Route
-        path='*'
-        element={<Navigate to={'/start'} replace />}
-      />
-    </Route>
+type Props = {
+  header: ReactNode;
+  overlays: ReactNode;
+}
 
-  </RRoutes>
+const Routes: FC<Props> = ({header, overlays}) => (
+  <RouterProvider
+    routes={
+      <>
+        <Route path={'*'}
+               element={
+                 <>
+                   {header}
+                   <AuthRoute title='app.title' translateTitle/>
+                   {overlays}
+                 </>
+               }>
+          <Route
+            path={'Start'}
+            element={<Dashboard/>}
+          />
+          <Route path={'Lists'} element={<Lists/>}/>
+          <Route path={'Buttons'} element={<Buttons/>}/>
+          <Route path={'Typographies'} element={<Typographies/>}/>
+          <Route path={'Icons'} element={<Icons/>}/>
+          <Route path={'Colors'} element={<Colors/>}/>
+          <Route path={'ExternalLinks'} element={<ExternalLinks/>}/>
+          <Route path={'Cards'} element={<Cards/>}/>
+          <Route path={'Tables'} element={<Tables/>}/>
+          <Route path={'Dialogs'} element={<Dialogs/>}/>
+          <Route path={'Notifications'} element={<Notifications/>}/>
+          <Route path={'Boxes'} element={<Boxes/>}/>
+          <Route path={'Tabs'} element={<TabsDemo/>}/>
+          <Route path={'Forms'} element={<Forms/>}/>
+          <Route path={'AppCardContentExample'} element={<AppCardContentExample/>}/>
+          <Route path={'SharedComponent'} element={<AppCardContentExample/>}/>
+          <Route path={'*'} element={<Navigate to={'Start'} replace/>}/>
+        </Route>
+        <Route path={'*'}
+               element={
+                 <>
+                   {header}
+                   <NoAuthRoute title='app.title' translateTitle/>
+                   {overlays}
+                 </>
+               }>
+          <Route path={'NoAuthRoute'} element={<>No Auth Route</>}/>
+        </Route>
+      </>
+    }/>
 );
 
 export default Routes;
