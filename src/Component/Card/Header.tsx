@@ -31,7 +31,6 @@ const Header: React.FC<AppCardHeaderBaseProps> = ({
       action={action}
       title={
         <>
-
           <Stack
             direction={'row'}
             spacing={1}
