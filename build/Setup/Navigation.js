@@ -31,11 +31,13 @@ var Divider_1 = __importDefault(require("@mui/material/Divider"));
 var Navigation = __importStar(require("../Component/Navigation"));
 var Logout = __importStar(require("../Component/Logout"));
 var Settings = __importStar(require("../Component/Settings"));
+var Version_1 = require("../Component/Version");
 var Drawer = function () { return (react_1.default.createElement(Navigation.Drawer, null,
     react_1.default.createElement(Navigation.Item, { iconName: 'account_box', messageId: 'app.login', unauthorizedOnly: true, onClickRoute: '/start' }),
     react_1.default.createElement(Navigation.Item, { iconName: 'home', messageId: 'app.title', onClickRoute: '/start', authorizedOnly: true }),
     react_1.default.createElement(Divider_1.default, null),
     react_1.default.createElement(Settings.NavigationItem, null),
     react_1.default.createElement(Divider_1.default, null),
-    react_1.default.createElement(Logout.NavigationItem, null))); };
+    react_1.default.createElement(Logout.NavigationItem, null),
+    react_1.default.createElement(Version_1.VersionNavigationItem, null))); };
 exports.default = Drawer;

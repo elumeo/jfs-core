@@ -50,7 +50,7 @@ var react_1 = __importStar(require("react"));
 var material_1 = require("@mui/material");
 exports.wrapperStyles = {
     position: 'relative',
-    display: 'inline-block'
+    display: 'inline'
 };
 var mapToCircularProgressSize = function (size) {
     switch (size) {
@@ -77,8 +77,8 @@ var getSpinnerSx = function (size) {
 };
 var ButtonProgress = (0, react_1.forwardRef)(function (_a, ref) {
     var children = _a.children, onClick = _a.onClick, _b = _a.size, size = _b === void 0 ? 'medium' : _b, _c = _a.color, color = _c === void 0 ? 'inherit' : _c, _d = _a.disabled, disabled = _d === void 0 ? false : _d, _e = _a.inProgress, inProgress = _e === void 0 ? false : _e, _f = _a.spinnerColor, spinnerColor = _f === void 0 ? undefined : _f, rest = __rest(_a, ["children", "onClick", "size", "color", "disabled", "inProgress", "spinnerColor"]);
-    return react_1.default.createElement(material_1.Box, { sx: exports.wrapperStyles },
-        react_1.default.createElement(material_1.Button, __assign({ ref: ref, size: size, color: color, disabled: disabled || inProgress, onClick: onClick }, rest), children),
+    return react_1.default.createElement(material_1.Button, __assign({ ref: ref, size: size, color: color, disabled: disabled || inProgress, onClick: onClick }, rest),
+        children,
         inProgress
             ? react_1.default.createElement(material_1.CircularProgress, { size: (0, exports.mapToCircularProgressSize)(size), color: spinnerColor || color, sx: getSpinnerSx(size) })
             : react_1.default.createElement(react_1.default.Fragment, null));

@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
-import { Box, Button, ButtonProps, CircularProgress, CircularProgressProps, PropTypes, SxProps } from '@mui/material';
+import {Button, ButtonProps, CircularProgress, CircularProgressProps, PropTypes, SxProps} from '@mui/material';
 
 
 export const wrapperStyles: SxProps = {
   position: 'relative',
-  display: 'inline-block'
+  display: 'inline'
 };
 
 export const mapToCircularProgressSize = (size: string): number => {
@@ -46,10 +46,7 @@ const ButtonProgress = forwardRef<HTMLButtonElement, ButtonProgressProps>((
     ...rest
   },
   ref) => {
-  return <Box
-    sx={wrapperStyles}
-  >
-    <Button
+  return  <Button
       ref={ref}
       size={size}
       color={color}
@@ -58,13 +55,11 @@ const ButtonProgress = forwardRef<HTMLButtonElement, ButtonProgressProps>((
       {
         children
       }
+      {inProgress
+        ? <CircularProgress size={mapToCircularProgressSize(size)} color={spinnerColor || color}
+                            sx={getSpinnerSx(size)} />
+        : <></>}
     </Button>
-    {inProgress
-      ? <CircularProgress size={mapToCircularProgressSize(size)} color={spinnerColor || color}
-        sx={getSpinnerSx(size)} />
-      : <></>}
-
-  </Box>;
 }
 );
 

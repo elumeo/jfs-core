@@ -3,6 +3,7 @@ import Divider from '@mui/material/Divider';
 import * as Navigation from 'Component/Navigation';
 import * as Logout from 'Component/Logout';
 import * as Settings from 'Component/Settings';
+import {VersionNavigationItem} from "Component/Version";
 
 const Drawer: React.FC = () => (
   <Navigation.Drawer>
@@ -18,11 +19,11 @@ const Drawer: React.FC = () => (
       onClickRoute='/start'
       authorizedOnly
     />
-    <Divider />
-    <Settings.NavigationItem />
-    <Divider />
-    <Logout.NavigationItem />
-    {/* <VersionNavigationItem /> */}
+    <Divider/>
+    <Settings.NavigationItem/>
+    <Divider/>
+    <Logout.NavigationItem/>
+    <VersionNavigationItem/>
   </Navigation.Drawer>
 );
 
