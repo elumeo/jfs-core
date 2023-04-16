@@ -16,6 +16,14 @@
       "plannedGames"
     ]
   },
+  "JfsWebSocketClient": {
+    "HostV": "http://localhost:8080",
+    "PathV": "",
+    "Host": "http://api-test.juwelo.de",
+    "Path": "/staging/websocket.services",
+    "PrivateNamespace": "Jfs2Jfs",
+    "AutoRoomSubscriptions": []
+  },
   "Language": "de",
   "Currency": "EUR",
   "Container": "juwelotv",

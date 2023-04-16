@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import {Card, List, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
 import LinkIcon from '@mui/icons-material/Link';
 import AppsIcon from '@mui/icons-material/Apps';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
@@ -14,68 +14,73 @@ import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import TabIcon from '@mui/icons-material/Tab';
 import BallotOutlinedIcon from '@mui/icons-material/BallotOutlined';
 import ShareIcon from '@mui/icons-material/Share';
+import NatIcon from '@mui/icons-material/Nat';
 import { useNavigate } from 'react-router-dom';
 
 const AppNavigation = () => {
   const navigate = useNavigate();
   return <Card sx={{ minWidth: 300 }}>
     <List dense>
-      <ListItem button onClick={() => navigate('/Boxes')}>
+      <ListItemButton onClick={() => navigate('/Boxes')}>
         <ListItemIcon><CheckBoxOutlineBlankIcon /></ListItemIcon>
         <ListItemText primary='Boxes' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/Buttons')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/Buttons')}>
         <ListItemIcon><ViewAgendaIcon /></ListItemIcon>
         <ListItemText primary='Buttons' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/Cards')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/Cards')}>
         <ListItemIcon><DashboardIcon /></ListItemIcon>
         <ListItemText primary='Cards' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/Colors')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/Colors')}>
         <ListItemIcon><ColorLensIcon /></ListItemIcon>
         <ListItemText primary='Colors' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/Dialogs')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/Dialogs')}>
         <ListItemIcon><FilterNoneIcon /></ListItemIcon>
         <ListItemText primary='Dialogs / Popovers / Tooltips' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/ExternalLinks')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/ExternalLinks')}>
         <ListItemIcon><LinkIcon /></ListItemIcon>
         <ListItemText primary='External Links' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/Forms')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/Forms')}>
         <ListItemIcon><BallotOutlinedIcon /></ListItemIcon>
         <ListItemText primary='Forms' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/Icons')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/Icons')}>
         <ListItemIcon><AppsIcon /></ListItemIcon>
         <ListItemText primary='Icons' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/Lists')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/Lists')}>
         <ListItemIcon><ListIcon /></ListItemIcon>
         <ListItemText primary='Lists' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/Notifications')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/Notifications')}>
         <ListItemIcon><NotificationsIcon /></ListItemIcon>
         <ListItemText primary='Notifications' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/Tables')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/Tables')}>
         <ListItemIcon><TableChartIcon /></ListItemIcon>
         <ListItemText primary='Tables' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/Tabs')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/Tabs')}>
         <ListItemIcon><TabIcon /></ListItemIcon>
         <ListItemText primary='Tabs' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/Typographies')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/Typographies')}>
         <ListItemIcon><FontDownloadIcon /></ListItemIcon>
         <ListItemText primary='Typographies' />
-      </ListItem>
-      <ListItem button onClick={() => navigate('/SharedComponent')}>
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/WebSocket')}>
+        <ListItemIcon><NatIcon /></ListItemIcon>
+        <ListItemText primary='WebSocket' />
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/SharedComponent')}>
         <ListItemIcon><ShareIcon /></ListItemIcon>
         <ListItemText primary='SharedComponent' />
-      </ListItem>
+      </ListItemButton>
     </List>
   </Card>;
 };

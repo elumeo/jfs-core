@@ -14,19 +14,23 @@ var WebSocket = function (_a) {
     react_1.default.useEffect(function () {
         if (!hasSubscribed) {
             var listenRoomsSubscription_1 = WSClient_1.WSClient.listenRoomsObservable$.subscribe(function (roomData) {
-                return dispatch((0, Action_1.webSocketUpdateRoomAction)(roomData));
+                dispatch((0, Action_1.webSocketUpdateRoomAction)(roomData));
             });
             var connectionErrorSubscription_1 = WSClient_1.WSClient.connectionErrorObservable$.subscribe(function (error) {
                 dispatch((0, Action_1.webSocketConnectFailedAction)(error));
             });
             setHasSubscribed(true);
             return function () {
-                listenRoomsSubscription_1.unsubscribe();
-                connectionErrorSubscription_1.unsubscribe();
+                if (hasSubscribed) {
+                    listenRoomsSubscription_1.unsubscribe();
+                    connectionErrorSubscription_1.unsubscribe();
+                }
             };
         }
-        return function () { return undefined; };
-    }, [hasSubscribed, dispatch]);
+        return function () {
+            return undefined;
+        };
+    }, [hasSubscribed]);
     return react_1.default.createElement(react_1.default.Fragment, null, children);
 };
 exports.default = WebSocket;

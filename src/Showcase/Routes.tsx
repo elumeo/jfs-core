@@ -12,6 +12,7 @@ import Buttons from './Component/Buttons.showcase';
 import Tables from './Component/Tables.showcase';
 import Dialogs from './Component/Dialogs.showcase';
 import Notifications from './Component/Notifications.showcase';
+import WebSocket from './Component/WebSocket.showcase';
 import Boxes from './Component/Boxes.showcase';
 import TabsDemo from './Component/Tabs.showcase';
 import Forms from './Component/Forms.showcase';
@@ -53,6 +54,7 @@ const Routes: FC<Props> = ({header, overlays}) => (
           <Route path={'Boxes'} element={<Boxes/>}/>
           <Route path={'Tabs'} element={<TabsDemo/>}/>
           <Route path={'Forms'} element={<Forms/>}/>
+          <Route path={'WebSocket'} element={<WebSocket/>}/>
           <Route path={'AppCardContentExample'} element={<AppCardContentExample/>}/>
           <Route path={'SharedComponent'} element={<AppCardContentExample/>}/>
           <Route path={'*'} element={<Navigate to={'Start'} replace/>}/>
