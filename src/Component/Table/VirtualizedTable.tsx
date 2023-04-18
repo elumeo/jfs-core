@@ -38,7 +38,7 @@ const sort = <ItemData extends {}>(data: ItemData[], sortBy: keyof ItemData, com
     return 0
   })
 }
-export type Props<ItemData> = Partial<TableVirtuosoProps<ItemData, unknown>> & {
+export type Props<ItemData, ItemContext = unknown> = Partial<TableVirtuosoProps<ItemData, ItemContext>> & {
   data: ItemData[];
   sortBy?: keyof ItemData
   sortDirection?: SortDirection
