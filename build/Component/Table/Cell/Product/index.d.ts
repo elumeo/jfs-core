@@ -1,10 +1,9 @@
 import React from 'react';
 import { TableCellProps } from '@mui/material';
-import { MediaUri } from '../../../../Types/MediaUri';
 export type TableCellProductProps = Partial<TableCellProps> & {
     id?: string;
     rowIndex?: number;
-    mediaUris?: MediaUri[];
+    mediaUri?: string;
     name?: string;
     productType?: string;
     inStockPool?: boolean;

@@ -1,8 +1,7 @@
 import React from 'react';
-import { MediaUri } from '../../../../Types/MediaUri';
 export type ProductImageProps = {
     id: string;
-    mediaUris?: MediaUri[];
+    mediaUri?: string;
 };
-declare const ProductImage: React.FC<ProductImageProps>;
-export default ProductImage;
+declare const _default: React.NamedExoticComponent<ProductImageProps>;
+export default _default;

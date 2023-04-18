@@ -3,7 +3,6 @@ import { grey } from '@mui/material/colors';
 import definition from 'Component/App/Stateless/Style/Theme/Definition';
 import React from 'react';
 
-
 export type NoProductImageAvailableProps = {
   onClick?: BoxProps['onClick']
 }

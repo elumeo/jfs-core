@@ -1,8 +1,8 @@
 import React from 'react';
-export type AttributesProps = {
+export type Props = {
     productType?: string;
     inStockPool?: boolean;
     hasNoTvLock?: boolean;
 };
-declare const Attributes: React.FC<AttributesProps>;
-export default Attributes;
+declare const _default: React.NamedExoticComponent<Props>;
+export default _default;

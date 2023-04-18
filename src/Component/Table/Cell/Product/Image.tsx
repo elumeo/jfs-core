@@ -1,29 +1,16 @@
-import React from 'react';
-import { ButtonBase } from '@mui/material';
+import React, {memo} from 'react';
+import {ButtonBase} from '@mui/material';
 import BundleImage from './BundleImage';
 import ProductImage from './ProductImage';
-import { MediaUri } from 'Types/MediaUri';
 
 export type ImageProps = {
   id?: string;
-  mediaUris?: MediaUri[];
+  mediaUri?: string;
   isProductBundle?: boolean;
   onClick?: HTMLElement['click'];
 }
 
-const Image: React.FC<ImageProps> = ({
-  id = null,
-  mediaUris = null,
-  isProductBundle = false,
-  onClick = null
-}) => (
-  <ButtonBase onClick={onClick}>
-    {
-      isProductBundle
-        ? <BundleImage />
-        : <ProductImage id={id} mediaUris={mediaUris} />
-    }
-  </ButtonBase>
-)
+const Image: React.FC<ImageProps> = ({id = null, mediaUri = null, isProductBundle = false, onClick = null}) =>
+  <ButtonBase onClick={onClick}>{isProductBundle ? <BundleImage/> : <ProductImage id={id} mediaUri={mediaUri}/>}</ButtonBase>;
 
-export default Image
+export default memo(Image);

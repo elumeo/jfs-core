@@ -2,7 +2,6 @@ import React from 'react';
 import {Stack, TableCellProps} from '@mui/material';
 import Image from './Image';
 import Details from './Details';
-import { MediaUri } from 'Types/MediaUri';
 import Attributes from 'Component/Table/Cell/Product/Attributes';
 import Loading from 'Component/Table/Cell/Loading';
 import Root from 'Component/Table/Cell/Root';
@@ -10,7 +9,7 @@ import Root from 'Component/Table/Cell/Root';
 export type TableCellProductProps = Partial<TableCellProps> & {
   id?: string;
   rowIndex?: number;
-  mediaUris?: MediaUri[];
+  mediaUri?: string;
   name?: string;
   productType?: string;
   inStockPool?: boolean;
@@ -22,7 +21,7 @@ export type TableCellProductProps = Partial<TableCellProps> & {
 const Product: React.FC<TableCellProductProps> = ({
   id = null,
   rowIndex = null,
-  mediaUris = null,
+  mediaUri = null,
   name = null,
   productType = null,
   inStockPool = false,
@@ -34,7 +33,7 @@ const Product: React.FC<TableCellProductProps> = ({
   const handleOnClick = React.useCallback(() => onClick(id, rowIndex), [onClick, id, rowIndex]);
   return <Root {...rest}>
     {id && <Stack direction='row' maxHeight='100%' spacing={1} maxWidth='inherit' width={'100%'}>
-      <Image onClick={handleOnClick} isProductBundle={isProductBundle} id={id} mediaUris={mediaUris} />
+      <Image onClick={handleOnClick} isProductBundle={isProductBundle} id={id} mediaUri={mediaUri} />
       <Details onClick={handleOnClick} id={id} name={name} />
       <Attributes productType={productType} hasNoTvLock={hasNoTvLock} inStockPool={inStockPool} />
     </Stack>}

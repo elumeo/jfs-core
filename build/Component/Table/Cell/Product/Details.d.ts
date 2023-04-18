@@ -1,8 +1,8 @@
 import React from 'react';
-export type DetailsProps = {
+export type Props = {
     id?: string;
     name?: string;
     onClick?: HTMLElement['click'];
 };
-declare const Details: React.FC<DetailsProps>;
-export default Details;
+declare const _default: React.NamedExoticComponent<Props>;
+export default _default;

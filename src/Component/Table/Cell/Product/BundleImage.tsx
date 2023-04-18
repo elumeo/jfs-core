@@ -1,12 +1,12 @@
+import React, {memo} from 'react';
 import { Box, BoxProps, SxProps } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import definition from 'Component/App/Stateless/Style/Theme/Definition';
-import React from 'react';
-
 
 export type BundleImageProps = {
   onClick?: BoxProps['onClick']
 }
+
 const bundleBoxStyles: SxProps = {
   width: definition.spacing(10),
   height: definition.spacing(10),
@@ -18,8 +18,6 @@ const bundleBoxStyles: SxProps = {
   cursor: 'pointer',
 }
 
-const BundleImage: React.FC<BundleImageProps> = () => {
-  return <Box sx={bundleBoxStyles}>Product Bundle</Box>;
-}
+const BundleImage: React.FC<BundleImageProps> = () => <Box sx={bundleBoxStyles}>Product Bundle</Box>;
 
-export default BundleImage
+export default memo(BundleImage);

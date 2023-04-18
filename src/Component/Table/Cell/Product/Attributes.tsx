@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useIntl } from 'react-intl';
 import { Chip, Stack, SxProps } from '@mui/material';
 
@@ -7,13 +7,13 @@ const containerStyle: SxProps = {
   marginLeft: .5
 }
 
-export type AttributesProps = {
+export type Props = {
   productType?: string;
   inStockPool?: boolean;
   hasNoTvLock?: boolean;
 }
 
-const Attributes: React.FC<AttributesProps> = ({ productType = null, inStockPool = false, hasNoTvLock = false }) => {
+const Attributes: React.FC<Props> = ({ productType = null, inStockPool = false, hasNoTvLock = false }) => {
   const { formatMessage } = useIntl();
   const hasChip = productType !== null || inStockPool || hasNoTvLock;
   return hasChip && <>
@@ -25,4 +25,4 @@ const Attributes: React.FC<AttributesProps> = ({ productType = null, inStockPool
   </> || <></>;
 };
 
-export default Attributes
+export default memo(Attributes);

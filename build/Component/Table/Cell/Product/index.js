@@ -33,11 +33,11 @@ var Attributes_1 = __importDefault(require("../../../Table/Cell/Product/Attribut
 var Loading_1 = __importDefault(require("../../../Table/Cell/Loading"));
 var Root_1 = __importDefault(require("../../../Table/Cell/Root"));
 var Product = function (_a) {
-    var _b = _a.id, id = _b === void 0 ? null : _b, _c = _a.rowIndex, rowIndex = _c === void 0 ? null : _c, _d = _a.mediaUris, mediaUris = _d === void 0 ? null : _d, _e = _a.name, name = _e === void 0 ? null : _e, _f = _a.productType, productType = _f === void 0 ? null : _f, _g = _a.inStockPool, inStockPool = _g === void 0 ? false : _g, _h = _a.hasNoTvLock, hasNoTvLock = _h === void 0 ? false : _h, _j = _a.isProductBundle, isProductBundle = _j === void 0 ? false : _j, _k = _a.onClick, onClick = _k === void 0 ? null : _k, rest = __rest(_a, ["id", "rowIndex", "mediaUris", "name", "productType", "inStockPool", "hasNoTvLock", "isProductBundle", "onClick"]);
+    var _b = _a.id, id = _b === void 0 ? null : _b, _c = _a.rowIndex, rowIndex = _c === void 0 ? null : _c, _d = _a.mediaUri, mediaUri = _d === void 0 ? null : _d, _e = _a.name, name = _e === void 0 ? null : _e, _f = _a.productType, productType = _f === void 0 ? null : _f, _g = _a.inStockPool, inStockPool = _g === void 0 ? false : _g, _h = _a.hasNoTvLock, hasNoTvLock = _h === void 0 ? false : _h, _j = _a.isProductBundle, isProductBundle = _j === void 0 ? false : _j, _k = _a.onClick, onClick = _k === void 0 ? null : _k, rest = __rest(_a, ["id", "rowIndex", "mediaUri", "name", "productType", "inStockPool", "hasNoTvLock", "isProductBundle", "onClick"]);
     var handleOnClick = react_1.default.useCallback(function () { return onClick(id, rowIndex); }, [onClick, id, rowIndex]);
     return react_1.default.createElement(Root_1.default, __assign({}, rest),
         id && react_1.default.createElement(material_1.Stack, { direction: 'row', maxHeight: '100%', spacing: 1, maxWidth: 'inherit', width: '100%' },
-            react_1.default.createElement(Image_1.default, { onClick: handleOnClick, isProductBundle: isProductBundle, id: id, mediaUris: mediaUris }),
+            react_1.default.createElement(Image_1.default, { onClick: handleOnClick, isProductBundle: isProductBundle, id: id, mediaUri: mediaUri }),
             react_1.default.createElement(Details_1.default, { onClick: handleOnClick, id: id, name: name }),
             react_1.default.createElement(Attributes_1.default, { productType: productType, hasNoTvLock: hasNoTvLock, inStockPool: inStockPool })),
         id === null && react_1.default.createElement(Loading_1.default, null));
