@@ -9,7 +9,13 @@ exports.history = (0, history_1.createHashHistory)();
 var epicMiddleware = (0, redux_observable_1.createEpicMiddleware)({
     dependencies: { history: exports.history },
 });
-var composeEnhancers = (0, extension_1.composeWithDevTools)({ trace: true, traceLimit: 25 });
+var composeEnhancers = (0, extension_1.composeWithDevTools)({
+    trace: true, traceLimit: 25, serialize: {
+        options: {
+            map: true,
+        }
+    }
+});
 var storeEnhancer = (0, redux_1.applyMiddleware)(epicMiddleware);
 var middleware = (process.env.NODE_ENV == 'development'
     && typeof window !== 'undefined'
