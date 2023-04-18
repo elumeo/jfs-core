@@ -49,7 +49,7 @@ export type Props<ItemData, ItemContext = unknown> = Partial<TableVirtuosoProps<
   tableRowProps?: TableRowProps;
 };
 
-const VirtualizedTable = <ItemData extends {}>({
+const VirtualizedTable = <ItemData extends {}, ItemContext = unknown>({
                                                  data = [],
                                                  sortBy,
                                                  sortDirection,
@@ -59,7 +59,7 @@ const VirtualizedTable = <ItemData extends {}>({
                                                  tableRowProps,
                                                  components: propComponents,
                                                  ...props
-                                               }: Props<ItemData>) => {
+                                               }: Props<ItemData, ItemContext>) => {
 
   const ref = React.useRef<VirtuosoHandle>(null);
 
