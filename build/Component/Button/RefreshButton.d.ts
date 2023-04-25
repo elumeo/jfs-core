@@ -1,4 +1,4 @@
-/// <reference types="react" />
-import { type IconButtonProgressProps } from './IconButtonProgress';
-declare const RefreshButton: (props: IconButtonProgressProps) => JSX.Element;
+import { FC } from 'react';
+import { IconButtonProgressProps } from './IconButtonProgress';
+declare const RefreshButton: FC<IconButtonProgressProps>;
 export default RefreshButton;

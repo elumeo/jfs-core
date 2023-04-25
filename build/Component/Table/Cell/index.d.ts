@@ -5,7 +5,7 @@ declare const Cell: {
     Default: import("react").FC<import("./Default").Props>;
     Loading: import("react").FC<{}>;
     Msisdn: import("react").FC<import("./Msisdn").Props>;
-    Product: import("react").FC<import("./Product").TableCellProductProps>;
+    Product: import("react").NamedExoticComponent<import("./Product").TableCellProductProps>;
     Root: import("react").FC<import("./Root").Props>;
     Select: import("react").FC<import("./Select").Props>;
 };

@@ -5,7 +5,7 @@ import {grey} from '@mui/material/colors';
 import {apatith} from 'Constant/Color';
 import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
-const sortingStyles: SxProps = {
+export const sortingStyles: SxProps = {
   backgroundColor: grey[200],
   borderRadius: `${definition.spacing(.5)} ${definition.spacing(.5)} 0 0`
 }
@@ -35,7 +35,7 @@ const Default: React.FC<Props> = ({height = 48, isNumeric = false, disableSort =
       }
     ), [sortBy, isActiveSort, height, width]);
 
-  const sort: TableCellProps['onClick'] = (e) => disableSort || onClick(e)
+  const sort: TableCellProps['onClick'] = event => disableSort || onClick(event)
   return <TableCell
     variant='head'
     sx={styles}

@@ -11,5 +11,5 @@ export type TableCellProductProps = Partial<TableCellProps> & {
     isProductBundle?: boolean;
     onClick?: (productId: string, rowIndex?: number) => void;
 };
-declare const Product: React.FC<TableCellProductProps>;
-export default Product;
+declare const _default: React.NamedExoticComponent<TableCellProductProps>;
+export default _default;

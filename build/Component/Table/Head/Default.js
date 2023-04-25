@@ -48,13 +48,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.sortingStyles = void 0;
 var react_1 = __importStar(require("react"));
 var material_1 = require("@mui/material");
 var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
 var colors_1 = require("@mui/material/colors");
 var Color_1 = require("../../../Constant/Color");
 var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
-var sortingStyles = {
+exports.sortingStyles = {
     backgroundColor: colors_1.grey[200],
     borderRadius: "".concat(Definition_1.default.spacing(.5), " ").concat(Definition_1.default.spacing(.5), " 0 0")
 };
@@ -64,8 +65,8 @@ var Default = function (_a) {
     var color = isActiveSort || !disableSort
         ? Color_1.apatith.main
         : 'inherit';
-    var styles = (0, react_1.useMemo)(function () { return (__assign(__assign({}, (isActiveSort ? sortingStyles : {})), { height: height, maxWidth: '100%', width: width })); }, [sortBy, isActiveSort, height, width]);
-    var sort = function (e) { return disableSort || onClick(e); };
+    var styles = (0, react_1.useMemo)(function () { return (__assign(__assign({}, (isActiveSort ? exports.sortingStyles : {})), { height: height, maxWidth: '100%', width: width })); }, [sortBy, isActiveSort, height, width]);
+    var sort = function (event) { return disableSort || onClick(event); };
     return react_1.default.createElement(material_1.TableCell, __assign({ variant: 'head', sx: styles, align: rest.align ? rest.align : isNumeric ? 'right' : 'left', onClick: sort }, rest),
         disableSort && react_1.default.createElement(material_1.Typography, { fontWeight: 600, variant: 'subtitle1' }, label),
         !disableSort &&

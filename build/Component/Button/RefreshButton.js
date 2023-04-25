@@ -16,7 +16,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Refresh_1 = __importDefault(require("@mui/icons-material/Refresh"));
 var react_1 = __importDefault(require("react"));
-// import {IconButtonProps} from '@mui/material/IconButton';
 var IconButtonProgress_1 = __importDefault(require("./IconButtonProgress"));
 var RefreshButton = function (props) { return react_1.default.createElement(IconButtonProgress_1.default, __assign({}, props),
     react_1.default.createElement(Refresh_1.default, null)); };

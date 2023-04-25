@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import {Stack, TableCellProps} from '@mui/material';
 import Image from './Image';
 import Details from './Details';
@@ -41,4 +41,4 @@ const Product: React.FC<TableCellProductProps> = ({
   </Root>;
 };
 
-export default Product;
+export default memo(Product);

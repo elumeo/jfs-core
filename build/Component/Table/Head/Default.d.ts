@@ -1,5 +1,6 @@
 import React from 'react';
-import { SortDirection, TableCellProps } from '@mui/material';
+import { SortDirection, SxProps, TableCellProps } from '@mui/material';
+export declare const sortingStyles: SxProps;
 export type Props = TableCellProps & {
     height?: number;
     isNumeric?: boolean;
