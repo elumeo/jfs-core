@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckboxProps, TableCellProps } from '@mui/material';
-export type Props = Partial<TableCellProps> & {
+export type Props = Partial<Omit<TableCellProps, 'onChange'>> & {
     value: string | number;
     checked: boolean;
     disabled?: boolean;
@@ -8,5 +8,5 @@ export type Props = Partial<TableCellProps> & {
     id?: CheckboxProps['id'];
     name?: CheckboxProps['name'];
 };
-declare const Select: React.FC<Props>;
-export default Select;
+declare const _default: React.NamedExoticComponent<Props>;
+export default _default;

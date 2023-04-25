@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import {Checkbox, CheckboxProps, SxProps, TableCellProps} from '@mui/material';
 import Root from './Root';
 
 
 const checkboxStyles: SxProps = {padding: 1};
 
-export type Props = Partial<TableCellProps> & {
+export type Props = Partial<Omit<TableCellProps, 'onChange'>> & {
   value: string|number;
   checked: boolean;
   disabled?: boolean;
@@ -38,4 +38,4 @@ const Select: React.FC<Props> = (
   />
 </Root>;
 
-export default Select;
+export default memo(Select);

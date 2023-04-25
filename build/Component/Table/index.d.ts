@@ -9,7 +9,7 @@ declare const Table: {
         Msisdn: import("react").FC<import("./Cell/Msisdn").Props>;
         Product: import("react").NamedExoticComponent<import("./Cell/Product").TableCellProductProps>;
         Root: import("react").FC<import("./Cell/Root").Props>;
-        Select: import("react").FC<import("./Cell/Select").Props>;
+        Select: import("react").NamedExoticComponent<import("./Cell/Select").Props>;
     };
     Head: {
         Default: import("react").FC<import("./Head/Default").Props>;
