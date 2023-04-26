@@ -29,6 +29,7 @@ const Select: React.FC<Props> = (
   <Checkbox
     sx={checkboxStyles}
     size={'small'}
+    color={'secondary'}
     id={id + value}
     name={name}
     value={value ?? ''}
