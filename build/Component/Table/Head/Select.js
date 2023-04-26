@@ -34,6 +34,6 @@ var Select = function (_a) {
     return (react_1.default.createElement(material_1.TableCell, __assign({ variant: 'head' }, rest), loading
         ? react_1.default.createElement(material_1.Box, { sx: loadingStyles },
             react_1.default.createElement(material_1.CircularProgress, { size: 16 }))
-        : react_1.default.createElement(material_1.Checkbox, { sx: checkboxStyles, size: 'small', disabled: disabled, id: id, name: name, value: value, checked: checked, onChange: onChange })));
+        : react_1.default.createElement(material_1.Checkbox, { sx: checkboxStyles, color: 'secondary', size: 'small', disabled: disabled, id: id, name: name, value: value, checked: checked, onChange: onChange })));
 };
 exports.default = Select;

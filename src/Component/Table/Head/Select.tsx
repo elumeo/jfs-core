@@ -19,6 +19,7 @@ const Select: React.FC<Props> = ({disabled = false, loading = false, checked, on
       ? <Box sx={loadingStyles}><CircularProgress size={16}/></Box>
       : <Checkbox
         sx={checkboxStyles}
+        color={'secondary'}
         size={'small'}
         disabled={disabled}
         id={id}
