@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Box, Checkbox, CheckboxProps, CircularProgress, SxProps, TableCell, TableCellProps} from '@mui/material';
 
 const loadingStyles: SxProps = {ml: 1.5, mr: 1.5};
 const checkboxStyles: SxProps = {p: 0};
 
-export type Props = TableCellProps & {
+export type Props = Omit<TableCellProps, 'onChange'> & {
   disabled?: boolean;
   loading?: boolean;
   checked: boolean;
@@ -32,4 +32,4 @@ const Select: React.FC<Props> = ({disabled = false, loading = false, checked, on
 )
 
 
-export default Select;
+export default memo(Select);

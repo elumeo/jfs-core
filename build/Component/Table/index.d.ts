@@ -13,7 +13,7 @@ declare const Table: {
     };
     Head: {
         Default: import("react").FC<import("./Head/Default").Props>;
-        Select: import("react").FC<import("./Head/Select").Props>;
+        Select: import("react").NamedExoticComponent<import("./Head/Select").Props>;
     };
     Row: {
         NoResults: import("react").FC<{}>;
