@@ -10,7 +10,7 @@ export const sortingStyles: SxProps = {
   borderRadius: `${definition.spacing(.5)} ${definition.spacing(.5)} 0 0`
 }
 
-export type Props = TableCellProps & {
+export type Props = Omit<TableCellProps, 'onClick'> & {
   height?: number;
   isNumeric?: boolean;
   disableSort?: boolean;
@@ -19,6 +19,7 @@ export type Props = TableCellProps & {
   sortDirection?: SortDirection;
   label?: React.ReactNode;
   dataKey: string;
+  onClick: (sortBy: string, sortDirection: SortDirection) => void
 };
 
 const Default: React.FC<Props> = ({height = 48, isNumeric = false, disableSort = false, sortBy, sortDirection, onClick, label, dataKey, width, ...rest}) => {
@@ -35,7 +36,7 @@ const Default: React.FC<Props> = ({height = 48, isNumeric = false, disableSort =
       }
     ), [sortBy, isActiveSort, height, width]);
 
-  const sort: TableCellProps['onClick'] = event => disableSort || onClick(event)
+  const sort: TableCellProps['onClick'] = () => disableSort || onClick(sortBy, isActiveSort ? (sortDirection === 'asc' ? 'desc' : 'asc') : 'asc');
   return <TableCell
     variant='head'
     sx={styles}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SortDirection, SxProps, TableCellProps } from '@mui/material';
 export declare const sortingStyles: SxProps;
-export type Props = TableCellProps & {
+export type Props = Omit<TableCellProps, 'onClick'> & {
     height?: number;
     isNumeric?: boolean;
     disableSort?: boolean;
@@ -9,6 +9,7 @@ export type Props = TableCellProps & {
     sortDirection?: SortDirection;
     label?: React.ReactNode;
     dataKey: string;
+    onClick: (sortBy: string, sortDirection: SortDirection) => void;
 };
 declare const Default: React.FC<Props>;
 export default Default;
