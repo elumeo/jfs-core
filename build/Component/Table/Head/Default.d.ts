@@ -9,7 +9,7 @@ export type Props = Omit<TableCellProps, 'onClick'> & {
     sortDirection?: SortDirection;
     label?: React.ReactNode;
     dataKey: string;
-    onClick: (sortBy: string, sortDirection: SortDirection) => void;
+    onClick?: (sortBy: string, sortDirection: SortDirection) => void;
 };
 declare const Default: React.FC<Props>;
 export default Default;
