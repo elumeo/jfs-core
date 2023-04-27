@@ -36,7 +36,7 @@ const Default: React.FC<Props> = ({height = 48, isNumeric = false, disableSort =
     }
   ), [sortBy, isActiveSort, height, width]);
 
-  const sort: TableCellProps['onClick'] = () => disableSort || (onClick !== undefined && onClick(sortBy, isActiveSort ? (sortDirection === 'asc' ? 'desc' : 'asc') : 'asc'));
+  const sort: TableCellProps['onClick'] = () => disableSort || (onClick !== undefined && onClick(dataKey, isActiveSort ? (sortDirection === 'asc' ? 'desc' : 'asc') : 'asc'));
   return <TableCell
     variant='head'
     sx={styles}

@@ -66,7 +66,7 @@ var Default = function (_a) {
         ? Color_1.apatith.main
         : 'inherit';
     var styles = (0, react_1.useMemo)(function () { return (__assign(__assign({}, (isActiveSort ? exports.sortingStyles : {})), { height: height, maxWidth: '100%', width: width })); }, [sortBy, isActiveSort, height, width]);
-    var sort = function () { return disableSort || (onClick !== undefined && onClick(sortBy, isActiveSort ? (sortDirection === 'asc' ? 'desc' : 'asc') : 'asc')); };
+    var sort = function () { return disableSort || (onClick !== undefined && onClick(dataKey, isActiveSort ? (sortDirection === 'asc' ? 'desc' : 'asc') : 'asc')); };
     return react_1.default.createElement(material_1.TableCell, __assign({ variant: 'head', sx: styles, align: rest.align ? rest.align : isNumeric ? 'right' : 'left', onClick: sort }, rest),
         disableSort && react_1.default.createElement(material_1.Typography, { fontWeight: 600, variant: 'subtitle1' }, label),
         !disableSort && react_1.default.createElement(material_1.TableSortLabel, { active: isActiveSort, direction: sortDirection, sx: { color: color } },
