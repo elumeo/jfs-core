@@ -14,7 +14,7 @@ const Content: FC<Props> = ({fullHeight = false, withSubtitle = false, overrideC
   const sx: SxProps = useMemo(() => ({
     flexDirection: 'column',
     height: overrideCardTitleHeight !== null ? overrideCardTitleHeight : fullHeight
-      ? 'calc(100% - ' + (withSubtitle ? theme.spacing(10) : theme.spacing(7)) + ')'
+      ? 'calc(100% - ' + (withSubtitle ? theme.spacing(10.5) : theme.spacing(7)) + ')'
       : 'initial'
   }), [fullHeight, withSubtitle, overrideCardTitleHeight]);
   return <CardContent sx={sx} {...rest} />;
