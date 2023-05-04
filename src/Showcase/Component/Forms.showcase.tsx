@@ -248,6 +248,9 @@ const Forms = () => {
                           slotProps={{
                             textField: {
                               helperText: 'The MUI date picker component has migrated to @mui/x-date-picker.',
+                            },
+                            actionBar: {
+                              actions: ['today', 'clear']
                             }
                           }}
                           label='Date picker'

@@ -6,12 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var AdapterDateFns_1 = require("@mui/x-date-pickers/AdapterDateFns");
 var LocalizationProvider_1 = require("@mui/x-date-pickers/LocalizationProvider");
+var locales_1 = require("@mui/x-date-pickers/locales");
 var de_1 = __importDefault(require("date-fns/locale/de"));
 var en_GB_1 = __importDefault(require("date-fns/locale/en-GB"));
 var it_1 = __importDefault(require("date-fns/locale/it"));
-var locales = { de: de_1.default, en: en_GB_1.default, it: it_1.default };
+var adapterLocales = { de: de_1.default, en: en_GB_1.default, it: it_1.default };
+var textLocales = { de: locales_1.deDE, en: locales_1.enUS, it: locales_1.itIT };
 var Picker = function (_a) {
     var children = _a.children, locale = _a.locale;
-    return react_1.default.createElement(LocalizationProvider_1.LocalizationProvider, { dateAdapter: AdapterDateFns_1.AdapterDateFns, adapterLocale: locales[locale] }, children);
+    return react_1.default.createElement(LocalizationProvider_1.LocalizationProvider, { dateAdapter: AdapterDateFns_1.AdapterDateFns, adapterLocale: adapterLocales[locale], localeText: textLocales[locale].components.MuiLocalizationProvider.defaultProps.localeText }, children);
 };
 exports.default = Picker;
