@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import {useIntl} from 'react-intl';
 import {DateTime as DateTimeUtility} from 'Utilities/Format';
 import Root from 'Component/Table/Cell/Root';
@@ -8,17 +8,18 @@ export type Props = Partial<TableCellProps> & {
   value: Date | string;
   noValueElement?: React.ReactNode;
   asTwoLines?: boolean;
+  displayTime: boolean;
 }
 
-const DateTime = ({value = null, noValueElement = '-', asTwoLines = true, ...rest}: Props) => {
+const DateTime = ({value = null, noValueElement = '-', asTwoLines = true, displayTime = true, ...rest}: Props) => {
   const {formatDate, formatTime} = useIntl();
   return <Root {...rest}>
     {(value === null || value === undefined) && noValueElement}
     {value && <>
       {formatDate(value, DateTimeUtility.getDefaultDateFormatOptions())}{asTwoLines && <br/>}{asTwoLines === false && ' '}
-      {formatTime(value, DateTimeUtility.getDefaultTimeFormatOptions(true))}
+      {displayTime && formatTime(value, DateTimeUtility.getDefaultTimeFormatOptions(true))}
     </>}
   </Root>;
 };
 
-export default DateTime;
+export default memo(DateTime);

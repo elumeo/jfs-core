@@ -2,7 +2,7 @@
 export { default as VirtualizedTable } from './VirtualizedTable';
 declare const Table: {
     Cell: {
-        DateTime: ({ value, noValueElement, asTwoLines, ...rest }: import("./Cell/DateTime").Props) => JSX.Element;
+        DateTime: import("react").MemoExoticComponent<({ value, noValueElement, asTwoLines, displayTime, ...rest }: import("./Cell/DateTime").Props) => JSX.Element>;
         DateTimeRange: import("react").FC<import("./Cell/DateTimeRange").Props>;
         Default: import("react").FC<import("./Cell/Default").Props>;
         Loading: import("react").FC<{}>;

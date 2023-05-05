@@ -1,6 +1,6 @@
 /// <reference types="react" />
 declare const Cell: {
-    DateTime: ({ value, noValueElement, asTwoLines, ...rest }: import("./DateTime").Props) => JSX.Element;
+    DateTime: import("react").MemoExoticComponent<({ value, noValueElement, asTwoLines, displayTime, ...rest }: import("./DateTime").Props) => JSX.Element>;
     DateTimeRange: import("react").FC<import("./DateTimeRange").Props>;
     Default: import("react").FC<import("./Default").Props>;
     Loading: import("react").FC<{}>;

@@ -4,6 +4,7 @@ export type Props = Partial<TableCellProps> & {
     value: Date | string;
     noValueElement?: React.ReactNode;
     asTwoLines?: boolean;
+    displayTime: boolean;
 };
-declare const DateTime: ({ value, noValueElement, asTwoLines, ...rest }: Props) => JSX.Element;
-export default DateTime;
+declare const _default: React.MemoExoticComponent<({ value, noValueElement, asTwoLines, displayTime, ...rest }: Props) => JSX.Element>;
+export default _default;
