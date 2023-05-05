@@ -8,7 +8,7 @@ export type Props = Partial<TableCellProps> & {
   value: Date | string;
   noValueElement?: React.ReactNode;
   asTwoLines?: boolean;
-  displayTime: boolean;
+  displayTime?: boolean;
 }
 
 const DateTime = ({value = null, noValueElement = '-', asTwoLines = true, displayTime = true, ...rest}: Props) => {
