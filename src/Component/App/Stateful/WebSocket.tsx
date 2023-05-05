@@ -15,24 +15,27 @@ export type Props = {
 };
 const WebSocket = ({ children }: Props) => {
   const dispatch = useDispatch();
-  const [hasSubscribed, setHasSubscribed] = React.useState(false);
+  const subscription = React.useRef(null)
+  const errors = React.useRef(null)
   React.useEffect(
     () => {
-      if (!hasSubscribed) {
-        const listenRoomsSubscription = WSClient.listenRoomsObservable$.subscribe(roomData =>
-          dispatch(webSocketUpdateRoomAction(roomData))
+      if (!subscription.current) {
+        subscription.current = WSClient.listenRoomsObservable$.subscribe(
+          roomData =>
+            dispatch(webSocketUpdateRoomAction(roomData))
         );
-        const connectionErrorSubscription = WSClient.connectionErrorObservable$.subscribe(error => {
-          dispatch(webSocketConnectFailedAction(error));
-        });
-        setHasSubscribed(true);
-        return () => {
-          listenRoomsSubscription.unsubscribe();
-          connectionErrorSubscription.unsubscribe();
-        };
       }
-      return () => {return undefined};
-    }, [hasSubscribed, dispatch]);
+      if (!errors.current) {
+        errors.current = WSClient.connectionErrorObservable$.subscribe(
+          error =>
+            dispatch(webSocketConnectFailedAction(error))
+        );
+      }
+      return () => {
+        subscription.current.unsubscribe();
+        errors.current.unsubscribe();
+      };
+    }, [dispatch]);
 
   return <>{children}</>;
 };
