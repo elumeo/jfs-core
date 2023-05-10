@@ -14,18 +14,18 @@ var WebSocket = function (_a) {
     var errors = react_1.default.useRef(null);
     react_1.default.useEffect(function () {
         if (!subscription.current) {
-            subscription.current = WSClient_1.WSClient.listenRoomsObservable$.subscribe(function (roomData) {
-                return dispatch((0, Action_1.webSocketUpdateRoomAction)(roomData));
-            });
+            subscription.current = WSClient_1.WSClient.listenRoomsObservable$.subscribe(function (roomData) { return dispatch((0, Action_1.webSocketUpdateRoomAction)(roomData)); });
         }
         if (!errors.current) {
-            errors.current = WSClient_1.WSClient.connectionErrorObservable$.subscribe(function (error) {
-                return dispatch((0, Action_1.webSocketConnectFailedAction)(error));
-            });
+            errors.current = WSClient_1.WSClient.connectionErrorObservable$.subscribe(function (error) { return dispatch((0, Action_1.webSocketConnectFailedAction)(error)); });
         }
         return function () {
-            subscription.current.unsubscribe();
-            errors.current.unsubscribe();
+            if (subscription.current) {
+                subscription.current.unsubscribe();
+            }
+            if (errors.current) {
+                errors.current.unsubscribe();
+            }
         };
     }, [dispatch]);
     return react_1.default.createElement(react_1.default.Fragment, null, children);
