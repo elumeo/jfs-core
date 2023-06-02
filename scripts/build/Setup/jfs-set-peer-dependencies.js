@@ -31,6 +31,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -43,9 +54,10 @@ exports.name = 'jfs-set-peer-dependencies';
 exports.scope = ['app', 'component'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     if (env.which !== 'core') {
-        const { name, dependencies, devDependencies } = yield Package.json((0, path_1.resolve)(env.core, 'package.json'));
+        const { name, dependencies: coreDependencies, peerDependencies: corePeerdependencies, devDependencies: coreDevDependencies } = yield Package.json((0, path_1.resolve)(env.core, 'package.json'));
+        const _a = yield Package.json((0, path_1.resolve)(process.cwd(), 'package.json')), { peerDependencies: appPeerDependencies, devDependencies: appDevDependencies } = _a, appPackagejson = __rest(_a, ["peerDependencies", "devDependencies"]);
         const path = (0, path_1.resolve)(process.cwd(), 'package.json');
-        const next = Object.assign(Object.assign({}, (yield Package.json((0, path_1.resolve)(process.cwd(), 'package.json')))), { peerDependencies: dependencies, devDependencies });
+        const next = Object.assign(Object.assign({}, appPackagejson), { peerDependencies: Object.assign(Object.assign(Object.assign({}, appPeerDependencies !== null && appPeerDependencies !== void 0 ? appPeerDependencies : {}), corePeerdependencies !== null && corePeerdependencies !== void 0 ? corePeerdependencies : {}), coreDependencies !== null && coreDependencies !== void 0 ? coreDependencies : {}), devDependencies: Object.assign(Object.assign({}, appDevDependencies !== null && appDevDependencies !== void 0 ? appDevDependencies : {}), coreDevDependencies !== null && coreDevDependencies !== void 0 ? coreDevDependencies : {}) });
         yield fs_extra_1.default.writeJSON(path, next, {
             spaces: 2
         });
