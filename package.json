@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "11.0.3-beta.2",
+  "version": "11.0.3-beta.3",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -57,6 +57,7 @@
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^0.26.1",
     "axios-mock-adapter": "^1.20.0",
+    "babel-loader": "^9.1.2",
     "date-fns": "^2.29.3",
     "google-libphonenumber": "^3.2.27",
     "history": "^5.3.0",
@@ -115,7 +116,6 @@
     "source-map-loader": "^3.0.1",
     "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.1",
-    "babel-loader": "^9.1.2",
     "babel-plugin-import": "^1.13.6",
     "compression-webpack-plugin": "^8.0.1",
     "copy-webpack-plugin": "^9.1.0",
