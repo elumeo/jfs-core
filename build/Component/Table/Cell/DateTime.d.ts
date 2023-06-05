@@ -6,5 +6,5 @@ export type Props = Partial<TableCellProps> & {
     asTwoLines?: boolean;
     displayTime?: boolean;
 };
-declare const _default: React.MemoExoticComponent<({ value, noValueElement, asTwoLines, displayTime, ...rest }: Props) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ value, noValueElement, asTwoLines, displayTime, ...rest }: Props) => React.JSX.Element>;
 export default _default;

@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { TableVirtuosoProps } from 'react-virtuoso';
 import { SortDirection } from '@mui/material/TableCell';
 import { SxProps, TableProps } from '@mui/material';
@@ -18,5 +18,5 @@ export type Props<ItemData, ItemContext = unknown> = Partial<TableVirtuosoProps<
     tableProps?: TableProps;
     tableRowProps?: TableRowProps;
 };
-declare const VirtualizedTable: <ItemData extends {}, ItemContext = unknown>({ data, sortBy, sortDirection, compare, filter, tableProps, tableRowProps, components: propComponents, ...props }: Props<ItemData, ItemContext>) => JSX.Element;
+declare const VirtualizedTable: <ItemData extends {}, ItemContext = unknown>({ data, sortBy, sortDirection, compare, filter, tableProps, tableRowProps, components: propComponents, ...props }: Props<ItemData, ItemContext>) => React.JSX.Element;
 export default VirtualizedTable;

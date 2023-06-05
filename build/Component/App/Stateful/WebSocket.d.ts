@@ -9,5 +9,5 @@ export type Props = {
     webSocketUpdateRoomAction?: typeof Action.webSocketUpdateRoomAction;
     webSocketConnectFailedAction?: typeof Action.webSocketConnectFailedAction;
 };
-declare const WebSocket: ({ children }: Props) => JSX.Element;
+declare const WebSocket: ({ children }: Props) => React.JSX.Element;
 export default WebSocket;
