@@ -3,7 +3,6 @@ const PathAliasPlugin = require('tsconfig-paths-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const { resolve } = require('path');
 
-process.env.NODE_ENV = 'development';
 const common = {
   mode: 'none',
   entry: PATH.ENTRYPOINT,
