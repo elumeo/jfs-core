@@ -18,6 +18,7 @@
     "noImplicitReturns": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "incremental": true
+    "incremental": true,
+    "jsxImportSource": "@welldone-software/why-did-you-render"
   }
 }
