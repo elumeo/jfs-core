@@ -23,7 +23,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.mapToCircularProgressColor = exports.mapToCircularProgressSize = exports.wrapperStyles = void 0;
-var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var jsx_runtime_1 = require("react/jsx-runtime");
 var react_1 = require("react");
 var material_1 = require("@mui/material");
 exports.wrapperStyles = {

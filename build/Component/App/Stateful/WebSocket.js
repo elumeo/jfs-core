@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var jsx_runtime_1 = require("react/jsx-runtime");
 var react_1 = __importDefault(require("react"));
 var WSClient_1 = require("../../../API/WS/WSClient");
 var react_redux_1 = require("react-redux");

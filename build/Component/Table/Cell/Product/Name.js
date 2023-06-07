@@ -11,7 +11,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var jsx_runtime_1 = require("react/jsx-runtime");
 var react_1 = require("react");
 var material_1 = require("@mui/material");
 var nameStyles = {

@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var jsx_runtime_1 = require("react/jsx-runtime");
 var Redux_1 = require("../../Types/Redux");
 var PhoneNumberFormat = __importStar(require("../../Utilities/Format/PhoneNumber"));
 var FormattedMsisdn = function (_a) {

@@ -25,7 +25,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var jsx_runtime_1 = require("react/jsx-runtime");
 var FormattedMsisdn_1 = __importDefault(require("../../FormattedMsisdn"));
 var Loading_1 = __importDefault(require("../../Table/Cell/Loading"));
 var Root_1 = __importDefault(require("../../Table/Cell/Root"));

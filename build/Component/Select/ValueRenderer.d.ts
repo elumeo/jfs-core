@@ -7,5 +7,5 @@ type Props<T> = {
     onClear: () => void;
     isInClearableState: boolean;
 };
-declare const _default: React.MemoExoticComponent<(<T>({ selected, labelsByValue, onUnselect, onClear, maxValuesShown, isInClearableState }: Props<T>) => JSX.Element)>;
+declare const _default: React.MemoExoticComponent<(<T>({ selected, labelsByValue, onUnselect, onClear, maxValuesShown, isInClearableState }: Props<T>) => import("react/jsx-runtime").JSX.Element)>;
 export default _default;

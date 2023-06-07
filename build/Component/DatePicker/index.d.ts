@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { ReactDatePickerProps } from 'react-datepicker';
 import './Setup';
 import { LANGUAGE } from '../../Types/Language';
@@ -11,5 +10,5 @@ export type DatePickerProps<IsRangePicker extends boolean = undefined> = ReactDa
     isClearable?: boolean;
     color?: 'primary' | 'secondary';
 };
-declare const DatePicker: <IsRangePicker extends boolean = undefined>({ dateFormat, color, language: languageFromProp, onChange, textFieldProps, shouldOpenOnFocus, shouldCloseOnSelect, disabled, isClearable, ...rest }: DatePickerProps<IsRangePicker>) => JSX.Element;
+declare const DatePicker: <IsRangePicker extends boolean = undefined>({ dateFormat, color, language: languageFromProp, onChange, textFieldProps, shouldOpenOnFocus, shouldCloseOnSelect, disabled, isClearable, ...rest }: DatePickerProps<IsRangePicker>) => import("react/jsx-runtime").JSX.Element;
 export default DatePicker;

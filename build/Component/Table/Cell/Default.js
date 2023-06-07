@@ -26,7 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContentEllipseMode = void 0;
-var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var jsx_runtime_1 = require("react/jsx-runtime");
 var react_1 = __importDefault(require("react"));
 var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
 var Root_1 = __importDefault(require("../../Table/Cell/Root"));

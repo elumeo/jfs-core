@@ -7,5 +7,5 @@ export type Props<T = unknown> = SelectProps<T> & {
     loading?: boolean;
     formControlProps?: FormControlProps;
 };
-declare const Select: <T>({ children, helperText, loading, maxValuesShown, canClear, formControlProps, ...selectProps }: React.PropsWithChildren<Props<T>>) => JSX.Element;
+declare const Select: <T>({ children, helperText, loading, maxValuesShown, canClear, formControlProps, ...selectProps }: React.PropsWithChildren<Props<T>>) => import("react/jsx-runtime").JSX.Element;
 export default Select;

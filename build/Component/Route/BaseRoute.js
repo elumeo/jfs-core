@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var jsx_runtime_1 = require("react/jsx-runtime");
 var react_router_dom_1 = require("react-router-dom");
 var react_intl_1 = require("react-intl");
 var react_helmet_1 = require("react-helmet");
