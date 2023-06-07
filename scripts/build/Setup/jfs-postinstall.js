@@ -50,6 +50,9 @@ const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     if (['app', 'component'].includes(env.which)) {
         yield NPM.Package.run('jfs-set-peer-dependencies');
     }
+    console.log('postinstall DONE √');
+    console.log('Now install dev dependencies by running');
+    console.log('$> npm i');
 });
 exports.run = run;
 //# sourceMappingURL=jfs-postinstall.js.map
