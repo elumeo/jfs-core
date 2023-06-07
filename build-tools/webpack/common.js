@@ -3,7 +3,7 @@ const PathAliasPlugin = require('tsconfig-paths-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const { resolve } = require('path');
 
-const babelPresetReact = process.env.NODE_ENV == 'development'  || true
+const babelPresetReact = process.env.NODE_ENV == 'development'
 ? ['@babel/preset-react', {
   runtime: 'automatic',
   development: true,
