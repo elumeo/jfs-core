@@ -25,7 +25,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var material_1 = require("@mui/material");
 var Definition_1 = __importDefault(require("./Stateless/Style/Theme/Definition"));
 var gridContainerSx = ({
@@ -38,8 +38,6 @@ var gridContainerSx = ({
 var AppLayout = function (_a) {
     var _b;
     var children = _a.children, _c = _a.navigation, navigation = _c === void 0 ? null : _c, _d = _a.spacing, spacing = _d === void 0 ? 1 : _d, _e = _a.contentProps, contentProps = _e === void 0 ? {} : _e, _f = _a.fullWidth, fullWidth = _f === void 0 ? false : _f, containerProps = __rest(_a, ["children", "navigation", "spacing", "contentProps", "fullWidth"]);
-    return (react_1.default.createElement(material_1.Stack, __assign({ p: spacing, sx: __assign(__assign({}, gridContainerSx), (_b = containerProps === null || containerProps === void 0 ? void 0 : containerProps.sx) !== null && _b !== void 0 ? _b : {}), spacing: spacing, direction: 'row', gap: (navigation && spacing > 0) ? spacing : 0 }, containerProps),
-        navigation,
-        react_1.default.createElement(material_1.Box, __assign({}, contentProps, { sx: { marginLeft: '0 !important', width: fullWidth ? '100%' : 'auto' } }), children)));
+    return ((0, jsx_runtime_1.jsxs)(material_1.Stack, __assign({ p: spacing, sx: __assign(__assign({}, gridContainerSx), (_b = containerProps === null || containerProps === void 0 ? void 0 : containerProps.sx) !== null && _b !== void 0 ? _b : {}), spacing: spacing, direction: 'row', gap: (navigation && spacing > 0) ? spacing : 0 }, containerProps, { children: [navigation, (0, jsx_runtime_1.jsx)(material_1.Box, __assign({}, contentProps, { sx: { marginLeft: '0 !important', width: fullWidth ? '100%' : 'auto' } }, { children: children }))] })));
 };
 exports.default = AppLayout;

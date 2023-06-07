@@ -1,4 +1,3 @@
-import { TableProps } from '@mui/material';
-import React from 'react';
-declare const Table: (props: TableProps) => React.JSX.Element;
+/// <reference types="react" />
+declare const Table: (props: TableProps) => JSX.Element;
 export default Table;

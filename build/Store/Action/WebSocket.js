@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.webSocketUpdateRoomAction = exports.webSocketLeaveRoomSuccessAction = exports.webSocketLeaveRoomRequestAction = exports.webSocketJoinRoomFailureAction = exports.webSocketJoinRoomSuccessAction = exports.webSocketJoinRoomLoadingAction = exports.webSocketJoinRoomRequestAction = exports.webSocketDisconnectSuccessAction = exports.webSocketDisconnectRequestAction = exports.webSocketReconnectAction = exports.webSocketConnectFailedAction = exports.webSocketConnectSuccessAction = exports.webSocketConnectRequestAction = exports.webSocketAddNamespaceAction = void 0;
 var typesafe_actions_1 = require("typesafe-actions");
-var WebSocket_1 = require("../../Constant/WebSocket");
+var WebSocket_1 = require("Constant/WebSocket");
 exports.webSocketAddNamespaceAction = (0, typesafe_actions_1.createAction)('websocket/ADD_NAMESPACE')();
 exports.webSocketConnectRequestAction = (0, typesafe_actions_1.createAction)('websocket/CONNECT_REQUEST')();
 exports.webSocketConnectSuccessAction = (0, typesafe_actions_1.createAction)('websocket/CONNECT_SUCCESS')();

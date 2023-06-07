@@ -27,7 +27,7 @@ exports.reconnect = void 0;
 var operators_1 = require("rxjs/operators");
 var rxjs_1 = require("rxjs");
 var TA = __importStar(require("typesafe-actions"));
-var Action = __importStar(require("../../Action"));
+var Action = __importStar(require("Store/Action"));
 var reconnect = function (action$) {
     return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.webSocketReconnectAction)), (0, operators_1.switchMap)(function (action) { return (0, rxjs_1.of)(Action.webSocketConnectSuccessAction(action.payload)); }));
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TableCellProps } from '@mui/material';
-export type Props = Partial<TableCellProps> & {
+export declare type Props = Partial<TableCellProps> & {
     value: string;
     isLoading?: boolean;
 };

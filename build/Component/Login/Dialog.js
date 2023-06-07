@@ -1,9 +1,20 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var Dialog_1 = __importDefault(require("@mui/material/Dialog"));
 var DialogTitle_1 = __importDefault(require("@mui/material/DialogTitle"));
 var DialogContent_1 = __importDefault(require("@mui/material/DialogContent"));
@@ -18,12 +29,7 @@ var sx = {
 var Dialog = function () {
     var _a = (0, useLogin_1.default)(), open = _a.open, credentials = _a.credentials, onChange = _a.onChange, check = _a.check;
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
-    return (react_1.default.createElement(Dialog_1.default, { open: open, sx: sx },
-        react_1.default.createElement(DialogTitle_1.default, null, formatMessage({ id: 'app.login' })),
-        react_1.default.createElement(DialogContent_1.default, null,
-            react_1.default.createElement(Credentials_1.default, { value: credentials, onChange: onChange, onSubmit: check })),
-        react_1.default.createElement(DialogActions_1.default, null,
-            react_1.default.createElement(Submit_1.default, { onClick: check, disabled: !credentials.username ||
-                    !credentials.password }))));
+    return ((0, jsx_runtime_1.jsxs)(Dialog_1.default, __assign({ open: open, sx: sx }, { children: [(0, jsx_runtime_1.jsx)(DialogTitle_1.default, { children: formatMessage({ id: 'app.login' }) }), (0, jsx_runtime_1.jsx)(DialogContent_1.default, { children: (0, jsx_runtime_1.jsx)(Credentials_1.default, { value: credentials, onChange: onChange, onSubmit: check }) }), (0, jsx_runtime_1.jsx)(DialogActions_1.default, { children: (0, jsx_runtime_1.jsx)(Submit_1.default, { onClick: check, disabled: !credentials.username ||
+                        !credentials.password }) })] })));
 };
 exports.default = Dialog;

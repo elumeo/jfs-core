@@ -1,1 +1,1 @@
-export type Locale = 'en-GB' | 'de-DE' | 'it-IT';
+export declare type Locale = 'en-GB' | 'de-DE' | 'it-IT';

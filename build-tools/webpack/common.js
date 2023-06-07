@@ -3,6 +3,15 @@ const PathAliasPlugin = require('tsconfig-paths-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const { resolve } = require('path');
 
+const babelPresetReact = process.env.NODE_ENV == 'development'  || true
+? ['@babel/preset-react', {
+  runtime: 'automatic',
+  development: true,
+  importSource: '@welldone-software/why-did-you-render',
+
+}]
+: '@babel/preset-react';
+
 const common = {
   mode: 'none',
   entry: PATH.ENTRYPOINT,
@@ -21,11 +30,7 @@ const common = {
                 ['@babel/preset-env', {
                   "modules": false
                 }],
-                ['@babel/preset-react', {
-                  runtime: 'automatic',
-                  development: process.env.NODE_ENV === 'development',
-                  importSource: '@welldone-software/why-did-you-render',
-                }],
+                babelPresetReact,
                 '@babel/preset-typescript'
               ],
               plugins: [

@@ -29,8 +29,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var rxjs_1 = require("rxjs");
 var operators_1 = require("rxjs/operators");
 var typesafe_actions_1 = require("typesafe-actions");
-var JSC_1 = __importDefault(require("../../API/JSC"));
-var Action = __importStar(require("../Action"));
+var JSC_1 = __importDefault(require("API/JSC"));
+var Action = __importStar(require("Store/Action"));
 var getRegion = function (action$) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.configLoadedAction)), (0, operators_1.switchMap)(function () {
         return (0, rxjs_1.from)(JSC_1.default.SystemClient.getRegion()).pipe((0, operators_1.switchMap)(function (response) {

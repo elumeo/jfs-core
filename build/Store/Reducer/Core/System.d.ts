@@ -1,5 +1,5 @@
 import * as TA from 'typesafe-actions';
-export type State = {
+export declare type State = {
     backendRegion: string;
     pending: boolean;
 };

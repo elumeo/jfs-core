@@ -1,12 +1,12 @@
 import { Language } from './Language';
-import { NotificationPosition } from './Notification';
-export type WebSocketClient = {
+import { NotificationPosition } from 'Types/Notification';
+export declare type WebSocketClient = {
     Host: string;
     Path: string;
     PrivateNamespace: string;
     AutoRoomSubscriptions: string[];
 };
-export type Configuration = {
+export declare type Configuration = {
     RobotUsername: string;
     RobotPassword: string;
     Language: Language;

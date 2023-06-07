@@ -30,8 +30,8 @@ var rxjs_1 = require("rxjs");
 var operators_1 = require("rxjs/operators");
 var typesafe_actions_1 = require("typesafe-actions");
 var js_cookie_1 = __importDefault(require("js-cookie"));
-var Action = __importStar(require("../../Action"));
-var Locale = __importStar(require("../../../Utilities/Format/Locale"));
+var Action = __importStar(require("Store/Action"));
+var Locale = __importStar(require("Utilities/Format/Locale"));
 var moment_1 = __importDefault(require("moment"));
 var setLanguage = function (action$) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.changeLanguageAction)), (0, operators_1.switchMap)(function (_a) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from './Style';
-export type Props = {
+export declare type Props = {
     locale: string;
     messages: Record<string, string>;
 };

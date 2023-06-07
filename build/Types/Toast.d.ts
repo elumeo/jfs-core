@@ -1,4 +1,4 @@
-export type Toast = {
+export declare type Toast = {
     contentMessage?: string | null;
     contentTranslationId?: string | null;
     contentTranslationValues?: {};

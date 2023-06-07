@@ -1,3 +1,3 @@
-import React from 'react';
-declare const BackendIndicator: () => React.JSX.Element;
+/// <reference types="react" />
+declare const BackendIndicator: () => JSX.Element;
 export default BackendIndicator;

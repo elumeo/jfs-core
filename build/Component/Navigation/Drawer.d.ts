@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { DrawerProps } from '@mui/material/Drawer';
 import { ListProps } from '@mui/material/List';
-type Props = Omit<DrawerProps, 'children'> & {
+declare type Props = Omit<DrawerProps, 'children'> & {
     children: ListProps['children'];
     width?: number;
 };

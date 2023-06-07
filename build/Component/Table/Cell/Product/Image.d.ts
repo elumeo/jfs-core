@@ -1,5 +1,5 @@
 import React from 'react';
-export type ImageProps = {
+export declare type ImageProps = {
     id?: string;
     mediaUri?: string;
     isProductBundle?: boolean;

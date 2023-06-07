@@ -46,11 +46,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = __importDefault(require("react"));
 var lodash_1 = __importDefault(require("lodash"));
 var notistack = __importStar(require("notistack"));
 var Button = __importStar(require("./Button"));
-var Redux_1 = require("../../Types/Redux");
+var Redux_1 = require("Types/Redux");
 var Card_1 = __importDefault(require("./Card"));
 var Notistack = function () {
     var all = (0, Redux_1.useSelector)(function (state) { return state.Core.Notification.history; });
@@ -75,10 +76,8 @@ var Notistack = function () {
         });
         if (!isHistoryOpen) {
             missing.forEach(function (notification) {
-                var action = function (snackbar, id, temporary) { return (react_1.default.createElement(react_1.default.Fragment, null,
-                    temporary && react_1.default.createElement(Button.Dismiss, { onClick: function () { return snackbar.closeSnackbar(notification.id); } }),
-                    notification.action && notification.action(snackbar, notification.id, true))); };
-                snackbar.enqueueSnackbar(notification.id, __assign(__assign({}, notification.notistackOptions), { key: notification.id, content: function () { return react_1.default.createElement(Card_1.default, { key: notification.id, notification: __assign(__assign({}, notification), { action: action }), temporary: true }); } }));
+                var action = function (snackbar, id, temporary) { return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [temporary && (0, jsx_runtime_1.jsx)(Button.Dismiss, { onClick: function () { return snackbar.closeSnackbar(notification.id); } }), notification.action && notification.action(snackbar, notification.id, true)] })); };
+                snackbar.enqueueSnackbar(notification.id, __assign(__assign({}, notification.notistackOptions), { key: notification.id, content: function () { return (0, jsx_runtime_1.jsx)(Card_1.default, { notification: __assign(__assign({}, notification), { action: action }), temporary: true }, notification.id); } }));
             });
         }
         if (missing.length) {

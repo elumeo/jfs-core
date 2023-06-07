@@ -45,7 +45,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initialState = void 0;
 var typesafe_actions_1 = require("typesafe-actions");
-var Action = __importStar(require("../../Action"));
+var Action = __importStar(require("Store/Action"));
 /**
  * It is not possible to set initial state values for any namespace here
  * because namespaces will be create dynamically with the action:

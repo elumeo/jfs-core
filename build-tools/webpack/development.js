@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'development';
+
 const common = require('./common');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PATH = require('./PATH');
@@ -5,7 +7,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { resolve } = require('path');
 
-process.env.NODE_ENV = 'development';
 const development = {
   ...common,
   mode: 'development',

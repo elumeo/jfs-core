@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var Redux_1 = require("../../Types/Redux");
+var Redux_1 = require("Types/Redux");
 var useWords_1 = __importDefault(require("./useWords"));
 var useSeverity_1 = __importDefault(require("./useSeverity"));
 var useAutoHideDuration_1 = __importDefault(require("./useAutoHideDuration"));

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Props as StatefulProps } from './Stateful';
-export type Props = StatefulProps & {
+export declare type Props = StatefulProps & {
     allowRobotLogin?: boolean;
     packageJSON: Record<string, unknown>;
     translations: Record<string, Record<string, string>>;

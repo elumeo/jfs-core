@@ -22,14 +22,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
-var Navigation = __importStar(require("../Navigation"));
-var Redux_1 = require("../../Types/Redux");
-var Action_1 = require("../../Store/Action");
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var Navigation = __importStar(require("Component/Navigation"));
+var Redux_1 = require("Types/Redux");
+var Action_1 = require("Store/Action");
 var react_redux_1 = require("react-redux");
 var NavigationItem = function () {
     var dispatch = (0, react_redux_1.useDispatch)();
@@ -39,6 +36,6 @@ var NavigationItem = function () {
             state.Core.Configuration.config.RobotPassword &&
             state.Core.App.allowRobotLogin;
     });
-    return !robotLoginAvailable ? (react_1.default.createElement(Navigation.Item, { iconName: 'exit_to_app', messageId: 'app.logout', authorizedOnly: true, onClick: function () { return dispatch((0, Action_1.openLogout)()); } })) : (react_1.default.createElement(react_1.default.Fragment, null));
+    return !robotLoginAvailable ? ((0, jsx_runtime_1.jsx)(Navigation.Item, { iconName: 'exit_to_app', messageId: 'app.logout', authorizedOnly: true, onClick: function () { return dispatch((0, Action_1.openLogout)()); } })) : ((0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, {}));
 };
 exports.default = NavigationItem;

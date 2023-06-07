@@ -37,8 +37,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var operators_1 = require("rxjs/operators");
 var TA = __importStar(require("typesafe-actions"));
-var Action = __importStar(require("../../Action"));
-var WSClient_1 = require("../../../API/WS/WSClient");
+var Action = __importStar(require("Store/Action"));
+var WSClient_1 = require("API/WS/WSClient");
 var lodash_1 = __importDefault(require("lodash"));
 var connectSuccess = function (action$, state$) {
     return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.webSocketConnectSuccessAction)), (0, operators_1.switchMap)(function (action) {

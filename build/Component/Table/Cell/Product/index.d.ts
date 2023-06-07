@@ -1,6 +1,6 @@
 import React from 'react';
 import { TableCellProps } from '@mui/material';
-export type TableCellProductProps = Partial<TableCellProps> & {
+export declare type TableCellProductProps = Partial<TableCellProps> & {
     id?: string;
     rowIndex?: number;
     mediaUri?: string;
@@ -11,5 +11,5 @@ export type TableCellProductProps = Partial<TableCellProps> & {
     isProductBundle?: boolean;
     onClick?: (productId: string, rowIndex?: number) => void;
 };
-declare const _default: React.NamedExoticComponent<TableCellProductProps>;
+declare const _default: React.NamedExoticComponent<any>;
 export default _default;

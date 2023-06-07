@@ -25,19 +25,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
-var FormattedMsisdn_1 = __importDefault(require("../../FormattedMsisdn"));
-var Loading_1 = __importDefault(require("../../Table/Cell/Loading"));
-var Root_1 = __importDefault(require("../../Table/Cell/Root"));
-var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var FormattedMsisdn_1 = __importDefault(require("Component/FormattedMsisdn"));
+var Loading_1 = __importDefault(require("Component/Table/Cell/Loading"));
+var Root_1 = __importDefault(require("Component/Table/Cell/Root"));
+var VirtualizedTable_1 = require("Component/Table/VirtualizedTable");
 var material_1 = require("@mui/material");
 var Msisdn = function (_a) {
     var value = _a.value, _b = _a.isLoading, isLoading = _b === void 0 ? false : _b, rest = __rest(_a, ["value", "isLoading"]);
-    return react_1.default.createElement(Root_1.default, __assign({}, rest), isLoading
-        ? react_1.default.createElement(Loading_1.default, null)
-        : value
-            ? react_1.default.createElement(material_1.Box, { sx: VirtualizedTable_1.ellipsesStyle },
-                react_1.default.createElement(FormattedMsisdn_1.default, { msisdn: value }))
-            : '-');
+    return (0, jsx_runtime_1.jsx)(Root_1.default, __assign({}, rest, { children: isLoading
+            ? (0, jsx_runtime_1.jsx)(Loading_1.default, {})
+            : value
+                ? (0, jsx_runtime_1.jsx)(material_1.Box, __assign({ sx: VirtualizedTable_1.ellipsesStyle }, { children: (0, jsx_runtime_1.jsx)(FormattedMsisdn_1.default, { msisdn: value }) }))
+                : '-' }));
 };
 exports.default = Msisdn;

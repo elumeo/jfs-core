@@ -48,6 +48,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = __importStar(require("react"));
 var material_1 = require("@mui/material");
 var Clear_1 = __importDefault(require("@mui/icons-material/Clear"));
@@ -59,17 +60,15 @@ var TextField = react_1.default.forwardRef(function (_a, ref) {
         var _a;
         (_a = props === null || props === void 0 ? void 0 : props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, { target: { value: null } });
     }, [props.onChange]);
-    var endAdornmentClearButton = react_1.default.useMemo(function () { return (forceEnableClearButton || isDirty) && !hideClearButton ? (react_1.default.createElement(material_1.IconButton, __assign({ disabled: props.disabled && !forceEnableClearButton, size: clearButtonSize, color: 'secondary', onClick: clear }, clearButtonProps),
-        react_1.default.createElement(Clear_1.default, { fontSize: clearIconSize })))
-        : react_1.default.createElement(react_1.default.Fragment, null); }, [isDirty, props.disabled, clearButtonProps, clearButtonSize, forceEnableClearButton, clearIconSize, clear, hideClearButton]);
+    var endAdornmentClearButton = react_1.default.useMemo(function () { return (forceEnableClearButton || isDirty) && !hideClearButton ? ((0, jsx_runtime_1.jsx)(material_1.IconButton, __assign({ disabled: props.disabled && !forceEnableClearButton, size: clearButtonSize, color: 'secondary', onClick: clear }, clearButtonProps, { children: (0, jsx_runtime_1.jsx)(Clear_1.default, { fontSize: clearIconSize }) })))
+        : (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, {}); }, [isDirty, props.disabled, clearButtonProps, clearButtonSize, forceEnableClearButton, clearIconSize, clear, hideClearButton]);
     var preparedInputProps = (0, react_1.useMemo)(function () {
         var _a, _b;
-        return (__assign(__assign({}, props === null || props === void 0 ? void 0 : props.InputProps), { endAdornment: react_1.default.createElement(material_1.InputAdornment, { position: 'end' }, (_b = (_a = props === null || props === void 0 ? void 0 : props.InputProps) === null || _a === void 0 ? void 0 : _a.endAdornment) !== null && _b !== void 0 ? _b : react_1.default.createElement(react_1.default.Fragment, null),
-                endAdornmentClearButton) }));
+        return (__assign(__assign({}, props === null || props === void 0 ? void 0 : props.InputProps), { endAdornment: (0, jsx_runtime_1.jsxs)(material_1.InputAdornment, __assign({ position: 'end' }, { children: [(_b = (_a = props === null || props === void 0 ? void 0 : props.InputProps) === null || _a === void 0 ? void 0 : _a.endAdornment) !== null && _b !== void 0 ? _b : (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, {}), endAdornmentClearButton] })) }));
     }, [endAdornmentClearButton, (_b = props === null || props === void 0 ? void 0 : props.InputProps) === null || _b === void 0 ? void 0 : _b.endAdornment, hideClearButton]);
     var onChange = react_1.default.useCallback(function (e) {
         props.onChange(e);
     }, [props.onChange]);
-    return react_1.default.createElement(material_1.TextField, __assign({ ref: ref, name: name, value: value || '' }, props, { onChange: onChange, InputProps: preparedInputProps }));
+    return (0, jsx_runtime_1.jsx)(material_1.TextField, __assign({ ref: ref, name: name, value: value || '' }, props, { onChange: onChange, InputProps: preparedInputProps }));
 });
 exports.default = TextField;

@@ -1,6 +1,6 @@
 import * as TA from 'typesafe-actions';
-import { ActionType } from '../../../Types/Redux';
-export type State = {
+import { ActionType } from 'Types/Redux';
+export declare type State = {
     appInitialized: boolean;
     allowRobotLogin: boolean;
     packageJson: {

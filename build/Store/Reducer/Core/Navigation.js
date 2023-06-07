@@ -35,7 +35,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typesafe_actions_1 = require("typesafe-actions");
-var Action = __importStar(require("../../Action"));
+var Action = __importStar(require("Store/Action"));
 var initialState = {
     navigationOpen: false,
 };

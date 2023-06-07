@@ -26,9 +26,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContentEllipseMode = void 0;
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = __importDefault(require("react"));
-var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
-var Root_1 = __importDefault(require("../../Table/Cell/Root"));
+var VirtualizedTable_1 = require("Component/Table/VirtualizedTable");
+var Root_1 = __importDefault(require("Component/Table/Cell/Root"));
 var material_1 = require("@mui/material");
 var Loading_1 = __importDefault(require("./Loading"));
 var ContentEllipseMode;
@@ -57,8 +58,6 @@ var Default = function (_a) {
                 return null;
         }
     }, [ellipsesLinesStyle]);
-    return react_1.default.createElement(Root_1.default, __assign({}, rest),
-        isLoading === false && react_1.default.createElement(material_1.Box, { sx: styles }, children),
-        isLoading && react_1.default.createElement(Loading_1.default, null));
+    return (0, jsx_runtime_1.jsxs)(Root_1.default, __assign({}, rest, { children: [isLoading === false && (0, jsx_runtime_1.jsx)(material_1.Box, __assign({ sx: styles }, { children: children })), isLoading && (0, jsx_runtime_1.jsx)(Loading_1.default, {})] }));
 };
 exports.default = Default;

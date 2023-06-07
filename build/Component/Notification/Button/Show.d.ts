@@ -1,5 +1,5 @@
 import React from 'react';
-export type Props = {
+export declare type Props = {
     keepOpenOnOutsideClick?: boolean;
 };
 declare const ShowButton: React.FC<Props>;

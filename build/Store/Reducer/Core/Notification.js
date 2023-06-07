@@ -43,7 +43,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Action = __importStar(require("../../Action"));
+var Action = __importStar(require("Store/Action"));
 var TA = __importStar(require("typesafe-actions"));
 var initialState = {
     history: [],

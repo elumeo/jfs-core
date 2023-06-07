@@ -1,5 +1,5 @@
 import React from 'react';
-export type Props = {
+export declare type Props = {
     id?: string;
     name?: string;
     onClick?: HTMLElement['click'];

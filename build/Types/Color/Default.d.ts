@@ -1,2 +1,2 @@
-type Color = 'inherit' | 'primary' | 'secondary';
+declare type Color = 'inherit' | 'primary' | 'secondary';
 export default Color;

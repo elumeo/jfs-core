@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonProps as MuiButtonProps } from '@mui/material';
-export type Props = {
+export declare type Props = {
     id?: string;
     onClick?: MuiButtonProps['onClick'];
 };

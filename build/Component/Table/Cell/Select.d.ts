@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckboxProps, TableCellProps } from '@mui/material';
-export type Props = Partial<Omit<TableCellProps, 'onChange'>> & {
+export declare type Props = Partial<Omit<TableCellProps, 'onChange'>> & {
     value: string | number;
     checked: boolean;
     disabled?: boolean;

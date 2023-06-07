@@ -1,3 +1,2 @@
-import { Theme } from '@mui/material/styles';
-declare const definition: Theme;
+declare const definition: any;
 export default definition;

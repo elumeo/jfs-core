@@ -26,6 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ellipsesStyle = exports.visuallyHiddenStyle = void 0;
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = __importDefault(require("react"));
 var react_virtuoso_1 = require("react-virtuoso");
 var Table_1 = __importDefault(require("./Table"));
@@ -69,7 +70,7 @@ var VirtualizedTable = function (_a) {
             ? sorted.reverse()
             : sorted;
     }, [data, sortBy, sortDirection, compare, filter]);
-    var components = react_1.default.useMemo(function () { return (__assign({ EmptyPlaceholder: NoResults_1.default, Scroller: Container_1.default, Table: function (props) { return react_1.default.createElement(Table_1.default, __assign({}, props, tableProps)); }, TableHead: material_1.TableHead, TableRow: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(material_1.TableRow, __assign({}, props, tableRowProps, { ref: ref })); }), TableBody: material_1.TableBody, TableFoot: react_1.default.forwardRef(function (props, ref) { return react_1.default.createElement(Footer_1.default, __assign({}, props, { ref: ref })); }) }, propComponents)); }, [propComponents]);
-    return react_1.default.createElement(react_virtuoso_1.TableVirtuoso, __assign({ ref: ref, data: _sorted, components: components, overscan: 20 }, props));
+    var components = react_1.default.useMemo(function () { return (__assign({ EmptyPlaceholder: NoResults_1.default, Scroller: Container_1.default, Table: function (props) { return (0, jsx_runtime_1.jsx)(Table_1.default, __assign({}, props, tableProps)); }, TableHead: material_1.TableHead, TableRow: react_1.default.forwardRef(function (props, ref) { return (0, jsx_runtime_1.jsx)(material_1.TableRow, __assign({}, props, tableRowProps, { ref: ref })); }), TableBody: material_1.TableBody, TableFoot: react_1.default.forwardRef(function (props, ref) { return (0, jsx_runtime_1.jsx)(Footer_1.default, __assign({}, props, { ref: ref })); }) }, propComponents)); }, [propComponents]);
+    return (0, jsx_runtime_1.jsx)(react_virtuoso_1.TableVirtuoso, __assign({ ref: ref, data: _sorted, components: components, overscan: 20 }, props));
 };
 exports.default = VirtualizedTable;

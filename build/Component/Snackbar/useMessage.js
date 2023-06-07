@@ -26,9 +26,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = __importDefault(require("react"));
 var Failure_1 = __importDefault(require("./Failure"));
-var Format = __importStar(require("../../Utilities/Format"));
+var Format = __importStar(require("Utilities/Format"));
 var useMessage = function (toast, words) {
     var _a = react_1.default.useState(''), message = _a[0], setMessage = _a[1];
     react_1.default.useEffect(function () {
@@ -37,7 +38,7 @@ var useMessage = function (toast, words) {
         }
         else if ((toast === null || toast === void 0 ? void 0 : toast.contentError) && (toast === null || toast === void 0 ? void 0 : toast.contentError) instanceof Error) {
             var _a = Format.Error.apply(toast.contentError), title = _a.title, details = _a.details;
-            setMessage(react_1.default.createElement(Failure_1.default, { title: title, details: details }));
+            setMessage((0, jsx_runtime_1.jsx)(Failure_1.default, { title: title, details: details }));
         }
     }, [toast === null || toast === void 0 ? void 0 : toast.contentMessage, toast === null || toast === void 0 ? void 0 : toast.contentTranslationId, toast === null || toast === void 0 ? void 0 : toast.contentError, words]);
     return message;

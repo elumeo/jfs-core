@@ -1,6 +1,6 @@
 import React from 'react';
-type Props = {
+declare type Props = {
     children: React.ReactNode;
 };
-declare const Uninitialized: ({ children }: Props) => React.JSX.Element;
+declare const Uninitialized: ({ children }: Props) => JSX.Element;
 export default Uninitialized;

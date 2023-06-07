@@ -1,6 +1,6 @@
 import React from 'react';
 import { StackProps, BoxProps } from '@mui/material';
-export type Props = StackProps & {
+export declare type Props = StackProps & {
     navigation?: React.ReactNode;
     spacing?: number;
     contentProps?: BoxProps;

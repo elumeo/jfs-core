@@ -27,8 +27,8 @@ exports.connectRequest = void 0;
 var operators_1 = require("rxjs/operators");
 var rxjs_1 = require("rxjs");
 var TA = __importStar(require("typesafe-actions"));
-var Action = __importStar(require("../../Action"));
-var WSClient_1 = require("../../../API/WS/WSClient");
+var Action = __importStar(require("Store/Action"));
+var WSClient_1 = require("API/WS/WSClient");
 var connectRequest = function (action$, state$) {
     return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.webSocketConnectRequestAction)), (0, operators_1.filter)(function () {
         return state$.value.Core.Configuration.loaded &&

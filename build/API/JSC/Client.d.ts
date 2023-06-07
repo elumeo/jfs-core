@@ -1,5 +1,5 @@
-import { Configuration } from '../../Types/Configuration';
-import { HttpClient } from '../HTTP/HttpClient';
+import { Configuration } from 'Types/Configuration';
+import { HttpClient } from 'API/HTTP/HttpClient';
 import { AxiosRequestConfig } from 'axios';
 export default class JscClient extends HttpClient {
     static Config: Configuration;

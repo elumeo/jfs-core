@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -26,23 +37,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var Card_1 = __importDefault(require("@mui/material/Card"));
 var CardHeader_1 = __importDefault(require("@mui/material/CardHeader"));
 var CardContent_1 = __importDefault(require("@mui/material/CardContent"));
 var History = __importStar(require("./History"));
-var Overlay = function () { return (react_1.default.createElement(Card_1.default, { sx: {
+var Overlay = function () { return ((0, jsx_runtime_1.jsxs)(Card_1.default, __assign({ sx: {
         width: 400,
         height: 'calc(100vh - 100px)',
-    } },
-    react_1.default.createElement(CardHeader_1.default, { sx: { height: 70 }, action: react_1.default.createElement(History.Toolbar, null) }),
-    react_1.default.createElement(CardContent_1.default, { sx: {
-            width: '100%',
-            height: 'calc(100% - 70px)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: 0
-        } },
-        react_1.default.createElement(History.All, null)))); };
+    } }, { children: [(0, jsx_runtime_1.jsx)(CardHeader_1.default, { sx: { height: 70 }, action: (0, jsx_runtime_1.jsx)(History.Toolbar, {}) }), (0, jsx_runtime_1.jsx)(CardContent_1.default, __assign({ sx: {
+                width: '100%',
+                height: 'calc(100% - 70px)',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: 0
+            } }, { children: (0, jsx_runtime_1.jsx)(History.All, {}) }))] }))); };
 exports.default = Overlay;

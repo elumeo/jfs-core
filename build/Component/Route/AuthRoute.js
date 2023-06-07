@@ -37,10 +37,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = __importDefault(require("react"));
-var Action_1 = require("../../Store/Action");
+var Action_1 = require("Store/Action");
 var react_redux_1 = require("react-redux");
-var Session = __importStar(require("../../Store/Selector/Core/Session"));
+var Session = __importStar(require("Store/Selector/Core/Session"));
 var BaseRoute_1 = __importDefault(require("./BaseRoute"));
 var AuthRoute = function (props) {
     var dispatch = (0, react_redux_1.useDispatch)();
@@ -49,7 +50,7 @@ var AuthRoute = function (props) {
         dispatch((0, Action_1.enterAuthorizedRoute)());
     }, []);
     return (isAuthorized
-        ? react_1.default.createElement(BaseRoute_1.default, __assign({}, props))
-        : react_1.default.createElement(react_1.default.Fragment, null));
+        ? (0, jsx_runtime_1.jsx)(BaseRoute_1.default, __assign({}, props))
+        : (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, {}));
 };
 exports.default = AuthRoute;

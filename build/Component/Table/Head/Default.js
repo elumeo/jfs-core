@@ -10,29 +10,6 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -49,12 +26,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sortingStyles = void 0;
-var react_1 = __importStar(require("react"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var react_1 = require("react");
 var material_1 = require("@mui/material");
-var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
+var VirtualizedTable_1 = require("Component/Table/VirtualizedTable");
 var colors_1 = require("@mui/material/colors");
-var Color_1 = require("../../../Constant/Color");
-var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
+var Color_1 = require("Constant/Color");
+var Definition_1 = __importDefault(require("Component/App/Stateless/Style/Theme/Definition"));
 exports.sortingStyles = {
     backgroundColor: colors_1.grey[200],
     borderRadius: "".concat(Definition_1.default.spacing(.5), " ").concat(Definition_1.default.spacing(.5), " 0 0")
@@ -67,12 +45,8 @@ var Default = function (_a) {
         : 'inherit';
     var styles = (0, react_1.useMemo)(function () { return (__assign(__assign({}, (isActiveSort ? exports.sortingStyles : {})), { height: height, maxWidth: '100%', width: width })); }, [sortBy, isActiveSort, height, width]);
     var sort = function () { return disableSort || (onClick !== undefined && onClick(dataKey, isActiveSort ? (sortDirection === 'asc' ? 'desc' : 'asc') : 'asc')); };
-    return react_1.default.createElement(material_1.TableCell, __assign({ variant: 'head', sx: styles, align: rest.align ? rest.align : isNumeric ? 'right' : 'left', onClick: sort }, rest),
-        disableSort && react_1.default.createElement(material_1.Typography, { fontWeight: 600, variant: 'subtitle1' }, label),
-        !disableSort && react_1.default.createElement(material_1.TableSortLabel, { active: isActiveSort, direction: sortDirection, sx: { color: color } },
-            react_1.default.createElement(material_1.Typography, { fontWeight: 600, lineHeight: 1, variant: 'subtitle1', color: color }, label),
-            isActiveSort
-                ? react_1.default.createElement(material_1.Typography, { component: 'span', sx: VirtualizedTable_1.visuallyHiddenStyle }, "".concat(sortDirection).toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending')
-                : null));
+    return (0, jsx_runtime_1.jsxs)(material_1.TableCell, __assign({ variant: 'head', sx: styles, align: rest.align ? rest.align : isNumeric ? 'right' : 'left', onClick: sort }, rest, { children: [disableSort && (0, jsx_runtime_1.jsx)(material_1.Typography, __assign({ fontWeight: 600, variant: 'subtitle1' }, { children: label })), !disableSort && (0, jsx_runtime_1.jsxs)(material_1.TableSortLabel, __assign({ active: isActiveSort, direction: sortDirection, sx: { color: color } }, { children: [(0, jsx_runtime_1.jsx)(material_1.Typography, __assign({ fontWeight: 600, lineHeight: 1, variant: 'subtitle1', color: color }, { children: label })), isActiveSort
+                        ? (0, jsx_runtime_1.jsx)(material_1.Typography, __assign({ component: 'span', sx: VirtualizedTable_1.visuallyHiddenStyle }, { children: "".concat(sortDirection).toLowerCase() === 'desc' ? 'sorted descending' : 'sorted ascending' }))
+                        : null] }))] }));
 };
 exports.default = Default;

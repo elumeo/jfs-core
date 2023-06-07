@@ -14,5 +14,5 @@ var disconnectRequest_1 = __importDefault(require("./disconnectRequest"));
 var joinRoomRequest_1 = __importDefault(require("./joinRoomRequest"));
 var joinRoomLoading_1 = __importDefault(require("./joinRoomLoading"));
 var leaveRoomRequest_1 = __importDefault(require("./leaveRoomRequest"));
-var reconnect_1 = __importDefault(require("../../Epic/WebSocket/reconnect"));
+var reconnect_1 = __importDefault(require("Store/Epic/WebSocket/reconnect"));
 exports.default = (0, redux_observable_1.combineEpics)(appIsInitialized_1.default, connectRequest_1.default, connectSuccess_1.default, checkForConnectionError_1.default, checkForReconnect_1.default, reconnect_1.default, disconnectRequest_1.default, joinRoomLoading_1.default, joinRoomRequest_1.default, leaveRoomRequest_1.default, logout_1.default);

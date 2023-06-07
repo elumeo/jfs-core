@@ -1,5 +1,5 @@
 import React from 'react';
-export type Props = {
+export declare type Props = {
     value: string;
 };
 declare const Title: React.FC<Props>;

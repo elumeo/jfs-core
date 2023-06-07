@@ -3,11 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_helmet_1 = __importDefault(require("react-helmet"));
 var Title = function (_a) {
     var value = _a.value;
-    return (react_1.default.createElement(react_helmet_1.default, null,
-        react_1.default.createElement("title", null, value)));
+    return ((0, jsx_runtime_1.jsx)(react_helmet_1.default, { children: (0, jsx_runtime_1.jsx)("title", { children: value }) }));
 };
 exports.default = Title;

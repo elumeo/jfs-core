@@ -14,10 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var Wrapper_1 = __importDefault(require("../Wrapper"));
-var Test = function (props) { return (react_1.default.createElement(Wrapper_1.default, __assign({}, props),
-    react_1.default.createElement("title", null, "test"),
-    react_1.default.createElement("g", { stroke: 'none', strokeWidth: '1', fill: 'none', fillRule: 'evenodd' },
-        react_1.default.createElement("circle", { fill: 'currentcolor', cx: '16.5', cy: '15.5', r: '10.5' })))); };
+var Test = function (props) { return ((0, jsx_runtime_1.jsxs)(Wrapper_1.default, __assign({}, props, { children: [(0, jsx_runtime_1.jsx)("title", { children: "test" }), (0, jsx_runtime_1.jsx)("g", __assign({ stroke: 'none', strokeWidth: '1', fill: 'none', fillRule: 'evenodd' }, { children: (0, jsx_runtime_1.jsx)("circle", { fill: 'currentcolor', cx: '16.5', cy: '15.5', r: '10.5' }) }))] }))); };
 exports.default = Test;

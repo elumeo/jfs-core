@@ -1,5 +1,5 @@
 import React from 'react';
-export type Props = {
+export declare type Props = {
     onClick: () => void;
 };
 declare const Cancel: React.FC<Props>;

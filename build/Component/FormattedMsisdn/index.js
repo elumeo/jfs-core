@@ -22,16 +22,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
-var Redux_1 = require("../../Types/Redux");
-var PhoneNumberFormat = __importStar(require("../../Utilities/Format/PhoneNumber"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var Redux_1 = require("Types/Redux");
+var PhoneNumberFormat = __importStar(require("Utilities/Format/PhoneNumber"));
 var FormattedMsisdn = function (_a) {
     var msisdn = _a.msisdn;
     var backendRegion = (0, Redux_1.useSelector)(function (state) { return state.Core.System.backendRegion; });
-    return react_1.default.createElement(react_1.default.Fragment, null, PhoneNumberFormat.formatPhone(msisdn, backendRegion));
+    return (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: PhoneNumberFormat.formatPhone(msisdn, backendRegion) });
 };
 exports.default = FormattedMsisdn;

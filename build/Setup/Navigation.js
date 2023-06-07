@@ -26,18 +26,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var Divider_1 = __importDefault(require("@mui/material/Divider"));
-var Navigation = __importStar(require("../Component/Navigation"));
-var Logout = __importStar(require("../Component/Logout"));
-var Settings = __importStar(require("../Component/Settings"));
-var Version_1 = require("../Component/Version");
-var Drawer = function () { return (react_1.default.createElement(Navigation.Drawer, null,
-    react_1.default.createElement(Navigation.Item, { iconName: 'account_box', messageId: 'app.login', unauthorizedOnly: true, onClickRoute: '/start' }),
-    react_1.default.createElement(Navigation.Item, { iconName: 'home', messageId: 'app.title', onClickRoute: '/start', authorizedOnly: true }),
-    react_1.default.createElement(Divider_1.default, null),
-    react_1.default.createElement(Settings.NavigationItem, null),
-    react_1.default.createElement(Divider_1.default, null),
-    react_1.default.createElement(Logout.NavigationItem, null),
-    react_1.default.createElement(Version_1.VersionNavigationItem, null))); };
+var Navigation = __importStar(require("Component/Navigation"));
+var Logout = __importStar(require("Component/Logout"));
+var Settings = __importStar(require("Component/Settings"));
+var Version_1 = require("Component/Version");
+var Drawer = function () { return ((0, jsx_runtime_1.jsxs)(Navigation.Drawer, { children: [(0, jsx_runtime_1.jsx)(Navigation.Item, { iconName: 'account_box', messageId: 'app.login', unauthorizedOnly: true, onClickRoute: '/start' }), (0, jsx_runtime_1.jsx)(Navigation.Item, { iconName: 'home', messageId: 'app.title', onClickRoute: '/start', authorizedOnly: true }), (0, jsx_runtime_1.jsx)(Divider_1.default, {}), (0, jsx_runtime_1.jsx)(Settings.NavigationItem, {}), (0, jsx_runtime_1.jsx)(Divider_1.default, {}), (0, jsx_runtime_1.jsx)(Logout.NavigationItem, {}), (0, jsx_runtime_1.jsx)(Version_1.VersionNavigationItem, {})] })); };
 exports.default = Drawer;

@@ -10,29 +10,6 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -48,19 +25,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importStar(require("react"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var react_1 = require("react");
 var react_intl_1 = require("react-intl");
-var Format_1 = require("../../../Utilities/Format");
-var Root_1 = __importDefault(require("../../Table/Cell/Root"));
+var Format_1 = require("Utilities/Format");
+var Root_1 = __importDefault(require("Component/Table/Cell/Root"));
 var DateTime = function (_a) {
     var _b = _a.value, value = _b === void 0 ? null : _b, _c = _a.noValueElement, noValueElement = _c === void 0 ? '-' : _c, _d = _a.asTwoLines, asTwoLines = _d === void 0 ? true : _d, _e = _a.displayTime, displayTime = _e === void 0 ? true : _e, rest = __rest(_a, ["value", "noValueElement", "asTwoLines", "displayTime"]);
     var _f = (0, react_intl_1.useIntl)(), formatDate = _f.formatDate, formatTime = _f.formatTime;
-    return react_1.default.createElement(Root_1.default, __assign({}, rest),
-        (value === null || value === undefined) && noValueElement,
-        value && react_1.default.createElement(react_1.default.Fragment, null,
-            formatDate(value, Format_1.DateTime.getDefaultDateFormatOptions()),
-            asTwoLines && react_1.default.createElement("br", null),
-            asTwoLines === false && ' ',
-            displayTime && formatTime(value, Format_1.DateTime.getDefaultTimeFormatOptions(true))));
+    return (0, jsx_runtime_1.jsxs)(Root_1.default, __assign({}, rest, { children: [(value === null || value === undefined) && noValueElement, value && (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [formatDate(value, Format_1.DateTime.getDefaultDateFormatOptions()), asTwoLines && (0, jsx_runtime_1.jsx)("br", {}), asTwoLines === false && ' ', displayTime && formatTime(value, Format_1.DateTime.getDefaultTimeFormatOptions(true))] })] }));
 };
 exports.default = (0, react_1.memo)(DateTime);

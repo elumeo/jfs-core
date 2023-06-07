@@ -30,7 +30,7 @@ var rxjs_1 = require("rxjs");
 var operators_1 = require("rxjs/operators");
 var typesafe_actions_1 = require("typesafe-actions");
 var js_cookie_1 = __importDefault(require("js-cookie"));
-var Action = __importStar(require("../../Action"));
+var Action = __importStar(require("Store/Action"));
 var setInitialLanguage = function (action$, state$) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.configLoadedAction)), (0, operators_1.concatMap)(function (_a) {
         var config = _a.payload.config;

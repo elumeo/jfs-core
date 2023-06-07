@@ -1,6 +1,6 @@
 import React from 'react';
-export type Country = 'de' | 'uk' | 'it';
-export type Props = {
+export declare type Country = 'de' | 'uk' | 'it';
+export declare type Props = {
     country: Country;
 };
 declare const Flag: React.FC<Props>;

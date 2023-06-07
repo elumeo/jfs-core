@@ -1,6 +1,6 @@
-import * as Country from '../../../Types/Country';
-import { ActionType } from '../../../Types/Redux';
-export type State = {
+import * as Country from 'Types/Country';
+import { ActionType } from 'Types/Redux';
+export declare type State = {
     locale: Country.Locale;
 };
 export declare const initialState: State;

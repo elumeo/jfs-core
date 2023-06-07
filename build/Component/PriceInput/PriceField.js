@@ -25,12 +25,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = __importDefault(require("react"));
 var material_1 = require("@mui/material");
-var TextField_1 = __importDefault(require("../TextField"));
-var useCurrency_1 = __importDefault(require("../../Effect/useCurrency"));
-var usePriceFieldAdornment_1 = __importDefault(require("../../Effect/usePriceFieldAdornment"));
-var Format_1 = require("../../Utilities/Format");
+var TextField_1 = __importDefault(require("Component/TextField"));
+var useCurrency_1 = __importDefault(require("Effect/useCurrency"));
+var usePriceFieldAdornment_1 = __importDefault(require("Effect/usePriceFieldAdornment"));
+var Format_1 = require("Utilities/Format");
 var PriceField = function (_a) {
     var _b = _a.currency, currency = _b === void 0 ? 'eur' : _b, _c = _a.value, value = _c === void 0 ? 0.0 : _c, _d = _a.selectOnFocus, selectOnFocus = _d === void 0 ? true : _d, _e = _a.showDecimals, showDecimals = _e === void 0 ? true : _e, min = _a.min, max = _a.max, props = __rest(_a, ["currency", "value", "selectOnFocus", "showDecimals", "min", "max"]);
     var configCurrency = (0, useCurrency_1.default)();
@@ -68,8 +69,8 @@ var PriceField = function (_a) {
     }, [props === null || props === void 0 ? void 0 : props.onChange, min, max,]);
     var _InputProps = react_1.default.useMemo(function () {
         var _a;
-        return (__assign((_a = {}, _a[adornmentType] = react_1.default.createElement(material_1.InputAdornment, { position: adornmentPosition, sx: styles }, Format_1.Currency.getCurrencySign(currency)), _a), props === null || props === void 0 ? void 0 : props.InputProps));
+        return (__assign((_a = {}, _a[adornmentType] = (0, jsx_runtime_1.jsx)(material_1.InputAdornment, __assign({ position: adornmentPosition, sx: styles }, { children: Format_1.Currency.getCurrencySign(currency) })), _a), props === null || props === void 0 ? void 0 : props.InputProps));
     }, [adornmentPosition, adornmentType, currency, props === null || props === void 0 ? void 0 : props.InputProps, styles]);
-    return (react_1.default.createElement(TextField_1.default, __assign({ inputRef: ref, value: _focused ? value : display, InputProps: _InputProps, onChange: _onChange, onFocus: _onFocus, onBlur: _onBlur }, props)));
+    return ((0, jsx_runtime_1.jsx)(TextField_1.default, __assign({ inputRef: ref, value: _focused ? value : display, InputProps: _InputProps, onChange: _onChange, onFocus: _onFocus, onBlur: _onBlur }, props)));
 };
 exports.default = PriceField;

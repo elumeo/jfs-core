@@ -1,5 +1,5 @@
-import { ActionType } from '../../../Types/Redux';
-export type State = {
+import { ActionType } from 'Types/Redux';
+export declare type State = {
     settingsOpen: boolean;
 };
 declare const Settings: import("typesafe-actions").Reducer<State, ActionType<{}>> & {

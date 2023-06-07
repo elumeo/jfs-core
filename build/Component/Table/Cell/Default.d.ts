@@ -1,11 +1,11 @@
 import React from 'react';
-import { Props as RootProps } from '../../Table/Cell/Root';
+import { Props as RootProps } from 'Component/Table/Cell/Root';
 export declare enum ContentEllipseMode {
     None = "none",
     Normal = "normal",
     Lines = "lines"
 }
-export type Props = RootProps & {
+export declare type Props = RootProps & {
     isLoading?: boolean;
     contentEllipseMode?: ContentEllipseMode;
     contentEllipseLines?: number;

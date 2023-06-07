@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppBarProps, ToolbarProps } from '@mui/material';
-export type Props = {
+export declare type Props = {
     left?: React.ReactNode;
     middle?: React.ReactNode;
     right?: React.ReactNode;

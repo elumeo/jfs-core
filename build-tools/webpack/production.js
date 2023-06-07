@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'production';
+
 const webpack = require('webpack');
 const common = require('./common');
 const PATH = require('./PATH');
@@ -8,8 +10,6 @@ const rimraf = require('rimraf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 rimraf.sync(PATH.PUBLIC);
-
-process.env.NODE_ENV = 'production';
 
 const production = {
   ...common,

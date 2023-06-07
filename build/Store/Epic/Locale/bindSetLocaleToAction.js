@@ -24,10 +24,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var operators_1 = require("rxjs/operators");
-var Action = __importStar(require("../../Action"));
+var Action = __importStar(require("Store/Action"));
 var typesafe_actions_1 = require("typesafe-actions");
 var rxjs_1 = require("rxjs");
-var Format = __importStar(require("../../../Utilities/Format"));
+var Format = __importStar(require("Utilities/Format"));
 var bindSetLocaleToAction = function (action$) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.setLocale)), (0, operators_1.switchMap)(function (_a) {
         var locale = _a.payload.locale;

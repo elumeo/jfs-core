@@ -26,7 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var operators_1 = require("rxjs/operators");
 var typesafe_actions_1 = require("typesafe-actions");
 var rxjs_1 = require("rxjs");
-var Action = __importStar(require("../../Action"));
+var Action = __importStar(require("Store/Action"));
 var robotLoginRefresh = function (action$, state$) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.unauthorizeSession)), (0, operators_1.filter)(function () {
         return state$.value.Core.App.allowRobotLogin &&

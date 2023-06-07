@@ -1,3 +1,3 @@
 import Default from './Default';
-type Color = Default;
+declare type Color = Default;
 export default Color;

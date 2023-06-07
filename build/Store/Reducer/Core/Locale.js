@@ -36,7 +36,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initialState = void 0;
 var typesafe_actions_1 = require("typesafe-actions");
-var Action = __importStar(require("../../Action"));
+var Action = __importStar(require("Store/Action"));
 exports.initialState = {
     locale: 'en-GB',
 };

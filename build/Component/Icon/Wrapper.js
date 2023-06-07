@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var SvgIcon_1 = __importDefault(require("@mui/material/SvgIcon"));
-var Wrapper = function (props) { return (react_1.default.createElement(SvgIcon_1.default, __assign({ viewBox: '0 0 32 32', color: 'inherit' }, props))); };
+var Wrapper = function (props) { return ((0, jsx_runtime_1.jsx)(SvgIcon_1.default, __assign({ viewBox: '0 0 32 32', color: 'inherit' }, props))); };
 exports.default = Wrapper;

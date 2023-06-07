@@ -48,15 +48,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = __importStar(require("react"));
 var react_datepicker_1 = __importDefault(require("react-datepicker"));
 require("./Setup");
-var Redux_1 = require("../../Types/Redux");
+var Redux_1 = require("Types/Redux");
 var mapLanguageToDateFormat_1 = __importDefault(require("./mapLanguageToDateFormat"));
 require("react-datepicker/dist/react-datepicker.css");
 var material_1 = require("@mui/material");
 var Today_1 = __importDefault(require("@mui/icons-material/Today"));
-var TextField_1 = __importDefault(require("../TextField"));
+var TextField_1 = __importDefault(require("Component/TextField"));
 var DatePicker = function (_a) {
     var _b;
     var dateFormat = _a.dateFormat, _c = _a.color, color = _c === void 0 ? 'primary' : _c, languageFromProp = _a.language, onChange = _a.onChange, textFieldProps = _a.textFieldProps, _d = _a.shouldOpenOnFocus, shouldOpenOnFocus = _d === void 0 ? true : _d, _e = _a.shouldCloseOnSelect, shouldCloseOnSelect = _e === void 0 ? true : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, _g = _a.isClearable, isClearable = _g === void 0 ? true : _g, rest = __rest(_a, ["dateFormat", "color", "language", "onChange", "textFieldProps", "shouldOpenOnFocus", "shouldCloseOnSelect", "disabled", "isClearable"]);
@@ -92,8 +93,7 @@ var DatePicker = function (_a) {
         onChange(newValue, event);
     }, [onChange, setOpen, disabled, shouldCloseOnSelect]);
     var toggleOpen = react_1.default.useCallback(function () { return !disabled && setOpen(function (old) { return !old; }); }, [disabled, setOpen]);
-    var preparedInputProps = (0, react_1.useMemo)(function () { return (__assign(__assign({}, textFieldProps === null || textFieldProps === void 0 ? void 0 : textFieldProps.InputProps), { autoComplete: 'off', onFocus: function () { return shouldOpenOnFocus ? setOpen(true) : null; }, endAdornment: (react_1.default.createElement(material_1.IconButton, { disabled: disabled, size: 'small', onClick: toggleOpen },
-            react_1.default.createElement(Today_1.default, null))) })); }, [textFieldProps === null || textFieldProps === void 0 ? void 0 : textFieldProps.InputProps, shouldOpenOnFocus, disabled, setOpen, toggleOpen]);
-    return (react_1.default.createElement(react_datepicker_1.default, __assign({ id: id, disabled: disabled, ref: datePickerRef, className: 'jfs-datepicker', dayClassName: function () { return 'jfs-datepicker__day'; }, onClickOutside: toggleOpen, onChange: handleChangeValue, dateFormat: dateFormat || (0, mapLanguageToDateFormat_1.default)(language), locale: language, portalId: 'overlay', open: open, customInput: react_1.default.createElement(TextField_1.default, __assign({ color: color, hideClearButton: !isClearable || isPristine, required: rest.required }, textFieldProps, { InputProps: preparedInputProps, clearButtonProps: { id: clearButtonId } })) }, rest)));
+    var preparedInputProps = (0, react_1.useMemo)(function () { return (__assign(__assign({}, textFieldProps === null || textFieldProps === void 0 ? void 0 : textFieldProps.InputProps), { autoComplete: 'off', onFocus: function () { return shouldOpenOnFocus ? setOpen(true) : null; }, endAdornment: ((0, jsx_runtime_1.jsx)(material_1.IconButton, __assign({ disabled: disabled, size: 'small', onClick: toggleOpen }, { children: (0, jsx_runtime_1.jsx)(Today_1.default, {}) }))) })); }, [textFieldProps === null || textFieldProps === void 0 ? void 0 : textFieldProps.InputProps, shouldOpenOnFocus, disabled, setOpen, toggleOpen]);
+    return ((0, jsx_runtime_1.jsx)(react_datepicker_1.default, __assign({ id: id, disabled: disabled, ref: datePickerRef, className: 'jfs-datepicker', dayClassName: function () { return 'jfs-datepicker__day'; }, onClickOutside: toggleOpen, onChange: handleChangeValue, dateFormat: dateFormat || (0, mapLanguageToDateFormat_1.default)(language), locale: language, portalId: 'overlay', open: open, customInput: (0, jsx_runtime_1.jsx)(TextField_1.default, __assign({ color: color, hideClearButton: !isClearable || isPristine, required: rest.required }, textFieldProps, { InputProps: preparedInputProps, clearButtonProps: { id: clearButtonId } })) }, rest)));
 };
 exports.default = DatePicker;

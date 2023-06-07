@@ -25,10 +25,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_intl_1 = require("react-intl");
-var Format_1 = require("../../../Utilities/Format");
-var Root_1 = __importDefault(require("../../Table/Cell/Root"));
+var Format_1 = require("Utilities/Format");
+var Root_1 = __importDefault(require("Component/Table/Cell/Root"));
 var DateTimeRange = function (_a) {
     var _b = _a.value, value = _b === void 0 ? null : _b, _c = _a.noValueElement, noValueElement = _c === void 0 ? '-' : _c, rest = __rest(_a, ["value", "noValueElement"]);
     var _d = (0, react_intl_1.useIntl)(), formatDate = _d.formatDate, formatTime = _d.formatTime;
@@ -44,23 +44,6 @@ var DateTimeRange = function (_a) {
         endTime = formatTime(value.end, Format_1.DateTime.getDefaultTimeFormatOptions(true));
         hasSameDate = startDate === endDate;
     }
-    return react_1.default.createElement(Root_1.default, __assign({}, rest),
-        (value === null || value === undefined || value.start === null) && noValueElement,
-        value && value.start !== null && react_1.default.createElement(react_1.default.Fragment, null,
-            hasSameDate && react_1.default.createElement(react_1.default.Fragment, null,
-                startDate,
-                react_1.default.createElement("br", null),
-                startTime,
-                " - ",
-                endTime),
-            hasSameDate === false && react_1.default.createElement(react_1.default.Fragment, null,
-                startDate,
-                " ",
-                startTime,
-                " -",
-                react_1.default.createElement("br", null),
-                endDate,
-                " ",
-                endTime)));
+    return (0, jsx_runtime_1.jsxs)(Root_1.default, __assign({}, rest, { children: [(value === null || value === undefined || value.start === null) && noValueElement, value && value.start !== null && (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [hasSameDate && (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [startDate, (0, jsx_runtime_1.jsx)("br", {}), startTime, " - ", endTime] }), hasSameDate === false && (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [startDate, " ", startTime, " -", (0, jsx_runtime_1.jsx)("br", {}), endDate, " ", endTime] })] })] }));
 };
 exports.default = DateTimeRange;

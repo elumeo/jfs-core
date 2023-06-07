@@ -21,14 +21,11 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var material_1 = require("@mui/material");
 var Root = function (_a) {
     var children = _a.children, _b = _a.isNumeric, isNumeric = _b === void 0 ? false : _b, rest = __rest(_a, ["children", "isNumeric"]);
-    return react_1.default.createElement(material_1.TableCell, __assign({ variant: 'body', align: isNumeric ? 'right' : 'left' }, rest), children);
+    return (0, jsx_runtime_1.jsx)(material_1.TableCell, __assign({ variant: 'body', align: isNumeric ? 'right' : 'left' }, rest, { children: children }));
 };
 exports.default = Root;

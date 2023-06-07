@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouteProps } from 'react-router-dom';
-export type BaseRouteProps = RouteProps & {
+export declare type BaseRouteProps = RouteProps & {
     title?: string;
     subtitle?: string;
     translateTitle?: boolean;

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { CardContentProps } from '@mui/material/CardContent/CardContent';
-export type Props = CardContentProps & {
+export declare type Props = CardContentProps & {
     fullHeight?: boolean;
     withSubtitle?: boolean;
     overrideCardTitleHeight?: string;

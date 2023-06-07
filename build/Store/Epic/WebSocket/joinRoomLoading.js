@@ -26,8 +26,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var operators_1 = require("rxjs/operators");
 var rxjs_1 = require("rxjs");
 var TA = __importStar(require("typesafe-actions"));
-var Action = __importStar(require("../../Action"));
-var WSClient_1 = require("../../../API/WS/WSClient");
+var Action = __importStar(require("Store/Action"));
+var WSClient_1 = require("API/WS/WSClient");
 var joinRoomLoading = function (action$, state$) {
     return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.webSocketJoinRoomLoadingAction)), (0, operators_1.concatMap)(function (action) {
         return WSClient_1.WSClient.join(action.payload.namespace, action.payload.name).pipe((0, operators_1.map)(function (name) {

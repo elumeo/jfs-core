@@ -22,17 +22,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
-var Navigation = __importStar(require("../Navigation"));
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var Navigation = __importStar(require("Component/Navigation"));
 var react_redux_1 = require("react-redux");
-var Action_1 = require("../../Store/Action");
+var Action_1 = require("Store/Action");
 var NavigationItem = function () {
     var dispatch = (0, react_redux_1.useDispatch)();
     var onClick = function () { return dispatch((0, Action_1.openSettings)()); };
-    return (react_1.default.createElement(Navigation.Item, { iconName: 'settings', messageId: 'app.settings', onClick: onClick }));
+    return ((0, jsx_runtime_1.jsx)(Navigation.Item, { iconName: 'settings', messageId: 'app.settings', onClick: onClick }));
 };
 exports.default = NavigationItem;
