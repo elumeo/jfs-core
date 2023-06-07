@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "11.0.6-beta.1",
+  "version": "11.0.6-beta.2",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -61,7 +61,6 @@
     "@mui/x-date-pickers": "^6.0.3",
     "@reduxjs/toolkit": "^1.9.1",
     "@redux-devtools/extension": "^3.2.5",
-    "@welldone-software/why-did-you-render": "^7.0.1",
     "css-loader": "^6.7.1",
     "axios-mock-adapter": "^1.20.0",
     "axios": "^0.26.1",
@@ -133,6 +132,7 @@
     "@types/react-window": "^1.8.5",
     "@types/socket.io-client": "^1.4.36",
     "@types/webpack": "^5.28.0",
+    "@welldone-software/why-did-you-render": "^7.0.1",
     "msw": "^0.39.2",
     "ts-node": "^10.9.1"
   }
