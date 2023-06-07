@@ -15,4 +15,7 @@ export const run = async (env: Type.Environment.Info) => {
   if (['app', 'component'].includes(env.which)) {
     await NPM.Package.run('jfs-set-peer-dependencies');
   }
+  console.log('postinstall DONE √')
+  console.log('Now install dev dependencies by running')
+  console.log('$> npm i')
 }
