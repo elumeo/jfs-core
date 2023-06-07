@@ -37,7 +37,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var react_intl_1 = require("react-intl");
-var Format = __importStar(require("Utilities/Format"));
+var Format = __importStar(require("../../Utilities/Format"));
 var useWords = function (toast) {
     var intl = (0, react_intl_1.useIntl)();
     var _a = react_1.default.useState([]), words = _a[0], setWords = _a[1];

@@ -29,7 +29,7 @@ var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime")
 var react_1 = __importDefault(require("react"));
 var material_1 = require("@mui/material");
 var useFormControl_1 = __importDefault(require("@mui/material/FormControl/useFormControl"));
-var ValueRenderer_1 = __importDefault(require("Component/Select/ValueRenderer"));
+var ValueRenderer_1 = __importDefault(require("../Select/ValueRenderer"));
 var Select = function (_a) {
     var _b;
     var children = _a.children, helperText = _a.helperText, _c = _a.loading, loading = _c === void 0 ? false : _c, maxValuesShown = _a.maxValuesShown, _d = _a.canClear, canClear = _d === void 0 ? false : _d, formControlProps = _a.formControlProps, selectProps = __rest(_a, ["children", "helperText", "loading", "maxValuesShown", "canClear", "formControlProps"]);

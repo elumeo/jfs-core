@@ -1,5 +1,5 @@
-import JSCApi from 'API/JSC';
-import * as Type from 'Types/WebSocket';
+import JSCApi from '../../API/JSC';
+import * as Type from '../../Types/WebSocket';
 export declare const webSocketAddNamespaceAction: import("typesafe-actions").PayloadActionCreator<"websocket/ADD_NAMESPACE", string>;
 export declare const webSocketConnectRequestAction: import("typesafe-actions").PayloadActionCreator<"websocket/CONNECT_REQUEST", string>;
 export declare const webSocketConnectSuccessAction: import("typesafe-actions").PayloadActionCreator<"websocket/CONNECT_SUCCESS", string>;

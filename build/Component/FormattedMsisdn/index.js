@@ -24,8 +24,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
-var Redux_1 = require("Types/Redux");
-var PhoneNumberFormat = __importStar(require("Utilities/Format/PhoneNumber"));
+var Redux_1 = require("../../Types/Redux");
+var PhoneNumberFormat = __importStar(require("../../Utilities/Format/PhoneNumber"));
 var FormattedMsisdn = function (_a) {
     var msisdn = _a.msisdn;
     var backendRegion = (0, Redux_1.useSelector)(function (state) { return state.Core.System.backendRegion; });

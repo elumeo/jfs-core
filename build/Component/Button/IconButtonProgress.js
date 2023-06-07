@@ -25,7 +25,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = require("react");
 var material_1 = require("@mui/material");
-var ButtonProgress_1 = require("Component/Button/ButtonProgress");
+var ButtonProgress_1 = require("../Button/ButtonProgress");
 var getSpinnerSx = function (size) {
     if (size === void 0) { size = 'medium'; }
     return ({

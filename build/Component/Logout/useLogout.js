@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_redux_1 = require("react-redux");
 var react_1 = __importDefault(require("react"));
-var Redux_1 = require("Types/Redux");
-var Action_1 = require("Store/Action");
+var Redux_1 = require("../../Types/Redux");
+var Action_1 = require("../../Store/Action");
 var useLogout = function () {
     var dispatch = (0, react_redux_1.useDispatch)();
     var open = (0, Redux_1.useSelector)(function (state) { return state.Core.Logout.logoutOpen; });

@@ -1,4 +1,4 @@
-import { Configuration } from 'Types/Configuration';
+import { Configuration } from '../../Types/Configuration';
 export declare const loadConfig: import("typesafe-actions").EmptyActionCreator<"config/LOAD">;
 export declare const configLoadedAction: import("typesafe-actions").PayloadActionCreator<"config/LOADED", {
     config: Configuration;

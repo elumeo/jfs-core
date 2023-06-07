@@ -1,5 +1,5 @@
 import React from 'react';
-export declare type Props = {
+export type Props = {
     allowRobotLogin: boolean;
     packageJSON: Record<string, unknown>;
     translations: Record<string, Record<string, string>>;

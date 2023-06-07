@@ -28,8 +28,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = require("react");
 var react_intl_1 = require("react-intl");
-var Format_1 = require("Utilities/Format");
-var Root_1 = __importDefault(require("Component/Table/Cell/Root"));
+var Format_1 = require("../../../Utilities/Format");
+var Root_1 = __importDefault(require("../../Table/Cell/Root"));
 var DateTime = function (_a) {
     var _b = _a.value, value = _b === void 0 ? null : _b, _c = _a.noValueElement, noValueElement = _c === void 0 ? '-' : _c, _d = _a.asTwoLines, asTwoLines = _d === void 0 ? true : _d, _e = _a.displayTime, displayTime = _e === void 0 ? true : _e, rest = __rest(_a, ["value", "noValueElement", "asTwoLines", "displayTime"]);
     var _f = (0, react_intl_1.useIntl)(), formatDate = _f.formatDate, formatTime = _f.formatTime;

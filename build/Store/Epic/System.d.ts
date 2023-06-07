@@ -1,3 +1,3 @@
-import { Epic } from 'Types/Redux';
+import { Epic } from '../../Types/Redux';
 declare const getRegion: Epic;
 export default getRegion;

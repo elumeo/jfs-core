@@ -50,7 +50,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var Token = __importStar(require("../LOCAL_STORAGE/Token"));
-var HttpClient_1 = require("API/HTTP/HttpClient");
+var HttpClient_1 = require("../HTTP/HttpClient");
 var JscClient = /** @class */ (function (_super) {
     __extends(JscClient, _super);
     function JscClient() {

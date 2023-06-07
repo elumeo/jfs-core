@@ -29,10 +29,10 @@ var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime")
 var react_1 = __importDefault(require("react"));
 var Drawer_1 = __importDefault(require("@mui/material/Drawer"));
 var List_1 = __importDefault(require("@mui/material/List"));
-var Redux_1 = require("Types/Redux");
+var Redux_1 = require("../../Types/Redux");
 var Header_1 = __importDefault(require("./Header"));
 var react_redux_1 = require("react-redux");
-var Action_1 = require("Store/Action");
+var Action_1 = require("../../Store/Action");
 var material_1 = require("@mui/material");
 var Drawer = function (_a) {
     var children = _a.children, _b = _a.width, width = _b === void 0 ? 270 : _b, rest = __rest(_a, ["children", "width"]);

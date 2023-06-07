@@ -1,5 +1,5 @@
 import React from 'react';
-export declare type Props = {
+export type Props = {
     value: string;
     onChange: (next: string) => void;
     onEnter: () => void;

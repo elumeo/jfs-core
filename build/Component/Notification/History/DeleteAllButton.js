@@ -17,10 +17,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var Button_1 = __importDefault(require("@mui/material/Button"));
 var Delete_1 = __importDefault(require("@mui/icons-material/Delete"));
-var Redux_1 = require("Types/Redux");
+var Redux_1 = require("../../../Types/Redux");
 var react_intl_1 = require("react-intl");
 var react_redux_1 = require("react-redux");
-var Action_1 = require("Store/Action");
+var Action_1 = require("../../../Store/Action");
 var DeleteAllButton = function () {
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
     var dispatch = (0, react_redux_1.useDispatch)();

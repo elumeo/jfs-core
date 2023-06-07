@@ -30,8 +30,8 @@ var rxjs_1 = require("rxjs");
 var operators_1 = require("rxjs/operators");
 var axios_1 = __importDefault(require("axios"));
 var typesafe_actions_1 = require("typesafe-actions");
-var Action = __importStar(require("Store/Action"));
-var Client_1 = __importDefault(require("API/JSC/Client"));
+var Action = __importStar(require("../Action"));
+var Client_1 = __importDefault(require("../../API/JSC/Client"));
 var loadConfiguration = function (action$) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.loadConfig)), (0, operators_1.concatMap)(function () { return (0, rxjs_1.from)(axios_1.default.get("./config.json", {})); }), (0, operators_1.concatMap)(function (response) {
         var config = response.data;

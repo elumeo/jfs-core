@@ -29,8 +29,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var rxjs_1 = require("rxjs");
 var operators_1 = require("rxjs/operators");
 var typesafe_actions_1 = require("typesafe-actions");
-var Action = __importStar(require("Store/Action"));
-var Client_1 = __importDefault(require("API/JSC/Client"));
+var Action = __importStar(require("../Action"));
+var Client_1 = __importDefault(require("../../API/JSC/Client"));
 var initializeApp = function (action$) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.initializeApp)), (0, operators_1.concatMap)(function (action) {
         Client_1.default.setPackageJson(action.payload.packageJson);

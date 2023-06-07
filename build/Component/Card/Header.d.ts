@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from '@mui/material';
 import { IconButtonProps } from '@mui/material/IconButton';
-export declare type AppCardHeaderBaseProps = {
+export type AppCardHeaderBaseProps = {
     isLoading?: boolean;
     title: React.ReactNode;
     subtitle?: React.ReactNode;

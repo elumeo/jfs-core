@@ -29,7 +29,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = __importDefault(require("react"));
 var Failure_1 = __importDefault(require("./Failure"));
-var Format = __importStar(require("Utilities/Format"));
+var Format = __importStar(require("../../Utilities/Format"));
 var useMessage = function (toast, words) {
     var _a = react_1.default.useState(''), message = _a[0], setMessage = _a[1];
     react_1.default.useEffect(function () {

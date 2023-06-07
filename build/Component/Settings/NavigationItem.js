@@ -24,9 +24,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
-var Navigation = __importStar(require("Component/Navigation"));
+var Navigation = __importStar(require("../Navigation"));
 var react_redux_1 = require("react-redux");
-var Action_1 = require("Store/Action");
+var Action_1 = require("../../Store/Action");
 var NavigationItem = function () {
     var dispatch = (0, react_redux_1.useDispatch)();
     var onClick = function () { return dispatch((0, Action_1.openSettings)()); };

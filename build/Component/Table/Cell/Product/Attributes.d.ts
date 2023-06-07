@@ -1,5 +1,5 @@
 import React from 'react';
-export declare type Props = {
+export type Props = {
     productType?: string;
     inStockPool?: boolean;
     hasNoTvLock?: boolean;

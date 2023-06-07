@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { State as CoreState } from './Core';
-export declare type State = {
+export type State = {
     Core: CoreState;
 } & Record<string, unknown>;
 declare const Global: Reducer<State>;

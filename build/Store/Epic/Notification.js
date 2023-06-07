@@ -26,7 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.mapErrorToNotification = void 0;
 var operators_1 = require("rxjs/operators");
 var typesafe_actions_1 = require("typesafe-actions");
-var Action = __importStar(require("Store/Action"));
+var Action = __importStar(require("../Action"));
 var mapErrorToNotification = function (error) {
     var _a, _b, _c, _d, _e, _f, _g, _h;
     var id = crypto.randomUUID();

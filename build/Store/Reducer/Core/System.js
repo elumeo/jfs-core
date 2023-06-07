@@ -35,7 +35,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var TA = __importStar(require("typesafe-actions"));
-var Action = __importStar(require("Store/Action"));
+var Action = __importStar(require("../../Action"));
 var initialState = {
     backendRegion: null,
     pending: false,

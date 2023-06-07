@@ -39,9 +39,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = __importDefault(require("react"));
-var Action_1 = require("Store/Action");
+var Action_1 = require("../../Store/Action");
 var react_redux_1 = require("react-redux");
-var Session = __importStar(require("Store/Selector/Core/Session"));
+var Session = __importStar(require("../../Store/Selector/Core/Session"));
 var BaseRoute_1 = __importDefault(require("./BaseRoute"));
 var AuthRoute = function (props) {
     var dispatch = (0, react_redux_1.useDispatch)();

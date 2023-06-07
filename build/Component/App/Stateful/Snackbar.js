@@ -38,9 +38,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
-var Notification = __importStar(require("Component/Notification"));
+var Notification = __importStar(require("../../Notification"));
 var notistack_1 = require("notistack");
-var Redux_1 = require("Types/Redux");
+var Redux_1 = require("../../../Types/Redux");
 var Definition_1 = __importDefault(require("../Stateless/Style/Theme/Definition"));
 var anchorOriginTopRight = { vertical: 'top', horizontal: 'right' };
 var anchorOriginBottomRight = { vertical: 'bottom', horizontal: 'right' };

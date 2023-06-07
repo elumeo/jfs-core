@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var Tooltip_1 = __importDefault(require("@mui/material/Tooltip"));
-var Redux_1 = require("Types/Redux");
+var Redux_1 = require("../../../Types/Redux");
 var react_intl_1 = require("react-intl");
 var Flag_1 = __importDefault(require("./Flag"));
 var material_1 = require("@mui/material");

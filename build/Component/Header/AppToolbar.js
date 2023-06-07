@@ -30,8 +30,8 @@ var react_1 = __importDefault(require("react"));
 var react_intl_1 = require("react-intl");
 var Menu_1 = __importDefault(require("@mui/icons-material/Menu"));
 var material_1 = require("@mui/material");
-var Definition_1 = __importDefault(require("Component/App/Stateless/Style/Theme/Definition"));
-var Navigation_1 = require("Store/Action/Navigation");
+var Definition_1 = __importDefault(require("../App/Stateless/Style/Theme/Definition"));
+var Navigation_1 = require("../../Store/Action/Navigation");
 var react_redux_1 = require("react-redux");
 var toolbarStyle = {
     height: Definition_1.default.mixins.toolbar.minHeight,

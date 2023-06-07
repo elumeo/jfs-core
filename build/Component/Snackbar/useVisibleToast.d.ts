@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toast } from 'Types/Toast';
+import { Toast } from '../../Types/Toast';
 import { Severity } from './useSeverity';
 declare const useVisibleToast: () => {
     toast: Toast;
@@ -7,6 +7,6 @@ declare const useVisibleToast: () => {
     words: string[];
     message: React.ReactNode;
     autoHideDuration: number;
-    severity: AlertColor;
+    severity: Severity;
 };
 export default useVisibleToast;

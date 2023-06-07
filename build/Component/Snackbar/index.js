@@ -20,7 +20,7 @@ var Snackbar_1 = __importDefault(require("@mui/material/Snackbar/Snackbar"));
 var useVisibleToast_1 = __importDefault(require("./useVisibleToast"));
 var material_1 = require("@mui/material");
 var react_redux_1 = require("react-redux");
-var Action_1 = require("Store/Action");
+var Action_1 = require("../../Store/Action");
 var anchor = {
     vertical: 'bottom',
     horizontal: 'center',

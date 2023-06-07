@@ -13,8 +13,8 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_intl_1 = require("react-intl");
-var Redux_1 = require("Types/Redux");
-var Button_1 = require("Component/Button");
+var Redux_1 = require("../../Types/Redux");
+var Button_1 = require("../Button");
 var Submit = function (_a) {
     var onClick = _a.onClick, disabled = _a.disabled;
     var intl = (0, react_intl_1.useIntl)();

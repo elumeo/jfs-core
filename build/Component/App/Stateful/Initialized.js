@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
-var useSelector_1 = __importDefault(require("Store/useSelector"));
+var useSelector_1 = __importDefault(require("../../../Store/useSelector"));
 var Initialized = function (_a) {
     var children = _a.children;
     var initialized = (0, useSelector_1.default)(function (state) { return state.Core.App.appInitialized; });

@@ -16,11 +16,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = require("react");
-var Redux_1 = require("Types/Redux");
+var Redux_1 = require("../../../../Types/Redux");
 var material_1 = require("@mui/material");
 var colors_1 = require("@mui/material/colors");
 var react_intl_1 = require("react-intl");
-var Definition_1 = __importDefault(require("Component/App/Stateless/Style/Theme/Definition"));
+var Definition_1 = __importDefault(require("../../../App/Stateless/Style/Theme/Definition"));
 var Indicator = function (_a) {
     var client = _a.client, roomName = _a.roomName;
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;

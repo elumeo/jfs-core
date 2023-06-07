@@ -1,5 +1,5 @@
 import * as TA from 'typesafe-actions';
-import * as Type from 'Types/Notification';
+import * as Type from '../../Types/Notification';
 import { AxiosError } from 'axios';
 export declare const addNotification: TA.PayloadActionCreator<"notification/ADD", Type.Notification>;
 export declare const removeNotification: TA.PayloadActionCreator<"notification/REMOVE", string>;

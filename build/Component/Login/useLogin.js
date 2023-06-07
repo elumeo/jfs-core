@@ -29,8 +29,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Login_1 = require("./../../Store/Action/Login");
 var react_redux_1 = require("react-redux");
 var react_1 = __importDefault(require("react"));
-var Redux_1 = require("Types/Redux");
-var Selector = __importStar(require("Store/Selector"));
+var Redux_1 = require("../../Types/Redux");
+var Selector = __importStar(require("../../Store/Selector"));
 var useLogin = function () {
     var dispatch = (0, react_redux_1.useDispatch)();
     var open = (0, Redux_1.useSelector)(Selector.Login.isLoginOpen);

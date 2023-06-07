@@ -1,4 +1,4 @@
-import * as Type from 'Types/Login';
+import * as Type from '../../Types/Login';
 export declare const openLoginDialog: import("typesafe-actions").EmptyActionCreator<"login/OPEN">;
 export declare const closeLoginDialog: import("typesafe-actions").EmptyActionCreator<"login/CLOSE">;
 export declare const checkLogin: import("typesafe-actions").PayloadActionCreator<"login/CHECK", Type.Credentials>;

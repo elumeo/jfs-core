@@ -1,5 +1,5 @@
-import { ActionType } from 'Types/Redux';
-export declare type State = {
+import { ActionType } from '../../../Types/Redux';
+export type State = {
     callstack: unknown[];
     limit: number;
 };

@@ -18,7 +18,7 @@ var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime")
 var react_1 = require("react");
 var material_1 = require("@mui/material");
 var colors_1 = require("@mui/material/colors");
-var Definition_1 = __importDefault(require("Component/App/Stateless/Style/Theme/Definition"));
+var Definition_1 = __importDefault(require("../../../App/Stateless/Style/Theme/Definition"));
 var bundleBoxStyles = {
     width: Definition_1.default.spacing(10),
     height: Definition_1.default.spacing(10),

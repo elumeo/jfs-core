@@ -27,8 +27,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_intl_1 = require("react-intl");
-var Format_1 = require("Utilities/Format");
-var Root_1 = __importDefault(require("Component/Table/Cell/Root"));
+var Format_1 = require("../../../Utilities/Format");
+var Root_1 = __importDefault(require("../../Table/Cell/Root"));
 var DateTimeRange = function (_a) {
     var _b = _a.value, value = _b === void 0 ? null : _b, _c = _a.noValueElement, noValueElement = _c === void 0 ? '-' : _c, rest = __rest(_a, ["value", "noValueElement"]);
     var _d = (0, react_intl_1.useIntl)(), formatDate = _d.formatDate, formatTime = _d.formatTime;

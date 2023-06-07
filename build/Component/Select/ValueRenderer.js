@@ -27,7 +27,7 @@ var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime")
 var react_1 = require("react");
 var material_1 = require("@mui/material");
 var Cancel_1 = __importDefault(require("@mui/icons-material/Cancel"));
-var IconButtonClear_1 = __importDefault(require("Component/Select/IconButtonClear"));
+var IconButtonClear_1 = __importDefault(require("../Select/IconButtonClear"));
 var ValueRenderer = function (_a) {
     var selected = _a.selected, labelsByValue = _a.labelsByValue, onUnselect = _a.onUnselect, onClear = _a.onClear, maxValuesShown = _a.maxValuesShown, isInClearableState = _a.isInClearableState;
     var renderedValue;

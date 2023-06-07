@@ -23,7 +23,7 @@ var Header_1 = __importDefault(require("./Header"));
 var notistack_1 = require("notistack");
 var Actions_1 = __importDefault(require("./Actions"));
 var Footer_1 = __importDefault(require("./Footer"));
-var Definition_1 = __importDefault(require("Component/App/Stateless/Style/Theme/Definition"));
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
 var colors_1 = require("@mui/material/colors");
 var _getStyles = function (_a) {
     var _b, _c, _d, _e;

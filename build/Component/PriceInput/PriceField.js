@@ -28,10 +28,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = __importDefault(require("react"));
 var material_1 = require("@mui/material");
-var TextField_1 = __importDefault(require("Component/TextField"));
-var useCurrency_1 = __importDefault(require("Effect/useCurrency"));
-var usePriceFieldAdornment_1 = __importDefault(require("Effect/usePriceFieldAdornment"));
-var Format_1 = require("Utilities/Format");
+var TextField_1 = __importDefault(require("../TextField"));
+var useCurrency_1 = __importDefault(require("../../Effect/useCurrency"));
+var usePriceFieldAdornment_1 = __importDefault(require("../../Effect/usePriceFieldAdornment"));
+var Format_1 = require("../../Utilities/Format");
 var PriceField = function (_a) {
     var _b = _a.currency, currency = _b === void 0 ? 'eur' : _b, _c = _a.value, value = _c === void 0 ? 0.0 : _c, _d = _a.selectOnFocus, selectOnFocus = _d === void 0 ? true : _d, _e = _a.showDecimals, showDecimals = _e === void 0 ? true : _e, min = _a.min, max = _a.max, props = __rest(_a, ["currency", "value", "selectOnFocus", "showDecimals", "min", "max"]);
     var configCurrency = (0, useCurrency_1.default)();

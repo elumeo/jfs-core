@@ -5,7 +5,7 @@ import International from './International';
 import Snackbar from './Snackbar';
 import Initialized from './Initialized';
 import Uninitialized from './Uninitialized';
-export declare type Props = React.PropsWithChildren<{
+export type Props = React.PropsWithChildren<{
     store: Store;
 }>;
 declare const Stateful: React.FC<Props> & {

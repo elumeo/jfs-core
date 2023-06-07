@@ -39,9 +39,9 @@ var react_1 = __importStar(require("react"));
 var material_1 = require("@mui/material");
 var icons_material_1 = require("@mui/icons-material");
 var react_redux_1 = require("react-redux");
-var Action = __importStar(require("Store/Action"));
+var Action = __importStar(require("../../Store/Action"));
 var react_intl_1 = require("react-intl");
-var Redux_1 = require("Types/Redux");
+var Redux_1 = require("../../Types/Redux");
 var colors_1 = require("@mui/material/colors");
 var DebugButton = function (_a) {
     var _b = _a.selector, selector = _b === void 0 ? function (state) { return state; } : _b, _c = _a.actions, actions = _c === void 0 ? [Action.addErrorNotification] : _c, _d = _a.mapper, mapper = _d === void 0 ? function (action) { var _a, _b; return (_b = (_a = (action)) === null || _a === void 0 ? void 0 : _a.payload) !== null && _b !== void 0 ? _b : action.type; } : _d, _e = _a.filter, filter = _e === void 0 ? function () { return true; } : _e;

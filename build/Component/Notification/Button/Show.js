@@ -22,9 +22,9 @@ var Badge_1 = __importDefault(require("@mui/material/Badge"));
 var Popper_1 = __importDefault(require("@mui/material/Popper"));
 var Popover_1 = __importDefault(require("@mui/material/Popover"));
 var Notifications_1 = __importDefault(require("@mui/icons-material/Notifications"));
-var Overlay_1 = __importDefault(require("Component/Notification/Overlay"));
+var Overlay_1 = __importDefault(require("../../Notification/Overlay"));
 var notistack_1 = require("notistack");
-var Redux_1 = require("Types/Redux");
+var Redux_1 = require("../../../Types/Redux");
 var ShowButton = function (_a) {
     var keepOpenOnOutsideClick = _a.keepOpenOnOutsideClick;
     var _b = react_1.default.useState(null), anchorRef = _b[0], setAnchorRef = _b[1];

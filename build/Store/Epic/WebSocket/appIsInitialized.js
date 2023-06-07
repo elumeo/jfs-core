@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var operators_1 = require("rxjs/operators");
 var TA = __importStar(require("typesafe-actions"));
-var Action = __importStar(require("Store/Action"));
+var Action = __importStar(require("../../Action"));
 var appIsInitialized = function (action$, state$) {
     return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.authorizeSession)), (0, operators_1.filter)(function () {
         return state$.value.Core.Configuration.loaded &&

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parse = exports.limit = void 0;
-var Language_1 = require("Types/Language");
+var Language_1 = require("../../Types/Language");
 var Currency_1 = require("./Currency");
 var Locale_1 = require("./Locale");
 var limit = function (number, min, max) {

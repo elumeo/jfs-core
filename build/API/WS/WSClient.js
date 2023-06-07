@@ -7,7 +7,7 @@ exports.WSClient = void 0;
 /* eslint-disable max-lines */
 var rxjs_1 = require("rxjs");
 var socket_io_client_1 = __importDefault(require("socket.io-client"));
-var WebSocket_1 = require("Constant/WebSocket");
+var WebSocket_1 = require("../../Constant/WebSocket");
 var WSClient = /** @class */ (function () {
     function WSClient() {
     }

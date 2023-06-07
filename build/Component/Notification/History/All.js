@@ -15,14 +15,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
-var Redux_1 = require("Types/Redux");
-var Card_1 = __importDefault(require("Component/Notification/Card"));
+var Redux_1 = require("../../../Types/Redux");
+var Card_1 = __importDefault(require("../../Notification/Card"));
 var Empty_1 = __importDefault(require("./Empty"));
 var List_1 = __importDefault(require("@mui/material/List"));
 var ListItem_1 = __importDefault(require("@mui/material/ListItem"));
 var material_1 = require("@mui/material");
 var react_transition_group_1 = require("react-transition-group");
-var Definition_1 = __importDefault(require("Component/App/Stateless/Style/Theme/Definition"));
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
 var classes = {
     root: {
         display: 'flex',

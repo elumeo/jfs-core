@@ -13,7 +13,7 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var material_1 = require("@mui/material");
-var Redux_1 = require("Types/Redux");
+var Redux_1 = require("../../../Types/Redux");
 var Indicator = function (_a) {
     var client = _a.client;
     var isNamespaceConnected = (0, Redux_1.useSelector)(function (state) {

@@ -41,7 +41,7 @@ var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime")
 var notistack_1 = require("notistack");
 var Button = __importStar(require("../Button"));
 var Box_1 = __importDefault(require("@mui/material/Box"));
-var Definition_1 = __importDefault(require("Component/App/Stateless/Style/Theme/Definition"));
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
 var useStyles = {
     root: {
         gridColumnStart: 2,

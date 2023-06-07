@@ -17,7 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = require("react");
 var react_redux_1 = require("react-redux");
-var Action_1 = require("Store/Action");
+var Action_1 = require("../../Store/Action");
 var BaseRoute_1 = __importDefault(require("./BaseRoute"));
 var NoAuthRoute = function (props) {
     var dispatch = (0, react_redux_1.useDispatch)();

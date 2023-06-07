@@ -34,7 +34,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Action = __importStar(require("Store/Action"));
+var Action = __importStar(require("../../Action"));
 var typesafe_actions_1 = require("typesafe-actions");
 var initialState = {
     logoutOpen: false,

@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Client_1 = __importDefault(require("./Client"));
 var rxjs_1 = require("rxjs");
-var WebSocket_1 = require("Constant/WebSocket");
+var WebSocket_1 = require("../../Constant/WebSocket");
 var JSCApi;
 (function (JSCApi) {
     var DTO;

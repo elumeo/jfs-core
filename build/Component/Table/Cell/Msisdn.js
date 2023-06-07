@@ -26,10 +26,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
-var FormattedMsisdn_1 = __importDefault(require("Component/FormattedMsisdn"));
-var Loading_1 = __importDefault(require("Component/Table/Cell/Loading"));
-var Root_1 = __importDefault(require("Component/Table/Cell/Root"));
-var VirtualizedTable_1 = require("Component/Table/VirtualizedTable");
+var FormattedMsisdn_1 = __importDefault(require("../../FormattedMsisdn"));
+var Loading_1 = __importDefault(require("../../Table/Cell/Loading"));
+var Root_1 = __importDefault(require("../../Table/Cell/Root"));
+var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
 var material_1 = require("@mui/material");
 var Msisdn = function (_a) {
     var value = _a.value, _b = _a.isLoading, isLoading = _b === void 0 ? false : _b, rest = __rest(_a, ["value", "isLoading"]);

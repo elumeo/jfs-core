@@ -1,5 +1,5 @@
 import React from "react";
-declare type Props<T> = {
+type Props<T> = {
     selected: T;
     maxValuesShown?: number;
     labelsByValue: Record<string, string>;

@@ -29,10 +29,10 @@ exports.sortingStyles = void 0;
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
 var react_1 = require("react");
 var material_1 = require("@mui/material");
-var VirtualizedTable_1 = require("Component/Table/VirtualizedTable");
+var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
 var colors_1 = require("@mui/material/colors");
-var Color_1 = require("Constant/Color");
-var Definition_1 = __importDefault(require("Component/App/Stateless/Style/Theme/Definition"));
+var Color_1 = require("../../../Constant/Color");
+var Definition_1 = __importDefault(require("../../App/Stateless/Style/Theme/Definition"));
 exports.sortingStyles = {
     backgroundColor: colors_1.grey[200],
     borderRadius: "".concat(Definition_1.default.spacing(.5), " ").concat(Definition_1.default.spacing(.5), " 0 0")

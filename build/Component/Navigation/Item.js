@@ -20,10 +20,10 @@ var ListItem_1 = __importDefault(require("@mui/material/ListItem"));
 var ListItemIcon_1 = __importDefault(require("@mui/material/ListItemIcon"));
 var Icon_1 = __importDefault(require("@mui/material/Icon"));
 var ListItemText_1 = __importDefault(require("@mui/material/ListItemText"));
-var Redux_1 = require("Types/Redux");
+var Redux_1 = require("../../Types/Redux");
 var react_intl_1 = require("react-intl");
 var react_redux_1 = require("react-redux");
-var Action_1 = require("Store/Action");
+var Action_1 = require("../../Store/Action");
 var react_router_dom_1 = require("react-router-dom");
 var NavigationItem = react_1.default.forwardRef(function (_a, ref) {
     var iconName = _a.iconName, messageId = _a.messageId, onClick = _a.onClick, active = _a.active, messageString = _a.messageString, authorizedOnly = _a.authorizedOnly, unauthorizedOnly = _a.unauthorizedOnly, onClickRoute = _a.onClickRoute;
