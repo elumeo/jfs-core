@@ -36,7 +36,6 @@ const eslintrc = (which) => {
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     const typescript = path_1.default.resolve(env.core, 'build-tools', 'typescript');
     const eslint = path_1.default.resolve(env.core, 'build-tools', 'eslint');
-    // const cypress = path.resolve(env.core, 'build-tools', 'cypress');
     const copy = [
         {
             from: path_1.default.resolve(typescript, tsconfig(env.which)),
@@ -45,12 +44,7 @@ const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
         {
             from: path_1.default.resolve(eslint, eslintrc(env.which)),
             to: path_1.default.resolve(process.cwd(), '.eslintrc')
-        },
-        // TODO: re-enable when testing becomes relevant
-        // ...['cypress.json', 'Dockerfile', 'docker-compose-test.yml'].map(fileName => ({
-        //   from: path.resolve(cypress, fileName),
-        //   to: path.resolve(process.cwd(), fileName)
-        // }))
+        }
     ];
     yield Promise.all(copy.map(({ from, to }) => fs_extra_1.default.copyFile(from, to)));
 });

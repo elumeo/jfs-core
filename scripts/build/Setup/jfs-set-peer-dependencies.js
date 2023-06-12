@@ -54,10 +54,10 @@ exports.name = 'jfs-set-peer-dependencies';
 exports.scope = ['app', 'component'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     if (env.which !== 'core') {
-        const { name, dependencies: coreDependencies, peerDependencies: corePeerdependencies, devDependencies: coreDevDependencies } = yield Package.json((0, path_1.resolve)(env.core, 'package.json'));
-        const _a = yield Package.json((0, path_1.resolve)(process.cwd(), 'package.json')), { peerDependencies: appPeerDependencies, devDependencies: appDevDependencies } = _a, appPackagejson = __rest(_a, ["peerDependencies", "devDependencies"]);
+        const { name, dependencies: coreDependencies, peerDependencies: corePeerdependencies } = yield Package.json((0, path_1.resolve)(env.core, 'package.json'));
+        const _a = yield Package.json((0, path_1.resolve)(process.cwd(), 'package.json')), { peerDependencies: appPeerDependencies } = _a, appPackagejson = __rest(_a, ["peerDependencies"]);
         const path = (0, path_1.resolve)(process.cwd(), 'package.json');
-        const next = Object.assign(Object.assign({}, appPackagejson), { peerDependencies: Object.assign(Object.assign(Object.assign({}, appPeerDependencies !== null && appPeerDependencies !== void 0 ? appPeerDependencies : {}), corePeerdependencies !== null && corePeerdependencies !== void 0 ? corePeerdependencies : {}), coreDependencies !== null && coreDependencies !== void 0 ? coreDependencies : {}), devDependencies: Object.assign(Object.assign({}, appDevDependencies !== null && appDevDependencies !== void 0 ? appDevDependencies : {}), coreDevDependencies !== null && coreDevDependencies !== void 0 ? coreDevDependencies : {}) });
+        const next = Object.assign(Object.assign({}, appPackagejson), { peerDependencies: Object.assign(Object.assign(Object.assign({}, appPeerDependencies !== null && appPeerDependencies !== void 0 ? appPeerDependencies : {}), corePeerdependencies !== null && corePeerdependencies !== void 0 ? corePeerdependencies : {}), coreDependencies !== null && coreDependencies !== void 0 ? coreDependencies : {}) });
         yield fs_extra_1.default.writeJSON(path, next, {
             spaces: 2
         });

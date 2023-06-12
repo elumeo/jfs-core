@@ -31,24 +31,38 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = exports.scope = exports.name = void 0;
-const path_1 = __importDefault(require("path"));
-const JFS = __importStar(require("../Library/JFS"));
-const NPM = __importStar(require("../Library/NPM"));
-exports.name = 'jfs-postinstall';
-exports.scope = ['all'];
+const Package = __importStar(require("../Library/NPM/Package"));
+const path_1 = require("path");
+const fs_extra_1 = __importDefault(require("fs-extra"));
+exports.name = 'jfs-set-dev-dependencies';
+exports.scope = ['app', 'component'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     if (env.which !== 'core') {
-        yield JFS.Package.register(env, yield JFS.Bin.scripts(env));
-        yield JFS.Augmentation.copy(env, path_1.default.resolve(env.root, 'augmentation'));
+        const { name, devDependencies: coreDevDependencies } = yield Package.json((0, path_1.resolve)(env.core, 'package.json'));
+        const _a = yield Package.json((0, path_1.resolve)(process.cwd(), 'package.json')), { devDependencies: appDevDependencies } = _a, appPackagejson = __rest(_a, ["devDependencies"]);
+        const path = (0, path_1.resolve)(process.cwd(), 'package.json');
+        const next = Object.assign(Object.assign({}, appPackagejson), { devDependencies: Object.assign(Object.assign({}, appDevDependencies !== null && appDevDependencies !== void 0 ? appDevDependencies : {}), coreDevDependencies !== null && coreDevDependencies !== void 0 ? coreDevDependencies : {}) });
+        yield fs_extra_1.default.writeJSON(path, next, {
+            spaces: 2
+        });
+        console.log(`Added devDependencies to package.json of ${name}`);
     }
-    yield NPM.Package.run('jfs-deploy-config-files').then(() => {
-        console.log(`√ jfs-core config files deployed`);
-    });
 });
 exports.run = run;
-//# sourceMappingURL=jfs-postinstall.js.map
+//# sourceMappingURL=jfs-set-dev-dependencies.js.map
