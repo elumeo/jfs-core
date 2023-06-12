@@ -11,7 +11,7 @@ export const run = async (env: Type.Environment.Info) => {
     return
   }
 
-  const { name, devDependencies: coreDevDependencies, peerDependencies: corePeerDependencies } = await NPM.Package.json(resolve(env.core, 'package.json'));
+  const { name, devDependencies: coreDevDependencies, dependencies: coreDependencies } = await NPM.Package.json(resolve(env.core, 'package.json'));
   const { devDependencies: appDevDependencies, peerDependencies: appPeerDependencies, ...appPackagejson } = await NPM.Package.json(resolve(process.cwd(), 'package.json'));
 
   const path = resolve(process.cwd(), 'package.json');
@@ -23,7 +23,7 @@ export const run = async (env: Type.Environment.Info) => {
     },
     peerDependencies: {
       ...appPeerDependencies ?? {},
-      ...corePeerDependencies ?? {},
+      ...coreDependencies ?? {},
     }
   };
 
@@ -32,8 +32,8 @@ export const run = async (env: Type.Environment.Info) => {
   });
 
   console.log(`Added devDependencies of ${name} to package.json`)
-  console.log(`Added peerDependencies of ${name} to package.json`)
+  console.log(`Added dependencies of ${name} as peerDependencies in package.json`)
 
-  NPM.Package.run('npm run install')
+  NPM.Package.run('install')
 
 }
