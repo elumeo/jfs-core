@@ -30,8 +30,8 @@ var Action = __importStar(require("../../Action"));
 var Token = __importStar(require("../../../API/LOCAL_STORAGE/Token"));
 var loadSession = function (action$, store) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.loadSession)), (0, operators_1.map)(function () {
-        var _a;
-        var _b = (_a = store.value.Core.Configuration.config) !== null && _a !== void 0 ? _a : {}, username = _b.RobotUsername, password = _b.RobotPassword, allowRobotLogin = _b.AllowRobotLogin;
+        var _a, _b;
+        var _c = (_b = (_a = store.value.Core.Configuration) === null || _a === void 0 ? void 0 : _a.config) !== null && _b !== void 0 ? _b : {}, username = _c.RobotUsername, password = _c.RobotPassword, allowRobotLogin = _c.AllowRobotLogin;
         return [allowRobotLogin, { username: username, password: password }];
     }), (0, operators_1.switchMap)(function (_a) {
         var allowRobotLogin = _a[0], _b = _a[1], username = _b.username, password = _b.password;

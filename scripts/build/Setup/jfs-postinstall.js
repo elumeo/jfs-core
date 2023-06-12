@@ -43,7 +43,9 @@ exports.name = 'jfs-postinstall';
 exports.scope = ['all'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     if (env.which !== 'core') {
-        yield JFS.Package.register(env, yield JFS.Bin.scripts(env));
+        yield JFS.Package.register(env, yield JFS.Bin.scripts(env)).then(() => {
+            console.log("√ jfs-core scripts registered in package.json");
+        });
         yield JFS.Augmentation.copy(env, path_1.default.resolve(env.root, 'augmentation'));
     }
     yield NPM.Package.run('jfs-deploy-config-files').then(() => {
