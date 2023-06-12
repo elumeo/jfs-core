@@ -12,6 +12,8 @@ export const run = async (env: Type.Environment.Info) => {
     const { name, devDependencies: coreDevDependencies } = await Package.json(resolve(env.core, 'package.json'));
     const { devDependencies: appDevDependencies, ...appPackagejson } = await Package.json(resolve(process.cwd(), 'package.json'));
 
+    console.log({ name, coreDevDependencies, appDevDependencies, appPackagejson })
+
     const path = resolve(process.cwd(), 'package.json');
     const next = {
       ...appPackagejson,

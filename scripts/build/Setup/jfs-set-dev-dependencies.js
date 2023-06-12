@@ -56,6 +56,7 @@ const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     if (env.which !== 'core') {
         const { name, devDependencies: coreDevDependencies } = yield Package.json((0, path_1.resolve)(env.core, 'package.json'));
         const _a = yield Package.json((0, path_1.resolve)(process.cwd(), 'package.json')), { devDependencies: appDevDependencies } = _a, appPackagejson = __rest(_a, ["devDependencies"]);
+        console.log({ name, coreDevDependencies, appDevDependencies, appPackagejson });
         const path = (0, path_1.resolve)(process.cwd(), 'package.json');
         const next = Object.assign(Object.assign({}, appPackagejson), { devDependencies: Object.assign(Object.assign({}, appDevDependencies !== null && appDevDependencies !== void 0 ? appDevDependencies : {}), coreDevDependencies !== null && coreDevDependencies !== void 0 ? coreDevDependencies : {}) });
         yield fs_extra_1.default.writeJSON(path, next, {
