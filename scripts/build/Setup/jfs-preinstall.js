@@ -53,22 +53,19 @@ const fs_extra_1 = __importDefault(require("fs-extra"));
 exports.name = 'jfs-preinstall';
 exports.scope = ['all'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
-    switch (env.which) {
-        case 'app':
-        case 'component':
-            const { name, devDependencies: coreDevDependencies, peerDependencies: corePeerDependencies } = yield NPM.Package.json((0, path_1.resolve)(env.core, 'package.json'));
-            const _a = yield NPM.Package.json((0, path_1.resolve)(process.cwd(), 'package.json')), { devDependencies: appDevDependencies, peerDependencies: appPeerDependencies } = _a, appPackagejson = __rest(_a, ["devDependencies", "peerDependencies"]);
-            console.log({ name, coreDevDependencies, appDevDependencies, appPackagejson });
-            const path = (0, path_1.resolve)(process.cwd(), 'package.json');
-            const next = Object.assign(Object.assign({}, appPackagejson), { devDependencies: Object.assign(Object.assign({}, appDevDependencies !== null && appDevDependencies !== void 0 ? appDevDependencies : {}), coreDevDependencies !== null && coreDevDependencies !== void 0 ? coreDevDependencies : {}), peerDependencies: Object.assign(Object.assign({}, appPeerDependencies !== null && appPeerDependencies !== void 0 ? appPeerDependencies : {}), corePeerDependencies !== null && corePeerDependencies !== void 0 ? corePeerDependencies : {}) });
-            yield fs_extra_1.default.writeJSON(path, next, {
-                spaces: 2
-            });
-            console.log(`Added devDependencies of ${name} to package.json`);
-            console.log(`Added peerDependencies of ${name} to package.json`);
-            NPM.Package.run('npm run install');
-            break;
+    if (env.which != 'component' && env.which != 'app') {
+        return;
     }
+    const { name, devDependencies: coreDevDependencies, peerDependencies: corePeerDependencies } = yield NPM.Package.json((0, path_1.resolve)(env.core, 'package.json'));
+    const _a = yield NPM.Package.json((0, path_1.resolve)(process.cwd(), 'package.json')), { devDependencies: appDevDependencies, peerDependencies: appPeerDependencies } = _a, appPackagejson = __rest(_a, ["devDependencies", "peerDependencies"]);
+    const path = (0, path_1.resolve)(process.cwd(), 'package.json');
+    const next = Object.assign(Object.assign({}, appPackagejson), { devDependencies: Object.assign(Object.assign({}, appDevDependencies !== null && appDevDependencies !== void 0 ? appDevDependencies : {}), coreDevDependencies !== null && coreDevDependencies !== void 0 ? coreDevDependencies : {}), peerDependencies: Object.assign(Object.assign({}, appPeerDependencies !== null && appPeerDependencies !== void 0 ? appPeerDependencies : {}), corePeerDependencies !== null && corePeerDependencies !== void 0 ? corePeerDependencies : {}) });
+    yield fs_extra_1.default.writeJSON(path, next, {
+        spaces: 2
+    });
+    console.log(`Added devDependencies of ${name} to package.json`);
+    console.log(`Added peerDependencies of ${name} to package.json`);
+    NPM.Package.run('npm run install');
 });
 exports.run = run;
 //# sourceMappingURL=jfs-preinstall.js.map
