@@ -10,11 +10,8 @@ export const run = async (env: Type.Environment.Info) => {
   switch (env.which) {
     case 'app':
     case 'component':
-      // await NPM.Package.run('jfs-set-peer-dependencies')
-      // await NPM.Package.run('jfs-set-dev-dependencies')
-
-      const { name, devDependencies: coreDevDependencies } = await NPM.Package.json(resolve(env.core, 'package.json'));
-      const { devDependencies: appDevDependencies, ...appPackagejson } = await NPM.Package.json(resolve(process.cwd(), 'package.json'));
+      const { name, devDependencies: coreDevDependencies, peerDependencies: corePeerDependencies } = await NPM.Package.json(resolve(env.core, 'package.json'));
+      const { devDependencies: appDevDependencies, peerDependencies: appPeerDependencies, ...appPackagejson } = await NPM.Package.json(resolve(process.cwd(), 'package.json'));
 
       console.log({ name, coreDevDependencies, appDevDependencies, appPackagejson })
 
@@ -24,6 +21,10 @@ export const run = async (env: Type.Environment.Info) => {
         devDependencies: {
           ...appDevDependencies ?? {},
           ...coreDevDependencies ?? {},
+        },
+        peerDependencies: {
+          ...appPeerDependencies ?? {},
+          ...corePeerDependencies ?? {},
         }
       };
 
@@ -32,8 +33,9 @@ export const run = async (env: Type.Environment.Info) => {
       });
 
       console.log(`Added devDependencies of ${name} to package.json`)
+      console.log(`Added peerDependencies of ${name} to package.json`)
 
-
+      NPM.Package.run('npm run install')
 
       break
   }
