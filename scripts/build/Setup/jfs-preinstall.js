@@ -33,18 +33,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = exports.scope = exports.name = void 0;
-const JFSBin = __importStar(require("../Library/JFS/Bin"));
-const JFSPackage = __importStar(require("../Library/JFS/Package"));
 const NPM = __importStar(require("../Library/NPM"));
 exports.name = 'jfs-preinstall';
 exports.scope = ['all'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     switch (env.which) {
-        case 'core':
-            yield JFSPackage.register(env, yield JFSBin.scripts(env)).then(() => {
-                console.log("√ jfs-core scripts registered in package.json");
-            });
-            break;
         case 'app':
         case 'component':
             yield NPM.Package.run('jfs-set-peer-dependencies').then(() => {
