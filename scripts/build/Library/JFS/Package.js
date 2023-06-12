@@ -38,13 +38,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.register = void 0;
 const path_1 = __importDefault(require("path"));
 const Package = __importStar(require("../NPM/Package"));
-const lodash_1 = __importDefault(require("lodash"));
 const combine = (scripts) => (scripts.reduce((all, { name, command }) => (Object.assign(Object.assign({}, all), { [name]: command })), {}));
 const register = (env, scripts) => __awaiter(void 0, void 0, void 0, function* () {
     const file = path_1.default.resolve(env.root, 'package.json');
     const json = yield Package.json(file);
     const next = { scripts: combine(scripts) };
-    yield Package.save(file, lodash_1.default.merge(json, next));
+    // await Package.save(file, _.merge(json, next));
+    yield Package.save(file, Object.assign(Object.assign({}, json), { scripts: Object.assign(Object.assign({}, json.scripts), next.scripts) }));
 });
 exports.register = register;
 //# sourceMappingURL=Package.js.map

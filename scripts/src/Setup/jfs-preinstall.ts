@@ -1,6 +1,6 @@
-import path from 'path';
 import * as Type from 'Type';
-import * as JFS from 'Library/JFS';
+import * as JFSBin from 'Library/JFS/Bin';
+import * as JFSPackage from 'Library/JFS/Package';
 import * as NPM from 'Library/NPM';
 
 export const name = 'jfs-preinstall';
@@ -10,7 +10,7 @@ export const run = async (env: Type.Environment.Info) => {
   switch (env.which) {
 
     case 'core':
-      await JFS.Package.register(env, await JFS.Bin.scripts(env)).then(() => {
+      await JFSPackage.register(env, await JFSBin.scripts(env)).then(() => {
         console.log("√ jfs-core scripts registered in package.json")
       });
       break
