@@ -31,21 +31,42 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = exports.scope = exports.name = void 0;
 const NPM = __importStar(require("../Library/NPM"));
+const path_1 = require("path");
+const fs_extra_1 = __importDefault(require("fs-extra"));
 exports.name = 'jfs-preinstall';
 exports.scope = ['all'];
 const run = (env) => __awaiter(void 0, void 0, void 0, function* () {
     switch (env.which) {
         case 'app':
         case 'component':
-            yield NPM.Package.run('jfs-set-peer-dependencies').then(() => {
-                console.log(`√ jfs-core peer-dependencies added to package.json`);
+            // await NPM.Package.run('jfs-set-peer-dependencies')
+            // await NPM.Package.run('jfs-set-dev-dependencies')
+            const { name, devDependencies: coreDevDependencies } = yield NPM.Package.json((0, path_1.resolve)(env.core, 'package.json'));
+            const _a = yield NPM.Package.json((0, path_1.resolve)(process.cwd(), 'package.json')), { devDependencies: appDevDependencies } = _a, appPackagejson = __rest(_a, ["devDependencies"]);
+            console.log({ name, coreDevDependencies, appDevDependencies, appPackagejson });
+            const path = (0, path_1.resolve)(process.cwd(), 'package.json');
+            const next = Object.assign(Object.assign({}, appPackagejson), { devDependencies: Object.assign(Object.assign({}, appDevDependencies !== null && appDevDependencies !== void 0 ? appDevDependencies : {}), coreDevDependencies !== null && coreDevDependencies !== void 0 ? coreDevDependencies : {}) });
+            yield fs_extra_1.default.writeJSON(path, next, {
+                spaces: 2
             });
-            yield NPM.Package.run('jfs-set-dev-dependencies').then(() => {
-                console.log(`√ jfs-core dev-dependencies added to package.json`);
-            });
+            console.log(`Added devDependencies of ${name} to package.json`);
             break;
     }
 });

@@ -1,4 +1,3 @@
-import * as JFS from 'Library/JFS';
 import * as Package from 'Library/NPM/Package';
 import { resolve } from 'path';
 import fs from 'fs-extra';
