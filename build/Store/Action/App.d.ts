@@ -1,6 +1,5 @@
 import * as TA from 'typesafe-actions';
 export declare const initializeApp: TA.PayloadActionCreator<"app/INITIALZE", {
-    allowRobotLogin?: boolean;
     packageJson: Record<string, unknown>;
     ForceHTTPS?: boolean;
     translations: Record<string, Record<string, string>>;

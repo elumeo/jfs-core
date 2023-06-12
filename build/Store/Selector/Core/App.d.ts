@@ -5,13 +5,6 @@ export declare const appInitialized: ((state: {
 }> & {
     clearCache: () => void;
 };
-export declare const allowRobotLogin: ((state: {
-    Core: import("../../Reducer/Core").State;
-} & Record<string, unknown>) => boolean) & import("reselect").OutputSelectorFields<(args_0: import("../../Reducer/Core/App").State) => boolean, {
-    clearCache: () => void;
-}> & {
-    clearCache: () => void;
-};
 export declare const packageJson: ((state: {
     Core: import("../../Reducer/Core").State;
 } & Record<string, unknown>) => {

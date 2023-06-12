@@ -11,7 +11,6 @@ declare const Notification: TA.Reducer<State, ActionType<{}>> & {
         description: string;
         state: unknown;
     }> | TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>> | TA.PayloadAction<"CORE/DEBUGGER/log", unknown> | TA.PayloadAction<"app/INITIALZE", {
-        allowRobotLogin?: boolean;
         packageJson: Record<string, unknown>;
         ForceHTTPS?: boolean;
         translations: Record<string, Record<string, string>>;
@@ -29,7 +28,6 @@ declare const Notification: TA.Reducer<State, ActionType<{}>> & {
         description: string;
         state: unknown;
     }>, THandledAction> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, THandledAction> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, THandledAction> | Exclude<TA.PayloadAction<"app/INITIALZE", {
-        allowRobotLogin?: boolean;
         packageJson: Record<string, unknown>;
         ForceHTTPS?: boolean;
         translations: Record<string, Record<string, string>>;
@@ -48,7 +46,6 @@ declare const Notification: TA.Reducer<State, ActionType<{}>> & {
             description: string;
             state: unknown;
         }>, TOutputAction> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction> | Exclude<TA.PayloadAction<"app/INITIALZE", {
-            allowRobotLogin?: boolean;
             packageJson: Record<string, unknown>;
             ForceHTTPS?: boolean;
             translations: Record<string, Record<string, string>>;
@@ -68,7 +65,6 @@ declare const Notification: TA.Reducer<State, ActionType<{}>> & {
                 description: string;
                 state: unknown;
             }>, TOutputAction_1> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_1> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_1> | Exclude<TA.PayloadAction<"app/INITIALZE", {
-                allowRobotLogin?: boolean;
                 packageJson: Record<string, unknown>;
                 ForceHTTPS?: boolean;
                 translations: Record<string, Record<string, string>>;
@@ -88,7 +84,6 @@ declare const Notification: TA.Reducer<State, ActionType<{}>> & {
                     description: string;
                     state: unknown;
                 }>, TOutputAction_2> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_2> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_2> | Exclude<TA.PayloadAction<"app/INITIALZE", {
-                    allowRobotLogin?: boolean;
                     packageJson: Record<string, unknown>;
                     ForceHTTPS?: boolean;
                     translations: Record<string, Record<string, string>>;
@@ -108,7 +103,6 @@ declare const Notification: TA.Reducer<State, ActionType<{}>> & {
                         description: string;
                         state: unknown;
                     }>, TOutputAction_3> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_3> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_3> | Exclude<TA.PayloadAction<"app/INITIALZE", {
-                        allowRobotLogin?: boolean;
                         packageJson: Record<string, unknown>;
                         ForceHTTPS?: boolean;
                         translations: Record<string, Record<string, string>>;
@@ -128,7 +122,6 @@ declare const Notification: TA.Reducer<State, ActionType<{}>> & {
                             description: string;
                             state: unknown;
                         }>, TOutputAction_4> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_4> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_4> | Exclude<TA.PayloadAction<"app/INITIALZE", {
-                            allowRobotLogin?: boolean;
                             packageJson: Record<string, unknown>;
                             ForceHTTPS?: boolean;
                             translations: Record<string, Record<string, string>>;
@@ -148,7 +141,6 @@ declare const Notification: TA.Reducer<State, ActionType<{}>> & {
                                 description: string;
                                 state: unknown;
                             }>, TOutputAction_5> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_5> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_5> | Exclude<TA.PayloadAction<"app/INITIALZE", {
-                                allowRobotLogin?: boolean;
                                 packageJson: Record<string, unknown>;
                                 ForceHTTPS?: boolean;
                                 translations: Record<string, Record<string, string>>;
@@ -168,7 +160,6 @@ declare const Notification: TA.Reducer<State, ActionType<{}>> & {
                                     description: string;
                                     state: unknown;
                                 }>, TOutputAction_6> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_6> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_6> | Exclude<TA.PayloadAction<"app/INITIALZE", {
-                                    allowRobotLogin?: boolean;
                                     packageJson: Record<string, unknown>;
                                     ForceHTTPS?: boolean;
                                     translations: Record<string, Record<string, string>>;
@@ -188,7 +179,6 @@ declare const Notification: TA.Reducer<State, ActionType<{}>> & {
                                         description: string;
                                         state: unknown;
                                     }>, TOutputAction_7> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_7> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_7> | Exclude<TA.PayloadAction<"app/INITIALZE", {
-                                        allowRobotLogin?: boolean;
                                         packageJson: Record<string, unknown>;
                                         ForceHTTPS?: boolean;
                                         translations: Record<string, Record<string, string>>;
@@ -208,7 +198,6 @@ declare const Notification: TA.Reducer<State, ActionType<{}>> & {
                                             description: string;
                                             state: unknown;
                                         }>, TOutputAction_8> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_8> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_8> | Exclude<TA.PayloadAction<"app/INITIALZE", {
-                                            allowRobotLogin?: boolean;
                                             packageJson: Record<string, unknown>;
                                             ForceHTTPS?: boolean;
                                             translations: Record<string, Record<string, string>>;
@@ -228,7 +217,6 @@ declare const Notification: TA.Reducer<State, ActionType<{}>> & {
                                                 description: string;
                                                 state: unknown;
                                             }>, TOutputAction_9> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/register", Required<Omit<import("../../../Types/Debug").Logger, "selector">>>, TOutputAction_9> | Exclude<TA.PayloadAction<"CORE/DEBUGGER/log", unknown>, TOutputAction_9> | Exclude<TA.PayloadAction<"app/INITIALZE", {
-                                                allowRobotLogin?: boolean;
                                                 packageJson: Record<string, unknown>;
                                                 ForceHTTPS?: boolean;
                                                 translations: Record<string, Record<string, string>>;

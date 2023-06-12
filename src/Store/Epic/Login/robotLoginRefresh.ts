@@ -9,7 +9,7 @@ const robotLoginRefresh: Epic = (action$, state$) =>
     filter(isActionOf(Action.unauthorizeSession)),
     filter(
       () =>
-        state$.value.Core.App.allowRobotLogin &&
+        state$.value.Core.Configuration.config.AllowRobotLogin &&
         state$.value.Core.Configuration.config.RobotUsername &&
         state$.value.Core.Configuration.config.RobotPassword &&
         !state$.value.Core.Login.failedLogins,
