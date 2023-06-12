@@ -11,11 +11,7 @@ export const run = async (env: Type.Environment.Info) => {
     await JFS.Package.register(env, await JFS.Bin.scripts(env));
     await JFS.Augmentation.copy(env, path.resolve(env.root, 'augmentation'));
   }
-  await NPM.Package.run('jfs-deploy-config-files');
-  if (['app', 'component'].includes(env.which)) {
-    await NPM.Package.run('jfs-set-peer-dependencies');
-  }
-  console.log('postinstall DONE √')
-  console.log('Now install dev dependencies by running')
-  console.log('$> npm i')
+  await NPM.Package.run('jfs-deploy-config-files').then(() => {
+    console.log(`√ jfs-core config files deployed`)
+  });
 }
