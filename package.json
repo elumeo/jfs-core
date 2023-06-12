@@ -18,6 +18,7 @@
     "release": "npm publish --access public",
     "release:alpha": "npm publish --tag alpha --access public",
     "release:beta": "npm publish --tag beta --access public",
+    "preinstall": "npm run jfs-preinstall",
     "install:subpkg": "subpkg install",
     "postinstall": "npm run install:subpkg && npm run jfs-postinstall",
     "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i",
@@ -26,6 +27,7 @@
     "jfs-read-translations": "node ./scripts/bin/jfs-read-translations",
     "jfs-deploy-config-files": "node ./scripts/bin/jfs-deploy-config-files",
     "jfs-generate-api": "node ./scripts/bin/jfs-generate-api",
+    "jfs-preinstall": "node ./scripts/bin/jfs-preinstall",
     "jfs-postinstall": "node ./scripts/bin/jfs-postinstall",
     "jfs-check-config-schema": "node ./scripts/bin/jfs-check-config-schema"
   },

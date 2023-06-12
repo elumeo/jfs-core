@@ -9,17 +9,13 @@ export const scope: Type.Script.Scope[] = ['app', 'component'];
 
 export const run = async (env: Type.Environment.Info) => {
   if (env.which !== 'core') {
-    const { name, dependencies: coreDependencies, peerDependencies: corePeerdependencies, devDependencies: coreDevDependencies } = await Package.json(resolve(env.core, 'package.json'));
-    const { peerDependencies: appPeerDependencies, devDependencies: appDevDependencies, ...appPackagejson } = await Package.json(resolve(process.cwd(), 'package.json'));
+    const { name, dependencies: coreDependencies, peerDependencies: corePeerdependencies} = await Package.json(resolve(env.core, 'package.json'));
+    const { peerDependencies: appPeerDependencies, ...appPackagejson } = await Package.json(resolve(process.cwd(), 'package.json'));
 
     const path = resolve(process.cwd(), 'package.json');
     const next = {
       ...appPackagejson,
-      peerDependencies: { ...appPeerDependencies ?? {}, ...corePeerdependencies ?? {}, ...coreDependencies ?? {} },
-      devDependencies: {
-        ...appDevDependencies ?? {},
-        ...coreDevDependencies ?? {},
-      }
+      peerDependencies: { ...appPeerDependencies ?? {}, ...corePeerdependencies ?? {}, ...coreDependencies ?? {} }
     };
 
     await fs.writeJSON(path, next, {
