@@ -27,11 +27,10 @@ var sx = {
     alignItems: 'center',
 };
 var Initializer = function (_a) {
-    var allowRobotLogin = _a.allowRobotLogin, packageJSON = _a.packageJSON, translations = _a.translations;
+    var packageJSON = _a.packageJSON, translations = _a.translations;
     var dispatch = (0, react_redux_1.useDispatch)();
     react_1.default.useEffect(function () {
         dispatch((0, Action_1.initializeApp)({
-            allowRobotLogin: allowRobotLogin,
             packageJson: packageJSON,
             translations: translations
         }));

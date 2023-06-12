@@ -6,10 +6,6 @@ export const appInitialized = createSelector(
   state => state.appInitialized,
 );
 
-export const allowRobotLogin = createSelector(
-  (state: State) => state.Core.App,
-  state => state.allowRobotLogin,
-);
 
 export const packageJson = createSelector(
   (state: State) => state.Core.App,

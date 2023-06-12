@@ -39,10 +39,9 @@ var TA = __importStar(require("typesafe-actions"));
 var Action = __importStar(require("../../Action"));
 exports.initialState = {
     appInitialized: false,
-    allowRobotLogin: false,
     packageJson: null,
 };
 var App = TA.createReducer(exports.initialState)
-    .handleAction(Action.initializeApp, function (state, action) { return (__assign(__assign({}, state), { allowRobotLogin: action.payload.allowRobotLogin, packageJson: action.payload.packageJson })); })
+    .handleAction(Action.initializeApp, function (state, action) { return (__assign(__assign({}, state), { packageJson: action.payload.packageJson })); })
     .handleAction(Action.appInitialized, function (state) { return (__assign(__assign({}, state), { appInitialized: true })); });
 exports.default = App;

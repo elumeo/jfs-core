@@ -9,7 +9,6 @@ Date.prototype.toJSON = function () {
 };
 
 export type Props = StatefulProps & {
-  allowRobotLogin?: boolean;
   packageJSON: Record<string, unknown>;
   translations: Record<string, Record<string, string>>;
   title?: string;
@@ -18,7 +17,6 @@ export type Props = StatefulProps & {
 const App: React.FC<Props> =
   ({
      children,
-     allowRobotLogin,
      translations,
      packageJSON,
      title,
@@ -40,7 +38,6 @@ const App: React.FC<Props> =
       <Stateful.Uninitialized>
         <Stateless.Style>
           <Stateful.Initializer
-            allowRobotLogin={allowRobotLogin}
             packageJSON={packageJSON}
             translations={translations}/>
         </Stateless.Style>

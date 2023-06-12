@@ -11,19 +11,17 @@ const sx: SxProps = {
 };
 
 export type Props = {
-  allowRobotLogin: boolean;
   packageJSON: Record<string, unknown>;
   translations: Record<string, Record<string, string>>;
 };
 
 const Initializer: React.FC<Props> = ({
-  allowRobotLogin, packageJSON, translations
+  packageJSON, translations
 }) => {
   const dispatch = useDispatch();
   React.useEffect(
     () => {
       dispatch(initializeApp({
-        allowRobotLogin,
         packageJson: packageJSON,
         translations
       }));

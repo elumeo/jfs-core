@@ -31,10 +31,11 @@ var react_redux_1 = require("react-redux");
 var NavigationItem = function () {
     var dispatch = (0, react_redux_1.useDispatch)();
     var robotLoginAvailable = (0, Redux_1.useSelector)(function (state) {
+        var _a, _b, _c;
         return state.Core.Configuration.config &&
-            state.Core.Configuration.config.RobotUsername &&
-            state.Core.Configuration.config.RobotPassword &&
-            state.Core.App.allowRobotLogin;
+            ((_a = state.Core.Configuration.config) === null || _a === void 0 ? void 0 : _a.RobotUsername) &&
+            ((_b = state.Core.Configuration.config) === null || _b === void 0 ? void 0 : _b.RobotPassword) &&
+            ((_c = state.Core.Configuration.config) === null || _c === void 0 ? void 0 : _c.AllowRobotLogin);
     });
     return !robotLoginAvailable ? ((0, jsx_runtime_1.jsx)(Navigation.Item, { iconName: 'exit_to_app', messageId: 'app.logout', authorizedOnly: true, onClick: function () { return dispatch((0, Action_1.openLogout)()); } })) : ((0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, {}));
 };

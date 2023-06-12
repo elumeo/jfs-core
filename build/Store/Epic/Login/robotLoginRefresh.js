@@ -29,7 +29,7 @@ var rxjs_1 = require("rxjs");
 var Action = __importStar(require("../../Action"));
 var robotLoginRefresh = function (action$, state$) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.unauthorizeSession)), (0, operators_1.filter)(function () {
-        return state$.value.Core.App.allowRobotLogin &&
+        return state$.value.Core.Configuration.config.AllowRobotLogin &&
             state$.value.Core.Configuration.config.RobotUsername &&
             state$.value.Core.Configuration.config.RobotPassword &&
             !state$.value.Core.Login.failedLogins;

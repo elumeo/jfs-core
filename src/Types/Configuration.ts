@@ -11,6 +11,7 @@ export type WebSocketClient = {
 export type Configuration = {
   RobotUsername: string;
   RobotPassword: string;
+  AllowRobotLogin: boolean;
   Language: Language;
   Currency: string;
   ForceHTTPS: boolean;
