@@ -33,7 +33,6 @@ export const run = async (env: Type.Environment.Info) => {
 
   console.log(`Added devDependencies of ${name} to package.json`)
   console.log(`Added dependencies of ${name} as peerDependencies in package.json`)
-
-  NPM.Package.run('install')
-
+  console.log(`Be sure to install for dev environments using`)
+  console.log(`\t$> npm i --include=dev`)
 }
