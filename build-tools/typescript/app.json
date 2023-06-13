@@ -13,7 +13,6 @@
       "Types/*": ["./Types/*"],
       "Utilities/*": ["./Utilities/*"],
       "API/*" : ["./API/*"]
-
     }
   },
   "include": ["src", "augmentation"],

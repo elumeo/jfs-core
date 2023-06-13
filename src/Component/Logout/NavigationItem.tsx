@@ -9,9 +9,9 @@ const NavigationItem: React.FC = () => {
   const robotLoginAvailable = useSelector(
     state =>
       state.Core.Configuration.config &&
-      state.Core.Configuration.config.RobotUsername &&
-      state.Core.Configuration.config.RobotPassword &&
-      state.Core.App.allowRobotLogin,
+      state.Core.Configuration.config?.RobotUsername &&
+      state.Core.Configuration.config?.RobotPassword &&
+      state.Core.Configuration.config?.AllowRobotLogin,
   );
 
   return !robotLoginAvailable ? (

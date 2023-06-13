@@ -12,8 +12,8 @@ const loadSession: Epic = (action$, store) =>
       const {
         RobotUsername: username,
         RobotPassword: password,
-      } = store.value.Core.Configuration.config;
-      const { allowRobotLogin } = store.value.Core.App;
+        AllowRobotLogin: allowRobotLogin
+      } = store.value.Core.Configuration?.config ?? {};
       return [allowRobotLogin, { username, password }] as [
         boolean,
         { username: string; password: string },
