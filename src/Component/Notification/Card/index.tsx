@@ -20,7 +20,7 @@ const _getStyles =
       maxWidth: definition.spacing(60),
       minHeight: 'fit-content',
       backgroundColor:
-        definition.palette?.[variant]?.['main'] || grey[400],
+        definition.palette?.[variant]?.['main'] || grey[800],
       color: definition.palette?.[variant]?.['contrastText'] || grey[50]
     },
     footer: {

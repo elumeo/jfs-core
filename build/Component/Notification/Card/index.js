@@ -36,7 +36,7 @@ var _getStyles = function (_a) {
             gridTemplateRows: 'auto auto',
             maxWidth: Definition_1.default.spacing(60),
             minHeight: 'fit-content',
-            backgroundColor: ((_c = (_b = Definition_1.default.palette) === null || _b === void 0 ? void 0 : _b[variant]) === null || _c === void 0 ? void 0 : _c['main']) || colors_1.grey[400],
+            backgroundColor: ((_c = (_b = Definition_1.default.palette) === null || _b === void 0 ? void 0 : _b[variant]) === null || _c === void 0 ? void 0 : _c['main']) || colors_1.grey[800],
             color: ((_e = (_d = Definition_1.default.palette) === null || _d === void 0 ? void 0 : _d[variant]) === null || _e === void 0 ? void 0 : _e['contrastText']) || colors_1.grey[50]
         },
         footer: {
