@@ -26,7 +26,7 @@ const register: Epic = (action$, state$) =>
 const post: Epic = (action$, _, { intl }) =>
     action$.pipe(
         rxFilter(isActionOf(Action.Debug.post)),
-        map(({ payload }) => ({ message: payload.description, payload: JSON.stringify(payload) })),
+        map(({ payload }) => ({ message: payload.description, payload: JSON.stringify(payload, null, 4) })),
         switchMap((dto) =>
             from(JSCApi.DebugNotificationClient.sendToMattermost(dto))
                 .pipe(
