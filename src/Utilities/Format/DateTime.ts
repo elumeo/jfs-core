@@ -6,6 +6,7 @@ export const getDefaultTimeFormatOptions = (withSeconds = false): FormatDateOpti
 ;
 
 export const getDefaultDateFormatOptions = (): FormatDateOptions => ({ year: 'numeric', month: '2-digit', day: '2-digit' });
+export const getDefaultDateTimeFormatOptions = (withSeconds = false): FormatDateOptions => ({ ...getDefaultDateFormatOptions(), ...getDefaultTimeFormatOptions(withSeconds) });
 
 export const getDefaultDateFormat = (): string => 'DD.MM.YYYY';
 
