@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "11.0.10",
+  "version": "11.0.11",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -91,7 +91,7 @@
     "react-helmet": "^6.1.0",
     "react-intl": "^5.25.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.8.0",
+    "react-router-dom": "^6.13.0",
     "react-virtuoso": "^4.1.0",
     "react": "^18.2.0",
     "redux-observable": "^2.0.0",
