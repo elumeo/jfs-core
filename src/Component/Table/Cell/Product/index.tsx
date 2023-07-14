@@ -30,7 +30,7 @@ const Product: React.FC<TableCellProductProps> = ({
   onClick = null,
   ...rest
 }) => {
-  const handleOnClick = React.useCallback(() => onClick(id, rowIndex), [onClick, id, rowIndex]);
+  const handleOnClick = React.useCallback(() => onClick !== null ? onClick(id, rowIndex) : null, [onClick, id, rowIndex]);
   return <Root {...rest}>
     {id && <Stack direction='row' maxHeight='100%' spacing={1} maxWidth='inherit' width={'100%'}>
       <Image onClick={handleOnClick} isProductBundle={isProductBundle} id={id} mediaUri={mediaUri} />
