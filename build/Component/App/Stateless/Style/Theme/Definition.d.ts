@@ -1,3 +1,2 @@
-import { Theme } from '@mui/material/styles';
-declare const definition: Theme;
+declare const definition: import("@mui/material/styles").Theme;
 export default definition;

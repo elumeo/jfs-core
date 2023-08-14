@@ -1,27 +1,7 @@
 /* eslint-disable max-lines */
-import { alpha, createTheme, Theme } from '@mui/material/styles';
-import * as Color from '../../../../../Constant/Color';
+import { createTheme } from '@mui/material/styles';
+import * as Color from 'Constant/Color';
 import { grey } from '@mui/material/colors';
-
-const selectedStyles = ({ theme }: { theme: Theme }) => (
-  {
-    '&.Mui-selected': {
-      backgroundColor: `${alpha(Color.secondary.main, theme.palette.action.selectedOpacity)}`,
-      '&:hover': {
-        backgroundColor: `${alpha(Color.secondary.main, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity)}`
-      }
-    },
-    '&:hover': {
-      backgroundColor: `${alpha(Color.secondary.main, theme.palette.action.hoverOpacity)}`
-    },
-    '&.Mui-focusVisible': {
-      backgroundColor: `${alpha(Color.secondary.main, theme.palette.action.selectedOpacity)} !important`,
-      '&:hover': {
-        backgroundColor: `${alpha(Color.secondary.main, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity)}`
-      }
-    }
-  }
-)
 
 const definition = createTheme({
   palette: {
@@ -100,21 +80,6 @@ const definition = createTheme({
           fontSize: '0.925rem',
         }
       }
-    },
-    MuiListItem: {
-      styleOverrides: {
-        root: selectedStyles
-      }
-    },
-    MuiListItemButton: {
-      styleOverrides: {
-        root: selectedStyles
-      }
-    },
-    MuiMenuItem: {
-      styleOverrides: {
-        root: selectedStyles
-      },
     },
     MuiTableSortLabel: {
       styleOverrides: {
