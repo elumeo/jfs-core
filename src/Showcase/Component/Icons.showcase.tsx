@@ -1,34 +1,35 @@
 /* eslint-disable max-lines */
-import React, { memo } from 'react';
+import Done from '@mui/icons-material/Done';
 import { Box, Card, CardContent, CardHeader, Container, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import React, { memo } from 'react';
+import Layout from '../../Component/App/Layout';
+import definition from '../../Component/App/Stateless/Style/Theme/Definition';
 import {
-  BadgePercent as BadgePercentIcon,
-  BidBlock as BidBlockIcon,
-  BoxOpen as BoxOpenIcon,
-  CashInAdvance as CashInAdvanceIcon,
-  CashOnDelivery as CashOnDeliveryIcon,
-  Check as CheckIcon,
-  DeletePin as DeletePinIcon,
-  DeliveryAddress as DeliveryAddressIcon,
-  FilterReset as FilterResetIcon,
-  Ideal as IdealIcon,
-  InvoiceAddress as InvoiceAddressIcon,
-  MultipleSources as MultipleSourcesIcon,
-  PayPal as PayPalIcon,
-  PhoneBlock as PhoneBlockIcon,
-  RatePay as RatePayIcon,
-  Test as TestIcon,
-  WebShop as WebShopIcon,
-  WebShopBidAgent as WebShopBidAgentIcon,
-  WebShopBlock as WebShopBlockIcon
+  BadgePercent,
+  BidBlock,
+  BoxOpen,
+  CashInAdvance,
+  CashOnDelivery,
+  Check,
+  DeletePin,
+  DeliveryAddress,
+  FilterReset,
+  Ideal,
+  InvoiceAddress,
+  MultipleSources,
+  PayPal,
+  PhoneBlock,
+  Pound,
+  RatePay,
+  Test,
+  WebShop,
+  WebShopBidAgent,
+  WebShopBlock
 } from '../../Component/Icon';
 import AppNavigation from './AppNavigation.showcase';
 import CodeBox from './CodeBox.showcase';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import DoneIcon from '@mui/icons-material/Done';
-import definition from '../../Component/App/Stateless/Style/Theme/Definition';
-import Layout from '../../Component/App/Layout';
 const sxs = {
   icon: {
     fontSize: definition.typography.pxToRem(32),
@@ -48,88 +49,92 @@ const Icons = () => {
             <Typography variant={'h6'}>Custom Icons</Typography>
             <Grid container>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><BadgePercentIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<BadgePercentIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><BadgePercent /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<BadgePercent/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><BidBlockIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<BidBlockIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><BidBlock /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<BidBlock/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><BoxOpenIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<BoxOpenIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><BoxOpen /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<BoxOpen/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><CashInAdvanceIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<CashInAdvanceIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><CashInAdvance /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<CashInAdvance/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><CashOnDeliveryIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<CashOnDeliveryIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><CashOnDelivery /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<CashOnDelivery/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><CheckIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<CheckIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><Check /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<Check/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><DeletePinIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<DeletePinIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><DeletePin /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<DeletePin/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><DeliveryAddressIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<DeliveryAddressIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><DeliveryAddress /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<DeliveryAddress/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><FilterResetIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<FilterResetIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><FilterReset /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<FilterReset/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><IdealIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<IdealIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><Ideal /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<Ideal/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><InvoiceAddressIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<InvoiceAddressIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><InvoiceAddress /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<InvoiceAddress/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><InvoiceAddressIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<InvoiceAddressIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><InvoiceAddress /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<InvoiceAddress/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><MultipleSourcesIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<MultipleSourcesIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><MultipleSources /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<MultipleSources/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><PayPalIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<PayPalIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><PayPal /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<PayPal/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><PayPalIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<PayPalIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><PayPal /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<PayPal/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><PhoneBlockIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<PhoneBlockIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><PhoneBlock /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<PhoneBlock/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><RatePayIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<RatePayIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><RatePay /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<RatePay/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><TestIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<TestIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><Test /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<Test/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><WebShopIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<WebShopIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><WebShop /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<WebShop/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><WebShopBidAgentIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<WebShopBidAgentIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><WebShopBidAgent /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<WebShopBidAgent />`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><WebShopBlockIcon /></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<WebShopBlockIcon />`}</CodeBox></ListItemText>
+                <ListItemAvatar><WebShopBlock /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<WebShopBlock />`}</CodeBox></ListItemText>
+              </ListItem></Grid>
+              <Grid item xs={4}><ListItem>
+                <ListItemAvatar><Pound /></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<Pound />`}</CodeBox></ListItemText>
               </ListItem></Grid>
             </Grid>
             <Box mt={2}>
@@ -146,38 +151,38 @@ const Icons = () => {
               </CodeBox>
               <List>
                 <ListItem>
-                  <ListItemAvatar><BadgePercentIcon /></ListItemAvatar>
-                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<BadgePercentIcon />`}</CodeBox></ListItemText>
+                  <ListItemAvatar><BadgePercent /></ListItemAvatar>
+                  <ListItemText><CodeBox component={'span'} size={'small'}>{`<BadgePercent />`}</CodeBox></ListItemText>
                 </ListItem>
                 <ListItem>
                   <ListItemAvatar>
-                    <Box component={BadgePercentIcon} color='secondary.main' fontSize={definition.typography.pxToRem(32)} />
+                    <Box component={BadgePercent} color='secondary.main' fontSize={definition.typography.pxToRem(32)} />
                   </ListItemAvatar>
                   <ListItemText>
-                    <CodeBox component={'span'} size={'small'}>{`<Box component={BadgePercentIcon} color='secondary.main' fontSize={definition.typography.pxToRem(32)} />`}</CodeBox>
+                    <CodeBox component={'span'} size={'small'}>{`<Box component={BadgePercent} color='secondary.main' fontSize={definition.typography.pxToRem(32)} />`}</CodeBox>
                   </ListItemText>
                 </ListItem>
                 <ListItem>
                   <ListItemAvatar>
-                    <BadgePercentIcon sx={{ fontSize: definition.typography.pxToRem(32), color: definition.palette.secondary.main }} />
+                    <BadgePercent sx={{ fontSize: definition.typography.pxToRem(32), color: definition.palette.secondary.main }} />
                   </ListItemAvatar>
                   <ListItemText><CodeBox component={'span'}
-                    size={'small'}>{`<BadgePercentIcon sx={{ fontSize: definition.typography.pxToRem(32), color :definition.palette.secondary.main }} />`}</CodeBox></ListItemText>
+                    size={'small'}>{`<BadgePercent sx={{ fontSize: definition.typography.pxToRem(32), color :definition.palette.secondary.main }} />`}</CodeBox></ListItemText>
                 </ListItem>
                 <ListItem>
                   <ListItemAvatar>
-                    <BadgePercentIcon sx={sxs.icon} />
+                    <BadgePercent sx={sxs.icon} />
                   </ListItemAvatar>
                   <ListItemText>
-                    <CodeBox component={'span'} size={'small'}>{`<BadgePercentIcon sx={classes.icon} />`}</CodeBox>
+                    <CodeBox component={'span'} size={'small'}>{`<BadgePercent sx={classes.icon} />`}</CodeBox>
                   </ListItemText>
                 </ListItem>
                 <ListItem>
                   <ListItemAvatar>
-                    <Typography variant={'h4'} color='secondary'> <BadgePercentIcon /></Typography>
+                    <Typography variant={'h4'} color='secondary'> <BadgePercent /></Typography>
                   </ListItemAvatar>
                   <ListItemText>
-                    <CodeBox component={'span'} size={'small'}>{`<Typography variant={'h4'} color='secondary'><BadgePercentIcon /></Typography>`}</CodeBox>
+                    <CodeBox component={'span'} size={'small'}>{`<Typography variant={'h4'} color='secondary'><BadgePercent /></Typography>`}</CodeBox>
                   </ListItemText>
                 </ListItem>
               </List>
@@ -195,9 +200,9 @@ const Icons = () => {
               />
               <Box mt={1}>
                 <Grid container spacing={1}>
-                  <Grid item><BadgePercentIcon sx={iconColor === 'reactMd' ? { color: `${definition.palette.common.black}80` } : null} /></Grid>
-                  <Grid item><DoneIcon color={'secondary'} /></Grid>
-                  <Grid item><WebShopBidAgentIcon color={'primary'} /></Grid>
+                  <Grid item><BadgePercent sx={iconColor === 'reactMd' ? { color: `${definition.palette.common.black}80` } : null} /></Grid>
+                  <Grid item><Done color={'secondary'} /></Grid>
+                  <Grid item><WebShopBidAgent color={'primary'} /></Grid>
                 </Grid>
               </Box>
             </Box>
