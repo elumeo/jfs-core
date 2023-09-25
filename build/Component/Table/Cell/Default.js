@@ -25,39 +25,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ContentEllipseMode = void 0;
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
-var react_1 = __importDefault(require("react"));
-var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
 var Root_1 = __importDefault(require("../../Table/Cell/Root"));
-var material_1 = require("@mui/material");
 var Loading_1 = __importDefault(require("./Loading"));
-var ContentEllipseMode;
-(function (ContentEllipseMode) {
-    ContentEllipseMode["None"] = "none";
-    ContentEllipseMode["Normal"] = "normal";
-    ContentEllipseMode["Lines"] = "lines";
-})(ContentEllipseMode = exports.ContentEllipseMode || (exports.ContentEllipseMode = {}));
 var Default = function (_a) {
-    var children = _a.children, _b = _a.overflow, overflow = _b === void 0 ? 'hidden' : _b, _c = _a.contentEllipseMode, contentEllipseMode = _c === void 0 ? ContentEllipseMode.Lines : _c, _d = _a.contentEllipseLines, contentEllipseLines = _d === void 0 ? 4 : _d, _e = _a.isLoading, isLoading = _e === void 0 ? false : _e, rest = __rest(_a, ["children", "overflow", "contentEllipseMode", "contentEllipseLines", "isLoading"]);
-    var ellipsesLinesStyle = react_1.default.useMemo(function () { return ({
-        overflow: overflow,
-        whiteSpace: 'normal',
-        WebkitBoxOrient: 'vertical',
-        WebkitLineClamp: contentEllipseLines,
-        display: '-webkit-box',
-    }); }, [contentEllipseLines]);
-    var styles = react_1.default.useMemo(function () {
-        switch (contentEllipseMode) {
-            case ContentEllipseMode.Lines:
-                return ellipsesLinesStyle;
-            case ContentEllipseMode.Normal:
-                return VirtualizedTable_1.ellipsesStyle;
-            case ContentEllipseMode.None:
-            default:
-                return null;
-        }
-    }, [ellipsesLinesStyle]);
-    return (0, jsx_runtime_1.jsxs)(Root_1.default, __assign({}, rest, { children: [isLoading === false && (0, jsx_runtime_1.jsx)(material_1.Box, __assign({ sx: styles }, { children: children })), isLoading && (0, jsx_runtime_1.jsx)(Loading_1.default, {})] }));
+    var children = _a.children, _b = _a.isLoading, isLoading = _b === void 0 ? false : _b, rest = __rest(_a, ["children", "isLoading"]);
+    return (0, jsx_runtime_1.jsxs)(Root_1.default, __assign({}, rest, { children: [isLoading === false && (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: children }), isLoading && (0, jsx_runtime_1.jsx)(Loading_1.default, {})] }));
 };
 exports.default = Default;
