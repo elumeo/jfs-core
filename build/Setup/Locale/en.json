@@ -82,5 +82,7 @@
     "showcase.table.header.fat": "Fat",
     "showcase.table.header.protein": "Protein",
     "showcase.table.header.dateTime": "DateTime",
-    "showcase.table.header.select": "Select"
+    "showcase.table.header.select": "Select",
+    "showcase.table.header.product": "Product",
+    "product.type.ProductType": "Product Type"
 }

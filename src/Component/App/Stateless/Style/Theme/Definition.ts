@@ -136,6 +136,5 @@ const definition = createTheme({
       }
     }
   }
-}
-)
+})
 export default definition;

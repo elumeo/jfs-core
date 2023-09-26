@@ -15,69 +15,70 @@ import TabIcon from '@mui/icons-material/Tab';
 import BallotOutlinedIcon from '@mui/icons-material/BallotOutlined';
 import ShareIcon from '@mui/icons-material/Share';
 import NatIcon from '@mui/icons-material/Nat';
-import { useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate } from 'react-router-dom';
 
 const AppNavigation = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   return <Card sx={{ minWidth: 300 }}>
     <List dense>
-      <ListItemButton onClick={() => navigate('/Boxes')}>
+      <ListItemButton onClick={() => navigate('/Boxes')} selected={pathname.startsWith('/Boxes')}>
         <ListItemIcon><CheckBoxOutlineBlankIcon /></ListItemIcon>
         <ListItemText primary='Boxes' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/Buttons')}>
+      <ListItemButton onClick={() => navigate('/Buttons')} selected={pathname.startsWith('/Buttons')}>
         <ListItemIcon><ViewAgendaIcon /></ListItemIcon>
         <ListItemText primary='Buttons' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/Cards')}>
+      <ListItemButton onClick={() => navigate('/Cards')} selected={pathname.startsWith('/Cards')}>
         <ListItemIcon><DashboardIcon /></ListItemIcon>
         <ListItemText primary='Cards' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/Colors')}>
+      <ListItemButton onClick={() => navigate('/Colors')} selected={pathname.startsWith('/Colors')}>
         <ListItemIcon><ColorLensIcon /></ListItemIcon>
         <ListItemText primary='Colors' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/Dialogs')}>
+      <ListItemButton onClick={() => navigate('/Dialogs')} selected={pathname.startsWith('/Dialogs')}>
         <ListItemIcon><FilterNoneIcon /></ListItemIcon>
         <ListItemText primary='Dialogs / Popovers / Tooltips' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/ExternalLinks')}>
+      <ListItemButton onClick={() => navigate('/ExternalLinks')} selected={pathname.startsWith('/ExternalLinks')}>
         <ListItemIcon><LinkIcon /></ListItemIcon>
         <ListItemText primary='External Links' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/Forms')}>
+      <ListItemButton onClick={() => navigate('/Forms')} selected={pathname.startsWith('/Forms')}>
         <ListItemIcon><BallotOutlinedIcon /></ListItemIcon>
         <ListItemText primary='Forms' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/Icons')}>
+      <ListItemButton onClick={() => navigate('/Icons')} selected={pathname.startsWith('/Icons')}>
         <ListItemIcon><AppsIcon /></ListItemIcon>
         <ListItemText primary='Icons' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/Lists')}>
+      <ListItemButton onClick={() => navigate('/Lists')} selected={pathname.startsWith('/Lists')}>
         <ListItemIcon><ListIcon /></ListItemIcon>
         <ListItemText primary='Lists' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/Notifications')}>
+      <ListItemButton onClick={() => navigate('/Notifications')} selected={pathname.startsWith('/Notifications')}>
         <ListItemIcon><NotificationsIcon /></ListItemIcon>
         <ListItemText primary='Notifications' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/Tables')}>
+      <ListItemButton onClick={() => navigate('/Tables')} selected={pathname.startsWith('/Tables')}>
         <ListItemIcon><TableChartIcon /></ListItemIcon>
         <ListItemText primary='Tables' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/Tabs')}>
+      <ListItemButton onClick={() => navigate('/Tabs')} selected={pathname.startsWith('/Tabs')}>
         <ListItemIcon><TabIcon /></ListItemIcon>
         <ListItemText primary='Tabs' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/Typographies')}>
+      <ListItemButton onClick={() => navigate('/Typographies')} selected={pathname.startsWith('/Typographies')}>
         <ListItemIcon><FontDownloadIcon /></ListItemIcon>
         <ListItemText primary='Typographies' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/WebSocket')}>
+      <ListItemButton onClick={() => navigate('/WebSocket')} selected={pathname.startsWith('/WebSocket')}>
         <ListItemIcon><NatIcon /></ListItemIcon>
         <ListItemText primary='WebSocket' />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate('/SharedComponent')}>
+      <ListItemButton onClick={() => navigate('/SharedComponent')} selected={pathname.startsWith('/SharedComponent')}>
         <ListItemIcon><ShareIcon /></ListItemIcon>
         <ListItemText primary='SharedComponent' />
       </ListItemButton>

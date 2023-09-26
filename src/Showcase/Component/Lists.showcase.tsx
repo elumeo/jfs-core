@@ -8,7 +8,6 @@ import {
   Container,
   FormControlLabel,
   List,
-  ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
@@ -63,10 +62,10 @@ const Lists = () => {
                 <Typography variant='h6'>Icon and text list</Typography>
                 <List dense={dense} subheader={showSubheader === true ? <ListSubheader>With a subheader</ListSubheader> : null}>
                   {generate(
-                    <ListItem button onClick={() => setSecondary(!secondary)}>
+                    <ListItemButton onClick={() => setSecondary(!secondary)}>
                       <ListItemIcon><FolderIcon /></ListItemIcon>
                       <ListItemText primary={'Primary List Item Text'} secondary={secondary ? 'Secondary List Item Text' : null} />
-                    </ListItem>,
+                    </ListItemButton>,
                   )}
                 </List>
               </Stack>
