@@ -25,7 +25,12 @@ import Layout from '../../Component/App/Layout';
 import * as TableApi from '../Mock/TableApi';
 import {useIntl} from 'react-intl';
 import {common} from '../../Constant/Color';
-import Table from '../../Component/Table';
+import TableHeadDefault from '../../Component/Table/Head/Default';
+import TableHeadSelect from '../../Component/Table/Head/Select';
+import TableCellSelect from '../../Component/Table/Cell/Select';
+import TableCellDefault from '../../Component/Table/Cell/Default';
+import TableCellDateTime from '../../Component/Table/Cell/DateTime';
+import TableCellProduct from '../../Component/Table/Cell/Product';
 import {addToastAction} from '../../Store/Action';
 import {useDispatch} from 'react-redux';
 import Select from '@mui/material/Select';
@@ -69,7 +74,7 @@ const Tables = () => {
   const header = <TableRow sx={{backgroundColor: common.white, zIndex: 10}}>
     {TableApi.Columns.map((key) => {
         if (key == 'select') {
-          return <Table.Head.Select
+          return <TableHeadSelect
             size={sizeVirtualizedTable}
             width={TableApi.widthByColumn[key]}
             checked={false}
@@ -80,7 +85,7 @@ const Tables = () => {
             onChange={() => dispatch(addToastAction({contentMessage: 'dynamic select is not implemented in showcase'}))}
           />
         }
-        return <Table.Head.Default
+        return <TableHeadDefault
           align={'left'}
           dataKey={key}
           key={key}
@@ -128,18 +133,26 @@ const Tables = () => {
                   <TableBody>
                     {TableApi.rowsBasicTable.map((row, index) => (
                       <TableRow key={row.name + '_' + index} hover>
-                        <Table.Cell.Select
+                        <TableCellSelect
                           align={'left'}
                           value={row.select}
                           checked={false}
                           onChange={() => dispatch(addToastAction({contentMessage: 'dynamic select is not implemented in showcase'}))}
                         />
-                        <Table.Cell.Default>{row.name}</Table.Cell.Default>
-                        <Table.Cell.Default>{row.calories}</Table.Cell.Default>
-                        <Table.Cell.Default>{row.fat}</Table.Cell.Default>
-                        <Table.Cell.Default>{row.carbs}</Table.Cell.Default>
-                        <Table.Cell.Default>{row.protein}</Table.Cell.Default>
-                        <Table.Cell.DateTime value={row.dateTime} asTwoLines={false}/>
+                        <TableCellProduct
+                          id={'12345'}
+                          mediaUri={'https://dummyimage.com/80x80/999999/fff.jpg&text=Dummy+Image'}
+                          name={'Testname with a long long string Testname with a long long string Testname with a long long string Testname with a long long string Testname with a long long string'}
+                          productType={'ProductType'}
+                          inStockPool
+                          hasNoTvLock
+                        />
+                        <TableCellDefault>{row.name}</TableCellDefault>
+                        <TableCellDefault>{row.calories}</TableCellDefault>
+                        <TableCellDefault>{row.fat}</TableCellDefault>
+                        <TableCellDefault>{row.carbs}</TableCellDefault>
+                        <TableCellDefault>{row.protein}</TableCellDefault>
+                        <TableCellDateTime value={row.dateTime} asTwoLines={false}/>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -184,18 +197,26 @@ const Tables = () => {
                     }
                     itemContent={(index, row) => (
                       <>
-                        <Table.Cell.Select
+                        <TableCellSelect
                           align={'left'}
                           value={row.select}
                           checked={false}
                           onChange={() => dispatch(addToastAction({contentMessage: 'dynamic select is not implemented in showcase'}))}
                         />
-                        <Table.Cell.Default size={sizeVirtualizedTable}>{row.dessert}</Table.Cell.Default>
-                        <Table.Cell.Default size={sizeVirtualizedTable}>{row.carbs}</Table.Cell.Default>
-                        <Table.Cell.Default size={sizeVirtualizedTable}>{row.calories}</Table.Cell.Default>
-                        <Table.Cell.Default size={sizeVirtualizedTable}>{row.fat}</Table.Cell.Default>
-                        <Table.Cell.Default size={sizeVirtualizedTable}>{row.protein}</Table.Cell.Default>
-                        <Table.Cell.DateTime size={sizeVirtualizedTable} value={row.dateTime}/>
+                        <TableCellProduct
+                          id={'12345'}
+                          mediaUri={'https://dummyimage.com/80x80/999999/fff.jpg&text=Dummy+Image'}
+                          name={'Testname with a long long string Testname with a long long string Testname with a long long string Testname with a long long string Testname with a long long string'}
+                          productType={'ProductType'}
+                          inStockPool
+                          hasNoTvLock
+                        />
+                        <TableCellDefault size={sizeVirtualizedTable}>{row.dessert}</TableCellDefault>
+                        <TableCellDefault size={sizeVirtualizedTable}>{row.carbs}</TableCellDefault>
+                        <TableCellDefault size={sizeVirtualizedTable}>{row.calories}</TableCellDefault>
+                        <TableCellDefault size={sizeVirtualizedTable}>{row.fat}</TableCellDefault>
+                        <TableCellDefault size={sizeVirtualizedTable}>{row.protein}</TableCellDefault>
+                        <TableCellDateTime size={sizeVirtualizedTable} value={row.dateTime}/>
                       </>
                     )}
                     sortBy={sortBy}

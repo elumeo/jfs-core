@@ -3,6 +3,7 @@ import {omit} from 'lodash'
 export const Column = {
   select: 'select',
   id: 'id',
+  product: 'product',
   dessert: 'dessert',
   carbs: 'carbs',
   calories: 'calories',
@@ -29,7 +30,8 @@ export const sortableColumns = Columns.filter(() => true)
 
 export const widthByColumn: Record<Column, string> = {
   [Column.select]: '3%',
-  [Column.dessert]: '35%',
+  [Column.product]: '25%',
+  [Column.dessert]: '10%',
   [Column.calories]: '10%',
   [Column.fat]: '10%',
   [Column.carbs]: '10%',
