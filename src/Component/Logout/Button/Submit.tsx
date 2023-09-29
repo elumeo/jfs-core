@@ -16,7 +16,7 @@ const Submit: React.FC<Props> = ({ pending, onClick }) => {
       onClick={onClick}
       color='primary'
       variant={'contained'}>
-      {intl.formatMessage({ id: 'app.logout.action' })}
+      {intl.formatMessage({ id: 'app.confirm' })}
     </ButtonProgress>
   );
 };

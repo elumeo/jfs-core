@@ -5,6 +5,7 @@
   "app.closeBtnLabelModalDialog": "Chiuso",
   "app.enterSearchValue": "Inserisci il termine di ricerca!",
   "app.error": "Errore",
+  "app.confirm": "Confermare",
   "app.login": "Login",
   "app.logout": "Logout",
   "app.logout.action": "Uscire",

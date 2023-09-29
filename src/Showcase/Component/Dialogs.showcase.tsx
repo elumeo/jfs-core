@@ -213,7 +213,7 @@ const Dialogs = () => {
                     </Stack>
                   </DialogContent>
                   <DialogActions>
-                    <Button onClick={handleCloseForm} variant={'contained'} color='secondary'>Cancel</Button>
+                    <Button onClick={handleCloseForm} variant={'outlined'} color='secondary'>Cancel</Button>
                     <Button onClick={handleCloseForm} variant={'contained'} color='primary' disabled={!formValue?.length || (formValueMulti.length < 2)} autoFocus>Primary
                       Action</Button>
                   </DialogActions>
@@ -229,7 +229,7 @@ const Dialogs = () => {
                     Action buttons should reload of a async state. This means: when saving a form the dialog should wait until the call is finished and shows a loading indicator.
                   </DialogContent>
                   <DialogActions>
-                    <ButtonProgress onClick={handleCloseAsync} variant={'contained'} color='secondary'>Cancel</ButtonProgress>
+                    <ButtonProgress onClick={handleCloseAsync} variant={'outlined'} color='secondary'>Cancel</ButtonProgress>
                     <ButtonProgress inProgress={asyncLoading} variant={'contained'} color='primary' onClick={handleButtonAsyncClick}>Primary Action</ButtonProgress>
                   </DialogActions>
                 </Dialog>

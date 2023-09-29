@@ -9,7 +9,7 @@ export type Props = {
 const Cancel: React.FC<Props> = ({ onClick }) => {
   const intl = useIntl();
   return (
-    <Button onClick={onClick} variant={'outlined'}>
+    <Button onClick={onClick} variant={'outlined'} color={'secondary'}>
       {intl.formatMessage({ id: 'app.cancel.action' })}
     </Button>
   );

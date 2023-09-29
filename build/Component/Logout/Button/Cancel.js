@@ -20,6 +20,6 @@ var Button_1 = __importDefault(require("@mui/material/Button"));
 var Cancel = function (_a) {
     var onClick = _a.onClick;
     var intl = (0, react_intl_1.useIntl)();
-    return ((0, jsx_runtime_1.jsx)(Button_1.default, __assign({ onClick: onClick, variant: 'outlined' }, { children: intl.formatMessage({ id: 'app.cancel.action' }) })));
+    return ((0, jsx_runtime_1.jsx)(Button_1.default, __assign({ onClick: onClick, variant: 'outlined', color: 'secondary' }, { children: intl.formatMessage({ id: 'app.cancel.action' }) })));
 };
 exports.default = Cancel;
