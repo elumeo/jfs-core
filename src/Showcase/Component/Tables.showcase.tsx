@@ -31,6 +31,7 @@ import TableCellSelect from '../../Component/Table/Cell/Select';
 import TableCellDefault from '../../Component/Table/Cell/Default';
 import TableCellDateTime from '../../Component/Table/Cell/DateTime';
 import TableCellProduct from '../../Component/Table/Cell/Product';
+import TableCellLoading from '../../Component/Table/Cell/Loading';
 import {addToastAction} from '../../Store/Action';
 import {useDispatch} from 'react-redux';
 import Select from '@mui/material/Select';

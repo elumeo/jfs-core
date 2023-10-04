@@ -31,13 +31,15 @@ const Product: React.FC<TableCellProductProps> = ({
   ...rest
 }) => {
   const handleOnClick = React.useCallback(() => onClick !== null ? onClick(id, rowIndex) : null, [onClick, id, rowIndex]);
+  if (id === null) {
+    return <Loading {...rest}/>
+  }
   return <Root {...rest}>
     {id && <Stack direction='row' maxHeight='100%' spacing={1} maxWidth='inherit' width={'100%'}>
       <Image onClick={handleOnClick} isProductBundle={isProductBundle} id={id} mediaUri={mediaUri} />
       <Details onClick={handleOnClick} id={id} name={name} />
       <Attributes productType={productType} hasNoTvLock={hasNoTvLock} inStockPool={inStockPool} />
     </Stack>}
-    {id === null && <Loading />}
   </Root>;
 };
 

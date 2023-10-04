@@ -5,7 +5,7 @@ declare const Table: {
         DateTime: import("react").MemoExoticComponent<({ value, noValueElement, asTwoLines, displayTime, ...rest }: import("./Cell/DateTime").Props) => JSX.Element>;
         DateTimeRange: import("react").FC<import("./Cell/DateTimeRange").Props>;
         Default: import("react").FC<import("./Cell/Default").Props>;
-        Loading: import("react").FC<{}>;
+        Loading: import("react").FC<import("@mui/material").TableCellProps>;
         Msisdn: import("react").FC<import("./Cell/Msisdn").Props>;
         Product: import("react").NamedExoticComponent<import("./Cell/Product").TableCellProductProps>;
         Root: import("react").FC<import("./Cell/Root").Props>;
