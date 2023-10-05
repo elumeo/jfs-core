@@ -1,0 +1,126 @@
+Index: src/Component/Settings/LanguageSettings.scss
+===================================================================
+--- src/Component/Settings/LanguageSettings.scss	(revision 7b07c661c118b3e9b2021e0bf3de97bc1b83b620)
++++ src/Component/Settings/LanguageSettings.scss	(revision 7b07c661c118b3e9b2021e0bf3de97bc1b83b620)
+@@ -1,6 +0,0 @@
+-.language-settings {
+-  ul, ul * {
+-    width: 100%;
+-    box-sizing: border-box;
+-  }
+-}
+Index: src/Component/Settings/LanguageSettings.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\n\nimport Cookie from 'js-cookie';\nimport { connect } from 'react-redux';\nimport SelectField from 'react-md/lib/SelectFields/SelectField';\n\nimport { ICoreRootReducer } from '../../Store/Reducer';\nimport { changeLanguageAction } from '../../Store/Action/LanguageAction';\n\nimport './LanguageSettings.scss';\nimport International from '../International';\nimport Translations from \"../../Utilities/Format/Translations\";\n\nexport interface ILanguageSettingsProps {\n  language?: string;\n  changeLanguageAction?: typeof changeLanguageAction;\n}\n\nenum LANGUAGE {\n  GERMAN = 'de',\n  ENGLISH = 'en',\n  ITALIAN = 'it'\n}\n\nconst LANGUAGES = [\n  {label: 'Deutsch', value: LANGUAGE.GERMAN },\n  {label: 'English', value: LANGUAGE.ENGLISH },\n  {label: 'Italiano', value: LANGUAGE.ITALIAN }\n];\n\nconst LanguageSettings: React.FC<ILanguageSettingsProps> = ({\n  language,\n  changeLanguageAction\n}) => {\n  console.log(language, Translations.formatMessage({ id: 'app.name' }));\n  return (\n      <div className=\"language-settings\">\n        <International>\n          {({ formatMessage }) => (\n              <SelectField\n                  id=\"language\"\n                  label={formatMessage({id: 'settings.language'})}\n                  menuItems={LANGUAGES}\n                  value={language}\n                  itemLabel=\"label\"\n                  itemValue=\"value\"\n                  fullWidth\n                  simplifiedMenu={false}\n                  onChange={\n                    lang => {\n                      Cookie.set('lang', lang);\n                      changeLanguageAction(lang.toString());\n                    }\n                  }/>\n          )}\n        </International>\n      </div>\n  );\n}\n\nconst mapStateToProps = (\n  state: ICoreRootReducer,\n  ownProps: ILanguageSettingsProps\n): ILanguageSettingsProps => ({\n  ...ownProps,\n  language: (\n    state.languageReducer.language || state.configReducer.config.Language\n  ),\n});\n\nconst enhance = connect(mapStateToProps, {changeLanguageAction});\n\nexport default enhance(LanguageSettings);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Component/Settings/LanguageSettings.tsx	(revision 7b07c661c118b3e9b2021e0bf3de97bc1b83b620)
++++ src/Component/Settings/LanguageSettings.tsx	(date 1588939027061)
+@@ -7,9 +7,8 @@
+ import { ICoreRootReducer } from '../../Store/Reducer';
+ import { changeLanguageAction } from '../../Store/Action/LanguageAction';
+ 
+-import './LanguageSettings.scss';
+ import International from '../International';
+-import Translations from "../../Utilities/Format/Translations";
++import Translations from '../../Utilities/Format/Translations';
+ 
+ export interface ILanguageSettingsProps {
+   language?: string;
+@@ -30,15 +29,15 @@
+ 
+ const LanguageSettings: React.FC<ILanguageSettingsProps> = ({
+   language,
+-  changeLanguageAction
++  changeLanguageAction: _changeLanguageAction
+ }) => {
+   console.log(language, Translations.formatMessage({ id: 'app.name' }));
+   return (
+-      <div className="language-settings">
++      <div className='language-settings'>
+         <International>
+           {({ formatMessage }) => (
+               <SelectField
+-                  id="language"
++                  id='language'
+                   label={formatMessage({id: 'settings.language'})}
+                   menuItems={LANGUAGES}
+                   value={language}
+@@ -49,14 +48,14 @@
+                   onChange={
+                     lang => {
+                       Cookie.set('lang', lang);
+-                      changeLanguageAction(lang.toString());
++                      _changeLanguageAction(lang.toString());
+                     }
+                   }/>
+           )}
+         </International>
+       </div>
+   );
+-}
++};
+ 
+ const mapStateToProps = (
+   state: ICoreRootReducer,
+Index: src/Component/Notification/NotificationCard.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport { connect } from 'react-redux';\nimport Card from 'react-md/lib/Cards/Card';\nimport FontIcon from 'react-md/lib/FontIcons/FontIcon';\n\nimport './NotificationCard.scss'\nimport ErrorContent, { errorText } from '../Snackbar/ErrorContent';\nimport { ICoreRootReducer } from '../../Store/Reducer';\n// noinspection TypeScriptPreferShortImport\nimport { dismissNotificationAction, fadeNotificationOffScreenAction } from '../../Store/Action/NotificationAction';\nimport { INotification, INotificationContent } from '../../Store/Reducer/NotificationReducer';\nimport { Badge, Button, CardText } from 'react-md';\nimport Format from '../../Utilities/Format';\nimport { timeToRead as _timeToRead } from '../../Base/Utilities';\n\nexport const timeToRead = (notification: INotificationContent): number => getContent(notification).timeToRead;\n\nexport const getPlainText = (notification: INotificationContent): string => getContent(notification).words;\n\nexport const getContent = (notification: INotificationContent) => {\n  const { message, translationId, error } = notification;\n  const { formatMessage } = Format.Translations;\n  if (!((message ? 1 : 0) ^ (translationId ? 1 : 0) ^ (error ? 1 : 0))) {\n    throw new Error(\n      `Either 'message', 'translationId' or 'error' most be specified.`\n    );\n  }\n  let content = null;\n  let words = '';\n  if (message) {\n    words = typeof message == 'object' ? message.join(' ') : message;\n    content = typeof message == 'object' ? <ul>{message.map((m, i) => <li key={i}>{m}</li>)}</ul> : message;\n  }\n  if (translationId) {\n    words = typeof translationId == 'object' ? translationId.map(tId => formatMessage({ id: tId })).join(' ') : translationId;\n    content = typeof translationId == 'object'\n      ? <ul>{translationId.map((tId, i) => <li key={i}>{formatMessage({ id: tId })}</li>)}</ul>\n      : formatMessage({ id: translationId });\n  }\n  if (error) {\n    const { body, head } = errorText(error);\n    words = `${formatMessage({ id: 'app.error' })}: ${body} ${head}`;\n    content = <ErrorContent contentError={error}/>\n  }\n  return {\n    words,\n    content: <CardText className='md-text--inherit'>{content}</CardText>,\n    timeToRead: _timeToRead(words)\n  };\n};\n\nexport interface INotificationCardProps {\n  config: INotification;\n  dismissNotificationAction?: typeof dismissNotificationAction;\n  fadeNotificationOffScreenAction?: typeof fadeNotificationOffScreenAction;\n  language?: string;\n}\n\nclass NotificationCard extends React.Component<INotificationCardProps> {\n\n  getBadge = (): React.ReactNode => {\n    const { config: { count, id } } = this.props;\n    return count <= 1\n      ? null\n      : <Badge primary circular className='badge' badgeId={`count_of_${id}`} badgeContent={`${count}x`}>\n        <FontIcon> </FontIcon>\n      </Badge>;\n  };\n\n  getHeader = (): React.ReactNode => {\n    return <header className='header'>\n      {this.getIcon()}\n      {this.getTimestamp()}\n    </header>\n  };\n\n  getContent = (): JSX.Element => getContent(this.props.config).content;\n\n  getIcon = () => {\n    const { config: { icon, error, isError, isSuccess } } = this.props;\n    let iconName = icon;\n    iconName = (error || isError) && !icon ? 'error' : iconName;\n    iconName = isSuccess && !icon ? 'check' : iconName;\n    return iconName ? <FontIcon className='icon md-text--inherit'>{iconName}</FontIcon> : null;\n  };\n\n  getTimestamp = () => {\n    const { config: { timestamp } } = this.props;\n    const { formatDate, formatTime } = Format;\n    const now = new Date();\n    const displayDate = now.toDateString() != timestamp.toDateString();\n    return <div\n      className='timestamp'>{displayDate ? `${formatDate(timestamp)} ` : null}{formatTime(timestamp)}</div>;\n  };\n\n  getActions = (): React.ReactNode[] => {\n    const {\n      config,\n      config: {\n        customActionTooltipTranslationId, customActionIconName, onCustomAction,\n        dismissButtonVisible, onDismiss,\n        hideButtonVisible, onHide\n      }\n    } = this.props;\n    const { formatMessage } = Format.Translations;\n    const fm = id => formatMessage({ id });\n    if (!(!onCustomAction) && !customActionIconName) {\n      throw new Error('If you provide a onCustomAction you should also provide a customActionIconName');\n    }\n    const actions = [];\n    if (dismissButtonVisible !== false) {\n      actions.push(\n        <Button\n          icon\n          key='dismiss-btn'\n          tooltipLabel={fm('Dismiss')}\n          tooltipPosition={'left'}\n          tooltipDelay={666}\n          onClick={event => {\n            event.stopPropagation();\n            this.props.dismissNotificationAction(config.id);\n            if (typeof onDismiss == 'function') {\n              onDismiss(config, this);\n            }\n          }}>\n          close\n        </Button>\n      );\n    }\n    if (hideButtonVisible !== false) {\n      actions.push(\n        <Button\n          icon\n          key='hide-btn'\n          tooltipLabel={fm('Hide')}\n          tooltipPosition={'left'}\n          tooltipDelay={666}\n          onClick={event => {\n            event.stopPropagation();\n            this.props.fadeNotificationOffScreenAction(config.id);\n            if (typeof onHide == 'function') {\n              onHide(config, this);\n            }\n          }}>\n          arrow_forward\n        </Button>\n      );\n    }\n    if (!(!onCustomAction)) {\n      actions.push(\n        <Button\n          icon\n          key='custom-action-btn'\n          tooltipLabel={customActionTooltipTranslationId ? fm(customActionTooltipTranslationId) : undefined}\n          tooltipPosition={'left'}\n          tooltipDelay={666}\n          onClick={() => onCustomAction(config, this)}\n        >\n          {customActionIconName}\n        </Button>\n      );\n    }\n    return actions;\n  };\n\n  componentDidMount(): void {\n    const { config, config: { onMount } } = this.props;\n    if (typeof onMount == 'function') {\n      onMount(config, this);\n    }\n  }\n\n  render() {\n    const { config, config: { error, isSuccess, isError, onClick } } = this.props;\n    const errorClass = isError || error ? 'error' : '';\n    const successClass = isSuccess ? 'success' : '';\n    const clickClass = onClick ? 'clickable' : '';\n    if (errorClass.length && successClass.length) {\n      throw new Error('isError|error and isSuccess cannot be combined');\n    }\n    const actions = this.getActions();\n    return (\n      <Card\n        onClick={() => {\n          if (onClick) {\n            onClick(config, this);\n          }\n        }}\n        className={[\n          `md-cell`, `md-cell--12`,\n          `badges__notifications__notification`,\n          successClass, errorClass, clickClass\n        ].join(' ')}>\n        {this.getBadge()}\n        <div className='notification-grid'>\n          <div className='notification-grid-content'>\n            {this.getHeader()}\n            {this.getContent()}\n          </div>\n          {actions.length ? <div className='notification-grid-actions'>{actions}</div> : null}\n        </div>\n      </Card>\n    )\n  }\n}\n\nexport default connect(\n  (store: ICoreRootReducer, ownProps: INotificationCardProps): INotificationCardProps => ({\n    ...ownProps,\n    language: store.languageReducer.language,\n  }), {\n    dismissNotificationAction,\n    fadeNotificationOffScreenAction,\n  })\n(NotificationCard);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Component/Notification/NotificationCard.tsx	(revision 7b07c661c118b3e9b2021e0bf3de97bc1b83b620)
++++ src/Component/Notification/NotificationCard.tsx	(date 1588939154247)
+@@ -113,9 +113,6 @@
+         <Button
+           icon
+           key='dismiss-btn'
+-          tooltipLabel={fm('Dismiss')}
+-          tooltipPosition={'left'}
+-          tooltipDelay={666}
+           onClick={event => {
+             event.stopPropagation();
+             this.props.dismissNotificationAction(config.id);
+@@ -132,9 +129,6 @@
+         <Button
+           icon
+           key='hide-btn'
+-          tooltipLabel={fm('Hide')}
+-          tooltipPosition={'left'}
+-          tooltipDelay={666}
+           onClick={event => {
+             event.stopPropagation();
+             this.props.fadeNotificationOffScreenAction(config.id);
+Index: src/Component/Settings/SettingsDialog.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport { connect } from 'react-redux';\n\nimport International from '../International';\nimport ModalDialog from '../Modal/ModalDialog';\nimport { ICoreRootReducer } from '../../Store/Reducer';\nimport { closeSettings } from '../../Store/Action/SettingsAction';\nimport './SettingsDialog.scss';\n\nexport interface ISettingsDialogProps {\n  closeSettings?: typeof closeSettings;\n  settingsOpen?: boolean;\n}\n\nconst SettingsDialog: React.FC<ISettingsDialogProps> = ({\n  closeSettings,\n  settingsOpen,\n  children\n}) => (\n  <International>\n    {({ formatMessage }) => (\n      <ModalDialog\n        title={formatMessage({id: 'app.settings'})}\n        className=\"settings-dialog\"\n        visible={settingsOpen}\n        closeDialog={() => closeSettings()}>\n        {children}\n      </ModalDialog>\n    )}\n  </International>\n);\n\nconst mapStateToProps = (\n  state: ICoreRootReducer,\n  ownProps: ISettingsDialogProps\n): ISettingsDialogProps => ({\n  ...ownProps,\n  settingsOpen: state.settingsReducer.settingsOpen\n});\n\nconst enhance = connect(mapStateToProps, {closeSettings});\n\nexport default enhance(SettingsDialog);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Component/Settings/SettingsDialog.tsx	(revision 7b07c661c118b3e9b2021e0bf3de97bc1b83b620)
++++ src/Component/Settings/SettingsDialog.tsx	(date 1588938965045)
+@@ -13,7 +13,7 @@
+ }
+ 
+ const SettingsDialog: React.FC<ISettingsDialogProps> = ({
+-  closeSettings,
++  closeSettings: _closeSettings,
+   settingsOpen,
+   children
+ }) => (
+@@ -21,9 +21,9 @@
+     {({ formatMessage }) => (
+       <ModalDialog
+         title={formatMessage({id: 'app.settings'})}
+-        className="settings-dialog"
++        className='settings-dialog'
+         visible={settingsOpen}
+-        closeDialog={() => closeSettings()}>
++        closeDialog={() => _closeSettings()}>
+         {children}
+       </ModalDialog>
+     )}

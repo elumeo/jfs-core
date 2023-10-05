@@ -9,5 +9,5 @@ export const Client = (core: boolean) => (
 
 export default (core: boolean) => Text.lines(
   EcmaScript.import({ what: '{ AxiosResponse }', from: 'axios' }),
-  EcmaScript.import({ what: 'JscClient', from: Client(core) }),
+  EcmaScript.import({ what: '{ JscClient }', from: Client(core) }),
 );

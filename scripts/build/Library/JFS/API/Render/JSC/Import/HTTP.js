@@ -30,5 +30,5 @@ const Client = (core) => (core
     ? './Client'
     : '@elumeo/jfs-core/build/API/JSC/Client');
 exports.Client = Client;
-exports.default = (core) => Text.lines(EcmaScript.import({ what: '{ AxiosResponse }', from: 'axios' }), EcmaScript.import({ what: 'JscClient', from: (0, exports.Client)(core) }));
+exports.default = (core) => Text.lines(EcmaScript.import({ what: '{ AxiosResponse }', from: 'axios' }), EcmaScript.import({ what: '{ JscClient }', from: (0, exports.Client)(core) }));
 //# sourceMappingURL=HTTP.js.map

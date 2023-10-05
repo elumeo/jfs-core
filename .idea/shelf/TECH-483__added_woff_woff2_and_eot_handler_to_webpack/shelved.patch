@@ -1,0 +1,42 @@
+Index: build-tools/webpack/common.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const PATH = require('./PATH');\nconst PathAliasPlugin = require('tsconfig-paths-webpack-plugin');\nconst { resolve } = require('path');\n\nconst common = {\n  mode: 'none',\n  entry: PATH.ENTRYPOINT,\n  context: PATH.SOURCE,\n  target: 'web',\n  module: {\n    rules: [\n      {\n        test: /\\.tsx?$/,\n        include: PATH.SOURCE,\n        use: [\n          {\n            loader: 'babel-loader',\n            options: {\n              presets: [\n                ['@babel/preset-env', {\n                  \"modules\": false\n                }],\n                '@babel/preset-react',\n                '@babel/preset-typescript'\n              ],\n              plugins: [\n                ['@babel/transform-runtime', {\n                  regenerator: true\n                }],\n                \"@babel/plugin-proposal-class-properties\",\n                [\n                  'babel-plugin-import',\n                  {\n                    'libraryName': '@material-ui/core',\n                    'libraryDirectory': 'esm',\n                    'camel2DashComponentName': false\n                  },\n                  'core'\n                ],\n                [\n                  'babel-plugin-import',\n                  {\n                    'libraryName': '@material-ui/icons',\n                    'libraryDirectory': 'esm',\n                    'camel2DashComponentName': false\n                  },\n                  'icons'\n                ]\n              ]\n            }\n          },\n          'eslint-loader'\n        ],\n      },\n      {\n        test: /\\.js$/,\n        enforce: 'pre',\n        use: ['source-map-loader']\n      },\n      {\n        test: /\\.mp3$/,\n        use: ['file-loader']\n      },\n      {\n        test: /\\.css$/,\n        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],\n      }\n    ]\n  },\n  resolve: {\n    extensions: ['.ts', '.tsx', '.js', '.json', '.mp3'],\n    alias: {\n      Core: resolve(PATH.ROOT, 'node_modules', '@elumeo', 'jfs-core', 'build')\n    },\n    plugins: [\n      new  PathAliasPlugin({\n        configFile : resolve(PATH.ROOT, 'tsconfig.json')\n      })\n    ]\n  },\n};\n\nmodule.exports = common;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build-tools/webpack/common.js b/build-tools/webpack/common.js
+--- a/build-tools/webpack/common.js	(revision c4dca21f61a420ae29c16b6a81769f44d1cd5671)
++++ b/build-tools/webpack/common.js	(date 1643642466858)
+@@ -64,6 +64,31 @@
+       {
+         test: /\.css$/,
+         use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
++      },
++      ,
++      {
++        test: /\.eot(\?v=[0-9]\.[0-9]\.[0-9])?$/,
++        loader: "url-loader",
++        options: {
++          esModule: false,
++          mimetype: 'application/font-woff'
++        }
++      },
++      {
++        test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/,
++        loader: "url-loader",
++        options: {
++          esModule: false,
++          mimetype: 'application/font-woff'
++        }
++      },
++      {
++        test: /\.woff2(\?v=[0-9]\.[0-9]\.[0-9])?$/,
++        loader: "url-loader",
++        options: {
++          esModule: false,
++          mimetype: 'application/font-woff2'
++        }
+       }
+     ]
+   },

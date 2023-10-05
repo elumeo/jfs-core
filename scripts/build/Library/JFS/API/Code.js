@@ -35,26 +35,58 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generate = exports.save = exports.format = void 0;
+exports.generate = exports.save = exports.cleanup = exports.format = void 0;
 const fs_extra_1 = __importDefault(require("fs-extra"));
 const path_1 = require("path");
 const Prettier = __importStar(require("prettier"));
-const Adapter = __importStar(require("./Adapter"));
+const _1 = require(".");
 const Render = __importStar(require("./Render"));
 const format = (code) => (Prettier.format(code, { parser: 'babel-ts' }));
 exports.format = format;
-const save = (path, code) => __awaiter(void 0, void 0, void 0, function* () {
-    return (fs_extra_1.default.writeFile((0, path_1.resolve)(path, 'src', 'API', 'JSC', 'index.ts'), (0, exports.format)(code)));
+const cleanup = (path) => __awaiter(void 0, void 0, void 0, function* () {
+    const apiPath = (0, path_1.resolve)(path, 'src', 'API', 'JSC');
+    yield fs_extra_1.default.rm((0, path_1.join)(apiPath, 'DTO'), { recursive: true }).catch(console.error);
+    return fs_extra_1.default.rm((0, path_1.join)(apiPath, 'Client'), { recursive: true }).catch(console.error);
+});
+exports.cleanup = cleanup;
+const save = (path, modules) => __awaiter(void 0, void 0, void 0, function* () {
+    return modules.map(({ name, namespace, code, modules: subModules }) => __awaiter(void 0, void 0, void 0, function* () {
+        const apiPath = (0, path_1.resolve)(path, 'src', 'API', 'JSC');
+        const modulePath = namespace.split('.');
+        const fileName = (0, path_1.join)(apiPath, ...modulePath, name + '.ts');
+        console.log({ fileName, name, namespace, code, subModules });
+        yield fs_extra_1.default.ensureFile(fileName);
+        if (!!subModules.length) {
+            yield (0, exports.save)(path, subModules);
+            yield (0, exports.save)(path, [{
+                    name: 'index',
+                    namespace,
+                    modules: [],
+                    code: Render.Text.lines(...subModules.map(m => Render.EcmaScript.export(`* as ${m.name} from './${m.name}'`)))
+                }]);
+        }
+        yield fs_extra_1.default.writeFile(fileName, (0, exports.format)(code));
+    }));
 });
 exports.save = save;
 const generate = (description, options) => {
-    const remote = Adapter.adapt(description);
-    const webSocket = (remote.clients
-        .map(({ name }) => name)
-        .includes('WebSocketClient'));
-    return Render.Text.lines(Render.JSC.Import.HTTP(options.core), webSocket
-        ? Render.JSC.Import.WebSocket(options.core)
-        : '', Render.JSC.namespace({ name: options.namespace, remote }), Render.EcmaScript.export(`default ${options.namespace}`));
+    const remote = _1.Adapter.adapt(description);
+    const dtoModules = remote.dtos
+        .map(dto => Render.JSC.DTO.toModule(dto));
+    const clientModules = remote.clients
+        .map(client => Render.JSC.Client.toModule(client, options));
+    return {
+        name: options.moduleName,
+        modules: [...dtoModules, ...clientModules],
+        namespace: '',
+        code: ''
+    };
+    // return Render.Text.lines(
+    //   Render.JSC.Import.HTTP(options.core),
+    //   importWebSocketDependencies ? Render.JSC.Import.WebSocket(options.core) : '',
+    //   Render.JSC.namespace({ name: options.name, remote }),
+    //   Render.EcmaScript.export(`default ${options.name}`)
+    // );
 };
 exports.generate = generate;
 //# sourceMappingURL=Code.js.map

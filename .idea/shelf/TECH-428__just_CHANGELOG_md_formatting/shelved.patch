@@ -1,0 +1,57 @@
+Index: src/Component/Search/SearchComponent.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport { connect } from 'react-redux';\nimport Button from 'react-md/lib/Buttons/Button';\nimport CircularProgress from 'react-md/lib/Progress/CircularProgress';\nimport Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';\nimport { addToastAction } from '../../Store/Action/ToastAction';\nimport { ICoreRootReducer } from '../../Store/Reducer';\nimport './SearchComponent.scss';\nimport International from '../International';\n\nexport interface ISearchComponentProps {\n  addToastAction?: typeof addToastAction;\n  autocompleteData?: string[] | number[] | { dataLabel: string, dataValue: string }[];\n  centered?: boolean;\n  focusInputOnAutocomplete?: boolean;\n  forceNumericInput?: boolean;\n  id: string;\n  indicateSearchProgress?: boolean;\n  labelTranslationId?: string;\n  onChange?: (value: string) => void;\n  onSearch: (props: ISearchComponentProps, state: ISearchComponentState) => void;\n  placeholderTranslationId: string;\n  searchOnAutocomplete?: boolean;\n  style?: React.CSSProperties;\n  className?: string;\n  value?: string;\n}\n\nexport interface ISearchComponentState {\n  value?: string;\n}\n\nclass SearchComponent extends React.Component<ISearchComponentProps, ISearchComponentState> {\n  state: ISearchComponentState;\n  static defaultProps = {\n    autocompleteData: [],\n    focusInputOnAutocomplete: false,\n    forceNumericInput: false,\n    searchOnAutocomplete: true,\n    value: '',\n  };\n\n  constructor(props) {\n    super(props);\n    this.state = {value: this.props.value ? this.props.value : ''};\n  }\n\n  handleChange = (value: string) => {\n    if (this.props.forceNumericInput) {\n      value = value\n        .toString()\n        .match(/^(\\d*)/)[0]\n        .toString();\n    }\n    if (this.props.onChange) {\n      this.props.onChange(value);\n    }\n    this.setState({value});\n  };\n\n  handleKeyDown = e => {\n    switch (e.keyCode) {\n      case 13: /* Return */\n        this.handleSearch();\n        break;\n      case 27: /* ESC */\n        document.getElementById(this.props.id).blur();\n        break;\n      default:\n        break;\n    }\n  };\n\n  handleAutocomplete = (v) => {\n    const {searchOnAutocomplete} = this.props;\n    this.setState({value: v});\n    if (searchOnAutocomplete) {\n      this.handleSearch(v);\n    }\n  };\n\n  handleSearch = (value?: string) => {\n    value = value == undefined ? this.state.value : value;\n    if (value == '') {\n      document.getElementById(this.props.id).focus();\n      this.props.addToastAction({contentTranslationId: 'app.enterSearchValue'});\n      return;\n    }\n    this.props.onSearch(this.props, {...this.state, value});\n  };\n\n  handleClear = () => {\n    document.getElementById(this.props.id).focus();\n    this.setState({value: ''});\n  };\n\n  render() {\n    const {\n      id, style, className, placeholderTranslationId, autocompleteData, indicateSearchProgress,\n      labelTranslationId, focusInputOnAutocomplete, searchOnAutocomplete\n    } = this.props;\n    const menuId = `${id}Menu`;\n    return (\n      <div\n        id={id}\n        style={style}\n        className={'search-component md-text-field-icon-container ' + className}>\n        <div className=\"icon-view-box\">\n          {\n            indicateSearchProgress\n              ? (\n                <CircularProgress\n                  id={`${id}SearchProgress`}\n                  className=\"search-progress\"/>\n              )\n              : (\n                <Button\n                  icon\n                  onClick={() => this.handleSearch()}\n                  disabled={indicateSearchProgress}>\n                  search\n                </Button>\n              )\n          }\n        </div>\n        <International>\n          {({ formatMessage }) => (\n            <Autocomplete\n              id={`${id}-autocomplete`}\n              data={autocompleteData}\n              focusInputOnAutocomplete={focusInputOnAutocomplete && !searchOnAutocomplete}\n              inputClassName={`search ${this.state.value != '' && 'search-active' || ''}`}\n              label={labelTranslationId ? formatMessage({id: labelTranslationId}) : null}\n              menuId={menuId}\n              onAutocomplete={this.handleAutocomplete}\n              onChange={this.handleChange}\n              onKeyDown={this.handleKeyDown}\n              placeholder={placeholderTranslationId ? formatMessage({id: placeholderTranslationId}) : null}\n              textFieldClassName={'md-text-field-icon'}\n              value={this.state.value}/>\n          )}\n        </International>\n        <Button\n          icon\n          className={`clear-btn ${this.state.value != '' ? 'visible' : ''}`}\n          onClick={this.handleClear}\n        >clear</Button>\n      </div>\n    );\n  }\n}\n\n// higher order components -----------------------------------------------------\nconst mapStateToProps = (\n  state: ICoreRootReducer,\n  ownProps: ISearchComponentProps\n): ISearchComponentProps => ({\n  ...state.toastReducer,\n  ...ownProps\n});\n\nconst enhance = connect(mapStateToProps, {addToastAction});\n\nexport default enhance(SearchComponent);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Component/Search/SearchComponent.tsx	(revision 31707110ea4162d04bf7d7a35d9a9beafdea021f)
++++ src/Component/Search/SearchComponent.tsx	(date 1589976511710)
+@@ -3,6 +3,7 @@
+ import Button from 'react-md/lib/Buttons/Button';
+ import CircularProgress from 'react-md/lib/Progress/CircularProgress';
+ import Autocomplete from 'react-md/lib/Autocompletes/Autocomplete';
++// noinspection TypeScriptPreferShortImport
+ import { addToastAction } from '../../Store/Action/ToastAction';
+ import { ICoreRootReducer } from '../../Store/Reducer';
+ import './SearchComponent.scss';
+@@ -105,13 +106,13 @@
+         id={id}
+         style={style}
+         className={'search-component md-text-field-icon-container ' + className}>
+-        <div className="icon-view-box">
++        <div className='icon-view-box'>
+           {
+             indicateSearchProgress
+               ? (
+                 <CircularProgress
+                   id={`${id}SearchProgress`}
+-                  className="search-progress"/>
++                  className='search-progress'/>
+               )
+               : (
+                 <Button
+@@ -161,4 +162,5 @@
+ 
+ const enhance = connect(mapStateToProps, {addToastAction});
+ 
++// noinspection JSUnusedGlobalSymbols
+ export default enhance(SearchComponent);
+Index: src/Component/Search/SearchComponent.scss
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@import '~react-md/src/scss/react-md';\n\n.app-header .search-component {\n  .md-divider {\n    background: rgba(255, 255, 255, 0.87);\n\n    &--text-field::after {\n      background: rgba(255, 255, 255, 1);\n      height: 2px;\n    }\n  }\n\n  .md-toolbar .md-autocomplete {\n    width: unset;\n  }\n\n  input.md-text-field {\n    $searchFieldBaseWidth: 120px;\n    $searchFieldWithIncrease: 80px;\n    transition: width ease-in-out 150ms;\n    width: $searchFieldBaseWidth;\n\n    &:focus, &.search-active {\n      width: $searchFieldBaseWidth + $searchFieldWithIncrease;\n    }\n  }\n\n  .search-progress {\n    circle {\n      stroke: rgba(255, 255, 255, 1);\n    }\n  }\n}\n\n.md-toolbar .md-autocomplete-container.search-component,\n.md-toolbar .search-component .md-autocomplete {\n  height: unset;\n}\n\n.md-toolbar {\n  .search-component {\n    .md-autocomplete, .md-autocomplete-container {\n      height: unset;\n    }\n  }\n}\n\n.search-component {\n  position: relative;\n  padding-right: $md-btn-icon-padding;\n\n  .md-divider.md-divider--text-field {\n    margin-inline-end: 0;\n  }\n\n  .md-text-field.search {\n    padding-right: $md-default-padding;\n  }\n\n  button.clear-btn {\n    position: absolute;\n    right: 0;\n    visibility: hidden;\n\n    &.visible {\n      visibility: visible;\n    }\n  }\n\n  .icon-view-box {\n    width: calc(#{$md-line-height}em * 2);\n    height: calc(#{$md-line-height}em * 2);\n    display: inline-block;\n    vertical-align: bottom;\n  }\n\n  .search-progress {\n    height: #{$md-line-height}em;\n    width: #{$md-line-height}em;\n    margin: calc(#{$md-line-height}em / 2);\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Component/Search/SearchComponent.scss	(revision 31707110ea4162d04bf7d7a35d9a9beafdea021f)
++++ src/Component/Search/SearchComponent.scss	(date 1589969653878)
+@@ -54,7 +54,7 @@
+   }
+ 
+   .md-text-field.search {
+-    padding-right: $md-default-padding;
++    padding-right: 30px;
+   }
+ 
+   button.clear-btn {

@@ -1,11 +1,10 @@
 import fs from 'fs-extra';
 import { resolve } from 'path';
 import JsonDiff from 'json-diff';
-import * as Render from './Render';
 
 export const run = async (
   path: string,
-  description: Render.Type.JSC.Description
+  description: unknown
 ): Promise<string> => {
   if (!fs.existsSync(resolve(path, 'src', 'API', 'JSC', 'Description.json'))) {
     return 'No description found.';

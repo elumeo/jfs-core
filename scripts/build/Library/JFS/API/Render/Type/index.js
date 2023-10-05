@@ -23,9 +23,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.JSC = exports.TypeScript = exports.HTML = exports.EcmaScript = void 0;
+exports.Generator = exports.JSC = exports.TypeScript = exports.HTML = exports.EcmaScript = void 0;
 exports.EcmaScript = __importStar(require("./EcmaScript"));
 exports.HTML = __importStar(require("./HTML"));
 exports.TypeScript = __importStar(require("./TypeScript"));
 exports.JSC = __importStar(require("./JSC"));
+exports.Generator = __importStar(require("./Generator"));
 //# sourceMappingURL=index.js.map

@@ -34,29 +34,34 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
 const ANSI = __importStar(require("ansi-colors"));
-const Description = __importStar(require("./Description"));
-const Code = __importStar(require("./Code"));
-const Check = __importStar(require("./Check"));
+const OpenAPI = __importStar(require("openapi-typescript-codegen"));
 const run = (path, options) => __awaiter(void 0, void 0, void 0, function* () {
-    const description = yield Description.generate(path);
-    const result = yield Check.run(path, description);
-    if (result) {
+    // const description = await Description.generate(path);
+    // const result = await Check.run(path, description);
+    if (true) {
         console.log([
-            `API/JSC/Description.json did change.\n`,
+            `API/JSC/Description.json did change.`,
             ANSI.bgRedBright(' --> Generating new API...')
-        ].join(''));
-        const code = Code.generate(description, {
-            namespace: (options || {}).namespace || 'JSCApi',
-            core: (options || {}).core || false
+        ].join('\n'));
+        // const module = Code.generate(description, {
+        //   moduleName: (options || {}).namespace || 'JSCApi',
+        //   context: (options || {}).core && 'core' || 'app'
+        // });
+        // console.log({ description })
+        // await Description.save(path, description)
+        yield OpenAPI.generate({
+            input: "http://api.jsc-app.book/openapi/description?filter=services:ServiceProxy",
+            //input: "./src/API/JSC/Description.json",
+            output: './src/API/JSC/generated'
         });
-        Description.save(path, description);
-        Code.save(path, code);
+        // await Code.cleanup(path)
+        // await Code.save(path, [module])
     }
     else {
         console.log([
-            `API/JSC/Description.json did not change.\n`,
+            `API/JSC/Description.json did not change.`,
             ANSI.bgGreenBright(' --> Nothing to be done here.')
-        ].join(''));
+        ].join('\n'));
     }
 });
 exports.run = run;

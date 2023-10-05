@@ -23,7 +23,23 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WebSocket = exports.HTTP = void 0;
+exports.toModule = exports.WebSocket = exports.HTTP = void 0;
+const Render = __importStar(require("../../../Render"));
+const Client = __importStar(require("../Client"));
 exports.HTTP = __importStar(require("./HTTP"));
 exports.WebSocket = __importStar(require("./WebSocket"));
+const toModule = (client, options, parentNamespace = 'Client') => {
+    const namespaceFullName = [parentNamespace, client.name].join('.');
+    return {
+        name: client.name,
+        namespace: namespaceFullName,
+        modules: [],
+        code: Render.Text.lines(Render.JSC.Import.HTTP(options.context == 'core'), ...client.methods
+            .filter(({ protocol }) => protocol.name === 'HTTP')
+            .map(Client.HTTP.request), ...client.methods
+            .filter(({ protocol }) => protocol.name === 'WS')
+            .map(Client.WebSocket.stream))
+    };
+};
+exports.toModule = toModule;
 //# sourceMappingURL=index.js.map

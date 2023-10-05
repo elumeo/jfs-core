@@ -1,0 +1,4 @@
+<changelist name="TECH-428__Fixed_language_settings_dropdown_oversize__Fixed_missing_translations_for_notifi" date="1588939491839" recycled="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/TECH-428__Fixed_language_settings_dropdown_oversize__Fixed_missing_translations_for_notifi/shelved.patch" />
+  <option name="DESCRIPTION" value="TECH-428: Fixed language settings dropdown oversize. Fixed missing translations for notification card action button tooltips." />
+</changelist>

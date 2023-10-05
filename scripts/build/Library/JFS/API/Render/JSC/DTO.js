@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.namespace = exports.interface = exports.property = exports.constant = void 0;
+exports.toModule = exports.type = exports.namespace = exports.interface = exports.property = exports.constant = void 0;
 const Code = __importStar(require("../Code"));
 const TypeScript = __importStar(require("../TypeScript"));
 const Text = __importStar(require("../Text"));
@@ -55,4 +55,46 @@ const namespace = ({ name, constants = [], dtos, namespaces }) => (TypeScript.na
     ].map(EcmaScript.export))
 }));
 exports.namespace = namespace;
+const _type = (description) => TypeScript.type({
+    name: ('I'
+        + description.name.substring(description.name.lastIndexOf('\\') + 1)
+        + TypeScript.generics(...description.generics)),
+    value: Code.Block.braces({
+        lines: [
+            ...Object
+                .keys(description.properties)
+                .map(key => `${key}?: ${(0, exports.property)(key, description.properties[key])};`)
+        ],
+        indentation: 4
+    })
+});
+exports.type = _type;
+const toModule = (description, parentNamespace = 'DTO') => {
+    const isDTODescription = !!(description === null || description === void 0 ? void 0 : description.properties);
+    if (isDTODescription) {
+        const dto = description;
+        return {
+            name: dto.name,
+            namespace: parentNamespace,
+            modules: [],
+            code: EcmaScript.export(_type(dto))
+        };
+    }
+    else {
+        const namespace = description;
+        const namespaceFullName = [parentNamespace, namespace.name].join('.');
+        return {
+            name: namespace.name,
+            namespace: namespaceFullName,
+            modules: [
+                ...namespace.dtos.map(dto => (0, exports.toModule)(dto, namespaceFullName)),
+                ...namespace.namespaces.map(n => (0, exports.toModule)(n, namespaceFullName))
+            ],
+            code: Text.lines(...namespace.constants
+                .map(exports.constant)
+                .map(EcmaScript.export)),
+        };
+    }
+};
+exports.toModule = toModule;
 //# sourceMappingURL=DTO.js.map

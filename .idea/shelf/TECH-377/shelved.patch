@@ -1,0 +1,411 @@
+Index: app/containers/header/SearchComponent.scss
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/containers/header/SearchComponent.scss	(date 1568040637733)
++++ app/containers/header/SearchComponent.scss	(date 1568040637733)
+@@ -0,0 +1,33 @@
++@import '~react-md/src/scss/_react-md';
++
++.app-header .search-component {
++  .md-divider {
++    background: rgba(255, 255, 255, 0.87);
++
++    &--text-field::after {
++      background: rgba(255, 255, 255, 1);
++      height: 2px;
++    }
++  }
++  input.md-text-field {
++    $searchFieldBaseWidth: 120px;
++    $searchFieldWithIncrease: 80px;
++    transition: width ease-in-out 150ms;
++    width: $searchFieldBaseWidth;
++    &:focus {
++      width: $searchFieldBaseWidth + $searchFieldWithIncrease;
++    }
++  }
++}
++
++.search-component {
++  .md-text-field-container {
++    &--input {
++      width: initial;
++
++      @media #{$md-desktop-media} {
++        width: 300px;
++      }
++    }
++  }
++}
+\ No newline at end of file
+Index: app/components/modal/ModalDialog.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as React from \"react\";\nimport { InjectedIntlProps, injectIntl } from \"react-intl\";\n\nimport DialogContainer from \"react-md/lib/Dialogs\";\n\ninterface IModalDialog extends InjectedIntlProps {\n  visible: boolean;\n  children?: any;\n  closeDialog: (close: boolean) => void;\n  title?: string;\n  closeButtonText?: string;\n  description?: string;\n  className?: string;\n  confirmButtonText?: any;\n  onConfirm?: any;\n  closeOnEsc?: boolean;\n  actions?: {}[];\n}\n\nconst ModalDialog: React.SFC<IModalDialog> = ({\n  title,\n  description,\n  closeDialog,\n  intl,\n  visible,\n  closeButtonText,\n  children,\n  className,\n  confirmButtonText,\n  onConfirm,\n  closeOnEsc,\n  actions\n}) => {\n  const { formatMessage } = intl;\n  const id = `modal-dialog-${Math.round(Math.random() * 1000)}`;\n  return (\n    <DialogContainer\n      id={id}\n      visible={visible}\n      title={title}\n      aria-describedby={description}\n      modal\n      className={className}\n      actions={[\n        {\n          onClick: () => {\n            closeDialog(false);\n          },\n          primary: true,\n          label: formatMessage({ id: closeButtonText }),\n        },\n        ...(\n          (confirmButtonText && onConfirm) && [\n            {\n              onClick: () => {\n                onConfirm();\n              },\n              primary: true,\n              label: formatMessage({ id: confirmButtonText }),\n            }\n          ] || []\n        ),\n        ...(actions || [])\n      ]}\n    >\n      {children}\n    </DialogContainer>\n  );\n};\n\nModalDialog.defaultProps = {\n  title: \"Modal Dialog\",\n  description: \"\",\n  closeButtonText: \"app.closeBtnLabelModalDialog\",\n};\n\nexport default injectIntl(ModalDialog);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/components/modal/ModalDialog.tsx	(revision 7066f85eada997ad448c7b650176eb72ab129747)
++++ app/components/modal/ModalDialog.tsx	(date 1568037899783)
+@@ -17,7 +17,7 @@
+   actions?: {}[];
+ }
+ 
+-const ModalDialog: React.SFC<IModalDialog> = ({
++const ModalDialog: React.FC<IModalDialog> = ({
+   title,
+   description,
+   closeDialog,
+@@ -74,4 +74,5 @@
+   closeButtonText: "app.closeBtnLabelModalDialog",
+ };
+ 
++// noinspection JSUnusedGlobalSymbols
+ export default injectIntl(ModalDialog);
+Index: app/containers/header/SearchComponent.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/containers/header/SearchComponent.tsx	(date 1568042212831)
++++ app/containers/header/SearchComponent.tsx	(date 1568042212831)
+@@ -0,0 +1,101 @@
++import * as React from 'react';
++
++import TextField from 'react-md/lib/TextFields/TextField';
++import FontIcon from 'react-md/lib/FontIcons/FontIcon';
++import {InjectedIntlProps, injectIntl} from 'react-intl';
++
++import './SearchComponent.scss';
++import {IRootReducer} from "../../store/reducer/RootReducer";
++import {compose} from "redux";
++import {connect} from "react-redux";
++import {addToastAction} from "../../store/action/BaseAction";
++
++export interface ISearchComponentProps extends InjectedIntlProps {
++    id: string;
++    placeholderTranslationId: string;
++    onSearch: (props: ISearchComponentProps, state: ISearchComponentState) => void;
++    shouldReset?: boolean;
++    centered?: boolean;
++    value?: string;
++    forceNumericInput?: boolean;
++    language?: string;
++    addToastAction?: (IToastConfig) => void;
++}
++
++export interface ISearchComponentState {
++    value?: string;
++}
++
++class SearchComponent extends React.Component<ISearchComponentProps & InjectedIntlProps, ISearchComponentState> {
++    state: ISearchComponentState;
++
++    static defaultProps = {
++        forceNumericInput: false
++    };
++
++    constructor(props) {
++        super(props);
++        this.state = {value: this.props.value ? this.props.value : ''};
++    }
++
++    handleSearchInputChange = (value: string) => {
++        if (this.props.forceNumericInput) {
++            value = value
++              .toString()
++              .match(/^(\d*)/)[0]
++              .toString();
++        }
++        this.setState({value});
++    };
++
++    handleSearchInputKeyDown = e => {
++        if (e.keyCode == 13) {
++            this.handleSearch();
++        }
++    };
++
++    handleSearch = () => {
++        this.props.onSearch(this.props, this.state);
++    };
++
++    componentWillReceiveProps(nextProps: Readonly<ISearchComponentProps>, nextContext: any): void {
++        const {shouldReset} = this.props;
++        if (shouldReset) {
++            this.setState({value: ''});
++        }
++    }
++
++    render() {
++        const {id, placeholderTranslationId, intl: {formatMessage}} = this.props;
++        return (
++          <TextField
++            id={id}
++            className={'search-component'}
++            type="search"
++            leftIcon={
++                <FontIcon style={{cursor: 'pointer'}} onClick={this.handleSearch}>
++                    search
++                </FontIcon>
++            }
++            leftIconStateful
++            placeholder={formatMessage({id: placeholderTranslationId})}
++            onChange={this.handleSearchInputChange}
++            onKeyDown={this.handleSearchInputKeyDown}
++            value={this.state.value}
++          />
++        );
++    }
++}
++
++// higher order components -----------------------------------------------------
++const mapStateToProps = (state: IRootReducer, ownProps: ISearchComponentProps): ISearchComponentProps => ({
++    ...ownProps
++});
++
++const enhance = compose(
++  connect(mapStateToProps, {addToastAction}),
++  injectIntl
++);
++
++// noinspection JSUnusedGlobalSymbols
++export default enhance(SearchComponent);
+\ No newline at end of file
+Index: app/containers/login/LoginButton.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as React from 'react';\nimport {InjectedIntlProps, injectIntl} from 'react-intl';\n\nimport Button from 'react-md/lib/Buttons/Button';\nimport CircularProgress from 'react-md/lib/Progress/CircularProgress';\n\nexport interface ILoginButtonProps extends InjectedIntlProps {\n  isCheckingLogin: boolean;\n  onLogin: any;\n}\n\nconst loginButton: React.SFC<ILoginButtonProps> = ({\n  intl: { formatMessage },\n  isCheckingLogin, onLogin\n}) => (\n    <Button\n        children={isCheckingLogin ? <CircularProgress\n            id=\"loginIsCheckingSpinner2\"\n        /> : formatMessage({id: 'login.button'})}\n        primary\n        flat\n        onClick={onLogin}\n      />\n)\n\nexport default injectIntl(loginButton);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/containers/login/LoginButton.tsx	(revision 7066f85eada997ad448c7b650176eb72ab129747)
++++ app/containers/login/LoginButton.tsx	(date 1568037899777)
+@@ -9,7 +9,7 @@
+   onLogin: any;
+ }
+ 
+-const loginButton: React.SFC<ILoginButtonProps> = ({
++const loginButton: React.FC<ILoginButtonProps> = ({
+   intl: { formatMessage },
+   isCheckingLogin, onLogin
+ }) => (
+@@ -21,6 +21,6 @@
+         flat
+         onClick={onLogin}
+       />
+-)
++);
+ 
+ export default injectIntl(loginButton);
+Index: app/containers/header/AppToolbar.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as React from 'react';\nimport { injectIntl, InjectedIntlProps } from 'react-intl';\nimport Toolbar from 'react-md/lib/Toolbars/Toolbar';\nimport Button from 'react-md/lib/Buttons/Button';\n// @ts-ignore\nimport { leftTools, rightTools } from '../../../../../../src/HeaderTools';\nimport './AppToolbar.scss';\n\nexport interface IAppToolbarProps extends InjectedIntlProps {\n  onToggleMenu: any;\n}\n\nconst AppToolbar: React.SFC<IAppToolbarProps> = ({\n  intl: { formatMessage },\n  onToggleMenu\n}) => (\n  <Toolbar\n    title={formatMessage({ id: 'app.title' })}\n    nav={<Button key=\"nav\" icon onClick={onToggleMenu}>menu</Button>}\n    colored\n    fixed\n  >\n    <div className=\"tools\">\n      <div className=\"left-tools\">\n        {leftTools.map((tool, index) => (\n          <div className=\"tool\" key={`left-tool-${index}`}>\n            {tool}\n          </div>\n        ))}\n      </div>\n      <div className=\"right-tools\">\n        {rightTools.map((tool, index) => (\n          <div className=\"tool\" key={`right-tool-${index}`}>\n            {tool}\n          </div>\n        ))}\n      </div>\n    </div>\n  </Toolbar>\n);\n\nexport default injectIntl(AppToolbar);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/containers/header/AppToolbar.tsx	(revision 7066f85eada997ad448c7b650176eb72ab129747)
++++ app/containers/header/AppToolbar.tsx	(date 1568037978367)
+@@ -10,7 +10,7 @@
+   onToggleMenu: any;
+ }
+ 
+-const AppToolbar: React.SFC<IAppToolbarProps> = ({
++const AppToolbar: React.FC<IAppToolbarProps> = ({
+   intl: { formatMessage },
+   onToggleMenu
+ }) => (
+Index: app/containers/settings/SettingsContainer.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as React from 'react';\nimport { InjectedIntlProps, injectIntl } from 'react-intl';\nimport { connect } from 'react-redux';\n\nimport Card from 'react-md/lib/Cards/Card';\nimport CardTitle from 'react-md/lib/Cards/CardTitle';\nimport SelectField from 'react-md/lib/SelectFields';\n\nimport { changeLanguageAction } from '../../store/action/BaseAction';\nimport { IRootReducer } from '../../store/reducer/RootReducer';\nimport Config from '../../base/Config';\nimport { ReactText } from \"react\";\nimport CardActions from \"react-md/lib/Cards/CardActions\";\nimport {Button} from \"react-md\";\nimport { History, withRouter } from \"react-router-dom\";\n\nconst LANGUAGES = [\n  { label: 'Deutsch', value: 'de' },\n  { label: 'English', value: 'en' },\n  { label: 'Italiano', value: 'it' }\n];\n\n// props & state ---------------------------------------------------------------\ninterface ISettingsContainerProps extends InjectedIntlProps {\n  language?: string;\n  changeLanguageAction: (language: ReactText) => void;\n  history?: History;\n}\n\n// component -------------------------------------------------------------------\nclass SettingsContainer extends React.Component<ISettingsContainerProps> {\n  render() {\n    const { intl: { formatMessage }, language } = this.props;\n\n    return (\n      <div className=\"md-grid\">\n        <div className=\"md-cell md-cell--12\">\n          <Card style={{ width: 330, margin: 'auto' }} raise={true}>\n            <CardTitle title={formatMessage({ id: 'settings.title' })} />\n            <SelectField\n              id=\"language\"\n              label={formatMessage({ id: 'settings.language' })}\n              className=\"md-cell md-cell--12\"\n              menuItems={LANGUAGES}\n              value={language}\n              itemLabel=\"label\"\n              itemValue=\"value\"\n              onChange={\n                lang =>\n                {\n                  let cookieJSON = {};\n                  if (document.cookie.length) {\n                    cookieJSON = JSON.parse(document.cookie);\n                  }\n                  cookieJSON['lang'] = lang;\n                  document.cookie = JSON.stringify(cookieJSON);\n\n                  this.props.changeLanguageAction(lang);\n                }\n              }\n            />\n            <div style={{ height: 20 }} />\n            <CardActions className=\"md-dialog-footer\">\n              <Button primary flat onClick={this.props.history.goBack} >\n                <label>{formatMessage({id: 'Done'})}</label>\n              </Button>\n            </CardActions>\n          </Card>\n        </div>\n      </div>\n    );\n  }\n}\n\n// higher order components -----------------------------------------------------\nconst mapStateToProps = (state: IRootReducer, ownProps: ISettingsContainerProps): ISettingsContainerProps => ({\n  language: state.baseReducer.language ? state.baseReducer.language : Config.Language,\n  ...ownProps\n});\n\n// noinspection JSUnusedGlobalSymbols\nexport default withRouter(injectIntl(connect(mapStateToProps, {changeLanguageAction}, null, {withRef: true})(SettingsContainer)));\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/containers/settings/SettingsContainer.tsx	(revision 7066f85eada997ad448c7b650176eb72ab129747)
++++ app/containers/settings/SettingsContainer.tsx	(date 1568041214998)
+@@ -62,7 +62,7 @@
+             <div style={{ height: 20 }} />
+             <CardActions className="md-dialog-footer">
+               <Button primary flat onClick={this.props.history.goBack} >
+-                <label>{formatMessage({id: 'Done'})}</label>
++                <label>{formatMessage({id: 'app.settings.done'})}</label>
+               </Button>
+             </CardActions>
+           </Card>
+Index: app/Translations.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// @ts-ignore\nimport appTranslations from '../../../../src/Translations.json';\n\nconst defaultTranslations = {\n  \"de\": {\n    \"app.login\": \"Anmelden\",\n    \"app.logout\": \"Abmelden\",\n    \"app.logout.message\": \"Möchtest du dich abmelden?\",\n    \"app.logout.title\": \"Abmeldung\",\n    \"app.logout.action\": \"Abmelden\",\n    \"app.cancel.action\": \"Abbrechen\",\n    \"app.settings\": \"Einstellungen\",\n    \"app.version\": \"Version {versionNumber}\",\n    \"app.error\": \"Fehler\",\n    \"app.system\": \"System\",\n\n    \"login.failed\": \"Login fehlgeschlagen\",\n    \"login.noUserRights\": \"Keine Benutzerrechte vorhanden\",\n    \"login.button\": \"Anmelden\",\n    \"login.error\": \"Benutzername oder Passwort falsch\",\n    \"login.password\": \"Passwort\",\n    \"login.password.errorText\": \"Passwort erforderlich\",\n    \"login.title\": \"Willkommen\",\n    \"login.username\": \"Benutzername\",\n    \"login.username.errorText\": \"Benutzername erforderlich\",\n    \"please.login\": \"Bitte anmelden\",\n    \"settings.language\": \"Sprache\",\n    \"settings.title\": \"Einstellungen\",\n    \"app.closeBtnLabelModalDialog\": \"Close\"\n  },\n  \"en\": {\n    \"app.login\": \"Login\",\n    \"app.logout\": \"Logout\",\n    \"app.logout.message\": \"Do you wish to logout?\",\n    \"app.logout.title\": \"Logout\",\n    \"app.logout.action\": \"Logout\",\n    \"app.cancel.action\": \"Cancel\",\n    \"app.settings\": \"Settings\",\n    \"app.version\": \"Version {versionNumber}\",\n    \"app.error\": \"Error\",\n    \"app.system\": \"System\",\n\n    \"login.failed\": \"Login failed\",\n    \"login.noUserRights\": \"No user rights\",\n    \"login.button\": \"Login\",\n    \"login.error\": \"User or password wrong\",\n    \"login.password\": \"Password\",\n    \"login.password.errorText\": \"Password is required\",\n    \"login.title\": \"Welcome\",\n    \"login.username\": \"Username\",\n    \"login.username.errorText\": \"Username is required\",\n    \"please.login\": \"Please login\",\n    \"settings.language\": \"Language\",\n    \"settings.title\": \"Settings\",\n    \"app.closeBtnLabelModalDialog\": \"Close\"\n  },\n  \"it\": {\n    \"app.login\": \"Login\",\n    \"app.logout\": \"Logout\",\n    \"app.logout.message\": \"Vuoi davvero uscire?\",\n    \"app.logout.title\": \"Logout\",\n    \"app.logout.action\": \"Uscire\",\n    \"app.cancel.action\": \"Interrompere\",\n    \"app.settings\": \"Impostazioni\",\n    \"app.version\": \"Versione {versionNumber}\",\n    \"app.error\": \"Errore\",\n    \"app.system\": \"Sistema\",\n\n    \"login.failed\": \"Login errato\",\n    \"login.noUserRights\": \"Privilegi insufficienti\",\n    \"login.button\": \"Login\",\n    \"login.error\": \"Nome utente o Password sbagliati\",\n    \"login.password\": \"Password\",\n    \"login.password.errorText\": \"Necessaria password\",\n    \"login.title\": \"Benvenuti\",\n    \"login.username\": \"Nome utente\",\n    \"login.username.errorText\": \"Necessario nome utente\",\n    \"please.login\": \"Login\",\n    \"settings.language\": \"Lingua\",\n    \"settings.title\": \"Impostazioni\",\n    \"app.closeBtnLabelModalDialog\": \"Close\"\n  }\n};\n\nconst translations = defaultTranslations;\nfor (const language in translations) {\n  const defaultLanguage = translations[language];\n  const appLanguage = appTranslations[language];\n  if (appLanguage) translations[language] = Object.assign(defaultLanguage, appLanguage);\n}\n\nexport default translations;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Translations.ts	(revision 7066f85eada997ad448c7b650176eb72ab129747)
++++ app/Translations.ts	(date 1568041103868)
+@@ -3,21 +3,25 @@
+ 
+ const defaultTranslations = {
+   "de": {
++    "app.backend": "Backend",
++    "app.cancel.action": "Abbrechen",
++    "app.closeBtnLabelModalDialog": "Schließen",
++    "app.error": "Fehler",
+     "app.login": "Anmelden",
+     "app.logout": "Abmelden",
++    "app.logout.action": "Abmelden",
+     "app.logout.message": "Möchtest du dich abmelden?",
+     "app.logout.title": "Abmeldung",
+-    "app.logout.action": "Abmelden",
+-    "app.cancel.action": "Abbrechen",
++    "app.search": "Suchen",
+     "app.settings": "Einstellungen",
+-    "app.version": "Version {versionNumber}",
+-    "app.error": "Fehler",
++    "app.settings.done": "Fertig",
+     "app.system": "System",
++    "app.version": "Version {versionNumber}",
+ 
+-    "login.failed": "Login fehlgeschlagen",
+-    "login.noUserRights": "Keine Benutzerrechte vorhanden",
+     "login.button": "Anmelden",
+     "login.error": "Benutzername oder Passwort falsch",
++    "login.failed": "Login fehlgeschlagen",
++    "login.noUserRights": "Keine Benutzerrechte vorhanden",
+     "login.password": "Passwort",
+     "login.password.errorText": "Passwort erforderlich",
+     "login.title": "Willkommen",
+@@ -26,24 +30,27 @@
+     "please.login": "Bitte anmelden",
+     "settings.language": "Sprache",
+     "settings.title": "Einstellungen",
+-    "app.closeBtnLabelModalDialog": "Close"
+   },
+   "en": {
++    "app.backend": "Backend",
++    "app.cancel.action": "Cancel",
++    "app.closeBtnLabelModalDialog": "Close",
++    "app.error": "Error",
+     "app.login": "Login",
+     "app.logout": "Logout",
++    "app.logout.action": "Logout",
+     "app.logout.message": "Do you wish to logout?",
+     "app.logout.title": "Logout",
+-    "app.logout.action": "Logout",
+-    "app.cancel.action": "Cancel",
++    "app.search": "Search",
+     "app.settings": "Settings",
+-    "app.version": "Version {versionNumber}",
+-    "app.error": "Error",
++    "app.settings.done": "Done",
+     "app.system": "System",
++    "app.version": "Version {versionNumber}",
+ 
++    "login.button": "Login",
++    "login.error": "User or password wrong",
+     "login.failed": "Login failed",
+     "login.noUserRights": "No user rights",
+-    "login.button": "Login",
+-    "login.error": "User or password wrong",
+     "login.password": "Password",
+     "login.password.errorText": "Password is required",
+     "login.title": "Welcome",
+@@ -52,24 +59,27 @@
+     "please.login": "Please login",
+     "settings.language": "Language",
+     "settings.title": "Settings",
+-    "app.closeBtnLabelModalDialog": "Close"
+   },
+   "it": {
++    "app.backend": "Backend",
++    "app.cancel.action": "Interrompere",
++    "app.closeBtnLabelModalDialog": "Chiuso",
++    "app.error": "Errore",
+     "app.login": "Login",
+     "app.logout": "Logout",
++    "app.logout.action": "Uscire",
+     "app.logout.message": "Vuoi davvero uscire?",
+     "app.logout.title": "Logout",
+-    "app.logout.action": "Uscire",
+-    "app.cancel.action": "Interrompere",
++    "app.search": "Ricerca",
+     "app.settings": "Impostazioni",
++    "app.settings.done": "Finito",
++    "app.system": "Sistema",
+     "app.version": "Versione {versionNumber}",
+-    "app.error": "Errore",
+-    "app.system": "Sistema",
+ 
++    "login.button": "Login",
++    "login.error": "Nome utente o Password sbagliati",
+     "login.failed": "Login errato",
+     "login.noUserRights": "Privilegi insufficienti",
+-    "login.button": "Login",
+-    "login.error": "Nome utente o Password sbagliati",
+     "login.password": "Password",
+     "login.password.errorText": "Necessaria password",
+     "login.title": "Benvenuti",
+@@ -78,7 +88,6 @@
+     "please.login": "Login",
+     "settings.language": "Lingua",
+     "settings.title": "Impostazioni",
+-    "app.closeBtnLabelModalDialog": "Close"
+   }
+ };
+ 
+Index: app/containers/header/BackendIndicator.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as React from 'react';\nimport { compose } from 'redux';\nimport { connect } from 'react-redux';\nimport { getRegion } from '../../store/action/SystemAction';\nimport Tooltipped from 'react-md/lib/Tooltips/Tooltipped';\nimport { injectIntl, InjectedIntlProps } from 'react-intl';\n// @ts-ignore\nimport { IRootReducer } from '../../../../../../src/store/reducer/Root';\n\nexport interface IBackendIndicatorProps extends InjectedIntlProps {\n  getRegion?: any;\n  backendRegion?: string;\n}\n\nexport interface IBackendIndicatorState {\n\n}\n\nclass BackendIndicator extends React.Component<IBackendIndicatorProps, IBackendIndicatorState> {\n  constructor(props) {\n    super(props);\n    const { props: { getRegion } } = this;\n    getRegion();\n  }\n\n  render() {\n    const { props: { intl: { formatMessage }, backendRegion } } = this;\n    return (\n      <Tooltipped\n        label={`${formatMessage({id: 'Backend'})}: ${backendRegion}`}>\n        <div className='system'>\n          <div className={(backendRegion || '').toLowerCase()}/>\n        </div>\n      </Tooltipped>\n    )\n  }\n}\n\nconst mapStateToProps = (state: IRootReducer, ownProps: IBackendIndicatorProps) => ({\n  ...ownProps,\n  ...state.systemReducer\n});\n\nconst enhance = compose(\n  connect(mapStateToProps, { getRegion }),\n  injectIntl\n);\n\n// noinspection JSUnusedGlobalSymbols\nexport default enhance(BackendIndicator);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/containers/header/BackendIndicator.tsx	(revision 7066f85eada997ad448c7b650176eb72ab129747)
++++ app/containers/header/BackendIndicator.tsx	(date 1568040971694)
+@@ -27,7 +27,7 @@
+     const { props: { intl: { formatMessage }, backendRegion } } = this;
+     return (
+       <Tooltipped
+-        label={`${formatMessage({id: 'Backend'})}: ${backendRegion}`}>
++        label={`${formatMessage({id: 'app.backend'})}: ${backendRegion}`}>
+         <div className='system'>
+           <div className={(backendRegion || '').toLowerCase()}/>
+         </div>
+Index: app/containers/login/LoginCredentials.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as React from 'react';\nimport { injectIntl, InjectedIntlProps } from 'react-intl';\nimport TextField from 'react-md/lib/TextFields/TextField';\n\nexport interface ILoginCredentialsProps extends InjectedIntlProps {\n  onChangeUsername: any;\n  onChangePassword: any;\n  onLogin: any;\n}\n\nconst loginCredentials: React.SFC<ILoginCredentialsProps> = ({\n  intl: { formatMessage },\n  onChangeUsername, onChangePassword, onLogin\n}) => (\n  <div className=\"login-credentials\">\n    <TextField\n      id=\"username\"\n      type=\"text\"\n      placeholder={formatMessage({id: 'login.username'})}\n      required={true}\n      errorText={formatMessage({id: 'login.username.errorText'})}\n      onChange={onChangeUsername}\n    />\n    <TextField\n      id=\"password\"\n      type=\"password\"\n      placeholder={formatMessage({id: 'login.password'})}\n      required={true}\n      errorText={formatMessage({id: 'login.password.errorText'})}\n      onChange={onChangePassword}\n      onKeyUp={e => e.keyCode === 13 && onLogin()}\n    />\n  </div>\n);\n\nexport default injectIntl(loginCredentials);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/containers/login/LoginCredentials.tsx	(revision 7066f85eada997ad448c7b650176eb72ab129747)
++++ app/containers/login/LoginCredentials.tsx	(date 1568036036171)
+@@ -8,7 +8,7 @@
+   onLogin: any;
+ }
+ 
+-const loginCredentials: React.SFC<ILoginCredentialsProps> = ({
++const loginCredentials: React.FC<ILoginCredentialsProps> = ({
+   intl: { formatMessage },
+   onChangeUsername, onChangePassword, onLogin
+ }) => (
+Index: app/containers/login/LogoutDialog.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as React from 'react';\nimport { InjectedIntlProps, injectIntl } from 'react-intl';\n\nimport Dialog from 'react-md/lib/Dialogs';\n\ninterface ILogoutDialog extends InjectedIntlProps {\n  visible: boolean;\n  closeDialog: (logout: boolean) => void;\n}\n\nconst LogoutDialog: React.SFC<ILogoutDialog> = ({ closeDialog, intl, visible }) => {\n  const { formatMessage } = intl;\n  return (\n    <Dialog\n      id=\"logout\"\n      visible={visible}\n      title={formatMessage({ id: 'app.logout.title' })}\n      onHide={() => {\n        closeDialog(false);\n      }}\n      aria-labelledby=\"logoutDescription\"\n      modal\n      actions={[\n        {\n          onClick: () => {\n            closeDialog(true);\n          },\n          primary: true,\n          label: formatMessage({ id: 'app.logout.action' })\n        },\n        {\n          onClick: () => {\n            closeDialog(false);\n          },\n          label: formatMessage({ id: 'app.cancel.action' })\n        }\n      ]}\n    >\n      <p id=\"logoutDescription\" className=\"md-color--secondary-text\">\n        {formatMessage({ id: 'app.logout.message' })}\n      </p>\n    </Dialog>\n  );\n};\n\nexport default injectIntl(LogoutDialog);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/containers/login/LogoutDialog.tsx	(revision 7066f85eada997ad448c7b650176eb72ab129747)
++++ app/containers/login/LogoutDialog.tsx	(date 1568036036184)
+@@ -8,7 +8,7 @@
+   closeDialog: (logout: boolean) => void;
+ }
+ 
+-const LogoutDialog: React.SFC<ILogoutDialog> = ({ closeDialog, intl, visible }) => {
++const LogoutDialog: React.FC<ILogoutDialog> = ({ closeDialog, intl, visible }) => {
+   const { formatMessage } = intl;
+   return (
+     <Dialog

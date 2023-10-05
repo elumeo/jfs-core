@@ -23,7 +23,12 @@ export const namespace = (namespace: Type.TypeScript.Namespace) => (
   })}`
 );
 
-export const type = (type: Type.TypeScript.Type) => `type ${Code.Expression.assignment(type)}`;
+export const type = (type: Type.TypeScript.Type) =>
+  `type ${Code.Expression.assignment(type)}`;
+
+export type foo<T> = {
+  bar: T
+}
 
 const _interface = (_interface: Type.TypeScript.Interface) => (
   `interface ${_interface.name} ${Code.Block.braces({

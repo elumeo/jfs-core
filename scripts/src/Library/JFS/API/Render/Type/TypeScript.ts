@@ -41,8 +41,14 @@ export type Function = {
   };
 };
 
-
 export type Interface = {
   name: string;
   lines: string[];
+}
+
+export type Module = {
+  namespace: string,
+  name: string,
+  code: string,
+  modules: Module[]
 }

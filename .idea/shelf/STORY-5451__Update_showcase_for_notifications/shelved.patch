@@ -1,0 +1,83 @@
+Index: showcase/src/Component/AddNotificationButton.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as React from 'react';\nimport { useIntl } from 'react-intl';\nimport useActions from '@elumeo/jfs-core/build/Store/useActions';\nimport { v4 as uuid } from 'uuid';\nimport { Button } from '@material-ui/core';\n\nconst randomSelect = <T, >(array: T[]) => array[Math.floor(Math.random() * array.length)]\n\nconst AddNotificationButton: React.FC = () => {\n  const {formatMessage} = useIntl();\n  const {addNotification} = useActions();\n  return (\n    <Button variant={'outlined'} onClick={() => addNotification({\n      id: uuid(),\n      variant: randomSelect(['default', 'error', 'success', 'warning', 'info']),\n      title: 'Some title',\n      subtitle: 'Some subtitle',\n      content: <>Some content</>,\n      action: () => (<></>)\n    })}>\n      {formatMessage({id: 'Add Notification'})}\n    </Button>\n  );\n}\n\nexport default AddNotificationButton;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/showcase/src/Component/AddNotificationButton.tsx b/showcase/src/Component/AddNotificationButton.tsx
+--- a/showcase/src/Component/AddNotificationButton.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/showcase/src/Component/AddNotificationButton.tsx	(date 1649884443985)
+@@ -1,24 +1,57 @@
+ import * as React from 'react';
+ import { useIntl } from 'react-intl';
+-import useActions from '@elumeo/jfs-core/build/Store/useActions';
+-import { v4 as uuid } from 'uuid';
+-import { Button } from '@material-ui/core';
++import { Button, IconButton } from '@material-ui/core';
++import { Notification } from '../../../src/Types/Notification';
++import { OptionsObject, VariantType } from 'notistack';
++import { Visibility } from '@material-ui/icons';
++import useActions from '../Store/useActions';
+ 
+-const randomSelect = <T, >(array: T[]) => array[Math.floor(Math.random() * array.length)]
++const generateNotification = (): Notification => {
++  const rand = Math.round(Math.random() * 100000)
++  const variant: VariantType =
++    rand % 7 == 0 && 'error'
++    || rand % 5 == 0 && 'warning'
++    || rand % 3 == 0 && 'success'
++    || rand % 2 == 0 && 'info'
++    || 'default'
++  const id = String(rand)
++  const notistackOptions: OptionsObject = { persist: true }
++  switch (variant) {
++    case 'error':
++      return {
++        id,
++        variant,
++        notistackOptions,
++        title: 'ServerError',
++        subtitle: 'Join Room (action.payload.name)',
++        content: 'Habitant habitasse, sem etiamnostra etiam. Tristique viverra volutpat mi, ornare non tellus, praesent odio justo platea erat quis. Aliquam est varius, fringilla class, in ad dictumst turpis vivamus eros augue. Nunc fames donec, vehicula phasellus, volutpat sem luctus leo ut. Consequat nulla enim, curae hac, lorem purus cursus feugiat habitant fusce. Ante metus curabitur, litora nec, donec diam bibendum euismod elit placerat neque. Pretium sit, morbi odio iaculis.'
++      }
++    case 'warning':
++      return {
++        id,
++        variant,
++        notistackOptions,
++        title: 'Warning',
++        subtitle: 'Some changes aren\'t saved yet',
++        content: 'The quick brown fox jumps over the lazy dog',
++        action: () => <IconButton><Visibility/></IconButton>
++      }
++    case 'success':
++      return { id, variant, title: 'Changes saved' }
++    case 'info':
++      return { id, variant, content: 'Time for a cup of coffee!' }
++    case 'default':
++    default:
++      return { id, variant: 'default', content: 'content loaded' }
++  }
++}
+ 
+ const AddNotificationButton: React.FC = () => {
+-  const {formatMessage} = useIntl();
+-  const {addNotification} = useActions();
++  const { formatMessage } = useIntl();
++  const { addNotification } = useActions();
+   return (
+-    <Button variant={'outlined'} onClick={() => addNotification({
+-      id: uuid(),
+-      variant: randomSelect(['default', 'error', 'success', 'warning', 'info']),
+-      title: 'Some title',
+-      subtitle: 'Some subtitle',
+-      content: <>Some content</>,
+-      action: () => (<></>)
+-    })}>
+-      {formatMessage({id: 'Add Notification'})}
++    <Button variant={'outlined'} onClick={() => addNotification(generateNotification())}>
++      {formatMessage({ id: 'Add Notification' })}
+     </Button>
+   );
+ }

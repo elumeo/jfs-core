@@ -1,0 +1,2020 @@
+Index: src/Component/Notification/Card/Default.tsx
+===================================================================
+diff --git a/src/Component/Notification/Card/Default.tsx b/src/Component/Notification/Card/Default.tsx
+deleted file mode 100644
+--- a/src/Component/Notification/Card/Default.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ /dev/null	(revision 0b19630d855163bf16f7227595513ca87c237dac)
+@@ -1,68 +0,0 @@
+-import React from 'react';
+-import Typography from '@material-ui/core/Typography';
+-import CardActions from '@material-ui/core/CardActions';
+-import { useSnackbar } from 'notistack';
+-import * as Type from 'Types/Notification';
+-import { useIntl } from 'react-intl';
+-
+-export type Props = {
+-  notification: Type.Notification;
+-  temporary?: boolean;
+-};
+-
+-const DefaultNotificationCard: React.FC<Props> = ({
+-  notification: {
+-    title,
+-    subtitle,
+-    content,
+-    action,
+-    id,
+-    isTranslationId = false,
+-    httpDetails,
+-    timeStamp
+-  },
+-  temporary,
+-}) => {
+-  const snackbar = useSnackbar();
+-  const { formatMessage, formatDate, formatTime } = useIntl();
+-  return (
+-    <>
+-      <div style={{color: 'inherit'}}>
+-        {title && (
+-          <Typography variant='h6' component='div'>
+-            {isTranslationId ? formatMessage({ id: title as string }) : title}
+-          </Typography>
+-        )}
+-        {subtitle && (
+-          <Typography variant='subtitle1' component='div'>
+-            {isTranslationId
+-              ? formatMessage({ id: subtitle as string })
+-              : subtitle}
+-          </Typography>
+-        )}
+-        {content && (
+-          <Typography variant='body2' component='div'>
+-            {isTranslationId
+-              ? formatMessage({ id: content as string })
+-              : content}
+-          </Typography>
+-        )}
+-
+-        {
+-          (httpDetails || timeStamp) &&
+-          <div style={{padding: '4px'}}>
+-            {httpDetails && <Typography variant='caption' component='div'>{httpDetails}</Typography>}
+-            {timeStamp &&
+-            <Typography variant='caption' component='div'>
+-              {formatDate(timeStamp, {dateStyle: 'medium'})}&nbsp;{formatTime(timeStamp, {timeStyle: 'medium'})}
+-            </Typography>
+-            }
+-          </div>
+-        }
+-      </div>
+-      {!temporary && action && <CardActions>{action(snackbar, id, temporary)}</CardActions>}
+-    </>
+-  );
+-};
+-
+-export default DefaultNotificationCard;
+Index: src/Component/Notification/Card/Icon.tsx
+===================================================================
+diff --git a/src/Component/Notification/Card/Icon.tsx b/src/Component/Notification/Card/Icon.tsx
+deleted file mode 100644
+--- a/src/Component/Notification/Card/Icon.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ /dev/null	(revision 0b19630d855163bf16f7227595513ca87c237dac)
+@@ -1,24 +0,0 @@
+-import React from 'react';
+-import FontIcon from '@material-ui/core/Icon';
+-import { VariantType } from 'notistack';
+-
+-export type Props = {
+-  variant: VariantType;
+-};
+-
+-const Icon: React.FC<Props> = ({ variant }) => {
+-  const iconName = React.useMemo(() => {
+-    if (variant === 'error') {
+-      return 'cancel';
+-    } else if (variant === 'default') {
+-      return 'alert';
+-    } else if (variant === 'success') {
+-      return 'check';
+-    } else {
+-      return variant;
+-    }
+-  }, [variant]);
+-  return iconName ? <FontIcon color='inherit'>{iconName}</FontIcon> : null;
+-};
+-
+-export default Icon;
+Index: src/Component/Notification/History/Button/DismissAllNotifications.tsx
+===================================================================
+diff --git a/src/Component/Notification/History/Button/DismissAllNotifications.tsx b/src/Component/Notification/History/Button/DismissAllNotifications.tsx
+deleted file mode 100644
+--- a/src/Component/Notification/History/Button/DismissAllNotifications.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ /dev/null	(revision 0b19630d855163bf16f7227595513ca87c237dac)
+@@ -1,17 +0,0 @@
+-import React from 'react';
+-import IconButton from '@material-ui/core/IconButton';
+-import DeleteIcon from '@material-ui/icons/Delete';
+-import useActions from 'Store/useActions';
+-import { useSelector } from 'Types/Redux';
+-
+-const DismissAllNotificationsButton: React.FC = () => {
+-  const history = useSelector(state => state.Core.Notification.history);
+-  const { removeAllNotifications } = useActions();
+-  return (
+-    <IconButton onClick={removeAllNotifications} disabled={!history.length}>
+-      <DeleteIcon />
+-    </IconButton>
+-  );
+-};
+-
+-export default DismissAllNotificationsButton;
+Index: src/Component/Notification/History/Button/index.ts
+===================================================================
+diff --git a/src/Component/Notification/History/Button/index.ts b/src/Component/Notification/History/Button/index.ts
+deleted file mode 100644
+--- a/src/Component/Notification/History/Button/index.ts	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ /dev/null	(revision 0b19630d855163bf16f7227595513ca87c237dac)
+@@ -1,1 +0,0 @@
+-export { default as DismissAllNotifications } from './DismissAllNotifications';
+Index: src/Component/Notification/History/DeleteAllButton.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/History/DeleteAllButton.tsx b/src/Component/Notification/History/DeleteAllButton.tsx
+new file mode 100644
+--- /dev/null	(date 1649887493649)
++++ b/src/Component/Notification/History/DeleteAllButton.tsx	(date 1649887493649)
+@@ -0,0 +1,19 @@
++import React from 'react';
++import Button from '@material-ui/core/Button';
++import Delete from '@material-ui/icons/Delete';
++import useActions from 'Store/useActions';
++import { useSelector } from 'Types/Redux';
++import { useIntl } from 'react-intl';
++
++const DeleteAllButton: React.FC = () => {
++  const { formatMessage } = useIntl()
++  const history = useSelector(state => state.Core.Notification.history);
++  const { removeAllNotifications } = useActions();
++  return (
++    <Button onClick={() => removeAllNotifications()} disabled={!history.length} startIcon={<Delete/>}>
++      {formatMessage({ id: 'notification.removeAll' })}
++    </Button>
++  );
++};
++
++export default DeleteAllButton;
+Index: src/Component/Notification/History/index.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>export { default as All } from './All';\nexport { default as Empty } from './Empty';\nexport { default as Toolbar } from './Toolbar';\nexport * as Button from './Button';\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/History/index.ts b/src/Component/Notification/History/index.ts
+--- a/src/Component/Notification/History/index.ts	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Notification/History/index.ts	(date 1649843910822)
+@@ -1,4 +1,4 @@
+ export { default as All } from './All';
+ export { default as Empty } from './Empty';
+ export { default as Toolbar } from './Toolbar';
+-export * as Button from './Button';
++export { default as DeleteAllButton } from './DeleteAllButton';
+Index: src/Component/Notification/History/All.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport { useSelector } from 'Types/Redux';\nimport Card from 'Component/Notification/Card';\nimport Empty from './Empty';\nimport ListItem from '@material-ui/core/ListItem';\nimport { Notification } from 'Types/Notification';\n\nconst All: React.FC = () => {\n  const history = useSelector(state => state.Core.Notification.history);\n  useSelector(state => state.Core.App.appInitialized);\n\n  return history.length ? (\n    <div\n      style={{\n        display: 'flex',\n        flexDirection: 'column',\n        width: '100%',\n        height: '100%',\n        overflowY: 'scroll',\n        gap: '8px',\n      }}>\n      {history.map((notification: Notification) => (\n        <ListItem key={notification.id} style={{ width: '100%' }}>\n          <Card notification={notification} temporary={false} />\n        </ListItem>\n      ))}\n    </div>\n  ) : (\n    <Empty />\n  );\n};\n\nexport default All;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/History/All.tsx b/src/Component/Notification/History/All.tsx
+--- a/src/Component/Notification/History/All.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Notification/History/All.tsx	(date 1649855834853)
+@@ -2,32 +2,50 @@
+ import { useSelector } from 'Types/Redux';
+ import Card from 'Component/Notification/Card';
+ import Empty from './Empty';
++import List from '@material-ui/core/List';
+ import ListItem from '@material-ui/core/ListItem';
+ import { Notification } from 'Types/Notification';
++import { makeStyles } from '@material-ui/core/styles';
++import { Collapse } from '@material-ui/core';
++import { TransitionGroup } from 'react-transition-group'
+ 
+-const All: React.FC = () => {
+-  const history = useSelector(state => state.Core.Notification.history);
+-  useSelector(state => state.Core.App.appInitialized);
+-
+-  return history.length ? (
+-    <div
+-      style={{
+-        display: 'flex',
+-        flexDirection: 'column',
+-        width: '100%',
+-        height: '100%',
+-        overflowY: 'scroll',
+-        gap: '8px',
+-      }}>
+-      {history.map((notification: Notification) => (
+-        <ListItem key={notification.id} style={{ width: '100%' }}>
+-          <Card notification={notification} temporary={false} />
+-        </ListItem>
+-      ))}
+-    </div>
+-  ) : (
+-    <Empty />
++const useStyles = makeStyles(theme => ({
++  root: {
++    display: 'flex',
++    flexDirection: 'column',
++    width: '100%',
++    height: '100%',
++    overflowY: 'scroll',
++    gap: theme.spacing(1),
++    padding: theme.spacing(2, 0)
++  },
++  item: {
++    width: '100%'
++  }
++}))
++
++const All: React.FC = () => {
++  const classes = useStyles()
++  const history = useSelector(state => state.Core.Notification.history)
++  useSelector(state => state.Core.App.appInitialized)
++
++  if (history.length < 1) {
++    return <Empty/>
++  }
++
++  return (
++    <List className={classes.root}>
++      <TransitionGroup>
++        {history.map((notification: Notification) => (
++          <Collapse key={notification.id}>
++            <ListItem className={classes.item}>
++              <Card notification={notification} temporary={false}/>
++            </ListItem>
++          </Collapse>
++        ))}
++      </TransitionGroup>
++    </List>
+   );
+-};
++}
+ 
+ export default All;
+Index: src/Component/Notification/History/Toolbar.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport CardActions from '@material-ui/core/CardActions';\nimport * as Button from './Button';\n\nconst Toolbar: React.FC = () => (\n  <CardActions>\n    <Button.DismissAllNotifications />\n  </CardActions>\n);\n\nexport default Toolbar;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/History/Toolbar.tsx b/src/Component/Notification/History/Toolbar.tsx
+--- a/src/Component/Notification/History/Toolbar.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Notification/History/Toolbar.tsx	(date 1649843821414)
+@@ -1,10 +1,10 @@
+ import React from 'react';
+ import CardActions from '@material-ui/core/CardActions';
+-import * as Button from './Button';
++import DeleteAllButton from './DeleteAllButton';
+ 
+ const Toolbar: React.FC = () => (
+   <CardActions>
+-    <Button.DismissAllNotifications />
++    <DeleteAllButton/>
+   </CardActions>
+ );
+ 
+Index: src/Component/Notification/History/Empty.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport Typography from '@material-ui/core/Typography';\nimport NotificationsIcon from '@material-ui/icons/Notifications';\nimport { useIntl } from 'react-intl';\n\nconst Empty: React.FC = () => {\n  const { formatMessage } = useIntl();\n  const iconRef = React.useRef();\n  return (\n    <div\n      style={{\n        width: 'max-content',\n        display: 'flex',\n        justifyContent: 'center',\n        alignItems: 'center',\n        flexDirection: 'column',\n        color: 'grey',\n      }}>\n      <NotificationsIcon fontSize='large' ref={iconRef} />\n      <Typography>{formatMessage({ id: 'app.noNotifications' })}</Typography>\n    </div>\n  );\n};\n\nexport default Empty;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/History/Empty.tsx b/src/Component/Notification/History/Empty.tsx
+--- a/src/Component/Notification/History/Empty.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Notification/History/Empty.tsx	(date 1649843865860)
+@@ -16,7 +16,7 @@
+         flexDirection: 'column',
+         color: 'grey',
+       }}>
+-      <NotificationsIcon fontSize='large' ref={iconRef} />
++      <NotificationsIcon fontSize='large' ref={iconRef}/>
+       <Typography>{formatMessage({ id: 'app.noNotifications' })}</Typography>
+     </div>
+   );
+Index: src/Component/App/Stateful/Snackbar.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, { memo } from 'react';\nimport * as Notification from 'Component/Notification';\nimport { SnackbarProvider } from 'notistack';\n\nconst Snackbar = ({ children }: { children: React.ReactNode }) => {\n  return (\n    <SnackbarProvider\n      anchorOrigin={{\n        vertical: 'bottom',\n        horizontal: 'right',\n      }}\n      maxSnack={5}\n      domRoot={document.getElementById('overlay')}>\n      <Notification.Notistack />\n      {children}\n    </SnackbarProvider>\n  )\n};\n\nexport default memo(Snackbar);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/App/Stateful/Snackbar.tsx b/src/Component/App/Stateful/Snackbar.tsx
+--- a/src/Component/App/Stateful/Snackbar.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/App/Stateful/Snackbar.tsx	(date 1649888931850)
+@@ -1,17 +1,45 @@
+ import React, { memo } from 'react';
+ import * as Notification from 'Component/Notification';
+-import { SnackbarProvider } from 'notistack';
++import { SnackbarOrigin, SnackbarProvider } from 'notistack';
++import { useSelector } from 'Types/Redux';
++import { State } from 'Store/Reducer/Global';
++import { makeStyles } from '@material-ui/core/styles';
++
++const anchorOriginTopRight: SnackbarOrigin = { vertical: 'top', horizontal: 'right' }
++const anchorOriginBottomRight: SnackbarOrigin = { vertical: 'bottom', horizontal: 'right' }
++
++const selectNotificationPosition = (state: State) => state.Core.Configuration.config.NotificationPosition
++const selectNotificationMax = (state: State) => state.Core.Configuration.config.NotificationMax
++
++const useStyles = makeStyles(theme => ({
++  root: {
++    background: 'none',
++    padding: 0,
++    '& #notistack-snackbar': {
++      width: '100%',
++      height: '100%',
++      padding: 0
++    }
++  },
++  containerAnchorOriginTopRight: {
++    marginTop: theme.mixins.toolbar.minHeight
++  }
++}))
+ 
+ const Snackbar = ({ children }: { children: React.ReactNode }) => {
++  const notificationPosition = useSelector(selectNotificationPosition)
++  const notificationMax = useSelector(selectNotificationMax)
++  const anchorOrigin = notificationPosition == 'topRight' && anchorOriginTopRight || anchorOriginBottomRight
++  const classes = useStyles()
+   return (
+     <SnackbarProvider
+-      anchorOrigin={{
+-        vertical: 'bottom',
+-        horizontal: 'right',
+-      }}
+-      maxSnack={5}
+-      domRoot={document.getElementById('overlay')}>
+-      <Notification.Notistack />
++      className={classes.root}
++      anchorOrigin={anchorOrigin}
++      maxSnack={notificationMax}
++      classes={{ containerAnchorOriginTopRight: classes.containerAnchorOriginTopRight }}
++      domRoot={document.getElementById('overlay')}
++    >
++      <Notification.Notistack/>
+       {children}
+     </SnackbarProvider>
+   )
+Index: src/Component/Notification/Overlay.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport Card from '@material-ui/core/Card';\nimport CardHeader from '@material-ui/core/CardHeader';\nimport CardContent from '@material-ui/core/CardContent';\nimport * as History from './History';\n\nconst Overlay: React.FC = () => (\n  <Card\n    style={{\n      width: 400,\n      height: 'calc(100vh - 100px)',\n    }}>\n    <CardHeader style={{ height: 70 }} action={<History.Toolbar />} />\n    <CardContent\n      style={{\n        width: '100%',\n        height: 'calc(100% - 70px)',\n        display: 'flex',\n        justifyContent: 'center',\n        alignItems: 'center',\n      }}>\n      <History.All />\n    </CardContent>\n  </Card>\n);\n\nexport default Overlay;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/Overlay.tsx b/src/Component/Notification/Overlay.tsx
+--- a/src/Component/Notification/Overlay.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Notification/Overlay.tsx	(date 1649853788141)
+@@ -18,6 +18,7 @@
+         display: 'flex',
+         justifyContent: 'center',
+         alignItems: 'center',
++        padding: 0
+       }}>
+       <History.All />
+     </CardContent>
+Index: config.dist.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"JscClient\": {\n    \"Host-Internal\": \"http://de.TECH-64_push_to_web.api.staging-jsc-app.juwelo.local\",\n    \"Host\": \"https://api-test.juwelo.de/staging/de/master\",\n    \"Host-Local\": \"http://localhost/jsc-api-de\",\n    \"Timeout\": 30000\n  },\n  \"JscWebSocketClient\": {\n    \"HostV\": \"http://localhost:8080\",\n    \"PathV\": \"\",\n    \"Host\": \"https://api-test.juwelo.de\",\n    \"Path\": \"/staging/websocket.services\",\n    \"PrivateNamespace\": \"Jsc2Jfs\"\n  },\n  \"Language\": \"de\",\n  \"Currency\": \"EUR\",\n  \"Container\": \"juwelotv\",\n  \"ContainerLanguage\": \"de\",\n  \"AppName\": \"jfs_Boilerplate\"\n}\n  
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/config.dist.json b/config.dist.json
+--- a/config.dist.json	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/config.dist.json	(date 1649853435758)
+@@ -16,6 +16,7 @@
+   "Currency": "EUR",
+   "Container": "juwelotv",
+   "ContainerLanguage": "de",
+-  "AppName": "jfs_Boilerplate"
++  "AppName": "jfs_Boilerplate",
++  "NotificationPosition": "bottomRight",
++  "NotificationMax": 5
+ }
+-  
+\ No newline at end of file
+Index: src/Component/Notification/Notistack.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport _ from 'lodash';\nimport * as notistack from 'notistack';\nimport { useSelector } from 'Types/Redux';\nimport * as Type from 'Types/Notification';\nimport Card from './Card';\nimport * as Button from './Button';\n\nconst Notistack: React.FC = () => {\n  const all = useSelector(state => state.Core.Notification.history);\n  const isHistoryOpen = useSelector(\n    state => state.Core.Notification.isHistoryOpen,\n  );\n  const [shown, setShown] = React.useState<Type.Notification[]>([]);\n  const snackbar = notistack.useSnackbar();\n\n  React.useEffect(() => {\n    const missing = _.differenceBy(all, shown, 'id');\n    if (!isHistoryOpen) {\n      missing.forEach(notification => {\n        snackbar.enqueueSnackbar(\n          <Card.Default notification={notification} temporary />,\n          {\n            key: notification.id,\n            variant: notification.variant,\n            action: (\n              <>\n                {notification.action &&\n                  notification.action(snackbar, notification.id, true)}\n                <Button.Dismiss\n                  onClick={() => snackbar.closeSnackbar(notification.id)}\n                />\n              </>\n            ),\n          },\n        );\n      });\n    }\n    setShown([...shown, ...missing]);\n  }, [all]);\n\n  return null;\n};\n\nexport default Notistack;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/Notistack.tsx b/src/Component/Notification/Notistack.tsx
+--- a/src/Component/Notification/Notistack.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Notification/Notistack.tsx	(date 1649887141282)
+@@ -1,42 +1,49 @@
+ import React from 'react';
+ import _ from 'lodash';
+ import * as notistack from 'notistack';
+-import { useSelector } from 'Types/Redux';
+ import * as Type from 'Types/Notification';
+-import Card from './Card';
+ import * as Button from './Button';
++import { useSelector } from 'Types/Redux';
++import Card from './Card';
+ 
+ const Notistack: React.FC = () => {
+   const all = useSelector(state => state.Core.Notification.history);
+-  const isHistoryOpen = useSelector(
+-    state => state.Core.Notification.isHistoryOpen,
+-  );
++  const isHistoryOpen = useSelector(state => state.Core.Notification.isHistoryOpen);
++  const NotificationMax = useSelector(state => state.Core.Configuration.config.NotificationMax)
+   const [shown, setShown] = React.useState<Type.Notification[]>([]);
+   const snackbar = notistack.useSnackbar();
+ 
+   React.useEffect(() => {
+     const missing = _.differenceBy(all, shown, 'id');
++    const deleted = _.differenceBy(shown, all, 'id');
++    const persistentShown = shown.filter(n => n.notistackOptions?.persist);
++    const requiredDismissCount = Math.max(0, persistentShown.length + missing.length - NotificationMax)
++    for (let i = 0; i < requiredDismissCount; i++) {
++      const notification = persistentShown.shift()
++      notification.notistackOptions.persist = false
++      snackbar.closeSnackbar(notification.id)
++    }
++    deleted.forEach(notification => {
++      snackbar.closeSnackbar(notification.id)
++    })
+     if (!isHistoryOpen) {
+       missing.forEach(notification => {
++        const customAction = notification.action
++        notification.action = (snackbar, id, temporary) => (
++          <>
++            {temporary && <Button.Dismiss onClick={() => snackbar.closeSnackbar(notification.id)}/>}
++            {customAction && customAction(snackbar, notification.id, true)}
++          </>
++        )
+         snackbar.enqueueSnackbar(
+-          <Card.Default notification={notification} temporary />,
+-          {
+-            key: notification.id,
+-            variant: notification.variant,
+-            action: (
+-              <>
+-                {notification.action &&
+-                  notification.action(snackbar, notification.id, true)}
+-                <Button.Dismiss
+-                  onClick={() => snackbar.closeSnackbar(notification.id)}
+-                />
+-              </>
+-            ),
+-          },
++          <Card notification={notification} temporary/>,
++          { ...notification.notistackOptions, key: notification.id },
+         );
+       });
+     }
+-    setShown([...shown, ...missing]);
++    if (missing.length) {
++      setShown([...shown, ...missing]);
++    }
+   }, [all]);
+ 
+   return null;
+Index: src/Component/App/index.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport Stateless from './Stateless';\nimport Stateful, { Props as StatefulProps } from './Stateful';\nimport Title from './Title';\nimport moment from 'moment';\n\nDate.prototype.toJSON = function () {\n  return moment(this).format();\n};\n\nexport type Props = StatefulProps & {\n  allowRobotLogin?: boolean;\n  packageJSON: Record<string, unknown>;\n  translations: Record<string, Record<string, string>>;\n  title?: string;\n};\n\nconst App: React.FC<Props> = ({\n  children,\n  allowRobotLogin,\n  translations,\n  packageJSON,\n  title,\n  store,\n}) => (\n  <Stateful store={store}>\n    <Title\n      value={title || (packageJSON.name as string)}/>\n    <Stateful.Initialized>\n      <Stateful.International translations={translations}>\n        {({ locale }) => (\n          <Stateless\n            locale={locale}\n            messages={translations[locale]}>\n            <Stateful.Snackbar>\n              {children}\n            </Stateful.Snackbar>\n          </Stateless>\n        )}\n      </Stateful.International>\n    </Stateful.Initialized>\n    <Stateful.Uninitialized>\n      <Stateless.Style>\n        <Stateful.Initializer\n          allowRobotLogin={allowRobotLogin}\n          packageJSON={packageJSON}\n          translations={translations}/>\n      </Stateless.Style>\n    </Stateful.Uninitialized>\n  </Stateful>\n);\n\nexport default App;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/App/index.tsx b/src/Component/App/index.tsx
+--- a/src/Component/App/index.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/App/index.tsx	(date 1649774443296)
+@@ -15,39 +15,37 @@
+   title?: string;
+ };
+ 
+-const App: React.FC<Props> = ({
+-  children,
+-  allowRobotLogin,
+-  translations,
+-  packageJSON,
+-  title,
+-  store,
+-}) => (
+-  <Stateful store={store}>
+-    <Title
+-      value={title || (packageJSON.name as string)}/>
+-    <Stateful.Initialized>
+-      <Stateful.International translations={translations}>
+-        {({ locale }) => (
+-          <Stateless
+-            locale={locale}
+-            messages={translations[locale]}>
+-            <Stateful.Snackbar>
+-              {children}
+-            </Stateful.Snackbar>
+-          </Stateless>
+-        )}
+-      </Stateful.International>
+-    </Stateful.Initialized>
+-    <Stateful.Uninitialized>
+-      <Stateless.Style>
+-        <Stateful.Initializer
+-          allowRobotLogin={allowRobotLogin}
+-          packageJSON={packageJSON}
+-          translations={translations}/>
+-      </Stateless.Style>
+-    </Stateful.Uninitialized>
+-  </Stateful>
+-);
++const App: React.FC<Props> =
++  ({
++     children,
++     allowRobotLogin,
++     translations,
++     packageJSON,
++     title,
++     store,
++   }) => (
++    <Stateful store={store}>
++      <Title value={title || (packageJSON.name as string)}/>
++      <Stateful.Initialized>
++        <Stateful.International translations={translations}>
++          {({ locale }) => (
++            <Stateless locale={locale} messages={translations[locale]}>
++              <Stateful.Snackbar>
++                {children}
++              </Stateful.Snackbar>
++            </Stateless>
++          )}
++        </Stateful.International>
++      </Stateful.Initialized>
++      <Stateful.Uninitialized>
++        <Stateless.Style>
++          <Stateful.Initializer
++            allowRobotLogin={allowRobotLogin}
++            packageJSON={packageJSON}
++            translations={translations}/>
++        </Stateless.Style>
++      </Stateful.Uninitialized>
++    </Stateful>
++  );
+ 
+ export default App;
+Index: src/Store/Action/Notification.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as TA from 'typesafe-actions';\nimport * as Type from 'Types/Notification';\nimport { AxiosError } from 'axios';\n\nexport const addNotification = TA.createAction('notification/ADD')<Type.Notification>();\nexport const removeNotification = TA.createAction('notification/remove')<string>();\nexport const removeAllNotifications = TA.createAction('notification/remove_all',)();\nexport const addErrorNotification = TA.createAction('notification/ERROR_ADD')<AxiosError>();\n\nexport const setIsNotificationHistoryOpen = TA.createAction('notification/SET_IS_HISTORY_OPEN')<boolean>();\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Store/Action/Notification.ts b/src/Store/Action/Notification.ts
+--- a/src/Store/Action/Notification.ts	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Store/Action/Notification.ts	(date 1649927867390)
+@@ -3,8 +3,9 @@
+ import { AxiosError } from 'axios';
+ 
+ export const addNotification = TA.createAction('notification/ADD')<Type.Notification>();
+-export const removeNotification = TA.createAction('notification/remove')<string>();
+-export const removeAllNotifications = TA.createAction('notification/remove_all',)();
++export const removeNotification = TA.createAction('notification/REMOVE')<string>();
++export const removeNotificationGroup = TA.createAction('notification/REMOVE_GROUP')<string>();
++export const removeAllNotifications = TA.createAction('notification/REMOVE_ALL')();
+ export const addErrorNotification = TA.createAction('notification/ERROR_ADD')<AxiosError>();
+ 
+ export const setIsNotificationHistoryOpen = TA.createAction('notification/SET_IS_HISTORY_OPEN')<boolean>();
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"name\": \"@elumeo/jfs-core\",\n  \"version\": \"10.0.0-beta.211\",\n  \"description\": \"Foundation for all JFS Apps\",\n  \"main\": \"Main.js\",\n  \"directories\": {\n    \"bin\": \"./scripts/bin\"\n  },\n  \"scripts\": {\n    \"start\": \"webpack serve --port 8083 --config build-tools/webpack/dev-server\",\n    \"build\": \"tsc && tsc-alias\",\n    \"build:watch\": \"tsc-watch --onSuccess tsc-alias\",\n    \"build:webpack\": \"webpack --config build-tools/webpack/dev-server\",\n    \"prettier\": \"echo prettierx --write src\",\n    \"release\": \"npm publish --access public\",\n    \"release:alpha\": \"npm publish --tag alpha --access public\",\n    \"release:beta\": \"npm publish --tag beta --access public\",\n    \"install:subpkg\": \"subpkg install\",\n    \"postinstall\": \"npm run install:subpkg && npm run jfs-postinstall\",\n    \"clean-install\": \"rm -rf ./node_modules ./package-lock.json && npm i\",\n    \"jfs-check-api\": \"node ./scripts/bin/jfs-check-api\",\n    \"jfs-check-translations\": \"node ./scripts/bin/jfs-check-translations\",\n    \"jfs-read-translations\": \"node ./scripts/bin/jfs-read-translations\",\n    \"jfs-deploy-config-files\": \"node ./scripts/bin/jfs-deploy-config-files\",\n    \"jfs-generate-api\": \"node ./scripts/bin/jfs-generate-api\",\n    \"jfs-open-showcase\": \"node ./scripts/bin/jfs-open-showcase\",\n    \"jfs-postinstall\": \"node ./scripts/bin/jfs-postinstall\",\n    \"jfs-check-config-schema\": \"node ./scripts/bin/jfs-check-config-schema\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/elumeo/jfs-core.git\"\n  },\n  \"author\": \"elumeo SE\",\n  \"license\": \"ISC\",\n  \"bugs\": {\n    \"url\": \"https://github.com/elumeo/jfs-core/issues\"\n  },\n  \"homepage\": \"http://www.elumeo.com\",\n  \"subPackages\": [\n    \"scripts\"\n  ],\n  \"dependencies\": {\n    \"@babel/core\": \"^7.8.6\",\n    \"@babel/plugin-transform-runtime\": \"^7.14.5\",\n    \"@babel/preset-env\": \"^7.14.7\",\n    \"@babel/preset-react\": \"^7.14.5\",\n    \"@babel/preset-typescript\": \"^7.14.5\",\n    \"@cypress/react\": \"5.10.3\",\n    \"@cypress/webpack-dev-server\": \"^1.7.0\",\n    \"@date-io/date-fns\": \"^1.3.13\",\n    \"@date-io/moment\": \"^1.3.13\",\n    \"@fontsource/roboto\": \"^4.5.1\",\n    \"@material-ui/core\": \"^4.12.3\",\n    \"@material-ui/data-grid\": \"^4.0.0-alpha.37\",\n    \"@material-ui/icons\": \"^4.11.2\",\n    \"@material-ui/lab\": \"^4.0.0-alpha.60\",\n    \"@material-ui/pickers\": \"^3.3.10\",\n    \"@types/diacritics\": \"^1.3.1\",\n    \"@types/cypress\": \"^1.1.3\",\n    \"@types/cypress-image-snapshot\": \"^3.1.6\",\n    \"@types/google-libphonenumber\": \"^7.4.21\",\n    \"@types/history\": \"^4.7.9\",\n    \"@types/js-cookie\": \"^2.2.7\",\n    \"@types/lodash\": \"^4.14.141\",\n    \"@types/node\": \"^14.0.0\",\n    \"@types/react\": \"^17.0.14\",\n    \"@types/react-dom\": \"^17.0.9\",\n    \"@types/react-helmet\": \"^6.1.2\",\n    \"@types/react-redux\": \"^7.1.18\",\n    \"@types/react-router-dom\": \"^5.1.8\",\n    \"@types/react-virtualized\": \"^9.21.12\",\n    \"@types/react-virtualized-auto-sizer\": \"^1.0.1\",\n    \"@types/react-window\": \"^1.8.4\",\n    \"@types/socket.io-client\": \"^1.4.32\",\n    \"@types/uuid\": \"^8.3.1\",\n    \"@types/webpack\": \"^5.28.0\",\n    \"@types/webpack-dev-server\": \"^3.11.5\",\n    \"@typescript-eslint/eslint-plugin\": \"^4.29.2\",\n    \"@typescript-eslint/parser\": \"^4.29.2\",\n    \"axios\": \"^0.21.1\",\n    \"axios-mock-adapter\": \"^1.20.0\",\n    \"babel-loader\": \"^8.2.2\",\n    \"babel-plugin-import\": \"^1.13.3\",\n    \"compression-webpack-plugin\": \"^8.0.1\",\n    \"connected-react-router\": \"6.9.1\",\n    \"copy-webpack-plugin\": \"^9.0.1\",\n    \"css-loader\": \"^6.2.0\",\n    \"cypress\": \"9.1.1\",\n    \"cypress-image-snapshot\": \"4.0.1\",\n    \"date-fns\": \"^2.22.1\",\n    \"diacritics\": \"^1.3.0\",\n    \"eslint\": \"^7.32.0\",\n    \"eslint-config-prettier\": \"^8.3.0\",\n    \"eslint-loader\": \"^4.0.2\",\n    \"eslint-plugin-prettier\": \"^3.4.1\",\n    \"eslint-plugin-prettierx\": \"^0.18.0\",\n    \"eslint-plugin-react\": \"^7.24.0\",\n    \"eslint-plugin-react-hooks\": \"^4.2.0\",\n    \"file-loader\": \"^6.2.0\",\n    \"fork-ts-checker-notifier-webpack-plugin\": \"^4.0.0\",\n    \"fork-ts-checker-webpack-plugin\": \"^6.2.12\",\n    \"google-libphonenumber\": \"^3.2.21\",\n    \"history\": \"^4.10.1\",\n    \"html-webpack-plugin\": \"^5.3.2\",\n    \"js-cookie\": \"^2.2.1\",\n    \"lodash\": \"^4.17.21\",\n    \"lodash-webpack-plugin\": \"^0.11.6\",\n    \"material-icons\": \"^1.10.6\",\n    \"moment\": \"^2.29.1\",\n    \"msw\": \"^0.35.0\",\n    \"notistack\": \"^1.0.10\",\n    \"react\": \"^17.0.2\",\n    \"react-datepicker\": \"^4.2.1\",\n    \"react-dom\": \"^17.0.2\",\n    \"react-helmet\": \"^6.1.0\",\n    \"react-intl\": \"^5.20.4\",\n    \"react-redux\": \"^7.2.4\",\n    \"react-router-dom\": \"^5.2.0\",\n    \"react-virtualized\": \"^9.22.3\",\n    \"react-virtualized-auto-sizer\": \"^1.0.5\",\n    \"react-window\": \"^1.8.6\",\n    \"redux\": \"^4.1.0\",\n    \"redux-devtools-extension\": \"^2.13.9\",\n    \"redux-observable\": \"^1.1.0\",\n    \"reselect\": \"^4.0.0\",\n    \"rxjs\": \"^6.6.7\",\n    \"socket.io\": \"^2.3.0\",\n    \"source-map-loader\": \"^3.0.0\",\n    \"style-loader\": \"^3.2.1\",\n    \"styled-components\": \"^5.3.1\",\n    \"subpackage\": \"^1.1.0\",\n    \"terser-webpack-plugin\": \"^5.1.4\",\n    \"ts-loader\": \"^9.2.3\",\n    \"ts-node\": \"^10.2.1\",\n    \"tsc-alias\": \"^1.3.7\",\n    \"tsc-watch\": \"^4.4.0\",\n    \"tsconfig-paths\": \"^3.10.1\",\n    \"tsconfig-paths-webpack-plugin\": \"^3.5.1\",\n    \"typesafe-actions\": \"^5.1.0\",\n    \"typescript\": \"^4.3.5\",\n    \"url-loader\": \"^4.1.1\",\n    \"uuid\": \"^8.3.2\",\n    \"webpack\": \"5.44.0\",\n    \"webpack-cli\": \"^4.7.2\",\n    \"webpack-dev-server\": \"^3.11.2\"\n  },\n  \"devDependencies\": {\n    \"@types/react-datepicker\": \"^4.1.4\",\n    \"@types/styled-components\": \"^5.1.15\",\n    \"@welldone-software/why-did-you-render\": \"^6.2.1\"\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package.json b/package.json
+--- a/package.json	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/package.json	(date 1649927867392)
+@@ -1,6 +1,6 @@
+ {
+   "name": "@elumeo/jfs-core",
+-  "version": "10.0.0-beta.211",
++  "version": "10.0.0-beta.212",
+   "description": "Foundation for all JFS Apps",
+   "main": "Main.js",
+   "directories": {
+Index: src/Setup/Locale/en.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"app.title\": \"JFS Core\",\n  \"app.backend\": \"Backend\",\n  \"app.cancel.action\": \"Cancel\",\n  \"app.closeBtnLabelModalDialog\": \"Close\",\n  \"app.enterSearchValue\": \"Enter search term!\",\n  \"app.error\": \"Error\",\n  \"app.login\": \"Login\",\n  \"app.logout\": \"Logout\",\n  \"app.logout.action\": \"Logout\",\n  \"app.logout.message\": \"Do you wish to logout?\",\n  \"app.logout.title\": \"Logout\",\n  \"app.notifications\": \"Notifications\",\n  \"app.noNotifications\": \"No notifications\",\n  \"app.search\": \"Search\",\n  \"app.settings\": \"Settings\",\n  \"app.settings.done\": \"Done\",\n  \"app.system\": \"System\",\n  \"app.version\": \"Version {versionNumber}\",\n  \"login.accessDenied\": \"Access Denied\",\n  \"login.button\": \"Login\",\n  \"login.error\": \"User or password wrong\",\n  \"login.failed\": \"Login failed\",\n  \"login.noUserRights\": \"No user rights\",\n  \"login.password\": \"Password\",\n  \"login.password.errorText\": \"Password is required\",\n  \"login.title\": \"Welcome\",\n  \"login.username\": \"Username\",\n  \"login.username.errorText\": \"Username is required\",\n  \"logout.failed\": \"Logout failed\",\n  \"notification.action_1\": \"Action 1\",\n  \"notification.dismiss\": \"Dismiss\",\n  \"notification.hide\": \"Hide\",\n  \"please.login\": \"Please login\",\n  \"session.expired\": \"Session expired\",\n  \"settings.language\": \"Language\",\n  \"settings.title\": \"Settings\",\n  \"userRights.checkFailed\": \"Unable to load user rights\",\n  \"date\": \"Date\",\n  \"table.noResults\": \"No results\",\n  \"product.type.onDemand\": \"Creation\",\n  \"product.type.disabledOnDemand\": \"Excreation\",\n  \"product.details\": \"Product Details\"\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Setup/Locale/en.json b/src/Setup/Locale/en.json
+--- a/src/Setup/Locale/en.json	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Setup/Locale/en.json	(date 1649887493645)
+@@ -30,6 +30,7 @@
+   "logout.failed": "Logout failed",
+   "notification.action_1": "Action 1",
+   "notification.dismiss": "Dismiss",
++  "notification.removeAll": "Remove all",
+   "notification.hide": "Hide",
+   "please.login": "Please login",
+   "session.expired": "Session expired",
+@@ -41,4 +42,4 @@
+   "product.type.onDemand": "Creation",
+   "product.type.disabledOnDemand": "Excreation",
+   "product.details": "Product Details"
+-}
+\ No newline at end of file
++}
+Index: src/Store/Reducer/Core/Notification.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as Action from 'Store/Action';\nimport * as TA from 'typesafe-actions';\nimport * as Type from 'Types/Notification';\nimport { ActionType } from 'Types/Redux';\nimport { v4 } from 'uuid';\n\nexport type State = {\n  history: Type.Notification[];\n  isHistoryOpen: boolean;\n};\n\nconst initialState: State = {\n  history: [],\n  isHistoryOpen: false,\n};\n\nconst Notification = TA.createReducer<State, ActionType>(initialState)\n  .handleAction(Action.addNotification, (state, action) => ({\n    ...state,\n    history: [\n      { id: action.payload?.id ?? v4(), timeStamp: action.payload?.timeStamp ?? new Date(), ...action.payload },\n      ...state.history,\n    ],\n  }))\n  .handleAction(Action.removeNotification, (state, { payload: id }) => ({\n    ...state,\n    history: state.history.filter(notification => notification.id !== id),\n  }))\n\n  .handleAction(Action.removeAllNotifications, state => ({\n    ...state,\n    history: [],\n  }))\n  .handleAction(Action.setIsNotificationHistoryOpen, (state, { payload }) => ({\n    ...state,\n    isHistoryOpen: payload,\n  }));\n\nexport default Notification;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Store/Reducer/Core/Notification.ts b/src/Store/Reducer/Core/Notification.ts
+--- a/src/Store/Reducer/Core/Notification.ts	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Store/Reducer/Core/Notification.ts	(date 1649884936119)
+@@ -26,6 +26,10 @@
+     ...state,
+     history: state.history.filter(notification => notification.id !== id),
+   }))
++  .handleAction(Action.removeNotificationGroup, (state, { payload: group }): State => ({
++    ...state,
++    history: state.history.filter(notification => notification.group != group)
++  }))
+ 
+   .handleAction(Action.removeAllNotifications, state => ({
+     ...state,
+Index: src/Setup/Locale/de.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"app.title\": \"jfs-core\",\n  \"app.backend\": \"Backend\",\n  \"app.cancel.action\": \"Abbrechen\",\n  \"app.closeBtnLabelModalDialog\": \"Schließen\",\n  \"app.enterSearchValue\": \"Suchbegriff eingeben!\",\n  \"app.error\": \"Fehler\",\n  \"app.login\": \"Anmelden\",\n  \"app.logout\": \"Abmelden\",\n  \"app.logout.action\": \"Abmelden\",\n  \"app.logout.message\": \"Möchtest du dich abmelden?\",\n  \"app.logout.title\": \"Abmeldung\",\n  \"app.notifications\": \"Benachrichtigungen\",\n  \"app.noNotifications\": \"Keine Benachrichtigungen\",\n  \"app.search\": \"Suchen\",\n  \"app.settings\": \"Einstellungen\",\n  \"app.settings.done\": \"Fertig\",\n  \"app.system\": \"System\",\n  \"app.version\": \"Version {versionNumber}\",\n  \"login.accessDenied\": \"Zugriff verweigert\",\n  \"login.button\": \"Anmelden\",\n  \"login.error\": \"Benutzername oder Passwort falsch\",\n  \"login.failed\": \"Login fehlgeschlagen\",\n  \"login.noUserRights\": \"Keine Benutzerrechte vorhanden\",\n  \"login.password\": \"Passwort\",\n  \"login.password.errorText\": \"Passwort erforderlich\",\n  \"login.title\": \"Willkommen\",\n  \"login.username\": \"Benutzername\",\n  \"login.username.errorText\": \"Benutzername erforderlich\",\n  \"logout.failed\": \"Abmelden fehlgeschlagen\",\n  \"notification.action_1\": \"Aktion 1\",\n  \"notification.dismiss\": \"Verwerfen\",\n  \"notification.hide\": \"Ausblenden\",\n  \"please.login\": \"Bitte anmelden\",\n  \"session.expired\": \"Sitzung abgelaufen\",\n  \"settings.language\": \"Sprache\",\n  \"settings.title\": \"Einstellungen\",\n  \"userRights.checkFailed\": \"Benutzerrechte konnten nicht geladen werden\",\n  \"date\": \"Datum\",\n  \"table.noResults\": \"Keine Ergebnisse\",\n  \"product.type.onDemand\": \"Creation\",\n  \"product.type.disabledOnDemand\": \"Excreation\",\n  \"product.details\": \"Artikeldetails\"\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Setup/Locale/de.json b/src/Setup/Locale/de.json
+--- a/src/Setup/Locale/de.json	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Setup/Locale/de.json	(date 1649887493651)
+@@ -30,6 +30,7 @@
+   "logout.failed": "Abmelden fehlgeschlagen",
+   "notification.action_1": "Aktion 1",
+   "notification.dismiss": "Verwerfen",
++  "notification.removeAll": "Alle entfernen",
+   "notification.hide": "Ausblenden",
+   "please.login": "Bitte anmelden",
+   "session.expired": "Sitzung abgelaufen",
+@@ -41,4 +42,4 @@
+   "product.type.onDemand": "Creation",
+   "product.type.disabledOnDemand": "Excreation",
+   "product.details": "Artikeldetails"
+-}
+\ No newline at end of file
++}
+Index: src/Setup/Locale/it.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"app.title\": \"JFS Core\",\n  \"app.backend\": \"Backend\",\n  \"app.cancel.action\": \"Interrompere\",\n  \"app.closeBtnLabelModalDialog\": \"Chiuso\",\n  \"app.enterSearchValue\": \"Inserisci il termine di ricerca!\",\n  \"app.error\": \"Errore\",\n  \"app.login\": \"Login\",\n  \"app.logout\": \"Logout\",\n  \"app.logout.action\": \"Uscire\",\n  \"app.logout.message\": \"Vuoi davvero uscire?\",\n  \"app.logout.title\": \"Logout\",\n  \"app.notifications\": \"Notifiche\",\n  \"app.noNotifications\": \"Nessuna notifica\",\n  \"app.search\": \"Ricerca\",\n  \"app.settings\": \"Impostazioni\",\n  \"app.settings.done\": \"Finito\",\n  \"app.system\": \"Sistema\",\n  \"app.version\": \"Versione {versionNumber}\",\n  \"login.accessDenied\": \"Accesso negato\",\n  \"login.button\": \"Login\",\n  \"login.error\": \"Nome utente o Password sbagliati\",\n  \"login.failed\": \"Login errato\",\n  \"login.noUserRights\": \"Privilegi insufficienti\",\n  \"login.password\": \"Password\",\n  \"login.password.errorText\": \"Necessaria password\",\n  \"login.title\": \"Benvenuti\",\n  \"login.username\": \"Nome utente\",\n  \"login.username.errorText\": \"Necessario nome utente\",\n  \"logout.failed\": \"Logout non riuscito\",\n  \"notification.action_1\": \"Azione 1\",\n  \"notification.dismiss\": \"Respingere\",\n  \"notification.hide\": \"Nascondere\",\n  \"please.login\": \"Login\",\n  \"session.expired\": \"Sessione scaduta\",\n  \"settings.language\": \"Lingua\",\n  \"settings.title\": \"Impostazioni\",\n  \"userRights.checkFailed\": \"Impossibile caricare i diritti utente\",\n  \"date\": \"Data\",\n  \"table.noResults\": \"Nessun risultato\",\n  \"product.type.onDemand\": \"Creation\",\n  \"product.type.disabledOnDemand\": \"Ex-creation\",\n  \"product.details\": \"Dettagli del prodotto\"\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Setup/Locale/it.json b/src/Setup/Locale/it.json
+--- a/src/Setup/Locale/it.json	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Setup/Locale/it.json	(date 1649887517794)
+@@ -30,6 +30,7 @@
+   "logout.failed": "Logout non riuscito",
+   "notification.action_1": "Azione 1",
+   "notification.dismiss": "Respingere",
++  "notification.removeAll": "Remuovi tutto",
+   "notification.hide": "Nascondere",
+   "please.login": "Login",
+   "session.expired": "Sessione scaduta",
+@@ -41,4 +42,4 @@
+   "product.type.onDemand": "Creation",
+   "product.type.disabledOnDemand": "Ex-creation",
+   "product.details": "Dettagli del prodotto"
+-}
+\ No newline at end of file
++}
+Index: src/Types/Notification.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {\n  SnackbarAction,\n  useSnackbar,\n  VariantType,\n  OptionsObject,\n} from 'notistack';\nimport React from 'react';\n\nexport type Notification = {\n  id?: string;\n  title?: React.ReactNode;\n  subtitle?: React.ReactNode;\n  content?: React.ReactNode;\n  variant: VariantType;\n  action?: (\n    snackbar: ReturnType<typeof useSnackbar>,\n    id: string,\n    temporary: boolean,\n  ) => SnackbarAction;\n  notistackOptions?: OptionsObject;\n  isTranslationId?: boolean;\n  httpDetails?: React.ReactNode;\n  timeStamp?: Date;\n};\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Types/Notification.ts b/src/Types/Notification.ts
+--- a/src/Types/Notification.ts	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Types/Notification.ts	(date 1649921626561)
+@@ -8,6 +8,7 @@
+ 
+ export type Notification = {
+   id?: string;
++  group?: string;
+   title?: React.ReactNode;
+   subtitle?: React.ReactNode;
+   content?: React.ReactNode;
+@@ -22,3 +23,5 @@
+   httpDetails?: React.ReactNode;
+   timeStamp?: Date;
+ };
++
++export type NotificationPosition = 'topRight' | 'bottomRight';
+Index: src/Types/Configuration.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Language } from './Language';\n\nexport type WebSocketClient = {\n  Host: string;\n  Path: string;\n  PrivateNamespace: string;\n  AutoRoomSubscriptions: string[];\n};\n\nexport type Configuration = {\n  RobotUsername: string;\n  RobotPassword: string;\n  Language: Language;\n  Currency: string;\n  ForceHTTPS: boolean;\n  AppName: string;\n  JscClient: {\n    Host: string;\n    Timeout?: number;\n  };\n  JscWebSocketClient: WebSocketClient;\n  JfsWebSocketClient: WebSocketClient;\n};\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Types/Configuration.ts b/src/Types/Configuration.ts
+--- a/src/Types/Configuration.ts	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Types/Configuration.ts	(date 1649853245188)
+@@ -1,4 +1,5 @@
+ import { Language } from './Language';
++import { NotificationPosition } from 'Types/Notification';
+ 
+ export type WebSocketClient = {
+   Host: string;
+@@ -13,6 +14,8 @@
+   Language: Language;
+   Currency: string;
+   ForceHTTPS: boolean;
++  NotificationPosition: NotificationPosition;
++  NotificationMax: number;
+   AppName: string;
+   JscClient: {
+     Host: string;
+Index: src/Component/Snackbar/useAutoHideDuration.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\n\nconst MINIMUM_AUTO_HIDE_DURATION = 2000;\nconst READ_TIME_WORDS_PER_MILLISECOND = 0.00375;\nconst READ_TIME_MILLISECONDS_PER_WORD = 1 / READ_TIME_WORDS_PER_MILLISECOND;\n\nconst useAutoHideDuration = (words: string[]): number => {\n  const [autoHideDuration, setAutoHideDuration] = React.useState(\n    MINIMUM_AUTO_HIDE_DURATION,\n  );\n\n  React.useEffect(() => {\n    const next = words.length * READ_TIME_MILLISECONDS_PER_WORD;\n    setAutoHideDuration(\n      next >= MINIMUM_AUTO_HIDE_DURATION ? next : MINIMUM_AUTO_HIDE_DURATION,\n    );\n  }, [JSON.stringify(words)]);\n\n  return autoHideDuration;\n};\n\nexport default useAutoHideDuration;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Snackbar/useAutoHideDuration.ts b/src/Component/Snackbar/useAutoHideDuration.ts
+--- a/src/Component/Snackbar/useAutoHideDuration.ts	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Snackbar/useAutoHideDuration.ts	(date 1649861869296)
+@@ -14,7 +14,7 @@
+     setAutoHideDuration(
+       next >= MINIMUM_AUTO_HIDE_DURATION ? next : MINIMUM_AUTO_HIDE_DURATION,
+     );
+-  }, [JSON.stringify(words)]);
++  }, [words]);
+ 
+   return autoHideDuration;
+ };
+Index: src/index.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// import './wdyr';\n// import React from 'react';\n// import ReactDOM from 'react-dom';\n// import App from 'Component/App';\n// import * as Login from 'Component/Login';\n// import * as Logout from 'Component/Logout';\n// import * as Settings from 'Component/Settings';\n// import * as Language from 'Component/Language';\n// import * as Header from 'Component/Header';\n// import reducer from './Store/Reducer/Global';\n// import epic from './Store/Epic';\n\n// import * as Notification from 'Component/Notification';\n// import Snackbar from 'Component/Snackbar';\n// import Overlay from 'Component/Overlay';\n// import { Navigation, Routes, Translations } from 'Setup';\n// import packageJson from '../package.json';\n// import { create } from 'Store';\n// import { history } from 'Store/Middleware';\n\n// ReactDOM.render(\n//   <App\n//     store={create(epic, reducer(history))}\n//     title='core'\n//     translations={Translations}\n//     packageJSON={packageJson}>\n//     <Header.AppToolbar\n//       left={<Header.BackendIndicator />}\n//       right={\n//         <>\n//           <Settings.Button />\n//           <Notification.Button.Show />\n//         </>\n//       }\n//     />\n//     <Routes />\n//     <Overlay>\n//       <Navigation />\n//       <Login.Dialog />\n//       <Logout.Dialog />\n//       <Settings.Dialog>\n//         <Language.Settings />\n//       </Settings.Dialog>\n//       <Snackbar />\n//     </Overlay>\n//   </App>,\n//   document.getElementById('root'),\n// );\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/index.tsx b/src/index.tsx
+--- a/src/index.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/index.tsx	(date 1649928248224)
+@@ -9,7 +9,7 @@
+ // import * as Header from 'Component/Header';
+ // import reducer from './Store/Reducer/Global';
+ // import epic from './Store/Epic';
+-
++//
+ // import * as Notification from 'Component/Notification';
+ // import Snackbar from 'Component/Snackbar';
+ // import Overlay from 'Component/Overlay';
+@@ -17,7 +17,7 @@
+ // import packageJson from '../package.json';
+ // import { create } from 'Store';
+ // import { history } from 'Store/Middleware';
+-
++//
+ // ReactDOM.render(
+ //   <App
+ //     store={create(epic, reducer(history))}
+Index: src/Component/Snackbar/useSeverity.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport { Color } from '@material-ui/lab';\nimport { Toast } from 'Types/Toast';\n\nconst useSeverity = (toast: Toast): Color => {\n  const [severity, setSeverity] = React.useState<Color>('info');\n\n  React.useEffect(() => {\n    if (toast?.isSuccess) {\n      setSeverity('success');\n    }\n    else if (toast?.isError) {\n      setSeverity('error');\n    }\n    else {\n      setSeverity('info');\n    }\n  }, [JSON.stringify(toast)]);\n\n  return severity;\n};\n\nexport default useSeverity;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Snackbar/useSeverity.ts b/src/Component/Snackbar/useSeverity.ts
+--- a/src/Component/Snackbar/useSeverity.ts	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Snackbar/useSeverity.ts	(date 1649862158769)
+@@ -6,16 +6,14 @@
+   const [severity, setSeverity] = React.useState<Color>('info');
+ 
+   React.useEffect(() => {
+-    if (toast?.isSuccess) {
++    if (toast && toast.isSuccess) {
+       setSeverity('success');
+-    }
+-    else if (toast?.isError) {
++    } else if (toast && toast.isError) {
+       setSeverity('error');
+-    }
+-    else {
++    } else if (toast) {
+       setSeverity('info');
+     }
+-  }, [JSON.stringify(toast)]);
++  }, [!!toast, toast?.isSuccess, toast?.isError]);
+ 
+   return severity;
+ };
+Index: src/Component/Snackbar/useMessage.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport Failure from './Failure';\nimport { Toast } from 'Types/Toast';\nimport * as Format from 'Utilities/Format';\n\nconst useMessage = (toast: Toast, words: string[]): React.ReactNode => {\n  const [message, setMessage] = React.useState<React.ReactNode>('');\n\n  React.useEffect(() => {\n    if (toast?.contentMessage || toast?.contentTranslationId) {\n      setMessage(words.join(' '));\n    }\n    else if (toast?.contentError && toast?.contentError instanceof Error) {\n      const { title, details } = Format.Error.apply(toast.contentError);\n      setMessage(<Failure title={title} details={details} />);\n    }\n  }, [JSON.stringify(toast), JSON.stringify(words)]);\n\n  return message;\n};\n\nexport default useMessage;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Snackbar/useMessage.tsx b/src/Component/Snackbar/useMessage.tsx
+--- a/src/Component/Snackbar/useMessage.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Snackbar/useMessage.tsx	(date 1649862118297)
+@@ -9,12 +9,11 @@
+   React.useEffect(() => {
+     if (toast?.contentMessage || toast?.contentTranslationId) {
+       setMessage(words.join(' '));
+-    }
+-    else if (toast?.contentError && toast?.contentError instanceof Error) {
++    } else if (toast?.contentError && toast?.contentError instanceof Error) {
+       const { title, details } = Format.Error.apply(toast.contentError);
+-      setMessage(<Failure title={title} details={details} />);
++      setMessage(<Failure title={title} details={details}/>);
+     }
+-  }, [JSON.stringify(toast), JSON.stringify(words)]);
++  }, [toast?.contentMessage, toast?.contentTranslationId, toast?.contentError, words]);
+ 
+   return message;
+ };
+Index: src/Component/Snackbar/useWords.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport { useIntl } from 'react-intl';\nimport { Toast } from 'Types/Toast';\nimport * as Format from 'Utilities/Format';\n\nconst useWords = (toast: Toast): string[] => {\n  const intl = useIntl();\n  const [words, setWords] = React.useState<string[]>([]);\n\n  React.useEffect(() => {\n    if (toast?.contentMessage) {\n      const next = toast.contentMessage.split(' ');\n      setWords(next);\n    }\n    else if (toast?.contentTranslationId) {\n      const id = toast.contentTranslationId;\n      const values = toast.contentTranslationValues || {};\n      const next = intl.formatMessage({ id }, values).split(' ');\n      setWords(next);\n    }\n    else if (toast?.contentError && toast?.contentError instanceof Error) {\n      const { title, details } = Format.Error.apply(toast.contentError);\n      const next = [...title.split(' '), ...details.split(' ')];\n      setWords(next);\n    }\n  }, [JSON.stringify(toast)]);\n\n  return words;\n};\n\nexport default useWords;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Snackbar/useWords.ts b/src/Component/Snackbar/useWords.ts
+--- a/src/Component/Snackbar/useWords.ts	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Snackbar/useWords.ts	(date 1649862066073)
+@@ -11,19 +11,17 @@
+     if (toast?.contentMessage) {
+       const next = toast.contentMessage.split(' ');
+       setWords(next);
+-    }
+-    else if (toast?.contentTranslationId) {
++    } else if (toast?.contentTranslationId) {
+       const id = toast.contentTranslationId;
+       const values = toast.contentTranslationValues || {};
+       const next = intl.formatMessage({ id }, values).split(' ');
+       setWords(next);
+-    }
+-    else if (toast?.contentError && toast?.contentError instanceof Error) {
++    } else if (toast?.contentError && toast?.contentError instanceof Error) {
+       const { title, details } = Format.Error.apply(toast.contentError);
+       const next = [...title.split(' '), ...details.split(' ')];
+       setWords(next);
+     }
+-  }, [JSON.stringify(toast)]);
++  }, [toast?.contentMessage, toast?.contentTranslationId, toast?.contentTranslationValues, toast?.contentError]);
+ 
+   return words;
+ };
+Index: src/Component/Snackbar/index.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport MUISnackbar from '@material-ui/core/Snackbar';\nimport { Alert } from '@material-ui/lab';\nimport useActions from 'Store/useActions';\nimport useVisibleToast from './useVisibleToast';\n\nconst Snackbar: React.FC = () => {\n  const { dismissToastAction } = useActions();\n  const { open, severity, message, autoHideDuration } = useVisibleToast();\n  return (\n    <MUISnackbar\n      open={open}\n      id='alert-snackbar'\n      onClose={(_, reason) => {\n        if (reason === 'timeout') {\n          dismissToastAction();\n        }\n      }}\n      autoHideDuration={autoHideDuration}>\n      <Alert severity={severity} variant={'filled'}>\n        {message}\n      </Alert>\n    </MUISnackbar>\n  );\n};\n\nexport default Snackbar;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Snackbar/index.tsx b/src/Component/Snackbar/index.tsx
+--- a/src/Component/Snackbar/index.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Snackbar/index.tsx	(date 1649861672769)
+@@ -1,25 +1,22 @@
+ import React from 'react';
+ import MUISnackbar from '@material-ui/core/Snackbar';
+-import { Alert } from '@material-ui/lab';
+ import useActions from 'Store/useActions';
+ import useVisibleToast from './useVisibleToast';
++import { Alert } from '@material-ui/lab';
+ 
+ const Snackbar: React.FC = () => {
+   const { dismissToastAction } = useActions();
+   const { open, severity, message, autoHideDuration } = useVisibleToast();
+-  return (
+-    <MUISnackbar
+-      open={open}
+-      id='alert-snackbar'
+-      onClose={(_, reason) => {
+-        if (reason === 'timeout') {
+-          dismissToastAction();
+-        }
+-      }}
+-      autoHideDuration={autoHideDuration}>
+-      <Alert severity={severity} variant={'filled'}>
+-        {message}
+-      </Alert>
++  const onCloseCallback = React.useCallback((event, reason) => {
++    if (reason === 'timeout') {
++      dismissToastAction();
++    }
++  }, [dismissToastAction])
++  // const alertEl = useMemo(() => {}, [])
++
++  return (
++    <MUISnackbar open={open} id='alert-snackbar' onClose={onCloseCallback} autoHideDuration={autoHideDuration}>
++      <Alert severity={severity} variant='filled'>{message}</Alert>
+     </MUISnackbar>
+   );
+ };
+Index: src/Component/Notification/Button/Delete.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/Button/Delete.tsx b/src/Component/Notification/Button/Delete.tsx
+new file mode 100644
+--- /dev/null	(date 1649854620901)
++++ b/src/Component/Notification/Button/Delete.tsx	(date 1649854620901)
+@@ -0,0 +1,22 @@
++import * as React from 'react';
++import IconButton from '@material-ui/core/IconButton';
++import DeleteIcon from '@material-ui/icons/Delete';
++import { Notification } from 'Types/Notification'
++import useActions from 'Store/useActions';
++import { useCallback } from 'react';
++
++type Props = Pick<Notification, 'id'>
++
++const Delete: React.FC<Props> = ({ id }) => {
++  const { removeNotification } = useActions()
++  const onDeleteCallback = useCallback(() => {
++    removeNotification(id)
++  }, [id, removeNotification])
++  return (
++    <IconButton color='inherit' onClick={onDeleteCallback}>
++      <DeleteIcon/>
++    </IconButton>
++  )
++}
++
++export default React.memo(Delete)
+Index: src/Component/Notification/Card/Actions.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/Card/Actions.tsx b/src/Component/Notification/Card/Actions.tsx
+new file mode 100644
+--- /dev/null	(date 1649923752553)
++++ b/src/Component/Notification/Card/Actions.tsx	(date 1649923752553)
+@@ -0,0 +1,36 @@
++import * as React from 'react';
++import CardActions from '@material-ui/core/CardActions';
++import { Props as CardProps } from './';
++import { makeStyles } from '@material-ui/core/styles';
++import { Notification } from 'Types/Notification';
++import { useSnackbar } from 'notistack';
++import * as Button from '../Button';
++
++const useStyles = makeStyles(theme => ({
++  root: {
++    gridColumnStart: 2,
++    gridRowStart: 1,
++    display: 'grid',
++    gridAutoFlow: 'column',
++    gridTemplate: 'auto auto / auto auto',
++    alignContent: 'center',
++    direction: 'rtl',
++    justifyItems: 'start'
++  }
++}))
++
++type Props = Pick<CardProps, 'temporary'> & Pick<Notification, 'action' | 'id'>
++
++const Actions: React.FC<Props> = ({ temporary, action, id }) => {
++  const classes = useStyles()
++  const snackbar = useSnackbar();
++
++  return (
++    <CardActions className={classes.root}>
++      {!temporary ? <Button.Delete id={id}/> : null}
++      {action ? action(snackbar, id, temporary) : null}
++    </CardActions>
++  )
++}
++
++export default React.memo(Actions)
+Index: src/Component/Notification/Card/Content.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/Card/Content.tsx b/src/Component/Notification/Card/Content.tsx
+new file mode 100644
+--- /dev/null	(date 1649922927800)
++++ b/src/Component/Notification/Card/Content.tsx	(date 1649922927800)
+@@ -0,0 +1,27 @@
++import * as React from 'react';
++import CardContent from '@material-ui/core/CardContent';
++import Typography from '@material-ui/core/Typography';
++import { PropsWithChildren } from 'react';
++import { makeStyles } from '@material-ui/core/styles';
++
++const useStyles = makeStyles(theme => ({
++  root: {
++    gridRowStart: 2,
++    gridColumnStart: 1,
++    gridColumnEnd: 'none'
++  }
++}))
++
++const Content: React.FC<PropsWithChildren<{}>> = ({ children }) => {
++  const classes = useStyles()
++  return (
++    !children
++      ? null :
++      <CardContent className={classes.root}>
++        <Typography variant='body2' component='div'>
++          {children}
++        </Typography>
++      </CardContent>
++  )
++}
++export default React.memo(Content)
+Index: src/Component/develop.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/* eslint-disable max-lines */\nimport React, { CSSProperties, useCallback, useMemo, useState } from 'react';\nimport {\n  Button, ButtonProps,\n  Card,\n  CardContent,\n  Chip,\n  Grid, IconButton, InputAdornment,\n  List,\n  ListItem,\n  ListItemIcon,\n  ListItemText, MenuItem,\n  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,\n  Typography\n} from '@material-ui/core';\nimport { AccountCircle as AccountCircleIcon, ContactPhone as ContactPhoneIcon } from '@material-ui/icons';\nimport { useTheme } from '@material-ui/core/styles';\nimport { getCurrency } from 'Utilities/Format/Currency';\nimport { useDispatch } from 'react-redux';\nimport * as Action from 'Store/Action';\nimport { v4 as uuid } from 'uuid';\nimport { VirtualizedTable } from 'Component/Table';\nimport { Index, TableCellProps, TableProps } from 'react-virtualized';\nimport TextFieldClearButton, { TextFieldClearButtonProps } from 'Component/TextFieldClearButton';\nimport { ContentEllipseMode } from 'Component/Table/TableCell/TableCellDefault';\nimport { TableCellDateTime, TableCellDateTimeRange, TableCellDefault } from 'Component/Table/TableCell';\nimport { ButtonProgress } from 'Component/Button';\nimport { AppCardHeader, AppCardContent } from 'Component/Card';\nimport { TableRowLoading } from 'Component/Table/TableRow';\nimport SelectClearButton, { SelectClearButtonProps } from 'Component/SelectClearButton';\nimport SearchIcon from '@material-ui/icons/Search';\nimport { CustomerCard, FilterReset } from 'Component/Icon';\nimport DatePicker from 'Component/DatePicker';\nimport { ColumnData } from 'Component/Table/VirtualizedTable';\nimport { DateTimeRangeCellProps } from 'Types/Table/DateTimeRangeCellProps';\nimport WarningIcon from '@material-ui/icons/Warning';\nimport TableCellSelect from 'Component/Table/TableCell/TableCellSelect';\nimport TableHeadSelect from 'Component/Table/TableHead/TableHeadSelect';\n\nconst tableRowHeight = 48;\n\ntype DataVirtualizedTable = {\n  calories: number;\n  carbs: number;\n  dessert: string;\n  fat: number;\n  id: number;\n  datetimeRange: DateTimeRangeCellProps;\n  datetime: Date;\n}\n\ntype SampleVirtualizedTable = [string, number, number, number, DateTimeRangeCellProps, Date?];\n\nconst sample: SampleVirtualizedTable[] = [\n  ['Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt Frozen yoghurt', 159, 6.0, 24, {\n    start: null,\n    end: null,\n    isLiveShow: false\n  }, null],\n  ['Ice cream sandwich', 237, 9.0, 37, {start: new Date(), end: new Date(), isLiveShow: false}, new Date()],\n  ['Eclair', 262, 16.0, 24, {start: new Date(2021, 9, 23, 8, 0, 15), end: new Date(), isLiveShow: false}, new Date()],\n  ['Cupcake', 305, 3.7, 67, {start: new Date(), end: new Date(), isLiveShow: false}, new Date()],\n  ['Gingerbread', 356, 16.0, 49, {start: new Date(), end: new Date(), isLiveShow: false}, new Date()]\n];\n\nconst createDataVirtualizedTable = (id: number, dessert: string, calories: number, fat: number, carbs: number, datetimeRange: DateTimeRangeCellProps, datetime?: Date): DataVirtualizedTable => ({ id, dessert, calories, fat, carbs, datetimeRange, datetime });\n\nconst rows: DataVirtualizedTable[] = [];\n\nfor (let i = 0; i < 200; i += 1) {\n  const randomSelection = sample[Math.floor(Math.random() * sample.length)];\n  rows.push(createDataVirtualizedTable(i, ...randomSelection));\n}\n\nconst columns: ColumnData[] = [\n  {\n    width: 50,\n    dataKey: 'select',\n    disableSort: true,\n    headerRenderer: (cellProps: TableCellProps) => <TableHeadSelect checked={false} onChange={console.log} height={tableRowHeight} />,\n    cellRenderer: (cellProps: TableCellProps) => <TableCellSelect checked={false} value={cellProps.cellData} onChange={console.log} height={tableRowHeight} />\n  },\n  {\n    width: (width: number) => width - (120 * 4),\n    label: 'Dessert (100g serving)',\n    dataKey: 'dessert',\n    disableSort: true,\n    cellRenderer: (cellProps: TableCellProps) => <TableCellDefault height={tableRowHeight} cellData={cellProps.cellData} contentEllipseMode={ContentEllipseMode.Lines} contentEllipseLines={2} />\n  },\n  {\n    width: 120,\n    label: 'Calories\\u00A0(g)',\n    dataKey: 'calories',\n  },\n  {\n    width: 120,\n    label: 'Fat\\u00A0(g)',\n    dataKey: 'fat',\n  },\n  {\n    width: 120,\n    label: 'Carbs\\u00A0(g)',\n    dataKey: 'carbs',\n  },\n  {\n    width: 220,\n    label: 'Datum (Range)',\n    dataKey: 'datetimeRange',\n    cellRenderer: cellProps => <TableCellDateTimeRange cellData={cellProps.cellData} height={tableRowHeight} />\n  },\n  {\n    width: 180,\n    label: 'Datum',\n    dataKey: 'datetime',\n    cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} height={tableRowHeight} />\n  }\n];\nconst textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon /></InputAdornment> };\n\nconst selectMenuItems = [\n  <MenuItem value={'test 1'} key={'menu-item-1'}>Test 1</MenuItem>,\n  <MenuItem value={'test 2'} key={'menu-item-2'}>Test 2</MenuItem>,\n  <MenuItem value={'test 3'} key={'menu-item-3'}>Test 3</MenuItem>,\n  <MenuItem value={'test 4'} key={'menu-item-4'}>Test 4</MenuItem>\n];\n\nconst Develop: React.FC = () => {\n  const theme = useTheme();\n  const dispatch = useDispatch();\n  const [testTextFieldValue, setTestTextFieldValue] = useState('');\n  const [testSelectValue, setTestSelectValue] = useState('');\n  const [testDatePickerValue, setTestDatePickerValue] = useState<Date>(null);\n  const noRowsRenderer = useCallback(() => <TableRowLoading />, []);\n  const rowGetter = useCallback((row: Index) => rows[row.index], []);\n  const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);\n  const handleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => setTestSelectValue(event === null ? '' : event.target.value as string), []);\n  const handleOnClickNotification: ButtonProps['onClick'] = useCallback(() => dispatch(Action.addNotification({\n    id: uuid(),\n    title: 'Error',\n    subtitle: 'Join Room (action.payload.name)',\n    content: 'MESSAGE',\n    variant: 'error'\n  })), []);\n  const handleOnClickToast: ButtonProps['onClick'] = useCallback(() => dispatch(Action.addToastAction({\n    contentMessage: 'Toast Test',\n    dismissLabel: 'Dismiss',\n    isSuccess: true\n  })), []);\n\n  return (\n    <div style={{ margin: theme.spacing(1) }}>\n      <Card>\n        <AppCardHeader title={'Test'} titleIcon={<WarningIcon />} onRefresh={console.log} />\n        <AppCardContent>\n          Das ist der Inhalt\n          <IconButton size={'small'} color={'secondary'}><FilterReset/></IconButton>\n        </AppCardContent>\n      </Card>\n      <div style={{ marginTop: theme.spacing(1) }}>\n        <Card>\n          <CardContent style={{ height: 600 }}>\n            <VirtualizedTable\n              showRowHoverHighlight\n              rowHeight={tableRowHeight}\n              rowCount={rows.length}\n              rowGetter={rowGetter}\n              noRowsRenderer={noRowsRenderer}\n              sortBy={'calories'}\n              sortDirection={'ASC'}\n              columns={columns}\n            />\n          </CardContent>\n        </Card>\n      </div>\n      <Grid container spacing={1} alignItems={'center'}>\n        <Grid item>\n          {/*<DatePicker*/}\n          {/*  label={'DatePicker'}*/}\n          {/*  onChange={console.log}*/}\n          {/*  value={testDatePickerValue}*/}\n          {/*  isClearable={false}*/}\n          {/*/>*/}\n        </Grid>\n        <Grid item>\n          <TextFieldClearButton\n            label={'Textfield'}\n            onChange={handleTextFieldUpdate}\n            value={testTextFieldValue}\n            clearButtonSize={'small'}\n            InputProps={textFieldInputProps}\n          />\n        </Grid>\n        <Grid item>\n          {/*<TextFieldClearButton*/}\n          {/*  disabled*/}\n          {/*  label={'Textfield'}*/}\n          {/*  onChange={handleTextFieldUpdate}*/}\n          {/*  value={testTextFieldValue}*/}\n          {/*  clearButtonSize={'small'}*/}\n          {/*/>*/}\n        </Grid>\n        <Grid item>\n          {/*<SelectClearButton*/}\n          {/*  label={'Select with Clear Button'}*/}\n          {/*  onChange={handleSelectUpdate}*/}\n          {/*  value={testSelectValue}*/}\n          {/*  clearButtonSize={'small'}*/}\n          {/*>{selectMenuItems}</SelectClearButton>*/}\n        </Grid>\n        <Grid item>\n          <CustomerCard />\n        </Grid>\n        <Grid item>\n          <Button onClick={handleOnClickNotification}>Notification</Button>\n        </Grid>\n        <Grid item>\n          <Button onClick={handleOnClickToast}>Toast</Button>\n        </Grid>\n        <Grid item>\n          <ButtonProgress inProgress onClick={handleOnClickToast}>Toast</ButtonProgress>\n        </Grid>\n      </Grid>\n      <div style={{ marginTop: theme.spacing(1) }}>\n        <List>\n          <ListItem>\n            <ListItemText secondary={'getCurrency(\\'EUR\\', 100, true, true, true)'}>\n              {getCurrency('EUR', 100, true, true, true)}\n            </ListItemText>\n          </ListItem>\n          <ListItem>\n            <ListItemText secondary={'getCurrency(\\'EUR\\', 100, true, true, false)'}>\n              {getCurrency('EUR', 100, true, true, false)}\n            </ListItemText>\n          </ListItem>\n          <ListItem>\n            <ListItemText secondary={'getCurrency(\\'EUR\\', 100.00, true, true, true)'}>\n              {getCurrency('EUR', 100.00, true, true, true)}\n            </ListItemText>\n          </ListItem>\n          <ListItem>\n            <ListItemText secondary={'getCurrency(\\'EUR\\', 100.00, true, true, false)'}>\n              {getCurrency('EUR', 100.00, true, true, false)}\n            </ListItemText>\n          </ListItem>\n          <ListItem>\n            <ListItemText secondary={'getCurrency(\\'EUR\\', 100.5, true, true, true)'}>\n              {getCurrency('EUR', 100.5, true, true, true)}\n            </ListItemText>\n          </ListItem>\n          <ListItem>\n            <ListItemText secondary={'getCurrency(\\'EUR\\', 100.5, true, true, false)'}>\n              {getCurrency('EUR', 100.5, true, true, false)}\n            </ListItemText>\n          </ListItem>\n          <ListItem>\n            <ListItemText secondary={'getCurrency(\\'EUR\\', 100.50, true, true, true)'}>\n              {getCurrency('EUR', 100.50, true, true, true)}\n            </ListItemText>\n          </ListItem>\n          <ListItem>\n            <ListItemText secondary={'getCurrency(\\'EUR\\', 100.50, true, true, false)'}>\n              {getCurrency('EUR', 100.50, true, true, false)}\n            </ListItemText>\n          </ListItem>\n          <ListItem>\n            <ListItemText secondary={'getCurrency(\\'EUR\\', 100.75, true, true, true)'}>\n              {getCurrency('EUR', 100.75, true, true, true)}\n            </ListItemText>\n          </ListItem>\n          <ListItem>\n            <ListItemText secondary={'getCurrency(\\'EUR\\', 100.75, true, true, false)'}>\n              {getCurrency('EUR', 100.75, true, true, false)}\n            </ListItemText>\n          </ListItem>\n        </List>\n      </div>\n      <div style={{ marginTop: theme.spacing(1) }}>\n        <Grid container>\n          <Grid item>\n            <Typography\n              style={{ margin: theme.spacing(1), padding: theme.spacing(1), backgroundColor: theme.palette.info.main, color: theme.palette.getContrastText(theme.palette.info.main) }}>Info</Typography>\n          </Grid>\n          <Grid item>\n            <Typography style={{\n              margin: theme.spacing(1),\n              padding: theme.spacing(1),\n              backgroundColor: theme.palette.error.main,\n              color: theme.palette.getContrastText(theme.palette.error.main)\n            }}>Error</Typography>\n          </Grid>\n          <Grid item>\n            <Typography style={{\n              margin: theme.spacing(1),\n              padding: theme.spacing(1),\n              backgroundColor: theme.palette.warning.main,\n              color: theme.palette.getContrastText(theme.palette.warning.main)\n            }}>Warning</Typography>\n          </Grid>\n          <Grid item>\n            <Typography style={{\n              margin: theme.spacing(1),\n              padding: theme.spacing(1),\n              backgroundColor: theme.palette.success.main,\n              color: theme.palette.getContrastText(theme.palette.success.main)\n            }}>Success</Typography>\n          </Grid>\n        </Grid>\n      </div>\n      <div style={{ marginTop: theme.spacing(1) }}>\n        <Grid container spacing={1}>\n          <Grid item xs={3}>\n            <Paper>\n              <List dense>\n                <ListItem button selected={true}>\n                  <ListItemIcon>\n                    <AccountCircleIcon />\n                  </ListItemIcon>\n                  <ListItemText primary={'primary111'} secondary={'secondary222'} />\n                </ListItem>\n\n                <ListItem button selected={false}>\n                  <ListItemIcon>\n                    <ContactPhoneIcon />\n                  </ListItemIcon>\n                  <ListItemText primary={'primary222'} secondary={'secondary222'} />\n                </ListItem>\n              </List>\n            </Paper>\n          </Grid>\n\n          <Grid item xs={3}>\n            <Paper>\n              <List>\n                <ListItem button selected={true}>\n                  <ListItemIcon>\n                    <AccountCircleIcon />\n                  </ListItemIcon>\n                  <ListItemText primary={'primary111'} secondary={'secondary222'} />\n                </ListItem>\n\n                <ListItem button selected={false}>\n                  <ListItemIcon>\n                    <ContactPhoneIcon />\n                  </ListItemIcon>\n                  <ListItemText primary={'primary222'} secondary={'secondary222'} />\n                </ListItem>\n              </List>\n            </Paper>\n          </Grid>\n\n          <Grid item xs={3}>\n            <Card>\n              <CardContent>\n                <Grid container spacing={1}>\n                  <Grid item><Chip label={'label label1'} icon={<ContactPhoneIcon />} /></Grid>\n                  <Grid item><Chip label={'label label2'} clickable icon={<AccountCircleIcon />} /></Grid>\n                  <Grid item><Chip size={'small'} label={'label label3'} clickable icon={<AccountCircleIcon />} /></Grid>\n                </Grid>\n              </CardContent>\n            </Card>\n          </Grid>\n        </Grid>\n      </div>\n\n      <div style={{ marginTop: theme.spacing(1) }}>\n        <Card>\n          <CardContent style={{ height: 300 }}>\n            <TableContainer style={{ maxHeight: 300 }}>\n              <Table stickyHeader>\n                <TableHead>\n                  <TableRow>\n                    {['calories', 'carbs', 'dessert', 'fat', 'id', 'protein'].map((column, index) => <TableCell key={'column-head-index-' + index}>{column}</TableCell>)}\n                  </TableRow>\n                </TableHead>\n                <TableBody>\n                  {rows.map((row, index) => <TableRow key={'row-body-index' + index}>\n                    <TableCell>{row.calories}</TableCell>\n                    <TableCell>{row.carbs}</TableCell>\n                    <TableCell>{row.dessert}</TableCell>\n                    <TableCell>{row.fat}</TableCell>\n                    <TableCell>{row.id}</TableCell>\n                  </TableRow>)}\n                </TableBody>\n              </Table>\n            </TableContainer>\n          </CardContent>\n        </Card>\n      </div>\n    </div>\n  );\n};\n\nexport default Develop;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/develop.tsx b/src/Component/develop.tsx
+--- a/src/Component/develop.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/develop.tsx	(date 1649922640631)
+@@ -1,44 +1,107 @@
+ /* eslint-disable max-lines */
+-import React, { CSSProperties, useCallback, useMemo, useState } from 'react';
++import React, { useCallback, useRef, useState } from 'react';
+ import {
+-  Button, ButtonProps,
++  Button,
++  ButtonProps,
+   Card,
+-  CardContent,
+-  Chip,
+-  Grid, IconButton, InputAdornment,
++  CardContent, Checkbox,
++  Chip, FormControlLabel,
++  Grid,
++  IconButton,
++  InputAdornment,
+   List,
+   ListItem,
+   ListItemIcon,
+-  ListItemText, MenuItem,
+-  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
++  ListItemText, NativeSelect,
++  Paper,
++  Table,
++  TableBody,
++  TableCell,
++  TableContainer,
++  TableHead,
++  TableRow,
+   Typography
+ } from '@material-ui/core';
+-import { AccountCircle as AccountCircleIcon, ContactPhone as ContactPhoneIcon } from '@material-ui/icons';
++import {
++  AccountCircle as AccountCircleIcon, CheckBox,
++  ContactPhone as ContactPhoneIcon,
++  Error,
++  Visibility, VisibilityOff, Block, Refresh
++} from '@material-ui/icons';
+ import { useTheme } from '@material-ui/core/styles';
+ import { getCurrency } from 'Utilities/Format/Currency';
+ import { useDispatch } from 'react-redux';
+ import * as Action from 'Store/Action';
+-import { v4 as uuid } from 'uuid';
+ import { VirtualizedTable } from 'Component/Table';
+-import { Index, TableCellProps, TableProps } from 'react-virtualized';
++import { Index, TableCellProps } from 'react-virtualized';
+ import TextFieldClearButton, { TextFieldClearButtonProps } from 'Component/TextFieldClearButton';
+ import { ContentEllipseMode } from 'Component/Table/TableCell/TableCellDefault';
+ import { TableCellDateTime, TableCellDateTimeRange, TableCellDefault } from 'Component/Table/TableCell';
+ import { ButtonProgress } from 'Component/Button';
+-import { AppCardHeader, AppCardContent } from 'Component/Card';
++import { AppCardContent, AppCardHeader } from 'Component/Card';
+ import { TableRowLoading } from 'Component/Table/TableRow';
+-import SelectClearButton, { SelectClearButtonProps } from 'Component/SelectClearButton';
+ import SearchIcon from '@material-ui/icons/Search';
+ import { CustomerCard, FilterReset } from 'Component/Icon';
+-import DatePicker from 'Component/DatePicker';
+ import { ColumnData } from 'Component/Table/VirtualizedTable';
+ import { DateTimeRangeCellProps } from 'Types/Table/DateTimeRangeCellProps';
+ import WarningIcon from '@material-ui/icons/Warning';
+ import TableCellSelect from 'Component/Table/TableCell/TableCellSelect';
+ import TableHeadSelect from 'Component/Table/TableHead/TableHeadSelect';
++import { OptionsObject, VariantType } from 'notistack';
++import { Notification } from 'Types/Notification';
++import Box from '@material-ui/core/Box';
+ 
+ const tableRowHeight = 48;
+ 
++const generateNotification = (persist = false): Notification => {
++  const rand = Math.round(Math.random() * 100000)
++  const variant: VariantType =
++    rand % 7 == 0 && 'error'
++    || rand % 5 == 0 && 'warning'
++    || rand % 3 == 0 && 'success'
++    || rand % 2 == 0 && 'info'
++    || 'default'
++  const id = String(rand)
++  const group = variant.match(/(error|warning)/) ? 'important' : 'unimportant'
++  const defaultProps: Notification = {
++    id,
++    group,
++    variant,
++    notistackOptions: { persist: persist }
++  }
++  switch (variant) {
++    case 'error':
++      return {
++        ...defaultProps,
++        title: 'ServerError',
++        subtitle: 'Join Room (action.payload.name)',
++        content: <Box display='flex' flexDirection='column'>
++          <span>Habitant habitasse, sem etiamnostra etiam. Tristique viverra volutpat mi, ornare non tellus, praesent odio justo platea erat quis. Aliquam est varius, fringilla class, in ad dictumst turpis vivamus eros augue. Nunc fames donec, vehicula phasellus, volutpat sem luctus leo ut. Consequat nulla enim, curae hac, lorem purus cursus feugiat habitant fusce. Ante metus curabitur, litora nec, donec diam bibendum euismod elit placerat neque. Pretium sit, morbi odio iaculis.</span>
++          <Box display='flex' flexDirection='row'>
++            <Button color='inherit' startIcon={<Refresh/>}>Try again</Button>
++            <Button color='inherit' startIcon={<Block/>}>Ignore</Button>
++          </Box>
++        </Box>,
++        action: () => <IconButton color='inherit'><Visibility/></IconButton>
++      }
++    case 'warning':
++      return {
++        ...defaultProps,
++        title: 'Warning',
++        subtitle: 'Some changes aren\'t saved yet',
++        content: 'The quick brown fox jumps over the lazy dog',
++        action: () => <IconButton><Visibility/></IconButton>
++      }
++    case 'success':
++      return { ...defaultProps, title: 'Changes saved' }
++    case 'info':
++      return { ...defaultProps, content: 'Time for a cup of coffee!', action: () => <Button color='inherit'>Get</Button> }
++    case 'default':
++    default:
++      return { ...defaultProps, variant: 'default', content: 'content loaded' }
++  }
++}
++
+ type DataVirtualizedTable = {
+   calories: number;
+   carbs: number;
+@@ -57,13 +120,21 @@
+     end: null,
+     isLiveShow: false
+   }, null],
+-  ['Ice cream sandwich', 237, 9.0, 37, {start: new Date(), end: new Date(), isLiveShow: false}, new Date()],
+-  ['Eclair', 262, 16.0, 24, {start: new Date(2021, 9, 23, 8, 0, 15), end: new Date(), isLiveShow: false}, new Date()],
+-  ['Cupcake', 305, 3.7, 67, {start: new Date(), end: new Date(), isLiveShow: false}, new Date()],
+-  ['Gingerbread', 356, 16.0, 49, {start: new Date(), end: new Date(), isLiveShow: false}, new Date()]
++  ['Ice cream sandwich', 237, 9.0, 37, { start: new Date(), end: new Date(), isLiveShow: false }, new Date()],
++  ['Eclair', 262, 16.0, 24, { start: new Date(2021, 9, 23, 8, 0, 15), end: new Date(), isLiveShow: false }, new Date()],
++  ['Cupcake', 305, 3.7, 67, { start: new Date(), end: new Date(), isLiveShow: false }, new Date()],
++  ['Gingerbread', 356, 16.0, 49, { start: new Date(), end: new Date(), isLiveShow: false }, new Date()]
+ ];
+ 
+-const createDataVirtualizedTable = (id: number, dessert: string, calories: number, fat: number, carbs: number, datetimeRange: DateTimeRangeCellProps, datetime?: Date): DataVirtualizedTable => ({ id, dessert, calories, fat, carbs, datetimeRange, datetime });
++const createDataVirtualizedTable = (id: number, dessert: string, calories: number, fat: number, carbs: number, datetimeRange: DateTimeRangeCellProps, datetime?: Date): DataVirtualizedTable => ({
++  id,
++  dessert,
++  calories,
++  fat,
++  carbs,
++  datetimeRange,
++  datetime
++});
+ 
+ const rows: DataVirtualizedTable[] = [];
+ 
+@@ -77,15 +148,19 @@
+     width: 50,
+     dataKey: 'select',
+     disableSort: true,
+-    headerRenderer: (cellProps: TableCellProps) => <TableHeadSelect checked={false} onChange={console.log} height={tableRowHeight} />,
+-    cellRenderer: (cellProps: TableCellProps) => <TableCellSelect checked={false} value={cellProps.cellData} onChange={console.log} height={tableRowHeight} />
++    headerRenderer: () => <TableHeadSelect checked={false} onChange={console.log}
++                                           height={tableRowHeight}/>,
++    cellRenderer: (cellProps: TableCellProps) => <TableCellSelect checked={false} value={cellProps.cellData}
++                                                                  onChange={console.log} height={tableRowHeight}/>
+   },
+   {
+     width: (width: number) => width - (120 * 4),
+     label: 'Dessert (100g serving)',
+     dataKey: 'dessert',
+     disableSort: true,
+-    cellRenderer: (cellProps: TableCellProps) => <TableCellDefault height={tableRowHeight} cellData={cellProps.cellData} contentEllipseMode={ContentEllipseMode.Lines} contentEllipseLines={2} />
++    cellRenderer: (cellProps: TableCellProps) => <TableCellDefault height={tableRowHeight} cellData={cellProps.cellData}
++                                                                   contentEllipseMode={ContentEllipseMode.Lines}
++                                                                   contentEllipseLines={2}/>
+   },
+   {
+     width: 120,
+@@ -106,41 +181,39 @@
+     width: 220,
+     label: 'Datum (Range)',
+     dataKey: 'datetimeRange',
+-    cellRenderer: cellProps => <TableCellDateTimeRange cellData={cellProps.cellData} height={tableRowHeight} />
++    cellRenderer: cellProps => <TableCellDateTimeRange cellData={cellProps.cellData} height={tableRowHeight}/>
+   },
+   {
+     width: 180,
+     label: 'Datum',
+     dataKey: 'datetime',
+-    cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} height={tableRowHeight} />
++    cellRenderer: cellProps => <TableCellDateTime cellData={cellProps.cellData} height={tableRowHeight}/>
+   }
+ ];
+-const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon /></InputAdornment> };
++const textFieldInputProps = { startAdornment: <InputAdornment position={'start'}><SearchIcon/></InputAdornment> };
+ 
+-const selectMenuItems = [
+-  <MenuItem value={'test 1'} key={'menu-item-1'}>Test 1</MenuItem>,
+-  <MenuItem value={'test 2'} key={'menu-item-2'}>Test 2</MenuItem>,
+-  <MenuItem value={'test 3'} key={'menu-item-3'}>Test 3</MenuItem>,
+-  <MenuItem value={'test 4'} key={'menu-item-4'}>Test 4</MenuItem>
+-];
++// const selectMenuItems = [
++//   <MenuItem value={'test 1'} key={'menu-item-1'}>Test 1</MenuItem>,
++//   <MenuItem value={'test 2'} key={'menu-item-2'}>Test 2</MenuItem>,
++//   <MenuItem value={'test 3'} key={'menu-item-3'}>Test 3</MenuItem>,
++//   <MenuItem value={'test 4'} key={'menu-item-4'}>Test 4</MenuItem>
++// ];
+ 
+ const Develop: React.FC = () => {
+   const theme = useTheme();
+   const dispatch = useDispatch();
+   const [testTextFieldValue, setTestTextFieldValue] = useState('');
+-  const [testSelectValue, setTestSelectValue] = useState('');
+-  const [testDatePickerValue, setTestDatePickerValue] = useState<Date>(null);
+-  const noRowsRenderer = useCallback(() => <TableRowLoading />, []);
++  const noRowsRenderer = useCallback(() => <TableRowLoading/>, []);
+   const rowGetter = useCallback((row: Index) => rows[row.index], []);
+   const handleTextFieldUpdate: TextFieldClearButtonProps['onChange'] = useCallback(event => setTestTextFieldValue(event === null ? '' : event.target.value), []);
+-  const handleSelectUpdate: SelectClearButtonProps['onChange'] = useCallback(event => setTestSelectValue(event === null ? '' : event.target.value as string), []);
+-  const handleOnClickNotification: ButtonProps['onClick'] = useCallback(() => dispatch(Action.addNotification({
+-    id: uuid(),
+-    title: 'Error',
+-    subtitle: 'Join Room (action.payload.name)',
+-    content: 'MESSAGE',
+-    variant: 'error'
+-  })), []);
++  const persistNotificationsRef = useRef(null)
++  const handleOnClickNotification: ButtonProps['onClick'] = useCallback(() => {
++    const persist = persistNotificationsRef?.current?.checked
++    dispatch(Action.addNotification(generateNotification(persist)))
++  }, []);
++  const handleRemoveNotificationsByGroup = useCallback(event => {
++    dispatch(Action.removeNotificationGroup(event.target.value))
++  }, [])
+   const handleOnClickToast: ButtonProps['onClick'] = useCallback(() => dispatch(Action.addToastAction({
+     contentMessage: 'Toast Test',
+     dismissLabel: 'Dismiss',
+@@ -149,29 +222,29 @@
+ 
+   return (
+     <div style={{ margin: theme.spacing(1) }}>
+-      <Card>
+-        <AppCardHeader title={'Test'} titleIcon={<WarningIcon />} onRefresh={console.log} />
+-        <AppCardContent>
+-          Das ist der Inhalt
+-          <IconButton size={'small'} color={'secondary'}><FilterReset/></IconButton>
+-        </AppCardContent>
+-      </Card>
+-      <div style={{ marginTop: theme.spacing(1) }}>
+-        <Card>
+-          <CardContent style={{ height: 600 }}>
+-            <VirtualizedTable
+-              showRowHoverHighlight
+-              rowHeight={tableRowHeight}
+-              rowCount={rows.length}
+-              rowGetter={rowGetter}
+-              noRowsRenderer={noRowsRenderer}
+-              sortBy={'calories'}
+-              sortDirection={'ASC'}
+-              columns={columns}
+-            />
+-          </CardContent>
+-        </Card>
+-      </div>
++      {/*<Card>*/}
++      {/*  <AppCardHeader title={'Test'} titleIcon={<WarningIcon/>} onRefresh={console.log}/>*/}
++      {/*  <AppCardContent>*/}
++      {/*    Das ist der Inhalt*/}
++      {/*    <IconButton size={'small'} color={'secondary'}><FilterReset/></IconButton>*/}
++      {/*  </AppCardContent>*/}
++      {/*</Card>*/}
++      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
++      {/*  <Card>*/}
++      {/*    <CardContent style={{ height: 600 }}>*/}
++      {/*      <VirtualizedTable*/}
++      {/*        showRowHoverHighlight*/}
++      {/*        rowHeight={tableRowHeight}*/}
++      {/*        rowCount={rows.length}*/}
++      {/*        rowGetter={rowGetter}*/}
++      {/*        noRowsRenderer={noRowsRenderer}*/}
++      {/*        sortBy={'calories'}*/}
++      {/*        sortDirection={'ASC'}*/}
++      {/*        columns={columns}*/}
++      {/*      />*/}
++      {/*    </CardContent>*/}
++      {/*  </Card>*/}
++      {/*</div>*/}
+       <Grid container spacing={1} alignItems={'center'}>
+         <Grid item>
+           {/*<DatePicker*/}
+@@ -182,13 +255,13 @@
+           {/*/>*/}
+         </Grid>
+         <Grid item>
+-          <TextFieldClearButton
+-            label={'Textfield'}
+-            onChange={handleTextFieldUpdate}
+-            value={testTextFieldValue}
+-            clearButtonSize={'small'}
+-            InputProps={textFieldInputProps}
+-          />
++          {/*<TextFieldClearButton*/}
++          {/*  label={'Textfield'}*/}
++          {/*  onChange={handleTextFieldUpdate}*/}
++          {/*  value={testTextFieldValue}*/}
++          {/*  clearButtonSize={'small'}*/}
++          {/*  InputProps={textFieldInputProps}*/}
++          {/*/>*/}
+         </Grid>
+         <Grid item>
+           {/*<TextFieldClearButton*/}
+@@ -207,11 +280,19 @@
+           {/*  clearButtonSize={'small'}*/}
+           {/*>{selectMenuItems}</SelectClearButton>*/}
+         </Grid>
++        {/*<Grid item>*/}
++        {/*  <CustomerCard/>*/}
++        {/*</Grid>*/}
+         <Grid item>
+-          <CustomerCard />
+-        </Grid>
+-        <Grid item>
+-          <Button onClick={handleOnClickNotification}>Notification</Button>
++          <FormControlLabel control={
++            <Checkbox inputRef={persistNotificationsRef}/>
++          } label={'persist'}/>
++          <Button onClick={handleOnClickNotification}>Add Notification</Button>
++          <NativeSelect value={0} onChange={handleRemoveNotificationsByGroup}>
++            <option value={0} disabled>Remove Notifications by group</option>
++            <option value='important'>All Important</option>
++            <option value='unimportant'>All Unimportant</option>
++          </NativeSelect>
+         </Grid>
+         <Grid item>
+           <Button onClick={handleOnClickToast}>Toast</Button>
+@@ -220,172 +301,178 @@
+           <ButtonProgress inProgress onClick={handleOnClickToast}>Toast</ButtonProgress>
+         </Grid>
+       </Grid>
+-      <div style={{ marginTop: theme.spacing(1) }}>
+-        <List>
+-          <ListItem>
+-            <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, true)'}>
+-              {getCurrency('EUR', 100, true, true, true)}
+-            </ListItemText>
+-          </ListItem>
+-          <ListItem>
+-            <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, false)'}>
+-              {getCurrency('EUR', 100, true, true, false)}
+-            </ListItemText>
+-          </ListItem>
+-          <ListItem>
+-            <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, true)'}>
+-              {getCurrency('EUR', 100.00, true, true, true)}
+-            </ListItemText>
+-          </ListItem>
+-          <ListItem>
+-            <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, false)'}>
+-              {getCurrency('EUR', 100.00, true, true, false)}
+-            </ListItemText>
+-          </ListItem>
+-          <ListItem>
+-            <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, true)'}>
+-              {getCurrency('EUR', 100.5, true, true, true)}
+-            </ListItemText>
+-          </ListItem>
+-          <ListItem>
+-            <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, false)'}>
+-              {getCurrency('EUR', 100.5, true, true, false)}
+-            </ListItemText>
+-          </ListItem>
+-          <ListItem>
+-            <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, true)'}>
+-              {getCurrency('EUR', 100.50, true, true, true)}
+-            </ListItemText>
+-          </ListItem>
+-          <ListItem>
+-            <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, false)'}>
+-              {getCurrency('EUR', 100.50, true, true, false)}
+-            </ListItemText>
+-          </ListItem>
+-          <ListItem>
+-            <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, true)'}>
+-              {getCurrency('EUR', 100.75, true, true, true)}
+-            </ListItemText>
+-          </ListItem>
+-          <ListItem>
+-            <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, false)'}>
+-              {getCurrency('EUR', 100.75, true, true, false)}
+-            </ListItemText>
+-          </ListItem>
+-        </List>
+-      </div>
+-      <div style={{ marginTop: theme.spacing(1) }}>
+-        <Grid container>
+-          <Grid item>
+-            <Typography
+-              style={{ margin: theme.spacing(1), padding: theme.spacing(1), backgroundColor: theme.palette.info.main, color: theme.palette.getContrastText(theme.palette.info.main) }}>Info</Typography>
+-          </Grid>
+-          <Grid item>
+-            <Typography style={{
+-              margin: theme.spacing(1),
+-              padding: theme.spacing(1),
+-              backgroundColor: theme.palette.error.main,
+-              color: theme.palette.getContrastText(theme.palette.error.main)
+-            }}>Error</Typography>
+-          </Grid>
+-          <Grid item>
+-            <Typography style={{
+-              margin: theme.spacing(1),
+-              padding: theme.spacing(1),
+-              backgroundColor: theme.palette.warning.main,
+-              color: theme.palette.getContrastText(theme.palette.warning.main)
+-            }}>Warning</Typography>
+-          </Grid>
+-          <Grid item>
+-            <Typography style={{
+-              margin: theme.spacing(1),
+-              padding: theme.spacing(1),
+-              backgroundColor: theme.palette.success.main,
+-              color: theme.palette.getContrastText(theme.palette.success.main)
+-            }}>Success</Typography>
+-          </Grid>
+-        </Grid>
+-      </div>
+-      <div style={{ marginTop: theme.spacing(1) }}>
+-        <Grid container spacing={1}>
+-          <Grid item xs={3}>
+-            <Paper>
+-              <List dense>
+-                <ListItem button selected={true}>
+-                  <ListItemIcon>
+-                    <AccountCircleIcon />
+-                  </ListItemIcon>
+-                  <ListItemText primary={'primary111'} secondary={'secondary222'} />
+-                </ListItem>
++      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
++      {/*  <List>*/}
++      {/*    <ListItem>*/}
++      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, true)'}>*/}
++      {/*        {getCurrency('EUR', 100, true, true, true)}*/}
++      {/*      </ListItemText>*/}
++      {/*    </ListItem>*/}
++      {/*    <ListItem>*/}
++      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100, true, true, false)'}>*/}
++      {/*        {getCurrency('EUR', 100, true, true, false)}*/}
++      {/*      </ListItemText>*/}
++      {/*    </ListItem>*/}
++      {/*    <ListItem>*/}
++      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, true)'}>*/}
++      {/*        {getCurrency('EUR', 100.00, true, true, true)}*/}
++      {/*      </ListItemText>*/}
++      {/*    </ListItem>*/}
++      {/*    <ListItem>*/}
++      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.00, true, true, false)'}>*/}
++      {/*        {getCurrency('EUR', 100.00, true, true, false)}*/}
++      {/*      </ListItemText>*/}
++      {/*    </ListItem>*/}
++      {/*    <ListItem>*/}
++      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, true)'}>*/}
++      {/*        {getCurrency('EUR', 100.5, true, true, true)}*/}
++      {/*      </ListItemText>*/}
++      {/*    </ListItem>*/}
++      {/*    <ListItem>*/}
++      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.5, true, true, false)'}>*/}
++      {/*        {getCurrency('EUR', 100.5, true, true, false)}*/}
++      {/*      </ListItemText>*/}
++      {/*    </ListItem>*/}
++      {/*    <ListItem>*/}
++      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, true)'}>*/}
++      {/*        {getCurrency('EUR', 100.50, true, true, true)}*/}
++      {/*      </ListItemText>*/}
++      {/*    </ListItem>*/}
++      {/*    <ListItem>*/}
++      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.50, true, true, false)'}>*/}
++      {/*        {getCurrency('EUR', 100.50, true, true, false)}*/}
++      {/*      </ListItemText>*/}
++      {/*    </ListItem>*/}
++      {/*    <ListItem>*/}
++      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, true)'}>*/}
++      {/*        {getCurrency('EUR', 100.75, true, true, true)}*/}
++      {/*      </ListItemText>*/}
++      {/*    </ListItem>*/}
++      {/*    <ListItem>*/}
++      {/*      <ListItemText secondary={'getCurrency(\'EUR\', 100.75, true, true, false)'}>*/}
++      {/*        {getCurrency('EUR', 100.75, true, true, false)}*/}
++      {/*      </ListItemText>*/}
++      {/*    </ListItem>*/}
++      {/*  </List>*/}
++      {/*</div>*/}
++      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
++      {/*  <Grid container>*/}
++      {/*    <Grid item>*/}
++      {/*      <Typography*/}
++      {/*        style={{*/}
++      {/*          margin: theme.spacing(1),*/}
++      {/*          padding: theme.spacing(1),*/}
++      {/*          backgroundColor: theme.palette.info.main,*/}
++      {/*          color: theme.palette.getContrastText(theme.palette.info.main)*/}
++      {/*        }}>Info</Typography>*/}
++      {/*    </Grid>*/}
++      {/*    <Grid item>*/}
++      {/*      <Typography style={{*/}
++      {/*        margin: theme.spacing(1),*/}
++      {/*        padding: theme.spacing(1),*/}
++      {/*        backgroundColor: theme.palette.error.main,*/}
++      {/*        color: theme.palette.getContrastText(theme.palette.error.main)*/}
++      {/*      }}>Error</Typography>*/}
++      {/*    </Grid>*/}
++      {/*    <Grid item>*/}
++      {/*      <Typography style={{*/}
++      {/*        margin: theme.spacing(1),*/}
++      {/*        padding: theme.spacing(1),*/}
++      {/*        backgroundColor: theme.palette.warning.main,*/}
++      {/*        color: theme.palette.getContrastText(theme.palette.warning.main)*/}
++      {/*      }}>Warning</Typography>*/}
++      {/*    </Grid>*/}
++      {/*    <Grid item>*/}
++      {/*      <Typography style={{*/}
++      {/*        margin: theme.spacing(1),*/}
++      {/*        padding: theme.spacing(1),*/}
++      {/*        backgroundColor: theme.palette.success.main,*/}
++      {/*        color: theme.palette.getContrastText(theme.palette.success.main)*/}
++      {/*      }}>Success</Typography>*/}
++      {/*    </Grid>*/}
++      {/*  </Grid>*/}
++      {/*</div>*/}
++      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
++      {/*  <Grid container spacing={1}>*/}
++      {/*    <Grid item xs={3}>*/}
++      {/*      <Paper>*/}
++      {/*        <List dense>*/}
++      {/*          <ListItem button selected={true}>*/}
++      {/*            <ListItemIcon>*/}
++      {/*              <AccountCircleIcon/>*/}
++      {/*            </ListItemIcon>*/}
++      {/*            <ListItemText primary={'primary111'} secondary={'secondary222'}/>*/}
++      {/*          </ListItem>*/}
+ 
+-                <ListItem button selected={false}>
+-                  <ListItemIcon>
+-                    <ContactPhoneIcon />
+-                  </ListItemIcon>
+-                  <ListItemText primary={'primary222'} secondary={'secondary222'} />
+-                </ListItem>
+-              </List>
+-            </Paper>
+-          </Grid>
++      {/*          <ListItem button selected={false}>*/}
++      {/*            <ListItemIcon>*/}
++      {/*              <ContactPhoneIcon/>*/}
++      {/*            </ListItemIcon>*/}
++      {/*            <ListItemText primary={'primary222'} secondary={'secondary222'}/>*/}
++      {/*          </ListItem>*/}
++      {/*        </List>*/}
++      {/*      </Paper>*/}
++      {/*    </Grid>*/}
+ 
+-          <Grid item xs={3}>
+-            <Paper>
+-              <List>
+-                <ListItem button selected={true}>
+-                  <ListItemIcon>
+-                    <AccountCircleIcon />
+-                  </ListItemIcon>
+-                  <ListItemText primary={'primary111'} secondary={'secondary222'} />
+-                </ListItem>
++      {/*    <Grid item xs={3}>*/}
++      {/*      <Paper>*/}
++      {/*        <List>*/}
++      {/*          <ListItem button selected={true}>*/}
++      {/*            <ListItemIcon>*/}
++      {/*              <AccountCircleIcon/>*/}
++      {/*            </ListItemIcon>*/}
++      {/*            <ListItemText primary={'primary111'} secondary={'secondary222'}/>*/}
++      {/*          </ListItem>*/}
+ 
+-                <ListItem button selected={false}>
+-                  <ListItemIcon>
+-                    <ContactPhoneIcon />
+-                  </ListItemIcon>
+-                  <ListItemText primary={'primary222'} secondary={'secondary222'} />
+-                </ListItem>
+-              </List>
+-            </Paper>
+-          </Grid>
++      {/*          <ListItem button selected={false}>*/}
++      {/*            <ListItemIcon>*/}
++      {/*              <ContactPhoneIcon/>*/}
++      {/*            </ListItemIcon>*/}
++      {/*            <ListItemText primary={'primary222'} secondary={'secondary222'}/>*/}
++      {/*          </ListItem>*/}
++      {/*        </List>*/}
++      {/*      </Paper>*/}
++      {/*    </Grid>*/}
+ 
+-          <Grid item xs={3}>
+-            <Card>
+-              <CardContent>
+-                <Grid container spacing={1}>
+-                  <Grid item><Chip label={'label label1'} icon={<ContactPhoneIcon />} /></Grid>
+-                  <Grid item><Chip label={'label label2'} clickable icon={<AccountCircleIcon />} /></Grid>
+-                  <Grid item><Chip size={'small'} label={'label label3'} clickable icon={<AccountCircleIcon />} /></Grid>
+-                </Grid>
+-              </CardContent>
+-            </Card>
+-          </Grid>
+-        </Grid>
+-      </div>
++      {/*    <Grid item xs={3}>*/}
++      {/*      <Card>*/}
++      {/*        <CardContent>*/}
++      {/*          <Grid container spacing={1}>*/}
++      {/*            <Grid item><Chip label={'label label1'} icon={<ContactPhoneIcon/>}/></Grid>*/}
++      {/*            <Grid item><Chip label={'label label2'} clickable icon={<AccountCircleIcon/>}/></Grid>*/}
++      {/*            <Grid item><Chip size={'small'} label={'label label3'} clickable icon={<AccountCircleIcon/>}/></Grid>*/}
++      {/*          </Grid>*/}
++      {/*        </CardContent>*/}
++      {/*      </Card>*/}
++      {/*    </Grid>*/}
++      {/*  </Grid>*/}
++      {/*</div>*/}
+ 
+-      <div style={{ marginTop: theme.spacing(1) }}>
+-        <Card>
+-          <CardContent style={{ height: 300 }}>
+-            <TableContainer style={{ maxHeight: 300 }}>
+-              <Table stickyHeader>
+-                <TableHead>
+-                  <TableRow>
+-                    {['calories', 'carbs', 'dessert', 'fat', 'id', 'protein'].map((column, index) => <TableCell key={'column-head-index-' + index}>{column}</TableCell>)}
+-                  </TableRow>
+-                </TableHead>
+-                <TableBody>
+-                  {rows.map((row, index) => <TableRow key={'row-body-index' + index}>
+-                    <TableCell>{row.calories}</TableCell>
+-                    <TableCell>{row.carbs}</TableCell>
+-                    <TableCell>{row.dessert}</TableCell>
+-                    <TableCell>{row.fat}</TableCell>
+-                    <TableCell>{row.id}</TableCell>
+-                  </TableRow>)}
+-                </TableBody>
+-              </Table>
+-            </TableContainer>
+-          </CardContent>
+-        </Card>
+-      </div>
++      {/*<div style={{ marginTop: theme.spacing(1) }}>*/}
++      {/*  <Card>*/}
++      {/*    <CardContent style={{ height: 300 }}>*/}
++      {/*      <TableContainer style={{ maxHeight: 300 }}>*/}
++      {/*        <Table stickyHeader>*/}
++      {/*          <TableHead>*/}
++      {/*            <TableRow>*/}
++      {/*              {['calories', 'carbs', 'dessert', 'fat', 'id', 'protein'].map((column, index) => <TableCell*/}
++      {/*                key={'column-head-index-' + index}>{column}</TableCell>)}*/}
++      {/*            </TableRow>*/}
++      {/*          </TableHead>*/}
++      {/*          <TableBody>*/}
++      {/*            {rows.map((row, index) => <TableRow key={'row-body-index' + index}>*/}
++      {/*              <TableCell>{row.calories}</TableCell>*/}
++      {/*              <TableCell>{row.carbs}</TableCell>*/}
++      {/*              <TableCell>{row.dessert}</TableCell>*/}
++      {/*              <TableCell>{row.fat}</TableCell>*/}
++      {/*              <TableCell>{row.id}</TableCell>*/}
++      {/*            </TableRow>)}*/}
++      {/*          </TableBody>*/}
++      {/*        </Table>*/}
++      {/*      </TableContainer>*/}
++      {/*    </CardContent>*/}
++      {/*  </Card>*/}
++      {/*</div>*/}
+     </div>
+   );
+ };
+Index: src/Component/Notification/Card/useicon.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/Card/useicon.tsx b/src/Component/Notification/Card/useicon.tsx
+new file mode 100644
+--- /dev/null	(date 1649854381695)
++++ b/src/Component/Notification/Card/useicon.tsx	(date 1649854381695)
+@@ -0,0 +1,20 @@
++import { VariantType } from 'notistack';
++import React, { useMemo } from 'react';
++import FontIcon from '@material-ui/core/Icon';
++
++const useIcon = (variant: VariantType): React.ReactElement | undefined =>
++  useMemo(() => {
++    switch (variant) {
++      case 'success':
++        return <FontIcon color='inherit'>check</FontIcon>
++      case 'error':
++      case 'warning':
++      case 'info':
++        return <FontIcon color='inherit'>{variant}</FontIcon>
++      case 'default':
++      default:
++        return undefined
++    }
++  }, [variant])
++
++export default useIcon
+Index: src/Component/Notification/Card/Header.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/Card/Header.tsx b/src/Component/Notification/Card/Header.tsx
+new file mode 100644
+--- /dev/null	(date 1649854381698)
++++ b/src/Component/Notification/Card/Header.tsx	(date 1649854381698)
+@@ -0,0 +1,28 @@
++import * as React from 'react';
++import Typography from '@material-ui/core/Typography';
++import CardHeader from '@material-ui/core/CardHeader';
++import useIcon from './useicon';
++import { Notification } from 'Types/Notification'
++
++type Props = Pick<Notification, 'title' | 'subtitle' | 'variant'>
++
++const Header: React.FC<Props> =
++  ({
++     title,
++     subtitle,
++     variant
++   }) => {
++    const icon = useIcon(variant)
++    return (
++      !icon && !title && !subtitle
++        ? null :
++        <CardHeader
++          avatar={icon}
++          title={<Typography variant='h6' component='div'>{title}</Typography>}
++          subheader={<Typography variant='subtitle1' component='div'>{subtitle}</Typography>}
++          subheaderTypographyProps={{ color: 'inherit' }}
++        />
++    )
++  }
++
++export default React.memo(Header)
+Index: src/Component/Notification/Card/Footer.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/Card/Footer.tsx b/src/Component/Notification/Card/Footer.tsx
+new file mode 100644
+--- /dev/null	(date 1649802198906)
++++ b/src/Component/Notification/Card/Footer.tsx	(date 1649802198906)
+@@ -0,0 +1,36 @@
++import * as React from 'react';
++import Box from '@material-ui/core/Box';
++import Typography from '@material-ui/core/Typography';
++import { Notification } from 'Types/Notification';
++import { makeStyles } from '@material-ui/core/styles';
++import { useIntl } from 'react-intl';
++import { useMemo } from 'react';
++
++const useStyles = makeStyles(theme => ({
++  root: {
++    padding: theme.spacing(1, 2),
++    gridColumnStart: 1,
++    gridColumnEnd: 'none',
++    textAlign: 'right'
++  }
++}))
++
++type Props = Pick<Notification, 'timeStamp' | 'httpDetails'>
++
++const Footer: React.FC<Props> = ({ timeStamp, httpDetails }) => {
++  const classes = useStyles()
++  const { formatDate, formatTime } = useIntl();
++  const formattedTimeStamp = useMemo(() =>
++      timeStamp && <>{formatDate(timeStamp, { dateStyle: 'medium' })}&nbsp;{formatTime(timeStamp, { timeStyle: 'medium' })}</>
++    , [timeStamp])
++  return (
++    !httpDetails && !formattedTimeStamp
++      ? null :
++      <Box className={classes.root}>
++        {httpDetails && <Typography variant='caption' component='div'>{httpDetails}</Typography>}
++        {formattedTimeStamp && <Typography variant='caption' component='div'>{formattedTimeStamp}</Typography>}
++      </Box>
++  )
++}
++
++export default React.memo(Footer)
+Index: src/Component/Notification/Button/index.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>export { default as Dismiss } from './Dismiss';\nexport { default as Show } from './Show';\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/Button/index.ts b/src/Component/Notification/Button/index.ts
+--- a/src/Component/Notification/Button/index.ts	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Notification/Button/index.ts	(date 1649804606597)
+@@ -1,2 +1,3 @@
+ export { default as Dismiss } from './Dismiss';
+ export { default as Show } from './Show';
++export { default as Delete } from './Delete';
+Index: src/Component/Notification/Card/index.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport MUICard from '@material-ui/core/Card';\nimport CardHeader from '@material-ui/core/CardHeader';\nimport CardContent from '@material-ui/core/CardContent';\nimport CardActions from '@material-ui/core/CardActions';\nimport Typography from '@material-ui/core/Typography';\nimport Box from '@material-ui/core/Box';\nimport IconButton from '@material-ui/core/IconButton';\nimport { default as Default } from './Default';\nimport { useTheme } from '@material-ui/core/styles';\nimport Icon from './Icon';\nimport { Notification } from 'Types/Notification';\nimport useActions from 'Store/useActions';\nimport DeleteIcon from '@material-ui/icons/Delete';\nimport { useSnackbar } from 'notistack';\nimport { useIntl } from 'react-intl';\n\nexport type Props = {\n  notification: Notification;\n  temporary: boolean;\n};\n\ntype Severity = 'error' | 'success' | 'warning' | 'info';\n\nconst Card: React.FC<Props> & {\n  Default: typeof Default;\n  Icon: typeof Icon;\n} = ({ notification, temporary }) => {\n  const { palette } = useTheme();\n  const { removeNotification } = useActions();\n  const snackbar = useSnackbar();\n  const { formatMessage, formatDate, formatTime } = useIntl();\n\n  return (\n    <MUICard\n      style={{\n        width: '100%',\n        minHeight: 'fit-content',\n        backgroundColor: palette[notification.variant as Severity]?.['main'],\n        color: palette[notification.variant as Severity]?.['contrastText']\n      }}>\n      <CardHeader\n        avatar={<Icon variant={notification.variant} />}\n        title={\n          <Typography variant='h6' component='div'>\n            {notification?.isTranslationId\n              ? formatMessage({ id: notification.title as string })\n              : notification.title}\n          </Typography>\n        }\n        subheader={\n          <Typography variant='subtitle1' component='div'>\n            {notification?.isTranslationId\n              ? formatMessage({ id: notification.subtitle as string })\n              : notification.subtitle}\n          </Typography>\n        }\n        subheaderTypographyProps={{ color: 'inherit' }}\n        action={\n          <CardActions>\n            {notification.action\n              ? notification.action(snackbar, notification.id, temporary)\n              : null}\n            <IconButton onClick={() => removeNotification(notification.id)}>\n              <DeleteIcon\n                style={{\n                  color:\n                  palette[notification.variant as Severity]?.contrastText\n                }}\n              />\n            </IconButton>\n          </CardActions>\n        }\n      />\n      <Box component={CardContent} pt={0}>\n        <Typography variant='body2' component='div'>\n          {notification?.isTranslationId\n            ? formatMessage({ id: notification.content as string })\n            : notification.content}\n        </Typography>\n        {\n          (notification?.httpDetails || notification?.timeStamp) &&\n          <div style={{ padding: '4px' }}>\n            {notification?.httpDetails && <Typography variant='caption' component='div'>{notification.httpDetails}</Typography>}\n            {notification?.timeStamp &&\n            <Typography variant='caption' component='div'>\n              {formatDate(notification.timeStamp, { dateStyle: 'medium' })}&nbsp;{formatTime(notification.timeStamp, { timeStyle: 'medium' })}\n            </Typography>\n            }\n          </div>\n        }\n      </Box>\n    </MUICard>\n  );\n};\nCard.Default = Default;\nCard.Icon = Icon;\n\nexport default Card;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Component/Notification/Card/index.tsx b/src/Component/Notification/Card/index.tsx
+--- a/src/Component/Notification/Card/index.tsx	(revision 0b19630d855163bf16f7227595513ca87c237dac)
++++ b/src/Component/Notification/Card/index.tsx	(date 1649922927793)
+@@ -1,99 +1,56 @@
+ import React from 'react';
+ import MUICard from '@material-ui/core/Card';
+-import CardHeader from '@material-ui/core/CardHeader';
+-import CardContent from '@material-ui/core/CardContent';
+-import CardActions from '@material-ui/core/CardActions';
+-import Typography from '@material-ui/core/Typography';
+-import Box from '@material-ui/core/Box';
+-import IconButton from '@material-ui/core/IconButton';
+-import { default as Default } from './Default';
+-import { useTheme } from '@material-ui/core/styles';
+-import Icon from './Icon';
++import { Theme, makeStyles } from '@material-ui/core/styles';
+ import { Notification } from 'Types/Notification';
+-import useActions from 'Store/useActions';
+-import DeleteIcon from '@material-ui/icons/Delete';
+-import { useSnackbar } from 'notistack';
+ import { useIntl } from 'react-intl';
+-
+-export type Props = {
+-  notification: Notification;
+-  temporary: boolean;
+-};
++import Content from './Content';
++import Header from './Header';
++import Actions from './Actions';
++import Footer from './Footer';
+ 
+ type Severity = 'error' | 'success' | 'warning' | 'info';
+ 
+-const Card: React.FC<Props> & {
+-  Default: typeof Default;
+-  Icon: typeof Icon;
+-} = ({ notification, temporary }) => {
+-  const { palette } = useTheme();
+-  const { removeNotification } = useActions();
+-  const snackbar = useSnackbar();
+-  const { formatMessage, formatDate, formatTime } = useIntl();
+-
+-  return (
+-    <MUICard
+-      style={{
+-        width: '100%',
+-        minHeight: 'fit-content',
+-        backgroundColor: palette[notification.variant as Severity]?.['main'],
+-        color: palette[notification.variant as Severity]?.['contrastText']
+-      }}>
+-      <CardHeader
+-        avatar={<Icon variant={notification.variant} />}
+-        title={
+-          <Typography variant='h6' component='div'>
+-            {notification?.isTranslationId
+-              ? formatMessage({ id: notification.title as string })
+-              : notification.title}
+-          </Typography>
+-        }
+-        subheader={
+-          <Typography variant='subtitle1' component='div'>
+-            {notification?.isTranslationId
+-              ? formatMessage({ id: notification.subtitle as string })
+-              : notification.subtitle}
+-          </Typography>
+-        }
+-        subheaderTypographyProps={{ color: 'inherit' }}
+-        action={
+-          <CardActions>
+-            {notification.action
+-              ? notification.action(snackbar, notification.id, temporary)
+-              : null}
+-            <IconButton onClick={() => removeNotification(notification.id)}>
+-              <DeleteIcon
+-                style={{
+-                  color:
+-                  palette[notification.variant as Severity]?.contrastText
+-                }}
+-              />
+-            </IconButton>
+-          </CardActions>
+-        }
+-      />
+-      <Box component={CardContent} pt={0}>
+-        <Typography variant='body2' component='div'>
+-          {notification?.isTranslationId
+-            ? formatMessage({ id: notification.content as string })
+-            : notification.content}
+-        </Typography>
+-        {
+-          (notification?.httpDetails || notification?.timeStamp) &&
+-          <div style={{ padding: '4px' }}>
+-            {notification?.httpDetails && <Typography variant='caption' component='div'>{notification.httpDetails}</Typography>}
+-            {notification?.timeStamp &&
+-            <Typography variant='caption' component='div'>
+-              {formatDate(notification.timeStamp, { dateStyle: 'medium' })}&nbsp;{formatTime(notification.timeStamp, { timeStyle: 'medium' })}
+-            </Typography>
+-            }
+-          </div>
+-        }
+-      </Box>
++const useStyles = makeStyles<Theme, { variant: Severity }>(theme => ({
++  root: {
++    display: 'grid',
++    width: '100%',
++    gridTemplateColumns: '1fr auto',
++    gridTemplateRows: 'auto auto',
++    maxWidth: theme.spacing(60),
++    minHeight: 'fit-content',
++    backgroundColor: props => theme.palette?.[props.variant]?.['main'] || theme.palette['grey']['A400'],
++    color: props => theme.palette?.[props.variant]?.['contrastText'] || theme.palette['grey']['50']
++  }
++}))
++
++export type Props = {
++  notification: Notification;
++  temporary: boolean;
++};
++
++const Card: React.FC<Props> = ({ notification, temporary }) => {
++  const { variant, isTranslationId } = notification
++  const { formatMessage } = useIntl()
++  const classes = useStyles({ variant: variant as Severity });
++
++  const title = isTranslationId && notification.title
++    ? formatMessage({ id: notification.title as string })
++    : notification.title
++  const subtitle = isTranslationId && notification.subtitle
++    ? formatMessage({ id: notification.subtitle as string })
++    : notification.subtitle
++  const content = isTranslationId && notification.content
++    ? formatMessage({ id: notification.content as string })
++    : notification.content
++
++  return (
++    <MUICard className={classes.root}>
++      <Header title={title} subtitle={subtitle || content} variant={notification.variant}/>
++      <Content>{subtitle ? content : null}</Content>
++      <Actions id={notification?.id} action={notification.action} temporary={temporary}/>
++      <Footer timeStamp={!temporary && notification.timeStamp || undefined} httpDetails={notification.httpDetails}/>
+     </MUICard>
+   );
+ };
+-Card.Default = Default;
+-Card.Icon = Icon;
+ 
+-export default Card;
++export default React.memo(Card)

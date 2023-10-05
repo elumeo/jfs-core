@@ -42,21 +42,28 @@ const path_1 = require("path");
 const Config = __importStar(require("./Config"));
 const JFS = __importStar(require("../../JFS"));
 const Text = __importStar(require("../../Text"));
-const save = (path, description) => {
-    fs_extra_1.default.writeFile((0, path_1.resolve)(path, 'src', 'API', 'JSC', 'Description.json'), JSON.stringify(description, null, 2));
-};
+const save = (path, description) => fs_extra_1.default.writeFile((0, path_1.resolve)(path, 'src', 'API', 'JSC', 'Description.json'), JSON.stringify(description, null, 17));
 exports.save = save;
 const generate = (path) => __awaiter(void 0, void 0, void 0, function* () {
     const remote = {
         host: (yield JFS.Config.get(path)).JscClient.Host,
-        path: '/client/api/description',
-        configuration: (yield Config.read(path)).remote
+        path: '/openapi/description',
+        configuration: (yield Config.read(path)).remote,
     };
     const url = `${remote.host}${remote.path}`;
     try {
-        return ((yield axios_1.default.post(['http', 'https'].some(protocol => Text.Prefix.match(url, protocol))
+        return axios_1.default.get((['http', 'https'].some(protocol => Text.Prefix.match(url, protocol))
             ? url
-            : `http://${url}`, remote.configuration)).data);
+            : `http://${url}`), {
+            params: {
+                // filter: 'controllers:' + Object.keys(remote.configuration).join(','),
+                filter: 'services:WebProxy',
+                XDEBUG_SESSION_START: '1'
+            }
+        }).then(response => {
+            console.log({ response });
+            return response;
+        });
     }
     catch (error) {
         console.log(error);
