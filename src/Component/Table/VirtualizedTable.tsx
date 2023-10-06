@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import {TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, TableComponents,} from 'react-virtuoso'
 import {SortDirection} from '@mui/material/TableCell'
 import Table from './Table'
@@ -95,4 +95,4 @@ const VirtualizedTable = <ItemData extends {}, ItemContext = unknown>({
   />;
 }
 
-export default VirtualizedTable;
+export default memo(VirtualizedTable);
