@@ -67,7 +67,6 @@ var joinRoomLoading = function (action$, state$) {
                 toJSON: function () { return err.error.message; },
             };
             return (0, rxjs_1.of)(Action.webSocketJoinRoomFailureAction(update), Action.addNotification({
-                id: crypto.randomUUID(),
                 title: 'Error',
                 subtitle: 'Join Room (' + action.payload.name + ')',
                 content: error.message,

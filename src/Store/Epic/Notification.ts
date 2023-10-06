@@ -7,7 +7,6 @@ import * as Types from 'Types/Notification';
 import { AxiosError } from 'axios';
 
 export const mapErrorToNotification = (error: AxiosError): Types.Notification => {
-  const id = crypto.randomUUID();
   const responseData = error?.response?.data;
 
   const title = error?.response?.statusText || error?.name;
@@ -17,7 +16,7 @@ export const mapErrorToNotification = (error: AxiosError): Types.Notification =>
   const detailsAppendix = (title != error?.response?.status?.toString()) && error?.response?.status || ''
   const httpDetails = `${error?.config?.method?.toUpperCase() || ''} ${error?.config?.url || ''} ${detailsAppendix}`.trim()
 
-  return { id, title, subtitle, content, httpDetails, variant: 'error' }
+  return { title, subtitle, content, httpDetails, variant: 'error' }
 }
 
 const showError: Epic = action$ =>

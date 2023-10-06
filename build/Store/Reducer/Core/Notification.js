@@ -45,6 +45,19 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Action = __importStar(require("../../Action"));
 var TA = __importStar(require("typesafe-actions"));
+var convertToHash = function (str) {
+    if (str == "") {
+        return 0;
+    }
+    var hash = 0;
+    for (var _i = 0, str_1 = str; _i < str_1.length; _i++) {
+        var character = str_1[_i];
+        hash = hash << 5 - hash;
+        hash += character.charCodeAt(0);
+        hash |= hash;
+    }
+    return hash;
+};
 var initialState = {
     history: [],
     isHistoryOpen: false,
@@ -53,7 +66,7 @@ var Notification = TA.createReducer(initialState)
     .handleAction(Action.addNotification, function (state, action) {
     var _a, _b, _c, _d;
     return (__assign(__assign({}, state), { history: __spreadArray([
-            __assign({ id: (_b = (_a = action.payload) === null || _a === void 0 ? void 0 : _a.id) !== null && _b !== void 0 ? _b : crypto.randomUUID(), timeStamp: (_d = (_c = action.payload) === null || _c === void 0 ? void 0 : _c.timeStamp) !== null && _d !== void 0 ? _d : new Date() }, action.payload)
+            __assign({ id: (_b = (_a = action.payload) === null || _a === void 0 ? void 0 : _a.id) !== null && _b !== void 0 ? _b : convertToHash(new Date().getTime().toString() + state.history.length).toString(), timeStamp: (_d = (_c = action.payload) === null || _c === void 0 ? void 0 : _c.timeStamp) !== null && _d !== void 0 ? _d : new Date() }, action.payload)
         ], state.history, true) }));
 })
     .handleAction(Action.removeNotification, function (state, _a) {
