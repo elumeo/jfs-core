@@ -58,11 +58,13 @@ export default showError;
 
 
 ## __Use the DebugButton__
-### required:
+### required in 
+`config.json`
 ```JSON
-//config.json
+{
   "DebugMode": true,
   "DebugCallstackLimit": 300
+}
 ```
 ### summary:
 The DebugButton Component offers a simple API consisting of 4 properties described in `Types/Debug/Logger` (`actions`, `mapper`, `selector`, `filter`),
