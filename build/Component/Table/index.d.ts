@@ -23,6 +23,6 @@ declare const Table: {
     };
     Container: import("react").ForwardRefExoticComponent<import("react").RefAttributes<HTMLDivElement>>;
     Table: (props: import("@mui/material").TableProps<"table", {}>) => JSX.Element;
-    VirtualizedTable: import("react").MemoExoticComponent<(<ItemData extends {}, ItemContext = unknown>({ data, sortBy, sortDirection, compare, filter, tableProps, tableRowProps, components: propComponents, ...props }: import("./VirtualizedTable").Props<ItemData, ItemContext>) => JSX.Element)>;
+    VirtualizedTable: <ItemData extends {}, ItemContext = unknown>({ data, sortBy, sortDirection, compare, filter, tableProps, tableRowProps, components: propComponents, ...props }: import("./VirtualizedTable").Props<ItemData, ItemContext>) => JSX.Element;
 };
 export default Table;

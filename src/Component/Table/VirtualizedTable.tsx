@@ -95,4 +95,4 @@ const VirtualizedTable = <ItemData extends {}, ItemContext = unknown>({
   />;
 }
 
-export default memo(VirtualizedTable);
+export default memo(VirtualizedTable) as typeof VirtualizedTable;

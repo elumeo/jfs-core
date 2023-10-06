@@ -1,4 +1,4 @@
-import React from 'react';
+/// <reference types="react" />
 import { TableVirtuosoProps } from 'react-virtuoso';
 import { SortDirection } from '@mui/material/TableCell';
 import { SxProps, TableProps } from '@mui/material';
@@ -18,5 +18,5 @@ export type Props<ItemData, ItemContext = unknown> = Partial<TableVirtuosoProps<
     tableProps?: TableProps;
     tableRowProps?: TableRowProps;
 };
-declare const _default: React.MemoExoticComponent<(<ItemData extends {}, ItemContext = unknown>({ data, sortBy, sortDirection, compare, filter, tableProps, tableRowProps, components: propComponents, ...props }: Props<ItemData, ItemContext>) => JSX.Element)>;
+declare const _default: <ItemData extends {}, ItemContext = unknown>({ data, sortBy, sortDirection, compare, filter, tableProps, tableRowProps, components: propComponents, ...props }: Props<ItemData, ItemContext>) => JSX.Element;
 export default _default;
