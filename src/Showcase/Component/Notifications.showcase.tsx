@@ -31,6 +31,7 @@ const Notifications = () => {
     setPersist(value)
   }, [setPersist])
   const onGroupNameChange: InputProps['onChange'] = React.useCallback(event => {
+    // @ts-ignore
     setGroupName(event.target.value)
   }, [setGroupName])
   return (
@@ -59,7 +60,7 @@ const Notifications = () => {
 
             <Grid item xs={12}><Typography variant='h6'><br />Add</Typography></Grid>
             {(['error', 'warning', 'success', 'info', 'default'] as VariantType[]).map((variant: VariantType) =>
-              <Grid item>
+              <Grid item key={variant}>
                 <AddNotificationButton variant={variant} persist={persist} group={groupName} />
               </Grid>
             )}

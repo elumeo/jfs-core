@@ -32,7 +32,6 @@ var checkForConnectionError = function (action$, state) {
     return action$.pipe((0, operators_1.filter)(TA.isActionOf(Action.webSocketConnectRequestAction)), (0, operators_1.concatMap)(function () { return WSClient_1.WSClient.connectionErrorObservable$; }), (0, operators_1.switchMap)(function (err) {
         if (state.value.Core.WebSocket[err.namespace].isConnecting) {
             return (0, rxjs_1.of)(Action.addNotification({
-                id: crypto.randomUUID(),
                 variant: 'error',
                 title: 'Websocket',
                 subtitle: 'Connection Request',

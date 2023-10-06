@@ -29,16 +29,13 @@ const showError: Epic = action$ => (
   action$.pipe(
     filter(isActionOf(Actions.catchErrorNotification)),
     switchMap(({ payload: { response: { data }}}: ActionType<AxiosError>) => {
-      const id = crypto.randomUUID();
       const { error, id: errorId, message } = data
       return of(
         Actions.addNotification({                                 <---
-          id,                                                     <---
           variant: 'error',                                       <---
           content: (                                              <---
             <Notification.Card.Default                            <---
               notification={{                                     <---
-                id,                                               <---
                 title: errorId,                                   <---
                 subtitle: error,                                  <---
                 content: message,                                 <---
@@ -61,11 +58,13 @@ export default showError;
 
 
 ## __Use the DebugButton__
-### required:
+### required in 
+`config.json`
 ```JSON
-//config.json
+{
   "DebugMode": true,
   "DebugCallstackLimit": 300
+}
 ```
 ### summary:
 The DebugButton Component offers a simple API consisting of 4 properties described in `Types/Debug/Logger` (`actions`, `mapper`, `selector`, `filter`),

@@ -9,7 +9,7 @@ const AddToastButton: React.FC = () => {
   const dispatch = useDispatch();
   return (
     <Button variant={'outlined'} onClick={() => dispatch(addToastAction({contentMessage: 'Hi, I\'ve been slide up here.'}))}>
-      {formatMessage({ id: 'Add Toast' })}
+      {formatMessage({ id: 'showcase.toast.add' })}
     </Button>
   );
 }

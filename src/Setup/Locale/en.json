@@ -85,6 +85,7 @@
   "showcase.table.header.dateTime": "DateTime",
   "showcase.table.header.select": "Select",
   "showcase.table.header.product": "Product",
+  "showcase.toast.add": "Add Toast",
   "product.type.ProductType": "Product Type",
   "app.sourceOfOrder.tv": "TV",
   "app.sourceOfOrder.retrospectiveEntry": "Re-Order",

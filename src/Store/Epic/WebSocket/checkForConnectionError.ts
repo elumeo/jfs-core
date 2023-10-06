@@ -13,7 +13,6 @@ const checkForConnectionError: Epic = (action$, state) => {
       if (state.value.Core.WebSocket[err.namespace].isConnecting) {
         return of(
           Action.addNotification({
-            id: crypto.randomUUID(),
             variant: 'error',
             title: 'Websocket',
             subtitle: 'Connection Request',
