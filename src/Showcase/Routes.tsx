@@ -1,5 +1,5 @@
 import React, {FC, ReactNode} from 'react';
-import {Route, Navigate} from 'react-router-dom';
+import {Navigate, Route} from 'react-router-dom';
 import AuthRoute from '../Component/Route/AuthRoute';
 import Lists from './Component/Lists.showcase';
 import Typographies from './Component/Typographies.showcase';
@@ -33,7 +33,7 @@ const Routes: FC<Props> = ({header, overlays}) => (
                element={
                  <>
                    {header}
-                   <AuthRoute title='app.title' translateTitle/>
+                   <AuthRoute title={'Showcase'}/>
                    {overlays}
                  </>
                }>
@@ -63,7 +63,7 @@ const Routes: FC<Props> = ({header, overlays}) => (
                element={
                  <>
                    {header}
-                   <NoAuthRoute title='app.title' translateTitle/>
+                   <NoAuthRoute title={'Showcase'}/>
                    {overlays}
                  </>
                }>
