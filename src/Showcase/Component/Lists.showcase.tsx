@@ -8,6 +8,7 @@ import {
   Container,
   FormControlLabel,
   List,
+  ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
@@ -49,7 +50,7 @@ const Lists = () => {
             </Stack>
             <Stack direction={'row'} spacing={2}>
               <Stack spacing={0}>
-                <Typography variant='h6'>Text only list</Typography>
+                <Typography variant='h6'>ListItemButton only list</Typography>
                 <List dense={dense} subheader={showSubheader === true ? <ListSubheader >With a subheader; disableGutters</ListSubheader> : null}>
                   {generate(
                     <ListItemButton onClick={() => setSecondary(!secondary)}>
@@ -59,13 +60,24 @@ const Lists = () => {
                 </List>
               </Stack>
               <Stack>
-                <Typography variant='h6'>Icon and text list</Typography>
+                <Typography variant='h6'>ListItemButton with Icon list</Typography>
                 <List dense={dense} subheader={showSubheader === true ? <ListSubheader>With a subheader</ListSubheader> : null}>
                   {generate(
                     <ListItemButton onClick={() => setSecondary(!secondary)}>
                       <ListItemIcon><FolderIcon /></ListItemIcon>
                       <ListItemText primary={'Primary List Item Text'} secondary={secondary ? 'Secondary List Item Text' : null} />
                     </ListItemButton>,
+                  )}
+                </List>
+              </Stack>
+              <Stack>
+                <Typography variant='h6'>ListItem with Icon list</Typography>
+                <List dense={dense} subheader={showSubheader === true ? <ListSubheader>With a subheader</ListSubheader> : null}>
+                  {generate(
+                    <ListItem>
+                      <ListItemIcon><FolderIcon /></ListItemIcon>
+                      <ListItemText primary={'Primary List Item Text'} secondary={secondary ? 'Secondary List Item Text' : null} />
+                    </ListItem>,
                   )}
                 </List>
               </Stack>

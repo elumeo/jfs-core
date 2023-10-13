@@ -38,6 +38,26 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var styles_1 = require("@mui/material/styles");
 var Color = __importStar(require("../../../../../Constant/Color"));
 var colors_1 = require("@mui/material/colors");
+var selectedStyles = function (_a) {
+    var theme = _a.theme;
+    return ({
+        '&.Mui-selected': {
+            backgroundColor: "".concat((0, styles_1.alpha)(Color.common.black, theme.palette.action.selectedOpacity)),
+            '&:hover': {
+                backgroundColor: "".concat((0, styles_1.alpha)(Color.common.black, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity))
+            }
+        },
+        '&:hover': {
+            backgroundColor: "".concat((0, styles_1.alpha)(Color.common.black, theme.palette.action.hoverOpacity))
+        },
+        '&.Mui-focusVisible': {
+            backgroundColor: "".concat((0, styles_1.alpha)(Color.common.black, theme.palette.action.selectedOpacity), " !important"),
+            '&:hover': {
+                backgroundColor: "".concat((0, styles_1.alpha)(Color.common.black, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity))
+            }
+        }
+    });
+};
 var definition = (0, styles_1.createTheme)({
     palette: __assign({ primary: Color.primary, secondary: Color.apatith, warning: Color.warning, error: Color.error, success: Color.success, info: Color.info, grey: colors_1.grey, common: Color.common, text: {
             primary: colors_1.grey[900],
@@ -102,6 +122,21 @@ var definition = (0, styles_1.createTheme)({
                     fontSize: '0.925rem',
                 }
             }
+        },
+        MuiListItem: {
+            styleOverrides: {
+                root: selectedStyles
+            }
+        },
+        MuiListItemButton: {
+            styleOverrides: {
+                root: selectedStyles
+            }
+        },
+        MuiMenuItem: {
+            styleOverrides: {
+                root: selectedStyles
+            },
         },
         MuiTableSortLabel: {
             styleOverrides: {
