@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { Props as ThemeProps } from './Theme';
 import 'material-icons/iconfont/material-icons.css';
 import '@fontsource/roboto/300.css';

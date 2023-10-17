@@ -91,7 +91,7 @@ const DatePicker = ({
       }
     }
     handleChangeValue(newDate as Date, event);
-  }, [language, onChange]);
+  }, [language, onChange, handleChangeValue]);
   const handleClearClick = useCallback(() => isClearable ? handleChangeValue(null) : null, [isClearable]);
   const handleTodayClick = useCallback(() => disabled === false ? setOpen(true) : null, [disabled]);
   const preparedInputProps = useMemo(() => ({
