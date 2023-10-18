@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, memo, ChangeEvent, ReactNode, useMemo } from 'react';
+import React, { useState, useEffect, useRef, memo, ChangeEvent, ReactNode } from 'react';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import './Setup';
 import { LANGUAGE } from 'Types/Language';
@@ -94,13 +94,15 @@ const DatePicker = ({
   };
   const handleClearClick = () => isClearable ? handleChangeValue(null) : null;
   const handleTodayClick = () => disabled === false ? setOpen(true) : null;
-  const preparedInputProps = useMemo(() => ({
+
+  // noinspection JSUnusedGlobalSymbols
+  const preparedInputProps = {
     onFocus: () => shouldOpenOnFocus ? setOpen(true) : null,
     onBlur: () => setDirty(true),
     endAdornment: <InputAdornment position={'end'}>
       <IconButton disabled={disabled} size={'small'} onClick={handleTodayClick}><TodayIcon /></IconButton>
     </InputAdornment>
-  }), [shouldOpenOnFocus, disabled]);
+  };
 
   return (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
