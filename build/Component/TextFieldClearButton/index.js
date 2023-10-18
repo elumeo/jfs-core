@@ -70,15 +70,15 @@ var TextFieldClearButton = react_1.default.forwardRef(function (_a, ref) {
             }
         }
     }, [rest.value]);
-    var handleClearClick = (0, react_1.useCallback)(function () {
+    var handleClearClick = function () {
         if (onClearClick !== undefined) {
             onClearClick();
         }
         else {
             handleOnChange(null);
         }
-    }, [onChange, onClearClick]);
-    var handleOnChange = (0, react_1.useCallback)(function (event) {
+    };
+    var handleOnChange = function (event) {
         if (onChange === undefined) {
             if (event !== null && event.target.value !== '' && showClearButton === false) {
                 setShowClearButton(true);
@@ -91,7 +91,7 @@ var TextFieldClearButton = react_1.default.forwardRef(function (_a, ref) {
         else {
             onChange(event);
         }
-    }, [onChange]);
+    };
     var endAdornmentClearButton = showClearButton && isClearable && (react_1.default.createElement(core_1.IconButton, { disabled: rest.disabled, size: clearButtonSize, color: 'secondary', onClick: handleClearClick },
         react_1.default.createElement(Close_1.default, { fontSize: getIconSize() })));
     var preparedInputProps = (0, react_1.useMemo)(function () { return (__assign(__assign({}, InputProps), { endAdornment: react_1.default.createElement(core_1.InputAdornment, { position: 'end' },

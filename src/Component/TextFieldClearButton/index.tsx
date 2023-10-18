@@ -40,15 +40,15 @@ const TextFieldClearButton = React.forwardRef<HTMLDivElement, TextFieldClearButt
     }
   }, [rest.value]);
 
-  const handleClearClick: IconButtonProps['onClick'] = useCallback(() => {
+  const handleClearClick: IconButtonProps['onClick'] = () => {
     if (onClearClick !== undefined) {
       onClearClick();
     } else {
       handleOnChange(null);
     }
-  }, [onChange, onClearClick]);
+  };
 
-  const handleOnChange: TextFieldProps['onChange'] = useCallback((event) => {
+  const handleOnChange: TextFieldProps['onChange'] = (event) => {
     if (onChange === undefined) {
       if (event !== null && event.target.value !== '' && showClearButton === false) {
         setShowClearButton(true);
@@ -59,7 +59,7 @@ const TextFieldClearButton = React.forwardRef<HTMLDivElement, TextFieldClearButt
     } else {
       onChange(event);
     }
-  }, [onChange]);
+  };
 
   const endAdornmentClearButton = showClearButton && isClearable && (
     <IconButton
