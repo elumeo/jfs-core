@@ -93,7 +93,7 @@ var DatePicker = function (_a) {
             setOpen(false);
         }
     };
-    var handleOnChange = (0, react_1.useCallback)(function (newDate, event) {
+    var handleOnChange = function (newDate, event) {
         // @ts-ignore
         var isChangeEvent = event._reactName && event._reactName === 'onChange';
         if (isChangeEvent) {
@@ -103,9 +103,9 @@ var DatePicker = function (_a) {
             }
         }
         handleChangeValue(newDate, event);
-    }, [language, onChange, handleChangeValue]);
-    var handleClearClick = (0, react_1.useCallback)(function () { return isClearable ? handleChangeValue(null) : null; }, [isClearable]);
-    var handleTodayClick = (0, react_1.useCallback)(function () { return disabled === false ? setOpen(true) : null; }, [disabled]);
+    };
+    var handleClearClick = function () { return isClearable ? handleChangeValue(null) : null; };
+    var handleTodayClick = function () { return disabled === false ? setOpen(true) : null; };
     var preparedInputProps = (0, react_1.useMemo)(function () { return ({
         onFocus: function () { return shouldOpenOnFocus ? setOpen(true) : null; },
         onBlur: function () { return setDirty(true); },

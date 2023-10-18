@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, memo, ChangeEvent, ReactNode, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useRef, memo, ChangeEvent, ReactNode, useMemo } from 'react';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import './Setup';
 import { LANGUAGE } from 'Types/Language';
@@ -81,7 +81,7 @@ const DatePicker = ({
       setOpen(false);
     }
   };
-  const handleOnChange: ReactDatePickerProps['onChange'] = useCallback((newDate, event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+  const handleOnChange: ReactDatePickerProps['onChange'] = (newDate, event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     // @ts-ignore
     const isChangeEvent = event._reactName && event._reactName === 'onChange';
     if (isChangeEvent) {
@@ -91,9 +91,9 @@ const DatePicker = ({
       }
     }
     handleChangeValue(newDate as Date, event);
-  }, [language, onChange, handleChangeValue]);
-  const handleClearClick = useCallback(() => isClearable ? handleChangeValue(null) : null, [isClearable]);
-  const handleTodayClick = useCallback(() => disabled === false ? setOpen(true) : null, [disabled]);
+  };
+  const handleClearClick = () => isClearable ? handleChangeValue(null) : null;
+  const handleTodayClick = () => disabled === false ? setOpen(true) : null;
   const preparedInputProps = useMemo(() => ({
     onFocus: () => shouldOpenOnFocus ? setOpen(true) : null,
     onBlur: () => setDirty(true),
