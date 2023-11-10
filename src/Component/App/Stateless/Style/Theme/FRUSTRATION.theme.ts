@@ -24,8 +24,8 @@ const selectedStyles = ({ theme }: { theme: Theme }) => (
 
 const FRUSTRATION = createTheme({
   palette: {
-    primary: Color.warning,
-    secondary: Color.info,
+    primary: Color.quarz,
+    secondary: Color.quarz,
     warning: Color.warning,
     error: Color.error,
     success: Color.success,

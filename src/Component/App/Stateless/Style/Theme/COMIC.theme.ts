@@ -23,8 +23,8 @@ const selectedStyles = ({ theme }: { theme: Theme }) => (
 )
 const comicPalette: PaletteOptions = {
   ...Color,
-  primary: Color.warning,
-  secondary: Color.info,
+  primary: Color.info,
+  secondary: Color.warning,
   mode: 'light',
   grey: grey,
   common: Color.common,
