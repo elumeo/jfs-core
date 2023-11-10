@@ -9,7 +9,7 @@ import '@fontsource/roboto/700.css'
 import "@fontsource/comic-neue"; // Defaults to weight 400
 import "@fontsource/comic-neue/400.css"; // Specify weight
 import "@fontsource/comic-neue/400-italic.css";
-
+import '@fontsource/press-start-2p';
 const Style: React.FC<React.PropsWithChildren> = ({ children }) => (
   <Theme>
     <CssBaseline />

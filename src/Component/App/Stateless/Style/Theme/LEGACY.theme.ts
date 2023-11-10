@@ -53,6 +53,11 @@ const LEGACY = createTheme({
       minHeight: 48,
     },
   },
+  typography: {
+    fontSize: 10,
+    fontFamily: "'Press Start 2P', sans-serif",
+
+  },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
@@ -62,7 +67,7 @@ const LEGACY = createTheme({
         body: {
           margin: 0,
           padding: 0,
-          fontFamily: 'Roboto',
+          fontFamily: "'Press Start 2P', sans-serif",
           '&.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after': {
             borderBottomColor: `${Color.secondary.main} !important`,
           },
