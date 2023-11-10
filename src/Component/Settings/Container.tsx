@@ -34,6 +34,7 @@ const Container: React.FC = () => {
         <MenuItem value='en' color={'secondary'}>English</MenuItem>
         <MenuItem value='it'>Italiano</MenuItem>
       </Select>
+
       <CardActions>
         <Button onClick={goBack}>
           {formatMessage({ id: 'app.settings.done' })}

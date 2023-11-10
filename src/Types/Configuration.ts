@@ -1,5 +1,10 @@
 import { Language } from './Language';
 import { NotificationPosition } from 'Types/Notification';
+import {agents  } from 'clippyjs'
+export type ClippyConfiguration = {
+  messages: String[];
+  // defaultAgent?: AGENTS;
+}
 
 export type WebSocketClient = {
   Host: string;

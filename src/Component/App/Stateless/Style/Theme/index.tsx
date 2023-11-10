@@ -1,12 +1,12 @@
 import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
+import useTheme from './useTheme';
 
-import definition from './Definition';
-
-const Theme: React.FC<React.PropsWithChildren> = ({ children }) => (
-  <ThemeProvider theme={definition}>
+const Theme: React.FC<React.PropsWithChildren> = ({ children }) => {
+  const _theme = useTheme();
+  return <ThemeProvider theme={_theme}>
     {children}
   </ThemeProvider>
-);
+};
 
 export default Theme;

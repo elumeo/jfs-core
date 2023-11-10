@@ -1,5 +1,11 @@
 import { AxiosError } from 'axios';
 
+
+export type JscError = {
+  id: string;
+  message: string;
+};
+
 const isAxiosError = (error: Error) =>
   ['config', 'code', 'request', 'response'].every(key => key in error);
 
@@ -7,7 +13,7 @@ const isJscError = (error: Error) =>
   isAxiosError(error) &&
   typeof (error as AxiosError)?.response?.data === 'object' &&
   // eslint-disable-next-line no-unsafe-optional-chaining
-  ['id', 'message'].every(key => key in (error as AxiosError)?.response?.data);
+  ['id', 'message'].every(key => key in (error as AxiosError<JscError>)?.response?.data);
 const head = (error: AxiosError) => {
   const { status, statusText } = error.response;
   const method = error.config.method.toUpperCase();
@@ -15,7 +21,7 @@ const head = (error: AxiosError) => {
   return `(http: ${status} ${statusText} // ${method} ${url})`;
 };
 
-const body = (error: AxiosError) => {
+const body = (error: AxiosError<JscError>) => {
   const { data } = error.response;
   if (isJscError(error)) {
     const { id, message } = data;
@@ -26,9 +32,9 @@ const body = (error: AxiosError) => {
   }
 };
 
-const http = (error: AxiosError) => ({
-  title: head(error as AxiosError),
-  details: body(error as AxiosError),
+const http = (error: AxiosError<unknown>) => ({
+  title: head(error as AxiosError<unknown>),
+  details: body(error as AxiosError<JscError>),
 });
 
 const generic = (error: Error) => ({

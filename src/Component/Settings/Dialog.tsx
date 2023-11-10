@@ -9,6 +9,7 @@ import { useSelector } from 'Types/Redux';
 import { DialogContentProps } from '@mui/material/DialogContent/DialogContent';
 import { useDispatch } from 'react-redux';
 import { closeSettings } from 'Store/Action';
+import ThemePickerMenu from 'Component/Theme/ThemePicker.menu';
 
 type Props = {
   children: DialogContentProps['children'];
@@ -23,6 +24,7 @@ const Dialog = ({ children }: Props) => {
     <MUIDialog open={open} onClose={onClose}>
       <DialogTitle>{formatMessage({ id: 'app.settings' })}</DialogTitle>
       <DialogContent>{children}</DialogContent>
+      <DialogContent><ThemePickerMenu></ThemePickerMenu></DialogContent>
       <DialogActions>
         <Button variant='outlined' onClick={onClose}>
           {formatMessage({ id: 'app.closeBtnLabelModalDialog' })}

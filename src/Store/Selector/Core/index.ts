@@ -6,3 +6,4 @@ export * as Core from './Core';
 export * as Configuration from './Configuration';
 export * as WebSocket from './WebSocket';
 export * as Session from './Session';
+export * as Theme from './Theme.selector';

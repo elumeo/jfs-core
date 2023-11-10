@@ -15,6 +15,7 @@ import Toast, { State as ToastState } from './Toast';
 import Login, { State as LoginState } from './Login';
 import Locale, { State as LocaleState } from './Locale';
 import WebSocket, { State as WebSocketState } from './WebSocket';
+import Theme, { State as ThemeState } from './Theme.reducer';
 import * as Type from 'Types/Configuration';
 
 export type State = {
@@ -34,6 +35,7 @@ export type State = {
   WebSocket?: WebSocketState;
   Configuration?: ConfigurationState<Type.Configuration>;
   Locale?: LocaleState;
+  Theme?: ThemeState;
 };
 
 const Core = combineReducers<State>({
@@ -53,6 +55,7 @@ const Core = combineReducers<State>({
   Toast,
   WebSocket,
   Locale,
+  Theme,
 });
 
 export default Core;
