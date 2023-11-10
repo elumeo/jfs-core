@@ -5,6 +5,7 @@ import LIGHT from './LIGHT.theme';
 import LEGACY from './LEGACY.theme';
 import FRUSTRATION from './FRUSTRATION.theme';
 import COMIC from './COMIC.theme';
+import HIGH_CONTRAST from './HIGH_CONTRAST.theme';
 
 
 
@@ -13,8 +14,8 @@ export const themeMap: Record<ThemeVariant, Theme> = {
   [ThemeVariant.LIGHT]: LIGHT,
   [ThemeVariant.LEGACY]: LEGACY,
   [ThemeVariant.FRUSTRATION]: FRUSTRATION,
-  [ThemeVariant.HIGH_CONTRAST]: definition,
-  [ThemeVariant.HIGH_CONTRAST_INVERTED]: definition,
+  [ThemeVariant.HIGH_CONTRAST]: HIGH_CONTRAST,
+  // [ThemeVariant.HIGH_CONTRAST_INVERTED]: definition,
   [ThemeVariant.COMIC]: COMIC,
 }
 

@@ -22,7 +22,7 @@ const selectedStyles = ({ theme }: { theme: Theme }) => (
   }
 )
 
-const LEGACY = createTheme({
+const FRUSTRATION = createTheme({
   palette: {
     primary: Color.warning,
     secondary: Color.info,
@@ -34,8 +34,8 @@ const LEGACY = createTheme({
     grey: grey,
     common: Color.common,
     text: {
-      primary: grey[100],
-      secondary: grey[200],
+      primary: grey[900],
+      secondary: grey[700],
       disabled: grey[500],
     },
     action: {
@@ -136,7 +136,7 @@ const LEGACY = createTheme({
     MuiTableCell: {
       styleOverrides: {
         root: props => ({
-          fontSize: LEGACY.typography.body1.fontSize,
+          fontSize: FRUSTRATION.typography.body1.fontSize,
           cursor: (props?.variant !== 'head' || props?.disableSort) ? 'default' : 'pointer'
         }),
 
@@ -173,4 +173,4 @@ const LEGACY = createTheme({
   }
 })
 
-export default LEGACY;
+export default FRUSTRATION;

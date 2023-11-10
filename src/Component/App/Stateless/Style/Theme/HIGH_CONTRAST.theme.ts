@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import { alpha, createTheme, PaletteOptions, Theme } from '@mui/material/styles';
+import { alpha, createTheme, Theme } from '@mui/material/styles';
 import * as Color from 'Constant/Color';
 import { grey } from '@mui/material/colors';
 const selectedStyles = ({ theme }: { theme: Theme }) => (
@@ -21,40 +21,40 @@ const selectedStyles = ({ theme }: { theme: Theme }) => (
     }
   }
 )
-const comicPalette: PaletteOptions = {
-  ...Color,
-  primary: Color.warning,
-  secondary: Color.info,
-  mode: 'light',
-  grey: grey,
-  common: Color.common,
-  text: {
-    primary: grey[900],
-    secondary: grey[700],
-    disabled: grey[500],
-  },
-  action: {
-    hover: 'rgba(0, 0, 0, 0.12)',
-    hoverOpacity: 0.12,
-    selected: 'rgba(0, 0, 0, 0.16)',
-    selectedOpacity: 0.16,
-    focus: 'rgba(0, 0, 0, 0.2)',
-    focusOpacity: 0.2,
-  },
-  background: {
-    default: '#e5e2dd',
-  },
-}
 
-const COMIC = createTheme({
-  palette: comicPalette,
+const HIGH_CONTRAST = createTheme({
+  palette: {
+    primary: Color.primary,
+    secondary: Color.secondary,
+    warning: Color.warning,
+    error: Color.error,
+    success: Color.success,
+    info: Color.info,
+    mode: 'dark',
+    grey: grey,
+    common: Color.common,
+    text: {
+      primary: grey[100],
+      secondary: grey[200],
+      disabled: grey[500],
+    },
+    action: {
+      hover: 'rgba(0, 0, 0, 0.12)',
+      hoverOpacity: 0.12,
+      selected: 'rgba(0, 0, 0, 0.16)',
+      selectedOpacity: 0.16,
+      focus: 'rgba(0, 0, 0, 0.2)',
+      focusOpacity: 0.2,
+    },
+    background: {
+      default: '#e5e2dd',
+    },
+    ...Color
+  },
   mixins: {
     toolbar: {
       minHeight: 48,
     },
-  },
-  typography: {
-    fontFamily: 'Comic Neue',
   },
   components: {
     MuiCssBaseline: {
@@ -65,7 +65,7 @@ const COMIC = createTheme({
         body: {
           margin: 0,
           padding: 0,
-          fontFamily: 'Comic Neue',
+          fontFamily: 'Roboto',
           '&.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after': {
             borderBottomColor: `${Color.secondary.main} !important`,
           },
@@ -133,16 +133,10 @@ const COMIC = createTheme({
         }
       }
     },
-    MuiButton: {
-      styleOverrides: {
-        root: { borderRadius: '50%', }
-
-      }
-    },
     MuiTableCell: {
       styleOverrides: {
         root: props => ({
-          fontSize: COMIC.typography.body1.fontSize,
+          fontSize: HIGH_CONTRAST.typography.body1.fontSize,
           cursor: (props?.variant !== 'head' || props?.disableSort) ? 'default' : 'pointer'
         }),
 
@@ -179,4 +173,4 @@ const COMIC = createTheme({
   }
 })
 
-export default COMIC;
+export default HIGH_CONTRAST;
