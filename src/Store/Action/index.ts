@@ -14,3 +14,4 @@ export * from './System';
 export * from './Toast';
 export * from './WebSocket';
 export * from './Theme.action';
+export * from './LocalStorage.action';

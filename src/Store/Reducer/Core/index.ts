@@ -15,7 +15,7 @@ import Toast, { State as ToastState } from './Toast';
 import Login, { State as LoginState } from './Login';
 import Locale, { State as LocaleState } from './Locale';
 import WebSocket, { State as WebSocketState } from './WebSocket';
-import Theme, { State as ThemeState } from './Theme.reducer';
+import LocalStorage, { State as LocalStorageState } from './LocalStorage.reducer';
 import * as Type from 'Types/Configuration';
 
 export type State = {
@@ -26,7 +26,6 @@ export type State = {
   Navigation?: NavigationState;
   Notification?: NotificationState;
   Debug?: DebugState;
-  // router?: RouterState;
   Router?: RouterState;
   Session?: SessionState;
   Settings?: SettingsState;
@@ -35,12 +34,11 @@ export type State = {
   WebSocket?: WebSocketState;
   Configuration?: ConfigurationState<Type.Configuration>;
   Locale?: LocaleState;
-  Theme?: ThemeState;
+  LocalStorage?: LocalStorageState;
 };
 
 const Core = combineReducers<State>({
   App,
-  // router : connectRouter(history),
   Configuration,
   Debug,
   Language,
@@ -55,7 +53,7 @@ const Core = combineReducers<State>({
   Toast,
   WebSocket,
   Locale,
-  Theme,
+  LocalStorage,
 });
 
 export default Core;

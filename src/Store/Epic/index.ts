@@ -6,6 +6,7 @@ import Language from './Language';
 import Login from './Login';
 import Locale from './Locale';
 import Session from './Session';
+import LocalStorage from './LocalStorage';
 import System from './System';
 import WebSocket from './WebSocket';
 import Notification from './Notification';
@@ -46,6 +47,7 @@ const Core = combineEpics(
   WebSocket,
   Language,
   Notification,
+  LocalStorage,
   Debug
 );
 

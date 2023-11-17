@@ -12,7 +12,7 @@ import "@fontsource/comic-neue/400-italic.css";
 import '@fontsource/press-start-2p';
 const Style: React.FC<React.PropsWithChildren> = ({ children }) => (
   <Theme>
-    <CssBaseline />
+    <CssBaseline enableColorScheme />
     {children}
   </Theme>
 );

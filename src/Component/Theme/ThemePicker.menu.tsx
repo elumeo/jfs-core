@@ -1,23 +1,27 @@
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
-import { setThemeVariant } from 'Store/Action/Theme.action'
-import { pickThemeVariant } from 'Store/Selector/Core/Theme.selector'
+import * as UserConfig from 'API/LOCAL_STORAGE/UserConfig'
+import useTheme from 'Component/App/Stateless/Style/Theme/useTheme'
+import { saveToLocalStorage } from 'Store/Action/LocalStorage.action'
+import { useSelector } from 'Types/Redux'
 import { ThemeVariant } from 'Types/ThemeVariant.type'
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 type Props = {}
 const ThemePickerMenu: React.FC<Props> = () => {
-  const _themeVariant = useSelector(pickThemeVariant)
+  const { themeVariant, } = useTheme()
   const dispatch = useDispatch()
-  const handleChange = (event: SelectChangeEvent<ThemeVariant>,) =>
-    dispatch(setThemeVariant(event.target.value as ThemeVariant));
+  const userId = useSelector(state => state?.Core?.Session?.sessionDTO?.username ?? '')
+  const handleChange = React.useCallback(
+    (event: SelectChangeEvent<ThemeVariant>,) =>
+      dispatch(saveToLocalStorage([userId, UserConfig.themeFeature].join(UserConfig.SEPERATOR), event.target.value))
+    , [userId])
 
-  console.log('ThemePickerMenu _themeVariant', _themeVariant);
   return <FormControl fullWidth>
     <InputLabel id='theme-picker-label'>Theme Variante</InputLabel>
     <Select<ThemeVariant>
       labelId='theme-picker-label'
       id='theme-picker'
-      value={_themeVariant}
+      value={themeVariant}
       label='theme'
       onChange={handleChange}
     >

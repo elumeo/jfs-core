@@ -1,6 +1,6 @@
 import { Language } from './Language';
 import { NotificationPosition } from 'Types/Notification';
-import {agents  } from 'clippyjs'
+// import { agents } from 'clippyts'
 export type ClippyConfiguration = {
   messages: String[];
   // defaultAgent?: AGENTS;

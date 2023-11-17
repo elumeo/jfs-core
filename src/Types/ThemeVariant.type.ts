@@ -7,6 +7,7 @@ export const ThemeVariant = {
   HIGH_CONTRAST: 'HIGH_CONTRAST',
   // HIGH_CONTRAST_INVERTED: 'HIGH_CONTRAST_INVERTED',
   COMIC: 'COMIC',
+  PIXEL: 'PIXEL'
 } as const;
 
 export type ThemeVariant = typeof ThemeVariant[keyof typeof ThemeVariant];

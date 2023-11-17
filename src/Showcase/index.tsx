@@ -25,9 +25,10 @@ declare const window: Window & { core_reactRoot: ReturnType<typeof createRoot> }
 if (module.hot) {
   module.hot.accept();
 }
+const doc = document.getElementById('root')
 
-if (window['core_reactRoot'] === undefined) {
-  window['core_reactRoot'] = createRoot(document.getElementById('root')!);
+if (window['core_reactRoot'] === undefined && doc !== null) {
+  window['core_reactRoot'] = createRoot(doc);
 }
 
 window['core_reactRoot'].render(<App

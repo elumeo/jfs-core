@@ -23,8 +23,8 @@ const selectedStyles = ({ theme }: { theme: Theme }) => (
 )
 const legacyPalette: PaletteOptions = {
   ...Color,
-  primary: Color.secondary,
-  secondary: Color.warning,
+  primary: Color.warning,
+  secondary: Color.info,
   mode: 'light',
   grey: grey,
   common: Color.common,
@@ -54,7 +54,9 @@ const LEGACY = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Roboto',
+    fontSize: 10,
+    fontFamily: "'Press Start 2P', sans-serif",
+
   },
   components: {
     MuiCssBaseline: {
@@ -65,7 +67,7 @@ const LEGACY = createTheme({
         body: {
           margin: 0,
           padding: 0,
-          fontFamily: 'Roboto',
+          fontFamily: "'Press Start 2P', sans-serif",
           '&.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after': {
             borderBottomColor: `${Color.secondary.main} !important`,
           },
@@ -101,6 +103,7 @@ const LEGACY = createTheme({
         }
       }
     },
+
     MuiListItem: {
       styleOverrides: {
         root: selectedStyles
@@ -122,7 +125,6 @@ const LEGACY = createTheme({
           color: Color.secondary.main,
           '&.MuiTableSortLabel-active': {
             color: Color.secondary.main
-
           },
           '&.MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon': {
             color: Color.secondary.main
@@ -137,9 +139,7 @@ const LEGACY = createTheme({
     MuiTableCell: {
       styleOverrides: {
         root: props => ({
-          backgroundColor: Color.warning.dark,
           fontSize: LEGACY.typography.body1.fontSize,
-          color: Color.info.contrastText,
           cursor: (props?.variant !== 'head' || props?.disableSort) ? 'default' : 'pointer'
         }),
 
