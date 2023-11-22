@@ -6,7 +6,7 @@ import * as Action from 'Store/Action';
 import * as Types from 'Types/Notification';
 import { AxiosError } from 'axios';
 
-export const mapErrorToNotification = (error: AxiosError): Types.Notification => {
+export const mapErrorToNotification = (error: AxiosError<{ error?: string, message?: string }>): Types.Notification => {
   const responseData = error?.response?.data;
 
   const title = error?.response?.statusText || error?.name;
