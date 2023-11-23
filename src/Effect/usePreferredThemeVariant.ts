@@ -1,5 +1,5 @@
 import { ThemeVariant } from 'Types/ThemeVariant.type';
-import * as UserConfig from './../../../../../API/LOCAL_STORAGE/UserConfig';
+import * as UserConfig from '../API/LOCAL_STORAGE/UserConfig';
 import { useSelector } from 'Types/Redux';
 
 export default (): ThemeVariant => {

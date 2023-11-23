@@ -1,9 +1,9 @@
 import { Language } from './Language';
 import { NotificationPosition } from 'Types/Notification';
-// import { agents } from 'clippyts'
 export type ClippyConfiguration = {
-  messages: String[];
-  // defaultAgent?: AGENTS;
+  messages?: String[];
+  interval?: number;
+  enabled? : boolean;
 }
 
 export type WebSocketClient = {
@@ -31,4 +31,5 @@ export type Configuration = {
   JfsWebSocketClient: WebSocketClient;
   DebugMode?: boolean
   DebugCallstackLimit?: number
+  ClippyConfig?: ClippyConfiguration
 };

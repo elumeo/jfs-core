@@ -1,9 +1,9 @@
 import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
-import useTheme from './useTheme';
+import useTheme from 'Effect/useTheme';
 
 const Theme: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const {theme} = useTheme();
+  const { theme } = useTheme();
   return <ThemeProvider theme={theme}>
     {children}
   </ThemeProvider>

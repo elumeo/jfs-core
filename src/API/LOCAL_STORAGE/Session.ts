@@ -1,4 +1,4 @@
-const BASE_NAME = 'jfs_';
+export const BASE_NAME = 'jfs_';
 
 export const getItem = (key: string): string => {
   return window.localStorage.getItem(BASE_NAME + key);

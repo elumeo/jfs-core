@@ -1,4 +1,5 @@
 export * from './App';
+export * from './Clippy.action';
 export * from './Configuration';
 export * as Debug from './Debug';
 export * from './Language';
