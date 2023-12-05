@@ -37,7 +37,7 @@ const Forms = () => {
   const [displayRowStyle, setDisplayRowStyle] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
   const [selectValue, setSelectValue] = React.useState<string>('');
-  const [priceValue, setPriceValue] = React.useState('1000.55');
+  const [priceValue, setPriceValue] = React.useState(1000.55);
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date('2021-07-09T10:00:00'));
   const [textFieldValue, setTextFieldValue] = React.useState('This is a default value');
   const [dateRange, setDateRange] = React.useState<[Date, Date]>([new Date('2021-07-09T10:00:00'), new Date('2021-07-09T10:00:00')]);
