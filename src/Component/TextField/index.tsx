@@ -35,7 +35,13 @@ const TextField = React.forwardRef<HTMLDivElement, Props>(({
       onFocus(e)
     }
     if (selectOnFocus) {
-      e.target.select()
+      const target = e.target;
+      window.requestAnimationFrame(() => {
+        console.log('requestAnimationFrame', target);
+        if (target) {
+          target.select();
+        }
+      });
     }
   }, [selectOnFocus, onFocus])
   const endAdornmentClearButton = React.useMemo(
@@ -45,6 +51,7 @@ const TextField = React.forwardRef<HTMLDivElement, Props>(({
         size={clearButtonSize}
         color={'secondary'}
         onClick={clear}
+        tabIndex={-1}
         {...clearButtonProps}
       ><Clear fontSize={clearIconSize} /></IconButton>)
       : <></>,
