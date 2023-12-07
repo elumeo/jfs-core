@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.divideBy100 = exports.getDivider = exports.isValidLocalisedNumber = exports.getNonGroupingNumberFormatRegex = exports.getGroupingNumberFormatRegex = exports.limit = void 0;
+exports.getGroupingSeparator = exports.getDecimalSeparator = exports.divideBy100 = exports.getDivider = exports.isValidLocalisedNumber = exports.getNonGroupingNumberFormatRegex = exports.getGroupingNumberFormatRegex = exports.limit = void 0;
 var limit = function (number, min, max) {
     var result = number;
     if (min !== undefined && min !== null) {
@@ -43,3 +43,11 @@ var getDivider = function (divideValue) { return divideValue == 0 ? undefined : 
 }; };
 exports.getDivider = getDivider;
 exports.divideBy100 = (0, exports.getDivider)(100);
+var getDecimalSeparator = function (locale) {
+    return (1.1).toLocaleString(locale).substring(1, 2);
+};
+exports.getDecimalSeparator = getDecimalSeparator;
+var getGroupingSeparator = function (locale) {
+    return (1000).toLocaleString(locale).substring(1, 2);
+};
+exports.getGroupingSeparator = getGroupingSeparator;

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { InputAdornment, InputLabel, Typography } from '@mui/material';
+import { InputAdornment,  Typography } from '@mui/material';
 import TextFieldClearButton, { type Props as TextFieldProps } from 'Component/TextField'
 import usePriceFieldAdornment, { AdornmentPosition } from 'Effect/usePriceFieldAdornment';
 import { Currency } from 'Utilities/Format';

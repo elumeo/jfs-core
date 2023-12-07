@@ -10,7 +10,8 @@ type Props = {
     min?: number;
     max?: number;
     showDecimals?: boolean;
-    textFieldProps?: Omit<TextFieldProps, 'value' | 'selectOnFocus' | 'error' | 'onFocus' | 'onBlur' | 'onChange' | 'InputProps'>;
+    textFieldProps?: Omit<TextFieldProps, 'value' | 'selectOnFocus' | 'error' | 'onFocus' | 'onBlur' | 'onChange' | 'InputProps' | 'disabled'>;
+    disabled?: TextFieldProps['disabled'];
     setValue?: (value: number) => void;
     currencyPosition?: AdornmentPosition;
 };

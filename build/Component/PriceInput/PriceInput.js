@@ -60,32 +60,29 @@ var Language_1 = require("../../Types/Language");
 var lodash_1 = require("lodash");
 var PriceInput_helper_1 = require("./PriceInput.helper");
 var Number_1 = require("../../Utilities/Format/Number");
+var Definition_1 = __importDefault(require("../App/Stateless/Style/Theme/Definition"));
 var PriceField = function (_a) {
     var _b;
-    var _c;
-    var _d = _a.currency, currency = _d === void 0 ? 'eur' : _d, valueInCent = _a.valueInCent, _e = _a.language, language = _e === void 0 ? Language_1.LANGUAGE.GERMAN : _e, _f = _a.selectOnFocus, selectOnFocus = _f === void 0 ? false : _f, _g = _a.showDecimals, showDecimals = _g === void 0 ? false : _g, _h = _a.min, min = _h === void 0 ? Number.NEGATIVE_INFINITY : _h, _j = _a.max, max = _j === void 0 ? Number.POSITIVE_INFINITY : _j, _k = _a.textFieldProps, _l = _k === void 0 ? { required: false } : _k, required = _l.required, textFieldProps = __rest(_l, ["required"]), _m = _a.currencyPosition, currencyPosition = _m === void 0 ? usePriceFieldAdornment_1.AdornmentPosition.end : _m, setValue = _a.setValue;
-    var _o = (0, usePriceFieldAdornment_1.default)(currencyPosition), position = _o[0], at = _o[1];
-    var _p = (0, react_intl_1.useIntl)(), formatNumber = _p.formatNumber, formatMessage = _p.formatMessage;
+    var _c = _a.currency, currency = _c === void 0 ? 'eur' : _c, valueInCent = _a.valueInCent, _d = _a.language, language = _d === void 0 ? Language_1.LANGUAGE.GERMAN : _d, _e = _a.selectOnFocus, selectOnFocus = _e === void 0 ? false : _e, _f = _a.showDecimals, showDecimals = _f === void 0 ? false : _f, _g = _a.min, min = _g === void 0 ? Number.NEGATIVE_INFINITY : _g, _h = _a.max, max = _h === void 0 ? Number.POSITIVE_INFINITY : _h, _j = _a.textFieldProps, _k = _j === void 0 ? { required: false } : _j, required = _k.required, textFieldProps = __rest(_k, ["required"]), _l = _a.currencyPosition, currencyPosition = _l === void 0 ? usePriceFieldAdornment_1.AdornmentPosition.end : _l, disabled = _a.disabled, setValue = _a.setValue;
+    var _m = (0, usePriceFieldAdornment_1.default)(currencyPosition), position = _m[0], at = _m[1];
+    var _o = (0, react_intl_1.useIntl)(), formatNumber = _o.formatNumber, formatMessage = _o.formatMessage;
     var locale = (0, Locale_1.mapLanguageToLocale)(language);
-    var fraction = showDecimals ? 2 : 0;
-    var toLocaleStringFractionOptions = { minimumFractionDigits: fraction, maximumFractionDigits: fraction };
-    var _q = react_1.default.useState(((_c = (0, Number_1.divideBy100)(valueInCent, showDecimals)) !== null && _c !== void 0 ? _c : '').toLocaleString(locale, __assign({ style: 'decimal', useGrouping: true }, toLocaleStringFractionOptions))), localValue = _q[0], setLocalValue = _q[1];
-    var decimalSeparator = (1.1).toLocaleString(locale).substring(1, 2);
-    var groupingSeparator = (1000).toLocaleString(locale).substring(1, 2);
+    var _p = react_1.default.useState((0, PriceInput_helper_1.getLocaleString)(locale, (0, Number_1.divideBy100)(valueInCent, showDecimals), true, showDecimals)), localValue = _p[0], setLocalValue = _p[1];
+    var decimalSeparator = (0, Number_1.getDecimalSeparator)(locale);
+    var groupingSeparator = (0, Number_1.getGroupingSeparator)(locale);
     var outOfRange = (!!valueInCent)
         && ((min !== -Infinity && valueInCent < min) || (max !== Infinity && valueInCent > max));
     var isLocalValueValid = (0, Number_1.isValidLocalisedNumber)(localValue, groupingSeparator, decimalSeparator, showDecimals);
     var hasErrors = !isLocalValueValid || outOfRange;
     (0, react_1.useEffect)(function () {
-        var _a, _b;
         if (valueInCent === null) {
             setLocalValue(null);
         }
         else {
-            var prepared = ((_a = (0, Number_1.divideBy100)(valueInCent, showDecimals)) !== null && _a !== void 0 ? _a : '').toLocaleString(locale, __assign({ style: 'decimal', useGrouping: false }, toLocaleStringFractionOptions));
+            var prepared = (0, PriceInput_helper_1.getLocaleString)(locale, (0, Number_1.divideBy100)(valueInCent, showDecimals), false, showDecimals);
             var _isValidValue = (0, Number_1.isValidLocalisedNumber)(localValue, groupingSeparator, decimalSeparator, showDecimals);
             if (!_isValidValue || (0, PriceInput_helper_1.sanitize)(localValue, decimalSeparator) !== (0, PriceInput_helper_1.sanitize)(prepared, decimalSeparator)) {
-                setLocalValue(((_b = (0, Number_1.divideBy100)(valueInCent, showDecimals)) !== null && _b !== void 0 ? _b : '').toLocaleString(locale, __assign({ style: 'decimal', useGrouping: true }, toLocaleStringFractionOptions)));
+                setLocalValue((0, PriceInput_helper_1.getLocaleString)(locale, (0, Number_1.divideBy100)(valueInCent, showDecimals), true, showDecimals));
             }
         }
     }, [valueInCent]);
@@ -104,12 +101,14 @@ var PriceField = function (_a) {
         var _isValidValue = _sanitizedValue ? (0, Number_1.isValidLocalisedNumber)(localValue, groupingSeparator, decimalSeparator, showDecimals) : true;
         var parsedValue = !_sanitizedValue || !_isValidValue ? null : (0, lodash_1.parseInt)(_sanitizedValue);
         if (parsedValue !== null) {
-            var localizedValue = (0, Number_1.divideBy100)(parsedValue, showDecimals).toLocaleString(locale, __assign({ style: 'decimal' }, toLocaleStringFractionOptions));
+            var localizedValue = (0, PriceInput_helper_1.getLocaleString)(locale, (0, Number_1.divideBy100)(parsedValue, showDecimals), true, showDecimals);
             setLocalValue(localizedValue);
         }
         else {
             setValue(valueInCent);
-            setLocalValue(!(0, Number_1.divideBy100)(valueInCent, showDecimals) ? null : (0, Number_1.divideBy100)(valueInCent, showDecimals).toLocaleString(locale, __assign({ style: 'decimal', useGrouping: true }, toLocaleStringFractionOptions)));
+            setLocalValue(!(0, Number_1.divideBy100)(valueInCent, showDecimals)
+                ? null
+                : (0, PriceInput_helper_1.getLocaleString)(locale, (0, Number_1.divideBy100)(valueInCent, showDecimals), true, showDecimals));
         }
     };
     var _onFocus = function () {
@@ -117,16 +116,18 @@ var PriceField = function (_a) {
         var _isValidValue = _sanitizedValue ? (0, Number_1.isValidLocalisedNumber)(localValue, groupingSeparator, decimalSeparator, showDecimals) : true;
         var parsedValue = !_sanitizedValue || !_isValidValue ? null : (0, lodash_1.parseInt)(_sanitizedValue);
         if (parsedValue !== null) {
-            var localizedValue = (0, Number_1.divideBy100)(parsedValue, showDecimals).toLocaleString(locale, __assign({ style: 'decimal', useGrouping: false }, toLocaleStringFractionOptions));
+            var localizedValue = (0, PriceInput_helper_1.getLocaleString)(locale, (0, Number_1.divideBy100)(parsedValue, showDecimals), false, showDecimals);
             setLocalValue(localizedValue);
         }
     };
     return (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: (0, jsx_runtime_1.jsx)(TextField_1.default, __assign({ required: required }, textFieldProps, { helperText: hasErrors
                 ? outOfRange
-                    ? "min: ".concat(formatNumber(min / 100, __assign({}, toLocaleStringFractionOptions)), " max: ").concat(formatNumber(max / 100, __assign({}, toLocaleStringFractionOptions)))
+                    ? "min: ".concat(formatNumber(min / 100, __assign({}, (0, PriceInput_helper_1.toLocaleStringFractionOptions)(showDecimals ? 2 : 0))), " max: ").concat(formatNumber(max / 100, __assign({}, (0, PriceInput_helper_1.toLocaleStringFractionOptions)(showDecimals ? 2 : 0))))
                     : formatMessage({ id: 'priceField.invalid' })
-                : textFieldProps.helperText, value: localValue, selectOnFocus: selectOnFocus, error: hasErrors, onFocus: _onFocus, onBlur: _onBlur, onChange: _onChange, InputProps: (_b = {},
-                _b[position] = (0, jsx_runtime_1.jsx)(material_1.InputAdornment, __assign({ position: at }, { children: Format_1.Currency.getCurrencySign(currency) })),
-                _b) })) });
+                : textFieldProps.helperText, value: localValue, selectOnFocus: selectOnFocus, error: hasErrors, onFocus: _onFocus, onBlur: _onBlur, onChange: _onChange, hideClearButton: disabled, InputProps: (_b = {},
+                _b[position] = (0, jsx_runtime_1.jsx)(material_1.InputAdornment, __assign({ position: at }, { children: (0, jsx_runtime_1.jsx)(material_1.Typography, __assign({ color: disabled
+                            ? Definition_1.default.palette.text.disabled
+                            : 'inherit' }, { children: Format_1.Currency.getCurrencySign(currency) })) })),
+                _b), disabled: disabled })) });
 };
 exports.default = PriceField;
