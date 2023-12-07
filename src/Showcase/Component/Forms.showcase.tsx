@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable max-lines */
 import React from 'react';
 import AppNavigation from './AppNavigation.showcase';
@@ -47,12 +48,7 @@ const Forms = () => {
   const [displayRowStyle, setDisplayRowStyle] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
   const [selectValue, setSelectValue] = React.useState<string>('');
-  const [priceValueEnWithoutDecimals, setPriceValueEnWithoutDecimals] = React.useState<number | undefined>(100000);
-  const [priceValueDeWithoutDecimals, setPriceValueDeWithoutDecimals] = React.useState<number | undefined>(123466);
-  const [priceValueEnWithDecimals, setPriceValueEnWithDecimals] = React.useState<number | undefined>(100000);
-  const [priceValueDeWithDecimals, setPriceValueDeWithDecimals] = React.useState<number | undefined>(123466);
-  const [priceValueEnWithNegativeMinMax, setPriceValueEnWithNegativeMinMax] = React.useState<number | undefined>(-100001);
-  const [priceValueDeWithPositiveMinMax, setPriceValueDeWithPositiveMinMax] = React.useState<number | undefined>(100001);
+  const [priceValue, setPriceValue] = React.useState<number | undefined>(123466);
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date('2021-07-09T10:00:00'));
   const [textFieldValue, setTextFieldValue] = React.useState('This is a default value');
   const [dateRange, setDateRange] = React.useState<[Date, Date]>([new Date('2021-07-09T10:00:00'), new Date('2021-07-09T10:00:00')]);
@@ -65,17 +61,17 @@ const Forms = () => {
   const handleDateChange: DatePickerProps<Date>['onChange'] = (date: Date) => setSelectedDate(date);
 
   return (
-    <Layout navigation={<AppNavigation/>}>
+    <Layout navigation={<AppNavigation />}>
       {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
       <Container disableGutters maxWidth={false}>
         <Card>
           <CardHeader title='Forms'
-                      subheader={<>Errors are controlled by the <CodeBox component={'span'} size={'small'}>{`<FormControl required error>...</FormControl>`}</CodeBox> Element.
-                        The <CodeBox component={'span'} size={'small'}>required</CodeBox> attribute controls the asterisk (*) char.</>}/>
+            subheader={<>Errors are controlled by the <CodeBox component={'span'} size={'small'}>{`<FormControl required error>...</FormControl>`}</CodeBox> Element.
+              The <CodeBox component={'span'} size={'small'}>required</CodeBox> attribute controls the asterisk (*) char.</>} />
           <CardContent>
             <Grid container spacing={1}>
-              <Grid item><FormControlLabel control={<Switch onChange={toggleDisplayRowStyle} checked={displayRowStyle}/>} label='Enable row style'/></Grid>
-              <Grid item><FormControlLabel control={<Switch onChange={toggleShowError} checked={showError}/>} label='Show error'/></Grid>
+              <Grid item><FormControlLabel control={<Switch onChange={toggleDisplayRowStyle} checked={displayRowStyle} />} label='Enable row style' /></Grid>
+              <Grid item><FormControlLabel control={<Switch onChange={toggleShowError} checked={showError} />} label='Show error' /></Grid>
             </Grid>
             <Box mt={2}>
               <Grid container spacing={displayRowStyle ? 4 : 2}>
@@ -84,20 +80,20 @@ const Forms = () => {
                     <FormLabel>Checkbox Example</FormLabel>
                     <FormGroup row={displayRowStyle}>
                       <FormControlLabel
-                        control={<Checkbox checked={checkboxState.checkboxA} onChange={handleCheckboxChange} name='checkboxA'/>}
+                        control={<Checkbox checked={checkboxState.checkboxA} onChange={handleCheckboxChange} name='checkboxA' />}
                         label='Checkbox A'
                       />
                       <FormControlLabel
-                        control={<Checkbox checked={checkboxState.checkboxB} onChange={handleCheckboxChange} name='checkboxB'/>}
+                        control={<Checkbox checked={checkboxState.checkboxB} onChange={handleCheckboxChange} name='checkboxB' />}
                         label='Checkbox B'
                       />
                       <FormControlLabel
-                        control={<Checkbox checked={checkboxState.checkboxC} onChange={handleCheckboxChange} name='checkboxC'/>}
+                        control={<Checkbox checked={checkboxState.checkboxC} onChange={handleCheckboxChange} name='checkboxC' />}
                         label='Checkbox C'
                       />
                       <FormControlLabel
                         disabled
-                        control={<Checkbox checked={checkboxState.checkboxD} onChange={handleCheckboxChange} name='checkboxD'/>}
+                        control={<Checkbox checked={checkboxState.checkboxD} onChange={handleCheckboxChange} name='checkboxD' />}
                         label='Checkbox D'
                       />
                     </FormGroup>
@@ -108,10 +104,10 @@ const Forms = () => {
                   <FormControl required error={showError}>
                     <FormLabel>Radio Buttons Example</FormLabel>
                     <RadioGroup row={displayRowStyle} name='radio' value={radioValue} onChange={handleRadioChange}>
-                      <FormControlLabel value='radio1' control={<Radio/>} label='Radio 1'/>
-                      <FormControlLabel value='radio2' control={<Radio/>} label='Radio 2'/>
-                      <FormControlLabel value='radio3' control={<Radio/>} label='Radio 3'/>
-                      <FormControlLabel value='radio4' disabled control={<Radio/>} label='Radio 4'/>
+                      <FormControlLabel value='radio1' control={<Radio />} label='Radio 1' />
+                      <FormControlLabel value='radio2' control={<Radio />} label='Radio 2' />
+                      <FormControlLabel value='radio3' control={<Radio />} label='Radio 3' />
+                      <FormControlLabel value='radio4' disabled control={<Radio />} label='Radio 4' />
                     </RadioGroup>
                     <FormHelperText>{showError ? 'Ups, an error was detected!' : 'This is a helper text'}</FormHelperText>
                   </FormControl>
@@ -125,31 +121,31 @@ const Forms = () => {
                           checked={switchState.switchA}
                           onChange={(event, value) => handleSwitchChange('switchA', value)} name='switchA'
                         />}
-                        label='Switch 1'/>
+                        label='Switch 1' />
                       <FormControlLabel
                         control={<Switch
                           checked={switchState.switchB}
                           onChange={(event, value) => handleSwitchChange('switchB', value)} name='switchB'
                         />}
-                        label='Switch 2'/>
+                        label='Switch 2' />
                       <FormControlLabel
                         control={<Switch
                           checked={switchState.switchC}
                           onChange={(event, value) => handleSwitchChange('switchC', value)} name='switchC'
                         />}
-                        label='Switch 3'/>
+                        label='Switch 3' />
                       <FormControlLabel
                         control={<Switch
                           checked={switchState.switchD}
                           onChange={(event, value) => handleSwitchChange('switchD', value)} name='switchD'
                         />}
-                        label='Switch 4'/>
+                        label='Switch 4' />
                     </FormGroup>
                     <FormHelperText>{showError ? 'Ups, an error was detected!' : 'This is a helper text'}</FormHelperText>
                   </FormControl>
                 </Grid>
                 <Grid item xs={12}>
-                  <Divider/>
+                  <Divider />
                   <Box mt={2}>
                     <Typography variant={'h6'}>Select/Dropdown Elements</Typography>
                     <Typography color={'textSecondary'}>Icons in <CodeBox component={'span'} size={'small'}>Select</CodeBox>'s need a little custom styling: <CodeBox
@@ -167,18 +163,18 @@ const Forms = () => {
                             canClear
                           >
                             <MenuItem value={'1'}><Box alignItems={'center'} display={'flex'}>
-                              <WarningIcon sx={{ fontSize: definition.typography.pxToRem(20) }}/>
+                              <WarningIcon sx={{ fontSize: definition.typography.pxToRem(20) }} />
                               <Box component={'span'} ml={1}>Value 1</Box>
                             </Box></MenuItem>
                             <MenuItem value={'2'}><Box alignItems={'center'} display={'flex'}>
-                              <WarningIcon sx={{ fontSize: definition.typography.pxToRem(20) }} color={'primary'}/>
+                              <WarningIcon sx={{ fontSize: definition.typography.pxToRem(20) }} color={'primary'} />
                               <Box component={'span'} ml={1} color={definition.palette.primary.main}>Value 2</Box>
                             </Box></MenuItem>
                             <MenuItem value={'3'} disabled>Value 3</MenuItem>
                             <MenuItem value={'4'}>Value 4 with a longer label</MenuItem>
                             <MenuItem value={'5'}>Value 5 with even a more longer, longer and longer label</MenuItem>
                             <MenuItem value={'6'} disabled><Box alignItems={'center'} display={'flex'}>
-                              <WarningIcon sx={{ fontSize: definition.typography.pxToRem(20) }} color={'primary'}/>
+                              <WarningIcon sx={{ fontSize: definition.typography.pxToRem(20) }} color={'primary'} />
                               <Box component={'span'} ml={1} color={definition.palette.primary.main}>Value 6</Box>
                             </Box></MenuItem>
                             <MenuItem value={'7'}>Value 7</MenuItem>
@@ -327,7 +323,7 @@ const Forms = () => {
                           onChange={event => setTextFieldValue(event === null ? '' : event.target.value)}
                           error={showError}
                           helperText='The icon can be implemented on start or end or both and should reflect error color'
-                          InputProps={{ startAdornment: <InputAdornment position='start'><WarningIcon color={showError ? 'error' : 'inherit'}/></InputAdornment> }}
+                          InputProps={{ startAdornment: <InputAdornment position='start'><WarningIcon color={showError ? 'error' : 'inherit'} /></InputAdornment> }}
                         />
                       </Grid>
                       <Grid item xs={2}>
@@ -350,10 +346,10 @@ const Forms = () => {
                       showDecimals={false}
                       language={LANGUAGE.ENGLISH}
                       currency='gbp'
-                      valueInCent={priceValueEnWithoutDecimals}
+                      valueInCent={priceValue}
                       setValue={value => {
-                        console.log(`setting showcase price for ${textFieldENId}WithoutDecimals`, value);
-                        setPriceValueEnWithoutDecimals(value)
+                        console.log(`setting showcase price for ${textFieldENId}WithDecimals`, value);
+                        setPriceValue(value)
                       }}
                     />
                   </Grid>
@@ -363,12 +359,13 @@ const Forms = () => {
                       showDecimals={false}
                       selectOnFocus
                       language={LANGUAGE.GERMAN}
-                      valueInCent={priceValueDeWithoutDecimals}
+                      valueInCent={priceValue}
                       setValue={value => {
-                        console.log(`setting showcase price for ${textFieldDEId}WithoutDecimals`, value);
-                        setPriceValueDeWithoutDecimals(value)
+                        console.log(`setting showcase price for ${textFieldENId}WithDecimals`, value);
+                        setPriceValue(value)
                       }}
                     />
+
                   </Grid>
                   <Grid item xs={2}>
                     <PriceField
@@ -376,10 +373,11 @@ const Forms = () => {
                       showDecimals={true}
                       language={LANGUAGE.ENGLISH}
                       currency='gbp'
-                      valueInCent={priceValueEnWithDecimals}
+                      currencyPosition={'start'}
+                      valueInCent={priceValue}
                       setValue={value => {
                         console.log(`setting showcase price for ${textFieldENId}WithDecimals`, value);
-                        setPriceValueEnWithDecimals(value)
+                        setPriceValue(value)
                       }}
                     />
                   </Grid>
@@ -389,10 +387,10 @@ const Forms = () => {
                       showDecimals={true}
                       selectOnFocus
                       language={LANGUAGE.GERMAN}
-                      valueInCent={priceValueDeWithDecimals}
+                      valueInCent={priceValue}
                       setValue={value => {
-                        console.log(`setting showcase price for ${textFieldDEId}WithDecimals`, value);
-                        setPriceValueDeWithDecimals(value)
+                        console.log(`setting showcase price for ${textFieldENId}WithDecimals`, value);
+                        setPriceValue(value)
                       }}
                     />
                   </Grid>
@@ -404,10 +402,10 @@ const Forms = () => {
                       max={-1000}
                       language={LANGUAGE.ENGLISH}
                       currency='gbp'
-                      valueInCent={priceValueEnWithNegativeMinMax}
+                      valueInCent={priceValue}
                       setValue={value => {
-                        console.log(`setting showcase price for ${textFieldENId}WithNegativeMinMax`, value);
-                        setPriceValueEnWithNegativeMinMax(value)
+                        console.log(`setting showcase price for ${textFieldENId}WithDecimals`, value);
+                        setPriceValue(value)
                       }}
                     />
                   </Grid>
@@ -419,16 +417,17 @@ const Forms = () => {
                       max={100000}
                       selectOnFocus
                       language={LANGUAGE.GERMAN}
-                      valueInCent={priceValueDeWithPositiveMinMax}
+                      valueInCent={priceValue}
                       setValue={value => {
-                        console.log(`setting showcase price for ${textFieldDEId}WithPositiveMinMax`, value);
-                        setPriceValueDeWithPositiveMinMax(value)
+                        console.log(`setting showcase price for ${textFieldENId}WithDecimals`, value);
+                        setPriceValue(value)
                       }}
                     />
+
                   </Grid>
                   <Grid item xs={2}>
-                    <Button sx={{mt: 2}} variant={'contained'} type={'submit'} onClick={(e) => {
-                      console.log('submitted button', { e, priceValueDeWithoutDecimals, priceValueEnWithoutDecimals, priceValueDeWithDecimals, priceValueEnWithDecimals })
+                    <Button sx={{ mt: 2 }} variant={'contained'} type={'submit'} onClick={(e) => {
+                      console.log('submitted button', { e, priceValueEnWithDecimals: priceValue })
                     }}>submit price field test</Button>
                   </Grid>
                 </Grid>

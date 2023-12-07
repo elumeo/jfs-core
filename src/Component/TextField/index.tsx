@@ -37,7 +37,6 @@ const TextField = React.forwardRef<HTMLDivElement, Props>(({
     if (selectOnFocus) {
       const target = e.target;
       window.requestAnimationFrame(() => {
-        console.log('requestAnimationFrame', target);
         if (target) {
           target.select();
         }
