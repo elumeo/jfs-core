@@ -388,6 +388,7 @@ const Forms = () => {
                       selectOnFocus
                       language={LANGUAGE.GERMAN}
                       valueInCent={priceValue}
+                      currencyPosition={'start'}
                       setValue={value => {
                         console.log(`setting showcase price for ${textFieldENId}WithDecimals`, value);
                         setPriceValue(value)

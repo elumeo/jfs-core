@@ -1,5 +1,7 @@
 
 
+import * as Country from 'Types/Country';
+import { FormatNumberOptions } from 'react-intl';
 export const sanitize = (value: string, decimalSeparator: string): string => {
   let returnValue = value;
   if (!returnValue || returnValue == 'null') {
@@ -21,3 +23,7 @@ export const sanitize = (value: string, decimalSeparator: string): string => {
   }
   return returnValue.replace(/[^\d-]|(?<=\d)-/g, '');
 }
+export const toLocaleStringFractionOptions = (fraction = 2): FormatNumberOptions => ({ minimumFractionDigits: fraction, maximumFractionDigits: fraction });
+
+export const getLocaleString = (locale: Country.Locale, input: number, grouping = true, showDecimals = true) => (input ?? '')
+  .toLocaleString(locale, { style: 'decimal', useGrouping: grouping, ...toLocaleStringFractionOptions(showDecimals ? 2 : 0) })

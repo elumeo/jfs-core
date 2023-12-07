@@ -37,3 +37,8 @@ export const getDivider = (divideValue: number) => divideValue == 0 ? undefined 
     : Math.floor(input / divideValue)
 }
 export const divideBy100 = getDivider(100);
+
+export const getDecimalSeparator = (locale: string) =>
+  (1.1).toLocaleString(locale).substring(1, 2);
+export const getGroupingSeparator = (locale: string) =>
+  (1000).toLocaleString(locale).substring(1, 2);
