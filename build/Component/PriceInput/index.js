@@ -4,5 +4,5 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = void 0;
-var PriceField_1 = require("./PriceField");
-Object.defineProperty(exports, "default", { enumerable: true, get: function () { return __importDefault(PriceField_1).default; } });
+var PriceInput_1 = require("./PriceInput");
+Object.defineProperty(exports, "default", { enumerable: true, get: function () { return __importDefault(PriceInput_1).default; } });
