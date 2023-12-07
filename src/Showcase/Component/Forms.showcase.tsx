@@ -358,6 +358,7 @@ const Forms = () => {
                       textFieldProps={{ id: `${textFieldDEId}WithoutDecimals`, label: 'Price field DE', helperText: 'without decimals', required: true }}
                       showDecimals={false}
                       selectOnFocus
+                      disabled
                       language={LANGUAGE.GERMAN}
                       valueInCent={priceValue}
                       setValue={value => {

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { InputAdornment } from '@mui/material';
+import { InputAdornment, InputLabel, Typography } from '@mui/material';
 import TextFieldClearButton, { type Props as TextFieldProps } from 'Component/TextField'
 import usePriceFieldAdornment, { AdornmentPosition } from 'Effect/usePriceFieldAdornment';
 import { Currency } from 'Utilities/Format';
@@ -9,6 +9,7 @@ import { LANGUAGE } from 'Types/Language';
 import { parseInt } from 'lodash';
 import { getLocaleString, sanitize, toLocaleStringFractionOptions } from './PriceInput.helper';
 import { divideBy100, getDecimalSeparator, getGroupingSeparator, isValidLocalisedNumber } from 'Utilities/Format/Number';
+import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
 type Props = {
   language?: LANGUAGE;
@@ -26,7 +27,9 @@ type Props = {
     | 'onBlur'
     | 'onChange'
     | 'InputProps'
+    | 'disabled'
   >,
+  disabled?: TextFieldProps['disabled'],
   setValue?: (value: number) => void,
   currencyPosition?: AdornmentPosition
 }
@@ -41,6 +44,7 @@ const PriceField: React.FC<Props> = ({
   max = Number.POSITIVE_INFINITY,
   textFieldProps: { required, ...textFieldProps } = { required: false },
   currencyPosition = AdornmentPosition.end,
+  disabled,
   setValue,
 }) => {
   const [position, at] = usePriceFieldAdornment(currencyPosition)
@@ -118,9 +122,17 @@ const PriceField: React.FC<Props> = ({
       onFocus={_onFocus}
       onBlur={_onBlur}
       onChange={_onChange}
+      hideClearButton={disabled}
       InputProps={{
-        [position]: <InputAdornment position={at}>{Currency.getCurrencySign(currency)}</InputAdornment>,
+        [position]: <InputAdornment position={at}>
+          <Typography color={disabled
+            ? definition.palette.text.disabled
+            : 'inherit'}>
+            {Currency.getCurrencySign(currency)}
+          </Typography>
+        </InputAdornment>,
       }}
+      disabled={disabled}
     />
   </>
 };
