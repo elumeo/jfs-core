@@ -1,5 +1,4 @@
 import * as Locale from './Locale';
-import { ReactText } from 'react';
 
 export const getCurrencySign = (currency: string): string =>
   new Intl.NumberFormat(Locale.locale, { style: 'currency', currency })
@@ -8,22 +7,6 @@ export const getCurrencySign = (currency: string): string =>
       (sign, { type, value }) => sign + (type === 'currency' ? value : ''),
       '',
     );
-export const formatDisplay = (
-  value: ReactText,
-  min?: number,
-  max?: number,
-): string => {
-  const val = parseFloat(
-    `${value}`.replace(matchAllNonNumericOrSeperatorRegex, ''),
-  );
-  if ((!!min || min === 0) && val < min) {
-    return min.toString();
-  }
-  else if (max && val > max) {
-    return max.toString();
-  }
-  return val.toFixed(2);
-};
 
 export const getCurrency = (
   currency: string,
@@ -40,15 +23,3 @@ export const getCurrency = (
   };
   return new Intl.NumberFormat(Locale.locale, options).format(value);
 };
-
-export const intlThousandsSeperator = new Intl.NumberFormat(Locale.locale)
-  .format(1111)
-  .replace(/1/g, '');
-
-export const intlDecSeparator = new Intl.NumberFormat(Locale.locale)
-  .format(1.1)
-  .replace(/1/g, '');
-
-export const matchAllNonNumericOrSeperatorRegex = /[^0-9.,-]/g;
-export const matchComma = /,/g
-export const matchFirstPoint = /(?<=(.*\..*))\./g

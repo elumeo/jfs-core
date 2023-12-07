@@ -1,9 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.divideBy100 = exports.getDivider = exports.isValidLocalisedNumber = exports.getNonGroupingNumberFormatRegex = exports.getGroupingNumberFormatRegex = exports.parse = exports.limit = void 0;
-var Language_1 = require("../../Types/Language");
-var Currency_1 = require("./Currency");
-var Locale_1 = require("./Locale");
+exports.divideBy100 = exports.getDivider = exports.isValidLocalisedNumber = exports.getNonGroupingNumberFormatRegex = exports.getGroupingNumberFormatRegex = exports.limit = void 0;
 var limit = function (number, min, max) {
     var result = number;
     if (min !== undefined && min !== null) {
@@ -19,25 +16,6 @@ var limit = function (number, min, max) {
     return result;
 };
 exports.limit = limit;
-var parse = function (number, min, max, numberOfDecimals, language) {
-    if (number === void 0) { number = ''; }
-    if (min === void 0) { min = Number.NEGATIVE_INFINITY; }
-    if (max === void 0) { max = Number.POSITIVE_INFINITY; }
-    if (numberOfDecimals === void 0) { numberOfDecimals = 2; }
-    if (language === void 0) { language = Language_1.LANGUAGE.GERMAN; }
-    var locale = (0, Locale_1.mapLanguageToLocale)(language);
-    var decimalSeparator = (1.1).toLocaleString(locale).substring(1, 2);
-    var floatable = number.replace(Currency_1.matchAllNonNumericOrSeperatorRegex, '')
-        .replace(new RegExp(decimalSeparator === ',' ? ',' : '.'), '.')
-        .replace(Currency_1.matchFirstPoint, '');
-    var santized = floatable.length === 0
-        || floatable.endsWith('.')
-        || (floatable.length === 1 && floatable.startsWith('-'))
-        ? floatable
-        : (+(0, exports.limit)((parseFloat(floatable)), min, max).toFixed(numberOfDecimals)).toString();
-    return santized;
-};
-exports.parse = parse;
 var getGroupingNumberFormatRegex = function (groupingSeparator, decimalSeparator, allowDecimals) {
     var regexString = "^-?((\\d{1,3}(".concat(groupingSeparator == '.' ? "\\." : groupingSeparator, "\\d{3})*").concat(allowDecimals ? "(".concat(decimalSeparator == '.' ? "\\." : decimalSeparator, "\\d{1,2})?)|\\d+(").concat(decimalSeparator == '.' ? "\\." : decimalSeparator, "?\\d{1,2}") : "", ")?)$");
     return new RegExp(regexString, 'g');

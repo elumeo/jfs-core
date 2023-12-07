@@ -1,7 +1,3 @@
-import { LANGUAGE } from 'Types/Language';
-import { matchAllNonNumericOrSeperatorRegex, matchFirstPoint } from './Currency';
-import { mapLanguageToLocale } from './Locale';
-
 
 export const limit = (number: number, min: number, max: number): number => {
   let result = number;
@@ -16,20 +12,6 @@ export const limit = (number: number, min: number, max: number): number => {
     result = Math.min(result, max);
   }
   return result;
-}
-export const parse = (number = '', min = Number.NEGATIVE_INFINITY, max = Number.POSITIVE_INFINITY, numberOfDecimals = 2, language = LANGUAGE.GERMAN): number => {
-  const locale = mapLanguageToLocale(language);
-  const decimalSeparator = (1.1).toLocaleString(locale).substring(1, 2);
-  const floatable = number.replace(matchAllNonNumericOrSeperatorRegex, '')
-    .replace(new RegExp(decimalSeparator === ',' ? ',' : '.'), '.')
-    .replace(matchFirstPoint, '')
-  const santized =
-    floatable.length === 0
-      || floatable.endsWith('.')
-      || (floatable.length === 1 && floatable.startsWith('-'))
-      ? floatable
-      : (+limit((parseFloat(floatable)), min, max).toFixed(numberOfDecimals)).toString()
-  return santized as unknown as number;
 }
 export const getGroupingNumberFormatRegex = (groupingSeparator: string, decimalSeparator: string, allowDecimals: boolean) => {
   const regexString = `^-?((\\d{1,3}(${groupingSeparator == '.' ? `\\.` : groupingSeparator}\\d{3})*${allowDecimals ? `(${decimalSeparator == '.' ? `\\.` : decimalSeparator}\\d{1,2})?)|\\d+(${decimalSeparator == '.' ? `\\.` : decimalSeparator}?\\d{1,2}` : ``})?)$`;
