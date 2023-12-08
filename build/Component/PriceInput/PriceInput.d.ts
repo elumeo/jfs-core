@@ -10,10 +10,11 @@ type Props = {
     min?: number;
     max?: number;
     showDecimals?: boolean;
-    textFieldProps?: Omit<TextFieldProps, 'value' | 'selectOnFocus' | 'error' | 'onFocus' | 'onBlur' | 'onChange' | 'InputProps' | 'disabled'>;
+    textFieldProps?: Omit<TextFieldProps, 'value' | 'selectOnFocus' | 'error' | 'onFocus' | 'onBlur' | 'onChange' | 'InputProps' | 'disabled' | 'required'>;
     disabled?: TextFieldProps['disabled'];
     setValue?: (value: number) => void;
     currencyPosition?: AdornmentPosition;
+    required?: boolean;
 };
 declare const PriceField: React.FC<Props>;
 export default PriceField;
