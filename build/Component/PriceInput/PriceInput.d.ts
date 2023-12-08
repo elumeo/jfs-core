@@ -2,7 +2,7 @@ import React from 'react';
 import { type Props as TextFieldProps } from '../TextField';
 import { AdornmentPosition } from '../../Effect/usePriceFieldAdornment';
 import { LANGUAGE } from '../../Types/Language';
-type Props = {
+export type Props = {
     language?: LANGUAGE;
     currency?: string;
     selectOnFocus?: boolean;

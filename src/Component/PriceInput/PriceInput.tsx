@@ -11,7 +11,7 @@ import { getLocaleString, sanitize, toLocaleStringFractionOptions } from './Pric
 import { divideBy100, getDecimalSeparator, getGroupingSeparator, isValidLocalisedNumber } from 'Utilities/Format/Number';
 import definition from 'Component/App/Stateless/Style/Theme/Definition';
 
-type Props = {
+export type Props = {
   language?: LANGUAGE;
   currency?: string;
   selectOnFocus?: boolean;
