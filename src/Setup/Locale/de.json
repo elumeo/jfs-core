@@ -45,6 +45,7 @@
   "product.type.disabledOnDemand": "Excreation",
   "product.details": "Artikeldetails",
   "webSocket.room": "WebSocket Raum",
+  "priceField.invalid": "Ungültiger Preis",
   "debug.title": "Fehler-Report Senden",
   "debug.label": "Beschreibung oder zusätzliche Info",
   "debug.submit": "senden",

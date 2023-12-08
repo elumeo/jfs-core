@@ -44,6 +44,7 @@
   "product.type.disabledOnDemand": "Ex-creation",
   "product.details": "Dettagli del prodotto",
   "webSocket.room": "WebSocket Room",
+  "priceField.invalid": "Prezzo non valido",
   "debug.title": "Inviare la segnalazione del problema",
   "debug.label": "Descrizione o informazioni",
   "debug.submit": "inviare",

@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.matchFirstPoint = exports.matchComma = exports.matchAllNonNumericOrSeperatorRegex = exports.intlDecSeparator = exports.intlThousandsSeperator = exports.getCurrency = exports.formatDisplay = exports.getCurrencySign = void 0;
+exports.getCurrency = exports.getCurrencySign = void 0;
 var Locale = __importStar(require("./Locale"));
 var getCurrencySign = function (currency) {
     return new Intl.NumberFormat(Locale.locale, { style: 'currency', currency: currency })
@@ -34,17 +34,6 @@ var getCurrencySign = function (currency) {
     }, '');
 };
 exports.getCurrencySign = getCurrencySign;
-var formatDisplay = function (value, min, max) {
-    var val = parseFloat("".concat(value).replace(exports.matchAllNonNumericOrSeperatorRegex, ''));
-    if ((!!min || min === 0) && val < min) {
-        return min.toString();
-    }
-    else if (max && val > max) {
-        return max.toString();
-    }
-    return val.toFixed(2);
-};
-exports.formatDisplay = formatDisplay;
 var getCurrency = function (currency, value, showFraction, withCurrencySign, withZeroDecimals) {
     if (showFraction === void 0) { showFraction = false; }
     if (withCurrencySign === void 0) { withCurrencySign = true; }
@@ -58,12 +47,3 @@ var getCurrency = function (currency, value, showFraction, withCurrencySign, wit
     return new Intl.NumberFormat(Locale.locale, options).format(value);
 };
 exports.getCurrency = getCurrency;
-exports.intlThousandsSeperator = new Intl.NumberFormat(Locale.locale)
-    .format(1111)
-    .replace(/1/g, '');
-exports.intlDecSeparator = new Intl.NumberFormat(Locale.locale)
-    .format(1.1)
-    .replace(/1/g, '');
-exports.matchAllNonNumericOrSeperatorRegex = /[^0-9.,-]/g;
-exports.matchComma = /,/g;
-exports.matchFirstPoint = /(?<=(.*\..*))\./g;

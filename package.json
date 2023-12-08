@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "11.1.0",
+  "version": "11.2.0",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "webpack serve --port 8083 --config build-tools/webpack/core-dev-server --no-client-overlay-warnings",
-    "build": "rm -rf build && tsc && tsc-alias",
+    "build": "rimraf build && tsc && tsc-alias",
     "build:showcase": "webpack --config build-tools/webpack/showcase",
     "build:watch": "tsc-watch --onSuccess tsc-alias",
     "build:webpack": "webpack --config build-tools/webpack/production",
@@ -20,7 +20,7 @@
     "release:beta": "npm publish --tag beta --access public",
     "install:subpkg": "subpkg install",
     "postinstall": "npm run install:subpkg && npm run jfs-postinstall",
-    "clean-install": "rm -rf ./node_modules ./package-lock.json && npm i",
+    "clean-install": "rimraf ./node_modules ./package-lock.json && npm i",
     "jfs-check-api": "node ./scripts/bin/jfs-check-api",
     "jfs-check-translations": "node ./scripts/bin/jfs-check-translations",
     "jfs-read-translations": "node ./scripts/bin/jfs-read-translations",

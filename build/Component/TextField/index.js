@@ -54,21 +54,35 @@ var material_1 = require("@mui/material");
 var Clear_1 = __importDefault(require("@mui/icons-material/Clear"));
 var TextField = react_1.default.forwardRef(function (_a, ref) {
     var _b;
-    var _c = _a.clearButtonSize, clearButtonSize = _c === void 0 ? 'small' : _c, _d = _a.clearIconSize, clearIconSize = _d === void 0 ? 'small' : _d, _e = _a.value, value = _e === void 0 ? null : _e, hideClearButton = _a.hideClearButton, forceEnableClearButton = _a.forceEnableClearButton, clearButtonProps = _a.clearButtonProps, name = _a.name, props = __rest(_a, ["clearButtonSize", "clearIconSize", "value", "hideClearButton", "forceEnableClearButton", "clearButtonProps", "name"]);
+    var _c = _a.clearButtonSize, clearButtonSize = _c === void 0 ? 'small' : _c, _d = _a.clearIconSize, clearIconSize = _d === void 0 ? 'small' : _d, _e = _a.value, value = _e === void 0 ? null : _e, hideClearButton = _a.hideClearButton, forceEnableClearButton = _a.forceEnableClearButton, clearButtonProps = _a.clearButtonProps, name = _a.name, selectOnFocus = _a.selectOnFocus, onFocus = _a.onFocus, props = __rest(_a, ["clearButtonSize", "clearIconSize", "value", "hideClearButton", "forceEnableClearButton", "clearButtonProps", "name", "selectOnFocus", "onFocus"]);
     var isDirty = value !== null && value !== undefined && value !== '';
     var clear = react_1.default.useCallback(function () {
         var _a;
         (_a = props === null || props === void 0 ? void 0 : props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, { target: { value: null } });
     }, [props.onChange]);
-    var endAdornmentClearButton = react_1.default.useMemo(function () { return (forceEnableClearButton || isDirty) && !hideClearButton ? ((0, jsx_runtime_1.jsx)(material_1.IconButton, __assign({ disabled: props.disabled && !forceEnableClearButton, size: clearButtonSize, color: 'secondary', onClick: clear }, clearButtonProps, { children: (0, jsx_runtime_1.jsx)(Clear_1.default, { fontSize: clearIconSize }) })))
+    var _onFocus = react_1.default.useCallback(function (e) {
+        if (onFocus) {
+            onFocus(e);
+        }
+        if (selectOnFocus) {
+            var target_1 = e.target;
+            window.requestAnimationFrame(function () {
+                if (target_1) {
+                    target_1.select();
+                }
+            });
+        }
+    }, [selectOnFocus, onFocus]);
+    var endAdornmentClearButton = react_1.default.useMemo(function () { return (forceEnableClearButton || isDirty) && !hideClearButton ? ((0, jsx_runtime_1.jsx)(material_1.IconButton, __assign({ disabled: props.disabled && !forceEnableClearButton, size: clearButtonSize, color: 'secondary', onClick: clear, tabIndex: -1 }, clearButtonProps, { children: (0, jsx_runtime_1.jsx)(Clear_1.default, { fontSize: clearIconSize }) })))
         : (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, {}); }, [isDirty, props.disabled, clearButtonProps, clearButtonSize, forceEnableClearButton, clearIconSize, clear, hideClearButton]);
     var preparedInputProps = (0, react_1.useMemo)(function () {
         var _a, _b;
         return (__assign(__assign({}, props === null || props === void 0 ? void 0 : props.InputProps), { endAdornment: (0, jsx_runtime_1.jsxs)(material_1.InputAdornment, __assign({ position: 'end' }, { children: [(_b = (_a = props === null || props === void 0 ? void 0 : props.InputProps) === null || _a === void 0 ? void 0 : _a.endAdornment) !== null && _b !== void 0 ? _b : (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, {}), endAdornmentClearButton] })) }));
     }, [endAdornmentClearButton, (_b = props === null || props === void 0 ? void 0 : props.InputProps) === null || _b === void 0 ? void 0 : _b.endAdornment, hideClearButton]);
     var onChange = react_1.default.useCallback(function (e) {
-        props.onChange(e);
+        var _a;
+        (_a = props === null || props === void 0 ? void 0 : props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, e);
     }, [props.onChange]);
-    return (0, jsx_runtime_1.jsx)(material_1.TextField, __assign({ ref: ref, name: name, value: value || '' }, props, { onChange: onChange, InputProps: preparedInputProps }));
+    return (0, jsx_runtime_1.jsx)(material_1.TextField, __assign({ ref: ref, name: name, value: value || '' }, props, { onFocus: _onFocus, onChange: onChange, InputProps: preparedInputProps }));
 });
 exports.default = TextField;
