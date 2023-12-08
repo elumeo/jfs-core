@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { InputAdornment,  Typography } from '@mui/material';
+import { InputAdornment, Typography } from '@mui/material';
 import TextFieldClearButton, { type Props as TextFieldProps } from 'Component/TextField'
 import usePriceFieldAdornment, { AdornmentPosition } from 'Effect/usePriceFieldAdornment';
 import { Currency } from 'Utilities/Format';
@@ -28,10 +28,12 @@ type Props = {
     | 'onChange'
     | 'InputProps'
     | 'disabled'
+    | 'required'
   >,
   disabled?: TextFieldProps['disabled'],
   setValue?: (value: number) => void,
   currencyPosition?: AdornmentPosition
+  required?: boolean
 }
 
 const PriceField: React.FC<Props> = ({
@@ -42,10 +44,11 @@ const PriceField: React.FC<Props> = ({
   showDecimals = false,
   min = Number.NEGATIVE_INFINITY,
   max = Number.POSITIVE_INFINITY,
-  textFieldProps: { required, ...textFieldProps } = { required: false },
+  textFieldProps,
   currencyPosition = AdornmentPosition.end,
   disabled,
   setValue,
+  required,
 }) => {
   const [position, at] = usePriceFieldAdornment(currencyPosition)
   const { formatNumber, formatMessage } = useIntl()
@@ -55,7 +58,7 @@ const PriceField: React.FC<Props> = ({
   const groupingSeparator = getGroupingSeparator(locale)
   const outOfRange = (!!valueInCent)
     && ((min !== -Infinity && valueInCent < min) || (max !== Infinity && valueInCent > max))
-  const isLocalValueValid = isValidLocalisedNumber(localValue, groupingSeparator, decimalSeparator, showDecimals);
+  const isLocalValueValid = isValidLocalisedNumber(localValue, groupingSeparator, decimalSeparator, showDecimals) || (!required && (localValue == null || localValue == ''));
   const hasErrors = !isLocalValueValid || outOfRange;
 
   useEffect(() => {
@@ -109,7 +112,6 @@ const PriceField: React.FC<Props> = ({
 
   return <>
     <TextFieldClearButton
-      required={required}
       {...textFieldProps as TextFieldProps}
       helperText={hasErrors
         ? outOfRange
@@ -119,6 +121,7 @@ const PriceField: React.FC<Props> = ({
       value={localValue}
       selectOnFocus={selectOnFocus}
       error={hasErrors}
+      required={required}
       onFocus={_onFocus}
       onBlur={_onBlur}
       onChange={_onChange}

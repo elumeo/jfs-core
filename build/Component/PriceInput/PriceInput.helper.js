@@ -14,7 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getLocaleString = exports.toLocaleStringFractionOptions = exports.sanitize = void 0;
 var sanitize = function (value, decimalSeparator) {
     var returnValue = value;
-    if (!returnValue || returnValue == 'null') {
+    if (!returnValue || returnValue == 'null' || returnValue == '-') {
         return null;
     }
     // @INFO: assumptions is, that the user always wants to input euros
