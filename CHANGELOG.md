@@ -1,3 +1,10 @@
+## [11.2.0] - 2023-12-08
+- Reworked `PriceInput` Component.
+  -> new API (get:number, set:(number)=>{}) and better behaviour
+
+## [11.1.0]
+- replaced deprecated dependencies
+
 ## [11.0.0] - 2023-02-01
 - bump/add/remove core libraries and dependencies
 - reintegrated showcase into project to faciliate development
