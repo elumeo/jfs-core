@@ -34,6 +34,7 @@ export type Props = {
   setValue?: (value: number) => void,
   currencyPosition?: AdornmentPosition
   required?: boolean
+  error?: boolean
 }
 
 const PriceField: React.FC<Props> = ({
@@ -49,6 +50,7 @@ const PriceField: React.FC<Props> = ({
   disabled,
   setValue,
   required,
+  error
 }) => {
   const [position, at] = usePriceFieldAdornment(currencyPosition)
   const { formatNumber, formatMessage } = useIntl()
@@ -59,7 +61,7 @@ const PriceField: React.FC<Props> = ({
   const outOfRange = (!!valueInCent)
     && ((min !== -Infinity && valueInCent < min) || (max !== Infinity && valueInCent > max))
   const isLocalValueValid = isValidLocalisedNumber(localValue, groupingSeparator, decimalSeparator, showDecimals) || (!required && (localValue == null || localValue == ''));
-  const hasErrors = !isLocalValueValid || outOfRange;
+  const hasErrors = error || !isLocalValueValid || outOfRange;
 
   useEffect(() => {
     if (valueInCent === null) {
@@ -134,6 +136,7 @@ const PriceField: React.FC<Props> = ({
             {Currency.getCurrencySign(currency)}
           </Typography>
         </InputAdornment>,
+
       }}
       disabled={disabled}
     />
