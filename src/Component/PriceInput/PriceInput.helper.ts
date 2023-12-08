@@ -4,10 +4,9 @@ import * as Country from 'Types/Country';
 import { FormatNumberOptions } from 'react-intl';
 export const sanitize = (value: string, decimalSeparator: string): string => {
   let returnValue = value;
-  if (!returnValue || returnValue == 'null') {
+  if (!returnValue || returnValue == 'null' || returnValue == '-') {
     return null;
   }
-
   // @INFO: assumptions is, that the user always wants to input euros
   if (!returnValue.includes(decimalSeparator) || returnValue[returnValue.length - 1] === decimalSeparator) {
     if (!returnValue.includes(decimalSeparator)) {

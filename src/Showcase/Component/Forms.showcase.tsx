@@ -342,7 +342,7 @@ const Forms = () => {
                 <Grid item container xs={12}>
                   <Grid item xs={2}>
                     <PriceField
-                      textFieldProps={{ id: `${textFieldENId}WithoutDecimals`, label: 'Price field EN', helperText: 'without decimals', required: true }}
+                      textFieldProps={{ id: `${textFieldENId}WithoutDecimals`, label: 'Price field EN', helperText: 'without decimals' }}
                       showDecimals={false}
                       language={LANGUAGE.ENGLISH}
                       currency='gbp'
@@ -355,7 +355,7 @@ const Forms = () => {
                   </Grid>
                   <Grid item xs={2}>
                     <PriceField
-                      textFieldProps={{ id: `${textFieldDEId}WithoutDecimals`, label: 'Price field DE', helperText: 'without decimals', required: true }}
+                      textFieldProps={{ id: `${textFieldDEId}WithoutDecimals`, label: 'Price field DE', helperText: 'without decimals' }}
                       showDecimals={false}
                       selectOnFocus
                       disabled
@@ -370,7 +370,7 @@ const Forms = () => {
                   </Grid>
                   <Grid item xs={2}>
                     <PriceField
-                      textFieldProps={{ id: `${textFieldENId}WithDecimals`, label: 'Price field EN', helperText: 'with decimals', required: true }}
+                      textFieldProps={{ id: `${textFieldENId}WithDecimals`, label: 'Price field EN', helperText: 'with decimals' }}
                       showDecimals={true}
                       language={LANGUAGE.ENGLISH}
                       currency='gbp'
@@ -384,11 +384,12 @@ const Forms = () => {
                   </Grid>
                   <Grid item xs={2}>
                     <PriceField
-                      textFieldProps={{ id: `${textFieldDEId}WithDecimals`, label: 'Price field DE', helperText: 'with decimals', required: true }}
+                      textFieldProps={{ id: `${textFieldDEId}WithDecimals`, label: 'Price field DE', helperText: 'with decimals' }}
                       showDecimals={true}
                       selectOnFocus
                       language={LANGUAGE.GERMAN}
                       valueInCent={priceValue}
+                      required
                       currencyPosition={'start'}
                       setValue={value => {
                         console.log(`setting showcase price for ${textFieldENId}WithDecimals`, value);
@@ -398,7 +399,7 @@ const Forms = () => {
                   </Grid>
                   <Grid item xs={2}>
                     <PriceField
-                      textFieldProps={{ id: `${textFieldENId}WithNegativeMinMax`, label: 'Price field EN', helperText: 'with negative min/max', required: true }}
+                      textFieldProps={{ id: `${textFieldENId}WithNegativeMinMax`, label: 'Price field EN', helperText: 'with negative min/max' }}
                       showDecimals={true}
                       min={-100000}
                       max={-1000}
@@ -413,7 +414,7 @@ const Forms = () => {
                   </Grid>
                   <Grid item xs={2}>
                     <PriceField
-                      textFieldProps={{ id: `${textFieldDEId}WithPositiveMinMax`, label: 'Price field DE', helperText: 'with positive min/max', required: true }}
+                      textFieldProps={{ id: `${textFieldDEId}WithPositiveMinMax`, label: 'Price field DE', helperText: 'with positive min/max' }}
                       showDecimals={true}
                       min={1000}
                       max={100000}
