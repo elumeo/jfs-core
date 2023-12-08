@@ -1,6 +1,7 @@
 ## [11.2.0] - 2023-12-08
 - Reworked `PriceInput` Component.
-  -> new API (get:number, set:(number)=>{}) and better behaviour
+  - PriceInput now emits a value of type `number`
+  - PriceInput now validates the input value and only emits valid values. 
 
 ## [11.1.0]
 - replaced deprecated dependencies
