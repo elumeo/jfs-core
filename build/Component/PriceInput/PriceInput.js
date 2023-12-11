@@ -52,7 +52,7 @@ var Number_1 = require("../../Utilities/Format/Number");
 var Definition_1 = __importDefault(require("../App/Stateless/Style/Theme/Definition"));
 var PriceField = function (_a) {
     var _b;
-    var _c = _a.currency, currency = _c === void 0 ? 'eur' : _c, valueInCent = _a.valueInCent, _d = _a.language, language = _d === void 0 ? Language_1.LANGUAGE.GERMAN : _d, _e = _a.selectOnFocus, selectOnFocus = _e === void 0 ? false : _e, _f = _a.showDecimals, showDecimals = _f === void 0 ? false : _f, _g = _a.min, min = _g === void 0 ? Number.NEGATIVE_INFINITY : _g, _h = _a.max, max = _h === void 0 ? Number.POSITIVE_INFINITY : _h, textFieldProps = _a.textFieldProps, _j = _a.currencyPosition, currencyPosition = _j === void 0 ? usePriceFieldAdornment_1.AdornmentPosition.end : _j, disabled = _a.disabled, setValue = _a.setValue, required = _a.required;
+    var _c = _a.currency, currency = _c === void 0 ? 'eur' : _c, valueInCent = _a.valueInCent, _d = _a.language, language = _d === void 0 ? Language_1.LANGUAGE.GERMAN : _d, _e = _a.selectOnFocus, selectOnFocus = _e === void 0 ? false : _e, _f = _a.showDecimals, showDecimals = _f === void 0 ? false : _f, _g = _a.min, min = _g === void 0 ? Number.NEGATIVE_INFINITY : _g, _h = _a.max, max = _h === void 0 ? Number.POSITIVE_INFINITY : _h, textFieldProps = _a.textFieldProps, _j = _a.currencyPosition, currencyPosition = _j === void 0 ? usePriceFieldAdornment_1.AdornmentPosition.end : _j, disabled = _a.disabled, setValue = _a.setValue, required = _a.required, error = _a.error;
     var _k = (0, usePriceFieldAdornment_1.default)(currencyPosition), position = _k[0], at = _k[1];
     var _l = (0, react_intl_1.useIntl)(), formatNumber = _l.formatNumber, formatMessage = _l.formatMessage;
     var locale = (0, Locale_1.mapLanguageToLocale)(language);
@@ -62,7 +62,7 @@ var PriceField = function (_a) {
     var outOfRange = (!!valueInCent)
         && ((min !== -Infinity && valueInCent < min) || (max !== Infinity && valueInCent > max));
     var isLocalValueValid = (0, Number_1.isValidLocalisedNumber)(localValue, groupingSeparator, decimalSeparator, showDecimals) || (!required && (localValue == null || localValue == ''));
-    var hasErrors = !isLocalValueValid || outOfRange;
+    var hasErrors = error || !isLocalValueValid || outOfRange;
     (0, react_1.useEffect)(function () {
         if (valueInCent === null) {
             setLocalValue(null);

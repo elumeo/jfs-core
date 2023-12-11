@@ -15,6 +15,7 @@ export type Props = {
     setValue?: (value: number) => void;
     currencyPosition?: AdornmentPosition;
     required?: boolean;
+    error?: boolean;
 };
 declare const PriceField: React.FC<Props>;
 export default PriceField;
