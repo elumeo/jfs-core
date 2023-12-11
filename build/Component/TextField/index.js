@@ -58,8 +58,8 @@ var TextField = react_1.default.forwardRef(function (_a, ref) {
     var isDirty = value !== null && value !== undefined && value !== '';
     var clear = react_1.default.useCallback(function () {
         var _a;
-        (_a = props === null || props === void 0 ? void 0 : props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, { target: { value: null } });
-    }, [props.onChange]);
+        (_a = props === null || props === void 0 ? void 0 : props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, { target: { name: name, value: null } });
+    }, [props.onChange, name]);
     var _onFocus = react_1.default.useCallback(function (e) {
         if (onFocus) {
             onFocus(e);

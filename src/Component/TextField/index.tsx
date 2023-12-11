@@ -26,9 +26,9 @@ const TextField = React.forwardRef<HTMLDivElement, Props>(({
   const isDirty = value !== null && value !== undefined && value !== '';
   const clear = React.useCallback(
     () => {
-      props?.onChange?.({ target: { value: null } } as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)
+      props?.onChange?.({ target: { name, value: null } } as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)
     },
-    [props.onChange]
+    [props.onChange, name]
   )
   const _onFocus: TextFieldProps['onFocus'] = React.useCallback((e) => {
     if (onFocus) {
