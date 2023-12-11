@@ -29,12 +29,14 @@ export type Props = {
     | 'InputProps'
     | 'disabled'
     | 'required'
-  >,
-  disabled?: TextFieldProps['disabled'],
-  setValue?: (value: number) => void,
-  currencyPosition?: AdornmentPosition
-  required?: boolean
-  error?: boolean
+  >;
+  disabled?: TextFieldProps['disabled'];
+  setValue?: (value: number) => void;
+  currencyPosition?: AdornmentPosition;
+  required?: boolean;
+  error?: boolean;
+  autoCorrection?: boolean;
+  getValidationState?: (isValid: boolean) => void;
 }
 
 const PriceField: React.FC<Props> = ({
@@ -50,7 +52,9 @@ const PriceField: React.FC<Props> = ({
   disabled,
   setValue,
   required,
-  error
+  error,
+  autoCorrection = false,
+  getValidationState,
 }) => {
   const [position, at] = usePriceFieldAdornment(currencyPosition)
   const { formatNumber, formatMessage } = useIntl()
@@ -58,8 +62,7 @@ const PriceField: React.FC<Props> = ({
   const [localValue, setLocalValue] = React.useState(getLocaleString(locale, divideBy100(valueInCent, showDecimals), true, showDecimals))
   const decimalSeparator = getDecimalSeparator(locale)
   const groupingSeparator = getGroupingSeparator(locale)
-  const outOfRange = (!!valueInCent)
-    && ((min !== -Infinity && valueInCent < min) || (max !== Infinity && valueInCent > max))
+  const outOfRange = (!!valueInCent) && ((min !== -Infinity && valueInCent < min) || (max !== Infinity && valueInCent > max))
   const isLocalValueValid = isValidLocalisedNumber(localValue, groupingSeparator, decimalSeparator, showDecimals) || (!required && (localValue == null || localValue == ''));
   const hasErrors = error || !isLocalValueValid || outOfRange;
 
@@ -94,11 +97,13 @@ const PriceField: React.FC<Props> = ({
       const localizedValue = getLocaleString(locale, divideBy100(parsedValue, showDecimals), true, showDecimals)
       setLocalValue(localizedValue);
     } else {
-      setValue(valueInCent);
-      setLocalValue(!divideBy100(valueInCent, showDecimals)
-        ? null
-        : getLocaleString(locale, divideBy100(valueInCent, showDecimals), true, showDecimals)
-      );
+      if(autoCorrection) {
+        setValue(valueInCent);
+        setLocalValue(!divideBy100(valueInCent, showDecimals)
+          ? null
+          : getLocaleString(locale, divideBy100(valueInCent, showDecimals), true, showDecimals),
+        );
+      }
     }
   }
 
@@ -107,10 +112,13 @@ const PriceField: React.FC<Props> = ({
     const _isValidValue = _sanitizedValue ? isValidLocalisedNumber(localValue, groupingSeparator, decimalSeparator, showDecimals) : true;
     const parsedValue = !_sanitizedValue || !_isValidValue ? null : parseInt(_sanitizedValue);
     if (parsedValue !== null) {
-      const localizedValue = getLocaleString(locale, divideBy100(parsedValue, showDecimals), false, showDecimals)
-      setLocalValue(localizedValue);
+      setLocalValue(getLocaleString(locale, divideBy100(parsedValue, showDecimals), false, showDecimals));
     }
   }
+
+  useEffect(() => {
+    getValidationState?.(!hasErrors);
+  }, [hasErrors]);
 
   return <>
     <TextFieldClearButton
@@ -130,13 +138,10 @@ const PriceField: React.FC<Props> = ({
       hideClearButton={disabled}
       InputProps={{
         [position]: <InputAdornment position={at}>
-          <Typography color={disabled
-            ? definition.palette.text.disabled
-            : 'inherit'}>
+          <Typography color={disabled ? definition.palette.text.disabled : 'inherit'}>
             {Currency.getCurrencySign(currency)}
           </Typography>
         </InputAdornment>,
-
       }}
       disabled={disabled}
     />
