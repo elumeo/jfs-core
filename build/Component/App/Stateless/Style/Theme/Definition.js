@@ -113,6 +113,13 @@ var definition = (0, styles_1.createTheme)({
                 },
             }
         },
+        MuiCheckbox: {
+            styleOverrides: {
+                sizeSmall: {
+                    '>.MuiSvgIcon-root': { fontSize: '1.2rem' }
+                }
+            }
+        },
         MuiChip: {
             styleOverrides: {
                 clickable: { '&:hover': { backgroundColor: colors_1.grey[400] } },

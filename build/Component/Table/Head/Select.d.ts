@@ -8,6 +8,9 @@ export type Props = Omit<TableCellProps, 'onChange'> & {
     id: CheckboxProps['id'];
     name: CheckboxProps['name'];
     value: CheckboxProps['value'];
+    slotProps?: {
+        checkbox?: CheckboxProps;
+    };
 };
 declare const _default: React.NamedExoticComponent<Props>;
 export default _default;

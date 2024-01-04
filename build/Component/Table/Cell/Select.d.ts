@@ -7,6 +7,9 @@ export type Props = Partial<Omit<TableCellProps, 'onChange'>> & {
     onChange: CheckboxProps['onChange'];
     id?: CheckboxProps['id'];
     name?: CheckboxProps['name'];
+    slotProps?: {
+        checkbox?: CheckboxProps;
+    };
 };
 declare const _default: React.NamedExoticComponent<Props>;
 export default _default;
