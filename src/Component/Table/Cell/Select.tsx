@@ -1,17 +1,18 @@
 import React, { memo } from 'react';
-import {Checkbox, CheckboxProps, SxProps, TableCellProps} from '@mui/material';
+import { Checkbox, CheckboxProps, TableCellProps } from '@mui/material';
 import Root from './Root';
 
 
-const checkboxStyles: SxProps = {padding: 1};
-
 export type Props = Partial<Omit<TableCellProps, 'onChange'>> & {
-  value: string|number;
+  value: string | number;
   checked: boolean;
   disabled?: boolean;
   onChange: CheckboxProps['onChange'];
   id?: CheckboxProps['id'],
   name?: CheckboxProps['name'],
+  slotProps?: {
+    checkbox?: CheckboxProps;
+  }
 }
 
 const Select: React.FC<Props> = (
@@ -23,20 +24,21 @@ const Select: React.FC<Props> = (
     id = 'table-cell-select-',
     name = 'table-cell-select[]',
     height,
+    slotProps,
     ...rest
   }
-) => <Root padding='checkbox' align='center' size='small' height={height} {...rest}>
-  <Checkbox
-    sx={checkboxStyles}
-    size={'small'}
-    color={'secondary'}
-    id={id + value}
-    name={name}
-    value={value ?? ''}
-    checked={checked}
-    disabled={disabled}
-    onChange={onChange}
-  />
-</Root>;
+) => <Root padding='none' align='center' size='small' height={height} {...rest}>
+    <Checkbox
+      size={'small'}
+      color={'secondary'}
+      id={id + value}
+      name={name}
+      value={value ?? ''}
+      checked={checked}
+      disabled={disabled}
+      onChange={onChange}
+      {...slotProps?.checkbox}
+    />
+  </Root>;
 
 export default memo(Select);
