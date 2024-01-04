@@ -1,3 +1,6 @@
+## [11.2.4] - 2024-01-03
+- fix/improved styles for table checkboxes 
+
 ## [11.2.0] - 2023-12-08
 - Reworked `PriceInput` Component.
   - PriceInput now emits a value of type `number`
