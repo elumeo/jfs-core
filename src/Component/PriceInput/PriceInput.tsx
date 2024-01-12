@@ -97,7 +97,7 @@ const PriceField: React.FC<Props> = ({
       const localizedValue = getLocaleString(locale, divideBy100(parsedValue, showDecimals), true, showDecimals)
       setLocalValue(localizedValue);
     } else {
-      if(autoCorrection) {
+      if (autoCorrection) {
         setValue(valueInCent);
         setLocalValue(!divideBy100(valueInCent, showDecimals)
           ? null
@@ -123,11 +123,13 @@ const PriceField: React.FC<Props> = ({
   return <>
     <TextFieldClearButton
       {...textFieldProps as TextFieldProps}
-      helperText={hasErrors
-        ? outOfRange
-          ? `min: ${formatNumber(min / 100, { ...toLocaleStringFractionOptions(showDecimals ? 2 : 0) })} max: ${formatNumber(max / 100, { ...toLocaleStringFractionOptions(showDecimals ? 2 : 0) })}`
-          : formatMessage({ id: 'priceField.invalid' })
-        : textFieldProps.helperText}
+      helperText={
+        textFieldProps?.helperText ?? hasErrors
+          ? outOfRange
+            ? `min: ${formatNumber(min / 100, { ...toLocaleStringFractionOptions(showDecimals ? 2 : 0) })} max: ${formatNumber(max / 100, { ...toLocaleStringFractionOptions(showDecimals ? 2 : 0) })}`
+            : formatMessage({ id: 'priceField.invalid' })
+          : undefined
+      }
       value={localValue}
       selectOnFocus={selectOnFocus}
       error={hasErrors}
