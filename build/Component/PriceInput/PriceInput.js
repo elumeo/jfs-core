@@ -38,6 +38,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+/* eslint-disable max-lines */
 var react_1 = __importStar(require("react"));
 var material_1 = require("@mui/material");
 var TextField_1 = __importDefault(require("../TextField"));
@@ -52,12 +53,11 @@ var Number_1 = require("../../Utilities/Format/Number");
 var Definition_1 = __importDefault(require("../App/Stateless/Style/Theme/Definition"));
 var PriceField = function (_a) {
     var _b;
-    var _c;
-    var _d = _a.currency, currency = _d === void 0 ? 'eur' : _d, valueInCent = _a.valueInCent, _e = _a.language, language = _e === void 0 ? Language_1.LANGUAGE.GERMAN : _e, _f = _a.selectOnFocus, selectOnFocus = _f === void 0 ? false : _f, _g = _a.showDecimals, showDecimals = _g === void 0 ? false : _g, _h = _a.min, min = _h === void 0 ? Number.NEGATIVE_INFINITY : _h, _j = _a.max, max = _j === void 0 ? Number.POSITIVE_INFINITY : _j, textFieldProps = _a.textFieldProps, _k = _a.currencyPosition, currencyPosition = _k === void 0 ? usePriceFieldAdornment_1.AdornmentPosition.end : _k, disabled = _a.disabled, setValue = _a.setValue, required = _a.required, error = _a.error, _l = _a.autoCorrection, autoCorrection = _l === void 0 ? false : _l, getValidationState = _a.getValidationState;
-    var _m = (0, usePriceFieldAdornment_1.default)(currencyPosition), position = _m[0], at = _m[1];
-    var _o = (0, react_intl_1.useIntl)(), formatNumber = _o.formatNumber, formatMessage = _o.formatMessage;
+    var _c = _a.currency, currency = _c === void 0 ? 'eur' : _c, valueInCent = _a.valueInCent, _d = _a.language, language = _d === void 0 ? Language_1.LANGUAGE.GERMAN : _d, _e = _a.selectOnFocus, selectOnFocus = _e === void 0 ? false : _e, _f = _a.showDecimals, showDecimals = _f === void 0 ? false : _f, _g = _a.min, min = _g === void 0 ? Number.NEGATIVE_INFINITY : _g, _h = _a.max, max = _h === void 0 ? Number.POSITIVE_INFINITY : _h, textFieldProps = _a.textFieldProps, _j = _a.currencyPosition, currencyPosition = _j === void 0 ? usePriceFieldAdornment_1.AdornmentPosition.end : _j, disabled = _a.disabled, setValue = _a.setValue, required = _a.required, error = _a.error, _k = _a.autoCorrection, autoCorrection = _k === void 0 ? false : _k, getValidationState = _a.getValidationState;
+    var _l = (0, usePriceFieldAdornment_1.default)(currencyPosition), position = _l[0], at = _l[1];
+    var _m = (0, react_intl_1.useIntl)(), formatNumber = _m.formatNumber, formatMessage = _m.formatMessage;
     var locale = (0, Locale_1.mapLanguageToLocale)(language);
-    var _p = react_1.default.useState((0, PriceInput_helper_1.getLocaleString)(locale, (0, Number_1.divideBy100)(valueInCent, showDecimals), true, showDecimals)), localValue = _p[0], setLocalValue = _p[1];
+    var _o = react_1.default.useState((0, PriceInput_helper_1.getLocaleString)(locale, (0, Number_1.divideBy100)(valueInCent, showDecimals), true, showDecimals)), localValue = _o[0], setLocalValue = _o[1];
     var decimalSeparator = (0, Number_1.getDecimalSeparator)(locale);
     var groupingSeparator = (0, Number_1.getGroupingSeparator)(locale);
     var outOfRange = (!!valueInCent) && ((min !== -Infinity && valueInCent < min) || (max !== Infinity && valueInCent > max));
@@ -113,11 +113,13 @@ var PriceField = function (_a) {
     (0, react_1.useEffect)(function () {
         getValidationState === null || getValidationState === void 0 ? void 0 : getValidationState(!hasErrors);
     }, [hasErrors]);
-    return (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: (0, jsx_runtime_1.jsx)(TextField_1.default, __assign({}, textFieldProps, { helperText: ((_c = textFieldProps === null || textFieldProps === void 0 ? void 0 : textFieldProps.helperText) !== null && _c !== void 0 ? _c : hasErrors)
-                ? outOfRange
-                    ? "min: ".concat(formatNumber(min / 100, __assign({}, (0, PriceInput_helper_1.toLocaleStringFractionOptions)(showDecimals ? 2 : 0))), " max: ").concat(formatNumber(max / 100, __assign({}, (0, PriceInput_helper_1.toLocaleStringFractionOptions)(showDecimals ? 2 : 0))))
-                    : formatMessage({ id: 'priceField.invalid' })
-                : '', value: localValue, selectOnFocus: selectOnFocus, error: hasErrors, required: required, onFocus: _onFocus, onBlur: _onBlur, onChange: _onChange, hideClearButton: disabled, InputProps: (_b = {},
+    return (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: (0, jsx_runtime_1.jsx)(TextField_1.default, __assign({}, textFieldProps, { helperText: textFieldProps.helperText
+                ? textFieldProps.helperText
+                : hasErrors
+                    ? outOfRange
+                        ? "min: ".concat(formatNumber(min / 100, __assign({}, (0, PriceInput_helper_1.toLocaleStringFractionOptions)(showDecimals ? 2 : 0))), " max: ").concat(formatNumber(max / 100, __assign({}, (0, PriceInput_helper_1.toLocaleStringFractionOptions)(showDecimals ? 2 : 0))))
+                        : formatMessage({ id: 'priceField.invalid' })
+                    : undefined, value: localValue, selectOnFocus: selectOnFocus, error: hasErrors, required: required, onFocus: _onFocus, onBlur: _onBlur, onChange: _onChange, hideClearButton: disabled, InputProps: (_b = {},
                 _b[position] = (0, jsx_runtime_1.jsx)(material_1.InputAdornment, __assign({ position: at }, { children: (0, jsx_runtime_1.jsx)(material_1.Typography, __assign({ color: disabled ? Definition_1.default.palette.text.disabled : 'inherit' }, { children: Format_1.Currency.getCurrencySign(currency) })) })),
                 _b), disabled: disabled })) });
 };

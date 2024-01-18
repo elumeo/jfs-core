@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { useEffect } from 'react';
 import { InputAdornment, Typography } from '@mui/material';
 import TextFieldClearButton, { type Props as TextFieldProps } from 'Component/TextField'
@@ -119,16 +120,17 @@ const PriceField: React.FC<Props> = ({
   useEffect(() => {
     getValidationState?.(!hasErrors);
   }, [hasErrors]);
-
   return <>
     <TextFieldClearButton
       {...textFieldProps as TextFieldProps}
       helperText={
-        textFieldProps?.helperText ?? hasErrors
-          ? outOfRange
-            ? `min: ${formatNumber(min / 100, { ...toLocaleStringFractionOptions(showDecimals ? 2 : 0) })} max: ${formatNumber(max / 100, { ...toLocaleStringFractionOptions(showDecimals ? 2 : 0) })}`
-            : formatMessage({ id: 'priceField.invalid' })
-          : undefined
+        textFieldProps.helperText
+          ? textFieldProps.helperText
+          : hasErrors
+            ? outOfRange
+              ? `min: ${formatNumber(min / 100, { ...toLocaleStringFractionOptions(showDecimals ? 2 : 0) })} max: ${formatNumber(max / 100, { ...toLocaleStringFractionOptions(showDecimals ? 2 : 0) })}`
+              : formatMessage({ id: 'priceField.invalid' })
+            : undefined
       }
       value={localValue}
       selectOnFocus={selectOnFocus}
