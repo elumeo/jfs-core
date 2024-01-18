@@ -1,3 +1,6 @@
+## [11.2.5/6] - 2024-01-18
+- fix/improved handling of helperText in PriceInput Component
+
 ## [11.2.4] - 2024-01-03
 - fix/improved styles for table checkboxes 
 
