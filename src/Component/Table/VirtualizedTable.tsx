@@ -82,7 +82,12 @@ const VirtualizedTable = <ItemData extends {}, ItemContext = unknown>({
         ? NoResults
         : undefined,
       Scroller: TableContainer,
-      Table: (props: TableProps) => <Table  {...props} {...slotProps?.tableProps ?? {}} sx={{ tableLayout: 'fixed', ...slotProps?.tableProps?.sx ?? {} }} />,
+      Table: (_props: TableProps) => <Table  {..._props} {...slotProps?.tableProps ?? {}}
+        sx={{
+          tableLayout: 'fixed',
+          ...(_props?.sx ?? {}),
+          ...(slotProps?.tableProps?.sx ?? {}),
+        } as SxProps} />,
       TableHead,
       TableRow: React.forwardRef<HTMLTableRowElement, TableRowProps>((props, ref) => <TableRow {...props}  {...slotProps?.tableRowProps ?? {}} ref={ref} />),
       TableBody,

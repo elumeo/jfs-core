@@ -6,7 +6,7 @@ const Footer = React.forwardRef<HTMLTableSectionElement, React.PropsWithChildren
     ? isLoading
       ? (
         <caption ref={ref}>
-          < Box textAlign={'center'} >
+          <Box textAlign={'center'} >
             <CircularProgress size={20} color='secondary' />
           </Box>
         </caption>
