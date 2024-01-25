@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import React, {useCallback, useEffect} from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   Box,
   Card,
@@ -14,7 +14,7 @@ import {
   TableContainer,
   TableRow,
   TableHead as MuiTableHead,
-  Typography, TableProps, FormControl, MenuItem, SelectProps, CircularProgress
+  Typography, TableProps, FormControl, MenuItem, SelectProps
 } from '@mui/material';
 import AppNavigation from './AppNavigation.showcase';
 import Switch from '@mui/material/Switch';
@@ -23,32 +23,32 @@ import VirtualizedTable from '../../Component/Table/VirtualizedTable';
 import useSortParamsRouter from '../../Effect/useSortParamsRouter';
 import Layout from '../../Component/App/Layout';
 import * as TableApi from '../Mock/TableApi';
-import {useIntl} from 'react-intl';
-import {common} from '../../Constant/Color';
+import { useIntl } from 'react-intl';
+import { common } from '../../Constant/Color';
 import TableHeadDefault from '../../Component/Table/Head/Default';
 import TableHeadSelect from '../../Component/Table/Head/Select';
 import TableCellSelect from '../../Component/Table/Cell/Select';
 import TableCellDefault from '../../Component/Table/Cell/Default';
 import TableCellDateTime from '../../Component/Table/Cell/DateTime';
 import TableCellProduct from '../../Component/Table/Cell/Product';
-import {addToastAction} from '../../Store/Action';
-import {useDispatch} from 'react-redux';
+import { addToastAction } from '../../Store/Action';
+import { useDispatch } from 'react-redux';
 import Select from '@mui/material/Select';
 import Grid2 from '@mui/material/Unstable_Grid2';
 
 const sxs: Record<string, SxProps> = {
-  TableBasic: {minWidth: 650},
-  TableBasicContainer: {maxHeight: 440},
+  TableBasic: { minWidth: 650 },
+  TableBasicContainer: { maxHeight: 440 },
 };
 
 const Tables = () => {
   const dispatch = useDispatch();
-  const {formatMessage} = useIntl()
+  const { formatMessage } = useIntl()
   const [sizeBasicTable, setSizeBasicTable] = React.useState<TableProps['size']>('medium')
   const [stickyBasicTable, setStickyBasicTable] = React.useState(true)
-  const [{sortBy, sortDirection}, setSort] = useSortParamsRouter<TableApi.Row>({sortBy: 'dateTime', sortDirection: 'asc'})
+  const [{ sortBy, sortDirection }, setSort] = useSortParamsRouter<TableApi.Row>({ sortBy: 'dateTime', sortDirection: 'asc' })
   const [sizeVirtualizedTable, setSizeVirtualizedTable] = React.useState<TableProps['size']>('medium')
-  const [virtualizedTableData, setVirtualizedTableData] = React.useState([])
+  const [virtualizedTableData, setVirtualizedTableData] = React.useState<TableApi.Row[]>([])
   const [isLoading, setIsLoading] = React.useState(false)
   const toggleStickyBasicTable = () => setStickyBasicTable(old => !old);
   const onChangeBasicSize: SelectProps<TableProps['size']>['onChange'] = (event) => setSizeBasicTable(event.target.value as TableProps['size']);
@@ -71,46 +71,46 @@ const Tables = () => {
     return () => clearTimeout(timeout)
   }, []);
 
-  const header = <TableRow sx={{backgroundColor: common.white, zIndex: 10}}>
+  const header = <TableRow sx={{ backgroundColor: common.white, zIndex: 10 }}>
     {TableApi.Columns.map((key) => {
-        if (key == 'select') {
-          return <TableHeadSelect
-            size={sizeVirtualizedTable}
-            width={TableApi.widthByColumn[key]}
-            checked={false}
-            id={'test'}
-            name={'###all###'}
-            value={'###all###'}
-            key={key}
-            onChange={() => dispatch(addToastAction({contentMessage: 'dynamic select is not implemented in showcase'}))}
-          />
-        }
-        return <TableHeadDefault
-          align={'left'}
-          dataKey={key}
-          key={key}
-          sortBy={sortBy}
+      if (key == 'select') {
+        return <TableHeadSelect
           size={sizeVirtualizedTable}
           width={TableApi.widthByColumn[key]}
-          onClick={() => {
-            setSort({
-              sortBy: key as keyof TableApi.Row,
-              sortDirection: sortDirection === 'asc' ? 'desc' : 'asc'
-            })
-          }}
-          sortDirection={sortDirection}
-          disableSort={!TableApi.sortableColumns.includes(key)}
-          label={formatMessage({id: `showcase.table.header.${key}`})}
+          checked={false}
+          id={'test'}
+          name={'###all###'}
+          value={'###all###'}
+          key={key}
+          onChange={() => dispatch(addToastAction({ contentMessage: 'dynamic select is not implemented in showcase' }))}
         />
       }
+      return <TableHeadDefault
+        align={'left'}
+        dataKey={key}
+        key={key}
+        sortBy={sortBy}
+        size={sizeVirtualizedTable}
+        width={TableApi.widthByColumn[key]}
+        onClick={() => {
+          setSort({
+            sortBy: key as keyof TableApi.Row,
+            sortDirection: sortDirection === 'asc' ? 'desc' : 'asc'
+          })
+        }}
+        sortDirection={sortDirection}
+        disableSort={!TableApi.sortableColumns.includes(key)}
+        label={formatMessage({ id: `showcase.table.header.${key}` })}
+      />
+    }
     )}
   </TableRow>
-  return <Layout navigation={<AppNavigation/>}>
+  return <Layout navigation={<AppNavigation />}>
     <Container disableGutters maxWidth={false}>
       <Grid container direction={'column'} spacing={1}>
         <Grid item xs>
           <Card>
-            <CardHeader title='Basic Table'/>
+            <CardHeader title='Basic Table' />
             <CardContent>
               <Typography>When making the table header sticky it becomes more highlighted (default app background color). The sticky header should be the default
                 behaviour.</Typography>
@@ -124,7 +124,7 @@ const Tables = () => {
                   </FormControl>
                 </Grid2>
                 <Grid2>
-                  <FormControlLabel control={<Switch onChange={toggleStickyBasicTable} checked={stickyBasicTable}/>} label='Sticky'/>
+                  <FormControlLabel control={<Switch onChange={toggleStickyBasicTable} checked={stickyBasicTable} />} label='Sticky' />
                 </Grid2>
               </Grid2>
               <TableContainer sx={sxs.TableBasicContainer}>
@@ -137,7 +137,7 @@ const Tables = () => {
                           align={'left'}
                           value={row.select}
                           checked={false}
-                          onChange={() => dispatch(addToastAction({contentMessage: 'dynamic select is not implemented in showcase'}))}
+                          onChange={() => dispatch(addToastAction({ contentMessage: 'dynamic select is not implemented in showcase' }))}
                         />
                         <TableCellProduct
                           id={'12345'}
@@ -152,7 +152,7 @@ const Tables = () => {
                         <TableCellDefault>{row.fat}</TableCellDefault>
                         <TableCellDefault>{row.carbs}</TableCellDefault>
                         <TableCellDefault>{row.protein}</TableCellDefault>
-                        <TableCellDateTime value={row.dateTime} asTwoLines={false}/>
+                        <TableCellDateTime value={row.dateTime} asTwoLines={false} />
                       </TableRow>
                     ))}
                   </TableBody>
@@ -163,9 +163,9 @@ const Tables = () => {
         </Grid>
         <Grid item xs>
           <Card>
-            <CardHeader title='Virtualized Table'/>
+            <CardHeader title='Virtualized Table' />
             <Box component={CardContent} height={'600px'}>
-              <Grid container direction={'column'} style={{height: '100%'}}>
+              <Grid container direction={'column'} style={{ height: '100%' }}>
                 <Grid item>
                   <Typography>Virtualized Tables are based on the <Link target={'_blank'} href={'https://virtuoso.dev/'}>react-virtuoso</Link> library. This
                     lib is headless, so it requires authors to handle their own components and styles.
@@ -181,27 +181,36 @@ const Tables = () => {
                   </FormControl>
                 </Grid>
                 <Grid item xs>
-                  <VirtualizedTable
-                    tableProps={{
-                      size: sizeVirtualizedTable,
-                    }}
-                    tableRowProps={{
-                      hover: true,
-                      /* sx: {'&:nth-of-type(odd)': {backgroundColor: 'lightcyan',}} */
-                    }}
-                    data={virtualizedTableData}
+                  <VirtualizedTable<TableApi.Row>
+                    totalCount={200}
                     fixedHeaderContent={() => header}
-                    fixedFooterContent={() => isLoading
-                      ? <CircularProgress size={20} color={'secondary'}/>
-                      : <Typography variant={'body1'} textAlign={'center'}>{formatMessage({id: 'table.noMoreResults'})}</Typography>
+                    data={[]} />
+                </Grid>
+                <Grid item xs>
+                  <VirtualizedTable<TableApi.Row>
+                    slotProps={{
+                      tableProps: {
+                        size: sizeVirtualizedTable,
+                      },
+                      tableRowProps: {
+                        hover: true,
+                        /* sx: {'&:nth-of-type(odd)': {backgroundColor: 'lightcyan',}} */
+                      }
+                    }}
+                    isLoading={isLoading}
+                    data={
+                      virtualizedTableData
                     }
+                    totalCount={200}
+                    fixedHeaderContent={() => header}
+
                     itemContent={(index, row) => (
                       <>
                         <TableCellSelect
                           align={'left'}
                           value={row.select}
                           checked={false}
-                          onChange={() => dispatch(addToastAction({contentMessage: 'dynamic select is not implemented in showcase'}))}
+                          onChange={() => dispatch(addToastAction({ contentMessage: 'dynamic select is not implemented in showcase' }))}
                         />
                         <TableCellProduct
                           id={'12345'}
@@ -216,7 +225,7 @@ const Tables = () => {
                         <TableCellDefault size={sizeVirtualizedTable}>{row.calories}</TableCellDefault>
                         <TableCellDefault size={sizeVirtualizedTable}>{row.fat}</TableCellDefault>
                         <TableCellDefault size={sizeVirtualizedTable}>{row.protein}</TableCellDefault>
-                        <TableCellDateTime size={sizeVirtualizedTable} value={row.dateTime}/>
+                        <TableCellDateTime size={sizeVirtualizedTable} value={row.dateTime} />
                       </>
                     )}
                     sortBy={sortBy}
@@ -224,7 +233,7 @@ const Tables = () => {
                     endReached={loadMore}
                     overscan={50}
                     components={{
-                      EmptyPlaceholder: undefined
+                      // EmptyPlaceholder: undefined
                     }}
                   />
                 </Grid>

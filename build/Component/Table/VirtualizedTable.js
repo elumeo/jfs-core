@@ -85,7 +85,7 @@ var sort = function (data, sortBy, compare) {
     });
 };
 var VirtualizedTable = function (_a) {
-    var _b = _a.data, data = _b === void 0 ? [] : _b, sortBy = _a.sortBy, sortDirection = _a.sortDirection, _c = _a.compare, compare = _c === void 0 ? function (a, b) { return (a[sortBy] < b[sortBy]) ? -1 : a[sortBy] === b[sortBy] ? 0 : 1; } : _c, _d = _a.filter, filter = _d === void 0 ? function () { return true; } : _d, tableProps = _a.tableProps, tableRowProps = _a.tableRowProps, propComponents = _a.components, props = __rest(_a, ["data", "sortBy", "sortDirection", "compare", "filter", "tableProps", "tableRowProps", "components"]);
+    var _b = _a.data, data = _b === void 0 ? [] : _b, sortBy = _a.sortBy, sortDirection = _a.sortDirection, _c = _a.compare, compare = _c === void 0 ? function (a, b) { return (a[sortBy] < b[sortBy]) ? -1 : a[sortBy] === b[sortBy] ? 0 : 1; } : _c, _d = _a.filter, filter = _d === void 0 ? function () { return true; } : _d, slotProps = _a.slotProps, propComponents = _a.components, _e = _a.isLoading, isLoading = _e === void 0 ? false : _e, props = __rest(_a, ["data", "sortBy", "sortDirection", "compare", "filter", "slotProps", "components", "isLoading"]);
     var ref = react_1.default.useRef(null);
     var _sorted = react_1.default.useMemo(function () {
         var sorted = sort(data.filter(filter), sortBy, compare);
@@ -93,7 +93,9 @@ var VirtualizedTable = function (_a) {
             ? sorted.reverse()
             : sorted;
     }, [data, sortBy, sortDirection, compare, filter]);
-    var components = react_1.default.useMemo(function () { return (__assign({ EmptyPlaceholder: NoResults_1.default, Scroller: Container_1.default, Table: function (props) { return (0, jsx_runtime_1.jsx)(Table_1.default, __assign({}, props, tableProps)); }, TableHead: material_1.TableHead, TableRow: react_1.default.forwardRef(function (props, ref) { return (0, jsx_runtime_1.jsx)(material_1.TableRow, __assign({}, props, tableRowProps, { ref: ref })); }), TableBody: material_1.TableBody, TableFoot: react_1.default.forwardRef(function (props, ref) { return (0, jsx_runtime_1.jsx)(Footer_1.default, __assign({}, props, { ref: ref })); }) }, propComponents)); }, [propComponents]);
-    return (0, jsx_runtime_1.jsx)(react_virtuoso_1.TableVirtuoso, __assign({ ref: ref, data: _sorted, components: components, overscan: 20 }, props));
+    var components = react_1.default.useMemo(function () { return (__assign({ EmptyPlaceholder: (data.length == 0 && !isLoading)
+            ? NoResults_1.default
+            : undefined, Scroller: Container_1.default, Table: function (props) { var _a, _b, _c; return (0, jsx_runtime_1.jsx)(Table_1.default, __assign({}, props, (_a = slotProps === null || slotProps === void 0 ? void 0 : slotProps.tableProps) !== null && _a !== void 0 ? _a : {}, { sx: __assign({ tableLayout: 'fixed' }, (_c = (_b = slotProps === null || slotProps === void 0 ? void 0 : slotProps.tableProps) === null || _b === void 0 ? void 0 : _b.sx) !== null && _c !== void 0 ? _c : {}) })); }, TableHead: material_1.TableHead, TableRow: react_1.default.forwardRef(function (props, ref) { var _a; return (0, jsx_runtime_1.jsx)(material_1.TableRow, __assign({}, props, (_a = slotProps === null || slotProps === void 0 ? void 0 : slotProps.tableRowProps) !== null && _a !== void 0 ? _a : {}, { ref: ref })); }), TableBody: material_1.TableBody, TableFoot: react_1.default.forwardRef(function (props, ref) { return (0, jsx_runtime_1.jsx)(Footer_1.default, __assign({ isLoading: isLoading }, props, { ref: ref })); }) }, propComponents)); }, [propComponents, slotProps, isLoading]);
+    return (0, jsx_runtime_1.jsx)(react_virtuoso_1.TableVirtuoso, __assign({ ref: ref, data: _sorted, components: components, fixedFooterContent: function () { return undefined; }, overscan: 20 }, props));
 };
 exports.default = (0, react_1.memo)(VirtualizedTable);

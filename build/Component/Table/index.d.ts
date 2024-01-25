@@ -18,11 +18,13 @@ declare const Table: {
     Row: {
         NoResults: import("react").FC<{}>;
         Footer: import("react").ForwardRefExoticComponent<{
+            isLoading: boolean;
+        } & {
             children?: import("react").ReactNode;
         } & import("react").RefAttributes<HTMLTableSectionElement>>;
     };
     Container: import("react").ForwardRefExoticComponent<import("react").RefAttributes<HTMLDivElement>>;
     Table: (props: import("@mui/material").TableProps<"table", {}>) => JSX.Element;
-    VirtualizedTable: <ItemData extends {}, ItemContext = unknown>({ data, sortBy, sortDirection, compare, filter, tableProps, tableRowProps, components: propComponents, ...props }: import("./VirtualizedTable").Props<ItemData, ItemContext>) => JSX.Element;
+    VirtualizedTable: <ItemData extends {}, ItemContext = unknown>({ data, sortBy, sortDirection, compare, filter, slotProps, components: propComponents, isLoading, ...props }: import("./VirtualizedTable").Props<ItemData, ItemContext>) => JSX.Element;
 };
 export default Table;
