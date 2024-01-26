@@ -89,9 +89,13 @@ const VirtualizedTable = <ItemData extends {}, ItemContext = unknown>({
           ...(slotProps?.tableProps?.sx ?? {}),
         } as SxProps} />,
       TableHead,
-      TableRow: React.forwardRef<HTMLTableRowElement, TableRowProps>((props, ref) => <TableRow {...props}  {...slotProps?.tableRowProps ?? {}} ref={ref} />),
+      TableRow: React.forwardRef<HTMLTableRowElement, TableRowProps>((_props, ref) => <TableRow {..._props}  {...slotProps?.tableRowProps ?? {}} ref={ref}
+        sx={{
+          ..._props?.sx ?? {},
+          ...(slotProps?.tableRowProps?.sx ?? {}),
+        } as SxProps} />),
       TableBody,
-      TableFoot: React.forwardRef<HTMLTableSectionElement, TableFooterProps>((props, ref) => <Footer isLoading={isLoading} {...props} ref={ref} />),
+      TableFoot: React.forwardRef<HTMLTableSectionElement, TableFooterProps>((_props, ref) => <Footer isLoading={isLoading} {..._props} ref={ref} />),
       ...propComponents
     }),
     [propComponents, slotProps, isLoading]
