@@ -1,3 +1,6 @@
+## [11.2.7/8] - 2024-01-18
+- fix/improved virtualized table styles
+
 ## [11.2.5/6] - 2024-01-18
 - fix/improved handling of helperText in PriceInput Component
 
