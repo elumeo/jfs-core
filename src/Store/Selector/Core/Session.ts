@@ -8,3 +8,4 @@ export const isAuthorized = createSelector(pickState, state => state.isAuthorize
 export const isCheckingSession = createSelector(pickState, state => state.isCheckingSession)
 
 
+export const pickUsername = createSelector(pickState, state => state.sessionDTO?.username ?? '')

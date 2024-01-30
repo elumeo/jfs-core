@@ -1,11 +1,11 @@
-import React, {memo} from 'react'
-import {TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, TableComponents,} from 'react-virtuoso'
-import {SortDirection} from '@mui/material/TableCell'
+import React, { memo } from 'react'
+import { TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, TableComponents, } from 'react-virtuoso'
+import { SortDirection } from '@mui/material/TableCell'
 import Table from './Table'
 import TableContainer from './Container'
 import NoResults from './Row/NoResults'
-import {SxProps, TableBody, TableFooterProps, TableHead, TableProps, TableRow} from '@mui/material'
-import {TableRowProps} from '@mui/material/TableRow';
+import { SxProps, TableBody, TableFooterProps, TableHead, TableProps, TableRow } from '@mui/material'
+import { TableRowProps } from '@mui/material/TableRow';
 import Footer from './Row/Footer'
 
 export const visuallyHiddenStyle: SxProps = {
@@ -38,28 +38,31 @@ const sort = <ItemData extends {}>(data: ItemData[], sortBy: keyof ItemData, com
     return 0
   })
 }
-export type Props<ItemData, ItemContext = unknown> = Partial<TableVirtuosoProps<ItemData, ItemContext>> & {
+export type Props<ItemData, ItemContext = unknown> = TableVirtuosoProps<ItemData, ItemContext> & {
   data: ItemData[];
   sortBy?: keyof ItemData
   sortDirection?: SortDirection
   compare?: (a: ItemData, b: ItemData) => -1 | 0 | 1,
   filter?: (item: ItemData) => boolean,
-  setSort?: ({sortBy, sortDirection}: { sortBy: keyof ItemData, sortDirection: SortDirection }) => void,
-  tableProps?: TableProps;
-  tableRowProps?: TableRowProps;
+  setSort?: ({ sortBy, sortDirection }: { sortBy: keyof ItemData, sortDirection: SortDirection }) => void,
+  isLoading?: boolean,
+  slotProps?: {
+    tableProps?: TableProps;
+    tableRowProps?: TableRowProps;
+  }
 };
 
 const VirtualizedTable = <ItemData extends {}, ItemContext = unknown>({
-                                                 data = [],
-                                                 sortBy,
-                                                 sortDirection,
-                                                 compare = (a, b) => (a[sortBy] < b[sortBy]) ? -1 : a[sortBy] === b[sortBy] ? 0 : 1,
-                                                 filter = () => true,
-                                                 tableProps,
-                                                 tableRowProps,
-                                                 components: propComponents,
-                                                 ...props
-                                               }: Props<ItemData, ItemContext>) => {
+  data = [],
+  sortBy,
+  sortDirection,
+  compare = (a, b) => (a[sortBy] < b[sortBy]) ? -1 : a[sortBy] === b[sortBy] ? 0 : 1,
+  filter = () => true,
+  slotProps,
+  components: propComponents,
+  isLoading = false,
+  ...props
+}: Props<ItemData, ItemContext>) => {
 
   const ref = React.useRef<VirtuosoHandle>(null);
 
@@ -73,23 +76,35 @@ const VirtualizedTable = <ItemData extends {}, ItemContext = unknown>({
     [data, sortBy, sortDirection, compare, filter]
   );
 
-  const components: TableComponents = React.useMemo(
+  const components: TableComponents<ItemData, ItemContext> = React.useMemo(
     () => ({
-      EmptyPlaceholder: NoResults,
+      EmptyPlaceholder: (data.length == 0 && !isLoading)
+        ? NoResults
+        : undefined,
       Scroller: TableContainer,
-      Table: (props: TableProps) => <Table {...props} {...tableProps} />,
+      Table: (_props: TableProps) => <Table  {..._props} {...slotProps?.tableProps ?? {}}
+        sx={{
+          tableLayout: 'fixed',
+          ...(_props?.sx ?? {}),
+          ...(slotProps?.tableProps?.sx ?? {}),
+        } as SxProps} />,
       TableHead,
-      TableRow: React.forwardRef<HTMLTableRowElement, TableRowProps>((props, ref) => <TableRow {...props} {...tableRowProps} ref={ref}/>),
+      TableRow: React.forwardRef<HTMLTableRowElement, TableRowProps>((_props, ref) => <TableRow {..._props}  {...slotProps?.tableRowProps ?? {}} ref={ref}
+        sx={{
+          ..._props?.sx ?? {},
+          ...(slotProps?.tableRowProps?.sx ?? {}),
+        } as SxProps} />),
       TableBody,
-      TableFoot: React.forwardRef<HTMLTableSectionElement, TableFooterProps>((props, ref) => <Footer {...props} ref={ref}/>),
+      TableFoot: React.forwardRef<HTMLTableSectionElement, TableFooterProps>((_props, ref) => <Footer isLoading={isLoading} {..._props} ref={ref} />),
       ...propComponents
     }),
-    [propComponents]
+    [propComponents, slotProps, isLoading]
   );
-  return <TableVirtuoso
+  return <TableVirtuoso<ItemData, ItemContext>
     ref={ref}
     data={_sorted}
     components={components}
+    fixedFooterContent={() => undefined}
     overscan={20}
     {...props}
   />;

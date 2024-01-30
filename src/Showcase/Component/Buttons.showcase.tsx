@@ -41,7 +41,7 @@ const Buttons: React.FC<Props> = () => {
         if (agent) {
           agent.show(false);
           agent.animate();
-          agent.speak('It looks like you are trying to use clippy', false);
+          agent.speak('ich bin das Spaßprojekt', false);
         }
       }
       }> clippy</Button>

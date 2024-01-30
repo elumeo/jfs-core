@@ -1,73 +1,56 @@
 import * as UserConfig from 'API/LOCAL_STORAGE/UserConfig';
-import ClippyLoaderService from 'Component/Clippy/ClippyLoader.service';
+import ClippyLoaderService from 'API/CLIPPY/ClippyLoader.service';
+import { pickClippyVariant } from 'Store/Selector/Core/LocalStorage.selector';
+import { pickUsername } from 'Store/Selector/Core/Session';
 import { Agent } from 'Types/Clippy.type';
 import { useSelector } from 'Types/Redux';
 import { type Agent as ClippyAgent } from 'clippyts';
 import { AgentType } from 'clippyts/dist/types';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 
 export type ClippyVariant = Agent
 const useClippy = () => {
   const [agent, setAgent] = useState<ClippyAgent>(null)
-  const userId = useSelector(state => state.Core.Session?.sessionDTO?.username ?? '')
-  const clippyVariant = useSelector(state =>
-    state
-      .Core
-      .LocalStorage
-    ?.[
-    [userId, UserConfig.clippyFeature].join(UserConfig.SEPERATOR) as ClippyVariant] ?? 'Clippy')
+  const clippyVariant = useSelector(pickClippyVariant)
 
   const hide = useCallback(() => {
     if (agent) {
       agent?.hide(false, () => { return });
     }
-  }, [agent, setAgent])
-  const clippyloader = useMemo(() => ClippyLoaderService(clippyVariant), [clippyVariant])
+  }, [agent])
+  const clippyloader = useMemo(async () => await ClippyLoaderService(clippyVariant), [clippyVariant])
 
   useEffect(() => {
-
     // if (clippyVariant) {
-    clippyloader.then(setAgent).catch(() => setAgent(null))
-    // ClippyLoaderService(clippyVariant).then(setAgent).catch(() => setAgent(null))
+    clippyloader.then(agent => {
+      setAgent(agent)
+      console.log('hello clippy', { clippyVariant, agent, })
+    }).catch(() => setAgent(null))
 
-    // console.log('loading clippy')
-    // clippy.load({
-    //   name: clippyVariant,
-    //   successCb: setAgent,
-    //   failCb: (error) => {
-    //     console.log(error)
-    //     setAgent(null);
-    //   },
-    //   selector: 'clippy',
-    // })
-    // }
-    // else if (clippy.agents?.[clippyVariant as AgentType]) {
-    //   clippy.agents?.[clippyVariant as AgentType].show(true, );
-    // }
     return () => {
       console.log('bye clippy')
       hide()
     };
-  }, [clippyloader, hide])
+  }, [clippyloader])
 
-  useEffect(() => {
-    const clippyDom = document.querySelector('.clippy');
-    // const stopCb = () => {
-    //   console.log('stopping?');
-    //   agent.closeBalloon();
-    // }
+  useLayoutEffect(() => {
+    const clippyDoms = document.querySelectorAll('.clippy');
     if (agent) {
-      if (clippyDom) {
-        console.log('adding?');
-        clippyDom.addEventListener('contextmenu', e => { e.preventDefault(); hide() });
+      if (clippyDoms.length) {
+        clippyDoms.forEach(clippyDom => {
+          clippyDom.addEventListener('contextmenu', e => { e.preventDefault(); hide() });
+        })
       }
     }
     return () => {
-      console.log('removing?');
-      clippyDom?.removeEventListener('contextmenu', e => { e.preventDefault(); hide() });
+      clippyDoms.forEach(clippyDom => {
+        clippyDom.removeEventListener('contextmenu', e => { e.preventDefault(); hide() });
+      })
     }
   }, [agent, hide])
-  return useMemo(() => ({ variant: clippyVariant as ClippyVariant, agent: agent }), [clippyVariant, agent])
+  //useMemo(() => 
+  return ({ variant: clippyVariant as ClippyVariant, agent: agent })
+  // , [clippyVariant, agent])
 }
 
 export default useClippy

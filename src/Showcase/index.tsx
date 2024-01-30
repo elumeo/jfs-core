@@ -18,6 +18,8 @@ import { create } from '../Store';
 import Indicator from '../Component/WebSocket/Room/Status/Indicator';
 import DebugButton from '../Component/Button/DebugButton';
 import Routes from './Routes';
+import actionsToLog from './Debug/actionsToLog';
+import Mapper from './Debug/Mapper';
 
 declare const module: { hot: { accept: () => void } };
 declare const window: Window & { core_reactRoot: ReturnType<typeof createRoot> }
@@ -47,10 +49,14 @@ window['core_reactRoot'].render(<App
             Path: '/staging/websocket2.services',
             PrivateNamespace: 'Jsc2Jfs',
             AutoRoomSubscriptions: ['currentGame', 'plannedGames']
-          }} roomName={'currentGame'} />
-          <Settings.Button />
-          <DebugButton />
-          <Notification.Button.Show />
+          }} roomName={'currentGame'}/>
+          <Settings.Button/>
+          <DebugButton
+            actions={actionsToLog}
+            mapper={Mapper}
+            filter={() => true}
+          />
+          <Notification.Button.Show/>
         </>
       }
     />}

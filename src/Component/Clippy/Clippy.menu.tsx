@@ -1,5 +1,5 @@
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, } from '@mui/material';
-import React from 'react'
+import React, { useEffect } from 'react'
 // import clippy from 'clippyts';
 // import useTheme from 'Component/App/Stateless/Style/Theme/useTheme'
 import { savePreferredClippyVariant } from 'Store/Action';
@@ -9,17 +9,17 @@ import { type Agent, AGENTS } from 'Types/Clippy.type';
 const ClippyMenu: React.FC = () => {
   const { variant, agent } = useClippy()
   const dispatch = useDispatch()
-  const handleChange =
+  const handleChange = React.useCallback(
     (event: SelectChangeEvent<ClippyVariant>,) => {
       agent.hide(true, () => dispatch(savePreferredClippyVariant(event.target.value as Agent)));
-    }
+    }, [agent, dispatch]
+  )
 
 
   return <FormControl fullWidth >
     <InputLabel id='clippy-picker-label'>Helferlein wählen</InputLabel>
     <Select<ClippyVariant>
       value={variant}
-      // disabled={!!agent}
       onChange={handleChange}
     >
       {

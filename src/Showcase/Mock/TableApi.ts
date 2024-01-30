@@ -1,4 +1,4 @@
-import {omit} from 'lodash'
+import { omit } from 'lodash'
 
 export const Column = {
   select: 'select',
@@ -41,7 +41,7 @@ export const widthByColumn: Record<Column, string> = {
 }
 
 function createDataBasicTable(select: number, name: string, calories: number, fat: number, carbs: number, protein: number, dateTime: Date) {
-  return {select, name, calories, fat, carbs, protein, dateTime};
+  return { select, name, calories, fat, carbs, protein, dateTime };
 }
 
 export const rowsBasicTable = [
@@ -67,9 +67,9 @@ export const sample: SampleVirtualizedTable[] = [
   [5, 'Gingerbread', 356, 16.0, 49, 3.9, (new Date()).toISOString()],
 ];
 
-export const loadRowData = (length: number) => {
-  const currentRowData = [];
-  for(let i = 0; i < length; i++) {
+export const loadRowData = (length: number): Row[] => {
+  const currentRowData: Row[] = [];
+  for (let i = 0; i < length; i++) {
     const randomIndex = Math.floor(Math.random() * sample.length);
     currentRowData.push({
       select: sample.length,

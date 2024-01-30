@@ -29,9 +29,8 @@ var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime")
 var react_1 = require("react");
 var material_1 = require("@mui/material");
 var Root_1 = __importDefault(require("./Root"));
-var checkboxStyles = { padding: 1 };
 var Select = function (_a) {
-    var value = _a.value, checked = _a.checked, _b = _a.disabled, disabled = _b === void 0 ? false : _b, onChange = _a.onChange, _c = _a.id, id = _c === void 0 ? 'table-cell-select-' : _c, _d = _a.name, name = _d === void 0 ? 'table-cell-select[]' : _d, height = _a.height, rest = __rest(_a, ["value", "checked", "disabled", "onChange", "id", "name", "height"]);
-    return (0, jsx_runtime_1.jsx)(Root_1.default, __assign({ padding: 'checkbox', align: 'center', size: 'small', height: height }, rest, { children: (0, jsx_runtime_1.jsx)(material_1.Checkbox, { sx: checkboxStyles, size: 'small', color: 'secondary', id: id + value, name: name, value: value !== null && value !== void 0 ? value : '', checked: checked, disabled: disabled, onChange: onChange }) }));
+    var value = _a.value, checked = _a.checked, _b = _a.disabled, disabled = _b === void 0 ? false : _b, onChange = _a.onChange, _c = _a.id, id = _c === void 0 ? 'table-cell-select-' : _c, _d = _a.name, name = _d === void 0 ? 'table-cell-select[]' : _d, height = _a.height, slotProps = _a.slotProps, rest = __rest(_a, ["value", "checked", "disabled", "onChange", "id", "name", "height", "slotProps"]);
+    return (0, jsx_runtime_1.jsx)(Root_1.default, __assign({ padding: 'none', align: 'center', size: 'small', height: height }, rest, { children: (0, jsx_runtime_1.jsx)(material_1.Checkbox, __assign({ size: 'small', color: 'secondary', id: id + value, name: name, value: value !== null && value !== void 0 ? value : '', checked: checked, disabled: disabled, onChange: onChange }, slotProps === null || slotProps === void 0 ? void 0 : slotProps.checkbox)) }));
 };
 exports.default = (0, react_1.memo)(Select);

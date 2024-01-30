@@ -91,6 +91,13 @@ const FRUSTRATION = createTheme({
         },
       }
     },
+    MuiCheckbox: {
+      styleOverrides: {
+        sizeSmall: {
+          '>.MuiSvgIcon-root': { fontSize: '1.2rem' }
+        }
+      }
+    },
     MuiChip: {
       styleOverrides: {
         clickable: { '&:hover': { backgroundColor: grey[400] } },

@@ -1,3 +1,20 @@
+## [11.2.7/8] - 2024-01-18
+- fix/improved virtualized table styles
+
+## [11.2.5/6] - 2024-01-18
+- fix/improved handling of helperText in PriceInput Component
+
+## [11.2.4] - 2024-01-03
+- fix/improved styles for table checkboxes 
+
+## [11.2.0] - 2023-12-08
+- Reworked `PriceInput` Component.
+  - PriceInput now emits a value of type `number`
+  - PriceInput now validates the input value and only emits valid values. 
+
+## [11.1.0]
+- replaced deprecated dependencies
+
 ## [11.0.0] - 2023-02-01
 - bump/add/remove core libraries and dependencies
 - reintegrated showcase into project to faciliate development

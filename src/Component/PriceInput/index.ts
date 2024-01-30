@@ -1,1 +1,2 @@
-export { default } from './PriceField';
+export * from './PriceInput';
+export { default } from './PriceInput';

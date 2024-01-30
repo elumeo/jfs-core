@@ -5,7 +5,7 @@ import { SxProps, TableProps } from '@mui/material';
 import { TableRowProps } from '@mui/material/TableRow';
 export declare const visuallyHiddenStyle: SxProps;
 export declare const ellipsesStyle: SxProps;
-export type Props<ItemData, ItemContext = unknown> = Partial<TableVirtuosoProps<ItemData, ItemContext>> & {
+export type Props<ItemData, ItemContext = unknown> = TableVirtuosoProps<ItemData, ItemContext> & {
     data: ItemData[];
     sortBy?: keyof ItemData;
     sortDirection?: SortDirection;
@@ -15,8 +15,11 @@ export type Props<ItemData, ItemContext = unknown> = Partial<TableVirtuosoProps<
         sortBy: keyof ItemData;
         sortDirection: SortDirection;
     }) => void;
-    tableProps?: TableProps;
-    tableRowProps?: TableRowProps;
+    isLoading?: boolean;
+    slotProps?: {
+        tableProps?: TableProps;
+        tableRowProps?: TableRowProps;
+    };
 };
-declare const _default: <ItemData extends {}, ItemContext = unknown>({ data, sortBy, sortDirection, compare, filter, tableProps, tableRowProps, components: propComponents, ...props }: Props<ItemData, ItemContext>) => JSX.Element;
+declare const _default: <ItemData extends {}, ItemContext = unknown>({ data, sortBy, sortDirection, compare, filter, slotProps, components: propComponents, isLoading, ...props }: Props<ItemData, ItemContext>) => JSX.Element;
 export default _default;

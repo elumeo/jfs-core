@@ -9,11 +9,11 @@ export type JscError = {
 const isAxiosError = (error: Error) =>
   ['config', 'code', 'request', 'response'].every(key => key in error);
 
-const isJscError = (error: Error) =>
-  isAxiosError(error) &&
-  typeof (error as AxiosError)?.response?.data === 'object' &&
-  // eslint-disable-next-line no-unsafe-optional-chaining
-  ['id', 'message'].every(key => key in (error as AxiosError<JscError>)?.response?.data);
+const isJscError = (error: AxiosError<{ id?: string, message?: string }>) =>
+  isAxiosError(error)
+  && typeof error?.response?.data === 'object'
+  && ['id', 'message'].every(key => key in error.response.data);
+
 const head = (error: AxiosError) => {
   const { status, statusText } = error.response;
   const method = error.config.method.toUpperCase();
@@ -21,7 +21,7 @@ const head = (error: AxiosError) => {
   return `(http: ${status} ${statusText} // ${method} ${url})`;
 };
 
-const body = (error: AxiosError<JscError>) => {
+const body = (error: AxiosError<{id?: string, message?: string}>) => {
   const { data } = error.response;
   if (isJscError(error)) {
     const { id, message } = data;
