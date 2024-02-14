@@ -6,10 +6,17 @@ const server = {
   devServer: {
     static: PATH.PUBLIC,
     hot: true,
-    proxy: {
-      '/api': 'http://localhost'
-    }
-  }
+    proxy: [{
+      '/api': 'http://localhost',
+    }],
+    client: {
+      overlay: {
+        errors: false,
+        warnings: false,
+        runtimeErrors: false,
+      },
+    },
+  },
 };
 
 module.exports = server;
