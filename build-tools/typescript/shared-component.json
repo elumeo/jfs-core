@@ -22,6 +22,7 @@
     "dist",
     "build",
     "node_modules/@elumeo/jfs-core/scripts",
+    "src/Showcase/**/*",
     "**/node_modules",
     "**/.*/"
   ]
