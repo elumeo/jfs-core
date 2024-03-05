@@ -7,6 +7,7 @@ import Login from './Login';
 import Locale from './Locale';
 import Session from './Session';
 import System from './System';
+import Clipboard from './Clipboard.epic';
 import WebSocket from './WebSocket';
 import Notification from './Notification';
 import { Epic } from 'Types/Redux';
@@ -38,6 +39,7 @@ export const wrap = (
 
 const Core = combineEpics(
   App,
+  Clipboard,
   Session,
   System,
   Login,

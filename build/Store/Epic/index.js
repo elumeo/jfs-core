@@ -24,6 +24,7 @@ var Login_1 = __importDefault(require("./Login"));
 var Locale_1 = __importDefault(require("./Locale"));
 var Session_1 = __importDefault(require("./Session"));
 var System_1 = __importDefault(require("./System"));
+var Clipboard_epic_1 = __importDefault(require("./Clipboard.epic"));
 var WebSocket_1 = __importDefault(require("./WebSocket"));
 var Notification_1 = __importDefault(require("./Notification"));
 var react_intl_1 = require("react-intl");
@@ -39,5 +40,5 @@ var wrap = function (epic, wrapper) { return function (action$, state$, dependen
         } })));
 }; };
 exports.wrap = wrap;
-var Core = (0, redux_observable_1.combineEpics)(App_1.default, Session_1.default, System_1.default, Login_1.default, Locale_1.default, Configuration_1.default, WebSocket_1.default, Language_1.default, Notification_1.default, Debug_1.default);
+var Core = (0, redux_observable_1.combineEpics)(App_1.default, Clipboard_epic_1.default, Session_1.default, System_1.default, Login_1.default, Locale_1.default, Configuration_1.default, WebSocket_1.default, Language_1.default, Notification_1.default, Debug_1.default);
 exports.default = Core;

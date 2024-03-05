@@ -125,5 +125,7 @@
   "app.sourceOfOrder.appSmartTv": "SmartTV-App",
   "app.sourceOfOrder.app_hbbTvUNITY": "SmartTV-App",
   "app.sourceOfOrder.appShoppingAndroid": "Android: In-App-Vendita",
-  "app.sourceOfOrder.appShoppingIOS": "iOS: In-App-Vendita"
+  "app.sourceOfOrder.appShoppingIOS": "iOS: In-App-Vendita",
+  "app.copyToClipboard.success": "Copiato negli appunti!",
+  "app.copyToClipboard.failure": "Impossibile copiare negli appunti!"
 }
