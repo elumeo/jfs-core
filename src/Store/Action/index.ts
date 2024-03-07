@@ -13,3 +13,4 @@ export * from './Settings';
 export * from './System';
 export * from './Toast';
 export * from './WebSocket';
+export * from './Clipboard.action'

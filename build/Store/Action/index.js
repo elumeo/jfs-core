@@ -42,3 +42,4 @@ __exportStar(require("./Settings"), exports);
 __exportStar(require("./System"), exports);
 __exportStar(require("./Toast"), exports);
 __exportStar(require("./WebSocket"), exports);
+__exportStar(require("./Clipboard.action"), exports);
