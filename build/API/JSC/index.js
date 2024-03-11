@@ -10,14 +10,6 @@ var JSCApi;
 (function (JSCApi) {
     var DTO;
     (function (DTO) {
-        var Authorization;
-        (function (Authorization) {
-            Authorization.I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ = "1";
-            Authorization.I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE = "2";
-            Authorization.I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE = "4";
-            Authorization.I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE = "8";
-            Authorization.I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE = "3";
-        })(Authorization = DTO.Authorization || (DTO.Authorization = {}));
         var App;
         (function (App) {
             App.I_APP_DTO_FRONTEND_APP_DOCK = "appDock";
@@ -32,6 +24,9 @@ var JSCApi;
     })(DebugNotificationClient = JSCApi.DebugNotificationClient || (JSCApi.DebugNotificationClient = {}));
     var LoginClient;
     (function (LoginClient) {
+        LoginClient.getLoginPublicKey = function (config) {
+            return Client_1.default.get("/session-public-key", config);
+        };
         LoginClient.loginFrontend = function (appName, credentials, config) {
             return Client_1.default.post("/session/" +
                 encodeURIComponent(typeof appName === "number"

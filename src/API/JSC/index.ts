@@ -1,5 +1,3 @@
-/* eslint-disable max-lines */
-/* eslint-disable @typescript-eslint/no-namespace */
 import { AxiosResponse } from "axios";
 import JscClient from "./Client";
 import { Observable, Subject } from "rxjs";
@@ -27,9 +25,17 @@ namespace JSCApi {
       }
     }
     export namespace Login {
+      export interface IPublicKeyDTO {
+        publicKey?: string;
+        createdAt?: string;
+        createdBy?: string;
+        modifiedAt?: string;
+        modifiedBy?: string;
+      }
       export interface ICredentialsDTO {
         username?: string;
         password?: string;
+        encryptedPassword?: string;
         token?: string;
         createdAt?: string;
         createdBy?: string;
@@ -60,11 +66,6 @@ namespace JSCApi {
       }
     }
     export namespace Authorization {
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ = "1";
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE = "2";
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE = "4";
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE = "8";
-      export const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE = "3";
       export interface IPropertyDTO {
         key?: string;
         value?: string;
@@ -74,17 +75,7 @@ namespace JSCApi {
         modifiedBy?: string;
       }
       export interface IUserRightsDTO {
-        entityAttributeAccesses?: DTO.Authorization.IEntityAttributeAccessDTO[];
         assignedApps?: DTO.App.IAppDTO[];
-      }
-      export interface IEntityAttributeAccessDTO {
-        entity?: string;
-        attribute?: string;
-        access?: string;
-        createdAt?: string;
-        createdBy?: string;
-        modifiedAt?: string;
-        modifiedBy?: string;
       }
     }
     export namespace App {
@@ -129,6 +120,10 @@ namespace JSCApi {
       JscClient.post<void>("/debug/sendToMattermost", message, config);
   }
   export namespace LoginClient {
+    export const getLoginPublicKey = (
+      config?: IJscClientConfig
+    ): Promise<AxiosResponse<DTO.Login.IPublicKeyDTO>> =>
+      JscClient.get<DTO.Login.IPublicKeyDTO>("/session-public-key", config);
     export const loginFrontend = (
       appName: string,
       credentials: DTO.Login.ICredentialsDTO,

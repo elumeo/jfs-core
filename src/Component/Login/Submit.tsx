@@ -11,12 +11,13 @@ export type Props = {
 
 const Submit: React.FC<Props> = ({ onClick, disabled }) => {
   const intl = useIntl();
+  const publicKey = useSelector(state => state.Core.Login.publicKey);
   const isCheckingLogin = useSelector(state => state.Core.Login.isCheckingLogin);
   return <ButtonProgress
     color='primary'
     variant={'contained'}
     onClick={onClick}
-    disabled={disabled}
+    disabled={disabled || !publicKey}
     inProgress={isCheckingLogin}>
     {intl.formatMessage({ id: 'login.button' })}
   </ButtonProgress>;

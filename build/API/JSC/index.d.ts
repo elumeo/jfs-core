@@ -23,9 +23,17 @@ declare namespace JSCApi {
             }
         }
         namespace Login {
+            interface IPublicKeyDTO {
+                publicKey?: string;
+                createdAt?: string;
+                createdBy?: string;
+                modifiedAt?: string;
+                modifiedBy?: string;
+            }
             interface ICredentialsDTO {
                 username?: string;
                 password?: string;
+                encryptedPassword?: string;
                 token?: string;
                 createdAt?: string;
                 createdBy?: string;
@@ -56,11 +64,6 @@ declare namespace JSCApi {
             }
         }
         namespace Authorization {
-            const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ = "1";
-            const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE = "2";
-            const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE = "4";
-            const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE = "8";
-            const I_ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE = "3";
             interface IPropertyDTO {
                 key?: string;
                 value?: string;
@@ -70,17 +73,7 @@ declare namespace JSCApi {
                 modifiedBy?: string;
             }
             interface IUserRightsDTO {
-                entityAttributeAccesses?: DTO.Authorization.IEntityAttributeAccessDTO[];
                 assignedApps?: DTO.App.IAppDTO[];
-            }
-            interface IEntityAttributeAccessDTO {
-                entity?: string;
-                attribute?: string;
-                access?: string;
-                createdAt?: string;
-                createdBy?: string;
-                modifiedAt?: string;
-                modifiedBy?: string;
             }
         }
         namespace App {
@@ -121,6 +114,7 @@ declare namespace JSCApi {
         const sendToMattermost: (message: DTO.DebugNotification.IMattermostDTO, config?: IJscClientConfig) => Promise<AxiosResponse<void>>;
     }
     namespace LoginClient {
+        const getLoginPublicKey: (config?: IJscClientConfig) => Promise<AxiosResponse<DTO.Login.IPublicKeyDTO>>;
         const loginFrontend: (appName: string, credentials: DTO.Login.ICredentialsDTO, config?: IJscClientConfig) => Promise<AxiosResponse<DTO.Session.IFrontendSessionDTO>>;
     }
     namespace SessionClient {
