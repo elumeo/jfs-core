@@ -5,7 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import InfoIcon from '@mui/icons-material/Info';
 import ListItemText from '@mui/material/ListItemText';
-import packageJson from '../../../package.json';
+import { CORE_VERSION } from 'Constant/Version';
 
 const VersionNavigationItem: React.FC = () => {
   const { formatMessage } = useIntl();
@@ -17,7 +17,7 @@ const VersionNavigationItem: React.FC = () => {
     </ListItem>
     <ListItem>
       <ListItemIcon><InfoIcon color={'info'}/></ListItemIcon>
-      <ListItemText primary={formatMessage({ id: 'core.version' }, { versionNumber: packageJson.version })}/>
+      <ListItemText primary={formatMessage({ id: 'core.version' }, { versionNumber: CORE_VERSION })}/>
     </ListItem>
   </>
 }
