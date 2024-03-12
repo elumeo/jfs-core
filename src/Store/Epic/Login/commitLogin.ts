@@ -5,17 +5,7 @@ import JSCApi from 'API/JSC';
 import * as Action from 'Store/Action';
 import * as Token from 'API/LOCAL_STORAGE/Token';
 import {Epic} from 'Types/Redux';
-import {JSEncrypt} from 'jsencrypt';
-
-async function encryptString(plainText: string, publicKey: string): Promise<string> {
-  const encrypt = new JSEncrypt();
-  encrypt.setPublicKey(publicKey);
-  const encrypted = encrypt.encrypt(plainText);
-  if (encrypted === false) {
-    throw new Error('Encryption failed');
-  }
-  return encrypted;
-}
+import encryptString from 'Utilities/encryptString';
 
 const commitLogin: Epic = (action$, state$) =>
   action$.pipe(
