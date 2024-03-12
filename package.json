@@ -9,6 +9,10 @@
   "engines": {
     "node": "v18"
   },
+  "config": {
+    "commit-hooks": false,
+    "git-tag-version": false
+  },
   "scripts": {
     "start": "webpack serve --port 8083 --config build-tools/webpack/core-dev-server --no-client-overlay-warnings",
     "build": "npm run core-generate-version && rimraf build && tsc && tsc-alias",
