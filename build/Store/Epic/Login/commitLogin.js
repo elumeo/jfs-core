@@ -68,27 +68,13 @@ var rxjs_1 = require("rxjs");
 var JSC_1 = __importDefault(require("../../../API/JSC"));
 var Action = __importStar(require("../../Action"));
 var Token = __importStar(require("../../../API/LOCAL_STORAGE/Token"));
-var jsencrypt_1 = require("jsencrypt");
-function encryptString(plainText, publicKey) {
-    return __awaiter(this, void 0, void 0, function () {
-        var encrypt, encrypted;
-        return __generator(this, function (_a) {
-            encrypt = new jsencrypt_1.JSEncrypt();
-            encrypt.setPublicKey(publicKey);
-            encrypted = encrypt.encrypt(plainText);
-            if (encrypted === false) {
-                throw new Error('Encryption failed');
-            }
-            return [2 /*return*/, encrypted];
-        });
-    });
-}
+var encryptString_1 = __importDefault(require("../../../Utilities/encryptString"));
 var commitLogin = function (action$, state$) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.checkLogin)), (0, operators_1.switchMap)(function (action) { return __awaiter(void 0, void 0, void 0, function () {
         var newPassword;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, encryptString(action.payload.password, state$.value.Core.Login.publicKey)];
+                case 0: return [4 /*yield*/, (0, encryptString_1.default)(action.payload.password, state$.value.Core.Login.publicKey)];
                 case 1:
                     newPassword = _a.sent();
                     return [2 /*return*/, {
