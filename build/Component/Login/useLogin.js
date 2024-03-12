@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -26,7 +37,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Login_1 = require("./../../Store/Action/Login");
+var Login_1 = require("../../Store/Action/Login");
 var react_redux_1 = require("react-redux");
 var react_1 = __importDefault(require("react"));
 var Redux_1 = require("../../Types/Redux");
@@ -38,7 +49,10 @@ var useLogin = function () {
         username: null,
         password: null,
     }), credentials = _a[0], setCredentials = _a[1];
-    var handleCheck = react_1.default.useCallback(function () { return dispatch((0, Login_1.checkLogin)(credentials)); }, [credentials, dispatch]);
+    var handleCheck = react_1.default.useCallback(function () {
+        setCredentials(__assign(__assign({}, credentials), { password: null }));
+        dispatch((0, Login_1.checkLogin)(credentials));
+    }, [credentials, dispatch]);
     var handleOnChange = react_1.default.useCallback(function (next) { return setCredentials(next); }, [setCredentials]);
     return {
         open: open,

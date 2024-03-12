@@ -18,7 +18,8 @@ var Button_1 = require("../Button");
 var Submit = function (_a) {
     var onClick = _a.onClick, disabled = _a.disabled;
     var intl = (0, react_intl_1.useIntl)();
+    var publicKey = (0, Redux_1.useSelector)(function (state) { return state.Core.Login.publicKey; });
     var isCheckingLogin = (0, Redux_1.useSelector)(function (state) { return state.Core.Login.isCheckingLogin; });
-    return (0, jsx_runtime_1.jsx)(Button_1.ButtonProgress, __assign({ color: 'primary', variant: 'contained', onClick: onClick, disabled: disabled, inProgress: isCheckingLogin }, { children: intl.formatMessage({ id: 'login.button' }) }));
+    return (0, jsx_runtime_1.jsx)(Button_1.ButtonProgress, __assign({ color: 'primary', variant: 'contained', onClick: onClick, disabled: disabled || !publicKey, inProgress: isCheckingLogin }, { children: intl.formatMessage({ id: 'login.button' }) }));
 };
 exports.default = Submit;

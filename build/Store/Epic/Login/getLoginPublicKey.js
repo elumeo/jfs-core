@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -33,17 +22,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var typesafe_actions_1 = require("typesafe-actions");
-var Action = __importStar(require("../../Action"));
-var initialState = {
-    publicKey: null,
-    isCheckingLogin: false,
-    failedLogins: 0,
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Login = (0, typesafe_actions_1.createReducer)(initialState)
-    .handleAction(Action.checkLogin, function (state) { return (__assign(__assign({}, state), { isCheckingLogin: true })); })
-    .handleAction(Action.loginFailed, function (state) { return (__assign(__assign({}, state), { failedLogins: state.failedLogins + 1, isCheckingLogin: false })); })
-    .handleAction(Action.setPublicKey, function (state, action) { return (__assign(__assign({}, state), { publicKey: action.payload })); })
-    .handleAction(Action.loggedIn, function (state) { return (__assign(__assign({}, state), { failedLogins: 0, isCheckingLogin: false, username: '', password: '' })); });
-exports.default = Login;
+Object.defineProperty(exports, "__esModule", { value: true });
+var operators_1 = require("rxjs/operators");
+var typesafe_actions_1 = require("typesafe-actions");
+var rxjs_1 = require("rxjs");
+var JSC_1 = __importDefault(require("../../../API/JSC"));
+var Action = __importStar(require("../../Action"));
+var getLoginPublicKey = function (action$) { return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.configLoadedAction)), (0, operators_1.switchMap)(function () { return (0, rxjs_1.from)(JSC_1.default.LoginClient.getLoginPublicKey()).pipe((0, operators_1.switchMap)(function (response) { return [Action.setPublicKey(response.data.publicKey)]; }), (0, operators_1.catchError)(function (error) { return [Action.addErrorNotification(error)]; })); })); };
+exports.default = getLoginPublicKey;
