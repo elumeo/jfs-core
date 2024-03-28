@@ -11,19 +11,19 @@ export type TextFieldClearButtonProps = Partial<TextFieldProps> & {
 declare const _default: React.MemoExoticComponent<React.ForwardRefExoticComponent<(Omit<Partial<import("@material-ui/core").StandardTextFieldProps> & {
     onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
     clearButtonSize?: "small" | "medium";
-    clearIconSize?: "default" | "inherit" | "small" | "medium" | "large";
+    clearIconSize?: "default" | "small" | "inherit" | "medium" | "large";
     onClearClick?: () => void;
     isClearable?: boolean;
 }, "ref"> | Omit<Partial<import("@material-ui/core").FilledTextFieldProps> & {
     onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
     clearButtonSize?: "small" | "medium";
-    clearIconSize?: "default" | "inherit" | "small" | "medium" | "large";
+    clearIconSize?: "default" | "small" | "inherit" | "medium" | "large";
     onClearClick?: () => void;
     isClearable?: boolean;
 }, "ref"> | Omit<Partial<import("@material-ui/core").OutlinedTextFieldProps> & {
     onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
     clearButtonSize?: "small" | "medium";
-    clearIconSize?: "default" | "inherit" | "small" | "medium" | "large";
+    clearIconSize?: "default" | "small" | "inherit" | "medium" | "large";
     onClearClick?: () => void;
     isClearable?: boolean;
 }, "ref">) & React.RefAttributes<HTMLDivElement>>>;

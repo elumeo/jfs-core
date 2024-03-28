@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Switch, Redirect } from 'react-router-dom';
 
-import Content from '@elumeo/jfs-core/build/Component/Content/Content';
 import AuthRoute from '@elumeo/jfs-core/build/Component/Route/AuthRoute';
 import NoAuthRoute from '@elumeo/jfs-core/build/Component/Route/NoAuthRoute';
 import Lists from 'Component/Lists';
@@ -22,7 +21,6 @@ import AppCardContentExample from 'Component/AppCardContentExample';
 import SharedComponent from 'Component/SharedComponent';
 
 const Routes: React.FC = () => (
-  <Content>
     <Switch>
       <AuthRoute key='start' exact path='/start' component={Dashboard}/>
       <AuthRoute key='Styling' exact path='/Lists' component={Lists}/>
@@ -42,7 +40,6 @@ const Routes: React.FC = () => (
       <AuthRoute key='AppCardContent' exact path='/AppCardContent' component={AppCardContentExample}/>
       <NoAuthRoute key='default' exact path='/' component={() => <Redirect to={{pathname: '/start'}}/>}/>
     </Switch>
-  </Content>
 );
 
 export default Routes;
