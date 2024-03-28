@@ -12,5 +12,5 @@ export type TableCellDefaultProps = Partial<TableCellRootProps> & {
     contentEllipseLines?: number;
     overflow?: 'hidden' | 'visible';
 };
-declare const _default: React.MemoExoticComponent<({ cellData, overflow, contentEllipseMode, contentEllipseLines, isLoading, ...rest }: TableCellDefaultProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ cellData, overflow, contentEllipseMode, contentEllipseLines, isLoading, ...rest }: TableCellDefaultProps) => React.JSX.Element>;
 export default _default;

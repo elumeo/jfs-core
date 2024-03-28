@@ -11,5 +11,5 @@ export type TableHeadSelectProps = {
     name?: CheckboxProps['name'];
     value?: CheckboxProps['value'];
 };
-declare const _default: React.MemoExoticComponent<({ disabled, loading, checked, height, onChange, id, name, value, className }: TableHeadSelectProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ disabled, loading, checked, height, onChange, id, name, value, className }: TableHeadSelectProps) => React.JSX.Element>;
 export default _default;

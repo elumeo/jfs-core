@@ -20,5 +20,5 @@ export type VirtualizedTableProps = Partial<TableProps> & {
     onResize?: AutoSizerProps['onResize'];
     rowHeight?: TableProps['rowHeight'];
 };
-declare const VirtualizedTable: React.ForwardRefExoticComponent<Pick<VirtualizedTableProps, keyof import("react-virtualized/dist/es/Grid").GridCoreProps> & React.RefAttributes<Table>>;
+declare const VirtualizedTable: React.ForwardRefExoticComponent<Omit<VirtualizedTableProps, "ref"> & React.RefAttributes<Table>>;
 export default VirtualizedTable;

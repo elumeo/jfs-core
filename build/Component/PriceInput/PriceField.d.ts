@@ -9,5 +9,5 @@ type Props = {
     showDecimals?: boolean;
     onChange?: StandardTextFieldProps['onChange'];
 } & Partial<StandardTextFieldProps>;
-declare const PriceField: ({ currency, value, selectOnFocus, showDecimals, min, max, ...props }: Props) => JSX.Element;
+declare const PriceField: ({ currency, value, selectOnFocus, showDecimals, min, max, ...props }: Props) => React.JSX.Element;
 export default PriceField;

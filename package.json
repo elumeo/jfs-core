@@ -1,10 +1,13 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "10.6.1",
+  "version": "10.6.2",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
     "bin": "./scripts/bin"
+  },
+  "engines": {
+    "node": "=14"
   },
   "scripts": {
     "start": "webpack serve --port 8083 --config build-tools/webpack/dev-server --no-client-overlay",

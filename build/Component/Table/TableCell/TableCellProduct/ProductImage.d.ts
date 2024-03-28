@@ -5,5 +5,5 @@ export type ProductImageProps = {
     mediaUris?: MediaUri[];
     onClick?: HTMLElement['click'];
 };
-declare const _default: React.MemoExoticComponent<({ id, mediaUris, onClick }: ProductImageProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ id, mediaUris, onClick }: ProductImageProps) => React.JSX.Element>;
 export default _default;

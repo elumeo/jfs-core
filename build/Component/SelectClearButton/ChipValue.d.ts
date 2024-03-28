@@ -5,5 +5,5 @@ export type Props = Partial<Omit<ChipProps, 'onDelete'>> & {
     value: string;
     label: ReactNode;
 };
-declare const _default: React.MemoExoticComponent<({ onDelete, value, label, ...rest }: Props) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ onDelete, value, label, ...rest }: Props) => React.JSX.Element>;
 export default _default;

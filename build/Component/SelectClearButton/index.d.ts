@@ -18,5 +18,5 @@ export type Props = Partial<Omit<SelectProps, 'onChange'>> & {
     loadingSize?: number;
     displayClearButton?: boolean;
 };
-declare const _default: React.MemoExoticComponent<({ onChange, clearButtonSize, clearIconSize, variant, endAdornment, formControlProps, valueChipProps, renderValueAsChip, maxValuesToDisplayInInput, options, loading, loadingSize, displayClearButton, ...rest }: Props) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ onChange, clearButtonSize, clearIconSize, variant, endAdornment, formControlProps, valueChipProps, renderValueAsChip, maxValuesToDisplayInInput, options, loading, loadingSize, displayClearButton, ...rest }: Props) => React.JSX.Element>;
 export default _default;

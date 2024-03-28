@@ -18,22 +18,24 @@ export type TableHeadDefaultProps = {
   sortDirection?: SortDirectionType;
   label?: React.ReactNode;
   dataKey: string;
+  styles?: CSSProperties;
 };
 
-const TableHeadDefault = ({ height = 48, isNumeric = false, disableSort = false, sortBy, sortDirection, label, dataKey }: TableHeadDefaultProps) => {
+const TableHeadDefault = ({ height = 48, isNumeric = false, disableSort = false, sortBy, sortDirection, label, dataKey, styles = {} }: TableHeadDefaultProps) => {
   const theme = useTheme<Theme>();
   const isActiveSort = useMemo(() => sortBy === dataKey, [sortBy]);
-  const styles = useMemo<CSSProperties>(() => ({
+  const mergedStyles = useMemo<CSSProperties>(() => ({
     ...flexContainerStyles,
     ...rowNoClickStyles,
     ...(isActiveSort ? sortingStyles : null),
-    height: height + 'px', flex: 1, padding: theme.spacing(1), maxWidth: '100%'
+    ...styles,
+    height: height + 'px', flex: 1, padding: theme.spacing(1), maxWidth: '100%',
   }), [sortBy]);
   const mapSortDirection = (sortDirection: SortDirectionType) => sortDirection === 'ASC' ? 'asc' : 'desc';
   return <TableCell
     component='div'
     variant='head'
-    style={styles}
+    style={mergedStyles}
     align={isNumeric || false ? 'right' : 'left'}>
     {disableSort !== true && <TableSortLabel active={isActiveSort} direction={isActiveSort ? mapSortDirection(sortDirection) : 'asc'}>
       <div>{label}</div>

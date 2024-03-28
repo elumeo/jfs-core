@@ -9,5 +9,5 @@ export type Props = {
     renderValueAsChip?: boolean;
     valueChipProps?: Partial<ChipProps>;
 };
-declare const _default: React.MemoExoticComponent<({ setValue, valueChipProps, selectedValue, onDeleteItem, maxValuesToDisplayInInput, renderValueAsChip }: Props) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ setValue, valueChipProps, selectedValue, onDeleteItem, maxValuesToDisplayInInput, renderValueAsChip }: Props) => React.JSX.Element>;
 export default _default;

@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { Props as ThemeProps } from './Theme';
 import 'material-icons/iconfont/material-icons.css';
 import '@fontsource/roboto/300.css';
@@ -8,5 +8,5 @@ import '@fontsource/roboto/700.css';
 type Props = {
     children: ThemeProps['children'];
 };
-declare const Style: ({ children }: Props) => JSX.Element;
+declare const Style: ({ children }: Props) => React.JSX.Element;
 export default Style;

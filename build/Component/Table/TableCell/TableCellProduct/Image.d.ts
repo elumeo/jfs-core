@@ -6,5 +6,5 @@ export type ImageProps = {
     isProductBundle?: boolean;
     onClick?: HTMLElement['click'];
 };
-declare const _default: React.MemoExoticComponent<({ id, mediaUris, isProductBundle, onClick }: ImageProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ id, mediaUris, isProductBundle, onClick }: ImageProps) => React.JSX.Element>;
 export default _default;

@@ -9,5 +9,5 @@ export type Props = {
     onClickClearButton?: ClearButtonProps['onClick'];
     disabled?: boolean;
 };
-declare const _default: React.MemoExoticComponent<({ endAdornment, showClearButton, multiple, clearButtonSize, clearIconSize, disabled, onClickClearButton }: Props) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ endAdornment, showClearButton, multiple, clearButtonSize, clearIconSize, disabled, onClickClearButton }: Props) => React.JSX.Element>;
 export default _default;

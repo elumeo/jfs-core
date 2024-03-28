@@ -9,5 +9,5 @@ export type TableCellSelectProps = Partial<TableCellRootProps> & {
     id?: CheckboxProps['id'];
     name?: CheckboxProps['name'];
 };
-declare const _default: React.MemoExoticComponent<({ value, checked, disabled, onChange, id, name, height }: TableCellSelectProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ value, checked, disabled, onChange, id, name, height }: TableCellSelectProps) => React.JSX.Element>;
 export default _default;

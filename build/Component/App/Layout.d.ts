@@ -8,5 +8,5 @@ export type Props = {
     };
     className?: string;
 };
-declare const _default: React.MemoExoticComponent<({ children, className, navigation, spacing }: Props) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ children, className, navigation, spacing }: Props) => React.JSX.Element>;
 export default _default;

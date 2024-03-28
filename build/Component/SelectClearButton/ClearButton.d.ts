@@ -8,5 +8,5 @@ export type Props = {
     size?: IconButtonProps['size'];
     iconSize?: IconProps['fontSize'];
 };
-declare const _default: React.MemoExoticComponent<({ disabled, size, iconSize, multiple, onClick }: Props) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ disabled, size, iconSize, multiple, onClick }: Props) => React.JSX.Element>;
 export default _default;

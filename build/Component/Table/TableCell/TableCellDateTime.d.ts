@@ -5,5 +5,5 @@ export type TableCellDateTimeProps = Partial<TableCellRootProps> & {
     noValueElement?: ReactNode;
     asTwoLines?: boolean;
 };
-declare const _default: React.MemoExoticComponent<({ cellData, noValueElement, asTwoLines, ...rest }: TableCellDateTimeProps) => JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ cellData, noValueElement, asTwoLines, ...rest }: TableCellDateTimeProps) => React.JSX.Element>;
 export default _default;
