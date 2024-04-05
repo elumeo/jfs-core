@@ -4,6 +4,7 @@ import { TableCellRootProps } from '../../Table/TableCell/TableCellRoot';
 export type TableCellDateTimeRangeProps = Partial<TableCellRootProps> & {
     cellData: DateTimeRangeCellProps;
     noValueElement?: ReactNode;
+    additional?: ReactNode;
 };
-declare const _default: React.MemoExoticComponent<({ cellData, noValueElement, ...rest }: TableCellDateTimeRangeProps) => React.JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ cellData, additional, noValueElement, ...rest }: TableCellDateTimeRangeProps) => React.JSX.Element>;
 export default _default;

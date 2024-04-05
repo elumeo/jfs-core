@@ -53,8 +53,8 @@ var react_intl_1 = require("react-intl");
 var Format_1 = require("../../../Utilities/Format");
 var TableCellRoot_1 = __importDefault(require("../../Table/TableCell/TableCellRoot"));
 var TableCellDateTimeRange = function (_a) {
-    var _b = _a.cellData, cellData = _b === void 0 ? null : _b, _c = _a.noValueElement, noValueElement = _c === void 0 ? '-' : _c, rest = __rest(_a, ["cellData", "noValueElement"]);
-    var _d = (0, react_intl_1.useIntl)(), formatDate = _d.formatDate, formatTime = _d.formatTime;
+    var _b = _a.cellData, cellData = _b === void 0 ? null : _b, _c = _a.additional, additional = _c === void 0 ? null : _c, _d = _a.noValueElement, noValueElement = _d === void 0 ? '-' : _d, rest = __rest(_a, ["cellData", "additional", "noValueElement"]);
+    var _e = (0, react_intl_1.useIntl)(), formatDate = _e.formatDate, formatTime = _e.formatTime;
     var startDate;
     var startTime;
     var endDate;
@@ -84,6 +84,7 @@ var TableCellDateTimeRange = function (_a) {
                 react_1.default.createElement("br", null),
                 endDate,
                 " ",
-                endTime)));
+                endTime)),
+        additional);
 };
 exports.default = (0, react_1.memo)(TableCellDateTimeRange);

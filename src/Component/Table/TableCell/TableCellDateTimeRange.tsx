@@ -7,9 +7,10 @@ import TableCellRoot, { TableCellRootProps } from 'Component/Table/TableCell/Tab
 export type TableCellDateTimeRangeProps = Partial<TableCellRootProps> & {
   cellData: DateTimeRangeCellProps;
   noValueElement?: ReactNode;
+  additional?: ReactNode;
 }
 
-const TableCellDateTimeRange = ({ cellData = null, noValueElement = '-', ...rest }: TableCellDateTimeRangeProps) => {
+const TableCellDateTimeRange = ({ cellData = null, additional = null, noValueElement = '-', ...rest }: TableCellDateTimeRangeProps) => {
   const { formatDate, formatTime } = useIntl();
 
   let startDate: string;
@@ -37,6 +38,7 @@ const TableCellDateTimeRange = ({ cellData = null, noValueElement = '-', ...rest
         {endDate} {endTime}
       </>}
     </>}
+    {additional}
   </TableCellRoot>;
 };
 
