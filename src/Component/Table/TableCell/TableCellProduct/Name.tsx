@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
       display: '-webkit-box',
       overflow: 'hidden',
       boxOrient: 'vertical',
+      wordBreak: 'break-all',
       lineClamp: 3,
       lineHeight: 1.3,
     }

@@ -35,6 +35,7 @@ var useStyles = (0, styles_1.makeStyles)(function (theme) { return (0, styles_1.
         display: '-webkit-box',
         overflow: 'hidden',
         boxOrient: 'vertical',
+        wordBreak: 'break-all',
         lineClamp: 3,
         lineHeight: 1.3,
     }
