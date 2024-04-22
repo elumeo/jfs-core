@@ -28,6 +28,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Debug = void 0;
 __exportStar(require("./App"), exports);
+__exportStar(require("./Clippy.action"), exports);
 __exportStar(require("./Configuration"), exports);
 exports.Debug = __importStar(require("./Debug"));
 __exportStar(require("./Language"), exports);
@@ -43,3 +44,5 @@ __exportStar(require("./System"), exports);
 __exportStar(require("./Toast"), exports);
 __exportStar(require("./WebSocket"), exports);
 __exportStar(require("./Clipboard.action"), exports);
+__exportStar(require("./Theme.action"), exports);
+__exportStar(require("./LocalStorage.action"), exports);

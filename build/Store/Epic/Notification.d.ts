@@ -1,9 +1,7 @@
 import { Epic } from '../../Types/Redux';
 import * as Types from '../../Types/Notification';
 import { AxiosError } from 'axios';
-export declare const mapErrorToNotification: (error: AxiosError<{
-    error?: string;
-    message?: string;
-}, any>) => Types.Notification;
+import { JscError } from '../../Utilities/Format/Error';
+export declare const mapErrorToNotification: (error: AxiosError<JscError | any>) => Types.Notification;
 declare const showError: Epic;
 export default showError;

@@ -19,3 +19,10 @@ export declare const isCheckingSession: ((state: {
 }> & {
     clearCache: () => void;
 };
+export declare const pickUsername: ((state: {
+    Core: import("../../Reducer/Core").State;
+} & Record<string, unknown>) => string) & import("reselect").OutputSelectorFields<(args_0: import("../../Reducer/Core/Session").State) => string, {
+    clearCache: () => void;
+}> & {
+    clearCache: () => void;
+};

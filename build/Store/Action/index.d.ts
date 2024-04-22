@@ -1,4 +1,5 @@
 export * from './App';
+export * from './Clippy.action';
 export * from './Configuration';
 export * as Debug from './Debug';
 export * from './Language';
@@ -14,3 +15,5 @@ export * from './System';
 export * from './Toast';
 export * from './WebSocket';
 export * from './Clipboard.action';
+export * from './Theme.action';
+export * from './LocalStorage.action';

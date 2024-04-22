@@ -20,9 +20,9 @@ var Toast_1 = __importDefault(require("./Toast"));
 var Login_1 = __importDefault(require("./Login"));
 var Locale_1 = __importDefault(require("./Locale"));
 var WebSocket_1 = __importDefault(require("./WebSocket"));
+var LocalStorage_reducer_1 = __importDefault(require("./LocalStorage.reducer"));
 var Core = (0, redux_1.combineReducers)({
     App: App_1.default,
-    // router : connectRouter(history),
     Configuration: Configuration_1.default,
     Debug: Debug_1.default,
     Language: Language_1.default,
@@ -37,5 +37,6 @@ var Core = (0, redux_1.combineReducers)({
     Toast: Toast_1.default,
     WebSocket: WebSocket_1.default,
     Locale: Locale_1.default,
+    LocalStorage: LocalStorage_reducer_1.default,
 });
 exports.default = Core;
