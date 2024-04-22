@@ -11,3 +11,6 @@ export const isLoginOpen = (state: State): boolean =>
   !state.Core.Session.isAuthorized &&
   !isLoginRobotAvailable(state) &&
   !state.Core.Session.isCheckingSession;
+
+export const getPublicKey = (state: State) => state.Core.Login.publicKey;
+export const isCheckingLogin = (state: State) => state.Core.Login.isCheckingLogin;

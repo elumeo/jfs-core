@@ -17,7 +17,8 @@
     "app.settings": "Settings",
     "app.settings.done": "Done",
     "app.system": "System",
-    "app.version": "Version {versionNumber}",
+    "app.version": "App Version {versionNumber}",
+    "core.version": "Core Version {versionNumber}",
     "login.accessDenied": "Access Denied",
     "login.button": "Login",
     "login.error": "User or password wrong",
@@ -126,5 +127,7 @@
     "app.sourceOfOrder.appSmartTv": "SmartTV-App",
     "app.sourceOfOrder.app_hbbTvUNITY": "SmartTV-App",
     "app.sourceOfOrder.appShoppingAndroid": "Android: In-App-Sale",
-    "app.sourceOfOrder.appShoppingIOS": "iOS: In-App-Sale"
+    "app.sourceOfOrder.appShoppingIOS": "iOS: In-App-Sale",
+    "app.copyToClipboard.success": "Copied to clipboard!",
+    "app.copyToClipboard.failure": "Copy to clipboard failed!"
 }

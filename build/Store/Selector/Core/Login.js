@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isLoginOpen = exports.isLoginRobotAvailable = void 0;
+exports.isCheckingLogin = exports.getPublicKey = exports.isLoginOpen = exports.isLoginRobotAvailable = void 0;
 var isLoginRobotAvailable = function (state) {
     var _a, _b, _c, _d, _e, _f;
     return ((_b = (_a = state.Core.Configuration) === null || _a === void 0 ? void 0 : _a.config) === null || _b === void 0 ? void 0 : _b.RobotUsername) &&
@@ -16,3 +16,7 @@ var isLoginOpen = function (state) {
         !state.Core.Session.isCheckingSession;
 };
 exports.isLoginOpen = isLoginOpen;
+var getPublicKey = function (state) { return state.Core.Login.publicKey; };
+exports.getPublicKey = getPublicKey;
+var isCheckingLogin = function (state) { return state.Core.Login.isCheckingLogin; };
+exports.isCheckingLogin = isCheckingLogin;

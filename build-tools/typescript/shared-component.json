@@ -6,7 +6,6 @@
     "baseUrl": "./src",
     "paths": {
       "Effect/*": ["./Effect/*"],
-      "Core/*": ["../node_modules/@elumeo/jfs-core/build/*"],
       "Component/*": ["./Component/*"],
       "Constant/*": ["./Constant/*"],
       "Mock/*": ["./Mock/*"],
@@ -22,6 +21,7 @@
     "dist",
     "build",
     "node_modules/@elumeo/jfs-core/scripts",
+    "src/Showcase/**/*",
     "**/node_modules",
     "**/.*/"
   ]

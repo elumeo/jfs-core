@@ -48,6 +48,37 @@
       "constants": [],
       "dtos": [
         {
+          "name": "PublicKeyDTO",
+          "generics": [],
+          "properties": {
+            "publicKey": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "createdBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedAt": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "modifiedBy": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            }
+          }
+        },
+        {
           "name": "CredentialsDTO",
           "generics": [],
           "properties": {
@@ -57,6 +88,11 @@
               "generics": []
             },
             "password": {
+              "type": "string",
+              "array": false,
+              "generics": []
+            },
+            "encryptedPassword": {
               "type": "string",
               "array": false,
               "generics": []
@@ -192,28 +228,7 @@
     },
     {
       "name": "Authorization",
-      "constants": [
-        {
-          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READ",
-          "value": 1
-        },
-        {
-          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_WRITE",
-          "value": 2
-        },
-        {
-          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_CREATE",
-          "value": 4
-        },
-        {
-          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_DELETE",
-          "value": 8
-        },
-        {
-          "name": "ENTITY_ATTRIBUTE_ACCESS_DTO_ACCESS_READWRITE",
-          "value": 3
-        }
-      ],
+      "constants": [],
       "dtos": [
         {
           "name": "PropertyDTO",
@@ -255,55 +270,9 @@
           "name": "UserRightsDTO",
           "generics": [],
           "properties": {
-            "entityAttributeAccesses": {
-              "type": "DTO.Authorization.EntityAttributeAccessDTO",
-              "array": true,
-              "generics": []
-            },
             "assignedApps": {
               "type": "DTO.App.AppDTO",
               "array": true,
-              "generics": []
-            }
-          }
-        },
-        {
-          "name": "EntityAttributeAccessDTO",
-          "generics": [],
-          "properties": {
-            "entity": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "attribute": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "access": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "createdBy": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedAt": {
-              "type": "string",
-              "array": false,
-              "generics": []
-            },
-            "modifiedBy": {
-              "type": "string",
-              "array": false,
               "generics": []
             }
           }
@@ -495,6 +464,22 @@
     {
       "name": "LoginController",
       "methods": [
+        {
+          "name": "getLoginPublicKey",
+          "resource": {
+            "path": "/session-public-key",
+            "type": {
+              "name": "DTO.Login.PublicKeyDTO",
+              "generics": [],
+              "array": false
+            }
+          },
+          "protocol": {
+            "name": "HTTP",
+            "method": "get"
+          },
+          "parameters": []
+        },
         {
           "name": "loginFrontend",
           "resource": {

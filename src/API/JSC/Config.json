@@ -5,7 +5,7 @@
   "remote": {
     "SystemController": ["getRegion"],
     "SessionController": ["getCurrentSessionFrontend", "logout"],
-    "LoginController": ["loginFrontend"],
+    "LoginController": ["loginFrontend", "getLoginPublicKey"],
     "UserController": ["getUserRights"],
     "WebSocketController": ["subscribePingRoom"],
     "DebugNotificationController":["sendToMattermost"]

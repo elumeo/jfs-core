@@ -10,6 +10,7 @@ import Session from './Session';
 import Theme from './Theme';
 import LocalStorage from './LocalStorage';
 import System from './System';
+import Clipboard from './Clipboard.epic';
 import WebSocket from './WebSocket';
 import Notification from './Notification';
 import { Epic } from 'Types/Redux';
@@ -41,6 +42,7 @@ export const wrap = (
 
 const Core = combineEpics(
   App,
+  Clipboard,
   Session,
   System,
   Login,
