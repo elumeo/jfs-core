@@ -1,4 +1,4 @@
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, mergeMap,  tap } from 'rxjs/operators';
 import { saveToLocalStorage, syncLocalStorageToReducer } from 'Store/Action/LocalStorage.action';
 import { Epic } from 'Types/Redux';
 import { filter } from 'rxjs';
@@ -10,7 +10,7 @@ const sync: Epic = (action$) =>
     filter(isActionOf(saveToLocalStorage)),
     tap(({ payload, meta }) => Session.setItem(payload, meta)),
     map(({ payload }) => ({ key: payload, value: Session.getItem(payload) })),
-    switchMap(({ key, value }) => [syncLocalStorageToReducer({ [key]: value })]),
+    mergeMap(({ key, value }) => [syncLocalStorageToReducer({ [key]: value })]),
   )
 
 export default sync

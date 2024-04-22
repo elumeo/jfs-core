@@ -11,7 +11,6 @@ import Switch from '@mui/material/Switch';
 import CodeBox from './CodeBox.showcase';
 import { ButtonProgress } from '../../Component/Button';
 import Layout from '../../Component/App/Layout';
-import useClippy from '../../Effect/useClippy';
 type Props = {};
 const style = ({
   root: {
@@ -32,19 +31,10 @@ const generate = (_variants: string[], _colors: Color.Button[], size: 'small' | 
 
 const Buttons: React.FC<Props> = () => {
   const [size, setSize] = React.useState<'small' | 'medium' | 'large'>('medium');
-  // const clippyRef = React.useRef(clippy.load({ name: 'Clippy' }));
   const [inProgress, setInProgress] = React.useState(false);
-  const { variant, agent } = useClippy()
   return (
     <Layout navigation={<AppNavigation />}>
-      <Button onClick={() => {
-        if (agent) {
-          agent.show(false);
-          agent.animate();
-          agent.speak('ich bin das Spaßprojekt', false);
-        }
-      }
-      }> clippy</Button>
+
       <Container disableGutters maxWidth={false}>
         <Grid container direction={'column'} spacing={1}>
           <Grid item>

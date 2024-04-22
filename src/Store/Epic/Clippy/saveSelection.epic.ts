@@ -4,15 +4,15 @@ import { saveToLocalStorage } from 'Store/Action/LocalStorage.action';
 import { Epic } from 'Types/Redux';
 import { filter } from 'rxjs';
 import { isActionOf } from 'typesafe-actions';
-import { savePreferredClippyVariant } from 'Store/Action';
+import { clippySaveAgent, clippyDestroy } from 'Store/Action';
 import { Agent } from 'Types/Clippy.type';
 
 const save: Epic = (action$, state$) =>
   action$.pipe(
-    filter(isActionOf(savePreferredClippyVariant)),
+    filter(isActionOf(clippySaveAgent)),
     filter(() => !!(state$.value.Core?.Session?.sessionDTO?.username ?? '')),
     map(({ payload }) => ({ userId: state$.value.Core?.Session?.sessionDTO?.username, clippyVariant: payload as Agent })),
-    switchMap(({ userId, clippyVariant }) => [saveToLocalStorage([userId, UserConfig.clippyFeature].join(UserConfig.SEPERATOR), clippyVariant)]),
+    switchMap(({ userId, clippyVariant }) => [clippyDestroy(), saveToLocalStorage([userId, UserConfig.clippyFeature].join(UserConfig.SEPERATOR), clippyVariant)]),
   )
 
 

@@ -4,7 +4,6 @@ export default function (agent: string) {
     clippy.load({
       name: agent,
       successCb: (agent: Agent) => {
-        console.log('clippy loaded', { agent })
         resolve(agent);
       },
       failCb: (error) => {

@@ -1,7 +1,7 @@
 import { Language } from './Language';
 import { NotificationPosition } from 'Types/Notification';
 export type ClippyConfiguration = {
-  messages?: String[];
+  messages?: string[];
   interval?: number;
   enabled? : boolean;
 }
