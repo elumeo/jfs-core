@@ -19,7 +19,7 @@ import Forms from './Component/Forms.showcase';
 import AppCardContentExample from './Component/AppCardContentExample.showcase';
 import RouterProvider from '../Component/App/Stateful/RouterProvider';
 import NoAuthRoute from '../Component/Route/NoAuthRoute';
-import MiscShowcase from './Component/Misc.showcase';
+import ClippyConfetti from './Component/ClippyConfetti.showcase';
 
 type Props = {
   header: ReactNode;
@@ -58,7 +58,7 @@ const Routes: FC<Props> = ({ header, overlays }) => (
           <Route path={'WebSocket'} element={<WebSocket />} />
           <Route path={'AppCardContentExample'} element={<AppCardContentExample />} />
           <Route path={'SharedComponent'} element={<AppCardContentExample />} />
-          <Route path={'Misc'} element={<MiscShowcase />} />
+          <Route path={'ClippyConfetti'} element={<ClippyConfetti />} />
           <Route path={'*'} element={<Navigate to={'Start'} replace />} />
         </Route>
         <Route path={'*'}

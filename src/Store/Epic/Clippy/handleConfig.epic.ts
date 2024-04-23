@@ -9,8 +9,8 @@ const handleMessages: Epic = (action$, state$) =>
     action$.pipe(
         filter(isActionOf(clippyInitialized)),
         map(() => ({
-            messages: Selector.ClippyConfig.pickConfigMessages(state$.value),
-            interval: Selector.ClippyConfig.pickClippyInterval(state$.value),
+            messages: Selector.ClippyConfig.pickClippyConfigMessages(state$.value),
+            interval: Selector.ClippyConfig.pickClippyConfigInterval(state$.value),
             enabled: Selector.ClippyConfig.pickClippyEnabled(state$.value)
 
         })),

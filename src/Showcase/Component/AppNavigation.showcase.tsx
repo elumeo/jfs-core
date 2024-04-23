@@ -34,6 +34,10 @@ const AppNavigation = () => {
         <ListItemIcon><DashboardIcon /></ListItemIcon>
         <ListItemText primary='Cards' />
       </ListItemButton>
+      <ListItemButton onClick={() => navigate('/ClippyConfetti')} selected={pathname.startsWith('/ClippyConfetti')}>
+        <ListItemIcon><Celebration /></ListItemIcon>
+        <ListItemText primary='Clippy & Confetti' />
+      </ListItemButton>
       <ListItemButton onClick={() => navigate('/Colors')} selected={pathname.startsWith('/Colors')}>
         <ListItemIcon><ColorLensIcon /></ListItemIcon>
         <ListItemText primary='Colors' />
@@ -81,10 +85,6 @@ const AppNavigation = () => {
       <ListItemButton onClick={() => navigate('/SharedComponent')} selected={pathname.startsWith('/SharedComponent')}>
         <ListItemIcon><ShareIcon /></ListItemIcon>
         <ListItemText primary='SharedComponent' />
-      </ListItemButton>
-      <ListItemButton onClick={() => navigate('/Misc')} selected={pathname.startsWith('/Misc')}>
-        <ListItemIcon><Celebration /></ListItemIcon>
-        <ListItemText primary='Clippy & Confetti' />
       </ListItemButton>
     </List>
   </Card>;

@@ -28,16 +28,16 @@ const listenContextMenu: Epic = (action$, state$) =>
 const init: Epic = (_action$, state$) =>
   state$.pipe(
     filter(() => Selector.ClippyConfig.pickClippyEnabled(state$.value)),
-    filter(() => !!Selector.ClippyConfig.pickClippyVariant(state$.value)),
+    filter(() => !!Selector.ClippyConfig.pickPreferredClippyVariant(state$.value)),
     filter(() => !agent.instance),
-    switchMap(() => [clippyInit(Selector.ClippyConfig.pickClippyVariant(state$.value))]),
+    switchMap(() => [clippyInit(Selector.ClippyConfig.pickPreferredClippyVariant(state$.value))]),
   )
 
 const handleLoader: Epic = (action$, state$) =>
   action$.pipe(
     filter(isActionOf([clippyInit, clippySaveAgent])),
     map((action) =>
-      (action as ReturnType<typeof clippySaveAgent>).payload ?? Selector.ClippyConfig.pickClippyVariant(state$.value),
+      (action as ReturnType<typeof clippySaveAgent>).payload ?? Selector.ClippyConfig.pickPreferredClippyVariant(state$.value),
 
     ),
     map(async (variant) => {
@@ -64,7 +64,7 @@ const handleSay: Epic = (action$, state$) =>
         agent.instance.speak(payload, false)
         return [clippyAnimate(meta ?? null)]
       } else {
-        return [clippyInit(Selector.ClippyConfig.pickClippyVariant(state$.value))]
+        return [clippyInit(Selector.ClippyConfig.pickPreferredClippyVariant(state$.value))]
       }
     }),
   )
@@ -92,7 +92,7 @@ const handleDestroy: Epic = (action$, state$) =>
       }
       Array.from(document.querySelectorAll('.clippy')).map(el => el.remove())
     }),
-    switchMap(() => [clippyInit(Selector.ClippyConfig.pickClippyVariant(state$.value))])
+    switchMap(() => [clippyInit(Selector.ClippyConfig.pickPreferredClippyVariant(state$.value))])
   )
 export default combineEpics(listenContextMenu, init, handleLoader, handleSay, handleDestroy, handleAnimation);
 

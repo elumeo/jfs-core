@@ -1,6 +1,7 @@
 
 import React from 'react'
 import AppNavigation from './AppNavigation.showcase';
+import ClippyMenu from '../../Component/Clippy/Clippy.menu';
 import Layout from '../../Component/App/Layout';
 import Crossfire from 'react-canvas-confetti/dist/presets/crossfire';
 import Explosion from 'react-canvas-confetti/dist/presets/explosion';
@@ -26,7 +27,7 @@ const ConfettiVariants: Record<string, (any) => JSX.Element> = {
     vortex: Vortex,
 }
 
-const MiscShowcase: React.FC<Props> = () => {
+const ClippyConfetti: React.FC<Props> = () => {
     const dispatch = useDispatch()
     const input = React.useRef<HTMLInputElement>(null)
     const [fire, setFire] = React.useState(false)
@@ -76,8 +77,19 @@ const MiscShowcase: React.FC<Props> = () => {
                         <Typography>        ]</Typography>
                         <Typography> {`}`}</Typography>
                     </CodeBox>
+                    <Typography>
+                        Agent selection is saved in local storage.
+                    </Typography>
+                    <CodeBox>
+                        jfs_<i>{`{`}username{`}`}</i>-_-_--preferred_clippy
+                    </CodeBox>
+                    <Typography>
+                        relevant selectors are exposed under:
+                    </Typography>
+                    <CodeBox><i>src/Store/Core/ClippyConfig.selector.ts</i></CodeBox>
                 </CardContent>
                 <Stack gap={1}>
+                    <ClippyMenu />
                     <TextField inputRef={input} label='message to say:' />
                     <Button
                         variant='contained'
@@ -96,4 +108,4 @@ const MiscShowcase: React.FC<Props> = () => {
         </Stack>
     </Layout>
 }
-export default MiscShowcase
+export default ClippyConfetti

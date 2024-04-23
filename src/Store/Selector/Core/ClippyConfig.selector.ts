@@ -10,18 +10,18 @@ export const pickClippyEnabled = createSelector(
     config => config?.enabled
 )
 
-export const pickClippyVariant = createSelector(
+export const pickPreferredClippyVariant = createSelector(
     [LocalStorage.pickState, pickUsername],
     (storage, userId) => {
         const key = [userId, UserConfig.clippyFeature].join(UserConfig.SEPERATOR)
         return (storage[key]) as Agent
     }
 )
-export const pickClippyInterval = createSelector(
+export const pickClippyConfigInterval = createSelector(
     Config.pickClippyConfig,
     config => config?.interval
 )
-export const pickConfigMessages = createSelector(
+export const pickClippyConfigMessages = createSelector(
     Config.pickClippyConfig,
     config => config?.messages
 )
