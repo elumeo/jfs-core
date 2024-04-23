@@ -35,7 +35,7 @@ const MiscShowcase: React.FC<Props> = () => {
     const [variant, setVariant] = React.useState<keyof typeof ConfettiVariants>('crossfire')
     const Component = React.useMemo(() => ConfettiVariants[variant], [variant])
 
-    const onVariantChange: SelectProps['onChange'] = (event, value) => {
+    const onVariantChange: SelectProps['onChange'] = (event) => {
         setVariant(event.target.value as keyof typeof ConfettiVariants)
     }
     return <Layout navigation={<AppNavigation />}>
