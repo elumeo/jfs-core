@@ -25,15 +25,9 @@ import { VariantType } from 'notistack';
 import Layout from '../../Component/App/Layout';
 import Header from '../../Component/Card/Header';
 import Content from '../../Component/Card/Content';
-import * as ClippyAction from '../../Store/Action/Clippy.action';
-import { useDispatch } from 'react-redux';
-// import useClippy, { ClippyVariant } from '../../Effect/useClippy';
 
 const Notifications = () => {
   const [persist, setPersist] = useState(false)
-  const input = React.useRef<HTMLInputElement>(null)
-  const dispatch = useDispatch()
-  // useClippy()
   const [groupName, setGroupName] = useState('default')
   const groups = useSelector(state => Array.from(new Set(state?.Core?.Notification?.history?.map?.(n => n.group))))
   const onPersistChange: FormControlLabelProps['onChange'] = React.useCallback((event, value) => {
@@ -86,18 +80,6 @@ const Notifications = () => {
             <Grid item xs={12}>
               <AddToastButton />
             </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography pt={4} pb={2} variant='h6'>🤗🤗🤗🤗 Clippy 🤗🤗🤗🤗 </Typography></Grid>
-          <Grid item xs={12}>
-            <Stack direction={'row'} gap={2}>
-              <TextField inputRef={input} label='message to say:' />
-              <Button
-                variant='contained'
-                onClick={() => {
-                  dispatch(ClippyAction.clippySay(input.current?.value || ''))
-                }}>Say</Button>
-            </Stack>
           </Grid>
         </Content>
       </Card>

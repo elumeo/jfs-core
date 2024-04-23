@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, List, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
+import { Card, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import LinkIcon from '@mui/icons-material/Link';
 import AppsIcon from '@mui/icons-material/Apps';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
@@ -15,7 +15,7 @@ import TabIcon from '@mui/icons-material/Tab';
 import BallotOutlinedIcon from '@mui/icons-material/BallotOutlined';
 import ShareIcon from '@mui/icons-material/Share';
 import NatIcon from '@mui/icons-material/Nat';
-import {useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const AppNavigation = () => {
   const navigate = useNavigate();
@@ -81,6 +81,10 @@ const AppNavigation = () => {
       <ListItemButton onClick={() => navigate('/SharedComponent')} selected={pathname.startsWith('/SharedComponent')}>
         <ListItemIcon><ShareIcon /></ListItemIcon>
         <ListItemText primary='SharedComponent' />
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/Misc')} selected={pathname.startsWith('/Misc')}>
+        <ListItemIcon><ShareIcon /></ListItemIcon>
+        <ListItemText primary='misc' />
       </ListItemButton>
     </List>
   </Card>;
