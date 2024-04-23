@@ -10,9 +10,10 @@ import Pride from 'react-canvas-confetti/dist/presets/pride';
 import Realistic from 'react-canvas-confetti/dist/presets/realistic';
 import Snow from 'react-canvas-confetti/dist/presets/snow';
 import Vortex from 'react-canvas-confetti/dist/presets/vortex';
-import { Button, Card, CardContent, CardHeader, Container, FormControlLabel, MenuItem, Select, SelectProps, Stack, Switch, TextField } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, Container, FormControlLabel, MenuItem, Select, SelectProps, Stack, Switch, TextField, Typography } from '@mui/material';
 import * as ClippyAction from '../../Store/Action/Clippy.action';
 import { useDispatch } from 'react-redux';
+import CodeBox from './CodeBox.showcase';
 type Props = {}
 const ConfettiVariants: Record<string, (any) => JSX.Element> = {
     crossfire: Crossfire,
@@ -38,8 +39,8 @@ const MiscShowcase: React.FC<Props> = () => {
     const onVariantChange: SelectProps['onChange'] = (event) => {
         setVariant(event.target.value as keyof typeof ConfettiVariants)
     }
-    return <Layout navigation={<AppNavigation />}>
-        <Stack direction={'row'} gap={2}>
+    return <Layout navigation={<AppNavigation />} fullWidth >
+        <Stack direction={'row'} gap={2} width={'100%'} height={'100%'}>
             <Container component={Card}>
                 <Stack component={CardContent} gap={2}>
                     <CardHeader title='🎉Confetti!🎉' />
@@ -61,13 +62,34 @@ const MiscShowcase: React.FC<Props> = () => {
             </Container>
             <Container component={Card}>
                 <CardHeader title='Extremely useful Agent' />
-                <Stack gap={2}>
+                <CardContent >
+                    <Typography variant='subtitle1'>clippy config.json</Typography>
+                    <CodeBox>
+                        <Typography> "ClippyConfig": {`{`}</Typography>
+                        <Typography>       "enabled": true,</Typography>
+                        <Typography>        "interval": 5000,</Typography>
+                        <Typography>        "messages": [</Typography>
+                        <Typography>               "config message 1",</Typography>
+                        <Typography>               "config message 2",</Typography>
+                        <Typography>               "config message 3",</Typography>
+                        <Typography>               "config message 4"</Typography>
+                        <Typography>        ]</Typography>
+                        <Typography> {`}`}</Typography>
+                    </CodeBox>
+                </CardContent>
+                <Stack gap={1}>
                     <TextField inputRef={input} label='message to say:' />
                     <Button
                         variant='contained'
                         onClick={() => {
                             dispatch(ClippyAction.clippySay(input.current?.value || ''))
                         }}>Say</Button>
+
+                    <Button
+                        variant='contained'
+                        onClick={() => {
+                            dispatch(ClippyAction.clippyDestroy())
+                        }}>destroy</Button>
                 </Stack>
 
             </Container>

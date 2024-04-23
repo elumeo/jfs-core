@@ -47,7 +47,7 @@ const HIGH_CONTRAST = createTheme({
       focusOpacity: 0.2,
     },
     background: {
-      default: '#06066',
+      default: grey[900],
     },
     ...Color
   },
@@ -143,13 +143,13 @@ const HIGH_CONTRAST = createTheme({
     MuiTableCell: {
       styleOverrides: {
         root: props => ({
+          backgroundColor: grey[900],
           fontSize: HIGH_CONTRAST.typography.body1.fontSize,
-          cursor: (props?.variant !== 'head' || props?.disableSort) ? 'default' : 'pointer'
+          cursor: (props?.variant !== 'head' || props?.disableSort) ? 'default' : 'pointer',
+          '&.Mui-active': {
+            backgroundColor: grey[800]
+          }
         }),
-
-        stickyHeader: {
-          backgroundColor: Color.common.white
-        }
       }
     },
     MuiTooltip: {
