@@ -16,6 +16,7 @@ import BallotOutlinedIcon from '@mui/icons-material/BallotOutlined';
 import ShareIcon from '@mui/icons-material/Share';
 import NatIcon from '@mui/icons-material/Nat';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Celebration } from '@mui/icons-material';
 
 const AppNavigation = () => {
   const navigate = useNavigate();
@@ -83,7 +84,7 @@ const AppNavigation = () => {
         <ListItemText primary='SharedComponent' />
       </ListItemButton>
       <ListItemButton onClick={() => navigate('/Misc')} selected={pathname.startsWith('/Misc')}>
-        <ListItemIcon><ShareIcon /></ListItemIcon>
+        <ListItemIcon><Celebration /></ListItemIcon>
         <ListItemText primary='misc' />
       </ListItemButton>
     </List>
