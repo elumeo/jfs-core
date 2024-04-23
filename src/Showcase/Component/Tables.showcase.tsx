@@ -24,7 +24,6 @@ import useSortParamsRouter from '../../Effect/useSortParamsRouter';
 import Layout from '../../Component/App/Layout';
 import * as TableApi from '../Mock/TableApi';
 import { useIntl } from 'react-intl';
-import { common } from '../../Constant/Color';
 import TableHeadDefault from '../../Component/Table/Head/Default';
 import TableHeadSelect from '../../Component/Table/Head/Select';
 import TableCellSelect from '../../Component/Table/Cell/Select';
