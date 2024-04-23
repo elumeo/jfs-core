@@ -17,7 +17,6 @@ import ShareIcon from '@mui/icons-material/Share';
 import NatIcon from '@mui/icons-material/Nat';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Celebration } from '@mui/icons-material';
-
 const AppNavigation = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -85,7 +84,7 @@ const AppNavigation = () => {
       </ListItemButton>
       <ListItemButton onClick={() => navigate('/Misc')} selected={pathname.startsWith('/Misc')}>
         <ListItemIcon><Celebration /></ListItemIcon>
-        <ListItemText primary='misc' />
+        <ListItemText primary='Clippy & Confetti' />
       </ListItemButton>
     </List>
   </Card>;
