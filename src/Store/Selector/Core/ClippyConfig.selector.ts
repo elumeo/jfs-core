@@ -23,5 +23,5 @@ export const pickClippyConfigInterval = createSelector(
 )
 export const pickClippyConfigMessages = createSelector(
     Config.pickClippyConfig,
-    config => config?.messages
+    config => config?.messages ?? []
 )

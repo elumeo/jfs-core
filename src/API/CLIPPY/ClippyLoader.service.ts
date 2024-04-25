@@ -8,7 +8,7 @@ export default function (agent: string) {
       },
       failCb: (error) => {
         reject(error);
-      },
+      }
     }
     )
 
