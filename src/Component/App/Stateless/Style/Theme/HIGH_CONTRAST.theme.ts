@@ -72,21 +72,34 @@ const HIGH_CONTRAST = createTheme({
           '&.jfs-datepicker__day,.react-datepicker .react-datepicker__header': {
             backgroundColor: `${Color.secondary.main}`,
             '&>*,.react-datepicker__day-name': {
-              color: `${Color.secondary.contrastText}`,
+              color: `${Color.common.white}`,
             }
           },
           '&.jfs-datepicker__day,.react-datepicker .react-datepicker__day--in-selecting-range': ({
-            backgroundColor: Color.common.white,
+            backgroundColor: grey[800],
             boxShadow: `inset  0 0 0 1px ${Color.secondary.main}`,
-            color: Color.secondary.main,
+            color: Color.common.white,
+          }),
+          '&.jfs-datepicker__day,.react-datepicker .react-datepicker__day': ({
+            color: `${Color.common.white}`,
+            '&:hover': {
+              backgroundColor: grey[700],
+              boxShadow: `inset  0 0 0 1px ${Color.secondary.main}`,
+              color: Color.common.white,
+            }
           }),
           '&.jfs-datepicker__day .react-datepicker__day--selected,.react-datepicker__day--in-range': ({
-            backgroundColor: `${Color.secondary.light}cc`,
-            color: Color.secondary.contrastText,
+            backgroundColor: grey[800],
+            boxShadow: `inset  0 0 0 1px ${Color.secondary.main}`,
+            color: Color.common.white,
             '&:hover': {
-              backgroundColor: Color.secondary.main,
-              color: Color.secondary.contrastText
+              backgroundColor: grey[900],
+
             }
+          }),
+          '&.react-datepicker.jfs-datepicker__popper, .react-datepicker, .react-datepicker__month, .react-datepicker__week': ({
+            backgroundColor: `${grey[900]} !important`,
+            color: `${Color.common.white} !important`,
           })
         },
       }

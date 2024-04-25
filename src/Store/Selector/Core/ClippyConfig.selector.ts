@@ -14,7 +14,7 @@ export const pickPreferredClippyVariant = createSelector(
     [LocalStorage.pickState, pickUsername],
     (storage, userId) => {
         const key = [userId, UserConfig.clippyFeature].join(UserConfig.SEPERATOR)
-        return (storage[key]) as Agent ?? 'Clippy'
+        return (storage[key]) as Agent ?? Agent.Clippy
     }
 )
 export const pickClippyConfigInterval = createSelector(
