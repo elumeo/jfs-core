@@ -70,18 +70,27 @@ const COMIC = createTheme({
             borderBottomColor: `${Color.secondary.main} !important`,
           },
           '&.jfs-datepicker__day,.react-datepicker .react-datepicker__header': {
+            fontFamily: 'Comic Neue',
             backgroundColor: `${Color.secondary.main}`,
             '&>*,.react-datepicker__day-name': {
               color: `${Color.secondary.contrastText}`,
             }
           },
+          '&.jfs-datepicker__day,.react-datepicker .react-datepicker__day': {
+            fontFamily: 'Comic Neue',
+            '&:hover': {
+              fontFamily: 'Comic Neue',
+            }
+          },
           '&.jfs-datepicker__day,.react-datepicker .react-datepicker__day--in-selecting-range': ({
             backgroundColor: Color.common.white,
             boxShadow: `inset  0 0 0 1px ${Color.secondary.main}`,
+            fontFamily: 'Comic Neue',
             color: Color.secondary.main,
           }),
           '&.jfs-datepicker__day .react-datepicker__day--selected,.react-datepicker__day--in-range': ({
             backgroundColor: `${Color.secondary.light}cc`,
+            fontFamily: 'Comic Neue',
             color: Color.secondary.contrastText,
             '&:hover': {
               backgroundColor: Color.secondary.main,
