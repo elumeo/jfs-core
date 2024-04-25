@@ -73,7 +73,6 @@ const LEGACY = createTheme({
           },
           '&.jfs-datepicker__day,.react-datepicker .react-datepicker__header': {
             backgroundColor: `${Color.secondary.main}`,
-
             fontFamily: "'Press Start 2P', sans-serif",
             '&>*,.react-datepicker__day-name': {
 

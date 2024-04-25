@@ -30,6 +30,8 @@ const ConfettiVariants: Record<string, (any) => JSX.Element> = {
 const ClippyConfetti: React.FC<Props> = () => {
     const dispatch = useDispatch()
     const input = React.useRef<HTMLInputElement>(null)
+    const inputQueue = React.useRef<HTMLInputElement>(null)
+    const inputQueueDuration = React.useRef<HTMLInputElement>(null)
     const [fire, setFire] = React.useState(false)
     const [speed, setSpeed] = React.useState(10)
     const [duration, setDuration] = React.useState(3000)
@@ -61,7 +63,7 @@ const ClippyConfetti: React.FC<Props> = () => {
                 </Stack>
             </Container>
             <Container component={Card}>
-                <CardHeader title='Extremely useful Agent' />
+                <CardHeader title='Extremely useful Agent' subheader={'⚠️⚠️ close it by right-clicking the agent ⚠️⚠️'} />
                 <CardContent >
                     <Typography variant='subtitle1'>clippy config.json</Typography>
                     <CodeBox>
@@ -87,20 +89,34 @@ const ClippyConfetti: React.FC<Props> = () => {
                     </Typography>
                     <CodeBox><i>src/Store/Selector/Core/ClippyConfig.selector.ts</i></CodeBox>
                 </CardContent>
-                <Stack gap={1}>
+                <Stack >
                     <ClippyMenu />
-                    <TextField inputRef={input} label='message to say:' />
-                    <Button
-                        variant='contained'
-                        onClick={() => {
-                            dispatch(ClippyAction.clippySay(input.current?.value || ''))
-                        }}>Say</Button>
-
                     <Button
                         variant='contained'
                         onClick={() => {
                             dispatch(ClippyAction.clippyDestroy())
                         }}>destroy</Button>
+                    <Stack gap={2} width={'100%'}>
+                        <Stack width={'100%'}>
+                            <TextField inputRef={input} label='message to say:' />
+                            <Button
+                                variant='outlined'
+                                onClick={() => {
+                                    dispatch(ClippyAction.clippySay(input.current?.value || ''))
+                                }}>Say</Button>
+                        </Stack>
+                        <Stack width={'100%'}>
+                            <Stack direction={'row'} width={'100%'}>
+                                <TextField inputRef={inputQueue} label='messages to say, one line per message:' multiline minRows={3} fullWidth />
+                                <TextField inputRef={inputQueueDuration} type='number' inputProps={{ inputMode: 'decimal' }} defaultValue={5000} label={'interval in ms'} />
+                            </Stack>
+                            <Button
+                                variant='outlined'
+                                onClick={() => {
+                                    dispatch(ClippyAction.clippySayQueue((inputQueue.current?.value || '').split('\n'), inputQueueDuration.current?.valueAsNumber ?? 5000))
+                                }}>messages queue</Button>
+                        </Stack>
+                    </Stack>
                 </Stack>
 
             </Container>

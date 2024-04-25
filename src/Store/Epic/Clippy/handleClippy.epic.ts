@@ -1,8 +1,8 @@
 import * as UserConfig from 'API/LOCAL_STORAGE/UserConfig';
-import { clippySay, clippyAnimate, clippySaveAgent, clippyInit, clippyInitialized, clippyDestroy, authorizeSession } from 'Store/Action';
+import { clippySay, clippyAnimate, clippySaveAgent, clippyInit, clippyInitialized, clippyDestroy, authorizeSession, clippySayQueue } from 'Store/Action';
 import * as Selector from 'Store/Selector/Core';
 import { Epic } from 'Types/Redux';
-import { concatMap, filter, fromEvent, map, switchMap, takeUntil, tap } from 'rxjs';
+import { concatMap, filter, fromEvent, map, switchMap, take, takeUntil, tap, timer } from 'rxjs';
 import { isActionOf } from 'typesafe-actions';
 import ClippyLoaderService from 'API/CLIPPY/ClippyLoader.service';
 import { combineEpics } from 'redux-observable';
@@ -80,6 +80,17 @@ const handleSay: Epic = (action$, state$) =>
     }),
     switchMap(action => action)
   )
+const handleSayQueue: Epic = (action$, state$) =>
+  action$.pipe(
+    filter(isActionOf(clippySayQueue)),
+    switchMap(
+      ({ payload: messages, meta: interval }) =>
+        timer(0, interval).pipe(
+          concatMap((index) => [clippySay(messages[index])]),
+          take(messages.length),
+        )
+    )
+  )
 const handleAnimation: Epic = (action$) =>
   action$.pipe(
     filter(isActionOf(clippyAnimate)),
@@ -106,6 +117,6 @@ const handleDestroy: Epic = (action$) =>
     }),
     switchMap(() => [])
   )
-export default combineEpics(listenContextMenu, init, handleLoader, handleSay, handleDestroy, handleAnimation);
+export default combineEpics(listenContextMenu, init, handleLoader, handleSay, handleDestroy, handleAnimation, handleSayQueue);
 
 
