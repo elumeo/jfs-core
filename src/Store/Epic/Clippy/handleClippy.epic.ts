@@ -64,7 +64,7 @@ const handleSay: Epic = (action$, state$) =>
         agent.instance.show(false)
         agent.instance.speak(payload, false)
         agent.type = variant
-        return [clippyAnimate(meta ?? null)]  
+        return [clippyAnimate(meta ?? null)]
       }
     }),
     switchMap(action => action)
