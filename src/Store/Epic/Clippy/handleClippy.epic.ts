@@ -85,7 +85,7 @@ const handleSayQueue: Epic = (action$, state$) =>
     filter(isActionOf(clippySayQueue)),
     switchMap(
       ({ payload: messages, meta: interval }) =>
-        timer(0, interval).pipe(
+        timer(0, interval ?? Selector.ClippyConfig.pickClippyConfigInterval(state$.value)).pipe(
           concatMap((index) => [clippySay(messages[index])]),
           take(messages.length),
         )
