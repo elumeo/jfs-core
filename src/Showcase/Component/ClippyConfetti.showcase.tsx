@@ -16,7 +16,7 @@ import * as ClippyAction from '../../Store/Action/Clippy.action';
 import { useDispatch } from 'react-redux';
 import CodeBox from './CodeBox.showcase';
 type Props = {}
-const ConfettiVariants: Record<string, (any) => JSX.Element> = {
+const ConfettiVariants: Record<string, (props) => JSX.Element> = {
     crossfire: Crossfire,
     explosion: Explosion,
     fireworks: Fireworks,
@@ -108,12 +108,12 @@ const ClippyConfetti: React.FC<Props> = () => {
                         <Stack width={'100%'}>
                             <Stack direction={'row'} width={'100%'}>
                                 <TextField inputRef={inputQueue} label='messages to say, one line per message:' multiline minRows={3} fullWidth />
-                                <TextField inputRef={inputQueueDuration} type='number' inputProps={{ inputMode: 'decimal' }} defaultValue={5000} label={'interval in ms'} />
+                                <TextField inputRef={inputQueueDuration} type='number' inputProps={{ inputMode: 'decimal' }} defaultValue={5000} label={'interval in ms (defaults to config)'} />
                             </Stack>
                             <Button
                                 variant='outlined'
                                 onClick={() => {
-                                    dispatch(ClippyAction.clippySayQueue((inputQueue.current?.value || '').split('\n'), inputQueueDuration.current?.valueAsNumber ?? 5000))
+                                    dispatch(ClippyAction.clippySayQueue((inputQueue.current?.value || '').split('\n'), inputQueueDuration.current?.valueAsNumber))
                                 }}>messages queue</Button>
                         </Stack>
                     </Stack>
