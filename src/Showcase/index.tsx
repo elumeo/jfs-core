@@ -64,7 +64,7 @@ window['core_reactRoot'].render(<App
       <Navigation />
       <Login.Dialog />
       <Logout.Dialog />
-      <Settings.Dialog>
+      <Settings.Dialog enableClippy enableTheme>
         <Language.Settings />
       </Settings.Dialog>
       <Snackbar />

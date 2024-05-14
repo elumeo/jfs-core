@@ -42,9 +42,10 @@ const init: Epic = (action$, state$) =>
     takeUntil(action$.pipe(filter(isActionOf(clippyInit))))
   )
 
-const handleLoader: Epic = (action$) =>
+const handleLoader: Epic = (action$, state$) =>
   action$.pipe(
     filter(isActionOf([clippyInit, clippySaveAgent])),
+    filter(() => Selector.ClippyConfig.pickClippyEnabled(state$.value)),
     map(({ payload }) => payload),
     switchMap(async (variant) => {
       if (!variant) {
@@ -65,6 +66,7 @@ const handleLoader: Epic = (action$) =>
 const handleSay: Epic = (action$, state$) =>
   action$.pipe(
     filter(isActionOf(clippySay)),
+    filter(() => Selector.ClippyConfig.pickClippyEnabled(state$.value)),
     concatMap(async ({ payload, meta }) => {
       if (agent.instance) {
         agent.instance.speak(payload, false)
