@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, List, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
+import { Card, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import LinkIcon from '@mui/icons-material/Link';
 import AppsIcon from '@mui/icons-material/Apps';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
@@ -15,8 +15,8 @@ import TabIcon from '@mui/icons-material/Tab';
 import BallotOutlinedIcon from '@mui/icons-material/BallotOutlined';
 import ShareIcon from '@mui/icons-material/Share';
 import NatIcon from '@mui/icons-material/Nat';
-import {useLocation, useNavigate } from 'react-router-dom';
-
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Celebration } from '@mui/icons-material';
 const AppNavigation = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -33,6 +33,10 @@ const AppNavigation = () => {
       <ListItemButton onClick={() => navigate('/Cards')} selected={pathname.startsWith('/Cards')}>
         <ListItemIcon><DashboardIcon /></ListItemIcon>
         <ListItemText primary='Cards' />
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/ClippyConfetti')} selected={pathname.startsWith('/ClippyConfetti')}>
+        <ListItemIcon><Celebration /></ListItemIcon>
+        <ListItemText primary='Clippy & Confetti' />
       </ListItemButton>
       <ListItemButton onClick={() => navigate('/Colors')} selected={pathname.startsWith('/Colors')}>
         <ListItemIcon><ColorLensIcon /></ListItemIcon>

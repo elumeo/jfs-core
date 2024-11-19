@@ -5,8 +5,10 @@ import * as Action from 'Store/Action';
 
 import * as Types from 'Types/Notification';
 import { AxiosError } from 'axios';
+import { JscError } from 'Utilities/Format/Error';
 
-export const mapErrorToNotification = (error: AxiosError<{ error?: string, message?: string }>): Types.Notification => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const mapErrorToNotification = (error: AxiosError<JscError | any>): Types.Notification => {
   const responseData = error?.response?.data;
 
   const title = error?.response?.statusText || error?.name;

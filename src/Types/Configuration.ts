@@ -1,5 +1,10 @@
 import { Language } from './Language';
 import { NotificationPosition } from 'Types/Notification';
+export type ClippyConfiguration = {
+  messages?: string[];
+  interval?: number;
+  enabled? : boolean;
+}
 
 export type WebSocketClient = {
   Host: string;
@@ -26,4 +31,5 @@ export type Configuration = {
   JfsWebSocketClient: WebSocketClient;
   DebugMode?: boolean
   DebugCallstackLimit?: number
+  ClippyConfig?: ClippyConfiguration
 };

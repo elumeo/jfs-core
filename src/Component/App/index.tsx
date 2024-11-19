@@ -16,14 +16,14 @@ export type Props = StatefulProps & {
 
 const App: React.FC<Props> =
   ({
-     children,
-     translations,
-     packageJSON,
-     title,
-     store,
-   }) => (
+    children,
+    translations,
+    packageJSON,
+    title,
+    store,
+  }) => (
     <Stateful store={store}>
-      <Title value={title || (packageJSON.name as string)}/>
+      <Title value={title || (packageJSON.name as string)} />
       <Stateful.Initialized>
         <Stateful.International translations={translations}>
           {({ locale }) => (
@@ -39,7 +39,7 @@ const App: React.FC<Props> =
         <Stateless.Style>
           <Stateful.Initializer
             packageJSON={packageJSON}
-            translations={translations}/>
+            translations={translations} />
         </Stateless.Style>
       </Stateful.Uninitialized>
     </Stateful>

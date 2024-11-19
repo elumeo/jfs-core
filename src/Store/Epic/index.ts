@@ -2,10 +2,13 @@ import { combineEpics } from 'redux-observable';
 import App from './App';
 import Configuration from './Configuration';
 import Debug from './Debug';
+import Clippy from './Clippy';
 import Language from './Language';
 import Login from './Login';
 import Locale from './Locale';
 import Session from './Session';
+import Theme from './Theme';
+import LocalStorage from './LocalStorage';
 import System from './System';
 import Clipboard from './Clipboard.epic';
 import WebSocket from './WebSocket';
@@ -45,10 +48,13 @@ const Core = combineEpics(
   Login,
   Locale,
   Configuration,
+  Clippy,
   WebSocket,
   Language,
   Notification,
-  Debug
+  LocalStorage,
+  Debug,
+  Theme
 );
 
 export default Core;

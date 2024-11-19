@@ -25,12 +25,14 @@ var react_intl_1 = require("react-intl");
 var Redux_1 = require("../../Types/Redux");
 var react_redux_1 = require("react-redux");
 var Action_1 = require("../../Store/Action");
+var ThemePicker_menu_1 = __importDefault(require("../Theme/ThemePicker.menu"));
+var Clippy_menu_1 = __importDefault(require("../Clippy/Clippy.menu"));
 var Dialog = function (_a) {
     var children = _a.children;
     var dispatch = (0, react_redux_1.useDispatch)();
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
     var open = (0, Redux_1.useSelector)(function (state) { return state.Core.Settings.settingsOpen; });
     var onClose = react_1.default.useCallback(function () { return dispatch((0, Action_1.closeSettings)()); }, [dispatch]);
-    return ((0, jsx_runtime_1.jsxs)(Dialog_1.default, __assign({ open: open, onClose: onClose }, { children: [(0, jsx_runtime_1.jsx)(DialogTitle_1.default, { children: formatMessage({ id: 'app.settings' }) }), (0, jsx_runtime_1.jsx)(DialogContent_1.default, { children: children }), (0, jsx_runtime_1.jsx)(DialogActions_1.default, { children: (0, jsx_runtime_1.jsx)(Button_1.default, __assign({ variant: 'outlined', onClick: onClose }, { children: formatMessage({ id: 'app.closeBtnLabelModalDialog' }) })) })] })));
+    return ((0, jsx_runtime_1.jsxs)(Dialog_1.default, __assign({ open: open, onClose: onClose }, { children: [(0, jsx_runtime_1.jsx)(DialogTitle_1.default, { children: formatMessage({ id: 'app.settings' }) }), (0, jsx_runtime_1.jsx)(DialogContent_1.default, { children: children }), (0, jsx_runtime_1.jsx)(DialogContent_1.default, { children: (0, jsx_runtime_1.jsx)(ThemePicker_menu_1.default, {}) }), (0, jsx_runtime_1.jsx)(DialogContent_1.default, { children: (0, jsx_runtime_1.jsx)(Clippy_menu_1.default, {}) }), (0, jsx_runtime_1.jsx)(DialogActions_1.default, { children: (0, jsx_runtime_1.jsx)(Button_1.default, __assign({ variant: 'outlined', onClick: onClose }, { children: formatMessage({ id: 'app.closeBtnLabelModalDialog' }) })) })] })));
 };
 exports.default = Dialog;

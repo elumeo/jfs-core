@@ -24,7 +24,6 @@ import useSortParamsRouter from '../../Effect/useSortParamsRouter';
 import Layout from '../../Component/App/Layout';
 import * as TableApi from '../Mock/TableApi';
 import { useIntl } from 'react-intl';
-import { common } from '../../Constant/Color';
 import TableHeadDefault from '../../Component/Table/Head/Default';
 import TableHeadSelect from '../../Component/Table/Head/Select';
 import TableCellSelect from '../../Component/Table/Cell/Select';
@@ -35,6 +34,7 @@ import { addToastAction } from '../../Store/Action';
 import { useDispatch } from 'react-redux';
 import Select from '@mui/material/Select';
 import Grid2 from '@mui/material/Unstable_Grid2';
+import definition from '../../Component/App/Stateless/Style/Theme/Definition';
 
 const sxs: Record<string, SxProps> = {
   TableBasic: { minWidth: 650 },
@@ -71,7 +71,7 @@ const Tables = () => {
     return () => clearTimeout(timeout)
   }, []);
 
-  const header = <TableRow sx={{ backgroundColor: common.white, zIndex: 10 }}>
+  const header = <TableRow sx={{ backgroundColor: definition.palette.background.paper, zIndex: 10 }}>
     {TableApi.Columns.map((key) => {
       if (key == 'select') {
         return <TableHeadSelect

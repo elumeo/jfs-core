@@ -14,3 +14,9 @@ export const DebugCallstackLimit = createSelector(
   Configuration,
   config => config?.DebugCallstackLimit
 )
+
+
+export const pickClippyConfig = createSelector(
+  Configuration,
+  config => config?.ClippyConfig ?? {}
+)

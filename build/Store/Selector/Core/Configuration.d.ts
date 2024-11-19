@@ -19,3 +19,10 @@ export declare const DebugCallstackLimit: ((state: {
 }> & {
     clearCache: () => void;
 };
+export declare const pickClippyConfig: ((state: {
+    Core: import("../../Reducer/Core").State;
+} & Record<string, unknown>) => import("../../../Types/Configuration").ClippyConfiguration) & import("reselect").OutputSelectorFields<(args_0: import("../../../Types/Configuration").Configuration) => import("../../../Types/Configuration").ClippyConfiguration, {
+    clearCache: () => void;
+}> & {
+    clearCache: () => void;
+};

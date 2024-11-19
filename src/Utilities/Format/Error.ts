@@ -1,5 +1,11 @@
 import { AxiosError } from 'axios';
 
+
+export type JscError = {
+  id: string;
+  message: string;
+};
+
 const isAxiosError = (error: Error) =>
   ['config', 'code', 'request', 'response'].every(key => key in error);
 
@@ -26,9 +32,9 @@ const body = (error: AxiosError<{id?: string, message?: string}>) => {
   }
 };
 
-const http = (error: AxiosError) => ({
-  title: head(error as AxiosError),
-  details: body(error as AxiosError),
+const http = (error: AxiosError<unknown>) => ({
+  title: head(error as AxiosError<unknown>),
+  details: body(error as AxiosError<JscError>),
 });
 
 const generic = (error: Error) => ({

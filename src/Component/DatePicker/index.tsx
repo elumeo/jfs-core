@@ -93,7 +93,9 @@ const DatePicker = <IsRangePicker extends boolean = undefined>({
       disabled={disabled}
       ref={datePickerRef}
       className='jfs-datepicker'
+      popperClassName='jfs-datepicker__popper'
       dayClassName={() => 'jfs-datepicker__day'}
+      monthClassName={(d) => 'jfs-datepicker__month--' + d}
       onClickOutside={toggleOpen}
       onChange={handleChangeValue}
       dateFormat={dateFormat || mapLanguageToDateFormat(language as LANGUAGE)}

@@ -13,6 +13,7 @@ import { State as ToastState } from './Toast';
 import { State as LoginState } from './Login';
 import { State as LocaleState } from './Locale';
 import { State as WebSocketState } from './WebSocket';
+import { State as LocalStorageState } from './LocalStorage.reducer';
 import * as Type from '../../../Types/Configuration';
 export type State = {
     App?: AppState;
@@ -30,6 +31,7 @@ export type State = {
     WebSocket?: WebSocketState;
     Configuration?: ConfigurationState<Type.Configuration>;
     Locale?: LocaleState;
+    LocalStorage?: LocalStorageState;
 };
 declare const Core: import("redux").Reducer<import("redux").CombinedState<State>, import("redux").AnyAction>;
 export default Core;

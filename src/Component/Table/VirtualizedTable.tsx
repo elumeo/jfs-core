@@ -1,10 +1,10 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, TableComponents, TableBodyProps, } from 'react-virtuoso'
 import { SortDirection } from '@mui/material/TableCell'
 import Table from './Table'
 import TableContainer from './Container'
 import NoResults from './Row/NoResults'
-import { SxProps, TableBody, TableFooterProps, TableHead, TableProps, TableRow } from '@mui/material'
+import { SxProps, TableBody, TableBodyProps, TableFooterProps, TableHead, TableProps, TableRow } from '@mui/material'
 import { TableRowProps } from '@mui/material/TableRow';
 import Footer from './Row/Footer'
 
@@ -49,6 +49,7 @@ export type Props<ItemData, ItemContext = unknown> = TableVirtuosoProps<ItemData
   slotProps?: {
     tableProps?: TableProps;
     tableRowProps?: TableRowProps;
+    tableBodyProps?: TableBodyProps
   }
 };
 
@@ -59,7 +60,7 @@ const VirtualizedTable = <ItemData extends {}, ItemContext = unknown>({
   compare = (a, b) => (a[sortBy] < b[sortBy]) ? -1 : a[sortBy] === b[sortBy] ? 0 : 1,
   filter = () => true,
   slotProps,
-  components: propComponents,
+  components,
   isLoading = false,
   ...props
 }: Props<ItemData, ItemContext>) => {
@@ -76,7 +77,7 @@ const VirtualizedTable = <ItemData extends {}, ItemContext = unknown>({
     [data, sortBy, sortDirection, compare, filter]
   );
 
-  const components: TableComponents<ItemData, ItemContext> = React.useMemo(
+  const _components: TableComponents<ItemData, ItemContext> = React.useMemo(
     () => ({
       EmptyPlaceholder: (data.length == 0 && !isLoading)
         ? NoResults
@@ -94,20 +95,20 @@ const VirtualizedTable = <ItemData extends {}, ItemContext = unknown>({
           ..._props?.sx ?? {},
           ...(slotProps?.tableRowProps?.sx ?? {}),
         } as SxProps} />),
-      TableBody: React.forwardRef<HTMLTableSectionElement, TableBodyProps>((_props, ref) => <TableBody {..._props} ref={ref} />),
+      TableBody: React.forwardRef<HTMLTableSectionElement, TableBodyProps>((_props, ref) => <TableBody {..._props} ref={ref} {...slotProps?.tableBodyProps ?? {}} />),
       TableFoot: React.forwardRef<HTMLTableSectionElement, TableFooterProps>((_props, ref) => <Footer isLoading={isLoading} {..._props} ref={ref} />),
-      ...propComponents
+      ...components
     }),
-    [propComponents, slotProps, isLoading]
+    [components, slotProps, isLoading]
   );
   return <TableVirtuoso<ItemData, ItemContext>
     ref={ref}
     data={_sorted}
-    components={components}
+    components={_components}
     fixedFooterContent={() => undefined}
     overscan={20}
     {...props}
   />;
 }
 
-export default memo(VirtualizedTable) as typeof VirtualizedTable;
+export default VirtualizedTable
