@@ -13,7 +13,7 @@ function default_1(agent) {
             },
             failCb: function (error) {
                 reject(error);
-            },
+            }
         });
     });
 }

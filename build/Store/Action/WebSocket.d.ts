@@ -7,10 +7,10 @@ export declare const webSocketConnectFailedAction: import("typesafe-actions").Pa
 export declare const webSocketReconnectAction: import("typesafe-actions").PayloadActionCreator<"websocket/PREPARE_RECONNECT", string>;
 export declare const webSocketDisconnectRequestAction: import("typesafe-actions").PayloadActionCreator<"websocket/DISCONNECT_REQUEST", string>;
 export declare const webSocketDisconnectSuccessAction: import("typesafe-actions").PayloadActionCreator<"websocket/DISCONNECT_SUCCESS", string>;
-export declare const webSocketJoinRoomRequestAction: import("typesafe-actions").PayloadActionCreator<"websocket/JOIN_ROOM_REQUEST", Type.IWebSocketRoom<string>>;
+export declare const webSocketJoinRoomRequestAction: import("typesafe-actions").PayloadActionCreator<"websocket/JOIN_ROOM_REQUEST", Type.IWebSocketRoom<unknown>>;
 export declare const webSocketJoinRoomLoadingAction: import("typesafe-actions").PayloadActionCreator<"websocket/JOIN_ROOM_LOADING", Type.IWebSocketRoomConnection>;
 export declare const webSocketJoinRoomSuccessAction: import("typesafe-actions").PayloadActionCreator<"websocket/JOIN_ROOM_SUCCESS", Type.IWebSocketRoomConnection>;
 export declare const webSocketJoinRoomFailureAction: import("typesafe-actions").PayloadActionCreator<"websocket/JOIN_ROOM_FAILURE", Type.IWebSocketRoomConnection>;
-export declare const webSocketLeaveRoomRequestAction: import("typesafe-actions").PayloadActionCreator<"websocket/LEAVE_ROOM_REQUEST", Type.IWebSocketRoom<string>>;
-export declare const webSocketLeaveRoomSuccessAction: import("typesafe-actions").PayloadActionCreator<"websocket/LEAVE_ROOM_SUCCESS", Type.IWebSocketRoom<string>>;
+export declare const webSocketLeaveRoomRequestAction: import("typesafe-actions").PayloadActionCreator<"websocket/LEAVE_ROOM_REQUEST", Type.IWebSocketRoom<unknown>>;
+export declare const webSocketLeaveRoomSuccessAction: import("typesafe-actions").PayloadActionCreator<"websocket/LEAVE_ROOM_SUCCESS", Type.IWebSocketRoom<unknown>>;
 export declare const webSocketUpdateRoomAction: import("typesafe-actions").PayloadActionCreator<"websocket/UPDATE_ROOM", JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>>;

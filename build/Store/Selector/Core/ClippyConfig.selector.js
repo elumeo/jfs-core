@@ -23,16 +23,18 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pickConfigMessages = exports.pickClippyInterval = exports.pickClippyVariant = exports.pickClippyEnabled = void 0;
+exports.pickClippyConfigMessages = exports.pickClippyConfigInterval = exports.pickPreferredClippyVariant = exports.pickClippyEnabled = void 0;
 var toolkit_1 = require("@reduxjs/toolkit");
 var Config = __importStar(require("./Configuration"));
 var LocalStorage = __importStar(require("./LocalStorage.selector"));
 var Session_1 = require("./Session");
 var UserConfig = __importStar(require("../../../API/LOCAL_STORAGE/UserConfig"));
+var Clippy_type_1 = require("../../../Types/Clippy.type");
 exports.pickClippyEnabled = (0, toolkit_1.createSelector)(Config.pickClippyConfig, function (config) { return config === null || config === void 0 ? void 0 : config.enabled; });
-exports.pickClippyVariant = (0, toolkit_1.createSelector)([LocalStorage.pickState, Session_1.pickUsername], function (storage, userId) {
+exports.pickPreferredClippyVariant = (0, toolkit_1.createSelector)([LocalStorage.pickState, Session_1.pickUsername], function (storage, userId) {
+    var _a;
     var key = [userId, UserConfig.clippyFeature].join(UserConfig.SEPERATOR);
-    return (storage[key]);
+    return (_a = (storage[key])) !== null && _a !== void 0 ? _a : Clippy_type_1.Agent.Clippy;
 });
-exports.pickClippyInterval = (0, toolkit_1.createSelector)(Config.pickClippyConfig, function (config) { return config === null || config === void 0 ? void 0 : config.interval; });
-exports.pickConfigMessages = (0, toolkit_1.createSelector)(Config.pickClippyConfig, function (config) { return config === null || config === void 0 ? void 0 : config.messages; });
+exports.pickClippyConfigInterval = (0, toolkit_1.createSelector)(Config.pickClippyConfig, function (config) { return config === null || config === void 0 ? void 0 : config.interval; });
+exports.pickClippyConfigMessages = (0, toolkit_1.createSelector)(Config.pickClippyConfig, function (config) { var _a; return (_a = config === null || config === void 0 ? void 0 : config.messages) !== null && _a !== void 0 ? _a : []; });

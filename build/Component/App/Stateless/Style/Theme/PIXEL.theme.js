@@ -98,8 +98,16 @@ var LEGACY = (0, styles_1.createTheme)({
                     },
                     '&.jfs-datepicker__day,.react-datepicker .react-datepicker__header': {
                         backgroundColor: "".concat(Color.secondary.main),
+                        fontFamily: "'Press Start 2P', sans-serif",
                         '&>*,.react-datepicker__day-name': {
+                            fontFamily: "'Press Start 2P', sans-serif",
                             color: "".concat(Color.secondary.contrastText),
+                        }
+                    },
+                    '&.jfs-datepicker__day,.react-datepicker .react-datepicker__day': {
+                        fontFamily: "'Press Start 2P', sans-serif",
+                        '&:hover': {
+                            fontFamily: "'Press Start 2P', sans-serif",
                         }
                     },
                     '&.jfs-datepicker__day,.react-datepicker .react-datepicker__day--in-selecting-range': ({

@@ -71,7 +71,7 @@ var HIGH_CONTRAST = (0, styles_1.createTheme)({
             focus: 'rgba(0, 0, 0, 0.2)',
             focusOpacity: 0.2,
         }, background: {
-            default: '#06066',
+            default: colors_1.grey[900],
         } }, Color),
     mixins: {
         toolbar: {
@@ -94,21 +94,33 @@ var HIGH_CONTRAST = (0, styles_1.createTheme)({
                     '&.jfs-datepicker__day,.react-datepicker .react-datepicker__header': {
                         backgroundColor: "".concat(Color.secondary.main),
                         '&>*,.react-datepicker__day-name': {
-                            color: "".concat(Color.secondary.contrastText),
+                            color: "".concat(Color.common.white),
                         }
                     },
                     '&.jfs-datepicker__day,.react-datepicker .react-datepicker__day--in-selecting-range': ({
-                        backgroundColor: Color.common.white,
+                        backgroundColor: colors_1.grey[800],
                         boxShadow: "inset  0 0 0 1px ".concat(Color.secondary.main),
-                        color: Color.secondary.main,
+                        color: Color.common.white,
+                    }),
+                    '&.jfs-datepicker__day,.react-datepicker .react-datepicker__day': ({
+                        color: "".concat(Color.common.white),
+                        '&:hover': {
+                            backgroundColor: colors_1.grey[700],
+                            boxShadow: "inset  0 0 0 1px ".concat(Color.secondary.main),
+                            color: Color.common.white,
+                        }
                     }),
                     '&.jfs-datepicker__day .react-datepicker__day--selected,.react-datepicker__day--in-range': ({
-                        backgroundColor: "".concat(Color.secondary.light, "cc"),
-                        color: Color.secondary.contrastText,
+                        backgroundColor: colors_1.grey[800],
+                        boxShadow: "inset  0 0 0 1px ".concat(Color.secondary.main),
+                        color: Color.common.white,
                         '&:hover': {
-                            backgroundColor: Color.secondary.main,
-                            color: Color.secondary.contrastText
+                            backgroundColor: colors_1.grey[900],
                         }
+                    }),
+                    '&.react-datepicker.jfs-datepicker__popper, .react-datepicker, .react-datepicker__month, .react-datepicker__week': ({
+                        backgroundColor: "".concat(colors_1.grey[900], " !important"),
+                        color: "".concat(Color.common.white, " !important"),
                     })
                 },
             }
@@ -164,12 +176,13 @@ var HIGH_CONTRAST = (0, styles_1.createTheme)({
         MuiTableCell: {
             styleOverrides: {
                 root: function (props) { return ({
+                    backgroundColor: colors_1.grey[900],
                     fontSize: HIGH_CONTRAST.typography.body1.fontSize,
-                    cursor: ((props === null || props === void 0 ? void 0 : props.variant) !== 'head' || (props === null || props === void 0 ? void 0 : props.disableSort)) ? 'default' : 'pointer'
+                    cursor: ((props === null || props === void 0 ? void 0 : props.variant) !== 'head' || (props === null || props === void 0 ? void 0 : props.disableSort)) ? 'default' : 'pointer',
+                    '&.Mui-active': {
+                        backgroundColor: colors_1.grey[800]
+                    }
                 }); },
-                stickyHeader: {
-                    backgroundColor: Color.common.white
-                }
             }
         },
         MuiTooltip: {

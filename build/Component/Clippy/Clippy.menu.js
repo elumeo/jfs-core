@@ -22,7 +22,7 @@ var react_redux_1 = require("react-redux");
 var Clippy_type_1 = require("../../Types/Clippy.type");
 var ClippyConfig_selector_1 = require("../../Store/Selector/Core/ClippyConfig.selector");
 var ClippyMenu = function () {
-    var variant = (0, react_redux_1.useSelector)(ClippyConfig_selector_1.pickClippyVariant);
+    var variant = (0, react_redux_1.useSelector)(ClippyConfig_selector_1.pickPreferredClippyVariant);
     var dispatch = (0, react_redux_1.useDispatch)();
     var handleChange = react_1.default.useCallback(function (event) {
         dispatch((0, Action_1.clippySaveAgent)(event.target.value));

@@ -36,7 +36,7 @@ var save = function (action$, state$) {
         return ({ userId: (_d = (_c = (_b = state$.value.Core) === null || _b === void 0 ? void 0 : _b.Session) === null || _c === void 0 ? void 0 : _c.sessionDTO) === null || _d === void 0 ? void 0 : _d.username, clippyVariant: payload });
     }), (0, operators_1.switchMap)(function (_a) {
         var userId = _a.userId, clippyVariant = _a.clippyVariant;
-        return [(0, Action_1.clippyDestroy)(), (0, LocalStorage_action_1.saveToLocalStorage)([userId, UserConfig.clippyFeature].join(UserConfig.SEPERATOR), clippyVariant)];
+        return [(0, LocalStorage_action_1.saveToLocalStorage)([userId, UserConfig.clippyFeature].join(UserConfig.SEPERATOR), clippyVariant)];
     }));
 };
 exports.default = save;

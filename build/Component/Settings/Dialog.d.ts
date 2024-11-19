@@ -1,7 +1,7 @@
-/// <reference types="react" />
-import { DialogContentProps } from '@mui/material/DialogContent/DialogContent';
+import React from 'react';
 type Props = {
-    children: DialogContentProps['children'];
+    enableTheme?: boolean;
+    enableClippy?: boolean;
 };
-declare const Dialog: ({ children }: Props) => JSX.Element;
+declare const Dialog: React.FC<React.PropsWithChildren<Props>>;
 export default Dialog;

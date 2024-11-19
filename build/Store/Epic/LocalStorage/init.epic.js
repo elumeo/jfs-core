@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -27,8 +38,8 @@ var Session = __importStar(require("../../../API/LOCAL_STORAGE/Session"));
 var rxjs_1 = require("rxjs");
 var typesafe_actions_1 = require("typesafe-actions");
 var Action = __importStar(require("../../Action"));
-var init = function (action$) { return action$.pipe((0, rxjs_1.filter)((0, typesafe_actions_1.isActionOf)(Action.configLoadedAction)), (0, rxjs_1.mergeMap)(function () { return (0, rxjs_1.of)(window.localStorage).pipe((0, rxjs_1.map)(function (localStorage) { return Object.keys(localStorage); }), (0, rxjs_1.map)(function (keys) { return keys.map(function (key) { return key.replace(Session.BASE_NAME, ''); }); }), (0, rxjs_1.mergeMap)(function (keys) { return keys.map(function (key) {
+var init = function (action$) { return action$.pipe((0, rxjs_1.filter)((0, typesafe_actions_1.isActionOf)(Action.configLoadedAction)), (0, rxjs_1.mergeMap)(function () { return (0, rxjs_1.of)(window.localStorage).pipe((0, rxjs_1.map)(function (localStorage) { return Object.keys(localStorage); }), (0, rxjs_1.map)(function (keys) { return keys.map(function (key) { return key.replace(Session.BASE_NAME, ''); }); }), (0, rxjs_1.map)(function (keys) { return keys.reduce(function (acc, key) {
     var _a;
-    return Action.syncLocalStorageToReducer((_a = {}, _a[key] = Session.getItem(key), _a));
-}); })); })); };
+    return (__assign(__assign({}, acc), (_a = {}, _a[key] = Session.getItem(key), _a)));
+}, {}); }), (0, rxjs_1.switchMap)(function (payload) { return [Action.syncLocalStorageToReducer(payload)]; })); })); };
 exports.default = init;

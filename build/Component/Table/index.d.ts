@@ -25,6 +25,6 @@ declare const Table: {
     };
     Container: import("react").ForwardRefExoticComponent<import("react").RefAttributes<HTMLDivElement>>;
     Table: (props: import("@mui/material").TableProps<"table", {}>) => JSX.Element;
-    VirtualizedTable: <ItemData extends {}, ItemContext = unknown>({ data, sortBy, sortDirection, compare, filter, slotProps, components: propComponents, isLoading, ...props }: import("./VirtualizedTable").Props<ItemData, ItemContext>) => JSX.Element;
+    VirtualizedTable: <ItemData extends {}, ItemContext = unknown>({ data, sortBy, sortDirection, compare, filter, slotProps, components, isLoading, ...props }: import("./VirtualizedTable").Props<ItemData, ItemContext>) => JSX.Element;
 };
 export default Table;

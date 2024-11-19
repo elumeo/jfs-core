@@ -1,13 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.clippyAnimate = exports.clippySayQueue = exports.clippySay = exports.clippyHide = exports.clippyShow = exports.clippyDestroy = exports.clippyInitialized = exports.clippyInit = exports.clippySaveAgent = void 0;
+exports.clippyAnimate = exports.clippySayQueue = exports.clippySay = exports.clippyDestroy = exports.clippyInitialized = exports.clippyInit = exports.clippySaveAgent = void 0;
 var typesafe_actions_1 = require("typesafe-actions");
 exports.clippySaveAgent = (0, typesafe_actions_1.createAction)('Core/Clippy/clippySaveAgent')();
 exports.clippyInit = (0, typesafe_actions_1.createAction)('Core/Clippy/clippyInit')();
 exports.clippyInitialized = (0, typesafe_actions_1.createAction)('Core/Clippy/clippyInitialized')();
 exports.clippyDestroy = (0, typesafe_actions_1.createAction)('Core/Clippy/clippyDestroy')();
-exports.clippyShow = (0, typesafe_actions_1.createAction)('Core/Clippy/clippyShow')();
-exports.clippyHide = (0, typesafe_actions_1.createAction)('Core/Clippy/clippyHide')();
 exports.clippySay = (0, typesafe_actions_1.createAction)('Core/Clippy/clippySay')();
 exports.clippySayQueue = (0, typesafe_actions_1.createAction)('Core/Clippy/clippySayQueue')();
 exports.clippyAnimate = (0, typesafe_actions_1.createAction)('Core/Clippy/clippyAnimate')();

@@ -29,8 +29,8 @@ var rxjs_1 = require("rxjs");
 var typesafe_actions_1 = require("typesafe-actions");
 var handleMessages = function (action$, state$) {
     return action$.pipe((0, rxjs_1.filter)((0, typesafe_actions_1.isActionOf)(Action_1.clippyInitialized)), (0, rxjs_1.map)(function () { return ({
-        messages: Selector.ClippyConfig.pickConfigMessages(state$.value),
-        interval: Selector.ClippyConfig.pickClippyInterval(state$.value),
+        messages: Selector.ClippyConfig.pickClippyConfigMessages(state$.value),
+        interval: Selector.ClippyConfig.pickClippyConfigInterval(state$.value),
         enabled: Selector.ClippyConfig.pickClippyEnabled(state$.value)
     }); }), (0, rxjs_1.filter)(function (_a) {
         var messages = _a.messages, interval = _a.interval, enabled = _a.enabled;

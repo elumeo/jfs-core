@@ -2,7 +2,7 @@ export interface IWebSocketError {
     namespace: string;
     message: string;
 }
-export interface IWebSocketRoom<T = string> {
+export interface IWebSocketRoom<T = (unknown | Array<unknown>)> {
     room: string;
     namespace?: string;
     error?: string;
