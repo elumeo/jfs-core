@@ -6,7 +6,7 @@ import { closeLogout, logout } from 'Store/Action';
 const useLogout = (): {
   open: boolean;
   pending: boolean;
-  commit: Function
+  commit: (session: typeof logout['arguments']) => void
   close: VoidFunction
 } => {
   const dispatch = useDispatch();

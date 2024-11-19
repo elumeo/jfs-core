@@ -44,7 +44,7 @@ var react_intl_1 = require("react-intl");
 var Redux_1 = require("../../Types/Redux");
 var colors_1 = require("@mui/material/colors");
 var DebugButton = function (_a) {
-    var _b = _a.selector, selector = _b === void 0 ? function (state) { return state; } : _b, _c = _a.actions, actions = _c === void 0 ? [Action.addErrorNotification] : _c, _d = _a.mapper, mapper = _d === void 0 ? function (action) { var _a, _b; return (_b = (_a = (action)) === null || _a === void 0 ? void 0 : _a.payload) !== null && _b !== void 0 ? _b : action.type; } : _d, _e = _a.filter, filter = _e === void 0 ? function () { return true; } : _e;
+    var _b = _a.selector, selector = _b === void 0 ? function (state) { return (__assign({}, state)); } : _b, _c = _a.actions, actions = _c === void 0 ? [Action.addErrorNotification] : _c, _d = _a.mapper, mapper = _d === void 0 ? function (action) { var _a, _b; return (_b = (_a = (action)) === null || _a === void 0 ? void 0 : _a.payload) !== null && _b !== void 0 ? _b : action.type; } : _d, _e = _a.filter, filter = _e === void 0 ? function () { return true; } : _e;
     var dispatch = (0, react_redux_1.useDispatch)();
     var formatMessage = (0, react_intl_1.useIntl)().formatMessage;
     var state = (0, Redux_1.useSelector)(selector);

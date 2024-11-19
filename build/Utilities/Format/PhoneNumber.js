@@ -13,6 +13,7 @@ var formatPhone = function (msisdn, backendRegion) {
                     ? google_libphonenumber_1.PhoneNumberFormat.INTERNATIONAL
                     : google_libphonenumber_1.PhoneNumberFormat.NATIONAL);
             }
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         }
         catch (e) {
             return msisdn;

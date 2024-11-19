@@ -27,6 +27,7 @@ export const copyToClipboard = async (ids: string) => {
     }
     return await fallbackCopyToClipboard(ids)
   }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   catch (error) {
     return await fallbackCopyToClipboard(ids)
   }

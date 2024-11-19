@@ -1,3 +1,4 @@
+/// <reference types="date-fns" />
 import { Language } from '../../Types/Language';
 import * as Country from '../../Types/Country';
 export declare let locale: Country.Locale;

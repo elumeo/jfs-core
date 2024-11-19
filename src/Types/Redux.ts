@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import {
   Epic as TEpic,
   EpicMiddleware as TEpicMiddleware,

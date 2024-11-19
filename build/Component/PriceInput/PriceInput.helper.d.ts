@@ -1,3 +1,4 @@
+/// <reference types="date-fns" />
 import * as Country from '../../Types/Country';
 import { FormatNumberOptions } from 'react-intl';
 export declare const sanitize: (value: string, decimalSeparator: string) => string;

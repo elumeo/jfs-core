@@ -14,6 +14,7 @@ export const formatPhone = (msisdn: string, backendRegion: string): string => {
             : PhoneNumberFormat.NATIONAL,
         );
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       return msisdn;
     }

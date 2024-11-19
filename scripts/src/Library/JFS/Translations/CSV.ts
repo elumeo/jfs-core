@@ -1,10 +1,10 @@
 import * as Type from './Type';
-import { json2csv, csv2json, IFullOptions } from 'json-2-csv';
+import { json2csv, csv2json, Json2CsvOptions } from 'json-2-csv';
 import * as Table from './Table';
 
 const columns = ['de', 'en', 'it']
 
-export const options: IFullOptions = {
+export const options: Json2CsvOptions = {
   keys: ['key', ...columns],
   prependHeader: false
 };

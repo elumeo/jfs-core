@@ -9,8 +9,8 @@ export enum LANGUAGE {
 export enum DATE_FORMAT {
   DE = 'dd.MM.yyyy',
   EN = 'dd/MM/yyyy',
-  ES = 'dd/MM/yyyy',
-  FR = 'dd/MM/yyyy',
+  ES = EN,
+  FR = EN,
   NL = 'dd-MM-yyyy',
-  IT = 'dd/MM/yyyy',
+  IT = EN,
 }

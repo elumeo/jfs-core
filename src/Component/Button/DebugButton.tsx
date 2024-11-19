@@ -9,7 +9,7 @@ import { Logger } from 'Types/Debug'
 import { common } from '@mui/material/colors'
 type Props = Logger
 const DebugButton: React.FC<Props> = ({
-  selector = state => state,
+  selector = state => ({...state}),
   actions = [Action.addErrorNotification],
   mapper = (action) => (action)?.payload ?? action.type,
   filter = () => true

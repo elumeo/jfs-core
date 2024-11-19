@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, TableComponents, } from 'react-virtuoso'
+import { TableVirtuoso, TableVirtuosoProps, VirtuosoHandle, TableComponents, TableBodyProps, } from 'react-virtuoso'
 import { SortDirection } from '@mui/material/TableCell'
 import Table from './Table'
 import TableContainer from './Container'
@@ -94,7 +94,7 @@ const VirtualizedTable = <ItemData extends {}, ItemContext = unknown>({
           ..._props?.sx ?? {},
           ...(slotProps?.tableRowProps?.sx ?? {}),
         } as SxProps} />),
-      TableBody,
+      TableBody: React.forwardRef<HTMLTableSectionElement, TableBodyProps>((_props, ref) => <TableBody {..._props} ref={ref} />),
       TableFoot: React.forwardRef<HTMLTableSectionElement, TableFooterProps>((_props, ref) => <Footer isLoading={isLoading} {..._props} ref={ref} />),
       ...propComponents
     }),

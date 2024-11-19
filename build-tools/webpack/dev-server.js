@@ -6,9 +6,13 @@ const server = {
   devServer: {
     static: PATH.PUBLIC,
     hot: true,
-    proxy: {
-      '/api': 'http://localhost'
-    }
+    proxy: [
+      {
+        context: ['/api'],
+        target: 'http://localhost',
+        changeOrigin: true
+      }
+    ]
   }
 };
 
