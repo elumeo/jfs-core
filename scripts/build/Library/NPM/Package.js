@@ -16,11 +16,9 @@ exports.start = exports.run = exports.save = exports.json = exports.node_module 
 const path_1 = require("path");
 const fs_extra_1 = __importDefault(require("fs-extra"));
 const child_process_1 = __importDefault(require("child_process"));
-const node_module = (path, name) => (0, path_1.resolve)(path, 'node_modules', name);
+const node_module = (path, name) => (0, path_1.resolve)(path, "node_modules", name);
 exports.node_module = node_module;
-const json = (path) => __awaiter(void 0, void 0, void 0, function* () {
-    return (yield fs_extra_1.default.readJSON(path));
-});
+const json = (path) => __awaiter(void 0, void 0, void 0, function* () { return (yield fs_extra_1.default.readJSON(path)); });
 exports.json = json;
 const save = (path, json) => __awaiter(void 0, void 0, void 0, function* () {
     const data = JSON.stringify(json, null, 2);
@@ -28,18 +26,18 @@ const save = (path, json) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.save = save;
 const run = (script, options = {}, onSpawn) => {
-    const command = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-    const argv = ['run', script];
-    const child = child_process_1.default.spawn(command, argv, options);
+    const command = process.platform === "win32" ? "npm.cmd" : "npm";
+    const argv = ["run", script];
+    const child = child_process_1.default.spawn(command, argv, Object.assign({ shell: true }, options));
     if (onSpawn) {
         onSpawn(child);
     }
-    return new Promise(resolve => child.on('exit', resolve));
+    return new Promise((resolve) => child.on("exit", resolve));
 };
 exports.run = run;
-const start = (path) => (0, exports.run)('start', {
+const start = (path) => (0, exports.run)("start", {
     cwd: path,
-    stdio: 'inherit'
+    stdio: "inherit",
 });
 exports.start = start;
 //# sourceMappingURL=Package.js.map
