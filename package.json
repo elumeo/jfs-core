@@ -1,6 +1,6 @@
 {
   "name": "@elumeo/jfs-core",
-  "version": "12.0.0-beta.3",
+  "version": "12.0.0-beta.4",
   "description": "Foundation for all JFS Apps",
   "main": "Main.js",
   "directories": {
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "webpack serve --port 8083 --config build-tools/webpack/core-dev-server --no-client-overlay-warnings",
-    "build": "rimraf build && tsc && tsc-alias",
+    "build": "npm run core-generate-version && rimraf build && tsc && tsc-alias",
     "build:showcase": "webpack --config build-tools/webpack/showcase",
     "build:watch": "tsc-watch --onSuccess tsc-alias",
     "build:webpack": "webpack --config build-tools/webpack/production",
