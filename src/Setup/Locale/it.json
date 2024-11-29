@@ -128,5 +128,11 @@
   "app.sourceOfOrder.appShoppingAndroid": "Android: In-App-Vendita",
   "app.sourceOfOrder.appShoppingIOS": "iOS: In-App-Vendita",
   "app.copyToClipboard.success": "Copiato negli appunti!",
-  "app.copyToClipboard.failure": "Impossibile copiare negli appunti!"
+  "app.copyToClipboard.failure": "Impossibile copiare negli appunti!",
+  "app.themeVariant.LIGHT": "Chiaro",
+  "app.themeVariant.HIGH_CONTRAST": "Scuro",
+  "app.themeVariant.LEGACY": "Legacy",
+  "app.themeVariant.COMIC": "Fumetto",
+  "app.themeVariant.PIXEL": "Pixel",
+  "app.themeVariant.AUTO_DETECT": "automatico"
 }

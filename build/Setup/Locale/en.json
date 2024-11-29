@@ -129,5 +129,11 @@
     "app.sourceOfOrder.appShoppingAndroid": "Android: In-App-Sale",
     "app.sourceOfOrder.appShoppingIOS": "iOS: In-App-Sale",
     "app.copyToClipboard.success": "Copied to clipboard!",
-    "app.copyToClipboard.failure": "Copy to clipboard failed!"
+    "app.copyToClipboard.failure": "Copy to clipboard failed!",
+    "app.themeVariant.LIGHT": "Light",
+    "app.themeVariant.HIGH_CONTRAST": "Dark",
+    "app.themeVariant.LEGACY": "Legacy",
+    "app.themeVariant.COMIC": "Comic",
+    "app.themeVariant.PIXEL": "Pixel",
+    "app.themeVariant.AUTO_DETECT": "automatic"
 }

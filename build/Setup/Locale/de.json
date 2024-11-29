@@ -129,5 +129,11 @@
     "app.sourceOfOrder.appShoppingAndroid": "Android: In-App-Verkauf",
     "app.sourceOfOrder.appShoppingIOS": "iOS: In-App-Verkauf",
     "app.copyToClipboard.success": "Erfolgreich in Zwischenablage kopiert",
-    "app.copyToClipboard.failure": "Kopieren in Zwischenablage fehlgeschlagen"
+    "app.copyToClipboard.failure": "Kopieren in Zwischenablage fehlgeschlagen",
+    "app.themeVariant.LIGHT": "Hell",
+    "app.themeVariant.HIGH_CONTRAST": "Dunkel",
+    "app.themeVariant.LEGACY": "Legacy",
+    "app.themeVariant.COMIC": "Comic",
+    "app.themeVariant.PIXEL": "Pixel",
+    "app.themeVariant.AUTO_DETECT": "automatisch"
 }
