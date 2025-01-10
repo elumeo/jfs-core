@@ -111,7 +111,7 @@
   "app.sourceOfOrder.bidAgentNL": "Online Bid NL",
   "app.sourceOfOrder.bidAgentES": "Online Bid ES",
   "app.sourceOfOrder.bidAgentIT": "Online Bid IT",
-  "app.sourceOfOrder.bidAgentEN": "Online Bid GB",
+  "app.sourceOfOrder.bidAgentEN": "Online Bid EN",
   "app.sourceOfOrder.bidAgentENExternal": "Online Bid External",
   "app.sourceOfOrder.personalShop": "Personal Shopper",
   "app.sourceOfOrder.personalShopEvent": "Personal Shopper Event",
@@ -126,8 +126,10 @@
   "app.sourceOfOrder.appMobileIOS": "iOS: Bidding App",
   "app.sourceOfOrder.appSmartTv": "SmartTV-App",
   "app.sourceOfOrder.app_hbbTvUNITY": "SmartTV-App",
+  "app.sourceOfOrder.appHbbTvUnity": "SmartTV-App",
   "app.sourceOfOrder.appShoppingAndroid": "Android: In-App-Sale",
   "app.sourceOfOrder.appShoppingIOS": "iOS: In-App-Sale",
+  "app.sourceOfOrder.undefined": "unknown",
   "app.copyToClipboard.success": "Copied to clipboard!",
   "app.copyToClipboard.failure": "Copy to clipboard failed!"
 

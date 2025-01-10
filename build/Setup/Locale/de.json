@@ -111,7 +111,7 @@
     "app.sourceOfOrder.bidAgentNL": "Onlinegebot NL",
     "app.sourceOfOrder.bidAgentES": "Onlinegebot ES",
     "app.sourceOfOrder.bidAgentIT": "Onlinegebot IT",
-    "app.sourceOfOrder.bidAgentEN": "Onlinegebot GB",
+    "app.sourceOfOrder.bidAgentEN": "Onlinegebot EN",
     "app.sourceOfOrder.bidAgentENExternal": "Onlinegebot External",
     "app.sourceOfOrder.personalShop": "Personal Shopper",
     "app.sourceOfOrder.personalShopEvent": "Personal Shopper Event",
@@ -126,8 +126,10 @@
     "app.sourceOfOrder.appMobileIOS": "iOS: Bietapp",
     "app.sourceOfOrder.appSmartTv": "SmartTV-App",
     "app.sourceOfOrder.app_hbbTvUNITY": "SmartTV-App",
+    "app.sourceOfOrder.appHbbTvUnity": "SmartTV-App",
     "app.sourceOfOrder.appShoppingAndroid": "Android: In-App-Verkauf",
     "app.sourceOfOrder.appShoppingIOS": "iOS: In-App-Verkauf",
+    "app.sourceOfOrder.undefined": "unknown",
     "app.copyToClipboard.success": "Erfolgreich in Zwischenablage kopiert",
     "app.copyToClipboard.failure": "Kopieren in Zwischenablage fehlgeschlagen"
 }

@@ -7,7 +7,6 @@
     "src/Component/Icon/SVG/*.tsx",
     "src/Component/Icon/SVG/**",
     "scripts/**",
-    "build/**",
-    "src/API/JSC/**"
+    "build/**"
   ]
 }
