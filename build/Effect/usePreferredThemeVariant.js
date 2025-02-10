@@ -22,12 +22,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var ThemeVariant_type_1 = require("../Types/ThemeVariant.type");
 var UserConfig = __importStar(require("../API/LOCAL_STORAGE/UserConfig"));
-var Redux_1 = require("../Types/Redux");
+var useSelector_1 = __importDefault(require("../Store/useSelector"));
+var Selector = __importStar(require("../Store/Selector"));
 exports.default = (function () {
-    var userId = (0, Redux_1.useSelector)(function (state) { var _a, _b, _c; return (_c = (_b = (_a = state.Core.Session) === null || _a === void 0 ? void 0 : _a.sessionDTO) === null || _b === void 0 ? void 0 : _b.username) !== null && _c !== void 0 ? _c : ''; });
-    var themeVariant = (0, Redux_1.useSelector)(function (state) { var _a, _b; return (_b = (_a = state.Core.LocalStorage) === null || _a === void 0 ? void 0 : _a[[userId, UserConfig.themeFeature].join(UserConfig.SEPERATOR)]) !== null && _b !== void 0 ? _b : ThemeVariant_type_1.ThemeVariant.LIGHT; });
+    var userId = (0, useSelector_1.default)(Selector.Session.pickUsername);
+    var themeVariant = (0, useSelector_1.default)(function (state) { var _a, _b; return (_b = (_a = state.Core.LocalStorage) === null || _a === void 0 ? void 0 : _a[[userId, UserConfig.themeFeature].join(UserConfig.SEPERATOR)]) !== null && _b !== void 0 ? _b : ThemeVariant_type_1.ThemeVariant.AUTO_DETECT; });
     return themeVariant;
 });
