@@ -17,6 +17,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
     ForceHTTPS?: boolean;
     translations: Record<string, Record<string, string>>;
 }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+    /**
+     * It is not possible to set initial state values for any namespace here
+     * because namespaces will be create dynamically with the action:
+     * webSocketAddNamespaceAction
+     */
     config: import("../../../Types/Configuration").Configuration;
 }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
     locale: import("../../../Types/Country").Locale;
@@ -35,6 +40,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
         ForceHTTPS?: boolean;
         translations: Record<string, Record<string, string>>;
     }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+        /**
+         * It is not possible to set initial state values for any namespace here
+         * because namespaces will be create dynamically with the action:
+         * webSocketAddNamespaceAction
+         */
         config: import("../../../Types/Configuration").Configuration;
     }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
         locale: import("../../../Types/Country").Locale;
@@ -53,6 +63,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
         ForceHTTPS?: boolean;
         translations: Record<string, Record<string, string>>;
     }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+        /**
+         * It is not possible to set initial state values for any namespace here
+         * because namespaces will be create dynamically with the action:
+         * webSocketAddNamespaceAction
+         */
         config: import("../../../Types/Configuration").Configuration;
     }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
         locale: import("../../../Types/Country").Locale;
@@ -70,6 +85,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
         ForceHTTPS?: boolean;
         translations: Record<string, Record<string, string>>;
     }>, THandledAction> | Exclude<import("typesafe-actions").EmptyAction<"app/INITIALZED">, THandledAction> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType>, THandledAction> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType>, THandledAction> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType>, THandledAction> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void>, THandledAction> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void>, THandledAction> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number>, THandledAction> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void>, THandledAction> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD">, THandledAction> | Exclude<import("typesafe-actions").PayloadAction<"config/LOADED", {
+        /**
+         * It is not possible to set initial state values for any namespace here
+         * because namespaces will be create dynamically with the action:
+         * webSocketAddNamespaceAction
+         */
         config: import("../../../Types/Configuration").Configuration;
     }>, THandledAction> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD_FAILED">, THandledAction> | Exclude<import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language>, THandledAction> | Exclude<import("typesafe-actions").EmptyAction<"language/INITIALIZE">, THandledAction> | Exclude<import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
         locale: import("../../../Types/Country").Locale;
@@ -87,6 +107,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
         ForceHTTPS?: boolean;
         translations: Record<string, Record<string, string>>;
     }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+        /**
+         * It is not possible to set initial state values for any namespace here
+         * because namespaces will be create dynamically with the action:
+         * webSocketAddNamespaceAction
+         */
         config: import("../../../Types/Configuration").Configuration;
     }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
         locale: import("../../../Types/Country").Locale;
@@ -105,6 +130,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
             ForceHTTPS?: boolean;
             translations: Record<string, Record<string, string>>;
         }>, TOutputAction> | Exclude<import("typesafe-actions").EmptyAction<"app/INITIALZED">, TOutputAction> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType>, TOutputAction> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType>, TOutputAction> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType>, TOutputAction> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void>, TOutputAction> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void>, TOutputAction> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number>, TOutputAction> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void>, TOutputAction> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD">, TOutputAction> | Exclude<import("typesafe-actions").PayloadAction<"config/LOADED", {
+            /**
+             * It is not possible to set initial state values for any namespace here
+             * because namespaces will be create dynamically with the action:
+             * webSocketAddNamespaceAction
+             */
             config: import("../../../Types/Configuration").Configuration;
         }>, TOutputAction> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD_FAILED">, TOutputAction> | Exclude<import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language>, TOutputAction> | Exclude<import("typesafe-actions").EmptyAction<"language/INITIALIZE">, TOutputAction> | Exclude<import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
             locale: import("../../../Types/Country").Locale;
@@ -122,6 +152,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
             ForceHTTPS?: boolean;
             translations: Record<string, Record<string, string>>;
         }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+            /**
+             * It is not possible to set initial state values for any namespace here
+             * because namespaces will be create dynamically with the action:
+             * webSocketAddNamespaceAction
+             */
             config: import("../../../Types/Configuration").Configuration;
         }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
             locale: import("../../../Types/Country").Locale;
@@ -140,6 +175,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
             ForceHTTPS?: boolean;
             translations: Record<string, Record<string, string>>;
         }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+            /**
+             * It is not possible to set initial state values for any namespace here
+             * because namespaces will be create dynamically with the action:
+             * webSocketAddNamespaceAction
+             */
             config: import("../../../Types/Configuration").Configuration;
         }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
             locale: import("../../../Types/Country").Locale;
@@ -158,6 +198,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                 ForceHTTPS?: boolean;
                 translations: Record<string, Record<string, string>>;
             }>, TOutputAction_1> | Exclude<import("typesafe-actions").EmptyAction<"app/INITIALZED">, TOutputAction_1> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType>, TOutputAction_1> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType>, TOutputAction_1> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType>, TOutputAction_1> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void>, TOutputAction_1> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void>, TOutputAction_1> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number>, TOutputAction_1> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void>, TOutputAction_1> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD">, TOutputAction_1> | Exclude<import("typesafe-actions").PayloadAction<"config/LOADED", {
+                /**
+                 * It is not possible to set initial state values for any namespace here
+                 * because namespaces will be create dynamically with the action:
+                 * webSocketAddNamespaceAction
+                 */
                 config: import("../../../Types/Configuration").Configuration;
             }>, TOutputAction_1> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD_FAILED">, TOutputAction_1> | Exclude<import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language>, TOutputAction_1> | Exclude<import("typesafe-actions").EmptyAction<"language/INITIALIZE">, TOutputAction_1> | Exclude<import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                 locale: import("../../../Types/Country").Locale;
@@ -175,6 +220,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                 ForceHTTPS?: boolean;
                 translations: Record<string, Record<string, string>>;
             }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                /**
+                 * It is not possible to set initial state values for any namespace here
+                 * because namespaces will be create dynamically with the action:
+                 * webSocketAddNamespaceAction
+                 */
                 config: import("../../../Types/Configuration").Configuration;
             }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                 locale: import("../../../Types/Country").Locale;
@@ -193,6 +243,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                 ForceHTTPS?: boolean;
                 translations: Record<string, Record<string, string>>;
             }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                /**
+                 * It is not possible to set initial state values for any namespace here
+                 * because namespaces will be create dynamically with the action:
+                 * webSocketAddNamespaceAction
+                 */
                 config: import("../../../Types/Configuration").Configuration;
             }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                 locale: import("../../../Types/Country").Locale;
@@ -211,6 +266,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                     ForceHTTPS?: boolean;
                     translations: Record<string, Record<string, string>>;
                 }>, TOutputAction_2> | Exclude<import("typesafe-actions").EmptyAction<"app/INITIALZED">, TOutputAction_2> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType>, TOutputAction_2> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType>, TOutputAction_2> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType>, TOutputAction_2> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void>, TOutputAction_2> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void>, TOutputAction_2> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number>, TOutputAction_2> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void>, TOutputAction_2> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD">, TOutputAction_2> | Exclude<import("typesafe-actions").PayloadAction<"config/LOADED", {
+                    /**
+                     * It is not possible to set initial state values for any namespace here
+                     * because namespaces will be create dynamically with the action:
+                     * webSocketAddNamespaceAction
+                     */
                     config: import("../../../Types/Configuration").Configuration;
                 }>, TOutputAction_2> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD_FAILED">, TOutputAction_2> | Exclude<import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language>, TOutputAction_2> | Exclude<import("typesafe-actions").EmptyAction<"language/INITIALIZE">, TOutputAction_2> | Exclude<import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                     locale: import("../../../Types/Country").Locale;
@@ -228,6 +288,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                     ForceHTTPS?: boolean;
                     translations: Record<string, Record<string, string>>;
                 }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                    /**
+                     * It is not possible to set initial state values for any namespace here
+                     * because namespaces will be create dynamically with the action:
+                     * webSocketAddNamespaceAction
+                     */
                     config: import("../../../Types/Configuration").Configuration;
                 }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                     locale: import("../../../Types/Country").Locale;
@@ -246,6 +311,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                     ForceHTTPS?: boolean;
                     translations: Record<string, Record<string, string>>;
                 }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                    /**
+                     * It is not possible to set initial state values for any namespace here
+                     * because namespaces will be create dynamically with the action:
+                     * webSocketAddNamespaceAction
+                     */
                     config: import("../../../Types/Configuration").Configuration;
                 }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                     locale: import("../../../Types/Country").Locale;
@@ -264,6 +334,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                         ForceHTTPS?: boolean;
                         translations: Record<string, Record<string, string>>;
                     }>, TOutputAction_3> | Exclude<import("typesafe-actions").EmptyAction<"app/INITIALZED">, TOutputAction_3> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType>, TOutputAction_3> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType>, TOutputAction_3> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType>, TOutputAction_3> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void>, TOutputAction_3> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void>, TOutputAction_3> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number>, TOutputAction_3> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void>, TOutputAction_3> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD">, TOutputAction_3> | Exclude<import("typesafe-actions").PayloadAction<"config/LOADED", {
+                        /**
+                         * It is not possible to set initial state values for any namespace here
+                         * because namespaces will be create dynamically with the action:
+                         * webSocketAddNamespaceAction
+                         */
                         config: import("../../../Types/Configuration").Configuration;
                     }>, TOutputAction_3> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD_FAILED">, TOutputAction_3> | Exclude<import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language>, TOutputAction_3> | Exclude<import("typesafe-actions").EmptyAction<"language/INITIALIZE">, TOutputAction_3> | Exclude<import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                         locale: import("../../../Types/Country").Locale;
@@ -281,6 +356,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                         ForceHTTPS?: boolean;
                         translations: Record<string, Record<string, string>>;
                     }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                        /**
+                         * It is not possible to set initial state values for any namespace here
+                         * because namespaces will be create dynamically with the action:
+                         * webSocketAddNamespaceAction
+                         */
                         config: import("../../../Types/Configuration").Configuration;
                     }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                         locale: import("../../../Types/Country").Locale;
@@ -299,6 +379,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                         ForceHTTPS?: boolean;
                         translations: Record<string, Record<string, string>>;
                     }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                        /**
+                         * It is not possible to set initial state values for any namespace here
+                         * because namespaces will be create dynamically with the action:
+                         * webSocketAddNamespaceAction
+                         */
                         config: import("../../../Types/Configuration").Configuration;
                     }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                         locale: import("../../../Types/Country").Locale;
@@ -317,6 +402,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                             ForceHTTPS?: boolean;
                             translations: Record<string, Record<string, string>>;
                         }>, TOutputAction_4> | Exclude<import("typesafe-actions").EmptyAction<"app/INITIALZED">, TOutputAction_4> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType>, TOutputAction_4> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType>, TOutputAction_4> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType>, TOutputAction_4> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void>, TOutputAction_4> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void>, TOutputAction_4> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number>, TOutputAction_4> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void>, TOutputAction_4> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD">, TOutputAction_4> | Exclude<import("typesafe-actions").PayloadAction<"config/LOADED", {
+                            /**
+                             * It is not possible to set initial state values for any namespace here
+                             * because namespaces will be create dynamically with the action:
+                             * webSocketAddNamespaceAction
+                             */
                             config: import("../../../Types/Configuration").Configuration;
                         }>, TOutputAction_4> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD_FAILED">, TOutputAction_4> | Exclude<import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language>, TOutputAction_4> | Exclude<import("typesafe-actions").EmptyAction<"language/INITIALIZE">, TOutputAction_4> | Exclude<import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                             locale: import("../../../Types/Country").Locale;
@@ -334,6 +424,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                             ForceHTTPS?: boolean;
                             translations: Record<string, Record<string, string>>;
                         }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                            /**
+                             * It is not possible to set initial state values for any namespace here
+                             * because namespaces will be create dynamically with the action:
+                             * webSocketAddNamespaceAction
+                             */
                             config: import("../../../Types/Configuration").Configuration;
                         }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                             locale: import("../../../Types/Country").Locale;
@@ -352,6 +447,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                             ForceHTTPS?: boolean;
                             translations: Record<string, Record<string, string>>;
                         }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                            /**
+                             * It is not possible to set initial state values for any namespace here
+                             * because namespaces will be create dynamically with the action:
+                             * webSocketAddNamespaceAction
+                             */
                             config: import("../../../Types/Configuration").Configuration;
                         }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                             locale: import("../../../Types/Country").Locale;
@@ -370,6 +470,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                 ForceHTTPS?: boolean;
                                 translations: Record<string, Record<string, string>>;
                             }>, TOutputAction_5> | Exclude<import("typesafe-actions").EmptyAction<"app/INITIALZED">, TOutputAction_5> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType>, TOutputAction_5> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType>, TOutputAction_5> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType>, TOutputAction_5> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void>, TOutputAction_5> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void>, TOutputAction_5> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number>, TOutputAction_5> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void>, TOutputAction_5> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD">, TOutputAction_5> | Exclude<import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                /**
+                                 * It is not possible to set initial state values for any namespace here
+                                 * because namespaces will be create dynamically with the action:
+                                 * webSocketAddNamespaceAction
+                                 */
                                 config: import("../../../Types/Configuration").Configuration;
                             }>, TOutputAction_5> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD_FAILED">, TOutputAction_5> | Exclude<import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language>, TOutputAction_5> | Exclude<import("typesafe-actions").EmptyAction<"language/INITIALIZE">, TOutputAction_5> | Exclude<import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                 locale: import("../../../Types/Country").Locale;
@@ -387,6 +492,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                 ForceHTTPS?: boolean;
                                 translations: Record<string, Record<string, string>>;
                             }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                /**
+                                 * It is not possible to set initial state values for any namespace here
+                                 * because namespaces will be create dynamically with the action:
+                                 * webSocketAddNamespaceAction
+                                 */
                                 config: import("../../../Types/Configuration").Configuration;
                             }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                 locale: import("../../../Types/Country").Locale;
@@ -405,6 +515,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                 ForceHTTPS?: boolean;
                                 translations: Record<string, Record<string, string>>;
                             }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                /**
+                                 * It is not possible to set initial state values for any namespace here
+                                 * because namespaces will be create dynamically with the action:
+                                 * webSocketAddNamespaceAction
+                                 */
                                 config: import("../../../Types/Configuration").Configuration;
                             }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                 locale: import("../../../Types/Country").Locale;
@@ -423,6 +538,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                     ForceHTTPS?: boolean;
                                     translations: Record<string, Record<string, string>>;
                                 }>, TOutputAction_6> | Exclude<import("typesafe-actions").EmptyAction<"app/INITIALZED">, TOutputAction_6> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType>, TOutputAction_6> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType>, TOutputAction_6> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType>, TOutputAction_6> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void>, TOutputAction_6> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void>, TOutputAction_6> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number>, TOutputAction_6> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void>, TOutputAction_6> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD">, TOutputAction_6> | Exclude<import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                    /**
+                                     * It is not possible to set initial state values for any namespace here
+                                     * because namespaces will be create dynamically with the action:
+                                     * webSocketAddNamespaceAction
+                                     */
                                     config: import("../../../Types/Configuration").Configuration;
                                 }>, TOutputAction_6> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD_FAILED">, TOutputAction_6> | Exclude<import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language>, TOutputAction_6> | Exclude<import("typesafe-actions").EmptyAction<"language/INITIALIZE">, TOutputAction_6> | Exclude<import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                     locale: import("../../../Types/Country").Locale;
@@ -440,6 +560,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                     ForceHTTPS?: boolean;
                                     translations: Record<string, Record<string, string>>;
                                 }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                    /**
+                                     * It is not possible to set initial state values for any namespace here
+                                     * because namespaces will be create dynamically with the action:
+                                     * webSocketAddNamespaceAction
+                                     */
                                     config: import("../../../Types/Configuration").Configuration;
                                 }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                     locale: import("../../../Types/Country").Locale;
@@ -458,6 +583,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                     ForceHTTPS?: boolean;
                                     translations: Record<string, Record<string, string>>;
                                 }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                    /**
+                                     * It is not possible to set initial state values for any namespace here
+                                     * because namespaces will be create dynamically with the action:
+                                     * webSocketAddNamespaceAction
+                                     */
                                     config: import("../../../Types/Configuration").Configuration;
                                 }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                     locale: import("../../../Types/Country").Locale;
@@ -476,6 +606,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                         ForceHTTPS?: boolean;
                                         translations: Record<string, Record<string, string>>;
                                     }>, TOutputAction_7> | Exclude<import("typesafe-actions").EmptyAction<"app/INITIALZED">, TOutputAction_7> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType>, TOutputAction_7> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType>, TOutputAction_7> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType>, TOutputAction_7> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void>, TOutputAction_7> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void>, TOutputAction_7> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number>, TOutputAction_7> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void>, TOutputAction_7> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD">, TOutputAction_7> | Exclude<import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                        /**
+                                         * It is not possible to set initial state values for any namespace here
+                                         * because namespaces will be create dynamically with the action:
+                                         * webSocketAddNamespaceAction
+                                         */
                                         config: import("../../../Types/Configuration").Configuration;
                                     }>, TOutputAction_7> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD_FAILED">, TOutputAction_7> | Exclude<import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language>, TOutputAction_7> | Exclude<import("typesafe-actions").EmptyAction<"language/INITIALIZE">, TOutputAction_7> | Exclude<import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                         locale: import("../../../Types/Country").Locale;
@@ -493,6 +628,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                         ForceHTTPS?: boolean;
                                         translations: Record<string, Record<string, string>>;
                                     }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                        /**
+                                         * It is not possible to set initial state values for any namespace here
+                                         * because namespaces will be create dynamically with the action:
+                                         * webSocketAddNamespaceAction
+                                         */
                                         config: import("../../../Types/Configuration").Configuration;
                                     }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                         locale: import("../../../Types/Country").Locale;
@@ -511,6 +651,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                         ForceHTTPS?: boolean;
                                         translations: Record<string, Record<string, string>>;
                                     }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                        /**
+                                         * It is not possible to set initial state values for any namespace here
+                                         * because namespaces will be create dynamically with the action:
+                                         * webSocketAddNamespaceAction
+                                         */
                                         config: import("../../../Types/Configuration").Configuration;
                                     }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                         locale: import("../../../Types/Country").Locale;
@@ -529,6 +674,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                             ForceHTTPS?: boolean;
                                             translations: Record<string, Record<string, string>>;
                                         }>, TOutputAction_8> | Exclude<import("typesafe-actions").EmptyAction<"app/INITIALZED">, TOutputAction_8> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType>, TOutputAction_8> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType>, TOutputAction_8> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType>, TOutputAction_8> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void>, TOutputAction_8> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void>, TOutputAction_8> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number>, TOutputAction_8> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void>, TOutputAction_8> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD">, TOutputAction_8> | Exclude<import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                            /**
+                                             * It is not possible to set initial state values for any namespace here
+                                             * because namespaces will be create dynamically with the action:
+                                             * webSocketAddNamespaceAction
+                                             */
                                             config: import("../../../Types/Configuration").Configuration;
                                         }>, TOutputAction_8> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD_FAILED">, TOutputAction_8> | Exclude<import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language>, TOutputAction_8> | Exclude<import("typesafe-actions").EmptyAction<"language/INITIALIZE">, TOutputAction_8> | Exclude<import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                             locale: import("../../../Types/Country").Locale;
@@ -546,6 +696,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                             ForceHTTPS?: boolean;
                                             translations: Record<string, Record<string, string>>;
                                         }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                            /**
+                                             * It is not possible to set initial state values for any namespace here
+                                             * because namespaces will be create dynamically with the action:
+                                             * webSocketAddNamespaceAction
+                                             */
                                             config: import("../../../Types/Configuration").Configuration;
                                         }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                             locale: import("../../../Types/Country").Locale;
@@ -564,6 +719,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                             ForceHTTPS?: boolean;
                                             translations: Record<string, Record<string, string>>;
                                         }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                            /**
+                                             * It is not possible to set initial state values for any namespace here
+                                             * because namespaces will be create dynamically with the action:
+                                             * webSocketAddNamespaceAction
+                                             */
                                             config: import("../../../Types/Configuration").Configuration;
                                         }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                             locale: import("../../../Types/Country").Locale;
@@ -582,6 +742,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                                 ForceHTTPS?: boolean;
                                                 translations: Record<string, Record<string, string>>;
                                             }>, TOutputAction_9> | Exclude<import("typesafe-actions").EmptyAction<"app/INITIALZED">, TOutputAction_9> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType>, TOutputAction_9> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType>, TOutputAction_9> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType>, TOutputAction_9> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void>, TOutputAction_9> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void>, TOutputAction_9> | Exclude<import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number>, TOutputAction_9> | Exclude<import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void>, TOutputAction_9> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD">, TOutputAction_9> | Exclude<import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                                /**
+                                                 * It is not possible to set initial state values for any namespace here
+                                                 * because namespaces will be create dynamically with the action:
+                                                 * webSocketAddNamespaceAction
+                                                 */
                                                 config: import("../../../Types/Configuration").Configuration;
                                             }>, TOutputAction_9> | Exclude<import("typesafe-actions").EmptyAction<"config/LOAD_FAILED">, TOutputAction_9> | Exclude<import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language>, TOutputAction_9> | Exclude<import("typesafe-actions").EmptyAction<"language/INITIALIZE">, TOutputAction_9> | Exclude<import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                                 locale: import("../../../Types/Country").Locale;
@@ -599,6 +764,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                                 ForceHTTPS?: boolean;
                                                 translations: Record<string, Record<string, string>>;
                                             }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                                /**
+                                                 * It is not possible to set initial state values for any namespace here
+                                                 * because namespaces will be create dynamically with the action:
+                                                 * webSocketAddNamespaceAction
+                                                 */
                                                 config: import("../../../Types/Configuration").Configuration;
                                             }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                                 locale: import("../../../Types/Country").Locale;
@@ -617,6 +787,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                                 ForceHTTPS?: boolean;
                                                 translations: Record<string, Record<string, string>>;
                                             }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                                /**
+                                                 * It is not possible to set initial state values for any namespace here
+                                                 * because namespaces will be create dynamically with the action:
+                                                 * webSocketAddNamespaceAction
+                                                 */
                                                 config: import("../../../Types/Configuration").Configuration;
                                             }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                                 locale: import("../../../Types/Country").Locale;
@@ -634,6 +809,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                                 ForceHTTPS?: boolean;
                                                 translations: Record<string, Record<string, string>>;
                                             }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                                /**
+                                                 * It is not possible to set initial state values for any namespace here
+                                                 * because namespaces will be create dynamically with the action:
+                                                 * webSocketAddNamespaceAction
+                                                 */
                                                 config: import("../../../Types/Configuration").Configuration;
                                             }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                                 locale: import("../../../Types/Country").Locale;
@@ -652,6 +832,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                                     ForceHTTPS?: boolean;
                                                     translations: Record<string, Record<string, string>>;
                                                 }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                                    /**
+                                                     * It is not possible to set initial state values for any namespace here
+                                                     * because namespaces will be create dynamically with the action:
+                                                     * webSocketAddNamespaceAction
+                                                     */
                                                     config: import("../../../Types/Configuration").Configuration;
                                                 }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                                     locale: import("../../../Types/Country").Locale;
@@ -671,6 +856,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                             ForceHTTPS?: boolean;
                                             translations: Record<string, Record<string, string>>;
                                         }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                            /**
+                                             * It is not possible to set initial state values for any namespace here
+                                             * because namespaces will be create dynamically with the action:
+                                             * webSocketAddNamespaceAction
+                                             */
                                             config: import("../../../Types/Configuration").Configuration;
                                         }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                             locale: import("../../../Types/Country").Locale;
@@ -689,6 +879,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                                 ForceHTTPS?: boolean;
                                                 translations: Record<string, Record<string, string>>;
                                             }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                                /**
+                                                 * It is not possible to set initial state values for any namespace here
+                                                 * because namespaces will be create dynamically with the action:
+                                                 * webSocketAddNamespaceAction
+                                                 */
                                                 config: import("../../../Types/Configuration").Configuration;
                                             }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                                 locale: import("../../../Types/Country").Locale;
@@ -708,6 +903,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                         ForceHTTPS?: boolean;
                                         translations: Record<string, Record<string, string>>;
                                     }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                        /**
+                                         * It is not possible to set initial state values for any namespace here
+                                         * because namespaces will be create dynamically with the action:
+                                         * webSocketAddNamespaceAction
+                                         */
                                         config: import("../../../Types/Configuration").Configuration;
                                     }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                         locale: import("../../../Types/Country").Locale;
@@ -726,6 +926,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                             ForceHTTPS?: boolean;
                                             translations: Record<string, Record<string, string>>;
                                         }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                            /**
+                                             * It is not possible to set initial state values for any namespace here
+                                             * because namespaces will be create dynamically with the action:
+                                             * webSocketAddNamespaceAction
+                                             */
                                             config: import("../../../Types/Configuration").Configuration;
                                         }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                             locale: import("../../../Types/Country").Locale;
@@ -745,6 +950,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                     ForceHTTPS?: boolean;
                                     translations: Record<string, Record<string, string>>;
                                 }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                    /**
+                                     * It is not possible to set initial state values for any namespace here
+                                     * because namespaces will be create dynamically with the action:
+                                     * webSocketAddNamespaceAction
+                                     */
                                     config: import("../../../Types/Configuration").Configuration;
                                 }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                     locale: import("../../../Types/Country").Locale;
@@ -763,6 +973,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                         ForceHTTPS?: boolean;
                                         translations: Record<string, Record<string, string>>;
                                     }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                        /**
+                                         * It is not possible to set initial state values for any namespace here
+                                         * because namespaces will be create dynamically with the action:
+                                         * webSocketAddNamespaceAction
+                                         */
                                         config: import("../../../Types/Configuration").Configuration;
                                     }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                         locale: import("../../../Types/Country").Locale;
@@ -782,6 +997,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                 ForceHTTPS?: boolean;
                                 translations: Record<string, Record<string, string>>;
                             }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                /**
+                                 * It is not possible to set initial state values for any namespace here
+                                 * because namespaces will be create dynamically with the action:
+                                 * webSocketAddNamespaceAction
+                                 */
                                 config: import("../../../Types/Configuration").Configuration;
                             }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                 locale: import("../../../Types/Country").Locale;
@@ -800,6 +1020,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                     ForceHTTPS?: boolean;
                                     translations: Record<string, Record<string, string>>;
                                 }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                    /**
+                                     * It is not possible to set initial state values for any namespace here
+                                     * because namespaces will be create dynamically with the action:
+                                     * webSocketAddNamespaceAction
+                                     */
                                     config: import("../../../Types/Configuration").Configuration;
                                 }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                     locale: import("../../../Types/Country").Locale;
@@ -819,6 +1044,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                             ForceHTTPS?: boolean;
                             translations: Record<string, Record<string, string>>;
                         }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                            /**
+                             * It is not possible to set initial state values for any namespace here
+                             * because namespaces will be create dynamically with the action:
+                             * webSocketAddNamespaceAction
+                             */
                             config: import("../../../Types/Configuration").Configuration;
                         }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                             locale: import("../../../Types/Country").Locale;
@@ -837,6 +1067,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                                 ForceHTTPS?: boolean;
                                 translations: Record<string, Record<string, string>>;
                             }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                                /**
+                                 * It is not possible to set initial state values for any namespace here
+                                 * because namespaces will be create dynamically with the action:
+                                 * webSocketAddNamespaceAction
+                                 */
                                 config: import("../../../Types/Configuration").Configuration;
                             }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                                 locale: import("../../../Types/Country").Locale;
@@ -856,6 +1091,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                         ForceHTTPS?: boolean;
                         translations: Record<string, Record<string, string>>;
                     }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                        /**
+                         * It is not possible to set initial state values for any namespace here
+                         * because namespaces will be create dynamically with the action:
+                         * webSocketAddNamespaceAction
+                         */
                         config: import("../../../Types/Configuration").Configuration;
                     }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                         locale: import("../../../Types/Country").Locale;
@@ -874,6 +1114,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                             ForceHTTPS?: boolean;
                             translations: Record<string, Record<string, string>>;
                         }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                            /**
+                             * It is not possible to set initial state values for any namespace here
+                             * because namespaces will be create dynamically with the action:
+                             * webSocketAddNamespaceAction
+                             */
                             config: import("../../../Types/Configuration").Configuration;
                         }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                             locale: import("../../../Types/Country").Locale;
@@ -893,6 +1138,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                     ForceHTTPS?: boolean;
                     translations: Record<string, Record<string, string>>;
                 }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                    /**
+                     * It is not possible to set initial state values for any namespace here
+                     * because namespaces will be create dynamically with the action:
+                     * webSocketAddNamespaceAction
+                     */
                     config: import("../../../Types/Configuration").Configuration;
                 }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                     locale: import("../../../Types/Country").Locale;
@@ -911,6 +1161,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                         ForceHTTPS?: boolean;
                         translations: Record<string, Record<string, string>>;
                     }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                        /**
+                         * It is not possible to set initial state values for any namespace here
+                         * because namespaces will be create dynamically with the action:
+                         * webSocketAddNamespaceAction
+                         */
                         config: import("../../../Types/Configuration").Configuration;
                     }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                         locale: import("../../../Types/Country").Locale;
@@ -930,6 +1185,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                 ForceHTTPS?: boolean;
                 translations: Record<string, Record<string, string>>;
             }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                /**
+                 * It is not possible to set initial state values for any namespace here
+                 * because namespaces will be create dynamically with the action:
+                 * webSocketAddNamespaceAction
+                 */
                 config: import("../../../Types/Configuration").Configuration;
             }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                 locale: import("../../../Types/Country").Locale;
@@ -948,6 +1208,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                     ForceHTTPS?: boolean;
                     translations: Record<string, Record<string, string>>;
                 }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                    /**
+                     * It is not possible to set initial state values for any namespace here
+                     * because namespaces will be create dynamically with the action:
+                     * webSocketAddNamespaceAction
+                     */
                     config: import("../../../Types/Configuration").Configuration;
                 }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                     locale: import("../../../Types/Country").Locale;
@@ -967,6 +1232,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
             ForceHTTPS?: boolean;
             translations: Record<string, Record<string, string>>;
         }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+            /**
+             * It is not possible to set initial state values for any namespace here
+             * because namespaces will be create dynamically with the action:
+             * webSocketAddNamespaceAction
+             */
             config: import("../../../Types/Configuration").Configuration;
         }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
             locale: import("../../../Types/Country").Locale;
@@ -985,6 +1255,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
                 ForceHTTPS?: boolean;
                 translations: Record<string, Record<string, string>>;
             }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+                /**
+                 * It is not possible to set initial state values for any namespace here
+                 * because namespaces will be create dynamically with the action:
+                 * webSocketAddNamespaceAction
+                 */
                 config: import("../../../Types/Configuration").Configuration;
             }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
                 locale: import("../../../Types/Country").Locale;
@@ -1004,6 +1279,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
         ForceHTTPS?: boolean;
         translations: Record<string, Record<string, string>>;
     }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+        /**
+         * It is not possible to set initial state values for any namespace here
+         * because namespaces will be create dynamically with the action:
+         * webSocketAddNamespaceAction
+         */
         config: import("../../../Types/Configuration").Configuration;
     }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
         locale: import("../../../Types/Country").Locale;
@@ -1022,6 +1302,11 @@ declare const WebSocket: import("typesafe-actions").Reducer<State, import("types
             ForceHTTPS?: boolean;
             translations: Record<string, Record<string, string>>;
         }> | import("typesafe-actions").EmptyAction<"app/INITIALZED"> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippySaveAgent", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInit", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyInitialized", import("clippyts/dist/types").AgentType> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyDestroy", void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySay", string, string | void> | import("typesafe-actions").PayloadMetaAction<"Core/Clippy/clippySayQueue", string[], number> | import("typesafe-actions").PayloadAction<"Core/Clippy/clippyAnimate", string | void> | import("typesafe-actions").EmptyAction<"config/LOAD"> | import("typesafe-actions").PayloadAction<"config/LOADED", {
+            /**
+             * It is not possible to set initial state values for any namespace here
+             * because namespaces will be create dynamically with the action:
+             * webSocketAddNamespaceAction
+             */
             config: import("../../../Types/Configuration").Configuration;
         }> | import("typesafe-actions").EmptyAction<"config/LOAD_FAILED"> | import("typesafe-actions").PayloadAction<"language/CHANGE", import("../../../Types/Language").Language> | import("typesafe-actions").EmptyAction<"language/INITIALIZE"> | import("typesafe-actions").PayloadAction<"locale/SET_LOCALE", {
             locale: import("../../../Types/Country").Locale;
