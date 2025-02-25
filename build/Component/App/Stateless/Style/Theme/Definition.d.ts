@@ -1,5 +1,5 @@
-import { ThemeVariant } from '../../../../../Types/ThemeVariant.type';
-import { Theme } from '@mui/material/styles';
-declare const definition: Theme;
+import { ThemeVariant } from "../../../../../Types/ThemeVariant.type";
+import { Theme } from "@mui/material/styles";
+import LIGHT from "./LIGHT.theme";
 export declare const themeMap: Record<ThemeVariant, Theme>;
-export default definition;
+export default LIGHT;

@@ -1,8 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import MenuIcon from '@mui/icons-material/Menu';
-import { AppBar, AppBarProps, IconButton, Toolbar, Typography, ToolbarProps, Stack } from '@mui/material';
-import theme from 'Component/App/Stateless/Style/Theme/Definition';
+import { AppBar, AppBarProps, IconButton, Toolbar, Typography, ToolbarProps, Stack, Theme } from '@mui/material';
 import { openNavigation } from 'Store/Action/Navigation';
 import { useDispatch } from 'react-redux';
 
@@ -17,7 +16,7 @@ export type Props = {
   toolbarProps?: ToolbarProps
 };
 const toolbarStyle = {
-  height: theme.mixins.toolbar.minHeight,
+  height: (_theme: Theme) => _theme.mixins.toolbar.minHeight,
   overflow: 'hidden',
   pr: .25
 }
