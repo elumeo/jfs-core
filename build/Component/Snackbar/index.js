@@ -29,10 +29,10 @@ var Snackbar = function () {
     var dispatch = (0, react_redux_1.useDispatch)();
     var id = react_1.default.useId();
     var _a = (0, useVisibleToast_1.default)(), open = _a.open, severity = _a.severity, message = _a.message, autoHideDuration = _a.autoHideDuration;
-    var onCloseCallback = react_1.default.useCallback(function (event, reason) {
-        if (reason === 'timeout') {
-            dispatch((0, Action_1.dismissToastAction)());
-        }
+    var onCloseCallback = react_1.default.useCallback(function () {
+        // if (reason === 'timeout') {
+        dispatch((0, Action_1.dismissToastAction)());
+        // }
     }, [dispatch]);
     return ((0, jsx_runtime_1.jsx)(Snackbar_1.default, __assign({ open: open, id: "alert-snackbar-".concat(id), onClose: onCloseCallback, anchorOrigin: anchor, autoHideDuration: autoHideDuration }, { children: open ? (0, jsx_runtime_1.jsx)(material_1.Alert, __assign({ severity: severity, variant: 'filled' }, { children: message })) : null })));
 };
