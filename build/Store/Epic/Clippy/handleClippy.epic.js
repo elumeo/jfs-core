@@ -69,14 +69,14 @@ var rxjs_1 = require("rxjs");
 var typesafe_actions_1 = require("typesafe-actions");
 var ClippyLoader_service_1 = __importDefault(require("../../../API/CLIPPY/ClippyLoader.service"));
 var redux_observable_1 = require("redux-observable");
+var Clippy_type_1 = require("../../../Types/Clippy.type");
 var agent = {
     instance: null,
-    type: null
+    type: null,
 };
 var listenContextMenu = function (action$, state$) {
     return state$.pipe((0, rxjs_1.switchMap)(function () {
-        return (0, rxjs_1.fromEvent)(document, 'contextmenu')
-            .pipe((0, rxjs_1.filter)(function (e) { var _a, _b; return e.target instanceof HTMLElement && ((_b = (_a = e.target.classList) === null || _a === void 0 ? void 0 : _a.contains) === null || _b === void 0 ? void 0 : _b.call(_a, 'clippy')); }), (0, rxjs_1.tap)(function (e) { return e.stopImmediatePropagation(); }), (0, rxjs_1.tap)(function (e) { return e.preventDefault(); }), (0, rxjs_1.switchMap)(function () { return [(0, Action_1.clippyDestroy)()]; }));
+        return (0, rxjs_1.fromEvent)(document, "contextmenu").pipe((0, rxjs_1.filter)(function (e) { var _a, _b; return e.target instanceof HTMLElement && ((_b = (_a = e.target.classList) === null || _a === void 0 ? void 0 : _a.contains) === null || _b === void 0 ? void 0 : _b.call(_a, "clippy")); }), (0, rxjs_1.tap)(function (e) { return e.stopImmediatePropagation(); }), (0, rxjs_1.tap)(function (e) { return e.preventDefault(); }), (0, rxjs_1.switchMap)(function () { return [(0, Action_1.clippyDestroy)()]; }));
     }));
 };
 var init = function (action$, state$) {
@@ -90,7 +90,11 @@ var init = function (action$, state$) {
         var userName = (_c = (_b = payload.frontendSessionDTO) === null || _b === void 0 ? void 0 : _b.session) === null || _c === void 0 ? void 0 : _c.username;
         var preferred = (_d = Selector.LocalStorage.pickState(state$.value)) === null || _d === void 0 ? void 0 : _d[[userName, UserConfig.clippyFeature].join(UserConfig.SEPERATOR)];
         return preferred;
-    }), (0, rxjs_1.switchMap)(function (variant) { return [(0, Action_1.clippyInit)(variant)]; }), (0, rxjs_1.takeUntil)(action$.pipe((0, rxjs_1.filter)((0, typesafe_actions_1.isActionOf)(Action_1.clippyInit)))));
+    }), (0, rxjs_1.switchMap)(function (variant) {
+        // Ensure we have a valid agent type
+        var agentType = (0, Clippy_type_1.isValidAgent)(variant) ? variant : Clippy_type_1.Agent.Clippy;
+        return [(0, Action_1.clippyInit)(agentType)];
+    }), (0, rxjs_1.takeUntil)(action$.pipe((0, rxjs_1.filter)((0, typesafe_actions_1.isActionOf)(Action_1.clippyInit)))));
 };
 var handleLoader = function (action$, state$) {
     return action$.pipe((0, rxjs_1.filter)((0, typesafe_actions_1.isActionOf)([Action_1.clippyInit, Action_1.clippySaveAgent])), (0, rxjs_1.filter)(function () { return Selector.ClippyConfig.pickClippyEnabled(state$.value); }), (0, rxjs_1.map)(function (_a) {
@@ -101,8 +105,9 @@ var handleLoader = function (action$, state$) {
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
-                    if (!variant) {
-                        return [2 /*return*/, [(0, Action_1.clippyInit)('Clippy')]];
+                    // Ensure we have a valid agent type
+                    if (!variant || !(0, Clippy_type_1.isValidAgent)(variant)) {
+                        return [2 /*return*/, [(0, Action_1.clippyInit)(Clippy_type_1.Agent.Clippy)]];
                     }
                     if (agent.instance !== null && agent.type !== variant) {
                         return [2 /*return*/, [(0, Action_1.clippyInit)(variant), (0, Action_1.clippyDestroy)()]];
@@ -110,7 +115,7 @@ var handleLoader = function (action$, state$) {
                     _a = agent;
                     return [4 /*yield*/, (0, ClippyLoader_service_1.default)(variant)];
                 case 1:
-                    _a.instance = (_b.sent());
+                    _a.instance = _b.sent();
                     agent.type = variant;
                     agent.instance.show(false);
                     return [2 /*return*/, [(0, Action_1.clippyInitialized)(variant)]];
@@ -131,14 +136,16 @@ var handleSay = function (action$, state$) {
                         return [2 /*return*/, [(0, Action_1.clippyAnimate)(meta !== null && meta !== void 0 ? meta : null)]];
                     case 1:
                         variant = Selector.ClippyConfig.pickPreferredClippyVariant(state$.value);
+                        if (!(0, Clippy_type_1.isValidAgent)(variant)) return [3 /*break*/, 3];
                         _b = agent;
                         return [4 /*yield*/, (0, ClippyLoader_service_1.default)(variant)];
                     case 2:
-                        _b.instance = (_c.sent());
+                        _b.instance = _c.sent();
                         agent.instance.show(false);
                         agent.instance.speak(payload, false);
                         agent.type = variant;
                         return [2 /*return*/, [(0, Action_1.clippyAnimate)(meta !== null && meta !== void 0 ? meta : null)]];
+                    case 3: return [2 /*return*/, []];
                 }
             });
         });
@@ -158,18 +165,20 @@ var handleAnimation = function (action$) {
         if (agent.instance) {
             animation ? agent.instance.play(animation) : agent.instance.animate();
         }
-        return [];
+        return rxjs_1.EMPTY;
     }));
 };
 var handleDestroy = function (action$) {
     return action$.pipe((0, rxjs_1.filter)((0, typesafe_actions_1.isActionOf)(Action_1.clippyDestroy)), (0, rxjs_1.map)(function () {
         if (agent.instance !== null) {
             agent.instance.stopCurrent();
-            agent.instance.hide(false, function () { return; });
+            agent.instance.hide(false, function () {
+                return;
+            });
             agent.instance = null;
             agent.type = null;
         }
-        Array.from(document.querySelectorAll('.clippy,.clippy-balloon')).map(function (el) { return el.remove(); });
-    }), (0, rxjs_1.switchMap)(function () { return []; }));
+        Array.from(document.querySelectorAll(".clippy,.clippy-balloon")).map(function (el) { return el.remove(); });
+    }), (0, rxjs_1.switchMap)(function () { return rxjs_1.EMPTY; }));
 };
 exports.default = (0, redux_observable_1.combineEpics)(listenContextMenu, init, handleLoader, handleSay, handleDestroy, handleAnimation, handleSayQueue);

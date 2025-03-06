@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "webpack serve --port 8083 --config build-tools/webpack/core-dev-server --no-client-overlay-warnings",
-    "build": "npm run core-generate-version && rimraf build && tsc && tsc-alias",
+    "build": "npm run core-generate-version && rimraf build && tsc --build && tsc-alias",
     "build:showcase": "webpack --config build-tools/webpack/showcase",
     "build:watch": "tsc-watch --onSuccess tsc-alias",
     "build:webpack": "webpack --config build-tools/webpack/production",
@@ -146,6 +146,7 @@
     "@types/react-window": "^1.8.6",
     "@types/socket.io-client": "^1.4.36",
     "@types/webpack": "^5.28.5",
+    "null-loader": "^4.0.1",
     "ts-node": "^10.9.2"
   }
 }
