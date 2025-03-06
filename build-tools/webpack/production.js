@@ -34,24 +34,11 @@ const production = {
         terserOptions: {
           compress: {
             warnings: false,
-            unused: true,
-            dead_code: true,
-            drop_console: true,
-            drop_debugger: true,
-            conditionals: true,
-            evaluate: true,
-            booleans: true,
-            loops: true,
-            toplevel: true,
-            passes: 3
           },
-          mangle: true,
           output: {
             comments: false
           },
           ie8: true,
-          keep_classnames: false,
-          keep_fnames: false
         },
       })
     ]
