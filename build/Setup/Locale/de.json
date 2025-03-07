@@ -137,5 +137,16 @@
     "app.themeVariant.LEGACY": "Legacy",
     "app.themeVariant.COMIC": "Comic",
     "app.themeVariant.PIXEL": "Pixel",
-    "app.themeVariant.AUTO_DETECT": "automatisch"
+    "app.themeVariant.AUTO_DETECT": "automatisch",
+    "app.formOfPayment.credit_card": "Kreditkarte",
+    "app.formOfPayment.cash_on_delivery": "Nachnahme",
+    "app.formOfPayment.cash_in_advance": "Vorkasse",
+    "app.formOfPayment.paypal": "Paypal",
+    "app.formOfPayment.check": "Scheck",
+    "app.formOfPayment.ideal": "iDeal",
+    "app.formOfPayment.purchaseOnInvoice": "RatePay - KaR",
+    "app.formOfPayment.directDebiting": "RatePay - Lastschrift",
+    "app.formOfPayment.installment": "RatePay - Ratenkauf",
+    "app.formOfPayment.unknown": "Unbekannt",
+    "app.formOfPayment.jPayPurchaseOnInvoice": "Juwelo Rechnungskauf"
 }

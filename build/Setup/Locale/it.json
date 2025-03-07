@@ -136,5 +136,16 @@
     "app.themeVariant.LEGACY": "Legacy",
     "app.themeVariant.COMIC": "Fumetto",
     "app.themeVariant.PIXEL": "Pixel",
-    "app.themeVariant.AUTO_DETECT": "automatico"
+    "app.themeVariant.AUTO_DETECT": "automatico",
+    "app.formOfPayment.credit_card": "Carta di credito",
+    "app.formOfPayment.cash_on_delivery": "Contrassegno",
+    "app.formOfPayment.cash_in_advance": "Pagamento anticipato",
+    "app.formOfPayment.paypal": "Paypal",
+    "app.formOfPayment.check": "Assegno",
+    "app.formOfPayment.ideal": "iDeal",
+    "app.formOfPayment.purchaseOnInvoice": "RatePay - Fattura",
+    "app.formOfPayment.directDebiting": "RatePay - Addebito diretto",
+    "app.formOfPayment.installment": "RatePay - Pagamento a rate",
+    "app.formOfPayment.unknown": "Sconosciuto",
+    "app.formOfPayment.jPayPurchaseOnInvoice": " Juwelo Acquisto in conto vendit"
 }
