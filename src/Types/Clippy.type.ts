@@ -1,15 +1,15 @@
-import { AgentType } from 'clippyts/dist/types';
-export type Agent = AgentType
+import type { Agent as OriginalAgent } from 'clippyts';
+import type { AgentType as OriginalAgentType } from 'clippyts/dist/types';
+
 export const Agent = {
     Clippy: 'Clippy',
-    Bonzi: 'Bonzi',
-    F1: 'F1',
-    Genie: 'Genie',
-    Genius: 'Genius',
     Links: 'Links',
-    Merlin: 'Merlin',
-    Peedy: 'Peedy',
-    Rocky: 'Rocky',
-    Rover: 'Rover'
-} as const
-export const AGENTS: Agent[] = ['Clippy', 'Bonzi', 'F1', 'Genie', 'Genius', 'Links', 'Merlin', 'Peedy', 'Rocky', 'Rover']
+} as const;
+
+export type Agent = typeof Agent[keyof typeof Agent];
+export const AGENTS: Agent[] = ['Clippy', 'Links'];
+export type ClippyAgent = OriginalAgent;
+export type ClippyAgentType = OriginalAgentType;
+export function isValidAgent(agent: string): agent is Agent {
+    return AGENTS.includes(agent as Agent);
+}

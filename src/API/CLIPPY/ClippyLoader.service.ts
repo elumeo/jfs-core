@@ -1,16 +1,21 @@
-import clippy, { type Agent } from 'clippyts';
-export default function (agent: string) {
-  return new Promise<Agent>((resolve, reject) =>
+import clippy from 'clippyts';
+import { Agent, ClippyAgent, isValidAgent } from 'Types/Clippy.type';
+
+export default function (agent: Agent): Promise<ClippyAgent> {
+  return new Promise<ClippyAgent>((resolve, reject) => {
+    if (!isValidAgent(agent)) {
+      reject(new Error(`Agent ${agent} is not supported`));
+      return;
+    }
+
     clippy.load({
       name: agent,
-      successCb: (agent: Agent) => {
+      successCb: (agent: ClippyAgent) => {
         resolve(agent);
       },
-      failCb: (error) => {
+      failCb: (error: Error) => {
         reject(error);
       }
-    }
-    )
-
-  )
+    });
+  });
 }

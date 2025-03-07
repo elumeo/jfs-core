@@ -1,3 +1,4 @@
+import { Agent } from '../../../Types/Clippy.type';
 export declare const pickClippyEnabled: ((state: {
     Core: import("../../Reducer/Core").State;
 } & Record<string, unknown>) => boolean) & import("reselect").OutputSelectorFields<(args_0: import("../../../Types/Configuration").ClippyConfiguration) => boolean, {
@@ -7,7 +8,7 @@ export declare const pickClippyEnabled: ((state: {
 };
 export declare const pickPreferredClippyVariant: ((state: {
     Core: import("../../Reducer/Core").State;
-} & Record<string, unknown>) => import("clippyts/dist/types").AgentType) & import("reselect").OutputSelectorFields<(args_0: import("../../Reducer/Core/LocalStorage.reducer").State, args_1: string) => import("clippyts/dist/types").AgentType, {
+} & Record<string, unknown>) => Agent) & import("reselect").OutputSelectorFields<(args_0: import("../../Reducer/Core/LocalStorage.reducer").State, args_1: string) => Agent, {
     clearCache: () => void;
 }> & {
     clearCache: () => void;

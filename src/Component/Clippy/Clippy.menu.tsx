@@ -2,18 +2,17 @@ import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, } from '@
 import React from 'react'
 import { clippySaveAgent } from 'Store/Action';
 import { useDispatch, useSelector } from 'react-redux';
-import { type Agent, AGENTS } from 'Types/Clippy.type';
+import { Agent, AGENTS } from 'Types/Clippy.type';
 import { pickPreferredClippyVariant } from 'Store/Selector/Core/ClippyConfig.selector';
-import { AgentType } from 'clippyts/dist/types';
+
 const ClippyMenu: React.FC = () => {
   const variant = useSelector(pickPreferredClippyVariant)
   const dispatch = useDispatch()
   const handleChange = React.useCallback(
-    (event: SelectChangeEvent<AgentType>,) => {
+    (event: SelectChangeEvent<Agent>,) => {
       dispatch(clippySaveAgent(event.target.value as Agent))
     }, [dispatch]
   )
-
 
   return <FormControl fullWidth >
     <InputLabel id='clippy-picker-label'>Helferlein wählen</InputLabel>

@@ -1,2 +1,2 @@
-import { type Agent } from 'clippyts';
-export default function (agent: string): Promise<Agent>;
+import { Agent, ClippyAgent } from '../../Types/Clippy.type';
+export default function (agent: Agent): Promise<ClippyAgent>;
