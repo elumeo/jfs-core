@@ -32,13 +32,9 @@ const production = {
       new TerserPlugin({
         extractComments: false,
         terserOptions: {
-          compress: {
-            warnings: false,
-          },
-          output: {
-            comments: false
-          },
-          ie8: true,
+          compress: { warnings: false },
+          output: { comments: false },
+          ie8: true
         },
       })
     ]
@@ -74,7 +70,6 @@ const production = {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.ContextReplacementPlugin(
       /clippyts[\/\\]dist[\/\\]agents/,
       /^\.\/(?:Clippy|Links)\.js$/

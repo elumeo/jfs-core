@@ -34,18 +34,12 @@ var JSC_1 = __importDefault(require("../../../API/JSC"));
 var toastableErrorIds = ['authorizationRequired', 'invalidSession'];
 var checkSession = function (action$, store) {
     return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.checkSession)), (0, operators_1.concatMap)(function () {
-        return (0, rxjs_1.from)(JSC_1.default.SessionClient.getCurrentSessionFrontend(store.value.Core.Configuration.config.AppName)).pipe((0, operators_1.switchMap)(function (response) {
-            return (0, rxjs_1.of)(Action.authorizeSession({ frontendSessionDTO: response.data }));
-        }));
+        return (0, rxjs_1.from)(JSC_1.default.SessionClient.getCurrentSessionFrontend(store.value.Core.Configuration.config.AppName)).pipe((0, operators_1.switchMap)(function (response) { return (0, rxjs_1.of)(Action.authorizeSession({ frontendSessionDTO: response.data })); }));
     }), (0, operators_1.catchError)(function (error) {
         var isToastable = toastableErrorIds.find(function (id) { var _a; return id === ((_a = error === null || error === void 0 ? void 0 : error.response) === null || _a === void 0 ? void 0 : _a.id); });
         return (0, rxjs_1.concat)(isToastable
             ? (0, rxjs_1.of)(Action.addToastAction({
-                contentTranslationId: isToastable
-                    ? error.response.id === 'authorizationRequired'
-                        ? 'userRights.checkFailed'
-                        : 'session.expired'
-                    : null,
+                contentTranslationId: isToastable ? (error.response.id === 'authorizationRequired' ? 'userRights.checkFailed' : 'session.expired') : null,
                 isError: true,
             }))
             : rxjs_1.EMPTY, (0, rxjs_1.of)(Action.unauthorizeSession()));
