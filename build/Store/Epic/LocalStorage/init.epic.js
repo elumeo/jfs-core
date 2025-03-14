@@ -35,11 +35,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var Session = __importStar(require("../../../API/LOCAL_STORAGE/Session"));
-var rxjs_1 = require("rxjs");
+var operators_1 = require("rxjs/operators");
 var typesafe_actions_1 = require("typesafe-actions");
 var Action = __importStar(require("../../Action"));
-var init = function (action$) { return action$.pipe((0, rxjs_1.filter)((0, typesafe_actions_1.isActionOf)(Action.configLoadedAction)), (0, rxjs_1.mergeMap)(function () { return (0, rxjs_1.of)(window.localStorage).pipe((0, rxjs_1.map)(function (localStorage) { return Object.keys(localStorage); }), (0, rxjs_1.map)(function (keys) { return keys.map(function (key) { return key.replace(Session.BASE_NAME, ''); }); }), (0, rxjs_1.map)(function (keys) { return keys.reduce(function (acc, key) {
-    var _a;
-    return (__assign(__assign({}, acc), (_a = {}, _a[key] = Session.getItem(key), _a)));
-}, {}); }), (0, rxjs_1.switchMap)(function (payload) { return [Action.syncLocalStorageToReducer(payload)]; })); })); };
+var rxjs_1 = require("rxjs");
+var init = function (action$) {
+    return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.configLoadedAction)), (0, operators_1.mergeMap)(function () {
+        return (0, rxjs_1.of)(window.localStorage).pipe((0, operators_1.map)(function (localStorage) { return Object.keys(localStorage); }), (0, operators_1.map)(function (keys) { return keys.map(function (key) { return key.replace(Session.BASE_NAME, ''); }); }), (0, operators_1.map)(function (keys) { return keys.reduce(function (acc, key) {
+            var _a;
+            return (__assign(__assign({}, acc), (_a = {}, _a[key] = Session.getItem(key), _a)));
+        }, {}); }), (0, operators_1.switchMap)(function (payload) { return [Action.syncLocalStorageToReducer(payload)]; }));
+    }));
+};
 exports.default = init;

@@ -1,7 +1,6 @@
-import { map, mergeMap,  tap } from 'rxjs/operators';
+import { map, mergeMap, tap, filter } from 'rxjs/operators';
 import { saveToLocalStorage, syncLocalStorageToReducer } from 'Store/Action/LocalStorage.action';
 import { Epic } from 'Types/Redux';
-import { filter } from 'rxjs';
 import { isActionOf } from 'typesafe-actions';
 import * as Session from 'API/LOCAL_STORAGE/Session';
 
