@@ -36,7 +36,7 @@ const AppLayout: React.FC<Props> = (
       gap={(navigation && spacing > 0) ? spacing : 0}
       {...containerProps}>
       {navigation}
-      <Box  {...contentProps} sx={{ marginLeft: '0 !important', width: fullWidth ? '100%' : 'auto' }}>{children}</Box>
+      <Box  {...contentProps} sx={{ marginLeft: '0 !important', width: fullWidth ? '100%' : 'auto', ...contentProps.sx }}>{children}</Box>
     </Stack>
   )
 };

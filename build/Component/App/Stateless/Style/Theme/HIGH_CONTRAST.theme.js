@@ -71,7 +71,7 @@ var HIGH_CONTRAST = (0, styles_1.createTheme)({
             focus: 'rgba(0, 0, 0, 0.2)',
             focusOpacity: 0.2,
         }, background: {
-            default: colors_1.grey[900],
+            default: colors_1.grey[900] + '21',
         } }, Color),
     mixins: {
         toolbar: {

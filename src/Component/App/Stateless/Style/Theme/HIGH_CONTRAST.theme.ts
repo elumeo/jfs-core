@@ -47,7 +47,7 @@ const HIGH_CONTRAST = createTheme({
       focusOpacity: 0.2,
     },
     background: {
-      default: grey[900],
+      default: grey[900] + '21',
     },
     ...Color
   },

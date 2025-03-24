@@ -27,7 +27,7 @@ const showError: Epic = action$ =>
     switchMap(({ payload }) => [
       Action.addNotification(mapErrorToNotification(payload))
     ]),
-    catchError(error => {
+    catchError((error: unknown) => {
       // eslint-disable-next-line no-console
       console.error(error)
       return []
