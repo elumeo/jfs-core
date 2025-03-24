@@ -27,7 +27,6 @@ exports.mapErrorToNotification = void 0;
 var operators_1 = require("rxjs/operators");
 var typesafe_actions_1 = require("typesafe-actions");
 var Action = __importStar(require("../Action"));
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 var mapErrorToNotification = function (error) {
     var _a, _b, _c, _d, _e, _f, _g, _h;
     var responseData = (_a = error === null || error === void 0 ? void 0 : error.response) === null || _a === void 0 ? void 0 : _a.data;
