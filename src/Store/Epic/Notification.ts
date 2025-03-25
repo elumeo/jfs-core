@@ -7,8 +7,7 @@ import * as Types from 'Types/Notification';
 import { AxiosError } from 'axios';
 import { JscError } from 'Utilities/Format/Error';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const mapErrorToNotification = (error: AxiosError<JscError | any>): Types.Notification => {
+export const mapErrorToNotification = (error: AxiosError<JscError>): Types.Notification => {
   const responseData = error?.response?.data;
 
   const title = error?.response?.statusText || error?.name;
@@ -27,7 +26,7 @@ const showError: Epic = action$ =>
     switchMap(({ payload }) => [
       Action.addNotification(mapErrorToNotification(payload))
     ]),
-    catchError(error => {
+    catchError((error) => {
       // eslint-disable-next-line no-console
       console.error(error)
       return []

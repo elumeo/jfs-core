@@ -4,6 +4,7 @@ import { AxiosError } from 'axios';
 export type JscError = {
   id: string;
   message: string;
+  error?: string;
 };
 
 const isAxiosError = (error: Error) =>
@@ -21,7 +22,7 @@ const head = (error: AxiosError) => {
   return `(http: ${status} ${statusText} // ${method} ${url})`;
 };
 
-const body = (error: AxiosError<{id?: string, message?: string}>) => {
+const body = (error: AxiosError<{ id?: string, message?: string }>) => {
   const { data } = error.response;
   if (isJscError(error)) {
     const { id, message } = data;
