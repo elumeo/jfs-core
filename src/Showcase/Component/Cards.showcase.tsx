@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import { Box, Button, Card, CardActions, CardContent, CardHeader, Container, Grid, IconButton, Stack, Typography } from '@mui/material';
 import AppNavigation from './AppNavigation.showcase';
 import Switch from '@mui/material/Switch';
@@ -60,7 +60,7 @@ const Cards = () => {
                   ? 'This is an advanced card with more options'
                   : <Grid container spacing={1}>
                     <Grid item><Typography variant='h5'>This is an advanced card with more options</Typography></Grid>
-                    <Grid item><IconButton size={'small'} sx={{ p: .25}}><RefreshIcon /></IconButton></Grid>
+                    <Grid item><IconButton size={'small'} sx={{ p: .25 }}><RefreshIcon /></IconButton></Grid>
                   </Grid>}
               subheader={topLeftActionButtonsEnabled === false ? '... in the header' : <Typography variant={'body1'} color={'textSecondary'}>... in the header</Typography>}
               action={topRightActionButtonNumber === 1 ? <Button color='primary' variant='contained'>Primary Action</Button> :
