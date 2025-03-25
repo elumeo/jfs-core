@@ -5,18 +5,18 @@ import { grey } from '@mui/material/colors';
 const selectedStyles = ({ theme }: { theme: Theme }) => (
   {
     '&.Mui-selected': {
-      backgroundColor: `${alpha(Color.common.black, theme.palette.action.selectedOpacity)}`,
+      backgroundColor: `${alpha(Color.common.white, theme.palette.action.selectedOpacity)}`,
       '&:hover': {
-        backgroundColor: `${alpha(Color.common.black, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity)}`
+        backgroundColor: `${alpha(Color.common.white, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity)}`
       }
     },
     '&:hover': {
-      backgroundColor: `${alpha(Color.common.black, theme.palette.action.hoverOpacity)}`
+      backgroundColor: `${alpha(Color.common.white, theme.palette.action.hoverOpacity)}`
     },
     '&.Mui-focusVisible': {
-      backgroundColor: `${alpha(Color.common.black, theme.palette.action.selectedOpacity)} !important`,
+      backgroundColor: `${alpha(Color.common.white, theme.palette.action.selectedOpacity)} !important`,
       '&:hover': {
-        backgroundColor: `${alpha(Color.common.black, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity)}`
+        backgroundColor: `${alpha(Color.common.white, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity)}`
       }
     }
   }

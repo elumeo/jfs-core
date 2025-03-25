@@ -42,18 +42,18 @@ var selectedStyles = function (_a) {
     var theme = _a.theme;
     return ({
         '&.Mui-selected': {
-            backgroundColor: "".concat((0, styles_1.alpha)(Color.common.black, theme.palette.action.selectedOpacity)),
+            backgroundColor: "".concat((0, styles_1.alpha)(Color.common.white, theme.palette.action.selectedOpacity)),
             '&:hover': {
-                backgroundColor: "".concat((0, styles_1.alpha)(Color.common.black, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity))
+                backgroundColor: "".concat((0, styles_1.alpha)(Color.common.white, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity))
             }
         },
         '&:hover': {
-            backgroundColor: "".concat((0, styles_1.alpha)(Color.common.black, theme.palette.action.hoverOpacity))
+            backgroundColor: "".concat((0, styles_1.alpha)(Color.common.white, theme.palette.action.hoverOpacity))
         },
         '&.Mui-focusVisible': {
-            backgroundColor: "".concat((0, styles_1.alpha)(Color.common.black, theme.palette.action.selectedOpacity), " !important"),
+            backgroundColor: "".concat((0, styles_1.alpha)(Color.common.white, theme.palette.action.selectedOpacity), " !important"),
             '&:hover': {
-                backgroundColor: "".concat((0, styles_1.alpha)(Color.common.black, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity))
+                backgroundColor: "".concat((0, styles_1.alpha)(Color.common.white, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity))
             }
         }
     });
