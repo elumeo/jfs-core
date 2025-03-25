@@ -5,6 +5,7 @@ import * as Selector from "Store/Selector";
 
 export default (): ThemeVariant => {
   const userId = useSelector(Selector.Session.pickUsername);
-  const themeVariant = useSelector((state) => state.Core.LocalStorage?.[[userId, UserConfig.themeFeature].join(UserConfig.SEPERATOR) as ThemeVariant] ?? ThemeVariant.AUTO_DETECT);
+  const defaultTheme = useSelector(state => state.Core.Configuration.config?.DefaultTheme ?? ThemeVariant.LIGHT);
+  const themeVariant = useSelector((state) => state.Core.LocalStorage?.[[userId, UserConfig.themeFeature].join(UserConfig.SEPERATOR) as ThemeVariant] ?? defaultTheme);
   return themeVariant as ThemeVariant;
 };

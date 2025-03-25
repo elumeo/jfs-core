@@ -32,6 +32,7 @@ var useSelector_1 = __importDefault(require("../Store/useSelector"));
 var Selector = __importStar(require("../Store/Selector"));
 exports.default = (function () {
     var userId = (0, useSelector_1.default)(Selector.Session.pickUsername);
-    var themeVariant = (0, useSelector_1.default)(function (state) { var _a, _b; return (_b = (_a = state.Core.LocalStorage) === null || _a === void 0 ? void 0 : _a[[userId, UserConfig.themeFeature].join(UserConfig.SEPERATOR)]) !== null && _b !== void 0 ? _b : ThemeVariant_type_1.ThemeVariant.AUTO_DETECT; });
+    var defaultTheme = (0, useSelector_1.default)(function (state) { var _a, _b; return (_b = (_a = state.Core.Configuration.config) === null || _a === void 0 ? void 0 : _a.DefaultTheme) !== null && _b !== void 0 ? _b : ThemeVariant_type_1.ThemeVariant.LIGHT; });
+    var themeVariant = (0, useSelector_1.default)(function (state) { var _a, _b; return (_b = (_a = state.Core.LocalStorage) === null || _a === void 0 ? void 0 : _a[[userId, UserConfig.themeFeature].join(UserConfig.SEPERATOR)]) !== null && _b !== void 0 ? _b : defaultTheme; });
     return themeVariant;
 });

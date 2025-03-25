@@ -1,5 +1,6 @@
 import { Language } from './Language';
 import { NotificationPosition } from 'Types/Notification';
+import { ThemeVariant } from "Types/ThemeVariant.type";
 export type ClippyConfiguration = {
   messages?: string[];
   interval?: number;
@@ -32,4 +33,5 @@ export type Configuration = {
   DebugMode?: boolean
   DebugCallstackLimit?: number
   ClippyConfig?: ClippyConfiguration
+  DefaultTheme?: ThemeVariant
 };
