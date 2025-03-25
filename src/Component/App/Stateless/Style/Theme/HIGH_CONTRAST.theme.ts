@@ -39,11 +39,11 @@ const HIGH_CONTRAST = createTheme({
       disabled: grey[500],
     },
     action: {
-      hover: 'rgba(0, 0, 0, 0.12)',
+      hover: `${alpha(Color.common.white, .12)}`,
       hoverOpacity: 0.12,
-      selected: 'rgba(0, 0, 0, 0.16)',
+      selected: `${alpha(Color.common.white, .16)}`,
       selectedOpacity: 0.16,
-      focus: 'rgba(0, 0, 0, 0.2)',
+      focus: `${alpha(Color.common.white, .2)}`,
       focusOpacity: 0.2,
     },
     background: {

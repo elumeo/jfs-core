@@ -64,11 +64,11 @@ var HIGH_CONTRAST = (0, styles_1.createTheme)({
             secondary: colors_1.grey[200],
             disabled: colors_1.grey[500],
         }, action: {
-            hover: 'rgba(0, 0, 0, 0.12)',
+            hover: "".concat((0, styles_1.alpha)(Color.common.white, .12)),
             hoverOpacity: 0.12,
-            selected: 'rgba(0, 0, 0, 0.16)',
+            selected: "".concat((0, styles_1.alpha)(Color.common.white, .16)),
             selectedOpacity: 0.16,
-            focus: 'rgba(0, 0, 0, 0.2)',
+            focus: "".concat((0, styles_1.alpha)(Color.common.white, .2)),
             focusOpacity: 0.2,
         }, background: {
             default: colors_1.grey[900] + '21',

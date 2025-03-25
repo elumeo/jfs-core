@@ -21,10 +21,12 @@ import CodeBox from './CodeBox.showcase';
 import Layout from '../../Component/App/Layout'
 
 const generate = (element: React.ReactElement) => {
-  return [0, 1, 2].map((value) =>
+  return Array(4).fill(0).map((_, value) =>
     React.cloneElement(element, {
       key: value,
       selected: value === 1,
+      disabled: value === 2,
+
     }),
   );
 }
