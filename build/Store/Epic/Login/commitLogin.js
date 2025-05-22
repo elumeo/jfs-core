@@ -108,6 +108,10 @@ var commitLogin = function (action$, state$) {
             actionsToReturn.push(Action.addErrorNotification(error));
         }
         return actionsToReturn;
-    })); }));
+    })); }), (0, operators_1.catchError)(function (error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+        return rxjs_1.EMPTY;
+    }));
 };
 exports.default = commitLogin;

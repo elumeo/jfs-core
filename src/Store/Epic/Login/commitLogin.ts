@@ -1,10 +1,10 @@
-import {catchError, filter, switchMap} from 'rxjs/operators';
-import {isActionOf} from 'typesafe-actions';
-import {from} from 'rxjs';
+import { catchError, filter, switchMap, tap } from 'rxjs/operators';
+import { isActionOf } from 'typesafe-actions';
+import { EMPTY, from } from 'rxjs';
 import JSCApi from 'API/JSC';
 import * as Action from 'Store/Action';
 import * as Token from 'API/LOCAL_STORAGE/Token';
-import {Epic} from 'Types/Redux';
+import { Epic } from 'Types/Redux';
 import encryptString from 'Utilities/encryptString';
 
 const commitLogin: Epic = (action$, state$) =>
@@ -29,7 +29,7 @@ const commitLogin: Epic = (action$, state$) =>
         switchMap(response => {
           Token.setToken(response.data.session.token);
           return [
-            Action.authorizeSession({frontendSessionDTO: response.data}),
+            Action.authorizeSession({ frontendSessionDTO: response.data }),
             Action.loggedIn(),
           ];
         }),
@@ -55,6 +55,11 @@ const commitLogin: Epic = (action$, state$) =>
         }),
       ),
     ),
+    catchError((error) => {
+      // eslint-disable-next-line no-console
+      console.error(error);
+      return EMPTY;
+    })
   );
 
 export default commitLogin;
