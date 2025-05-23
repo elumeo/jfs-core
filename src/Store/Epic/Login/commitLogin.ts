@@ -1,4 +1,4 @@
-import { catchError, filter, switchMap, tap } from 'rxjs/operators';
+import { catchError, filter, switchMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { EMPTY, from } from 'rxjs';
 import JSCApi from 'API/JSC';
