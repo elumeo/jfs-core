@@ -15,7 +15,7 @@ import JSCApi from "../../API/JSC";
 
 export type WebSocketState = JSCApi.DTO.WebSocket.IWebSocketRoomUpdateDTO<unknown>
 export const WebSocketReducer = createReducer<WebSocketState, ActionType<typeof Action>>({})
-  .handleAction(Action.webSocketJoinRoomSuccessAction, (): WebSocketState => ({}))
+  .handleAction(Action.webSocketJoinRoomSuccessAction, (): WebSocketState => ({ data: 'waiting for update...' }))
   .handleAction(Action.webSocketLeaveRoomSuccessAction, (): WebSocketState => ({}))
   .handleAction(Action.webSocketUpdateRoomAction, (_, action): WebSocketState => action.payload)
 
