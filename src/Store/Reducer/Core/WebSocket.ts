@@ -8,60 +8,57 @@ export type State = {
 
 /**
  * It is not possible to set initial state values for any namespace here
- * because namespaces will be create dynamically with the action:
+ * because namespaces will be created dynamically with the action:
  * webSocketAddNamespaceAction
  */
 export const initialState: State = {};
 
 const WebSocket = createReducer<State, ActionType<typeof Action>>(initialState)
-  .handleAction(Action.webSocketConnectRequestAction, (state, action) => ({
+  .handleAction(Action.webSocketConnectRequestAction, (state, { payload: namespace }): State => ({
     ...state,
-    [action.payload]: {
-      ...state[action.payload],
+    [namespace]: {
+      ...state[namespace],
       isConnecting: true,
       isConnected: false,
       connectionError: null
     }
   }))
 
-  .handleAction(Action.webSocketConnectSuccessAction, (state, action) => ({
+  .handleAction(Action.webSocketConnectSuccessAction, (state, { payload: namespace }): State => ({
     ...state,
-    [action.payload]: {
-      ...state[action.payload],
+    [namespace]: {
+      ...state[namespace],
       isConnecting: false,
       isConnected: true,
-      connectionError: null,
-      // rooms: state[action.payload].rooms.map(room => {
-      //   room.shouldJoin = false;
-      //   return room;
-      // })
+      connectionError: null
     }
   }))
-  .handleAction(Action.webSocketConnectFailedAction, (state, action) => ({
+  .handleAction(Action.webSocketConnectFailedAction, (state, { payload: room }): State => ({
     ...state,
-    [action.payload.namespace]: {
-      ...state[action.payload.namespace],
+    [room.namespace]: {
+      ...state[room.namespace],
       isConnecting: false,
       isConnected: false,
-      connectionError: action.payload.message,
+      connectionError: room.message,
     }
   }))
-  .handleAction(Action.webSocketReconnectAction, (state, action) => ({
+  .handleAction(Action.webSocketReconnectAction, (state, { payload: namespace }): State => ({
     ...state,
-    [action.payload]: {
-      ...state[action.payload],
-      rooms: state[action.payload].rooms.map(room => {
-        room.shouldJoin = room.isJoining || room.hasJoined;
-        room.isJoining = false;
-        room.hasJoined = false;
-        return room;
-      })
+    [namespace]: {
+      ...state[namespace],
+      rooms: (state[namespace]?.rooms || [])
+        .map(r => ({
+          ...r,
+          shouldJoin: r.isJoining || r.hasJoined,
+          isJoining: false,
+          hasJoined: false
+        }))
     }
   }))
-  .handleAction(Action.webSocketDisconnectSuccessAction, (state, action) => ({
+  .handleAction(Action.webSocketDisconnectSuccessAction, (state, { payload: namespace }): State => ({
     ...state,
-    [action.payload]: {
-      ...state[action.payload],
+    [namespace]: {
+      ...state[namespace],
       isConnecting: false,
       isConnected: false,
       connectionError: null,
@@ -74,53 +71,31 @@ const WebSocket = createReducer<State, ActionType<typeof Action>>(initialState)
       Action.webSocketJoinRoomSuccessAction,
       Action.webSocketJoinRoomFailureAction
     ],
-    (state, action) => {
-      const newRooms: Type.IWebSocketRoomConnection[] = [];
-      if (state[action.payload.namespace] !== undefined) {
-        for (const room of state[action.payload.namespace].rooms) {
-          if (room.name !== action.payload.name) {
-            newRooms.push({ ...room });
-          }
-        }
-      }
-      newRooms.push({ ...action.payload });
-      return {
-        ...state,
-        ...{
-          [action.payload.namespace]: {
-            ...state[action.payload.namespace],
-            rooms: [...newRooms]
-          }
-        }
-      };
-    }
-  )
-
-  .handleAction(Action.webSocketLeaveRoomSuccessAction, (state, action) => {
-    const newRooms: Type.IWebSocketRoomConnection[] = [];
-    for (const room of state[action.payload.namespace].rooms) {
-      if (room.name !== action.payload.room) {
-        newRooms.push({ ...room });
-      } else {
-        const newRoom = {
-          ...room
-        };
-        newRoom.hasJoined = false;
-        newRoom.isJoining = false;
-        newRooms.push(newRoom);
-      }
-    }
-    return {
+    (state, { payload: room }): State => ({
       ...state,
-      [action.payload.namespace]: {
-        ...state[action.payload.namespace],
-        rooms: newRooms
+      [room.namespace]: {
+        ...state[room.namespace],
+        rooms: [
+          ...(state?.[room.namespace]?.rooms || []).filter(r => r.name !== room.name),
+          room
+        ]
       }
-    };
-  })
-  .handleAction(Action.webSocketAddNamespaceAction, (state, action) => ({
+    }))
+  .handleAction(Action.webSocketLeaveRoomSuccessAction, (state, { payload: room }): State => ({
     ...state,
-    [action.payload]: {
+    [room.namespace]: {
+      ...state[room.namespace],
+      rooms: (state[room.namespace]?.rooms || [])
+        .map(r =>
+          r.name == room.room
+            ? { ...r, hasJoined: false, isJoining: false }
+            : r
+        ),
+    }
+  }))
+  .handleAction(Action.webSocketAddNamespaceAction, (state, { payload: namespace }): State => ({
+    ...state,
+    [namespace]: {
       isConnected: false,
       isConnecting: false,
       connectionError: null,

@@ -48,80 +48,68 @@ var typesafe_actions_1 = require("typesafe-actions");
 var Action = __importStar(require("../../Action"));
 /**
  * It is not possible to set initial state values for any namespace here
- * because namespaces will be create dynamically with the action:
+ * because namespaces will be created dynamically with the action:
  * webSocketAddNamespaceAction
  */
 exports.initialState = {};
 var WebSocket = (0, typesafe_actions_1.createReducer)(exports.initialState)
-    .handleAction(Action.webSocketConnectRequestAction, function (state, action) {
-    var _a;
-    return (__assign(__assign({}, state), (_a = {}, _a[action.payload] = __assign(__assign({}, state[action.payload]), { isConnecting: true, isConnected: false, connectionError: null }), _a)));
+    .handleAction(Action.webSocketConnectRequestAction, function (state, _a) {
+    var _b;
+    var namespace = _a.payload;
+    return (__assign(__assign({}, state), (_b = {}, _b[namespace] = __assign(__assign({}, state[namespace]), { isConnecting: true, isConnected: false, connectionError: null }), _b)));
 })
-    .handleAction(Action.webSocketConnectSuccessAction, function (state, action) {
-    var _a;
-    return (__assign(__assign({}, state), (_a = {}, _a[action.payload] = __assign(__assign({}, state[action.payload]), { isConnecting: false, isConnected: true, connectionError: null }), _a)));
+    .handleAction(Action.webSocketConnectSuccessAction, function (state, _a) {
+    var _b;
+    var namespace = _a.payload;
+    return (__assign(__assign({}, state), (_b = {}, _b[namespace] = __assign(__assign({}, state[namespace]), { isConnecting: false, isConnected: true, connectionError: null }), _b)));
 })
-    .handleAction(Action.webSocketConnectFailedAction, function (state, action) {
-    var _a;
-    return (__assign(__assign({}, state), (_a = {}, _a[action.payload.namespace] = __assign(__assign({}, state[action.payload.namespace]), { isConnecting: false, isConnected: false, connectionError: action.payload.message }), _a)));
+    .handleAction(Action.webSocketConnectFailedAction, function (state, _a) {
+    var _b;
+    var room = _a.payload;
+    return (__assign(__assign({}, state), (_b = {}, _b[room.namespace] = __assign(__assign({}, state[room.namespace]), { isConnecting: false, isConnected: false, connectionError: room.message }), _b)));
 })
-    .handleAction(Action.webSocketReconnectAction, function (state, action) {
-    var _a;
-    return (__assign(__assign({}, state), (_a = {}, _a[action.payload] = __assign(__assign({}, state[action.payload]), { rooms: state[action.payload].rooms.map(function (room) {
-            room.shouldJoin = room.isJoining || room.hasJoined;
-            room.isJoining = false;
-            room.hasJoined = false;
-            return room;
-        }) }), _a)));
+    .handleAction(Action.webSocketReconnectAction, function (state, _a) {
+    var _b;
+    var _c;
+    var namespace = _a.payload;
+    return (__assign(__assign({}, state), (_b = {}, _b[namespace] = __assign(__assign({}, state[namespace]), { rooms: (((_c = state[namespace]) === null || _c === void 0 ? void 0 : _c.rooms) || [])
+            .map(function (r) { return (__assign(__assign({}, r), { shouldJoin: r.isJoining || r.hasJoined, isJoining: false, hasJoined: false })); }) }), _b)));
 })
-    .handleAction(Action.webSocketDisconnectSuccessAction, function (state, action) {
-    var _a;
-    return (__assign(__assign({}, state), (_a = {}, _a[action.payload] = __assign(__assign({}, state[action.payload]), { isConnecting: false, isConnected: false, connectionError: null, rooms: [] }), _a)));
+    .handleAction(Action.webSocketDisconnectSuccessAction, function (state, _a) {
+    var _b;
+    var namespace = _a.payload;
+    return (__assign(__assign({}, state), (_b = {}, _b[namespace] = __assign(__assign({}, state[namespace]), { isConnecting: false, isConnected: false, connectionError: null, rooms: [] }), _b)));
 })
     .handleAction([
     Action.webSocketJoinRoomLoadingAction,
     Action.webSocketJoinRoomSuccessAction,
     Action.webSocketJoinRoomFailureAction
-], function (state, action) {
-    var _a;
-    var newRooms = [];
-    if (state[action.payload.namespace] !== undefined) {
-        for (var _i = 0, _b = state[action.payload.namespace].rooms; _i < _b.length; _i++) {
-            var room = _b[_i];
-            if (room.name !== action.payload.name) {
-                newRooms.push(__assign({}, room));
-            }
-        }
-    }
-    newRooms.push(__assign({}, action.payload));
-    return __assign(__assign({}, state), (_a = {},
-        _a[action.payload.namespace] = __assign(__assign({}, state[action.payload.namespace]), { rooms: __spreadArray([], newRooms, true) }),
-        _a));
+], function (state, _a) {
+    var _b;
+    var _c;
+    var room = _a.payload;
+    return (__assign(__assign({}, state), (_b = {}, _b[room.namespace] = __assign(__assign({}, state[room.namespace]), { rooms: __spreadArray(__spreadArray([], (((_c = state === null || state === void 0 ? void 0 : state[room.namespace]) === null || _c === void 0 ? void 0 : _c.rooms) || []).filter(function (r) { return r.name !== room.name; }), true), [
+            room
+        ], false) }), _b)));
 })
-    .handleAction(Action.webSocketLeaveRoomSuccessAction, function (state, action) {
-    var _a;
-    var newRooms = [];
-    for (var _i = 0, _b = state[action.payload.namespace].rooms; _i < _b.length; _i++) {
-        var room = _b[_i];
-        if (room.name !== action.payload.room) {
-            newRooms.push(__assign({}, room));
-        }
-        else {
-            var newRoom = __assign({}, room);
-            newRoom.hasJoined = false;
-            newRoom.isJoining = false;
-            newRooms.push(newRoom);
-        }
-    }
-    return __assign(__assign({}, state), (_a = {}, _a[action.payload.namespace] = __assign(__assign({}, state[action.payload.namespace]), { rooms: newRooms }), _a));
+    .handleAction(Action.webSocketLeaveRoomSuccessAction, function (state, _a) {
+    var _b;
+    var _c;
+    var room = _a.payload;
+    return (__assign(__assign({}, state), (_b = {}, _b[room.namespace] = __assign(__assign({}, state[room.namespace]), { rooms: (((_c = state[room.namespace]) === null || _c === void 0 ? void 0 : _c.rooms) || [])
+            .map(function (r) {
+            return r.name == room.room
+                ? __assign(__assign({}, r), { hasJoined: false, isJoining: false }) : r;
+        }) }), _b)));
 })
-    .handleAction(Action.webSocketAddNamespaceAction, function (state, action) {
-    var _a;
-    return (__assign(__assign({}, state), (_a = {}, _a[action.payload] = {
+    .handleAction(Action.webSocketAddNamespaceAction, function (state, _a) {
+    var _b;
+    var namespace = _a.payload;
+    return (__assign(__assign({}, state), (_b = {}, _b[namespace] = {
         isConnected: false,
         isConnecting: false,
         connectionError: null,
         rooms: []
-    }, _a)));
+    }, _b)));
 });
 exports.default = WebSocket;

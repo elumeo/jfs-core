@@ -1,5 +1,4 @@
-import { of } from 'rxjs';
-import { filter, concatMap, map } from 'rxjs/operators';
+import { concatMap, filter, map } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import Cookie from 'js-cookie';
 import * as Action from 'Store/Action';
