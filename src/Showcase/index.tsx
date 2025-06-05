@@ -7,7 +7,6 @@ import * as Logout from '../Component/Logout';
 import * as Settings from '../Component/Settings';
 import * as Language from '../Component/Language';
 import * as Header from '../Component/Header';
-import reducer from '../Store/Reducer/Global';
 import epic from '../Store/Epic';
 import * as Notification from '../Component/Notification';
 import Snackbar from '../Component/Snackbar';
@@ -20,6 +19,9 @@ import DebugButton from '../Component/Button/DebugButton';
 import Routes from './Routes';
 import actionsToLog from './Debug/actionsToLog';
 import Mapper from './Debug/Mapper';
+import { combineReducers, Reducer } from "redux";
+import Core, { State as CoreState } from "../Store/Reducer/Core";
+import { WebSocketReducer, WebSocketState } from "./Component/WebSocket.showcase";
 
 declare const module: { hot: { accept: () => void } };
 declare const window: Window & { core_reactRoot: ReturnType<typeof createRoot> }
@@ -33,7 +35,14 @@ if (window['core_reactRoot'] === undefined && doc !== null) {
   window['core_reactRoot'] = createRoot(doc);
 }
 
-window['core_reactRoot'].render(<App
+type ShowcaseState = { WebSocket: WebSocketState }
+export type State = { Core: CoreState, Showcase: ShowcaseState }
+const reducer: Reducer<State> = combineReducers<State>({
+  Core,
+  Showcase: combineReducers<ShowcaseState>({ WebSocket: WebSocketReducer })
+});
+
+window.core_reactRoot.render(<App
   store={create(epic, reducer)}
   title='core'
   translations={Translations}
@@ -41,7 +50,7 @@ window['core_reactRoot'].render(<App
 >
   <Routes
     header={<Header.AppToolbar
-      left={<Header.BackendIndicator />}
+      left={<Header.BackendIndicator/>}
       right={
         <>
           <Indicator client={{
@@ -61,13 +70,13 @@ window['core_reactRoot'].render(<App
       }
     />}
     overlays={<Overlay>
-      <Navigation />
-      <Login.Dialog />
-      <Logout.Dialog />
+      <Navigation/>
+      <Login.Dialog/>
+      <Logout.Dialog/>
       <Settings.Dialog enableClippy enableTheme>
-        <Language.Settings />
+        <Language.Settings/>
       </Settings.Dialog>
-      <Snackbar />
+      <Snackbar/>
     </Overlay>}
   />
 </App>);

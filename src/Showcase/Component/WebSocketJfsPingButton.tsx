@@ -6,7 +6,7 @@ import useSelector from '../../Store/useSelector';
 import { useDispatch } from 'react-redux';
 import {webSocketJoinRoomRequestAction, webSocketLeaveRoomRequestAction} from '../../Store/Action';
 
-const pingRoom: IWebSocketRoom = {
+export const JfsPingRoom: IWebSocketRoom = {
   room: 'ping',
   namespace: 'Jfs2Jfs'
 };
@@ -22,11 +22,11 @@ const JfsPingButton: React.FC = () => {
   }
 
   if (jfs2jfsConnected) {
-    const room = jfs2jfsNamespace.rooms.find(({ name }) => name === pingRoom.room);
+    const room = jfs2jfsNamespace.rooms.find(({ name }) => name === JfsPingRoom.room);
     if (!room || room.hasJoined === false) {
-      return <MUI.Button variant={'contained'} disabled={room && room.isJoining} onClick={() => dispatch(webSocketJoinRoomRequestAction(pingRoom))}>Join JFS Ping Room</MUI.Button>;
+      return <MUI.Button variant={'contained'} disabled={room && room.isJoining} onClick={() => dispatch(webSocketJoinRoomRequestAction(JfsPingRoom))}>Join JFS Ping Room</MUI.Button>;
     } else {
-      return <MUI.Button variant={'contained'} onClick={() => dispatch(webSocketLeaveRoomRequestAction(pingRoom))}>Leave Jfs Ping Room</MUI.Button>;
+      return <MUI.Button variant={'contained'} onClick={() => dispatch(webSocketLeaveRoomRequestAction(JfsPingRoom))}>Leave Jfs Ping Room</MUI.Button>;
     }
   }
   return <MUI.Typography variant='button'>JfsWebSocket not connected!</MUI.Typography>;
