@@ -15,10 +15,14 @@ var WebSocket = function (_a) {
     var errors = react_1.default.useRef(null);
     react_1.default.useEffect(function () {
         if (!subscription.current) {
-            subscription.current = WSClient_1.WSClient.listenRoomsObservable$.subscribe(function (roomData) { return dispatch((0, Action_1.webSocketUpdateRoomAction)(roomData)); });
+            subscription.current = WSClient_1.WSClient.listenRoomsObservable$.subscribe(function (roomData) {
+                dispatch((0, Action_1.webSocketUpdateRoomAction)(roomData));
+            });
         }
         if (!errors.current) {
-            errors.current = WSClient_1.WSClient.connectionErrorObservable$.subscribe(function (error) { return dispatch((0, Action_1.webSocketConnectFailedAction)(error)); });
+            errors.current = WSClient_1.WSClient.connectionErrorObservable$.subscribe(function (error) {
+                dispatch((0, Action_1.webSocketConnectFailedAction)(error));
+            });
         }
         return function () {
             if (subscription.current) {
