@@ -62,7 +62,7 @@ const common = {
         use: ['source-map-loader']
       },
       {
-        test: /\.mp3$/,
+        test: /\.(mp3|wav)$/,
         use: ['file-loader']
       },
       {
