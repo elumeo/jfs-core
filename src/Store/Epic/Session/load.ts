@@ -7,7 +7,7 @@ import { Epic } from 'Types/Redux';
 
 const loadSession: Epic = (action$, store) =>
   action$.pipe(
-    filter(isActionOf(Action.loadSession)),
+    filter(isActionOf([Action.setPublicKey, Action.loadSession])),
     map(() => {
       const {
         RobotUsername: username,

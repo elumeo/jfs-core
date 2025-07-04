@@ -30,18 +30,14 @@ var operators_1 = require("rxjs/operators");
 var typesafe_actions_1 = require("typesafe-actions");
 var js_cookie_1 = __importDefault(require("js-cookie"));
 var Action = __importStar(require("../../Action"));
-var Selector = __importStar(require("../../Selector"));
 var setInitialLanguage = function (action$, state$) {
-    return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.setPublicKey)), (0, operators_1.map)(function () { return ({
-        config: Selector.Configuration.Configuration(state$.value)
-    }); }), (0, operators_1.concatMap)(function (_a) {
-        var config = _a.config;
+    return action$.pipe((0, operators_1.filter)((0, typesafe_actions_1.isActionOf)(Action.configLoadedAction)), (0, operators_1.concatMap)(function (_a) {
+        var config = _a.payload.config;
         return [
-            Action.changeLanguageAction(state$.value.Core.Language.language
-                || js_cookie_1.default.get('lang')
-                || config.Language
-                || 'en'),
-            Action.loadSession(),
+            Action.changeLanguageAction(state$.value.Core.Language.language ||
+                js_cookie_1.default.get('lang') ||
+                config.Language ||
+                'en')
         ];
     }));
 };
