@@ -9,6 +9,10 @@ var mapLanguageToDateFormat = function (language) {
             return Language_1.DATE_FORMAT.EN;
         case Language_1.LANGUAGE.ITALIAN:
             return Language_1.DATE_FORMAT.IT;
+        case Language_1.LANGUAGE.SPANISH:
+            return Language_1.DATE_FORMAT.ES;
+        case Language_1.LANGUAGE.POLISH:
+            return Language_1.DATE_FORMAT.PL; // Assuming Polish uses the same format as English
         default:
             return Language_1.DATE_FORMAT.DE;
     }

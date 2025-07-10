@@ -8,6 +8,10 @@ const mapLanguageToDateFormat = (language: LANGUAGE): DATE_FORMAT => {
       return DATE_FORMAT.EN;
     case LANGUAGE.ITALIAN:
       return DATE_FORMAT.IT;
+    case LANGUAGE.SPANISH:
+      return DATE_FORMAT.ES;
+    case LANGUAGE.POLISH:
+      return DATE_FORMAT.PL; // Assuming Polish uses the same format as English
     default:
       return DATE_FORMAT.DE;
   }
