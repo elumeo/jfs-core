@@ -1,5 +1,5 @@
 import React from 'react';
-import Stateless from './Stateless';
+import Stateless, {Props as StatelessProps} from './Stateless';
 import Stateful, { Props as StatefulProps } from './Stateful';
 import Title from './Title';
 import moment from 'moment';
@@ -11,6 +11,7 @@ Date.prototype.toJSON = function () {
 export type Props = StatefulProps & {
   packageJSON: Record<string, unknown>;
   translations: Record<string, Record<string, string>>;
+  onTranslationError?: StatelessProps['onError'];
   title?: string;
 };
 
@@ -18,6 +19,7 @@ const App: React.FC<Props> =
   ({
     children,
     translations,
+    onTranslationError,
     packageJSON,
     title,
     store,
@@ -27,7 +29,7 @@ const App: React.FC<Props> =
       <Stateful.Initialized>
         <Stateful.International translations={translations}>
           {({ locale }) => (
-            <Stateless locale={locale} messages={translations[locale]}>
+            <Stateless locale={locale} messages={translations[locale]} onError={onTranslationError}>
               <Stateful.Snackbar>
                 {children}
               </Stateful.Snackbar>

@@ -23,10 +23,10 @@ Date.prototype.toJSON = function () {
     return (0, moment_1.default)(this).format();
 };
 var App = function (_a) {
-    var children = _a.children, translations = _a.translations, packageJSON = _a.packageJSON, title = _a.title, store = _a.store;
+    var children = _a.children, translations = _a.translations, onTranslationError = _a.onTranslationError, packageJSON = _a.packageJSON, title = _a.title, store = _a.store;
     return ((0, jsx_runtime_1.jsxs)(Stateful_1.default, __assign({ store: store }, { children: [(0, jsx_runtime_1.jsx)(Title_1.default, { value: title || packageJSON.name }), (0, jsx_runtime_1.jsx)(Stateful_1.default.Initialized, { children: (0, jsx_runtime_1.jsx)(Stateful_1.default.International, __assign({ translations: translations }, { children: function (_a) {
                         var locale = _a.locale;
-                        return ((0, jsx_runtime_1.jsx)(Stateless_1.default, __assign({ locale: locale, messages: translations[locale] }, { children: (0, jsx_runtime_1.jsx)(Stateful_1.default.Snackbar, { children: children }) })));
+                        return ((0, jsx_runtime_1.jsx)(Stateless_1.default, __assign({ locale: locale, messages: translations[locale], onError: onTranslationError }, { children: (0, jsx_runtime_1.jsx)(Stateful_1.default.Snackbar, { children: children }) })));
                     } })) }), (0, jsx_runtime_1.jsx)(Stateful_1.default.Uninitialized, { children: (0, jsx_runtime_1.jsx)(Stateless_1.default.Style, { children: (0, jsx_runtime_1.jsx)(Stateful_1.default.Initializer, { packageJSON: packageJSON, translations: translations }) }) })] })));
 };
 exports.default = App;

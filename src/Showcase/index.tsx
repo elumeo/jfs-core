@@ -22,6 +22,7 @@ import Mapper from './Debug/Mapper';
 import { combineReducers, Reducer } from "redux";
 import Core, { State as CoreState } from "../Store/Reducer/Core";
 import { WebSocketReducer, WebSocketState } from "./Component/WebSocket.showcase";
+import * as Action from '../Store/Action'
 
 declare const module: { hot: { accept: () => void } };
 declare const window: Window & { core_reactRoot: ReturnType<typeof createRoot> }
@@ -42,9 +43,16 @@ const reducer: Reducer<State> = combineReducers<State>({
   Showcase: combineReducers<ShowcaseState>({ WebSocket: WebSocketReducer })
 });
 
+const store = create(epic, reducer)
+
 window.core_reactRoot.render(<App
-  store={create(epic, reducer)}
+  store={store}
   title='core'
+  onTranslationError={e => store.dispatch(Action.addNotification({
+    variant: 'error',
+    title: e.code,
+    content: e.message
+  }))}
   translations={Translations}
   packageJSON={packageJson}
 >

@@ -1,22 +1,18 @@
 import React from 'react';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider, IntlConfig } from 'react-intl';
 import Style from './Style';
 import Picker from './Picker';
 
-export type Props = {
-  locale: string;
-  messages: Record<string, string>;
-};
+export type Props = React.PropsWithChildren<IntlConfig>
 
-const Stateless: React.FC<React.PropsWithChildren<Props>> & { Style: typeof Style; } = ({ locale, messages, children }) => <IntlProvider
-  locale={locale}
-  messages={messages}>
-  <Style>
-    <Picker locale={locale}>
-      {children}
-    </Picker>
-  </Style>
-</IntlProvider>;
+const Stateless: React.FC<React.PropsWithChildren<Props>> & { Style: typeof Style; } = ({locale, children, ...intlProviderProps }) =>
+  <IntlProvider locale={locale} {...intlProviderProps}>
+    <Style>
+      <Picker locale={locale}>
+        {children}
+      </Picker>
+    </Style>
+  </IntlProvider>;
 
 Stateless.Style = Style;
 

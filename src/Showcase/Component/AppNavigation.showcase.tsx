@@ -16,7 +16,7 @@ import BallotOutlinedIcon from '@mui/icons-material/BallotOutlined';
 import ShareIcon from '@mui/icons-material/Share';
 import NatIcon from '@mui/icons-material/Nat';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Celebration } from '@mui/icons-material';
+import { Celebration, Error } from '@mui/icons-material';
 const AppNavigation = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -85,6 +85,10 @@ const AppNavigation = () => {
       <ListItemButton onClick={() => navigate('/SharedComponent')} selected={pathname.startsWith('/SharedComponent')}>
         <ListItemIcon><ShareIcon /></ListItemIcon>
         <ListItemText primary='SharedComponent' />
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/TriggerIntlError')} selected={pathname.startsWith('/TriggerIntlError')}>
+        <ListItemIcon><Error /></ListItemIcon>
+        <ListItemText primary='TriggerIntlError' />
       </ListItemButton>
     </List>
   </Card>;

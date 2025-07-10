@@ -20,6 +20,7 @@ import AppCardContentExample from './Component/AppCardContentExample.showcase';
 import RouterProvider from '../Component/App/Stateful/RouterProvider';
 import NoAuthRoute from '../Component/Route/NoAuthRoute';
 import ClippyConfetti from './Component/ClippyConfetti.showcase';
+import TriggerIntlError from "./Component/TriggerIntlError.showcase";
 
 type Props = {
   header: ReactNode;
@@ -59,6 +60,7 @@ const Routes: FC<Props> = ({ header, overlays }) => (
           <Route path={'AppCardContentExample'} element={<AppCardContentExample />} />
           <Route path={'SharedComponent'} element={<AppCardContentExample />} />
           <Route path={'ClippyConfetti'} element={<ClippyConfetti />} />
+          <Route path={'TriggerIntlError'} element={<TriggerIntlError />} />
           <Route path={'*'} element={<Navigate to={'Start'} replace />} />
         </Route>
         <Route path={'*'}
