@@ -6,6 +6,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const rimraf = require('rimraf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {resolve} = require("path");
 
 rimraf.sync(PATH.PUBLIC);
 
@@ -58,6 +59,18 @@ const production = {
   },
   plugins: [
     ...common.plugins,
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        configFile: resolve(PATH.ROOT, 'tsconfig.json'),
+        memoryLimit: 8192,
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+        mode: "write-references",
+      },
+      async: true
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
