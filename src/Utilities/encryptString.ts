@@ -1,4 +1,4 @@
-import { JSEncrypt } from 'jsencrypt';
+import JSEncrypt from 'jsencrypt';
 
 export default async (plainText: string, publicKey: string): Promise<string> => {
   const encrypt = new JSEncrypt();
