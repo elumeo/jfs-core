@@ -7,6 +7,7 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const rimraf = require('rimraf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {resolve} = require("path");
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 rimraf.sync(PATH.PUBLIC);
 
@@ -14,6 +15,7 @@ process.env.NODE_ENV = 'production';
 
 const production = {
   ...common,
+  devtool: 'hidden-source-map',
   mode: 'production',
   output: {
     filename: PATH.UNIQUE_BUNDLE_NAME,
