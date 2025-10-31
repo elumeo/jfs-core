@@ -5,7 +5,7 @@ node_modules
 .DS_Store
 /showcase-dist/
 /config.json
-tsconfig.tsbuildinfo
+*tsconfig.tsbuildinfo
 /jest.config.ts
 /setup.ts
 /Dockerfile
