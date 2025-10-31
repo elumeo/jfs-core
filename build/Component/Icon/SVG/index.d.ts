@@ -20,3 +20,5 @@ export { default as WebShopBidAgent } from './WebShopBidAgent';
 export { default as WebShopBlock } from './WebShopBlock';
 export { default as CustomerCard } from './CustomerCard';
 export { default as Pound } from './Pound';
+export { default as GooglePay } from './GooglePay';
+export { default as ApplePay } from './ApplePay';

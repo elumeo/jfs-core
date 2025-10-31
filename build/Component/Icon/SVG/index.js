@@ -26,7 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Pound = exports.CustomerCard = exports.WebShopBlock = exports.WebShopBidAgent = exports.WebShop = exports.Test = exports.RatePay = exports.PhoneBlock = exports.PayPal = exports.MultipleSources = exports.InvoiceAddress = exports.Ideal = exports.Flag = exports.FilterReset = exports.DeliveryAddress = exports.Check = exports.DeletePin = exports.CashOnDelivery = exports.CashInAdvance = exports.BoxOpen = exports.BidBlock = exports.BadgePercent = void 0;
+exports.ApplePay = exports.GooglePay = exports.Pound = exports.CustomerCard = exports.WebShopBlock = exports.WebShopBidAgent = exports.WebShop = exports.Test = exports.RatePay = exports.PhoneBlock = exports.PayPal = exports.MultipleSources = exports.InvoiceAddress = exports.Ideal = exports.Flag = exports.FilterReset = exports.DeliveryAddress = exports.Check = exports.DeletePin = exports.CashOnDelivery = exports.CashInAdvance = exports.BoxOpen = exports.BidBlock = exports.BadgePercent = void 0;
 var BadgePercent_1 = require("./BadgePercent");
 Object.defineProperty(exports, "BadgePercent", { enumerable: true, get: function () { return __importDefault(BadgePercent_1).default; } });
 var BidBlock_1 = require("./BidBlock");
@@ -70,3 +70,7 @@ var CustomerCard_1 = require("./CustomerCard");
 Object.defineProperty(exports, "CustomerCard", { enumerable: true, get: function () { return __importDefault(CustomerCard_1).default; } });
 var Pound_1 = require("./Pound");
 Object.defineProperty(exports, "Pound", { enumerable: true, get: function () { return __importDefault(Pound_1).default; } });
+var GooglePay_1 = require("./GooglePay");
+Object.defineProperty(exports, "GooglePay", { enumerable: true, get: function () { return __importDefault(GooglePay_1).default; } });
+var ApplePay_1 = require("./ApplePay");
+Object.defineProperty(exports, "ApplePay", { enumerable: true, get: function () { return __importDefault(ApplePay_1).default; } });
