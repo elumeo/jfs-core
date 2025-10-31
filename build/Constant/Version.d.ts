@@ -1,1 +1,1 @@
-export declare const CORE_VERSION = "12.0.16-beta.2";
+export declare const CORE_VERSION = "12.0.16";
