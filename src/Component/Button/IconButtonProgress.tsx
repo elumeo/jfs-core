@@ -1,6 +1,11 @@
 import React, { forwardRef } from 'react';
-import { Box, ButtonProps, CircularProgress, IconButton, IconButtonProps, PropTypes, SxProps } from '@mui/material';
-import { mapToCircularProgressColor, mapToCircularProgressSize, wrapperStyles } from 'Component/Button/ButtonProgress';
+import { Box, ButtonProps, CircularProgress, IconButton, IconButtonProps, PropTypes } from '@mui/material';
+import {
+  mapToCircularProgressColor,
+  mapToCircularProgressSize,
+  SpinnerContainerSX,
+  wrapperStyles
+} from 'Component/Button/ButtonProgress';
 
 
 export type IconButtonProgressProps = IconButtonProps & {
@@ -9,17 +14,6 @@ export type IconButtonProgressProps = IconButtonProps & {
   inProgress?: boolean;
   color?: PropTypes.Color;
 };
-const SpinnerContainerSX: SxProps = ({
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  height: '100%',
-  width: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center'
-})
 
 const IconButtonProgress = forwardRef<HTMLButtonElement, IconButtonProgressProps>((
     {
