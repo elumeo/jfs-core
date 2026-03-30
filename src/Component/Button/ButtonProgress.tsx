@@ -4,7 +4,9 @@ import {Button, ButtonProps, CircularProgress, CircularProgressProps, PropTypes,
 
 export const wrapperStyles: SxProps = {
   position: 'relative',
-  display: 'inline'
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
 };
 
 export const mapToCircularProgressSize = (size: string): number => {

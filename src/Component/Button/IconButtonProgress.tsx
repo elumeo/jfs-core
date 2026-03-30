@@ -9,41 +9,46 @@ export type IconButtonProgressProps = IconButtonProps & {
   inProgress?: boolean;
   color?: PropTypes.Color;
 };
-const getSpinnerSx = (size = 'medium'): SxProps => ({
+const SpinnerContainerSX: SxProps = ({
   position: 'absolute',
   top: '50%',
   left: '50%',
-  marginTop: mapToCircularProgressSize(size) / 2 * -1 + 'px',
-  marginLeft: mapToCircularProgressSize(size) / 2 * -1 + 'px'
+  transform: 'translate(-50%, -50%)',
+  height: '100%',
+  width: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
 })
 
 const IconButtonProgress = forwardRef<HTMLButtonElement, IconButtonProgressProps>((
-  {
-    children,
-    onClick,
-    size = 'medium',
-    color = 'inherit',
-    disabled = false,
-    inProgress = false,
-    ...rest
-  }, ref) => {
-  return <Box sx={wrapperStyles}>
-    <IconButton
-      ref={ref}
-      size={size}
-      color={color}
-      disabled={disabled || inProgress}
-      onClick={onClick}
-      {...rest}>{children}
-    </IconButton>
-    {inProgress
-      ? <CircularProgress size={mapToCircularProgressSize(size)} color={mapToCircularProgressColor(color)} sx={getSpinnerSx(size)} />
-      : <></>
-    }
-  </Box>
-
-
-}
+    {
+      children,
+      onClick,
+      size = 'medium',
+      color = 'inherit',
+      disabled = false,
+      inProgress = false,
+      ...rest
+    }, ref) => {
+    return (
+      <Box sx={wrapperStyles}>
+        <IconButton
+          ref={ref}
+          size={size}
+          color={color}
+          disabled={disabled || inProgress}
+          onClick={onClick}
+          {...rest}>{children}
+        </IconButton>
+        {inProgress && (
+          <Box sx={SpinnerContainerSX}>
+            <CircularProgress size={mapToCircularProgressSize(size)} color={mapToCircularProgressColor(color)}/>
+          </Box>
+        ) || null}
+      </Box>
+    )
+  }
 );
 
 export default IconButtonProgress
