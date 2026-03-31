@@ -36,8 +36,39 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable max-lines */
 var styles_1 = require("@mui/material/styles");
-var Color = __importStar(require("../../../../../Constant/Color"));
+var BaseColor = __importStar(require("../../../../../Constant/Color"));
 var colors_1 = require("@mui/material/colors");
+var Color = __assign(__assign({}, BaseColor), { primary: {
+        light: (0, styles_1.lighten)(BaseColor.primary.light, .2),
+        main: (0, styles_1.lighten)(BaseColor.primary.main, .2),
+        dark: (0, styles_1.lighten)(BaseColor.primary.dark, .2),
+        contrastText: BaseColor.primary.contrastText,
+    }, secondary: {
+        light: (0, styles_1.lighten)(BaseColor.secondary.light, .1),
+        main: (0, styles_1.lighten)(BaseColor.secondary.main, .1),
+        dark: (0, styles_1.lighten)(BaseColor.secondary.dark, .1),
+        contrastText: BaseColor.secondary.contrastText,
+    }, success: {
+        light: (0, styles_1.lighten)(BaseColor.success.light, .1),
+        main: (0, styles_1.lighten)(BaseColor.success.main, .1),
+        dark: (0, styles_1.lighten)(BaseColor.success.dark, .1),
+        contrastText: BaseColor.success.contrastText,
+    }, warning: {
+        light: (0, styles_1.lighten)(BaseColor.warning.light, .1),
+        main: (0, styles_1.lighten)(BaseColor.warning.main, .1),
+        dark: (0, styles_1.lighten)(BaseColor.warning.dark, .1),
+        contrastText: BaseColor.warning.contrastText,
+    }, error: {
+        light: (0, styles_1.lighten)(BaseColor.error.light, .3),
+        main: (0, styles_1.lighten)(BaseColor.error.main, .3),
+        dark: (0, styles_1.lighten)(BaseColor.error.dark, .3),
+        contrastText: BaseColor.error.contrastText,
+    }, info: {
+        light: (0, styles_1.lighten)(BaseColor.info.light, .1),
+        main: (0, styles_1.lighten)(BaseColor.info.main, .1),
+        dark: (0, styles_1.lighten)(BaseColor.info.dark, .1),
+        contrastText: BaseColor.info.contrastText,
+    } });
 var selectedStyles = function (_a) {
     var theme = _a.theme;
     return ({
@@ -59,7 +90,15 @@ var selectedStyles = function (_a) {
     });
 };
 var HIGH_CONTRAST = (0, styles_1.createTheme)({
-    palette: __assign({ primary: Color.primary, secondary: Color.secondary, warning: Color.warning, error: Color.error, success: Color.success, info: Color.info, mode: 'dark', grey: colors_1.grey, common: Color.common, text: {
+    palette: __assign({ primary: {
+            dark: (0, styles_1.lighten)(Color.primary.dark, .8),
+            main: (0, styles_1.lighten)(Color.primary.main, .8),
+            light: (0, styles_1.lighten)(Color.primary.light, .8),
+        }, secondary: {
+            dark: (0, styles_1.lighten)(Color.secondary.dark, .8),
+            main: (0, styles_1.lighten)(Color.secondary.main, .8),
+            light: (0, styles_1.lighten)(Color.secondary.light, .8),
+        }, warning: Color.warning, error: Color.error, success: Color.success, info: Color.info, mode: 'dark', grey: colors_1.grey, common: Color.common, text: {
             primary: colors_1.grey[100],
             secondary: colors_1.grey[200],
             disabled: colors_1.grey[500],

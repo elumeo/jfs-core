@@ -2,7 +2,7 @@ import React from 'react';
 import { ButtonProps, CircularProgressProps, PropTypes, SxProps } from '@mui/material';
 export declare const wrapperStyles: SxProps;
 export declare const mapToCircularProgressSize: (size: string) => number;
-export declare const mapToCircularProgressColor: (color: PropTypes.Color) => 'inherit' | 'primary' | 'secondary';
+export declare const SpinnerContainerSX: SxProps;
 export type ButtonProgressProps = ButtonProps & {
     onClick?: ButtonProps['onClick'];
     disabled?: boolean;

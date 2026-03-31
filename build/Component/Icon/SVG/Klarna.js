@@ -1,0 +1,27 @@
+"use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("@welldone-software/why-did-you-render/jsx-runtime");
+var SvgIcon_1 = __importDefault(require("@mui/material/SvgIcon"));
+var Klarna = function (props) { return (
+// <SvgIcon viewBox='0 0 46 32' color='inherit' {...props} >
+//   <g fill="none" transform="matrix(1, 0, 0, 1, 1, 3.6)">
+//     <rect fill="#ffb3c7" height="25" rx="4.321" width="45"/>
+//     <path d="m40.794 14.646a1.07 1.07 0 0 0 -1.066 1.076 1.07 1.07 0 0 0 1.066 1.076c.588 0 1.066-.482 1.066-1.076a1.07 1.07 0 0 0 -1.066-1.076zm-3.508-.831c0-.814-.689-1.473-1.539-1.473s-1.539.66-1.539 1.473.69 1.472 1.54 1.472 1.538-.659 1.538-1.472zm.006-2.863h1.698v5.725h-1.698v-.366a2.96 2.96 0 0 1 -1.684.524c-1.653 0-2.993-1.352-2.993-3.02s1.34-3.02 2.993-3.02c.625 0 1.204.193 1.684.524zm-13.592.746v-.745h-1.739v5.724h1.743v-2.673c0-.902.968-1.386 1.64-1.386h.02v-1.665c-.69 0-1.323.298-1.664.745zm-4.332 2.117c0-.814-.689-1.473-1.539-1.473s-1.539.66-1.539 1.473.69 1.472 1.54 1.472 1.538-.659 1.538-1.472zm.006-2.863h1.699v5.725h-1.699v-.366c-.48.33-1.059.524-1.684.524-1.653 0-2.993-1.352-2.993-3.02s1.34-3.02 2.993-3.02c.625 0 1.204.193 1.684.524zm10.223-.153c-.678 0-1.32.212-1.75.798v-.644h-1.691v5.724h1.712v-3.008c0-.87.578-1.297 1.275-1.297.746 0 1.176.45 1.176 1.285v3.02h1.696v-3.64c0-1.332-1.05-2.238-2.418-2.238zm-17.374 5.878h1.778v-8.275h-1.778zm-7.81.002h1.883v-8.279h-1.882zm6.586-8.279c0 1.792-.692 3.46-1.926 4.699l2.602 3.58h-2.325l-2.827-3.89.73-.552a4.768 4.768 0 0 0 1.902-3.837h1.842z" fill="#0a0b09"/>
+//   </g>
+// </SvgIcon>
+(0, jsx_runtime_1.jsx)(SvgIcon_1.default, __assign({ viewBox: '0 0 32 32', color: 'inherit' }, props, { children: (0, jsx_runtime_1.jsxs)("g", __assign({ fill: "none", transform: "matrix(1, 0, 0, 1, 4.193, 5.626)", "transform-origin": "-4.193px -5.626px" }, { children: [(0, jsx_runtime_1.jsx)("rect", { fill: "#ffb3c7", height: "32", rx: "3", width: "32", "transform-origin": "-4.193px -5.626px", x: "-4.193", y: "-5.626", ry: "3" }), (0, jsx_runtime_1.jsx)("path", { "transform-origin": "2px 0px", d: "M 19.551 14.708 C 18.297 14.712 17.287 15.732 17.294 16.986 C 17.287 18.239 18.297 19.259 19.551 19.264 C 20.796 19.264 21.807 18.243 21.807 16.986 C 21.814 15.732 20.804 14.712 19.551 14.708 Z M 1.807 19.012 L 5.793 19.012 L 5.793 1.484 L 1.809 1.484 L 1.807 19.012 Z M 15.75 1.484 C 15.75 5.278 14.285 8.809 11.672 11.433 L 17.181 19.012 L 12.259 19.012 L 6.274 10.776 L 7.819 9.607 C 10.371 7.69 11.863 4.676 11.846 1.484 L 15.746 1.484 L 15.75 1.484 Z", fill: "#0a0b09" })] })) }))); };
+exports.default = Klarna;
