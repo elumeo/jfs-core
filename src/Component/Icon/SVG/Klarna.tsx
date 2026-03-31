@@ -11,6 +11,7 @@ const Klarna: React.FC<Props> = props => (
   // </SvgIcon>
 
   <SvgIcon viewBox='0 0 32 32' color='inherit' {...props} >
+    <title>Klarna</title>
     <g fill="none" transform="matrix(1, 0, 0, 1, 4.193, 5.626)" transform-origin="-4.193px -5.626px">
       <rect fill="#ffb3c7" height="32" rx="3" width="32" transform-origin="-4.193px -5.626px" x="-4.193" y="-5.626"
             ry="3"/>

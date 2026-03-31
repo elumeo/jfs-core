@@ -4,6 +4,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 
 const ApplePay: React.FC<Props> = props => (
   <SvgIcon viewBox='0 0 77.945 32' color='inherit' {...props}>
+    <title>ApplePay</title>
     <g stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
       <path
         fill='currentcolor'

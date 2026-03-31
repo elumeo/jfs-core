@@ -4,6 +4,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 
 const GooglePay: React.FC<Props> = props => (
   <SvgIcon viewBox='0 0 67.192 32' color='inherit' {...props} >
+    <title>GooglePay</title>
     <g transform="matrix(0.836336, 0, 0, 0.836336, -0.004092, 0.686504)">
       <g>
         <path fill="inherit"
