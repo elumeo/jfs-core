@@ -42,7 +42,9 @@ import {
   ApplePay,
   GooglePay,
   Klarna,
-  KlarnaBadge
+  KlarnaBadge,
+  PayPalColor,
+  RatePayColor
 } from '../../Component/Icon';
 import AppNavigation from './AppNavigation.showcase';
 import CodeBox from './CodeBox.showcase';
@@ -122,8 +124,8 @@ const Icons = () => {
                 <ListItemText><CodeBox component={'span'} size={'small'}>{`<PayPal/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
-                <ListItemAvatar><PayPal/></ListItemAvatar>
-                <ListItemText><CodeBox component={'span'} size={'small'}>{`<PayPal/>`}</CodeBox></ListItemText>
+                <ListItemAvatar><PayPalColor/></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<PayPalColor/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
                 <ListItemAvatar><PhoneBlock/></ListItemAvatar>
@@ -132,6 +134,10 @@ const Icons = () => {
               <Grid item xs={4}><ListItem>
                 <ListItemAvatar><RatePay/></ListItemAvatar>
                 <ListItemText><CodeBox component={'span'} size={'small'}>{`<RatePay/>`}</CodeBox></ListItemText>
+              </ListItem></Grid>
+              <Grid item xs={4}><ListItem>
+                <ListItemAvatar><RatePayColor/></ListItemAvatar>
+                <ListItemText><CodeBox component={'span'} size={'small'}>{`<RatePayColor/>`}</CodeBox></ListItemText>
               </ListItem></Grid>
               <Grid item xs={4}><ListItem>
                 <ListItemAvatar><Test/></ListItemAvatar>
