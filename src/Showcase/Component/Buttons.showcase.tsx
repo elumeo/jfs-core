@@ -104,8 +104,10 @@ const Buttons: React.FC<Props> = () => {
                       && <IconButtonProgress inProgress={inProgress} size={size}><SearchIcon /></IconButtonProgress>
                       || <Typography color={'error'}>Not supported!</Typography>
                     }</Grid>
-                    <Grid item>{size !== 'large' && <IconButtonProgress inProgress={inProgress} size={size} color={'secondary'}><DoneIcon /></IconButtonProgress>}</Grid>
-                    <Grid item>{size !== 'large' && <IconButtonProgress inProgress={inProgress} size={size} color={'primary'}><HomeIcon /></IconButtonProgress>}</Grid>
+                    <Grid item>{size !== 'large' && <IconButtonProgress inProgress={inProgress} size={size}
+                                                                        color='secondary'><DoneIcon/></IconButtonProgress>}</Grid>
+                    <Grid item>{size !== 'large' && <IconButtonProgress inProgress={inProgress} size={size}
+                                                                        color='primary'><HomeIcon/></IconButtonProgress>}</Grid>
                   </Grid>
                   <CodeBox>{`<IconButtonProgress inProgress={inProgress} size={size}><SearchIcon /></IconButtonProgress>`}</CodeBox>
                   <CodeBox>

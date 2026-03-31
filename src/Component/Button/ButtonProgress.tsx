@@ -19,7 +19,6 @@ export const mapToCircularProgressSize = (size: string): number => {
       return 24;
   }
 };
-export const mapToCircularProgressColor = (color: PropTypes.Color): 'inherit' | 'primary' | 'secondary' => color === 'default' ? 'inherit' : color;
 
 export const SpinnerContainerSX: SxProps = ({
   position: 'absolute',
@@ -40,33 +39,31 @@ export type ButtonProgressProps = ButtonProps & {
 };
 
 const ButtonProgress = forwardRef<HTMLButtonElement, ButtonProgressProps>((
-    {
-      children,
-      onClick,
-      size = 'medium',
-      color = 'inherit',
-      disabled = false,
-      inProgress = false,
-      spinnerColor = undefined,
-      ...rest
-    },
-    ref) => {
-    return <Button
-      ref={ref}
-      size={size}
-      color={color}
-      disabled={disabled || inProgress}
-      onClick={onClick}{...rest}>
-      {
-        children
-      }
-      {inProgress && (
-        <Box sx={SpinnerContainerSX}>
-          <CircularProgress size={mapToCircularProgressSize(size)} color={spinnerColor || color}/>
-        </Box>
-      ) || null}
-    </Button>
-  }
-);
+  {
+    children,
+    onClick,
+    size = 'medium',
+    color = 'inherit',
+    disabled = false,
+    inProgress = false,
+    spinnerColor = undefined,
+    ...rest
+  }, ref) => (
+  <Button
+    ref={ref}
+    size={size}
+    color={color}
+    disabled={disabled || inProgress}
+    onClick={onClick}
+    {...rest}
+  >
+    {children}
+    {inProgress && (
+      <Box sx={SpinnerContainerSX}>
+        <CircularProgress size={mapToCircularProgressSize(size)} color={spinnerColor || color}/>
+      </Box>
+    ) || null}
+  </Button>
+));
 
 export default ButtonProgress

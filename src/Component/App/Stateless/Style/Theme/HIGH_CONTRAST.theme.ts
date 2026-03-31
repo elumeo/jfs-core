@@ -1,7 +1,48 @@
 /* eslint-disable max-lines */
-import { alpha, createTheme, Theme } from '@mui/material/styles';
-import * as Color from 'Constant/Color';
+import { alpha, createTheme, Theme, lighten } from '@mui/material/styles';
+import * as BaseColor from 'Constant/Color';
 import { grey } from '@mui/material/colors';
+
+const Color = {
+  ...BaseColor,
+  primary: {
+    light: lighten(BaseColor.primary.light, .2),
+    main: lighten(BaseColor.primary.main, .2),
+    dark: lighten(BaseColor.primary.dark, .2),
+    contrastText: BaseColor.primary.contrastText,
+  },
+  secondary: {
+    light: lighten(BaseColor.secondary.light, .1),
+    main: lighten(BaseColor.secondary.main, .1),
+    dark: lighten(BaseColor.secondary.dark, .1),
+    contrastText: BaseColor.secondary.contrastText,
+  },
+  success: {
+    light: lighten(BaseColor.success.light, .1),
+    main: lighten(BaseColor.success.main, .1),
+    dark: lighten(BaseColor.success.dark, .1),
+    contrastText: BaseColor.success.contrastText,
+  },
+  warning: {
+    light: lighten(BaseColor.warning.light, .1),
+    main: lighten(BaseColor.warning.main, .1),
+    dark: lighten(BaseColor.warning.dark, .1),
+    contrastText: BaseColor.warning.contrastText,
+  },
+  error: {
+    light: lighten(BaseColor.error.light, .3),
+    main: lighten(BaseColor.error.main, .3),
+    dark: lighten(BaseColor.error.dark, .3),
+    contrastText: BaseColor.error.contrastText,
+  },
+  info: {
+    light: lighten(BaseColor.info.light, .1),
+    main: lighten(BaseColor.info.main, .1),
+    dark: lighten(BaseColor.info.dark, .1),
+    contrastText: BaseColor.info.contrastText,
+  },
+}
+
 const selectedStyles = ({ theme }: { theme: Theme }) => (
   {
     '&.Mui-selected': {
@@ -24,8 +65,16 @@ const selectedStyles = ({ theme }: { theme: Theme }) => (
 
 const HIGH_CONTRAST = createTheme({
   palette: {
-    primary: Color.primary,
-    secondary: Color.secondary,
+    primary: {
+      dark: lighten(Color.primary.dark, .8),
+      main: lighten(Color.primary.main, .8),
+      light: lighten(Color.primary.light, .8),
+    },
+    secondary: {
+      dark: lighten(Color.secondary.dark, .8),
+      main: lighten(Color.secondary.main, .8),
+      light: lighten(Color.secondary.light, .8),
+    },
     warning: Color.warning,
     error: Color.error,
     success: Color.success,

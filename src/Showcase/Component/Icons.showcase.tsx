@@ -41,6 +41,8 @@ import {
   WebShopBlock,
   ApplePay,
   GooglePay,
+  Klarna,
+  KlarnaBadge
 } from '../../Component/Icon';
 import AppNavigation from './AppNavigation.showcase';
 import CodeBox from './CodeBox.showcase';
@@ -159,6 +161,14 @@ const Icons = () => {
               <Grid item xs={4}><ListItem>
                 <ListItemAvatar><GooglePay/></ListItemAvatar>
                 <ListItemText><CodeBox component='span' size='small'>{`<GooglePay />`}</CodeBox></ListItemText>
+              </ListItem></Grid>
+              <Grid item xs={4}><ListItem>
+                <ListItemAvatar><Klarna/></ListItemAvatar>
+                <ListItemText><CodeBox component='span' size='small'>{`<Klarna />`}</CodeBox></ListItemText>
+              </ListItem></Grid>
+              <Grid item xs={4}><ListItem>
+                <ListItemAvatar><KlarnaBadge/></ListItemAvatar>
+                <ListItemText><CodeBox component='span' size='small'>{`<KlarnaBadge />`}</CodeBox></ListItemText>
               </ListItem></Grid>
             </Grid>
             <Box mt={2}>
