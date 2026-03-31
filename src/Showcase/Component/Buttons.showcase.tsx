@@ -1,16 +1,28 @@
 import React from 'react';
-import { Box, Button, Grid, CardContent, CardHeader, Container, Card, Radio, Typography, Link } from '@mui/material';
+import {
+  Box,
+  Button,
+  ButtonProps,
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Grid,
+  Link,
+  Radio,
+  Typography
+} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import DoneIcon from '@mui/icons-material/Done';
 import HomeIcon from '@mui/icons-material/Home';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import * as Color from '../../Types/Color';
 import IconButtonProgress from '../../Component/Button/IconButtonProgress';
 import AppNavigation from './AppNavigation.showcase';
 import Switch from '@mui/material/Switch';
 import CodeBox from './CodeBox.showcase';
 import { ButtonProgress } from '../../Component/Button';
 import Layout from '../../Component/App/Layout';
+
 type Props = {};
 const style = ({
   root: {
@@ -20,13 +32,18 @@ const style = ({
 
 type VARIANT = 'contained' | 'outlined' | 'text';
 const variants: VARIANT[] = ['text', 'outlined', 'contained'];
-const colors: Color.Button[] = ['primary', 'secondary', 'inherit'];
+const colors: ButtonProps['color'][] = ['primary', 'secondary', 'inherit', 'info', 'success', 'warning', 'error'];
 
-const generate = (_variants: string[], _colors: Color.Button[], size: 'small' | 'medium' | 'large' = 'medium') => {
-  const rows = _variants.map(variant => _colors.map(color => <Grid item key={'grid-item-' + variant + color} xs={4}>
-    <Button color={color} variant={variant as VARIANT} key={'btn-' + variant + color} size={size}>{variant} + {color}</Button>
-  </Grid>));
-  return <Grid container spacing={1}>{rows.map((row, i) => (<Grid container item xs={12} spacing={3} key={'grid-row+' + i}>{row}</Grid>))}</Grid>;
+const generate = (_variants: string[], _colors: ButtonProps['color'][], size: 'small' | 'medium' | 'large' = 'medium') => {
+  return (
+    <Box display='grid' gridTemplateColumns={`repeat(${_colors.length}, auto)`} gap={3}>
+      {_variants.map(variant => _colors.map(color => (
+        <Button color={color} variant={variant as VARIANT} key={'btn-' + variant + color} size={size}>
+          {variant} + {color}
+        </Button>
+      )))}
+    </Box>
+  )
 };
 
 const Buttons: React.FC<Props> = () => {
@@ -56,19 +73,19 @@ const Buttons: React.FC<Props> = () => {
                     value={'small'}
                     control={<Radio />}
                     label={'Small'}
-                    onChange={(event, selected) => selected ? setSize('small') : null} />
+                    onChange={(_, selected) => selected ? setSize('small') : null}/>
                   <FormControlLabel
                     checked={size === 'medium'}
                     value={'medium'}
                     control={<Radio />}
                     label={'Medium'}
-                    onChange={(event, selected) => (selected ? setSize('medium') : null)} />
+                    onChange={(_, selected) => (selected ? setSize('medium') : null)}/>
                   <FormControlLabel
                     checked={size === 'large'}
                     value={'large'}
                     control={<Radio />}
                     label={'Large'}
-                    onChange={(event, selected) => (selected ? setSize('large') : null)} />
+                    onChange={(_, selected) => (selected ? setSize('large') : null)}/>
                 </Box>
                 <Box sx={style.root}>{generate(variants, colors, size)}</Box>
               </CardContent>
@@ -78,17 +95,20 @@ const Buttons: React.FC<Props> = () => {
             <Card>
               <CardHeader title={'ButtonProgress and IconButtonProgress'} />
               <CardContent>
-                <Typography>To have a consistent ui we have decided to implement a <CodeBox component={'span'} size={'small'}>ButtonProgress</CodeBox> and
-                  a <CodeBox component={'span'} size={'small'}>IconButtonProgress</CodeBox> component.</Typography>
+                <Typography>To have a consistent ui we have decided to implement a <CodeBox component='span'
+                                                                                            size='small'>ButtonProgress</CodeBox> and
+                  a <CodeBox component='span' size='small'>IconButtonProgress</CodeBox> component.</Typography>
                 <FormControlLabel control={<Switch onChange={() => setInProgress(!inProgress)} checked={inProgress} />} label='Enable progress' />
                 <Box mt={4}>
-                  <Typography variant={'h6'}>ButtonProgress</Typography>
-                  <Grid container spacing={1} alignItems={'center'}>
+                  <Typography variant='h6'>ButtonProgress</Typography>
+                  <Grid container spacing={1} alignItems='center'>
                     <Grid item><ButtonProgress inProgress={inProgress} size={size}>A Progress Button</ButtonProgress></Grid>
-                    <Grid item><ButtonProgress inProgress={inProgress} size={size} variant={'outlined'} color={'secondary'}>A Progress Button</ButtonProgress></Grid>
-                    <Grid item><ButtonProgress inProgress={inProgress} size={size} variant={'contained'} color={'primary'}>A Progress Button</ButtonProgress></Grid>
+                    <Grid item><ButtonProgress inProgress={inProgress} size={size} variant='outlined' color='secondary'>A
+                      Progress Button</ButtonProgress></Grid>
+                    <Grid item><ButtonProgress inProgress={inProgress} size={size} variant='contained' color='primary'>A
+                      Progress Button</ButtonProgress></Grid>
                   </Grid>
-                  <CodeBox>{`<ButtonProgress inProgress={inProgress} size={size}>A Progress Button</ButtonProgress>`}</CodeBox>
+                  <CodeBox>{'<ButtonProgress inProgress={inProgress} size={size}>A Progress Button</ButtonProgress>'}</CodeBox>
                   <CodeBox>
                     {`onClick ? : () => void;`}<br />
                     {`disabled ? : boolean;`}<br />

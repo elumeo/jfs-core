@@ -1,46 +1,46 @@
 /* eslint-disable max-lines */
-import { alpha, createTheme, Theme, lighten } from '@mui/material/styles';
+import { alpha, createTheme, Theme } from '@mui/material/styles';
 import * as BaseColor from 'Constant/Color';
 import { grey } from '@mui/material/colors';
 
 const Color = {
   ...BaseColor,
   primary: {
-    light: lighten(BaseColor.primary.light, .2),
-    main: lighten(BaseColor.primary.main, .2),
-    dark: lighten(BaseColor.primary.dark, .2),
-    contrastText: BaseColor.primary.contrastText,
+    light: '#FF9AD7',
+    main: '#FF8FD3',
+    dark: '#FF79CA',
+    contrastText: BaseColor.common.black,
   },
   secondary: {
-    light: lighten(BaseColor.secondary.light, .1),
-    main: lighten(BaseColor.secondary.main, .1),
-    dark: lighten(BaseColor.secondary.dark, .1),
-    contrastText: BaseColor.secondary.contrastText,
-  },
-  success: {
-    light: lighten(BaseColor.success.light, .1),
-    main: lighten(BaseColor.success.main, .1),
-    dark: lighten(BaseColor.success.dark, .1),
-    contrastText: BaseColor.success.contrastText,
-  },
-  warning: {
-    light: lighten(BaseColor.warning.light, .1),
-    main: lighten(BaseColor.warning.main, .1),
-    dark: lighten(BaseColor.warning.dark, .1),
-    contrastText: BaseColor.warning.contrastText,
-  },
-  error: {
-    light: lighten(BaseColor.error.light, .3),
-    main: lighten(BaseColor.error.main, .3),
-    dark: lighten(BaseColor.error.dark, .3),
-    contrastText: BaseColor.error.contrastText,
+    light: '#00F4FF',
+    main: '#00CED7',
+    dark: '#00B2B9',
+    contrastText: BaseColor.common.black,
   },
   info: {
-    light: lighten(BaseColor.info.light, .1),
-    main: lighten(BaseColor.info.main, .1),
-    dark: lighten(BaseColor.info.dark, .1),
-    contrastText: BaseColor.info.contrastText,
+    light: '#5BD3FF',
+    main: '#00BBFF',
+    dark: '#008EC1',
+    contrastText: BaseColor.common.black,
   },
+  success: {
+    light: '#93E893',
+    main: '#56B956',
+    dark: '#3A9B3A',
+    contrastText: BaseColor.common.black,
+  },
+  warning: {
+    light: '#FFDA2E',
+    main: '#FFC25B',
+    dark: '#FFB333',
+    contrastText: BaseColor.common.black,
+  },
+  error: {
+    light: '#FF7A7A',
+    main: '#FF5A5A',
+    dark: '#FF4A4A',
+    contrastText: BaseColor.common.black,
+  }
 }
 
 const selectedStyles = ({ theme }: { theme: Theme }) => (
@@ -65,16 +65,8 @@ const selectedStyles = ({ theme }: { theme: Theme }) => (
 
 const HIGH_CONTRAST = createTheme({
   palette: {
-    primary: {
-      dark: lighten(Color.primary.dark, .8),
-      main: lighten(Color.primary.main, .8),
-      light: lighten(Color.primary.light, .8),
-    },
-    secondary: {
-      dark: lighten(Color.secondary.dark, .8),
-      main: lighten(Color.secondary.main, .8),
-      light: lighten(Color.secondary.light, .8),
-    },
+    primary: Color.primary,
+    secondary: Color.secondary,
     warning: Color.warning,
     error: Color.error,
     success: Color.success,
@@ -96,7 +88,8 @@ const HIGH_CONTRAST = createTheme({
       focusOpacity: 0.2,
     },
     background: {
-      default: grey[900] + '21',
+      default: '#141414',
+      paper: '#1E1E1E',
     },
     ...Color
   },

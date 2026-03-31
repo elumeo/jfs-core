@@ -26,13 +26,16 @@ const Notifications = () => {
   const [persist, setPersist] = useState(false)
   const [groupName, setGroupName] = useState('default')
   const groups = useSelector(state => Array.from(new Set(state?.Core?.Notification?.history?.map?.(n => n.group))))
+
   const onPersistChange: CheckboxProps['onChange'] = React.useCallback((event, value) => {
     setPersist(value)
   }, [setPersist])
+
   const onGroupNameChange: InputProps['onChange'] = React.useCallback(event => {
     // @ts-ignore
     setGroupName(event.target.value)
   }, [setGroupName])
+
   return (
     <Layout navigation={<AppNavigation />} >
       <Card>
@@ -53,7 +56,7 @@ const Notifications = () => {
               </FormControl>
             </Grid>
             <Grid item xs={2}>
-              <FormControlLabel value={persist} control={<Checkbox onChange={onPersistChange} />} label={'persist'} />
+              <FormControlLabel value={persist} control={<Checkbox onChange={onPersistChange} />} label='persist' />
             </Grid>
             <Grid item xs={4} />
 

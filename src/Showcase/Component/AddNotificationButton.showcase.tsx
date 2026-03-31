@@ -2,21 +2,11 @@ import * as React from 'react';
 
 import { Button, IconButton, Tooltip } from '@mui/material';
 import { VariantType } from 'notistack';
-import { Notification, Severity } from '../../Types/Notification';
+import { Notification } from '../../Types/Notification';
 import Box from '@mui/material/Box';
 import { Refresh, SignalCellularConnectedNoInternet0Bar, Visibility } from '@mui/icons-material';
-import definition from '../../Component/App/Stateless/Style/Theme/Definition';
 import { useDispatch } from 'react-redux';
 import { addNotification, addToastAction } from '../../Store/Action';
-import * as Color from '../../Constant/Color'
-const sxs = (variant: Severity) => ({
-  backgroundColor: Color?.[variant]?.['main'] || definition.palette.grey[800],
-  color: Color?.[variant]?.['contrastText'] || definition.palette.grey['50'],
-  '&:hover': {
-    backgroundColor: Color?.[variant]?.['dark'] || definition.palette.grey['900'],
-    color: Color?.[variant]?.['contrastText'] || definition.palette.grey['50']
-  }
-})
 
 type Props = {
   variant: VariantType,
@@ -30,11 +20,10 @@ const AddNotificationButton: React.FC<Props> =
     group = 'default',
     persist = false
   }) => {
-    const classes = sxs(variant as Severity)
     const dispatch = useDispatch()
-    const addNotificationCallback = React.useCallback(() => dispatch(addNotification(generateNotification())), [dispatch])
+    const addNotificationCallback = () => dispatch(addNotification(generateNotification()))
 
-    const generateNotification = React.useCallback((): Notification => {
+    const generateNotification = (): Notification => {
       const defaultProps: Notification = { group, variant, notistackOptions: { persist } }
       switch (variant) {
         case 'error':
@@ -73,10 +62,10 @@ const AddNotificationButton: React.FC<Props> =
         default:
           return { ...defaultProps, variant: 'default', content: 'content loaded' }
       }
-    }, [variant, persist, dispatch])
+    }
 
     return (
-      <Button sx={classes} variant={'text'} onClick={addNotificationCallback}>
+      <Button color={variant == 'default' ? 'inherit' : variant} variant='contained' onClick={addNotificationCallback}>
         {variant} Notification
       </Button>
     );

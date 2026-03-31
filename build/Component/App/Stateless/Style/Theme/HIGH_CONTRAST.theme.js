@@ -39,35 +39,35 @@ var styles_1 = require("@mui/material/styles");
 var BaseColor = __importStar(require("../../../../../Constant/Color"));
 var colors_1 = require("@mui/material/colors");
 var Color = __assign(__assign({}, BaseColor), { primary: {
-        light: (0, styles_1.lighten)(BaseColor.primary.light, .2),
-        main: (0, styles_1.lighten)(BaseColor.primary.main, .2),
-        dark: (0, styles_1.lighten)(BaseColor.primary.dark, .2),
-        contrastText: BaseColor.primary.contrastText,
+        light: '#FF9AD7',
+        main: '#FF8FD3',
+        dark: '#FF79CA',
+        contrastText: BaseColor.common.black,
     }, secondary: {
-        light: (0, styles_1.lighten)(BaseColor.secondary.light, .1),
-        main: (0, styles_1.lighten)(BaseColor.secondary.main, .1),
-        dark: (0, styles_1.lighten)(BaseColor.secondary.dark, .1),
-        contrastText: BaseColor.secondary.contrastText,
-    }, success: {
-        light: (0, styles_1.lighten)(BaseColor.success.light, .1),
-        main: (0, styles_1.lighten)(BaseColor.success.main, .1),
-        dark: (0, styles_1.lighten)(BaseColor.success.dark, .1),
-        contrastText: BaseColor.success.contrastText,
-    }, warning: {
-        light: (0, styles_1.lighten)(BaseColor.warning.light, .1),
-        main: (0, styles_1.lighten)(BaseColor.warning.main, .1),
-        dark: (0, styles_1.lighten)(BaseColor.warning.dark, .1),
-        contrastText: BaseColor.warning.contrastText,
-    }, error: {
-        light: (0, styles_1.lighten)(BaseColor.error.light, .3),
-        main: (0, styles_1.lighten)(BaseColor.error.main, .3),
-        dark: (0, styles_1.lighten)(BaseColor.error.dark, .3),
-        contrastText: BaseColor.error.contrastText,
+        light: '#00F4FF',
+        main: '#00CED7',
+        dark: '#00B2B9',
+        contrastText: BaseColor.common.black,
     }, info: {
-        light: (0, styles_1.lighten)(BaseColor.info.light, .1),
-        main: (0, styles_1.lighten)(BaseColor.info.main, .1),
-        dark: (0, styles_1.lighten)(BaseColor.info.dark, .1),
-        contrastText: BaseColor.info.contrastText,
+        light: '#5BD3FF',
+        main: '#00BBFF',
+        dark: '#008EC1',
+        contrastText: BaseColor.common.black,
+    }, success: {
+        light: '#93E893',
+        main: '#56B956',
+        dark: '#3A9B3A',
+        contrastText: BaseColor.common.black,
+    }, warning: {
+        light: '#FFDA2E',
+        main: '#FFC25B',
+        dark: '#FFB333',
+        contrastText: BaseColor.common.black,
+    }, error: {
+        light: '#FF7A7A',
+        main: '#FF5A5A',
+        dark: '#FF4A4A',
+        contrastText: BaseColor.common.black,
     } });
 var selectedStyles = function (_a) {
     var theme = _a.theme;
@@ -90,15 +90,7 @@ var selectedStyles = function (_a) {
     });
 };
 var HIGH_CONTRAST = (0, styles_1.createTheme)({
-    palette: __assign({ primary: {
-            dark: (0, styles_1.lighten)(Color.primary.dark, .8),
-            main: (0, styles_1.lighten)(Color.primary.main, .8),
-            light: (0, styles_1.lighten)(Color.primary.light, .8),
-        }, secondary: {
-            dark: (0, styles_1.lighten)(Color.secondary.dark, .8),
-            main: (0, styles_1.lighten)(Color.secondary.main, .8),
-            light: (0, styles_1.lighten)(Color.secondary.light, .8),
-        }, warning: Color.warning, error: Color.error, success: Color.success, info: Color.info, mode: 'dark', grey: colors_1.grey, common: Color.common, text: {
+    palette: __assign({ primary: Color.primary, secondary: Color.secondary, warning: Color.warning, error: Color.error, success: Color.success, info: Color.info, mode: 'dark', grey: colors_1.grey, common: Color.common, text: {
             primary: colors_1.grey[100],
             secondary: colors_1.grey[200],
             disabled: colors_1.grey[500],
@@ -110,7 +102,8 @@ var HIGH_CONTRAST = (0, styles_1.createTheme)({
             focus: "".concat((0, styles_1.alpha)(Color.common.white, .2)),
             focusOpacity: 0.2,
         }, background: {
-            default: colors_1.grey[900] + '21',
+            default: '#141414',
+            paper: '#1E1E1E',
         } }, Color),
     mixins: {
         toolbar: {
