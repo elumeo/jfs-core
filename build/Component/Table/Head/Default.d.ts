@@ -1,6 +1,6 @@
 import React from 'react';
-import { SortDirection, SxProps, TableCellProps } from '@mui/material';
-export declare const sortingStyles: SxProps;
+import { SortDirection, SxProps, TableCellProps, Theme } from '@mui/material';
+export declare const sortingStyles: SxProps<Theme>;
 export type Props = Omit<TableCellProps, 'onClick'> & {
     height?: number;
     isNumeric?: boolean;

@@ -14,7 +14,7 @@ const Snackbar: React.FC = () => {
   const id = React.useId()
   const { open, severity, message, autoHideDuration } = useVisibleToast();
   const onCloseCallback: SnackbarProps['onClose'] = React.useCallback(
-    (event, reason) => {
+    (_, reason) => {
       if (reason === 'timeout') {
         dispatch(dismissToastAction());
       }
@@ -24,7 +24,9 @@ const Snackbar: React.FC = () => {
 
   return (
     <MUISnackbar open={open} id={`alert-snackbar-${id}`} onClose={onCloseCallback} anchorOrigin={anchor} autoHideDuration={autoHideDuration}>
-      {open ? <Alert severity={severity} variant='filled'>{message}</Alert> : null}
+      {open ? <Alert severity={severity} variant='standard'>
+        {message}
+      </Alert> : null}
     </MUISnackbar>
   );
 };

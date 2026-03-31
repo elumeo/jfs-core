@@ -193,7 +193,7 @@ var HIGH_CONTRAST = (0, styles_1.createTheme)({
             styleOverrides: {
                 root: {
                     color: Color.secondary.main,
-                    '&.MuiTableSortLabel-active': {
+                    '&.MuiTableSortLabel-active, &MuiTableCell-head .MuiTypography-root': {
                         color: Color.secondary.main
                     },
                     '&.MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon': {
@@ -202,7 +202,7 @@ var HIGH_CONTRAST = (0, styles_1.createTheme)({
                 },
                 icon: {
                     color: Color.secondary.main
-                }
+                },
             }
         },
         MuiTableCell: {

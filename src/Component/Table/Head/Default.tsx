@@ -1,15 +1,21 @@
 import React, { useMemo } from 'react';
-import { TableCell, TableSortLabel, SortDirection, SxProps, TableCellProps, Typography, TableSortLabelProps, Theme } from '@mui/material';
+import {
+  SortDirection,
+  SxProps,
+  TableCell,
+  TableCellProps,
+  TableSortLabel,
+  TableSortLabelProps,
+  Theme,
+  Typography
+} from '@mui/material';
 import { visuallyHiddenStyle } from 'Component/Table/VirtualizedTable';
-import { grey } from '@mui/material/colors';
-import { apatith } from 'Constant/Color';
+import { useTheme } from "@mui/material/styles";
 
-export const sortingStyles: SxProps = {
-  backgroundColor: (theme: Theme) => theme.palette.mode === 'dark'
-    ? grey[800] : grey[200]
-  ,
-  borderRadius: (theme: Theme) => `${theme.spacing(.5)} ${theme.spacing(.5)} 0 0`
-}
+export const sortingStyles: SxProps<Theme> = theme => ({
+  backgroundColor: theme.palette.action.selected,
+  borderRadius: `${theme.spacing(.5)} ${theme.spacing(.5)} 0 0`
+})
 
 export type Props = Omit<TableCellProps, 'onClick'> & {
   height?: number;
@@ -24,13 +30,14 @@ export type Props = Omit<TableCellProps, 'onClick'> & {
 };
 
 const Default: React.FC<Props> = ({ height = 48, isNumeric = false, disableSort = false, sortBy, sortDirection, onClick, label, dataKey, width, sx, ...rest }) => {
+  const theme = useTheme()
   const isActiveSort = sortBy === dataKey
   const color = isActiveSort || !disableSort
-    ? apatith.main
+    ? theme.palette.secondary.main
     : 'inherit'
-  const styles = useMemo<SxProps>(() => (
+  const styles = useMemo<SxProps<Theme>>(() => (
     {
-      ...(isActiveSort ? sortingStyles : {}),
+      ...(isActiveSort ? sortingStyles(theme) : {}),
       height: height,
       maxWidth: '100%',
       width: width,

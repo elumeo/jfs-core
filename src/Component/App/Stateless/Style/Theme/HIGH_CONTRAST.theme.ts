@@ -182,7 +182,7 @@ const HIGH_CONTRAST = createTheme({
       styleOverrides: {
         root: {
           color: Color.secondary.main,
-          '&.MuiTableSortLabel-active': {
+          '&.MuiTableSortLabel-active, &MuiTableCell-head .MuiTypography-root': {
             color: Color.secondary.main
           },
           '&.MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon': {
@@ -191,8 +191,7 @@ const HIGH_CONTRAST = createTheme({
         },
         icon: {
           color: Color.secondary.main
-
-        }
+        },
       }
     },
     MuiTableCell: {
