@@ -13,7 +13,6 @@ import { visuallyHiddenStyle } from 'Component/Table/VirtualizedTable';
 import { useTheme } from "@mui/material/styles";
 
 export const sortingStyles: SxProps<Theme> = theme => ({
-  backgroundColor: theme.palette.action.selected,
   borderRadius: `${theme.spacing(.5)} ${theme.spacing(.5)} 0 0`
 })
 

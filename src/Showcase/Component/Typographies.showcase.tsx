@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Box, CardContent, CardHeader, Typography, Grid, Container, Card } from '@mui/material';
+import { Box, CardContent, CardHeader, Typography, Grid, Container, Card, Link } from '@mui/material';
 import * as Color from '../../Types/Color'
 import AppNavigation from './AppNavigation.showcase';
 import CodeBox from './CodeBox.showcase';
@@ -33,6 +33,7 @@ const Typographies = () => {
           <Grid item>
             <Card>
               <CardHeader title='Standard variants' />
+              <Link href="/" color='secondary'>Start</Link>
               <CardContent>
                 <Typography variant={'h5'}>Variant <CodeBox component={'span'} size={'small'}>h5</CodeBox> - This variant is used in dialogs and cards title</Typography>
                 <Box mt={2}><Typography variant={'h6'}>Variant <CodeBox component={'span'} size={'small'}>h6</CodeBox></Typography></Box>

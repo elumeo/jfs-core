@@ -44,9 +44,9 @@ var Color = __assign(__assign({}, BaseColor), { primary: {
         dark: '#FF79CA',
         contrastText: BaseColor.common.black,
     }, secondary: {
-        light: '#00F4FF',
-        main: '#00CED7',
-        dark: '#00B2B9',
+        light: '#6ED9DE',
+        main: '#1DC2C9',
+        dark: '#15a6ac',
         contrastText: BaseColor.common.black,
     }, info: {
         light: '#5BD3FF',

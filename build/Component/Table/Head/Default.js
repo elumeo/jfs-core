@@ -29,7 +29,6 @@ var material_1 = require("@mui/material");
 var VirtualizedTable_1 = require("../../Table/VirtualizedTable");
 var styles_1 = require("@mui/material/styles");
 var sortingStyles = function (theme) { return ({
-    backgroundColor: theme.palette.action.selected,
     borderRadius: "".concat(theme.spacing(.5), " ").concat(theme.spacing(.5), " 0 0")
 }); };
 exports.sortingStyles = sortingStyles;
